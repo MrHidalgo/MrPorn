@@ -11,6 +11,10 @@
 		}
 		&-2 {
 			background-color: #081b49;
+
+			.c-grid {
+				position: relative;
+			}
 		}
 		&-3 {
 			background-color: rgb(11, 13, 40);
@@ -49,9 +53,23 @@
 				}
 			}
 		}
+
 		&-2 {
 			min-height: 121px;
+
+			.header__col {
+				&-1 {
+					width: 100%;
+					max-width: 410px;
+				}
+				&-2 {
+					flex: 1;
+					min-width: 1px;
+					max-width: 100%;
+				}
+			}
 		}
+
 		&-3 {
 			align-items: center;
 			justify-content: space-between;

@@ -1,6 +1,13 @@
 // LOGOTYPE :: START
 
 .logo {
+	&--haeder {
+		position: absolute;
+		top: 50%;
+		left: 12px;
+		transform: translateY(-50%);
+		max-width: 350px;
+	}
 	&--footer {
 		max-width: 405px;
 		padding-bottom: 52px;

@@ -668,12 +668,23 @@ picture {
 }
 
 /* line 4, src/scss/_macros/_logotype.scss */
+.logo--haeder {
+  position: absolute;
+  top: 50%;
+  left: 12px;
+  -webkit-transform: translateY(-50%);
+      -ms-transform: translateY(-50%);
+          transform: translateY(-50%);
+  max-width: 350px;
+}
+
+/* line 11, src/scss/_macros/_logotype.scss */
 .logo--footer {
   max-width: 405px;
   padding-bottom: 52px;
 }
 
-/* line 9, src/scss/_macros/_logotype.scss */
+/* line 16, src/scss/_macros/_logotype.scss */
 .logo__btn {
   display: -webkit-box;
   display: -webkit-flex;
@@ -685,7 +696,7 @@ picture {
           align-items: center;
 }
 
-/* line 14, src/scss/_macros/_logotype.scss */
+/* line 21, src/scss/_macros/_logotype.scss */
 .logo__img {
   display: block;
   max-width: 100%;
@@ -717,13 +728,18 @@ picture {
 }
 
 /* line 15, src/scss/_components/common/_header.scss */
+.header__container-2 .c-grid {
+  position: relative;
+}
+
+/* line 19, src/scss/_components/common/_header.scss */
 .header__container-3 {
   background-color: #0b0d28;
   -webkit-box-shadow: 1.482px 16.935px 35px 0px rgba(31, 37, 103, 0.33);
           box-shadow: 1.482px 16.935px 35px 0px rgba(31, 37, 103, 0.33);
 }
 
-/* line 21, src/scss/_components/common/_header.scss */
+/* line 25, src/scss/_components/common/_header.scss */
 .header__wrapper {
   display: -webkit-box;
   display: -webkit-flex;
@@ -731,7 +747,7 @@ picture {
   display: flex;
 }
 
-/* line 24, src/scss/_components/common/_header.scss */
+/* line 28, src/scss/_components/common/_header.scss */
 .header__wrapper-1 {
   -webkit-box-align: center;
   -webkit-align-items: center;
@@ -740,13 +756,13 @@ picture {
   min-height: 46px;
 }
 
-/* line 29, src/scss/_components/common/_header.scss */
+/* line 33, src/scss/_components/common/_header.scss */
 .header__wrapper-1 .header__col-1, .header__wrapper-1 .header__col-3 {
   width: 100%;
   max-width: 254px;
 }
 
-/* line 35, src/scss/_components/common/_header.scss */
+/* line 39, src/scss/_components/common/_header.scss */
 .header__wrapper-1 .header__col-2 {
   -webkit-box-flex: 1;
   -webkit-flex: 1;
@@ -756,7 +772,7 @@ picture {
   max-width: 100%;
 }
 
-/* line 41, src/scss/_components/common/_header.scss */
+/* line 45, src/scss/_components/common/_header.scss */
 .header__wrapper-1 .header__col-3 {
   display: -webkit-box;
   display: -webkit-flex;
@@ -772,17 +788,33 @@ picture {
           justify-content: flex-end;
 }
 
-/* line 46, src/scss/_components/common/_header.scss */
+/* line 50, src/scss/_components/common/_header.scss */
 .header__wrapper-1 .header__col-3 > div {
   padding-left: 4px;
 }
 
-/* line 52, src/scss/_components/common/_header.scss */
+/* line 57, src/scss/_components/common/_header.scss */
 .header__wrapper-2 {
   min-height: 121px;
 }
 
-/* line 55, src/scss/_components/common/_header.scss */
+/* line 61, src/scss/_components/common/_header.scss */
+.header__wrapper-2 .header__col-1 {
+  width: 100%;
+  max-width: 410px;
+}
+
+/* line 65, src/scss/_components/common/_header.scss */
+.header__wrapper-2 .header__col-2 {
+  -webkit-box-flex: 1;
+  -webkit-flex: 1;
+      -ms-flex: 1;
+          flex: 1;
+  min-width: 1px;
+  max-width: 100%;
+}
+
+/* line 73, src/scss/_components/common/_header.scss */
 .header__wrapper-3 {
   -webkit-box-align: center;
   -webkit-align-items: center;
@@ -794,7 +826,7 @@ picture {
           justify-content: space-between;
 }
 
-/* line 61, src/scss/_components/common/_header.scss */
+/* line 79, src/scss/_components/common/_header.scss */
 .header__toggle {
   position: relative;
   display: -webkit-box;
@@ -811,7 +843,7 @@ picture {
   background-color: #030b2e;
 }
 
-/* line 72, src/scss/_components/common/_header.scss */
+/* line 90, src/scss/_components/common/_header.scss */
 .header__toggle-left, .header__toggle-right {
   z-index: 0;
   position: absolute;
@@ -828,7 +860,7 @@ picture {
   height: 100%;
 }
 
-/* line 82, src/scss/_components/common/_header.scss */
+/* line 100, src/scss/_components/common/_header.scss */
 .header__toggle-left .icon-font, .header__toggle-right .icon-font {
   color: #ffffff;
   -webkit-transition: opacity 0.35s ease-in-out;
@@ -836,13 +868,13 @@ picture {
   transition: opacity 0.35s ease-in-out;
 }
 
-/* line 86, src/scss/_components/common/_header.scss */
+/* line 104, src/scss/_components/common/_header.scss */
 .header__toggle-left .icon-font.icon-moon, .header__toggle-right .icon-font.icon-moon {
   opacity: 0;
   font-size: 12px;
 }
 
-/* line 93, src/scss/_components/common/_header.scss */
+/* line 111, src/scss/_components/common/_header.scss */
 .header__toggle-left {
   left: 0;
   -webkit-box-pack: end;
@@ -851,7 +883,7 @@ picture {
           justify-content: flex-end;
 }
 
-/* line 98, src/scss/_components/common/_header.scss */
+/* line 116, src/scss/_components/common/_header.scss */
 .header__toggle-right {
   right: 0;
   -webkit-box-pack: start;
@@ -860,7 +892,7 @@ picture {
           justify-content: flex-start;
 }
 
-/* line 103, src/scss/_components/common/_header.scss */
+/* line 121, src/scss/_components/common/_header.scss */
 .header__toggle input {
   opacity: 0;
   visibility: hidden;
@@ -871,24 +903,24 @@ picture {
   height: 0;
 }
 
-/* line 114, src/scss/_components/common/_header.scss */
+/* line 132, src/scss/_components/common/_header.scss */
 .header__toggle input:checked + label .icon-font {
   -webkit-transition: opacity 0.35s ease-in-out;
   -o-transition: opacity 0.35s ease-in-out;
   transition: opacity 0.35s ease-in-out;
 }
 
-/* line 117, src/scss/_components/common/_header.scss */
+/* line 135, src/scss/_components/common/_header.scss */
 .header__toggle input:checked + label .icon-font.icon-sun {
   opacity: 0;
 }
 
-/* line 120, src/scss/_components/common/_header.scss */
+/* line 138, src/scss/_components/common/_header.scss */
 .header__toggle input:checked + label .icon-font.icon-moon {
   opacity: 1;
 }
 
-/* line 125, src/scss/_components/common/_header.scss */
+/* line 143, src/scss/_components/common/_header.scss */
 .header__toggle input:checked + label span {
   -webkit-transform: translateX(-35px);
       -ms-transform: translateX(-35px);
@@ -900,7 +932,7 @@ picture {
   transition: transform 0.35s ease-in-out, -webkit-transform 0.35s ease-in-out;
 }
 
-/* line 133, src/scss/_components/common/_header.scss */
+/* line 151, src/scss/_components/common/_header.scss */
 .header__toggle label {
   z-index: 2;
   cursor: pointer;
@@ -915,7 +947,7 @@ picture {
   height: 100%;
 }
 
-/* line 144, src/scss/_components/common/_header.scss */
+/* line 162, src/scss/_components/common/_header.scss */
 .header__toggle span {
   position: absolute;
   top: 2px;
@@ -937,7 +969,7 @@ picture {
   transition: transform 0.35s ease-in-out, -webkit-transform 0.35s ease-in-out;
 }
 
-/* line 158, src/scss/_components/common/_header.scss */
+/* line 176, src/scss/_components/common/_header.scss */
 .header__category {
   display: -webkit-box;
   display: -webkit-flex;
@@ -953,7 +985,7 @@ picture {
           justify-content: center;
 }
 
-/* line 163, src/scss/_components/common/_header.scss */
+/* line 181, src/scss/_components/common/_header.scss */
 .header__category-item {
   display: -webkit-box;
   display: -webkit-flex;
@@ -961,7 +993,7 @@ picture {
   display: flex;
 }
 
-/* line 167, src/scss/_components/common/_header.scss */
+/* line 185, src/scss/_components/common/_header.scss */
 .header__category-title, .header__category-link {
   padding-left: 12px;
   padding-right: 12px;
@@ -971,12 +1003,12 @@ picture {
   line-height: 1.2;
 }
 
-/* line 177, src/scss/_components/common/_header.scss */
+/* line 195, src/scss/_components/common/_header.scss */
 .header__category-title {
   color: #fff;
 }
 
-/* line 181, src/scss/_components/common/_header.scss */
+/* line 199, src/scss/_components/common/_header.scss */
 .header__category-link {
   color: #35539c;
   -webkit-transition: color 0.35s ease-in-out;
@@ -984,7 +1016,7 @@ picture {
   transition: color 0.35s ease-in-out;
 }
 
-/* line 185, src/scss/_components/common/_header.scss */
+/* line 203, src/scss/_components/common/_header.scss */
 .header__category-link:hover {
   color: #ffffff;
   -webkit-transition: color 0.35s ease-in-out;
@@ -992,7 +1024,7 @@ picture {
   transition: color 0.35s ease-in-out;
 }
 
-/* line 192, src/scss/_components/common/_header.scss */
+/* line 210, src/scss/_components/common/_header.scss */
 .header__action {
   display: -webkit-box;
   display: -webkit-flex;
@@ -1017,7 +1049,7 @@ picture {
           border-radius: 5px;
 }
 
-/* line 205, src/scss/_components/common/_header.scss */
+/* line 223, src/scss/_components/common/_header.scss */
 .header__action-link {
   display: -webkit-box;
   display: -webkit-flex;
@@ -1027,17 +1059,17 @@ picture {
   font-weight: 700;
 }
 
-/* line 210, src/scss/_components/common/_header.scss */
+/* line 228, src/scss/_components/common/_header.scss */
 .header__action-link--logout {
   color: #9294ad;
 }
 
-/* line 213, src/scss/_components/common/_header.scss */
+/* line 231, src/scss/_components/common/_header.scss */
 .header__action-link--admin {
   color: #91a538;
 }
 
-/* line 219, src/scss/_components/common/_header.scss */
+/* line 237, src/scss/_components/common/_header.scss */
 .header__nav {
   display: -webkit-box;
   display: -webkit-flex;
@@ -1054,13 +1086,13 @@ picture {
   height: 44px;
 }
 
-/* line 225, src/scss/_components/common/_header.scss */
+/* line 243, src/scss/_components/common/_header.scss */
 .header__nav-item, .header__nav-link, .header__nav-separator {
   position: relative;
   height: 100%;
 }
 
-/* line 232, src/scss/_components/common/_header.scss */
+/* line 250, src/scss/_components/common/_header.scss */
 .header__nav-item {
   display: -webkit-box;
   display: -webkit-flex;
@@ -1074,7 +1106,7 @@ picture {
   max-width: 100%;
 }
 
-/* line 238, src/scss/_components/common/_header.scss */
+/* line 256, src/scss/_components/common/_header.scss */
 .header__nav-item:first-of-type, .header__nav-item:last-of-type {
   -webkit-box-flex: unset;
   -webkit-flex: unset;
@@ -1083,7 +1115,7 @@ picture {
   width: 145px;
 }
 
-/* line 245, src/scss/_components/common/_header.scss */
+/* line 263, src/scss/_components/common/_header.scss */
 .header__nav-item:first-of-type .header__nav-link {
   -webkit-box-pack: start;
   -webkit-justify-content: flex-start;
@@ -1091,7 +1123,7 @@ picture {
           justify-content: flex-start;
 }
 
-/* line 250, src/scss/_components/common/_header.scss */
+/* line 268, src/scss/_components/common/_header.scss */
 .header__nav-item:last-of-type .header__nav-link {
   -webkit-box-pack: end;
   -webkit-justify-content: flex-end;
@@ -1099,7 +1131,7 @@ picture {
           justify-content: flex-end;
 }
 
-/* line 255, src/scss/_components/common/_header.scss */
+/* line 273, src/scss/_components/common/_header.scss */
 .header__nav-item--saparator {
   -webkit-box-flex: unset;
   -webkit-flex: unset;
@@ -1108,7 +1140,7 @@ picture {
   width: 3px;
 }
 
-/* line 261, src/scss/_components/common/_header.scss */
+/* line 279, src/scss/_components/common/_header.scss */
 .header__nav-link {
   display: -webkit-box;
   display: -webkit-flex;
@@ -1132,7 +1164,7 @@ picture {
   max-width: 100%;
 }
 
-/* line 272, src/scss/_components/common/_header.scss */
+/* line 290, src/scss/_components/common/_header.scss */
 .header__nav-link:hover span {
   color: #ffffff;
   -webkit-transition: color 0.35s ease-in-out;
@@ -1140,13 +1172,13 @@ picture {
   transition: color 0.35s ease-in-out;
 }
 
-/* line 278, src/scss/_components/common/_header.scss */
+/* line 296, src/scss/_components/common/_header.scss */
 .header__nav-link .icon-png {
   margin-right: 6px;
   mix-blend-mode: screen;
 }
 
-/* line 283, src/scss/_components/common/_header.scss */
+/* line 301, src/scss/_components/common/_header.scss */
 .header__nav-link span {
   text-transform: uppercase;
   font-size: 13px;
@@ -1158,7 +1190,7 @@ picture {
   transition: color 0.35s ease-in-out;
 }
 
-/* line 293, src/scss/_components/common/_header.scss */
+/* line 311, src/scss/_components/common/_header.scss */
 .header__nav-separator {
   position: absolute;
   top: 50%;
