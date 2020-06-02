@@ -1,0 +1,142 @@
+$sprite: (
+  header-nav-blog: (
+    offset-x: -34px,
+    offset-y: 0px,
+    width: 23px,
+    height: 22px,
+    total-width: 102px,
+    total-height: 75px,
+    image: '../img/sprite.png'
+  ),
+  header-nav-home: (
+    offset-x: 0px,
+    offset-y: -59px,
+    width: 18px,
+    height: 16px,
+    total-width: 102px,
+    total-height: 75px,
+    image: '../img/sprite.png'
+  ),
+  header-nav-livesex: (
+    offset-x: -34px,
+    offset-y: -27px,
+    width: 23px,
+    height: 21px,
+    total-width: 102px,
+    total-height: 75px,
+    image: '../img/sprite.png'
+  ),
+  header-nav-meetfuck: (
+    offset-x: 0px,
+    offset-y: 0px,
+    width: 29px,
+    height: 22px,
+    total-width: 102px,
+    total-height: 75px,
+    image: '../img/sprite.png'
+  ),
+  header-nav-porncoupons: (
+    offset-x: 0px,
+    offset-y: -27px,
+    width: 22px,
+    height: 27px,
+    total-width: 102px,
+    total-height: 75px,
+    image: '../img/sprite.png'
+  ),
+  header-nav-porngames: (
+    offset-x: -62px,
+    offset-y: -22px,
+    width: 16px,
+    height: 21px,
+    total-width: 102px,
+    total-height: 75px,
+    image: '../img/sprite.png'
+  ),
+  header-nav-pornstars: (
+    offset-x: -88px,
+    offset-y: 0px,
+    width: 14px,
+    height: 17px,
+    total-width: 102px,
+    total-height: 75px,
+    image: '../img/sprite.png'
+  ),
+  header-nav-videos: (
+    offset-x: -62px,
+    offset-y: 0px,
+    width: 21px,
+    height: 17px,
+    total-width: 102px,
+    total-height: 75px,
+    image: '../img/sprite.png'
+  ),
+);
+
+@mixin sprite-size($image) {
+  background-size: map-get(map-get($sprite, $image), 'total-width') map-get(map-get($sprite, $image), 'total-height');
+}
+@mixin sprite-width($image) {
+  width: map-get(map-get($sprite, $image), 'width');
+}
+@mixin sprite-height($image) {
+  height: map-get(map-get($sprite, $image), 'height');
+}
+@mixin sprite-position($image) {
+  background-position: map-get(map-get($sprite, $image), 'offset-x') map-get(map-get($sprite, $image), 'offset-y');
+}
+@mixin sprite-image($image) {
+  background-image: url(map-get(map-get($sprite, $image), 'image'));
+}
+@mixin sprite-image-retina($image) {
+  $image-path: map-get(map-get($sprite, $image), 'image');
+  $image-path-retina: str-slice($image-path, 1, str-index($image-path, '.png') - 1) + '@2x.png';
+
+  background-image: url($image-path-retina);
+}
+@mixin sprite($image, $size: true) {
+  @include sprite-image($image);
+  @include sprite-position($image);
+  background-repeat: no-repeat;
+
+  @if $size {
+    @include sprite-width($image);
+    @include sprite-height($image);
+  }
+
+  @media only screen and (-webkit-min-device-pixel-ratio: 2),
+    only screen and (   min--moz-device-pixel-ratio: 2),
+    only screen and (     -o-min-device-pixel-ratio: 2/1),
+    only screen and (        min-device-pixel-ratio: 2),
+    only screen and (                min-resolution: 192dpi),
+    only screen and (                min-resolution: 2dppx)
+  {
+    @include sprite-size($image);
+    @include sprite-image-retina($image);
+  }
+}
+
+.header-nav-blog:before {
+  @include sprite(header-nav-blog);
+}
+.header-nav-home:before {
+  @include sprite(header-nav-home);
+}
+.header-nav-livesex:before {
+  @include sprite(header-nav-livesex);
+}
+.header-nav-meetfuck:before {
+  @include sprite(header-nav-meetfuck);
+}
+.header-nav-porncoupons:before {
+  @include sprite(header-nav-porncoupons);
+}
+.header-nav-porngames:before {
+  @include sprite(header-nav-porngames);
+}
+.header-nav-pornstars:before {
+  @include sprite(header-nav-pornstars);
+}
+.header-nav-videos:before {
+  @include sprite(header-nav-videos);
+}

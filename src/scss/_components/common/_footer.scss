@@ -49,6 +49,12 @@
 			font-size: 22px;
 			color: rgb(70, 128, 202);
 			line-height: 2.273;
+			@include transition(color);
+
+			&:hover {
+				color: #ffffff;
+				@include transition(color);
+			}
 		}
 	}
 }

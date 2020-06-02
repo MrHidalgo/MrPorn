@@ -2,7 +2,7 @@
 /// @group  Mixin
 ////
 
-/// 
+///
 /// Mixin setting the width and height element.
 ///
 /// @name   mixinDimensions
@@ -169,7 +169,7 @@
 		$idx: str_index(inspect($prop), "0.");
 
 		@if($idx == null) {
-			$duration: 0.3s;
+			$duration: 0.35s;
 		}
 
 		$list: append($list, $prop $duration ease-in-out, comma);
