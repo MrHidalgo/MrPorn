@@ -1,3 +1,4 @@
+@charset "UTF-8";
 /* line 119, src/scss/_generated/_spritePNG.scss */
 .header-nav-blog:before {
   background-image: url("../img/sprite.png");
@@ -140,6 +141,87 @@
             background-size: 102px 75px;
     background-image: url("../img/sprite@2x.png");
   }
+}
+
+/* line 1, src/scss/_generated/_spriteSVG.scss */
+.icon-china {
+  width: 512px;
+  height: 512px;
+}
+
+/* line 5, src/scss/_generated/_spriteSVG.scss */
+.icon-czech-republic {
+  width: 512px;
+  height: 512px;
+}
+
+/* line 9, src/scss/_generated/_spriteSVG.scss */
+.icon-france {
+  width: 512px;
+  height: 512px;
+}
+
+/* line 13, src/scss/_generated/_spriteSVG.scss */
+.icon-germany {
+  width: 512px;
+  height: 512px;
+}
+
+/* line 17, src/scss/_generated/_spriteSVG.scss */
+.icon-japan {
+  width: 512px;
+  height: 512px;
+}
+
+/* line 21, src/scss/_generated/_spriteSVG.scss */
+.icon-norway {
+  width: 512px;
+  height: 512px;
+}
+
+/* line 25, src/scss/_generated/_spriteSVG.scss */
+.icon-sweden {
+  width: 512px;
+  height: 512px;
+}
+
+/* line 29, src/scss/_generated/_spriteSVG.scss */
+.icon-uk {
+  width: 512px;
+  height: 512px;
+}
+
+@font-face {
+  font-family: "iconFont";
+  src: url("../fonts/iconFont.eot");
+  src: url("../fonts/iconFont.eot?#iefix") format("eot"), url("../fonts/iconFont.woff2") format("woff2"), url("../fonts/iconFont.woff") format("woff"), url("../fonts/iconFont.ttf") format("truetype"), url("../fonts/iconFont.svg#iconFont") format("svg");
+}
+
+/* line 23, src/scss/_generated/_spriteFont.scss */
+.icon-arrow-angle:before, .icon-moon:before, .icon-sun:before {
+  font-family: "iconFont", sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  font-style: normal;
+  font-variant: normal;
+  font-weight: normal;
+  text-decoration: none;
+  text-transform: none;
+}
+
+/* line 44, src/scss/_generated/_spriteFont.scss */
+.icon-arrow-angle:before {
+  content: "";
+}
+
+/* line 44, src/scss/_generated/_spriteFont.scss */
+.icon-moon:before {
+  content: "";
+}
+
+/* line 44, src/scss/_generated/_spriteFont.scss */
+.icon-sun:before {
+  content: "";
 }
 
 /* line 1, src/scss/_shared/_main-setting-reset.scss */
@@ -336,6 +418,212 @@ picture {
 }
 
 /* line 3, src/scss/_shared/_common.scss */
+.lang {
+  position: relative;
+}
+
+/* line 8, src/scss/_shared/_common.scss */
+.lang:hover .lang__toggle {
+  border-color: #fff;
+  -webkit-border-bottom-left-radius: 0;
+          border-bottom-left-radius: 0;
+  -webkit-border-bottom-right-radius: 0;
+          border-bottom-right-radius: 0;
+  background-color: #ffffff;
+  -webkit-transition: border-color 0.35s ease-in-out, background-color 0.35s ease-in-out, -webkit-border-radius 0.35s ease-in-out;
+  transition: border-color 0.35s ease-in-out, background-color 0.35s ease-in-out, -webkit-border-radius 0.35s ease-in-out;
+  -o-transition: border-color 0.35s ease-in-out, background-color 0.35s ease-in-out, border-radius 0.35s ease-in-out;
+  transition: border-color 0.35s ease-in-out, background-color 0.35s ease-in-out, border-radius 0.35s ease-in-out;
+  transition: border-color 0.35s ease-in-out, background-color 0.35s ease-in-out, border-radius 0.35s ease-in-out, -webkit-border-radius 0.35s ease-in-out;
+}
+
+/* line 15, src/scss/_shared/_common.scss */
+.lang:hover .lang__toggle span,
+.lang:hover .lang__toggle .icon-font {
+  color: #080915;
+  -webkit-transition: color 0.35s ease-in-out;
+  -o-transition: color 0.35s ease-in-out;
+  transition: color 0.35s ease-in-out;
+}
+
+/* line 22, src/scss/_shared/_common.scss */
+.lang:hover .lang__drop {
+  opacity: 1;
+  visibility: visible;
+  -webkit-transform: translateY(0);
+      -ms-transform: translateY(0);
+          transform: translateY(0);
+  -webkit-transition: opacity 0.35s ease-in-out, visibility 0.35s ease-in-out, -webkit-transform 0.35s ease-in-out;
+  transition: opacity 0.35s ease-in-out, visibility 0.35s ease-in-out, -webkit-transform 0.35s ease-in-out;
+  -o-transition: opacity 0.35s ease-in-out, visibility 0.35s ease-in-out, transform 0.35s ease-in-out;
+  transition: opacity 0.35s ease-in-out, visibility 0.35s ease-in-out, transform 0.35s ease-in-out;
+  transition: opacity 0.35s ease-in-out, visibility 0.35s ease-in-out, transform 0.35s ease-in-out, -webkit-transform 0.35s ease-in-out;
+}
+
+/* line 31, src/scss/_shared/_common.scss */
+.lang__toggle {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+  -webkit-align-items: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  width: 84px;
+  height: 29px;
+  padding-left: 10px;
+  padding-right: 10px;
+  border-width: 2px;
+  border-color: #30335a;
+  border-style: solid;
+  -webkit-border-radius: 5px;
+          border-radius: 5px;
+  background-color: transparent;
+  -webkit-transition: border-color 0.35s ease-in-out, background-color 0.35s ease-in-out, -webkit-border-radius 0.35s ease-in-out;
+  transition: border-color 0.35s ease-in-out, background-color 0.35s ease-in-out, -webkit-border-radius 0.35s ease-in-out;
+  -o-transition: border-color 0.35s ease-in-out, background-color 0.35s ease-in-out, border-radius 0.35s ease-in-out;
+  transition: border-color 0.35s ease-in-out, background-color 0.35s ease-in-out, border-radius 0.35s ease-in-out;
+  transition: border-color 0.35s ease-in-out, background-color 0.35s ease-in-out, border-radius 0.35s ease-in-out, -webkit-border-radius 0.35s ease-in-out;
+}
+
+/* line 46, src/scss/_shared/_common.scss */
+.lang__toggle span,
+.lang__toggle .icon-font {
+  color: #9294ad;
+  -webkit-transition: color 0.35s ease-in-out;
+  -o-transition: color 0.35s ease-in-out;
+  transition: color 0.35s ease-in-out;
+}
+
+/* line 52, src/scss/_shared/_common.scss */
+.lang__toggle span {
+  font-weight: 700;
+  text-transform: uppercase;
+}
+
+/* line 57, src/scss/_shared/_common.scss */
+.lang__toggle .icon-font {
+  margin-left: 10px;
+  font-size: 8px;
+  -webkit-transform: rotate(-90deg);
+      -ms-transform: rotate(-90deg);
+          transform: rotate(-90deg);
+}
+
+/* line 64, src/scss/_shared/_common.scss */
+.lang__drop {
+  opacity: 0;
+  visibility: hidden;
+  -webkit-transform: translateY(10px);
+      -ms-transform: translateY(10px);
+          transform: translateY(10px);
+  z-index: 999;
+  position: absolute;
+  top: 100%;
+  right: 0;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  min-width: 350px;
+  -webkit-border-radius: 5px 0 5px 5px;
+          border-radius: 5px 0 5px 5px;
+  background-color: white;
+  -webkit-backface-visibility: hidden;
+          backface-visibility: hidden;
+  -webkit-transform-origin: center;
+      -ms-transform-origin: center;
+          transform-origin: center;
+  -webkit-transition: opacity 0.35s ease-in-out, visibility 0.35s ease-in-out, -webkit-transform 0.35s ease-in-out;
+  transition: opacity 0.35s ease-in-out, visibility 0.35s ease-in-out, -webkit-transform 0.35s ease-in-out;
+  -o-transition: opacity 0.35s ease-in-out, visibility 0.35s ease-in-out, transform 0.35s ease-in-out;
+  transition: opacity 0.35s ease-in-out, visibility 0.35s ease-in-out, transform 0.35s ease-in-out;
+  transition: opacity 0.35s ease-in-out, visibility 0.35s ease-in-out, transform 0.35s ease-in-out, -webkit-transform 0.35s ease-in-out;
+}
+
+/* line 80, src/scss/_shared/_common.scss */
+.lang__drop-col {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+  -webkit-flex-direction: column;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: start;
+  -webkit-align-items: flex-start;
+      -ms-flex-align: start;
+          align-items: flex-start;
+  width: 50%;
+  padding: 15px;
+}
+
+/* line 88, src/scss/_shared/_common.scss */
+.lang__drop-link {
+  position: relative;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+  -webkit-align-items: center;
+      -ms-flex-align: center;
+          align-items: center;
+  padding-top: 5px;
+  margin-bottom: 5px;
+}
+
+/* line 96, src/scss/_shared/_common.scss */
+.lang__drop-link:hover:before, .lang__drop-link:hover:after {
+  width: 50%;
+  -webkit-transition: width 0.35s ease-in-out;
+  -o-transition: width 0.35s ease-in-out;
+  transition: width 0.35s ease-in-out;
+}
+
+/* line 103, src/scss/_shared/_common.scss */
+.lang__drop-link:before, .lang__drop-link:after {
+  content: '';
+  position: absolute;
+  top: 100%;
+  width: 0;
+  height: 1px;
+  background-color: #080915;
+  -webkit-transition: width 0.35s ease-in-out;
+  -o-transition: width 0.35s ease-in-out;
+  transition: width 0.35s ease-in-out;
+}
+
+/* line 114, src/scss/_shared/_common.scss */
+.lang__drop-link:before {
+  left: 50%;
+}
+
+/* line 117, src/scss/_shared/_common.scss */
+.lang__drop-link:after {
+  right: 50%;
+}
+
+/* line 121, src/scss/_shared/_common.scss */
+.lang__drop-link span {
+  color: #080915;
+}
+
+/* line 127, src/scss/_shared/_common.scss */
+.lang svg {
+  margin-right: 5px;
+  width: 19px;
+  height: 18px;
+}
+
+/* line 134, src/scss/_shared/_common.scss */
 .copyright {
   display: -webkit-box;
   display: -webkit-flex;
@@ -351,7 +639,7 @@ picture {
           justify-content: center;
 }
 
-/* line 8, src/scss/_shared/_common.scss */
+/* line 139, src/scss/_shared/_common.scss */
 .copyright__text {
   font-size: 22px;
   color: #8790b0;
@@ -362,6 +650,21 @@ picture {
 .icon-png:before {
   content: "";
   display: block;
+}
+
+/* line 3, src/scss/_shared/_iconSVG.scss */
+.icon-svg {
+  display: inline-block;
+  fill: currentColor;
+}
+
+/* line 1, src/scss/_shared/_iconFont.scss */
+.icon-font {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  line-height: 1;
 }
 
 /* line 4, src/scss/_macros/_logotype.scss */
@@ -430,15 +733,56 @@ picture {
 
 /* line 24, src/scss/_components/common/_header.scss */
 .header__wrapper-1 {
+  -webkit-box-align: center;
+  -webkit-align-items: center;
+      -ms-flex-align: center;
+          align-items: center;
   min-height: 46px;
 }
 
-/* line 27, src/scss/_components/common/_header.scss */
+/* line 29, src/scss/_components/common/_header.scss */
+.header__wrapper-1 .header__col-1, .header__wrapper-1 .header__col-3 {
+  width: 100%;
+  max-width: 254px;
+}
+
+/* line 35, src/scss/_components/common/_header.scss */
+.header__wrapper-1 .header__col-2 {
+  -webkit-box-flex: 1;
+  -webkit-flex: 1;
+      -ms-flex: 1;
+          flex: 1;
+  min-width: 1px;
+  max-width: 100%;
+}
+
+/* line 41, src/scss/_components/common/_header.scss */
+.header__wrapper-1 .header__col-3 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+  -webkit-align-items: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: end;
+  -webkit-justify-content: flex-end;
+      -ms-flex-pack: end;
+          justify-content: flex-end;
+}
+
+/* line 46, src/scss/_components/common/_header.scss */
+.header__wrapper-1 .header__col-3 > div {
+  padding-left: 4px;
+}
+
+/* line 52, src/scss/_components/common/_header.scss */
 .header__wrapper-2 {
   min-height: 121px;
 }
 
-/* line 30, src/scss/_components/common/_header.scss */
+/* line 55, src/scss/_components/common/_header.scss */
 .header__wrapper-3 {
   -webkit-box-align: center;
   -webkit-align-items: center;
@@ -450,7 +794,250 @@ picture {
           justify-content: space-between;
 }
 
-/* line 36, src/scss/_components/common/_header.scss */
+/* line 61, src/scss/_components/common/_header.scss */
+.header__toggle {
+  position: relative;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  width: 60px;
+  height: 25px;
+  border-width: 1px;
+  border-color: white;
+  border-style: solid;
+  -webkit-border-radius: 2em;
+          border-radius: 2em;
+  background-color: #030b2e;
+}
+
+/* line 72, src/scss/_components/common/_header.scss */
+.header__toggle-left, .header__toggle-right {
+  z-index: 0;
+  position: absolute;
+  top: 0;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+  -webkit-align-items: center;
+      -ms-flex-align: center;
+          align-items: center;
+  width: 50%;
+  height: 100%;
+}
+
+/* line 82, src/scss/_components/common/_header.scss */
+.header__toggle-left .icon-font, .header__toggle-right .icon-font {
+  color: #ffffff;
+  -webkit-transition: opacity 0.35s ease-in-out;
+  -o-transition: opacity 0.35s ease-in-out;
+  transition: opacity 0.35s ease-in-out;
+}
+
+/* line 86, src/scss/_components/common/_header.scss */
+.header__toggle-left .icon-font.icon-moon, .header__toggle-right .icon-font.icon-moon {
+  opacity: 0;
+  font-size: 12px;
+}
+
+/* line 93, src/scss/_components/common/_header.scss */
+.header__toggle-left {
+  left: 0;
+  -webkit-box-pack: end;
+  -webkit-justify-content: flex-end;
+      -ms-flex-pack: end;
+          justify-content: flex-end;
+}
+
+/* line 98, src/scss/_components/common/_header.scss */
+.header__toggle-right {
+  right: 0;
+  -webkit-box-pack: start;
+  -webkit-justify-content: flex-start;
+      -ms-flex-pack: start;
+          justify-content: flex-start;
+}
+
+/* line 103, src/scss/_components/common/_header.scss */
+.header__toggle input {
+  opacity: 0;
+  visibility: hidden;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 0;
+  height: 0;
+}
+
+/* line 114, src/scss/_components/common/_header.scss */
+.header__toggle input:checked + label .icon-font {
+  -webkit-transition: opacity 0.35s ease-in-out;
+  -o-transition: opacity 0.35s ease-in-out;
+  transition: opacity 0.35s ease-in-out;
+}
+
+/* line 117, src/scss/_components/common/_header.scss */
+.header__toggle input:checked + label .icon-font.icon-sun {
+  opacity: 0;
+}
+
+/* line 120, src/scss/_components/common/_header.scss */
+.header__toggle input:checked + label .icon-font.icon-moon {
+  opacity: 1;
+}
+
+/* line 125, src/scss/_components/common/_header.scss */
+.header__toggle input:checked + label span {
+  -webkit-transform: translateX(-35px);
+      -ms-transform: translateX(-35px);
+          transform: translateX(-35px);
+  -webkit-transition: -webkit-transform 0.35s ease-in-out;
+  transition: -webkit-transform 0.35s ease-in-out;
+  -o-transition: transform 0.35s ease-in-out;
+  transition: transform 0.35s ease-in-out;
+  transition: transform 0.35s ease-in-out, -webkit-transform 0.35s ease-in-out;
+}
+
+/* line 133, src/scss/_components/common/_header.scss */
+.header__toggle label {
+  z-index: 2;
+  cursor: pointer;
+  position: absolute;
+  top: 0;
+  left: 0;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  width: 100%;
+  height: 100%;
+}
+
+/* line 144, src/scss/_components/common/_header.scss */
+.header__toggle span {
+  position: absolute;
+  top: 2px;
+  right: 2px;
+  -webkit-border-radius: 50%;
+          border-radius: 50%;
+  background-color: #d7f24a;
+  width: 19px;
+  height: 19px;
+  -webkit-backface-visibility: hidden;
+          backface-visibility: hidden;
+  -webkit-transform-origin: center;
+      -ms-transform-origin: center;
+          transform-origin: center;
+  -webkit-transition: -webkit-transform 0.35s ease-in-out;
+  transition: -webkit-transform 0.35s ease-in-out;
+  -o-transition: transform 0.35s ease-in-out;
+  transition: transform 0.35s ease-in-out;
+  transition: transform 0.35s ease-in-out, -webkit-transform 0.35s ease-in-out;
+}
+
+/* line 158, src/scss/_components/common/_header.scss */
+.header__category {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+  -webkit-align-items: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
+
+/* line 163, src/scss/_components/common/_header.scss */
+.header__category-item {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+/* line 167, src/scss/_components/common/_header.scss */
+.header__category-title, .header__category-link {
+  padding-left: 12px;
+  padding-right: 12px;
+  text-transform: uppercase;
+  font-size: 14px;
+  font-weight: bold;
+  line-height: 1.2;
+}
+
+/* line 177, src/scss/_components/common/_header.scss */
+.header__category-title {
+  color: #fff;
+}
+
+/* line 181, src/scss/_components/common/_header.scss */
+.header__category-link {
+  color: #35539c;
+  -webkit-transition: color 0.35s ease-in-out;
+  -o-transition: color 0.35s ease-in-out;
+  transition: color 0.35s ease-in-out;
+}
+
+/* line 185, src/scss/_components/common/_header.scss */
+.header__category-link:hover {
+  color: #ffffff;
+  -webkit-transition: color 0.35s ease-in-out;
+  -o-transition: color 0.35s ease-in-out;
+  transition: color 0.35s ease-in-out;
+}
+
+/* line 192, src/scss/_components/common/_header.scss */
+.header__action {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+  -webkit-align-items: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: justify;
+  -webkit-justify-content: space-between;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  width: 149px;
+  height: 29px;
+  padding-left: 10px;
+  padding-right: 10px;
+  border-width: 2px;
+  border-color: #004aac;
+  border-style: solid;
+  -webkit-border-radius: 5px;
+          border-radius: 5px;
+}
+
+/* line 205, src/scss/_components/common/_header.scss */
+.header__action-link {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  font-size: 14px;
+  font-weight: 700;
+}
+
+/* line 210, src/scss/_components/common/_header.scss */
+.header__action-link--logout {
+  color: #9294ad;
+}
+
+/* line 213, src/scss/_components/common/_header.scss */
+.header__action-link--admin {
+  color: #91a538;
+}
+
+/* line 219, src/scss/_components/common/_header.scss */
 .header__nav {
   display: -webkit-box;
   display: -webkit-flex;
@@ -467,13 +1054,13 @@ picture {
   height: 44px;
 }
 
-/* line 42, src/scss/_components/common/_header.scss */
+/* line 225, src/scss/_components/common/_header.scss */
 .header__nav-item, .header__nav-link, .header__nav-separator {
   position: relative;
   height: 100%;
 }
 
-/* line 49, src/scss/_components/common/_header.scss */
+/* line 232, src/scss/_components/common/_header.scss */
 .header__nav-item {
   display: -webkit-box;
   display: -webkit-flex;
@@ -487,7 +1074,32 @@ picture {
   max-width: 100%;
 }
 
-/* line 55, src/scss/_components/common/_header.scss */
+/* line 238, src/scss/_components/common/_header.scss */
+.header__nav-item:first-of-type, .header__nav-item:last-of-type {
+  -webkit-box-flex: unset;
+  -webkit-flex: unset;
+      -ms-flex: unset;
+          flex: unset;
+  width: 145px;
+}
+
+/* line 245, src/scss/_components/common/_header.scss */
+.header__nav-item:first-of-type .header__nav-link {
+  -webkit-box-pack: start;
+  -webkit-justify-content: flex-start;
+      -ms-flex-pack: start;
+          justify-content: flex-start;
+}
+
+/* line 250, src/scss/_components/common/_header.scss */
+.header__nav-item:last-of-type .header__nav-link {
+  -webkit-box-pack: end;
+  -webkit-justify-content: flex-end;
+      -ms-flex-pack: end;
+          justify-content: flex-end;
+}
+
+/* line 255, src/scss/_components/common/_header.scss */
 .header__nav-item--saparator {
   -webkit-box-flex: unset;
   -webkit-flex: unset;
@@ -496,7 +1108,7 @@ picture {
   width: 3px;
 }
 
-/* line 61, src/scss/_components/common/_header.scss */
+/* line 261, src/scss/_components/common/_header.scss */
 .header__nav-link {
   display: -webkit-box;
   display: -webkit-flex;
@@ -520,7 +1132,7 @@ picture {
   max-width: 100%;
 }
 
-/* line 72, src/scss/_components/common/_header.scss */
+/* line 272, src/scss/_components/common/_header.scss */
 .header__nav-link:hover span {
   color: #ffffff;
   -webkit-transition: color 0.35s ease-in-out;
@@ -528,13 +1140,13 @@ picture {
   transition: color 0.35s ease-in-out;
 }
 
-/* line 78, src/scss/_components/common/_header.scss */
+/* line 278, src/scss/_components/common/_header.scss */
 .header__nav-link .icon-png {
   margin-right: 6px;
   mix-blend-mode: screen;
 }
 
-/* line 83, src/scss/_components/common/_header.scss */
+/* line 283, src/scss/_components/common/_header.scss */
 .header__nav-link span {
   text-transform: uppercase;
   font-size: 13px;
@@ -546,7 +1158,7 @@ picture {
   transition: color 0.35s ease-in-out;
 }
 
-/* line 93, src/scss/_components/common/_header.scss */
+/* line 293, src/scss/_components/common/_header.scss */
 .header__nav-separator {
   position: absolute;
   top: 50%;

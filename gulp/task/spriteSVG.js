@@ -40,8 +40,9 @@ gulp.task('spriteSVG', function () {
         run: function ($) {
           // $('[fill]').removeAttr('fill');
           // $('[stroke]').removeAttr('stroke');
-          // $('[style]').removeAttr('style');
+          $('[style]').removeAttr('style');
           $('[title]').removeAttr('title');
+					$('[desc]').removeAttr('desc');
         },
         parserOptions: {
           xmlMode: true
@@ -60,7 +61,17 @@ gulp.task('spriteSVG', function () {
             },
             example: false,
           }
-        }
+        },
+				shape: {
+					dimension: {
+						precision: 2,
+						attributes: false
+					},
+					spacing: {
+						padding: 10
+					},
+					transform: ['svgo']
+				}
       }))
       .pipe(gulp.dest(configPath.dest.img));
 });

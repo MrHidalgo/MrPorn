@@ -4,17 +4,103 @@ header#header.header
 
 	.header__container.header__container-1
 
-		.header__wrapper.header__wrapper-1
-			.c-grid
+		.c-grid
+
+			.header__wrapper.header__wrapper-1
+
+				.header__col.header__col-1
+
+					.header__toggle
+						input(type='checkbox' name='' id='toggle-mode')
+						label(for='toggle-mode')
+							.header__toggle-left
+								i.icon-font.icon-sun
+							.header__toggle-right
+								i.icon-font.icon-moon
+
+							span
+
+				.header__col.header__col-2
+
+					ul.header__category
+						li.header__category-item
+							p.header__category-title MOST POPULAR:
+						li.header__category-item
+							a.header__category-link(href='#') PREMIUM
+						li.header__category-item
+							a.header__category-link(href='#') PORN
+						li.header__category-item
+							a.header__category-link(href='#') GAMES
+						li.header__category-item
+							a.header__category-link(href='#') LIVE
+						li.header__category-item
+							a.header__category-link(href='#') CAMS
+						li.header__category-item
+							a.header__category-link(href='#') TEENS
+						li.header__category-item
+							a.header__category-link(href='#') AMATEUR
+						li.header__category-item
+							a.header__category-link(href='#') VR
+						li.header__category-item
+							a.header__category-link(href='#') HENTAI
+						li.header__category-item
+							a.header__category-link(href='#') DATING
+						li.header__category-item
+							a.header__category-link(href='#') SNAPCHAT
+						li.header__category-item
+							a.header__category-link(href='#') REDDIT
+
+				.header__col.header__col-3
+
+					div
+
+						.header__action
+							a.header__action-link.header__action-link--logout(href="#") Log out
+							a.header__action-link.header__action-link--admin(href="#") admin
+
+					div
+
+						.lang
+							a.lang__toggle(href="#")
+								+iconSVG('uk')
+								span EN
+								i.icon-font.icon-arrow-angle
+
+							.lang__drop
+								.lang__drop-col.lang__drop-col-1
+									a.lang__drop-link(href="#")
+										+iconSVG('uk')
+										span English
+									a.lang__drop-link(href="#")
+										+iconSVG('france')
+										span France
+									a.lang__drop-link(href="#")
+										+iconSVG('china')
+										span China
+									a.lang__drop-link(href="#")
+										+iconSVG('germany')
+										span Germany
+								.lang__drop-col.lang__drop-col-2
+									a.lang__drop-link(href="#")
+										+iconSVG('norway')
+										span Norway
+									a.lang__drop-link(href="#")
+										+iconSVG('sweden')
+										span Sweden
+									a.lang__drop-link(href="#")
+										+iconSVG('czech-republic')
+										span Czech Republic
 
 	.header__container.header__container-2
 
-		.header__wrapper.header__wrapper-2
-			.c-grid
+		.c-grid
+
+			.header__wrapper.header__wrapper-2
 
 	.header__container.header__container-3
 
 		.header__wrapper.header__wrapper-3
+
 			.c-grid
 
 				ul.header__nav
