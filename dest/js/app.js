@@ -49,8 +49,8 @@ var initPreventBehavior = function initPreventBehavior() {
 			var isClickInside = specifiedElement.contains(ev.target);
 
 			if (!isClickInside) {
-				document.querySelector('[view-favorites-toggle-js]').classList.toggle('is-active');
-				document.querySelector('[view-favorites-drop-js]').classList.toggle('is-open');
+				document.querySelector('[view-favorites-toggle-js]').classList.remove('is-active');
+				document.querySelector('[view-favorites-drop-js]').classList.remove('is-open');
 			}
 		});
 	};

@@ -1,0 +1,33 @@
+&__category {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+
+	&-item {
+		display: flex;
+	}
+
+	&-title,
+	&-link {
+		padding-left: 12px;
+		padding-right: 12px;
+		text-transform: uppercase;
+		font-size: 14px;
+		font-weight: bold;
+		line-height: 1.2;
+	}
+
+	&-title {
+		color: #fff;
+	}
+
+	&-link {
+		color: #35539c;
+		@include transition(color);
+
+		&:hover {
+			color: #ffffff;
+			@include transition(color);
+		}
+	}
+}

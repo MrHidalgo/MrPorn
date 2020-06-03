@@ -1,0 +1,26 @@
+&__action {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	width: 149px;
+	height: 29px;
+	padding-left: 10px;
+	padding-right: 10px;
+	border-width: 2px;
+	border-color: rgb(0, 74, 172);
+	border-style: solid;
+	border-radius: 5px;
+
+	&-link {
+		display: flex;
+		font-size: 14px;
+		font-weight: 700;
+
+		&--logout {
+			color: #9294ad;
+		}
+		&--admin {
+			color: #91a538;
+		}
+	}
+}
