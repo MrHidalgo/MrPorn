@@ -21,33 +21,7 @@ header#header.header
 
 				.header__col.header__col-2
 
-					ul.header__category
-						li.header__category-item
-							p.header__category-title MOST POPULAR:
-						li.header__category-item
-							a.header__category-link(href='#') PREMIUM
-						li.header__category-item
-							a.header__category-link(href='#') PORN
-						li.header__category-item
-							a.header__category-link(href='#') GAMES
-						li.header__category-item
-							a.header__category-link(href='#') LIVE
-						li.header__category-item
-							a.header__category-link(href='#') CAMS
-						li.header__category-item
-							a.header__category-link(href='#') TEENS
-						li.header__category-item
-							a.header__category-link(href='#') AMATEUR
-						li.header__category-item
-							a.header__category-link(href='#') VR
-						li.header__category-item
-							a.header__category-link(href='#') HENTAI
-						li.header__category-item
-							a.header__category-link(href='#') DATING
-						li.header__category-item
-							a.header__category-link(href='#') SNAPCHAT
-						li.header__category-item
-							a.header__category-link(href='#') REDDIT
+					include _header--category
 
 				.header__col.header__col-3
 
@@ -59,36 +33,7 @@ header#header.header
 
 					div
 
-						.lang
-							a.lang__toggle(href="#")
-								+iconSVG('uk')
-								span EN
-								i.icon-font.icon-arrow-angle
-
-							.lang__drop
-								.lang__drop-col.lang__drop-col-1
-									a.lang__drop-link(href="#")
-										+iconSVG('uk')
-										span English
-									a.lang__drop-link(href="#")
-										+iconSVG('france')
-										span France
-									a.lang__drop-link(href="#")
-										+iconSVG('china')
-										span China
-									a.lang__drop-link(href="#")
-										+iconSVG('germany')
-										span Germany
-								.lang__drop-col.lang__drop-col-2
-									a.lang__drop-link(href="#")
-										+iconSVG('norway')
-										span Norway
-									a.lang__drop-link(href="#")
-										+iconSVG('sweden')
-										span Sweden
-									a.lang__drop-link(href="#")
-										+iconSVG('czech-republic')
-										span Czech Republic
+						include _lang
 
 	.header__container.header__container-2
 
@@ -104,14 +49,7 @@ header#header.header
 
 				.header__col.header__col-2
 
-					.header__view
-						div
-							p VIEW YOUR FAVORITES!
-							u
-							span Quickly Access All Your Favorite Sites Here!
-
-						div
-							i.icon-font.icon-arrow-angle
+					include _header--view
 
 					form.category(action='' method='' autocomplete='off')
 						.category__left
@@ -144,52 +82,6 @@ header#header.header
 
 			.c-grid
 
-				ul.header__nav
-					li.header__nav-item
-						a.header__nav-link(href="#")
-							i.icon-png.header-nav-home
-							span Home
-					li.header__nav-item.header__nav-item--saparator
-						span.header__nav-separator
-					li.header__nav-item
-						a.header__nav-link(href="#")
-							i.icon-png.header-nav-blog
-							span Blog
-					li.header__nav-item.header__nav-item--saparator
-						span.header__nav-separator
-					li.header__nav-item
-						a.header__nav-link(href="#")
-							i.icon-png.header-nav-videos
-							span Videos
-					li.header__nav-item.header__nav-item--saparator
-						span.header__nav-separator
-					li.header__nav-item
-						a.header__nav-link(href="#")
-							i.icon-png.header-nav-pornstars
-							span Pornstars
-					li.header__nav-item.header__nav-item--saparator
-						span.header__nav-separator
-					li.header__nav-item
-						a.header__nav-link(href="#")
-							i.icon-png.header-nav-porncoupons
-							span Porn Coupons
-					li.header__nav-item.header__nav-item--saparator
-						span.header__nav-separator
-					li.header__nav-item
-						a.header__nav-link(href="#")
-							i.icon-png.header-nav-porngames
-							span Porn Games
-					li.header__nav-item.header__nav-item--saparator
-						span.header__nav-separator
-					li.header__nav-item
-						a.header__nav-link(href="#")
-							i.icon-png.header-nav-meetfuck
-							span Meet & Fuck
-					li.header__nav-item.header__nav-item--saparator
-						span.header__nav-separator
-					li.header__nav-item
-						a.header__nav-link(href="#")
-							i.icon-png.header-nav-livesex
-							span Live sex
+				include _header--nav
 
 // HEADER :: END

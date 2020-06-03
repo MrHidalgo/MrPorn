@@ -30,20 +30,23 @@
 	@if $filename == arrow-angle {
 		$char: "\E001";
 	}
-	@if $filename == left-arrow {
+	@if $filename == delete {
 		$char: "\E002";
 	}
-	@if $filename == moon {
+	@if $filename == left-arrow {
 		$char: "\E003";
 	}
-	@if $filename == search {
+	@if $filename == moon {
 		$char: "\E004";
 	}
-	@if $filename == sort {
+	@if $filename == search {
 		$char: "\E005";
 	}
-	@if $filename == sun {
+	@if $filename == sort {
 		$char: "\E006";
+	}
+	@if $filename == sun {
+		$char: "\E007";
 	}
 
 	@return $char;
@@ -62,6 +65,10 @@
 
 .icon-arrow-angle {
 	@include icon(arrow-angle);
+
+}
+.icon-delete {
+	@include icon(delete);
 
 }
 .icon-left-arrow {

@@ -42,7 +42,28 @@ var initPreventBehavior = function initPreventBehavior() {
  * =============================================
  * CALLBACK :: start
  * ============================================= */
+	var bodyClick = function bodyClick() {
+		var specifiedElement = document.querySelector('.header__view-wrapper');
 
+		document.addEventListener('click', function (ev) {
+			var isClickInside = specifiedElement.contains(ev.target);
+
+			if (!isClickInside) {
+				document.querySelector('[view-favorites-toggle-js]').classList.toggle('is-active');
+				document.querySelector('[view-favorites-drop-js]').classList.toggle('is-open');
+			}
+		});
+	};
+
+	var viewFavoritesToggle = function viewFavoritesToggle() {
+		var _btn = document.querySelector('[view-favorites-toggle-js]'),
+		    _node = document.querySelector('[view-favorites-drop-js]');
+
+		_btn.addEventListener('click', function (ev) {
+			_btn.classList.toggle('is-active');
+			_node.classList.toggle('is-open');
+		}, false);
+	};
 	/*
  * CALLBACK :: end
  * ============================================= */
@@ -61,7 +82,12 @@ var initPreventBehavior = function initPreventBehavior() {
 		// ==========================================
 
 		// callback
+		bodyClick();
+		viewFavoritesToggle();
 		// ==========================================
 	};
-	initNative();
+
+	window.addEventListener('load', function (ev) {
+		initNative();
+	});
 })();
