@@ -1,0 +1,130 @@
+.lang {
+	position: relative;
+
+	&:hover {
+		.lang {
+			&__toggle {
+				border-color: #fff;
+				border-bottom-left-radius: 0;
+				border-bottom-right-radius: 0;
+				background-color: #ffffff;
+				@include transition(border-color, background-color, border-radius);
+
+				span,
+				.icon-font {
+					color: #080915;
+					@include transition(color);
+				}
+			}
+
+			&__drop {
+				opacity: 1;
+				visibility: visible;
+				transform: translateY(0);
+				@include transition(opacity, visibility, transform);
+			}
+		}
+	}
+
+	&__toggle {
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		width: 84px;
+		height: 29px;
+		padding-left: 10px;
+		padding-right: 10px;
+		border-width: 2px;
+		border-color: rgb(48, 51, 90);
+		border-style: solid;
+		border-radius: 5px;
+		background-color: transparent;
+		@include transition(border-color, background-color, border-radius);
+
+		span,
+		.icon-font {
+			color: #9294ad;
+			@include transition(color);
+		}
+
+		span {
+			font-weight: 700;
+			text-transform: uppercase;
+		}
+
+		.icon-font {
+			margin-left: 10px;
+			font-size: 8px;
+			transform: rotate(-90deg);
+		}
+	}
+
+	&__drop {
+		opacity: 0;
+		visibility: hidden;
+		transform: translateY(10px);
+		z-index: 999;
+		position: absolute;
+		top: 100%;
+		right: 0;
+		display: flex;
+		min-width: 350px;
+		border-radius: 5px 0 5px 5px;
+		background-color: rgb(255, 255, 255);
+		backface-visibility: hidden;
+		transform-origin: center;
+		@include transition(opacity, visibility, transform);
+
+		&-col {
+			display: flex;
+			flex-direction: column;
+			align-items: flex-start;
+			width: 50%;
+			padding: 15px;
+		}
+
+		&-link {
+			position: relative;
+			display: flex;
+			align-items: center;
+			padding-top: 5px;
+			margin-bottom: 5px;
+
+			&:hover {
+				&:before,
+				&:after {
+					width: 50%;
+					@include transition(width);
+				}
+			}
+
+			&:before,
+			&:after {
+				content: '';
+				position: absolute;
+				top: 100%;
+				width: 0;
+				height: 1px;
+				background-color: #080915;
+				@include transition(width);
+			}
+
+			&:before {
+				left: 50%;
+			}
+			&:after {
+				right: 50%;
+			}
+
+			span {
+				color: #080915;
+			}
+		}
+	}
+
+	svg {
+		margin-right: 5px;
+		width: 19px;
+		height: 18px;
+	}
+}
