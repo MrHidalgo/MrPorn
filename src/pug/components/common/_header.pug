@@ -54,77 +54,194 @@ header#header.header
 					form.category(action='' method='' autocomplete='off')
 						.category__left
 
-							.sort
-								a.sort__toggle(href="#" sort-toggle-js)
-									i.icon-font.icon-left-arrow
-									p
-										span A
-										span Z
-								.sort__drop(sort-node-js)
-									each val, idx in ['A','B','C','D','E','F','G','H','I','J','K','L','M','N','O','P','Q','R','S','T','U','V','W','X','Y','Z']
-										a.sort__drop-link(href="#")!= val
-
-									.sort__drop-inner
-										.sort__collapse
-											a.sort__collapse-toggle(href="#" collapse-toggle-js data-container="sort-collapse-1")
-												div
-													span #1
-												div
-													img(src="img/img-black-porn-sites.png" srcset='img/img-black-porn-sites@2x.png 2x' alt="")
-													p!= '<span>B</span>lack Porn Sites'
-												div
-													i.icon-font.icon-arrow-angle
-											#sort-collapse-1.sort__collapse-body(collapse-body-js)
-												button(type='button')
-													span Free
-												img(src="img/img-badge-premium.png" srcset="img/img-badge-premium@2x.png 2x" alt="")
-										.sort__collapse
-											a.sort__collapse-toggle(href="#" collapse-toggle-js data-container="sort-collapse-2")
-												div
-													span #2
-												div
-													img(src="img/img-blog.png" srcset='img/img-blog@2x.png 2x' alt="")
-													p!= 'Porn <span>B</span>logs'
-												div
-													i.icon-font.icon-arrow-angle
-											#sort-collapse-2.sort__collapse-body(collapse-body-js)
-												button(type='button')
-													span Free
-												img(src="img/img-badge-premium.png" srcset="img/img-badge-premium@2x.png 2x" alt="")
-										.sort__collapse
-											a.sort__collapse-toggle(href="#" collapse-toggle-js data-container="sort-collapse-3")
-												div
-													span #3
-												div
-													img(src="img/img-best-webcam-girls.png" srcset='img/img-best-webcam-girls@2x.png 2x' alt="")
-													p!= '<span>B</span>est Webcam Girls'
-												div
-													i.icon-font.icon-arrow-angle
-											#sort-collapse-3.sort__collapse-body(collapse-body-js)
-												button(type='button')
-													span Free
-												img(src="img/img-badge-premium.png" srcset="img/img-badge-premium@2x.png 2x" alt="")
-										.sort__collapse
-											a.sort__collapse-toggle(href="#" collapse-toggle-js data-container="sort-collapse-4")
-												div
-													span #4
-												div
-													img(src="img/img-best-adult-ad-networks.png" srcset='img/img-best-adult-ad-networks@2x.png 2x' alt="")
-													p!= '<span>B</span>est Adult Ad Networks'
-												div
-													i.icon-font.icon-arrow-angle
-											#sort-collapse-4.sort__collapse-body(collapse-body-js)
-												button(type='button')
-													span Free
-												img(src="img/img-badge-premium.png" srcset="img/img-badge-premium@2x.png 2x" alt="")
+							include _sort
 
 						.category__middle
 
-							.category__wrapper
+							.category__wrapper(search-parent-js)
 								a.category__toggle(href="#")
-									input(type='text' name='' placeholder='Search 1000+ Porn Sites Here...')
+									input(type='text' name='' placeholder='Search 1000+ Porn Sites Here...' search-js)
 									button(type='submit')
 										i.icon-font.icon-search
+
+								.category__drop(search-drop-js)
+									.category__drop-head
+										div
+											p.category__title Top Results (1257)
+										div
+											.category__btn-wrapper
+												a.category__btn.category__btn--1(href="#")
+													img(src="img/img-black-porn-sites.png" srcset='img/img-black-porn-sites@2x.png 2x' alt="")
+													span Black Porn Sites
+												a.category__btn.category__btn--2(href="#")
+													img(src="img/img-blog.png" srcset='img/img-blog@2x.png 2x' alt="")
+													span Porn Blogs
+												a.category__btn.category__btn--3(href="#")
+													img(src="img/img-black-porn-sites.png" srcset='img/img-black-porn-sites@2x.png 2x' alt="")
+													span Black Porn Sites
+												a.category__btn.category__btn--4(href="#")
+													img(src="img/img-blog.png" srcset='img/img-blog@2x.png 2x' alt="")
+													span Porn Blogs
+												a.category__btn.category__btn--5(href="#")
+													img(src="img/img-blog.png" srcset='img/img-blog@2x.png 2x' alt="")
+													span Amateur Porn Sites
+
+									.category__drop-body
+
+										.category__list-wrapper
+											div
+												a.category__list(href="#")
+													.category__list-head
+														div
+															img(src="img/img-pornhub-icon.png" srcset="img/img-pornhub-icon@2x.png 2x" alt="")
+														div
+															p Pornhub Premium
+													.category__list-body
+														div
+															img(src="img/img-pornhub-preview.jpg" srcset="img/img-pornhub-preview@2x.jpg 2x" alt="")
+														div
+															p Premium Porn
+											div
+												a.category__list(href="#")
+													.category__list-head
+														div
+															img(src="img/img-brazzers-icon.png" srcset="img/img-brazzers-icon@2x.png 2x" alt="")
+														div
+															p Brazzers
+													.category__list-body
+														div
+															img(src="img/img-pornhub-preview.jpg" srcset="img/img-pornhub-preview@2x.jpg 2x" alt="")
+														div
+															p Premium Porn
+											div
+												a.category__list(href="#")
+													.category__list-head
+														div
+															img(src="img/img-pornhub-icon.png" srcset="img/img-pornhub-icon@2x.png 2x" alt="")
+														div
+															p Pornhub Premium
+													.category__list-body
+														div
+															img(src="img/img-pornhub-preview.jpg" srcset="img/img-pornhub-preview@2x.jpg 2x" alt="")
+														div
+															p Premium Porn
+											div
+												a.category__list(href="#")
+													.category__list-head
+														div
+															img(src="img/img-pornhub-icon.png" srcset="img/img-pornhub-icon@2x.png 2x" alt="")
+														div
+															p Pornhub Premium
+													.category__list-body
+														div
+															img(src="img/img-pornhub-preview.jpg" srcset="img/img-pornhub-preview@2x.jpg 2x" alt="")
+														div
+															p Premium Porn
+											div
+												a.category__list(href="#")
+													.category__list-head
+														div
+															img(src="img/img-brazzers-icon.png" srcset="img/img-brazzers-icon@2x.png 2x" alt="")
+														div
+															p Brazzers
+													.category__list-body
+														div
+															img(src="img/img-pornhub-preview.jpg" srcset="img/img-pornhub-preview@2x.jpg 2x" alt="")
+														div
+															p Premium Porn
+											div
+												a.category__list(href="#")
+													.category__list-head
+														div
+															img(src="img/img-pornhub-icon.png" srcset="img/img-pornhub-icon@2x.png 2x" alt="")
+														div
+															p Pornhub Premium
+													.category__list-body
+														div
+															img(src="img/img-pornhub-preview.jpg" srcset="img/img-pornhub-preview@2x.jpg 2x" alt="")
+														div
+															p Premium Porn
+											div
+												a.category__list(href="#")
+													.category__list-head
+														div.gf.gf--pink
+															span GF
+														div
+															p WatchMyGF
+													.category__list-body
+														div
+															img(src="img/img-pornhub-preview.jpg" srcset="img/img-pornhub-preview@2x.jpg 2x" alt="")
+														div
+															p Premium Porn
+											div
+												a.category__list(href="#")
+													.category__list-head
+														div.gf.gf--green
+															span GF
+														div
+															p GF Sex
+													.category__list-body
+														div
+															img(src="img/img-pornhub-preview.jpg" srcset="img/img-pornhub-preview@2x.jpg 2x" alt="")
+														div
+															p Premium Porn
+											div
+												a.category__list(href="#")
+													.category__list-head
+														div.gf.gf--pink
+															span GF
+														div
+															p WatchMyGF
+													.category__list-body
+														div
+															img(src="img/img-pornhub-preview.jpg" srcset="img/img-pornhub-preview@2x.jpg 2x" alt="")
+														div
+															p Premium Porn
+											div
+												a.category__list(href="#")
+													.category__list-head
+														div.gf.gf--pink
+															span GF
+														div
+															p WatchMyGF
+													.category__list-body
+														div
+															img(src="img/img-pornhub-preview.jpg" srcset="img/img-pornhub-preview@2x.jpg 2x" alt="")
+														div
+															p Premium Porn
+											div
+												a.category__list(href="#")
+													.category__list-head
+														div.gf.gf--green
+															span GF
+														div
+															p GF Sex
+													.category__list-body
+														div
+															img(src="img/img-pornhub-preview.jpg" srcset="img/img-pornhub-preview@2x.jpg 2x" alt="")
+														div
+															p Premium Porn
+											div
+												a.category__list(href="#")
+													.category__list-head
+														div.gf.gf--pink
+															span GF
+														div
+															p WatchMyGF
+													.category__list-body
+														div
+															img(src="img/img-pornhub-preview.jpg" srcset="img/img-pornhub-preview@2x.jpg 2x" alt="")
+														div
+															p Premium Porn
+
+									.category__drop-footer
+										.category__pagination
+											a.category__pagination-btn.is-active(href="#") 1
+											a.category__pagination-btn(href="#") 2
+											a.category__pagination-btn(href="#") 3
+											a.category__pagination-btn(href="#") 4
+											a.category__pagination-arrow(href="#")
+												i.icon-font.icon-arrow-angle
 
 						.category__right
 

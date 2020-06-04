@@ -114,6 +114,24 @@ if (!Element.prototype.closest) {
 		sortCollapse();
 	};
 
+
+	const search = () => {
+		const searchInput = document.querySelector('[search-js]');
+
+		searchInput.addEventListener('keyup', (ev) => {
+			const self = ev.currentTarget,
+				selfVal = self.value,
+				parentNode = self.closest('[search-parent-js]'),
+				dropNode = parentNode.querySelector('[search-drop-js]');
+
+			if(selfVal.length > 0) {
+				dropNode.classList.add('is-open');
+			} else {
+				dropNode.classList.remove('is-open');
+			}
+		}, false);
+	};
+
 	/*
 	* CALLBACK :: end
 	* ============================================= */
@@ -136,6 +154,7 @@ if (!Element.prototype.closest) {
 		bodyClick();
 		viewFavoritesToggle();
 		sortCB();
+		search();
 		// ==========================================
 	};
 
