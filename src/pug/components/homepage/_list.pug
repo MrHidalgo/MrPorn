@@ -30,9 +30,9 @@ mixin listBox(sliderID, name)
 						i.icon-font.icon-arrow-angle
 
 			mixin swiperContent()
-				each val, idx in [1,2,3,4,5,6,7,8,9,0]
+				each val, idx in [1,2,3,4,5,6,7,8,9,10,11]
 					.swiper-slide
-						a.list__box(href="#" style='background-image: url("img/img-pornhub-preview@2x.jpg")')
+						a.list__box(href="#" data-id!= val style='background-image: url("img/img-pornhub-preview@2x.jpg")')
 							.list__box-overlay
 							.list__box-border
 
@@ -64,6 +64,71 @@ mixin listBox(sliderID, name)
 
 			+swiper(sliderID, 'listSwiper', 'swiperContent', false, false, false)
 
+		.list__specification-wrapper
+			each val, idx in [1,2,3,4,5,6,7,8,9,10,11]
+				div
+					if(idx % 2 === 0)
+						.list__specification.list__specification--video(data-id!= val)
+							a.list__specification-close(href="#")
+								i.icon-font.icon-close
+
+							.list__specification-left
+								img.list__specification-logo(src="img/img-reality-kings.png" srcset="img/img-reality-kings@2x.png 2x" alt="")
+
+								.list__specification-action
+									div
+										a.list__specification-visit(href="#") VISIT WEBSITE
+									div
+										a.list__specification-read(href="#") READ REVIEW
+									div
+										a.list__specification-circle.list__specification-like.is-active(href="#")
+											i.icon-font.icon-like
+									div
+										a.list__specification-circle.list__specification-dislike(href="#")
+											i.icon-font.icon-like
+									div
+										a.list__specification-circle.list__specification-star(href="#")
+											i.icon-font.icon-star-fill
+
+								p.list__specification-desc Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in.
+
+							.list__specification-right
+								div
+									video#video1(poster='img/img-poster-vide.jpg')
+										source(src="img/video.mp4" type="video/mp4")
+
+									a#video-toggle.list__specification-play(href="#")
+										i.icon-font.icon-play-button
+
+					else
+						.list__specification.list__specification--banner(data-id!= val)
+							a.list__specification-close(href="#")
+								i.icon-font.icon-close
+
+							.list__specification-left
+								img.list__specification-logo(src="img/img-reality-kings.png" srcset="img/img-reality-kings@2x.png 2x" alt="")
+
+								.list__specification-action
+									div
+										a.list__specification-visit(href="#") VISIT WEBSITE
+									div
+										a.list__specification-read(href="#") READ REVIEW
+									div
+										a.list__specification-circle.list__specification-like.is-active(href="#")
+											i.icon-font.icon-like
+									div
+										a.list__specification-circle.list__specification-dislike(href="#")
+											i.icon-font.icon-like
+									div
+										a.list__specification-circle.list__specification-star(href="#")
+											i.icon-font.icon-star-fill
+
+								p.list__specification-desc Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in.
+
+							.list__specification-right
+								div
+									img(src="img/img-laptop.png" srcset="img/img-laptop@2x.png 2x" alt="")
+
 
 section#list.list
 	.c-grid
@@ -73,10 +138,5 @@ section#list.list
 		+listBox('listSlider3', '3')
 		+listBox('listSlider4', '4')
 		+listBox('listSlider5', '5')
-		+listBox('listSlider6', '6')
-		+listBox('listSlider7', '7')
-		+listBox('listSlider8', '8')
-		+listBox('listSlider9', '9')
-
 
 // SECTION :: END

@@ -132,6 +132,51 @@ if (!Element.prototype.closest) {
 		}, false);
 	};
 
+
+
+	const boxMore = () => {
+		const _btns = document.querySelectorAll('.list__box-more');
+
+		for(let btn of _btns) {
+			btn.addEventListener('click', (ev) => {
+				const _el = ev.currentTarget,
+					_boxParent = _el.closest('.list__box'),
+					_boxID = _boxParent.getAttribute('data-id'),
+					_parentNode = _el.closest('.list__box-wrapper');
+
+				const _specificationBox = document.querySelector('.list__specification[data-id="' + _boxID + '"]');
+
+				for(let box of document.querySelectorAll('.list__box')) {
+					box.classList.remove('is-active');
+				}
+				for(let specification of document.querySelectorAll('.list__specification')) {
+					specification.style.display = 'none';
+				}
+
+				_boxParent.classList.add('is-active');
+				_specificationBox.style.display = 'flex';
+
+				_parentNode.classList.add('is-open');
+			}, false);
+		}
+
+		// =====
+
+		const closeBtns = document.querySelectorAll('.list__specification-close');
+
+		for(let btn of closeBtns) {
+			btn.addEventListener('click', (ev) => {
+				const _el = ev.currentTarget;
+
+				_el.closest('.list__specification').style.display = 'none';
+
+				for(let btn of document.querySelectorAll('.list__box-more')) {
+					btn.closest('.list__box').classList.remove('is-active');
+				}
+			}, false);
+		}
+	};
+
 	/*
 	* CALLBACK :: end
 	* ============================================= */
@@ -156,6 +201,7 @@ if (!Element.prototype.closest) {
 		viewFavoritesToggle();
 		sortCB();
 		search();
+		boxMore();
 		// ==========================================
 	};
 

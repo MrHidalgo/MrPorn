@@ -30,35 +30,41 @@
 	@if $filename == arrow-angle {
 		$char: "\E001";
 	}
-	@if $filename == delete {
+	@if $filename == close {
 		$char: "\E002";
 	}
-	@if $filename == left-arrow {
+	@if $filename == delete {
 		$char: "\E003";
 	}
-	@if $filename == like {
+	@if $filename == left-arrow {
 		$char: "\E004";
 	}
-	@if $filename == moon {
+	@if $filename == like {
 		$char: "\E005";
 	}
-	@if $filename == out {
+	@if $filename == moon {
 		$char: "\E006";
 	}
-	@if $filename == search {
+	@if $filename == out {
 		$char: "\E007";
 	}
-	@if $filename == sort {
+	@if $filename == play-button {
 		$char: "\E008";
 	}
-	@if $filename == star-fill {
+	@if $filename == search {
 		$char: "\E009";
 	}
-	@if $filename == star {
+	@if $filename == sort {
 		$char: "\E00A";
 	}
-	@if $filename == sun {
+	@if $filename == star-fill {
 		$char: "\E00B";
+	}
+	@if $filename == star {
+		$char: "\E00C";
+	}
+	@if $filename == sun {
+		$char: "\E00D";
 	}
 
 	@return $char;
@@ -79,6 +85,10 @@
 	@include icon(arrow-angle);
 
 }
+.icon-close {
+	@include icon(close);
+
+}
 .icon-delete {
 	@include icon(delete);
 
@@ -97,6 +107,10 @@
 }
 .icon-out {
 	@include icon(out);
+
+}
+.icon-play-button {
+	@include icon(play-button);
 
 }
 .icon-search {

@@ -259,6 +259,155 @@ if (!Element.prototype.closest) {
 		}, false);
 	};
 
+	var boxMore = function boxMore() {
+		var _btns = document.querySelectorAll('.list__box-more');
+
+		var _iteratorNormalCompletion3 = true;
+		var _didIteratorError3 = false;
+		var _iteratorError3 = undefined;
+
+		try {
+			for (var _iterator3 = _btns[Symbol.iterator](), _step3; !(_iteratorNormalCompletion3 = (_step3 = _iterator3.next()).done); _iteratorNormalCompletion3 = true) {
+				var btn = _step3.value;
+
+				btn.addEventListener('click', function (ev) {
+					var _el = ev.currentTarget,
+					    _boxParent = _el.closest('.list__box'),
+					    _boxID = _boxParent.getAttribute('data-id'),
+					    _parentNode = _el.closest('.list__box-wrapper');
+
+					var _specificationBox = document.querySelector('.list__specification[data-id="' + _boxID + '"]');
+
+					var _iteratorNormalCompletion5 = true;
+					var _didIteratorError5 = false;
+					var _iteratorError5 = undefined;
+
+					try {
+						for (var _iterator5 = document.querySelectorAll('.list__box')[Symbol.iterator](), _step5; !(_iteratorNormalCompletion5 = (_step5 = _iterator5.next()).done); _iteratorNormalCompletion5 = true) {
+							var box = _step5.value;
+
+							box.classList.remove('is-active');
+						}
+					} catch (err) {
+						_didIteratorError5 = true;
+						_iteratorError5 = err;
+					} finally {
+						try {
+							if (!_iteratorNormalCompletion5 && _iterator5.return) {
+								_iterator5.return();
+							}
+						} finally {
+							if (_didIteratorError5) {
+								throw _iteratorError5;
+							}
+						}
+					}
+
+					var _iteratorNormalCompletion6 = true;
+					var _didIteratorError6 = false;
+					var _iteratorError6 = undefined;
+
+					try {
+						for (var _iterator6 = document.querySelectorAll('.list__specification')[Symbol.iterator](), _step6; !(_iteratorNormalCompletion6 = (_step6 = _iterator6.next()).done); _iteratorNormalCompletion6 = true) {
+							var specification = _step6.value;
+
+							specification.style.display = 'none';
+						}
+					} catch (err) {
+						_didIteratorError6 = true;
+						_iteratorError6 = err;
+					} finally {
+						try {
+							if (!_iteratorNormalCompletion6 && _iterator6.return) {
+								_iterator6.return();
+							}
+						} finally {
+							if (_didIteratorError6) {
+								throw _iteratorError6;
+							}
+						}
+					}
+
+					_boxParent.classList.add('is-active');
+					_specificationBox.style.display = 'flex';
+
+					_parentNode.classList.add('is-open');
+				}, false);
+			}
+
+			// =====
+		} catch (err) {
+			_didIteratorError3 = true;
+			_iteratorError3 = err;
+		} finally {
+			try {
+				if (!_iteratorNormalCompletion3 && _iterator3.return) {
+					_iterator3.return();
+				}
+			} finally {
+				if (_didIteratorError3) {
+					throw _iteratorError3;
+				}
+			}
+		}
+
+		var closeBtns = document.querySelectorAll('.list__specification-close');
+
+		var _iteratorNormalCompletion4 = true;
+		var _didIteratorError4 = false;
+		var _iteratorError4 = undefined;
+
+		try {
+			for (var _iterator4 = closeBtns[Symbol.iterator](), _step4; !(_iteratorNormalCompletion4 = (_step4 = _iterator4.next()).done); _iteratorNormalCompletion4 = true) {
+				var _btn2 = _step4.value;
+
+				_btn2.addEventListener('click', function (ev) {
+					var _el = ev.currentTarget;
+
+					_el.closest('.list__specification').style.display = 'none';
+
+					var _iteratorNormalCompletion7 = true;
+					var _didIteratorError7 = false;
+					var _iteratorError7 = undefined;
+
+					try {
+						for (var _iterator7 = document.querySelectorAll('.list__box-more')[Symbol.iterator](), _step7; !(_iteratorNormalCompletion7 = (_step7 = _iterator7.next()).done); _iteratorNormalCompletion7 = true) {
+							var _btn3 = _step7.value;
+
+							_btn3.closest('.list__box').classList.remove('is-active');
+						}
+					} catch (err) {
+						_didIteratorError7 = true;
+						_iteratorError7 = err;
+					} finally {
+						try {
+							if (!_iteratorNormalCompletion7 && _iterator7.return) {
+								_iterator7.return();
+							}
+						} finally {
+							if (_didIteratorError7) {
+								throw _iteratorError7;
+							}
+						}
+					}
+				}, false);
+			}
+		} catch (err) {
+			_didIteratorError4 = true;
+			_iteratorError4 = err;
+		} finally {
+			try {
+				if (!_iteratorNormalCompletion4 && _iterator4.return) {
+					_iterator4.return();
+				}
+			} finally {
+				if (_didIteratorError4) {
+					throw _iteratorError4;
+				}
+			}
+		}
+	};
+
 	/*
  * CALLBACK :: end
  * ============================================= */
@@ -282,6 +431,7 @@ if (!Element.prototype.closest) {
 		viewFavoritesToggle();
 		sortCB();
 		search();
+		boxMore();
 		// ==========================================
 	};
 
