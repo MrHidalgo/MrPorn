@@ -57,7 +57,7 @@ var initSwiper = function initSwiper() {
 			allowPageScroll: "auto",
 			//
 			slidesPerView: 'auto',
-			spaceBetween: 5,
+			spaceBetween: 0,
 			slidesPerGroup: 5,
 			navigation: {
 				nextEl: sliderArrow + ' .list__arrow--next',

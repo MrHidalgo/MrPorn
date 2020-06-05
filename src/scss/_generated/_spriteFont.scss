@@ -36,17 +36,29 @@
 	@if $filename == left-arrow {
 		$char: "\E003";
 	}
-	@if $filename == moon {
+	@if $filename == like {
 		$char: "\E004";
 	}
-	@if $filename == search {
+	@if $filename == moon {
 		$char: "\E005";
 	}
-	@if $filename == sort {
+	@if $filename == out {
 		$char: "\E006";
 	}
-	@if $filename == sun {
+	@if $filename == search {
 		$char: "\E007";
+	}
+	@if $filename == sort {
+		$char: "\E008";
+	}
+	@if $filename == star-fill {
+		$char: "\E009";
+	}
+	@if $filename == star {
+		$char: "\E00A";
+	}
+	@if $filename == sun {
+		$char: "\E00B";
 	}
 
 	@return $char;
@@ -75,8 +87,16 @@
 	@include icon(left-arrow);
 
 }
+.icon-like {
+	@include icon(like);
+
+}
 .icon-moon {
 	@include icon(moon);
+
+}
+.icon-out {
+	@include icon(out);
 
 }
 .icon-search {
@@ -85,6 +105,14 @@
 }
 .icon-sort {
 	@include icon(sort);
+
+}
+.icon-star-fill {
+	@include icon(star-fill);
+
+}
+.icon-star {
+	@include icon(star);
 
 }
 .icon-sun {

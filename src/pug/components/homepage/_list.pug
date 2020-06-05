@@ -38,6 +38,30 @@ mixin listBox(sliderID, name)
 
 							img.list__box-logo(src="img/img-brazzers-logo.svg" alt="")
 
+							.list__box-details
+								.list__box-details-left
+									button.list__box-external(type='button')
+										i.icon-font.icon-out
+									p.list__box-details-title REALITY KINGS
+									.list__rating
+										span User Rating:
+										div
+											i.icon-font.icon-star
+											i.icon-font.icon-star
+											i.icon-font.icon-star
+											i.icon-font.icon-star
+											i.icon-font.icon-star-fill
+								.list__box-details-right
+									button.list__box-like.is-active(type='button')
+										i.icon-font.icon-like
+									button.list__box-dislike(type='button')
+										i.icon-font.icon-like
+									button.list__box-favorites(type='button')
+										i.icon-font.icon-star-fill
+
+							button.list__box-more(type='button')
+								i.icon-font.icon-arrow-angle
+
 			+swiper(sliderID, 'listSwiper', 'swiperContent', false, false, false)
 
 

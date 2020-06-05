@@ -211,7 +211,7 @@
 }
 
 /* line 23, src/scss/_generated/_spriteFont.scss */
-.icon-arrow-angle:before, .icon-delete:before, .icon-left-arrow:before, .icon-moon:before, .icon-search:before, .icon-sort:before, .icon-sun:before {
+.icon-arrow-angle:before, .icon-delete:before, .icon-left-arrow:before, .icon-like:before, .icon-moon:before, .icon-out:before, .icon-search:before, .icon-sort:before, .icon-star-fill:before, .icon-star:before, .icon-sun:before {
   font-family: "iconFont", sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
@@ -222,39 +222,59 @@
   text-transform: none;
 }
 
-/* line 56, src/scss/_generated/_spriteFont.scss */
+/* line 68, src/scss/_generated/_spriteFont.scss */
 .icon-arrow-angle:before {
   content: "";
 }
 
-/* line 56, src/scss/_generated/_spriteFont.scss */
+/* line 68, src/scss/_generated/_spriteFont.scss */
 .icon-delete:before {
   content: "";
 }
 
-/* line 56, src/scss/_generated/_spriteFont.scss */
+/* line 68, src/scss/_generated/_spriteFont.scss */
 .icon-left-arrow:before {
   content: "";
 }
 
-/* line 56, src/scss/_generated/_spriteFont.scss */
-.icon-moon:before {
+/* line 68, src/scss/_generated/_spriteFont.scss */
+.icon-like:before {
   content: "";
 }
 
-/* line 56, src/scss/_generated/_spriteFont.scss */
-.icon-search:before {
+/* line 68, src/scss/_generated/_spriteFont.scss */
+.icon-moon:before {
   content: "";
 }
 
-/* line 56, src/scss/_generated/_spriteFont.scss */
-.icon-sort:before {
+/* line 68, src/scss/_generated/_spriteFont.scss */
+.icon-out:before {
   content: "";
 }
 
-/* line 56, src/scss/_generated/_spriteFont.scss */
-.icon-sun:before {
+/* line 68, src/scss/_generated/_spriteFont.scss */
+.icon-search:before {
   content: "";
+}
+
+/* line 68, src/scss/_generated/_spriteFont.scss */
+.icon-sort:before {
+  content: "";
+}
+
+/* line 68, src/scss/_generated/_spriteFont.scss */
+.icon-star-fill:before {
+  content: "";
+}
+
+/* line 68, src/scss/_generated/_spriteFont.scss */
+.icon-star:before {
+  content: "";
+}
+
+/* line 68, src/scss/_generated/_spriteFont.scss */
+.icon-sun:before {
+  content: "";
 }
 
 /* line 1, src/scss/_shared/_main-setting-reset.scss */
@@ -2957,6 +2977,7 @@ picture {
 /* line 150, src/scss/_components/homepage/_list.scss */
 .list__box {
   cursor: pointer;
+  overflow: hidden;
   position: absolute;
   top: 50%;
   left: 50%;
@@ -2995,7 +3016,7 @@ picture {
   transition: transform 0.35s ease-in-out, -webkit-transform 0.35s ease-in-out;
 }
 
-/* line 170, src/scss/_components/homepage/_list.scss */
+/* line 171, src/scss/_components/homepage/_list.scss */
 .list__box:hover {
   -webkit-transform: translate(-50%, -50%) scale(1.33);
       -ms-transform: translate(-50%, -50%) scale(1.33);
@@ -3008,7 +3029,59 @@ picture {
 }
 
 /* line 176, src/scss/_components/homepage/_list.scss */
+.list__box:hover .list__box-logo,
+.list__box:hover .list__box-details-left,
+.list__box:hover .list__box-details-right {
+  -webkit-transform: scale(0.77);
+      -ms-transform: scale(0.77);
+          transform: scale(0.77);
+  -webkit-transition: -webkit-transform 0.35s ease-in-out;
+  transition: -webkit-transform 0.35s ease-in-out;
+  -o-transition: transform 0.35s ease-in-out;
+  transition: transform 0.35s ease-in-out;
+  transition: transform 0.35s ease-in-out, -webkit-transform 0.35s ease-in-out;
+}
+
+/* line 183, src/scss/_components/homepage/_list.scss */
+.list__box:hover .list__box-details {
+  opacity: 1;
+  visibility: visible;
+  -webkit-transform: translateY(0);
+      -ms-transform: translateY(0);
+          transform: translateY(0);
+  -webkit-transition: opacity 0.35s ease-in-out, visibility 0.35s ease-in-out, -webkit-transform 0.35s ease-in-out;
+  transition: opacity 0.35s ease-in-out, visibility 0.35s ease-in-out, -webkit-transform 0.35s ease-in-out;
+  -o-transition: opacity 0.35s ease-in-out, visibility 0.35s ease-in-out, transform 0.35s ease-in-out;
+  transition: opacity 0.35s ease-in-out, visibility 0.35s ease-in-out, transform 0.35s ease-in-out;
+  transition: opacity 0.35s ease-in-out, visibility 0.35s ease-in-out, transform 0.35s ease-in-out, -webkit-transform 0.35s ease-in-out;
+}
+
+/* line 190, src/scss/_components/homepage/_list.scss */
+.list__box:hover .list__box-more {
+  opacity: 1;
+  visibility: visible;
+  -webkit-transition: opacity 0.35s ease-in-out, visibility 0.35s ease-in-out;
+  -o-transition: opacity 0.35s ease-in-out, visibility 0.35s ease-in-out;
+  transition: opacity 0.35s ease-in-out, visibility 0.35s ease-in-out;
+}
+
+/* line 195, src/scss/_components/homepage/_list.scss */
+.list__box:hover .list__box-more .icon-font {
+  -webkit-animation-fill-mode: both;
+          animation-fill-mode: both;
+  -webkit-animation-duration: 1.5s;
+          animation-duration: 1.5s;
+  -webkit-animation-iteration-count: infinite;
+          animation-iteration-count: infinite;
+  -webkit-animation-timing-function: ease-in-out;
+          animation-timing-function: ease-in-out;
+  -webkit-animation-name: slideToggle;
+          animation-name: slideToggle;
+}
+
+/* line 205, src/scss/_components/homepage/_list.scss */
 .list__box-overlay {
+  z-index: 0;
   position: absolute;
   top: 0;
   left: 0;
@@ -3017,8 +3090,9 @@ picture {
   background-color: rgba(8, 9, 21, 0.55);
 }
 
-/* line 185, src/scss/_components/homepage/_list.scss */
+/* line 215, src/scss/_components/homepage/_list.scss */
 .list__box-border {
+  z-index: 0;
   position: absolute;
   top: 2px;
   left: 2px;
@@ -3029,9 +3103,9 @@ picture {
   border: 1px dashed #fff;
 }
 
-/* line 194, src/scss/_components/homepage/_list.scss */
+/* line 225, src/scss/_components/homepage/_list.scss */
 .list__box-logo {
-  z-index: 5;
+  z-index: 15;
   position: relative;
   display: block;
   max-width: 100%;
@@ -3039,31 +3113,299 @@ picture {
   max-height: 100%;
   margin-left: auto;
   margin-right: auto;
+  -webkit-transition: -webkit-transform 0.35s ease-in-out;
+  transition: -webkit-transform 0.35s ease-in-out;
+  -o-transition: transform 0.35s ease-in-out;
+  transition: transform 0.35s ease-in-out;
+  transition: transform 0.35s ease-in-out, -webkit-transform 0.35s ease-in-out;
 }
 
-/* line 207, src/scss/_components/homepage/_list.scss */
+/* line 237, src/scss/_components/homepage/_list.scss */
+.list__box-details {
+  z-index: 11;
+  opacity: 0;
+  visibility: hidden;
+  -webkit-transform: translateY(100%);
+      -ms-transform: translateY(100%);
+          transform: translateY(100%);
+  position: absolute;
+  top: 3px;
+  left: 3px;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: end;
+  -webkit-align-items: flex-end;
+      -ms-flex-align: end;
+          align-items: flex-end;
+  -webkit-box-pack: justify;
+  -webkit-justify-content: space-between;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  width: 100%;
+  max-width: -webkit-calc(100% - 6px);
+  max-width: calc(100% - 6px);
+  height: -webkit-calc(100% - 6px);
+  height: calc(100% - 6px);
+  padding: 0 10px 25px;
+  background: -webkit-gradient(linear, left top, left bottom, from(rgba(8, 9, 21, 0)), to(rgba(8, 9, 21, 0.85)));
+  background: -webkit-linear-gradient(top, rgba(8, 9, 21, 0) 0%, rgba(8, 9, 21, 0.85) 100%);
+  background: -o-linear-gradient(top, rgba(8, 9, 21, 0) 0%, rgba(8, 9, 21, 0.85) 100%);
+  background: linear-gradient(to bottom, rgba(8, 9, 21, 0) 0%, rgba(8, 9, 21, 0.85) 100%);
+  -webkit-transition: opacity 0.35s ease-in-out, visibility 0.35s ease-in-out, -webkit-transform 0.35s ease-in-out;
+  transition: opacity 0.35s ease-in-out, visibility 0.35s ease-in-out, -webkit-transform 0.35s ease-in-out;
+  -o-transition: opacity 0.35s ease-in-out, visibility 0.35s ease-in-out, transform 0.35s ease-in-out;
+  transition: opacity 0.35s ease-in-out, visibility 0.35s ease-in-out, transform 0.35s ease-in-out;
+  transition: opacity 0.35s ease-in-out, visibility 0.35s ease-in-out, transform 0.35s ease-in-out, -webkit-transform 0.35s ease-in-out;
+}
+
+/* line 255, src/scss/_components/homepage/_list.scss */
+.list__box-details-left {
+  -webkit-transform-origin: left center;
+      -ms-transform-origin: left center;
+          transform-origin: left center;
+  -webkit-transition: -webkit-transform 0.35s ease-in-out;
+  transition: -webkit-transform 0.35s ease-in-out;
+  -o-transition: transform 0.35s ease-in-out;
+  transition: transform 0.35s ease-in-out;
+  transition: transform 0.35s ease-in-out, -webkit-transform 0.35s ease-in-out;
+}
+
+/* line 259, src/scss/_components/homepage/_list.scss */
+.list__box-details-left button {
+  outline: none;
+  cursor: pointer;
+  padding: 0;
+  border: none;
+  -webkit-border-radius: 0;
+          border-radius: 0;
+  -webkit-box-shadow: none;
+          box-shadow: none;
+  background-color: transparent;
+}
+
+/* line 269, src/scss/_components/homepage/_list.scss */
+.list__box-details-left button.list__box-external .icon-font {
+  margin-bottom: 5px;
+}
+
+/* line 274, src/scss/_components/homepage/_list.scss */
+.list__box-details-left button .icon-font {
+  color: #cecece;
+  font-size: 20px;
+}
+
+/* line 281, src/scss/_components/homepage/_list.scss */
+.list__box-details-right {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+  -webkit-flex-direction: column;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-transition: -webkit-transform 0.35s ease-in-out;
+  transition: -webkit-transform 0.35s ease-in-out;
+  -o-transition: transform 0.35s ease-in-out;
+  transition: transform 0.35s ease-in-out;
+  transition: transform 0.35s ease-in-out, -webkit-transform 0.35s ease-in-out;
+}
+
+/* line 286, src/scss/_components/homepage/_list.scss */
+.list__box-details-right button {
+  outline: none;
+  cursor: pointer;
+  padding: 0;
+  border: none;
+  -webkit-border-radius: 0;
+          border-radius: 0;
+  -webkit-box-shadow: none;
+          box-shadow: none;
+  background-color: transparent;
+}
+
+/* line 296, src/scss/_components/homepage/_list.scss */
+.list__box-details-right button.is-active .icon-font {
+  color: #c5f015;
+}
+
+/* line 302, src/scss/_components/homepage/_list.scss */
+.list__box-details-right button.list__box-like .icon-font {
+  -webkit-transform: scaleX(-1);
+      -ms-transform: scaleX(-1);
+          transform: scaleX(-1);
+}
+
+/* line 306, src/scss/_components/homepage/_list.scss */
+.list__box-details-right button.list__box-dislike {
+  -webkit-transform: scale(-1);
+      -ms-transform: scale(-1);
+          transform: scale(-1);
+}
+
+/* line 310, src/scss/_components/homepage/_list.scss */
+.list__box-details-right button:not(:last-of-type) {
+  margin-bottom: 10px;
+}
+
+/* line 314, src/scss/_components/homepage/_list.scss */
+.list__box-details-right button .icon-font {
+  color: #ffffff;
+  font-size: 20px;
+}
+
+/* line 321, src/scss/_components/homepage/_list.scss */
+.list__box-details-title {
+  color: #ffffff;
+  font-size: 20px;
+  font-weight: 700;
+}
+
+/* line 328, src/scss/_components/homepage/_list.scss */
+.list__box-more {
+  z-index: 20;
+  outline: none;
+  cursor: pointer;
+  opacity: 0;
+  visibility: hidden;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: start;
+  -webkit-align-items: flex-start;
+      -ms-flex-align: start;
+          align-items: flex-start;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  width: 100%;
+  height: 30px;
+  padding-top: 5px;
+  border: none;
+  -webkit-border-radius: 0;
+          border-radius: 0;
+  -webkit-box-shadow: none;
+          box-shadow: none;
+  background-color: transparent;
+  -webkit-transition: opacity 0.35s ease-in-out, visibility 0.35s ease-in-out;
+  -o-transition: opacity 0.35s ease-in-out, visibility 0.35s ease-in-out;
+  transition: opacity 0.35s ease-in-out, visibility 0.35s ease-in-out;
+}
+
+/* line 349, src/scss/_components/homepage/_list.scss */
+.list__box-more .icon-font {
+  color: #c5f015;
+  font-size: 16px;
+  -webkit-transform: rotate(-90deg);
+      -ms-transform: rotate(-90deg);
+          transform: rotate(-90deg);
+}
+
+/* line 357, src/scss/_components/homepage/_list.scss */
+.list__rating {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+  -webkit-align-items: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+/* line 361, src/scss/_components/homepage/_list.scss */
+.list__rating span {
+  color: #4a70a1;
+  font-size: 14px;
+}
+
+/* line 366, src/scss/_components/homepage/_list.scss */
+.list__rating > div {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+  -webkit-align-items: center;
+      -ms-flex-align: center;
+          align-items: center;
+  padding-left: 10px;
+}
+
+/* line 371, src/scss/_components/homepage/_list.scss */
+.list__rating > div .icon-font {
+  color: #004aac;
+  font-size: 19px;
+}
+
+/* line 375, src/scss/_components/homepage/_list.scss */
+.list__rating > div .icon-font:not(:last-of-type) {
+  margin-right: 3px;
+}
+
+/* line 383, src/scss/_components/homepage/_list.scss */
 .list .swiper-container {
   overflow: unset;
   padding-top: 25px;
   padding-bottom: 40px;
 }
 
-/* line 213, src/scss/_components/homepage/_list.scss */
+/* line 389, src/scss/_components/homepage/_list.scss */
 .list .swiper-slide {
   position: relative;
   width: 250px !important;
   height: 250px;
+  margin-left: 3px;
+  margin-right: 3px;
   -webkit-transition: width 0.35s ease-in-out;
   -o-transition: width 0.35s ease-in-out;
   transition: width 0.35s ease-in-out;
 }
 
-/* line 219, src/scss/_components/homepage/_list.scss */
+/* line 397, src/scss/_components/homepage/_list.scss */
 .list .swiper-slide:hover {
   width: 333px !important;
   -webkit-transition: width 0.35s ease-in-out;
   -o-transition: width 0.35s ease-in-out;
   transition: width 0.35s ease-in-out;
+}
+
+@-webkit-keyframes slideToggle {
+  from {
+    -webkit-transform: rotate(-90deg) translateX(5px);
+            transform: rotate(-90deg) translateX(5px);
+  }
+  50% {
+    -webkit-transform: rotate(-90deg) translateX(0);
+            transform: rotate(-90deg) translateX(0);
+  }
+  to {
+    -webkit-transform: rotate(-90deg) translateX(5px);
+            transform: rotate(-90deg) translateX(5px);
+  }
+}
+
+@keyframes slideToggle {
+  from {
+    -webkit-transform: rotate(-90deg) translateX(5px);
+            transform: rotate(-90deg) translateX(5px);
+  }
+  50% {
+    -webkit-transform: rotate(-90deg) translateX(0);
+            transform: rotate(-90deg) translateX(0);
+  }
+  to {
+    -webkit-transform: rotate(-90deg) translateX(5px);
+            transform: rotate(-90deg) translateX(5px);
+  }
 }
 
 /*# sourceMappingURL=maps/app.css.map */
