@@ -1,6 +1,6 @@
 @charset "UTF-8";
 /* line 14, src/scss/_utilities/_extend.scss */
-.category__list-head > div img, .category__list-body > div:nth-of-type(1) img {
+.category__list-head > div img, .category__list-body > div:nth-of-type(1) img, .list__info-circle img {
   position: absolute;
   top: 0;
   left: 0;
@@ -2733,6 +2733,8 @@ picture {
 
 /* line 8, src/scss/_components/homepage/_list.scss */
 .list__box-wrapper {
+  opacity: 0;
+  overflow: hidden;
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -2742,9 +2744,12 @@ picture {
   -webkit-flex-direction: column;
       -ms-flex-direction: column;
           flex-direction: column;
+  -webkit-transition: opacity 0.35s ease-in-out;
+  -o-transition: opacity 0.35s ease-in-out;
+  transition: opacity 0.35s ease-in-out;
 }
 
-/* line 13, src/scss/_components/homepage/_list.scss */
+/* line 16, src/scss/_components/homepage/_list.scss */
 .list__box-head {
   display: -webkit-box;
   display: -webkit-flex;
@@ -2758,6 +2763,307 @@ picture {
   -webkit-justify-content: space-between;
       -ms-flex-pack: justify;
           justify-content: space-between;
+  padding-bottom: 20px;
+}
+
+/* line 23, src/scss/_components/homepage/_list.scss */
+.list__box-line {
+  width: 100%;
+  height: 2px;
+  background-color: #191a28;
+}
+
+/* line 29, src/scss/_components/homepage/_list.scss */
+.list__box-body {
+  position: relative;
+}
+
+/* line 34, src/scss/_components/homepage/_list.scss */
+.list__info {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+  -webkit-align-items: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+/* line 39, src/scss/_components/homepage/_list.scss */
+.list__info > div:nth-of-type(1) {
+  width: 55px;
+}
+
+/* line 43, src/scss/_components/homepage/_list.scss */
+.list__info > div:nth-of-type(2) {
+  -webkit-box-flex: 1;
+  -webkit-flex: 1;
+      -ms-flex: 1;
+          flex: 1;
+  min-width: 1px;
+  max-width: 100%;
+  padding-left: 11px;
+}
+
+/* line 51, src/scss/_components/homepage/_list.scss */
+.list__info-circle {
+  overflow: hidden;
+  position: relative;
+  width: 55px;
+  height: 55px;
+  -webkit-border-radius: 50%;
+          border-radius: 50%;
+  background-color: #20212f;
+}
+
+/* line 59, src/scss/_components/homepage/_list.scss */
+.list__info-circle img {
+  -o-object-position: 12px 11px;
+     object-position: 12px 11px;
+}
+
+/* line 65, src/scss/_components/homepage/_list.scss */
+.list__info p {
+  color: #ffffff;
+  font-size: 30px;
+  font-weight: 700;
+}
+
+/* line 71, src/scss/_components/homepage/_list.scss */
+.list__info span {
+  color: #4b4e6b;
+  font-size: 16px;
+}
+
+/* line 77, src/scss/_components/homepage/_list.scss */
+.list__btn {
+  outline: none;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+  -webkit-align-items: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  min-width: 145px;
+  height: 45px;
+  -webkit-border-radius: 5px;
+          border-radius: 5px;
+  background-color: #d5f34a;
+  color: #080915;
+  font-size: 16px;
+  font-weight: 700;
+}
+
+/* line 90, src/scss/_components/homepage/_list.scss */
+.list__btn span {
+  color: #0c3495;
+}
+
+/* line 95, src/scss/_components/homepage/_list.scss */
+.list__arrow {
+  z-index: 10;
+  position: absolute;
+  top: 25px;
+  width: 125px;
+  height: -webkit-calc(100% - (25px + 40px));
+  height: calc(100% - (25px + 40px));
+  -webkit-transition: opacity 0.35s ease-in-out, visibility 0.35s ease-in-out;
+  -o-transition: opacity 0.35s ease-in-out, visibility 0.35s ease-in-out;
+  transition: opacity 0.35s ease-in-out, visibility 0.35s ease-in-out;
+}
+
+/* line 103, src/scss/_components/homepage/_list.scss */
+.list__arrow.swiper-button-disabled {
+  opacity: 0;
+  visibility: hidden;
+  -webkit-transition: opacity 0.35s ease-in-out, visibility 0.35s ease-in-out;
+  -o-transition: opacity 0.35s ease-in-out, visibility 0.35s ease-in-out;
+  transition: opacity 0.35s ease-in-out, visibility 0.35s ease-in-out;
+}
+
+/* line 109, src/scss/_components/homepage/_list.scss */
+.list__arrow--prev {
+  left: 0;
+  background: -webkit-gradient(linear, right top, left top, from(rgba(8, 9, 21, 0)), to(#080915));
+  background: -webkit-linear-gradient(right, rgba(8, 9, 21, 0) 0%, #080915 100%);
+  background: -o-linear-gradient(right, rgba(8, 9, 21, 0) 0%, #080915 100%);
+  background: linear-gradient(to left, rgba(8, 9, 21, 0) 0%, #080915 100%);
+}
+
+/* line 113, src/scss/_components/homepage/_list.scss */
+.list__arrow--prev .list__arrow-box {
+  left: 0;
+}
+
+/* line 118, src/scss/_components/homepage/_list.scss */
+.list__arrow--next {
+  right: 0;
+  background: -webkit-gradient(linear, left top, right top, from(rgba(8, 9, 21, 0)), to(#080915));
+  background: -webkit-linear-gradient(left, rgba(8, 9, 21, 0) 0%, #080915 100%);
+  background: -o-linear-gradient(left, rgba(8, 9, 21, 0) 0%, #080915 100%);
+  background: linear-gradient(to right, rgba(8, 9, 21, 0) 0%, #080915 100%);
+}
+
+/* line 122, src/scss/_components/homepage/_list.scss */
+.list__arrow--next .list__arrow-box {
+  right: 0;
+}
+
+/* line 125, src/scss/_components/homepage/_list.scss */
+.list__arrow--next .list__arrow-box .icon-font {
+  -webkit-transform: scaleX(-1);
+      -ms-transform: scaleX(-1);
+          transform: scaleX(-1);
+}
+
+/* line 131, src/scss/_components/homepage/_list.scss */
+.list__arrow-box {
+  z-index: 11;
+  position: absolute;
+  top: 50%;
+  -webkit-transform: translateY(-50%);
+      -ms-transform: translateY(-50%);
+          transform: translateY(-50%);
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+  -webkit-align-items: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  width: 51px;
+  height: 98px;
+  background-color: rgba(255, 255, 255, 0.05);
+}
+
+/* line 143, src/scss/_components/homepage/_list.scss */
+.list__arrow-box .icon-font {
+  color: #ffffff;
+  font-size: 24px;
+}
+
+/* line 150, src/scss/_components/homepage/_list.scss */
+.list__box {
+  cursor: pointer;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  -webkit-transform: translate(-50%, -50%);
+      -ms-transform: translate(-50%, -50%);
+          transform: translate(-50%, -50%);
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+  -webkit-align-items: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  width: 250px;
+  height: 250px;
+  padding: 10px;
+  background-color: #080915;
+  background-position: center;
+  background-repeat: no-repeat;
+  -webkit-background-size: cover;
+          background-size: cover;
+  -webkit-backface-visibility: hidden;
+          backface-visibility: hidden;
+  -webkit-transform-origin: center;
+      -ms-transform-origin: center;
+          transform-origin: center;
+  -webkit-transition: -webkit-transform 0.35s ease-in-out;
+  transition: -webkit-transform 0.35s ease-in-out;
+  -o-transition: transform 0.35s ease-in-out;
+  transition: transform 0.35s ease-in-out;
+  transition: transform 0.35s ease-in-out, -webkit-transform 0.35s ease-in-out;
+}
+
+/* line 170, src/scss/_components/homepage/_list.scss */
+.list__box:hover {
+  -webkit-transform: translate(-50%, -50%) scale(1.33);
+      -ms-transform: translate(-50%, -50%) scale(1.33);
+          transform: translate(-50%, -50%) scale(1.33);
+  -webkit-transition: -webkit-transform 0.35s ease-in-out;
+  transition: -webkit-transform 0.35s ease-in-out;
+  -o-transition: transform 0.35s ease-in-out;
+  transition: transform 0.35s ease-in-out;
+  transition: transform 0.35s ease-in-out, -webkit-transform 0.35s ease-in-out;
+}
+
+/* line 176, src/scss/_components/homepage/_list.scss */
+.list__box-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(8, 9, 21, 0.55);
+}
+
+/* line 185, src/scss/_components/homepage/_list.scss */
+.list__box-border {
+  position: absolute;
+  top: 2px;
+  left: 2px;
+  width: -webkit-calc(100% - 4px);
+  width: calc(100% - 4px);
+  height: -webkit-calc(100% - 4px);
+  height: calc(100% - 4px);
+  border: 1px dashed #fff;
+}
+
+/* line 194, src/scss/_components/homepage/_list.scss */
+.list__box-logo {
+  z-index: 5;
+  position: relative;
+  display: block;
+  max-width: 100%;
+  height: auto;
+  max-height: 100%;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+/* line 207, src/scss/_components/homepage/_list.scss */
+.list .swiper-container {
+  overflow: unset;
+  padding-top: 25px;
+  padding-bottom: 40px;
+}
+
+/* line 213, src/scss/_components/homepage/_list.scss */
+.list .swiper-slide {
+  position: relative;
+  width: 250px !important;
+  height: 250px;
+  -webkit-transition: width 0.35s ease-in-out;
+  -o-transition: width 0.35s ease-in-out;
+  transition: width 0.35s ease-in-out;
+}
+
+/* line 219, src/scss/_components/homepage/_list.scss */
+.list .swiper-slide:hover {
+  width: 333px !important;
+  -webkit-transition: width 0.35s ease-in-out;
+  -o-transition: width 0.35s ease-in-out;
+  transition: width 0.35s ease-in-out;
 }
 
 /*# sourceMappingURL=maps/app.css.map */

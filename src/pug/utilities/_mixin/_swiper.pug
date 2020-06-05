@@ -16,8 +16,8 @@
 			+swiper('someClassName', 'swiperContent', false, false, false)
 
 //- ========================
-mixin swiper(classMod, contentSlide, paginationBool, btnBool, scrollbarBool)
-	.swiper-container(class!= classMod)
+mixin swiper(idMod, classMod, contentSlide, paginationBool, btnBool, scrollbarBool)
+	.swiper-container(class!= classMod data-id!= idMod)
 
 		.swiper-wrapper
 			+#{contentSlide}

@@ -34,6 +34,55 @@ var initPreventBehavior = function initPreventBehavior() {
 	});
 };
 
+/**
+ * @name initSwiper
+ *
+ * @description initialize Swiper
+ */
+var initSwiper = function initSwiper() {
+	var sliders = document.querySelectorAll('.listSwiper'),
+	    slidersNode = document.querySelectorAll('.list__box-wrapper');
+
+	function swiperCB(swiperName, sliderArrow) {
+		new Swiper(swiperName, {
+			loop: false,
+			grabCursor: false,
+			effect: 'slide',
+			speed: 750,
+			// off touch for destop
+			touchMoveStopPropagation: false,
+			simulateTouch: false,
+			allowSwipeToNext: true,
+			allowSwipeToPrev: true,
+			allowPageScroll: "auto",
+			//
+			slidesPerView: 'auto',
+			spaceBetween: 5,
+			slidesPerGroup: 5,
+			navigation: {
+				nextEl: sliderArrow + ' .list__arrow--next',
+				prevEl: sliderArrow + ' .list__arrow--prev'
+			},
+			on: {
+				init: function init() {
+					var listBoxes = document.querySelectorAll('.list__box-wrapper');
+
+					for (var i = 0; i < listBoxes.length; i++) {
+						listBoxes[i].style.opacity = 1;
+					}
+				}
+			}
+		});
+	}
+
+	for (var idx = 0; idx < sliders.length; idx++) {
+		var sliderName = sliders[idx].getAttribute('data-id'),
+		    sliderWrapper = slidersNode[idx].getAttribute('data-name');
+
+		swiperCB(".swiper-container[data-id=\"" + sliderName + "\"]", ".list__box-wrapper[data-name='" + sliderWrapper + "']");
+	}
+};
+
 if (!Element.prototype.matches) {
 	Element.prototype.matches = Element.prototype.msMatchesSelector || Element.prototype.webkitMatchesSelector;
 }
@@ -225,6 +274,7 @@ if (!Element.prototype.closest) {
 		// ==========================================
 
 		// lib
+		initSwiper();
 		// ==========================================
 
 		// callback

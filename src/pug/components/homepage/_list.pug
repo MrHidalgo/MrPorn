@@ -1,12 +1,58 @@
 // SECTION :: START
 
+mixin listBox(sliderID, name)
+	.list__box-wrapper(data-name!= name)
+
+		.list__box-head
+			div
+
+				.list__info
+					div
+						.list__info-circle
+							img(src="img/img-premim-porn-icon.png" srcset="img/img-premim-porn-icon@2x.png 2x" alt="")
+					div
+						p Premium Porn
+						span Enjoy these best porn sites, all exclusive HD content starring beautiful pornstars.
+
+			div
+				a.list__btn(href="#")!= "SEE&nbsp;<span>69 MORE</span>"
+
+		.list__box-line
+
+		.list__box-body
+
+			.list__arrow-wrapper
+				a.list__arrow.list__arrow--prev(href="#")
+					.list__arrow-box
+						i.icon-font.icon-arrow-angle
+				a.list__arrow.list__arrow--next(href="#")
+					.list__arrow-box
+						i.icon-font.icon-arrow-angle
+
+			mixin swiperContent()
+				each val, idx in [1,2,3,4,5,6,7,8,9,0]
+					.swiper-slide
+						a.list__box(href="#" style='background-image: url("img/img-pornhub-preview@2x.jpg")')
+							.list__box-overlay
+							.list__box-border
+
+							img.list__box-logo(src="img/img-brazzers-logo.svg" alt="")
+
+			+swiper(sliderID, 'listSwiper', 'swiperContent', false, false, false)
+
+
 section#list.list
 	.c-grid
 
-		.list__box-wrapper
+		+listBox('listSlider1', '1')
+		+listBox('listSlider2', '2')
+		+listBox('listSlider3', '3')
+		+listBox('listSlider4', '4')
+		+listBox('listSlider5', '5')
+		+listBox('listSlider6', '6')
+		+listBox('listSlider7', '7')
+		+listBox('listSlider8', '8')
+		+listBox('listSlider9', '9')
 
-			.list__box-head
-
-			.list__box-body
 
 // SECTION :: END
