@@ -48,23 +48,26 @@
 	@if $filename == out {
 		$char: "\E007";
 	}
-	@if $filename == play-button {
+	@if $filename == pause {
 		$char: "\E008";
 	}
-	@if $filename == search {
+	@if $filename == play-button {
 		$char: "\E009";
 	}
-	@if $filename == sort {
+	@if $filename == search {
 		$char: "\E00A";
 	}
-	@if $filename == star-fill {
+	@if $filename == sort {
 		$char: "\E00B";
 	}
-	@if $filename == star {
+	@if $filename == star-fill {
 		$char: "\E00C";
 	}
-	@if $filename == sun {
+	@if $filename == star {
 		$char: "\E00D";
+	}
+	@if $filename == sun {
+		$char: "\E00E";
 	}
 
 	@return $char;
@@ -107,6 +110,10 @@
 }
 .icon-out {
 	@include icon(out);
+
+}
+.icon-pause {
+	@include icon(pause);
 
 }
 .icon-play-button {

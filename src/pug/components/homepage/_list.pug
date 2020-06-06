@@ -93,12 +93,17 @@ mixin listBox(sliderID, name)
 								p.list__specification-desc Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in.
 
 							.list__specification-right
-								div
-									video#video1(poster='img/img-poster-vide.jpg')
-										source(src="img/video.mp4" type="video/mp4")
+								div(video-parent-js)
+									if(idx === 0 || idx === 4 || idx === 8 || idx === 12)
+										video(poster='img/img-poster-video.jpg' video-js)
+											source(src="img/video1.mp4" type="video/mp4")
+									else if (idx === 2 || idx === 6 || idx === 10)
+										video(poster='img/img-poster-video.jpg' video-js)
+											source(src="img/video2.mp4" type="video/mp4")
 
-									a#video-toggle.list__specification-play(href="#")
-										i.icon-font.icon-play-button
+									a.list__specification-play(href="#" video-toggle-js)
+										i.icon-font.icon-play-button(video-play-js)
+										i.icon-font.icon-pause(video-pause-js)
 
 					else
 						.list__specification.list__specification--banner(data-id!= val)

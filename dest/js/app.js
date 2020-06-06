@@ -408,6 +408,57 @@ if (!Element.prototype.closest) {
 		}
 	};
 
+	var videoToggle = function videoToggle() {
+		function playPause(vid, playNode, pauseNode) {
+			if (vid.paused) {
+				vid.play();
+				playNode.style.opacity = '0';
+				pauseNode.style.opacity = '1';
+			} else {
+				vid.pause();
+				playNode.style.opacity = '1';
+				pauseNode.style.opacity = '0';
+			}
+		}
+
+		var videoBtns = document.querySelectorAll('[video-toggle-js]');
+
+		var _iteratorNormalCompletion8 = true;
+		var _didIteratorError8 = false;
+		var _iteratorError8 = undefined;
+
+		try {
+			for (var _iterator8 = videoBtns[Symbol.iterator](), _step8; !(_iteratorNormalCompletion8 = (_step8 = _iterator8.next()).done); _iteratorNormalCompletion8 = true) {
+				var btn = _step8.value;
+
+				btn.addEventListener('click', function (ev) {
+					var el = ev.currentTarget,
+					    playIcon = el.querySelector('[video-play-js]'),
+					    pauseIcon = el.querySelector('[video-pause-js]'),
+					    parentVideoNode = el.closest('[video-parent-js]'),
+					    vid = parentVideoNode.querySelector('[video-js]');
+
+					el.classList.toggle('is-active');
+
+					playPause(vid, playIcon, pauseIcon);
+				}, false);
+			}
+		} catch (err) {
+			_didIteratorError8 = true;
+			_iteratorError8 = err;
+		} finally {
+			try {
+				if (!_iteratorNormalCompletion8 && _iterator8.return) {
+					_iterator8.return();
+				}
+			} finally {
+				if (_didIteratorError8) {
+					throw _iteratorError8;
+				}
+			}
+		}
+	};
+
 	/*
  * CALLBACK :: end
  * ============================================= */
@@ -432,6 +483,7 @@ if (!Element.prototype.closest) {
 		sortCB();
 		search();
 		boxMore();
+		videoToggle();
 		// ==========================================
 	};
 

@@ -211,7 +211,7 @@
 }
 
 /* line 23, src/scss/_generated/_spriteFont.scss */
-.icon-arrow-angle:before, .icon-close:before, .icon-delete:before, .icon-left-arrow:before, .icon-like:before, .icon-moon:before, .icon-out:before, .icon-play-button:before, .icon-search:before, .icon-sort:before, .icon-star-fill:before, .icon-star:before, .icon-sun:before {
+.icon-arrow-angle:before, .icon-close:before, .icon-delete:before, .icon-left-arrow:before, .icon-like:before, .icon-moon:before, .icon-out:before, .icon-pause:before, .icon-play-button:before, .icon-search:before, .icon-sort:before, .icon-star-fill:before, .icon-star:before, .icon-sun:before {
   font-family: "iconFont", sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
@@ -222,69 +222,74 @@
   text-transform: none;
 }
 
-/* line 74, src/scss/_generated/_spriteFont.scss */
+/* line 77, src/scss/_generated/_spriteFont.scss */
 .icon-arrow-angle:before {
   content: "";
 }
 
-/* line 74, src/scss/_generated/_spriteFont.scss */
+/* line 77, src/scss/_generated/_spriteFont.scss */
 .icon-close:before {
   content: "";
 }
 
-/* line 74, src/scss/_generated/_spriteFont.scss */
+/* line 77, src/scss/_generated/_spriteFont.scss */
 .icon-delete:before {
   content: "";
 }
 
-/* line 74, src/scss/_generated/_spriteFont.scss */
+/* line 77, src/scss/_generated/_spriteFont.scss */
 .icon-left-arrow:before {
   content: "";
 }
 
-/* line 74, src/scss/_generated/_spriteFont.scss */
+/* line 77, src/scss/_generated/_spriteFont.scss */
 .icon-like:before {
   content: "";
 }
 
-/* line 74, src/scss/_generated/_spriteFont.scss */
+/* line 77, src/scss/_generated/_spriteFont.scss */
 .icon-moon:before {
   content: "";
 }
 
-/* line 74, src/scss/_generated/_spriteFont.scss */
+/* line 77, src/scss/_generated/_spriteFont.scss */
 .icon-out:before {
   content: "";
 }
 
-/* line 74, src/scss/_generated/_spriteFont.scss */
-.icon-play-button:before {
+/* line 77, src/scss/_generated/_spriteFont.scss */
+.icon-pause:before {
   content: "";
 }
 
-/* line 74, src/scss/_generated/_spriteFont.scss */
-.icon-search:before {
+/* line 77, src/scss/_generated/_spriteFont.scss */
+.icon-play-button:before {
   content: "";
 }
 
-/* line 74, src/scss/_generated/_spriteFont.scss */
-.icon-sort:before {
+/* line 77, src/scss/_generated/_spriteFont.scss */
+.icon-search:before {
   content: "";
 }
 
-/* line 74, src/scss/_generated/_spriteFont.scss */
-.icon-star-fill:before {
+/* line 77, src/scss/_generated/_spriteFont.scss */
+.icon-sort:before {
   content: "";
 }
 
-/* line 74, src/scss/_generated/_spriteFont.scss */
-.icon-star:before {
+/* line 77, src/scss/_generated/_spriteFont.scss */
+.icon-star-fill:before {
   content: "";
 }
 
-/* line 74, src/scss/_generated/_spriteFont.scss */
-.icon-sun:before {
+/* line 77, src/scss/_generated/_spriteFont.scss */
+.icon-star:before {
   content: "";
+}
+
+/* line 77, src/scss/_generated/_spriteFont.scss */
+.icon-sun:before {
+  content: "";
 }
 
 /* line 1, src/scss/_shared/_main-setting-reset.scss */
@@ -3471,8 +3476,11 @@ picture {
 
 /* line 456, src/scss/_components/homepage/_list.scss */
 .list__specification {
-  display: none;
   position: relative;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
   height: 322px;
   border-width: 2px;
   border-color: #7d848e;
@@ -3836,19 +3844,45 @@ picture {
 }
 
 /* line 713, src/scss/_components/homepage/_list.scss */
+.list__specification-play.is-active {
+  -webkit-transform: translate(-50%, -50%) scale(0.55);
+      -ms-transform: translate(-50%, -50%) scale(0.55);
+          transform: translate(-50%, -50%) scale(0.55);
+  -webkit-transition: -webkit-transform 0.55s ease-in-out;
+  transition: -webkit-transform 0.55s ease-in-out;
+  -o-transition: transform 0.55s ease-in-out;
+  transition: transform 0.55s ease-in-out;
+  transition: transform 0.55s ease-in-out, -webkit-transform 0.55s ease-in-out;
+}
+
+/* line 718, src/scss/_components/homepage/_list.scss */
 .list__specification-play .icon-font {
   position: relative;
   left: 5px;
   color: #ffffff;
   font-size: 57px;
+  -webkit-transition: opacity 0.35s ease-in-out;
+  -o-transition: opacity 0.35s ease-in-out;
+  transition: opacity 0.35s ease-in-out;
 }
 
-/* line 723, src/scss/_components/homepage/_list.scss */
+/* line 725, src/scss/_components/homepage/_list.scss */
+.list__specification-play .icon-font.icon-pause {
+  opacity: 0;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  -webkit-transform: translate(-50%, -50%);
+      -ms-transform: translate(-50%, -50%);
+          transform: translate(-50%, -50%);
+}
+
+/* line 737, src/scss/_components/homepage/_list.scss */
 .list .swiper-container {
   overflow: unset;
 }
 
-/* line 729, src/scss/_components/homepage/_list.scss */
+/* line 743, src/scss/_components/homepage/_list.scss */
 .list .swiper-slide {
   position: relative;
   width: 250px !important;
@@ -3860,17 +3894,17 @@ picture {
   transition: width 0.35s ease-in-out;
 }
 
-/* line 737, src/scss/_components/homepage/_list.scss */
+/* line 751, src/scss/_components/homepage/_list.scss */
 .list .swiper-slide:first-of-type {
   margin-left: 0;
 }
 
-/* line 740, src/scss/_components/homepage/_list.scss */
+/* line 754, src/scss/_components/homepage/_list.scss */
 .list .swiper-slide:last-of-type {
   margin-right: 0;
 }
 
-/* line 744, src/scss/_components/homepage/_list.scss */
+/* line 758, src/scss/_components/homepage/_list.scss */
 .list .swiper-slide:hover {
   width: 333px !important;
   -webkit-transition: width 0.35s ease-in-out;
