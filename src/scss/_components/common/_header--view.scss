@@ -31,18 +31,24 @@
 		min-width: 1px;
 		max-width: 100%;
 
+		p,
+		span {
+			flex: 1;
+			min-width: 1px;
+			max-width: 100%;
+			text-align: center;
+		}
+
 		p {
 			color: #ffffff;
 			font-weight: 700;
-			font-size: 16px;
+			font-size: 14px;
 			text-transform: uppercase;
 		}
 
 		u {
 			width: 1px;
 			height: calc(100% - 10px);
-			margin-left: 34px;
-			margin-right: 34px;
 			background-color: #3672c1;
 		}
 

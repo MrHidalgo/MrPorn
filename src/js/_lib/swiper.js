@@ -24,7 +24,7 @@ const initSwiper = () => {
 			//
 			slidesPerView: 'auto',
 			spaceBetween: 0,
-			slidesPerGroup: 5,
+			slidesPerGroup: 3,
 			navigation: {
 				nextEl: sliderArrow + ' .list__arrow--next',
 				prevEl: sliderArrow + ' .list__arrow--prev',
