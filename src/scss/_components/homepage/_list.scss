@@ -236,10 +236,21 @@
 		}
 
 		&-line {
+			position: relative;
 			width: 100%;
 			height: 2px;
 			margin-bottom: 25px;
 			background-color: rgb(25, 26, 40);
+
+			span {
+				cursor: pointer;
+				position: absolute;
+				top: 0;
+				left: 64px;
+				width: 64px;
+				height: 2px;
+				background-color: #d5f34a;
+			}
 		}
 
 		&-body {

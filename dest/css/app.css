@@ -947,6 +947,18 @@ picture {
 
 /* line 138, src/scss/_shared/macros/_category.scss */
 .category__drop-head > div:nth-of-type(2) {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+  -webkit-align-items: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: end;
+  -webkit-justify-content: flex-end;
+      -ms-flex-pack: end;
+          justify-content: flex-end;
   -webkit-box-flex: 1;
   -webkit-flex: 1;
       -ms-flex: 1;
@@ -955,7 +967,7 @@ picture {
   max-width: 100%;
 }
 
-/* line 146, src/scss/_shared/macros/_category.scss */
+/* line 149, src/scss/_shared/macros/_category.scss */
 .category__drop-body {
   -webkit-box-flex: 1;
   -webkit-flex: 1;
@@ -967,7 +979,7 @@ picture {
   padding-right: 10px;
 }
 
-/* line 154, src/scss/_shared/macros/_category.scss */
+/* line 157, src/scss/_shared/macros/_category.scss */
 .category__drop-footer {
   display: -webkit-box;
   display: -webkit-flex;
@@ -984,15 +996,15 @@ picture {
   height: 60px;
 }
 
-/* line 162, src/scss/_shared/macros/_category.scss */
+/* line 165, src/scss/_shared/macros/_category.scss */
 .category__title {
   padding-bottom: 5px;
   color: #ffffff;
-  font-size: 20px;
+  font-size: 18px;
   font-weight: 700;
 }
 
-/* line 170, src/scss/_shared/macros/_category.scss */
+/* line 173, src/scss/_shared/macros/_category.scss */
 .category__btn-wrapper {
   display: -webkit-box;
   display: -webkit-flex;
@@ -1005,10 +1017,9 @@ picture {
   -webkit-align-items: center;
       -ms-flex-align: center;
           align-items: center;
-  width: 100%;
 }
 
-/* line 176, src/scss/_shared/macros/_category.scss */
+/* line 178, src/scss/_shared/macros/_category.scss */
 .category__btn-wrapper .category__btn {
   display: -webkit-box;
   display: -webkit-flex;
@@ -1027,35 +1038,35 @@ picture {
   padding-left: 5px;
   padding-right: 5px;
   width: auto;
-  min-width: 135px;
+  min-width: 140px;
 }
 
-/* line 187, src/scss/_shared/macros/_category.scss */
+/* line 189, src/scss/_shared/macros/_category.scss */
 .category__btn-wrapper .category__btn--1 {
   background-color: #090b27;
 }
 
-/* line 190, src/scss/_shared/macros/_category.scss */
+/* line 192, src/scss/_shared/macros/_category.scss */
 .category__btn-wrapper .category__btn--2 {
   background-color: #0677ce;
 }
 
-/* line 193, src/scss/_shared/macros/_category.scss */
+/* line 195, src/scss/_shared/macros/_category.scss */
 .category__btn-wrapper .category__btn--3 {
   background-color: #767676;
 }
 
-/* line 196, src/scss/_shared/macros/_category.scss */
+/* line 198, src/scss/_shared/macros/_category.scss */
 .category__btn-wrapper .category__btn--4 {
   background-color: #625e73;
 }
 
-/* line 199, src/scss/_shared/macros/_category.scss */
+/* line 201, src/scss/_shared/macros/_category.scss */
 .category__btn-wrapper .category__btn--5 {
   background-color: #65a6bb;
 }
 
-/* line 203, src/scss/_shared/macros/_category.scss */
+/* line 205, src/scss/_shared/macros/_category.scss */
 .category__btn-wrapper .category__btn img {
   display: block;
   max-width: 100%;
@@ -1063,14 +1074,14 @@ picture {
   margin-right: 5px;
 }
 
-/* line 210, src/scss/_shared/macros/_category.scss */
+/* line 212, src/scss/_shared/macros/_category.scss */
 .category__btn-wrapper .category__btn span {
   text-transform: capitalize;
   font-size: 13px;
   font-weight: 700;
 }
 
-/* line 219, src/scss/_shared/macros/_category.scss */
+/* line 221, src/scss/_shared/macros/_category.scss */
 .category__list {
   display: -webkit-box;
   display: -webkit-flex;
@@ -1085,7 +1096,7 @@ picture {
   height: 210px;
 }
 
-/* line 225, src/scss/_shared/macros/_category.scss */
+/* line 227, src/scss/_shared/macros/_category.scss */
 .category__list-wrapper {
   display: -webkit-box;
   display: -webkit-flex;
@@ -1097,7 +1108,7 @@ picture {
   width: 100%;
 }
 
-/* line 230, src/scss/_shared/macros/_category.scss */
+/* line 232, src/scss/_shared/macros/_category.scss */
 .category__list-wrapper > div {
   width: 100%;
   max-width: -webkit-calc(100% / 6);
@@ -1106,7 +1117,7 @@ picture {
   padding-right: 5px;
 }
 
-/* line 238, src/scss/_shared/macros/_category.scss */
+/* line 240, src/scss/_shared/macros/_category.scss */
 .category__list-head {
   display: -webkit-box;
   display: -webkit-flex;
@@ -1123,7 +1134,7 @@ picture {
   height: 37px;
 }
 
-/* line 245, src/scss/_shared/macros/_category.scss */
+/* line 247, src/scss/_shared/macros/_category.scss */
 .category__list-head > div:nth-of-type(1) {
   overflow: hidden;
   position: relative;
@@ -1145,36 +1156,36 @@ picture {
           border-radius: 50%;
 }
 
-/* line 256, src/scss/_shared/macros/_category.scss */
+/* line 258, src/scss/_shared/macros/_category.scss */
 .category__list-head > div:nth-of-type(1).gf--pink {
   background-color: #b32eae;
 }
 
-/* line 259, src/scss/_shared/macros/_category.scss */
+/* line 261, src/scss/_shared/macros/_category.scss */
 .category__list-head > div:nth-of-type(1).gf--green {
   background-color: #13aea1;
 }
 
-/* line 265, src/scss/_shared/macros/_category.scss */
+/* line 267, src/scss/_shared/macros/_category.scss */
 .category__list-head > div:nth-of-type(2) {
   padding-left: 5px;
 }
 
-/* line 273, src/scss/_shared/macros/_category.scss */
+/* line 275, src/scss/_shared/macros/_category.scss */
 .category__list-head > div span {
   color: #ffffff;
   font-size: 11px;
   font-weight: 700;
 }
 
-/* line 280, src/scss/_shared/macros/_category.scss */
+/* line 282, src/scss/_shared/macros/_category.scss */
 .category__list-head p {
   color: #0a3e83;
   font-size: 12px;
   font-weight: 700;
 }
 
-/* line 287, src/scss/_shared/macros/_category.scss */
+/* line 289, src/scss/_shared/macros/_category.scss */
 .category__list-body {
   display: -webkit-box;
   display: -webkit-flex;
@@ -1188,7 +1199,7 @@ picture {
   height: 100%;
 }
 
-/* line 293, src/scss/_shared/macros/_category.scss */
+/* line 295, src/scss/_shared/macros/_category.scss */
 .category__list-body > div:nth-of-type(1) {
   overflow: hidden;
   position: relative;
@@ -1203,7 +1214,7 @@ picture {
   border-right: 1px solid #9ca4ad;
 }
 
-/* line 307, src/scss/_shared/macros/_category.scss */
+/* line 309, src/scss/_shared/macros/_category.scss */
 .category__list-body > div:nth-of-type(2) {
   display: -webkit-box;
   display: -webkit-flex;
@@ -1222,7 +1233,7 @@ picture {
   background-color: #0a3e83;
 }
 
-/* line 315, src/scss/_shared/macros/_category.scss */
+/* line 317, src/scss/_shared/macros/_category.scss */
 .category__list-body > div:nth-of-type(2) p {
   position: relative;
   top: -1px;
@@ -1233,7 +1244,7 @@ picture {
   text-align: center;
 }
 
-/* line 329, src/scss/_shared/macros/_category.scss */
+/* line 331, src/scss/_shared/macros/_category.scss */
 .category__pagination {
   display: -webkit-box;
   display: -webkit-flex;
@@ -1249,7 +1260,7 @@ picture {
           justify-content: center;
 }
 
-/* line 334, src/scss/_shared/macros/_category.scss */
+/* line 336, src/scss/_shared/macros/_category.scss */
 .category__pagination-btn, .category__pagination-arrow {
   display: -webkit-box;
   display: -webkit-flex;
@@ -1263,24 +1274,24 @@ picture {
   -webkit-justify-content: center;
       -ms-flex-pack: center;
           justify-content: center;
-  width: 30px;
-  height: 30px;
-  margin-left: 11px;
-  margin-right: 11px;
+  width: 28px;
+  height: 28px;
+  margin-left: 7px;
+  margin-right: 7px;
 }
 
-/* line 345, src/scss/_shared/macros/_category.scss */
+/* line 347, src/scss/_shared/macros/_category.scss */
 .category__pagination-btn {
   background-color: #e4e4e4;
   color: #8a8a8a;
-  font-size: 22px;
+  font-size: 18px;
   font-weight: 700;
   -webkit-transition: background-color 0.35s ease-in-out, color 0.35s ease-in-out;
   -o-transition: background-color 0.35s ease-in-out, color 0.35s ease-in-out;
   transition: background-color 0.35s ease-in-out, color 0.35s ease-in-out;
 }
 
-/* line 352, src/scss/_shared/macros/_category.scss */
+/* line 354, src/scss/_shared/macros/_category.scss */
 .category__pagination-btn:hover, .category__pagination-btn.is-active {
   background-color: #07113b;
   color: #d5f34a;
@@ -1289,10 +1300,10 @@ picture {
   transition: background-color 0.35s ease-in-out, color 0.35s ease-in-out;
 }
 
-/* line 361, src/scss/_shared/macros/_category.scss */
+/* line 363, src/scss/_shared/macros/_category.scss */
 .category__pagination-arrow .icon-font {
   color: #07113b;
-  font-size: 21px;
+  font-size: 18px;
   -webkit-transform: scaleX(-1);
       -ms-transform: scaleX(-1);
           transform: scaleX(-1);
@@ -3140,6 +3151,7 @@ picture {
 
 /* line 238, src/scss/_components/homepage/_list.scss */
 .list__box-line {
+  position: relative;
   width: 100%;
   height: 2px;
   margin-bottom: 25px;
@@ -3147,6 +3159,17 @@ picture {
 }
 
 /* line 245, src/scss/_components/homepage/_list.scss */
+.list__box-line span {
+  cursor: pointer;
+  position: absolute;
+  top: 0;
+  left: 64px;
+  width: 64px;
+  height: 2px;
+  background-color: #d5f34a;
+}
+
+/* line 256, src/scss/_components/homepage/_list.scss */
 .list__box-body {
   z-index: 100;
   position: relative;
@@ -3156,7 +3179,7 @@ picture {
   transition: padding-bottom 0.35s ease-in-out;
 }
 
-/* line 252, src/scss/_components/homepage/_list.scss */
+/* line 263, src/scss/_components/homepage/_list.scss */
 .list__box-overlay {
   z-index: 0;
   position: absolute;
@@ -3170,7 +3193,7 @@ picture {
   transition: background-color 0.35s ease-in-out;
 }
 
-/* line 263, src/scss/_components/homepage/_list.scss */
+/* line 274, src/scss/_components/homepage/_list.scss */
 .list__box-border {
   z-index: 0;
   position: absolute;
@@ -3186,7 +3209,7 @@ picture {
   transition: border-style 0.35s ease-in-out, border-width 0.35s ease-in-out;
 }
 
-/* line 274, src/scss/_components/homepage/_list.scss */
+/* line 285, src/scss/_components/homepage/_list.scss */
 .list__box-logo {
   z-index: 15;
   position: relative;
@@ -3203,7 +3226,7 @@ picture {
   transition: transform 0.35s ease-in-out, -webkit-transform 0.35s ease-in-out;
 }
 
-/* line 286, src/scss/_components/homepage/_list.scss */
+/* line 297, src/scss/_components/homepage/_list.scss */
 .list__box-details {
   z-index: 11;
   opacity: 0;
@@ -3239,7 +3262,7 @@ picture {
   transition: opacity 0.35s ease-in-out, visibility 0.35s ease-in-out;
 }
 
-/* line 306, src/scss/_components/homepage/_list.scss */
+/* line 317, src/scss/_components/homepage/_list.scss */
 .list__box-details-left > *, .list__box-details-right > * {
   -webkit-transition: -webkit-transform 0.35s ease-in-out;
   transition: -webkit-transform 0.35s ease-in-out;
@@ -3248,7 +3271,7 @@ picture {
   transition: transform 0.35s ease-in-out, -webkit-transform 0.35s ease-in-out;
 }
 
-/* line 311, src/scss/_components/homepage/_list.scss */
+/* line 322, src/scss/_components/homepage/_list.scss */
 .list__box-details-left {
   display: -webkit-box;
   display: -webkit-flex;
@@ -3268,7 +3291,7 @@ picture {
   max-width: calc(100% - 30px);
 }
 
-/* line 318, src/scss/_components/homepage/_list.scss */
+/* line 329, src/scss/_components/homepage/_list.scss */
 .list__box-details-left > * {
   width: 100%;
   -webkit-transform-origin: left center;
@@ -3276,7 +3299,7 @@ picture {
           transform-origin: left center;
 }
 
-/* line 323, src/scss/_components/homepage/_list.scss */
+/* line 334, src/scss/_components/homepage/_list.scss */
 .list__box-details-left button {
   outline: none;
   cursor: pointer;
@@ -3289,18 +3312,18 @@ picture {
   background-color: transparent;
 }
 
-/* line 333, src/scss/_components/homepage/_list.scss */
+/* line 344, src/scss/_components/homepage/_list.scss */
 .list__box-details-left button.list__box-external .icon-font {
   margin-bottom: 5px;
 }
 
-/* line 338, src/scss/_components/homepage/_list.scss */
+/* line 349, src/scss/_components/homepage/_list.scss */
 .list__box-details-left button .icon-font {
   color: #cecece;
   font-size: 20px;
 }
 
-/* line 345, src/scss/_components/homepage/_list.scss */
+/* line 356, src/scss/_components/homepage/_list.scss */
 .list__box-details-right {
   display: -webkit-box;
   display: -webkit-flex;
@@ -3322,14 +3345,14 @@ picture {
   width: 30px;
 }
 
-/* line 352, src/scss/_components/homepage/_list.scss */
+/* line 363, src/scss/_components/homepage/_list.scss */
 .list__box-details-right > * {
   -webkit-transform-origin: right center;
       -ms-transform-origin: right center;
           transform-origin: right center;
 }
 
-/* line 356, src/scss/_components/homepage/_list.scss */
+/* line 367, src/scss/_components/homepage/_list.scss */
 .list__box-details-right button {
   outline: none;
   cursor: pointer;
@@ -3346,37 +3369,37 @@ picture {
   background-color: transparent;
 }
 
-/* line 367, src/scss/_components/homepage/_list.scss */
+/* line 378, src/scss/_components/homepage/_list.scss */
 .list__box-details-right button.is-active .icon-font {
   color: #c5f015;
 }
 
-/* line 373, src/scss/_components/homepage/_list.scss */
+/* line 384, src/scss/_components/homepage/_list.scss */
 .list__box-details-right button.list__box-like .icon-font {
   -webkit-transform: scaleX(-1);
       -ms-transform: scaleX(-1);
           transform: scaleX(-1);
 }
 
-/* line 377, src/scss/_components/homepage/_list.scss */
+/* line 388, src/scss/_components/homepage/_list.scss */
 .list__box-details-right button.list__box-dislike {
   -webkit-transform: scale(-1);
       -ms-transform: scale(-1);
           transform: scale(-1);
 }
 
-/* line 381, src/scss/_components/homepage/_list.scss */
+/* line 392, src/scss/_components/homepage/_list.scss */
 .list__box-details-right button:not(:last-of-type) {
   margin-bottom: 10px;
 }
 
-/* line 385, src/scss/_components/homepage/_list.scss */
+/* line 396, src/scss/_components/homepage/_list.scss */
 .list__box-details-right button .icon-font {
   color: #ffffff;
   font-size: 20px;
 }
 
-/* line 392, src/scss/_components/homepage/_list.scss */
+/* line 403, src/scss/_components/homepage/_list.scss */
 .list__box-details-title {
   overflow: hidden;
   white-space: nowrap;
@@ -3387,7 +3410,7 @@ picture {
   font-weight: 700;
 }
 
-/* line 402, src/scss/_components/homepage/_list.scss */
+/* line 413, src/scss/_components/homepage/_list.scss */
 .list__box-more {
   z-index: 20;
   outline: none;
@@ -3423,7 +3446,7 @@ picture {
   transition: opacity 0.35s ease-in-out, visibility 0.35s ease-in-out;
 }
 
-/* line 423, src/scss/_components/homepage/_list.scss */
+/* line 434, src/scss/_components/homepage/_list.scss */
 .list__box-more .icon-font {
   color: #c5f015;
   font-size: 16px;
@@ -3432,7 +3455,7 @@ picture {
           transform: rotate(-90deg);
 }
 
-/* line 431, src/scss/_components/homepage/_list.scss */
+/* line 442, src/scss/_components/homepage/_list.scss */
 .list__rating {
   display: -webkit-box;
   display: -webkit-flex;
@@ -3444,13 +3467,13 @@ picture {
           align-items: center;
 }
 
-/* line 435, src/scss/_components/homepage/_list.scss */
+/* line 446, src/scss/_components/homepage/_list.scss */
 .list__rating span {
   color: #4a70a1;
   font-size: 14px;
 }
 
-/* line 440, src/scss/_components/homepage/_list.scss */
+/* line 451, src/scss/_components/homepage/_list.scss */
 .list__rating > div {
   display: -webkit-box;
   display: -webkit-flex;
@@ -3463,24 +3486,21 @@ picture {
   padding-left: 10px;
 }
 
-/* line 445, src/scss/_components/homepage/_list.scss */
+/* line 456, src/scss/_components/homepage/_list.scss */
 .list__rating > div .icon-font {
   color: #004aac;
   font-size: 19px;
 }
 
-/* line 449, src/scss/_components/homepage/_list.scss */
+/* line 460, src/scss/_components/homepage/_list.scss */
 .list__rating > div .icon-font:not(:last-of-type) {
   margin-right: 3px;
 }
 
-/* line 456, src/scss/_components/homepage/_list.scss */
+/* line 467, src/scss/_components/homepage/_list.scss */
 .list__specification {
+  display: none;
   position: relative;
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
   height: 322px;
   border-width: 2px;
   border-color: #7d848e;
@@ -3492,7 +3512,7 @@ picture {
           box-shadow: 1.047px 19.973px 43px 0px rgba(8, 9, 21, 0.3);
 }
 
-/* line 471, src/scss/_components/homepage/_list.scss */
+/* line 482, src/scss/_components/homepage/_list.scss */
 .list__specification.list__specification--video .list__specification-right > div:before {
   content: '';
   z-index: 2;
@@ -3507,7 +3527,7 @@ picture {
   background: linear-gradient(to left, rgba(0, 0, 0, 0) 0%, black 100%);
 }
 
-/* line 482, src/scss/_components/homepage/_list.scss */
+/* line 493, src/scss/_components/homepage/_list.scss */
 .list__specification.list__specification--video .list__specification-right > div:after {
   content: '';
   z-index: 2;
@@ -3522,7 +3542,7 @@ picture {
   background: linear-gradient(to left, rgba(0, 0, 0, 0.2) 0%, rgba(0, 0, 0, 0.2) 100%);
 }
 
-/* line 498, src/scss/_components/homepage/_list.scss */
+/* line 509, src/scss/_components/homepage/_list.scss */
 .list__specification.list__specification--banner .list__specification-right > div {
   display: -webkit-box;
   display: -webkit-flex;
@@ -3539,7 +3559,7 @@ picture {
   padding: 15px;
 }
 
-/* line 504, src/scss/_components/homepage/_list.scss */
+/* line 515, src/scss/_components/homepage/_list.scss */
 .list__specification.list__specification--banner .list__specification-right > div:before {
   content: '';
   z-index: 2;
@@ -3554,7 +3574,7 @@ picture {
   background: linear-gradient(to bottom, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0.25) 100%);
 }
 
-/* line 515, src/scss/_components/homepage/_list.scss */
+/* line 526, src/scss/_components/homepage/_list.scss */
 .list__specification.list__specification--banner .list__specification-right > div:after {
   content: '';
   z-index: 1;
@@ -3571,7 +3591,7 @@ picture {
           background-size: 175%;
 }
 
-/* line 530, src/scss/_components/homepage/_list.scss */
+/* line 541, src/scss/_components/homepage/_list.scss */
 .list__specification.list__specification--banner .list__specification-right > div img {
   display: block;
   max-width: 100%;
@@ -3581,7 +3601,7 @@ picture {
   max-height: 100%;
 }
 
-/* line 542, src/scss/_components/homepage/_list.scss */
+/* line 553, src/scss/_components/homepage/_list.scss */
 .list__specification-wrapper {
   z-index: 90;
   display: -webkit-box;
@@ -3596,7 +3616,7 @@ picture {
   position: relative;
 }
 
-/* line 550, src/scss/_components/homepage/_list.scss */
+/* line 561, src/scss/_components/homepage/_list.scss */
 .list__specification-close {
   z-index: 50;
   position: absolute;
@@ -3608,18 +3628,18 @@ picture {
   display: flex;
 }
 
-/* line 557, src/scss/_components/homepage/_list.scss */
+/* line 568, src/scss/_components/homepage/_list.scss */
 .list__specification-close .icon-font {
   color: #ffffff;
   font-size: 18px;
 }
 
-/* line 563, src/scss/_components/homepage/_list.scss */
+/* line 574, src/scss/_components/homepage/_list.scss */
 .list__specification-left, .list__specification-right {
   height: 100%;
 }
 
-/* line 568, src/scss/_components/homepage/_list.scss */
+/* line 579, src/scss/_components/homepage/_list.scss */
 .list__specification-left {
   z-index: 2;
   position: relative;
@@ -3647,7 +3667,7 @@ picture {
           clip-path: polygon(0 0, 90% 0, 100% 100%, 0% 100%);
 }
 
-/* line 581, src/scss/_components/homepage/_list.scss */
+/* line 592, src/scss/_components/homepage/_list.scss */
 .list__specification-right {
   z-index: 1;
   position: relative;
@@ -3656,7 +3676,7 @@ picture {
   max-width: calc(100% - 650px);
 }
 
-/* line 587, src/scss/_components/homepage/_list.scss */
+/* line 598, src/scss/_components/homepage/_list.scss */
 .list__specification-right > div {
   overflow: hidden;
   position: absolute;
@@ -3667,7 +3687,7 @@ picture {
   height: 100%;
 }
 
-/* line 601, src/scss/_components/homepage/_list.scss */
+/* line 612, src/scss/_components/homepage/_list.scss */
 .list__specification-logo {
   display: block;
   max-width: 100%;
@@ -3675,7 +3695,7 @@ picture {
   margin-bottom: 10px;
 }
 
-/* line 608, src/scss/_components/homepage/_list.scss */
+/* line 619, src/scss/_components/homepage/_list.scss */
 .list__specification-action {
   display: -webkit-box;
   display: -webkit-flex;
@@ -3692,12 +3712,12 @@ picture {
   padding-bottom: 20px;
 }
 
-/* line 616, src/scss/_components/homepage/_list.scss */
+/* line 627, src/scss/_components/homepage/_list.scss */
 .list__specification-action > div:not(:last-of-type) {
   margin-right: 10px;
 }
 
-/* line 622, src/scss/_components/homepage/_list.scss */
+/* line 633, src/scss/_components/homepage/_list.scss */
 .list__specification-visit, .list__specification-read {
   position: relative;
   display: -webkit-box;
@@ -3719,14 +3739,14 @@ picture {
   font-weight: 700;
 }
 
-/* line 635, src/scss/_components/homepage/_list.scss */
+/* line 646, src/scss/_components/homepage/_list.scss */
 .list__specification-visit {
   -webkit-border-radius: 5px;
           border-radius: 5px;
   background-color: #004aac;
 }
 
-/* line 640, src/scss/_components/homepage/_list.scss */
+/* line 651, src/scss/_components/homepage/_list.scss */
 .list__specification-read {
   border-width: 2px;
   border-color: #c5f015;
@@ -3735,7 +3755,7 @@ picture {
           border-radius: 5px;
 }
 
-/* line 647, src/scss/_components/homepage/_list.scss */
+/* line 658, src/scss/_components/homepage/_list.scss */
 .list__specification-circle {
   position: relative;
   display: -webkit-box;
@@ -3759,37 +3779,37 @@ picture {
           border-radius: 50%;
 }
 
-/* line 659, src/scss/_components/homepage/_list.scss */
+/* line 670, src/scss/_components/homepage/_list.scss */
 .list__specification-circle.is-active {
   border-color: #c5f015;
 }
 
-/* line 662, src/scss/_components/homepage/_list.scss */
+/* line 673, src/scss/_components/homepage/_list.scss */
 .list__specification-circle.is-active .icon-font {
   color: #c5f015;
 }
 
-/* line 667, src/scss/_components/homepage/_list.scss */
+/* line 678, src/scss/_components/homepage/_list.scss */
 .list__specification-circle .icon-font {
   color: #ffffff;
   font-size: 24px;
 }
 
-/* line 674, src/scss/_components/homepage/_list.scss */
+/* line 685, src/scss/_components/homepage/_list.scss */
 .list__specification-like .icon-font {
   -webkit-transform: scaleX(-1);
       -ms-transform: scaleX(-1);
           transform: scaleX(-1);
 }
 
-/* line 680, src/scss/_components/homepage/_list.scss */
+/* line 691, src/scss/_components/homepage/_list.scss */
 .list__specification-dislike .icon-font {
   -webkit-transform: scale(-1);
       -ms-transform: scale(-1);
           transform: scale(-1);
 }
 
-/* line 685, src/scss/_components/homepage/_list.scss */
+/* line 696, src/scss/_components/homepage/_list.scss */
 .list__specification-desc {
   width: 100%;
   max-width: 460px;
@@ -3798,7 +3818,7 @@ picture {
   font-size: 14px;
 }
 
-/* line 693, src/scss/_components/homepage/_list.scss */
+/* line 704, src/scss/_components/homepage/_list.scss */
 .list__specification-play {
   z-index: 20;
   position: absolute;
@@ -3831,7 +3851,7 @@ picture {
   transition: transform 0.35s ease-in-out, -webkit-transform 0.35s ease-in-out;
 }
 
-/* line 708, src/scss/_components/homepage/_list.scss */
+/* line 719, src/scss/_components/homepage/_list.scss */
 .list__specification-play:hover {
   -webkit-transform: translate(-50%, -50%) scale(0.8);
       -ms-transform: translate(-50%, -50%) scale(0.8);
@@ -3843,7 +3863,7 @@ picture {
   transition: transform 0.55s ease-in-out, -webkit-transform 0.55s ease-in-out;
 }
 
-/* line 713, src/scss/_components/homepage/_list.scss */
+/* line 724, src/scss/_components/homepage/_list.scss */
 .list__specification-play.is-active {
   -webkit-transform: translate(-50%, -50%) scale(0.55);
       -ms-transform: translate(-50%, -50%) scale(0.55);
@@ -3855,7 +3875,7 @@ picture {
   transition: transform 0.55s ease-in-out, -webkit-transform 0.55s ease-in-out;
 }
 
-/* line 718, src/scss/_components/homepage/_list.scss */
+/* line 729, src/scss/_components/homepage/_list.scss */
 .list__specification-play .icon-font {
   position: relative;
   left: 5px;
@@ -3866,7 +3886,7 @@ picture {
   transition: opacity 0.35s ease-in-out;
 }
 
-/* line 725, src/scss/_components/homepage/_list.scss */
+/* line 736, src/scss/_components/homepage/_list.scss */
 .list__specification-play .icon-font.icon-pause {
   opacity: 0;
   position: absolute;
@@ -3877,12 +3897,12 @@ picture {
           transform: translate(-50%, -50%);
 }
 
-/* line 737, src/scss/_components/homepage/_list.scss */
+/* line 748, src/scss/_components/homepage/_list.scss */
 .list .swiper-container {
   overflow: unset;
 }
 
-/* line 743, src/scss/_components/homepage/_list.scss */
+/* line 754, src/scss/_components/homepage/_list.scss */
 .list .swiper-slide {
   position: relative;
   width: 250px !important;
@@ -3894,17 +3914,17 @@ picture {
   transition: width 0.35s ease-in-out;
 }
 
-/* line 751, src/scss/_components/homepage/_list.scss */
+/* line 762, src/scss/_components/homepage/_list.scss */
 .list .swiper-slide:first-of-type {
   margin-left: 0;
 }
 
-/* line 754, src/scss/_components/homepage/_list.scss */
+/* line 765, src/scss/_components/homepage/_list.scss */
 .list .swiper-slide:last-of-type {
   margin-right: 0;
 }
 
-/* line 758, src/scss/_components/homepage/_list.scss */
+/* line 769, src/scss/_components/homepage/_list.scss */
 .list .swiper-slide:hover {
   width: 333px !important;
   -webkit-transition: width 0.35s ease-in-out;
