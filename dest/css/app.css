@@ -3790,11 +3790,11 @@ picture {
   -webkit-border-radius: 50%;
           border-radius: 50%;
   background-color: rgba(52, 52, 52, 0.43);
-  -webkit-transition: -webkit-transform 0.35s ease-in-out;
-  transition: -webkit-transform 0.35s ease-in-out;
-  -o-transition: transform 0.35s ease-in-out;
-  transition: transform 0.35s ease-in-out;
-  transition: transform 0.35s ease-in-out, -webkit-transform 0.35s ease-in-out;
+  -webkit-transition: opacity 0.35s ease-in-out, visibility 0.35s ease-in-out, -webkit-transform 0.35s ease-in-out;
+  transition: opacity 0.35s ease-in-out, visibility 0.35s ease-in-out, -webkit-transform 0.35s ease-in-out;
+  -o-transition: transform 0.35s ease-in-out, opacity 0.35s ease-in-out, visibility 0.35s ease-in-out;
+  transition: transform 0.35s ease-in-out, opacity 0.35s ease-in-out, visibility 0.35s ease-in-out;
+  transition: transform 0.35s ease-in-out, opacity 0.35s ease-in-out, visibility 0.35s ease-in-out, -webkit-transform 0.35s ease-in-out;
 }
 
 /* line 696, src/scss/_components/homepage/_list.scss */
@@ -3811,44 +3811,27 @@ picture {
 
 /* line 701, src/scss/_components/homepage/_list.scss */
 .list__specification-play.is-active {
-  -webkit-transform: translate(-50%, -50%) scale(0.55);
-      -ms-transform: translate(-50%, -50%) scale(0.55);
-          transform: translate(-50%, -50%) scale(0.55);
-  -webkit-transition: -webkit-transform 0.55s ease-in-out;
-  transition: -webkit-transform 0.55s ease-in-out;
-  -o-transition: transform 0.55s ease-in-out;
-  transition: transform 0.55s ease-in-out;
-  transition: transform 0.55s ease-in-out, -webkit-transform 0.55s ease-in-out;
+  opacity: 0;
+  visibility: hidden;
+  -webkit-transition: opacity 0.35s ease-in-out, visibility 0.35s ease-in-out;
+  -o-transition: opacity 0.35s ease-in-out, visibility 0.35s ease-in-out;
+  transition: opacity 0.35s ease-in-out, visibility 0.35s ease-in-out;
 }
 
-/* line 706, src/scss/_components/homepage/_list.scss */
+/* line 707, src/scss/_components/homepage/_list.scss */
 .list__specification-play .icon-font {
   position: relative;
   left: 5px;
   color: #ffffff;
   font-size: 57px;
-  -webkit-transition: opacity 0.35s ease-in-out;
-  -o-transition: opacity 0.35s ease-in-out;
-  transition: opacity 0.35s ease-in-out;
 }
 
-/* line 713, src/scss/_components/homepage/_list.scss */
-.list__specification-play .icon-font.icon-pause {
-  opacity: 0;
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  -webkit-transform: translate(-50%, -50%);
-      -ms-transform: translate(-50%, -50%);
-          transform: translate(-50%, -50%);
-}
-
-/* line 725, src/scss/_components/homepage/_list.scss */
+/* line 726, src/scss/_components/homepage/_list.scss */
 .list .swiper-container {
   overflow: unset;
 }
 
-/* line 731, src/scss/_components/homepage/_list.scss */
+/* line 732, src/scss/_components/homepage/_list.scss */
 .list .swiper-slide {
   position: relative;
   width: 230px !important;
@@ -3860,17 +3843,17 @@ picture {
   transition: width 0.35s ease-in-out;
 }
 
-/* line 739, src/scss/_components/homepage/_list.scss */
+/* line 740, src/scss/_components/homepage/_list.scss */
 .list .swiper-slide:first-of-type {
   margin-left: 0;
 }
 
-/* line 742, src/scss/_components/homepage/_list.scss */
+/* line 743, src/scss/_components/homepage/_list.scss */
 .list .swiper-slide:last-of-type {
   margin-right: 0;
 }
 
-/* line 746, src/scss/_components/homepage/_list.scss */
+/* line 747, src/scss/_components/homepage/_list.scss */
 .list .swiper-slide:hover {
   width: 350px !important;
   -webkit-transition: width 0.35s ease-in-out;

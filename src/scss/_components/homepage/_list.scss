@@ -691,7 +691,7 @@
 			height: 154px;
 			border-radius: 50%;
 			background-color: rgba(#343434, 0.43);
-			@include transition(transform);
+			@include transition(transform, opacity, visibility);
 
 			&:hover {
 				transform: translate(-50%, -50%) scale(0.8);
@@ -699,8 +699,9 @@
 			}
 
 			&.is-active {
-				transform: translate(-50%, -50%) scale(0.55);
-				@include transition(transform 0.55s);
+				opacity: 0;
+				visibility: hidden;
+				@include transition(opacity, visibility);
 			}
 
 			.icon-font {
@@ -708,15 +709,15 @@
 				left: 5px;
 				color: #ffffff;
 				font-size: 57px;
-				@include transition(opacity);
+				//@include transition(opacity);
 
-				&.icon-pause {
-					opacity: 0;
-					position: absolute;
-					top: 50%;
-					left: 50%;
-					transform: translate(-50%, -50%);
-				}
+				//&.icon-pause {
+				//	opacity: 0;
+				//	position: absolute;
+				//	top: 50%;
+				//	left: 50%;
+				//	transform: translate(-50%, -50%);
+				//}
 			}
 		}
 	}

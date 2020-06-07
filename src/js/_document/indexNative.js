@@ -135,6 +135,15 @@ if (!Element.prototype.closest) {
 
 
 	const boxMore = () => {
+		function playPause(vid) {
+			if (vid.paused) {
+				// some action
+			} else {
+				vid.pause();
+				vid.currentTime = 0;
+			}
+		}
+
 		const _btns = document.querySelectorAll('.list__box-more');
 
 		for(let btn of _btns) {
@@ -166,9 +175,14 @@ if (!Element.prototype.closest) {
 
 		for(let btn of closeBtns) {
 			btn.addEventListener('click', (ev) => {
-				const _el = ev.currentTarget;
+				const _el = ev.currentTarget,
+					parent = _el.closest('.list__specification'),
+					vid = parent.querySelector('video');
 
 				_el.closest('.list__specification').style.display = 'none';
+				parent.querySelector('[video-toggle-js]').classList.remove('is-active');
+
+				playPause(vid);
 
 				for(let btn of document.querySelectorAll('.list__box-more')) {
 					btn.closest('.list__box').classList.remove('is-active');
@@ -179,15 +193,11 @@ if (!Element.prototype.closest) {
 
 
 	const videoToggle = () => {
-		function playPause(vid, playNode, pauseNode) {
+		function playPause(vid) {
 			if (vid.paused) {
 				vid.play();
-				playNode.style.opacity = '0';
-				pauseNode.style.opacity = '1';
 			} else {
 				vid.pause();
-				playNode.style.opacity = '1';
-				pauseNode.style.opacity = '0';
 			}
 		}
 
@@ -196,14 +206,12 @@ if (!Element.prototype.closest) {
 		for(let btn of videoBtns) {
 			btn.addEventListener('click', (ev) => {
 				const el = ev.currentTarget,
-					playIcon = el.querySelector('[video-play-js]'),
-					pauseIcon = el.querySelector('[video-pause-js]'),
 					parentVideoNode = el.closest('[video-parent-js]'),
 					vid = parentVideoNode.querySelector('[video-js]');
 
 				el.classList.toggle('is-active');
 
-				playPause(vid, playIcon, pauseIcon);
+				playPause(vid);
 			}, false);
 		}
 	};

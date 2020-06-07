@@ -31,7 +31,7 @@ mixin listBox(sliderID, name)
 						i.icon-font.icon-arrow-angle
 
 			mixin swiperContent()
-				each val, idx in [1,2,3,4,5,6,7,8,9,10,11]
+				each val, idx in [1,2,3,4,5,6,7,8,9,10]
 					.swiper-slide
 						a.list__box(href="#" data-id!= val style='background-image: url("img/img-pornhub-preview@2x.jpg")')
 							.list__box-overlay
@@ -66,7 +66,7 @@ mixin listBox(sliderID, name)
 			+swiper(sliderID, 'listSwiper', 'swiperContent', false, false, false)
 
 		.list__specification-wrapper
-			each val, idx in [1,2,3,4,5,6,7,8,9,10,11]
+			each val, idx in [1,2,3,4,5,6,7,8,9,10]
 				div
 					if(idx % 2 === 0)
 						.list__specification.list__specification--video(data-id!= val)
@@ -104,7 +104,7 @@ mixin listBox(sliderID, name)
 
 									a.list__specification-play(href="#" video-toggle-js)
 										i.icon-font.icon-play-button(video-play-js)
-										i.icon-font.icon-pause(video-pause-js)
+										//i.icon-font.icon-pause(video-pause-js)
 
 					else
 						.list__specification.list__specification--banner(data-id!= val)
