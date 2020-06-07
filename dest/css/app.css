@@ -936,7 +936,7 @@ picture {
       -ms-flex-pack: justify;
           justify-content: space-between;
   min-height: 46px;
-  padding: 5px 15px 0;
+  padding: 5px 15px;
   background-color: #0a3e83;
 }
 
@@ -998,47 +998,30 @@ picture {
 
 /* line 165, src/scss/_shared/macros/_category.scss */
 .category__title {
-  padding-bottom: 5px;
   color: #ffffff;
   font-size: 18px;
   font-weight: 700;
 }
 
-/* line 173, src/scss/_shared/macros/_category.scss */
+/* line 172, src/scss/_shared/macros/_category.scss */
 .category__btn-wrapper {
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-flex-wrap: wrap;
-      -ms-flex-wrap: wrap;
-          flex-wrap: wrap;
-  -webkit-box-align: center;
-  -webkit-align-items: center;
-      -ms-flex-align: center;
-          align-items: center;
+  overflow: hidden;
+  overflow-x: auto;
+  white-space: nowrap;
+  position: relative;
+  font-size: 0;
 }
 
-/* line 178, src/scss/_shared/macros/_category.scss */
+/* line 179, src/scss/_shared/macros/_category.scss */
 .category__btn-wrapper .category__btn {
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-align: center;
-  -webkit-align-items: center;
-      -ms-flex-align: center;
-          align-items: center;
-  -webkit-box-pack: center;
-  -webkit-justify-content: center;
-      -ms-flex-pack: center;
-          justify-content: center;
+  display: inline-block;
+  vertical-align: middle;
   margin-right: 5px;
-  margin-bottom: 5px;
   padding-left: 5px;
   padding-right: 5px;
   width: auto;
   min-width: 140px;
+  line-height: 33px;
 }
 
 /* line 189, src/scss/_shared/macros/_category.scss */
@@ -1068,20 +1051,23 @@ picture {
 
 /* line 205, src/scss/_shared/macros/_category.scss */
 .category__btn-wrapper .category__btn img {
-  display: block;
+  display: inline-block;
+  vertical-align: middle;
   max-width: 100%;
   max-height: 100px;
   margin-right: 5px;
 }
 
-/* line 212, src/scss/_shared/macros/_category.scss */
+/* line 213, src/scss/_shared/macros/_category.scss */
 .category__btn-wrapper .category__btn span {
+  display: inline-block;
+  vertical-align: middle;
   text-transform: capitalize;
   font-size: 13px;
   font-weight: 700;
 }
 
-/* line 221, src/scss/_shared/macros/_category.scss */
+/* line 224, src/scss/_shared/macros/_category.scss */
 .category__list {
   display: -webkit-box;
   display: -webkit-flex;
@@ -1096,7 +1082,7 @@ picture {
   height: 210px;
 }
 
-/* line 227, src/scss/_shared/macros/_category.scss */
+/* line 230, src/scss/_shared/macros/_category.scss */
 .category__list-wrapper {
   display: -webkit-box;
   display: -webkit-flex;
@@ -1108,7 +1094,7 @@ picture {
   width: 100%;
 }
 
-/* line 232, src/scss/_shared/macros/_category.scss */
+/* line 235, src/scss/_shared/macros/_category.scss */
 .category__list-wrapper > div {
   width: 100%;
   max-width: -webkit-calc(100% / 6);
@@ -1117,7 +1103,7 @@ picture {
   padding-right: 5px;
 }
 
-/* line 240, src/scss/_shared/macros/_category.scss */
+/* line 243, src/scss/_shared/macros/_category.scss */
 .category__list-head {
   display: -webkit-box;
   display: -webkit-flex;
@@ -1134,7 +1120,7 @@ picture {
   height: 37px;
 }
 
-/* line 247, src/scss/_shared/macros/_category.scss */
+/* line 250, src/scss/_shared/macros/_category.scss */
 .category__list-head > div:nth-of-type(1) {
   overflow: hidden;
   position: relative;
@@ -1156,36 +1142,36 @@ picture {
           border-radius: 50%;
 }
 
-/* line 258, src/scss/_shared/macros/_category.scss */
+/* line 261, src/scss/_shared/macros/_category.scss */
 .category__list-head > div:nth-of-type(1).gf--pink {
   background-color: #b32eae;
 }
 
-/* line 261, src/scss/_shared/macros/_category.scss */
+/* line 264, src/scss/_shared/macros/_category.scss */
 .category__list-head > div:nth-of-type(1).gf--green {
   background-color: #13aea1;
 }
 
-/* line 267, src/scss/_shared/macros/_category.scss */
+/* line 270, src/scss/_shared/macros/_category.scss */
 .category__list-head > div:nth-of-type(2) {
   padding-left: 5px;
 }
 
-/* line 275, src/scss/_shared/macros/_category.scss */
+/* line 278, src/scss/_shared/macros/_category.scss */
 .category__list-head > div span {
   color: #ffffff;
   font-size: 11px;
   font-weight: 700;
 }
 
-/* line 282, src/scss/_shared/macros/_category.scss */
+/* line 285, src/scss/_shared/macros/_category.scss */
 .category__list-head p {
   color: #0a3e83;
   font-size: 12px;
   font-weight: 700;
 }
 
-/* line 289, src/scss/_shared/macros/_category.scss */
+/* line 292, src/scss/_shared/macros/_category.scss */
 .category__list-body {
   display: -webkit-box;
   display: -webkit-flex;
@@ -1199,7 +1185,7 @@ picture {
   height: 100%;
 }
 
-/* line 295, src/scss/_shared/macros/_category.scss */
+/* line 298, src/scss/_shared/macros/_category.scss */
 .category__list-body > div:nth-of-type(1) {
   overflow: hidden;
   position: relative;
@@ -1214,7 +1200,7 @@ picture {
   border-right: 1px solid #9ca4ad;
 }
 
-/* line 309, src/scss/_shared/macros/_category.scss */
+/* line 312, src/scss/_shared/macros/_category.scss */
 .category__list-body > div:nth-of-type(2) {
   display: -webkit-box;
   display: -webkit-flex;
@@ -1233,7 +1219,7 @@ picture {
   background-color: #0a3e83;
 }
 
-/* line 317, src/scss/_shared/macros/_category.scss */
+/* line 320, src/scss/_shared/macros/_category.scss */
 .category__list-body > div:nth-of-type(2) p {
   position: relative;
   top: -1px;
@@ -1244,7 +1230,7 @@ picture {
   text-align: center;
 }
 
-/* line 331, src/scss/_shared/macros/_category.scss */
+/* line 334, src/scss/_shared/macros/_category.scss */
 .category__pagination {
   display: -webkit-box;
   display: -webkit-flex;
@@ -1260,7 +1246,7 @@ picture {
           justify-content: center;
 }
 
-/* line 336, src/scss/_shared/macros/_category.scss */
+/* line 339, src/scss/_shared/macros/_category.scss */
 .category__pagination-btn, .category__pagination-arrow {
   display: -webkit-box;
   display: -webkit-flex;
@@ -1280,7 +1266,7 @@ picture {
   margin-right: 7px;
 }
 
-/* line 347, src/scss/_shared/macros/_category.scss */
+/* line 350, src/scss/_shared/macros/_category.scss */
 .category__pagination-btn {
   background-color: #e4e4e4;
   color: #8a8a8a;
@@ -1291,7 +1277,7 @@ picture {
   transition: background-color 0.35s ease-in-out, color 0.35s ease-in-out;
 }
 
-/* line 354, src/scss/_shared/macros/_category.scss */
+/* line 357, src/scss/_shared/macros/_category.scss */
 .category__pagination-btn:hover, .category__pagination-btn.is-active {
   background-color: #07113b;
   color: #d5f34a;
@@ -1300,7 +1286,7 @@ picture {
   transition: background-color 0.35s ease-in-out, color 0.35s ease-in-out;
 }
 
-/* line 363, src/scss/_shared/macros/_category.scss */
+/* line 366, src/scss/_shared/macros/_category.scss */
 .category__pagination-arrow .icon-font {
   color: #07113b;
   font-size: 18px;
