@@ -285,7 +285,7 @@ if (!Element.prototype.closest) {
 					    _boxID = _boxParent.getAttribute('data-id'),
 					    _parentNode = _el.closest('.list__box-wrapper');
 
-					var _specificationBox = document.querySelector('.list__specification[data-id="' + _boxID + '"]');
+					var _specificationBox = _parentNode.querySelector('.list__specification[data-id="' + _boxID + '"]');
 
 					var _iteratorNormalCompletion5 = true;
 					var _didIteratorError5 = false;
@@ -376,9 +376,11 @@ if (!Element.prototype.closest) {
 					    vid = parent.querySelector('video');
 
 					_el.closest('.list__specification').style.display = 'none';
-					parent.querySelector('[video-toggle-js]').classList.remove('is-active');
 
-					playPause(vid);
+					if (parent.querySelector('[video-toggle-js]')) {
+						parent.querySelector('[video-toggle-js]').classList.remove('is-active');
+						playPause(vid);
+					}
 
 					var _iteratorNormalCompletion7 = true;
 					var _didIteratorError7 = false;

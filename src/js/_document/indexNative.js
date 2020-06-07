@@ -153,7 +153,7 @@ if (!Element.prototype.closest) {
 					_boxID = _boxParent.getAttribute('data-id'),
 					_parentNode = _el.closest('.list__box-wrapper');
 
-				const _specificationBox = document.querySelector('.list__specification[data-id="' + _boxID + '"]');
+				const _specificationBox = _parentNode.querySelector('.list__specification[data-id="' + _boxID + '"]');
 
 				for(let box of document.querySelectorAll('.list__box')) {
 					box.classList.remove('is-active');
@@ -180,9 +180,11 @@ if (!Element.prototype.closest) {
 					vid = parent.querySelector('video');
 
 				_el.closest('.list__specification').style.display = 'none';
-				parent.querySelector('[video-toggle-js]').classList.remove('is-active');
 
-				playPause(vid);
+				if(parent.querySelector('[video-toggle-js]')) {
+					parent.querySelector('[video-toggle-js]').classList.remove('is-active');
+					playPause(vid);
+				}
 
 				for(let btn of document.querySelectorAll('.list__box-more')) {
 					btn.closest('.list__box').classList.remove('is-active');
