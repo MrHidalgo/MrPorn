@@ -1,5 +1,36 @@
 // SECTION :: START
 
+mixin listSliderBox(idVal, bgVal, logoVal)
+	a.list__box(href="#" data-id!= idVal style='background-image: url("img/' + bgVal + '")')
+		.list__box-overlay
+		.list__box-border
+
+		img.list__box-logo(src="img/" + logoVal alt="")
+
+		.list__box-details
+			.list__box-details-left
+				button.list__box-external(type='button')
+					i.icon-font.icon-out
+				p.list__box-details-title REALITY KINGS
+				.list__rating
+					span User Rating:
+					div
+						i.icon-font.icon-star
+						i.icon-font.icon-star
+						i.icon-font.icon-star
+						i.icon-font.icon-star
+						i.icon-font.icon-star-fill
+			.list__box-details-right
+				button.list__box-like.is-active(type='button')
+					i.icon-font.icon-like
+				button.list__box-dislike(type='button')
+					i.icon-font.icon-like
+				button.list__box-favorites(type='button')
+					i.icon-font.icon-star-fill
+
+		button.list__box-more(type='button')
+			i.icon-font.icon-arrow-angle
+
 mixin listBox(sliderID, name)
 	.list__box-wrapper(data-name!= name)
 
@@ -31,42 +62,25 @@ mixin listBox(sliderID, name)
 						i.icon-font.icon-arrow-angle
 
 			mixin swiperContent()
-				each val, idx in [1,2,3,4,5,6,7,8,9,10]
+				each val, idx in [1,2,3,4,5,6,7,8,9,10,11,12]
 					.swiper-slide
-						a.list__box(href="#" data-id!= val style='background-image: url("img/img-pornhub-preview@2x.jpg")')
-							.list__box-overlay
-							.list__box-border
-
-							img.list__box-logo(src="img/img-brazzers-logo.svg" alt="")
-
-							.list__box-details
-								.list__box-details-left
-									button.list__box-external(type='button')
-										i.icon-font.icon-out
-									p.list__box-details-title REALITY KINGS
-									.list__rating
-										span User Rating:
-										div
-											i.icon-font.icon-star
-											i.icon-font.icon-star
-											i.icon-font.icon-star
-											i.icon-font.icon-star
-											i.icon-font.icon-star-fill
-								.list__box-details-right
-									button.list__box-like.is-active(type='button')
-										i.icon-font.icon-like
-									button.list__box-dislike(type='button')
-										i.icon-font.icon-like
-									button.list__box-favorites(type='button')
-										i.icon-font.icon-star-fill
-
-							button.list__box-more(type='button')
-								i.icon-font.icon-arrow-angle
+						if(val === 1 || val === 7)
+							+listSliderBox(val, 'img-view-bruzzers.png', 'img-brazzers-logo.svg')
+						else if(val === 2 || val === 8)
+							+listSliderBox(val, 'img-realitykings-view.png', 'img-reliaty-kings-logo.png')
+						else if(val === 3 || val === 9)
+							+listSliderBox(val, 'img-xvideo-red-view.png', 'img-xvideo-red-logo.png')
+						else if(val === 4 || val === 10)
+							+listSliderBox(val, 'img-view-pornhub-premium.png', 'img-pornhub-premium-logo.png')
+						else if(val === 5 || val === 11)
+							+listSliderBox(val, 'img-bang-bros-view.png', 'img-bangbros-logo.png')
+						else if(val === 6 || val === 12)
+							+listSliderBox(val, 'img-mofos-view.png', 'img-mofos-logo.png')
 
 			+swiper(sliderID, 'listSwiper', 'swiperContent', false, false, false)
 
 		.list__specification-wrapper
-			each val, idx in [1,2,3,4,5,6,7,8,9,10]
+			each val, idx in [1,2,3,4,5,6,7,8,9,10,11,12]
 				div
 					if(idx % 2 === 0)
 						.list__specification.list__specification--video(data-id!= val)
@@ -104,7 +118,6 @@ mixin listBox(sliderID, name)
 
 									a.list__specification-play(href="#" video-toggle-js)
 										i.icon-font.icon-play-button(video-play-js)
-										//i.icon-font.icon-pause(video-pause-js)
 
 					else
 						.list__specification.list__specification--banner(data-id!= val)
