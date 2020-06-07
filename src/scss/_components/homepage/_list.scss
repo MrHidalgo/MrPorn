@@ -129,8 +129,8 @@
 		display: flex;
 		align-items: center;
 		justify-content: center;
-		width: 250px;
-		height: 250px;
+		width: 230px;
+		height: 230px;
 		padding: 10px;
 		background-color: #080915;
 		background-position: center;
@@ -138,26 +138,16 @@
 		background-size: cover;
 		backface-visibility: hidden;
 		transform-origin: center;
-		@include transition(transform);
+		@include transition(width, height);
 
 		&:hover {
-			transform: translate(-50%, -50%) scale(1.33);
-			@include transition(transform);
+			width: 350px;
+			height: 260px;
+			@include transition(width, height);
 
 			.list__box-border {
 				background-color: rgba(#080915, 0);
 				@include transition(background-color);
-			}
-
-			.list__box-logo {
-				transform: scale(0.9);
-				@include transition(transform);
-			}
-
-			.list__box-details-left > *,
-			.list__box-details-right > * {
-				transform: scale(0.77);
-				@include transition(transform);
 			}
 
 			.list__box-details {
@@ -232,14 +222,14 @@
 			display: flex;
 			align-items: center;
 			justify-content: space-between;
-			padding-bottom: 20px;
+			padding-bottom: 15px;
 		}
 
 		&-line {
 			position: relative;
 			width: 100%;
 			height: 2px;
-			margin-bottom: 25px;
+			margin-bottom: 20px;
 			background-color: rgb(25, 26, 40);
 
 			span {
@@ -286,12 +276,11 @@
 			z-index: 15;
 			position: relative;
 			display: block;
-			max-width: 100%;
+			max-width: 210px;
 			height: auto;
 			max-height: 100%;
 			margin-left: auto;
 			margin-right: auto;
-			@include transition(transform);
 		}
 
 		&-details {
@@ -312,13 +301,6 @@
 			background: linear-gradient(to bottom, rgba(8,9,21,0) 0%,rgba(8,9,21,0.85) 100%);
 			@include transition(opacity, visibility);
 
-			&-left,
-			&-right {
-				> * {
-					@include transition(transform);
-				}
-			}
-
 			&-left {
 				display: flex;
 				flex-direction: column;
@@ -328,7 +310,6 @@
 
 				> * {
 					width: 100%;
-					transform-origin: left center;
 				}
 
 				button {
@@ -359,10 +340,6 @@
 				align-items: flex-end;
 				justify-content: flex-end;
 				width: 30px;
-
-				> * {
-					transform-origin: right center;
-				}
 
 				button {
 					outline: none;
@@ -753,8 +730,8 @@
 
 		&-slide {
 			position: relative;
-			width: 250px !important;
-			height: 250px;
+			width: 230px !important;
+			height: 230px;
 			margin-left: 3px;
 			margin-right: 3px;
 			@include transition(width);
@@ -767,7 +744,7 @@
 			}
 
 			&:hover {
-				width: 333px !important;
+				width: 350px !important;
 				@include transition(width);
 			}
 		}
