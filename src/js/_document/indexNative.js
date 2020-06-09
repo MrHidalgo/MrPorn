@@ -218,6 +218,33 @@ if (!Element.prototype.closest) {
 		}
 	};
 
+
+	const listIndicator = () => {
+		const listBoxes = document.querySelectorAll('[list-box-js]');
+
+		for(let box of listBoxes) {
+
+			box.addEventListener('mouseenter', function(ev) {
+				const el = ev.currentTarget,
+					elID = el.getAttribute('data-id');
+
+				const parent = el.closest('[list-parent-js]'),
+					listIndicator = parent.querySelector('[list-line-js]');
+
+				const _elRect = el.getBoundingClientRect();
+
+				listIndicator.setAttribute(
+					'style',
+					'transform: translateX(' + ((_elRect.width * (elID - 1)) + ((elID * 6) - 3)) + 'px)'
+				);
+			});
+
+			box.addEventListener('mouseleave', function(ev) {
+				const el = ev.currentTarget;
+			});
+		}
+	};
+
 	/*
 	* CALLBACK :: end
 	* ============================================= */
@@ -244,6 +271,7 @@ if (!Element.prototype.closest) {
 		search();
 		boxMore();
 		videoToggle();
+		listIndicator();
 		// ==========================================
 	};
 

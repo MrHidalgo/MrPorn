@@ -469,6 +469,50 @@ if (!Element.prototype.closest) {
 		}
 	};
 
+	var listIndicator = function listIndicator() {
+		var listBoxes = document.querySelectorAll('[list-box-js]');
+
+		var _iteratorNormalCompletion9 = true;
+		var _didIteratorError9 = false;
+		var _iteratorError9 = undefined;
+
+		try {
+			for (var _iterator9 = listBoxes[Symbol.iterator](), _step9; !(_iteratorNormalCompletion9 = (_step9 = _iterator9.next()).done); _iteratorNormalCompletion9 = true) {
+				var box = _step9.value;
+
+
+				box.addEventListener('mouseenter', function (ev) {
+					var el = ev.currentTarget,
+					    elID = el.getAttribute('data-id');
+
+					var parent = el.closest('[list-parent-js]'),
+					    listIndicator = parent.querySelector('[list-line-js]');
+
+					var _elRect = el.getBoundingClientRect();
+
+					listIndicator.setAttribute('style', 'transform: translateX(' + (_elRect.width * (elID - 1) + (elID * 6 - 3)) + 'px)');
+				});
+
+				box.addEventListener('mouseleave', function (ev) {
+					var el = ev.currentTarget;
+				});
+			}
+		} catch (err) {
+			_didIteratorError9 = true;
+			_iteratorError9 = err;
+		} finally {
+			try {
+				if (!_iteratorNormalCompletion9 && _iterator9.return) {
+					_iterator9.return();
+				}
+			} finally {
+				if (_didIteratorError9) {
+					throw _iteratorError9;
+				}
+			}
+		}
+	};
+
 	/*
  * CALLBACK :: end
  * ============================================= */
@@ -494,6 +538,7 @@ if (!Element.prototype.closest) {
 		search();
 		boxMore();
 		videoToggle();
+		listIndicator();
 		// ==========================================
 	};
 

@@ -1,7 +1,7 @@
 // SECTION :: START
 
 mixin listSliderBox(idVal, bgVal, logoVal)
-	a.list__box(href="#" data-id!= idVal style='background-image: url("img/' + bgVal + '")')
+	a.list__box(list-box-js href="#" data-id!= idVal style='background-image: url("img/' + bgVal + '")')
 		.list__box-overlay
 		.list__box-border
 
@@ -20,8 +20,9 @@ mixin listSliderBox(idVal, bgVal, logoVal)
 						i.icon-font.icon-star
 						i.icon-font.icon-star
 						i.icon-font.icon-star-fill
+
 			.list__box-details-right
-				button.list__box-like.is-active(type='button')
+				button.list__box-like(type='button')
 					i.icon-font.icon-like
 				button.list__box-dislike(type='button')
 					i.icon-font.icon-like
@@ -32,7 +33,7 @@ mixin listSliderBox(idVal, bgVal, logoVal)
 			i.icon-font.icon-arrow-angle
 
 mixin listBox(sliderID, name)
-	.list__box-wrapper(data-name!= name)
+	.list__box-wrapper(list-parent-js data-name!= name)
 
 		.list__box-head
 			div
@@ -49,7 +50,7 @@ mixin listBox(sliderID, name)
 				a.list__btn(href="#")!= "SEE&nbsp;<span>69 MORE</span>"
 
 		.list__box-line
-			span
+			span(list-line-js)
 
 		.list__box-body
 
@@ -96,7 +97,7 @@ mixin listBox(sliderID, name)
 									div
 										a.list__specification-read(href="#") READ REVIEW
 									div
-										a.list__specification-circle.list__specification-like.is-active(href="#")
+										a.list__specification-circle.list__specification-like(href="#")
 											i.icon-font.icon-like
 									div
 										a.list__specification-circle.list__specification-dislike(href="#")
@@ -133,7 +134,7 @@ mixin listBox(sliderID, name)
 									div
 										a.list__specification-read(href="#") READ REVIEW
 									div
-										a.list__specification-circle.list__specification-like.is-active(href="#")
+										a.list__specification-circle.list__specification-like(href="#")
 											i.icon-font.icon-like
 									div
 										a.list__specification-circle.list__specification-dislike(href="#")
