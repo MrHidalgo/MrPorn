@@ -110,9 +110,14 @@ mixin listBox(sliderID, name)
 											a.list__specification-circle.list__specification-dislike(href="#" data-dislike!= val spec-dislike-js)
 												i.icon-font.icon-like
 										div
-											a.list__specification-circle.list__specification-favorites(href="#" data-favorites!= val spec-favorites-js)
-												i.icon-font.icon-star-fill
-												i.icon-font.icon-star
+											.c-popper
+												a.list__specification-circle.list__specification-favorites(href="#" data-favorites!= val spec-favorites-js)
+													i.icon-font.icon-star-fill
+													i.icon-font.icon-star
+
+												.c-poppertext
+													u Add To Favourites
+													u Remove From Favourites
 
 									p.list__specification-desc Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in.
 

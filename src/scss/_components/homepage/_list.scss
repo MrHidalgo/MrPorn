@@ -352,9 +352,15 @@
 				justify-content: flex-end;
 				width: 30px;
 
+				> * {
+					margin-top: 3px;
+				}
+
 				button {
 					outline: none;
 					cursor: pointer;
+					overflow: hidden;
+					position: relative;
 					display: flex;
 					align-items: center;
 					justify-content: center;
@@ -363,33 +369,45 @@
 					padding: 0;
 					border-radius: 50%;
 					box-shadow: none;
-					border: 1px solid transparent;
+					border: 1px solid #fff;
 					background-color: transparent;
-					@include transition(border-color, background-color, transform);
+					transition: all 0.4s ease-in-out;
+
+					&:after {
+						content: '';
+						z-index: 0;
+						opacity: 0;
+						visibility: hidden;
+						position: absolute;
+						left: 50%;
+						top: 50%;
+						width: calc(100% + 30px);
+						border-radius: 50%;
+						padding: calc(40% + 30px) 0;
+						background: radial-gradient(ellipse at center, rgba(255,255,255,0.75) 0%,rgba(255,255,255,0) 100%);
+						transform: translateX(-50%) translateY(-50%) scale(0);
+						animation-fill-mode: both;
+						animation-duration: 0.45s;
+						animation-timing-function: ease-in-out;
+					}
 
 					&:hover {
-						border-color: #fff;
 						background-color: rgba(#000, 0.85);
 						transform: scale(1.05);
-						@include transition(border-color, background-color, transform);
-
-						&.list__box-like {
-							.icon-font {
-								transform: scale(-0.9, 0.9);
-							}
-						}
+						transition: all 0.4s ease-in-out;
 
 						.icon-font {
-							transform: scale(0.9);
-							@include transition(transform);
+							@include transition(color);
 						}
 					}
 
 					&.is-active {
-						animation-fill-mode: both;
-						animation-duration: 1.5s;
-						animation-timing-function: ease-in-out;
-						animation-name: spinAction;
+						border-color: #c5f015;
+						transition: all 0.4s ease-in-out;
+
+						&:after {
+							animation-name: flashBlinking;
+						}
 
 						& + .c-poppertext {
 							> u {
@@ -402,14 +420,9 @@
 							}
 						}
 
-						&:hover {
-							border-color: #c5f015;
-							@include transition(border-color, background-color, transform);
-						}
-
 						.icon-font {
 							color: #c5f015;
-							@include transition(color 1.5s, transform);
+							@include transition(color);
 						}
 					}
 
@@ -427,7 +440,7 @@
 
 						&.is-active {
 							.icon-font {
-								@include transition(opacity 1.5s, visibility 1.5s, color 1.5s, transform);
+								@include transition(color, opacity, visibility);
 
 								&.icon-star-fill {
 									opacity: 0;
@@ -441,7 +454,7 @@
 						}
 
 						.icon-font {
-							@include transition(opacity, visibility , color, transform);
+							@include transition(color, opacity, visibility);
 
 							&.icon-star {
 								opacity: 0;
@@ -451,16 +464,10 @@
 						}
 					}
 
-					&:not(:last-of-type) {
-						margin-bottom: 2px;
-					}
-
 					.icon-font {
 						color: #ffffff;
 						font-size: 18px;
-						backface-visibility: hidden;
-						transform-origin: center;
-						@include transition(color, transform);
+						@include transition(color, opacity, visibility);
 					}
 				}
 			}
@@ -530,8 +537,8 @@
 	}
 
 	&__specification {
-		display: none;
-		//display: flex;
+		//display: none;
+		display: flex;
 		position: relative;
 		height: 322px;
 		border-width: 2px;
@@ -734,6 +741,7 @@
 		}
 
 		&-circle {
+			overflow: hidden;
 			position: relative;
 			display: flex;
 			align-items: center;
@@ -744,32 +752,61 @@
 			border-color: rgb(206, 206, 206);
 			border-style: solid;
 			border-radius: 50%;
-			transform-origin: center;
-			//backface-visibility: hidden;
-			@include transition(transform);
+			transition: all 0.4s ease-in-out;
+
+			&:after {
+				content: '';
+				z-index: 0;
+				opacity: 0;
+				visibility: hidden;
+				position: absolute;
+				left: 50%;
+				top: 50%;
+				width: calc(100% + 30px);
+				border-radius: 50%;
+				padding: calc(40% + 30px) 0;
+				background: radial-gradient(ellipse at center, rgba(255,255,255,0.75) 0%,rgba(255,255,255,0) 100%);
+				transform: translateX(-50%) translateY(-50%) scale(0);
+				animation-fill-mode: both;
+				animation-duration: 0.45s;
+				animation-timing-function: ease-in-out;
+			}
 
 			&:hover {
-				transform: scale(1.1);
-				@include transition(transform);
+				background-color: rgba(#000, 0.85);
+				transform: scale(1.05);
+				transition: all 0.4s ease-in-out;
 			}
 
 			&.is-active {
-				animation-fill-mode: both;
-				animation-duration: 1.5s;
-				animation-timing-function: ease-in-out;
-				animation-name: spinAction;
 				border-color: rgb(197, 240, 21);
-				@include transition(transform);
+				transition: all 0.4s ease-in-out;
+
+				&:after {
+					animation-name: flashBlinking;
+				}
+
+				& + .c-poppertext {
+					> u {
+						&:nth-of-type(1) {
+							display: none;
+						}
+						&:nth-of-type(2) {
+							display: block;
+						}
+					}
+				}
 
 				.icon-font {
 					color: rgb(197, 240, 21);
-					@include transition(opacity 1.5s, visibility 1.5s);
+					transition: all 0.4s ease-in-out;
 				}
 			}
 
 			.icon-font {
 				color: #ffffff;
 				font-size: 24px;
+				transition: all 0.4s ease-in-out;
 			}
 		}
 
@@ -788,6 +825,8 @@
 		&-favorites {
 			&.is-active {
 				.icon-font {
+					transition: all 0.4s ease-in-out;
+
 					&.icon-star-fill {
 						opacity: 0;
 						visibility: hidden;
@@ -800,7 +839,7 @@
 			}
 
 			.icon-font {
-				@include transition(opacity, visibility);
+				transition: all 0.4s ease-in-out;
 
 				&.icon-star {
 					opacity: 0;
@@ -916,12 +955,21 @@
 		transform: rotate(-90deg) translateX(5px);
 	}
 }
-@keyframes spinAction {
+@keyframes flashBlinking {
 	from {
-		transform: rotate3d(0, 1, 0, 0);
+		opacity: 0;
+		visibility: hidden;
+		transform: translateX(-50%) translateY(-50%) scale(0);
+	}
+	50% {
+		opacity: 1;
+		visibility: visible;
+		transform: translateX(-50%) translateY(-50%) scale(2);
 	}
 	to {
-		transform: rotate3d(0, 1, 0, 360deg);
+		opacity: 0;
+		visibility: hidden;
+		transform: translateX(-50%) translateY(-50%) scale(0);
 	}
 }
 // SECTION :: END

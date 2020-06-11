@@ -3461,9 +3461,16 @@ picture {
 }
 
 /* line 355, src/scss/_components/homepage/_list.scss */
+.list__box-details-right > * {
+  margin-top: 3px;
+}
+
+/* line 359, src/scss/_components/homepage/_list.scss */
 .list__box-details-right button {
   outline: none;
   cursor: pointer;
+  overflow: hidden;
+  position: relative;
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -3483,163 +3490,149 @@ picture {
           border-radius: 50%;
   -webkit-box-shadow: none;
           box-shadow: none;
-  border: 1px solid transparent;
+  border: 1px solid #fff;
   background-color: transparent;
-  -webkit-transition: border-color 0.35s ease-in-out, background-color 0.35s ease-in-out, -webkit-transform 0.35s ease-in-out;
-  transition: border-color 0.35s ease-in-out, background-color 0.35s ease-in-out, -webkit-transform 0.35s ease-in-out;
-  -o-transition: border-color 0.35s ease-in-out, background-color 0.35s ease-in-out, transform 0.35s ease-in-out;
-  transition: border-color 0.35s ease-in-out, background-color 0.35s ease-in-out, transform 0.35s ease-in-out;
-  transition: border-color 0.35s ease-in-out, background-color 0.35s ease-in-out, transform 0.35s ease-in-out, -webkit-transform 0.35s ease-in-out;
+  -webkit-transition: all 0.4s ease-in-out;
+  -o-transition: all 0.4s ease-in-out;
+  transition: all 0.4s ease-in-out;
 }
 
-/* line 370, src/scss/_components/homepage/_list.scss */
+/* line 376, src/scss/_components/homepage/_list.scss */
+.list__box-details-right button:after {
+  content: '';
+  z-index: 0;
+  opacity: 0;
+  visibility: hidden;
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  width: -webkit-calc(100% + 30px);
+  width: calc(100% + 30px);
+  -webkit-border-radius: 50%;
+          border-radius: 50%;
+  padding: -webkit-calc(40% + 30px) 0;
+  padding: calc(40% + 30px) 0;
+  background: -webkit-radial-gradient(center, ellipse, rgba(255, 255, 255, 0.75) 0%, rgba(255, 255, 255, 0) 100%);
+  background: -o-radial-gradient(center, ellipse, rgba(255, 255, 255, 0.75) 0%, rgba(255, 255, 255, 0) 100%);
+  background: radial-gradient(ellipse at center, rgba(255, 255, 255, 0.75) 0%, rgba(255, 255, 255, 0) 100%);
+  -webkit-transform: translateX(-50%) translateY(-50%) scale(0);
+      -ms-transform: translateX(-50%) translateY(-50%) scale(0);
+          transform: translateX(-50%) translateY(-50%) scale(0);
+  -webkit-animation-fill-mode: both;
+          animation-fill-mode: both;
+  -webkit-animation-duration: 0.45s;
+          animation-duration: 0.45s;
+  -webkit-animation-timing-function: ease-in-out;
+          animation-timing-function: ease-in-out;
+}
+
+/* line 394, src/scss/_components/homepage/_list.scss */
 .list__box-details-right button:hover {
-  border-color: #fff;
   background-color: rgba(0, 0, 0, 0.85);
   -webkit-transform: scale(1.05);
       -ms-transform: scale(1.05);
           transform: scale(1.05);
-  -webkit-transition: border-color 0.35s ease-in-out, background-color 0.35s ease-in-out, -webkit-transform 0.35s ease-in-out;
-  transition: border-color 0.35s ease-in-out, background-color 0.35s ease-in-out, -webkit-transform 0.35s ease-in-out;
-  -o-transition: border-color 0.35s ease-in-out, background-color 0.35s ease-in-out, transform 0.35s ease-in-out;
-  transition: border-color 0.35s ease-in-out, background-color 0.35s ease-in-out, transform 0.35s ease-in-out;
-  transition: border-color 0.35s ease-in-out, background-color 0.35s ease-in-out, transform 0.35s ease-in-out, -webkit-transform 0.35s ease-in-out;
+  -webkit-transition: all 0.4s ease-in-out;
+  -o-transition: all 0.4s ease-in-out;
+  transition: all 0.4s ease-in-out;
 }
 
-/* line 377, src/scss/_components/homepage/_list.scss */
-.list__box-details-right button:hover.list__box-like .icon-font {
-  -webkit-transform: scale(-0.9, 0.9);
-      -ms-transform: scale(-0.9, 0.9);
-          transform: scale(-0.9, 0.9);
-}
-
-/* line 382, src/scss/_components/homepage/_list.scss */
+/* line 399, src/scss/_components/homepage/_list.scss */
 .list__box-details-right button:hover .icon-font {
-  -webkit-transform: scale(0.9);
-      -ms-transform: scale(0.9);
-          transform: scale(0.9);
-  -webkit-transition: -webkit-transform 0.35s ease-in-out;
-  transition: -webkit-transform 0.35s ease-in-out;
-  -o-transition: transform 0.35s ease-in-out;
-  transition: transform 0.35s ease-in-out;
-  transition: transform 0.35s ease-in-out, -webkit-transform 0.35s ease-in-out;
+  -webkit-transition: color 0.35s ease-in-out;
+  -o-transition: color 0.35s ease-in-out;
+  transition: color 0.35s ease-in-out;
 }
 
-/* line 388, src/scss/_components/homepage/_list.scss */
+/* line 404, src/scss/_components/homepage/_list.scss */
 .list__box-details-right button.is-active {
-  -webkit-animation-fill-mode: both;
-          animation-fill-mode: both;
-  -webkit-animation-duration: 1.5s;
-          animation-duration: 1.5s;
-  -webkit-animation-timing-function: ease-in-out;
-          animation-timing-function: ease-in-out;
-  -webkit-animation-name: spinAction;
-          animation-name: spinAction;
+  border-color: #c5f015;
+  -webkit-transition: all 0.4s ease-in-out;
+  -o-transition: all 0.4s ease-in-out;
+  transition: all 0.4s ease-in-out;
 }
 
-/* line 396, src/scss/_components/homepage/_list.scss */
+/* line 408, src/scss/_components/homepage/_list.scss */
+.list__box-details-right button.is-active:after {
+  -webkit-animation-name: flashBlinking;
+          animation-name: flashBlinking;
+}
+
+/* line 414, src/scss/_components/homepage/_list.scss */
 .list__box-details-right button.is-active + .c-poppertext > u:nth-of-type(1) {
   display: none;
 }
 
-/* line 399, src/scss/_components/homepage/_list.scss */
+/* line 417, src/scss/_components/homepage/_list.scss */
 .list__box-details-right button.is-active + .c-poppertext > u:nth-of-type(2) {
   display: block;
 }
 
-/* line 405, src/scss/_components/homepage/_list.scss */
-.list__box-details-right button.is-active:hover {
-  border-color: #c5f015;
-  -webkit-transition: border-color 0.35s ease-in-out, background-color 0.35s ease-in-out, -webkit-transform 0.35s ease-in-out;
-  transition: border-color 0.35s ease-in-out, background-color 0.35s ease-in-out, -webkit-transform 0.35s ease-in-out;
-  -o-transition: border-color 0.35s ease-in-out, background-color 0.35s ease-in-out, transform 0.35s ease-in-out;
-  transition: border-color 0.35s ease-in-out, background-color 0.35s ease-in-out, transform 0.35s ease-in-out;
-  transition: border-color 0.35s ease-in-out, background-color 0.35s ease-in-out, transform 0.35s ease-in-out, -webkit-transform 0.35s ease-in-out;
-}
-
-/* line 410, src/scss/_components/homepage/_list.scss */
+/* line 423, src/scss/_components/homepage/_list.scss */
 .list__box-details-right button.is-active .icon-font {
   color: #c5f015;
-  -webkit-transition: color 1.5s 0.35s ease-in-out, -webkit-transform 0.35s ease-in-out;
-  transition: color 1.5s 0.35s ease-in-out, -webkit-transform 0.35s ease-in-out;
-  -o-transition: color 1.5s 0.35s ease-in-out, transform 0.35s ease-in-out;
-  transition: color 1.5s 0.35s ease-in-out, transform 0.35s ease-in-out;
-  transition: color 1.5s 0.35s ease-in-out, transform 0.35s ease-in-out, -webkit-transform 0.35s ease-in-out;
+  -webkit-transition: color 0.35s ease-in-out;
+  -o-transition: color 0.35s ease-in-out;
+  transition: color 0.35s ease-in-out;
 }
 
-/* line 417, src/scss/_components/homepage/_list.scss */
+/* line 430, src/scss/_components/homepage/_list.scss */
 .list__box-details-right button.list__box-like .icon-font {
   -webkit-transform: scaleX(-1);
       -ms-transform: scaleX(-1);
           transform: scaleX(-1);
 }
 
-/* line 422, src/scss/_components/homepage/_list.scss */
+/* line 435, src/scss/_components/homepage/_list.scss */
 .list__box-details-right button.list__box-dislike .icon-font {
   -webkit-transform: scale(-1);
       -ms-transform: scale(-1);
           transform: scale(-1);
 }
 
-/* line 429, src/scss/_components/homepage/_list.scss */
+/* line 442, src/scss/_components/homepage/_list.scss */
 .list__box-details-right button.list__box-favorites.is-active .icon-font {
-  -webkit-transition: opacity 1.5s 0.35s ease-in-out, visibility 1.5s 0.35s ease-in-out, color 1.5s 0.35s ease-in-out, -webkit-transform 0.35s ease-in-out;
-  transition: opacity 1.5s 0.35s ease-in-out, visibility 1.5s 0.35s ease-in-out, color 1.5s 0.35s ease-in-out, -webkit-transform 0.35s ease-in-out;
-  -o-transition: opacity 1.5s 0.35s ease-in-out, visibility 1.5s 0.35s ease-in-out, color 1.5s 0.35s ease-in-out, transform 0.35s ease-in-out;
-  transition: opacity 1.5s 0.35s ease-in-out, visibility 1.5s 0.35s ease-in-out, color 1.5s 0.35s ease-in-out, transform 0.35s ease-in-out;
-  transition: opacity 1.5s 0.35s ease-in-out, visibility 1.5s 0.35s ease-in-out, color 1.5s 0.35s ease-in-out, transform 0.35s ease-in-out, -webkit-transform 0.35s ease-in-out;
+  -webkit-transition: color 0.35s ease-in-out, opacity 0.35s ease-in-out, visibility 0.35s ease-in-out;
+  -o-transition: color 0.35s ease-in-out, opacity 0.35s ease-in-out, visibility 0.35s ease-in-out;
+  transition: color 0.35s ease-in-out, opacity 0.35s ease-in-out, visibility 0.35s ease-in-out;
 }
 
-/* line 432, src/scss/_components/homepage/_list.scss */
+/* line 445, src/scss/_components/homepage/_list.scss */
 .list__box-details-right button.list__box-favorites.is-active .icon-font.icon-star-fill {
   opacity: 0;
   visibility: hidden;
 }
 
-/* line 436, src/scss/_components/homepage/_list.scss */
+/* line 449, src/scss/_components/homepage/_list.scss */
 .list__box-details-right button.list__box-favorites.is-active .icon-font.icon-star {
   opacity: 1;
   visibility: visible;
 }
 
-/* line 443, src/scss/_components/homepage/_list.scss */
+/* line 456, src/scss/_components/homepage/_list.scss */
 .list__box-details-right button.list__box-favorites .icon-font {
-  -webkit-transition: opacity 0.35s ease-in-out, visibility 0.35s ease-in-out, color 0.35s ease-in-out, -webkit-transform 0.35s ease-in-out;
-  transition: opacity 0.35s ease-in-out, visibility 0.35s ease-in-out, color 0.35s ease-in-out, -webkit-transform 0.35s ease-in-out;
-  -o-transition: opacity 0.35s ease-in-out, visibility 0.35s ease-in-out, color 0.35s ease-in-out, transform 0.35s ease-in-out;
-  transition: opacity 0.35s ease-in-out, visibility 0.35s ease-in-out, color 0.35s ease-in-out, transform 0.35s ease-in-out;
-  transition: opacity 0.35s ease-in-out, visibility 0.35s ease-in-out, color 0.35s ease-in-out, transform 0.35s ease-in-out, -webkit-transform 0.35s ease-in-out;
+  -webkit-transition: color 0.35s ease-in-out, opacity 0.35s ease-in-out, visibility 0.35s ease-in-out;
+  -o-transition: color 0.35s ease-in-out, opacity 0.35s ease-in-out, visibility 0.35s ease-in-out;
+  transition: color 0.35s ease-in-out, opacity 0.35s ease-in-out, visibility 0.35s ease-in-out;
 }
 
-/* line 446, src/scss/_components/homepage/_list.scss */
+/* line 459, src/scss/_components/homepage/_list.scss */
 .list__box-details-right button.list__box-favorites .icon-font.icon-star {
   opacity: 0;
   visibility: hidden;
   position: absolute;
 }
 
-/* line 454, src/scss/_components/homepage/_list.scss */
-.list__box-details-right button:not(:last-of-type) {
-  margin-bottom: 2px;
-}
-
-/* line 458, src/scss/_components/homepage/_list.scss */
+/* line 467, src/scss/_components/homepage/_list.scss */
 .list__box-details-right button .icon-font {
   color: #ffffff;
   font-size: 18px;
-  -webkit-backface-visibility: hidden;
-          backface-visibility: hidden;
-  -webkit-transform-origin: center;
-      -ms-transform-origin: center;
-          transform-origin: center;
-  -webkit-transition: color 0.35s ease-in-out, -webkit-transform 0.35s ease-in-out;
-  transition: color 0.35s ease-in-out, -webkit-transform 0.35s ease-in-out;
-  -o-transition: color 0.35s ease-in-out, transform 0.35s ease-in-out;
-  transition: color 0.35s ease-in-out, transform 0.35s ease-in-out;
-  transition: color 0.35s ease-in-out, transform 0.35s ease-in-out, -webkit-transform 0.35s ease-in-out;
+  -webkit-transition: color 0.35s ease-in-out, opacity 0.35s ease-in-out, visibility 0.35s ease-in-out;
+  -o-transition: color 0.35s ease-in-out, opacity 0.35s ease-in-out, visibility 0.35s ease-in-out;
+  transition: color 0.35s ease-in-out, opacity 0.35s ease-in-out, visibility 0.35s ease-in-out;
 }
 
-/* line 468, src/scss/_components/homepage/_list.scss */
+/* line 475, src/scss/_components/homepage/_list.scss */
 .list__box-details-title {
   overflow: hidden;
   white-space: nowrap;
@@ -3650,7 +3643,7 @@ picture {
   font-weight: 700;
 }
 
-/* line 478, src/scss/_components/homepage/_list.scss */
+/* line 485, src/scss/_components/homepage/_list.scss */
 .list__box-more {
   z-index: 20;
   outline: none;
@@ -3686,7 +3679,7 @@ picture {
   transition: opacity 0.35s ease-in-out, visibility 0.35s ease-in-out;
 }
 
-/* line 499, src/scss/_components/homepage/_list.scss */
+/* line 506, src/scss/_components/homepage/_list.scss */
 .list__box-more .icon-font {
   color: #c5f015;
   font-size: 16px;
@@ -3695,7 +3688,7 @@ picture {
           transform: rotate(-90deg);
 }
 
-/* line 507, src/scss/_components/homepage/_list.scss */
+/* line 514, src/scss/_components/homepage/_list.scss */
 .list__rating {
   display: -webkit-box;
   display: -webkit-flex;
@@ -3707,13 +3700,13 @@ picture {
           align-items: center;
 }
 
-/* line 511, src/scss/_components/homepage/_list.scss */
+/* line 518, src/scss/_components/homepage/_list.scss */
 .list__rating span {
   color: #4a70a1;
   font-size: 14px;
 }
 
-/* line 516, src/scss/_components/homepage/_list.scss */
+/* line 523, src/scss/_components/homepage/_list.scss */
 .list__rating > div {
   display: -webkit-box;
   display: -webkit-flex;
@@ -3726,20 +3719,23 @@ picture {
   padding-left: 10px;
 }
 
-/* line 521, src/scss/_components/homepage/_list.scss */
+/* line 528, src/scss/_components/homepage/_list.scss */
 .list__rating > div .icon-font {
   color: #004aac;
   font-size: 19px;
 }
 
-/* line 525, src/scss/_components/homepage/_list.scss */
+/* line 532, src/scss/_components/homepage/_list.scss */
 .list__rating > div .icon-font:not(:last-of-type) {
   margin-right: 3px;
 }
 
-/* line 532, src/scss/_components/homepage/_list.scss */
+/* line 539, src/scss/_components/homepage/_list.scss */
 .list__specification {
-  display: none;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
   position: relative;
   height: 322px;
   border-width: 2px;
@@ -3752,7 +3748,7 @@ picture {
           box-shadow: 1.047px 19.973px 43px 0px rgba(8, 9, 21, 0.3);
 }
 
-/* line 547, src/scss/_components/homepage/_list.scss */
+/* line 554, src/scss/_components/homepage/_list.scss */
 .list__specification.list__specification--video .list__specification-right > div:before {
   content: '';
   z-index: 2;
@@ -3767,7 +3763,7 @@ picture {
   background: linear-gradient(to left, rgba(0, 0, 0, 0) 0%, black 100%);
 }
 
-/* line 558, src/scss/_components/homepage/_list.scss */
+/* line 565, src/scss/_components/homepage/_list.scss */
 .list__specification.list__specification--video .list__specification-right > div:after {
   content: '';
   z-index: 2;
@@ -3782,7 +3778,7 @@ picture {
   background: linear-gradient(to left, rgba(0, 0, 0, 0.2) 0%, rgba(0, 0, 0, 0.2) 100%);
 }
 
-/* line 574, src/scss/_components/homepage/_list.scss */
+/* line 581, src/scss/_components/homepage/_list.scss */
 .list__specification.list__specification--banner .list__specification-right > div {
   display: -webkit-box;
   display: -webkit-flex;
@@ -3799,7 +3795,7 @@ picture {
   padding: 15px;
 }
 
-/* line 580, src/scss/_components/homepage/_list.scss */
+/* line 587, src/scss/_components/homepage/_list.scss */
 .list__specification.list__specification--banner .list__specification-right > div:before {
   content: '';
   z-index: 2;
@@ -3814,7 +3810,7 @@ picture {
   background: linear-gradient(to bottom, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0.25) 100%);
 }
 
-/* line 591, src/scss/_components/homepage/_list.scss */
+/* line 598, src/scss/_components/homepage/_list.scss */
 .list__specification.list__specification--banner .list__specification-right > div:after {
   content: '';
   z-index: 1;
@@ -3831,7 +3827,7 @@ picture {
           background-size: 175%;
 }
 
-/* line 606, src/scss/_components/homepage/_list.scss */
+/* line 613, src/scss/_components/homepage/_list.scss */
 .list__specification.list__specification--banner .list__specification-right > div img {
   display: block;
   max-width: 100%;
@@ -3841,7 +3837,7 @@ picture {
   max-height: 100%;
 }
 
-/* line 618, src/scss/_components/homepage/_list.scss */
+/* line 625, src/scss/_components/homepage/_list.scss */
 .list__specification-wrapper {
   z-index: 90;
   display: -webkit-box;
@@ -3856,7 +3852,7 @@ picture {
   position: relative;
 }
 
-/* line 625, src/scss/_components/homepage/_list.scss */
+/* line 632, src/scss/_components/homepage/_list.scss */
 .list__specification-close {
   z-index: 50;
   position: absolute;
@@ -3868,18 +3864,18 @@ picture {
   display: flex;
 }
 
-/* line 632, src/scss/_components/homepage/_list.scss */
+/* line 639, src/scss/_components/homepage/_list.scss */
 .list__specification-close .icon-font {
   color: #ffffff;
   font-size: 18px;
 }
 
-/* line 638, src/scss/_components/homepage/_list.scss */
+/* line 645, src/scss/_components/homepage/_list.scss */
 .list__specification-left, .list__specification-right {
   height: 100%;
 }
 
-/* line 643, src/scss/_components/homepage/_list.scss */
+/* line 650, src/scss/_components/homepage/_list.scss */
 .list__specification-left {
   z-index: 2;
   position: relative;
@@ -3908,7 +3904,7 @@ picture {
           clip-path: polygon(0 0, 90% 0, 100% 100%, 0% 100%);
 }
 
-/* line 657, src/scss/_components/homepage/_list.scss */
+/* line 664, src/scss/_components/homepage/_list.scss */
 .list__specification-right {
   z-index: 1;
   position: relative;
@@ -3917,7 +3913,7 @@ picture {
   max-width: calc(100% - 650px);
 }
 
-/* line 663, src/scss/_components/homepage/_list.scss */
+/* line 670, src/scss/_components/homepage/_list.scss */
 .list__specification-right > div {
   overflow: hidden;
   position: absolute;
@@ -3928,7 +3924,7 @@ picture {
   height: 100%;
 }
 
-/* line 677, src/scss/_components/homepage/_list.scss */
+/* line 684, src/scss/_components/homepage/_list.scss */
 .list__specification-logo {
   display: block;
   max-width: 125px;
@@ -3936,7 +3932,7 @@ picture {
   margin-bottom: 10px;
 }
 
-/* line 684, src/scss/_components/homepage/_list.scss */
+/* line 691, src/scss/_components/homepage/_list.scss */
 .list__specification-action {
   display: -webkit-box;
   display: -webkit-flex;
@@ -3952,12 +3948,12 @@ picture {
   padding-bottom: 20px;
 }
 
-/* line 691, src/scss/_components/homepage/_list.scss */
+/* line 698, src/scss/_components/homepage/_list.scss */
 .list__specification-action > div:not(:last-of-type) {
   margin-right: 10px;
 }
 
-/* line 697, src/scss/_components/homepage/_list.scss */
+/* line 704, src/scss/_components/homepage/_list.scss */
 .list__specification-visit, .list__specification-read {
   position: relative;
   display: -webkit-box;
@@ -3979,7 +3975,7 @@ picture {
   font-weight: 700;
 }
 
-/* line 710, src/scss/_components/homepage/_list.scss */
+/* line 717, src/scss/_components/homepage/_list.scss */
 .list__specification-visit {
   -webkit-border-radius: 5px;
           border-radius: 5px;
@@ -3990,7 +3986,7 @@ picture {
   transition: background-color 0.35s ease-in-out;
 }
 
-/* line 716, src/scss/_components/homepage/_list.scss */
+/* line 723, src/scss/_components/homepage/_list.scss */
 .list__specification-visit:hover {
   background-color: transparent;
   -webkit-transition: background-color 0.35s ease-in-out;
@@ -3998,7 +3994,7 @@ picture {
   transition: background-color 0.35s ease-in-out;
 }
 
-/* line 722, src/scss/_components/homepage/_list.scss */
+/* line 729, src/scss/_components/homepage/_list.scss */
 .list__specification-read {
   border-width: 2px;
   border-color: #c5f015;
@@ -4010,7 +4006,7 @@ picture {
   transition: color 0.35s ease-in-out, background-color 0.35s ease-in-out;
 }
 
-/* line 729, src/scss/_components/homepage/_list.scss */
+/* line 736, src/scss/_components/homepage/_list.scss */
 .list__specification-read:hover {
   background-color: #c5f015;
   color: #222222;
@@ -4019,8 +4015,9 @@ picture {
   transition: color 0.35s ease-in-out, background-color 0.35s ease-in-out;
 }
 
-/* line 736, src/scss/_components/homepage/_list.scss */
+/* line 743, src/scss/_components/homepage/_list.scss */
 .list__specification-circle {
+  overflow: hidden;
   position: relative;
   display: -webkit-box;
   display: -webkit-flex;
@@ -4041,101 +4038,140 @@ picture {
   border-style: solid;
   -webkit-border-radius: 50%;
           border-radius: 50%;
-  -webkit-transform-origin: center;
-      -ms-transform-origin: center;
-          transform-origin: center;
-  -webkit-transition: -webkit-transform 0.35s ease-in-out;
-  transition: -webkit-transform 0.35s ease-in-out;
-  -o-transition: transform 0.35s ease-in-out;
-  transition: transform 0.35s ease-in-out;
-  transition: transform 0.35s ease-in-out, -webkit-transform 0.35s ease-in-out;
+  -webkit-transition: all 0.4s ease-in-out;
+  -o-transition: all 0.4s ease-in-out;
+  transition: all 0.4s ease-in-out;
 }
 
-/* line 751, src/scss/_components/homepage/_list.scss */
-.list__specification-circle:hover {
-  -webkit-transform: scale(1.1);
-      -ms-transform: scale(1.1);
-          transform: scale(1.1);
-  -webkit-transition: -webkit-transform 0.35s ease-in-out;
-  transition: -webkit-transform 0.35s ease-in-out;
-  -o-transition: transform 0.35s ease-in-out;
-  transition: transform 0.35s ease-in-out;
-  transition: transform 0.35s ease-in-out, -webkit-transform 0.35s ease-in-out;
-}
-
-/* line 756, src/scss/_components/homepage/_list.scss */
-.list__specification-circle.is-active {
+/* line 757, src/scss/_components/homepage/_list.scss */
+.list__specification-circle:after {
+  content: '';
+  z-index: 0;
+  opacity: 0;
+  visibility: hidden;
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  width: -webkit-calc(100% + 30px);
+  width: calc(100% + 30px);
+  -webkit-border-radius: 50%;
+          border-radius: 50%;
+  padding: -webkit-calc(40% + 30px) 0;
+  padding: calc(40% + 30px) 0;
+  background: -webkit-radial-gradient(center, ellipse, rgba(255, 255, 255, 0.75) 0%, rgba(255, 255, 255, 0) 100%);
+  background: -o-radial-gradient(center, ellipse, rgba(255, 255, 255, 0.75) 0%, rgba(255, 255, 255, 0) 100%);
+  background: radial-gradient(ellipse at center, rgba(255, 255, 255, 0.75) 0%, rgba(255, 255, 255, 0) 100%);
+  -webkit-transform: translateX(-50%) translateY(-50%) scale(0);
+      -ms-transform: translateX(-50%) translateY(-50%) scale(0);
+          transform: translateX(-50%) translateY(-50%) scale(0);
   -webkit-animation-fill-mode: both;
           animation-fill-mode: both;
-  -webkit-animation-duration: 1.5s;
-          animation-duration: 1.5s;
+  -webkit-animation-duration: 0.45s;
+          animation-duration: 0.45s;
   -webkit-animation-timing-function: ease-in-out;
           animation-timing-function: ease-in-out;
-  -webkit-animation-name: spinAction;
-          animation-name: spinAction;
-  border-color: #c5f015;
-  -webkit-transition: -webkit-transform 0.35s ease-in-out;
-  transition: -webkit-transform 0.35s ease-in-out;
-  -o-transition: transform 0.35s ease-in-out;
-  transition: transform 0.35s ease-in-out;
-  transition: transform 0.35s ease-in-out, -webkit-transform 0.35s ease-in-out;
 }
 
-/* line 764, src/scss/_components/homepage/_list.scss */
+/* line 775, src/scss/_components/homepage/_list.scss */
+.list__specification-circle:hover {
+  background-color: rgba(0, 0, 0, 0.85);
+  -webkit-transform: scale(1.05);
+      -ms-transform: scale(1.05);
+          transform: scale(1.05);
+  -webkit-transition: all 0.4s ease-in-out;
+  -o-transition: all 0.4s ease-in-out;
+  transition: all 0.4s ease-in-out;
+}
+
+/* line 781, src/scss/_components/homepage/_list.scss */
+.list__specification-circle.is-active {
+  border-color: #c5f015;
+  -webkit-transition: all 0.4s ease-in-out;
+  -o-transition: all 0.4s ease-in-out;
+  transition: all 0.4s ease-in-out;
+}
+
+/* line 785, src/scss/_components/homepage/_list.scss */
+.list__specification-circle.is-active:after {
+  -webkit-animation-name: flashBlinking;
+          animation-name: flashBlinking;
+}
+
+/* line 791, src/scss/_components/homepage/_list.scss */
+.list__specification-circle.is-active + .c-poppertext > u:nth-of-type(1) {
+  display: none;
+}
+
+/* line 794, src/scss/_components/homepage/_list.scss */
+.list__specification-circle.is-active + .c-poppertext > u:nth-of-type(2) {
+  display: block;
+}
+
+/* line 800, src/scss/_components/homepage/_list.scss */
 .list__specification-circle.is-active .icon-font {
   color: #c5f015;
-  -webkit-transition: opacity 1.5s 0.35s ease-in-out, visibility 1.5s 0.35s ease-in-out;
-  -o-transition: opacity 1.5s 0.35s ease-in-out, visibility 1.5s 0.35s ease-in-out;
-  transition: opacity 1.5s 0.35s ease-in-out, visibility 1.5s 0.35s ease-in-out;
+  -webkit-transition: all 0.4s ease-in-out;
+  -o-transition: all 0.4s ease-in-out;
+  transition: all 0.4s ease-in-out;
 }
 
-/* line 770, src/scss/_components/homepage/_list.scss */
+/* line 806, src/scss/_components/homepage/_list.scss */
 .list__specification-circle .icon-font {
   color: #ffffff;
   font-size: 24px;
+  -webkit-transition: all 0.4s ease-in-out;
+  -o-transition: all 0.4s ease-in-out;
+  transition: all 0.4s ease-in-out;
 }
 
-/* line 777, src/scss/_components/homepage/_list.scss */
+/* line 814, src/scss/_components/homepage/_list.scss */
 .list__specification-like .icon-font {
   -webkit-transform: scaleX(-1);
       -ms-transform: scaleX(-1);
           transform: scaleX(-1);
 }
 
-/* line 783, src/scss/_components/homepage/_list.scss */
+/* line 820, src/scss/_components/homepage/_list.scss */
 .list__specification-dislike .icon-font {
   -webkit-transform: scale(-1);
       -ms-transform: scale(-1);
           transform: scale(-1);
 }
 
-/* line 791, src/scss/_components/homepage/_list.scss */
+/* line 827, src/scss/_components/homepage/_list.scss */
+.list__specification-favorites.is-active .icon-font {
+  -webkit-transition: all 0.4s ease-in-out;
+  -o-transition: all 0.4s ease-in-out;
+  transition: all 0.4s ease-in-out;
+}
+
+/* line 830, src/scss/_components/homepage/_list.scss */
 .list__specification-favorites.is-active .icon-font.icon-star-fill {
   opacity: 0;
   visibility: hidden;
 }
 
-/* line 795, src/scss/_components/homepage/_list.scss */
+/* line 834, src/scss/_components/homepage/_list.scss */
 .list__specification-favorites.is-active .icon-font.icon-star {
   opacity: 1;
   visibility: visible;
 }
 
-/* line 802, src/scss/_components/homepage/_list.scss */
+/* line 841, src/scss/_components/homepage/_list.scss */
 .list__specification-favorites .icon-font {
-  -webkit-transition: opacity 0.35s ease-in-out, visibility 0.35s ease-in-out;
-  -o-transition: opacity 0.35s ease-in-out, visibility 0.35s ease-in-out;
-  transition: opacity 0.35s ease-in-out, visibility 0.35s ease-in-out;
+  -webkit-transition: all 0.4s ease-in-out;
+  -o-transition: all 0.4s ease-in-out;
+  transition: all 0.4s ease-in-out;
 }
 
-/* line 805, src/scss/_components/homepage/_list.scss */
+/* line 844, src/scss/_components/homepage/_list.scss */
 .list__specification-favorites .icon-font.icon-star {
   opacity: 0;
   visibility: hidden;
   position: absolute;
 }
 
-/* line 813, src/scss/_components/homepage/_list.scss */
+/* line 852, src/scss/_components/homepage/_list.scss */
 .list__specification-desc {
   width: 100%;
   max-width: 460px;
@@ -4143,7 +4179,7 @@ picture {
   font-size: 14px;
 }
 
-/* line 820, src/scss/_components/homepage/_list.scss */
+/* line 859, src/scss/_components/homepage/_list.scss */
 .list__specification-play {
   z-index: 20;
   position: absolute;
@@ -4176,7 +4212,7 @@ picture {
   transition: transform 0.35s ease-in-out, opacity 0.35s ease-in-out, visibility 0.35s ease-in-out, -webkit-transform 0.35s ease-in-out;
 }
 
-/* line 835, src/scss/_components/homepage/_list.scss */
+/* line 874, src/scss/_components/homepage/_list.scss */
 .list__specification-play:hover {
   -webkit-transform: translate(-50%, -50%) scale(0.8);
       -ms-transform: translate(-50%, -50%) scale(0.8);
@@ -4188,7 +4224,7 @@ picture {
   transition: transform 0.55s ease-in-out, -webkit-transform 0.55s ease-in-out;
 }
 
-/* line 840, src/scss/_components/homepage/_list.scss */
+/* line 879, src/scss/_components/homepage/_list.scss */
 .list__specification-play.is-active {
   opacity: 0;
   visibility: hidden;
@@ -4197,7 +4233,7 @@ picture {
   transition: opacity 0.35s ease-in-out, visibility 0.35s ease-in-out;
 }
 
-/* line 846, src/scss/_components/homepage/_list.scss */
+/* line 885, src/scss/_components/homepage/_list.scss */
 .list__specification-play .icon-font {
   position: relative;
   left: 5px;
@@ -4205,7 +4241,7 @@ picture {
   font-size: 57px;
 }
 
-/* line 854, src/scss/_components/homepage/_list.scss */
+/* line 893, src/scss/_components/homepage/_list.scss */
 .list__specification-pause {
   z-index: 20;
   opacity: 0;
@@ -4222,7 +4258,7 @@ picture {
   transition: opacity 0.35s ease-in-out, visibility 0.35s ease-in-out;
 }
 
-/* line 864, src/scss/_components/homepage/_list.scss */
+/* line 903, src/scss/_components/homepage/_list.scss */
 .list__specification-pause.is-active {
   opacity: 1;
   visibility: visible;
@@ -4231,18 +4267,18 @@ picture {
   transition: opacity 0.35s ease-in-out, visibility 0.35s ease-in-out;
 }
 
-/* line 870, src/scss/_components/homepage/_list.scss */
+/* line 909, src/scss/_components/homepage/_list.scss */
 .list__specification-pause .icon-font {
   color: #ffffff;
   font-size: 18px;
 }
 
-/* line 878, src/scss/_components/homepage/_list.scss */
+/* line 917, src/scss/_components/homepage/_list.scss */
 .list .swiper-container {
   overflow: unset;
 }
 
-/* line 884, src/scss/_components/homepage/_list.scss */
+/* line 923, src/scss/_components/homepage/_list.scss */
 .list .swiper-slide {
   position: relative;
   width: 230px !important;
@@ -4254,17 +4290,17 @@ picture {
   transition: width 0.35s ease-in-out;
 }
 
-/* line 892, src/scss/_components/homepage/_list.scss */
+/* line 931, src/scss/_components/homepage/_list.scss */
 .list .swiper-slide:first-of-type {
   margin-left: 0;
 }
 
-/* line 895, src/scss/_components/homepage/_list.scss */
+/* line 934, src/scss/_components/homepage/_list.scss */
 .list .swiper-slide:last-of-type {
   margin-right: 0;
 }
 
-/* line 899, src/scss/_components/homepage/_list.scss */
+/* line 938, src/scss/_components/homepage/_list.scss */
 .list .swiper-slide.is-hover {
   width: 350px !important;
   -webkit-transition: width 0.35s ease-in-out;
@@ -4302,25 +4338,45 @@ picture {
   }
 }
 
-@-webkit-keyframes spinAction {
+@-webkit-keyframes flashBlinking {
   from {
-    -webkit-transform: rotate3d(0, 1, 0, 0);
-            transform: rotate3d(0, 1, 0, 0);
+    opacity: 0;
+    visibility: hidden;
+    -webkit-transform: translateX(-50%) translateY(-50%) scale(0);
+            transform: translateX(-50%) translateY(-50%) scale(0);
+  }
+  50% {
+    opacity: 1;
+    visibility: visible;
+    -webkit-transform: translateX(-50%) translateY(-50%) scale(2);
+            transform: translateX(-50%) translateY(-50%) scale(2);
   }
   to {
-    -webkit-transform: rotate3d(0, 1, 0, 360deg);
-            transform: rotate3d(0, 1, 0, 360deg);
+    opacity: 0;
+    visibility: hidden;
+    -webkit-transform: translateX(-50%) translateY(-50%) scale(0);
+            transform: translateX(-50%) translateY(-50%) scale(0);
   }
 }
 
-@keyframes spinAction {
+@keyframes flashBlinking {
   from {
-    -webkit-transform: rotate3d(0, 1, 0, 0);
-            transform: rotate3d(0, 1, 0, 0);
+    opacity: 0;
+    visibility: hidden;
+    -webkit-transform: translateX(-50%) translateY(-50%) scale(0);
+            transform: translateX(-50%) translateY(-50%) scale(0);
+  }
+  50% {
+    opacity: 1;
+    visibility: visible;
+    -webkit-transform: translateX(-50%) translateY(-50%) scale(2);
+            transform: translateX(-50%) translateY(-50%) scale(2);
   }
   to {
-    -webkit-transform: rotate3d(0, 1, 0, 360deg);
-            transform: rotate3d(0, 1, 0, 360deg);
+    opacity: 0;
+    visibility: hidden;
+    -webkit-transform: translateX(-50%) translateY(-50%) scale(0);
+            transform: translateX(-50%) translateY(-50%) scale(0);
   }
 }
 
