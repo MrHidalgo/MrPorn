@@ -412,7 +412,9 @@
 						}
 					}
 					&.list__box-dislike {
-						transform: scale(-1);
+						.icon-font {
+							transform: scale(-1);
+						}
 					}
 					&.list__box-favorites {
 
@@ -521,8 +523,8 @@
 	}
 
 	&__specification {
-		//display: none;
-		display: flex;
+		display: none;
+		//display: flex;
 		position: relative;
 		height: 322px;
 		border-width: 2px;
@@ -745,6 +747,10 @@
 			}
 
 			&.is-active {
+				animation-fill-mode: both;
+				animation-duration: 1.5s;
+				animation-timing-function: ease-in-out;
+				animation-name: spinAction;
 				border-color: rgb(197, 240, 21);
 				@include transition(transform);
 
@@ -774,14 +780,7 @@
 
 		&-favorites {
 			&.is-active {
-				animation-fill-mode: both;
-				animation-duration: 1.5s;
-				animation-timing-function: ease-in-out;
-				animation-name: spinAction;
-
 				.icon-font {
-					@include transition(opacity 1.5s, visibility 1.5s);
-
 					&.icon-star-fill {
 						opacity: 0;
 						visibility: hidden;

@@ -23,6 +23,80 @@ if (!Element.prototype.closest) {
 	* =============================================
 	* CALLBACK :: start
 	* ============================================= */
+	const slideUp = (target, duration=500) => {
+		target.style.transitionProperty = 'height, margin, padding';
+		target.style.transitionDuration = duration + 'ms';
+		target.style.boxSizing = 'border-box';
+		target.style.height = target.offsetHeight + 'px';
+		target.offsetHeight;
+		target.style.overflow = 'hidden';
+		target.style.height = 0;
+		target.style.paddingTop = 0;
+		target.style.paddingBottom = 0;
+		target.style.marginTop = 0;
+		target.style.marginBottom = 0;
+
+		window.setTimeout( () => {
+			target.style.display = 'none';
+			target.style.removeProperty('height');
+			target.style.removeProperty('padding-top');
+			target.style.removeProperty('padding-bottom');
+			target.style.removeProperty('margin-top');
+			target.style.removeProperty('margin-bottom');
+			target.style.removeProperty('overflow');
+			target.style.removeProperty('transition-duration');
+			target.style.removeProperty('transition-property');
+		}, duration);
+	};
+
+	const slideDown = (target, duration=500) => {
+		target.style.removeProperty('display');
+		let display = window.getComputedStyle(target).display;
+
+		if (display === 'none') display = 'block';
+
+		target.style.display = display;
+		let height = target.offsetHeight;
+		target.style.overflow = 'hidden';
+		target.style.height = 0;
+		target.style.paddingTop = 0;
+		target.style.paddingBottom = 0;
+		target.style.marginTop = 0;
+		target.style.marginBottom = 0;
+		target.offsetHeight;
+		target.style.boxSizing = 'border-box';
+		target.style.transitionProperty = "height, margin, padding";
+		target.style.transitionDuration = duration + 'ms';
+		target.style.height = height + 'px';
+		target.style.removeProperty('padding-top');
+		target.style.removeProperty('padding-bottom');
+		target.style.removeProperty('margin-top');
+		target.style.removeProperty('margin-bottom');
+
+		window.setTimeout( () => {
+			target.style.removeProperty('height');
+			target.style.removeProperty('overflow');
+			target.style.removeProperty('transition-duration');
+			target.style.removeProperty('transition-property');
+		}, duration);
+	};
+
+	const slideToggle = (target, duration = 500) => {
+		if (window.getComputedStyle(target).display === 'none') {
+			return slideDown(target, duration);
+		} else {
+			return slideUp(target, duration);
+		}
+	};
+
+	// const _criteriaBtn = document.querySelectorAll('.criteria__box');
+	//
+	// for(let i = 0; i < _criteriaBtn.length; i++) {
+	// 	_criteriaBtn[i].addEventListener('click', (ev) => {
+	// 		slideToggle(_criteriaBtn[i].querySelector(".criteria__box-body"), 300);
+	// 	});
+	// }
+
 	const bodyClick = () => {
 		const className = '.header__view-wrapper, .sort';
 
@@ -247,9 +321,11 @@ if (!Element.prototype.closest) {
 
 	const detailsToggleAction = () => {
 		const favoritesBtns = document.querySelectorAll('[favorites-toggle-js]'),
-			listFavoritesBtns = document.querySelectorAll('[spec-favorites-js]'),
+			specFavoritesBtns = document.querySelectorAll('[spec-favorites-js]'),
 			likeBtns = document.querySelectorAll('[like-toggle-js]'),
-			dislikeBtns = document.querySelectorAll('[dislike-toggle-js]');
+			specLikeBtns = document.querySelectorAll('[spec-like-js]'),
+			dislikeBtns = document.querySelectorAll('[dislike-toggle-js]'),
+			specDislikeBtns = document.querySelectorAll('[spec-dislike-js]');
 
 		for(let btn of favoritesBtns) {
 			btn.addEventListener('click', (ev) => {
@@ -265,7 +341,7 @@ if (!Element.prototype.closest) {
 			}, false);
 		}
 
-		for(let btn of listFavoritesBtns) {
+		for(let btn of specFavoritesBtns) {
 			btn.addEventListener('click', (ev) => {
 				const el = ev.currentTarget,
 					elID = el.getAttribute('data-favorites'),
@@ -281,13 +357,57 @@ if (!Element.prototype.closest) {
 
 		for(let btn of likeBtns) {
 			btn.addEventListener('click', (ev) => {
+				const el = ev.currentTarget,
+					elID = el.getAttribute('data-id'),
+					elParent = el.closest('.list__box-wrapper');
 
+				const specificationBlock = elParent.querySelector('.list__specification[data-id="' + elID + '"]'),
+					specificationFavoritesBtn = specificationBlock.querySelector('[data-like="' + elID + '"]');
+
+				ev.currentTarget.classList.toggle('is-active');
+				specificationFavoritesBtn.classList.toggle('is-active');
+			}, false);
+		}
+
+		for(let btn of specLikeBtns) {
+			btn.addEventListener('click', (ev) => {
+				const el = ev.currentTarget,
+					elID = el.getAttribute('data-like'),
+					elParent = el.closest('.list__box-wrapper');
+
+				const listBlock = elParent.querySelector('.list__box[data-id="' + elID + '"]'),
+					listFavoritesBtn = listBlock.querySelector('.list__box-like[data-id="' + elID + '"]');
+
+				ev.currentTarget.classList.toggle('is-active');
+				listFavoritesBtn.classList.toggle('is-active');
 			}, false);
 		}
 
 		for(let btn of dislikeBtns) {
 			btn.addEventListener('click', (ev) => {
+				const el = ev.currentTarget,
+					elID = el.getAttribute('data-id'),
+					elParent = el.closest('.list__box-wrapper');
 
+				const specificationBlock = elParent.querySelector('.list__specification[data-id="' + elID + '"]'),
+					specificationFavoritesBtn = specificationBlock.querySelector('[data-dislike="' + elID + '"]');
+
+				ev.currentTarget.classList.toggle('is-active');
+				specificationFavoritesBtn.classList.toggle('is-active');
+			}, false);
+		}
+
+		for(let btn of specDislikeBtns) {
+			btn.addEventListener('click', (ev) => {
+				const el = ev.currentTarget,
+					elID = el.getAttribute('data-dislike'),
+					elParent = el.closest('.list__box-wrapper');
+
+				const listBlock = elParent.querySelector('.list__box[data-id="' + elID + '"]'),
+					listFavoritesBtn = listBlock.querySelector('.list__box-dislike[data-id="' + elID + '"]');
+
+				ev.currentTarget.classList.toggle('is-active');
+				listFavoritesBtn.classList.toggle('is-active');
 			}, false);
 		}
 	};
