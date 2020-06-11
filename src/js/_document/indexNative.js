@@ -246,13 +246,32 @@ if (!Element.prototype.closest) {
 
 
 	const detailsToggleAction = () => {
-		const favoritesBtns = document.querySelectorAll('[favorites-toggle-js]');
+		const favoritesBtns = document.querySelectorAll('[favorites-toggle-js]'),
+			likeBtns = document.querySelectorAll('[like-toggle-js]'),
+			dislikeBtns = document.querySelectorAll('[dislike-toggle-js]');
 
 		for(let btn of favoritesBtns) {
 			btn.addEventListener('click', (ev) => {
-				const el = ev.currentTarget;
+				const el = ev.currentTarget,
+					elID = el.getAttribute('data-id'),
+					elParent = el.closest('.list__box-wrapper');
 
-				
+				const specificationBlock = elParent.querySelector('.list__specification[data-id="' + elID + '"]'),
+					specificationFavoritesBtn = specificationBlock.querySelector('[data-favorites="' + elID + '"]');
+
+				ev.currentTarget.classList.toggle('is-active');
+				specificationFavoritesBtn.classList.toggle('is-active');
+			}, false);
+		}
+
+		for(let btn of likeBtns) {
+			btn.addEventListener('click', (ev) => {
+
+			}, false);
+		}
+
+		for(let btn of dislikeBtns) {
+			btn.addEventListener('click', (ev) => {
 
 			}, false);
 		}

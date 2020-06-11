@@ -1,8 +1,8 @@
 &__toggle {
 	position: relative;
 	display: flex;
-	width: 60px;
-	height: 25px;
+	width: 45px;
+	height: 20px;
 	border-width: 1px;
 	border-color: rgb(255, 255, 255);
 	border-style: solid;
@@ -21,11 +21,12 @@
 
 		.icon-font {
 			color: #ffffff;
+			font-size: 12px;
 			@include transition(opacity);
 
 			&.icon-moon {
 				opacity: 0;
-				font-size: 12px;
+				font-size: 9px;
 			}
 		}
 	}
@@ -63,7 +64,7 @@
 				}
 
 				span {
-					transform: translateX(-35px);
+					transform: translateX(-25px);
 					@include transition(transform);
 				}
 			}
@@ -87,8 +88,8 @@
 		right: 2px;
 		border-radius: 50%;
 		background-color: rgb(215, 242, 74);
-		width: 19px;
-		height: 19px;
+		width: 14px;
+		height: 14px;
 		backface-visibility: hidden;
 		transform-origin: center;
 		@include transition(transform);

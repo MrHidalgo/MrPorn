@@ -15,6 +15,9 @@
 		font-size: 14px;
 		font-weight: bold;
 		line-height: 1.2;
+		@include adaptive(1439) {
+			font-size: 13px;
+		}
 	}
 
 	&-title {

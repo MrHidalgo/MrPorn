@@ -500,7 +500,9 @@ if (!Element.prototype.closest) {
 	};
 
 	var detailsToggleAction = function detailsToggleAction() {
-		var favoritesBtns = document.querySelectorAll('[favorites-toggle-js]');
+		var favoritesBtns = document.querySelectorAll('[favorites-toggle-js]'),
+		    likeBtns = document.querySelectorAll('[like-toggle-js]'),
+		    dislikeBtns = document.querySelectorAll('[dislike-toggle-js]');
 
 		var _iteratorNormalCompletion9 = true;
 		var _didIteratorError9 = false;
@@ -511,7 +513,15 @@ if (!Element.prototype.closest) {
 				var btn = _step9.value;
 
 				btn.addEventListener('click', function (ev) {
-					var el = ev.currentTarget;
+					var el = ev.currentTarget,
+					    elID = el.getAttribute('data-id'),
+					    elParent = el.closest('.list__box-wrapper');
+
+					var specificationBlock = elParent.querySelector('.list__specification[data-id="' + elID + '"]'),
+					    specificationFavoritesBtn = specificationBlock.querySelector('[data-favorites="' + elID + '"]');
+
+					ev.currentTarget.classList.toggle('is-active');
+					specificationFavoritesBtn.classList.toggle('is-active');
 				}, false);
 			}
 		} catch (err) {
@@ -528,18 +538,68 @@ if (!Element.prototype.closest) {
 				}
 			}
 		}
-	};
-
-	var listIndicator = function listIndicator() {
-		var listBoxes = document.querySelectorAll('[list-box-js]');
 
 		var _iteratorNormalCompletion10 = true;
 		var _didIteratorError10 = false;
 		var _iteratorError10 = undefined;
 
 		try {
-			for (var _iterator10 = listBoxes[Symbol.iterator](), _step10; !(_iteratorNormalCompletion10 = (_step10 = _iterator10.next()).done); _iteratorNormalCompletion10 = true) {
-				var box = _step10.value;
+			for (var _iterator10 = likeBtns[Symbol.iterator](), _step10; !(_iteratorNormalCompletion10 = (_step10 = _iterator10.next()).done); _iteratorNormalCompletion10 = true) {
+				var _btn5 = _step10.value;
+
+				_btn5.addEventListener('click', function (ev) {}, false);
+			}
+		} catch (err) {
+			_didIteratorError10 = true;
+			_iteratorError10 = err;
+		} finally {
+			try {
+				if (!_iteratorNormalCompletion10 && _iterator10.return) {
+					_iterator10.return();
+				}
+			} finally {
+				if (_didIteratorError10) {
+					throw _iteratorError10;
+				}
+			}
+		}
+
+		var _iteratorNormalCompletion11 = true;
+		var _didIteratorError11 = false;
+		var _iteratorError11 = undefined;
+
+		try {
+			for (var _iterator11 = dislikeBtns[Symbol.iterator](), _step11; !(_iteratorNormalCompletion11 = (_step11 = _iterator11.next()).done); _iteratorNormalCompletion11 = true) {
+				var _btn6 = _step11.value;
+
+				_btn6.addEventListener('click', function (ev) {}, false);
+			}
+		} catch (err) {
+			_didIteratorError11 = true;
+			_iteratorError11 = err;
+		} finally {
+			try {
+				if (!_iteratorNormalCompletion11 && _iterator11.return) {
+					_iterator11.return();
+				}
+			} finally {
+				if (_didIteratorError11) {
+					throw _iteratorError11;
+				}
+			}
+		}
+	};
+
+	var listIndicator = function listIndicator() {
+		var listBoxes = document.querySelectorAll('[list-box-js]');
+
+		var _iteratorNormalCompletion12 = true;
+		var _didIteratorError12 = false;
+		var _iteratorError12 = undefined;
+
+		try {
+			for (var _iterator12 = listBoxes[Symbol.iterator](), _step12; !(_iteratorNormalCompletion12 = (_step12 = _iterator12.next()).done); _iteratorNormalCompletion12 = true) {
+				var box = _step12.value;
 
 
 				box.addEventListener('mouseenter', function (ev) {
@@ -565,16 +625,16 @@ if (!Element.prototype.closest) {
 				box.addEventListener('mouseleave', function (ev) {});
 			}
 		} catch (err) {
-			_didIteratorError10 = true;
-			_iteratorError10 = err;
+			_didIteratorError12 = true;
+			_iteratorError12 = err;
 		} finally {
 			try {
-				if (!_iteratorNormalCompletion10 && _iterator10.return) {
-					_iterator10.return();
+				if (!_iteratorNormalCompletion12 && _iterator12.return) {
+					_iterator12.return();
 				}
 			} finally {
-				if (_didIteratorError10) {
-					throw _iteratorError10;
+				if (_didIteratorError12) {
+					throw _iteratorError12;
 				}
 			}
 		}

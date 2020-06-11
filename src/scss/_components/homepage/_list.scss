@@ -163,7 +163,7 @@
 					opacity: 1;
 					visibility: visible;
 					@include transition(opacity 0.55s, visibility 0.55s);
-					transition-delay: 1s;
+					transition-delay: 0.9s;
 				}
 
 				&-more {
@@ -390,8 +390,14 @@
 					}
 
 					&.is-active {
+						&:hover {
+							border-color: #c5f015;
+							@include transition(border-color, background-color, transform);
+						}
+
 						.icon-font {
 							color: #c5f015;
+							@include transition(color, transform);
 						}
 					}
 
@@ -404,7 +410,25 @@
 						transform: scale(-1);
 					}
 					&.list__box-favorites {
+
+						&.is-active {
+							.icon-font {
+								@include transition(opacity, visibility, color, transform);
+
+								&.icon-star-fill {
+									opacity: 0;
+									visibility: hidden;
+								}
+								&.icon-star {
+									opacity: 1;
+									visibility: visible;
+								}
+							}
+						}
+
 						.icon-font {
+							@include transition(opacity, visibility, color, transform);
+
 							&.icon-star-fill {}
 							&.icon-star {
 								opacity: 0;
@@ -423,7 +447,7 @@
 						font-size: 18px;
 						backface-visibility: hidden;
 						transform-origin: center;
-						@include transition(transform);
+						@include transition(color, transform);
 					}
 				}
 			}
@@ -608,10 +632,11 @@
 			position: relative;
 			display: flex;
 			flex-direction: column;
-			justify-content: flex-start;
-			align-items: flex-start;
+			align-items: center;
+			justify-content: center;
 			width: 650px;
 			padding: 20px 40px;
+			padding-right: 80px;
 			background-color: #151414;
 			clip-path: polygon(0 0, 90% 0, 100% 100%, 0% 100%);
 		}
@@ -647,7 +672,6 @@
 			display: flex;
 			flex-wrap: wrap;
 			align-items: center;
-			padding-left: 12px;
 			padding-bottom: 20px;
 
 			> div {
@@ -721,6 +745,7 @@
 
 				.icon-font {
 					color: rgb(197, 240, 21);
+					@include transition(opacity, visibility);
 				}
 			}
 
@@ -742,10 +767,38 @@
 			}
 		}
 
+		&-favorites {
+			&.is-active {
+				.icon-font {
+					@include transition(opacity, visibility);
+
+					&.icon-star-fill {
+						opacity: 0;
+						visibility: hidden;
+					}
+					&.icon-star {
+						opacity: 1;
+						visibility: visible;
+						position: absolute;
+					}
+				}
+			}
+
+
+			.icon-font {
+				@include transition(opacity, visibility);
+
+				&.icon-star {
+					opacity: 0;
+					visibility: hidden;
+					position: absolute;
+				}
+			}
+		}
+
 		&-desc {
 			width: 100%;
 			max-width: 460px;
-			padding-left: 12px;
 			color: #8e8c8c;
 			font-size: 14px;
 		}
