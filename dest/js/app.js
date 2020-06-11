@@ -482,20 +482,26 @@ if (!Element.prototype.closest) {
 
 
 				box.addEventListener('mouseenter', function (ev) {
-					var el = ev.currentTarget,
-					    elID = el.getAttribute('data-id');
-
-					var parent = el.closest('[list-parent-js]'),
-					    listIndicator = parent.querySelector('[list-line-js]');
-
-					var _elRect = el.getBoundingClientRect();
-
-					listIndicator.setAttribute('style', 'transform: translateX(' + (_elRect.width * (elID - 1) + (elID * 6 - 3)) + 'px)');
+					// const el = ev.currentTarget,
+					// 	elID = el.getAttribute('data-id'),
+					// 	elWidth = el.clientWidth;
+					//
+					// const parent = el.closest('[list-parent-js]'),
+					// 	listIndicator = parent.querySelector('[list-line-js]'),
+					// 	listIndicatorWidth = listIndicator.clientWidth;
+					//
+					// const _elRect = el.getBoundingClientRect();
+					//
+					// let _indicatorOffset = (elWidth - listIndicatorWidth) / 2,
+					// 	_lineOffset = ((_elRect.width * (elID - 1)) + ((elID * 6) - 3)) + _indicatorOffset;
+					//
+					// listIndicator.setAttribute(
+					// 	'style',
+					// 	'transform: translateX(' + _lineOffset + 'px)'
+					// );
 				});
 
-				box.addEventListener('mouseleave', function (ev) {
-					var el = ev.currentTarget;
-				});
+				box.addEventListener('mouseleave', function (ev) {});
 			}
 		} catch (err) {
 			_didIteratorError9 = true;

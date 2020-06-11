@@ -144,30 +144,33 @@
 			width: 350px;
 			height: 260px;
 			@include transition(width, height);
-			transition-delay: 0.05s;
+			transition-delay: 0.75s;
 
 			.list__box {
 				&-overlay {
 					background-color: rgba(#000, 0.65);
 					@include transition(background-color);
+					transition-delay: 0.75s;
 				}
 
 				&-border {
 					background-color: rgba(#080915, 0);
 					@include transition(background-color);
+					transition-delay: 0.75s;
 				}
 
 				&-details {
 					opacity: 1;
 					visibility: visible;
 					@include transition(opacity 0.55s, visibility 0.55s);
-					transition-delay: 0.15s;
+					transition-delay: 1s;
 				}
 
 				&-more {
 					opacity: 1;
 					visibility: visible;
 					@include transition(opacity, visibility);
+					transition-delay: 0.75s;
 
 					.icon-font {
 						animation-fill-mode: both;
@@ -175,6 +178,7 @@
 						animation-iteration-count: infinite;
 						animation-timing-function: ease-in-out;
 						animation-name: slideToggle;
+						animation-delay: 1s;
 					}
 				}
 			}
@@ -795,6 +799,7 @@
 			&:hover {
 				width: 350px !important;
 				@include transition(width);
+				transition-delay: 0.75s;
 			}
 		}
 	}

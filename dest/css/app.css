@@ -471,13 +471,13 @@ picture {
   width: 100%;
   margin-right: auto;
   margin-left: auto;
-  padding-right: 25px;
-  padding-left: 25px;
+  padding-right: 20px;
+  padding-left: 20px;
 }
 
 /* line 20, src/scss/_shared/_grid.scss */
 .c-grid {
-  max-width: 100%;
+  max-width: 1630px;
 }
 
 /* line 26, src/scss/_shared/_grid.scss */
@@ -1788,7 +1788,7 @@ picture {
 /* line 11, src/scss/_macros/_logotype.scss */
 .logo--footer {
   max-width: 250px;
-  padding-bottom: 50px;
+  padding-bottom: 40px;
 }
 
 /* line 16, src/scss/_macros/_logotype.scss */
@@ -2654,8 +2654,8 @@ picture {
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
-  padding-top: 50px;
-  padding-bottom: 50px;
+  padding-top: 40px;
+  padding-bottom: 40px;
 }
 
 /* line 13, src/scss/_components/common/_footer.scss */
@@ -2692,6 +2692,22 @@ picture {
 }
 
 /* line 31, src/scss/_components/common/_footer.scss */
+.footer__title {
+  padding-bottom: 15px;
+  color: #ffffff;
+  font-size: 28px;
+  font-weight: 700;
+}
+
+/* line 38, src/scss/_components/common/_footer.scss */
+.footer__desc {
+  padding-bottom: 40px;
+  color: #4b4e6b;
+  line-height: 1.8;
+  font-size: 16px;
+}
+
+/* line 45, src/scss/_components/common/_footer.scss */
 .footer__nav {
   display: -webkit-box;
   display: -webkit-flex;
@@ -2707,7 +2723,7 @@ picture {
           justify-content: center;
 }
 
-/* line 36, src/scss/_components/common/_footer.scss */
+/* line 50, src/scss/_components/common/_footer.scss */
 .footer__nav-item {
   display: -webkit-box;
   display: -webkit-flex;
@@ -2715,7 +2731,7 @@ picture {
   display: flex;
 }
 
-/* line 39, src/scss/_components/common/_footer.scss */
+/* line 53, src/scss/_components/common/_footer.scss */
 .footer__nav-item span {
   margin-left: 15px;
   margin-right: 15px;
@@ -2724,7 +2740,7 @@ picture {
   line-height: 2.273;
 }
 
-/* line 48, src/scss/_components/common/_footer.scss */
+/* line 62, src/scss/_components/common/_footer.scss */
 .footer__nav-link {
   font-size: 16px;
   color: #4680ca;
@@ -2734,7 +2750,7 @@ picture {
   transition: color 0.35s ease-in-out;
 }
 
-/* line 54, src/scss/_components/common/_footer.scss */
+/* line 68, src/scss/_components/common/_footer.scss */
 .footer__nav-link:hover {
   color: #ffffff;
   -webkit-transition: color 0.35s ease-in-out;
@@ -2970,9 +2986,9 @@ picture {
   -webkit-transition: width 0.35s ease-in-out, height 0.35s ease-in-out;
   -o-transition: width 0.35s ease-in-out, height 0.35s ease-in-out;
   transition: width 0.35s ease-in-out, height 0.35s ease-in-out;
-  -webkit-transition-delay: 0.05s;
-       -o-transition-delay: 0.05s;
-          transition-delay: 0.05s;
+  -webkit-transition-delay: 0.75s;
+       -o-transition-delay: 0.75s;
+          transition-delay: 0.75s;
 }
 
 /* line 150, src/scss/_components/homepage/_list.scss */
@@ -2981,38 +2997,47 @@ picture {
   -webkit-transition: background-color 0.35s ease-in-out;
   -o-transition: background-color 0.35s ease-in-out;
   transition: background-color 0.35s ease-in-out;
+  -webkit-transition-delay: 0.75s;
+       -o-transition-delay: 0.75s;
+          transition-delay: 0.75s;
 }
 
-/* line 155, src/scss/_components/homepage/_list.scss */
+/* line 156, src/scss/_components/homepage/_list.scss */
 .list__box:hover .list__box-border {
   background-color: rgba(8, 9, 21, 0);
   -webkit-transition: background-color 0.35s ease-in-out;
   -o-transition: background-color 0.35s ease-in-out;
   transition: background-color 0.35s ease-in-out;
+  -webkit-transition-delay: 0.75s;
+       -o-transition-delay: 0.75s;
+          transition-delay: 0.75s;
 }
 
-/* line 160, src/scss/_components/homepage/_list.scss */
+/* line 162, src/scss/_components/homepage/_list.scss */
 .list__box:hover .list__box-details {
   opacity: 1;
   visibility: visible;
   -webkit-transition: opacity 0.55s ease-in-out, visibility 0.55s ease-in-out;
   -o-transition: opacity 0.55s ease-in-out, visibility 0.55s ease-in-out;
   transition: opacity 0.55s ease-in-out, visibility 0.55s ease-in-out;
-  -webkit-transition-delay: 0.15s;
-       -o-transition-delay: 0.15s;
-          transition-delay: 0.15s;
+  -webkit-transition-delay: 1s;
+       -o-transition-delay: 1s;
+          transition-delay: 1s;
 }
 
-/* line 167, src/scss/_components/homepage/_list.scss */
+/* line 169, src/scss/_components/homepage/_list.scss */
 .list__box:hover .list__box-more {
   opacity: 1;
   visibility: visible;
   -webkit-transition: opacity 0.35s ease-in-out, visibility 0.35s ease-in-out;
   -o-transition: opacity 0.35s ease-in-out, visibility 0.35s ease-in-out;
   transition: opacity 0.35s ease-in-out, visibility 0.35s ease-in-out;
+  -webkit-transition-delay: 0.75s;
+       -o-transition-delay: 0.75s;
+          transition-delay: 0.75s;
 }
 
-/* line 172, src/scss/_components/homepage/_list.scss */
+/* line 175, src/scss/_components/homepage/_list.scss */
 .list__box:hover .list__box-more .icon-font {
   -webkit-animation-fill-mode: both;
           animation-fill-mode: both;
@@ -3024,9 +3049,11 @@ picture {
           animation-timing-function: ease-in-out;
   -webkit-animation-name: slideToggle;
           animation-name: slideToggle;
+  -webkit-animation-delay: 1s;
+          animation-delay: 1s;
 }
 
-/* line 184, src/scss/_components/homepage/_list.scss */
+/* line 188, src/scss/_components/homepage/_list.scss */
 .list__box.is-active .list__box-border {
   border-style: solid;
   border-width: 4px;
@@ -3035,7 +3062,7 @@ picture {
   transition: border-style 0.35s ease-in-out, border-width 0.35s ease-in-out;
 }
 
-/* line 190, src/scss/_components/homepage/_list.scss */
+/* line 194, src/scss/_components/homepage/_list.scss */
 .list__box.is-active .list__box-details {
   opacity: 0;
   visibility: hidden;
@@ -3049,7 +3076,7 @@ picture {
   transition: opacity 0.55s ease-in-out, visibility 0.55s ease-in-out, transform 0.55s ease-in-out, -webkit-transform 0.55s ease-in-out;
 }
 
-/* line 197, src/scss/_components/homepage/_list.scss */
+/* line 201, src/scss/_components/homepage/_list.scss */
 .list__box.is-active:after {
   content: '';
   position: absolute;
@@ -3065,7 +3092,7 @@ picture {
   border-color: #fff transparent transparent transparent;
 }
 
-/* line 211, src/scss/_components/homepage/_list.scss */
+/* line 215, src/scss/_components/homepage/_list.scss */
 .list__box-wrapper {
   opacity: 0;
   overflow: hidden;
@@ -3086,7 +3113,7 @@ picture {
   transition: padding-bottom 0.35s ease-in-out;
 }
 
-/* line 219, src/scss/_components/homepage/_list.scss */
+/* line 223, src/scss/_components/homepage/_list.scss */
 .list__box-wrapper.is-open {
   padding-bottom: 40px;
   -webkit-transition: padding-bottom 0.35s ease-in-out;
@@ -3094,7 +3121,7 @@ picture {
   transition: padding-bottom 0.35s ease-in-out;
 }
 
-/* line 223, src/scss/_components/homepage/_list.scss */
+/* line 227, src/scss/_components/homepage/_list.scss */
 .list__box-wrapper.is-open .list__box-body {
   padding-bottom: 0;
   -webkit-transition: padding-bottom 0.35s ease-in-out;
@@ -3102,7 +3129,7 @@ picture {
   transition: padding-bottom 0.35s ease-in-out;
 }
 
-/* line 230, src/scss/_components/homepage/_list.scss */
+/* line 234, src/scss/_components/homepage/_list.scss */
 .list__box-head {
   display: -webkit-box;
   display: -webkit-flex;
@@ -3119,7 +3146,7 @@ picture {
   padding-bottom: 15px;
 }
 
-/* line 237, src/scss/_components/homepage/_list.scss */
+/* line 241, src/scss/_components/homepage/_list.scss */
 .list__box-line {
   position: relative;
   width: 100%;
@@ -3128,7 +3155,7 @@ picture {
   background-color: #191a28;
 }
 
-/* line 244, src/scss/_components/homepage/_list.scss */
+/* line 248, src/scss/_components/homepage/_list.scss */
 .list__box-line span {
   cursor: pointer;
   position: absolute;
@@ -3147,7 +3174,7 @@ picture {
   transition: transform 0.35s ease-in-out, -webkit-transform 0.35s ease-in-out;
 }
 
-/* line 257, src/scss/_components/homepage/_list.scss */
+/* line 261, src/scss/_components/homepage/_list.scss */
 .list__box-body {
   z-index: 100;
   position: relative;
@@ -3157,7 +3184,7 @@ picture {
   transition: padding-bottom 0.35s ease-in-out;
 }
 
-/* line 264, src/scss/_components/homepage/_list.scss */
+/* line 268, src/scss/_components/homepage/_list.scss */
 .list__box-overlay {
   z-index: 0;
   position: absolute;
@@ -3171,7 +3198,7 @@ picture {
   transition: background-color 0.35s ease-in-out;
 }
 
-/* line 275, src/scss/_components/homepage/_list.scss */
+/* line 279, src/scss/_components/homepage/_list.scss */
 .list__box-border {
   z-index: 0;
   position: absolute;
@@ -3187,7 +3214,7 @@ picture {
   transition: border-style 0.35s ease-in-out, border-width 0.35s ease-in-out;
 }
 
-/* line 286, src/scss/_components/homepage/_list.scss */
+/* line 290, src/scss/_components/homepage/_list.scss */
 .list__box-logo {
   z-index: 15;
   position: relative;
@@ -3199,7 +3226,7 @@ picture {
   margin-right: auto;
 }
 
-/* line 297, src/scss/_components/homepage/_list.scss */
+/* line 301, src/scss/_components/homepage/_list.scss */
 .list__box-details {
   z-index: 11;
   opacity: 0;
@@ -3235,7 +3262,7 @@ picture {
   transition: opacity 0.35s ease-in-out, visibility 0.35s ease-in-out;
 }
 
-/* line 315, src/scss/_components/homepage/_list.scss */
+/* line 319, src/scss/_components/homepage/_list.scss */
 .list__box-details-left {
   display: -webkit-box;
   display: -webkit-flex;
@@ -3255,12 +3282,12 @@ picture {
   max-width: calc(100% - 30px);
 }
 
-/* line 322, src/scss/_components/homepage/_list.scss */
+/* line 326, src/scss/_components/homepage/_list.scss */
 .list__box-details-left > * {
   width: 100%;
 }
 
-/* line 326, src/scss/_components/homepage/_list.scss */
+/* line 330, src/scss/_components/homepage/_list.scss */
 .list__box-details-left button {
   outline: none;
   cursor: pointer;
@@ -3273,18 +3300,18 @@ picture {
   background-color: transparent;
 }
 
-/* line 336, src/scss/_components/homepage/_list.scss */
+/* line 340, src/scss/_components/homepage/_list.scss */
 .list__box-details-left button.list__box-external .icon-font {
   margin-bottom: 5px;
 }
 
-/* line 341, src/scss/_components/homepage/_list.scss */
+/* line 345, src/scss/_components/homepage/_list.scss */
 .list__box-details-left button .icon-font {
   color: #cecece;
   font-size: 20px;
 }
 
-/* line 348, src/scss/_components/homepage/_list.scss */
+/* line 352, src/scss/_components/homepage/_list.scss */
 .list__box-details-right {
   display: -webkit-box;
   display: -webkit-flex;
@@ -3306,7 +3333,7 @@ picture {
   width: 30px;
 }
 
-/* line 355, src/scss/_components/homepage/_list.scss */
+/* line 359, src/scss/_components/homepage/_list.scss */
 .list__box-details-right button {
   outline: none;
   cursor: pointer;
@@ -3338,7 +3365,7 @@ picture {
   transition: border-color 0.35s ease-in-out, background-color 0.35s ease-in-out, transform 0.35s ease-in-out, -webkit-transform 0.35s ease-in-out;
 }
 
-/* line 370, src/scss/_components/homepage/_list.scss */
+/* line 374, src/scss/_components/homepage/_list.scss */
 .list__box-details-right button:hover {
   border-color: #fff;
   background-color: rgba(0, 0, 0, 0.85);
@@ -3352,14 +3379,14 @@ picture {
   transition: border-color 0.35s ease-in-out, background-color 0.35s ease-in-out, transform 0.35s ease-in-out, -webkit-transform 0.35s ease-in-out;
 }
 
-/* line 377, src/scss/_components/homepage/_list.scss */
+/* line 381, src/scss/_components/homepage/_list.scss */
 .list__box-details-right button:hover.list__box-like .icon-font {
   -webkit-transform: scale(-0.9, 0.9);
       -ms-transform: scale(-0.9, 0.9);
           transform: scale(-0.9, 0.9);
 }
 
-/* line 382, src/scss/_components/homepage/_list.scss */
+/* line 386, src/scss/_components/homepage/_list.scss */
 .list__box-details-right button:hover .icon-font {
   -webkit-transform: scale(0.9);
       -ms-transform: scale(0.9);
@@ -3371,31 +3398,31 @@ picture {
   transition: transform 0.35s ease-in-out, -webkit-transform 0.35s ease-in-out;
 }
 
-/* line 389, src/scss/_components/homepage/_list.scss */
+/* line 393, src/scss/_components/homepage/_list.scss */
 .list__box-details-right button.is-active .icon-font {
   color: #c5f015;
 }
 
-/* line 395, src/scss/_components/homepage/_list.scss */
+/* line 399, src/scss/_components/homepage/_list.scss */
 .list__box-details-right button.list__box-like .icon-font {
   -webkit-transform: scaleX(-1);
       -ms-transform: scaleX(-1);
           transform: scaleX(-1);
 }
 
-/* line 399, src/scss/_components/homepage/_list.scss */
+/* line 403, src/scss/_components/homepage/_list.scss */
 .list__box-details-right button.list__box-dislike {
   -webkit-transform: scale(-1);
       -ms-transform: scale(-1);
           transform: scale(-1);
 }
 
-/* line 403, src/scss/_components/homepage/_list.scss */
+/* line 407, src/scss/_components/homepage/_list.scss */
 .list__box-details-right button:not(:last-of-type) {
   margin-bottom: 2px;
 }
 
-/* line 407, src/scss/_components/homepage/_list.scss */
+/* line 411, src/scss/_components/homepage/_list.scss */
 .list__box-details-right button .icon-font {
   color: #ffffff;
   font-size: 18px;
@@ -3411,7 +3438,7 @@ picture {
   transition: transform 0.35s ease-in-out, -webkit-transform 0.35s ease-in-out;
 }
 
-/* line 417, src/scss/_components/homepage/_list.scss */
+/* line 421, src/scss/_components/homepage/_list.scss */
 .list__box-details-title {
   overflow: hidden;
   white-space: nowrap;
@@ -3422,7 +3449,7 @@ picture {
   font-weight: 700;
 }
 
-/* line 427, src/scss/_components/homepage/_list.scss */
+/* line 431, src/scss/_components/homepage/_list.scss */
 .list__box-more {
   z-index: 20;
   outline: none;
@@ -3458,7 +3485,7 @@ picture {
   transition: opacity 0.35s ease-in-out, visibility 0.35s ease-in-out;
 }
 
-/* line 448, src/scss/_components/homepage/_list.scss */
+/* line 452, src/scss/_components/homepage/_list.scss */
 .list__box-more .icon-font {
   color: #c5f015;
   font-size: 16px;
@@ -3467,7 +3494,7 @@ picture {
           transform: rotate(-90deg);
 }
 
-/* line 456, src/scss/_components/homepage/_list.scss */
+/* line 460, src/scss/_components/homepage/_list.scss */
 .list__rating {
   display: -webkit-box;
   display: -webkit-flex;
@@ -3479,13 +3506,13 @@ picture {
           align-items: center;
 }
 
-/* line 460, src/scss/_components/homepage/_list.scss */
+/* line 464, src/scss/_components/homepage/_list.scss */
 .list__rating span {
   color: #4a70a1;
   font-size: 14px;
 }
 
-/* line 465, src/scss/_components/homepage/_list.scss */
+/* line 469, src/scss/_components/homepage/_list.scss */
 .list__rating > div {
   display: -webkit-box;
   display: -webkit-flex;
@@ -3498,18 +3525,18 @@ picture {
   padding-left: 10px;
 }
 
-/* line 470, src/scss/_components/homepage/_list.scss */
+/* line 474, src/scss/_components/homepage/_list.scss */
 .list__rating > div .icon-font {
   color: #004aac;
   font-size: 19px;
 }
 
-/* line 474, src/scss/_components/homepage/_list.scss */
+/* line 478, src/scss/_components/homepage/_list.scss */
 .list__rating > div .icon-font:not(:last-of-type) {
   margin-right: 3px;
 }
 
-/* line 481, src/scss/_components/homepage/_list.scss */
+/* line 485, src/scss/_components/homepage/_list.scss */
 .list__specification {
   display: none;
   position: relative;
@@ -3524,7 +3551,7 @@ picture {
           box-shadow: 1.047px 19.973px 43px 0px rgba(8, 9, 21, 0.3);
 }
 
-/* line 495, src/scss/_components/homepage/_list.scss */
+/* line 499, src/scss/_components/homepage/_list.scss */
 .list__specification.list__specification--video .list__specification-right > div:before {
   content: '';
   z-index: 2;
@@ -3539,7 +3566,7 @@ picture {
   background: linear-gradient(to left, rgba(0, 0, 0, 0) 0%, black 100%);
 }
 
-/* line 506, src/scss/_components/homepage/_list.scss */
+/* line 510, src/scss/_components/homepage/_list.scss */
 .list__specification.list__specification--video .list__specification-right > div:after {
   content: '';
   z-index: 2;
@@ -3554,7 +3581,7 @@ picture {
   background: linear-gradient(to left, rgba(0, 0, 0, 0.2) 0%, rgba(0, 0, 0, 0.2) 100%);
 }
 
-/* line 522, src/scss/_components/homepage/_list.scss */
+/* line 526, src/scss/_components/homepage/_list.scss */
 .list__specification.list__specification--banner .list__specification-right > div {
   display: -webkit-box;
   display: -webkit-flex;
@@ -3571,7 +3598,7 @@ picture {
   padding: 15px;
 }
 
-/* line 528, src/scss/_components/homepage/_list.scss */
+/* line 532, src/scss/_components/homepage/_list.scss */
 .list__specification.list__specification--banner .list__specification-right > div:before {
   content: '';
   z-index: 2;
@@ -3586,7 +3613,7 @@ picture {
   background: linear-gradient(to bottom, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0.25) 100%);
 }
 
-/* line 539, src/scss/_components/homepage/_list.scss */
+/* line 543, src/scss/_components/homepage/_list.scss */
 .list__specification.list__specification--banner .list__specification-right > div:after {
   content: '';
   z-index: 1;
@@ -3603,7 +3630,7 @@ picture {
           background-size: 175%;
 }
 
-/* line 554, src/scss/_components/homepage/_list.scss */
+/* line 558, src/scss/_components/homepage/_list.scss */
 .list__specification.list__specification--banner .list__specification-right > div img {
   display: block;
   max-width: 100%;
@@ -3613,7 +3640,7 @@ picture {
   max-height: 100%;
 }
 
-/* line 566, src/scss/_components/homepage/_list.scss */
+/* line 570, src/scss/_components/homepage/_list.scss */
 .list__specification-wrapper {
   z-index: 90;
   display: -webkit-box;
@@ -3628,7 +3655,7 @@ picture {
   position: relative;
 }
 
-/* line 573, src/scss/_components/homepage/_list.scss */
+/* line 577, src/scss/_components/homepage/_list.scss */
 .list__specification-close {
   z-index: 50;
   position: absolute;
@@ -3640,18 +3667,18 @@ picture {
   display: flex;
 }
 
-/* line 580, src/scss/_components/homepage/_list.scss */
+/* line 584, src/scss/_components/homepage/_list.scss */
 .list__specification-close .icon-font {
   color: #ffffff;
   font-size: 18px;
 }
 
-/* line 586, src/scss/_components/homepage/_list.scss */
+/* line 590, src/scss/_components/homepage/_list.scss */
 .list__specification-left, .list__specification-right {
   height: 100%;
 }
 
-/* line 591, src/scss/_components/homepage/_list.scss */
+/* line 595, src/scss/_components/homepage/_list.scss */
 .list__specification-left {
   z-index: 2;
   position: relative;
@@ -3679,7 +3706,7 @@ picture {
           clip-path: polygon(0 0, 90% 0, 100% 100%, 0% 100%);
 }
 
-/* line 604, src/scss/_components/homepage/_list.scss */
+/* line 608, src/scss/_components/homepage/_list.scss */
 .list__specification-right {
   z-index: 1;
   position: relative;
@@ -3688,7 +3715,7 @@ picture {
   max-width: calc(100% - 650px);
 }
 
-/* line 610, src/scss/_components/homepage/_list.scss */
+/* line 614, src/scss/_components/homepage/_list.scss */
 .list__specification-right > div {
   overflow: hidden;
   position: absolute;
@@ -3699,7 +3726,7 @@ picture {
   height: 100%;
 }
 
-/* line 624, src/scss/_components/homepage/_list.scss */
+/* line 628, src/scss/_components/homepage/_list.scss */
 .list__specification-logo {
   display: block;
   max-width: 125px;
@@ -3707,7 +3734,7 @@ picture {
   margin-bottom: 10px;
 }
 
-/* line 631, src/scss/_components/homepage/_list.scss */
+/* line 635, src/scss/_components/homepage/_list.scss */
 .list__specification-action {
   display: -webkit-box;
   display: -webkit-flex;
@@ -3724,12 +3751,12 @@ picture {
   padding-bottom: 20px;
 }
 
-/* line 639, src/scss/_components/homepage/_list.scss */
+/* line 643, src/scss/_components/homepage/_list.scss */
 .list__specification-action > div:not(:last-of-type) {
   margin-right: 10px;
 }
 
-/* line 645, src/scss/_components/homepage/_list.scss */
+/* line 649, src/scss/_components/homepage/_list.scss */
 .list__specification-visit, .list__specification-read {
   position: relative;
   display: -webkit-box;
@@ -3751,7 +3778,7 @@ picture {
   font-weight: 700;
 }
 
-/* line 658, src/scss/_components/homepage/_list.scss */
+/* line 662, src/scss/_components/homepage/_list.scss */
 .list__specification-visit {
   -webkit-border-radius: 5px;
           border-radius: 5px;
@@ -3762,7 +3789,7 @@ picture {
   transition: background-color 0.35s ease-in-out;
 }
 
-/* line 664, src/scss/_components/homepage/_list.scss */
+/* line 668, src/scss/_components/homepage/_list.scss */
 .list__specification-visit:hover {
   background-color: transparent;
   -webkit-transition: background-color 0.35s ease-in-out;
@@ -3770,7 +3797,7 @@ picture {
   transition: background-color 0.35s ease-in-out;
 }
 
-/* line 670, src/scss/_components/homepage/_list.scss */
+/* line 674, src/scss/_components/homepage/_list.scss */
 .list__specification-read {
   border-width: 2px;
   border-color: #c5f015;
@@ -3782,7 +3809,7 @@ picture {
   transition: color 0.35s ease-in-out, background-color 0.35s ease-in-out;
 }
 
-/* line 677, src/scss/_components/homepage/_list.scss */
+/* line 681, src/scss/_components/homepage/_list.scss */
 .list__specification-read:hover {
   background-color: #c5f015;
   color: #222222;
@@ -3791,7 +3818,7 @@ picture {
   transition: color 0.35s ease-in-out, background-color 0.35s ease-in-out;
 }
 
-/* line 684, src/scss/_components/homepage/_list.scss */
+/* line 688, src/scss/_components/homepage/_list.scss */
 .list__specification-circle {
   position: relative;
   display: -webkit-box;
@@ -3825,7 +3852,7 @@ picture {
   transition: transform 0.35s ease-in-out, -webkit-transform 0.35s ease-in-out;
 }
 
-/* line 699, src/scss/_components/homepage/_list.scss */
+/* line 703, src/scss/_components/homepage/_list.scss */
 .list__specification-circle:hover {
   -webkit-transform: scale(1.1);
       -ms-transform: scale(1.1);
@@ -3837,37 +3864,37 @@ picture {
   transition: transform 0.35s ease-in-out, -webkit-transform 0.35s ease-in-out;
 }
 
-/* line 704, src/scss/_components/homepage/_list.scss */
+/* line 708, src/scss/_components/homepage/_list.scss */
 .list__specification-circle.is-active {
   border-color: #c5f015;
 }
 
-/* line 707, src/scss/_components/homepage/_list.scss */
+/* line 711, src/scss/_components/homepage/_list.scss */
 .list__specification-circle.is-active .icon-font {
   color: #c5f015;
 }
 
-/* line 712, src/scss/_components/homepage/_list.scss */
+/* line 716, src/scss/_components/homepage/_list.scss */
 .list__specification-circle .icon-font {
   color: #ffffff;
   font-size: 24px;
 }
 
-/* line 719, src/scss/_components/homepage/_list.scss */
+/* line 723, src/scss/_components/homepage/_list.scss */
 .list__specification-like .icon-font {
   -webkit-transform: scaleX(-1);
       -ms-transform: scaleX(-1);
           transform: scaleX(-1);
 }
 
-/* line 725, src/scss/_components/homepage/_list.scss */
+/* line 729, src/scss/_components/homepage/_list.scss */
 .list__specification-dislike .icon-font {
   -webkit-transform: scale(-1);
       -ms-transform: scale(-1);
           transform: scale(-1);
 }
 
-/* line 730, src/scss/_components/homepage/_list.scss */
+/* line 734, src/scss/_components/homepage/_list.scss */
 .list__specification-desc {
   width: 100%;
   max-width: 460px;
@@ -3876,7 +3903,7 @@ picture {
   font-size: 14px;
 }
 
-/* line 738, src/scss/_components/homepage/_list.scss */
+/* line 742, src/scss/_components/homepage/_list.scss */
 .list__specification-play {
   z-index: 20;
   position: absolute;
@@ -3909,7 +3936,7 @@ picture {
   transition: transform 0.35s ease-in-out, opacity 0.35s ease-in-out, visibility 0.35s ease-in-out, -webkit-transform 0.35s ease-in-out;
 }
 
-/* line 753, src/scss/_components/homepage/_list.scss */
+/* line 757, src/scss/_components/homepage/_list.scss */
 .list__specification-play:hover {
   -webkit-transform: translate(-50%, -50%) scale(0.8);
       -ms-transform: translate(-50%, -50%) scale(0.8);
@@ -3921,7 +3948,7 @@ picture {
   transition: transform 0.55s ease-in-out, -webkit-transform 0.55s ease-in-out;
 }
 
-/* line 758, src/scss/_components/homepage/_list.scss */
+/* line 762, src/scss/_components/homepage/_list.scss */
 .list__specification-play.is-active {
   opacity: 0;
   visibility: hidden;
@@ -3930,7 +3957,7 @@ picture {
   transition: opacity 0.35s ease-in-out, visibility 0.35s ease-in-out;
 }
 
-/* line 764, src/scss/_components/homepage/_list.scss */
+/* line 768, src/scss/_components/homepage/_list.scss */
 .list__specification-play .icon-font {
   position: relative;
   left: 5px;
@@ -3938,12 +3965,12 @@ picture {
   font-size: 57px;
 }
 
-/* line 774, src/scss/_components/homepage/_list.scss */
+/* line 778, src/scss/_components/homepage/_list.scss */
 .list .swiper-container {
   overflow: unset;
 }
 
-/* line 780, src/scss/_components/homepage/_list.scss */
+/* line 784, src/scss/_components/homepage/_list.scss */
 .list .swiper-slide {
   position: relative;
   width: 230px !important;
@@ -3955,22 +3982,25 @@ picture {
   transition: width 0.35s ease-in-out;
 }
 
-/* line 788, src/scss/_components/homepage/_list.scss */
+/* line 792, src/scss/_components/homepage/_list.scss */
 .list .swiper-slide:first-of-type {
   margin-left: 0;
 }
 
-/* line 791, src/scss/_components/homepage/_list.scss */
+/* line 795, src/scss/_components/homepage/_list.scss */
 .list .swiper-slide:last-of-type {
   margin-right: 0;
 }
 
-/* line 795, src/scss/_components/homepage/_list.scss */
+/* line 799, src/scss/_components/homepage/_list.scss */
 .list .swiper-slide:hover {
   width: 350px !important;
   -webkit-transition: width 0.35s ease-in-out;
   -o-transition: width 0.35s ease-in-out;
   transition: width 0.35s ease-in-out;
+  -webkit-transition-delay: 0.75s;
+       -o-transition-delay: 0.75s;
+          transition-delay: 0.75s;
 }
 
 @-webkit-keyframes slideToggle {
