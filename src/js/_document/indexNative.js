@@ -245,6 +245,20 @@ if (!Element.prototype.closest) {
 	};
 
 
+	const detailsToggleAction = () => {
+		const favoritesBtns = document.querySelectorAll('[favorites-toggle-js]');
+
+		for(let btn of favoritesBtns) {
+			btn.addEventListener('click', (ev) => {
+				const el = ev.currentTarget;
+
+				
+
+			}, false);
+		}
+	};
+
+
 	const listIndicator = () => {
 		const listBoxes = document.querySelectorAll('[list-box-js]');
 
@@ -301,6 +315,7 @@ if (!Element.prototype.closest) {
 		boxMore();
 		videoToggle();
 		listIndicator();
+		detailsToggleAction();
 		// ==========================================
 	};
 

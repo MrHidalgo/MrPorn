@@ -499,16 +499,47 @@ if (!Element.prototype.closest) {
 		}
 	};
 
-	var listIndicator = function listIndicator() {
-		var listBoxes = document.querySelectorAll('[list-box-js]');
+	var detailsToggleAction = function detailsToggleAction() {
+		var favoritesBtns = document.querySelectorAll('[favorites-toggle-js]');
 
 		var _iteratorNormalCompletion9 = true;
 		var _didIteratorError9 = false;
 		var _iteratorError9 = undefined;
 
 		try {
-			for (var _iterator9 = listBoxes[Symbol.iterator](), _step9; !(_iteratorNormalCompletion9 = (_step9 = _iterator9.next()).done); _iteratorNormalCompletion9 = true) {
-				var box = _step9.value;
+			for (var _iterator9 = favoritesBtns[Symbol.iterator](), _step9; !(_iteratorNormalCompletion9 = (_step9 = _iterator9.next()).done); _iteratorNormalCompletion9 = true) {
+				var btn = _step9.value;
+
+				btn.addEventListener('click', function (ev) {
+					var el = ev.currentTarget;
+				}, false);
+			}
+		} catch (err) {
+			_didIteratorError9 = true;
+			_iteratorError9 = err;
+		} finally {
+			try {
+				if (!_iteratorNormalCompletion9 && _iterator9.return) {
+					_iterator9.return();
+				}
+			} finally {
+				if (_didIteratorError9) {
+					throw _iteratorError9;
+				}
+			}
+		}
+	};
+
+	var listIndicator = function listIndicator() {
+		var listBoxes = document.querySelectorAll('[list-box-js]');
+
+		var _iteratorNormalCompletion10 = true;
+		var _didIteratorError10 = false;
+		var _iteratorError10 = undefined;
+
+		try {
+			for (var _iterator10 = listBoxes[Symbol.iterator](), _step10; !(_iteratorNormalCompletion10 = (_step10 = _iterator10.next()).done); _iteratorNormalCompletion10 = true) {
+				var box = _step10.value;
 
 
 				box.addEventListener('mouseenter', function (ev) {
@@ -534,16 +565,16 @@ if (!Element.prototype.closest) {
 				box.addEventListener('mouseleave', function (ev) {});
 			}
 		} catch (err) {
-			_didIteratorError9 = true;
-			_iteratorError9 = err;
+			_didIteratorError10 = true;
+			_iteratorError10 = err;
 		} finally {
 			try {
-				if (!_iteratorNormalCompletion9 && _iterator9.return) {
-					_iterator9.return();
+				if (!_iteratorNormalCompletion10 && _iterator10.return) {
+					_iterator10.return();
 				}
 			} finally {
-				if (_didIteratorError9) {
-					throw _iteratorError9;
+				if (_didIteratorError10) {
+					throw _iteratorError10;
 				}
 			}
 		}
@@ -575,6 +606,7 @@ if (!Element.prototype.closest) {
 		boxMore();
 		videoToggle();
 		listIndicator();
+		detailsToggleAction();
 		// ==========================================
 	};
 

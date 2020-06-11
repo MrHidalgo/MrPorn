@@ -403,6 +403,16 @@
 					&.list__box-dislike {
 						transform: scale(-1);
 					}
+					&.list__box-favorites {
+						.icon-font {
+							&.icon-star-fill {}
+							&.icon-star {
+								opacity: 0;
+								visibility: hidden;
+								position: absolute;
+							}
+						}
+					}
 
 					&:not(:last-of-type) {
 						margin-bottom: 2px;
