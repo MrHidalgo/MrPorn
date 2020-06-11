@@ -660,11 +660,15 @@ if (!Element.prototype.closest) {
 					    elID = el.getAttribute('data-id'),
 					    elParent = el.closest('.list__box-wrapper');
 
-					var specificationBlock = elParent.querySelector('.list__specification[data-id="' + elID + '"]'),
-					    specificationFavoritesBtn = specificationBlock.querySelector('[data-like="' + elID + '"]');
-
 					ev.currentTarget.classList.toggle('is-active');
-					specificationFavoritesBtn.classList.toggle('is-active');
+					elParent.querySelector('[dislike-toggle-js][data-id="' + elID + '"]').classList.toggle('is-hide');
+
+					var specificationBlock = elParent.querySelector('.list__specification[data-id="' + elID + '"]'),
+					    specificationLikeBtn = specificationBlock.querySelector('[data-like="' + elID + '"]'),
+					    specificationDislikeBtn = specificationBlock.querySelector('[data-dislike="' + elID + '"]');
+
+					specificationLikeBtn.classList.toggle('is-active');
+					specificationDislikeBtn.parentElement.classList.toggle('is-hide');
 				}, false);
 			}
 		} catch (err) {
@@ -693,13 +697,20 @@ if (!Element.prototype.closest) {
 				_btn7.addEventListener('click', function (ev) {
 					var el = ev.currentTarget,
 					    elID = el.getAttribute('data-like'),
-					    elParent = el.closest('.list__box-wrapper');
+					    elParent = el.closest('.list__box-wrapper'),
+					    elActionNode = el.closest('[spec-actionNode-js]'),
+					    dislikeBtn = elActionNode.querySelector('[spec-dislike-js]');
+
+					dislikeBtn.parentElement.classList.toggle('is-hide');
 
 					var listBlock = elParent.querySelector('.list__box[data-id="' + elID + '"]'),
-					    listFavoritesBtn = listBlock.querySelector('.list__box-like[data-id="' + elID + '"]');
+					    listLikeBtn = listBlock.querySelector('.list__box-like'),
+					    listDislikeBtn = listBlock.querySelector('.list__box-dislike');
 
 					ev.currentTarget.classList.toggle('is-active');
-					listFavoritesBtn.classList.toggle('is-active');
+
+					listLikeBtn.classList.toggle('is-active');
+					listDislikeBtn.classList.toggle('is-hide');
 				}, false);
 			}
 		} catch (err) {
@@ -730,11 +741,15 @@ if (!Element.prototype.closest) {
 					    elID = el.getAttribute('data-id'),
 					    elParent = el.closest('.list__box-wrapper');
 
-					var specificationBlock = elParent.querySelector('.list__specification[data-id="' + elID + '"]'),
-					    specificationFavoritesBtn = specificationBlock.querySelector('[data-dislike="' + elID + '"]');
-
 					ev.currentTarget.classList.toggle('is-active');
-					specificationFavoritesBtn.classList.toggle('is-active');
+					elParent.querySelector('[like-toggle-js][data-id="' + elID + '"]').classList.toggle('is-hide');
+
+					var specificationBlock = elParent.querySelector('.list__specification[data-id="' + elID + '"]'),
+					    specificationDislikeBtn = specificationBlock.querySelector('[data-dislike="' + elID + '"]'),
+					    specificationLikeBtn = specificationBlock.querySelector('[data-like="' + elID + '"]');
+
+					specificationDislikeBtn.classList.toggle('is-active');
+					specificationLikeBtn.parentElement.classList.toggle('is-hide');
 				}, false);
 			}
 		} catch (err) {
@@ -763,13 +778,20 @@ if (!Element.prototype.closest) {
 				_btn9.addEventListener('click', function (ev) {
 					var el = ev.currentTarget,
 					    elID = el.getAttribute('data-dislike'),
-					    elParent = el.closest('.list__box-wrapper');
+					    elParent = el.closest('.list__box-wrapper'),
+					    elActionNode = el.closest('[spec-actionNode-js]'),
+					    likeBtn = elActionNode.querySelector('[spec-like-js]');
+
+					likeBtn.parentElement.classList.toggle('is-hide');
 
 					var listBlock = elParent.querySelector('.list__box[data-id="' + elID + '"]'),
-					    listFavoritesBtn = listBlock.querySelector('.list__box-dislike[data-id="' + elID + '"]');
+					    listDislikeBtn = listBlock.querySelector('.list__box-dislike'),
+					    listLikeBtn = listBlock.querySelector('.list__box-like');
 
 					ev.currentTarget.classList.toggle('is-active');
-					listFavoritesBtn.classList.toggle('is-active');
+
+					listDislikeBtn.classList.toggle('is-active');
+					listLikeBtn.classList.toggle('is-hide');
 				}, false);
 			}
 		} catch (err) {
@@ -1020,6 +1042,9 @@ if (!Element.prototype.closest) {
 	};
 
 	window.addEventListener('load', function (ev) {
+		// for(let s of document.querySelectorAll('.swiper-slide')) {
+		// 	s.classList.add('is-hover');
+		// }
 		initNative();
 	});
 })();
