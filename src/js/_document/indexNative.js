@@ -89,14 +89,6 @@ if (!Element.prototype.closest) {
 		}
 	};
 
-	// const _criteriaBtn = document.querySelectorAll('.criteria__box');
-	//
-	// for(let i = 0; i < _criteriaBtn.length; i++) {
-	// 	_criteriaBtn[i].addEventListener('click', (ev) => {
-	// 		slideToggle(_criteriaBtn[i].querySelector(".criteria__box-body"), 300);
-	// 	});
-	// }
-
 	const bodyClick = () => {
 		const className = '.header__view-wrapper, .sort';
 
@@ -111,6 +103,7 @@ if (!Element.prototype.closest) {
 				// SORT
 				document.querySelector('[sort-node-js]').classList.remove('is-open');
 				document.querySelector('.sort__drop-inner').classList.remove('is-open');
+
 				for(let i = 0; i < document.querySelectorAll('.sort__drop-link').length; i++) {
 					document.querySelectorAll('.sort__drop-link')[i].classList.remove('is-active');
 				}
@@ -207,6 +200,40 @@ if (!Element.prototype.closest) {
 	};
 
 
+	const boxHover = () => {
+		const swiperSlide = document.querySelectorAll('.swiper-slide'),
+			boxDetails = document.querySelectorAll('.list__box');
+
+		for(let [idx, box] of boxDetails.entries()) {
+			// box.addEventListener('mouseenter', function(ev) {
+			// 	const el = ev.currentTarget;
+			//
+			// 	setTimeout(function() {
+			// 		el.classList.add('is-hover');
+			// 	}, 450);
+			// }, false);
+			// box.addEventListener('mouseleave', function(ev) {
+			// 	const el = ev.currentTarget;
+			//
+			// 	el.classList.remove('is-hover');
+			// }, false);
+
+			// swiperSlide[idx].addEventListener('mouseenter', function(ev) {
+			// 	const el = ev.currentTarget;
+			//
+			// 	setTimeout(function() {
+			// 		el.classList.add('is-hover');
+			// 	}, 500);
+			// }, false);
+			//
+			// swiperSlide[idx].addEventListener('mouseleave', function(ev) {
+			// 	const el = ev.currentTarget;
+			//
+			// 	el.classList.remove('is-hover');
+			// }, false);
+		}
+	};
+
 
 	const boxMore = () => {
 		function playPause(vid) {
@@ -241,7 +268,6 @@ if (!Element.prototype.closest) {
 
 					playPause(videoPlayers[idx]);
 				}
-
 
 				_boxParent.classList.add('is-active');
 				_specificationBox.style.display = 'flex';
@@ -466,6 +492,7 @@ if (!Element.prototype.closest) {
 		viewFavoritesToggle();
 		sortCB();
 		search();
+		boxHover();
 		boxMore();
 		videoToggle();
 		listIndicator();

@@ -181,14 +181,6 @@ if (!Element.prototype.closest) {
 		}
 	};
 
-	// const _criteriaBtn = document.querySelectorAll('.criteria__box');
-	//
-	// for(let i = 0; i < _criteriaBtn.length; i++) {
-	// 	_criteriaBtn[i].addEventListener('click', (ev) => {
-	// 		slideToggle(_criteriaBtn[i].querySelector(".criteria__box-body"), 300);
-	// 	});
-	// }
-
 	var bodyClick = function bodyClick() {
 		var className = '.header__view-wrapper, .sort';
 
@@ -203,6 +195,7 @@ if (!Element.prototype.closest) {
 				// SORT
 				document.querySelector('[sort-node-js]').classList.remove('is-open');
 				document.querySelector('.sort__drop-inner').classList.remove('is-open');
+
 				for (var i = 0; i < document.querySelectorAll('.sort__drop-link').length; i++) {
 					document.querySelectorAll('.sort__drop-link')[i].classList.remove('is-active');
 				}
@@ -341,80 +334,50 @@ if (!Element.prototype.closest) {
 		}, false);
 	};
 
-	var boxMore = function boxMore() {
-		function playPause(vid) {
-			vid.pause();
-			vid.currentTime = 0;
-			vid.load();
-		}
-
-		var _btns = document.querySelectorAll('.list__box-more');
+	var boxHover = function boxHover() {
+		var swiperSlide = document.querySelectorAll('.swiper-slide'),
+		    boxDetails = document.querySelectorAll('.list__box');
 
 		var _iteratorNormalCompletion3 = true;
 		var _didIteratorError3 = false;
 		var _iteratorError3 = undefined;
 
 		try {
-			for (var _iterator3 = _btns[Symbol.iterator](), _step3; !(_iteratorNormalCompletion3 = (_step3 = _iterator3.next()).done); _iteratorNormalCompletion3 = true) {
-				var btn = _step3.value;
+			for (var _iterator3 = boxDetails.entries()[Symbol.iterator](), _step3; !(_iteratorNormalCompletion3 = (_step3 = _iterator3.next()).done); _iteratorNormalCompletion3 = true) {
+				// box.addEventListener('mouseenter', function(ev) {
+				// 	const el = ev.currentTarget;
+				//
+				// 	setTimeout(function() {
+				// 		el.classList.add('is-hover');
+				// 	}, 450);
+				// }, false);
+				// box.addEventListener('mouseleave', function(ev) {
+				// 	const el = ev.currentTarget;
+				//
+				// 	el.classList.remove('is-hover');
+				// }, false);
 
-				btn.addEventListener('click', function (ev) {
-					var _el = ev.currentTarget,
-					    _boxParent = _el.closest('.list__box'),
-					    _boxID = _boxParent.getAttribute('data-id'),
-					    _parentNode = _el.closest('.list__box-wrapper');
+				// swiperSlide[idx].addEventListener('mouseenter', function(ev) {
+				// 	const el = ev.currentTarget;
+				//
+				// 	setTimeout(function() {
+				// 		el.classList.add('is-hover');
+				// 	}, 500);
+				// }, false);
+				//
+				// swiperSlide[idx].addEventListener('mouseleave', function(ev) {
+				// 	const el = ev.currentTarget;
+				//
+				// 	el.classList.remove('is-hover');
+				// }, false);
 
-					var _specificationBox = _parentNode.querySelector('.list__specification[data-id="' + _boxID + '"]');
+				var _ref = _step3.value;
 
-					var listBoxes = document.querySelectorAll('.list__box'),
-					    listSpecifications = document.querySelectorAll('.list__specification'),
-					    videoPlayers = document.querySelectorAll('.list__specification video'),
-					    pauseToggle = document.querySelectorAll('[video-pause-js]');
+				var _ref2 = _slicedToArray(_ref, 2);
 
-					var _iteratorNormalCompletion5 = true;
-					var _didIteratorError5 = false;
-					var _iteratorError5 = undefined;
-
-					try {
-						for (var _iterator5 = document.querySelectorAll('[video-toggle-js]').entries()[Symbol.iterator](), _step5; !(_iteratorNormalCompletion5 = (_step5 = _iterator5.next()).done); _iteratorNormalCompletion5 = true) {
-							var _ref = _step5.value;
-
-							var _ref2 = _slicedToArray(_ref, 2);
-
-							var idx = _ref2[0];
-							var playBtn = _ref2[1];
-
-							playBtn.classList.remove('is-active');
-							pauseToggle[idx].classList.remove('is-active');
-							listBoxes[idx].classList.remove('is-active');
-
-							listSpecifications[idx].style.display = 'none';
-
-							playPause(videoPlayers[idx]);
-						}
-					} catch (err) {
-						_didIteratorError5 = true;
-						_iteratorError5 = err;
-					} finally {
-						try {
-							if (!_iteratorNormalCompletion5 && _iterator5.return) {
-								_iterator5.return();
-							}
-						} finally {
-							if (_didIteratorError5) {
-								throw _iteratorError5;
-							}
-						}
-					}
-
-					_boxParent.classList.add('is-active');
-					_specificationBox.style.display = 'flex';
-
-					_parentNode.classList.add('is-open');
-				}, false);
+				var idx = _ref2[0];
+				var box = _ref2[1];
 			}
-
-			// =====
 		} catch (err) {
 			_didIteratorError3 = true;
 			_iteratorError3 = err;
@@ -429,40 +392,58 @@ if (!Element.prototype.closest) {
 				}
 			}
 		}
+	};
 
-		var closeBtns = document.querySelectorAll('.list__specification-close');
+	var boxMore = function boxMore() {
+		function playPause(vid) {
+			vid.pause();
+			vid.currentTime = 0;
+			vid.load();
+		}
+
+		var _btns = document.querySelectorAll('.list__box-more');
 
 		var _iteratorNormalCompletion4 = true;
 		var _didIteratorError4 = false;
 		var _iteratorError4 = undefined;
 
 		try {
-			for (var _iterator4 = closeBtns[Symbol.iterator](), _step4; !(_iteratorNormalCompletion4 = (_step4 = _iterator4.next()).done); _iteratorNormalCompletion4 = true) {
-				var _btn2 = _step4.value;
+			for (var _iterator4 = _btns[Symbol.iterator](), _step4; !(_iteratorNormalCompletion4 = (_step4 = _iterator4.next()).done); _iteratorNormalCompletion4 = true) {
+				var btn = _step4.value;
 
-				_btn2.addEventListener('click', function (ev) {
+				btn.addEventListener('click', function (ev) {
 					var _el = ev.currentTarget,
-					    parent = _el.closest('.list__specification'),
-					    vid = parent.querySelector('video'),
-					    pauseToggle = parent.querySelector('[video-pause-js]');
+					    _boxParent = _el.closest('.list__box'),
+					    _boxID = _boxParent.getAttribute('data-id'),
+					    _parentNode = _el.closest('.list__box-wrapper');
 
-					_el.closest('.list__specification').style.display = 'none';
+					var _specificationBox = _parentNode.querySelector('.list__specification[data-id="' + _boxID + '"]');
 
-					if (parent.querySelector('[video-toggle-js]')) {
-						pauseToggle.classList.remove('is-active');
-						parent.querySelector('[video-toggle-js]').classList.remove('is-active');
-						playPause(vid);
-					}
+					var listBoxes = document.querySelectorAll('.list__box'),
+					    listSpecifications = document.querySelectorAll('.list__specification'),
+					    videoPlayers = document.querySelectorAll('.list__specification video'),
+					    pauseToggle = document.querySelectorAll('[video-pause-js]');
 
 					var _iteratorNormalCompletion6 = true;
 					var _didIteratorError6 = false;
 					var _iteratorError6 = undefined;
 
 					try {
-						for (var _iterator6 = document.querySelectorAll('.list__box-more')[Symbol.iterator](), _step6; !(_iteratorNormalCompletion6 = (_step6 = _iterator6.next()).done); _iteratorNormalCompletion6 = true) {
-							var _btn3 = _step6.value;
+						for (var _iterator6 = document.querySelectorAll('[video-toggle-js]').entries()[Symbol.iterator](), _step6; !(_iteratorNormalCompletion6 = (_step6 = _iterator6.next()).done); _iteratorNormalCompletion6 = true) {
+							var _ref3 = _step6.value;
 
-							_btn3.closest('.list__box').classList.remove('is-active');
+							var _ref4 = _slicedToArray(_ref3, 2);
+
+							var idx = _ref4[0];
+							var playBtn = _ref4[1];
+
+							playBtn.classList.remove('is-active');
+							pauseToggle[idx].classList.remove('is-active');
+							listBoxes[idx].classList.remove('is-active');
+
+							listSpecifications[idx].style.display = 'none';
+
+							playPause(videoPlayers[idx]);
 						}
 					} catch (err) {
 						_didIteratorError6 = true;
@@ -478,8 +459,15 @@ if (!Element.prototype.closest) {
 							}
 						}
 					}
+
+					_boxParent.classList.add('is-active');
+					_specificationBox.style.display = 'flex';
+
+					_parentNode.classList.add('is-open');
 				}, false);
 			}
+
+			// =====
 		} catch (err) {
 			_didIteratorError4 = true;
 			_iteratorError4 = err;
@@ -491,6 +479,71 @@ if (!Element.prototype.closest) {
 			} finally {
 				if (_didIteratorError4) {
 					throw _iteratorError4;
+				}
+			}
+		}
+
+		var closeBtns = document.querySelectorAll('.list__specification-close');
+
+		var _iteratorNormalCompletion5 = true;
+		var _didIteratorError5 = false;
+		var _iteratorError5 = undefined;
+
+		try {
+			for (var _iterator5 = closeBtns[Symbol.iterator](), _step5; !(_iteratorNormalCompletion5 = (_step5 = _iterator5.next()).done); _iteratorNormalCompletion5 = true) {
+				var _btn2 = _step5.value;
+
+				_btn2.addEventListener('click', function (ev) {
+					var _el = ev.currentTarget,
+					    parent = _el.closest('.list__specification'),
+					    vid = parent.querySelector('video'),
+					    pauseToggle = parent.querySelector('[video-pause-js]');
+
+					_el.closest('.list__specification').style.display = 'none';
+
+					if (parent.querySelector('[video-toggle-js]')) {
+						pauseToggle.classList.remove('is-active');
+						parent.querySelector('[video-toggle-js]').classList.remove('is-active');
+						playPause(vid);
+					}
+
+					var _iteratorNormalCompletion7 = true;
+					var _didIteratorError7 = false;
+					var _iteratorError7 = undefined;
+
+					try {
+						for (var _iterator7 = document.querySelectorAll('.list__box-more')[Symbol.iterator](), _step7; !(_iteratorNormalCompletion7 = (_step7 = _iterator7.next()).done); _iteratorNormalCompletion7 = true) {
+							var _btn3 = _step7.value;
+
+							_btn3.closest('.list__box').classList.remove('is-active');
+						}
+					} catch (err) {
+						_didIteratorError7 = true;
+						_iteratorError7 = err;
+					} finally {
+						try {
+							if (!_iteratorNormalCompletion7 && _iterator7.return) {
+								_iterator7.return();
+							}
+						} finally {
+							if (_didIteratorError7) {
+								throw _iteratorError7;
+							}
+						}
+					}
+				}, false);
+			}
+		} catch (err) {
+			_didIteratorError5 = true;
+			_iteratorError5 = err;
+		} finally {
+			try {
+				if (!_iteratorNormalCompletion5 && _iterator5.return) {
+					_iterator5.return();
+				}
+			} finally {
+				if (_didIteratorError5) {
+					throw _iteratorError5;
 				}
 			}
 		}
@@ -508,13 +561,13 @@ if (!Element.prototype.closest) {
 		var videoPlayBtns = document.querySelectorAll('[video-toggle-js]'),
 		    videoPauseBtns = document.querySelectorAll('[video-pause-js]');
 
-		var _iteratorNormalCompletion7 = true;
-		var _didIteratorError7 = false;
-		var _iteratorError7 = undefined;
+		var _iteratorNormalCompletion8 = true;
+		var _didIteratorError8 = false;
+		var _iteratorError8 = undefined;
 
 		try {
-			for (var _iterator7 = videoPlayBtns[Symbol.iterator](), _step7; !(_iteratorNormalCompletion7 = (_step7 = _iterator7.next()).done); _iteratorNormalCompletion7 = true) {
-				var btn = _step7.value;
+			for (var _iterator8 = videoPlayBtns[Symbol.iterator](), _step8; !(_iteratorNormalCompletion8 = (_step8 = _iterator8.next()).done); _iteratorNormalCompletion8 = true) {
+				var btn = _step8.value;
 
 				btn.addEventListener('click', function (ev) {
 					var el = ev.currentTarget,
@@ -524,41 +577,6 @@ if (!Element.prototype.closest) {
 
 					el.classList.add('is-active');
 					pauseToggle.classList.add('is-active');
-
-					playPause(vid);
-				}, false);
-			}
-		} catch (err) {
-			_didIteratorError7 = true;
-			_iteratorError7 = err;
-		} finally {
-			try {
-				if (!_iteratorNormalCompletion7 && _iterator7.return) {
-					_iterator7.return();
-				}
-			} finally {
-				if (_didIteratorError7) {
-					throw _iteratorError7;
-				}
-			}
-		}
-
-		var _iteratorNormalCompletion8 = true;
-		var _didIteratorError8 = false;
-		var _iteratorError8 = undefined;
-
-		try {
-			for (var _iterator8 = videoPauseBtns[Symbol.iterator](), _step8; !(_iteratorNormalCompletion8 = (_step8 = _iterator8.next()).done); _iteratorNormalCompletion8 = true) {
-				var _btn4 = _step8.value;
-
-				_btn4.addEventListener('click', function (ev) {
-					var el = ev.currentTarget,
-					    parentVideoNode = el.closest('[video-parent-js]'),
-					    vid = parentVideoNode.querySelector('[video-js]'),
-					    playToggle = parentVideoNode.querySelector('[video-toggle-js]');
-
-					el.classList.remove('is-active');
-					playToggle.classList.remove('is-active');
 
 					playPause(vid);
 				}, false);
@@ -577,34 +595,25 @@ if (!Element.prototype.closest) {
 				}
 			}
 		}
-	};
-
-	var detailsToggleAction = function detailsToggleAction() {
-		var favoritesBtns = document.querySelectorAll('[favorites-toggle-js]'),
-		    specFavoritesBtns = document.querySelectorAll('[spec-favorites-js]'),
-		    likeBtns = document.querySelectorAll('[like-toggle-js]'),
-		    specLikeBtns = document.querySelectorAll('[spec-like-js]'),
-		    dislikeBtns = document.querySelectorAll('[dislike-toggle-js]'),
-		    specDislikeBtns = document.querySelectorAll('[spec-dislike-js]');
 
 		var _iteratorNormalCompletion9 = true;
 		var _didIteratorError9 = false;
 		var _iteratorError9 = undefined;
 
 		try {
-			for (var _iterator9 = favoritesBtns[Symbol.iterator](), _step9; !(_iteratorNormalCompletion9 = (_step9 = _iterator9.next()).done); _iteratorNormalCompletion9 = true) {
-				var btn = _step9.value;
+			for (var _iterator9 = videoPauseBtns[Symbol.iterator](), _step9; !(_iteratorNormalCompletion9 = (_step9 = _iterator9.next()).done); _iteratorNormalCompletion9 = true) {
+				var _btn4 = _step9.value;
 
-				btn.addEventListener('click', function (ev) {
+				_btn4.addEventListener('click', function (ev) {
 					var el = ev.currentTarget,
-					    elID = el.getAttribute('data-id'),
-					    elParent = el.closest('.list__box-wrapper');
+					    parentVideoNode = el.closest('[video-parent-js]'),
+					    vid = parentVideoNode.querySelector('[video-js]'),
+					    playToggle = parentVideoNode.querySelector('[video-toggle-js]');
 
-					var specificationBlock = elParent.querySelector('.list__specification[data-id="' + elID + '"]'),
-					    specificationFavoritesBtn = specificationBlock.querySelector('[data-favorites="' + elID + '"]');
+					el.classList.remove('is-active');
+					playToggle.classList.remove('is-active');
 
-					ev.currentTarget.classList.toggle('is-active');
-					specificationFavoritesBtn.classList.toggle('is-active');
+					playPause(vid);
 				}, false);
 			}
 		} catch (err) {
@@ -621,25 +630,34 @@ if (!Element.prototype.closest) {
 				}
 			}
 		}
+	};
+
+	var detailsToggleAction = function detailsToggleAction() {
+		var favoritesBtns = document.querySelectorAll('[favorites-toggle-js]'),
+		    specFavoritesBtns = document.querySelectorAll('[spec-favorites-js]'),
+		    likeBtns = document.querySelectorAll('[like-toggle-js]'),
+		    specLikeBtns = document.querySelectorAll('[spec-like-js]'),
+		    dislikeBtns = document.querySelectorAll('[dislike-toggle-js]'),
+		    specDislikeBtns = document.querySelectorAll('[spec-dislike-js]');
 
 		var _iteratorNormalCompletion10 = true;
 		var _didIteratorError10 = false;
 		var _iteratorError10 = undefined;
 
 		try {
-			for (var _iterator10 = specFavoritesBtns[Symbol.iterator](), _step10; !(_iteratorNormalCompletion10 = (_step10 = _iterator10.next()).done); _iteratorNormalCompletion10 = true) {
-				var _btn5 = _step10.value;
+			for (var _iterator10 = favoritesBtns[Symbol.iterator](), _step10; !(_iteratorNormalCompletion10 = (_step10 = _iterator10.next()).done); _iteratorNormalCompletion10 = true) {
+				var btn = _step10.value;
 
-				_btn5.addEventListener('click', function (ev) {
+				btn.addEventListener('click', function (ev) {
 					var el = ev.currentTarget,
-					    elID = el.getAttribute('data-favorites'),
+					    elID = el.getAttribute('data-id'),
 					    elParent = el.closest('.list__box-wrapper');
 
-					var listBlock = elParent.querySelector('.list__box[data-id="' + elID + '"]'),
-					    listFavoritesBtn = listBlock.querySelector('.list__box-favorites[data-id="' + elID + '"]');
+					var specificationBlock = elParent.querySelector('.list__specification[data-id="' + elID + '"]'),
+					    specificationFavoritesBtn = specificationBlock.querySelector('[data-favorites="' + elID + '"]');
 
 					ev.currentTarget.classList.toggle('is-active');
-					listFavoritesBtn.classList.toggle('is-active');
+					specificationFavoritesBtn.classList.toggle('is-active');
 				}, false);
 			}
 		} catch (err) {
@@ -662,19 +680,19 @@ if (!Element.prototype.closest) {
 		var _iteratorError11 = undefined;
 
 		try {
-			for (var _iterator11 = likeBtns[Symbol.iterator](), _step11; !(_iteratorNormalCompletion11 = (_step11 = _iterator11.next()).done); _iteratorNormalCompletion11 = true) {
-				var _btn6 = _step11.value;
+			for (var _iterator11 = specFavoritesBtns[Symbol.iterator](), _step11; !(_iteratorNormalCompletion11 = (_step11 = _iterator11.next()).done); _iteratorNormalCompletion11 = true) {
+				var _btn5 = _step11.value;
 
-				_btn6.addEventListener('click', function (ev) {
+				_btn5.addEventListener('click', function (ev) {
 					var el = ev.currentTarget,
-					    elID = el.getAttribute('data-id'),
+					    elID = el.getAttribute('data-favorites'),
 					    elParent = el.closest('.list__box-wrapper');
 
-					var specificationBlock = elParent.querySelector('.list__specification[data-id="' + elID + '"]'),
-					    specificationFavoritesBtn = specificationBlock.querySelector('[data-like="' + elID + '"]');
+					var listBlock = elParent.querySelector('.list__box[data-id="' + elID + '"]'),
+					    listFavoritesBtn = listBlock.querySelector('.list__box-favorites[data-id="' + elID + '"]');
 
 					ev.currentTarget.classList.toggle('is-active');
-					specificationFavoritesBtn.classList.toggle('is-active');
+					listFavoritesBtn.classList.toggle('is-active');
 				}, false);
 			}
 		} catch (err) {
@@ -697,19 +715,19 @@ if (!Element.prototype.closest) {
 		var _iteratorError12 = undefined;
 
 		try {
-			for (var _iterator12 = specLikeBtns[Symbol.iterator](), _step12; !(_iteratorNormalCompletion12 = (_step12 = _iterator12.next()).done); _iteratorNormalCompletion12 = true) {
-				var _btn7 = _step12.value;
+			for (var _iterator12 = likeBtns[Symbol.iterator](), _step12; !(_iteratorNormalCompletion12 = (_step12 = _iterator12.next()).done); _iteratorNormalCompletion12 = true) {
+				var _btn6 = _step12.value;
 
-				_btn7.addEventListener('click', function (ev) {
+				_btn6.addEventListener('click', function (ev) {
 					var el = ev.currentTarget,
-					    elID = el.getAttribute('data-like'),
+					    elID = el.getAttribute('data-id'),
 					    elParent = el.closest('.list__box-wrapper');
 
-					var listBlock = elParent.querySelector('.list__box[data-id="' + elID + '"]'),
-					    listFavoritesBtn = listBlock.querySelector('.list__box-like[data-id="' + elID + '"]');
+					var specificationBlock = elParent.querySelector('.list__specification[data-id="' + elID + '"]'),
+					    specificationFavoritesBtn = specificationBlock.querySelector('[data-like="' + elID + '"]');
 
 					ev.currentTarget.classList.toggle('is-active');
-					listFavoritesBtn.classList.toggle('is-active');
+					specificationFavoritesBtn.classList.toggle('is-active');
 				}, false);
 			}
 		} catch (err) {
@@ -732,19 +750,19 @@ if (!Element.prototype.closest) {
 		var _iteratorError13 = undefined;
 
 		try {
-			for (var _iterator13 = dislikeBtns[Symbol.iterator](), _step13; !(_iteratorNormalCompletion13 = (_step13 = _iterator13.next()).done); _iteratorNormalCompletion13 = true) {
-				var _btn8 = _step13.value;
+			for (var _iterator13 = specLikeBtns[Symbol.iterator](), _step13; !(_iteratorNormalCompletion13 = (_step13 = _iterator13.next()).done); _iteratorNormalCompletion13 = true) {
+				var _btn7 = _step13.value;
 
-				_btn8.addEventListener('click', function (ev) {
+				_btn7.addEventListener('click', function (ev) {
 					var el = ev.currentTarget,
-					    elID = el.getAttribute('data-id'),
+					    elID = el.getAttribute('data-like'),
 					    elParent = el.closest('.list__box-wrapper');
 
-					var specificationBlock = elParent.querySelector('.list__specification[data-id="' + elID + '"]'),
-					    specificationFavoritesBtn = specificationBlock.querySelector('[data-dislike="' + elID + '"]');
+					var listBlock = elParent.querySelector('.list__box[data-id="' + elID + '"]'),
+					    listFavoritesBtn = listBlock.querySelector('.list__box-like[data-id="' + elID + '"]');
 
 					ev.currentTarget.classList.toggle('is-active');
-					specificationFavoritesBtn.classList.toggle('is-active');
+					listFavoritesBtn.classList.toggle('is-active');
 				}, false);
 			}
 		} catch (err) {
@@ -767,19 +785,19 @@ if (!Element.prototype.closest) {
 		var _iteratorError14 = undefined;
 
 		try {
-			for (var _iterator14 = specDislikeBtns[Symbol.iterator](), _step14; !(_iteratorNormalCompletion14 = (_step14 = _iterator14.next()).done); _iteratorNormalCompletion14 = true) {
-				var _btn9 = _step14.value;
+			for (var _iterator14 = dislikeBtns[Symbol.iterator](), _step14; !(_iteratorNormalCompletion14 = (_step14 = _iterator14.next()).done); _iteratorNormalCompletion14 = true) {
+				var _btn8 = _step14.value;
 
-				_btn9.addEventListener('click', function (ev) {
+				_btn8.addEventListener('click', function (ev) {
 					var el = ev.currentTarget,
-					    elID = el.getAttribute('data-dislike'),
+					    elID = el.getAttribute('data-id'),
 					    elParent = el.closest('.list__box-wrapper');
 
-					var listBlock = elParent.querySelector('.list__box[data-id="' + elID + '"]'),
-					    listFavoritesBtn = listBlock.querySelector('.list__box-dislike[data-id="' + elID + '"]');
+					var specificationBlock = elParent.querySelector('.list__specification[data-id="' + elID + '"]'),
+					    specificationFavoritesBtn = specificationBlock.querySelector('[data-dislike="' + elID + '"]');
 
 					ev.currentTarget.classList.toggle('is-active');
-					listFavoritesBtn.classList.toggle('is-active');
+					specificationFavoritesBtn.classList.toggle('is-active');
 				}, false);
 			}
 		} catch (err) {
@@ -796,18 +814,53 @@ if (!Element.prototype.closest) {
 				}
 			}
 		}
-	};
-
-	var listIndicator = function listIndicator() {
-		var listBoxes = document.querySelectorAll('[list-box-js]');
 
 		var _iteratorNormalCompletion15 = true;
 		var _didIteratorError15 = false;
 		var _iteratorError15 = undefined;
 
 		try {
-			for (var _iterator15 = listBoxes[Symbol.iterator](), _step15; !(_iteratorNormalCompletion15 = (_step15 = _iterator15.next()).done); _iteratorNormalCompletion15 = true) {
-				var box = _step15.value;
+			for (var _iterator15 = specDislikeBtns[Symbol.iterator](), _step15; !(_iteratorNormalCompletion15 = (_step15 = _iterator15.next()).done); _iteratorNormalCompletion15 = true) {
+				var _btn9 = _step15.value;
+
+				_btn9.addEventListener('click', function (ev) {
+					var el = ev.currentTarget,
+					    elID = el.getAttribute('data-dislike'),
+					    elParent = el.closest('.list__box-wrapper');
+
+					var listBlock = elParent.querySelector('.list__box[data-id="' + elID + '"]'),
+					    listFavoritesBtn = listBlock.querySelector('.list__box-dislike[data-id="' + elID + '"]');
+
+					ev.currentTarget.classList.toggle('is-active');
+					listFavoritesBtn.classList.toggle('is-active');
+				}, false);
+			}
+		} catch (err) {
+			_didIteratorError15 = true;
+			_iteratorError15 = err;
+		} finally {
+			try {
+				if (!_iteratorNormalCompletion15 && _iterator15.return) {
+					_iterator15.return();
+				}
+			} finally {
+				if (_didIteratorError15) {
+					throw _iteratorError15;
+				}
+			}
+		}
+	};
+
+	var listIndicator = function listIndicator() {
+		var listBoxes = document.querySelectorAll('[list-box-js]');
+
+		var _iteratorNormalCompletion16 = true;
+		var _didIteratorError16 = false;
+		var _iteratorError16 = undefined;
+
+		try {
+			for (var _iterator16 = listBoxes[Symbol.iterator](), _step16; !(_iteratorNormalCompletion16 = (_step16 = _iterator16.next()).done); _iteratorNormalCompletion16 = true) {
+				var box = _step16.value;
 
 
 				box.addEventListener('mouseenter', function (ev) {
@@ -833,16 +886,16 @@ if (!Element.prototype.closest) {
 				box.addEventListener('mouseleave', function (ev) {});
 			}
 		} catch (err) {
-			_didIteratorError15 = true;
-			_iteratorError15 = err;
+			_didIteratorError16 = true;
+			_iteratorError16 = err;
 		} finally {
 			try {
-				if (!_iteratorNormalCompletion15 && _iterator15.return) {
-					_iterator15.return();
+				if (!_iteratorNormalCompletion16 && _iterator16.return) {
+					_iterator16.return();
 				}
 			} finally {
-				if (_didIteratorError15) {
-					throw _iteratorError15;
+				if (_didIteratorError16) {
+					throw _iteratorError16;
 				}
 			}
 		}
@@ -871,6 +924,7 @@ if (!Element.prototype.closest) {
 		viewFavoritesToggle();
 		sortCB();
 		search();
+		boxHover();
 		boxMore();
 		videoToggle();
 		listIndicator();

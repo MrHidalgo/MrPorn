@@ -237,6 +237,26 @@
 				max-width: calc(100% / 6);
 				padding-left: 5px;
 				padding-right: 5px;
+				@include adaptive(1535) {
+					max-width: calc(100% / 5);
+				}
+				@include adaptive(1365) {
+					max-width: calc(100% / 4);
+				}
+
+				&:nth-last-child(1),
+				&:nth-last-child(2) {
+					@include adaptive(1535) {
+						display: none;
+					}
+				}
+
+				&:nth-last-child(3),
+				&:nth-last-child(4) {
+					@include adaptive(1365) {
+						display: none;
+					}
+				}
 			}
 		}
 
