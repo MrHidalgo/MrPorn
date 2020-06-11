@@ -26,9 +26,14 @@ mixin listSliderBox(idVal, bgVal, logoVal)
 					i.icon-font.icon-like
 				button.list__box-dislike(type='button' data-id!= idVal dislike-toggle-js)
 					i.icon-font.icon-like
-				button.list__box-favorites(type='button' data-id!= idVal favorites-toggle-js)
-					i.icon-font.icon-star-fill
-					i.icon-font.icon-star
+				.c-popper
+					button.list__box-favorites(type='button' data-id!= idVal favorites-toggle-js)
+						i.icon-font.icon-star-fill
+						i.icon-font.icon-star
+
+					.c-poppertext
+						u Add To Favourites
+						u Remove From Favourites
 
 		button.list__box-more(type='button')
 			i.icon-font.icon-arrow-angle

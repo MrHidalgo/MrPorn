@@ -1,0 +1,46 @@
+.c-popper {
+	position: relative;
+
+	&:hover {
+		.c-poppertext {
+			opacity: 1;
+			visibility: visible;
+			@include transition(opacity, visibility);
+		}
+	}
+
+	.c-poppertext {
+		opacity: 0;
+		visibility: hidden;
+		display: block;
+		z-index: 100;
+		position: absolute;
+		top: 100%;
+		left: 50%;
+		transform: translateX(-50%);
+		min-width: 80px;
+		max-width: 220px;
+		padding-top: 10px;
+		@include transition(opacity, visibility);
+
+		> u {
+			white-space: nowrap;
+			display: block;
+			width: 100%;
+			min-height: 29px;
+			padding: 5px 10px;
+			border: 1px solid #fff;
+			border-radius: 3px;
+			background-color: #fff;
+			box-shadow: 0px 8px 19px 0px rgba(0, 0, 0, 0.14);
+			text-decoration: none;
+			color: #000;
+			text-align: center;
+			font-size: 13px;
+
+			&:not(:first-of-type) {
+				display: none;
+			}
+		}
+	}
+}

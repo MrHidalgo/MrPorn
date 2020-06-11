@@ -141,6 +141,7 @@
 		@include transition(width, height);
 
 		.is-hover & {
+			z-index: 100;
 			width: 350px;
 			height: 260px;
 			@include transition(width, height);
@@ -257,7 +258,7 @@
 		&-body {
 			z-index: 100;
 			position: relative;
-			padding-bottom: 20px;
+			padding-bottom: 30px;
 			@include transition(padding-bottom);
 		}
 
@@ -298,7 +299,6 @@
 			z-index: 11;
 			opacity: 0;
 			visibility: hidden;
-			overflow: hidden;
 			position: absolute;
 			top: 3px;
 			left: 3px;
@@ -390,6 +390,17 @@
 						animation-duration: 1.5s;
 						animation-timing-function: ease-in-out;
 						animation-name: spinAction;
+
+						& + .c-poppertext {
+							> u {
+								&:nth-of-type(1) {
+									display: none;
+								}
+								&:nth-of-type(2) {
+									display: block;
+								}
+							}
+						}
 
 						&:hover {
 							border-color: #c5f015;

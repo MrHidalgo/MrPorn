@@ -942,8 +942,34 @@ if (!Element.prototype.closest) {
 
 
 				bodyBlock.addEventListener('mouseleave', function (ev) {
-					clearTimeout(tOut);
 					hoverBool = false;
+
+					clearTimeout(tOut);
+
+					var _iteratorNormalCompletion18 = true;
+					var _didIteratorError18 = false;
+					var _iteratorError18 = undefined;
+
+					try {
+						for (var _iterator18 = swiperSlides[Symbol.iterator](), _step18; !(_iteratorNormalCompletion18 = (_step18 = _iterator18.next()).done); _iteratorNormalCompletion18 = true) {
+							var slide = _step18.value;
+
+							slide.classList.remove('is-hover');
+						}
+					} catch (err) {
+						_didIteratorError18 = true;
+						_iteratorError18 = err;
+					} finally {
+						try {
+							if (!_iteratorNormalCompletion18 && _iterator18.return) {
+								_iterator18.return();
+							}
+						} finally {
+							if (_didIteratorError18) {
+								throw _iteratorError18;
+							}
+						}
+					}
 				}, false);
 			}
 		} catch (err) {

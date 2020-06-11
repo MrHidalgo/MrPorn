@@ -514,8 +514,13 @@ if (!Element.prototype.closest) {
 		for(let bodyBlock of listBoxBody) {
 
 			bodyBlock.addEventListener('mouseleave', function(ev) {
-				clearTimeout(tOut);
 				hoverBool = false;
+
+				clearTimeout(tOut);
+
+				for(let slide of swiperSlides) {
+					slide.classList.remove('is-hover');
+				}
 			}, false);
 
 		}
