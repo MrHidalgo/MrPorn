@@ -3236,11 +3236,11 @@ picture {
   -webkit-transform-origin: center;
       -ms-transform-origin: center;
           transform-origin: center;
-  -webkit-transition: -webkit-transform 0.35s ease-in-out;
-  transition: -webkit-transform 0.35s ease-in-out;
-  -o-transition: transform 0.35s ease-in-out;
-  transition: transform 0.35s ease-in-out;
-  transition: transform 0.35s ease-in-out, -webkit-transform 0.35s ease-in-out;
+  -webkit-transition: width 0.35s ease-in-out, -webkit-transform 0.35s ease-in-out;
+  transition: width 0.35s ease-in-out, -webkit-transform 0.35s ease-in-out;
+  -o-transition: width 0.35s ease-in-out, transform 0.35s ease-in-out;
+  transition: width 0.35s ease-in-out, transform 0.35s ease-in-out;
+  transition: width 0.35s ease-in-out, transform 0.35s ease-in-out, -webkit-transform 0.35s ease-in-out;
 }
 
 /* line 257, src/scss/_components/homepage/_list.scss */

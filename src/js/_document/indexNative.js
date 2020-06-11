@@ -2,7 +2,6 @@ if (!Element.prototype.matches) {
 	Element.prototype.matches = Element.prototype.msMatchesSelector ||
 		Element.prototype.webkitMatchesSelector;
 }
-
 if (!Element.prototype.closest) {
 	Element.prototype.closest = function(s) {
 		var el = this;
@@ -48,7 +47,6 @@ if (!Element.prototype.closest) {
 			target.style.removeProperty('transition-property');
 		}, duration);
 	};
-
 	const slideDown = (target, duration=500) => {
 		target.style.removeProperty('display');
 		let display = window.getComputedStyle(target).display;
@@ -80,7 +78,6 @@ if (!Element.prototype.closest) {
 			target.style.removeProperty('transition-property');
 		}, duration);
 	};
-
 	const slideToggle = (target, duration = 500) => {
 		if (window.getComputedStyle(target).display === 'none') {
 			return slideDown(target, duration);
@@ -88,6 +85,7 @@ if (!Element.prototype.closest) {
 			return slideUp(target, duration);
 		}
 	};
+
 
 	const bodyClick = () => {
 		const className = '.header__view-wrapper, .sort';
@@ -197,44 +195,6 @@ if (!Element.prototype.closest) {
 				dropNode.classList.remove('is-open');
 			}
 		}, false);
-	};
-
-
-	const boxHover = () => {
-		const swiperSlides = document.querySelectorAll('.swiper-slide'),
-			listBoxBody = document.querySelectorAll('.list__box-body');
-
-		let tOut = null,
-			hoverBool = false;
-
-		for(let swiperSlide of swiperSlides) {
-			swiperSlide.addEventListener('mouseenter', function(ev) {
-				const el = ev.currentTarget;
-
-				if(hoverBool) {
-					el.classList.add('is-hover');
-				} else {
-					tOut = setTimeout(function() {
-						hoverBool = true;
-						el.classList.add('is-hover');
-					}, 600);
-				}
-			}, false);
-			swiperSlide.addEventListener('mouseleave', function(ev) {
-				const el = ev.currentTarget;
-
-				clearTimeout(tOut);
-				el.classList.remove('is-hover');
-			}, false);
-		}
-
-		for(let bodyBlock of listBoxBody) {
-			bodyBlock.addEventListener('mouseleave', function(ev) {
-				clearTimeout(tOut);
-				hoverBool = false;
-			}, false);
-		}
-
 	};
 
 
@@ -454,48 +414,112 @@ if (!Element.prototype.closest) {
 
 				const parent = el.closest('[list-parent-js]'),
 					listIndicator = parent.querySelector('[list-line-js]'),
-					listIndicatorWidth = listIndicator.clientWidth;
+					listIndicatorWidth = 64;
 
 				const _elRect = el.getBoundingClientRect();
 
 				const _listContainer = document.querySelector('#list .list__box-wrapper'),
 					_listContainerDimm = _listContainer.getBoundingClientRect();
 
-				// console.log(elID);
-				// console.log(_elRect.x - _listContainerDimm.x);
-
 				let _sum = 0;
 
 				for(let idx = 1; idx < elID; idx++) {
-					// console.log(idx);
-					// console.log(_elRect.width * idx);
-					// console.log(_elRect.x - _listContainerDimm.x);
-
 					if((_elRect.width * idx) < (_elRect.x - _listContainerDimm.x)) {
-						// console.log('if');
 						_sum++;
-						// console.log(_sum);
 					} else {
-						// console.log('else');
 						break;
 					}
 				}
 
-				// console.log(`_sum: `, _sum);
-
 				let _indicatorOffset = (elWidth - listIndicatorWidth) / 2,
-					_lineOffset = ((_elRect.width * _sum) + ((_sum * 6) - 3)) + _indicatorOffset
-					// _lineOffset = _elRect.x - _listContainerDimm.x
-				;
+					_lineOffset = ((_elRect.width * _sum) + ((_sum * 6) - 3)) + _indicatorOffset;
 
-				// listIndicator.setAttribute(
-				// 	'style',
-				// 	'transform: translateX(' + _lineOffset + 'px)'
-				// );
+				listIndicator.setAttribute(
+					'style',
+					'transform: translateX(' + _lineOffset + 'px)'
+				);
 			});
-
-			box.addEventListener('mouseleave', function(ev) {});
 		}
+	};
+
+
+	const boxHover = () => {
+		const swiperSlides = document.querySelectorAll('.swiper-slide'),
+			listBoxBody = document.querySelectorAll('.list__box-body');
+
+		let tOut = null,
+			hoverBool = false;
+
+		for(let swiperSlide of swiperSlides) {
+
+			swiperSlide.addEventListener('mouseenter', function(ev) {
+				const el = ev.currentTarget,
+					elParent = el.closest('[list-parent-js]'),
+					lineInd = elParent.querySelector('[list-line-js]');
+
+				setTimeout(function() {
+					let transformVal = '';
+
+					if(lineInd.getAttribute("style")) {
+						let val = lineInd.getAttribute("style");
+
+
+						if(val.indexOf(';') === -1) {
+							transformVal = val;
+						} else {
+							transformVal = val.substring(0, val.indexOf(';'));
+						}
+					}
+
+					if(hoverBool) {
+						el.classList.add('is-hover');
+						lineInd.setAttribute('style', transformVal + ';width: 189px');
+					} else {
+						tOut = setTimeout(function() {
+							hoverBool = true;
+							el.classList.add('is-hover');
+
+							lineInd.setAttribute('style', transformVal + ';width: 189px');
+						}, 750);
+					}
+				}, 150);
+			}, false);
+
+			swiperSlide.addEventListener('mouseleave', function(ev) {
+				const el = ev.currentTarget,
+					elParent = el.closest('[list-parent-js]'),
+					lineInd = elParent.querySelector('[list-line-js]');
+
+				let transformVal = '';
+
+				if(lineInd.getAttribute("style")) {
+					let val = lineInd.getAttribute("style");
+
+
+					if(val.indexOf(';') === -1) {
+						transformVal = val;
+					} else {
+						transformVal = val.substring(0, val.indexOf(';'));
+					}
+				}
+
+				clearTimeout(tOut);
+				el.classList.remove('is-hover');
+
+				lineInd.setAttribute('style', transformVal + ';width: 64px');
+			}, false);
+
+		}
+
+		for(let bodyBlock of listBoxBody) {
+
+			bodyBlock.addEventListener('mouseleave', function(ev) {
+				clearTimeout(tOut);
+				hoverBool = false;
+			}, false);
+
+		}
+
 	};
 
 	/*
