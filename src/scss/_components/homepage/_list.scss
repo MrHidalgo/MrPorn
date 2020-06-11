@@ -140,37 +140,33 @@
 		transform-origin: center;
 		@include transition(width, height);
 
-		&:hover {
+		.is-hover & {
 			width: 350px;
 			height: 260px;
 			@include transition(width, height);
-			transition-delay: 0.45s;
 
 			.list__box {
 				&-overlay {
 					background-color: rgba(#000, 0.65);
 					@include transition(background-color);
-					transition-delay: 0.45s;
 				}
 
 				&-border {
 					background-color: rgba(#080915, 0);
 					@include transition(background-color);
-					transition-delay: 0.45s;
 				}
 
 				&-details {
 					opacity: 1;
 					visibility: visible;
 					@include transition(opacity 0.55s, visibility 0.55s);
-					transition-delay: 0.55s;
+					transition-delay: 0.25s;
 				}
 
 				&-more {
 					opacity: 1;
 					visibility: visible;
 					@include transition(opacity, visibility);
-					transition-delay: 0.45s;
 
 					.icon-font {
 						animation-fill-mode: both;
@@ -261,7 +257,7 @@
 		&-body {
 			z-index: 100;
 			position: relative;
-			padding-bottom: 40px;
+			padding-bottom: 20px;
 			@include transition(padding-bottom);
 		}
 
@@ -889,10 +885,10 @@
 				margin-right: 0;
 			}
 
-			&:hover {
+			&.is-hover {
 				width: 350px !important;
 				@include transition(width);
-				transition-delay: 0.45s;
+				//transition-delay: 0.5s;
 			}
 		}
 	}

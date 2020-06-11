@@ -201,37 +201,40 @@ if (!Element.prototype.closest) {
 
 
 	const boxHover = () => {
-		const swiperSlide = document.querySelectorAll('.swiper-slide'),
-			boxDetails = document.querySelectorAll('.list__box');
+		const swiperSlides = document.querySelectorAll('.swiper-slide'),
+			listBoxBody = document.querySelectorAll('.list__box-body');
 
-		for(let [idx, box] of boxDetails.entries()) {
-			// box.addEventListener('mouseenter', function(ev) {
-			// 	const el = ev.currentTarget;
-			//
-			// 	setTimeout(function() {
-			// 		el.classList.add('is-hover');
-			// 	}, 450);
-			// }, false);
-			// box.addEventListener('mouseleave', function(ev) {
-			// 	const el = ev.currentTarget;
-			//
-			// 	el.classList.remove('is-hover');
-			// }, false);
+		let tOut = null,
+			hoverBool = false;
 
-			// swiperSlide[idx].addEventListener('mouseenter', function(ev) {
-			// 	const el = ev.currentTarget;
-			//
-			// 	setTimeout(function() {
-			// 		el.classList.add('is-hover');
-			// 	}, 500);
-			// }, false);
-			//
-			// swiperSlide[idx].addEventListener('mouseleave', function(ev) {
-			// 	const el = ev.currentTarget;
-			//
-			// 	el.classList.remove('is-hover');
-			// }, false);
+		for(let swiperSlide of swiperSlides) {
+			swiperSlide.addEventListener('mouseenter', function(ev) {
+				const el = ev.currentTarget;
+
+				if(hoverBool) {
+					el.classList.add('is-hover');
+				} else {
+					tOut = setTimeout(function() {
+						hoverBool = true;
+						el.classList.add('is-hover');
+					}, 600);
+				}
+			}, false);
+			swiperSlide.addEventListener('mouseleave', function(ev) {
+				const el = ev.currentTarget;
+
+				clearTimeout(tOut);
+				el.classList.remove('is-hover');
+			}, false);
 		}
+
+		for(let bodyBlock of listBoxBody) {
+			bodyBlock.addEventListener('mouseleave', function(ev) {
+				clearTimeout(tOut);
+				hoverBool = false;
+			}, false);
+		}
+
 	};
 
 
@@ -445,19 +448,46 @@ if (!Element.prototype.closest) {
 		for(let box of listBoxes) {
 
 			box.addEventListener('mouseenter', function(ev) {
-				// const el = ev.currentTarget,
-				// 	elID = el.getAttribute('data-id'),
-				// 	elWidth = el.clientWidth;
-				//
-				// const parent = el.closest('[list-parent-js]'),
-				// 	listIndicator = parent.querySelector('[list-line-js]'),
-				// 	listIndicatorWidth = listIndicator.clientWidth;
-				//
-				// const _elRect = el.getBoundingClientRect();
-				//
-				// let _indicatorOffset = (elWidth - listIndicatorWidth) / 2,
-				// 	_lineOffset = ((_elRect.width * (elID - 1)) + ((elID * 6) - 3)) + _indicatorOffset;
-				//
+				const el = ev.currentTarget,
+					elID = el.getAttribute('data-id'),
+					elWidth = el.clientWidth;
+
+				const parent = el.closest('[list-parent-js]'),
+					listIndicator = parent.querySelector('[list-line-js]'),
+					listIndicatorWidth = listIndicator.clientWidth;
+
+				const _elRect = el.getBoundingClientRect();
+
+				const _listContainer = document.querySelector('#list .list__box-wrapper'),
+					_listContainerDimm = _listContainer.getBoundingClientRect();
+
+				// console.log(elID);
+				// console.log(_elRect.x - _listContainerDimm.x);
+
+				let _sum = 0;
+
+				for(let idx = 1; idx < elID; idx++) {
+					// console.log(idx);
+					// console.log(_elRect.width * idx);
+					// console.log(_elRect.x - _listContainerDimm.x);
+
+					if((_elRect.width * idx) < (_elRect.x - _listContainerDimm.x)) {
+						// console.log('if');
+						_sum++;
+						// console.log(_sum);
+					} else {
+						// console.log('else');
+						break;
+					}
+				}
+
+				// console.log(`_sum: `, _sum);
+
+				let _indicatorOffset = (elWidth - listIndicatorWidth) / 2,
+					_lineOffset = ((_elRect.width * _sum) + ((_sum * 6) - 3)) + _indicatorOffset
+					// _lineOffset = _elRect.x - _listContainerDimm.x
+				;
+
 				// listIndicator.setAttribute(
 				// 	'style',
 				// 	'transform: translateX(' + _lineOffset + 'px)'

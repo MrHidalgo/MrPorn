@@ -3061,65 +3061,53 @@ picture {
 }
 
 /* line 143, src/scss/_components/homepage/_list.scss */
-.list__box:hover {
+.is-hover .list__box {
   width: 350px;
   height: 260px;
   -webkit-transition: width 0.35s ease-in-out, height 0.35s ease-in-out;
   -o-transition: width 0.35s ease-in-out, height 0.35s ease-in-out;
   transition: width 0.35s ease-in-out, height 0.35s ease-in-out;
-  -webkit-transition-delay: 0.45s;
-       -o-transition-delay: 0.45s;
-          transition-delay: 0.45s;
 }
 
-/* line 150, src/scss/_components/homepage/_list.scss */
-.list__box:hover .list__box-overlay {
+/* line 149, src/scss/_components/homepage/_list.scss */
+.is-hover .list__box .list__box-overlay {
   background-color: rgba(0, 0, 0, 0.65);
   -webkit-transition: background-color 0.35s ease-in-out;
   -o-transition: background-color 0.35s ease-in-out;
   transition: background-color 0.35s ease-in-out;
-  -webkit-transition-delay: 0.45s;
-       -o-transition-delay: 0.45s;
-          transition-delay: 0.45s;
 }
 
-/* line 156, src/scss/_components/homepage/_list.scss */
-.list__box:hover .list__box-border {
+/* line 154, src/scss/_components/homepage/_list.scss */
+.is-hover .list__box .list__box-border {
   background-color: rgba(8, 9, 21, 0);
   -webkit-transition: background-color 0.35s ease-in-out;
   -o-transition: background-color 0.35s ease-in-out;
   transition: background-color 0.35s ease-in-out;
-  -webkit-transition-delay: 0.45s;
-       -o-transition-delay: 0.45s;
-          transition-delay: 0.45s;
 }
 
-/* line 162, src/scss/_components/homepage/_list.scss */
-.list__box:hover .list__box-details {
+/* line 159, src/scss/_components/homepage/_list.scss */
+.is-hover .list__box .list__box-details {
   opacity: 1;
   visibility: visible;
   -webkit-transition: opacity 0.55s ease-in-out, visibility 0.55s ease-in-out;
   -o-transition: opacity 0.55s ease-in-out, visibility 0.55s ease-in-out;
   transition: opacity 0.55s ease-in-out, visibility 0.55s ease-in-out;
-  -webkit-transition-delay: 0.55s;
-       -o-transition-delay: 0.55s;
-          transition-delay: 0.55s;
+  -webkit-transition-delay: 0.25s;
+       -o-transition-delay: 0.25s;
+          transition-delay: 0.25s;
 }
 
-/* line 169, src/scss/_components/homepage/_list.scss */
-.list__box:hover .list__box-more {
+/* line 166, src/scss/_components/homepage/_list.scss */
+.is-hover .list__box .list__box-more {
   opacity: 1;
   visibility: visible;
   -webkit-transition: opacity 0.35s ease-in-out, visibility 0.35s ease-in-out;
   -o-transition: opacity 0.35s ease-in-out, visibility 0.35s ease-in-out;
   transition: opacity 0.35s ease-in-out, visibility 0.35s ease-in-out;
-  -webkit-transition-delay: 0.45s;
-       -o-transition-delay: 0.45s;
-          transition-delay: 0.45s;
 }
 
-/* line 175, src/scss/_components/homepage/_list.scss */
-.list__box:hover .list__box-more .icon-font {
+/* line 171, src/scss/_components/homepage/_list.scss */
+.is-hover .list__box .list__box-more .icon-font {
   -webkit-animation-fill-mode: both;
           animation-fill-mode: both;
   -webkit-animation-duration: 1.5s;
@@ -3134,7 +3122,7 @@ picture {
           animation-delay: 1s;
 }
 
-/* line 188, src/scss/_components/homepage/_list.scss */
+/* line 184, src/scss/_components/homepage/_list.scss */
 .list__box.is-active .list__box-border {
   border-style: solid;
   border-width: 4px;
@@ -3143,7 +3131,7 @@ picture {
   transition: border-style 0.35s ease-in-out, border-width 0.35s ease-in-out;
 }
 
-/* line 194, src/scss/_components/homepage/_list.scss */
+/* line 190, src/scss/_components/homepage/_list.scss */
 .list__box.is-active .list__box-details {
   opacity: 0;
   visibility: hidden;
@@ -3157,7 +3145,7 @@ picture {
   transition: opacity 0.55s ease-in-out, visibility 0.55s ease-in-out, transform 0.55s ease-in-out, -webkit-transform 0.55s ease-in-out;
 }
 
-/* line 201, src/scss/_components/homepage/_list.scss */
+/* line 197, src/scss/_components/homepage/_list.scss */
 .list__box.is-active:after {
   content: '';
   position: absolute;
@@ -3173,7 +3161,7 @@ picture {
   border-color: #fff transparent transparent transparent;
 }
 
-/* line 215, src/scss/_components/homepage/_list.scss */
+/* line 211, src/scss/_components/homepage/_list.scss */
 .list__box-wrapper {
   opacity: 0;
   overflow: hidden;
@@ -3194,7 +3182,7 @@ picture {
   transition: padding-bottom 0.35s ease-in-out;
 }
 
-/* line 223, src/scss/_components/homepage/_list.scss */
+/* line 219, src/scss/_components/homepage/_list.scss */
 .list__box-wrapper.is-open {
   padding-bottom: 40px;
   -webkit-transition: padding-bottom 0.35s ease-in-out;
@@ -3202,7 +3190,7 @@ picture {
   transition: padding-bottom 0.35s ease-in-out;
 }
 
-/* line 227, src/scss/_components/homepage/_list.scss */
+/* line 223, src/scss/_components/homepage/_list.scss */
 .list__box-wrapper.is-open .list__box-body {
   padding-bottom: 0;
   -webkit-transition: padding-bottom 0.35s ease-in-out;
@@ -3210,7 +3198,7 @@ picture {
   transition: padding-bottom 0.35s ease-in-out;
 }
 
-/* line 234, src/scss/_components/homepage/_list.scss */
+/* line 230, src/scss/_components/homepage/_list.scss */
 .list__box-head {
   display: -webkit-box;
   display: -webkit-flex;
@@ -3227,7 +3215,7 @@ picture {
   padding-bottom: 15px;
 }
 
-/* line 241, src/scss/_components/homepage/_list.scss */
+/* line 237, src/scss/_components/homepage/_list.scss */
 .list__box-line {
   position: relative;
   width: 100%;
@@ -3236,7 +3224,7 @@ picture {
   background-color: #191a28;
 }
 
-/* line 248, src/scss/_components/homepage/_list.scss */
+/* line 244, src/scss/_components/homepage/_list.scss */
 .list__box-line span {
   cursor: pointer;
   position: absolute;
@@ -3255,17 +3243,17 @@ picture {
   transition: transform 0.35s ease-in-out, -webkit-transform 0.35s ease-in-out;
 }
 
-/* line 261, src/scss/_components/homepage/_list.scss */
+/* line 257, src/scss/_components/homepage/_list.scss */
 .list__box-body {
   z-index: 100;
   position: relative;
-  padding-bottom: 40px;
+  padding-bottom: 20px;
   -webkit-transition: padding-bottom 0.35s ease-in-out;
   -o-transition: padding-bottom 0.35s ease-in-out;
   transition: padding-bottom 0.35s ease-in-out;
 }
 
-/* line 268, src/scss/_components/homepage/_list.scss */
+/* line 264, src/scss/_components/homepage/_list.scss */
 .list__box-overlay {
   z-index: 0;
   position: absolute;
@@ -3279,7 +3267,7 @@ picture {
   transition: background-color 0.35s ease-in-out;
 }
 
-/* line 279, src/scss/_components/homepage/_list.scss */
+/* line 275, src/scss/_components/homepage/_list.scss */
 .list__box-border {
   z-index: 0;
   position: absolute;
@@ -3295,7 +3283,7 @@ picture {
   transition: border-style 0.35s ease-in-out, border-width 0.35s ease-in-out;
 }
 
-/* line 290, src/scss/_components/homepage/_list.scss */
+/* line 286, src/scss/_components/homepage/_list.scss */
 .list__box-logo {
   z-index: 15;
   position: relative;
@@ -3307,7 +3295,7 @@ picture {
   margin-right: auto;
 }
 
-/* line 301, src/scss/_components/homepage/_list.scss */
+/* line 297, src/scss/_components/homepage/_list.scss */
 .list__box-details {
   z-index: 11;
   opacity: 0;
@@ -3343,7 +3331,7 @@ picture {
   transition: opacity 0.35s ease-in-out, visibility 0.35s ease-in-out;
 }
 
-/* line 319, src/scss/_components/homepage/_list.scss */
+/* line 315, src/scss/_components/homepage/_list.scss */
 .list__box-details-left {
   display: -webkit-box;
   display: -webkit-flex;
@@ -3363,12 +3351,12 @@ picture {
   max-width: calc(100% - 30px);
 }
 
-/* line 326, src/scss/_components/homepage/_list.scss */
+/* line 322, src/scss/_components/homepage/_list.scss */
 .list__box-details-left > * {
   width: 100%;
 }
 
-/* line 330, src/scss/_components/homepage/_list.scss */
+/* line 326, src/scss/_components/homepage/_list.scss */
 .list__box-details-left button {
   outline: none;
   cursor: pointer;
@@ -3381,18 +3369,18 @@ picture {
   background-color: transparent;
 }
 
-/* line 340, src/scss/_components/homepage/_list.scss */
+/* line 336, src/scss/_components/homepage/_list.scss */
 .list__box-details-left button.list__box-external .icon-font {
   margin-bottom: 5px;
 }
 
-/* line 345, src/scss/_components/homepage/_list.scss */
+/* line 341, src/scss/_components/homepage/_list.scss */
 .list__box-details-left button .icon-font {
   color: #cecece;
   font-size: 20px;
 }
 
-/* line 352, src/scss/_components/homepage/_list.scss */
+/* line 348, src/scss/_components/homepage/_list.scss */
 .list__box-details-right {
   display: -webkit-box;
   display: -webkit-flex;
@@ -3414,7 +3402,7 @@ picture {
   width: 30px;
 }
 
-/* line 359, src/scss/_components/homepage/_list.scss */
+/* line 355, src/scss/_components/homepage/_list.scss */
 .list__box-details-right button {
   outline: none;
   cursor: pointer;
@@ -3446,7 +3434,7 @@ picture {
   transition: border-color 0.35s ease-in-out, background-color 0.35s ease-in-out, transform 0.35s ease-in-out, -webkit-transform 0.35s ease-in-out;
 }
 
-/* line 374, src/scss/_components/homepage/_list.scss */
+/* line 370, src/scss/_components/homepage/_list.scss */
 .list__box-details-right button:hover {
   border-color: #fff;
   background-color: rgba(0, 0, 0, 0.85);
@@ -3460,14 +3448,14 @@ picture {
   transition: border-color 0.35s ease-in-out, background-color 0.35s ease-in-out, transform 0.35s ease-in-out, -webkit-transform 0.35s ease-in-out;
 }
 
-/* line 381, src/scss/_components/homepage/_list.scss */
+/* line 377, src/scss/_components/homepage/_list.scss */
 .list__box-details-right button:hover.list__box-like .icon-font {
   -webkit-transform: scale(-0.9, 0.9);
       -ms-transform: scale(-0.9, 0.9);
           transform: scale(-0.9, 0.9);
 }
 
-/* line 386, src/scss/_components/homepage/_list.scss */
+/* line 382, src/scss/_components/homepage/_list.scss */
 .list__box-details-right button:hover .icon-font {
   -webkit-transform: scale(0.9);
       -ms-transform: scale(0.9);
@@ -3479,7 +3467,7 @@ picture {
   transition: transform 0.35s ease-in-out, -webkit-transform 0.35s ease-in-out;
 }
 
-/* line 392, src/scss/_components/homepage/_list.scss */
+/* line 388, src/scss/_components/homepage/_list.scss */
 .list__box-details-right button.is-active {
   -webkit-animation-fill-mode: both;
           animation-fill-mode: both;
@@ -3491,7 +3479,7 @@ picture {
           animation-name: spinAction;
 }
 
-/* line 398, src/scss/_components/homepage/_list.scss */
+/* line 394, src/scss/_components/homepage/_list.scss */
 .list__box-details-right button.is-active:hover {
   border-color: #c5f015;
   -webkit-transition: border-color 0.35s ease-in-out, background-color 0.35s ease-in-out, -webkit-transform 0.35s ease-in-out;
@@ -3501,7 +3489,7 @@ picture {
   transition: border-color 0.35s ease-in-out, background-color 0.35s ease-in-out, transform 0.35s ease-in-out, -webkit-transform 0.35s ease-in-out;
 }
 
-/* line 403, src/scss/_components/homepage/_list.scss */
+/* line 399, src/scss/_components/homepage/_list.scss */
 .list__box-details-right button.is-active .icon-font {
   color: #c5f015;
   -webkit-transition: color 1.5s 0.35s ease-in-out, -webkit-transform 0.35s ease-in-out;
@@ -3511,21 +3499,21 @@ picture {
   transition: color 1.5s 0.35s ease-in-out, transform 0.35s ease-in-out, -webkit-transform 0.35s ease-in-out;
 }
 
-/* line 410, src/scss/_components/homepage/_list.scss */
+/* line 406, src/scss/_components/homepage/_list.scss */
 .list__box-details-right button.list__box-like .icon-font {
   -webkit-transform: scaleX(-1);
       -ms-transform: scaleX(-1);
           transform: scaleX(-1);
 }
 
-/* line 415, src/scss/_components/homepage/_list.scss */
+/* line 411, src/scss/_components/homepage/_list.scss */
 .list__box-details-right button.list__box-dislike .icon-font {
   -webkit-transform: scale(-1);
       -ms-transform: scale(-1);
           transform: scale(-1);
 }
 
-/* line 422, src/scss/_components/homepage/_list.scss */
+/* line 418, src/scss/_components/homepage/_list.scss */
 .list__box-details-right button.list__box-favorites.is-active .icon-font {
   -webkit-transition: opacity 1.5s 0.35s ease-in-out, visibility 1.5s 0.35s ease-in-out, color 1.5s 0.35s ease-in-out, -webkit-transform 0.35s ease-in-out;
   transition: opacity 1.5s 0.35s ease-in-out, visibility 1.5s 0.35s ease-in-out, color 1.5s 0.35s ease-in-out, -webkit-transform 0.35s ease-in-out;
@@ -3534,19 +3522,19 @@ picture {
   transition: opacity 1.5s 0.35s ease-in-out, visibility 1.5s 0.35s ease-in-out, color 1.5s 0.35s ease-in-out, transform 0.35s ease-in-out, -webkit-transform 0.35s ease-in-out;
 }
 
-/* line 425, src/scss/_components/homepage/_list.scss */
+/* line 421, src/scss/_components/homepage/_list.scss */
 .list__box-details-right button.list__box-favorites.is-active .icon-font.icon-star-fill {
   opacity: 0;
   visibility: hidden;
 }
 
-/* line 429, src/scss/_components/homepage/_list.scss */
+/* line 425, src/scss/_components/homepage/_list.scss */
 .list__box-details-right button.list__box-favorites.is-active .icon-font.icon-star {
   opacity: 1;
   visibility: visible;
 }
 
-/* line 436, src/scss/_components/homepage/_list.scss */
+/* line 432, src/scss/_components/homepage/_list.scss */
 .list__box-details-right button.list__box-favorites .icon-font {
   -webkit-transition: opacity 0.35s ease-in-out, visibility 0.35s ease-in-out, color 0.35s ease-in-out, -webkit-transform 0.35s ease-in-out;
   transition: opacity 0.35s ease-in-out, visibility 0.35s ease-in-out, color 0.35s ease-in-out, -webkit-transform 0.35s ease-in-out;
@@ -3555,19 +3543,19 @@ picture {
   transition: opacity 0.35s ease-in-out, visibility 0.35s ease-in-out, color 0.35s ease-in-out, transform 0.35s ease-in-out, -webkit-transform 0.35s ease-in-out;
 }
 
-/* line 439, src/scss/_components/homepage/_list.scss */
+/* line 435, src/scss/_components/homepage/_list.scss */
 .list__box-details-right button.list__box-favorites .icon-font.icon-star {
   opacity: 0;
   visibility: hidden;
   position: absolute;
 }
 
-/* line 447, src/scss/_components/homepage/_list.scss */
+/* line 443, src/scss/_components/homepage/_list.scss */
 .list__box-details-right button:not(:last-of-type) {
   margin-bottom: 2px;
 }
 
-/* line 451, src/scss/_components/homepage/_list.scss */
+/* line 447, src/scss/_components/homepage/_list.scss */
 .list__box-details-right button .icon-font {
   color: #ffffff;
   font-size: 18px;
@@ -3583,7 +3571,7 @@ picture {
   transition: color 0.35s ease-in-out, transform 0.35s ease-in-out, -webkit-transform 0.35s ease-in-out;
 }
 
-/* line 461, src/scss/_components/homepage/_list.scss */
+/* line 457, src/scss/_components/homepage/_list.scss */
 .list__box-details-title {
   overflow: hidden;
   white-space: nowrap;
@@ -3594,7 +3582,7 @@ picture {
   font-weight: 700;
 }
 
-/* line 471, src/scss/_components/homepage/_list.scss */
+/* line 467, src/scss/_components/homepage/_list.scss */
 .list__box-more {
   z-index: 20;
   outline: none;
@@ -3630,7 +3618,7 @@ picture {
   transition: opacity 0.35s ease-in-out, visibility 0.35s ease-in-out;
 }
 
-/* line 492, src/scss/_components/homepage/_list.scss */
+/* line 488, src/scss/_components/homepage/_list.scss */
 .list__box-more .icon-font {
   color: #c5f015;
   font-size: 16px;
@@ -3639,7 +3627,7 @@ picture {
           transform: rotate(-90deg);
 }
 
-/* line 500, src/scss/_components/homepage/_list.scss */
+/* line 496, src/scss/_components/homepage/_list.scss */
 .list__rating {
   display: -webkit-box;
   display: -webkit-flex;
@@ -3651,13 +3639,13 @@ picture {
           align-items: center;
 }
 
-/* line 504, src/scss/_components/homepage/_list.scss */
+/* line 500, src/scss/_components/homepage/_list.scss */
 .list__rating span {
   color: #4a70a1;
   font-size: 14px;
 }
 
-/* line 509, src/scss/_components/homepage/_list.scss */
+/* line 505, src/scss/_components/homepage/_list.scss */
 .list__rating > div {
   display: -webkit-box;
   display: -webkit-flex;
@@ -3670,18 +3658,18 @@ picture {
   padding-left: 10px;
 }
 
-/* line 514, src/scss/_components/homepage/_list.scss */
+/* line 510, src/scss/_components/homepage/_list.scss */
 .list__rating > div .icon-font {
   color: #004aac;
   font-size: 19px;
 }
 
-/* line 518, src/scss/_components/homepage/_list.scss */
+/* line 514, src/scss/_components/homepage/_list.scss */
 .list__rating > div .icon-font:not(:last-of-type) {
   margin-right: 3px;
 }
 
-/* line 525, src/scss/_components/homepage/_list.scss */
+/* line 521, src/scss/_components/homepage/_list.scss */
 .list__specification {
   display: none;
   position: relative;
@@ -3696,7 +3684,7 @@ picture {
           box-shadow: 1.047px 19.973px 43px 0px rgba(8, 9, 21, 0.3);
 }
 
-/* line 540, src/scss/_components/homepage/_list.scss */
+/* line 536, src/scss/_components/homepage/_list.scss */
 .list__specification.list__specification--video .list__specification-right > div:before {
   content: '';
   z-index: 2;
@@ -3711,7 +3699,7 @@ picture {
   background: linear-gradient(to left, rgba(0, 0, 0, 0) 0%, black 100%);
 }
 
-/* line 551, src/scss/_components/homepage/_list.scss */
+/* line 547, src/scss/_components/homepage/_list.scss */
 .list__specification.list__specification--video .list__specification-right > div:after {
   content: '';
   z-index: 2;
@@ -3726,7 +3714,7 @@ picture {
   background: linear-gradient(to left, rgba(0, 0, 0, 0.2) 0%, rgba(0, 0, 0, 0.2) 100%);
 }
 
-/* line 567, src/scss/_components/homepage/_list.scss */
+/* line 563, src/scss/_components/homepage/_list.scss */
 .list__specification.list__specification--banner .list__specification-right > div {
   display: -webkit-box;
   display: -webkit-flex;
@@ -3743,7 +3731,7 @@ picture {
   padding: 15px;
 }
 
-/* line 573, src/scss/_components/homepage/_list.scss */
+/* line 569, src/scss/_components/homepage/_list.scss */
 .list__specification.list__specification--banner .list__specification-right > div:before {
   content: '';
   z-index: 2;
@@ -3758,7 +3746,7 @@ picture {
   background: linear-gradient(to bottom, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0.25) 100%);
 }
 
-/* line 584, src/scss/_components/homepage/_list.scss */
+/* line 580, src/scss/_components/homepage/_list.scss */
 .list__specification.list__specification--banner .list__specification-right > div:after {
   content: '';
   z-index: 1;
@@ -3775,7 +3763,7 @@ picture {
           background-size: 175%;
 }
 
-/* line 599, src/scss/_components/homepage/_list.scss */
+/* line 595, src/scss/_components/homepage/_list.scss */
 .list__specification.list__specification--banner .list__specification-right > div img {
   display: block;
   max-width: 100%;
@@ -3785,7 +3773,7 @@ picture {
   max-height: 100%;
 }
 
-/* line 611, src/scss/_components/homepage/_list.scss */
+/* line 607, src/scss/_components/homepage/_list.scss */
 .list__specification-wrapper {
   z-index: 90;
   display: -webkit-box;
@@ -3800,7 +3788,7 @@ picture {
   position: relative;
 }
 
-/* line 618, src/scss/_components/homepage/_list.scss */
+/* line 614, src/scss/_components/homepage/_list.scss */
 .list__specification-close {
   z-index: 50;
   position: absolute;
@@ -3812,18 +3800,18 @@ picture {
   display: flex;
 }
 
-/* line 625, src/scss/_components/homepage/_list.scss */
+/* line 621, src/scss/_components/homepage/_list.scss */
 .list__specification-close .icon-font {
   color: #ffffff;
   font-size: 18px;
 }
 
-/* line 631, src/scss/_components/homepage/_list.scss */
+/* line 627, src/scss/_components/homepage/_list.scss */
 .list__specification-left, .list__specification-right {
   height: 100%;
 }
 
-/* line 636, src/scss/_components/homepage/_list.scss */
+/* line 632, src/scss/_components/homepage/_list.scss */
 .list__specification-left {
   z-index: 2;
   position: relative;
@@ -3852,7 +3840,7 @@ picture {
           clip-path: polygon(0 0, 90% 0, 100% 100%, 0% 100%);
 }
 
-/* line 650, src/scss/_components/homepage/_list.scss */
+/* line 646, src/scss/_components/homepage/_list.scss */
 .list__specification-right {
   z-index: 1;
   position: relative;
@@ -3861,7 +3849,7 @@ picture {
   max-width: calc(100% - 650px);
 }
 
-/* line 656, src/scss/_components/homepage/_list.scss */
+/* line 652, src/scss/_components/homepage/_list.scss */
 .list__specification-right > div {
   overflow: hidden;
   position: absolute;
@@ -3872,7 +3860,7 @@ picture {
   height: 100%;
 }
 
-/* line 670, src/scss/_components/homepage/_list.scss */
+/* line 666, src/scss/_components/homepage/_list.scss */
 .list__specification-logo {
   display: block;
   max-width: 125px;
@@ -3880,7 +3868,7 @@ picture {
   margin-bottom: 10px;
 }
 
-/* line 677, src/scss/_components/homepage/_list.scss */
+/* line 673, src/scss/_components/homepage/_list.scss */
 .list__specification-action {
   display: -webkit-box;
   display: -webkit-flex;
@@ -3896,12 +3884,12 @@ picture {
   padding-bottom: 20px;
 }
 
-/* line 684, src/scss/_components/homepage/_list.scss */
+/* line 680, src/scss/_components/homepage/_list.scss */
 .list__specification-action > div:not(:last-of-type) {
   margin-right: 10px;
 }
 
-/* line 690, src/scss/_components/homepage/_list.scss */
+/* line 686, src/scss/_components/homepage/_list.scss */
 .list__specification-visit, .list__specification-read {
   position: relative;
   display: -webkit-box;
@@ -3923,7 +3911,7 @@ picture {
   font-weight: 700;
 }
 
-/* line 703, src/scss/_components/homepage/_list.scss */
+/* line 699, src/scss/_components/homepage/_list.scss */
 .list__specification-visit {
   -webkit-border-radius: 5px;
           border-radius: 5px;
@@ -3934,7 +3922,7 @@ picture {
   transition: background-color 0.35s ease-in-out;
 }
 
-/* line 709, src/scss/_components/homepage/_list.scss */
+/* line 705, src/scss/_components/homepage/_list.scss */
 .list__specification-visit:hover {
   background-color: transparent;
   -webkit-transition: background-color 0.35s ease-in-out;
@@ -3942,7 +3930,7 @@ picture {
   transition: background-color 0.35s ease-in-out;
 }
 
-/* line 715, src/scss/_components/homepage/_list.scss */
+/* line 711, src/scss/_components/homepage/_list.scss */
 .list__specification-read {
   border-width: 2px;
   border-color: #c5f015;
@@ -3954,7 +3942,7 @@ picture {
   transition: color 0.35s ease-in-out, background-color 0.35s ease-in-out;
 }
 
-/* line 722, src/scss/_components/homepage/_list.scss */
+/* line 718, src/scss/_components/homepage/_list.scss */
 .list__specification-read:hover {
   background-color: #c5f015;
   color: #222222;
@@ -3963,7 +3951,7 @@ picture {
   transition: color 0.35s ease-in-out, background-color 0.35s ease-in-out;
 }
 
-/* line 729, src/scss/_components/homepage/_list.scss */
+/* line 725, src/scss/_components/homepage/_list.scss */
 .list__specification-circle {
   position: relative;
   display: -webkit-box;
@@ -3995,7 +3983,7 @@ picture {
   transition: transform 0.35s ease-in-out, -webkit-transform 0.35s ease-in-out;
 }
 
-/* line 744, src/scss/_components/homepage/_list.scss */
+/* line 740, src/scss/_components/homepage/_list.scss */
 .list__specification-circle:hover {
   -webkit-transform: scale(1.1);
       -ms-transform: scale(1.1);
@@ -4007,7 +3995,7 @@ picture {
   transition: transform 0.35s ease-in-out, -webkit-transform 0.35s ease-in-out;
 }
 
-/* line 749, src/scss/_components/homepage/_list.scss */
+/* line 745, src/scss/_components/homepage/_list.scss */
 .list__specification-circle.is-active {
   -webkit-animation-fill-mode: both;
           animation-fill-mode: both;
@@ -4025,7 +4013,7 @@ picture {
   transition: transform 0.35s ease-in-out, -webkit-transform 0.35s ease-in-out;
 }
 
-/* line 757, src/scss/_components/homepage/_list.scss */
+/* line 753, src/scss/_components/homepage/_list.scss */
 .list__specification-circle.is-active .icon-font {
   color: #c5f015;
   -webkit-transition: opacity 1.5s 0.35s ease-in-out, visibility 1.5s 0.35s ease-in-out;
@@ -4033,53 +4021,53 @@ picture {
   transition: opacity 1.5s 0.35s ease-in-out, visibility 1.5s 0.35s ease-in-out;
 }
 
-/* line 763, src/scss/_components/homepage/_list.scss */
+/* line 759, src/scss/_components/homepage/_list.scss */
 .list__specification-circle .icon-font {
   color: #ffffff;
   font-size: 24px;
 }
 
-/* line 770, src/scss/_components/homepage/_list.scss */
+/* line 766, src/scss/_components/homepage/_list.scss */
 .list__specification-like .icon-font {
   -webkit-transform: scaleX(-1);
       -ms-transform: scaleX(-1);
           transform: scaleX(-1);
 }
 
-/* line 776, src/scss/_components/homepage/_list.scss */
+/* line 772, src/scss/_components/homepage/_list.scss */
 .list__specification-dislike .icon-font {
   -webkit-transform: scale(-1);
       -ms-transform: scale(-1);
           transform: scale(-1);
 }
 
-/* line 784, src/scss/_components/homepage/_list.scss */
+/* line 780, src/scss/_components/homepage/_list.scss */
 .list__specification-favorites.is-active .icon-font.icon-star-fill {
   opacity: 0;
   visibility: hidden;
 }
 
-/* line 788, src/scss/_components/homepage/_list.scss */
+/* line 784, src/scss/_components/homepage/_list.scss */
 .list__specification-favorites.is-active .icon-font.icon-star {
   opacity: 1;
   visibility: visible;
 }
 
-/* line 795, src/scss/_components/homepage/_list.scss */
+/* line 791, src/scss/_components/homepage/_list.scss */
 .list__specification-favorites .icon-font {
   -webkit-transition: opacity 0.35s ease-in-out, visibility 0.35s ease-in-out;
   -o-transition: opacity 0.35s ease-in-out, visibility 0.35s ease-in-out;
   transition: opacity 0.35s ease-in-out, visibility 0.35s ease-in-out;
 }
 
-/* line 798, src/scss/_components/homepage/_list.scss */
+/* line 794, src/scss/_components/homepage/_list.scss */
 .list__specification-favorites .icon-font.icon-star {
   opacity: 0;
   visibility: hidden;
   position: absolute;
 }
 
-/* line 806, src/scss/_components/homepage/_list.scss */
+/* line 802, src/scss/_components/homepage/_list.scss */
 .list__specification-desc {
   width: 100%;
   max-width: 460px;
@@ -4087,7 +4075,7 @@ picture {
   font-size: 14px;
 }
 
-/* line 813, src/scss/_components/homepage/_list.scss */
+/* line 809, src/scss/_components/homepage/_list.scss */
 .list__specification-play {
   z-index: 20;
   position: absolute;
@@ -4120,7 +4108,7 @@ picture {
   transition: transform 0.35s ease-in-out, opacity 0.35s ease-in-out, visibility 0.35s ease-in-out, -webkit-transform 0.35s ease-in-out;
 }
 
-/* line 828, src/scss/_components/homepage/_list.scss */
+/* line 824, src/scss/_components/homepage/_list.scss */
 .list__specification-play:hover {
   -webkit-transform: translate(-50%, -50%) scale(0.8);
       -ms-transform: translate(-50%, -50%) scale(0.8);
@@ -4132,7 +4120,7 @@ picture {
   transition: transform 0.55s ease-in-out, -webkit-transform 0.55s ease-in-out;
 }
 
-/* line 833, src/scss/_components/homepage/_list.scss */
+/* line 829, src/scss/_components/homepage/_list.scss */
 .list__specification-play.is-active {
   opacity: 0;
   visibility: hidden;
@@ -4141,7 +4129,7 @@ picture {
   transition: opacity 0.35s ease-in-out, visibility 0.35s ease-in-out;
 }
 
-/* line 839, src/scss/_components/homepage/_list.scss */
+/* line 835, src/scss/_components/homepage/_list.scss */
 .list__specification-play .icon-font {
   position: relative;
   left: 5px;
@@ -4149,7 +4137,7 @@ picture {
   font-size: 57px;
 }
 
-/* line 847, src/scss/_components/homepage/_list.scss */
+/* line 843, src/scss/_components/homepage/_list.scss */
 .list__specification-pause {
   z-index: 20;
   opacity: 0;
@@ -4166,7 +4154,7 @@ picture {
   transition: opacity 0.35s ease-in-out, visibility 0.35s ease-in-out;
 }
 
-/* line 857, src/scss/_components/homepage/_list.scss */
+/* line 853, src/scss/_components/homepage/_list.scss */
 .list__specification-pause.is-active {
   opacity: 1;
   visibility: visible;
@@ -4175,18 +4163,18 @@ picture {
   transition: opacity 0.35s ease-in-out, visibility 0.35s ease-in-out;
 }
 
-/* line 863, src/scss/_components/homepage/_list.scss */
+/* line 859, src/scss/_components/homepage/_list.scss */
 .list__specification-pause .icon-font {
   color: #ffffff;
   font-size: 18px;
 }
 
-/* line 871, src/scss/_components/homepage/_list.scss */
+/* line 867, src/scss/_components/homepage/_list.scss */
 .list .swiper-container {
   overflow: unset;
 }
 
-/* line 877, src/scss/_components/homepage/_list.scss */
+/* line 873, src/scss/_components/homepage/_list.scss */
 .list .swiper-slide {
   position: relative;
   width: 230px !important;
@@ -4198,25 +4186,22 @@ picture {
   transition: width 0.35s ease-in-out;
 }
 
-/* line 885, src/scss/_components/homepage/_list.scss */
+/* line 881, src/scss/_components/homepage/_list.scss */
 .list .swiper-slide:first-of-type {
   margin-left: 0;
 }
 
-/* line 888, src/scss/_components/homepage/_list.scss */
+/* line 884, src/scss/_components/homepage/_list.scss */
 .list .swiper-slide:last-of-type {
   margin-right: 0;
 }
 
-/* line 892, src/scss/_components/homepage/_list.scss */
-.list .swiper-slide:hover {
+/* line 888, src/scss/_components/homepage/_list.scss */
+.list .swiper-slide.is-hover {
   width: 350px !important;
   -webkit-transition: width 0.35s ease-in-out;
   -o-transition: width 0.35s ease-in-out;
   transition: width 0.35s ease-in-out;
-  -webkit-transition-delay: 0.45s;
-       -o-transition-delay: 0.45s;
-          transition-delay: 0.45s;
 }
 
 @-webkit-keyframes slideToggle {
