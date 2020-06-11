@@ -1,5 +1,7 @@
 "use strict";
 
+var _slicedToArray = function () { function sliceIterator(arr, i) { var _arr = []; var _n = true; var _d = false; var _e = undefined; try { for (var _i = arr[Symbol.iterator](), _s; !(_n = (_s = _i.next()).done); _n = true) { _arr.push(_s.value); if (i && _arr.length === i) break; } } catch (err) { _d = true; _e = err; } finally { try { if (!_n && _i["return"]) _i["return"](); } finally { if (_d) throw _e; } } return _arr; } return function (arr, i) { if (Array.isArray(arr)) { return arr; } else if (Symbol.iterator in Object(arr)) { return sliceIterator(arr, i); } else { throw new TypeError("Invalid attempt to destructure non-iterable instance"); } }; }();
+
 /*
 *
 * ============================
@@ -261,12 +263,9 @@ if (!Element.prototype.closest) {
 
 	var boxMore = function boxMore() {
 		function playPause(vid) {
-			if (vid.paused) {
-				// some action
-			} else {
-				vid.pause();
-				vid.currentTime = 0;
-			}
+			vid.pause();
+			vid.currentTime = 0;
+			vid.load();
 		}
 
 		var _btns = document.querySelectorAll('.list__box-more');
@@ -287,15 +286,31 @@ if (!Element.prototype.closest) {
 
 					var _specificationBox = _parentNode.querySelector('.list__specification[data-id="' + _boxID + '"]');
 
+					var listBoxes = document.querySelectorAll('.list__box'),
+					    listSpecifications = document.querySelectorAll('.list__specification'),
+					    videoPlayers = document.querySelectorAll('.list__specification video'),
+					    pauseToggle = document.querySelectorAll('[video-pause-js]');
+
 					var _iteratorNormalCompletion5 = true;
 					var _didIteratorError5 = false;
 					var _iteratorError5 = undefined;
 
 					try {
-						for (var _iterator5 = document.querySelectorAll('.list__box')[Symbol.iterator](), _step5; !(_iteratorNormalCompletion5 = (_step5 = _iterator5.next()).done); _iteratorNormalCompletion5 = true) {
-							var box = _step5.value;
+						for (var _iterator5 = document.querySelectorAll('[video-toggle-js]').entries()[Symbol.iterator](), _step5; !(_iteratorNormalCompletion5 = (_step5 = _iterator5.next()).done); _iteratorNormalCompletion5 = true) {
+							var _ref = _step5.value;
 
-							box.classList.remove('is-active');
+							var _ref2 = _slicedToArray(_ref, 2);
+
+							var idx = _ref2[0];
+							var playBtn = _ref2[1];
+
+							playBtn.classList.remove('is-active');
+							pauseToggle[idx].classList.remove('is-active');
+							listBoxes[idx].classList.remove('is-active');
+
+							listSpecifications[idx].style.display = 'none';
+
+							playPause(videoPlayers[idx]);
 						}
 					} catch (err) {
 						_didIteratorError5 = true;
@@ -308,31 +323,6 @@ if (!Element.prototype.closest) {
 						} finally {
 							if (_didIteratorError5) {
 								throw _iteratorError5;
-							}
-						}
-					}
-
-					var _iteratorNormalCompletion6 = true;
-					var _didIteratorError6 = false;
-					var _iteratorError6 = undefined;
-
-					try {
-						for (var _iterator6 = document.querySelectorAll('.list__specification')[Symbol.iterator](), _step6; !(_iteratorNormalCompletion6 = (_step6 = _iterator6.next()).done); _iteratorNormalCompletion6 = true) {
-							var specification = _step6.value;
-
-							specification.style.display = 'none';
-						}
-					} catch (err) {
-						_didIteratorError6 = true;
-						_iteratorError6 = err;
-					} finally {
-						try {
-							if (!_iteratorNormalCompletion6 && _iterator6.return) {
-								_iterator6.return();
-							}
-						} finally {
-							if (_didIteratorError6) {
-								throw _iteratorError6;
 							}
 						}
 					}
@@ -373,36 +363,38 @@ if (!Element.prototype.closest) {
 				_btn2.addEventListener('click', function (ev) {
 					var _el = ev.currentTarget,
 					    parent = _el.closest('.list__specification'),
-					    vid = parent.querySelector('video');
+					    vid = parent.querySelector('video'),
+					    pauseToggle = parent.querySelector('[video-pause-js]');
 
 					_el.closest('.list__specification').style.display = 'none';
 
 					if (parent.querySelector('[video-toggle-js]')) {
+						pauseToggle.classList.remove('is-active');
 						parent.querySelector('[video-toggle-js]').classList.remove('is-active');
 						playPause(vid);
 					}
 
-					var _iteratorNormalCompletion7 = true;
-					var _didIteratorError7 = false;
-					var _iteratorError7 = undefined;
+					var _iteratorNormalCompletion6 = true;
+					var _didIteratorError6 = false;
+					var _iteratorError6 = undefined;
 
 					try {
-						for (var _iterator7 = document.querySelectorAll('.list__box-more')[Symbol.iterator](), _step7; !(_iteratorNormalCompletion7 = (_step7 = _iterator7.next()).done); _iteratorNormalCompletion7 = true) {
-							var _btn3 = _step7.value;
+						for (var _iterator6 = document.querySelectorAll('.list__box-more')[Symbol.iterator](), _step6; !(_iteratorNormalCompletion6 = (_step6 = _iterator6.next()).done); _iteratorNormalCompletion6 = true) {
+							var _btn3 = _step6.value;
 
 							_btn3.closest('.list__box').classList.remove('is-active');
 						}
 					} catch (err) {
-						_didIteratorError7 = true;
-						_iteratorError7 = err;
+						_didIteratorError6 = true;
+						_iteratorError6 = err;
 					} finally {
 						try {
-							if (!_iteratorNormalCompletion7 && _iterator7.return) {
-								_iterator7.return();
+							if (!_iteratorNormalCompletion6 && _iterator6.return) {
+								_iterator6.return();
 							}
 						} finally {
-							if (_didIteratorError7) {
-								throw _iteratorError7;
+							if (_didIteratorError6) {
+								throw _iteratorError6;
 							}
 						}
 					}
@@ -433,22 +425,60 @@ if (!Element.prototype.closest) {
 			}
 		}
 
-		var videoBtns = document.querySelectorAll('[video-toggle-js]');
+		var videoPlayBtns = document.querySelectorAll('[video-toggle-js]'),
+		    videoPauseBtns = document.querySelectorAll('[video-pause-js]');
+
+		var _iteratorNormalCompletion7 = true;
+		var _didIteratorError7 = false;
+		var _iteratorError7 = undefined;
+
+		try {
+			for (var _iterator7 = videoPlayBtns[Symbol.iterator](), _step7; !(_iteratorNormalCompletion7 = (_step7 = _iterator7.next()).done); _iteratorNormalCompletion7 = true) {
+				var btn = _step7.value;
+
+				btn.addEventListener('click', function (ev) {
+					var el = ev.currentTarget,
+					    parentVideoNode = el.closest('[video-parent-js]'),
+					    vid = parentVideoNode.querySelector('[video-js]'),
+					    pauseToggle = parentVideoNode.querySelector('[video-pause-js]');
+
+					el.classList.add('is-active');
+					pauseToggle.classList.add('is-active');
+
+					playPause(vid);
+				}, false);
+			}
+		} catch (err) {
+			_didIteratorError7 = true;
+			_iteratorError7 = err;
+		} finally {
+			try {
+				if (!_iteratorNormalCompletion7 && _iterator7.return) {
+					_iterator7.return();
+				}
+			} finally {
+				if (_didIteratorError7) {
+					throw _iteratorError7;
+				}
+			}
+		}
 
 		var _iteratorNormalCompletion8 = true;
 		var _didIteratorError8 = false;
 		var _iteratorError8 = undefined;
 
 		try {
-			for (var _iterator8 = videoBtns[Symbol.iterator](), _step8; !(_iteratorNormalCompletion8 = (_step8 = _iterator8.next()).done); _iteratorNormalCompletion8 = true) {
-				var btn = _step8.value;
+			for (var _iterator8 = videoPauseBtns[Symbol.iterator](), _step8; !(_iteratorNormalCompletion8 = (_step8 = _iterator8.next()).done); _iteratorNormalCompletion8 = true) {
+				var _btn4 = _step8.value;
 
-				btn.addEventListener('click', function (ev) {
+				_btn4.addEventListener('click', function (ev) {
 					var el = ev.currentTarget,
 					    parentVideoNode = el.closest('[video-parent-js]'),
-					    vid = parentVideoNode.querySelector('[video-js]');
+					    vid = parentVideoNode.querySelector('[video-js]'),
+					    playToggle = parentVideoNode.querySelector('[video-toggle-js]');
 
-					el.classList.toggle('is-active');
+					el.classList.remove('is-active');
+					playToggle.classList.remove('is-active');
 
 					playPause(vid);
 				}, false);

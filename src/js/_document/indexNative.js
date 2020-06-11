@@ -136,12 +136,9 @@ if (!Element.prototype.closest) {
 
 	const boxMore = () => {
 		function playPause(vid) {
-			if (vid.paused) {
-				// some action
-			} else {
-				vid.pause();
-				vid.currentTime = 0;
-			}
+			vid.pause();
+			vid.currentTime = 0;
+			vid.load();
 		}
 
 		const _btns = document.querySelectorAll('.list__box-more');
@@ -155,12 +152,22 @@ if (!Element.prototype.closest) {
 
 				const _specificationBox = _parentNode.querySelector('.list__specification[data-id="' + _boxID + '"]');
 
-				for(let box of document.querySelectorAll('.list__box')) {
-					box.classList.remove('is-active');
+				const listBoxes = document.querySelectorAll('.list__box'),
+					listSpecifications = document.querySelectorAll('.list__specification'),
+					videoPlayers = document.querySelectorAll('.list__specification video'),
+					pauseToggle = document.querySelectorAll('[video-pause-js]');
+
+
+				for(let [idx, playBtn] of document.querySelectorAll('[video-toggle-js]').entries()) {
+					playBtn.classList.remove('is-active');
+					pauseToggle[idx].classList.remove('is-active');
+					listBoxes[idx].classList.remove('is-active');
+
+					listSpecifications[idx].style.display = 'none';
+
+					playPause(videoPlayers[idx]);
 				}
-				for(let specification of document.querySelectorAll('.list__specification')) {
-					specification.style.display = 'none';
-				}
+
 
 				_boxParent.classList.add('is-active');
 				_specificationBox.style.display = 'flex';
@@ -177,11 +184,13 @@ if (!Element.prototype.closest) {
 			btn.addEventListener('click', (ev) => {
 				const _el = ev.currentTarget,
 					parent = _el.closest('.list__specification'),
-					vid = parent.querySelector('video');
+					vid = parent.querySelector('video'),
+					pauseToggle = parent.querySelector('[video-pause-js]');
 
 				_el.closest('.list__specification').style.display = 'none';
 
 				if(parent.querySelector('[video-toggle-js]')) {
+					pauseToggle.classList.remove('is-active');
 					parent.querySelector('[video-toggle-js]').classList.remove('is-active');
 					playPause(vid);
 				}
@@ -203,15 +212,32 @@ if (!Element.prototype.closest) {
 			}
 		}
 
-		const videoBtns = document.querySelectorAll('[video-toggle-js]');
+		const videoPlayBtns = document.querySelectorAll('[video-toggle-js]'),
+			videoPauseBtns = document.querySelectorAll('[video-pause-js]');
 
-		for(let btn of videoBtns) {
+		for(let btn of videoPlayBtns) {
 			btn.addEventListener('click', (ev) => {
 				const el = ev.currentTarget,
 					parentVideoNode = el.closest('[video-parent-js]'),
-					vid = parentVideoNode.querySelector('[video-js]');
+					vid = parentVideoNode.querySelector('[video-js]'),
+					pauseToggle = parentVideoNode.querySelector('[video-pause-js]');
 
-				el.classList.toggle('is-active');
+				el.classList.add('is-active');
+				pauseToggle.classList.add('is-active');
+
+				playPause(vid);
+			}, false);
+		}
+
+		for(let btn of videoPauseBtns) {
+			btn.addEventListener('click', (ev) => {
+				const el = ev.currentTarget,
+					parentVideoNode = el.closest('[video-parent-js]'),
+					vid = parentVideoNode.querySelector('[video-js]'),
+					playToggle = parentVideoNode.querySelector('[video-toggle-js]');
+
+				el.classList.remove('is-active');
+				playToggle.classList.remove('is-active');
 
 				playPause(vid);
 			}, false);
