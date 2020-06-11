@@ -504,7 +504,7 @@ if (!Element.prototype.closest) {
 							lineInd.setAttribute('style', transformVal + ';width: 189px');
 						}, 750);
 					}
-				}, 150);
+				}, 0);
 			}, false);
 
 			swiperSlide.addEventListener('mouseleave', function(ev) {
