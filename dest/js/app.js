@@ -501,6 +501,7 @@ if (!Element.prototype.closest) {
 
 	var detailsToggleAction = function detailsToggleAction() {
 		var favoritesBtns = document.querySelectorAll('[favorites-toggle-js]'),
+		    listFavoritesBtns = document.querySelectorAll('[spec-favorites-js]'),
 		    likeBtns = document.querySelectorAll('[like-toggle-js]'),
 		    dislikeBtns = document.querySelectorAll('[dislike-toggle-js]');
 
@@ -544,10 +545,20 @@ if (!Element.prototype.closest) {
 		var _iteratorError10 = undefined;
 
 		try {
-			for (var _iterator10 = likeBtns[Symbol.iterator](), _step10; !(_iteratorNormalCompletion10 = (_step10 = _iterator10.next()).done); _iteratorNormalCompletion10 = true) {
+			for (var _iterator10 = listFavoritesBtns[Symbol.iterator](), _step10; !(_iteratorNormalCompletion10 = (_step10 = _iterator10.next()).done); _iteratorNormalCompletion10 = true) {
 				var _btn5 = _step10.value;
 
-				_btn5.addEventListener('click', function (ev) {}, false);
+				_btn5.addEventListener('click', function (ev) {
+					var el = ev.currentTarget,
+					    elID = el.getAttribute('data-favorites'),
+					    elParent = el.closest('.list__box-wrapper');
+
+					var listBlock = elParent.querySelector('.list__box[data-id="' + elID + '"]'),
+					    listFavoritesBtn = listBlock.querySelector('.list__box-favorites[data-id="' + elID + '"]');
+
+					ev.currentTarget.classList.toggle('is-active');
+					listFavoritesBtn.classList.toggle('is-active');
+				}, false);
 			}
 		} catch (err) {
 			_didIteratorError10 = true;
@@ -569,7 +580,7 @@ if (!Element.prototype.closest) {
 		var _iteratorError11 = undefined;
 
 		try {
-			for (var _iterator11 = dislikeBtns[Symbol.iterator](), _step11; !(_iteratorNormalCompletion11 = (_step11 = _iterator11.next()).done); _iteratorNormalCompletion11 = true) {
+			for (var _iterator11 = likeBtns[Symbol.iterator](), _step11; !(_iteratorNormalCompletion11 = (_step11 = _iterator11.next()).done); _iteratorNormalCompletion11 = true) {
 				var _btn6 = _step11.value;
 
 				_btn6.addEventListener('click', function (ev) {}, false);
@@ -588,18 +599,43 @@ if (!Element.prototype.closest) {
 				}
 			}
 		}
-	};
-
-	var listIndicator = function listIndicator() {
-		var listBoxes = document.querySelectorAll('[list-box-js]');
 
 		var _iteratorNormalCompletion12 = true;
 		var _didIteratorError12 = false;
 		var _iteratorError12 = undefined;
 
 		try {
-			for (var _iterator12 = listBoxes[Symbol.iterator](), _step12; !(_iteratorNormalCompletion12 = (_step12 = _iterator12.next()).done); _iteratorNormalCompletion12 = true) {
-				var box = _step12.value;
+			for (var _iterator12 = dislikeBtns[Symbol.iterator](), _step12; !(_iteratorNormalCompletion12 = (_step12 = _iterator12.next()).done); _iteratorNormalCompletion12 = true) {
+				var _btn7 = _step12.value;
+
+				_btn7.addEventListener('click', function (ev) {}, false);
+			}
+		} catch (err) {
+			_didIteratorError12 = true;
+			_iteratorError12 = err;
+		} finally {
+			try {
+				if (!_iteratorNormalCompletion12 && _iterator12.return) {
+					_iterator12.return();
+				}
+			} finally {
+				if (_didIteratorError12) {
+					throw _iteratorError12;
+				}
+			}
+		}
+	};
+
+	var listIndicator = function listIndicator() {
+		var listBoxes = document.querySelectorAll('[list-box-js]');
+
+		var _iteratorNormalCompletion13 = true;
+		var _didIteratorError13 = false;
+		var _iteratorError13 = undefined;
+
+		try {
+			for (var _iterator13 = listBoxes[Symbol.iterator](), _step13; !(_iteratorNormalCompletion13 = (_step13 = _iterator13.next()).done); _iteratorNormalCompletion13 = true) {
+				var box = _step13.value;
 
 
 				box.addEventListener('mouseenter', function (ev) {
@@ -625,16 +661,16 @@ if (!Element.prototype.closest) {
 				box.addEventListener('mouseleave', function (ev) {});
 			}
 		} catch (err) {
-			_didIteratorError12 = true;
-			_iteratorError12 = err;
+			_didIteratorError13 = true;
+			_iteratorError13 = err;
 		} finally {
 			try {
-				if (!_iteratorNormalCompletion12 && _iterator12.return) {
-					_iterator12.return();
+				if (!_iteratorNormalCompletion13 && _iterator13.return) {
+					_iterator13.return();
 				}
 			} finally {
-				if (_didIteratorError12) {
-					throw _iteratorError12;
+				if (_didIteratorError13) {
+					throw _iteratorError13;
 				}
 			}
 		}

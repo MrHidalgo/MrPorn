@@ -144,33 +144,33 @@
 			width: 350px;
 			height: 260px;
 			@include transition(width, height);
-			transition-delay: 0.75s;
+			transition-delay: 0.55s;
 
 			.list__box {
 				&-overlay {
 					background-color: rgba(#000, 0.65);
 					@include transition(background-color);
-					transition-delay: 0.75s;
+					transition-delay: 0.55s;
 				}
 
 				&-border {
 					background-color: rgba(#080915, 0);
 					@include transition(background-color);
-					transition-delay: 0.75s;
+					transition-delay: 0.55s;
 				}
 
 				&-details {
 					opacity: 1;
 					visibility: visible;
 					@include transition(opacity 0.55s, visibility 0.55s);
-					transition-delay: 0.9s;
+					transition-delay: 0.75s;
 				}
 
 				&-more {
 					opacity: 1;
 					visibility: visible;
 					@include transition(opacity, visibility);
-					transition-delay: 0.75s;
+					transition-delay: 0.55s;
 
 					.icon-font {
 						animation-fill-mode: both;
@@ -390,6 +390,11 @@
 					}
 
 					&.is-active {
+						animation-fill-mode: both;
+						animation-duration: 1.5s;
+						animation-timing-function: ease-in-out;
+						animation-name: spinAction;
+
 						&:hover {
 							border-color: #c5f015;
 							@include transition(border-color, background-color, transform);
@@ -397,7 +402,7 @@
 
 						.icon-font {
 							color: #c5f015;
-							@include transition(color, transform);
+							@include transition(color 1.5s, transform);
 						}
 					}
 
@@ -413,7 +418,7 @@
 
 						&.is-active {
 							.icon-font {
-								@include transition(opacity, visibility, color, transform);
+								@include transition(opacity 1.5s, visibility 1.5s, color 1.5s, transform);
 
 								&.icon-star-fill {
 									opacity: 0;
@@ -427,9 +432,8 @@
 						}
 
 						.icon-font {
-							@include transition(opacity, visibility, color, transform);
+							@include transition(opacity, visibility , color, transform);
 
-							&.icon-star-fill {}
 							&.icon-star {
 								opacity: 0;
 								visibility: hidden;
@@ -517,8 +521,8 @@
 	}
 
 	&__specification {
-		display: none;
-		//display: flex;
+		//display: none;
+		display: flex;
 		position: relative;
 		height: 322px;
 		border-width: 2px;
@@ -732,7 +736,7 @@
 			border-style: solid;
 			border-radius: 50%;
 			transform-origin: center;
-			backface-visibility: hidden;
+			//backface-visibility: hidden;
 			@include transition(transform);
 
 			&:hover {
@@ -742,10 +746,11 @@
 
 			&.is-active {
 				border-color: rgb(197, 240, 21);
+				@include transition(transform);
 
 				.icon-font {
 					color: rgb(197, 240, 21);
-					@include transition(opacity, visibility);
+					@include transition(opacity 1.5s, visibility 1.5s);
 				}
 			}
 
@@ -769,8 +774,13 @@
 
 		&-favorites {
 			&.is-active {
+				animation-fill-mode: both;
+				animation-duration: 1.5s;
+				animation-timing-function: ease-in-out;
+				animation-name: spinAction;
+
 				.icon-font {
-					@include transition(opacity, visibility);
+					@include transition(opacity 1.5s, visibility 1.5s);
 
 					&.icon-star-fill {
 						opacity: 0;
@@ -779,11 +789,9 @@
 					&.icon-star {
 						opacity: 1;
 						visibility: visible;
-						position: absolute;
 					}
 				}
 			}
-
 
 			.icon-font {
 				@include transition(opacity, visibility);
@@ -885,7 +893,7 @@
 			&:hover {
 				width: 350px !important;
 				@include transition(width);
-				transition-delay: 0.75s;
+				transition-delay: 0.55s;
 			}
 		}
 	}
@@ -902,5 +910,12 @@
 		transform: rotate(-90deg) translateX(5px);
 	}
 }
-
+@keyframes spinAction {
+	from {
+		transform: rotate3d(0, 1, 0, 0);
+	}
+	to {
+		transform: rotate3d(0, 1, 0, 540deg);
+	}
+}
 // SECTION :: END

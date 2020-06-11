@@ -247,6 +247,7 @@ if (!Element.prototype.closest) {
 
 	const detailsToggleAction = () => {
 		const favoritesBtns = document.querySelectorAll('[favorites-toggle-js]'),
+			listFavoritesBtns = document.querySelectorAll('[spec-favorites-js]'),
 			likeBtns = document.querySelectorAll('[like-toggle-js]'),
 			dislikeBtns = document.querySelectorAll('[dislike-toggle-js]');
 
@@ -261,6 +262,20 @@ if (!Element.prototype.closest) {
 
 				ev.currentTarget.classList.toggle('is-active');
 				specificationFavoritesBtn.classList.toggle('is-active');
+			}, false);
+		}
+
+		for(let btn of listFavoritesBtns) {
+			btn.addEventListener('click', (ev) => {
+				const el = ev.currentTarget,
+					elID = el.getAttribute('data-favorites'),
+					elParent = el.closest('.list__box-wrapper');
+
+				const listBlock = elParent.querySelector('.list__box[data-id="' + elID + '"]'),
+					listFavoritesBtn = listBlock.querySelector('.list__box-favorites[data-id="' + elID + '"]');
+
+				ev.currentTarget.classList.toggle('is-active');
+				listFavoritesBtn.classList.toggle('is-active');
 			}, false);
 		}
 
