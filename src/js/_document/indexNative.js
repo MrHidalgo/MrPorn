@@ -543,11 +543,46 @@ if (!Element.prototype.closest) {
 		for(let swiperSlide of swiperSlides) {
 
 			swiperSlide.addEventListener('mouseenter', function(ev) {
-				const el = ev.currentTarget,
-					elParent = el.closest('[list-parent-js]'),
-					lineInd = elParent.querySelector('[list-line-js]');
+				if(window.innerWidth >= 1280) {
+					const el = ev.currentTarget,
+						elParent = el.closest('[list-parent-js]'),
+						lineInd = elParent.querySelector('[list-line-js]');
 
-				setTimeout(function() {
+					setTimeout(function() {
+						let transformVal = '';
+
+						if(lineInd.getAttribute("style")) {
+							let val = lineInd.getAttribute("style");
+
+
+							if(val.indexOf(';') === -1) {
+								transformVal = val;
+							} else {
+								transformVal = val.substring(0, val.indexOf(';'));
+							}
+						}
+
+						if(hoverBool) {
+							el.classList.add('is-hover');
+							lineInd.setAttribute('style', transformVal + ';width: 189px');
+						} else {
+							tOut = setTimeout(function() {
+								hoverBool = true;
+								el.classList.add('is-hover');
+
+								lineInd.setAttribute('style', transformVal + ';width: 189px');
+							}, 750);
+						}
+					}, 0);
+				}
+			}, false);
+
+			swiperSlide.addEventListener('mouseleave', function(ev) {
+				if(window.innerWidth >= 1280) {
+					const el = ev.currentTarget,
+						elParent = el.closest('[list-parent-js]'),
+						lineInd = elParent.querySelector('[list-line-js]');
+
 					let transformVal = '';
 
 					if(lineInd.getAttribute("style")) {
@@ -561,55 +596,25 @@ if (!Element.prototype.closest) {
 						}
 					}
 
-					if(hoverBool) {
-						el.classList.add('is-hover');
-						lineInd.setAttribute('style', transformVal + ';width: 189px');
-					} else {
-						tOut = setTimeout(function() {
-							hoverBool = true;
-							el.classList.add('is-hover');
+					clearTimeout(tOut);
+					el.classList.remove('is-hover');
 
-							lineInd.setAttribute('style', transformVal + ';width: 189px');
-						}, 750);
-					}
-				}, 0);
-			}, false);
-
-			swiperSlide.addEventListener('mouseleave', function(ev) {
-				const el = ev.currentTarget,
-					elParent = el.closest('[list-parent-js]'),
-					lineInd = elParent.querySelector('[list-line-js]');
-
-				let transformVal = '';
-
-				if(lineInd.getAttribute("style")) {
-					let val = lineInd.getAttribute("style");
-
-
-					if(val.indexOf(';') === -1) {
-						transformVal = val;
-					} else {
-						transformVal = val.substring(0, val.indexOf(';'));
-					}
+					lineInd.setAttribute('style', transformVal + ';width: 64px');
 				}
-
-				clearTimeout(tOut);
-				el.classList.remove('is-hover');
-
-				lineInd.setAttribute('style', transformVal + ';width: 64px');
 			}, false);
 
 		}
 
 		for(let bodyBlock of listBoxBody) {
-
 			bodyBlock.addEventListener('mouseleave', function(ev) {
-				hoverBool = false;
+				if(window.innerWidth >= 1280) {
+					hoverBool = false;
 
-				clearTimeout(tOut);
+					clearTimeout(tOut);
 
-				for(let slide of swiperSlides) {
-					slide.classList.remove('is-hover');
+					for(let slide of swiperSlides) {
+						slide.classList.remove('is-hover');
+					}
 				}
 			}, false);
 

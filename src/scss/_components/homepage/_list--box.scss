@@ -189,6 +189,9 @@
 		padding: 0 10px 25px;
 		background: linear-gradient(to bottom, rgba(8,9,21,0) 0%,rgba(8,9,21,0.85) 100%);
 		@include transition(opacity, visibility);
+		@include adaptive(1279) {
+			display: none;
+		}
 
 		&-left {
 			display: flex;
@@ -391,6 +394,18 @@
 		box-shadow: none;
 		background-color: transparent;
 		@include transition(opacity, visibility);
+		@include adaptive(1279) {
+			z-index: 99;
+			opacity: 1;
+			visibility: visible;
+			top: 0;
+			left: 0;
+			height: 100%;
+
+			.icon-font {
+				display: none;
+			}
+		}
 
 		.icon-font {
 			color: #c5f015;

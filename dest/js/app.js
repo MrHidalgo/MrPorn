@@ -951,11 +951,45 @@ if (!Element.prototype.closest) {
 
 
 				swiperSlide.addEventListener('mouseenter', function (ev) {
-					var el = ev.currentTarget,
-					    elParent = el.closest('[list-parent-js]'),
-					    lineInd = elParent.querySelector('[list-line-js]');
+					if (window.innerWidth >= 1280) {
+						var el = ev.currentTarget,
+						    elParent = el.closest('[list-parent-js]'),
+						    lineInd = elParent.querySelector('[list-line-js]');
 
-					setTimeout(function () {
+						setTimeout(function () {
+							var transformVal = '';
+
+							if (lineInd.getAttribute("style")) {
+								var val = lineInd.getAttribute("style");
+
+								if (val.indexOf(';') === -1) {
+									transformVal = val;
+								} else {
+									transformVal = val.substring(0, val.indexOf(';'));
+								}
+							}
+
+							if (hoverBool) {
+								el.classList.add('is-hover');
+								lineInd.setAttribute('style', transformVal + ';width: 189px');
+							} else {
+								tOut = setTimeout(function () {
+									hoverBool = true;
+									el.classList.add('is-hover');
+
+									lineInd.setAttribute('style', transformVal + ';width: 189px');
+								}, 750);
+							}
+						}, 0);
+					}
+				}, false);
+
+				swiperSlide.addEventListener('mouseleave', function (ev) {
+					if (window.innerWidth >= 1280) {
+						var el = ev.currentTarget,
+						    elParent = el.closest('[list-parent-js]'),
+						    lineInd = elParent.querySelector('[list-line-js]');
+
 						var transformVal = '';
 
 						if (lineInd.getAttribute("style")) {
@@ -968,41 +1002,11 @@ if (!Element.prototype.closest) {
 							}
 						}
 
-						if (hoverBool) {
-							el.classList.add('is-hover');
-							lineInd.setAttribute('style', transformVal + ';width: 189px');
-						} else {
-							tOut = setTimeout(function () {
-								hoverBool = true;
-								el.classList.add('is-hover');
+						clearTimeout(tOut);
+						el.classList.remove('is-hover');
 
-								lineInd.setAttribute('style', transformVal + ';width: 189px');
-							}, 750);
-						}
-					}, 0);
-				}, false);
-
-				swiperSlide.addEventListener('mouseleave', function (ev) {
-					var el = ev.currentTarget,
-					    elParent = el.closest('[list-parent-js]'),
-					    lineInd = elParent.querySelector('[list-line-js]');
-
-					var transformVal = '';
-
-					if (lineInd.getAttribute("style")) {
-						var val = lineInd.getAttribute("style");
-
-						if (val.indexOf(';') === -1) {
-							transformVal = val;
-						} else {
-							transformVal = val.substring(0, val.indexOf(';'));
-						}
+						lineInd.setAttribute('style', transformVal + ';width: 64px');
 					}
-
-					clearTimeout(tOut);
-					el.classList.remove('is-hover');
-
-					lineInd.setAttribute('style', transformVal + ';width: 64px');
 				}, false);
 			}
 		} catch (err) {
@@ -1028,33 +1032,34 @@ if (!Element.prototype.closest) {
 			for (var _iterator17 = listBoxBody[Symbol.iterator](), _step17; !(_iteratorNormalCompletion17 = (_step17 = _iterator17.next()).done); _iteratorNormalCompletion17 = true) {
 				var bodyBlock = _step17.value;
 
-
 				bodyBlock.addEventListener('mouseleave', function (ev) {
-					hoverBool = false;
+					if (window.innerWidth >= 1280) {
+						hoverBool = false;
 
-					clearTimeout(tOut);
+						clearTimeout(tOut);
 
-					var _iteratorNormalCompletion18 = true;
-					var _didIteratorError18 = false;
-					var _iteratorError18 = undefined;
+						var _iteratorNormalCompletion18 = true;
+						var _didIteratorError18 = false;
+						var _iteratorError18 = undefined;
 
-					try {
-						for (var _iterator18 = swiperSlides[Symbol.iterator](), _step18; !(_iteratorNormalCompletion18 = (_step18 = _iterator18.next()).done); _iteratorNormalCompletion18 = true) {
-							var slide = _step18.value;
-
-							slide.classList.remove('is-hover');
-						}
-					} catch (err) {
-						_didIteratorError18 = true;
-						_iteratorError18 = err;
-					} finally {
 						try {
-							if (!_iteratorNormalCompletion18 && _iterator18.return) {
-								_iterator18.return();
+							for (var _iterator18 = swiperSlides[Symbol.iterator](), _step18; !(_iteratorNormalCompletion18 = (_step18 = _iterator18.next()).done); _iteratorNormalCompletion18 = true) {
+								var slide = _step18.value;
+
+								slide.classList.remove('is-hover');
 							}
+						} catch (err) {
+							_didIteratorError18 = true;
+							_iteratorError18 = err;
 						} finally {
-							if (_didIteratorError18) {
-								throw _iteratorError18;
+							try {
+								if (!_iteratorNormalCompletion18 && _iterator18.return) {
+									_iterator18.return();
+								}
+							} finally {
+								if (_didIteratorError18) {
+									throw _iteratorError18;
+								}
 							}
 						}
 					}

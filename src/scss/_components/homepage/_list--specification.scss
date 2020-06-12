@@ -170,6 +170,9 @@
 
 			&.list__specification-action-circle {
 				width: 46px;
+				@include adaptive(1279) {
+					width: 40px;
+				}
 			}
 
 			&.is-hide {

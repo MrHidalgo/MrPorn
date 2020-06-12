@@ -6,6 +6,10 @@
 	height: calc(100% - 40px);
 	@include transition(opacity, visibility);
 
+	.is-open & {
+		height: 100%;
+	}
+
 	&.swiper-button-disabled {
 		opacity: 0;
 		visibility: hidden;
