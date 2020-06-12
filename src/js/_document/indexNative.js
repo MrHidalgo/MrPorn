@@ -1,3 +1,8 @@
+/**
+ * POLYFILL
+ * ===================================
+ */
+
 if (!Element.prototype.matches) {
 	Element.prototype.matches = Element.prototype.msMatchesSelector ||
 		Element.prototype.webkitMatchesSelector;
@@ -15,13 +20,22 @@ if (!Element.prototype.closest) {
 }
 
 /**
- * @description Document DOM ready.
+ * end POLYFILL
+ * ===================================
  */
+
+
 (function () {
-	/*
-	* =============================================
-	* CALLBACK :: start
-	* ============================================= */
+	/**
+	 * ADDITIONAL CALLBACK
+	 * ===================================
+	 */
+
+	/**
+	 * @name slideUp
+	 * @param target
+	 * @param duration
+	 */
 	const slideUp = (target, duration=500) => {
 		target.style.transitionProperty = 'height, margin, padding';
 		target.style.transitionDuration = duration + 'ms';
@@ -47,6 +61,11 @@ if (!Element.prototype.closest) {
 			target.style.removeProperty('transition-property');
 		}, duration);
 	};
+	/**
+	 * @name slideDown
+	 * @param target
+	 * @param duration
+	 */
 	const slideDown = (target, duration=500) => {
 		target.style.removeProperty('display');
 		let display = window.getComputedStyle(target).display;
@@ -78,6 +97,11 @@ if (!Element.prototype.closest) {
 			target.style.removeProperty('transition-property');
 		}, duration);
 	};
+	/**
+	 * @name slideToggle
+	 * @param target
+	 * @param duration
+	 */
 	const slideToggle = (target, duration = 500) => {
 		if (window.getComputedStyle(target).display === 'none') {
 			return slideDown(target, duration);
@@ -85,8 +109,20 @@ if (!Element.prototype.closest) {
 			return slideUp(target, duration);
 		}
 	};
+	/**
+	 * end ADDITIONAL CALLBACK
+	 * ===================================
+	 */
 
 
+	/**
+	 * MAIN CALLBACK
+	 * ===================================
+	 */
+
+	/**
+	 * @name bodyClick
+	 */
 	const bodyClick = () => {
 		const className = '.header__view-wrapper, .sort';
 
@@ -110,6 +146,9 @@ if (!Element.prototype.closest) {
 	};
 
 
+	/**
+	 * @name viewFavoritesToggle
+	 */
 	const viewFavoritesToggle = () => {
 		const _btn = document.querySelector('[view-favorites-toggle-js]'),
 			_node = document.querySelector('[view-favorites-drop-js]');
@@ -127,7 +166,13 @@ if (!Element.prototype.closest) {
 	};
 
 
+	/**
+	 * @name sortCB
+	 */
 	const sortCB = () => {
+		/**
+		 * @name sortToggle
+		 */
 		const sortToggle = () => {
 			const toggleSort = document.querySelector('[sort-toggle-js]'),
 				nodeSort = document.querySelector('[sort-node-js]');
@@ -136,7 +181,9 @@ if (!Element.prototype.closest) {
 				nodeSort.classList.toggle('is-open');
 			}, false);
 		};
-
+		/**
+		 * @name sortDropInner
+		 */
 		const sortDropInner = () => {
 			const links = document.querySelectorAll('.sort__drop-link'),
 				nodeDropInner = document.querySelector('.sort__drop-inner');
@@ -159,7 +206,9 @@ if (!Element.prototype.closest) {
 				}, false);
 			}
 		};
-
+		/**
+		 * @name sortCollapse
+		 */
 		const sortCollapse = () => {
 			const toggles = document.querySelectorAll('[collapse-toggle-js]');
 
@@ -174,12 +223,16 @@ if (!Element.prototype.closest) {
 			}
 		};
 
+
 		sortToggle();
 		sortDropInner();
 		sortCollapse();
 	};
 
 
+	/**
+	 * @name search
+	 */
 	const search = () => {
 		const searchInput = document.querySelector('[search-js]');
 
@@ -198,6 +251,9 @@ if (!Element.prototype.closest) {
 	};
 
 
+	/**
+	 * @name boxMore
+	 */
 	const boxMore = () => {
 		function playPause(vid) {
 			vid.pause();
@@ -266,6 +322,9 @@ if (!Element.prototype.closest) {
 	};
 
 
+	/**
+	 * @name videoToggle
+	 */
 	const videoToggle = () => {
 		function playPause(vid) {
 			if (vid.paused) {
@@ -308,6 +367,9 @@ if (!Element.prototype.closest) {
 	};
 
 
+	/**
+	 * @name detailsToggleAction
+	 */
 	const detailsToggleAction = () => {
 		const favoritesBtns = document.querySelectorAll('[favorites-toggle-js]'),
 			specFavoritesBtns = document.querySelectorAll('[spec-favorites-js]'),
@@ -424,6 +486,9 @@ if (!Element.prototype.closest) {
 	};
 
 
+	/**
+	 * @name listIndicator
+	 */
 	const listIndicator = () => {
 		const listBoxes = document.querySelectorAll('[list-box-js]');
 
@@ -465,6 +530,9 @@ if (!Element.prototype.closest) {
 	};
 
 
+	/**
+	 * @name boxHover
+	 */
 	const boxHover = () => {
 		const swiperSlides = document.querySelectorAll('.swiper-slide'),
 			listBoxBody = document.querySelectorAll('.list__box-body');
@@ -549,9 +617,10 @@ if (!Element.prototype.closest) {
 
 	};
 
-	/*
-	* CALLBACK :: end
-	* ============================================= */
+	/**
+	 * end MAIN CALLBACK
+	 * ===================================
+	 */
 
 
 	/**
@@ -581,6 +650,9 @@ if (!Element.prototype.closest) {
 		// ==========================================
 	};
 
+	/**
+	 * @description Init all CB after page load
+	 */
 	window.addEventListener('load', (ev) => {
 		// for(let s of document.querySelectorAll('.swiper-slide')) {
 		// 	s.classList.add('is-hover');
