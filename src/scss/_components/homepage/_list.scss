@@ -7,8 +7,6 @@
 	.swiper {
 		&-container {
 			overflow: unset;
-			//padding-top: 25px;
-			//padding-bottom: 40px;
 		}
 
 		&-slide {
@@ -18,6 +16,10 @@
 			margin-left: 3px;
 			margin-right: 3px;
 			@include transition(width);
+			@include adaptive(1023) {
+				width: 200px !important;
+				height: 200px;
+			}
 
 			&:first-of-type {
 				margin-left: 0;
@@ -29,7 +31,6 @@
 			&.is-hover {
 				width: 350px !important;
 				@include transition(width);
-				//transition-delay: 0.5s;
 			}
 		}
 	}

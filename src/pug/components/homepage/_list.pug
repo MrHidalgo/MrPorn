@@ -53,7 +53,9 @@ mixin listBox(sliderID, name)
 						span Enjoy these best porn sites, all exclusive HD content starring beautiful pornstars.
 
 			div
-				a.list__btn(href="#")!= "SEE&nbsp;<span>69 MORE</span>"
+				a.list__btn(href="#")
+					p!= "SEE&nbsp;<span>69 MORE</span>"
+					i.icon-font.icon-arrow-angle
 
 		.list__box-line
 			span(list-line-js)
@@ -145,7 +147,7 @@ mixin listBox(sliderID, name)
 								div
 									img.list__specification-logo(src="img/img-reality-kings.png" srcset="img/img-reality-kings@2x.png 2x" alt="")
 
-									.list__specification-action
+									.list__specification-action(spec-actionNode-js)
 										div
 											a.list__specification-visit(href="#") VISIT WEBSITE
 										div

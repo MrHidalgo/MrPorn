@@ -56,6 +56,11 @@
 				font-size: 16px;
 				color: rgb(70, 128, 202);
 				line-height: 2.273;
+				@include adaptive(1023) {
+					margin-left: 10px;
+					margin-right: 10px;
+					font-size: 14px;
+				}
 			}
 		}
 
@@ -64,6 +69,9 @@
 			color: rgb(70, 128, 202);
 			line-height: 2.273;
 			@include transition(color);
+			@include adaptive(1023) {
+				font-size: 14px;
+			}
 
 			&:hover {
 				color: #ffffff;

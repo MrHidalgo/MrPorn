@@ -12,6 +12,162 @@
      object-position: center;
 }
 
+/*!
+ * Hamburgers
+ * @description Tasty CSS-animated hamburgers
+ * @author Jonathan Suh @jonsuh
+ * @site https://jonsuh.com/hamburgers
+ * @link https://github.com/jonsuh/hamburgers
+ */
+/* line 3, src/scss/_vendor/hamburger/_base.scss */
+.hamburger {
+  padding: 15px 0;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  cursor: pointer;
+  -webkit-transition-property: opacity, -webkit-filter;
+  transition-property: opacity, -webkit-filter;
+  -o-transition-property: opacity, filter;
+  transition-property: opacity, filter;
+  transition-property: opacity, filter, -webkit-filter;
+  -webkit-transition-duration: 0.35s;
+       -o-transition-duration: 0.35s;
+          transition-duration: 0.35s;
+  -webkit-transition-timing-function: linear;
+       -o-transition-timing-function: linear;
+          transition-timing-function: linear;
+  font: inherit;
+  color: inherit;
+  text-transform: none;
+  background-color: transparent;
+  border: 0;
+  margin: 0;
+  overflow: visible;
+}
+
+/* line 21, src/scss/_vendor/hamburger/_base.scss */
+.hamburger:hover {
+  opacity: 1;
+}
+
+/* line 31, src/scss/_vendor/hamburger/_base.scss */
+.hamburger-box {
+  width: 30px;
+  height: 19px;
+  display: inline-block;
+  position: relative;
+}
+
+/* line 38, src/scss/_vendor/hamburger/_base.scss */
+.hamburger-inner {
+  display: block;
+  top: 50%;
+  margin-top: -1.5px;
+}
+
+/* line 43, src/scss/_vendor/hamburger/_base.scss */
+.hamburger-inner, .hamburger-inner::before, .hamburger-inner::after {
+  width: 30px;
+  height: 3px;
+  background-color: #fff;
+  -webkit-border-radius: 4px;
+          border-radius: 4px;
+  position: absolute;
+  -webkit-transition-property: -webkit-transform;
+  transition-property: -webkit-transform;
+  -o-transition-property: transform;
+  transition-property: transform;
+  transition-property: transform, -webkit-transform;
+  -webkit-transition-duration: 0.15s;
+       -o-transition-duration: 0.15s;
+          transition-duration: 0.15s;
+  -webkit-transition-timing-function: ease;
+       -o-transition-timing-function: ease;
+          transition-timing-function: ease;
+}
+
+/* line 56, src/scss/_vendor/hamburger/_base.scss */
+.hamburger-inner::before, .hamburger-inner::after {
+  content: "";
+  display: block;
+}
+
+/* line 62, src/scss/_vendor/hamburger/_base.scss */
+.hamburger-inner::before {
+  top: -8px;
+}
+
+/* line 66, src/scss/_vendor/hamburger/_base.scss */
+.hamburger-inner::after {
+  bottom: -8px;
+}
+
+/*
+   * Squeeze
+   */
+/* line 6, src/scss/_vendor/hamburger/types/_squeeze.scss */
+.hamburger--squeeze .hamburger-inner {
+  -webkit-transition-duration: 0.075s;
+       -o-transition-duration: 0.075s;
+          transition-duration: 0.075s;
+  -webkit-transition-timing-function: cubic-bezier(0.55, 0.055, 0.675, 0.19);
+       -o-transition-timing-function: cubic-bezier(0.55, 0.055, 0.675, 0.19);
+          transition-timing-function: cubic-bezier(0.55, 0.055, 0.675, 0.19);
+}
+
+/* line 10, src/scss/_vendor/hamburger/types/_squeeze.scss */
+.hamburger--squeeze .hamburger-inner::before {
+  -webkit-transition: top 0.075s 0.12s ease, opacity 0.075s ease;
+  -o-transition: top 0.075s 0.12s ease, opacity 0.075s ease;
+  transition: top 0.075s 0.12s ease, opacity 0.075s ease;
+}
+
+/* line 15, src/scss/_vendor/hamburger/types/_squeeze.scss */
+.hamburger--squeeze .hamburger-inner::after {
+  -webkit-transition: bottom 0.075s 0.12s ease, -webkit-transform 0.075s cubic-bezier(0.55, 0.055, 0.675, 0.19);
+  transition: bottom 0.075s 0.12s ease, -webkit-transform 0.075s cubic-bezier(0.55, 0.055, 0.675, 0.19);
+  -o-transition: bottom 0.075s 0.12s ease, transform 0.075s cubic-bezier(0.55, 0.055, 0.675, 0.19);
+  transition: bottom 0.075s 0.12s ease, transform 0.075s cubic-bezier(0.55, 0.055, 0.675, 0.19);
+  transition: bottom 0.075s 0.12s ease, transform 0.075s cubic-bezier(0.55, 0.055, 0.675, 0.19), -webkit-transform 0.075s cubic-bezier(0.55, 0.055, 0.675, 0.19);
+}
+
+/* line 22, src/scss/_vendor/hamburger/types/_squeeze.scss */
+.hamburger--squeeze.is-active .hamburger-inner {
+  -webkit-transform: rotate(45deg);
+      -ms-transform: rotate(45deg);
+          transform: rotate(45deg);
+  -webkit-transition-delay: 0.12s;
+       -o-transition-delay: 0.12s;
+          transition-delay: 0.12s;
+  -webkit-transition-timing-function: cubic-bezier(0.215, 0.61, 0.355, 1);
+       -o-transition-timing-function: cubic-bezier(0.215, 0.61, 0.355, 1);
+          transition-timing-function: cubic-bezier(0.215, 0.61, 0.355, 1);
+}
+
+/* line 27, src/scss/_vendor/hamburger/types/_squeeze.scss */
+.hamburger--squeeze.is-active .hamburger-inner::before {
+  top: 0;
+  opacity: 0;
+  -webkit-transition: top 0.075s ease, opacity 0.075s 0.12s ease;
+  -o-transition: top 0.075s ease, opacity 0.075s 0.12s ease;
+  transition: top 0.075s ease, opacity 0.075s 0.12s ease;
+}
+
+/* line 34, src/scss/_vendor/hamburger/types/_squeeze.scss */
+.hamburger--squeeze.is-active .hamburger-inner::after {
+  bottom: 0;
+  -webkit-transform: rotate(-90deg);
+      -ms-transform: rotate(-90deg);
+          transform: rotate(-90deg);
+  -webkit-transition: bottom 0.075s ease, -webkit-transform 0.075s 0.12s cubic-bezier(0.215, 0.61, 0.355, 1);
+  transition: bottom 0.075s ease, -webkit-transform 0.075s 0.12s cubic-bezier(0.215, 0.61, 0.355, 1);
+  -o-transition: bottom 0.075s ease, transform 0.075s 0.12s cubic-bezier(0.215, 0.61, 0.355, 1);
+  transition: bottom 0.075s ease, transform 0.075s 0.12s cubic-bezier(0.215, 0.61, 0.355, 1);
+  transition: bottom 0.075s ease, transform 0.075s 0.12s cubic-bezier(0.215, 0.61, 0.355, 1), -webkit-transform 0.075s 0.12s cubic-bezier(0.215, 0.61, 0.355, 1);
+}
+
 /* line 119, src/scss/_generated/_spritePNG.scss */
 .header-nav-blog:before {
   background-image: url("../img/sprite.png");
@@ -1869,13 +2025,20 @@ picture {
   }
 }
 
-/* line 18, src/scss/_macros/_logotype.scss */
+@media screen and (max-width: 1023px) {
+  /* line 4, src/scss/_macros/_logotype.scss */
+  .logo--haeder {
+    display: none;
+  }
+}
+
+/* line 21, src/scss/_macros/_logotype.scss */
 .logo--footer {
   max-width: 250px;
   padding-bottom: 30px;
 }
 
-/* line 23, src/scss/_macros/_logotype.scss */
+/* line 26, src/scss/_macros/_logotype.scss */
 .logo__btn {
   display: -webkit-box;
   display: -webkit-flex;
@@ -1887,7 +2050,7 @@ picture {
           align-items: center;
 }
 
-/* line 28, src/scss/_macros/_logotype.scss */
+/* line 31, src/scss/_macros/_logotype.scss */
 .logo__img {
   display: block;
   max-width: 100%;
@@ -1966,7 +2129,14 @@ picture {
           flex-direction: column;
 }
 
-/* line 8, src/scss/_components/common/_header.scss */
+@media screen and (max-width: 1023px) {
+  /* line 3, src/scss/_components/common/_header.scss */
+  .header {
+    display: none;
+  }
+}
+
+/* line 11, src/scss/_components/common/_header.scss */
 .header__update {
   color: #35539c;
   font-size: 10px;
@@ -2861,6 +3031,158 @@ picture {
   background-color: #161e3e;
 }
 
+/* line 4, src/scss/_components/common/_pre-header.scss */
+.pre-header__wrapper {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+  -webkit-justify-content: space-between;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+}
+
+/* line 8, src/scss/_components/common/_pre-header.scss */
+.pre-header__wrapper-1 {
+  -webkit-box-align: center;
+  -webkit-align-items: center;
+      -ms-flex-align: center;
+          align-items: center;
+  min-height: 80px;
+  padding: 5px 20px;
+  background-color: #081b49;
+}
+
+/* line 14, src/scss/_components/common/_pre-header.scss */
+.pre-header__wrapper-1 .pre-header__wrapper-middle {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+  -webkit-flex-direction: column;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: center;
+  -webkit-align-items: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  padding-left: 20px;
+  padding-right: 20px;
+}
+
+/* line 24, src/scss/_components/common/_pre-header.scss */
+.pre-header__wrapper-2 {
+  min-height: 40px;
+  background-color: #0b0d28;
+}
+
+/* line 28, src/scss/_components/common/_pre-header.scss */
+.pre-header__wrapper-2 .pre-header__wrapper-left,
+.pre-header__wrapper-2 .pre-header__wrapper-middle,
+.pre-header__wrapper-2 .pre-header__wrapper-right {
+  position: relative;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  width: 100%;
+  max-width: -webkit-calc(100% / 3);
+  max-width: calc(100% / 3);
+}
+
+/* line 38, src/scss/_components/common/_pre-header.scss */
+.pre-header__wrapper-2 .pre-header__wrapper-middle:before, .pre-header__wrapper-2 .pre-header__wrapper-middle:after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  -webkit-transform: translateY(-50%);
+      -ms-transform: translateY(-50%);
+          transform: translateY(-50%);
+  width: 2px;
+  height: -webkit-calc(100% - 14px);
+  height: calc(100% - 14px);
+  background-color: #161e3e;
+}
+
+/* line 49, src/scss/_components/common/_pre-header.scss */
+.pre-header__wrapper-2 .pre-header__wrapper-middle:before {
+  left: 0;
+}
+
+/* line 53, src/scss/_components/common/_pre-header.scss */
+.pre-header__wrapper-2 .pre-header__wrapper-middle:after {
+  right: 0;
+}
+
+/* line 60, src/scss/_components/common/_pre-header.scss */
+.pre-header__title {
+  color: #ffffff;
+  font-size: 14px;
+  text-align: center;
+}
+
+/* line 66, src/scss/_components/common/_pre-header.scss */
+.pre-header__hamburger {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  padding-top: 15px;
+  padding-bottom: 15px;
+}
+
+/* line 71, src/scss/_components/common/_pre-header.scss */
+.pre-header__hamburger-inner {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+  -webkit-align-items: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  width: 30px;
+  height: 19px;
+}
+
+/* line 79, src/scss/_components/common/_pre-header.scss */
+.pre-header__hamburger .icon-font {
+  color: #ffffff;
+  font-size: 20px;
+}
+
+/* line 85, src/scss/_components/common/_pre-header.scss */
+.pre-header__link {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+  -webkit-align-items: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  width: 100%;
+  height: 100%;
+  color: #abbde7;
+  font-size: 15px;
+  font-weight: 700;
+}
+
 /* line 3, src/scss/_components/common/_footer.scss */
 .footer {
   display: -webkit-box;
@@ -2966,7 +3288,16 @@ picture {
   line-height: 2.273;
 }
 
-/* line 62, src/scss/_components/common/_footer.scss */
+@media screen and (max-width: 1023px) {
+  /* line 53, src/scss/_components/common/_footer.scss */
+  .footer__nav-item span {
+    margin-left: 10px;
+    margin-right: 10px;
+    font-size: 14px;
+  }
+}
+
+/* line 67, src/scss/_components/common/_footer.scss */
 .footer__nav-link {
   font-size: 16px;
   color: #4680ca;
@@ -2976,7 +3307,14 @@ picture {
   transition: color 0.35s ease-in-out;
 }
 
-/* line 68, src/scss/_components/common/_footer.scss */
+@media screen and (max-width: 1023px) {
+  /* line 67, src/scss/_components/common/_footer.scss */
+  .footer__nav-link {
+    font-size: 14px;
+  }
+}
+
+/* line 76, src/scss/_components/common/_footer.scss */
 .footer__nav-link:hover {
   color: #ffffff;
   -webkit-transition: color 0.35s ease-in-out;
@@ -2995,7 +3333,7 @@ picture {
   overflow: unset;
 }
 
-/* line 14, src/scss/_components/homepage/_list.scss */
+/* line 12, src/scss/_components/homepage/_list.scss */
 .list .swiper-slide {
   position: relative;
   width: 230px !important;
@@ -3007,17 +3345,25 @@ picture {
   transition: width 0.35s ease-in-out;
 }
 
-/* line 22, src/scss/_components/homepage/_list.scss */
+@media screen and (max-width: 1023px) {
+  /* line 12, src/scss/_components/homepage/_list.scss */
+  .list .swiper-slide {
+    width: 200px !important;
+    height: 200px;
+  }
+}
+
+/* line 24, src/scss/_components/homepage/_list.scss */
 .list .swiper-slide:first-of-type {
   margin-left: 0;
 }
 
-/* line 25, src/scss/_components/homepage/_list.scss */
+/* line 27, src/scss/_components/homepage/_list.scss */
 .list .swiper-slide:last-of-type {
   margin-right: 0;
 }
 
-/* line 29, src/scss/_components/homepage/_list.scss */
+/* line 31, src/scss/_components/homepage/_list.scss */
 .list .swiper-slide.is-hover {
   width: 350px !important;
   -webkit-transition: width 0.35s ease-in-out;
@@ -3031,15 +3377,12 @@ picture {
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
-  -webkit-box-align: center;
-  -webkit-align-items: center;
-      -ms-flex-align: center;
-          align-items: center;
 }
 
-/* line 6, src/scss/_components/homepage/_list--info.scss */
+/* line 5, src/scss/_components/homepage/_list--info.scss */
 .list__info > div:nth-of-type(1) {
   width: 55px;
+  padding-top: 3px;
 }
 
 /* line 10, src/scss/_components/homepage/_list--info.scss */
@@ -3124,9 +3467,45 @@ picture {
   }
 }
 
-/* line 19, src/scss/_components/homepage/_list--btn.scss */
+@media screen and (max-width: 1023px) {
+  /* line 1, src/scss/_components/homepage/_list--btn.scss */
+  .list__btn {
+    position: absolute;
+    top: 0;
+    right: 0;
+    min-width: unset;
+    height: 34px;
+    background-color: transparent;
+  }
+}
+
+/* line 27, src/scss/_components/homepage/_list--btn.scss */
 .list__btn span {
   color: #0c3495;
+}
+
+@media screen and (max-width: 1023px) {
+  /* line 27, src/scss/_components/homepage/_list--btn.scss */
+  .list__btn span {
+    color: #d5f34a;
+  }
+}
+
+/* line 34, src/scss/_components/homepage/_list--btn.scss */
+.list__btn .icon-font {
+  display: none;
+  color: #d5f34a;
+  -webkit-transform: translateY(1px) scaleX(-1);
+      -ms-transform: translateY(1px) scaleX(-1);
+          transform: translateY(1px) scaleX(-1);
+  margin-left: 5px;
+}
+
+@media screen and (max-width: 1023px) {
+  /* line 34, src/scss/_components/homepage/_list--btn.scss */
+  .list__btn .icon-font {
+    display: block;
+  }
 }
 
 /* line 1, src/scss/_components/homepage/_list--arrow.scss */
@@ -3135,19 +3514,22 @@ picture {
   position: absolute;
   top: 0;
   width: 75px;
-  height: -webkit-calc(100% - 40px);
-  height: calc(100% - 40px);
-  -webkit-transition: opacity 0.35s ease-in-out, visibility 0.35s ease-in-out;
-  -o-transition: opacity 0.35s ease-in-out, visibility 0.35s ease-in-out;
-  transition: opacity 0.35s ease-in-out, visibility 0.35s ease-in-out;
+  height: -webkit-calc(100% - 30px);
+  height: calc(100% - 30px);
+  -webkit-transition: opacity 0.35s ease-in-out, visibility 0.35s ease-in-out, height 0.35s ease-in-out;
+  -o-transition: opacity 0.35s ease-in-out, visibility 0.35s ease-in-out, height 0.35s ease-in-out;
+  transition: opacity 0.35s ease-in-out, visibility 0.35s ease-in-out, height 0.35s ease-in-out;
 }
 
 /* line 9, src/scss/_components/homepage/_list--arrow.scss */
 .is-open .list__arrow {
   height: 100%;
+  -webkit-transition: height 0.35s ease-in-out;
+  -o-transition: height 0.35s ease-in-out;
+  transition: height 0.35s ease-in-out;
 }
 
-/* line 13, src/scss/_components/homepage/_list--arrow.scss */
+/* line 14, src/scss/_components/homepage/_list--arrow.scss */
 .list__arrow.swiper-button-disabled {
   opacity: 0;
   visibility: hidden;
@@ -3156,7 +3538,7 @@ picture {
   transition: opacity 0.35s ease-in-out, visibility 0.35s ease-in-out;
 }
 
-/* line 19, src/scss/_components/homepage/_list--arrow.scss */
+/* line 20, src/scss/_components/homepage/_list--arrow.scss */
 .list__arrow--prev {
   left: 0;
   background: -webkit-gradient(linear, right top, left top, from(rgba(8, 9, 21, 0)), to(#080915));
@@ -3165,12 +3547,12 @@ picture {
   background: linear-gradient(to left, rgba(8, 9, 21, 0) 0%, #080915 100%);
 }
 
-/* line 23, src/scss/_components/homepage/_list--arrow.scss */
+/* line 24, src/scss/_components/homepage/_list--arrow.scss */
 .list__arrow--prev .list__arrow-box {
   left: 0;
 }
 
-/* line 28, src/scss/_components/homepage/_list--arrow.scss */
+/* line 29, src/scss/_components/homepage/_list--arrow.scss */
 .list__arrow--next {
   right: 0;
   background: -webkit-gradient(linear, left top, right top, from(rgba(8, 9, 21, 0)), to(#080915));
@@ -3179,19 +3561,19 @@ picture {
   background: linear-gradient(to right, rgba(8, 9, 21, 0) 0%, #080915 100%);
 }
 
-/* line 32, src/scss/_components/homepage/_list--arrow.scss */
+/* line 33, src/scss/_components/homepage/_list--arrow.scss */
 .list__arrow--next .list__arrow-box {
   right: 0;
 }
 
-/* line 35, src/scss/_components/homepage/_list--arrow.scss */
+/* line 36, src/scss/_components/homepage/_list--arrow.scss */
 .list__arrow--next .list__arrow-box .icon-font {
   -webkit-transform: scaleX(-1);
       -ms-transform: scaleX(-1);
           transform: scaleX(-1);
 }
 
-/* line 41, src/scss/_components/homepage/_list--arrow.scss */
+/* line 42, src/scss/_components/homepage/_list--arrow.scss */
 .list__arrow-box {
   z-index: 11;
   position: absolute;
@@ -3216,7 +3598,7 @@ picture {
   background-color: rgba(255, 255, 255, 0.05);
 }
 
-/* line 53, src/scss/_components/homepage/_list--arrow.scss */
+/* line 54, src/scss/_components/homepage/_list--arrow.scss */
 .list__arrow-box .icon-font {
   color: #7b7b79;
   font-size: 24px;
@@ -3261,7 +3643,16 @@ picture {
   transition: width 0.35s ease-in-out, height 0.35s ease-in-out;
 }
 
-/* line 21, src/scss/_components/homepage/_list--box.scss */
+@media screen and (max-width: 1023px) {
+  /* line 1, src/scss/_components/homepage/_list--box.scss */
+  .list__box {
+    width: 200px;
+    height: 200px;
+    padding: 15px;
+  }
+}
+
+/* line 26, src/scss/_components/homepage/_list--box.scss */
 .is-hover .list__box {
   z-index: 100;
   width: 350px;
@@ -3271,7 +3662,7 @@ picture {
   transition: width 0.35s ease-in-out, height 0.35s ease-in-out;
 }
 
-/* line 28, src/scss/_components/homepage/_list--box.scss */
+/* line 33, src/scss/_components/homepage/_list--box.scss */
 .is-hover .list__box .list__box-overlay {
   background-color: rgba(0, 0, 0, 0.65);
   -webkit-transition: background-color 0.35s ease-in-out;
@@ -3279,7 +3670,7 @@ picture {
   transition: background-color 0.35s ease-in-out;
 }
 
-/* line 33, src/scss/_components/homepage/_list--box.scss */
+/* line 38, src/scss/_components/homepage/_list--box.scss */
 .is-hover .list__box .list__box-border {
   background-color: rgba(8, 9, 21, 0);
   -webkit-transition: background-color 0.35s ease-in-out;
@@ -3287,7 +3678,7 @@ picture {
   transition: background-color 0.35s ease-in-out;
 }
 
-/* line 38, src/scss/_components/homepage/_list--box.scss */
+/* line 43, src/scss/_components/homepage/_list--box.scss */
 .is-hover .list__box .list__box-details {
   opacity: 1;
   visibility: visible;
@@ -3299,7 +3690,7 @@ picture {
           transition-delay: 0.25s;
 }
 
-/* line 45, src/scss/_components/homepage/_list--box.scss */
+/* line 50, src/scss/_components/homepage/_list--box.scss */
 .is-hover .list__box .list__box-more {
   opacity: 1;
   visibility: visible;
@@ -3308,7 +3699,7 @@ picture {
   transition: opacity 0.35s ease-in-out, visibility 0.35s ease-in-out;
 }
 
-/* line 50, src/scss/_components/homepage/_list--box.scss */
+/* line 55, src/scss/_components/homepage/_list--box.scss */
 .is-hover .list__box .list__box-more .icon-font {
   -webkit-animation-fill-mode: both;
           animation-fill-mode: both;
@@ -3324,7 +3715,7 @@ picture {
           animation-delay: 1s;
 }
 
-/* line 63, src/scss/_components/homepage/_list--box.scss */
+/* line 68, src/scss/_components/homepage/_list--box.scss */
 .list__box.is-active .list__box-border {
   border-style: solid;
   border-width: 4px;
@@ -3333,7 +3724,7 @@ picture {
   transition: border-style 0.35s ease-in-out, border-width 0.35s ease-in-out;
 }
 
-/* line 69, src/scss/_components/homepage/_list--box.scss */
+/* line 74, src/scss/_components/homepage/_list--box.scss */
 .list__box.is-active .list__box-details {
   opacity: 0;
   visibility: hidden;
@@ -3347,7 +3738,7 @@ picture {
   transition: opacity 0.55s ease-in-out, visibility 0.55s ease-in-out, transform 0.55s ease-in-out, -webkit-transform 0.55s ease-in-out;
 }
 
-/* line 76, src/scss/_components/homepage/_list--box.scss */
+/* line 81, src/scss/_components/homepage/_list--box.scss */
 .list__box.is-active:after {
   content: '';
   position: absolute;
@@ -3363,7 +3754,7 @@ picture {
   border-color: #fff transparent transparent transparent;
 }
 
-/* line 90, src/scss/_components/homepage/_list--box.scss */
+/* line 95, src/scss/_components/homepage/_list--box.scss */
 .list__box-wrapper {
   opacity: 0;
   overflow: hidden;
@@ -3384,7 +3775,7 @@ picture {
   transition: padding-bottom 0.35s ease-in-out;
 }
 
-/* line 98, src/scss/_components/homepage/_list--box.scss */
+/* line 103, src/scss/_components/homepage/_list--box.scss */
 .list__box-wrapper.is-open {
   padding-bottom: 40px;
   -webkit-transition: padding-bottom 0.35s ease-in-out;
@@ -3392,7 +3783,7 @@ picture {
   transition: padding-bottom 0.35s ease-in-out;
 }
 
-/* line 102, src/scss/_components/homepage/_list--box.scss */
+/* line 107, src/scss/_components/homepage/_list--box.scss */
 .list__box-wrapper.is-open .list__box-body {
   padding-bottom: 0;
   -webkit-transition: padding-bottom 0.35s ease-in-out;
@@ -3400,8 +3791,9 @@ picture {
   transition: padding-bottom 0.35s ease-in-out;
 }
 
-/* line 109, src/scss/_components/homepage/_list--box.scss */
+/* line 114, src/scss/_components/homepage/_list--box.scss */
 .list__box-head {
+  position: relative;
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -3417,7 +3809,7 @@ picture {
   padding-bottom: 15px;
 }
 
-/* line 116, src/scss/_components/homepage/_list--box.scss */
+/* line 122, src/scss/_components/homepage/_list--box.scss */
 .list__box-line {
   position: relative;
   width: 100%;
@@ -3426,7 +3818,7 @@ picture {
   background-color: #191a28;
 }
 
-/* line 123, src/scss/_components/homepage/_list--box.scss */
+/* line 129, src/scss/_components/homepage/_list--box.scss */
 .list__box-line span {
   cursor: pointer;
   position: absolute;
@@ -3445,7 +3837,7 @@ picture {
   transition: width 0.35s ease-in-out, transform 0.35s ease-in-out, -webkit-transform 0.35s ease-in-out;
 }
 
-/* line 136, src/scss/_components/homepage/_list--box.scss */
+/* line 142, src/scss/_components/homepage/_list--box.scss */
 .list__box-body {
   z-index: 100;
   position: relative;
@@ -3455,7 +3847,7 @@ picture {
   transition: padding-bottom 0.35s ease-in-out;
 }
 
-/* line 143, src/scss/_components/homepage/_list--box.scss */
+/* line 149, src/scss/_components/homepage/_list--box.scss */
 .list__box-overlay {
   z-index: 0;
   position: absolute;
@@ -3469,7 +3861,7 @@ picture {
   transition: background-color 0.35s ease-in-out;
 }
 
-/* line 154, src/scss/_components/homepage/_list--box.scss */
+/* line 160, src/scss/_components/homepage/_list--box.scss */
 .list__box-border {
   z-index: 0;
   position: absolute;
@@ -3485,7 +3877,7 @@ picture {
   transition: border-style 0.35s ease-in-out, border-width 0.35s ease-in-out;
 }
 
-/* line 165, src/scss/_components/homepage/_list--box.scss */
+/* line 171, src/scss/_components/homepage/_list--box.scss */
 .list__box-logo {
   z-index: 15;
   position: relative;
@@ -3497,7 +3889,14 @@ picture {
   margin-right: auto;
 }
 
-/* line 176, src/scss/_components/homepage/_list--box.scss */
+@media screen and (max-width: 1023px) {
+  /* line 171, src/scss/_components/homepage/_list--box.scss */
+  .list__box-logo {
+    max-width: 100%;
+  }
+}
+
+/* line 185, src/scss/_components/homepage/_list--box.scss */
 .list__box-details {
   z-index: 11;
   opacity: 0;
@@ -3533,13 +3932,13 @@ picture {
 }
 
 @media screen and (max-width: 1279px) {
-  /* line 176, src/scss/_components/homepage/_list--box.scss */
+  /* line 185, src/scss/_components/homepage/_list--box.scss */
   .list__box-details {
     display: none;
   }
 }
 
-/* line 196, src/scss/_components/homepage/_list--box.scss */
+/* line 205, src/scss/_components/homepage/_list--box.scss */
 .list__box-details-left {
   display: -webkit-box;
   display: -webkit-flex;
@@ -3559,12 +3958,12 @@ picture {
   max-width: calc(100% - 30px);
 }
 
-/* line 203, src/scss/_components/homepage/_list--box.scss */
+/* line 212, src/scss/_components/homepage/_list--box.scss */
 .list__box-details-left > * {
   width: 100%;
 }
 
-/* line 207, src/scss/_components/homepage/_list--box.scss */
+/* line 216, src/scss/_components/homepage/_list--box.scss */
 .list__box-details-left button {
   outline: none;
   cursor: pointer;
@@ -3577,18 +3976,18 @@ picture {
   background-color: transparent;
 }
 
-/* line 217, src/scss/_components/homepage/_list--box.scss */
+/* line 226, src/scss/_components/homepage/_list--box.scss */
 .list__box-details-left button.list__box-external .icon-font {
   margin-bottom: 5px;
 }
 
-/* line 222, src/scss/_components/homepage/_list--box.scss */
+/* line 231, src/scss/_components/homepage/_list--box.scss */
 .list__box-details-left button .icon-font {
   color: #cecece;
   font-size: 20px;
 }
 
-/* line 229, src/scss/_components/homepage/_list--box.scss */
+/* line 238, src/scss/_components/homepage/_list--box.scss */
 .list__box-details-right {
   display: -webkit-box;
   display: -webkit-flex;
@@ -3610,7 +4009,7 @@ picture {
   width: 30px;
 }
 
-/* line 236, src/scss/_components/homepage/_list--box.scss */
+/* line 245, src/scss/_components/homepage/_list--box.scss */
 .list__box-details-right > * {
   margin-top: 3px;
   -webkit-transition: all 0.4s ease-in-out;
@@ -3618,7 +4017,7 @@ picture {
   transition: all 0.4s ease-in-out;
 }
 
-/* line 241, src/scss/_components/homepage/_list--box.scss */
+/* line 250, src/scss/_components/homepage/_list--box.scss */
 .list__box-details-right button {
   outline: none;
   cursor: pointer;
@@ -3653,7 +4052,7 @@ picture {
   transition: all 0.4s ease-in-out;
 }
 
-/* line 259, src/scss/_components/homepage/_list--box.scss */
+/* line 268, src/scss/_components/homepage/_list--box.scss */
 .list__box-details-right button.is-hide {
   opacity: 0;
   visibility: hidden;
@@ -3669,7 +4068,7 @@ picture {
   transition: opacity 0.35s ease-in-out, visibility 0.35s ease-in-out, height 0.35s ease-in-out, transform 0.35s ease-in-out, -webkit-transform 0.35s ease-in-out;
 }
 
-/* line 268, src/scss/_components/homepage/_list--box.scss */
+/* line 277, src/scss/_components/homepage/_list--box.scss */
 .list__box-details-right button:after {
   content: '';
   z-index: 0;
@@ -3698,7 +4097,7 @@ picture {
           animation-timing-function: ease-in-out;
 }
 
-/* line 286, src/scss/_components/homepage/_list--box.scss */
+/* line 295, src/scss/_components/homepage/_list--box.scss */
 .list__box-details-right button:hover {
   background-color: rgba(0, 0, 0, 0.85);
   -webkit-transform: scale(1.05);
@@ -3709,14 +4108,14 @@ picture {
   transition: all 0.4s ease-in-out;
 }
 
-/* line 291, src/scss/_components/homepage/_list--box.scss */
+/* line 300, src/scss/_components/homepage/_list--box.scss */
 .list__box-details-right button:hover .icon-font {
   -webkit-transition: color 0.35s ease-in-out;
   -o-transition: color 0.35s ease-in-out;
   transition: color 0.35s ease-in-out;
 }
 
-/* line 296, src/scss/_components/homepage/_list--box.scss */
+/* line 305, src/scss/_components/homepage/_list--box.scss */
 .list__box-details-right button.is-active {
   border-color: #c5f015;
   -webkit-transition: all 0.4s ease-in-out;
@@ -3724,23 +4123,23 @@ picture {
   transition: all 0.4s ease-in-out;
 }
 
-/* line 300, src/scss/_components/homepage/_list--box.scss */
+/* line 309, src/scss/_components/homepage/_list--box.scss */
 .list__box-details-right button.is-active:after {
   -webkit-animation-name: flashBlinking;
           animation-name: flashBlinking;
 }
 
-/* line 306, src/scss/_components/homepage/_list--box.scss */
+/* line 315, src/scss/_components/homepage/_list--box.scss */
 .list__box-details-right button.is-active + .c-poppertext > u:nth-of-type(1) {
   display: none;
 }
 
-/* line 309, src/scss/_components/homepage/_list--box.scss */
+/* line 318, src/scss/_components/homepage/_list--box.scss */
 .list__box-details-right button.is-active + .c-poppertext > u:nth-of-type(2) {
   display: block;
 }
 
-/* line 315, src/scss/_components/homepage/_list--box.scss */
+/* line 324, src/scss/_components/homepage/_list--box.scss */
 .list__box-details-right button.is-active .icon-font {
   color: #c5f015;
   -webkit-transition: color 0.35s ease-in-out;
@@ -3748,54 +4147,54 @@ picture {
   transition: color 0.35s ease-in-out;
 }
 
-/* line 322, src/scss/_components/homepage/_list--box.scss */
+/* line 331, src/scss/_components/homepage/_list--box.scss */
 .list__box-details-right button.list__box-like .icon-font {
   -webkit-transform: scaleX(-1);
       -ms-transform: scaleX(-1);
           transform: scaleX(-1);
 }
 
-/* line 327, src/scss/_components/homepage/_list--box.scss */
+/* line 336, src/scss/_components/homepage/_list--box.scss */
 .list__box-details-right button.list__box-dislike .icon-font {
   -webkit-transform: scale(-1);
       -ms-transform: scale(-1);
           transform: scale(-1);
 }
 
-/* line 334, src/scss/_components/homepage/_list--box.scss */
+/* line 343, src/scss/_components/homepage/_list--box.scss */
 .list__box-details-right button.list__box-favorites.is-active .icon-font {
   -webkit-transition: color 0.35s ease-in-out, opacity 0.35s ease-in-out, visibility 0.35s ease-in-out;
   -o-transition: color 0.35s ease-in-out, opacity 0.35s ease-in-out, visibility 0.35s ease-in-out;
   transition: color 0.35s ease-in-out, opacity 0.35s ease-in-out, visibility 0.35s ease-in-out;
 }
 
-/* line 337, src/scss/_components/homepage/_list--box.scss */
+/* line 346, src/scss/_components/homepage/_list--box.scss */
 .list__box-details-right button.list__box-favorites.is-active .icon-font.icon-star-fill {
   opacity: 0;
   visibility: hidden;
 }
 
-/* line 341, src/scss/_components/homepage/_list--box.scss */
+/* line 350, src/scss/_components/homepage/_list--box.scss */
 .list__box-details-right button.list__box-favorites.is-active .icon-font.icon-star {
   opacity: 1;
   visibility: visible;
 }
 
-/* line 348, src/scss/_components/homepage/_list--box.scss */
+/* line 357, src/scss/_components/homepage/_list--box.scss */
 .list__box-details-right button.list__box-favorites .icon-font {
   -webkit-transition: color 0.35s ease-in-out, opacity 0.35s ease-in-out, visibility 0.35s ease-in-out;
   -o-transition: color 0.35s ease-in-out, opacity 0.35s ease-in-out, visibility 0.35s ease-in-out;
   transition: color 0.35s ease-in-out, opacity 0.35s ease-in-out, visibility 0.35s ease-in-out;
 }
 
-/* line 351, src/scss/_components/homepage/_list--box.scss */
+/* line 360, src/scss/_components/homepage/_list--box.scss */
 .list__box-details-right button.list__box-favorites .icon-font.icon-star {
   opacity: 0;
   visibility: hidden;
   position: absolute;
 }
 
-/* line 359, src/scss/_components/homepage/_list--box.scss */
+/* line 368, src/scss/_components/homepage/_list--box.scss */
 .list__box-details-right button .icon-font {
   color: #ffffff;
   font-size: 18px;
@@ -3804,7 +4203,7 @@ picture {
   transition: color 0.35s ease-in-out, opacity 0.35s ease-in-out, visibility 0.35s ease-in-out;
 }
 
-/* line 367, src/scss/_components/homepage/_list--box.scss */
+/* line 376, src/scss/_components/homepage/_list--box.scss */
 .list__box-details-title {
   overflow: hidden;
   white-space: nowrap;
@@ -3815,7 +4214,7 @@ picture {
   font-weight: 700;
 }
 
-/* line 377, src/scss/_components/homepage/_list--box.scss */
+/* line 386, src/scss/_components/homepage/_list--box.scss */
 .list__box-more {
   z-index: 20;
   outline: none;
@@ -3852,7 +4251,7 @@ picture {
 }
 
 @media screen and (max-width: 1279px) {
-  /* line 377, src/scss/_components/homepage/_list--box.scss */
+  /* line 386, src/scss/_components/homepage/_list--box.scss */
   .list__box-more {
     z-index: 99;
     opacity: 1;
@@ -3861,13 +4260,13 @@ picture {
     left: 0;
     height: 100%;
   }
-  /* line 405, src/scss/_components/homepage/_list--box.scss */
+  /* line 414, src/scss/_components/homepage/_list--box.scss */
   .list__box-more .icon-font {
     display: none;
   }
 }
 
-/* line 410, src/scss/_components/homepage/_list--box.scss */
+/* line 419, src/scss/_components/homepage/_list--box.scss */
 .list__box-more .icon-font {
   color: #c5f015;
   font-size: 16px;
@@ -4173,7 +4572,14 @@ picture {
   }
 }
 
-/* line 178, src/scss/_components/homepage/_list--specification.scss */
+@media screen and (max-width: 1023px) {
+  /* line 171, src/scss/_components/homepage/_list--specification.scss */
+  .list__specification-action > div.list__specification-action-circle {
+    width: 30px;
+  }
+}
+
+/* line 181, src/scss/_components/homepage/_list--specification.scss */
 .list__specification-action > div.is-hide {
   opacity: 0;
   visibility: hidden;
@@ -4184,19 +4590,19 @@ picture {
   transition: opacity 0.35s ease-in-out, width 0.35s ease-in-out, visibility 0.35s ease-in-out, margin 0.35s ease-in-out;
 }
 
-/* line 186, src/scss/_components/homepage/_list--specification.scss */
+/* line 189, src/scss/_components/homepage/_list--specification.scss */
 .list__specification-action > div:not(:last-of-type) {
   margin-right: 10px;
 }
 
 @media screen and (max-width: 1279px) {
-  /* line 186, src/scss/_components/homepage/_list--specification.scss */
+  /* line 189, src/scss/_components/homepage/_list--specification.scss */
   .list__specification-action > div:not(:last-of-type) {
     margin-right: 5px;
   }
 }
 
-/* line 195, src/scss/_components/homepage/_list--specification.scss */
+/* line 198, src/scss/_components/homepage/_list--specification.scss */
 .list__specification-visit, .list__specification-read {
   position: relative;
   display: -webkit-box;
@@ -4219,7 +4625,7 @@ picture {
 }
 
 @media screen and (max-width: 1279px) {
-  /* line 195, src/scss/_components/homepage/_list--specification.scss */
+  /* line 198, src/scss/_components/homepage/_list--specification.scss */
   .list__specification-visit, .list__specification-read {
     min-width: 100px;
     height: 40px;
@@ -4227,7 +4633,16 @@ picture {
   }
 }
 
-/* line 213, src/scss/_components/homepage/_list--specification.scss */
+@media screen and (max-width: 1023px) {
+  /* line 198, src/scss/_components/homepage/_list--specification.scss */
+  .list__specification-visit, .list__specification-read {
+    min-width: 80px;
+    height: 35px;
+    font-size: 10px;
+  }
+}
+
+/* line 221, src/scss/_components/homepage/_list--specification.scss */
 .list__specification-visit {
   -webkit-border-radius: 5px;
           border-radius: 5px;
@@ -4238,7 +4653,7 @@ picture {
   transition: background-color 0.35s ease-in-out;
 }
 
-/* line 219, src/scss/_components/homepage/_list--specification.scss */
+/* line 227, src/scss/_components/homepage/_list--specification.scss */
 .list__specification-visit:hover {
   background-color: transparent;
   -webkit-transition: background-color 0.35s ease-in-out;
@@ -4246,7 +4661,7 @@ picture {
   transition: background-color 0.35s ease-in-out;
 }
 
-/* line 225, src/scss/_components/homepage/_list--specification.scss */
+/* line 233, src/scss/_components/homepage/_list--specification.scss */
 .list__specification-read {
   border-width: 2px;
   border-color: #c5f015;
@@ -4258,7 +4673,7 @@ picture {
   transition: color 0.35s ease-in-out, background-color 0.35s ease-in-out;
 }
 
-/* line 232, src/scss/_components/homepage/_list--specification.scss */
+/* line 240, src/scss/_components/homepage/_list--specification.scss */
 .list__specification-read:hover {
   background-color: #c5f015;
   color: #222222;
@@ -4267,7 +4682,7 @@ picture {
   transition: color 0.35s ease-in-out, background-color 0.35s ease-in-out;
 }
 
-/* line 239, src/scss/_components/homepage/_list--specification.scss */
+/* line 247, src/scss/_components/homepage/_list--specification.scss */
 .list__specification-circle {
   overflow: hidden;
   position: relative;
@@ -4296,14 +4711,22 @@ picture {
 }
 
 @media screen and (max-width: 1279px) {
-  /* line 239, src/scss/_components/homepage/_list--specification.scss */
+  /* line 247, src/scss/_components/homepage/_list--specification.scss */
   .list__specification-circle {
     width: 40px;
     height: 40px;
   }
 }
 
-/* line 257, src/scss/_components/homepage/_list--specification.scss */
+@media screen and (max-width: 1023px) {
+  /* line 247, src/scss/_components/homepage/_list--specification.scss */
+  .list__specification-circle {
+    width: 30px;
+    height: 30px;
+  }
+}
+
+/* line 269, src/scss/_components/homepage/_list--specification.scss */
 .list__specification-circle:after {
   content: '';
   z-index: 0;
@@ -4332,7 +4755,7 @@ picture {
           animation-timing-function: ease-in-out;
 }
 
-/* line 275, src/scss/_components/homepage/_list--specification.scss */
+/* line 287, src/scss/_components/homepage/_list--specification.scss */
 .list__specification-circle:hover {
   background-color: rgba(0, 0, 0, 0.85);
   -webkit-transform: scale(1.05);
@@ -4343,7 +4766,7 @@ picture {
   transition: all 0.4s ease-in-out;
 }
 
-/* line 281, src/scss/_components/homepage/_list--specification.scss */
+/* line 293, src/scss/_components/homepage/_list--specification.scss */
 .list__specification-circle.is-active {
   border-color: #c5f015;
   -webkit-transition: all 0.4s ease-in-out;
@@ -4351,23 +4774,23 @@ picture {
   transition: all 0.4s ease-in-out;
 }
 
-/* line 285, src/scss/_components/homepage/_list--specification.scss */
+/* line 297, src/scss/_components/homepage/_list--specification.scss */
 .list__specification-circle.is-active:after {
   -webkit-animation-name: flashBlinking;
           animation-name: flashBlinking;
 }
 
-/* line 291, src/scss/_components/homepage/_list--specification.scss */
+/* line 303, src/scss/_components/homepage/_list--specification.scss */
 .list__specification-circle.is-active + .c-poppertext > u:nth-of-type(1) {
   display: none;
 }
 
-/* line 294, src/scss/_components/homepage/_list--specification.scss */
+/* line 306, src/scss/_components/homepage/_list--specification.scss */
 .list__specification-circle.is-active + .c-poppertext > u:nth-of-type(2) {
   display: block;
 }
 
-/* line 300, src/scss/_components/homepage/_list--specification.scss */
+/* line 312, src/scss/_components/homepage/_list--specification.scss */
 .list__specification-circle.is-active .icon-font {
   color: #c5f015;
   -webkit-transition: all 0.4s ease-in-out;
@@ -4375,7 +4798,7 @@ picture {
   transition: all 0.4s ease-in-out;
 }
 
-/* line 306, src/scss/_components/homepage/_list--specification.scss */
+/* line 318, src/scss/_components/homepage/_list--specification.scss */
 .list__specification-circle .icon-font {
   color: #ffffff;
   font-size: 24px;
@@ -4385,60 +4808,67 @@ picture {
 }
 
 @media screen and (max-width: 1279px) {
-  /* line 306, src/scss/_components/homepage/_list--specification.scss */
+  /* line 318, src/scss/_components/homepage/_list--specification.scss */
   .list__specification-circle .icon-font {
     font-size: 20px;
   }
 }
 
-/* line 317, src/scss/_components/homepage/_list--specification.scss */
+@media screen and (max-width: 1023px) {
+  /* line 318, src/scss/_components/homepage/_list--specification.scss */
+  .list__specification-circle .icon-font {
+    font-size: 14px;
+  }
+}
+
+/* line 332, src/scss/_components/homepage/_list--specification.scss */
 .list__specification-like .icon-font {
   -webkit-transform: scaleX(-1);
       -ms-transform: scaleX(-1);
           transform: scaleX(-1);
 }
 
-/* line 323, src/scss/_components/homepage/_list--specification.scss */
+/* line 338, src/scss/_components/homepage/_list--specification.scss */
 .list__specification-dislike .icon-font {
   -webkit-transform: scale(-1);
       -ms-transform: scale(-1);
           transform: scale(-1);
 }
 
-/* line 330, src/scss/_components/homepage/_list--specification.scss */
+/* line 345, src/scss/_components/homepage/_list--specification.scss */
 .list__specification-favorites.is-active .icon-font {
   -webkit-transition: all 0.4s ease-in-out;
   -o-transition: all 0.4s ease-in-out;
   transition: all 0.4s ease-in-out;
 }
 
-/* line 333, src/scss/_components/homepage/_list--specification.scss */
+/* line 348, src/scss/_components/homepage/_list--specification.scss */
 .list__specification-favorites.is-active .icon-font.icon-star-fill {
   opacity: 0;
   visibility: hidden;
 }
 
-/* line 337, src/scss/_components/homepage/_list--specification.scss */
+/* line 352, src/scss/_components/homepage/_list--specification.scss */
 .list__specification-favorites.is-active .icon-font.icon-star {
   opacity: 1;
   visibility: visible;
 }
 
-/* line 344, src/scss/_components/homepage/_list--specification.scss */
+/* line 359, src/scss/_components/homepage/_list--specification.scss */
 .list__specification-favorites .icon-font {
   -webkit-transition: all 0.4s ease-in-out;
   -o-transition: all 0.4s ease-in-out;
   transition: all 0.4s ease-in-out;
 }
 
-/* line 347, src/scss/_components/homepage/_list--specification.scss */
+/* line 362, src/scss/_components/homepage/_list--specification.scss */
 .list__specification-favorites .icon-font.icon-star {
   opacity: 0;
   visibility: hidden;
   position: absolute;
 }
 
-/* line 355, src/scss/_components/homepage/_list--specification.scss */
+/* line 370, src/scss/_components/homepage/_list--specification.scss */
 .list__specification-desc {
   width: 100%;
   max-width: 460px;
@@ -4446,7 +4876,14 @@ picture {
   font-size: 14px;
 }
 
-/* line 362, src/scss/_components/homepage/_list--specification.scss */
+@media screen and (max-width: 1023px) {
+  /* line 370, src/scss/_components/homepage/_list--specification.scss */
+  .list__specification-desc {
+    font-size: 12px;
+  }
+}
+
+/* line 380, src/scss/_components/homepage/_list--specification.scss */
 .list__specification-play {
   z-index: 20;
   position: absolute;
@@ -4479,7 +4916,15 @@ picture {
   transition: transform 0.35s ease-in-out, opacity 0.35s ease-in-out, visibility 0.35s ease-in-out, -webkit-transform 0.35s ease-in-out;
 }
 
-/* line 377, src/scss/_components/homepage/_list--specification.scss */
+@media screen and (max-width: 1023px) {
+  /* line 380, src/scss/_components/homepage/_list--specification.scss */
+  .list__specification-play {
+    width: 115px;
+    height: 115px;
+  }
+}
+
+/* line 399, src/scss/_components/homepage/_list--specification.scss */
 .list__specification-play:hover {
   -webkit-transform: translate(-50%, -50%) scale(0.8);
       -ms-transform: translate(-50%, -50%) scale(0.8);
@@ -4491,7 +4936,7 @@ picture {
   transition: transform 0.55s ease-in-out, -webkit-transform 0.55s ease-in-out;
 }
 
-/* line 382, src/scss/_components/homepage/_list--specification.scss */
+/* line 404, src/scss/_components/homepage/_list--specification.scss */
 .list__specification-play.is-active {
   opacity: 0;
   visibility: hidden;
@@ -4500,7 +4945,7 @@ picture {
   transition: opacity 0.35s ease-in-out, visibility 0.35s ease-in-out;
 }
 
-/* line 388, src/scss/_components/homepage/_list--specification.scss */
+/* line 410, src/scss/_components/homepage/_list--specification.scss */
 .list__specification-play .icon-font {
   position: relative;
   left: 5px;
@@ -4508,7 +4953,14 @@ picture {
   font-size: 57px;
 }
 
-/* line 396, src/scss/_components/homepage/_list--specification.scss */
+@media screen and (max-width: 1023px) {
+  /* line 410, src/scss/_components/homepage/_list--specification.scss */
+  .list__specification-play .icon-font {
+    font-size: 45px;
+  }
+}
+
+/* line 421, src/scss/_components/homepage/_list--specification.scss */
 .list__specification-pause {
   z-index: 20;
   opacity: 0;
@@ -4525,7 +4977,7 @@ picture {
   transition: opacity 0.35s ease-in-out, visibility 0.35s ease-in-out;
 }
 
-/* line 406, src/scss/_components/homepage/_list--specification.scss */
+/* line 431, src/scss/_components/homepage/_list--specification.scss */
 .list__specification-pause.is-active {
   opacity: 1;
   visibility: visible;
@@ -4534,7 +4986,7 @@ picture {
   transition: opacity 0.35s ease-in-out, visibility 0.35s ease-in-out;
 }
 
-/* line 412, src/scss/_components/homepage/_list--specification.scss */
+/* line 437, src/scss/_components/homepage/_list--specification.scss */
 .list__specification-pause .icon-font {
   color: #ffffff;
   font-size: 18px;

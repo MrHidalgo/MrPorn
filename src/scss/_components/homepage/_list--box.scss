@@ -17,6 +17,11 @@
 	backface-visibility: hidden;
 	transform-origin: center;
 	@include transition(width, height);
+	@include adaptive(1023) {
+		width: 200px;
+		height: 200px;
+		padding: 15px;
+	}
 
 	.is-hover & {
 		z-index: 100;
@@ -107,6 +112,7 @@
 	}
 
 	&-head {
+		position: relative;
 		display: flex;
 		align-items: center;
 		justify-content: space-between;
@@ -171,6 +177,9 @@
 		max-height: 100%;
 		margin-left: auto;
 		margin-right: auto;
+		@include adaptive(1023) {
+			max-width: 100%;
+		}
 	}
 
 	&-details {

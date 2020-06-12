@@ -3,11 +3,12 @@
 	position: absolute;
 	top: 0;
 	width: 75px;
-	height: calc(100% - 40px);
-	@include transition(opacity, visibility);
+	height: calc(100% - 30px);
+	@include transition(opacity, visibility, height);
 
 	.is-open & {
 		height: 100%;
+		@include transition(height);
 	}
 
 	&.swiper-button-disabled {

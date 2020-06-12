@@ -15,8 +15,29 @@
 		height: 40px;
 		font-size: 14px;
 	}
+	@include adaptive(1023) {
+		position: absolute;
+		top: 0;
+		right: 0;
+		min-width: unset;
+		height: 34px;
+		background-color: transparent;
+	}
 
 	span {
 		color: #0c3495;
+		@include adaptive(1023) {
+			color: rgb(213, 243, 74);
+		}
+	}
+
+	.icon-font {
+		display: none;
+		color: rgb(213, 243, 74);
+		transform: translateY(1px) scaleX(-1);
+		margin-left: 5px;
+		@include adaptive(1023) {
+			display: block;
+		}
 	}
 }

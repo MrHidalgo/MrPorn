@@ -640,6 +640,7 @@ if (!Element.prototype.closest) {
 
 		// lib
 		initSwiper();
+		initHamburger();
 		// ==========================================
 
 		// callback

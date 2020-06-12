@@ -173,6 +173,9 @@
 				@include adaptive(1279) {
 					width: 40px;
 				}
+				@include adaptive(1023) {
+					width: 30px;
+				}
 			}
 
 			&.is-hide {
@@ -207,6 +210,11 @@
 			min-width: 100px;
 			height: 40px;
 			font-size: 12px;
+		}
+		@include adaptive(1023) {
+			min-width: 80px;
+			height: 35px;
+			font-size: 10px;
 		}
 	}
 
@@ -252,6 +260,10 @@
 		@include adaptive(1279) {
 			width: 40px;
 			height: 40px;
+		}
+		@include adaptive(1023) {
+			width: 30px;
+			height: 30px;
 		}
 
 		&:after {
@@ -310,6 +322,9 @@
 			@include adaptive(1279) {
 				font-size: 20px;
 			}
+			@include adaptive(1023) {
+				font-size: 14px;
+			}
 		}
 	}
 
@@ -357,6 +372,9 @@
 		max-width: 460px;
 		color: #8e8c8c;
 		font-size: 14px;
+		@include adaptive(1023) {
+			font-size: 12px;
+		}
 	}
 
 	&-play {
@@ -373,6 +391,10 @@
 		border-radius: 50%;
 		background-color: rgba(#343434, 0.43);
 		@include transition(transform, opacity, visibility);
+		@include adaptive(1023) {
+			width: 115px;
+			height: 115px;
+		}
 
 		&:hover {
 			transform: translate(-50%, -50%) scale(0.8);
@@ -390,6 +412,9 @@
 			left: 5px;
 			color: #ffffff;
 			font-size: 57px;
+			@include adaptive(1023) {
+				font-size: 45px;
+			}
 		}
 	}
 

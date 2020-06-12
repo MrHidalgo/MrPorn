@@ -13,6 +13,9 @@
 		@include adaptive(1279) {
 			max-width: 280px;
 		}
+		@include adaptive(1023) {
+			display: none;
+		}
 	}
 
 	&--footer {
