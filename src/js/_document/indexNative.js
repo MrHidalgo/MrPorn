@@ -501,7 +501,7 @@ if (!Element.prototype.closest) {
 
 				const parent = el.closest('[list-parent-js]'),
 					listIndicator = parent.querySelector('[list-line-js]'),
-					listIndicatorWidth = 64;
+					listIndicatorWidth = listIndicator.clientWidth;
 
 				const _elRect = el.getBoundingClientRect();
 

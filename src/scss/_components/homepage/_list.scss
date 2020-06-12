@@ -16,9 +16,13 @@
 			margin-left: 3px;
 			margin-right: 3px;
 			@include transition(width);
+			@include adaptive(1279) {
+				width: 195px !important;
+				height: 195px;
+			}
 			@include adaptive(1023) {
-				width: 200px !important;
-				height: 200px;
+				width: 150px !important;
+				height: 150px;
 			}
 
 			&:first-of-type {

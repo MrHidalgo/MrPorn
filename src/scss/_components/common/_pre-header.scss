@@ -1,6 +1,11 @@
 // SECTION :: START
 
 .pre-header {
+	display: none;
+	@include adaptive(1023) {
+		display: block;
+	}
+
 	&__wrapper {
 		display: flex;
 		justify-content: space-between;
