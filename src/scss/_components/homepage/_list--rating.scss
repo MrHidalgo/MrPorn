@@ -1,0 +1,24 @@
+&__rating {
+	display: flex;
+	align-items: center;
+
+	span {
+		color: #4a70a1;
+		font-size: 14px;
+	}
+
+	> div {
+		display: flex;
+		align-items: center;
+		padding-left: 10px;
+
+		.icon-font {
+			color: #004aac;
+			font-size: 19px;
+
+			&:not(:last-of-type) {
+				margin-right: 3px;
+			}
+		}
+	}
+}

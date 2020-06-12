@@ -1,0 +1,42 @@
+&__info {
+	display: flex;
+	align-items: center;
+
+	> div {
+		&:nth-of-type(1) {
+			width: 55px;
+		}
+
+		&:nth-of-type(2) {
+			flex: 1;
+			min-width: 1px;
+			max-width: 100%;
+			padding-left: 11px;
+		}
+	}
+
+	&-circle {
+		overflow: hidden;
+		position: relative;
+		width: 55px;
+		height: 55px;
+		border-radius: 50%;
+		background-color: rgb(32, 33, 47);
+
+		img {
+			@extend %imageResCoverAbs;
+			object-position: 12px 11px;
+		}
+	}
+
+	p {
+		color: #ffffff;
+		font-size: 28px;
+		font-weight: 700;
+	}
+
+	span {
+		color: #4b4e6b;
+		font-size: 16px;
+	}
+}
