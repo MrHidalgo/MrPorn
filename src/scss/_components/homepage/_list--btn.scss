@@ -10,6 +10,11 @@
 	color: #080915;
 	font-size: 16px;
 	font-weight: 700;
+	@include adaptive(1279) {
+		min-width: 125px;
+		height: 40px;
+		font-size: 14px;
+	}
 
 	span {
 		color: #0c3495;

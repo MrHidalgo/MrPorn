@@ -44,6 +44,9 @@
 			font-weight: 700;
 			font-size: 14px;
 			text-transform: uppercase;
+			@include adaptive(1279) {
+				font-size: 12px;
+			}
 		}
 
 		u {

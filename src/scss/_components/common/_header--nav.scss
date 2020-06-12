@@ -69,6 +69,9 @@
 			font-weight: bold;
 			line-height: 1.2;
 			@include transition(color);
+			@include adaptive(1279) {
+				font-size: 11px;
+			}
 		}
 	}
 

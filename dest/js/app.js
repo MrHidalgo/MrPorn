@@ -85,6 +85,11 @@ var initSwiper = function initSwiper() {
 	}
 };
 
+/**
+ * POLYFILL
+ * ===================================
+ */
+
 if (!Element.prototype.matches) {
 	Element.prototype.matches = Element.prototype.msMatchesSelector || Element.prototype.webkitMatchesSelector;
 }
@@ -101,13 +106,21 @@ if (!Element.prototype.closest) {
 }
 
 /**
- * @description Document DOM ready.
+ * end POLYFILL
+ * ===================================
  */
+
 (function () {
-	/*
- * =============================================
- * CALLBACK :: start
- * ============================================= */
+	/**
+  * ADDITIONAL CALLBACK
+  * ===================================
+  */
+
+	/**
+  * @name slideUp
+  * @param target
+  * @param duration
+  */
 	var slideUp = function slideUp(target) {
 		var duration = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : 500;
 
@@ -135,6 +148,11 @@ if (!Element.prototype.closest) {
 			target.style.removeProperty('transition-property');
 		}, duration);
 	};
+	/**
+  * @name slideDown
+  * @param target
+  * @param duration
+  */
 	var slideDown = function slideDown(target) {
 		var duration = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : 500;
 
@@ -168,6 +186,11 @@ if (!Element.prototype.closest) {
 			target.style.removeProperty('transition-property');
 		}, duration);
 	};
+	/**
+  * @name slideToggle
+  * @param target
+  * @param duration
+  */
 	var slideToggle = function slideToggle(target) {
 		var duration = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : 500;
 
@@ -177,7 +200,19 @@ if (!Element.prototype.closest) {
 			return slideUp(target, duration);
 		}
 	};
+	/**
+  * end ADDITIONAL CALLBACK
+  * ===================================
+  */
 
+	/**
+  * MAIN CALLBACK
+  * ===================================
+  */
+
+	/**
+  * @name bodyClick
+  */
 	var bodyClick = function bodyClick() {
 		var className = '.header__view-wrapper, .sort';
 
@@ -200,6 +235,9 @@ if (!Element.prototype.closest) {
 		}, false);
 	};
 
+	/**
+  * @name viewFavoritesToggle
+  */
 	var viewFavoritesToggle = function viewFavoritesToggle() {
 		var _btn = document.querySelector('[view-favorites-toggle-js]'),
 		    _node = document.querySelector('[view-favorites-drop-js]');
@@ -216,7 +254,13 @@ if (!Element.prototype.closest) {
 		}, false);
 	};
 
+	/**
+  * @name sortCB
+  */
 	var sortCB = function sortCB() {
+		/**
+   * @name sortToggle
+   */
 		var sortToggle = function sortToggle() {
 			var toggleSort = document.querySelector('[sort-toggle-js]'),
 			    nodeSort = document.querySelector('[sort-node-js]');
@@ -225,7 +269,9 @@ if (!Element.prototype.closest) {
 				nodeSort.classList.toggle('is-open');
 			}, false);
 		};
-
+		/**
+   * @name sortDropInner
+   */
 		var sortDropInner = function sortDropInner() {
 			var links = document.querySelectorAll('.sort__drop-link'),
 			    nodeDropInner = document.querySelector('.sort__drop-inner');
@@ -269,7 +315,9 @@ if (!Element.prototype.closest) {
 				}
 			}
 		};
-
+		/**
+   * @name sortCollapse
+   */
 		var sortCollapse = function sortCollapse() {
 			var toggles = document.querySelectorAll('[collapse-toggle-js]');
 
@@ -314,6 +362,9 @@ if (!Element.prototype.closest) {
 		sortCollapse();
 	};
 
+	/**
+  * @name search
+  */
 	var search = function search() {
 		var searchInput = document.querySelector('[search-js]');
 
@@ -331,6 +382,9 @@ if (!Element.prototype.closest) {
 		}, false);
 	};
 
+	/**
+  * @name boxMore
+  */
 	var boxMore = function boxMore() {
 		function playPause(vid) {
 			vid.pause();
@@ -486,6 +540,9 @@ if (!Element.prototype.closest) {
 		}
 	};
 
+	/**
+  * @name videoToggle
+  */
 	var videoToggle = function videoToggle() {
 		function playPause(vid) {
 			if (vid.paused) {
@@ -569,6 +626,9 @@ if (!Element.prototype.closest) {
 		}
 	};
 
+	/**
+  * @name detailsToggleAction
+  */
 	var detailsToggleAction = function detailsToggleAction() {
 		var favoritesBtns = document.querySelectorAll('[favorites-toggle-js]'),
 		    specFavoritesBtns = document.querySelectorAll('[spec-favorites-js]'),
@@ -810,6 +870,9 @@ if (!Element.prototype.closest) {
 		}
 	};
 
+	/**
+  * @name listIndicator
+  */
 	var listIndicator = function listIndicator() {
 		var listBoxes = document.querySelectorAll('[list-box-js]');
 
@@ -868,6 +931,9 @@ if (!Element.prototype.closest) {
 		}
 	};
 
+	/**
+  * @name boxHover
+  */
 	var boxHover = function boxHover() {
 		var swiperSlides = document.querySelectorAll('.swiper-slide'),
 		    listBoxBody = document.querySelectorAll('.list__box-body');
@@ -1010,9 +1076,10 @@ if (!Element.prototype.closest) {
 		}
 	};
 
-	/*
- * CALLBACK :: end
- * ============================================= */
+	/**
+  * end MAIN CALLBACK
+  * ===================================
+  */
 
 	/**
   * @name initNative
@@ -1041,6 +1108,9 @@ if (!Element.prototype.closest) {
 		// ==========================================
 	};
 
+	/**
+  * @description Init all CB after page load
+  */
 	window.addEventListener('load', function (ev) {
 		// for(let s of document.querySelectorAll('.swiper-slide')) {
 		// 	s.classList.add('is-hover');

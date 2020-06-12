@@ -243,6 +243,9 @@
 				@include adaptive(1365) {
 					max-width: calc(100% / 4);
 				}
+				@include adaptive(1279) {
+					max-width: calc(100% / 3);
+				}
 
 				&:nth-last-child(1),
 				&:nth-last-child(2) {
@@ -254,6 +257,13 @@
 				&:nth-last-child(3),
 				&:nth-last-child(4) {
 					@include adaptive(1365) {
+						display: none;
+					}
+				}
+
+				&:nth-last-child(5),
+				&:nth-last-child(6) {
+					@include adaptive(1279) {
 						display: none;
 					}
 				}
