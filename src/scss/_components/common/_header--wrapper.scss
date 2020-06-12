@@ -43,6 +43,9 @@
 
 	&-2 {
 		min-height: 121px;
+		@include adaptive(1023) {
+			flex-direction: column;
+		}
 
 		.header__col {
 			&-1 {
@@ -64,6 +67,9 @@
 				max-width: 100%;
 				padding-top: 12px;
 				padding-bottom: 12px;
+				@include adaptive(1023) {
+					padding: 0;
+				}
 			}
 		}
 	}

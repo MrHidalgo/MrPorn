@@ -1,18 +1,51 @@
 &__container {
 	&-1 {
 		background-color: #07113b;
+		@include adaptive(1023) {
+			display: none;
+		}
 	}
 
 	&-2 {
 		background-color: #081b49;
+		@include adaptive(1023) {
+			z-index: 1000;
+			opacity: 0;
+			visibility: hidden;
+			transform: translateY(50px);
+			overflow: hidden;
+			overflow-y: auto;
+			position: fixed;
+			top: 80px;
+			left: 0;
+			width: 100%;
+			height: calc(100% - 80px);
+			padding: 30px 20px;
+			background-color: rgba(#080915, 0.975);
+			@include transition(opacity, visibility, transform);
+
+			&.is-open {
+				opacity: 1;
+				visibility: visible;
+				transform: translateY(0);
+				@include transition(opacity, visibility, transform);
+			}
+		}
 
 		.c-grid {
 			position: relative;
+			@include adaptive(1023) {
+				padding-left: 0;
+				padding-right: 0;
+			}
 		}
 	}
 
 	&-3 {
 		background-color: rgb(11, 13, 40);
 		box-shadow: 1.482px 16.935px 35px 0px rgba(31, 37, 103, 0.33);
+		@include adaptive(1023) {
+			display: none;
+		}
 	}
 }

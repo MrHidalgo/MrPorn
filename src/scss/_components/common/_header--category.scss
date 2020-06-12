@@ -2,9 +2,24 @@
 	display: flex;
 	align-items: center;
 	justify-content: center;
+	@include adaptive(1023) {
+		flex-wrap: wrap;
+	}
 
 	&-item {
 		display: flex;
+
+		@include adaptive(1023) {
+			justify-content: center;
+			width: 100%;
+			max-width: calc(100% / 4);
+
+			&:nth-of-type(1) {
+				width: 100%;
+				max-width: 100%;
+				padding-bottom: 15px;
+			}
+		}
 	}
 
 	&-title,
@@ -26,6 +41,9 @@
 			padding-right: 5px;
 			font-size: 11px;
 		}
+		@include adaptive(1023) {
+			font-size: 14px;
+		}
 	}
 
 	&-title {
@@ -35,6 +53,9 @@
 	&-link {
 		color: #35539c;
 		@include transition(color);
+		@include adaptive(1023) {
+			min-height: 30px;
+		}
 
 		&:hover {
 			color: #ffffff;

@@ -4,9 +4,6 @@
 	position: relative;
 	display: flex;
 	flex-direction: column;
-	@include adaptive(1023) {
-		display: none;
-	}
 
 	&__update {
 		color: #35539c;

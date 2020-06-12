@@ -28,4 +28,36 @@ section#pre-header.pre-header
 		.pre-header__wrapper-right
 			a.pre-header__link(href="#") PORN GAMES
 
+	.pre-header__mobile(mobile-block-js)
+		div
+
+			.pre-header__mobile-top
+				div
+
+					.header__toggle
+						input(type='checkbox' name='' id='toggle-mode')
+						label(for='toggle-mode')
+							.header__toggle-left
+								i.icon-font.icon-sun
+							.header__toggle-right
+								i.icon-font.icon-moon
+							span
+
+				div
+
+					.header__action
+						a.header__action-link.header__action-link--logout(href="#") Log out
+						a.header__action-link.header__action-link--admin(href="#") admin
+
+					include _lang
+
+				div
+
+					include _header--category
+
+
+			.pre-header__mobile-bottom
+
+				include _header--nav
+
 // SECTION :: END
