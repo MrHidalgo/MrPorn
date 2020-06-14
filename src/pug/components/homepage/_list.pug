@@ -38,6 +38,34 @@ mixin listSliderBox(idVal, bgVal, logoVal)
 		button.list__box-more(type='button')
 			i.icon-font.icon-arrow-angle
 
+mixin listBoxLeftBar(val)
+	.list__specification-left
+		div
+			img.list__specification-logo(src="img/img-reality-kings.png" srcset="img/img-reality-kings@2x.png 2x" alt="")
+
+			.list__specification-action(spec-actionNode-js)
+				div
+					a.list__specification-visit(href="#") VISIT WEBSITE
+				div
+					a.list__specification-read(href="#") READ REVIEW
+				div.list__specification-action-circle
+					a.list__specification-circle.list__specification-like(href="#" data-like!= val spec-like-js)
+						i.icon-font.icon-like
+				div.list__specification-action-circle
+					a.list__specification-circle.list__specification-dislike(href="#" data-dislike!= val spec-dislike-js)
+						i.icon-font.icon-like
+				div.list__specification-action-circle
+					.c-popper
+						a.list__specification-circle.list__specification-favorites(href="#" data-favorites!= val spec-favorites-js)
+							i.icon-font.icon-star-fill
+							i.icon-font.icon-star
+
+						.c-poppertext
+							u Add To Favourites
+							u Remove From Favourites
+
+			p.list__specification-desc Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in.
+
 mixin listBox(sliderID, name)
 	.list__box-wrapper(list-parent-js data-name!= name)
 
@@ -96,32 +124,7 @@ mixin listBox(sliderID, name)
 							a.list__specification-close(href="#")
 								i.icon-font.icon-close
 
-							.list__specification-left
-								div
-									img.list__specification-logo(src="img/img-reality-kings.png" srcset="img/img-reality-kings@2x.png 2x" alt="")
-
-									.list__specification-action(spec-actionNode-js)
-										div
-											a.list__specification-visit(href="#") VISIT WEBSITE
-										div
-											a.list__specification-read(href="#") READ REVIEW
-										div.list__specification-action-circle
-											a.list__specification-circle.list__specification-like(href="#" data-like!= val spec-like-js)
-												i.icon-font.icon-like
-										div.list__specification-action-circle
-											a.list__specification-circle.list__specification-dislike(href="#" data-dislike!= val spec-dislike-js)
-												i.icon-font.icon-like
-										div.list__specification-action-circle
-											.c-popper
-												a.list__specification-circle.list__specification-favorites(href="#" data-favorites!= val spec-favorites-js)
-													i.icon-font.icon-star-fill
-													i.icon-font.icon-star
-
-												.c-poppertext
-													u Add To Favourites
-													u Remove From Favourites
-
-									p.list__specification-desc Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in.
+							+listBoxLeftBar(val)
 
 							.list__specification-right
 								div(video-parent-js)
@@ -143,27 +146,7 @@ mixin listBox(sliderID, name)
 							a.list__specification-close(href="#")
 								i.icon-font.icon-close
 
-							.list__specification-left
-								div
-									img.list__specification-logo(src="img/img-reality-kings.png" srcset="img/img-reality-kings@2x.png 2x" alt="")
-
-									.list__specification-action(spec-actionNode-js)
-										div
-											a.list__specification-visit(href="#") VISIT WEBSITE
-										div
-											a.list__specification-read(href="#") READ REVIEW
-										div
-											a.list__specification-circle.list__specification-like(href="#" data-like!= val spec-like-js)
-												i.icon-font.icon-like
-										div
-											a.list__specification-circle.list__specification-dislike(href="#" data-dislike!= val spec-dislike-js)
-												i.icon-font.icon-like
-										div
-											a.list__specification-circle.list__specification-favorites(href="#" data-favorites!= val spec-favorites-js)
-												i.icon-font.icon-star-fill
-												i.icon-font.icon-star
-
-									p.list__specification-desc Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in.
+							+listBoxLeftBar(val)
 
 							.list__specification-right
 								div

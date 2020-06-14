@@ -2021,7 +2021,9 @@ picture {
 @media screen and (max-width: 1279px) {
   /* line 4, src/scss/_macros/_logotype.scss */
   .logo--haeder {
-    max-width: 280px;
+    top: -webkit-calc(50% + 5px);
+    top: calc(50% + 5px);
+    max-width: 295px;
   }
 }
 
@@ -2032,13 +2034,13 @@ picture {
   }
 }
 
-/* line 21, src/scss/_macros/_logotype.scss */
+/* line 22, src/scss/_macros/_logotype.scss */
 .logo--footer {
   max-width: 250px;
   padding-bottom: 30px;
 }
 
-/* line 26, src/scss/_macros/_logotype.scss */
+/* line 27, src/scss/_macros/_logotype.scss */
 .logo__btn {
   display: -webkit-box;
   display: -webkit-flex;
@@ -2050,7 +2052,7 @@ picture {
           align-items: center;
 }
 
-/* line 31, src/scss/_macros/_logotype.scss */
+/* line 32, src/scss/_macros/_logotype.scss */
 .logo__img {
   display: block;
   max-width: 100%;
@@ -4868,6 +4870,10 @@ picture {
   .list__specification-action > div.list__specification-action-circle {
     width: 40px;
   }
+  /* line 176, src/scss/_components/homepage/_list--specification.scss */
+  .list__specification-action > div.list__specification-action-circle .c-poppertext {
+    display: none;
+  }
 }
 
 @media screen and (max-width: 1023px) {
@@ -4877,7 +4883,7 @@ picture {
   }
 }
 
-/* line 181, src/scss/_components/homepage/_list--specification.scss */
+/* line 185, src/scss/_components/homepage/_list--specification.scss */
 .list__specification-action > div.is-hide {
   opacity: 0;
   visibility: hidden;
@@ -4888,19 +4894,19 @@ picture {
   transition: opacity 0.35s ease-in-out, width 0.35s ease-in-out, visibility 0.35s ease-in-out, margin 0.35s ease-in-out;
 }
 
-/* line 189, src/scss/_components/homepage/_list--specification.scss */
+/* line 193, src/scss/_components/homepage/_list--specification.scss */
 .list__specification-action > div:not(:last-of-type) {
   margin-right: 10px;
 }
 
 @media screen and (max-width: 1279px) {
-  /* line 189, src/scss/_components/homepage/_list--specification.scss */
+  /* line 193, src/scss/_components/homepage/_list--specification.scss */
   .list__specification-action > div:not(:last-of-type) {
     margin-right: 5px;
   }
 }
 
-/* line 198, src/scss/_components/homepage/_list--specification.scss */
+/* line 202, src/scss/_components/homepage/_list--specification.scss */
 .list__specification-visit, .list__specification-read {
   position: relative;
   display: -webkit-box;
@@ -4923,7 +4929,7 @@ picture {
 }
 
 @media screen and (max-width: 1279px) {
-  /* line 198, src/scss/_components/homepage/_list--specification.scss */
+  /* line 202, src/scss/_components/homepage/_list--specification.scss */
   .list__specification-visit, .list__specification-read {
     min-width: 100px;
     height: 40px;
@@ -4932,7 +4938,7 @@ picture {
 }
 
 @media screen and (max-width: 1023px) {
-  /* line 198, src/scss/_components/homepage/_list--specification.scss */
+  /* line 202, src/scss/_components/homepage/_list--specification.scss */
   .list__specification-visit, .list__specification-read {
     min-width: 80px;
     height: 35px;
@@ -4940,7 +4946,7 @@ picture {
   }
 }
 
-/* line 221, src/scss/_components/homepage/_list--specification.scss */
+/* line 225, src/scss/_components/homepage/_list--specification.scss */
 .list__specification-visit {
   -webkit-border-radius: 5px;
           border-radius: 5px;
@@ -4951,7 +4957,7 @@ picture {
   transition: background-color 0.35s ease-in-out;
 }
 
-/* line 227, src/scss/_components/homepage/_list--specification.scss */
+/* line 231, src/scss/_components/homepage/_list--specification.scss */
 .list__specification-visit:hover {
   background-color: transparent;
   -webkit-transition: background-color 0.35s ease-in-out;
@@ -4959,7 +4965,7 @@ picture {
   transition: background-color 0.35s ease-in-out;
 }
 
-/* line 233, src/scss/_components/homepage/_list--specification.scss */
+/* line 237, src/scss/_components/homepage/_list--specification.scss */
 .list__specification-read {
   border-width: 2px;
   border-color: #c5f015;
@@ -4971,7 +4977,7 @@ picture {
   transition: color 0.35s ease-in-out, background-color 0.35s ease-in-out;
 }
 
-/* line 240, src/scss/_components/homepage/_list--specification.scss */
+/* line 244, src/scss/_components/homepage/_list--specification.scss */
 .list__specification-read:hover {
   background-color: #c5f015;
   color: #222222;
@@ -4980,7 +4986,7 @@ picture {
   transition: color 0.35s ease-in-out, background-color 0.35s ease-in-out;
 }
 
-/* line 247, src/scss/_components/homepage/_list--specification.scss */
+/* line 251, src/scss/_components/homepage/_list--specification.scss */
 .list__specification-circle {
   overflow: hidden;
   position: relative;
@@ -5009,7 +5015,7 @@ picture {
 }
 
 @media screen and (max-width: 1279px) {
-  /* line 247, src/scss/_components/homepage/_list--specification.scss */
+  /* line 251, src/scss/_components/homepage/_list--specification.scss */
   .list__specification-circle {
     width: 40px;
     height: 40px;
@@ -5017,14 +5023,14 @@ picture {
 }
 
 @media screen and (max-width: 1023px) {
-  /* line 247, src/scss/_components/homepage/_list--specification.scss */
+  /* line 251, src/scss/_components/homepage/_list--specification.scss */
   .list__specification-circle {
     width: 30px;
     height: 30px;
   }
 }
 
-/* line 269, src/scss/_components/homepage/_list--specification.scss */
+/* line 273, src/scss/_components/homepage/_list--specification.scss */
 .list__specification-circle:after {
   content: '';
   z-index: 0;
@@ -5053,7 +5059,7 @@ picture {
           animation-timing-function: ease-in-out;
 }
 
-/* line 287, src/scss/_components/homepage/_list--specification.scss */
+/* line 291, src/scss/_components/homepage/_list--specification.scss */
 .list__specification-circle:hover {
   background-color: rgba(0, 0, 0, 0.85);
   -webkit-transform: scale(1.05);
@@ -5064,7 +5070,7 @@ picture {
   transition: all 0.4s ease-in-out;
 }
 
-/* line 293, src/scss/_components/homepage/_list--specification.scss */
+/* line 297, src/scss/_components/homepage/_list--specification.scss */
 .list__specification-circle.is-active {
   border-color: #c5f015;
   -webkit-transition: all 0.4s ease-in-out;
@@ -5072,23 +5078,23 @@ picture {
   transition: all 0.4s ease-in-out;
 }
 
-/* line 297, src/scss/_components/homepage/_list--specification.scss */
+/* line 301, src/scss/_components/homepage/_list--specification.scss */
 .list__specification-circle.is-active:after {
   -webkit-animation-name: flashBlinking;
           animation-name: flashBlinking;
 }
 
-/* line 303, src/scss/_components/homepage/_list--specification.scss */
+/* line 307, src/scss/_components/homepage/_list--specification.scss */
 .list__specification-circle.is-active + .c-poppertext > u:nth-of-type(1) {
   display: none;
 }
 
-/* line 306, src/scss/_components/homepage/_list--specification.scss */
+/* line 310, src/scss/_components/homepage/_list--specification.scss */
 .list__specification-circle.is-active + .c-poppertext > u:nth-of-type(2) {
   display: block;
 }
 
-/* line 312, src/scss/_components/homepage/_list--specification.scss */
+/* line 316, src/scss/_components/homepage/_list--specification.scss */
 .list__specification-circle.is-active .icon-font {
   color: #c5f015;
   -webkit-transition: all 0.4s ease-in-out;
@@ -5096,7 +5102,7 @@ picture {
   transition: all 0.4s ease-in-out;
 }
 
-/* line 318, src/scss/_components/homepage/_list--specification.scss */
+/* line 322, src/scss/_components/homepage/_list--specification.scss */
 .list__specification-circle .icon-font {
   color: #ffffff;
   font-size: 24px;
@@ -5106,67 +5112,67 @@ picture {
 }
 
 @media screen and (max-width: 1279px) {
-  /* line 318, src/scss/_components/homepage/_list--specification.scss */
+  /* line 322, src/scss/_components/homepage/_list--specification.scss */
   .list__specification-circle .icon-font {
     font-size: 20px;
   }
 }
 
 @media screen and (max-width: 1023px) {
-  /* line 318, src/scss/_components/homepage/_list--specification.scss */
+  /* line 322, src/scss/_components/homepage/_list--specification.scss */
   .list__specification-circle .icon-font {
     font-size: 14px;
   }
 }
 
-/* line 332, src/scss/_components/homepage/_list--specification.scss */
+/* line 336, src/scss/_components/homepage/_list--specification.scss */
 .list__specification-like .icon-font {
   -webkit-transform: scaleX(-1);
       -ms-transform: scaleX(-1);
           transform: scaleX(-1);
 }
 
-/* line 338, src/scss/_components/homepage/_list--specification.scss */
+/* line 342, src/scss/_components/homepage/_list--specification.scss */
 .list__specification-dislike .icon-font {
   -webkit-transform: scale(-1);
       -ms-transform: scale(-1);
           transform: scale(-1);
 }
 
-/* line 345, src/scss/_components/homepage/_list--specification.scss */
+/* line 349, src/scss/_components/homepage/_list--specification.scss */
 .list__specification-favorites.is-active .icon-font {
   -webkit-transition: all 0.4s ease-in-out;
   -o-transition: all 0.4s ease-in-out;
   transition: all 0.4s ease-in-out;
 }
 
-/* line 348, src/scss/_components/homepage/_list--specification.scss */
+/* line 352, src/scss/_components/homepage/_list--specification.scss */
 .list__specification-favorites.is-active .icon-font.icon-star-fill {
   opacity: 0;
   visibility: hidden;
 }
 
-/* line 352, src/scss/_components/homepage/_list--specification.scss */
+/* line 356, src/scss/_components/homepage/_list--specification.scss */
 .list__specification-favorites.is-active .icon-font.icon-star {
   opacity: 1;
   visibility: visible;
 }
 
-/* line 359, src/scss/_components/homepage/_list--specification.scss */
+/* line 363, src/scss/_components/homepage/_list--specification.scss */
 .list__specification-favorites .icon-font {
   -webkit-transition: all 0.4s ease-in-out;
   -o-transition: all 0.4s ease-in-out;
   transition: all 0.4s ease-in-out;
 }
 
-/* line 362, src/scss/_components/homepage/_list--specification.scss */
+/* line 366, src/scss/_components/homepage/_list--specification.scss */
 .list__specification-favorites .icon-font.icon-star {
   opacity: 0;
   visibility: hidden;
   position: absolute;
 }
 
-/* line 370, src/scss/_components/homepage/_list--specification.scss */
+/* line 374, src/scss/_components/homepage/_list--specification.scss */
 .list__specification-desc {
   width: 100%;
   max-width: 460px;
@@ -5175,13 +5181,13 @@ picture {
 }
 
 @media screen and (max-width: 1023px) {
-  /* line 370, src/scss/_components/homepage/_list--specification.scss */
+  /* line 374, src/scss/_components/homepage/_list--specification.scss */
   .list__specification-desc {
     font-size: 12px;
   }
 }
 
-/* line 380, src/scss/_components/homepage/_list--specification.scss */
+/* line 384, src/scss/_components/homepage/_list--specification.scss */
 .list__specification-play {
   z-index: 20;
   position: absolute;
@@ -5215,14 +5221,14 @@ picture {
 }
 
 @media screen and (max-width: 1023px) {
-  /* line 380, src/scss/_components/homepage/_list--specification.scss */
+  /* line 384, src/scss/_components/homepage/_list--specification.scss */
   .list__specification-play {
     width: 115px;
     height: 115px;
   }
 }
 
-/* line 399, src/scss/_components/homepage/_list--specification.scss */
+/* line 403, src/scss/_components/homepage/_list--specification.scss */
 .list__specification-play:hover {
   -webkit-transform: translate(-50%, -50%) scale(0.8);
       -ms-transform: translate(-50%, -50%) scale(0.8);
@@ -5234,7 +5240,7 @@ picture {
   transition: transform 0.55s ease-in-out, -webkit-transform 0.55s ease-in-out;
 }
 
-/* line 404, src/scss/_components/homepage/_list--specification.scss */
+/* line 408, src/scss/_components/homepage/_list--specification.scss */
 .list__specification-play.is-active {
   opacity: 0;
   visibility: hidden;
@@ -5243,7 +5249,7 @@ picture {
   transition: opacity 0.35s ease-in-out, visibility 0.35s ease-in-out;
 }
 
-/* line 410, src/scss/_components/homepage/_list--specification.scss */
+/* line 414, src/scss/_components/homepage/_list--specification.scss */
 .list__specification-play .icon-font {
   position: relative;
   left: 5px;
@@ -5252,13 +5258,13 @@ picture {
 }
 
 @media screen and (max-width: 1023px) {
-  /* line 410, src/scss/_components/homepage/_list--specification.scss */
+  /* line 414, src/scss/_components/homepage/_list--specification.scss */
   .list__specification-play .icon-font {
     font-size: 45px;
   }
 }
 
-/* line 421, src/scss/_components/homepage/_list--specification.scss */
+/* line 425, src/scss/_components/homepage/_list--specification.scss */
 .list__specification-pause {
   z-index: 20;
   opacity: 0;
@@ -5275,7 +5281,7 @@ picture {
   transition: opacity 0.35s ease-in-out, visibility 0.35s ease-in-out;
 }
 
-/* line 431, src/scss/_components/homepage/_list--specification.scss */
+/* line 435, src/scss/_components/homepage/_list--specification.scss */
 .list__specification-pause.is-active {
   opacity: 1;
   visibility: visible;
@@ -5284,7 +5290,7 @@ picture {
   transition: opacity 0.35s ease-in-out, visibility 0.35s ease-in-out;
 }
 
-/* line 437, src/scss/_components/homepage/_list--specification.scss */
+/* line 441, src/scss/_components/homepage/_list--specification.scss */
 .list__specification-pause .icon-font {
   color: #ffffff;
   font-size: 18px;
