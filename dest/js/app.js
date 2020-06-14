@@ -931,8 +931,15 @@ if (!Element.prototype.closest) {
 					    elWidth = el.clientWidth;
 
 					var parent = el.closest('[list-parent-js]'),
-					    listIndicator = parent.querySelector('[list-line-js]'),
-					    listIndicatorWidth = listIndicator.clientWidth;
+					    listIndicator = parent.querySelector('[list-line-js]');
+
+					var listIndicatorWidth = 0;
+
+					if (window.innerWidth >= 1023) {
+						listIndicatorWidth = 64;
+					} else {
+						listIndicatorWidth = 34;
+					}
 
 					var _elRect = el.getBoundingClientRect();
 
