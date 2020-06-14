@@ -367,7 +367,7 @@
 }
 
 /* line 23, src/scss/_generated/_spriteFont.scss */
-.icon-arrow-angle:before, .icon-close:before, .icon-delete:before, .icon-left-arrow:before, .icon-like:before, .icon-moon:before, .icon-out:before, .icon-pause:before, .icon-play-button:before, .icon-point:before, .icon-search:before, .icon-sort:before, .icon-star-fill:before, .icon-star:before, .icon-sun:before {
+.icon-arrow-angle:before, .icon-close:before, .icon-delete:before, .icon-enter:before, .icon-key:before, .icon-left-arrow:before, .icon-like:before, .icon-moon:before, .icon-out:before, .icon-pause:before, .icon-play-button:before, .icon-point:before, .icon-search:before, .icon-sort:before, .icon-star-fill:before, .icon-star:before, .icon-sun:before {
   font-family: "iconFont", sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
@@ -378,79 +378,89 @@
   text-transform: none;
 }
 
-/* line 80, src/scss/_generated/_spriteFont.scss */
+/* line 86, src/scss/_generated/_spriteFont.scss */
 .icon-arrow-angle:before {
   content: "";
 }
 
-/* line 80, src/scss/_generated/_spriteFont.scss */
+/* line 86, src/scss/_generated/_spriteFont.scss */
 .icon-close:before {
   content: "";
 }
 
-/* line 80, src/scss/_generated/_spriteFont.scss */
+/* line 86, src/scss/_generated/_spriteFont.scss */
 .icon-delete:before {
   content: "";
 }
 
-/* line 80, src/scss/_generated/_spriteFont.scss */
-.icon-left-arrow:before {
+/* line 86, src/scss/_generated/_spriteFont.scss */
+.icon-enter:before {
   content: "";
 }
 
-/* line 80, src/scss/_generated/_spriteFont.scss */
-.icon-like:before {
+/* line 86, src/scss/_generated/_spriteFont.scss */
+.icon-key:before {
   content: "";
 }
 
-/* line 80, src/scss/_generated/_spriteFont.scss */
-.icon-moon:before {
+/* line 86, src/scss/_generated/_spriteFont.scss */
+.icon-left-arrow:before {
   content: "";
 }
 
-/* line 80, src/scss/_generated/_spriteFont.scss */
-.icon-out:before {
+/* line 86, src/scss/_generated/_spriteFont.scss */
+.icon-like:before {
   content: "";
 }
 
-/* line 80, src/scss/_generated/_spriteFont.scss */
-.icon-pause:before {
+/* line 86, src/scss/_generated/_spriteFont.scss */
+.icon-moon:before {
   content: "";
 }
 
-/* line 80, src/scss/_generated/_spriteFont.scss */
-.icon-play-button:before {
+/* line 86, src/scss/_generated/_spriteFont.scss */
+.icon-out:before {
   content: "";
 }
 
-/* line 80, src/scss/_generated/_spriteFont.scss */
-.icon-point:before {
+/* line 86, src/scss/_generated/_spriteFont.scss */
+.icon-pause:before {
   content: "";
 }
 
-/* line 80, src/scss/_generated/_spriteFont.scss */
-.icon-search:before {
+/* line 86, src/scss/_generated/_spriteFont.scss */
+.icon-play-button:before {
   content: "";
 }
 
-/* line 80, src/scss/_generated/_spriteFont.scss */
-.icon-sort:before {
+/* line 86, src/scss/_generated/_spriteFont.scss */
+.icon-point:before {
   content: "";
 }
 
-/* line 80, src/scss/_generated/_spriteFont.scss */
-.icon-star-fill:before {
+/* line 86, src/scss/_generated/_spriteFont.scss */
+.icon-search:before {
   content: "";
 }
 
-/* line 80, src/scss/_generated/_spriteFont.scss */
-.icon-star:before {
+/* line 86, src/scss/_generated/_spriteFont.scss */
+.icon-sort:before {
   content: "";
 }
 
-/* line 80, src/scss/_generated/_spriteFont.scss */
-.icon-sun:before {
+/* line 86, src/scss/_generated/_spriteFont.scss */
+.icon-star-fill:before {
   content: "";
+}
+
+/* line 86, src/scss/_generated/_spriteFont.scss */
+.icon-star:before {
+  content: "";
+}
+
+/* line 86, src/scss/_generated/_spriteFont.scss */
+.icon-sun:before {
+  content: "";
 }
 
 /* line 1, src/scss/_shared/_main-setting-reset.scss */
@@ -3429,7 +3439,7 @@ picture {
     width: 100%;
     height: -webkit-calc(100% - 80px);
     height: calc(100% - 80px);
-    padding: 30px 20px;
+    padding-bottom: 30px;
     background-color: rgba(8, 9, 21, 0.975);
   }
   /* line 130, src/scss/_components/common/_pre-header.scss */
@@ -3469,11 +3479,10 @@ picture {
   -webkit-flex-wrap: wrap;
       -ms-flex-wrap: wrap;
           flex-wrap: wrap;
-  padding-bottom: 15px;
-  margin-bottom: 20px;
+  min-height: 50px;
 }
 
-/* line 150, src/scss/_components/common/_pre-header.scss */
+/* line 149, src/scss/_components/common/_pre-header.scss */
 .pre-header__mobile-top:after {
   content: '';
   position: absolute;
@@ -3484,18 +3493,15 @@ picture {
   background-color: #161e3e;
 }
 
-/* line 161, src/scss/_components/common/_pre-header.scss */
-.pre-header__mobile-top > div:nth-of-type(1), .pre-header__mobile-top > div:nth-of-type(2) {
+/* line 159, src/scss/_components/common/_pre-header.scss */
+.pre-header__mobile-top > div {
   width: 50%;
+  min-height: 100%;
 }
 
-/* line 166, src/scss/_components/common/_pre-header.scss */
-.pre-header__mobile-top > div:nth-of-type(3) {
-  width: 100%;
-}
-
-/* line 170, src/scss/_components/common/_pre-header.scss */
-.pre-header__mobile-top > div:nth-of-type(2) {
+/* line 165, src/scss/_components/common/_pre-header.scss */
+.pre-header__mobile-middle {
+  position: relative;
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -3508,12 +3514,58 @@ picture {
   -webkit-justify-content: flex-end;
       -ms-flex-pack: end;
           justify-content: flex-end;
-  padding-bottom: 30px;
+  min-height: 50px;
+  padding-left: 20px;
+  padding-right: 20px;
 }
 
-/* line 176, src/scss/_components/common/_pre-header.scss */
-.pre-header__mobile-top > div:nth-of-type(2) .header__action {
-  margin-right: 10px;
+/* line 174, src/scss/_components/common/_pre-header.scss */
+.pre-header__mobile-middle:after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 1px;
+  background-color: #161e3e;
+}
+
+/* line 186, src/scss/_components/common/_pre-header.scss */
+.pre-header__signin, .pre-header__signup {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+  -webkit-align-items: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  width: 100%;
+  height: 100%;
+  background-color: #004aac;
+}
+
+/* line 195, src/scss/_components/common/_pre-header.scss */
+.pre-header__signin .icon-font, .pre-header__signup .icon-font {
+  margin-right: 5px;
+  color: #ffffff;
+  font-size: 16px;
+}
+
+/* line 201, src/scss/_components/common/_pre-header.scss */
+.pre-header__signin span, .pre-header__signup span {
+  color: #ffffff;
+  text-transform: uppercase;
+  font-size: 14px;
+}
+
+/* line 208, src/scss/_components/common/_pre-header.scss */
+.pre-header__signin {
+  border-right: 1px solid #161e3e;
 }
 
 /* line 3, src/scss/_components/common/_footer.scss */

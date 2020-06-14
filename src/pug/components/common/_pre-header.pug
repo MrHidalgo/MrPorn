@@ -33,28 +33,16 @@ section#pre-header.pre-header
 
 			.pre-header__mobile-top
 				div
-
-					.header__toggle
-						input(type='checkbox' name='' id='toggle-mode')
-						label(for='toggle-mode')
-							.header__toggle-left
-								i.icon-font.icon-sun
-							.header__toggle-right
-								i.icon-font.icon-moon
-							span
-
+					a.pre-header__signin(href="#")
+						i.icon-font.icon-enter
+						span Sign In
 				div
+					a.pre-header__signup(href="#")
+						i.icon-font.icon-key
+						span Sign Up
 
-					.header__action
-						a.header__action-link.header__action-link--logout(href="#") Log out
-						a.header__action-link.header__action-link--admin(href="#") admin
-
+			.pre-header__mobile-middle
 					include _lang
-
-				div
-
-					include _header--category
-
 
 			.pre-header__mobile-bottom
 

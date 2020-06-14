@@ -36,41 +36,47 @@
 	@if $filename == delete {
 		$char: "\E003";
 	}
-	@if $filename == left-arrow {
+	@if $filename == enter {
 		$char: "\E004";
 	}
-	@if $filename == like {
+	@if $filename == key {
 		$char: "\E005";
 	}
-	@if $filename == moon {
+	@if $filename == left-arrow {
 		$char: "\E006";
 	}
-	@if $filename == out {
+	@if $filename == like {
 		$char: "\E007";
 	}
-	@if $filename == pause {
+	@if $filename == moon {
 		$char: "\E008";
 	}
-	@if $filename == play-button {
+	@if $filename == out {
 		$char: "\E009";
 	}
-	@if $filename == point {
+	@if $filename == pause {
 		$char: "\E00A";
 	}
-	@if $filename == search {
+	@if $filename == play-button {
 		$char: "\E00B";
 	}
-	@if $filename == sort {
+	@if $filename == point {
 		$char: "\E00C";
 	}
-	@if $filename == star-fill {
+	@if $filename == search {
 		$char: "\E00D";
 	}
-	@if $filename == star {
+	@if $filename == sort {
 		$char: "\E00E";
 	}
-	@if $filename == sun {
+	@if $filename == star-fill {
 		$char: "\E00F";
+	}
+	@if $filename == star {
+		$char: "\E010";
+	}
+	@if $filename == sun {
+		$char: "\E011";
 	}
 
 	@return $char;
@@ -97,6 +103,14 @@
 }
 .icon-delete {
 	@include icon(delete);
+
+}
+.icon-enter {
+	@include icon(enter);
+
+}
+.icon-key {
+	@include icon(key);
 
 }
 .icon-left-arrow {
