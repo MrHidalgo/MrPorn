@@ -10,9 +10,19 @@
 	justify-content: center;
 
 	&__text {
+		text-align: center;
 		font-size: 16px;
 		color: rgb(135, 144, 176);
 		line-height: 2.273;
+		@include adaptive(767) {
+			font-size: 12px;
+			line-height: 2;
+
+			span {
+				font-size: 0;
+				display: block;
+			}
+		}
 	}
 }
 

@@ -283,15 +283,24 @@ if (!Element.prototype.closest) {
 					pauseToggle[idx].classList.remove('is-active');
 					listBoxes[idx].classList.remove('is-active');
 
-					listSpecifications[idx].style.display = 'none';
+					if(window.innerWidth >= 1024) {
+						listSpecifications[idx].style.display = 'none';
+					} else {
+						listSpecifications[idx].classList.remove('is-open');
+					}
 
 					playPause(videoPlayers[idx]);
 				}
 
 				_boxParent.classList.add('is-active');
-				_specificationBox.style.display = 'flex';
 
 				_parentNode.classList.add('is-open');
+
+				if(window.innerWidth >= 1024) {
+					_specificationBox.style.display = 'flex';
+				} else {
+					_specificationBox.classList.add('is-open');
+				}
 			}, false);
 		}
 
@@ -303,10 +312,17 @@ if (!Element.prototype.closest) {
 			btn.addEventListener('click', (ev) => {
 				const _el = ev.currentTarget,
 					parent = _el.closest('.list__specification'),
+					listBoxWrapper = _el.closest('.list__box-wrapper'),
 					vid = parent.querySelector('video'),
 					pauseToggle = parent.querySelector('[video-pause-js]');
 
-				_el.closest('.list__specification').style.display = 'none';
+				listBoxWrapper.classList.remove('is-open');
+
+				if(window.innerWidth >= 1024) {
+					_el.closest('.list__specification').style.display = 'none';
+				} else {
+					_el.closest('.list__specification').classList.remove('is-open');
+				}
 
 				if(parent.querySelector('[video-toggle-js]')) {
 					pauseToggle.classList.remove('is-active');
@@ -376,7 +392,8 @@ if (!Element.prototype.closest) {
 			likeBtns = document.querySelectorAll('[like-toggle-js]'),
 			specLikeBtns = document.querySelectorAll('[spec-like-js]'),
 			dislikeBtns = document.querySelectorAll('[dislike-toggle-js]'),
-			specDislikeBtns = document.querySelectorAll('[spec-dislike-js]');
+			specDislikeBtns = document.querySelectorAll('[spec-dislike-js]'),
+			skipBtns = document.querySelectorAll('.list__specification-skip');
 
 		for(let btn of favoritesBtns) {
 			btn.addEventListener('click', (ev) => {
@@ -389,6 +406,12 @@ if (!Element.prototype.closest) {
 
 				ev.currentTarget.classList.toggle('is-active');
 				specificationFavoritesBtn.classList.toggle('is-active');
+			}, false);
+		}
+
+		for(let btn of skipBtns) {
+			btn.addEventListener('click', (ev) => {
+				ev.currentTarget.classList.toggle('is-active');
 			}, false);
 		}
 
@@ -506,8 +529,10 @@ if (!Element.prototype.closest) {
 
 				if(window.innerWidth >= 1023) {
 					listIndicatorWidth = 64;
-				} else {
+				} else if(window.innerWidth >= 768) {
 					listIndicatorWidth = 34;
+				} else {
+					listIndicatorWidth = 14;
 				}
 
 				const _elRect = el.getBoundingClientRect();

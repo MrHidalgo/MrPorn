@@ -3,6 +3,11 @@
 .list {
 	padding-top: 25px;
 	padding-bottom: 25px;
+	@include adaptive(767) {
+		.c-grid {
+			padding-right: 0;
+		}
+	}
 
 	.swiper {
 		&-container {
@@ -23,6 +28,10 @@
 			@include adaptive(1023) {
 				width: 150px !important;
 				height: 150px;
+			}
+			@include adaptive(767) {
+				width: 75px !important;
+				height: 75px;
 			}
 
 			&:first-of-type {

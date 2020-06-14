@@ -9,6 +9,9 @@
 			display: flex;
 			padding-top: 30px;
 			padding-bottom: 30px;
+			@include adaptive(767) {
+				padding-bottom: 15px;
+			}
 		}
 		&-2 {
 			display: flex;
@@ -33,6 +36,12 @@
 		color: #ffffff;
 		font-size: 24px;
 		font-weight: 700;
+		@include adaptive(1023) {
+			font-size: 20px;
+		}
+		@include adaptive(767) {
+			font-size: 14px;
+		}
 	}
 
 	&__desc {
@@ -40,12 +49,21 @@
 		color: #4b4e6b;
 		line-height: 1.8;
 		font-size: 16px;
+		@include adaptive(1023) {
+			font-size: 14px;
+		}
+		@include adaptive(767) {
+			font-size: 12px;
+		}
 	}
 
 	&__nav {
 		display: flex;
 		align-items: center;
 		justify-content: center;
+		@include adaptive(767) {
+			flex-wrap: wrap;
+		}
 
 		&-item {
 			display: flex;
@@ -61,6 +79,9 @@
 					margin-right: 10px;
 					font-size: 14px;
 				}
+				@include adaptive(767) {
+					font-size: 0;
+				}
 			}
 		}
 
@@ -71,6 +92,12 @@
 			@include transition(color);
 			@include adaptive(1023) {
 				font-size: 14px;
+			}
+			@include adaptive(767) {
+				display: flex;
+				align-items: center;
+				min-height: 25px;
+				font-size: 12px;
 			}
 
 			&:hover {

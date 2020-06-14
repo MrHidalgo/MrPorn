@@ -5,6 +5,10 @@
 	width: 75px;
 	height: calc(100% - 30px);
 	@include transition(opacity, visibility, height);
+	@include adaptive(767) {
+		width: 40px;
+		height: 100%;
+	}
 
 	.is-open & {
 		height: 100%;
@@ -20,6 +24,9 @@
 	&--prev {
 		left: 0;
 		background: linear-gradient(to left, rgba(8,9,21,0) 0%,rgba(8,9,21,1) 100%);
+		@include adaptive(767) {
+			left: -10px;
+		}
 
 		.list__arrow-box {
 			left: 0;
@@ -50,10 +57,17 @@
 		width: 51px;
 		height: 98px;
 		background-color: rgba(#fff, 0.05);
+		@include adaptive(767) {
+			width: 100%;
+			background-color: transparent;
+		}
 
 		.icon-font {
 			color: #7b7b79;
 			font-size: 24px;
+			@include adaptive(767) {
+				display: none;
+			}
 		}
 	}
 }

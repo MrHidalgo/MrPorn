@@ -27,6 +27,11 @@
 		height: 150px;
 		padding: 15px;
 	}
+	@include adaptive(767) {
+		width: 75px;
+		height: 75px;
+		padding: 10px 8px;
+	}
 
 	.is-hover & {
 		z-index: 100;
@@ -104,14 +109,23 @@
 		flex-direction: column;
 		@include transition(opacity);
 		@include transition(padding-bottom);
+		@include adaptive(767) {
+			overflow: unset;
+		}
 
 		&.is-open {
-			padding-bottom: 40px;
+			padding-bottom: 30px;
 			@include transition(padding-bottom);
+			@include adaptive(767) {
+				padding-bottom: 0;
+			}
 
 			.list__box-body {
 				padding-bottom: 0;
 				@include transition(padding-bottom);
+				@include adaptive(767) {
+					padding-bottom: 10px;
+				}
 			}
 		}
 	}
@@ -122,6 +136,9 @@
 		align-items: center;
 		justify-content: space-between;
 		padding-bottom: 15px;
+		@include adaptive(767) {
+			padding-right: 10px;
+		}
 	}
 
 	&-line {
@@ -144,6 +161,9 @@
 			@include adaptive(1023) {
 				width: 34px;
 			}
+			@include adaptive(767) {
+				width: 14px;
+			}
 		}
 	}
 
@@ -152,6 +172,9 @@
 		position: relative;
 		padding-bottom: 30px;
 		@include transition(padding-bottom);
+		@include adaptive(767) {
+			padding-bottom: 10px;
+		}
 	}
 
 	&-overlay {

@@ -48,23 +48,50 @@ mixin listBoxLeftBar(val)
 					a.list__specification-visit(href="#") VISIT WEBSITE
 				div
 					a.list__specification-read(href="#") READ REVIEW
+				div.list__specification-action-desc
+					p!= "Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eius mod tempor incididunt ut labore et dolore magna eutin... <a href='#'>READ MORE</a>"
+				div.list__specification-action-skip
+					a.list__specification-circle.list__specification-skip(href="#")
+						i.icon-font.icon-point
+						span Skip
 				div.list__specification-action-circle
 					a.list__specification-circle.list__specification-like(href="#" data-like!= val spec-like-js)
 						i.icon-font.icon-like
+						span Like
 				div.list__specification-action-circle
 					a.list__specification-circle.list__specification-dislike(href="#" data-dislike!= val spec-dislike-js)
 						i.icon-font.icon-like
+						span Dislike
 				div.list__specification-action-circle
 					.c-popper
 						a.list__specification-circle.list__specification-favorites(href="#" data-favorites!= val spec-favorites-js)
 							i.icon-font.icon-star-fill
 							i.icon-font.icon-star
+							span Favorites
 
 						.c-poppertext
 							u Add To Favourites
 							u Remove From Favourites
 
 			p.list__specification-desc Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in.
+
+mixin listSpecificationHeader()
+	.list__specification-header
+		img.list__specification-logo(src="img/img-reality-kings.png" srcset="img/img-reality-kings@2x.png 2x" alt="")
+
+mixin listSpecificationMoreLike()
+	.list__specification-more
+		div
+			p More Like This
+		div
+			+listSliderBox(val, 'img-view-bruzzers.png', 'img-brazzers-logo.svg')
+			+listSliderBox(val, 'img-realitykings-view.png', 'img-reliaty-kings-logo.png')
+			+listSliderBox(val, 'img-xvideo-red-view.png', 'img-xvideo-red-logo.png')
+			+listSliderBox(val, 'img-view-pornhub-premium.png', 'img-pornhub-premium-logo.png')
+			+listSliderBox(val, 'img-bang-bros-view.png', 'img-bangbros-logo.png')
+			+listSliderBox(val, 'img-mofos-view.png', 'img-mofos-logo.png')
+			+listSliderBox(val, 'img-view-bruzzers.png', 'img-brazzers-logo.svg')
+			+listSliderBox(val, 'img-realitykings-view.png', 'img-reliaty-kings-logo.png')
 
 mixin listBox(sliderID, name)
 	.list__box-wrapper(list-parent-js data-name!= name)
@@ -124,6 +151,7 @@ mixin listBox(sliderID, name)
 							a.list__specification-close(href="#")
 								i.icon-font.icon-close
 
+							+listSpecificationHeader()
 							+listBoxLeftBar(val)
 
 							.list__specification-right
@@ -141,19 +169,25 @@ mixin listBox(sliderID, name)
 									a.list__specification-pause(href="#" video-pause-js)
 										i.icon-font.icon-pause
 
+							+listSpecificationMoreLike()
+
 					else
 						.list__specification.list__specification--banner(data-id!= val)
 							a.list__specification-close(href="#")
 								i.icon-font.icon-close
 
+							+listSpecificationHeader()
 							+listBoxLeftBar(val)
 
 							.list__specification-right
 								div
 									img(src="img/img-laptop.png" srcset="img/img-laptop@2x.png 2x" alt="")
 
+							+listSpecificationMoreLike()
+
 
 section#list.list
+
 	.c-grid
 
 		+listBox('listSlider1', '1')

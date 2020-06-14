@@ -30,6 +30,10 @@ $paddingRight: $paddingLeft;
 		padding-left: 20px;
 		padding-right: 20px;
 	}
+	@include adaptive(767) {
+		padding-left: 10px;
+		padding-right: 10px;
+	}
 
   &-fluid {
     @extend %grid;

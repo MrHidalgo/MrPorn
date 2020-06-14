@@ -29,6 +29,10 @@
 		&-2 {
 			min-height: 40px;
 			background-color: #0b0d28;
+			@include adaptive(767) {
+				border-top: 2px solid #0a3e83;
+				border-bottom: 2px solid #0a3e83;
+			}
 
 			.pre-header__wrapper-left,
 			.pre-header__wrapper-middle,
@@ -66,6 +70,9 @@
 		color: #ffffff;
 		font-size: 14px;
 		text-align: center;
+		@include adaptive(767) {
+			font-size: 10px;
+		}
 	}
 
 	&__hamburger {
@@ -96,6 +103,9 @@
 		color: #abbde7;
 		font-size: 15px;
 		font-weight: 700;
+		@include adaptive(767) {
+			font-size: 14px;
+		}
 	}
 
 	&__mobile {

@@ -5,6 +5,9 @@
 		&:nth-of-type(1) {
 			width: 55px;
 			padding-top: 3px;
+			@include adaptive(767) {
+				width: 45px;
+			}
 		}
 
 		&:nth-of-type(2) {
@@ -22,10 +25,17 @@
 		height: 55px;
 		border-radius: 50%;
 		background-color: rgb(32, 33, 47);
+		@include adaptive(767) {
+			width: 45px;
+			height: 45px;
+		}
 
 		img {
 			@extend %imageResCoverAbs;
 			object-position: 12px 11px;
+			@include adaptive(767) {
+				object-position: 10px 9px;
+			}
 		}
 	}
 
@@ -36,10 +46,19 @@
 		@include adaptive(1279) {
 			font-size: 24px;
 		}
+		@include adaptive(767) {
+			padding-right: 120px;
+			font-size: 18px;
+		}
 	}
 
 	span {
 		color: #4b4e6b;
 		font-size: 16px;
+		@include adaptive(767) {
+			display: block;
+			font-size: 10px;
+			line-height: 1.2;
+		}
 	}
 }

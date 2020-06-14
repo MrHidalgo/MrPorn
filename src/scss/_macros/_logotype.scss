@@ -22,6 +22,10 @@
 	&--footer {
 		max-width: 250px;
 		padding-bottom: 30px;
+		@include adaptive(767) {
+			max-width: 150px;
+			padding-bottom: 15px;
+		}
 	}
 
 	&__btn {

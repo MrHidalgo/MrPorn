@@ -22,6 +22,12 @@
 		min-width: unset;
 		height: 34px;
 		background-color: transparent;
+		color: rgb(213, 243, 74);
+	}
+	@include adaptive(767) {
+		right: 10px;
+		height: 28px;
+		font-size: 12px;
 	}
 
 	span {

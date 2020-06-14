@@ -54,20 +54,23 @@
 	@if $filename == play-button {
 		$char: "\E009";
 	}
-	@if $filename == search {
+	@if $filename == point {
 		$char: "\E00A";
 	}
-	@if $filename == sort {
+	@if $filename == search {
 		$char: "\E00B";
 	}
-	@if $filename == star-fill {
+	@if $filename == sort {
 		$char: "\E00C";
 	}
-	@if $filename == star {
+	@if $filename == star-fill {
 		$char: "\E00D";
 	}
-	@if $filename == sun {
+	@if $filename == star {
 		$char: "\E00E";
+	}
+	@if $filename == sun {
+		$char: "\E00F";
 	}
 
 	@return $char;
@@ -118,6 +121,10 @@
 }
 .icon-play-button {
 	@include icon(play-button);
+
+}
+.icon-point {
+	@include icon(point);
 
 }
 .icon-search {
