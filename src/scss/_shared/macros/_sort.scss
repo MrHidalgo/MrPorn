@@ -11,6 +11,9 @@
 		height: 100%;
 		border-radius: 5px 0 0 5px;
 		background-color: #939cb2;
+		@include adaptive(1023) {
+			border-radius: 5px 0 0 0;
+		}
 
 		.icon-font {
 			color: #ffffff;

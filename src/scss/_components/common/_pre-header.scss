@@ -114,7 +114,6 @@
 		transform: translateY(50px);
 		display: none;
 		@include adaptive(1023) {
-			z-index: 1600;
 			overflow: hidden;
 			overflow-y: auto;
 			position: fixed;
@@ -133,6 +132,7 @@
 			}
 
 			&.is-open {
+				z-index: 1600;
 				opacity: 1;
 				visibility: visible;
 				transform: translateY(0);

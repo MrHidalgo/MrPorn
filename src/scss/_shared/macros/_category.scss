@@ -70,6 +70,9 @@
 		height: 100%;
 		background-color: #ffffff;
 		border-radius: 0 5px 5px 0;
+		@include adaptive(1023) {
+			border-radius: 0 5px 0 0;
+		}
 
 		input {
 			outline: none;
@@ -130,14 +133,14 @@
 		backface-visibility: hidden;
 		@include transition(opacity, visibility, transform);
 		@include adaptive(1023) {
-			z-index: 1600;
 			left: -63px;
 			width: 100vw;
+			height: calc(100vh - 200px);
 			border-radius: 0;
 		}
 
-
 		&.is-open {
+			z-index: 1600;
 			opacity: 1;
 			visibility: visible;
 			transform: translateY(0);
@@ -153,6 +156,7 @@
 			background-color: #0a3e83;
 			@include adaptive(1023) {
 				padding-right: 0;
+				padding-left: 20px;
 			}
 
 			> div {
@@ -278,13 +282,16 @@
 		width: 100%;
 		height: 210px;
 		@include adaptive(1023) {
-			height: 160px;
+			height: 100%;
 		}
 
 		&-wrapper {
 			display: flex;
 			flex-wrap: wrap;
 			width: 100%;
+			@include adaptive(1023) {
+				height: 100%;
+			}
 
 			> div {
 				width: 100%;
@@ -349,6 +356,10 @@
 					width: 21px;
 					height: 21px;
 					border-radius: 50%;
+					@include adaptive(767) {
+						width: 18px;
+						height: 18px;
+					}
 
 					&.gf {
 						&--pink {
@@ -372,6 +383,9 @@
 					color: #ffffff;
 					font-size: 11px;
 					font-weight: 700;
+					@include adaptive(767) {
+						font-size: 9px;
+					}
 				}
 			}
 
@@ -379,6 +393,9 @@
 				color: #0a3e83;
 				font-size: 12px;
 				font-weight: 700;
+				@include adaptive(767) {
+					font-size: 10px;
+				}
 			}
 		}
 
@@ -428,11 +445,12 @@
 		display: none;
 		align-items: center;
 		justify-content: center;
-		min-width: 170px;
-		height: 47px;
+		min-width: 150px;
+		height: 40px;
 		background-color: #cde549;
 		color: #080915;
-		font-size: 16px;
+		font-size: 14px;
+		text-transform: uppercase;
 		@include adaptive(1023) {
 			display: flex;
 		}
