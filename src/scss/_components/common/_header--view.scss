@@ -17,6 +17,9 @@
 	&-wrapper {
 		position: relative;
 		display: flex;
+		@include adaptive(1023) {
+			display: none;
+		}
 	}
 
 	&-left,

@@ -45,6 +45,7 @@
 		min-height: 121px;
 		@include adaptive(1023) {
 			flex-direction: column;
+			min-height: unset;
 		}
 
 		.header__col {

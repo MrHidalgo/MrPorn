@@ -906,17 +906,25 @@ picture {
   padding-bottom: 10px;
 }
 
-/* line 7, src/scss/_shared/macros/_category.scss */
+@media screen and (max-width: 1023px) {
+  /* line 1, src/scss/_shared/macros/_category.scss */
+  .category {
+    padding-top: 0;
+    padding-bottom: 0;
+  }
+}
+
+/* line 11, src/scss/_shared/macros/_category.scss */
 .category > * {
   height: 34px;
 }
 
-/* line 11, src/scss/_shared/macros/_category.scss */
+/* line 15, src/scss/_shared/macros/_category.scss */
 .category__left {
   width: 43px;
 }
 
-/* line 15, src/scss/_shared/macros/_category.scss */
+/* line 19, src/scss/_shared/macros/_category.scss */
 .category__middle {
   position: relative;
   -webkit-box-flex: 1;
@@ -928,12 +936,30 @@ picture {
   padding-right: 4px;
 }
 
-/* line 23, src/scss/_shared/macros/_category.scss */
+@media screen and (max-width: 1023px) {
+  /* line 19, src/scss/_shared/macros/_category.scss */
+  .category__middle {
+    padding-right: 0;
+  }
+}
+
+/* line 30, src/scss/_shared/macros/_category.scss */
 .category__right {
   width: 111px;
 }
 
-/* line 27, src/scss/_shared/macros/_category.scss */
+@media screen and (max-width: 1023px) {
+  /* line 30, src/scss/_shared/macros/_category.scss */
+  .category__right {
+    width: 43px;
+  }
+  /* line 35, src/scss/_shared/macros/_category.scss */
+  .category__right .category__btn {
+    display: none;
+  }
+}
+
+/* line 41, src/scss/_shared/macros/_category.scss */
 .category__btn {
   outline: none;
   position: relative;
@@ -963,7 +989,7 @@ picture {
   font-weight: 700;
 }
 
-/* line 45, src/scss/_shared/macros/_category.scss */
+/* line 59, src/scss/_shared/macros/_category.scss */
 .category__wrapper {
   position: relative;
   display: -webkit-box;
@@ -974,7 +1000,7 @@ picture {
   height: 100%;
 }
 
-/* line 52, src/scss/_shared/macros/_category.scss */
+/* line 66, src/scss/_shared/macros/_category.scss */
 .category__toggle {
   position: relative;
   display: -webkit-box;
@@ -988,7 +1014,7 @@ picture {
           border-radius: 0 5px 5px 0;
 }
 
-/* line 60, src/scss/_shared/macros/_category.scss */
+/* line 74, src/scss/_shared/macros/_category.scss */
 .category__toggle input {
   outline: none;
   position: relative;
@@ -1045,7 +1071,7 @@ picture {
   font-weight: 700;
 }
 
-/* line 81, src/scss/_shared/macros/_category.scss */
+/* line 95, src/scss/_shared/macros/_category.scss */
 .category__toggle button {
   outline: none;
   cursor: pointer;
@@ -1072,12 +1098,12 @@ picture {
   background-color: transparent;
 }
 
-/* line 96, src/scss/_shared/macros/_category.scss */
+/* line 110, src/scss/_shared/macros/_category.scss */
 .category__toggle button .icon-font {
   color: #9294ad;
 }
 
-/* line 102, src/scss/_shared/macros/_category.scss */
+/* line 116, src/scss/_shared/macros/_category.scss */
 .category__drop {
   overflow: hidden;
   z-index: 1000;
@@ -1111,7 +1137,7 @@ picture {
   transition: opacity 0.35s ease-in-out, visibility 0.35s ease-in-out, transform 0.35s ease-in-out, -webkit-transform 0.35s ease-in-out;
 }
 
-/* line 119, src/scss/_shared/macros/_category.scss */
+/* line 133, src/scss/_shared/macros/_category.scss */
 .category__drop.is-open {
   opacity: 1;
   visibility: visible;
@@ -1125,7 +1151,7 @@ picture {
   transition: opacity 0.35s ease-in-out, visibility 0.35s ease-in-out, transform 0.35s ease-in-out, -webkit-transform 0.35s ease-in-out;
 }
 
-/* line 126, src/scss/_shared/macros/_category.scss */
+/* line 140, src/scss/_shared/macros/_category.scss */
 .category__drop-head {
   display: -webkit-box;
   display: -webkit-flex;
@@ -1144,12 +1170,12 @@ picture {
   background-color: #0a3e83;
 }
 
-/* line 135, src/scss/_shared/macros/_category.scss */
+/* line 149, src/scss/_shared/macros/_category.scss */
 .category__drop-head > div:nth-of-type(1) {
   width: 275px;
 }
 
-/* line 138, src/scss/_shared/macros/_category.scss */
+/* line 152, src/scss/_shared/macros/_category.scss */
 .category__drop-head > div:nth-of-type(2) {
   display: -webkit-box;
   display: -webkit-flex;
@@ -1171,7 +1197,7 @@ picture {
   max-width: 100%;
 }
 
-/* line 149, src/scss/_shared/macros/_category.scss */
+/* line 163, src/scss/_shared/macros/_category.scss */
 .category__drop-body {
   -webkit-box-flex: 1;
   -webkit-flex: 1;
@@ -1183,7 +1209,7 @@ picture {
   padding-right: 10px;
 }
 
-/* line 157, src/scss/_shared/macros/_category.scss */
+/* line 171, src/scss/_shared/macros/_category.scss */
 .category__drop-footer {
   display: -webkit-box;
   display: -webkit-flex;
@@ -1200,14 +1226,14 @@ picture {
   height: 60px;
 }
 
-/* line 165, src/scss/_shared/macros/_category.scss */
+/* line 179, src/scss/_shared/macros/_category.scss */
 .category__title {
   color: #ffffff;
   font-size: 18px;
   font-weight: 700;
 }
 
-/* line 172, src/scss/_shared/macros/_category.scss */
+/* line 186, src/scss/_shared/macros/_category.scss */
 .category__btn-wrapper {
   overflow: hidden;
   overflow-x: auto;
@@ -1216,7 +1242,7 @@ picture {
   font-size: 0;
 }
 
-/* line 179, src/scss/_shared/macros/_category.scss */
+/* line 193, src/scss/_shared/macros/_category.scss */
 .category__btn-wrapper .category__btn {
   display: inline-block;
   vertical-align: middle;
@@ -1228,32 +1254,32 @@ picture {
   line-height: 33px;
 }
 
-/* line 189, src/scss/_shared/macros/_category.scss */
+/* line 203, src/scss/_shared/macros/_category.scss */
 .category__btn-wrapper .category__btn--1 {
   background-color: #090b27;
 }
 
-/* line 192, src/scss/_shared/macros/_category.scss */
+/* line 206, src/scss/_shared/macros/_category.scss */
 .category__btn-wrapper .category__btn--2 {
   background-color: #0677ce;
 }
 
-/* line 195, src/scss/_shared/macros/_category.scss */
+/* line 209, src/scss/_shared/macros/_category.scss */
 .category__btn-wrapper .category__btn--3 {
   background-color: #767676;
 }
 
-/* line 198, src/scss/_shared/macros/_category.scss */
+/* line 212, src/scss/_shared/macros/_category.scss */
 .category__btn-wrapper .category__btn--4 {
   background-color: #625e73;
 }
 
-/* line 201, src/scss/_shared/macros/_category.scss */
+/* line 215, src/scss/_shared/macros/_category.scss */
 .category__btn-wrapper .category__btn--5 {
   background-color: #65a6bb;
 }
 
-/* line 205, src/scss/_shared/macros/_category.scss */
+/* line 219, src/scss/_shared/macros/_category.scss */
 .category__btn-wrapper .category__btn img {
   display: inline-block;
   vertical-align: middle;
@@ -1262,7 +1288,7 @@ picture {
   margin-right: 5px;
 }
 
-/* line 213, src/scss/_shared/macros/_category.scss */
+/* line 227, src/scss/_shared/macros/_category.scss */
 .category__btn-wrapper .category__btn span {
   display: inline-block;
   vertical-align: middle;
@@ -1271,7 +1297,31 @@ picture {
   font-weight: 700;
 }
 
-/* line 224, src/scss/_shared/macros/_category.scss */
+/* line 238, src/scss/_shared/macros/_category.scss */
+.category__close {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+  -webkit-align-items: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: end;
+  -webkit-justify-content: flex-end;
+      -ms-flex-pack: end;
+          justify-content: flex-end;
+  width: 100%;
+  height: 100%;
+}
+
+/* line 245, src/scss/_shared/macros/_category.scss */
+.category__close .icon-font {
+  color: #33529e;
+  font-size: 24px;
+}
+
+/* line 251, src/scss/_shared/macros/_category.scss */
 .category__list {
   display: -webkit-box;
   display: -webkit-flex;
@@ -1286,7 +1336,7 @@ picture {
   height: 210px;
 }
 
-/* line 230, src/scss/_shared/macros/_category.scss */
+/* line 257, src/scss/_shared/macros/_category.scss */
 .category__list-wrapper {
   display: -webkit-box;
   display: -webkit-flex;
@@ -1298,7 +1348,7 @@ picture {
   width: 100%;
 }
 
-/* line 235, src/scss/_shared/macros/_category.scss */
+/* line 262, src/scss/_shared/macros/_category.scss */
 .category__list-wrapper > div {
   width: 100%;
   max-width: -webkit-calc(100% / 6);
@@ -1308,7 +1358,7 @@ picture {
 }
 
 @media screen and (max-width: 1535px) {
-  /* line 235, src/scss/_shared/macros/_category.scss */
+  /* line 262, src/scss/_shared/macros/_category.scss */
   .category__list-wrapper > div {
     max-width: -webkit-calc(100% / 5);
     max-width: calc(100% / 5);
@@ -1316,7 +1366,7 @@ picture {
 }
 
 @media screen and (max-width: 1365px) {
-  /* line 235, src/scss/_shared/macros/_category.scss */
+  /* line 262, src/scss/_shared/macros/_category.scss */
   .category__list-wrapper > div {
     max-width: -webkit-calc(100% / 4);
     max-width: calc(100% / 4);
@@ -1324,7 +1374,7 @@ picture {
 }
 
 @media screen and (max-width: 1279px) {
-  /* line 235, src/scss/_shared/macros/_category.scss */
+  /* line 262, src/scss/_shared/macros/_category.scss */
   .category__list-wrapper > div {
     max-width: -webkit-calc(100% / 3);
     max-width: calc(100% / 3);
@@ -1332,27 +1382,27 @@ picture {
 }
 
 @media screen and (max-width: 1535px) {
-  /* line 250, src/scss/_shared/macros/_category.scss */
+  /* line 277, src/scss/_shared/macros/_category.scss */
   .category__list-wrapper > div:nth-last-child(1), .category__list-wrapper > div:nth-last-child(2) {
     display: none;
   }
 }
 
 @media screen and (max-width: 1365px) {
-  /* line 257, src/scss/_shared/macros/_category.scss */
+  /* line 284, src/scss/_shared/macros/_category.scss */
   .category__list-wrapper > div:nth-last-child(3), .category__list-wrapper > div:nth-last-child(4) {
     display: none;
   }
 }
 
 @media screen and (max-width: 1279px) {
-  /* line 264, src/scss/_shared/macros/_category.scss */
+  /* line 291, src/scss/_shared/macros/_category.scss */
   .category__list-wrapper > div:nth-last-child(5), .category__list-wrapper > div:nth-last-child(6) {
     display: none;
   }
 }
 
-/* line 273, src/scss/_shared/macros/_category.scss */
+/* line 300, src/scss/_shared/macros/_category.scss */
 .category__list-head {
   display: -webkit-box;
   display: -webkit-flex;
@@ -1369,7 +1419,7 @@ picture {
   height: 37px;
 }
 
-/* line 280, src/scss/_shared/macros/_category.scss */
+/* line 307, src/scss/_shared/macros/_category.scss */
 .category__list-head > div:nth-of-type(1) {
   overflow: hidden;
   position: relative;
@@ -1391,36 +1441,36 @@ picture {
           border-radius: 50%;
 }
 
-/* line 291, src/scss/_shared/macros/_category.scss */
+/* line 318, src/scss/_shared/macros/_category.scss */
 .category__list-head > div:nth-of-type(1).gf--pink {
   background-color: #b32eae;
 }
 
-/* line 294, src/scss/_shared/macros/_category.scss */
+/* line 321, src/scss/_shared/macros/_category.scss */
 .category__list-head > div:nth-of-type(1).gf--green {
   background-color: #13aea1;
 }
 
-/* line 300, src/scss/_shared/macros/_category.scss */
+/* line 327, src/scss/_shared/macros/_category.scss */
 .category__list-head > div:nth-of-type(2) {
   padding-left: 5px;
 }
 
-/* line 308, src/scss/_shared/macros/_category.scss */
+/* line 335, src/scss/_shared/macros/_category.scss */
 .category__list-head > div span {
   color: #ffffff;
   font-size: 11px;
   font-weight: 700;
 }
 
-/* line 315, src/scss/_shared/macros/_category.scss */
+/* line 342, src/scss/_shared/macros/_category.scss */
 .category__list-head p {
   color: #0a3e83;
   font-size: 12px;
   font-weight: 700;
 }
 
-/* line 322, src/scss/_shared/macros/_category.scss */
+/* line 349, src/scss/_shared/macros/_category.scss */
 .category__list-body {
   display: -webkit-box;
   display: -webkit-flex;
@@ -1434,7 +1484,7 @@ picture {
   height: 100%;
 }
 
-/* line 328, src/scss/_shared/macros/_category.scss */
+/* line 355, src/scss/_shared/macros/_category.scss */
 .category__list-body > div:nth-of-type(1) {
   overflow: hidden;
   position: relative;
@@ -1449,7 +1499,7 @@ picture {
   border-right: 1px solid #9ca4ad;
 }
 
-/* line 342, src/scss/_shared/macros/_category.scss */
+/* line 369, src/scss/_shared/macros/_category.scss */
 .category__list-body > div:nth-of-type(2) {
   display: -webkit-box;
   display: -webkit-flex;
@@ -1468,7 +1518,7 @@ picture {
   background-color: #0a3e83;
 }
 
-/* line 350, src/scss/_shared/macros/_category.scss */
+/* line 377, src/scss/_shared/macros/_category.scss */
 .category__list-body > div:nth-of-type(2) p {
   position: relative;
   top: -1px;
@@ -1479,7 +1529,7 @@ picture {
   text-align: center;
 }
 
-/* line 364, src/scss/_shared/macros/_category.scss */
+/* line 391, src/scss/_shared/macros/_category.scss */
 .category__pagination {
   display: -webkit-box;
   display: -webkit-flex;
@@ -1495,7 +1545,7 @@ picture {
           justify-content: center;
 }
 
-/* line 369, src/scss/_shared/macros/_category.scss */
+/* line 396, src/scss/_shared/macros/_category.scss */
 .category__pagination-btn, .category__pagination-arrow {
   display: -webkit-box;
   display: -webkit-flex;
@@ -1515,7 +1565,7 @@ picture {
   margin-right: 7px;
 }
 
-/* line 380, src/scss/_shared/macros/_category.scss */
+/* line 407, src/scss/_shared/macros/_category.scss */
 .category__pagination-btn {
   background-color: #e4e4e4;
   color: #8a8a8a;
@@ -1526,7 +1576,7 @@ picture {
   transition: background-color 0.35s ease-in-out, color 0.35s ease-in-out;
 }
 
-/* line 387, src/scss/_shared/macros/_category.scss */
+/* line 414, src/scss/_shared/macros/_category.scss */
 .category__pagination-btn:hover, .category__pagination-btn.is-active {
   background-color: #07113b;
   color: #d5f34a;
@@ -1535,7 +1585,7 @@ picture {
   transition: background-color 0.35s ease-in-out, color 0.35s ease-in-out;
 }
 
-/* line 396, src/scss/_shared/macros/_category.scss */
+/* line 423, src/scss/_shared/macros/_category.scss */
 .category__pagination-arrow .icon-font {
   color: #07113b;
   font-size: 18px;
@@ -1638,7 +1688,24 @@ picture {
   transition: opacity 0.35s ease-in-out, visibility 0.35s ease-in-out, transform 0.35s ease-in-out, -webkit-transform 0.35s ease-in-out;
 }
 
-/* line 52, src/scss/_shared/macros/_sort.scss */
+@media screen and (max-width: 1023px) {
+  /* line 35, src/scss/_shared/macros/_sort.scss */
+  .sort__drop {
+    position: relative;
+    top: 15px;
+    left: -20px;
+    width: -webkit-calc(100vw);
+    width: calc(100vw);
+    -webkit-transform: unset;
+        -ms-transform: unset;
+            transform: unset;
+    padding: 10px 0 10px;
+    -webkit-border-radius: 0;
+            border-radius: 0;
+  }
+}
+
+/* line 61, src/scss/_shared/macros/_sort.scss */
 .sort__drop.is-open {
   opacity: 1;
   visibility: visible;
@@ -1652,7 +1719,16 @@ picture {
   transition: opacity 0.35s ease-in-out, visibility 0.35s ease-in-out, transform 0.35s ease-in-out, -webkit-transform 0.35s ease-in-out;
 }
 
-/* line 59, src/scss/_shared/macros/_sort.scss */
+@media screen and (max-width: 1023px) {
+  /* line 61, src/scss/_shared/macros/_sort.scss */
+  .sort__drop.is-open {
+    -webkit-transform: unset;
+        -ms-transform: unset;
+            transform: unset;
+  }
+}
+
+/* line 71, src/scss/_shared/macros/_sort.scss */
 .sort__drop:after {
   content: '';
   position: absolute;
@@ -1668,7 +1744,17 @@ picture {
   border-color: transparent transparent #fff transparent;
 }
 
-/* line 72, src/scss/_shared/macros/_sort.scss */
+@media screen and (max-width: 1023px) {
+  /* line 71, src/scss/_shared/macros/_sort.scss */
+  .sort__drop:after {
+    left: 31px;
+    -webkit-transform: unset;
+        -ms-transform: unset;
+            transform: unset;
+  }
+}
+
+/* line 88, src/scss/_shared/macros/_sort.scss */
 .sort__drop-link {
   display: -webkit-box;
   display: -webkit-flex;
@@ -1696,7 +1782,15 @@ picture {
   transition: color 0.35s ease-in-out;
 }
 
-/* line 86, src/scss/_shared/macros/_sort.scss */
+@media screen and (max-width: 1023px) {
+  /* line 88, src/scss/_shared/macros/_sort.scss */
+  .sort__drop-link {
+    max-width: -webkit-calc(100% / 7);
+    max-width: calc(100% / 7);
+  }
+}
+
+/* line 105, src/scss/_shared/macros/_sort.scss */
 .sort__drop-link:hover {
   color: #004eb4;
   -webkit-transition: color 0.35s ease-in-out;
@@ -1704,7 +1798,7 @@ picture {
   transition: color 0.35s ease-in-out;
 }
 
-/* line 91, src/scss/_shared/macros/_sort.scss */
+/* line 110, src/scss/_shared/macros/_sort.scss */
 .sort__drop-link.is-active {
   text-decoration: underline;
   color: #004eb4;
@@ -1713,7 +1807,7 @@ picture {
   transition: color 0.35s ease-in-out;
 }
 
-/* line 98, src/scss/_shared/macros/_sort.scss */
+/* line 117, src/scss/_shared/macros/_sort.scss */
 .sort__drop-inner {
   z-index: 1000;
   opacity: 0;
@@ -1741,10 +1835,30 @@ picture {
   transition: opacity 0.35s ease-in-out, visibility 0.35s ease-in-out, transform 0.35s ease-in-out, -webkit-transform 0.35s ease-in-out;
 }
 
-/* line 115, src/scss/_shared/macros/_sort.scss */
+@media screen and (max-width: 1023px) {
+  /* line 117, src/scss/_shared/macros/_sort.scss */
+  .sort__drop-inner {
+    position: relative;
+    top: 10px;
+    left: 0;
+    width: -webkit-calc(100vw + 10px);
+    width: calc(100vw + 10px);
+    height: 0;
+    min-height: unset;
+    max-height: unset;
+    -webkit-transform: unset;
+        -ms-transform: unset;
+            transform: unset;
+    -webkit-border-radius: 0;
+            border-radius: 0;
+  }
+}
+
+/* line 145, src/scss/_shared/macros/_sort.scss */
 .sort__drop-inner.is-open {
   opacity: 1;
   visibility: visible;
+  height: auto;
   -webkit-transform: translateX(0);
       -ms-transform: translateX(0);
           transform: translateX(0);
@@ -1755,7 +1869,7 @@ picture {
   transition: opacity 0.35s ease-in-out, visibility 0.35s ease-in-out, transform 0.35s ease-in-out, -webkit-transform 0.35s ease-in-out;
 }
 
-/* line 124, src/scss/_shared/macros/_sort.scss */
+/* line 155, src/scss/_shared/macros/_sort.scss */
 .sort__collapse {
   position: relative;
   display: -webkit-box;
@@ -1769,12 +1883,12 @@ picture {
           flex-direction: column;
 }
 
-/* line 130, src/scss/_shared/macros/_sort.scss */
+/* line 161, src/scss/_shared/macros/_sort.scss */
 .sort__collapse:not(:last-of-type) .sort__collapse-toggle {
   border-bottom: 1px solid #bac4dd;
 }
 
-/* line 135, src/scss/_shared/macros/_sort.scss */
+/* line 166, src/scss/_shared/macros/_sort.scss */
 .sort__collapse-toggle {
   display: -webkit-box;
   display: -webkit-flex;
@@ -1787,7 +1901,7 @@ picture {
   transition: background-color 0.35s ease-in-out;
 }
 
-/* line 141, src/scss/_shared/macros/_sort.scss */
+/* line 172, src/scss/_shared/macros/_sort.scss */
 .sort__collapse-toggle:hover, .sort__collapse-toggle.is-active {
   background-color: #778098;
   -webkit-transition: background-color 0.35s ease-in-out;
@@ -1795,7 +1909,7 @@ picture {
   transition: background-color 0.35s ease-in-out;
 }
 
-/* line 147, src/scss/_shared/macros/_sort.scss */
+/* line 178, src/scss/_shared/macros/_sort.scss */
 .sort__collapse-toggle:hover > div > span, .sort__collapse-toggle.is-active > div > span {
   color: #c7f228;
   -webkit-transition: color 0.35s ease-in-out;
@@ -1803,7 +1917,7 @@ picture {
   transition: color 0.35s ease-in-out;
 }
 
-/* line 153, src/scss/_shared/macros/_sort.scss */
+/* line 184, src/scss/_shared/macros/_sort.scss */
 .sort__collapse-toggle:hover .icon-font, .sort__collapse-toggle.is-active .icon-font {
   opacity: 1;
   visibility: visible;
@@ -1812,7 +1926,7 @@ picture {
   transition: opacity 0.35s ease-in-out, visibility 0.35s ease-in-out;
 }
 
-/* line 160, src/scss/_shared/macros/_sort.scss */
+/* line 191, src/scss/_shared/macros/_sort.scss */
 .sort__collapse-toggle > div {
   display: -webkit-box;
   display: -webkit-flex;
@@ -1825,7 +1939,7 @@ picture {
   height: 100%;
 }
 
-/* line 165, src/scss/_shared/macros/_sort.scss */
+/* line 196, src/scss/_shared/macros/_sort.scss */
 .sort__collapse-toggle > div:nth-of-type(1), .sort__collapse-toggle > div:nth-of-type(3) {
   -webkit-box-pack: center;
   -webkit-justify-content: center;
@@ -1834,12 +1948,12 @@ picture {
   width: 50px;
 }
 
-/* line 171, src/scss/_shared/macros/_sort.scss */
+/* line 202, src/scss/_shared/macros/_sort.scss */
 .sort__collapse-toggle > div:nth-of-type(1) {
   border-right: 1px solid #bac4dd;
 }
 
-/* line 175, src/scss/_shared/macros/_sort.scss */
+/* line 206, src/scss/_shared/macros/_sort.scss */
 .sort__collapse-toggle > div:nth-of-type(2) {
   -webkit-box-flex: 1;
   -webkit-flex: 1;
@@ -1850,7 +1964,7 @@ picture {
   padding-left: 19px;
 }
 
-/* line 183, src/scss/_shared/macros/_sort.scss */
+/* line 214, src/scss/_shared/macros/_sort.scss */
 .sort__collapse-toggle span {
   color: #dbe2f1;
   font-size: 16px;
@@ -1860,7 +1974,7 @@ picture {
   transition: color 0.35s ease-in-out;
 }
 
-/* line 190, src/scss/_shared/macros/_sort.scss */
+/* line 221, src/scss/_shared/macros/_sort.scss */
 .sort__collapse-toggle img {
   display: block;
   max-width: 100%;
@@ -1869,7 +1983,7 @@ picture {
   margin-right: 7px;
 }
 
-/* line 198, src/scss/_shared/macros/_sort.scss */
+/* line 229, src/scss/_shared/macros/_sort.scss */
 .sort__collapse-toggle p {
   color: #ffffff;
   font-size: 16px;
@@ -1879,12 +1993,12 @@ picture {
   transition: color 0.35s ease-in-out;
 }
 
-/* line 204, src/scss/_shared/macros/_sort.scss */
+/* line 235, src/scss/_shared/macros/_sort.scss */
 .sort__collapse-toggle p span {
   color: #0a3e83;
 }
 
-/* line 209, src/scss/_shared/macros/_sort.scss */
+/* line 240, src/scss/_shared/macros/_sort.scss */
 .sort__collapse-toggle .icon-font {
   opacity: 0;
   visibility: hidden;
@@ -1898,7 +2012,7 @@ picture {
   transition: opacity 0.35s ease-in-out, visibility 0.35s ease-in-out;
 }
 
-/* line 219, src/scss/_shared/macros/_sort.scss */
+/* line 250, src/scss/_shared/macros/_sort.scss */
 .sort__collapse-body {
   overflow: hidden;
   display: none;
@@ -1916,7 +2030,7 @@ picture {
   background-color: #262e45;
 }
 
-/* line 229, src/scss/_shared/macros/_sort.scss */
+/* line 260, src/scss/_shared/macros/_sort.scss */
 .sort__collapse-body.is-open {
   display: -webkit-box;
   display: -webkit-flex;
@@ -1924,7 +2038,7 @@ picture {
   display: flex;
 }
 
-/* line 233, src/scss/_shared/macros/_sort.scss */
+/* line 264, src/scss/_shared/macros/_sort.scss */
 .sort__collapse-body button {
   outline: none;
   cursor: pointer;
@@ -1955,7 +2069,7 @@ picture {
   transition: background-color 0.35s ease-in-out;
 }
 
-/* line 249, src/scss/_shared/macros/_sort.scss */
+/* line 280, src/scss/_shared/macros/_sort.scss */
 .sort__collapse-body button:hover {
   background-color: #004aac;
   -webkit-transition: background-color 0.35s ease-in-out;
@@ -1963,7 +2077,7 @@ picture {
   transition: background-color 0.35s ease-in-out;
 }
 
-/* line 254, src/scss/_shared/macros/_sort.scss */
+/* line 285, src/scss/_shared/macros/_sort.scss */
 .sort__collapse-body button span {
   color: #ffffff;
   text-transform: uppercase;
@@ -1971,7 +2085,7 @@ picture {
   font-weight: 700;
 }
 
-/* line 262, src/scss/_shared/macros/_sort.scss */
+/* line 293, src/scss/_shared/macros/_sort.scss */
 .sort__collapse-body img {
   display: block;
   max-width: 100%;
@@ -2183,6 +2297,13 @@ picture {
   font-weight: 700;
 }
 
+@media screen and (max-width: 1023px) {
+  /* line 8, src/scss/_components/common/_header.scss */
+  .header__update {
+    display: none;
+  }
+}
+
 /* line 2, src/scss/_components/common/_header--conatainer.scss */
 .header__container-1 {
   background-color: #07113b;
@@ -2203,7 +2324,7 @@ picture {
 @media screen and (max-width: 1023px) {
   /* line 9, src/scss/_components/common/_header--conatainer.scss */
   .header__container-2 {
-    z-index: 1000;
+    z-index: 1600;
     opacity: 0;
     visibility: hidden;
     -webkit-transform: translateY(50px);
@@ -2212,12 +2333,11 @@ picture {
     overflow: hidden;
     overflow-y: auto;
     position: fixed;
-    top: 80px;
+    top: 0;
     left: 0;
     width: 100%;
-    height: -webkit-calc(100% - 80px);
-    height: calc(100% - 80px);
-    padding: 30px 20px;
+    min-height: 100vh;
+    padding: 10px 20px;
     background-color: rgba(8, 9, 21, 0.975);
   }
   /* line 27, src/scss/_components/common/_header--conatainer.scss */
@@ -2347,30 +2467,31 @@ picture {
     -webkit-flex-direction: column;
         -ms-flex-direction: column;
             flex-direction: column;
+    min-height: unset;
   }
 }
 
-/* line 51, src/scss/_components/common/_header--wrapper.scss */
+/* line 52, src/scss/_components/common/_header--wrapper.scss */
 .header__wrapper-2 .header__col-1 {
   width: 100%;
   max-width: 410px;
 }
 
 @media screen and (max-width: 1535px) {
-  /* line 51, src/scss/_components/common/_header--wrapper.scss */
+  /* line 52, src/scss/_components/common/_header--wrapper.scss */
   .header__wrapper-2 .header__col-1 {
     max-width: 350px;
   }
 }
 
 @media screen and (max-width: 1279px) {
-  /* line 51, src/scss/_components/common/_header--wrapper.scss */
+  /* line 52, src/scss/_components/common/_header--wrapper.scss */
   .header__wrapper-2 .header__col-1 {
     max-width: 300px;
   }
 }
 
-/* line 62, src/scss/_components/common/_header--wrapper.scss */
+/* line 63, src/scss/_components/common/_header--wrapper.scss */
 .header__wrapper-2 .header__col-2 {
   display: -webkit-box;
   display: -webkit-flex;
@@ -2392,13 +2513,13 @@ picture {
 }
 
 @media screen and (max-width: 1023px) {
-  /* line 62, src/scss/_components/common/_header--wrapper.scss */
+  /* line 63, src/scss/_components/common/_header--wrapper.scss */
   .header__wrapper-2 .header__col-2 {
     padding: 0;
   }
 }
 
-/* line 77, src/scss/_components/common/_header--wrapper.scss */
+/* line 78, src/scss/_components/common/_header--wrapper.scss */
 .header__wrapper-3 {
   -webkit-box-align: center;
   -webkit-align-items: center;
@@ -2769,7 +2890,14 @@ picture {
   display: flex;
 }
 
-/* line 22, src/scss/_components/common/_header--view.scss */
+@media screen and (max-width: 1023px) {
+  /* line 17, src/scss/_components/common/_header--view.scss */
+  .header__view-wrapper {
+    display: none;
+  }
+}
+
+/* line 25, src/scss/_components/common/_header--view.scss */
 .header__view-left, .header__view-right {
   display: -webkit-box;
   display: -webkit-flex;
@@ -2785,7 +2913,7 @@ picture {
           justify-content: center;
 }
 
-/* line 29, src/scss/_components/common/_header--view.scss */
+/* line 32, src/scss/_components/common/_header--view.scss */
 .header__view-left {
   -webkit-box-flex: 1;
   -webkit-flex: 1;
@@ -2795,7 +2923,7 @@ picture {
   max-width: 100%;
 }
 
-/* line 34, src/scss/_components/common/_header--view.scss */
+/* line 37, src/scss/_components/common/_header--view.scss */
 .header__view-left p,
 .header__view-left span {
   -webkit-box-flex: 1;
@@ -2807,7 +2935,7 @@ picture {
   text-align: center;
 }
 
-/* line 42, src/scss/_components/common/_header--view.scss */
+/* line 45, src/scss/_components/common/_header--view.scss */
 .header__view-left p {
   color: #ffffff;
   font-weight: 700;
@@ -2816,13 +2944,13 @@ picture {
 }
 
 @media screen and (max-width: 1279px) {
-  /* line 42, src/scss/_components/common/_header--view.scss */
+  /* line 45, src/scss/_components/common/_header--view.scss */
   .header__view-left p {
     font-size: 12px;
   }
 }
 
-/* line 52, src/scss/_components/common/_header--view.scss */
+/* line 55, src/scss/_components/common/_header--view.scss */
 .header__view-left u {
   width: 1px;
   height: -webkit-calc(100% - 10px);
@@ -2830,19 +2958,19 @@ picture {
   background-color: #3672c1;
 }
 
-/* line 58, src/scss/_components/common/_header--view.scss */
+/* line 61, src/scss/_components/common/_header--view.scss */
 .header__view-left span {
   color: #ffffff;
   font-size: 12px;
 }
 
-/* line 64, src/scss/_components/common/_header--view.scss */
+/* line 67, src/scss/_components/common/_header--view.scss */
 .header__view-right {
   width: 60px;
   height: 100%;
 }
 
-/* line 68, src/scss/_components/common/_header--view.scss */
+/* line 71, src/scss/_components/common/_header--view.scss */
 .header__view-right .icon-font {
   color: #ffffff;
   font-size: 18px;
@@ -2861,7 +2989,7 @@ picture {
   transition: transform 0.35s ease-in-out, -webkit-transform 0.35s ease-in-out;
 }
 
-/* line 78, src/scss/_components/common/_header--view.scss */
+/* line 81, src/scss/_components/common/_header--view.scss */
 .header__view-drop {
   opacity: 0;
   visibility: hidden;
@@ -2894,7 +3022,7 @@ picture {
   transition: opacity 0.35s ease-in-out, visibility 0.35s ease-in-out, transform 0.35s ease-in-out, -webkit-transform 0.35s ease-in-out;
 }
 
-/* line 97, src/scss/_components/common/_header--view.scss */
+/* line 100, src/scss/_components/common/_header--view.scss */
 .header__view-drop.is-open {
   opacity: 1;
   visibility: visible;
@@ -2908,7 +3036,7 @@ picture {
   transition: opacity 0.35s ease-in-out, visibility 0.35s ease-in-out, transform 0.35s ease-in-out, -webkit-transform 0.35s ease-in-out;
 }
 
-/* line 105, src/scss/_components/common/_header--view.scss */
+/* line 108, src/scss/_components/common/_header--view.scss */
 .header__view-link {
   display: -webkit-box;
   display: -webkit-flex;
@@ -2929,7 +3057,7 @@ picture {
   transition: background-color 0.35s ease-in-out;
 }
 
-/* line 113, src/scss/_components/common/_header--view.scss */
+/* line 116, src/scss/_components/common/_header--view.scss */
 .header__view-link:hover {
   background-color: #778098;
   -webkit-transition: background-color 0.35s ease-in-out;
@@ -2937,7 +3065,7 @@ picture {
   transition: background-color 0.35s ease-in-out;
 }
 
-/* line 117, src/scss/_components/common/_header--view.scss */
+/* line 120, src/scss/_components/common/_header--view.scss */
 .header__view-link:hover span {
   color: #c7f228;
   -webkit-transition: color 0.35s ease-in-out;
@@ -2945,7 +3073,7 @@ picture {
   transition: color 0.35s ease-in-out;
 }
 
-/* line 122, src/scss/_components/common/_header--view.scss */
+/* line 125, src/scss/_components/common/_header--view.scss */
 .header__view-link:hover p {
   color: #ffffff;
   -webkit-transition: color 0.35s ease-in-out;
@@ -2953,7 +3081,7 @@ picture {
   transition: color 0.35s ease-in-out;
 }
 
-/* line 128, src/scss/_components/common/_header--view.scss */
+/* line 131, src/scss/_components/common/_header--view.scss */
 .header__view-link:hover button .icon-font {
   color: #ffffff;
   -webkit-transition: color 0.35s ease-in-out;
@@ -2961,12 +3089,12 @@ picture {
   transition: color 0.35s ease-in-out;
 }
 
-/* line 135, src/scss/_components/common/_header--view.scss */
+/* line 138, src/scss/_components/common/_header--view.scss */
 .header__view-link:not(:last-of-type) {
   border-bottom: 1px solid #dce3f3;
 }
 
-/* line 139, src/scss/_components/common/_header--view.scss */
+/* line 142, src/scss/_components/common/_header--view.scss */
 .header__view-link > div {
   display: -webkit-box;
   display: -webkit-flex;
@@ -2981,13 +3109,13 @@ picture {
   padding-bottom: 5px;
 }
 
-/* line 146, src/scss/_components/common/_header--view.scss */
+/* line 149, src/scss/_components/common/_header--view.scss */
 .header__view-link > div:nth-of-type(1) {
   padding-left: 18px;
   width: 72px;
 }
 
-/* line 150, src/scss/_components/common/_header--view.scss */
+/* line 153, src/scss/_components/common/_header--view.scss */
 .header__view-link > div:nth-of-type(2) {
   -webkit-box-flex: 1;
   -webkit-flex: 1;
@@ -2997,7 +3125,7 @@ picture {
   max-width: 100%;
 }
 
-/* line 155, src/scss/_components/common/_header--view.scss */
+/* line 158, src/scss/_components/common/_header--view.scss */
 .header__view-link > div:nth-of-type(3) {
   -webkit-box-pack: center;
   -webkit-justify-content: center;
@@ -3006,7 +3134,7 @@ picture {
   width: 90px;
 }
 
-/* line 161, src/scss/_components/common/_header--view.scss */
+/* line 164, src/scss/_components/common/_header--view.scss */
 .header__view-link span {
   color: #757a85;
   font-size: 16px;
@@ -3016,7 +3144,7 @@ picture {
   transition: color 0.35s ease-in-out;
 }
 
-/* line 168, src/scss/_components/common/_header--view.scss */
+/* line 171, src/scss/_components/common/_header--view.scss */
 .header__view-link img {
   display: block;
   max-width: 100%;
@@ -3025,7 +3153,7 @@ picture {
   margin-right: 7px;
 }
 
-/* line 176, src/scss/_components/common/_header--view.scss */
+/* line 179, src/scss/_components/common/_header--view.scss */
 .header__view-link p {
   color: #0a3e83;
   font-size: 16px;
@@ -3035,7 +3163,7 @@ picture {
   transition: color 0.35s ease-in-out;
 }
 
-/* line 183, src/scss/_components/common/_header--view.scss */
+/* line 186, src/scss/_components/common/_header--view.scss */
 .header__view-link button {
   outline: none;
   cursor: pointer;
@@ -3062,7 +3190,7 @@ picture {
   background-color: transparent;
 }
 
-/* line 197, src/scss/_components/common/_header--view.scss */
+/* line 200, src/scss/_components/common/_header--view.scss */
 .header__view-link button .icon-font {
   color: #0a3e83;
   font-size: 21px;
@@ -3429,7 +3557,7 @@ picture {
 @media screen and (max-width: 1023px) {
   /* line 111, src/scss/_components/common/_pre-header.scss */
   .pre-header__mobile {
-    z-index: 1000;
+    z-index: 1600;
     overflow: hidden;
     overflow-y: auto;
     position: fixed;

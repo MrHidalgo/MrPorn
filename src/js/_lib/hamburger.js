@@ -31,8 +31,6 @@ const initHamburger = () => {
 
 	if(searchHamburger) {
 		searchHamburger.addEventListener("click", (ev) => {
-			const elem = ev.currentTarget;
-
 			searchContainer.classList.toggle("is-open");
 
 			hideScrollContainer.forEach((val, idx) => {
@@ -42,4 +40,14 @@ const initHamburger = () => {
 		});
 	}
 
+	const searchClose = document.querySelector('.category__close');
+
+	searchClose.addEventListener("click", (ev) => {
+		searchContainer.classList.toggle("is-open");
+
+		hideScrollContainer.forEach((val, idx) => {
+			val.classList.toggle("is-hideScroll");
+		});
+
+	});
 };

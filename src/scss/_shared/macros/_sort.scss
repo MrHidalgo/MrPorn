@@ -48,12 +48,24 @@
 		background-color: #ffffff;
 		backface-visibility: hidden;
 		@include transition(opacity, visibility, transform);
+		@include adaptive(1023) {
+			position: relative;
+			top: 15px;
+			left: -20px;
+			width: calc(100vw);
+			transform: unset;
+			padding: 10px 0 10px;
+			border-radius: 0;
+		}
 
 		&.is-open {
 			opacity: 1;
 			visibility: visible;
 			transform: translate(-50%, 0);
 			@include transition(opacity, visibility, transform);
+			@include adaptive(1023) {
+				transform: unset;
+			}
 		}
 
 		&:after {
@@ -67,6 +79,10 @@
 			border-style: solid;
 			border-width: 12px;
 			border-color: transparent transparent #fff transparent;
+			@include adaptive(1023) {
+				left: 31px;
+				transform: unset;
+			}
 		}
 
 		&-link {
@@ -82,6 +98,9 @@
 			font-size: 16px;
 			font-weight: 700;
 			@include transition(color);
+			@include adaptive(1023) {
+				max-width: calc(100% / 7);
+			}
 
 			&:hover {
 				color: #004eb4;
@@ -111,10 +130,22 @@
 			max-height: calc(46px * 4);
 			background-color: #939cb2;
 			@include transition(opacity, visibility, transform);
+			@include adaptive(1023) {
+				position: relative;
+				top: 10px;
+				left: 0;
+				width: calc(100vw + 10px);
+				height: 0;
+				min-height: unset;
+				max-height: unset;
+				transform: unset;
+				border-radius: 0;
+			}
 
 			&.is-open {
 				opacity: 1;
 				visibility: visible;
+				height: auto;
 				transform: translateX(0);
 				@include transition(opacity, visibility, transform);
 			}

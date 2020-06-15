@@ -9,18 +9,18 @@
 	&-2 {
 		background-color: #081b49;
 		@include adaptive(1023) {
-			z-index: 1000;
+			z-index: 1600;
 			opacity: 0;
 			visibility: hidden;
 			transform: translateY(50px);
 			overflow: hidden;
 			overflow-y: auto;
 			position: fixed;
-			top: 80px;
+			top: 0;
 			left: 0;
 			width: 100%;
-			height: calc(100% - 80px);
-			padding: 30px 20px;
+			min-height: 100vh;
+			padding: 10px 20px;
 			background-color: rgba(#080915, 0.975);
 			//@include transition(opacity, visibility, transform);
 

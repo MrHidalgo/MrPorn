@@ -46,8 +46,6 @@ var initHamburger = function initHamburger() {
 
 	if (searchHamburger) {
 		searchHamburger.addEventListener("click", function (ev) {
-			var elem = ev.currentTarget;
-
 			searchContainer.classList.toggle("is-open");
 
 			hideScrollContainer.forEach(function (val, idx) {
@@ -55,6 +53,16 @@ var initHamburger = function initHamburger() {
 			});
 		});
 	}
+
+	var searchClose = document.querySelector('.category__close');
+
+	searchClose.addEventListener("click", function (ev) {
+		searchContainer.classList.toggle("is-open");
+
+		hideScrollContainer.forEach(function (val, idx) {
+			val.classList.toggle("is-hideScroll");
+		});
+	});
 };
 
 /**
