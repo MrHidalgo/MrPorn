@@ -50,7 +50,7 @@
 		@include transition(opacity, visibility, transform);
 		@include adaptive(1023) {
 			position: relative;
-			top: 15px;
+			top: 5px;
 			left: -20px;
 			width: calc(100vw);
 			transform: unset;
@@ -80,8 +80,10 @@
 			border-width: 12px;
 			border-color: transparent transparent #fff transparent;
 			@include adaptive(1023) {
-				left: 31px;
+				top: -10px;
+				left: 35px;
 				transform: unset;
+				border-width: 7px;
 			}
 		}
 

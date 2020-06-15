@@ -236,11 +236,14 @@
 	}
 
 	&__close {
-		display: flex;
+		display: none;
 		align-items: center;
 		justify-content: flex-end;
 		width: 100%;
 		height: 100%;
+		@include adaptive(1023) {
+			display: flex;
+		}
 
 		.icon-font {
 			color: #33529e;
