@@ -169,11 +169,11 @@
 
 	&-body {
 		z-index: 100;
-		overflow: hidden;
 		position: relative;
 		padding-bottom: 30px;
 		@include transition(padding-bottom);
 		@include adaptive(767) {
+			overflow: hidden;
 			padding-bottom: 10px;
 		}
 	}

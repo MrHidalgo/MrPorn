@@ -15,13 +15,11 @@ const initSwiper = () => {
 			grabCursor: false,
 			effect: 'slide',
 			speed: 750,
-			// off touch for destop
 			touchMoveStopPropagation:false,
 			simulateTouch : false,
 			allowSwipeToNext: true,
 			allowSwipeToPrev: true,
 			allowPageScroll: "auto",
-			//
 			slidesPerView: 'auto',
 			spaceBetween: 0,
 			slidesPerGroup: 3,

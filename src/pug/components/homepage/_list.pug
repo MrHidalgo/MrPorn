@@ -38,6 +38,13 @@ mixin listSliderBox(idVal, bgVal, logoVal)
 		button.list__box-more(type='button')
 			i.icon-font.icon-arrow-angle
 
+mixin listSliderBoxMore(idVal, bgVal, logoVal)
+	a.list__box(list-box-js href="#" data-id!= idVal style='background-image: url("img/' + bgVal + '")')
+		.list__box-overlay
+		.list__box-border
+
+		img.list__box-logo(src="img/" + logoVal alt="")
+
 mixin listBoxLeftBar(val)
 	.list__specification-left
 		div
@@ -79,19 +86,22 @@ mixin listSpecificationHeader()
 	.list__specification-header
 		img.list__specification-logo(src="img/img-reality-kings.png" srcset="img/img-reality-kings@2x.png 2x" alt="")
 
+		a.list__specification-close(href="#")
+			i.icon-font.icon-close
+
 mixin listSpecificationMoreLike()
 	.list__specification-more
 		div
 			p More Like This
 		div
-			+listSliderBox(val, 'img-view-bruzzers.png', 'img-brazzers-logo.svg')
-			+listSliderBox(val, 'img-realitykings-view.png', 'img-reliaty-kings-logo.png')
-			+listSliderBox(val, 'img-xvideo-red-view.png', 'img-xvideo-red-logo.png')
-			+listSliderBox(val, 'img-view-pornhub-premium.png', 'img-pornhub-premium-logo.png')
-			+listSliderBox(val, 'img-bang-bros-view.png', 'img-bangbros-logo.png')
-			+listSliderBox(val, 'img-mofos-view.png', 'img-mofos-logo.png')
-			+listSliderBox(val, 'img-view-bruzzers.png', 'img-brazzers-logo.svg')
-			+listSliderBox(val, 'img-realitykings-view.png', 'img-reliaty-kings-logo.png')
+			+listSliderBoxMore(val, 'img-view-bruzzers.png', 'img-brazzers-logo.svg')
+			+listSliderBoxMore(val, 'img-realitykings-view.png', 'img-reliaty-kings-logo.png')
+			+listSliderBoxMore(val, 'img-xvideo-red-view.png', 'img-xvideo-red-logo.png')
+			+listSliderBoxMore(val, 'img-view-pornhub-premium.png', 'img-pornhub-premium-logo.png')
+			+listSliderBoxMore(val, 'img-bang-bros-view.png', 'img-bangbros-logo.png')
+			+listSliderBoxMore(val, 'img-mofos-view.png', 'img-mofos-logo.png')
+			+listSliderBoxMore(val, 'img-view-bruzzers.png', 'img-brazzers-logo.svg')
+			+listSliderBoxMore(val, 'img-realitykings-view.png', 'img-reliaty-kings-logo.png')
 
 mixin listBox(sliderID, name)
 	.list__box-wrapper(list-parent-js data-name!= name)
@@ -151,39 +161,41 @@ mixin listBox(sliderID, name)
 							a.list__specification-close(href="#")
 								i.icon-font.icon-close
 
-							+listSpecificationHeader()
-							+listBoxLeftBar(val)
+							div
+								+listSpecificationHeader()
+								+listBoxLeftBar(val)
 
-							.list__specification-right
-								div(video-parent-js)
-									if(idx === 0 || idx === 4 || idx === 8 || idx === 12)
-										video(poster='img/img-poster-video.jpg' video-js)
-											source(src="img/video1.mp4" type="video/mp4")
-									else if (idx === 2 || idx === 6 || idx === 10)
-										video(poster='img/img-poster-video.jpg' video-js)
-											source(src="img/video2.mp4" type="video/mp4")
+								.list__specification-right
+									div(video-parent-js)
+										if(idx === 0 || idx === 4 || idx === 8 || idx === 12)
+											video(poster='img/img-poster-video.jpg' video-js)
+												source(src="img/video1.mp4" type="video/mp4")
+										else if (idx === 2 || idx === 6 || idx === 10)
+											video(poster='img/img-poster-video.jpg' video-js)
+												source(src="img/video2.mp4" type="video/mp4")
 
-									a.list__specification-play(href="#" video-toggle-js)
-										i.icon-font.icon-play-button(video-play-js)
+										a.list__specification-play(href="#" video-toggle-js)
+											i.icon-font.icon-play-button(video-play-js)
 
-									a.list__specification-pause(href="#" video-pause-js)
-										i.icon-font.icon-pause
+										a.list__specification-pause(href="#" video-pause-js)
+											i.icon-font.icon-pause
 
-							+listSpecificationMoreLike()
+								+listSpecificationMoreLike()
 
 					else
 						.list__specification.list__specification--banner(data-id!= val)
 							a.list__specification-close(href="#")
 								i.icon-font.icon-close
 
-							+listSpecificationHeader()
-							+listBoxLeftBar(val)
+							div
+								+listSpecificationHeader()
+								+listBoxLeftBar(val)
 
-							.list__specification-right
-								div
-									img(src="img/img-laptop.png" srcset="img/img-laptop@2x.png 2x" alt="")
+								.list__specification-right
+									div
+										img(src="img/img-laptop.png" srcset="img/img-laptop@2x.png 2x" alt="")
 
-							+listSpecificationMoreLike()
+								+listSpecificationMoreLike()
 
 
 section#list.list
