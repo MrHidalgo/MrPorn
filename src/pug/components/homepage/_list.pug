@@ -58,7 +58,7 @@ mixin listBoxLeftBar(val)
 				div.list__specification-action-desc
 					p!= "Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eius mod tempor incididunt ut labore et dolore magna eutin... <a href='#'>READ MORE</a>"
 				div.list__specification-action-skip
-					a.list__specification-circle.list__specification-skip(href="#")
+					a.list__specification-circle.list__specification-skip(href="#" data-id!= val spec-skip-js)
 						i.icon-font.icon-point
 						span Skip
 				div.list__specification-action-circle

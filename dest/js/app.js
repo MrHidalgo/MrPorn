@@ -1217,6 +1217,45 @@ if (!Element.prototype.closest) {
 		});
 	};
 
+	var skipModal = function skipModal() {
+		var _skipBtns = document.querySelectorAll('[spec-skip-js]');
+
+		var _iteratorNormalCompletion20 = true;
+		var _didIteratorError20 = false;
+		var _iteratorError20 = undefined;
+
+		try {
+			for (var _iterator20 = _skipBtns[Symbol.iterator](), _step20; !(_iteratorNormalCompletion20 = (_step20 = _iterator20.next()).done); _iteratorNormalCompletion20 = true) {
+				var btn = _step20.value;
+
+				btn.addEventListener('click', function (ev) {
+					var el = ev.currentTarget,
+					    elID = el.getAttribute('data-id'),
+					    elParent = el.closest('.list__box-wrapper');
+
+					el.closest('.list__specification').querySelector('.list__specification-close').click();
+
+					if (elParent.querySelector('.list__specification[data-id="' + (Number(elID) + 1) + '"]')) {
+						elParent.querySelector('.list__specification[data-id="' + (Number(elID) + 1) + '"]').classList.add('is-open');
+					}
+				}, false);
+			}
+		} catch (err) {
+			_didIteratorError20 = true;
+			_iteratorError20 = err;
+		} finally {
+			try {
+				if (!_iteratorNormalCompletion20 && _iterator20.return) {
+					_iterator20.return();
+				}
+			} finally {
+				if (_didIteratorError20) {
+					throw _iteratorError20;
+				}
+			}
+		}
+	};
+
 	/**
   * end MAIN CALLBACK
   * ===================================
@@ -1248,6 +1287,7 @@ if (!Element.prototype.closest) {
 		videoToggle();
 		listIndicator();
 		detailsToggleAction();
+		skipModal();
 		// ==========================================
 	};
 
@@ -1278,13 +1318,13 @@ if (!Element.prototype.closest) {
 				_html.classList.add('is-hideScroll');
 				_body.classList.add('is-hideScroll');
 
-				var _iteratorNormalCompletion20 = true;
-				var _didIteratorError20 = false;
-				var _iteratorError20 = undefined;
+				var _iteratorNormalCompletion21 = true;
+				var _didIteratorError21 = false;
+				var _iteratorError21 = undefined;
 
 				try {
-					for (var _iterator20 = document.querySelectorAll('.list__specification')[Symbol.iterator](), _step20; !(_iteratorNormalCompletion20 = (_step20 = _iterator20.next()).done); _iteratorNormalCompletion20 = true) {
-						var el = _step20.value;
+					for (var _iterator21 = document.querySelectorAll('.list__specification')[Symbol.iterator](), _step21; !(_iteratorNormalCompletion21 = (_step21 = _iterator21.next()).done); _iteratorNormalCompletion21 = true) {
+						var el = _step21.value;
 
 						if (el.style.cssText.length !== 0 && el.style.cssText === "display: flex;") {
 							el.classList.add('is-open');
@@ -1293,16 +1333,16 @@ if (!Element.prototype.closest) {
 						}
 					}
 				} catch (err) {
-					_didIteratorError20 = true;
-					_iteratorError20 = err;
+					_didIteratorError21 = true;
+					_iteratorError21 = err;
 				} finally {
 					try {
-						if (!_iteratorNormalCompletion20 && _iterator20.return) {
-							_iterator20.return();
+						if (!_iteratorNormalCompletion21 && _iterator21.return) {
+							_iterator21.return();
 						}
 					} finally {
-						if (_didIteratorError20) {
-							throw _iteratorError20;
+						if (_didIteratorError21) {
+							throw _iteratorError21;
 						}
 					}
 				}
