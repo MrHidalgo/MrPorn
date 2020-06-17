@@ -34,6 +34,13 @@
 				height: 75px;
 			}
 
+			.is-mobile & {
+				@media screen and (orientation: landscape) {
+					width: 150px !important;
+					height: 150px;
+				}
+			}
+
 			&:first-of-type {
 				margin-left: 0;
 			}

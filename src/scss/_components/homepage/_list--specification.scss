@@ -24,6 +24,7 @@
 		border: none;
 		border-radius: 0;
 		background-color: #030308;
+		transform-origin: center;
 		@include transition(opacity, visibility, transform);
 
 		&.is-open {
@@ -34,6 +35,7 @@
 		}
 
 		.is-mobile & {
+			flex-direction: row-reverse;
 			@media screen and (orientation: landscape) {
 				> div {
 					overflow-y: auto;
