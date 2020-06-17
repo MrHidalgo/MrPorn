@@ -17,11 +17,9 @@
 		@include adaptive(767) {
 			font-size: 12px;
 			line-height: 2;
-
-			span {
-				font-size: 0;
-				display: block;
-			}
+		}
+		@include adaptive(424) {
+			font-size: 10px;
 		}
 	}
 }

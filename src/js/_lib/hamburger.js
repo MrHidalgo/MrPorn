@@ -49,5 +49,7 @@ const initHamburger = () => {
 			val.classList.toggle("is-hideScroll");
 		});
 
+		document.querySelector('[search-js]').value = '';
+		document.querySelector('.category__drop').classList.remove('is-open');
 	});
 };
