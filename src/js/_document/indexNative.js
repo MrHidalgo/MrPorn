@@ -160,7 +160,7 @@ if (!Element.prototype.closest) {
 			document.querySelector('[sort-node-js]').classList.remove('is-open');
 			document.querySelector('.sort__drop-inner').classList.remove('is-open');
 
-			for(let i = 0; i < document.querySelectorAll('.sort__drop-link').length; i++) {
+			for(let i = 0, len = document.querySelectorAll('.sort__drop-link').length; i < len; i++) {
 				document.querySelectorAll('.sort__drop-link')[i].classList.remove('is-active');
 			}
 		}, false);
@@ -189,8 +189,8 @@ if (!Element.prototype.closest) {
 			const links = document.querySelectorAll('.sort__drop-link'),
 				nodeDropInner = document.querySelector('.sort__drop-inner');
 
-			for(let link of links) {
-				link.addEventListener('click', (ev) => {
+			for(let i = 0, len = links.length; i < len; i++) {
+				links[i].addEventListener('click', (ev) => {
 					const el = ev.currentTarget;
 
 					if(el.classList.contains('is-active')) {
@@ -213,8 +213,8 @@ if (!Element.prototype.closest) {
 		const sortCollapse = () => {
 			const toggles = document.querySelectorAll('[collapse-toggle-js]');
 
-			for(let btn of toggles) {
-				btn.addEventListener('click', (ev) => {
+			for(let i = 0, len = toggles.length; i < len; i++) {
+				toggles[i].addEventListener('click', (ev) => {
 					const el = ev.currentTarget,
 						container = document.getElementById(el.dataset.container);
 
@@ -262,10 +262,10 @@ if (!Element.prototype.closest) {
 			vid.load();
 		}
 
-		const _btns = document.querySelectorAll('.list__box-more');
+		const btns = document.querySelectorAll('.list__box-more');
 
-		for(let btn of _btns) {
-			btn.addEventListener('click', (ev) => {
+		for(let i = 0, len = btns.length; i< len; i++) {
+			btns[i].addEventListener('click', (ev) => {
 				const _el = ev.currentTarget,
 					_boxParent = _el.closest('.list__box'),
 					_boxID = _boxParent.getAttribute('data-id'),
@@ -278,24 +278,23 @@ if (!Element.prototype.closest) {
 					videoPlayers = document.querySelectorAll('.list__specification video'),
 					pauseToggle = document.querySelectorAll('[video-pause-js]');
 
-
-				for(let [idx, playBtn] of document.querySelectorAll('[video-toggle-js]').entries()) {
-					playBtn.classList.remove('is-active');
-					pauseToggle[idx].classList.remove('is-active');
-					listBoxes[idx].classList.remove('is-active');
+				for(let j = 0, l = document.querySelectorAll('[video-toggle-js]').length; j < l; j++) {
+					document.querySelectorAll('[video-toggle-js]')[j].classList.remove('is-active');
+					pauseToggle[j].classList.remove('is-active');
+					listBoxes[j].classList.remove('is-active');
 
 					if(window.innerWidth >= 1024) {
-						listSpecifications[idx].style.display = 'none';
+						listSpecifications[j].style.display = 'none';
 					} else {
-						listSpecifications[idx].classList.remove('is-open');
+						listSpecifications[j].classList.remove('is-open');
 					}
 
-					playPause(videoPlayers[idx]);
+					playPause(videoPlayers[j]);
 				}
 
 				_boxParent.classList.add('is-active');
-
 				_parentNode.classList.add('is-open');
+
 
 				const hideScrollContainer = document.querySelectorAll("html, body");
 
@@ -316,8 +315,8 @@ if (!Element.prototype.closest) {
 
 		const closeBtns = document.querySelectorAll('.list__specification-close');
 
-		for(let btn of closeBtns) {
-			btn.addEventListener('click', (ev) => {
+		for(let i = 0, len = closeBtns.length; i < len; i++) {
+			closeBtns[i].addEventListener('click', (ev) => {
 				const _el = ev.currentTarget,
 					parent = _el.closest('.list__specification'),
 					listBoxWrapper = _el.closest('.list__box-wrapper'),
@@ -344,8 +343,8 @@ if (!Element.prototype.closest) {
 					playPause(vid);
 				}
 
-				for(let btn of document.querySelectorAll('.list__box-more')) {
-					btn.closest('.list__box').classList.remove('is-active');
+				for(let j = 0, l = document.querySelectorAll('.list__box-more').length; j < l; j++) {
+					document.querySelectorAll('.list__box-more')[j].closest('.list__box').classList.remove('is-active');
 				}
 			}, false);
 		}
@@ -367,8 +366,8 @@ if (!Element.prototype.closest) {
 		const videoPlayBtns = document.querySelectorAll('[video-toggle-js]'),
 			videoPauseBtns = document.querySelectorAll('[video-pause-js]');
 
-		for(let btn of videoPlayBtns) {
-			btn.addEventListener('click', (ev) => {
+		for(let i = 0, len = videoPlayBtns.length; i < len; i++) {
+			videoPlayBtns[i].addEventListener('click', (ev) => {
 				const el = ev.currentTarget,
 					parentVideoNode = el.closest('[video-parent-js]'),
 					vid = parentVideoNode.querySelector('[video-js]'),
@@ -381,8 +380,8 @@ if (!Element.prototype.closest) {
 			}, false);
 		}
 
-		for(let btn of videoPauseBtns) {
-			btn.addEventListener('click', (ev) => {
+		for(let i = 0, len = videoPauseBtns.length; i < len; i++) {
+			videoPauseBtns[i].addEventListener('click', (ev) => {
 				const el = ev.currentTarget,
 					parentVideoNode = el.closest('[video-parent-js]'),
 					vid = parentVideoNode.querySelector('[video-js]'),
@@ -409,8 +408,8 @@ if (!Element.prototype.closest) {
 			specDislikeBtns = document.querySelectorAll('[spec-dislike-js]'),
 			skipBtns = document.querySelectorAll('.list__specification-skip');
 
-		for(let btn of favoritesBtns) {
-			btn.addEventListener('click', (ev) => {
+		for(let i = 0, len = favoritesBtns.length; i < len; i++) {
+			favoritesBtns[i].addEventListener('click', (ev) => {
 				const el = ev.currentTarget,
 					elID = el.getAttribute('data-id'),
 					elParent = el.closest('.list__box-wrapper');
@@ -423,14 +422,14 @@ if (!Element.prototype.closest) {
 			}, false);
 		}
 
-		for(let btn of skipBtns) {
-			btn.addEventListener('click', (ev) => {
+		for(let i = 0, len = skipBtns.length; i < len; i++) {
+			skipBtns[i].addEventListener('click', (ev) => {
 				ev.currentTarget.classList.toggle('is-active');
 			}, false);
 		}
 
-		for(let btn of specFavoritesBtns) {
-			btn.addEventListener('click', (ev) => {
+		for(let i = 0, len = specFavoritesBtns.length; i < len; i++) {
+			specFavoritesBtns[i].addEventListener('click', (ev) => {
 				const el = ev.currentTarget,
 					elID = el.getAttribute('data-favorites'),
 					elParent = el.closest('.list__box-wrapper');
@@ -443,8 +442,8 @@ if (!Element.prototype.closest) {
 			}, false);
 		}
 
-		for(let btn of likeBtns) {
-			btn.addEventListener('click', (ev) => {
+		for(let i = 0, len = likeBtns.length; i < len; i++) {
+			likeBtns[i].addEventListener('click', (ev) => {
 				const el = ev.currentTarget,
 					elID = el.getAttribute('data-id'),
 					elParent = el.closest('.list__box-wrapper');
@@ -461,8 +460,8 @@ if (!Element.prototype.closest) {
 			}, false);
 		}
 
-		for(let btn of specLikeBtns) {
-			btn.addEventListener('click', (ev) => {
+		for(let i = 0, len = specLikeBtns.length; i < len; i++) {
+			specLikeBtns[i].addEventListener('click', (ev) => {
 				const el = ev.currentTarget,
 					elID = el.getAttribute('data-like'),
 					elParent = el.closest('.list__box-wrapper'),
@@ -482,8 +481,8 @@ if (!Element.prototype.closest) {
 			}, false);
 		}
 
-		for(let btn of dislikeBtns) {
-			btn.addEventListener('click', (ev) => {
+		for(let i = 0, len = dislikeBtns.length; i < len; i++) {
+			dislikeBtns[i].addEventListener('click', (ev) => {
 				const el = ev.currentTarget,
 					elID = el.getAttribute('data-id'),
 					elParent = el.closest('.list__box-wrapper');
@@ -500,8 +499,8 @@ if (!Element.prototype.closest) {
 			}, false);
 		}
 
-		for(let btn of specDislikeBtns) {
-			btn.addEventListener('click', (ev) => {
+		for(let i = 0, len = specDislikeBtns.length; i < len; i++) {
+			specDislikeBtns[i].addEventListener('click', (ev) => {
 				const el = ev.currentTarget,
 					elID = el.getAttribute('data-dislike'),
 					elParent = el.closest('.list__box-wrapper'),
@@ -529,9 +528,8 @@ if (!Element.prototype.closest) {
 	const listIndicator = () => {
 		const listBoxes = document.querySelectorAll('[list-box-js]');
 
-		for(let box of listBoxes) {
-
-			box.addEventListener('mouseenter', function(ev) {
+		for(let i = 0, len = listBoxes.length; i < len; i++) {
+			listBoxes[i].addEventListener('mouseenter', function(ev) {
 				const el = ev.currentTarget,
 					elID = el.getAttribute('data-id'),
 					elWidth = el.clientWidth;
@@ -586,9 +584,8 @@ if (!Element.prototype.closest) {
 		let tOut = null,
 			hoverBool = false;
 
-		for(let swiperSlide of swiperSlides) {
-
-			swiperSlide.addEventListener('mouseenter', function(ev) {
+		for(let i = 0, len = swiperSlides.length; i < len; i++) {
+			swiperSlides[i].addEventListener('mouseenter', function(ev) {
 				if(window.innerWidth >= 1280) {
 					const el = ev.currentTarget,
 						elParent = el.closest('[list-parent-js]'),
@@ -623,7 +620,7 @@ if (!Element.prototype.closest) {
 				}
 			}, false);
 
-			swiperSlide.addEventListener('mouseleave', function(ev) {
+			swiperSlides[i].addEventListener('mouseleave', function(ev) {
 				if(window.innerWidth >= 1280) {
 					const el = ev.currentTarget,
 						elParent = el.closest('[list-parent-js]'),
@@ -648,24 +645,21 @@ if (!Element.prototype.closest) {
 					lineInd.setAttribute('style', transformVal + ';width: 64px');
 				}
 			}, false);
-
 		}
 
-		for(let bodyBlock of listBoxBody) {
-			bodyBlock.addEventListener('mouseleave', function(ev) {
+		for(let i = 0, len = listBoxBody.length; i < len; i++) {
+			listBoxBody[i].addEventListener('mouseleave', function(ev) {
 				if(window.innerWidth >= 1280) {
 					hoverBool = false;
 
 					clearTimeout(tOut);
 
-					for(let slide of swiperSlides) {
-						slide.classList.remove('is-hover');
+					for(let j = 0, l = swiperSlides.length; j < l; j++) {
+						swiperSlides[j].classList.remove('is-hover');
 					}
 				}
 			}, false);
-
 		}
-
 	};
 
 
@@ -691,10 +685,10 @@ if (!Element.prototype.closest) {
 
 
 	const skipModal = () => {
-		const _skipBtns = document.querySelectorAll('[spec-skip-js]');
+		const skipBtns = document.querySelectorAll('[spec-skip-js]');
 
-		for(let btn of _skipBtns) {
-			btn.addEventListener('click', (ev) => {
+		for(let i = 0, len = skipBtns.length; i < len; i++) {
+			skipBtns[i].addEventListener('click', (ev) => {
 				const el = ev.currentTarget,
 					elID = el.getAttribute('data-id'),
 					elParent = el.closest('.list__box-wrapper');
@@ -750,9 +744,6 @@ if (!Element.prototype.closest) {
 	 * @description Init all CB after page load
 	 */
 	window.addEventListener('load', (ev) => {
-		// for(let s of document.querySelectorAll('.swiper-slide')) {
-		// 	s.classList.add('is-hover');
-		// }
 		initNative();
 	});
 
@@ -773,15 +764,17 @@ if (!Element.prototype.closest) {
 				_html.classList.add('is-hideScroll');
 				_body.classList.add('is-hideScroll');
 
-				for(let el of document.querySelectorAll('.list__specification')) {
+				for(let i = 0, len = document.querySelectorAll('.list__specification').length; i < len; i++) {
+					const el = document.querySelectorAll('.list__specification')[i];
+
 					if(el.style.cssText.length !== 0 && el.style.cssText === "display: flex;") {
 						el.classList.add('is-open');
 						el.removeAttribute('style');
 						return false;
 					}
 				}
-
 			}
 		}
 	});
+
 })();

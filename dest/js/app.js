@@ -1,7 +1,5 @@
 "use strict";
 
-var _slicedToArray = function () { function sliceIterator(arr, i) { var _arr = []; var _n = true; var _d = false; var _e = undefined; try { for (var _i = arr[Symbol.iterator](), _s; !(_n = (_s = _i.next()).done); _n = true) { _arr.push(_s.value); if (i && _arr.length === i) break; } } catch (err) { _d = true; _e = err; } finally { try { if (!_n && _i["return"]) _i["return"](); } finally { if (_d) throw _e; } } return _arr; } return function (arr, i) { if (Array.isArray(arr)) { return arr; } else if (Symbol.iterator in Object(arr)) { return sliceIterator(arr, i); } else { throw new TypeError("Invalid attempt to destructure non-iterable instance"); } }; }();
-
 /*
 *
 * ============================
@@ -118,7 +116,7 @@ var initSwiper = function initSwiper() {
 				init: function init() {
 					var listBoxes = document.querySelectorAll('.list__box-wrapper');
 
-					for (var i = 0; i < listBoxes.length; i++) {
+					for (var i = 0, len = listBoxes.length; i < len; i++) {
 						listBoxes[i].style.opacity = 1;
 					}
 				}
@@ -126,7 +124,7 @@ var initSwiper = function initSwiper() {
 		});
 	}
 
-	for (var idx = 0; idx < sliders.length; idx++) {
+	for (var idx = 0, len = sliders.length; idx < len; idx++) {
 		var sliderName = sliders[idx].getAttribute('data-id'),
 		    sliderWrapper = slidersNode[idx].getAttribute('data-name');
 
@@ -298,7 +296,7 @@ if (!Element.prototype.closest) {
 			document.querySelector('[sort-node-js]').classList.remove('is-open');
 			document.querySelector('.sort__drop-inner').classList.remove('is-open');
 
-			for (var i = 0; i < document.querySelectorAll('.sort__drop-link').length; i++) {
+			for (var i = 0, len = document.querySelectorAll('.sort__drop-link').length; i < len; i++) {
 				document.querySelectorAll('.sort__drop-link')[i].classList.remove('is-active');
 			}
 		}, false);
@@ -326,43 +324,22 @@ if (!Element.prototype.closest) {
 			var links = document.querySelectorAll('.sort__drop-link'),
 			    nodeDropInner = document.querySelector('.sort__drop-inner');
 
-			var _iteratorNormalCompletion = true;
-			var _didIteratorError = false;
-			var _iteratorError = undefined;
+			for (var i = 0, len = links.length; i < len; i++) {
+				links[i].addEventListener('click', function (ev) {
+					var el = ev.currentTarget;
 
-			try {
-				for (var _iterator = links[Symbol.iterator](), _step; !(_iteratorNormalCompletion = (_step = _iterator.next()).done); _iteratorNormalCompletion = true) {
-					var link = _step.value;
-
-					link.addEventListener('click', function (ev) {
-						var el = ev.currentTarget;
-
-						if (el.classList.contains('is-active')) {
-							el.classList.remove('is-active');
-							nodeDropInner.classList.remove('is-open');
-						} else {
-							for (var i = 0; i < links.length; i++) {
-								links[i].classList.remove('is-active');
-							}
-
-							el.classList.add('is-active');
-							nodeDropInner.classList.add('is-open');
+					if (el.classList.contains('is-active')) {
+						el.classList.remove('is-active');
+						nodeDropInner.classList.remove('is-open');
+					} else {
+						for (var _i = 0; _i < links.length; _i++) {
+							links[_i].classList.remove('is-active');
 						}
-					}, false);
-				}
-			} catch (err) {
-				_didIteratorError = true;
-				_iteratorError = err;
-			} finally {
-				try {
-					if (!_iteratorNormalCompletion && _iterator.return) {
-						_iterator.return();
+
+						el.classList.add('is-active');
+						nodeDropInner.classList.add('is-open');
 					}
-				} finally {
-					if (_didIteratorError) {
-						throw _iteratorError;
-					}
-				}
+				}, false);
 			}
 		};
 		/**
@@ -371,39 +348,14 @@ if (!Element.prototype.closest) {
 		var sortCollapse = function sortCollapse() {
 			var toggles = document.querySelectorAll('[collapse-toggle-js]');
 
-			var _loop = function _loop(btn) {
-				btn.addEventListener('click', function (ev) {
+			for (var i = 0, len = toggles.length; i < len; i++) {
+				toggles[i].addEventListener('click', function (ev) {
 					var el = ev.currentTarget,
 					    container = document.getElementById(el.dataset.container);
 
 					btn.classList.toggle('is-active');
 					container.classList.toggle('is-open');
 				}, false);
-			};
-
-			var _iteratorNormalCompletion2 = true;
-			var _didIteratorError2 = false;
-			var _iteratorError2 = undefined;
-
-			try {
-				for (var _iterator2 = toggles[Symbol.iterator](), _step2; !(_iteratorNormalCompletion2 = (_step2 = _iterator2.next()).done); _iteratorNormalCompletion2 = true) {
-					var btn = _step2.value;
-
-					_loop(btn);
-				}
-			} catch (err) {
-				_didIteratorError2 = true;
-				_iteratorError2 = err;
-			} finally {
-				try {
-					if (!_iteratorNormalCompletion2 && _iterator2.return) {
-						_iterator2.return();
-					}
-				} finally {
-					if (_didIteratorError2) {
-						throw _iteratorError2;
-					}
-				}
 			}
 		};
 
@@ -442,179 +394,89 @@ if (!Element.prototype.closest) {
 			vid.load();
 		}
 
-		var _btns = document.querySelectorAll('.list__box-more');
+		var btns = document.querySelectorAll('.list__box-more');
 
-		var _iteratorNormalCompletion3 = true;
-		var _didIteratorError3 = false;
-		var _iteratorError3 = undefined;
+		for (var i = 0, len = btns.length; i < len; i++) {
+			btns[i].addEventListener('click', function (ev) {
+				var _el = ev.currentTarget,
+				    _boxParent = _el.closest('.list__box'),
+				    _boxID = _boxParent.getAttribute('data-id'),
+				    _parentNode = _el.closest('.list__box-wrapper');
 
-		try {
-			for (var _iterator3 = _btns[Symbol.iterator](), _step3; !(_iteratorNormalCompletion3 = (_step3 = _iterator3.next()).done); _iteratorNormalCompletion3 = true) {
-				var btn = _step3.value;
+				var _specificationBox = _parentNode.querySelector('.list__specification[data-id="' + _boxID + '"]');
 
-				btn.addEventListener('click', function (ev) {
-					var _el = ev.currentTarget,
-					    _boxParent = _el.closest('.list__box'),
-					    _boxID = _boxParent.getAttribute('data-id'),
-					    _parentNode = _el.closest('.list__box-wrapper');
+				var listBoxes = document.querySelectorAll('.list__box'),
+				    listSpecifications = document.querySelectorAll('.list__specification'),
+				    videoPlayers = document.querySelectorAll('.list__specification video'),
+				    pauseToggle = document.querySelectorAll('[video-pause-js]');
 
-					var _specificationBox = _parentNode.querySelector('.list__specification[data-id="' + _boxID + '"]');
-
-					var listBoxes = document.querySelectorAll('.list__box'),
-					    listSpecifications = document.querySelectorAll('.list__specification'),
-					    videoPlayers = document.querySelectorAll('.list__specification video'),
-					    pauseToggle = document.querySelectorAll('[video-pause-js]');
-
-					var _iteratorNormalCompletion5 = true;
-					var _didIteratorError5 = false;
-					var _iteratorError5 = undefined;
-
-					try {
-						for (var _iterator5 = document.querySelectorAll('[video-toggle-js]').entries()[Symbol.iterator](), _step5; !(_iteratorNormalCompletion5 = (_step5 = _iterator5.next()).done); _iteratorNormalCompletion5 = true) {
-							var _ref = _step5.value;
-
-							var _ref2 = _slicedToArray(_ref, 2);
-
-							var idx = _ref2[0];
-							var playBtn = _ref2[1];
-
-							playBtn.classList.remove('is-active');
-							pauseToggle[idx].classList.remove('is-active');
-							listBoxes[idx].classList.remove('is-active');
-
-							if (window.innerWidth >= 1024) {
-								listSpecifications[idx].style.display = 'none';
-							} else {
-								listSpecifications[idx].classList.remove('is-open');
-							}
-
-							playPause(videoPlayers[idx]);
-						}
-					} catch (err) {
-						_didIteratorError5 = true;
-						_iteratorError5 = err;
-					} finally {
-						try {
-							if (!_iteratorNormalCompletion5 && _iterator5.return) {
-								_iterator5.return();
-							}
-						} finally {
-							if (_didIteratorError5) {
-								throw _iteratorError5;
-							}
-						}
-					}
-
-					_boxParent.classList.add('is-active');
-
-					_parentNode.classList.add('is-open');
-
-					var hideScrollContainer = document.querySelectorAll("html, body");
+				for (var j = 0, l = document.querySelectorAll('[video-toggle-js]').length; j < l; j++) {
+					document.querySelectorAll('[video-toggle-js]')[j].classList.remove('is-active');
+					pauseToggle[j].classList.remove('is-active');
+					listBoxes[j].classList.remove('is-active');
 
 					if (window.innerWidth >= 1024) {
-						_specificationBox.style.display = 'flex';
+						listSpecifications[j].style.display = 'none';
 					} else {
-						_specificationBox.classList.add('is-open');
-
-						hideScrollContainer.forEach(function (val, idx) {
-							val.classList.add("is-hideScroll");
-						});
+						listSpecifications[j].classList.remove('is-open');
 					}
-				}, false);
-			}
 
-			// =====
-		} catch (err) {
-			_didIteratorError3 = true;
-			_iteratorError3 = err;
-		} finally {
-			try {
-				if (!_iteratorNormalCompletion3 && _iterator3.return) {
-					_iterator3.return();
+					playPause(videoPlayers[j]);
 				}
-			} finally {
-				if (_didIteratorError3) {
-					throw _iteratorError3;
+
+				_boxParent.classList.add('is-active');
+				_parentNode.classList.add('is-open');
+
+				var hideScrollContainer = document.querySelectorAll("html, body");
+
+				if (window.innerWidth >= 1024) {
+					_specificationBox.style.display = 'flex';
+				} else {
+					_specificationBox.classList.add('is-open');
+
+					hideScrollContainer.forEach(function (val, idx) {
+						val.classList.add("is-hideScroll");
+					});
 				}
-			}
+			}, false);
 		}
+
+		// =====
 
 		var closeBtns = document.querySelectorAll('.list__specification-close');
 
-		var _iteratorNormalCompletion4 = true;
-		var _didIteratorError4 = false;
-		var _iteratorError4 = undefined;
+		for (var _i2 = 0, _len = closeBtns.length; _i2 < _len; _i2++) {
+			closeBtns[_i2].addEventListener('click', function (ev) {
+				var _el = ev.currentTarget,
+				    parent = _el.closest('.list__specification'),
+				    listBoxWrapper = _el.closest('.list__box-wrapper'),
+				    vid = parent.querySelector('video'),
+				    pauseToggle = parent.querySelector('[video-pause-js]');
 
-		try {
-			for (var _iterator4 = closeBtns[Symbol.iterator](), _step4; !(_iteratorNormalCompletion4 = (_step4 = _iterator4.next()).done); _iteratorNormalCompletion4 = true) {
-				var _btn2 = _step4.value;
+				var hideScrollContainer = document.querySelectorAll("html, body");
 
-				_btn2.addEventListener('click', function (ev) {
-					var _el = ev.currentTarget,
-					    parent = _el.closest('.list__specification'),
-					    listBoxWrapper = _el.closest('.list__box-wrapper'),
-					    vid = parent.querySelector('video'),
-					    pauseToggle = parent.querySelector('[video-pause-js]');
+				listBoxWrapper.classList.remove('is-open');
 
-					var hideScrollContainer = document.querySelectorAll("html, body");
+				if (window.innerWidth >= 1024) {
+					_el.closest('.list__specification').style.display = 'none';
+				} else {
+					_el.closest('.list__specification').classList.remove('is-open');
 
-					listBoxWrapper.classList.remove('is-open');
-
-					if (window.innerWidth >= 1024) {
-						_el.closest('.list__specification').style.display = 'none';
-					} else {
-						_el.closest('.list__specification').classList.remove('is-open');
-
-						hideScrollContainer.forEach(function (val, idx) {
-							val.classList.remove("is-hideScroll");
-						});
-					}
-
-					if (parent.querySelector('[video-toggle-js]')) {
-						pauseToggle.classList.remove('is-active');
-						parent.querySelector('[video-toggle-js]').classList.remove('is-active');
-						playPause(vid);
-					}
-
-					var _iteratorNormalCompletion6 = true;
-					var _didIteratorError6 = false;
-					var _iteratorError6 = undefined;
-
-					try {
-						for (var _iterator6 = document.querySelectorAll('.list__box-more')[Symbol.iterator](), _step6; !(_iteratorNormalCompletion6 = (_step6 = _iterator6.next()).done); _iteratorNormalCompletion6 = true) {
-							var _btn3 = _step6.value;
-
-							_btn3.closest('.list__box').classList.remove('is-active');
-						}
-					} catch (err) {
-						_didIteratorError6 = true;
-						_iteratorError6 = err;
-					} finally {
-						try {
-							if (!_iteratorNormalCompletion6 && _iterator6.return) {
-								_iterator6.return();
-							}
-						} finally {
-							if (_didIteratorError6) {
-								throw _iteratorError6;
-							}
-						}
-					}
-				}, false);
-			}
-		} catch (err) {
-			_didIteratorError4 = true;
-			_iteratorError4 = err;
-		} finally {
-			try {
-				if (!_iteratorNormalCompletion4 && _iterator4.return) {
-					_iterator4.return();
+					hideScrollContainer.forEach(function (val, idx) {
+						val.classList.remove("is-hideScroll");
+					});
 				}
-			} finally {
-				if (_didIteratorError4) {
-					throw _iteratorError4;
+
+				if (parent.querySelector('[video-toggle-js]')) {
+					pauseToggle.classList.remove('is-active');
+					parent.querySelector('[video-toggle-js]').classList.remove('is-active');
+					playPause(vid);
 				}
-			}
+
+				for (var j = 0, l = document.querySelectorAll('.list__box-more').length; j < l; j++) {
+					document.querySelectorAll('.list__box-more')[j].closest('.list__box').classList.remove('is-active');
+				}
+			}, false);
 		}
 	};
 
@@ -633,74 +495,32 @@ if (!Element.prototype.closest) {
 		var videoPlayBtns = document.querySelectorAll('[video-toggle-js]'),
 		    videoPauseBtns = document.querySelectorAll('[video-pause-js]');
 
-		var _iteratorNormalCompletion7 = true;
-		var _didIteratorError7 = false;
-		var _iteratorError7 = undefined;
+		for (var i = 0, len = videoPlayBtns.length; i < len; i++) {
+			videoPlayBtns[i].addEventListener('click', function (ev) {
+				var el = ev.currentTarget,
+				    parentVideoNode = el.closest('[video-parent-js]'),
+				    vid = parentVideoNode.querySelector('[video-js]'),
+				    pauseToggle = parentVideoNode.querySelector('[video-pause-js]');
 
-		try {
-			for (var _iterator7 = videoPlayBtns[Symbol.iterator](), _step7; !(_iteratorNormalCompletion7 = (_step7 = _iterator7.next()).done); _iteratorNormalCompletion7 = true) {
-				var btn = _step7.value;
+				el.classList.add('is-active');
+				pauseToggle.classList.add('is-active');
 
-				btn.addEventListener('click', function (ev) {
-					var el = ev.currentTarget,
-					    parentVideoNode = el.closest('[video-parent-js]'),
-					    vid = parentVideoNode.querySelector('[video-js]'),
-					    pauseToggle = parentVideoNode.querySelector('[video-pause-js]');
-
-					el.classList.add('is-active');
-					pauseToggle.classList.add('is-active');
-
-					playPause(vid);
-				}, false);
-			}
-		} catch (err) {
-			_didIteratorError7 = true;
-			_iteratorError7 = err;
-		} finally {
-			try {
-				if (!_iteratorNormalCompletion7 && _iterator7.return) {
-					_iterator7.return();
-				}
-			} finally {
-				if (_didIteratorError7) {
-					throw _iteratorError7;
-				}
-			}
+				playPause(vid);
+			}, false);
 		}
 
-		var _iteratorNormalCompletion8 = true;
-		var _didIteratorError8 = false;
-		var _iteratorError8 = undefined;
+		for (var _i3 = 0, _len2 = videoPauseBtns.length; _i3 < _len2; _i3++) {
+			videoPauseBtns[_i3].addEventListener('click', function (ev) {
+				var el = ev.currentTarget,
+				    parentVideoNode = el.closest('[video-parent-js]'),
+				    vid = parentVideoNode.querySelector('[video-js]'),
+				    playToggle = parentVideoNode.querySelector('[video-toggle-js]');
 
-		try {
-			for (var _iterator8 = videoPauseBtns[Symbol.iterator](), _step8; !(_iteratorNormalCompletion8 = (_step8 = _iterator8.next()).done); _iteratorNormalCompletion8 = true) {
-				var _btn4 = _step8.value;
+				el.classList.remove('is-active');
+				playToggle.classList.remove('is-active');
 
-				_btn4.addEventListener('click', function (ev) {
-					var el = ev.currentTarget,
-					    parentVideoNode = el.closest('[video-parent-js]'),
-					    vid = parentVideoNode.querySelector('[video-js]'),
-					    playToggle = parentVideoNode.querySelector('[video-toggle-js]');
-
-					el.classList.remove('is-active');
-					playToggle.classList.remove('is-active');
-
-					playPause(vid);
-				}, false);
-			}
-		} catch (err) {
-			_didIteratorError8 = true;
-			_iteratorError8 = err;
-		} finally {
-			try {
-				if (!_iteratorNormalCompletion8 && _iterator8.return) {
-					_iterator8.return();
-				}
-			} finally {
-				if (_didIteratorError8) {
-					throw _iteratorError8;
-				}
-			}
+				playPause(vid);
+			}, false);
 		}
 	};
 
@@ -716,263 +536,116 @@ if (!Element.prototype.closest) {
 		    specDislikeBtns = document.querySelectorAll('[spec-dislike-js]'),
 		    skipBtns = document.querySelectorAll('.list__specification-skip');
 
-		var _iteratorNormalCompletion9 = true;
-		var _didIteratorError9 = false;
-		var _iteratorError9 = undefined;
+		for (var i = 0, len = favoritesBtns.length; i < len; i++) {
+			favoritesBtns[i].addEventListener('click', function (ev) {
+				var el = ev.currentTarget,
+				    elID = el.getAttribute('data-id'),
+				    elParent = el.closest('.list__box-wrapper');
 
-		try {
-			for (var _iterator9 = favoritesBtns[Symbol.iterator](), _step9; !(_iteratorNormalCompletion9 = (_step9 = _iterator9.next()).done); _iteratorNormalCompletion9 = true) {
-				var btn = _step9.value;
+				var specificationBlock = elParent.querySelector('.list__specification[data-id="' + elID + '"]'),
+				    specificationFavoritesBtn = specificationBlock.querySelector('[data-favorites="' + elID + '"]');
 
-				btn.addEventListener('click', function (ev) {
-					var el = ev.currentTarget,
-					    elID = el.getAttribute('data-id'),
-					    elParent = el.closest('.list__box-wrapper');
-
-					var specificationBlock = elParent.querySelector('.list__specification[data-id="' + elID + '"]'),
-					    specificationFavoritesBtn = specificationBlock.querySelector('[data-favorites="' + elID + '"]');
-
-					ev.currentTarget.classList.toggle('is-active');
-					specificationFavoritesBtn.classList.toggle('is-active');
-				}, false);
-			}
-		} catch (err) {
-			_didIteratorError9 = true;
-			_iteratorError9 = err;
-		} finally {
-			try {
-				if (!_iteratorNormalCompletion9 && _iterator9.return) {
-					_iterator9.return();
-				}
-			} finally {
-				if (_didIteratorError9) {
-					throw _iteratorError9;
-				}
-			}
+				ev.currentTarget.classList.toggle('is-active');
+				specificationFavoritesBtn.classList.toggle('is-active');
+			}, false);
 		}
 
-		var _iteratorNormalCompletion10 = true;
-		var _didIteratorError10 = false;
-		var _iteratorError10 = undefined;
-
-		try {
-			for (var _iterator10 = skipBtns[Symbol.iterator](), _step10; !(_iteratorNormalCompletion10 = (_step10 = _iterator10.next()).done); _iteratorNormalCompletion10 = true) {
-				var _btn5 = _step10.value;
-
-				_btn5.addEventListener('click', function (ev) {
-					ev.currentTarget.classList.toggle('is-active');
-				}, false);
-			}
-		} catch (err) {
-			_didIteratorError10 = true;
-			_iteratorError10 = err;
-		} finally {
-			try {
-				if (!_iteratorNormalCompletion10 && _iterator10.return) {
-					_iterator10.return();
-				}
-			} finally {
-				if (_didIteratorError10) {
-					throw _iteratorError10;
-				}
-			}
+		for (var _i4 = 0, _len3 = skipBtns.length; _i4 < _len3; _i4++) {
+			skipBtns[_i4].addEventListener('click', function (ev) {
+				ev.currentTarget.classList.toggle('is-active');
+			}, false);
 		}
 
-		var _iteratorNormalCompletion11 = true;
-		var _didIteratorError11 = false;
-		var _iteratorError11 = undefined;
+		for (var _i5 = 0, _len4 = specFavoritesBtns.length; _i5 < _len4; _i5++) {
+			specFavoritesBtns[_i5].addEventListener('click', function (ev) {
+				var el = ev.currentTarget,
+				    elID = el.getAttribute('data-favorites'),
+				    elParent = el.closest('.list__box-wrapper');
 
-		try {
-			for (var _iterator11 = specFavoritesBtns[Symbol.iterator](), _step11; !(_iteratorNormalCompletion11 = (_step11 = _iterator11.next()).done); _iteratorNormalCompletion11 = true) {
-				var _btn6 = _step11.value;
+				var listBlock = elParent.querySelector('.list__box[data-id="' + elID + '"]'),
+				    listFavoritesBtn = listBlock.querySelector('.list__box-favorites[data-id="' + elID + '"]');
 
-				_btn6.addEventListener('click', function (ev) {
-					var el = ev.currentTarget,
-					    elID = el.getAttribute('data-favorites'),
-					    elParent = el.closest('.list__box-wrapper');
-
-					var listBlock = elParent.querySelector('.list__box[data-id="' + elID + '"]'),
-					    listFavoritesBtn = listBlock.querySelector('.list__box-favorites[data-id="' + elID + '"]');
-
-					ev.currentTarget.classList.toggle('is-active');
-					listFavoritesBtn.classList.toggle('is-active');
-				}, false);
-			}
-		} catch (err) {
-			_didIteratorError11 = true;
-			_iteratorError11 = err;
-		} finally {
-			try {
-				if (!_iteratorNormalCompletion11 && _iterator11.return) {
-					_iterator11.return();
-				}
-			} finally {
-				if (_didIteratorError11) {
-					throw _iteratorError11;
-				}
-			}
+				ev.currentTarget.classList.toggle('is-active');
+				listFavoritesBtn.classList.toggle('is-active');
+			}, false);
 		}
 
-		var _iteratorNormalCompletion12 = true;
-		var _didIteratorError12 = false;
-		var _iteratorError12 = undefined;
+		for (var _i6 = 0, _len5 = likeBtns.length; _i6 < _len5; _i6++) {
+			likeBtns[_i6].addEventListener('click', function (ev) {
+				var el = ev.currentTarget,
+				    elID = el.getAttribute('data-id'),
+				    elParent = el.closest('.list__box-wrapper');
 
-		try {
-			for (var _iterator12 = likeBtns[Symbol.iterator](), _step12; !(_iteratorNormalCompletion12 = (_step12 = _iterator12.next()).done); _iteratorNormalCompletion12 = true) {
-				var _btn7 = _step12.value;
+				ev.currentTarget.classList.toggle('is-active');
+				elParent.querySelector('[dislike-toggle-js][data-id="' + elID + '"]').classList.toggle('is-hide');
 
-				_btn7.addEventListener('click', function (ev) {
-					var el = ev.currentTarget,
-					    elID = el.getAttribute('data-id'),
-					    elParent = el.closest('.list__box-wrapper');
+				var specificationBlock = elParent.querySelector('.list__specification[data-id="' + elID + '"]'),
+				    specificationLikeBtn = specificationBlock.querySelector('[data-like="' + elID + '"]'),
+				    specificationDislikeBtn = specificationBlock.querySelector('[data-dislike="' + elID + '"]');
 
-					ev.currentTarget.classList.toggle('is-active');
-					elParent.querySelector('[dislike-toggle-js][data-id="' + elID + '"]').classList.toggle('is-hide');
-
-					var specificationBlock = elParent.querySelector('.list__specification[data-id="' + elID + '"]'),
-					    specificationLikeBtn = specificationBlock.querySelector('[data-like="' + elID + '"]'),
-					    specificationDislikeBtn = specificationBlock.querySelector('[data-dislike="' + elID + '"]');
-
-					specificationLikeBtn.classList.toggle('is-active');
-					specificationDislikeBtn.parentElement.classList.toggle('is-hide');
-				}, false);
-			}
-		} catch (err) {
-			_didIteratorError12 = true;
-			_iteratorError12 = err;
-		} finally {
-			try {
-				if (!_iteratorNormalCompletion12 && _iterator12.return) {
-					_iterator12.return();
-				}
-			} finally {
-				if (_didIteratorError12) {
-					throw _iteratorError12;
-				}
-			}
+				specificationLikeBtn.classList.toggle('is-active');
+				specificationDislikeBtn.parentElement.classList.toggle('is-hide');
+			}, false);
 		}
 
-		var _iteratorNormalCompletion13 = true;
-		var _didIteratorError13 = false;
-		var _iteratorError13 = undefined;
+		for (var _i7 = 0, _len6 = specLikeBtns.length; _i7 < _len6; _i7++) {
+			specLikeBtns[_i7].addEventListener('click', function (ev) {
+				var el = ev.currentTarget,
+				    elID = el.getAttribute('data-like'),
+				    elParent = el.closest('.list__box-wrapper'),
+				    elActionNode = el.closest('[spec-actionNode-js]'),
+				    dislikeBtn = elActionNode.querySelector('[spec-dislike-js]');
 
-		try {
-			for (var _iterator13 = specLikeBtns[Symbol.iterator](), _step13; !(_iteratorNormalCompletion13 = (_step13 = _iterator13.next()).done); _iteratorNormalCompletion13 = true) {
-				var _btn8 = _step13.value;
+				dislikeBtn.parentElement.classList.toggle('is-hide');
 
-				_btn8.addEventListener('click', function (ev) {
-					var el = ev.currentTarget,
-					    elID = el.getAttribute('data-like'),
-					    elParent = el.closest('.list__box-wrapper'),
-					    elActionNode = el.closest('[spec-actionNode-js]'),
-					    dislikeBtn = elActionNode.querySelector('[spec-dislike-js]');
+				var listBlock = elParent.querySelector('.list__box[data-id="' + elID + '"]'),
+				    listLikeBtn = listBlock.querySelector('.list__box-like'),
+				    listDislikeBtn = listBlock.querySelector('.list__box-dislike');
 
-					dislikeBtn.parentElement.classList.toggle('is-hide');
+				ev.currentTarget.classList.toggle('is-active');
 
-					var listBlock = elParent.querySelector('.list__box[data-id="' + elID + '"]'),
-					    listLikeBtn = listBlock.querySelector('.list__box-like'),
-					    listDislikeBtn = listBlock.querySelector('.list__box-dislike');
-
-					ev.currentTarget.classList.toggle('is-active');
-
-					listLikeBtn.classList.toggle('is-active');
-					listDislikeBtn.classList.toggle('is-hide');
-				}, false);
-			}
-		} catch (err) {
-			_didIteratorError13 = true;
-			_iteratorError13 = err;
-		} finally {
-			try {
-				if (!_iteratorNormalCompletion13 && _iterator13.return) {
-					_iterator13.return();
-				}
-			} finally {
-				if (_didIteratorError13) {
-					throw _iteratorError13;
-				}
-			}
+				listLikeBtn.classList.toggle('is-active');
+				listDislikeBtn.classList.toggle('is-hide');
+			}, false);
 		}
 
-		var _iteratorNormalCompletion14 = true;
-		var _didIteratorError14 = false;
-		var _iteratorError14 = undefined;
+		for (var _i8 = 0, _len7 = dislikeBtns.length; _i8 < _len7; _i8++) {
+			dislikeBtns[_i8].addEventListener('click', function (ev) {
+				var el = ev.currentTarget,
+				    elID = el.getAttribute('data-id'),
+				    elParent = el.closest('.list__box-wrapper');
 
-		try {
-			for (var _iterator14 = dislikeBtns[Symbol.iterator](), _step14; !(_iteratorNormalCompletion14 = (_step14 = _iterator14.next()).done); _iteratorNormalCompletion14 = true) {
-				var _btn9 = _step14.value;
+				ev.currentTarget.classList.toggle('is-active');
+				elParent.querySelector('[like-toggle-js][data-id="' + elID + '"]').classList.toggle('is-hide');
 
-				_btn9.addEventListener('click', function (ev) {
-					var el = ev.currentTarget,
-					    elID = el.getAttribute('data-id'),
-					    elParent = el.closest('.list__box-wrapper');
+				var specificationBlock = elParent.querySelector('.list__specification[data-id="' + elID + '"]'),
+				    specificationDislikeBtn = specificationBlock.querySelector('[data-dislike="' + elID + '"]'),
+				    specificationLikeBtn = specificationBlock.querySelector('[data-like="' + elID + '"]');
 
-					ev.currentTarget.classList.toggle('is-active');
-					elParent.querySelector('[like-toggle-js][data-id="' + elID + '"]').classList.toggle('is-hide');
-
-					var specificationBlock = elParent.querySelector('.list__specification[data-id="' + elID + '"]'),
-					    specificationDislikeBtn = specificationBlock.querySelector('[data-dislike="' + elID + '"]'),
-					    specificationLikeBtn = specificationBlock.querySelector('[data-like="' + elID + '"]');
-
-					specificationDislikeBtn.classList.toggle('is-active');
-					specificationLikeBtn.parentElement.classList.toggle('is-hide');
-				}, false);
-			}
-		} catch (err) {
-			_didIteratorError14 = true;
-			_iteratorError14 = err;
-		} finally {
-			try {
-				if (!_iteratorNormalCompletion14 && _iterator14.return) {
-					_iterator14.return();
-				}
-			} finally {
-				if (_didIteratorError14) {
-					throw _iteratorError14;
-				}
-			}
+				specificationDislikeBtn.classList.toggle('is-active');
+				specificationLikeBtn.parentElement.classList.toggle('is-hide');
+			}, false);
 		}
 
-		var _iteratorNormalCompletion15 = true;
-		var _didIteratorError15 = false;
-		var _iteratorError15 = undefined;
+		for (var _i9 = 0, _len8 = specDislikeBtns.length; _i9 < _len8; _i9++) {
+			specDislikeBtns[_i9].addEventListener('click', function (ev) {
+				var el = ev.currentTarget,
+				    elID = el.getAttribute('data-dislike'),
+				    elParent = el.closest('.list__box-wrapper'),
+				    elActionNode = el.closest('[spec-actionNode-js]'),
+				    likeBtn = elActionNode.querySelector('[spec-like-js]');
 
-		try {
-			for (var _iterator15 = specDislikeBtns[Symbol.iterator](), _step15; !(_iteratorNormalCompletion15 = (_step15 = _iterator15.next()).done); _iteratorNormalCompletion15 = true) {
-				var _btn10 = _step15.value;
+				likeBtn.parentElement.classList.toggle('is-hide');
 
-				_btn10.addEventListener('click', function (ev) {
-					var el = ev.currentTarget,
-					    elID = el.getAttribute('data-dislike'),
-					    elParent = el.closest('.list__box-wrapper'),
-					    elActionNode = el.closest('[spec-actionNode-js]'),
-					    likeBtn = elActionNode.querySelector('[spec-like-js]');
+				var listBlock = elParent.querySelector('.list__box[data-id="' + elID + '"]'),
+				    listDislikeBtn = listBlock.querySelector('.list__box-dislike'),
+				    listLikeBtn = listBlock.querySelector('.list__box-like');
 
-					likeBtn.parentElement.classList.toggle('is-hide');
+				ev.currentTarget.classList.toggle('is-active');
 
-					var listBlock = elParent.querySelector('.list__box[data-id="' + elID + '"]'),
-					    listDislikeBtn = listBlock.querySelector('.list__box-dislike'),
-					    listLikeBtn = listBlock.querySelector('.list__box-like');
-
-					ev.currentTarget.classList.toggle('is-active');
-
-					listDislikeBtn.classList.toggle('is-active');
-					listLikeBtn.classList.toggle('is-hide');
-				}, false);
-			}
-		} catch (err) {
-			_didIteratorError15 = true;
-			_iteratorError15 = err;
-		} finally {
-			try {
-				if (!_iteratorNormalCompletion15 && _iterator15.return) {
-					_iterator15.return();
-				}
-			} finally {
-				if (_didIteratorError15) {
-					throw _iteratorError15;
-				}
-			}
+				listDislikeBtn.classList.toggle('is-active');
+				listLikeBtn.classList.toggle('is-hide');
+			}, false);
 		}
 	};
 
@@ -982,67 +655,45 @@ if (!Element.prototype.closest) {
 	var listIndicator = function listIndicator() {
 		var listBoxes = document.querySelectorAll('[list-box-js]');
 
-		var _iteratorNormalCompletion16 = true;
-		var _didIteratorError16 = false;
-		var _iteratorError16 = undefined;
+		for (var i = 0, len = listBoxes.length; i < len; i++) {
+			listBoxes[i].addEventListener('mouseenter', function (ev) {
+				var el = ev.currentTarget,
+				    elID = el.getAttribute('data-id'),
+				    elWidth = el.clientWidth;
 
-		try {
-			for (var _iterator16 = listBoxes[Symbol.iterator](), _step16; !(_iteratorNormalCompletion16 = (_step16 = _iterator16.next()).done); _iteratorNormalCompletion16 = true) {
-				var box = _step16.value;
+				var parent = el.closest('[list-parent-js]'),
+				    listIndicator = parent.querySelector('[list-line-js]');
 
+				var listIndicatorWidth = 0;
 
-				box.addEventListener('mouseenter', function (ev) {
-					var el = ev.currentTarget,
-					    elID = el.getAttribute('data-id'),
-					    elWidth = el.clientWidth;
+				if (window.innerWidth >= 1023) {
+					listIndicatorWidth = 64;
+				} else if (window.innerWidth >= 768) {
+					listIndicatorWidth = 34;
+				} else {
+					listIndicatorWidth = 14;
+				}
 
-					var parent = el.closest('[list-parent-js]'),
-					    listIndicator = parent.querySelector('[list-line-js]');
+				var _elRect = el.getBoundingClientRect();
 
-					var listIndicatorWidth = 0;
+				var _listContainer = document.querySelector('#list .list__box-wrapper'),
+				    _listContainerDimm = _listContainer.getBoundingClientRect();
 
-					if (window.innerWidth >= 1023) {
-						listIndicatorWidth = 64;
-					} else if (window.innerWidth >= 768) {
-						listIndicatorWidth = 34;
+				var _sum = 0;
+
+				for (var idx = 1; idx < elID; idx++) {
+					if (_elRect.width * idx < _elRect.x - _listContainerDimm.x) {
+						_sum++;
 					} else {
-						listIndicatorWidth = 14;
+						break;
 					}
-
-					var _elRect = el.getBoundingClientRect();
-
-					var _listContainer = document.querySelector('#list .list__box-wrapper'),
-					    _listContainerDimm = _listContainer.getBoundingClientRect();
-
-					var _sum = 0;
-
-					for (var idx = 1; idx < elID; idx++) {
-						if (_elRect.width * idx < _elRect.x - _listContainerDimm.x) {
-							_sum++;
-						} else {
-							break;
-						}
-					}
-
-					var _indicatorOffset = (elWidth - listIndicatorWidth) / 2,
-					    _lineOffset = _elRect.width * _sum + (_sum * 6 - 3) + _indicatorOffset;
-
-					listIndicator.setAttribute('style', 'transform: translateX(' + _lineOffset + 'px)');
-				});
-			}
-		} catch (err) {
-			_didIteratorError16 = true;
-			_iteratorError16 = err;
-		} finally {
-			try {
-				if (!_iteratorNormalCompletion16 && _iterator16.return) {
-					_iterator16.return();
 				}
-			} finally {
-				if (_didIteratorError16) {
-					throw _iteratorError16;
-				}
-			}
+
+				var _indicatorOffset = (elWidth - listIndicatorWidth) / 2,
+				    _lineOffset = _elRect.width * _sum + (_sum * 6 - 3) + _indicatorOffset;
+
+				listIndicator.setAttribute('style', 'transform: translateX(' + _lineOffset + 'px)');
+			});
 		}
 	};
 
@@ -1056,55 +707,14 @@ if (!Element.prototype.closest) {
 		var tOut = null,
 		    hoverBool = false;
 
-		var _iteratorNormalCompletion17 = true;
-		var _didIteratorError17 = false;
-		var _iteratorError17 = undefined;
+		for (var i = 0, len = swiperSlides.length; i < len; i++) {
+			swiperSlides[i].addEventListener('mouseenter', function (ev) {
+				if (window.innerWidth >= 1280) {
+					var el = ev.currentTarget,
+					    elParent = el.closest('[list-parent-js]'),
+					    lineInd = elParent.querySelector('[list-line-js]');
 
-		try {
-			for (var _iterator17 = swiperSlides[Symbol.iterator](), _step17; !(_iteratorNormalCompletion17 = (_step17 = _iterator17.next()).done); _iteratorNormalCompletion17 = true) {
-				var swiperSlide = _step17.value;
-
-
-				swiperSlide.addEventListener('mouseenter', function (ev) {
-					if (window.innerWidth >= 1280) {
-						var el = ev.currentTarget,
-						    elParent = el.closest('[list-parent-js]'),
-						    lineInd = elParent.querySelector('[list-line-js]');
-
-						setTimeout(function () {
-							var transformVal = '';
-
-							if (lineInd.getAttribute("style")) {
-								var val = lineInd.getAttribute("style");
-
-								if (val.indexOf(';') === -1) {
-									transformVal = val;
-								} else {
-									transformVal = val.substring(0, val.indexOf(';'));
-								}
-							}
-
-							if (hoverBool) {
-								el.classList.add('is-hover');
-								lineInd.setAttribute('style', transformVal + ';width: 189px');
-							} else {
-								tOut = setTimeout(function () {
-									hoverBool = true;
-									el.classList.add('is-hover');
-
-									lineInd.setAttribute('style', transformVal + ';width: 189px');
-								}, 750);
-							}
-						}, 0);
-					}
-				}, false);
-
-				swiperSlide.addEventListener('mouseleave', function (ev) {
-					if (window.innerWidth >= 1280) {
-						var el = ev.currentTarget,
-						    elParent = el.closest('[list-parent-js]'),
-						    lineInd = elParent.querySelector('[list-line-js]');
-
+					setTimeout(function () {
 						var transformVal = '';
 
 						if (lineInd.getAttribute("style")) {
@@ -1117,82 +727,59 @@ if (!Element.prototype.closest) {
 							}
 						}
 
-						clearTimeout(tOut);
-						el.classList.remove('is-hover');
+						if (hoverBool) {
+							el.classList.add('is-hover');
+							lineInd.setAttribute('style', transformVal + ';width: 189px');
+						} else {
+							tOut = setTimeout(function () {
+								hoverBool = true;
+								el.classList.add('is-hover');
 
-						lineInd.setAttribute('style', transformVal + ';width: 64px');
-					}
-				}, false);
-			}
-		} catch (err) {
-			_didIteratorError17 = true;
-			_iteratorError17 = err;
-		} finally {
-			try {
-				if (!_iteratorNormalCompletion17 && _iterator17.return) {
-					_iterator17.return();
+								lineInd.setAttribute('style', transformVal + ';width: 189px');
+							}, 750);
+						}
+					}, 0);
 				}
-			} finally {
-				if (_didIteratorError17) {
-					throw _iteratorError17;
-				}
-			}
-		}
+			}, false);
 
-		var _iteratorNormalCompletion18 = true;
-		var _didIteratorError18 = false;
-		var _iteratorError18 = undefined;
+			swiperSlides[i].addEventListener('mouseleave', function (ev) {
+				if (window.innerWidth >= 1280) {
+					var el = ev.currentTarget,
+					    elParent = el.closest('[list-parent-js]'),
+					    lineInd = elParent.querySelector('[list-line-js]');
 
-		try {
-			for (var _iterator18 = listBoxBody[Symbol.iterator](), _step18; !(_iteratorNormalCompletion18 = (_step18 = _iterator18.next()).done); _iteratorNormalCompletion18 = true) {
-				var bodyBlock = _step18.value;
+					var transformVal = '';
 
-				bodyBlock.addEventListener('mouseleave', function (ev) {
-					if (window.innerWidth >= 1280) {
-						hoverBool = false;
+					if (lineInd.getAttribute("style")) {
+						var val = lineInd.getAttribute("style");
 
-						clearTimeout(tOut);
-
-						var _iteratorNormalCompletion19 = true;
-						var _didIteratorError19 = false;
-						var _iteratorError19 = undefined;
-
-						try {
-							for (var _iterator19 = swiperSlides[Symbol.iterator](), _step19; !(_iteratorNormalCompletion19 = (_step19 = _iterator19.next()).done); _iteratorNormalCompletion19 = true) {
-								var slide = _step19.value;
-
-								slide.classList.remove('is-hover');
-							}
-						} catch (err) {
-							_didIteratorError19 = true;
-							_iteratorError19 = err;
-						} finally {
-							try {
-								if (!_iteratorNormalCompletion19 && _iterator19.return) {
-									_iterator19.return();
-								}
-							} finally {
-								if (_didIteratorError19) {
-									throw _iteratorError19;
-								}
-							}
+						if (val.indexOf(';') === -1) {
+							transformVal = val;
+						} else {
+							transformVal = val.substring(0, val.indexOf(';'));
 						}
 					}
-				}, false);
-			}
-		} catch (err) {
-			_didIteratorError18 = true;
-			_iteratorError18 = err;
-		} finally {
-			try {
-				if (!_iteratorNormalCompletion18 && _iterator18.return) {
-					_iterator18.return();
+
+					clearTimeout(tOut);
+					el.classList.remove('is-hover');
+
+					lineInd.setAttribute('style', transformVal + ';width: 64px');
 				}
-			} finally {
-				if (_didIteratorError18) {
-					throw _iteratorError18;
+			}, false);
+		}
+
+		for (var _i10 = 0, _len9 = listBoxBody.length; _i10 < _len9; _i10++) {
+			listBoxBody[_i10].addEventListener('mouseleave', function (ev) {
+				if (window.innerWidth >= 1280) {
+					hoverBool = false;
+
+					clearTimeout(tOut);
+
+					for (var j = 0, l = swiperSlides.length; j < l; j++) {
+						swiperSlides[j].classList.remove('is-hover');
+					}
 				}
-			}
+			}, false);
 		}
 	};
 
@@ -1219,41 +806,20 @@ if (!Element.prototype.closest) {
 	};
 
 	var skipModal = function skipModal() {
-		var _skipBtns = document.querySelectorAll('[spec-skip-js]');
+		var skipBtns = document.querySelectorAll('[spec-skip-js]');
 
-		var _iteratorNormalCompletion20 = true;
-		var _didIteratorError20 = false;
-		var _iteratorError20 = undefined;
+		for (var i = 0, len = skipBtns.length; i < len; i++) {
+			skipBtns[i].addEventListener('click', function (ev) {
+				var el = ev.currentTarget,
+				    elID = el.getAttribute('data-id'),
+				    elParent = el.closest('.list__box-wrapper');
 
-		try {
-			for (var _iterator20 = _skipBtns[Symbol.iterator](), _step20; !(_iteratorNormalCompletion20 = (_step20 = _iterator20.next()).done); _iteratorNormalCompletion20 = true) {
-				var btn = _step20.value;
+				el.closest('.list__specification').querySelector('.list__specification-close').click();
 
-				btn.addEventListener('click', function (ev) {
-					var el = ev.currentTarget,
-					    elID = el.getAttribute('data-id'),
-					    elParent = el.closest('.list__box-wrapper');
-
-					el.closest('.list__specification').querySelector('.list__specification-close').click();
-
-					if (elParent.querySelector('.list__specification[data-id="' + (Number(elID) + 1) + '"]')) {
-						elParent.querySelector('.list__specification[data-id="' + (Number(elID) + 1) + '"]').classList.add('is-open');
-					}
-				}, false);
-			}
-		} catch (err) {
-			_didIteratorError20 = true;
-			_iteratorError20 = err;
-		} finally {
-			try {
-				if (!_iteratorNormalCompletion20 && _iterator20.return) {
-					_iterator20.return();
+				if (elParent.querySelector('.list__specification[data-id="' + (Number(elID) + 1) + '"]')) {
+					elParent.querySelector('.list__specification[data-id="' + (Number(elID) + 1) + '"]').classList.add('is-open');
 				}
-			} finally {
-				if (_didIteratorError20) {
-					throw _iteratorError20;
-				}
-			}
+			}, false);
 		}
 	};
 
@@ -1296,9 +862,6 @@ if (!Element.prototype.closest) {
   * @description Init all CB after page load
   */
 	window.addEventListener('load', function (ev) {
-		// for(let s of document.querySelectorAll('.swiper-slide')) {
-		// 	s.classList.add('is-hover');
-		// }
 		initNative();
 	});
 
@@ -1319,32 +882,13 @@ if (!Element.prototype.closest) {
 				_html.classList.add('is-hideScroll');
 				_body.classList.add('is-hideScroll');
 
-				var _iteratorNormalCompletion21 = true;
-				var _didIteratorError21 = false;
-				var _iteratorError21 = undefined;
+				for (var i = 0, len = document.querySelectorAll('.list__specification').length; i < len; i++) {
+					var el = document.querySelectorAll('.list__specification')[i];
 
-				try {
-					for (var _iterator21 = document.querySelectorAll('.list__specification')[Symbol.iterator](), _step21; !(_iteratorNormalCompletion21 = (_step21 = _iterator21.next()).done); _iteratorNormalCompletion21 = true) {
-						var el = _step21.value;
-
-						if (el.style.cssText.length !== 0 && el.style.cssText === "display: flex;") {
-							el.classList.add('is-open');
-							el.removeAttribute('style');
-							return false;
-						}
-					}
-				} catch (err) {
-					_didIteratorError21 = true;
-					_iteratorError21 = err;
-				} finally {
-					try {
-						if (!_iteratorNormalCompletion21 && _iterator21.return) {
-							_iterator21.return();
-						}
-					} finally {
-						if (_didIteratorError21) {
-							throw _iteratorError21;
-						}
+					if (el.style.cssText.length !== 0 && el.style.cssText === "display: flex;") {
+						el.classList.add('is-open');
+						el.removeAttribute('style');
+						return false;
 					}
 				}
 			}

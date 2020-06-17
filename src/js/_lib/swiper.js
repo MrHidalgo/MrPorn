@@ -31,7 +31,7 @@ const initSwiper = () => {
 				init: function () {
 					const listBoxes = document.querySelectorAll('.list__box-wrapper');
 
-					for(let i = 0; i < listBoxes.length; i++) {
+					for(let i = 0, len = listBoxes.length; i < len; i++) {
 						listBoxes[i].style.opacity = 1;
 					}
 				},
@@ -39,7 +39,7 @@ const initSwiper = () => {
 		});
 	}
 
-	for(let idx = 0; idx < sliders.length; idx++) {
+	for(let idx = 0, len = sliders.length; idx < len; idx++) {
 		const sliderName = sliders[idx].getAttribute('data-id'),
 			sliderWrapper = slidersNode[idx].getAttribute('data-name');
 
