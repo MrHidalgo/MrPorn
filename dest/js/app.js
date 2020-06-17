@@ -1270,8 +1270,10 @@ if (!Element.prototype.closest) {
 				_html.classList.remove('is-hideScroll');
 				_body.classList.remove('is-hideScroll');
 
-				document.querySelector('.list__specification.is-open').style.display = 'flex';
-				document.querySelector('.list__specification.is-open').classList.remove('is-open');
+				if (document.querySelector('.list__specification.is-open')) {
+					document.querySelector('.list__specification.is-open').style.display = 'flex';
+					document.querySelector('.list__specification.is-open').classList.remove('is-open');
+				}
 			} else {
 				_html.classList.add('is-hideScroll');
 				_body.classList.add('is-hideScroll');

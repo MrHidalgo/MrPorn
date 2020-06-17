@@ -4,6 +4,8 @@
 	padding-top: 10px;
 	padding-bottom: 10px;
 	@include adaptive(1023) {
+		position: relative;
+		top: -4px;
 		padding-top: 0;
 		padding-bottom: 0;
 	}
@@ -70,9 +72,6 @@
 		height: 100%;
 		background-color: #ffffff;
 		border-radius: 0 5px 5px 0;
-		@include adaptive(1023) {
-			border-radius: 0 5px 0 0;
-		}
 
 		input {
 			outline: none;

@@ -11,9 +11,6 @@
 		height: 100%;
 		border-radius: 5px 0 0 5px;
 		background-color: #939cb2;
-		@include adaptive(1023) {
-			border-radius: 5px 0 0 0;
-		}
 
 		.icon-font {
 			color: #ffffff;
@@ -249,6 +246,10 @@
 				transform: rotate(-90deg);
 				font-size: 16px;
 				@include transition(opacity, visibility);
+				@include adaptive(1023) {
+					opacity: 1;
+					visibility: visible;
+				}
 			}
 		}
 
