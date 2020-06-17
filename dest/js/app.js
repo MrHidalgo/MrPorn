@@ -297,6 +297,7 @@ if (!Element.prototype.closest) {
 
 			document.querySelector('[sort-node-js]').classList.remove('is-open');
 			document.querySelector('.sort__drop-inner').classList.remove('is-open');
+
 			for (var i = 0; i < document.querySelectorAll('.sort__drop-link').length; i++) {
 				document.querySelectorAll('.sort__drop-link')[i].classList.remove('is-active');
 			}
