@@ -30,14 +30,17 @@ const initSwiper = () => {
 			on: {
 				init: function () {
 					for(let i = 0, len = document.querySelectorAll('.list__box-wrapper').length; i < len; i++) {
-						document.querySelectorAll('.list__box-wrapper')[i].style.opacity = 1;
+						document.querySelectorAll('.list__box-wrapper')[i].style.opacity = '1';
 					}
 				},
 			},
 		});
 	}
 
-	for(let idx = 0, len = sliders.length; idx < len; idx++) {
+	let idx = null,
+		len = sliders.length;
+
+	for(idx = 0; idx < len; idx++) {
 		swiperCB(
 			`.swiper-container[data-id="${sliders[idx].getAttribute('data-id')}"]`,
 			`.list__box-wrapper[data-name='${slidersNode[idx].getAttribute('data-name')}']`

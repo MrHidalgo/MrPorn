@@ -71,7 +71,10 @@ if (!Element.prototype.closest) {
 			document.querySelector('[sort-node-js]').classList.remove('is-open');
 			document.querySelector('.sort__drop-inner').classList.remove('is-open');
 
-			for(let i = 0, len = document.querySelectorAll('.sort__drop-link').length; i < len; i++) {
+			let i = null,
+				len = document.querySelectorAll('.sort__drop-link').length;
+
+			for(i = 0; i < len; i++) {
 				document.querySelectorAll('.sort__drop-link')[i].classList.remove('is-active');
 			}
 		}, false);
@@ -100,7 +103,10 @@ if (!Element.prototype.closest) {
 			const links = document.querySelectorAll('.sort__drop-link'),
 				nodeDropInner = document.querySelector('.sort__drop-inner');
 
-			for(let i = 0, len = links.length; i < len; i++) {
+			let i = null,
+				len = links.length;
+
+			for(i = 0; i < len; i++) {
 				links[i].addEventListener('click', (ev) => {
 					const el = ev.currentTarget;
 
@@ -108,8 +114,8 @@ if (!Element.prototype.closest) {
 						el.classList.remove('is-active');
 						nodeDropInner.classList.remove('is-open');
 					} else {
-						for(let i = 0; i < links.length; i++) {
-							links[i].classList.remove('is-active');
+						for(let j = 0; j < links.length; j++) {
+							links[j].classList.remove('is-active');
 						}
 
 						el.classList.add('is-active');
@@ -124,7 +130,10 @@ if (!Element.prototype.closest) {
 		const sortCollapse = () => {
 			const toggles = document.querySelectorAll('[collapse-toggle-js]');
 
-			for(let i = 0, len = toggles.length; i < len; i++) {
+			let i = null,
+				len = toggles.length;
+
+			for(i = 0; i < len; i++) {
 				toggles[i].addEventListener('click', (ev) => {
 					const el = ev.currentTarget,
 						container = document.getElementById(el.dataset.container);
@@ -176,7 +185,10 @@ if (!Element.prototype.closest) {
 		const btns = document.querySelectorAll('.list__box-more'),
 			closeBtns = document.querySelectorAll('.list__specification-close');
 
-		for(let i = 0, len = btns.length; i< len; i++) {
+		let i = null,
+			len = btns.length;
+
+		for(i = 0; i < len; i++) {
 			btns[i].addEventListener('click', (ev) => {
 				const _el = ev.currentTarget,
 					_boxParent = _el.closest('.list__box'),
@@ -186,8 +198,10 @@ if (!Element.prototype.closest) {
 				const hideScrollContainer = document.querySelectorAll("html, body"),
 					_specificationBox = _parentNode.querySelector('.list__specification[data-id="' + _boxID + '"]');
 
+				let j = null,
+					l = document.querySelectorAll('[video-toggle-js]').length;
 
-				for(let j = 0, l = document.querySelectorAll('[video-toggle-js]').length; j < l; j++) {
+				for(j = 0; j < l; j++) {
 					if(document.querySelectorAll('.list__box')[j].classList.contains('is-active')) {
 						document.querySelectorAll('.list__box')[j].classList.remove('is-active');
 						document.querySelectorAll('.list__specification')[j].classList.remove('is-open');
@@ -221,8 +235,11 @@ if (!Element.prototype.closest) {
 			}, false);
 		}
 
-		for(let i = 0, len = closeBtns.length; i < len; i++) {
-			closeBtns[i].addEventListener('click', (ev) => {
+		let idx = null,
+			lenClose = closeBtns.length;
+
+		for(idx = 0; lenClose < len; idx++) {
+			closeBtns[idx].addEventListener('click', (ev) => {
 				const _el = ev.currentTarget,
 					parent = _el.closest('.list__specification');
 
@@ -243,7 +260,10 @@ if (!Element.prototype.closest) {
 					playPause(parent.querySelector('video'));
 				}
 
-				for(let j = 0, l = document.querySelectorAll('.list__box-more').length; j < l; j++) {
+				let j = null,
+					l = document.querySelectorAll('.list__box-more').length;
+
+				for(j = 0; j < l; j++) {
 					if(document.querySelectorAll('.list__box-more')[j].closest('.list__box').classList.contains('is-active')) {
 						document.querySelectorAll('.list__box-more')[j].closest('.list__box').classList.remove('is-active');
 					}
@@ -630,17 +650,17 @@ if (!Element.prototype.closest) {
 		// ==========================================
 
 		// callback
-		detectDevice();
-		bodyClick();
-		viewFavoritesToggle();
-		sortCB();
-		search();
-		boxHover();
-		boxMore();
-		videoToggle();
-		listIndicator();
-		detailsToggleAction();
-		skipModal();
+		// detectDevice();
+		// bodyClick();
+		// viewFavoritesToggle();
+		// sortCB();
+		// search();
+		// boxHover();
+		// boxMore();
+		// videoToggle();
+		// listIndicator();
+		// detailsToggleAction();
+		// skipModal();
 		// ==========================================
 	};
 
@@ -652,7 +672,6 @@ if (!Element.prototype.closest) {
 	});
 
 	window.addEventListener('resize', () => {
-		console.log('resize');
 		if(window.innerWidth > 1023) {
 			if(document.querySelector('.list__specification.is-open')) {
 				document.getElementsByTagName('html')[0].classList.remove('is-hideScroll');
