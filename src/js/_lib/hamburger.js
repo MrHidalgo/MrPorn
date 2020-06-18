@@ -31,6 +31,9 @@ const initHamburger = () => {
 
 	if(searchHamburger) {
 		searchHamburger.addEventListener("click", (ev) => {
+			btnHamburger.classList.remove("is-active");
+			mobileContainer.classList.remove("is-open");
+
 			searchContainer.classList.toggle("is-open");
 
 			hideScrollContainer.forEach((val, idx) => {
