@@ -56,6 +56,10 @@
 		}
 	}
 
+	&.is-open {
+		display: flex;
+	}
+
 	> div {
 		overflow-y: auto;
 		display: flex;
@@ -301,6 +305,7 @@
 		display: flex;
 		flex-wrap: wrap;
 		align-items: center;
+		padding-bottom: 15px;
 
 		> div {
 			@include transition(opacity, width, visibility, margin);

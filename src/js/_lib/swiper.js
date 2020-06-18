@@ -14,7 +14,7 @@ const initSwiper = () => {
 			loop: false,
 			grabCursor: false,
 			effect: 'slide',
-			speed: 750,
+			speed: 900,
 			touchMoveStopPropagation:false,
 			simulateTouch : false,
 			allowSwipeToNext: true,
@@ -29,10 +29,8 @@ const initSwiper = () => {
 			},
 			on: {
 				init: function () {
-					const listBoxes = document.querySelectorAll('.list__box-wrapper');
-
-					for(let i = 0, len = listBoxes.length; i < len; i++) {
-						listBoxes[i].style.opacity = 1;
+					for(let i = 0, len = document.querySelectorAll('.list__box-wrapper').length; i < len; i++) {
+						document.querySelectorAll('.list__box-wrapper')[i].style.opacity = 1;
 					}
 				},
 			},
@@ -40,12 +38,9 @@ const initSwiper = () => {
 	}
 
 	for(let idx = 0, len = sliders.length; idx < len; idx++) {
-		const sliderName = sliders[idx].getAttribute('data-id'),
-			sliderWrapper = slidersNode[idx].getAttribute('data-name');
-
 		swiperCB(
-			`.swiper-container[data-id="${sliderName}"]`,
-			`.list__box-wrapper[data-name='${sliderWrapper}']`
+			`.swiper-container[data-id="${sliders[idx].getAttribute('data-id')}"]`,
+			`.list__box-wrapper[data-name='${slidersNode[idx].getAttribute('data-name')}']`
 		);
 	}
 };
