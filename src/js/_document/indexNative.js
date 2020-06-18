@@ -30,7 +30,7 @@ if (!Element.prototype.closest) {
 	 * MAIN CALLBACK
 	 * ===================================
 	 */
-	/*const bodyClick = () => {
+	const bodyClick = () => {
 		const className = '.header__view-wrapper, .sort';
 
 		document.addEventListener('click', function(ev) {
@@ -75,9 +75,6 @@ if (!Element.prototype.closest) {
 
 
 	const sortCB = () => {
-		/!**
-		 * @name sortToggle
-		 *!/
 		const sortToggle = () => {
 			const toggleSort = document.querySelector('[sort-toggle-js]'),
 				nodeSort = document.querySelector('[sort-node-js]');
@@ -86,9 +83,6 @@ if (!Element.prototype.closest) {
 				nodeSort.classList.toggle('is-open');
 			}, false);
 		};
-		/!**
-		 * @name sortDropInner
-		 *!/
 		const sortDropInner = () => {
 			const links = document.querySelectorAll('.sort__drop-link'),
 				nodeDropInner = document.querySelector('.sort__drop-inner');
@@ -114,9 +108,6 @@ if (!Element.prototype.closest) {
 				}, false);
 			}
 		};
-		/!**
-		 * @name sortCollapse
-		 *!/
 		const sortCollapse = () => {
 			const toggles = document.querySelectorAll('[collapse-toggle-js]');
 
@@ -133,7 +124,6 @@ if (!Element.prototype.closest) {
 				}, false);
 			}
 		};
-
 
 		sortToggle();
 		sortDropInner();
@@ -591,7 +581,7 @@ if (!Element.prototype.closest) {
 
 			}, false);
 		}
-	};*/
+	};
 	/**
 	 * end MAIN CALLBACK
 	 * ===================================
@@ -614,17 +604,17 @@ if (!Element.prototype.closest) {
 		// ==========================================
 
 		// callback
-		// detectDevice();
-		// bodyClick();
-		// viewFavoritesToggle();
-		// sortCB();
-		// search();
-		// boxHover();
-		// boxMore();
-		// videoToggle();
-		// listIndicator();
-		// detailsToggleAction();
-		// skipModal();
+		detectDevice();
+		bodyClick();
+		viewFavoritesToggle();
+		sortCB();
+		search();
+		boxHover();
+		boxMore();
+		videoToggle();
+		listIndicator();
+		detailsToggleAction();
+		skipModal();
 		// ==========================================
 	};
 
