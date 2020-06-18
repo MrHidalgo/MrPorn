@@ -123,6 +123,7 @@
 			width: 100%;
 			height: calc(100% - 80px);
 			background-color: rgba(#080915, 0.975);
+			backface-visibility: hidden;
 			//@include transition(opacity, visibility, transform);
 
 			> div {

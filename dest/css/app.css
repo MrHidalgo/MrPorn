@@ -4019,8 +4019,10 @@ picture {
     height: -webkit-calc(100% - 80px);
     height: calc(100% - 80px);
     background-color: rgba(8, 9, 21, 0.975);
+    -webkit-backface-visibility: hidden;
+            backface-visibility: hidden;
   }
-  /* line 128, src/scss/_components/common/_pre-header.scss */
+  /* line 129, src/scss/_components/common/_pre-header.scss */
   .pre-header__mobile > div {
     display: -webkit-box;
     display: -webkit-flex;
@@ -4032,7 +4034,7 @@ picture {
         -ms-flex-direction: column;
             flex-direction: column;
   }
-  /* line 133, src/scss/_components/common/_pre-header.scss */
+  /* line 134, src/scss/_components/common/_pre-header.scss */
   .pre-header__mobile.is-open {
     z-index: 1600;
     opacity: 1;
@@ -4048,7 +4050,7 @@ picture {
   }
 }
 
-/* line 142, src/scss/_components/common/_pre-header.scss */
+/* line 143, src/scss/_components/common/_pre-header.scss */
 .pre-header__mobile-top {
   position: relative;
   display: -webkit-box;
@@ -4062,7 +4064,7 @@ picture {
   border-top: 1px solid #0a3e83;
 }
 
-/* line 149, src/scss/_components/common/_pre-header.scss */
+/* line 150, src/scss/_components/common/_pre-header.scss */
 .pre-header__mobile-top:after {
   content: '';
   position: absolute;
@@ -4073,13 +4075,13 @@ picture {
   background-color: #161e3e;
 }
 
-/* line 159, src/scss/_components/common/_pre-header.scss */
+/* line 160, src/scss/_components/common/_pre-header.scss */
 .pre-header__mobile-top > div {
   width: 50%;
   min-height: 100%;
 }
 
-/* line 165, src/scss/_components/common/_pre-header.scss */
+/* line 166, src/scss/_components/common/_pre-header.scss */
 .pre-header__mobile-middle {
   position: relative;
   display: -webkit-box;
@@ -4101,7 +4103,7 @@ picture {
   border-bottom: 1px solid #0a3e83;
 }
 
-/* line 176, src/scss/_components/common/_pre-header.scss */
+/* line 177, src/scss/_components/common/_pre-header.scss */
 .pre-header__mobile-middle:after {
   content: '';
   position: absolute;
@@ -4112,7 +4114,7 @@ picture {
   background-color: #161e3e;
 }
 
-/* line 188, src/scss/_components/common/_pre-header.scss */
+/* line 189, src/scss/_components/common/_pre-header.scss */
 .pre-header__signin, .pre-header__signup {
   display: -webkit-box;
   display: -webkit-flex;
@@ -4130,26 +4132,26 @@ picture {
   height: 100%;
 }
 
-/* line 197, src/scss/_components/common/_pre-header.scss */
+/* line 198, src/scss/_components/common/_pre-header.scss */
 .pre-header__signin .icon-font, .pre-header__signup .icon-font {
   margin-right: 5px;
   color: #ffffff;
   font-size: 16px;
 }
 
-/* line 203, src/scss/_components/common/_pre-header.scss */
+/* line 204, src/scss/_components/common/_pre-header.scss */
 .pre-header__signin span, .pre-header__signup span {
   color: #ffffff;
   text-transform: uppercase;
   font-size: 14px;
 }
 
-/* line 210, src/scss/_components/common/_pre-header.scss */
+/* line 211, src/scss/_components/common/_pre-header.scss */
 .pre-header__signin {
   border-right: 1px solid #0a3e83;
 }
 
-/* line 214, src/scss/_components/common/_pre-header.scss */
+/* line 215, src/scss/_components/common/_pre-header.scss */
 .pre-header__heading {
   display: -webkit-box;
   display: -webkit-flex;
@@ -4161,7 +4163,7 @@ picture {
           align-items: center;
 }
 
-/* line 218, src/scss/_components/common/_pre-header.scss */
+/* line 219, src/scss/_components/common/_pre-header.scss */
 .pre-header__heading i {
   position: relative;
   top: 3px;
@@ -4173,7 +4175,7 @@ picture {
   border-color: #fff transparent transparent transparent;
 }
 
-/* line 229, src/scss/_components/common/_pre-header.scss */
+/* line 230, src/scss/_components/common/_pre-header.scss */
 .pre-header__heading span {
   color: #ffffff;
 }
