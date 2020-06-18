@@ -34,6 +34,7 @@
 
 			p {
 				color: #abbde7;
+				font-weight: 700;
 			}
 
 			.icon-font {
@@ -52,11 +53,17 @@
 			a {
 				display: flex;
 				align-items: center;
-				min-height: 50px;
+				justify-content: center;
+				width: 100%;
+				min-height: 65px;
+
+				&:not(:last-of-type) {
+					border-bottom: 1px solid #1b1d30;
+				}
 
 				.icon-font {
 					margin-right: 5px;
-					font-size: 12px;
+					font-size: 20px;
 					color: #cde549;
 					transform: scaleX(-1);
 				}
@@ -64,7 +71,7 @@
 				span {
 					color: #ffffff;
 					font-weight: 700;
-					font-size: 20px;
+					font-size: 24px;
 				}
 			}
 		}

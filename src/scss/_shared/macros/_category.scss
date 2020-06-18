@@ -4,14 +4,25 @@
 	padding-top: 10px;
 	padding-bottom: 10px;
 	@include adaptive(1023) {
-		position: relative;
-		top: -4px;
 		padding-top: 0;
-		padding-bottom: 0;
+
+		&:after {
+			content: '';
+			position: absolute;
+			top: -10px;
+			left: -20px;
+			width: calc(100% + 40px);
+			height: calc(100% + 20px);
+			background-color: #081b49;
+		}
 	}
 
 	> * {
 		height: 34px;
+		@include adaptive(1023) {
+			z-index: 2;
+			position: relative;
+		}
 	}
 
 	&__left {
@@ -72,6 +83,9 @@
 		height: 100%;
 		background-color: #ffffff;
 		border-radius: 0 5px 5px 0;
+		@include adaptive(1023) {
+			border-radius: 0;
+		}
 
 		input {
 			outline: none;
@@ -132,11 +146,13 @@
 		backface-visibility: hidden;
 		@include transition(opacity, visibility, transform);
 		@include adaptive(1023) {
-			top: calc(100% + 4px);
+			top: calc(100% + 10px);
 			left: -63px;
 			width: 100vw;
-			height: calc(100vh - 200px);
+			height: calc(100vh - 54px);
+			min-height: 682px;
 			border-radius: 0;
+			background-color: #080915;
 		}
 
 		&.is-open {
@@ -291,7 +307,7 @@
 			flex-wrap: wrap;
 			width: 100%;
 			@include adaptive(1023) {
-				height: 100%;
+				min-height: 100%;
 			}
 
 			> div {
@@ -394,6 +410,9 @@
 				color: #0a3e83;
 				font-size: 12px;
 				font-weight: 700;
+				@include adaptive(1023) {
+					color: #ffffff;
+				}
 				@include adaptive(767) {
 					font-size: 10px;
 				}
