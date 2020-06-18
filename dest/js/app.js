@@ -249,14 +249,18 @@ if (!Element.prototype.closest) {
 		var sortCollapse = function sortCollapse() {
 			var toggles = document.querySelectorAll('[collapse-toggle-js]');
 
-			for (var i = 0, len = toggles.length; i < len; i++) {
+			var _loop = function _loop(i, len) {
 				toggles[i].addEventListener('click', function (ev) {
 					var el = ev.currentTarget,
 					    container = document.getElementById(el.dataset.container);
 
-					btn.classList.toggle('is-active');
+					toggles[i].classList.toggle('is-active');
 					container.classList.toggle('is-open');
 				}, false);
+			};
+
+			for (var i = 0, len = toggles.length; i < len; i++) {
+				_loop(i, len);
 			}
 		};
 

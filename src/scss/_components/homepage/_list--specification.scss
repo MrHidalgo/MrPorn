@@ -50,7 +50,7 @@
 				}
 
 				.list__specification-more {
-					min-height: 300px;
+					min-height: 350px;
 				}
 			}
 		}
@@ -180,6 +180,8 @@
 		}
 		@include adaptive(767) {
 			z-index: 1600;
+			top: 50%;
+			transform: translateY(-50%);
 		}
 
 		.icon-font {
@@ -198,6 +200,7 @@
 		padding: 5px 40px;
 		@include adaptive(1023) {
 			display: flex;
+			min-height: 70px;
 		}
 
 		.list__specification-logo {
@@ -270,10 +273,12 @@
 			order: 2;
 			max-width: 100%;
 			height: 300px !important;
+			min-height: 300px !important;
 			background-color: #004aac;
 		}
 		@include adaptive(767) {
 			height: 200px !important;
+			min-height: 200px !important;
 		}
 
 		> div {
@@ -672,12 +677,13 @@
 		flex-direction: column;
 		padding: 10px 20px 20px;
 		flex: 1;
-		min-height: 150px;
+		min-height: 1px;
 		max-height: 100%;
 		@include adaptive(1023) {
 			display: flex;
 		}
 		@include adaptive(767) {
+			min-height: 320px;
 			padding: 10px;
 		}
 

@@ -56,16 +56,26 @@
 	}
 
 	span {
+		position: relative;
 		color: #4b4e6b;
 		font-size: 16px;
 		@include adaptive(767) {
 			white-space: nowrap;
-			text-overflow: ellipsis;
 			overflow: hidden;
 			display: block;
 			font-size: 10px;
 			line-height: 1.2;
-			width: calc(100vw - (10px + 45px + 15px + 12px + 5px));
+			width: calc(100vw - (10px + 45px + 15px));
+
+			&:after {
+				content: '';
+				position: absolute;
+				top: 0;
+				right: 0;
+				width: 60px;
+				height: 100%;
+				background: linear-gradient(to right, rgba(0,0,0,0) 0%,rgba(8,9,21,1) 100%);
+			}
 		}
 	}
 }

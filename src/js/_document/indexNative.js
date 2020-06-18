@@ -129,7 +129,7 @@ if (!Element.prototype.closest) {
 					const el = ev.currentTarget,
 						container = document.getElementById(el.dataset.container);
 
-					btn.classList.toggle('is-active');
+					toggles[i].classList.toggle('is-active');
 					container.classList.toggle('is-open');
 				}, false);
 			}
