@@ -200,9 +200,17 @@ if (!Element.prototype.closest) {
 					}
 				}
 
-				_parentNode.classList.add('is-open');
-				_boxParent.classList.add('is-active');
-				_specificationBox.classList.add('is-open');
+				if(window.innerWidth < 1024) {
+					setTimeout(() => {
+						_parentNode.classList.add('is-open');
+						_boxParent.classList.add('is-active');
+						_specificationBox.classList.add('is-open');
+					}, 500);
+				} else {
+					_parentNode.classList.add('is-open');
+					_boxParent.classList.add('is-active');
+					_specificationBox.classList.add('is-open');
+				}
 
 
 				if(window.innerWidth <= 1023) {
@@ -443,7 +451,7 @@ if (!Element.prototype.closest) {
 
 				let listIndicatorWidth = 0;
 
-				if(window.innerWidth >= 1023) {
+				if(window.innerWidth >= 1024) {
 					listIndicatorWidth = 64;
 				} else if(window.innerWidth >= 768) {
 					listIndicatorWidth = 34;

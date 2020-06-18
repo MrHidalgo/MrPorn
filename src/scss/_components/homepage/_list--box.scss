@@ -170,7 +170,7 @@
 				width: 34px;
 			}
 			@include adaptive(767) {
-				width: 14px;
+				width: 19px;
 			}
 		}
 	}
@@ -206,6 +206,12 @@
 		height: calc(100% - 4px);
 		border: 1px dashed #fff;
 		@include transition(border-style, border-width);
+		@include adaptive(767) {
+			top: 1px;
+			left: 1px;
+			width: calc(100% - 2px);
+			height: calc(100% - 2px);
+		}
 	}
 
 	&-logo {
