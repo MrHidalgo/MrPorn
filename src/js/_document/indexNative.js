@@ -250,20 +250,6 @@ if (!Element.prototype.closest) {
 				}
 			}, false);
 		}
-
-		window.addEventListener('resize', () => {
-			if(window.innerWidth > 1023) {
-				if(document.querySelector('.list__specification.is-open')) {
-					document.getElementsByTagName('html')[0].classList.remove('is-hideScroll');
-					document.getElementsByTagName('body')[0].classList.remove('is-hideScroll');
-				}
-			} else {
-				if(document.querySelector('.list__specification.is-open')) {
-					document.getElementsByTagName('html')[0].classList.add('is-hideScroll');
-					document.getElementsByTagName('body')[0].classList.add('is-hideScroll');
-				}
-			}
-		});
 	};
 
 
@@ -661,17 +647,22 @@ if (!Element.prototype.closest) {
 	/**
 	 * @description Init all CB after page load
 	 */
-	// let _flag = false;
-
 	window.addEventListener('load', (ev) => {
-		// if(window.innerWidth > 1023) {
-		// 	_flag = false;
-		// } else {
-		// 	_flag = true;
-		// }
-		//
-		// console.log('_flag: ', _flag);
-
 		initNative();
+	});
+
+	window.addEventListener('resize', () => {
+		console.log('resize');
+		if(window.innerWidth > 1023) {
+			if(document.querySelector('.list__specification.is-open')) {
+				document.getElementsByTagName('html')[0].classList.remove('is-hideScroll');
+				document.getElementsByTagName('body')[0].classList.remove('is-hideScroll');
+			}
+		} else {
+			if(document.querySelector('.list__specification.is-open')) {
+				document.getElementsByTagName('html')[0].classList.add('is-hideScroll');
+				document.getElementsByTagName('body')[0].classList.add('is-hideScroll');
+			}
+		}
 	});
 })();
