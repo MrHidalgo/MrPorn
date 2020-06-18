@@ -117,6 +117,7 @@ var initSwiper = function initSwiper() {
 			},
 			on: {
 				init: function init() {
+					console.log("init");
 					var i = null,
 					    len = document.querySelectorAll('.list__box-wrapper').length;
 
@@ -132,7 +133,10 @@ var initSwiper = function initSwiper() {
 	    len = sliders.length;
 
 	for (idx = 0; idx < len; idx++) {
-		swiperCB(".swiper-container[data-id=\"" + sliders[idx].getAttribute('data-id') + "\"]", ".list__box-wrapper[data-name='" + slidersNode[idx].getAttribute('data-name') + "']");
+		var sliderName = sliders[idx].getAttribute('data-id'),
+		    sliderWrapper = slidersNode[idx].getAttribute('data-name');
+
+		swiperCB(".swiper-container[data-id=\"" + sliderName + "\"]", ".list__box-wrapper[data-name='" + sliderWrapper + "']");
 	}
 };
 

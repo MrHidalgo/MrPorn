@@ -29,6 +29,7 @@ const initSwiper = () => {
 			},
 			on: {
 				init: function () {
+					console.log(`init`);
 					let i = null,
 						len = document.querySelectorAll('.list__box-wrapper').length;
 
@@ -44,9 +45,12 @@ const initSwiper = () => {
 		len = sliders.length;
 
 	for(idx = 0; idx < len; idx++) {
+		const sliderName = sliders[idx].getAttribute('data-id'),
+			sliderWrapper = slidersNode[idx].getAttribute('data-name');
+
 		swiperCB(
-			`.swiper-container[data-id="${sliders[idx].getAttribute('data-id')}"]`,
-			`.list__box-wrapper[data-name='${slidersNode[idx].getAttribute('data-name')}']`
+			`.swiper-container[data-id="${sliderName}"]`,
+			`.list__box-wrapper[data-name='${sliderWrapper}']`
 		);
 	}
 };
