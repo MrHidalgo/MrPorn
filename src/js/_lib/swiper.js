@@ -29,13 +29,7 @@ const initSwiper = () => {
 			},
 			on: {
 				init: function () {
-					console.log(`init`);
-					let i = null,
-						len = document.querySelectorAll('.list__box-wrapper').length;
-
-					for(i = 0; i < len; i++) {
-						document.querySelectorAll('.list__box-wrapper')[i].style.opacity = '1';
-					}
+					document.querySelector(swiperName).closest('.list__box-wrapper').style.opacity = '1'
 				},
 			},
 		});
