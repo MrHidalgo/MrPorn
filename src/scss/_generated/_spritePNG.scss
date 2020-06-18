@@ -4,17 +4,44 @@ $sprite: (
     offset-y: 0px,
     width: 23px,
     height: 22px,
-    total-width: 102px,
-    total-height: 75px,
+    total-width: 98px,
+    total-height: 98px,
+    image: '../img/sprite.png'
+  ),
+  header-nav-email: (
+    offset-x: -45px,
+    offset-y: -59px,
+    width: 18px,
+    height: 13px,
+    total-width: 98px,
+    total-height: 98px,
+    image: '../img/sprite.png'
+  ),
+  header-nav-folder: (
+    offset-x: -19px,
+    offset-y: -81px,
+    width: 15px,
+    height: 14px,
+    total-width: 98px,
+    total-height: 98px,
     image: '../img/sprite.png'
   ),
   header-nav-home: (
-    offset-x: 0px,
+    offset-x: -22px,
     offset-y: -59px,
     width: 18px,
     height: 16px,
-    total-width: 102px,
-    total-height: 75px,
+    total-width: 98px,
+    total-height: 98px,
+    image: '../img/sprite.png'
+  ),
+  header-nav-info: (
+    offset-x: -88px,
+    offset-y: 0px,
+    width: 10px,
+    height: 23px,
+    total-width: 98px,
+    total-height: 98px,
     image: '../img/sprite.png'
   ),
   header-nav-livesex: (
@@ -22,8 +49,8 @@ $sprite: (
     offset-y: -27px,
     width: 23px,
     height: 21px,
-    total-width: 102px,
-    total-height: 75px,
+    total-width: 98px,
+    total-height: 98px,
     image: '../img/sprite.png'
   ),
   header-nav-meetfuck: (
@@ -31,8 +58,17 @@ $sprite: (
     offset-y: 0px,
     width: 29px,
     height: 22px,
-    total-width: 102px,
-    total-height: 75px,
+    total-width: 98px,
+    total-height: 98px,
+    image: '../img/sprite.png'
+  ),
+  header-nav-megaphone: (
+    offset-x: 0px,
+    offset-y: -59px,
+    width: 17px,
+    height: 17px,
+    total-width: 98px,
+    total-height: 98px,
     image: '../img/sprite.png'
   ),
   header-nav-porncoupons: (
@@ -40,8 +76,8 @@ $sprite: (
     offset-y: -27px,
     width: 22px,
     height: 27px,
-    total-width: 102px,
-    total-height: 75px,
+    total-width: 98px,
+    total-height: 98px,
     image: '../img/sprite.png'
   ),
   header-nav-porngames: (
@@ -49,17 +85,17 @@ $sprite: (
     offset-y: -22px,
     width: 16px,
     height: 21px,
-    total-width: 102px,
-    total-height: 75px,
+    total-width: 98px,
+    total-height: 98px,
     image: '../img/sprite.png'
   ),
   header-nav-pornstars: (
-    offset-x: -88px,
-    offset-y: 0px,
+    offset-x: 0px,
+    offset-y: -81px,
     width: 14px,
     height: 17px,
-    total-width: 102px,
-    total-height: 75px,
+    total-width: 98px,
+    total-height: 98px,
     image: '../img/sprite.png'
   ),
   header-nav-videos: (
@@ -67,8 +103,8 @@ $sprite: (
     offset-y: 0px,
     width: 21px,
     height: 17px,
-    total-width: 102px,
-    total-height: 75px,
+    total-width: 98px,
+    total-height: 98px,
     image: '../img/sprite.png'
   ),
 );
@@ -119,14 +155,26 @@ $sprite: (
 .header-nav-blog:before {
   @include sprite(header-nav-blog);
 }
+.header-nav-email:before {
+  @include sprite(header-nav-email);
+}
+.header-nav-folder:before {
+  @include sprite(header-nav-folder);
+}
 .header-nav-home:before {
   @include sprite(header-nav-home);
+}
+.header-nav-info:before {
+  @include sprite(header-nav-info);
 }
 .header-nav-livesex:before {
   @include sprite(header-nav-livesex);
 }
 .header-nav-meetfuck:before {
   @include sprite(header-nav-meetfuck);
+}
+.header-nav-megaphone:before {
+  @include sprite(header-nav-megaphone);
 }
 .header-nav-porncoupons:before {
   @include sprite(header-nav-porncoupons);

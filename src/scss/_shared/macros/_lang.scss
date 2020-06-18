@@ -43,6 +43,11 @@
 		@include adaptive(1279) {
 			width: 65px;
 		}
+		@include adaptive(1023) {
+			width: 84px;
+			padding-right: 0;
+			border-color: transparent;
+		}
 
 		span,
 		.icon-font {
@@ -55,6 +60,9 @@
 			text-transform: uppercase;
 			@include adaptive(1279) {
 				display: none;
+			}
+			@include adaptive(1023) {
+				display: inline-block;
 			}
 		}
 
