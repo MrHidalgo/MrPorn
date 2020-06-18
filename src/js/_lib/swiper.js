@@ -29,7 +29,10 @@ const initSwiper = () => {
 			},
 			on: {
 				init: function () {
-					for(let i = 0, len = document.querySelectorAll('.list__box-wrapper').length; i < len; i++) {
+					let i = null,
+						len = document.querySelectorAll('.list__box-wrapper').length;
+
+					for(i = 0; i < len; i++) {
 						document.querySelectorAll('.list__box-wrapper')[i].style.opacity = '1';
 					}
 				},

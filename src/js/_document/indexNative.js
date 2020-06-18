@@ -30,11 +30,7 @@ if (!Element.prototype.closest) {
 	 * MAIN CALLBACK
 	 * ===================================
 	 */
-
-	/**
-	 * @name bodyClick
-	 */
-	const bodyClick = () => {
+	/*const bodyClick = () => {
 		const className = '.header__view-wrapper, .sort';
 
 		document.addEventListener('click', function(ev) {
@@ -57,9 +53,6 @@ if (!Element.prototype.closest) {
 	};
 
 
-	/**
-	 * @name viewFavoritesToggle
-	 */
 	const viewFavoritesToggle = () => {
 		const _btn = document.querySelector('[view-favorites-toggle-js]'),
 			_node = document.querySelector('[view-favorites-drop-js]');
@@ -81,13 +74,10 @@ if (!Element.prototype.closest) {
 	};
 
 
-	/**
-	 * @name sortCB
-	 */
 	const sortCB = () => {
-		/**
+		/!**
 		 * @name sortToggle
-		 */
+		 *!/
 		const sortToggle = () => {
 			const toggleSort = document.querySelector('[sort-toggle-js]'),
 				nodeSort = document.querySelector('[sort-node-js]');
@@ -96,9 +86,9 @@ if (!Element.prototype.closest) {
 				nodeSort.classList.toggle('is-open');
 			}, false);
 		};
-		/**
+		/!**
 		 * @name sortDropInner
-		 */
+		 *!/
 		const sortDropInner = () => {
 			const links = document.querySelectorAll('.sort__drop-link'),
 				nodeDropInner = document.querySelector('.sort__drop-inner');
@@ -124,9 +114,9 @@ if (!Element.prototype.closest) {
 				}, false);
 			}
 		};
-		/**
+		/!**
 		 * @name sortCollapse
-		 */
+		 *!/
 		const sortCollapse = () => {
 			const toggles = document.querySelectorAll('[collapse-toggle-js]');
 
@@ -151,9 +141,6 @@ if (!Element.prototype.closest) {
 	};
 
 
-	/**
-	 * @name search
-	 */
 	const search = () => {
 		const searchInput = document.querySelector('[search-js]');
 
@@ -172,9 +159,6 @@ if (!Element.prototype.closest) {
 	};
 
 
-	/**
-	 * @name boxMore
-	 */
 	const boxMore = () => {
 		function playPause(vid) {
 			vid.pause();
@@ -273,9 +257,6 @@ if (!Element.prototype.closest) {
 	};
 
 
-	/**
-	 * @name videoToggle
-	 */
 	const videoToggle = () => {
 		function playPause(vid) {
 			if (vid.paused) {
@@ -314,9 +295,6 @@ if (!Element.prototype.closest) {
 	};
 
 
-	/**
-	 * @name detailsToggleAction
-	 */
 	const detailsToggleAction = () => {
 		const favoritesBtns = document.querySelectorAll('[favorites-toggle-js]'),
 			specFavoritesBtns = document.querySelectorAll('[spec-favorites-js]'),
@@ -440,9 +418,6 @@ if (!Element.prototype.closest) {
 	};
 
 
-	/**
-	 * @name listIndicator
-	 */
 	const listIndicator = () => {
 		const listBoxes = document.querySelectorAll('[list-box-js]');
 
@@ -492,9 +467,6 @@ if (!Element.prototype.closest) {
 	};
 
 
-	/**
-	 * @name boxHover
-	 */
 	const boxHover = () => {
 		const swiperSlides = document.querySelectorAll('.swiper-slide'),
 			listBoxBody = document.querySelectorAll('.list__box-body');
@@ -581,9 +553,6 @@ if (!Element.prototype.closest) {
 	};
 
 
-	/**
-	 * @name detectDevice
-	 */
 	const detectDevice = () => {
 		let check = false;
 
@@ -605,9 +574,6 @@ if (!Element.prototype.closest) {
 	};
 
 
-	/**
-	 * @name skipModal
-	 */
 	const skipModal = () => {
 		const skipBtns = document.querySelectorAll('[spec-skip-js]');
 
@@ -625,9 +591,7 @@ if (!Element.prototype.closest) {
 
 			}, false);
 		}
-	};
-
-
+	};*/
 	/**
 	 * end MAIN CALLBACK
 	 * ===================================
