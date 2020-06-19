@@ -604,7 +604,7 @@ if (!Element.prototype.closest) {
 		// ==========================================
 
 		// callback
-		detectDevice();
+		// detectDevice();
 		bodyClick();
 		viewFavoritesToggle();
 		sortCB();
