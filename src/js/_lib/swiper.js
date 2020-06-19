@@ -35,16 +35,16 @@ const initSwiper = () => {
 		});
 	}
 
-	// let idx = null,
-	// 	len = sliders.length;
-	//
-	// for(idx = 0; idx < len; idx++) {
-	// 	const sliderName = sliders[idx].getAttribute('data-id'),
-	// 		sliderWrapper = slidersNode[idx].getAttribute('data-name');
-	//
-	// 	swiperCB(
-	// 		`.swiper-container[data-id="${sliderName}"]`,
-	// 		`.list__box-wrapper[data-name='${sliderWrapper}']`
-	// 	);
-	// }
+	let idx = null,
+		len = sliders.length;
+
+	for(idx = 0; idx < len; idx++) {
+		const sliderName = sliders[idx].getAttribute('data-id'),
+			sliderWrapper = slidersNode[idx].getAttribute('data-name');
+
+		swiperCB(
+			`.swiper-container[data-id="${sliderName}"]`,
+			`.list__box-wrapper[data-name='${sliderWrapper}']`
+		);
+	}
 };
