@@ -176,16 +176,16 @@ if (!Element.prototype.closest) {
 					lInner = document.querySelectorAll('[video-toggle-js]').length;
 
 				for(jInner = 0; jInner < lInner; jInner++) {
-					if(document.querySelectorAll('.list__box')[jInner].classList.contains('is-active')) {
-						document.querySelectorAll('.list__box')[jInner].classList.remove('is-active');
-						document.querySelectorAll('.list__specification')[jInner].classList.remove('is-open');
-					}
+					document.querySelectorAll('[video-toggle-js]')[jInner].classList.remove('is-active');
+					document.querySelectorAll('[video-pause-js]')[jInner].classList.remove('is-active');
+					playPause(document.querySelectorAll('.list__specification video')[jInner]);
+				}
 
-					if(document.querySelectorAll('[video-toggle-js]')[jInner].classList.contains('is-active')) {
-						document.querySelectorAll('[video-toggle-js]')[jInner].classList.remove('is-active');
-						document.querySelectorAll('[video-pause-js]')[jInner].classList.remove('is-active');
-						playPause(document.querySelectorAll('.list__specification video')[jInner]);
-					}
+				for(let k = 0; k < document.querySelectorAll('.list__box').length; k++) {
+					document.querySelectorAll('.list__box')[k].classList.remove('is-active');
+				}
+				for(let k = 0; k < document.querySelectorAll('.list__specification').length; k++) {
+					document.querySelectorAll('.list__specification')[k].classList.remove('is-open');
 				}
 
 				if(window.innerWidth < 1024) {
