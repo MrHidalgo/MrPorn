@@ -7,8 +7,7 @@
     "start": "gulp",
     "build": "gulp build",
     "clean": "gulp clean",
-    "deploy-dev": "gulp build --dev && surge --project ./dest --domain https://mrporn-dev.surge.sh",
-    "deploy-prod": "gulp production --prod && surge --project ./dest --domain https://mrporn-dev.surge.sh"
+    "deploy-dev": "gulp build --dev && surge --project ./dest --domain https://mrporn-dev.surge.sh"
   },
   "author": "Andrii Kovalenko <hkovalenko9@gmail.com>",
   "license": "ISC",
@@ -17,7 +16,7 @@
     "babel-preset-env": "^1.7.0",
     "browser-sync": "^2.26.3",
     "del": "^3.0.0",
-    "gulp": "^3.9.1",
+    "gulp": "^4.0.0",
     "gulp-autoprefixer": "^5.0.0",
     "gulp-babel": "^7.0.1",
     "gulp-changed-in-place": "^2.3.0",
@@ -46,7 +45,6 @@
     "gulp-uglify": "^3.0.0",
     "gulp-webp": "^3.0.0",
     "gulp.spritesmith": "^6.9.0",
-    "main-bower-files": "^2.13.1",
     "pug": "^2.0.3",
     "require-dir": "^1.0.0",
     "require-yaml": "0.0.1",
