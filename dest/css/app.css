@@ -720,18 +720,7 @@ picture {
 
 /* line 20, src/scss/_shared/_grid.scss */
 .c-grid {
-  max-width: 100%;
-  padding-left: 145px;
-  padding-right: 145px;
-}
-
-@media screen and (max-width: 1919px) {
-  /* line 20, src/scss/_shared/_grid.scss */
-  .c-grid {
-    max-width: 1630px;
-    padding-left: 20px;
-    padding-right: 20px;
-  }
+  max-width: 1630px;
 }
 
 @media screen and (max-width: 767px) {
@@ -977,10 +966,185 @@ picture {
 }
 
 /* line 139, src/scss/_shared/macros/_lang.scss */
-.lang svg {
+.lang__flag {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
   margin-right: 5px;
-  width: 19px;
-  height: 18px;
+}
+
+/* line 143, src/scss/_shared/macros/_lang.scss */
+.lang__flag:before {
+  content: "";
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  width: 16px;
+  height: 11px;
+  background-image: url("../img/flags.png");
+  background-repeat: no-repeat;
+}
+
+/* line 153, src/scss/_shared/macros/_lang.scss */
+.lang__flag--en:before {
+  background-position: -48px 0;
+}
+
+/* line 158, src/scss/_shared/macros/_lang.scss */
+.lang__flag--de:before {
+  background-position: 0 -22px;
+}
+
+/* line 163, src/scss/_shared/macros/_lang.scss */
+.lang__flag--fr:before {
+  background-position: -32px -33px;
+}
+
+/* line 168, src/scss/_shared/macros/_lang.scss */
+.lang__flag--it:before {
+  background-position: -16px -44px;
+}
+
+/* line 173, src/scss/_shared/macros/_lang.scss */
+.lang__flag--ro:before {
+  background-position: -64px -44px;
+}
+
+/* line 178, src/scss/_shared/macros/_lang.scss */
+.lang__flag--pt:before {
+  background-position: -64px -33px;
+}
+
+/* line 183, src/scss/_shared/macros/_lang.scss */
+.lang__flag--ru:before {
+  background-position: 0 -55px;
+}
+
+/* line 188, src/scss/_shared/macros/_lang.scss */
+.lang__flag--es:before {
+  background-position: 0 -33px;
+}
+
+/* line 193, src/scss/_shared/macros/_lang.scss */
+.lang__flag--nl:before {
+  background-position: -64px 0;
+}
+
+/* line 198, src/scss/_shared/macros/_lang.scss */
+.lang__flag--tr:before {
+  background-position: -64px -55px;
+}
+
+/* line 203, src/scss/_shared/macros/_lang.scss */
+.lang__flag--sv:before {
+  background-position: -32px -55px;
+}
+
+/* line 208, src/scss/_shared/macros/_lang.scss */
+.lang__flag--no:before {
+  background-position: -64px -11px;
+}
+
+/* line 213, src/scss/_shared/macros/_lang.scss */
+.lang__flag--be:before {
+  background-position: 0 -11px;
+}
+
+/* line 218, src/scss/_shared/macros/_lang.scss */
+.lang__flag--ja:before {
+  background-position: -32px -44px;
+}
+
+/* line 223, src/scss/_shared/macros/_lang.scss */
+.lang__flag--el:before {
+  background-position: -32px -22px;
+}
+
+/* line 228, src/scss/_shared/macros/_lang.scss */
+.lang__flag--hi:before {
+  background-position: -48px -11px;
+}
+
+/* line 233, src/scss/_shared/macros/_lang.scss */
+.lang__flag--vi:before {
+  background-position: -16px -66px;
+}
+
+/* line 238, src/scss/_shared/macros/_lang.scss */
+.lang__flag--pl:before {
+  background-position: -64px -22px;
+}
+
+/* line 243, src/scss/_shared/macros/_lang.scss */
+.lang__flag--fi:before {
+  background-position: -16px -33px;
+}
+
+/* line 248, src/scss/_shared/macros/_lang.scss */
+.lang__flag--da:before {
+  background-position: -32px -11px;
+}
+
+/* line 253, src/scss/_shared/macros/_lang.scss */
+.lang__flag--sl:before {
+  background-position: -16px -55px;
+}
+
+/* line 258, src/scss/_shared/macros/_lang.scss */
+.lang__flag--hr:before {
+  background-position: -48px -33px;
+}
+
+/* line 263, src/scss/_shared/macros/_lang.scss */
+.lang__flag--ar:before {
+  background-position: 0 0;
+}
+
+/* line 268, src/scss/_shared/macros/_lang.scss */
+.lang__flag--hu:before {
+  background-position: -48px -22px;
+}
+
+/* line 273, src/scss/_shared/macros/_lang.scss */
+.lang__flag--cs:before {
+  background-position: -32px 0;
+}
+
+/* line 278, src/scss/_shared/macros/_lang.scss */
+.lang__flag--zh:before {
+  background-position: -32px -66px;
+}
+
+/* line 283, src/scss/_shared/macros/_lang.scss */
+.lang__flag--ko:before {
+  background-position: -48px -44px;
+}
+
+/* line 288, src/scss/_shared/macros/_lang.scss */
+.lang__flag--th:before {
+  background-position: -48px -55px;
+}
+
+/* line 293, src/scss/_shared/macros/_lang.scss */
+.lang__flag--id:before {
+  background-position: 0 -44px;
+}
+
+/* line 298, src/scss/_shared/macros/_lang.scss */
+.lang__flag--he:before {
+  background-position: -64px -88px;
+}
+
+/* line 303, src/scss/_shared/macros/_lang.scss */
+.lang__flag--bg:before {
+  background-position: -16px -110px;
+}
+
+/* line 308, src/scss/_shared/macros/_lang.scss */
+.lang__flag--hu:before {
+  background-position: -32px -110px;
 }
 
 /* line 1, src/scss/_shared/macros/_category.scss */
@@ -2437,7 +2601,7 @@ picture {
 .logo--haeder {
   position: absolute;
   top: 50%;
-  left: 145px;
+  left: 0;
   -webkit-transform: translateY(-50%);
       -ms-transform: translateY(-50%);
           transform: translateY(-50%);
@@ -2467,21 +2631,21 @@ picture {
   }
 }
 
-/* line 22, src/scss/_macros/_logotype.scss */
+/* line 23, src/scss/_macros/_logotype.scss */
 .logo--footer {
   max-width: 250px;
   padding-bottom: 30px;
 }
 
 @media screen and (max-width: 767px) {
-  /* line 22, src/scss/_macros/_logotype.scss */
+  /* line 23, src/scss/_macros/_logotype.scss */
   .logo--footer {
     max-width: 150px;
     padding-bottom: 15px;
   }
 }
 
-/* line 31, src/scss/_macros/_logotype.scss */
+/* line 32, src/scss/_macros/_logotype.scss */
 .logo__btn {
   display: -webkit-box;
   display: -webkit-flex;
@@ -2493,7 +2657,7 @@ picture {
           align-items: center;
 }
 
-/* line 36, src/scss/_macros/_logotype.scss */
+/* line 37, src/scss/_macros/_logotype.scss */
 .logo__img {
   display: block;
   max-width: 100%;

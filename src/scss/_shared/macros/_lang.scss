@@ -136,9 +136,178 @@
 		}
 	}
 
-	svg {
+	&__flag {
+		display: flex;
 		margin-right: 5px;
-		width: 19px;
-		height: 18px;
+
+		&:before {
+			content: "";
+			display: flex;
+			width: 16px;
+			height: 11px;
+			background-image: url('../img/flags.png');
+			background-repeat: no-repeat;
+		}
+
+		&--en {
+			&:before {
+				background-position: -48px 0
+			}
+		}
+		&--de {
+			&:before {
+				background-position: 0 -22px
+			}
+		}
+		&--fr {
+			&:before {
+				background-position: -32px -33px
+			}
+		}
+		&--it {
+			&:before {
+				background-position: -16px -44px
+			}
+		}
+		&--ro {
+			&:before {
+				background-position: -64px -44px
+			}
+		}
+		&--pt {
+			&:before {
+				background-position: -64px -33px
+			}
+		}
+		&--ru {
+			&:before {
+				background-position: 0 -55px
+			}
+		}
+		&--es {
+			&:before {
+				background-position: 0 -33px
+			}
+		}
+		&--nl {
+			&:before {
+				background-position: -64px 0
+			}
+		}
+		&--tr {
+			&:before {
+				background-position: -64px -55px
+			}
+		}
+		&--sv {
+			&:before {
+				background-position: -32px -55px
+			}
+		}
+		&--no {
+			&:before {
+				background-position: -64px -11px
+			}
+		}
+		&--be {
+			&:before {
+				background-position: 0 -11px
+			}
+		}
+		&--ja {
+			&:before {
+				background-position: -32px -44px
+			}
+		}
+		&--el {
+			&:before {
+				background-position: -32px -22px
+			}
+		}
+		&--hi {
+			&:before {
+				background-position: -48px -11px
+			}
+		}
+		&--vi {
+			&:before {
+				background-position: -16px -66px
+			}
+		}
+		&--pl {
+			&:before {
+				background-position: -64px -22px
+			}
+		}
+		&--fi {
+			&:before {
+				background-position: -16px -33px
+			}
+		}
+		&--da {
+			&:before {
+				background-position: -32px -11px
+			}
+		}
+		&--sl {
+			&:before {
+				background-position: -16px -55px
+			}
+		}
+		&--hr {
+			&:before {
+				background-position: -48px -33px
+			}
+		}
+		&--ar {
+			&:before {
+				background-position: 0 0
+			}
+		}
+		&--hu {
+			&:before {
+				background-position: -48px -22px
+			}
+		}
+		&--cs {
+			&:before {
+				background-position: -32px 0
+			}
+		}
+		&--zh {
+			&:before {
+				background-position: -32px -66px
+			}
+		}
+		&--ko {
+			&:before {
+				background-position: -48px -44px
+			}
+		}
+		&--th {
+			&:before {
+				background-position: -48px -55px
+			}
+		}
+		&--id {
+			&:before {
+				background-position: 0 -44px
+			}
+		}
+		&--he {
+			&:before {
+				background-position: -64px -88px
+			}
+		}
+		&--bg {
+			&:before {
+				background-position: -16px -110px
+			}
+		}
+		&--hu {
+			&:before {
+				background-position: -32px -110px
+			}
+		}
 	}
 }

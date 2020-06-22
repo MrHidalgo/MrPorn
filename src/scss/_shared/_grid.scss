@@ -19,17 +19,17 @@ $paddingRight: $paddingLeft;
 /// ===============
 .c-grid {
   @extend %grid;
-  //@if($maxWidth) {
-  //  max-width: $maxWidth;
-  //}
-	max-width: 100%;
-	padding-left: 145px;
-	padding-right: 145px;
-	@include adaptive(1919) {
-		max-width: 1630px;
-		padding-left: 20px;
-		padding-right: 20px;
-	}
+  @if($maxWidth) {
+    max-width: $maxWidth;
+  }
+	//max-width: 100%;
+	//padding-left: 145px;
+	//padding-right: 145px;
+	//@include adaptive(1919) {
+	//	max-width: 1630px;
+	//	padding-left: 20px;
+	//	padding-right: 20px;
+	//}
 	@include adaptive(767) {
 		padding-left: 10px;
 		padding-right: 10px;
