@@ -1,24 +1,20 @@
-const gulp        = require('gulp'),
-  plumber         = require('gulp-plumber'),
-  mainBowerFiles  = require('main-bower-files'),
-  concat          = require('gulp-concat'),
-  order           = require("gulp-order");
+'use strict';
 
+const { src, dest, task, watch, series } = require('gulp');
 
-/**
- *
- * @type {{src, dest, errorHandler}}
- */
-const configPath  = require('../config/configPath'),
-  configOption    = require('../config/configOption');
+const plumber = require('gulp-plumber'),
+  concat = require('gulp-concat'),
+  order = require("gulp-order");
+
+const configPath = require('../config/configPath'),
+  configOption = require('../config/configOption');
 
 
 /**
  * @description Gulp vendor script - concatenation of additional libraries.
  */
-gulp.task('vendorScript', function() {
-
-  let files = mainBowerFiles('**/*.js');
+task('vendorScript', function() {
+  let files = [];
 
   files.push(
     configPath.src.vendorScript + "/*.js",
@@ -27,25 +23,23 @@ gulp.task('vendorScript', function() {
     "!" + configPath.src.vendorScript + "/**/_**.js"
   );
 
-  return gulp
-    .src(files)
-      .pipe(plumber(configOption.pipeBreaking.err))
-      .pipe(order([
-        'jquery.js',
-        'popper.js',
-        '*'
-      ]))
-      .pipe(concat('vendor.js'))
-      .pipe(gulp.dest(configPath.dest.js))
+  return src(files)
+		.pipe(plumber(configOption.pipeBreaking.err))
+		.pipe(order([
+			'jquery.js',
+			'popper.js',
+			'*'
+		]))
+		.pipe(concat('vendor.js'))
+		.pipe(dest(configPath.dest.js))
 });
 
 
 /**
  * @description Gulp vendor script watch - keeps track of changes in files.
  */
-gulp.task('vendorScript:watch', function() {
-  gulp.watch(
-    configPath.src.vendorScript + '/**',
-    ['vendorScript']
-  );
+task('vendorScript:watch', (done) => {
+  watch(configPath.src.vendorScript + '/**', series('vendorScript'));
+
+  return done();
 });

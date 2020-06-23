@@ -1,57 +1,28 @@
-const gulp        = require('gulp'),
-	gulpif          = require('gulp-if'),
-	pug             = require('gulp-pug'),
-	plumber         = require('gulp-plumber'),
-	frontMatter     = require('gulp-front-matter'),
-	// emitty          = require('emitty').setup('src/pug', 'pug'),
-	changedInPlace    = require('gulp-changed-in-place'),
-	htmlmin         = require('gulp-htmlmin');
+'use strict';
 
+const { src, dest, task, watch, series } = require('gulp');
 
-/**
- *
- * @type {{src, dest, errorHandler}}
- */
-const configPath  = require('../config/configPath'),
-	configOption    = require('../config/configOption');
+const pug = require('gulp-pug'),
+	plumber = require('gulp-plumber'),
+	frontMatter = require('gulp-front-matter');
 
-
-/**
- *
- * @type {*[]}
- */
-const srcPath = configPath.src.templates + '/*.pug';
+const configPath = require('../config/configPath'),
+	configOption = require('../config/configOption');
 
 
 /**
  * @description Gulp PUG/JADE - preprocessor for creating html files.
  */
 const renderPug = () => {
-	return gulp
-		.src(srcPath)
+	return src(configPath.src.templates + '/*.pug')
 		.pipe(plumber(configOption.pipeBreaking.err))
-		// .pipe(gulpif(global.isPugWatching, emitty.stream(global.emittyChangedPugFile)))
-		// .pipe(emitty.stream(global.emittyChangedPugFile))
-		.pipe(frontMatter({
-			property: 'data'
-		}))
-		.pipe(pug({
-			pretty: true,
-			data: {
-				env : (argv.prod) ? 'production' : ""
-			},
-		}))
-		.pipe(gulpif(argv.prod, htmlmin({
-			collapseBooleanAttributes: true,
-			collapseWhitespace: true,
-			removeEmptyAttributes: true,
-			removeComments: true
-		})))
-		.pipe(changedInPlace(configOption.changed))
-		.pipe(gulp.dest(configPath.dest.html));
+		.pipe(frontMatter({property: 'data'}))
+		.pipe(pug({pretty: true}))
+		.pipe(plumber.stop())
+		.pipe(dest(configPath.dest.html));
 };
 
-gulp.task('pug', function() {
+task('pug', function() {
 	return renderPug();
 });
 
@@ -59,14 +30,12 @@ gulp.task('pug', function() {
 /**
  * @description Gulp PUG/JADE watch - keeps track of changes in files.
  */
-gulp.task('pug:watch', function() {
-	// global.isPugWatching = true;
-
-	gulp.watch([
+task('pug:watch', (done) => {
+	watch([
 		configPath.src.templates + '/**',
 		configPath.src.templates + '/**/**',
 		configPath.src.templates + '/**/**/**',
-	], ['pug']).on('all', (event, filepath) => {
-		// global.emittyChangedPugFile = filepath;
-	});
+	], series('pug')).on('all', (event, filepath) => {});
+
+	return done();
 });

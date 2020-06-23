@@ -1,17 +1,13 @@
 "use strict";
 
 /*
-*
-* ============================
 * ============================
 *
 * Include lib:
-*
-* - webFontLoader.js;
 * - preventBehavior.js;
-* - svg4everybody.js;
+* - swiper.js;
+* - hamburger;
 *
-* ============================
 * ============================
 * */
 

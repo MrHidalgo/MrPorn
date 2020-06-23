@@ -1,10 +1,7 @@
-const gulp        = require('gulp');
+'use strict';
 
+const { src, dest, task, watch, series } = require('gulp');
 
-/**
- *
- * @type {{src, dest, errorHandler}}
- */
 const configPath  = require('../config/configPath');
 
 
@@ -12,19 +9,17 @@ const configPath  = require('../config/configPath');
 /**
  * @description Gulp fonts - copy fonts to the dest folder.
  */
-gulp.task('fonts', function() {
-  return gulp
-    .src(configPath.src.fonts + '/**.*')
-      .pipe(gulp.dest(configPath.dest.fonts));
+task('fonts', (done) => {
+  return src(configPath.src.fonts + '/**.*')
+		.pipe(dest(configPath.dest.fonts));
 });
 
 
 /**
  * @description Gulp fonts watch - keeps track of changes in files.
  */
-gulp.task('fonts:watch', function() {
-  gulp.watch(
-    configPath.src.fonts + '/**',
-    ['fonts']
-  );
+task('fonts:watch', (done) => {
+  watch(configPath.src.fonts + '/**', series('fonts'));
+
+  return done();
 });

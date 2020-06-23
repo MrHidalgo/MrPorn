@@ -1,15 +1,13 @@
-const gulp  = require('gulp'),
-  runSequence = require('run-sequence');
+'use strict';
 
+const { task, series } = require('gulp');
 
-/**
- * @description Gulp default task - run build => watch => server.
- */
-gulp.task("default", function(callback) {
-  runSequence(
-    ['build'],
-    'watch',
-    'server',
-    callback
-  )
-});
+const _default = (done) => {
+	return series(
+		'build',
+		'watch',
+		'server'
+	)(done);
+};
+
+task('default', _default);

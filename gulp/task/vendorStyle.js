@@ -1,24 +1,20 @@
-const gulp        = require('gulp'),
-  plumber         = require('gulp-plumber'),
-  mainBowerFiles  = require('main-bower-files'),
-  concat          = require('gulp-concat'),
-  order           = require("gulp-order");
+'use strict';
 
+const { src, dest, task, watch, series } = require('gulp');
 
-/**
- *
- * @type {{src, dest, errorHandler}}
- */
-const configPath  = require('../config/configPath'),
-  configOption    = require('../config/configOption');
+const plumber = require('gulp-plumber'),
+  concat = require('gulp-concat'),
+  order = require("gulp-order");
+
+const configPath = require('../config/configPath'),
+  configOption = require('../config/configOption');
 
 
 /**
  * @description Gulp vendor style - concatenation of additional libraries.
  */
-gulp.task('vendorStyle', function() {
-
-  let files = mainBowerFiles('**/*.css');
+task('vendorStyle', (done) => {
+  let files = [];
 
   files.push(
     configPath.src.vendorStyle + "/*.css",
@@ -26,25 +22,22 @@ gulp.task('vendorStyle', function() {
     "!" + configPath.src.vendorStyle + "/**/_**.css"
   );
 
-
-  return gulp
-    .src(files)
-      .pipe(plumber(configOption.pipeBreaking.err))
-      .pipe(order([
-          'normalize.css',
-          '*'
-      ]))
-      .pipe(concat('vendor.css'))
-      .pipe(gulp.dest(configPath.dest.css))
+  return src(files)
+		.pipe(plumber(configOption.pipeBreaking.err))
+		.pipe(order([
+				'normalize.css',
+				'*'
+		]))
+		.pipe(concat('vendor.css'))
+		.pipe(dest(configPath.dest.css))
 });
 
 
 /**
  * @description Gulp vendor style watch - keeps track of changes in files.
  */
-gulp.task('vendorStyle:watch', function() {
-  gulp.watch(
-    configPath.src.vendorStyle + '/**',
-    ['vendorStyle', 'vendorFont']
-  );
+task('vendorStyle:watch', (done) => {
+  watch(configPath.src.vendorStyle + '/**', series('vendorStyle'));
+
+  return done();
 });

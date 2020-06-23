@@ -1,13 +1,10 @@
-const gulp    = require('gulp'),
-  runSequence = require('run-sequence');
+'use strict';
 
+const { task, series, parallel } = require('gulp');
 
-/**
- * @description Gulp build - build source files.
- */
-gulp.task("build", function(callback) {
-  runSequence(
-    'clean',
+const build = (done) => {
+	return parallel(
+		'clean',
     'scss',
     'pug',
     'js',
@@ -15,11 +12,10 @@ gulp.task("build", function(callback) {
 		'iconfont',
     'spritePNG',
     'spriteSVG',
-    'copy',
     'vendorScript',
     'vendorStyle',
-    'vendorFont',
     'list-pages',
-    callback
-  );
-});
+	)(done);
+};
+
+task('build', build);

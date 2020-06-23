@@ -1,3 +1,12 @@
+/*
+*
+* Include :
+*
+* - swiper.min.js;
+* - swiper.min.js.map;
+*
+* */
+
 /**
  * Swiper 5.3.7
  * Most modern mobile touch slider and framework with hardware accelerated transitions
