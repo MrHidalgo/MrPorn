@@ -121,6 +121,7 @@ mixin listBox(sliderID, name)
 					i.icon-font.icon-arrow-angle
 
 		.list__box-line
+			u(list-line-ind-js)
 			span(list-line-js)
 
 		.list__box-body
@@ -166,13 +167,13 @@ mixin listBox(sliderID, name)
 								.list__specification-right
 									div(video-parent-js)
 										if(idx === 0 || idx === 4 || idx === 8 || idx === 12)
-											//video(preload="none" poster='img/img-poster-video.jpg' video-js)
-											video(preload="none" video-js)
-												//source(src="img/video1.mp4" type="video/mp4")
+											//video(preload="none" video-js)
+											video(preload="none" poster='img/img-poster-video.jpg' video-js)
+												source(src="img/video1.mp4" type="video/mp4")
 										else if (idx === 2 || idx === 6 || idx === 10)
-											video(preload="none" video-js)
-											//video(preload="none" poster='img/img-poster-video.jpg' video-js)
-												//source(src="img/video2.mp4" type="video/mp4")
+											//video(preload="none" video-js)
+											video(preload="none" poster='img/img-poster-video.jpg' video-js)
+												source(src="img/video2.mp4" type="video/mp4")
 
 										a.list__specification-play(href="#" video-toggle-js)
 											i.icon-font.icon-play-button(video-play-js)

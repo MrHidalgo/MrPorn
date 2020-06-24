@@ -29,7 +29,12 @@ const initSwiper = () => {
 			},
 			on: {
 				init: function () {
-					document.querySelector(swiperName).closest('.list__box-wrapper').style.opacity = '1'
+					const swiperSlide = document.querySelectorAll('.swiper-slide');
+
+					document.querySelector(swiperName).closest('.list__box-wrapper').style.opacity = '1';
+					document.querySelector(swiperName).closest('.list__box-wrapper').classList.add('is-visible');
+
+					swiperSlide[swiperSlide.length - 1].classList.add('is-last');
 				},
 			},
 		});
