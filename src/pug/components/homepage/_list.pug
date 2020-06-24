@@ -38,8 +38,8 @@ mixin listSliderBox(idVal, bgVal, logoVal)
 		button.list__box-more(type='button')
 			i.icon-font.icon-arrow-angle
 
-mixin listSliderBoxMore(idVal, bgVal, logoVal)
-	a.list__box(list-box-js href="#" data-id!= idVal style='background-image: url("img/' + bgVal + '")')
+mixin listSliderBoxMore(idVal, count, bgVal, logoVal)
+	a.list__box(list-box-more-js href="#" data-id!= idVal data-count!= count style='background-image: url("img/' + bgVal + '")')
 		.list__box-overlay
 		.list__box-border
 
@@ -89,17 +89,17 @@ mixin listSpecificationHeader()
 		a.list__specification-close(href="#")
 			i.icon-font.icon-close
 
-mixin listSpecificationMoreLike()
+mixin listSpecificationMoreLike(val)
 	.list__specification-more
 		div
 			p More Like This
 		div
-			+listSliderBoxMore(val, 'img-view-bruzzers.png', 'img-brazzers-logo.svg')
-			+listSliderBoxMore(val, 'img-realitykings-view.png', 'img-reliaty-kings-logo.png')
-			+listSliderBoxMore(val, 'img-xvideo-red-view.png', 'img-xvideo-red-logo.png')
-			+listSliderBoxMore(val, 'img-view-pornhub-premium.png', 'img-pornhub-premium-logo.png')
-			+listSliderBoxMore(val, 'img-bang-bros-view.png', 'img-bangbros-logo.png')
-			+listSliderBoxMore(val, 'img-mofos-view.png', 'img-mofos-logo.png')
+			+listSliderBoxMore(val, 1, 'img-view-bruzzers.png', 'img-brazzers-logo.svg')
+			+listSliderBoxMore(val, 2, 'img-realitykings-view.png', 'img-reliaty-kings-logo.png')
+			+listSliderBoxMore(val, 3, 'img-xvideo-red-view.png', 'img-xvideo-red-logo.png')
+			+listSliderBoxMore(val, 4, 'img-view-pornhub-premium.png', 'img-pornhub-premium-logo.png')
+			+listSliderBoxMore(val, 5, 'img-bang-bros-view.png', 'img-bangbros-logo.png')
+			+listSliderBoxMore(val, 6, 'img-mofos-view.png', 'img-mofos-logo.png')
 
 mixin listBox(sliderID, name)
 	.list__box-wrapper(list-parent-js data-name!= name)
@@ -166,11 +166,13 @@ mixin listBox(sliderID, name)
 								.list__specification-right
 									div(video-parent-js)
 										if(idx === 0 || idx === 4 || idx === 8 || idx === 12)
-											video(poster='img/img-poster-video.jpg' video-js)
-												source(src="img/video1.mp4" type="video/mp4")
+											//video(preload="none" poster='img/img-poster-video.jpg' video-js)
+											video(preload="none" video-js)
+												//source(src="img/video1.mp4" type="video/mp4")
 										else if (idx === 2 || idx === 6 || idx === 10)
-											video(poster='img/img-poster-video.jpg' video-js)
-												source(src="img/video2.mp4" type="video/mp4")
+											video(preload="none" video-js)
+											//video(preload="none" poster='img/img-poster-video.jpg' video-js)
+												//source(src="img/video2.mp4" type="video/mp4")
 
 										a.list__specification-play(href="#" video-toggle-js)
 											i.icon-font.icon-play-button(video-play-js)
@@ -178,7 +180,7 @@ mixin listBox(sliderID, name)
 										a.list__specification-pause(href="#" video-pause-js)
 											i.icon-font.icon-pause
 
-								+listSpecificationMoreLike()
+								+listSpecificationMoreLike(val)
 
 					else
 						.list__specification.list__specification--banner(data-id!= val)
@@ -193,7 +195,7 @@ mixin listBox(sliderID, name)
 									div
 										img(src="img/img-laptop.png" srcset="img/img-laptop@2x.png 2x" alt="")
 
-								+listSpecificationMoreLike()
+								+listSpecificationMoreLike(val)
 
 
 section#list.list

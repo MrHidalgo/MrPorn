@@ -720,6 +720,10 @@
 			@include adaptive(767) {
 				padding: 15px;
 			}
+
+			.is-open & {
+				z-index: auto;
+			}
 		}
 	}
 }
