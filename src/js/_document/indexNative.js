@@ -119,6 +119,11 @@ if (!Element.prototype.closest) {
 					const el = ev.currentTarget,
 						container = document.getElementById(el.dataset.container);
 
+					if(document.querySelector('.sort__collapse-body.is-open')) {
+						document.querySelector('.sort__collapse-toggle.is-active').classList.remove('is-active');
+						document.querySelector('.sort__collapse-body.is-open').classList.remove('is-open');
+					}
+
 					el.classList.toggle('is-active');
 					container.classList.toggle('is-open');
 				}, false);
