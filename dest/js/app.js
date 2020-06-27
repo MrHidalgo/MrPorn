@@ -17,15 +17,20 @@
  * @description Init hamburger logic with animated
  */
 var initHamburger = function initHamburger() {
-	renderMobileMenu();
 
 	var btnHamburger = document.querySelector("[hamburger-js]"),
 	    hideScrollContainer = document.querySelectorAll("html, body"),
 	    mobileContainer = document.querySelector("[mobile-block-js]");
 
+	var mobileMenuTop = document.querySelector(".pre-header__mobile-top");
+
 	if (btnHamburger) {
 		btnHamburger.addEventListener("click", function (ev) {
 			var elem = ev.currentTarget;
+
+			if (!mobileMenuTop) {
+				renderMobileMenu();
+			}
 
 			elem.classList.toggle("is-active");
 			mobileContainer.classList.toggle("is-open");
@@ -75,6 +80,29 @@ var renderMobileMenu = function renderMobileMenu() {
 	mobileContainer.innerHTML = mobileNavHtml;
 };
 
+var renderFavourites = function renderFavourites() {
+	if (isMobileDevice) {
+		return;
+	}
+
+	var favouritesDropDown = document.querySelector('[view-favorites-drop-js]');
+
+	var favouriteData = [{ 'id': 1, 'name': 'Pornhub Premium', 'link': '#', 'image': 'img/img-black-porn-sites.png', 'image_2x': 'img/img-black-porn-sites@2x.png 2x' }, { 'id': 2, 'name': 'Pornhub Premium', 'link': '#', 'image': 'img/img-black-porn-sites.png', 'image_2x': 'img/img-black-porn-sites@2x.png 2x' }, { 'id': 3, 'name': 'Pornhub Premium', 'link': '#', 'image': 'img/img-black-porn-sites.png', 'image_2x': 'img/img-black-porn-sites@2x.png 2x' }, { 'id': 4, 'name': 'Pornhub Premium', 'link': '#', 'image': 'img/img-black-porn-sites.png', 'image_2x': 'img/img-black-porn-sites@2x.png 2x' }];
+
+	var favouritesHtml = '';
+	favouriteData.map(function (fav, index) {
+		favouritesHtml += '<a class="header__view-link" href="' + fav.link + '"><div><span>' + index + '.</span></div><div><img src="' + fav.image + '" srcset="' + fav.image_2x + '" alt=""><p>' + fav.name + '</p></div><div><button type="button"><i class="icon-font icon-delete"></i></button><button type="button"><i class="icon-font icon-search"></i></button></div></a>';
+	});
+	favouritesDropDown.innerHTML = favouritesHtml;
+};
+
+var renderSorting = function renderSorting() {
+	var sortingHtml = '<a class="sort__drop-link" href="#">A</a><a class="sort__drop-link" href="#">B</a><a class="sort__drop-link" href="#">C</a><a class="sort__drop-link" href="#">D</a><a class="sort__drop-link" href="#">E</a><a class="sort__drop-link" href="#">F</a><a class="sort__drop-link" href="#">G</a><a class="sort__drop-link" href="#">H</a><a class="sort__drop-link" href="#">I</a><a class="sort__drop-link" href="#">J</a><a class="sort__drop-link" href="#">K</a><a class="sort__drop-link" href="#">L</a><a class="sort__drop-link" href="#">M</a><a class="sort__drop-link" href="#">N</a><a class="sort__drop-link" href="#">O</a><a class="sort__drop-link" href="#">P</a><a class="sort__drop-link" href="#">Q</a><a class="sort__drop-link" href="#">R</a><a class="sort__drop-link" href="#">S</a><a class="sort__drop-link" href="#">T</a><a class="sort__drop-link" href="#">U</a><a class="sort__drop-link" href="#">V</a><a class="sort__drop-link" href="#">W</a><a class="sort__drop-link" href="#">X</a><a class="sort__drop-link" href="#">Y</a><a class="sort__drop-link" href="#">Z</a>' + '<div class="sort__drop-inner">' + '<div class="sort__collapse"><a class="sort__collapse-toggle" href="#" collapse-toggle-js data-container="sort-collapse-1">' + '<div><span>#1</span></div>' + '<div><img src="img/img-black-porn-sites.png" srcset="img/img-black-porn-sites@2x.png 2x" alt="">' + '<p><span>B</span>lack Porn Sites</p>' + '</div>' + '<div><i class="icon-font icon-arrow-angle"></i></div></a>' + '<div class="sort__collapse-body" id="sort-collapse-1" collapse-body-js>' + '<button type="button"><span>Free</span></button><img src="img/img-badge-premium.png" srcset="img/img-badge-premium@2x.png 2x" alt="">' + '</div>' + '</div>' + '<div class="sort__collapse"><a class="sort__collapse-toggle" href="#" collapse-toggle-js data-container="sort-collapse-2">' + '<div><span>#2</span></div>' + '<div><img src="img/img-blog.png" srcset="img/img-blog@2x.png 2x" alt="">' + '<p>Porn <span>B</span>logs</p>' + '</div>' + '<div><i class="icon-font icon-arrow-angle"></i></div></a>' + '<div class="sort__collapse-body" id="sort-collapse-2" collapse-body-js>' + '<button type="button"><span>Free</span></button><img src="img/img-badge-premium.png" srcset="img/img-badge-premium@2x.png 2x" alt="">' + '</div>' + '</div>' + '<div class="sort__collapse"><a class="sort__collapse-toggle" href="#" collapse-toggle-js data-container="sort-collapse-3">' + '<div><span>#3</span></div>' + '<div><img src="img/img-best-webcam-girls.png" srcset="img/img-best-webcam-girls@2x.png 2x" alt="">' + '<p><span>B</span>est Webcam Girls</p>' + '</div>' + '<div><i class="icon-font icon-arrow-angle"></i></div></a>' + '<div class="sort__collapse-body" id="sort-collapse-3" collapse-body-js>' + '<button type="button"><span>Free</span></button><img src="img/img-badge-premium.png" srcset="img/img-badge-premium@2x.png 2x" alt="">' + '</div>' + '</div>' + '<div class="sort__collapse"><a class="sort__collapse-toggle" href="#" collapse-toggle-js data-container="sort-collapse-4">' + '<div><span>#4</span></div>' + '<div><img src="img/img-best-adult-ad-networks.png" srcset="img/img-best-adult-ad-networks@2x.png 2x" alt="">' + '<p><span>B</span>est Adult Ad Networks</p>' + '</div>' + '<div><i class="icon-font icon-arrow-angle"></i></div></a>' + '<div class="sort__collapse-body" id="sort-collapse-4" collapse-body-js>' + '<button type="button"><span>Free</span></button><img src="img/img-badge-premium.png" srcset="img/img-badge-premium@2x.png 2x" alt="">' + '</div>' + '</div>' + '</div>';
+
+	var sortcontainer = document.querySelector('[sort-node-js]');
+	sortcontainer.innerHTML = sortingHtml;
+};
+
 /**
  * @name initPreventBehavior
  *
@@ -92,6 +120,13 @@ var initPreventBehavior = function initPreventBehavior() {
 			}
 		});
 	});
+};
+
+var renderSearch = function renderSearch() {
+	var searchHtml = '<div class="category__drop-head">\n' + '                        <div>\n' + '                          <p class="category__title">Top Results (1257)</p>\n' + '                        </div>\n' + '                        <div>\n' + '                          <div class="category__btn-wrapper"><a class="category__btn category__btn--1" href="#"><img src="img/img-black-porn-sites.png" srcset="img/img-black-porn-sites@2x.png 2x" alt=""><span>Black Porn Sites</span></a><a class="category__btn category__btn--2" href="#"><img src="img/img-blog.png" srcset="img/img-blog@2x.png 2x" alt=""><span>Porn Blogs</span></a><a class="category__btn category__btn--3" href="#"><img src="img/img-black-porn-sites.png" srcset="img/img-black-porn-sites@2x.png 2x" alt=""><span>Black Porn Sites</span></a><a class="category__btn category__btn--4" href="#"><img src="img/img-blog.png" srcset="img/img-blog@2x.png 2x" alt=""><span>Porn Blogs</span></a><a class="category__btn category__btn--5" href="#"><img src="img/img-blog.png" srcset="img/img-blog@2x.png 2x" alt=""><span>Amateur Porn Sites</span></a></div>\n' + '                        </div>\n' + '                      </div>\n' + '                      <div class="category__drop-body">\n' + '                        <div class="category__list-wrapper">\n' + '                          <div><a class="category__list" href="#">\n' + '                              <div class="category__list-head">\n' + '                                <div><img src="img/img-pornhub-icon.png" srcset="img/img-pornhub-icon@2x.png 2x" alt=""></div>\n' + '                                <div>\n' + '                                  <p>Pornhub Premium</p>\n' + '                                </div>\n' + '                              </div>\n' + '                              <div class="category__list-body">\n' + '                                <div><img src="img/img-view-pornhub-premium.png" alt=""></div>\n' + '                                <div>\n' + '                                  <p>Premium Porn</p>\n' + '                                </div>\n' + '                              </div></a></div>\n' + '                          <div><a class="category__list" href="#">\n' + '                              <div class="category__list-head">\n' + '                                <div><img src="img/img-brazzers-icon.png" srcset="img/img-brazzers-icon@2x.png 2x" alt=""></div>\n' + '                                <div>\n' + '                                  <p>Brazzers</p>\n' + '                                </div>\n' + '                              </div>\n' + '                              <div class="category__list-body">\n' + '                                <div><img src="img/img-view-bruzzers.png" alt=""></div>\n' + '                                <div>\n' + '                                  <p>Premium Porn</p>\n' + '                                </div>\n' + '                              </div></a></div>\n' + '                          <div><a class="category__list" href="#">\n' + '                              <div class="category__list-head">\n' + '                                <div><img src="img/img-pornhub-icon.png" srcset="img/img-pornhub-icon@2x.png 2x" alt=""></div>\n' + '                                <div>\n' + '                                  <p>Pornhub Premium</p>\n' + '                                </div>\n' + '                              </div>\n' + '                              <div class="category__list-body">\n' + '                                <div><img src="img/img-view-pornhub-premium.png" alt=""></div>\n' + '                                <div>\n' + '                                  <p>Premium Porn</p>\n' + '                                </div>\n' + '                              </div></a></div>\n' + '                          <div><a class="category__list" href="#">\n' + '                              <div class="category__list-head">\n' + '                                <div><img src="img/img-pornhub-icon.png" srcset="img/img-pornhub-icon@2x.png 2x" alt=""></div>\n' + '                                <div>\n' + '                                  <p>Pornhub Premium</p>\n' + '                                </div>\n' + '                              </div>\n' + '                              <div class="category__list-body">\n' + '                                <div><img src="img/img-view-pornhub-premium.png" alt=""></div>\n' + '                                <div>\n' + '                                  <p>Premium Porn</p>\n' + '                                </div>\n' + '                              </div></a></div>\n' + '                          <div><a class="category__list" href="#">\n' + '                              <div class="category__list-head">\n' + '                                <div><img src="img/img-brazzers-icon.png" srcset="img/img-brazzers-icon@2x.png 2x" alt=""></div>\n' + '                                <div>\n' + '                                  <p>Brazzers</p>\n' + '                                </div>\n' + '                              </div>\n' + '                              <div class="category__list-body">\n' + '                                <div><img src="img/img-view-bruzzers.png" alt=""></div>\n' + '                                <div>\n' + '                                  <p>Premium Porn</p>\n' + '                                </div>\n' + '                              </div></a></div>\n' + '                          <div><a class="category__list" href="#">\n' + '                              <div class="category__list-head">\n' + '                                <div><img src="img/img-pornhub-icon.png" srcset="img/img-pornhub-icon@2x.png 2x" alt=""></div>\n' + '                                <div>\n' + '                                  <p>Pornhub Premium</p>\n' + '                                </div>\n' + '                              </div>\n' + '                              <div class="category__list-body">\n' + '                                <div><img src="img/img-view-pornhub-premium.png" alt=""></div>\n' + '                                <div>\n' + '                                  <p>Premium Porn</p>\n' + '                                </div>\n' + '                              </div></a></div>\n' + '                          <div><a class="category__list" href="#">\n' + '                              <div class="category__list-head">\n' + '                                <div class="gf gf--pink"><span>GF</span></div>\n' + '                                <div>\n' + '                                  <p>WatchMyGF</p>\n' + '                                </div>\n' + '                              </div>\n' + '                              <div class="category__list-body">\n' + '                                <div><img src="img/img-watchmygf.jpg" alt=""></div>\n' + '                                <div>\n' + '                                  <p>Premium Porn</p>\n' + '                                </div>\n' + '                              </div></a></div>\n' + '                          <div><a class="category__list" href="#">\n' + '                              <div class="category__list-head">\n' + '                                <div class="gf gf--green"><span>GF</span></div>\n' + '                                <div>\n' + '                                  <p>GF Sex</p>\n' + '                                </div>\n' + '                              </div>\n' + '                              <div class="category__list-body">\n' + '                                <div><img src="img/img-gfsex.jpg" alt=""></div>\n' + '                                <div>\n' + '                                  <p>Premium Porn</p>\n' + '                                </div>\n' + '                              </div></a></div>\n' + '                          <div><a class="category__list" href="#">\n' + '                              <div class="category__list-head">\n' + '                                <div class="gf gf--pink"><span>GF</span></div>\n' + '                                <div>\n' + '                                  <p>WatchMyGF</p>\n' + '                                </div>\n' + '                              </div>\n' + '                              <div class="category__list-body">\n' + '                                <div><img src="img/img-watchmygf.jpg" alt=""></div>\n' + '                                <div>\n' + '                                  <p>Premium Porn</p>\n' + '                                </div>\n' + '                              </div></a></div>\n' + '                          <div><a class="category__list" href="#">\n' + '                              <div class="category__list-head">\n' + '                                <div class="gf gf--pink"><span>GF</span></div>\n' + '                                <div>\n' + '                                  <p>WatchMyGF</p>\n' + '                                </div>\n' + '                              </div>\n' + '                              <div class="category__list-body">\n' + '                                <div><img src="img/img-watchmygf.jpg" alt=""></div>\n' + '                                <div>\n' + '                                  <p>Premium Porn</p>\n' + '                                </div>\n' + '                              </div></a></div>\n' + '                          <div><a class="category__list" href="#">\n' + '                              <div class="category__list-head">\n' + '                                <div class="gf gf--green"><span>GF</span></div>\n' + '                                <div>\n' + '                                  <p>GF Sex</p>\n' + '                                </div>\n' + '                              </div>\n' + '                              <div class="category__list-body">\n' + '                                <div><img src="img/img-gfsex.jpg" alt=""></div>\n' + '                                <div>\n' + '                                  <p>Premium Porn</p>\n' + '                                </div>\n' + '                              </div></a></div>\n' + '                          <div><a class="category__list" href="#">\n' + '                              <div class="category__list-head">\n' + '                                <div class="gf gf--pink"><span>GF</span></div>\n' + '                                <div>\n' + '                                  <p>WatchMyGF</p>\n' + '                                </div>\n' + '                              </div>\n' + '                              <div class="category__list-body">\n' + '                                <div><img src="img/img-watchmygf.jpg" alt=""></div>\n' + '                                <div>\n' + '                                  <p>Premium Porn</p>\n' + '                                </div>\n' + '                              </div></a></div>\n' + '                        </div>\n' + '                      </div>\n' + '                      <div class="category__drop-footer"><a class="category__load" href="#">Load More</a>\n' + '                        <div class="category__pagination"><a class="category__pagination-btn is-active" href="#">1</a><a class="category__pagination-btn" href="#">2</a><a class="category__pagination-btn" href="#">3</a><a class="category__pagination-btn" href="#">4</a><a class="category__pagination-arrow" href="#"><i class="icon-font icon-arrow-angle"></i></a></div>\n' + '                      </div>';
+
+	var searchDropdownContainer = document.querySelector('[search-drop-js]');
+	searchDropdownContainer.innerHTML = searchHtml;
 };
 
 /**
@@ -150,6 +185,8 @@ var initSwiper = function initSwiper() {
  * ===================================
  */
 
+var isMobileDevice = false;
+
 if (!Element.prototype.matches) {
 	Element.prototype.matches = Element.prototype.msMatchesSelector || Element.prototype.webkitMatchesSelector;
 }
@@ -188,7 +225,10 @@ if (!Element.prototype.closest) {
 
 				// SORT
 				document.querySelector('[sort-node-js]').classList.remove('is-open');
-				document.querySelector('.sort__drop-inner').classList.remove('is-open');
+
+				if (document.querySelector('.sort__drop-inner')) {
+					document.querySelector('.sort__drop-inner').classList.remove('is-open');
+				}
 
 				for (var i = 0; i < document.querySelectorAll('.sort__drop-link').length; i++) {
 					document.querySelectorAll('.sort__drop-link')[i].classList.remove('is-active');
@@ -223,6 +263,13 @@ if (!Element.prototype.closest) {
 			    nodeSort = document.querySelector('[sort-node-js]');
 
 			toggleSort.addEventListener('click', function (ev) {
+				if (nodeSort.innerHTML.trim() == '') {
+					renderSorting();
+
+					sortDropInner();
+					sortCollapse();
+				}
+
 				nodeSort.classList.toggle('is-open');
 			}, false);
 		};
@@ -274,8 +321,6 @@ if (!Element.prototype.closest) {
 		};
 
 		sortToggle();
-		sortDropInner();
-		sortCollapse();
 	};
 
 	var search = function search() {
@@ -685,8 +730,10 @@ if (!Element.prototype.closest) {
 			})(navigator.userAgent || navigator.vendor || window.opera);
 
 			if (check) {
+				isMobileDevice = true;
 				document.getElementsByTagName('body')[0].classList.add('is-mobile');
 			} else {
+				isMobileDevice = false;
 				document.getElementsByTagName('body')[0].classList.remove('is-mobile');
 			}
 		}
@@ -773,6 +820,9 @@ if (!Element.prototype.closest) {
 		// callback
 		detectDevice();
 		bodyClick();
+
+		renderFavourites();
+
 		viewFavoritesToggle();
 		sortCB();
 		search();

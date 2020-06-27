@@ -6,15 +6,20 @@
  * @description Init hamburger logic with animated
  */
 const initHamburger = () => {
-	renderMobileMenu();
 
   const btnHamburger = document.querySelector("[hamburger-js]"),
     hideScrollContainer = document.querySelectorAll("html, body"),
     mobileContainer = document.querySelector("[mobile-block-js]");
 
+  const mobileMenuTop = document.querySelector(".pre-header__mobile-top");
+
 	if(btnHamburger) {
 		btnHamburger.addEventListener("click", (ev) => {
 			const elem = ev.currentTarget;
+
+			if(!mobileMenuTop){
+				renderMobileMenu();
+			}
 
 			elem.classList.toggle("is-active");
 			mobileContainer.classList.toggle("is-open");
@@ -133,3 +138,4 @@ const renderMobileMenu = () => {
 
 	mobileContainer.innerHTML = mobileNavHtml;
 }
+
