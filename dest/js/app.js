@@ -205,9 +205,9 @@ var initSwiper = function initSwiper() {
 				},
 				slideChange: function (e) {
 					let swipeWrapper = categorySwiper.$wrapperEl[0];
+					let swiperActiveIndex = categorySwiper.activeIndex;
 
-					console.log('changing slide');
-					console.log(swipeWrapper.dataset.category);
+					console.log('changing slide -'+swipeWrapper.dataset.category+' - '+categorySwiper.slides.length);
 				}
 			}
 		});
