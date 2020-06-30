@@ -175,7 +175,7 @@ var initSwiper = function initSwiper() {
 	    slidersNode = document.querySelectorAll('.list__box-wrapper');
 
 	function swiperCB(swiperName, sliderArrow) {
-		new Swiper(swiperName, {
+		let categorySwiper = new Swiper(swiperName, {
 			loop: false,
 			grabCursor: false,
 			effect: 'slide',
@@ -202,6 +202,12 @@ var initSwiper = function initSwiper() {
 					document.querySelector(swiperName).closest('.list__box-wrapper').classList.add('is-visible');
 
 					swiperSlide[swiperSlide.length - 1].classList.add('is-last');
+				},
+				slideChange: function (e) {
+					let swipeWrapper = categorySwiper.$wrapperEl[0];
+
+					console.log('changing slide');
+					console.log(swipeWrapper.dataset.category);
 				}
 			}
 		});
