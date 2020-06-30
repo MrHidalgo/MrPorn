@@ -47,6 +47,13 @@ var loadHomeData = function loadHomeData() {
 	});
 };
 
+var renderHompageSiteSlide = function renderHompageSiteSlide(category, index) {
+	var siteItem = homeData[category].sites[index];
+
+	var slideHtml = '<div class="swiper-slide">' + '<a class="list__box" list-box-js href="' + siteItem.link + '" data-id="' + siteItem.id + '" style="background-image: url(http://mpg.c2136.cloudnet.cloud/' + siteItem.thumb + ')">' + '<div class="list__box-overlay"></div>' + '<div class="list__box-border"></div><img class="list__box-logo" src="img/img-brazzers-logo.svg" alt="">' + '<div class="list__box-details">' + '<div class="list__box-details-left">' + '<button class="list__box-external" type="button"><i class="icon-font icon-out"></i></button>' + '<p class="list__box-details-title">' + siteItem.name + '</p>' + '<div class="list__rating"><span>User Rating:</span>' + '<div><i class="icon-font icon-star"></i><i class="icon-font icon-star"></i><i class="icon-font icon-star"></i><i class="icon-font icon-star"></i><i class="icon-font icon-star-fill"></i></div>' + '</div>' + '</div>' + '<div class="list__box-details-right">' + '<button class="list__box-like" type="button" data-id="1" like-toggle-js><i class="icon-font icon-like"></i></button>' + '<button class="list__box-dislike" type="button" data-id="1" dislike-toggle-js><i class="icon-font icon-like"></i></button>' + '<div class="c-popper">' + '<button class="list__box-favorites" type="button" data-id="1" favorites-toggle-js><i class="icon-font icon-star-fill"></i><i class="icon-font icon-star"></i></button>' + '<div class="c-poppertext">' + '<u>Add To Favourites</u>' + '<u>Remove From Favourites</u>' + '</div>' + '</div>' + '</div>' + '</div>' + '<button class="list__box-more" type="button"><i class="icon-font icon-arrow-angle"></i></button>' + '</a>' + '</div>';
+	return slideHtml;
+};
+
 /**
  * @name initHamburger
  *
@@ -175,7 +182,7 @@ var initSwiper = function initSwiper() {
 	    slidersNode = document.querySelectorAll('.list__box-wrapper');
 
 	function swiperCB(swiperName, sliderArrow) {
-		let categorySwiper = new Swiper(swiperName, {
+		var categorySwiper = new Swiper(swiperName, {
 			loop: false,
 			grabCursor: false,
 			effect: 'slide',
@@ -188,8 +195,6 @@ var initSwiper = function initSwiper() {
 			slidesPerView: 'auto',
 			spaceBetween: 0,
 			slidesPerGroup: 3,
-			watchSlidesVisibility:1,
-			lazyLoading: true,
 			navigation: {
 				nextEl: sliderArrow + ' .list__arrow--next',
 				prevEl: sliderArrow + ' .list__arrow--prev'
@@ -203,11 +208,10 @@ var initSwiper = function initSwiper() {
 
 					swiperSlide[swiperSlide.length - 1].classList.add('is-last');
 				},
-				slideChange: function (e) {
-					let swipeWrapper = categorySwiper.$wrapperEl[0];
-					let swiperActiveIndex = categorySwiper.activeIndex;
+				slideChange: function slideChange(e) {
+					var swipeWrapper = categorySwiper.$wrapperEl[0];
 
-					console.log('changing slide -'+swipeWrapper.dataset.category+' - '+categorySwiper.slides.length);
+					console.log('changing slide -' + swipeWrapper.dataset.category + ' - ' + categorySwiper.slides.count);
 				}
 			}
 		});
@@ -224,10 +228,7 @@ var initSwiper = function initSwiper() {
 	}
 
 	var mySwiper = document.querySelector('.swiper-container[data-category="18"]').swiper;
-	mySwiper.appendSlide([
-		'<div class="swiper-slide">Slide 10"</div>',
-		'<div class="swiper-slide">Slide 11"</div>'
-	]);
+	mySwiper.appendSlide(['<div class="swiper-slide">Slide 10"</div>', '<div class="swiper-slide">Slide 11"</div>']);
 };
 
 /**

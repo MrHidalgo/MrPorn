@@ -10,7 +10,7 @@ const initSwiper = () => {
 		slidersNode = document.querySelectorAll('.list__box-wrapper');
 
 	function swiperCB(swiperName, sliderArrow) {
-		new Swiper(swiperName, {
+		let categorySwiper = new Swiper(swiperName, {
 			loop: false,
 			grabCursor: false,
 			effect: 'slide',
@@ -36,6 +36,11 @@ const initSwiper = () => {
 
 					swiperSlide[swiperSlide.length - 1].classList.add('is-last');
 				},
+				slideChange: function (e) {
+					let swipeWrapper = categorySwiper.$wrapperEl[0];
+
+					console.log('changing slide -'+swipeWrapper.dataset.category+' - '+categorySwiper.slides.count);
+				}
 			},
 		});
 	}
@@ -52,4 +57,10 @@ const initSwiper = () => {
 			`.list__box-wrapper[data-name='${sliderWrapper}']`
 		);
 	}
+
+	var mySwiper = document.querySelector('.swiper-container[data-category="18"]').swiper;
+	mySwiper.appendSlide([
+		'<div class="swiper-slide">Slide 10"</div>',
+		'<div class="swiper-slide">Slide 11"</div>'
+	]);
 };
