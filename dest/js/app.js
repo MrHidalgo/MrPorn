@@ -1,4 +1,4 @@
-"use strict";
+'use strict';
 
 /*
 * ============================
@@ -10,6 +10,42 @@
 *
 * ============================
 * */
+
+var initHomeLazyLoad = function initHomeLazyLoad() {
+	var listElm = document.querySelector('#infinite-list');
+
+	var nextItem = 1;
+	var loadMore = function loadMore() {
+		for (var i = 0; i < 20; i++) {
+			var item = document.createElement('li');
+			item.innerText = 'Item ' + nextItem++;
+			listElm.appendChild(item);
+		}
+	};
+
+	// Detect when scrolled to bottom.
+	listElm.addEventListener('scroll', function () {
+		if (listElm.scrollTop + listElm.clientHeight >= listElm.scrollHeight) {
+			loadMore();
+		}
+	});
+
+	// Initially load some items.
+	loadMore();
+};
+
+var loadHomeData = function loadHomeData() {
+	var url = 'http://mpg.c2136.cloudnet.cloud/wp-json/mpg/home/';
+
+	fetch(url).then(function (res) {
+		return res.json();
+	}).then(function (out) {
+		console.log('Checkout this JSON! ', out);
+		homeData = out;
+	}).catch(function (err) {
+		throw err;
+	});
+};
 
 /**
  * @name initHamburger
@@ -152,6 +188,8 @@ var initSwiper = function initSwiper() {
 			slidesPerView: 'auto',
 			spaceBetween: 0,
 			slidesPerGroup: 3,
+			watchSlidesVisibility:1,
+			lazyLoading: true,
 			navigation: {
 				nextEl: sliderArrow + ' .list__arrow--next',
 				prevEl: sliderArrow + ' .list__arrow--prev'
@@ -176,8 +214,14 @@ var initSwiper = function initSwiper() {
 		var sliderName = sliders[idx].getAttribute('data-id'),
 		    sliderWrapper = slidersNode[idx].getAttribute('data-name');
 
-		swiperCB(".swiper-container[data-id=\"" + sliderName + "\"]", ".list__box-wrapper[data-name='" + sliderWrapper + "']");
+		swiperCB('.swiper-container[data-id="' + sliderName + '"]', '.list__box-wrapper[data-name=\'' + sliderWrapper + '\']');
 	}
+
+	var mySwiper = document.querySelector('.swiper-container[data-category="18"]').swiper;
+	mySwiper.appendSlide([
+		'<div class="swiper-slide">Slide 10"</div>',
+		'<div class="swiper-slide">Slide 11"</div>'
+	]);
 };
 
 /**
@@ -186,6 +230,7 @@ var initSwiper = function initSwiper() {
  */
 
 var isMobileDevice = false;
+var homeData = [];
 
 if (!Element.prototype.matches) {
 	Element.prototype.matches = Element.prototype.msMatchesSelector || Element.prototype.webkitMatchesSelector;
@@ -780,7 +825,7 @@ if (!Element.prototype.closest) {
 				el.closest('.list__specification').querySelector('.list__specification-close').click();
 
 				if (elID + 6 <= listBoxCount) {
-					console.log("Good");
+					console.log('Good');
 
 					elParent.querySelector('.list__specification[data-id="' + (elID + elCount) + '"]').classList.add('is-open');
 				} else {
@@ -834,6 +879,8 @@ if (!Element.prototype.closest) {
 		skipModal();
 		toggleMoreBox();
 		// ==========================================
+
+		loadHomeData();
 	};
 
 	/**

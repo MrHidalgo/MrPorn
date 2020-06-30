@@ -4,6 +4,7 @@
  */
 
 let isMobileDevice = false;
+let homeData = [];
 
 if (!Element.prototype.matches) {
 	Element.prototype.matches = Element.prototype.msMatchesSelector ||
@@ -674,6 +675,8 @@ if (!Element.prototype.closest) {
 		skipModal();
 		toggleMoreBox();
 		// ==========================================
+
+		loadHomeData();
 	};
 
 	/**
