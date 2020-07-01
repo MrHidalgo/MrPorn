@@ -33,11 +33,13 @@ const loadHomeData = () => {
 		.catch(err => { throw err });
 }
 
-const renderHompageSiteSlide = (category, index) => {
-	let siteItem = homeData[category].sites[index];
+function renderHompageSiteSlide(category, index){
+
+	let siteItem = homeData.categories[category].sites[index];
+	console.log(siteItem);
 
 	let slideHtml = '<div class="swiper-slide">'+
-											'<a class="list__box" list-box-js href="'+siteItem.link+'" data-id="'+siteItem.id+'" style="background-image: url(http://mpg.c2136.cloudnet.cloud/'+siteItem.thumb+')">'+
+											'<a class="list__box" list-box-js href="'+siteItem['link']+'" data-id="'+siteItem.id+'" style="background-image: url(http://mpg.c2136.cloudnet.cloud/'+siteItem.thumb+')">'+
 													'<div class="list__box-overlay"></div>'+
 																'<div class="list__box-border"></div><img class="list__box-logo" src="img/img-brazzers-logo.svg" alt="">'+
 																				'<div class="list__box-details">'+

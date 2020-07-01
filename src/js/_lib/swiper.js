@@ -38,8 +38,13 @@ const initSwiper = () => {
 				},
 				slideChange: function (e) {
 					let swipeWrapper = categorySwiper.$wrapperEl[0];
+					let currentSlideIndex = categorySwiper.activeIndex;
 
-					console.log('changing slide -'+swipeWrapper.dataset.category+' - '+categorySwiper.slides.count);
+					console.log(categorySwiper);
+					fixPrevSlides(swipeWrapper.dataset.category, categorySwiper);
+					fixNextSlides(swipeWrapper.dataset.category, categorySwiper);
+
+					console.log('changing slide -'+swipeWrapper.dataset.category+' - '+categorySwiper.slides.length+' - '+currentSlideIndex);
 				}
 			},
 		});
@@ -60,7 +65,32 @@ const initSwiper = () => {
 
 	var mySwiper = document.querySelector('.swiper-container[data-category="18"]').swiper;
 	mySwiper.appendSlide([
-		'<div class="swiper-slide">Slide 10"</div>',
-		'<div class="swiper-slide">Slide 11"</div>'
+		'<div class="swiper-slide">Slide 10</div>',
+		'<div class="swiper-slide">Slide 11</div>'
 	]);
 };
+
+function fixPrevSlides(category, swiper){
+	let swipeWrapper = swiper.$wrapperEl[0];
+	let totalSites = swipeWrapper.dataset.count;
+	let currentLoadedcount = swipeWrapper.dataset.slidecount;
+	let currentSlideIndex = swiper.activeIndex;
+
+	if(currentSlideIndex>9){
+		for(let i=0; i<6; i++){
+			swiper.removeSlide(i);
+		}
+	}
+
+	console.log('changing slide -'+swipeWrapper.dataset.category+' - '+swiper.slides.length+' - '+currentSlideIndex);
+}
+function fixNextSlides(category, swiper){
+	let swipeWrapper = swiper.$wrapperEl[0];
+	let totalSites = swipeWrapper.dataset.count;
+	let currentSlideIndex = swiper.activeIndex;
+	let loadedSlideCount = swipeWrapper.dataset.slidecount;
+
+	swiper.appendSlide(renderHompageSiteSlide(category, loadedSlideCount));
+	swiper.appendSlide(renderHompageSiteSlide(category, loadedSlideCount+1));
+	swiper.appendSlide(renderHompageSiteSlide(category, loadedSlideCount+2));
+}

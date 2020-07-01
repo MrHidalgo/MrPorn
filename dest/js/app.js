@@ -47,12 +47,14 @@ var loadHomeData = function loadHomeData() {
 	});
 };
 
-var renderHompageSiteSlide = function renderHompageSiteSlide(category, index) {
-	var siteItem = homeData[category].sites[index];
+function renderHompageSiteSlide(category, index) {
 
-	var slideHtml = '<div class="swiper-slide">' + '<a class="list__box" list-box-js href="' + siteItem.link + '" data-id="' + siteItem.id + '" style="background-image: url(http://mpg.c2136.cloudnet.cloud/' + siteItem.thumb + ')">' + '<div class="list__box-overlay"></div>' + '<div class="list__box-border"></div><img class="list__box-logo" src="img/img-brazzers-logo.svg" alt="">' + '<div class="list__box-details">' + '<div class="list__box-details-left">' + '<button class="list__box-external" type="button"><i class="icon-font icon-out"></i></button>' + '<p class="list__box-details-title">' + siteItem.name + '</p>' + '<div class="list__rating"><span>User Rating:</span>' + '<div><i class="icon-font icon-star"></i><i class="icon-font icon-star"></i><i class="icon-font icon-star"></i><i class="icon-font icon-star"></i><i class="icon-font icon-star-fill"></i></div>' + '</div>' + '</div>' + '<div class="list__box-details-right">' + '<button class="list__box-like" type="button" data-id="1" like-toggle-js><i class="icon-font icon-like"></i></button>' + '<button class="list__box-dislike" type="button" data-id="1" dislike-toggle-js><i class="icon-font icon-like"></i></button>' + '<div class="c-popper">' + '<button class="list__box-favorites" type="button" data-id="1" favorites-toggle-js><i class="icon-font icon-star-fill"></i><i class="icon-font icon-star"></i></button>' + '<div class="c-poppertext">' + '<u>Add To Favourites</u>' + '<u>Remove From Favourites</u>' + '</div>' + '</div>' + '</div>' + '</div>' + '<button class="list__box-more" type="button"><i class="icon-font icon-arrow-angle"></i></button>' + '</a>' + '</div>';
+	var siteItem = homeData.categories[category].sites[index];
+	console.log(siteItem);
+
+	var slideHtml = '<div class="swiper-slide">' + '<a class="list__box" list-box-js href="' + siteItem['link'] + '" data-id="' + siteItem.id + '" style="background-image: url(http://mpg.c2136.cloudnet.cloud/' + siteItem.thumb + ')">' + '<div class="list__box-overlay"></div>' + '<div class="list__box-border"></div><img class="list__box-logo" src="img/img-brazzers-logo.svg" alt="">' + '<div class="list__box-details">' + '<div class="list__box-details-left">' + '<button class="list__box-external" type="button"><i class="icon-font icon-out"></i></button>' + '<p class="list__box-details-title">' + siteItem.name + '</p>' + '<div class="list__rating"><span>User Rating:</span>' + '<div><i class="icon-font icon-star"></i><i class="icon-font icon-star"></i><i class="icon-font icon-star"></i><i class="icon-font icon-star"></i><i class="icon-font icon-star-fill"></i></div>' + '</div>' + '</div>' + '<div class="list__box-details-right">' + '<button class="list__box-like" type="button" data-id="1" like-toggle-js><i class="icon-font icon-like"></i></button>' + '<button class="list__box-dislike" type="button" data-id="1" dislike-toggle-js><i class="icon-font icon-like"></i></button>' + '<div class="c-popper">' + '<button class="list__box-favorites" type="button" data-id="1" favorites-toggle-js><i class="icon-font icon-star-fill"></i><i class="icon-font icon-star"></i></button>' + '<div class="c-poppertext">' + '<u>Add To Favourites</u>' + '<u>Remove From Favourites</u>' + '</div>' + '</div>' + '</div>' + '</div>' + '<button class="list__box-more" type="button"><i class="icon-font icon-arrow-angle"></i></button>' + '</a>' + '</div>';
 	return slideHtml;
-};
+}
 
 /**
  * @name initHamburger
@@ -210,8 +212,13 @@ var initSwiper = function initSwiper() {
 				},
 				slideChange: function slideChange(e) {
 					var swipeWrapper = categorySwiper.$wrapperEl[0];
+					var currentSlideIndex = categorySwiper.activeIndex;
 
-					console.log('changing slide -' + swipeWrapper.dataset.category + ' - ' + categorySwiper.slides.count);
+					console.log(categorySwiper);
+					fixPrevSlides(swipeWrapper.dataset.category, categorySwiper);
+					fixNextSlides(swipeWrapper.dataset.category, categorySwiper);
+
+					console.log('changing slide -' + swipeWrapper.dataset.category + ' - ' + categorySwiper.slides.length + ' - ' + currentSlideIndex);
 				}
 			}
 		});
@@ -228,8 +235,33 @@ var initSwiper = function initSwiper() {
 	}
 
 	var mySwiper = document.querySelector('.swiper-container[data-category="18"]').swiper;
-	mySwiper.appendSlide(['<div class="swiper-slide">Slide 10"</div>', '<div class="swiper-slide">Slide 11"</div>']);
+	mySwiper.appendSlide(['<div class="swiper-slide">Slide 10</div>', '<div class="swiper-slide">Slide 11</div>']);
 };
+
+function fixPrevSlides(category, swiper) {
+	var swipeWrapper = swiper.$wrapperEl[0];
+	var totalSites = swipeWrapper.dataset.count;
+	var currentLoadedcount = swipeWrapper.dataset.slidecount;
+	var currentSlideIndex = swiper.activeIndex;
+
+	if (currentSlideIndex > 9) {
+		for (var i = 0; i < 6; i++) {
+			swiper.removeSlide(i);
+		}
+	}
+
+	console.log('changing slide -' + swipeWrapper.dataset.category + ' - ' + swiper.slides.length + ' - ' + currentSlideIndex);
+}
+function fixNextSlides(category, swiper) {
+	var swipeWrapper = swiper.$wrapperEl[0];
+	var totalSites = swipeWrapper.dataset.count;
+	var currentSlideIndex = swiper.activeIndex;
+	var loadedSlideCount = swipeWrapper.dataset.slidecount;
+
+	swiper.appendSlide(renderHompageSiteSlide(category, loadedSlideCount));
+	swiper.appendSlide(renderHompageSiteSlide(category, loadedSlideCount + 1));
+	swiper.appendSlide(renderHompageSiteSlide(category, loadedSlideCount + 2));
+}
 
 /**
  * POLYFILL
