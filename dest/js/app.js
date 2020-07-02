@@ -216,16 +216,23 @@ var initSwiper = function initSwiper() {
 
 					swiperSlide[swiperSlide.length - 1].classList.add('is-last');
 				},
-				slideChange: function slideChange(e) {
+				slideChange: function slideChange(e, t) {
 					var swipeWrapper = categorySwiper.$wrapperEl[0];
 					var currentSlideIndex = categorySwiper.activeIndex;
 
-					console.log(categorySwiper);
+					console.log('transisioning');
+					console.log(e);
+					console.log(t);
 					fixPrevSlides(swipeWrapper.dataset.category, categorySwiper);
 					fixNextSlides(swipeWrapper.dataset.category, categorySwiper);
 
-					console.log('changing slide -' + swipeWrapper.dataset.category + ' - ' + categorySwiper.slides.length + ' - ' + currentSlideIndex);
+					//console.log('changing slide -'+swipeWrapper.dataset.category+' - '+categorySwiper.slides.length+' - '+currentSlideIndex);
 				}
+				/*slideChangeTransitionStart: function (e) {
+    	let swipeWrapper = categorySwiper.$wrapperEl[0];
+    	fixPrevSlides(swipeWrapper.dataset.category, categorySwiper);
+    	fixNextSlides(swipeWrapper.dataset.category, categorySwiper);
+    }*/
 			}
 		});
 	}
@@ -251,9 +258,13 @@ function fixPrevSlides(category, swiper) {
 	var slidsCount = swiper.slides.length;
 
 	if (slidsCount > 12) {
+		console.log('Removing slides ' + currentSlideIndex);
+
 		for (var i = 0; i < currentSlideIndex - 6; i++) {
-			swiper.removeSlide(i);
+			//swiper.removeSlide(i);
 		}
+
+		swiper.slides[0].innerHTML = '';
 	}
 
 	console.log('changing slide -' + swipeWrapper.dataset.category + ' - ' + swiper.slides.length + ' - ' + currentSlideIndex);
