@@ -94,7 +94,7 @@ function renderSiteBottomBanner(category, index) {
 
 		if (bannerType == 'image') {
 			bannerClass = 'list__specification--banner';
-			bannerRight = '<div class="list__specification-right">' + '<div><img src="' + bannerImage + '"></div>' + '</div>';
+			bannerRight = '<div class="list__specification-right">' + '<div><img src="' + bannerImage.url + '"></div>' + '</div>';
 		} else {
 			bannerClass = 'list__specification--video';
 
