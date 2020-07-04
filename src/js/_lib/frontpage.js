@@ -116,6 +116,9 @@ function renderSiteBottomBanner(category, index){
 		let bannerVideo = siteItem.banner_video;
 		let bannerVideoPoster = siteItem.banner_video_poster;
 
+		console.log(category+' - '+index);
+		console.log(siteItem);
+
 		var bannerRight = '';
 		if(bannerType=='image'){
 			bannerRight = '<div class="list__specification-right">' +

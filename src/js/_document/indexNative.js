@@ -186,6 +186,17 @@ if (!Element.prototype.closest) {
 					_boxID = _boxParent.getAttribute('data-id'),
 					_parentNode = _el.closest('.list__box-wrapper');
 
+				var swiperSlide = _el.closest('.swiper-slide');
+				var swiperWrapper = _el.closest('.swiper-wrapper');
+				var listBoxWrapper = _el.closest('.list__box-wrapper');
+				var bannerWrapper = listBoxWrapper.querySelector('.list__specification-wrapper');
+
+				var bottomBanner = renderSiteBottomBanner(swiperWrapper.dataset.category, swiperSlide.dataset.index);
+				if(bottomBanner){
+					bannerWrapper.innerHTML = bottomBanner;
+				}
+
+
 				const hideScrollContainer = document.querySelectorAll("html, body"),
 					_specificationBox = _parentNode.querySelector('.list__specification[data-id="' + _boxID + '"]');
 
