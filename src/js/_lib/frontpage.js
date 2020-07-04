@@ -120,11 +120,16 @@ function renderSiteBottomBanner(category, index){
 		console.log(siteItem);
 
 		var bannerRight = '';
+		var bannerClass = '';
+
 		if(bannerType=='image'){
+			bannerClass = 'list__specification--banner';
 			bannerRight = '<div class="list__specification-right">' +
 				'<div><img src="'+bannerImage+'"></div>' +
 				'</div>';
 		}else{
+			bannerClass = 'list__specification--video';
+
 			bannerRight = '<div class="list__specification-right">'+
 				'<div video-parent-js>'+
 				'<!--video(preload="none" video-js)-->'+
@@ -136,7 +141,7 @@ function renderSiteBottomBanner(category, index){
 				'</div>';
 		}
 
-		var bannerHtml = '<div class="list__specification list__specification--video" data-id="1">' +
+		var bannerHtml = '<div class="list__specification '+bannerClass+'" data-id="1">' +
 			'<a class="list__specification-close" href="#"><i class="icon-font icon-close"></i></a>'+
 			'<div>'+
 			'<div class="list__specification-header">' +

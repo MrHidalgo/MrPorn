@@ -90,13 +90,18 @@ function renderSiteBottomBanner(category, index) {
 		console.log(siteItem);
 
 		var bannerRight = '';
+		var bannerClass = '';
+
 		if (bannerType == 'image') {
+			bannerClass = 'list__specification--banner';
 			bannerRight = '<div class="list__specification-right">' + '<div><img src="' + bannerImage + '"></div>' + '</div>';
 		} else {
+			bannerClass = 'list__specification--video';
+
 			bannerRight = '<div class="list__specification-right">' + '<div video-parent-js>' + '<!--video(preload="none" video-js)-->' + '<video preload="none" poster="' + bannerVideoPoster.url + '" video-js>' + '<source src="' + bannerVideo.url + '" type="' + bannerVideo.mime_type + '">' + '</video>' + '<a class="list__specification-play" href="#" video-toggle-js><i class="icon-font icon-play-button" video-play-js></i></a><a class="list__specification-pause" href="#" video-pause-js><i class="icon-font icon-pause"></i></a>' + '</div>' + '</div>';
 		}
 
-		var bannerHtml = '<div class="list__specification list__specification--video" data-id="1">' + '<a class="list__specification-close" href="#"><i class="icon-font icon-close"></i></a>' + '<div>' + '<div class="list__specification-header">' + '<img class="list__specification-logo" src="img/img-reality-kings.png" srcset="img/img-reality-kings@2x.png 2x" alt="">' + '<a class="list__specification-close" href="#">' + '<i class="icon-font icon-close"></i>' + '</a>' + '</div>' + '<div class="list__specification-left">' + '<div>' + '<img class="list__specification-logo" src="img/img-reality-kings.png" srcset="img/img-reality-kings@2x.png 2x" alt="">' + '<div class="list__specification-action" spec-actionNode-js>' + '<div><a class="list__specification-visit" href="#">VISIT WEBSITE</a></div>' + '<div><a class="list__specification-read" href="#">READ REVIEW</a></div>' + '<div class="list__specification-action-desc">' + '<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eius mod tempor incididunt ut labore et dolore magna eutin... <a href="#">READ MORE</a></p>' + '</div>' + '<div class="list__specification-action-skip"><a class="list__specification-circle list__specification-skip" href="#" data-id="1" spec-skip-js><i class="icon-font icon-point"></i><span>Skip</span></a></div>' + '<div class="list__specification-action-circle"><a class="list__specification-circle list__specification-like" href="#" data-like="1" spec-like-js><i class="icon-font icon-like"></i><span>Like</span></a></div>' + '<div class="list__specification-action-circle"><a class="list__specification-circle list__specification-dislike" href="#" data-dislike="1" spec-dislike-js><i class="icon-font icon-like"></i><span>Dislike</span></a></div>' + '<div class="list__specification-action-circle">' + '<div class="c-popper"><a class="list__specification-circle list__specification-favorites" href="#" data-favorites="1" spec-favorites-js><i class="icon-font icon-star-fill"></i><i class="icon-font icon-star"></i><span>Favorites</span></a>' + '<div class="c-poppertext">' + '<u>Add To Favourites</u>' + '<u>Remove From Favourites</u>' + '</div>' + '</div>' + '</div>' + '</div>' + '<p class="list__specification-desc">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in.</p>' + '</div>' + '</div>' + bannerRight + '<div class="list__specification-more">' + '<div>' + '<p>More Like This</p>' + '</div>' + '<div><a class="list__box" list-box-more-js href="#" data-id="1" data-count="1" style="background-image: url(&quot;img/img-view-bruzzers.png&quot;)">' + '<div class="list__box-overlay"></div>' + '<div class="list__box-border"></div><img class="list__box-logo" src="img/img-brazzers-logo.svg" alt=""></a><a class="list__box" list-box-more-js href="#" data-id="1" data-count="2" style="background-image: url(&quot;img/img-realitykings-view.png&quot;)">' + '<div class="list__box-overlay"></div>' + '<div class="list__box-border"></div><img class="list__box-logo" src="img/img-reliaty-kings-logo.png" alt=""></a><a class="list__box" list-box-more-js href="#" data-id="1" data-count="3" style="background-image: url(&quot;img/img-xvideo-red-view.png&quot;)">' + '<div class="list__box-overlay"></div>' + '<div class="list__box-border"></div><img class="list__box-logo" src="img/img-xvideo-red-logo.png" alt=""></a><a class="list__box" list-box-more-js href="#" data-id="1" data-count="4" style="background-image: url(&quot;img/img-view-pornhub-premium.png&quot;)">' + '<div class="list__box-overlay"></div>' + '<div class="list__box-border"></div><img class="list__box-logo" src="img/img-pornhub-premium-logo.png" alt=""></a><a class="list__box" list-box-more-js href="#" data-id="1" data-count="5" style="background-image: url(&quot;img/img-bang-bros-view.png&quot;)">' + '<div class="list__box-overlay"></div>' + '<div class="list__box-border"></div><img class="list__box-logo" src="img/img-bangbros-logo.png" alt=""></a><a class="list__box" list-box-more-js href="#" data-id="1" data-count="6" style="background-image: url(&quot;img/img-mofos-view.png&quot;)">' + '<div class="list__box-overlay"></div>' + '<div class="list__box-border"></div><img class="list__box-logo" src="img/img-mofos-logo.png" alt=""></a>' + '</div>' + '</div>' + '</div>' + '</div>';
+		var bannerHtml = '<div class="list__specification ' + bannerClass + '" data-id="1">' + '<a class="list__specification-close" href="#"><i class="icon-font icon-close"></i></a>' + '<div>' + '<div class="list__specification-header">' + '<img class="list__specification-logo" src="img/img-reality-kings.png" srcset="img/img-reality-kings@2x.png 2x" alt="">' + '<a class="list__specification-close" href="#">' + '<i class="icon-font icon-close"></i>' + '</a>' + '</div>' + '<div class="list__specification-left">' + '<div>' + '<img class="list__specification-logo" src="img/img-reality-kings.png" srcset="img/img-reality-kings@2x.png 2x" alt="">' + '<div class="list__specification-action" spec-actionNode-js>' + '<div><a class="list__specification-visit" href="#">VISIT WEBSITE</a></div>' + '<div><a class="list__specification-read" href="#">READ REVIEW</a></div>' + '<div class="list__specification-action-desc">' + '<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eius mod tempor incididunt ut labore et dolore magna eutin... <a href="#">READ MORE</a></p>' + '</div>' + '<div class="list__specification-action-skip"><a class="list__specification-circle list__specification-skip" href="#" data-id="1" spec-skip-js><i class="icon-font icon-point"></i><span>Skip</span></a></div>' + '<div class="list__specification-action-circle"><a class="list__specification-circle list__specification-like" href="#" data-like="1" spec-like-js><i class="icon-font icon-like"></i><span>Like</span></a></div>' + '<div class="list__specification-action-circle"><a class="list__specification-circle list__specification-dislike" href="#" data-dislike="1" spec-dislike-js><i class="icon-font icon-like"></i><span>Dislike</span></a></div>' + '<div class="list__specification-action-circle">' + '<div class="c-popper"><a class="list__specification-circle list__specification-favorites" href="#" data-favorites="1" spec-favorites-js><i class="icon-font icon-star-fill"></i><i class="icon-font icon-star"></i><span>Favorites</span></a>' + '<div class="c-poppertext">' + '<u>Add To Favourites</u>' + '<u>Remove From Favourites</u>' + '</div>' + '</div>' + '</div>' + '</div>' + '<p class="list__specification-desc">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in.</p>' + '</div>' + '</div>' + bannerRight + '<div class="list__specification-more">' + '<div>' + '<p>More Like This</p>' + '</div>' + '<div><a class="list__box" list-box-more-js href="#" data-id="1" data-count="1" style="background-image: url(&quot;img/img-view-bruzzers.png&quot;)">' + '<div class="list__box-overlay"></div>' + '<div class="list__box-border"></div><img class="list__box-logo" src="img/img-brazzers-logo.svg" alt=""></a><a class="list__box" list-box-more-js href="#" data-id="1" data-count="2" style="background-image: url(&quot;img/img-realitykings-view.png&quot;)">' + '<div class="list__box-overlay"></div>' + '<div class="list__box-border"></div><img class="list__box-logo" src="img/img-reliaty-kings-logo.png" alt=""></a><a class="list__box" list-box-more-js href="#" data-id="1" data-count="3" style="background-image: url(&quot;img/img-xvideo-red-view.png&quot;)">' + '<div class="list__box-overlay"></div>' + '<div class="list__box-border"></div><img class="list__box-logo" src="img/img-xvideo-red-logo.png" alt=""></a><a class="list__box" list-box-more-js href="#" data-id="1" data-count="4" style="background-image: url(&quot;img/img-view-pornhub-premium.png&quot;)">' + '<div class="list__box-overlay"></div>' + '<div class="list__box-border"></div><img class="list__box-logo" src="img/img-pornhub-premium-logo.png" alt=""></a><a class="list__box" list-box-more-js href="#" data-id="1" data-count="5" style="background-image: url(&quot;img/img-bang-bros-view.png&quot;)">' + '<div class="list__box-overlay"></div>' + '<div class="list__box-border"></div><img class="list__box-logo" src="img/img-bangbros-logo.png" alt=""></a><a class="list__box" list-box-more-js href="#" data-id="1" data-count="6" style="background-image: url(&quot;img/img-mofos-view.png&quot;)">' + '<div class="list__box-overlay"></div>' + '<div class="list__box-border"></div><img class="list__box-logo" src="img/img-mofos-logo.png" alt=""></a>' + '</div>' + '</div>' + '</div>' + '</div>';
 
 		return bannerHtml;
 	}
@@ -625,13 +630,22 @@ if (!Element.prototype.closest) {
 				var listBoxWrapper = _el.closest('.list__box-wrapper');
 				var bannerWrapper = listBoxWrapper.querySelector('.list__specification-wrapper');
 
+				var currentBannerSection = document.querySelector('.list__specification');
+				if (currentBannerSection) {
+					currentBannerSection.remove();
+				}
+
 				var bottomBanner = renderSiteBottomBanner(swiperWrapper.dataset.category, swiperSlide.dataset.index);
 				if (bottomBanner) {
+					console.log('Loading bottom banner');
+
 					bannerWrapper.innerHTML = bottomBanner;
 				}
 
 				var hideScrollContainer = document.querySelectorAll("html, body"),
-				    _specificationBox = _parentNode.querySelector('.list__specification[data-id="' + _boxID + '"]');
+
+				//_specificationBox = _parentNode.querySelector('.list__specification[data-id="' + _boxID + '"]');
+				_specificationBox = _parentNode.querySelector('.list__specification');
 
 				var jInner = null,
 				    lInner = document.querySelectorAll('[video-toggle-js]').length;
@@ -653,12 +667,18 @@ if (!Element.prototype.closest) {
 					setTimeout(function () {
 						_parentNode.classList.add('is-open');
 						_boxParent.classList.add('is-active');
-						_specificationBox.classList.add('is-open');
+
+						if (_specificationBox) {
+							_specificationBox.classList.add('is-open');
+						}
 					}, 500);
 				} else {
 					_parentNode.classList.add('is-open');
 					_boxParent.classList.add('is-active');
-					_specificationBox.classList.add('is-open');
+
+					if (_specificationBox) {
+						_specificationBox.classList.add('is-open');
+					}
 				}
 
 				if (window.innerWidth <= 1023) {

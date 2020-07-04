@@ -191,14 +191,22 @@ if (!Element.prototype.closest) {
 				var listBoxWrapper = _el.closest('.list__box-wrapper');
 				var bannerWrapper = listBoxWrapper.querySelector('.list__specification-wrapper');
 
+				var currentBannerSection = document.querySelector('.list__specification');
+				if(currentBannerSection){
+					currentBannerSection.remove();
+				}
+
 				var bottomBanner = renderSiteBottomBanner(swiperWrapper.dataset.category, swiperSlide.dataset.index);
 				if(bottomBanner){
+					console.log('Loading bottom banner');
+
 					bannerWrapper.innerHTML = bottomBanner;
 				}
 
 
 				const hideScrollContainer = document.querySelectorAll("html, body"),
-					_specificationBox = _parentNode.querySelector('.list__specification[data-id="' + _boxID + '"]');
+					//_specificationBox = _parentNode.querySelector('.list__specification[data-id="' + _boxID + '"]');
+					_specificationBox = _parentNode.querySelector('.list__specification');
 
 				let jInner = null,
 					lInner = document.querySelectorAll('[video-toggle-js]').length;
@@ -220,12 +228,19 @@ if (!Element.prototype.closest) {
 					setTimeout(() => {
 						_parentNode.classList.add('is-open');
 						_boxParent.classList.add('is-active');
-						_specificationBox.classList.add('is-open');
+
+						if(_specificationBox){
+							_specificationBox.classList.add('is-open');
+						}
+
 					}, 500);
 				} else {
 					_parentNode.classList.add('is-open');
 					_boxParent.classList.add('is-active');
-					_specificationBox.classList.add('is-open');
+
+					if(_specificationBox){
+						_specificationBox.classList.add('is-open');
+					}
 				}
 
 
