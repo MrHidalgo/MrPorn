@@ -108,7 +108,32 @@ function renderSiteHoverContent(category, index){
 	return false;
 }
 
-function renderSiteBottomBanner(){
+function renderSiteBottomBanner(category, index){
+	let siteItem = homeData.categories[category].sites[index];
+	if(siteItem){
+		let bannerType = siteItem.banner_type;
+		let bannerImage = siteItem.banner_image;
+		let bannerVideo = siteItem.banner_video;
+		let bannerVideoPoster = siteItem.banner_video_poster;
+
+		var bannerRight = '';
+		if(bannerType=='image'){
+			bannerRight = '<div class="list__specification-right">' +
+				'<div><img src="'+bannerImage+'"></div>' +
+				'</div>';
+		}else{
+			bannerRight = '<div class="list__specification-right">'+
+				'<div video-parent-js>'+
+				'<!--video(preload="none" video-js)-->'+
+				'<video preload="none" poster="'+bannerVideoPoster.url+'" video-js>'+
+				'<source src="'+bannerVideo.url+'" type="'+bannerVideo.mime_type+'">'+
+				'</video>' +
+				'<a class="list__specification-play" href="#" video-toggle-js><i class="icon-font icon-play-button" video-play-js></i></a><a class="list__specification-pause" href="#" video-pause-js><i class="icon-font icon-pause"></i></a>'+
+				'</div>'+
+				'</div>';
+		}
+	}
+
 	var bannerHtml = '<div class="list__specification list__specification--video" data-id="1">' +
 		'<a class="list__specification-close" href="#"><i class="icon-font icon-close"></i></a>'+
                         '<div>'+
@@ -142,14 +167,7 @@ function renderSiteBottomBanner(){
                                     '<p class="list__specification-desc">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in.</p>'+
                                   '</div>'+
                                 '</div>'+
-                          '<div class="list__specification-right">'+
-                            '<div video-parent-js>'+
-                              '<!--video(preload="none" video-js)-->'+
-                              '<video preload="none" poster="img/img-poster-video.jpg" video-js>'+
-                                '<source src="img/video1.mp4" type="video/mp4">'+
-                              '</video><a class="list__specification-play" href="#" video-toggle-js><i class="icon-font icon-play-button" video-play-js></i></a><a class="list__specification-pause" href="#" video-pause-js><i class="icon-font icon-pause"></i></a>'+
-                            '</div>'+
-                          '</div>'+
+																bannerRight+
                                 '<div class="list__specification-more">'+
                                   '<div>'+
                                     '<p>More Like This</p>'+
