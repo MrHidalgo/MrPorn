@@ -487,6 +487,21 @@ if (!Element.prototype.closest) {
 						elParent = el.closest('[list-parent-js]'),
 						lineInd = elParent.querySelector('[list-line-js]');
 
+
+					const swiperParent  = el.parentNode;
+					var slideIndex = el.dataset.index;
+					var slideCategory = swiperParent.dataset.category;
+
+
+					var slideHoverContainer = el.querySelector('.list__box-details');
+					if(slideHoverContainer.innerHTML.trim()==''){
+						var slideHoverContent = renderSiteHoverContent(slideCategory, slideIndex);
+						if(slideHoverContent){
+							slideHoverContainer.innerHTML = slideHoverContent;
+						}
+					}
+
+
 					setTimeout(function() {
 						let transformVal = '';
 
@@ -500,6 +515,8 @@ if (!Element.prototype.closest) {
 								transformVal = val.substring(0, val.indexOf(';'));
 							}
 						}
+
+
 
 						if(hoverBool) {
 							el.classList.add('is-hover');
