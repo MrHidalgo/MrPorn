@@ -70,7 +70,7 @@ function renderSiteHoverContent(category, index) {
 		var siteName = siteItem.name;
 		var siteThumb = siteItem.thumb;
 
-		var hoverContent = '<div class="list__box-details-left">' + '<button class="list__box-external" type="button"><i class="icon-font icon-out"></i></button>' + '<p class="list__box-details-title">' + siteName + '</p>' + '<div class="list__rating"><span>User Rating:</span>' + '<div><i class="icon-font icon-star"></i><i class="icon-font icon-star"></i><i class="icon-font icon-star"></i><i class="icon-font icon-star"></i><i class="icon-font icon-star-fill"></i></div>' + '</div>' + '</div>' + '<div class="list__box-details-right">' + '<button class="list__box-like" type="button" data-id="1" like-toggle-js><i class="icon-font icon-like"></i></button>' + '<button class="list__box-dislike" type="button" data-id="1" dislike-toggle-js><i class="icon-font icon-like"></i></button>' + '<div class="c-popper">' + '<button class="list__box-favorites" type="button" data-id="1" favorites-toggle-js><i class="icon-font icon-star-fill"></i><i class="icon-font icon-star"></i></button>' + '<div class="c-poppertext">' + '<u>Add To Favourites</u>' + '<u>Remove From Favourites</u>' + '</div>' + '</div>' + '</div>';
+		var hoverContent = '<div class="list__box-details-left">' + '<button class="list__box-external" type="button"><i class="icon-font icon-out"></i></button>' + '<p class="list__box-details-title">' + siteName + '</p>' + '<div class="list__rating"><span>User Rating:</span>' + '<div><i class="icon-font icon-star"></i><i class="icon-font icon-star"></i><i class="icon-font icon-star"></i><i class="icon-font icon-star"></i><i class="icon-font icon-star-fill"></i></div>' + '</div>' + '</div>' + '<div class="list__box-details-right">' + '<button class="list__box-like" type="button" data-id="' + siteId + '" like-toggle-js><i class="icon-font icon-like"></i></button>' + '<button class="list__box-dislike" type="button" data-id="' + siteId + '" dislike-toggle-js><i class="icon-font icon-like"></i></button>' + '<div class="c-popper">' + '<button class="list__box-favorites" type="button" data-id="' + siteId + '" favorites-toggle-js><i class="icon-font icon-star-fill"></i><i class="icon-font icon-star"></i></button>' + '<div class="c-poppertext">' + '<u>Add To Favourites</u>' + '<u>Remove From Favourites</u>' + '</div>' + '</div>' + '</div>';
 
 		return hoverContent;
 	}
@@ -79,8 +79,11 @@ function renderSiteHoverContent(category, index) {
 }
 
 function renderSiteBottomBanner(category, index) {
+	console.log('rendering ' + category + ' - ' + index);
+
 	var siteItem = homeData.categories[category].sites[index];
 	if (siteItem) {
+		var siteId = siteItem.id;
 		var bannerType = siteItem.banner_type;
 		var bannerImage = siteItem.banner_image;
 		var bannerVideo = siteItem.banner_video;
@@ -101,7 +104,7 @@ function renderSiteBottomBanner(category, index) {
 			bannerRight = '<div class="list__specification-right">' + '<div video-parent-js>' + '<!--video(preload="none" video-js)-->' + '<video preload="none" poster="' + bannerVideoPoster.url + '" video-js>' + '<source src="' + bannerVideo.url + '" type="' + bannerVideo.mime_type + '">' + '</video>' + '<a class="list__specification-play" href="#" video-toggle-js><i class="icon-font icon-play-button" video-play-js></i></a><a class="list__specification-pause" href="#" video-pause-js><i class="icon-font icon-pause"></i></a>' + '</div>' + '</div>';
 		}
 
-		var bannerHtml = '<div class="list__specification ' + bannerClass + '" data-id="1">' + '<a class="list__specification-close" href="#"><i class="icon-font icon-close"></i></a>' + '<div>' + '<div class="list__specification-header">' + '<img class="list__specification-logo" src="img/img-reality-kings.png" srcset="img/img-reality-kings@2x.png 2x" alt="">' + '<a class="list__specification-close" href="#">' + '<i class="icon-font icon-close"></i>' + '</a>' + '</div>' + '<div class="list__specification-left">' + '<div>' + '<img class="list__specification-logo" src="img/img-reality-kings.png" srcset="img/img-reality-kings@2x.png 2x" alt="">' + '<div class="list__specification-action" spec-actionNode-js>' + '<div><a class="list__specification-visit" href="#">VISIT WEBSITE</a></div>' + '<div><a class="list__specification-read" href="#">READ REVIEW</a></div>' + '<div class="list__specification-action-desc">' + '<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eius mod tempor incididunt ut labore et dolore magna eutin... <a href="#">READ MORE</a></p>' + '</div>' + '<div class="list__specification-action-skip"><a class="list__specification-circle list__specification-skip" href="#" data-id="1" spec-skip-js><i class="icon-font icon-point"></i><span>Skip</span></a></div>' + '<div class="list__specification-action-circle"><a class="list__specification-circle list__specification-like" href="#" data-like="1" spec-like-js><i class="icon-font icon-like"></i><span>Like</span></a></div>' + '<div class="list__specification-action-circle"><a class="list__specification-circle list__specification-dislike" href="#" data-dislike="1" spec-dislike-js><i class="icon-font icon-like"></i><span>Dislike</span></a></div>' + '<div class="list__specification-action-circle">' + '<div class="c-popper"><a class="list__specification-circle list__specification-favorites" href="#" data-favorites="1" spec-favorites-js><i class="icon-font icon-star-fill"></i><i class="icon-font icon-star"></i><span>Favorites</span></a>' + '<div class="c-poppertext">' + '<u>Add To Favourites</u>' + '<u>Remove From Favourites</u>' + '</div>' + '</div>' + '</div>' + '</div>' + '<p class="list__specification-desc">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in.</p>' + '</div>' + '</div>' + bannerRight + '<div class="list__specification-more">' + '<div>' + '<p>More Like This</p>' + '</div>' + '<div><a class="list__box" list-box-more-js href="#" data-id="1" data-count="1" style="background-image: url(&quot;img/img-view-bruzzers.png&quot;)">' + '<div class="list__box-overlay"></div>' + '<div class="list__box-border"></div><img class="list__box-logo" src="img/img-brazzers-logo.svg" alt=""></a><a class="list__box" list-box-more-js href="#" data-id="1" data-count="2" style="background-image: url(&quot;img/img-realitykings-view.png&quot;)">' + '<div class="list__box-overlay"></div>' + '<div class="list__box-border"></div><img class="list__box-logo" src="img/img-reliaty-kings-logo.png" alt=""></a><a class="list__box" list-box-more-js href="#" data-id="1" data-count="3" style="background-image: url(&quot;img/img-xvideo-red-view.png&quot;)">' + '<div class="list__box-overlay"></div>' + '<div class="list__box-border"></div><img class="list__box-logo" src="img/img-xvideo-red-logo.png" alt=""></a><a class="list__box" list-box-more-js href="#" data-id="1" data-count="4" style="background-image: url(&quot;img/img-view-pornhub-premium.png&quot;)">' + '<div class="list__box-overlay"></div>' + '<div class="list__box-border"></div><img class="list__box-logo" src="img/img-pornhub-premium-logo.png" alt=""></a><a class="list__box" list-box-more-js href="#" data-id="1" data-count="5" style="background-image: url(&quot;img/img-bang-bros-view.png&quot;)">' + '<div class="list__box-overlay"></div>' + '<div class="list__box-border"></div><img class="list__box-logo" src="img/img-bangbros-logo.png" alt=""></a><a class="list__box" list-box-more-js href="#" data-id="1" data-count="6" style="background-image: url(&quot;img/img-mofos-view.png&quot;)">' + '<div class="list__box-overlay"></div>' + '<div class="list__box-border"></div><img class="list__box-logo" src="img/img-mofos-logo.png" alt=""></a>' + '</div>' + '</div>' + '</div>' + '</div>';
+		var bannerHtml = '<div class="list__specification ' + bannerClass + '" data-id="' + siteId + '">' + '<a class="list__specification-close" href="#"><i class="icon-font icon-close"></i></a>' + '<div>' + '<div class="list__specification-header">' + '<img class="list__specification-logo" src="img/img-reality-kings.png" srcset="img/img-reality-kings@2x.png 2x" alt="">' + '<a class="list__specification-close" href="#">' + '<i class="icon-font icon-close"></i>' + '</a>' + '</div>' + '<div class="list__specification-left">' + '<div>' + '<img class="list__specification-logo" src="img/img-reality-kings.png" srcset="img/img-reality-kings@2x.png 2x" alt="">' + '<div class="list__specification-action" spec-actionNode-js>' + '<div><a class="list__specification-visit" href="#">VISIT WEBSITE</a></div>' + '<div><a class="list__specification-read" href="#">READ REVIEW</a></div>' + '<div class="list__specification-action-desc">' + '<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eius mod tempor incididunt ut labore et dolore magna eutin... <a href="#">READ MORE</a></p>' + '</div>' + '<div class="list__specification-action-skip"><a class="list__specification-circle list__specification-skip" href="#" data-id="' + siteId + '" spec-skip-js><i class="icon-font icon-point"></i><span>Skip</span></a></div>' + '<div class="list__specification-action-circle"><a class="list__specification-circle list__specification-like" href="#" data-like="1" spec-like-js><i class="icon-font icon-like"></i><span>Like</span></a></div>' + '<div class="list__specification-action-circle"><a class="list__specification-circle list__specification-dislike" href="#" data-dislike="1" spec-dislike-js><i class="icon-font icon-like"></i><span>Dislike</span></a></div>' + '<div class="list__specification-action-circle">' + '<div class="c-popper"><a class="list__specification-circle list__specification-favorites" href="#" data-favorites="1" spec-favorites-js><i class="icon-font icon-star-fill"></i><i class="icon-font icon-star"></i><span>Favorites</span></a>' + '<div class="c-poppertext">' + '<u>Add To Favourites</u>' + '<u>Remove From Favourites</u>' + '</div>' + '</div>' + '</div>' + '</div>' + '<p class="list__specification-desc">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in.</p>' + '</div>' + '</div>' + bannerRight + '<div class="list__specification-more">' + '<div>' + '<p>More Like This</p>' + '</div>' + '<div><a class="list__box" list-box-more-js href="#" data-id="1" data-count="1" style="background-image: url(&quot;img/img-view-bruzzers.png&quot;)">' + '<div class="list__box-overlay"></div>' + '<div class="list__box-border"></div><img class="list__box-logo" src="img/img-brazzers-logo.svg" alt=""></a><a class="list__box" list-box-more-js href="#" data-id="1" data-count="2" style="background-image: url(&quot;img/img-realitykings-view.png&quot;)">' + '<div class="list__box-overlay"></div>' + '<div class="list__box-border"></div><img class="list__box-logo" src="img/img-reliaty-kings-logo.png" alt=""></a><a class="list__box" list-box-more-js href="#" data-id="1" data-count="3" style="background-image: url(&quot;img/img-xvideo-red-view.png&quot;)">' + '<div class="list__box-overlay"></div>' + '<div class="list__box-border"></div><img class="list__box-logo" src="img/img-xvideo-red-logo.png" alt=""></a><a class="list__box" list-box-more-js href="#" data-id="1" data-count="4" style="background-image: url(&quot;img/img-view-pornhub-premium.png&quot;)">' + '<div class="list__box-overlay"></div>' + '<div class="list__box-border"></div><img class="list__box-logo" src="img/img-pornhub-premium-logo.png" alt=""></a><a class="list__box" list-box-more-js href="#" data-id="1" data-count="5" style="background-image: url(&quot;img/img-bang-bros-view.png&quot;)">' + '<div class="list__box-overlay"></div>' + '<div class="list__box-border"></div><img class="list__box-logo" src="img/img-bangbros-logo.png" alt=""></a><a class="list__box" list-box-more-js href="#" data-id="1" data-count="6" style="background-image: url(&quot;img/img-mofos-view.png&quot;)">' + '<div class="list__box-overlay"></div>' + '<div class="list__box-border"></div><img class="list__box-logo" src="img/img-mofos-logo.png" alt=""></a>' + '</div>' + '</div>' + '</div>' + '</div>';
 
 		return bannerHtml;
 	}
@@ -482,6 +485,26 @@ if (!Element.prototype.closest) {
 
 		document.addEventListener('click', function (ev) {
 			var _ev = ev.target;
+			ev.preventDefault();
+
+			if (_ev.closest('.list__specification-close')) {
+				console.log('clicked on a banner close');
+				closeBanner(_ev);
+			} else if (_ev.closest('.list__box-more')) {
+				showBanner(ev);
+			} else if (_ev.closest('[spec-like-js]')) {
+				onBannerLikeClick(_ev.closest('[spec-like-js]'));
+			} else if (_ev.closest('[spec-dislike-js]')) {
+				onBannerDislikeClick(_ev.closest('[spec-dislike-js]'));
+			} else if (_ev.closest('[like-toggle-js]')) {
+				onSiteBoxLikeClick(_ev.closest('[like-toggle-js]'));
+			} else if (_ev.closest('[dislike-toggle-js]')) {
+				onSiteBoxDislikeClick(_ev.closest('[dislike-toggle-js]'));
+			} else if (_ev.closest('[favorites-toggle-js]')) {
+				onSiteBoxFavourite(_ev.closest('[favorites-toggle-js]'));
+			} else if (_ev.closest('[spec-favorites-js]')) {
+				onBannerFavourite(_ev.closest('[spec-favorites-js]'));
+			}
 
 			if (!_ev.closest(className)) {
 				// VIEW FAVORITES
@@ -605,12 +628,13 @@ if (!Element.prototype.closest) {
 		}, false);
 	};
 
+	function playPause(vid) {
+		vid.pause();
+		vid.currentTime = 0;
+		vid.load();
+	}
+
 	var boxMore = function boxMore() {
-		function playPause(vid) {
-			vid.pause();
-			vid.currentTime = 0;
-			vid.load();
-		}
 
 		var btns = document.querySelectorAll('.list__box-more'),
 		    closeBtns = document.querySelectorAll('.list__specification-close');
@@ -620,72 +644,8 @@ if (!Element.prototype.closest) {
 
 		for (i = 0; i < len; i++) {
 			btns[i].addEventListener('click', function (ev) {
-				var _el = ev.currentTarget,
-				    _boxParent = _el.closest('.list__box'),
-				    _boxID = _boxParent.getAttribute('data-id'),
-				    _parentNode = _el.closest('.list__box-wrapper');
 
-				var swiperSlide = _el.closest('.swiper-slide');
-				var swiperWrapper = _el.closest('.swiper-wrapper');
-				var listBoxWrapper = _el.closest('.list__box-wrapper');
-				var bannerWrapper = listBoxWrapper.querySelector('.list__specification-wrapper');
-
-				var currentBannerSection = document.querySelector('.list__specification');
-				if (currentBannerSection) {
-					currentBannerSection.remove();
-				}
-
-				var bottomBanner = renderSiteBottomBanner(swiperWrapper.dataset.category, swiperSlide.dataset.index);
-				if (bottomBanner) {
-					console.log('Loading bottom banner');
-
-					bannerWrapper.innerHTML = bottomBanner;
-				}
-
-				var hideScrollContainer = document.querySelectorAll("html, body"),
-
-				//_specificationBox = _parentNode.querySelector('.list__specification[data-id="' + _boxID + '"]');
-				_specificationBox = _parentNode.querySelector('.list__specification');
-
-				var jInner = null,
-				    lInner = document.querySelectorAll('[video-toggle-js]').length;
-
-				for (jInner = 0; jInner < lInner; jInner++) {
-					document.querySelectorAll('[video-toggle-js]')[jInner].classList.remove('is-active');
-					document.querySelectorAll('[video-pause-js]')[jInner].classList.remove('is-active');
-					playPause(document.querySelectorAll('.list__specification video')[jInner]);
-				}
-
-				for (var k = 0; k < document.querySelectorAll('.list__box').length; k++) {
-					document.querySelectorAll('.list__box')[k].classList.remove('is-active');
-				}
-				for (var _k = 0; _k < document.querySelectorAll('.list__specification').length; _k++) {
-					document.querySelectorAll('.list__specification')[_k].classList.remove('is-open');
-				}
-
-				if (window.innerWidth < 1024) {
-					setTimeout(function () {
-						_parentNode.classList.add('is-open');
-						_boxParent.classList.add('is-active');
-
-						if (_specificationBox) {
-							_specificationBox.classList.add('is-open');
-						}
-					}, 500);
-				} else {
-					_parentNode.classList.add('is-open');
-					_boxParent.classList.add('is-active');
-
-					if (_specificationBox) {
-						_specificationBox.classList.add('is-open');
-					}
-				}
-
-				if (window.innerWidth <= 1023) {
-					hideScrollContainer.forEach(function (val, idx) {
-						val.classList.add("is-hideScroll");
-					});
-				}
+				showBanner(ev);
 			}, false);
 		}
 
@@ -694,35 +654,116 @@ if (!Element.prototype.closest) {
 
 		for (idx = 0; idx < lenClose; idx++) {
 			closeBtns[idx].addEventListener('click', function (ev) {
-				var _el = ev.currentTarget,
-				    parent = _el.closest('.list__specification');
-
-				_el.closest('.list__box-wrapper').classList.remove('is-open');
-				_el.closest('.list__specification').classList.remove('is-open');
-
-				if (window.innerWidth <= 1024) {
-					document.querySelectorAll("html, body").forEach(function (val, idx) {
-						val.classList.remove("is-hideScroll");
-					});
-				}
-
-				if (parent.querySelector('[video-toggle-js]')) {
-					parent.querySelector('[video-pause-js]').classList.remove('is-active');
-					parent.querySelector('[video-toggle-js]').classList.remove('is-active');
-					playPause(parent.querySelector('video'));
-				}
-
-				var jInner = null,
-				    lInner = document.querySelectorAll('.list__box-more').length;
-
-				for (jInner = 0; jInner < lInner; jInner++) {
-					if (document.querySelectorAll('.list__box-more')[jInner].closest('.list__box').classList.contains('is-active')) {
-						document.querySelectorAll('.list__box-more')[jInner].closest('.list__box').classList.remove('is-active');
-					}
-				}
+				var _el = ev.currentTarget;
+				closeBanner(_el);
 			}, false);
 		}
 	};
+
+	function showBanner(ev) {
+		console.log(ev.target);
+
+		var _el = ev.target,
+		    _boxParent = _el.closest('.list__box'),
+		    _boxID = _boxParent.getAttribute('data-id'),
+		    _parentNode = _el.closest('.list__box-wrapper');
+
+		var swiperSlide = _el.closest('.swiper-slide');
+		var swiperWrapper = _el.closest('.swiper-wrapper');
+		var listBoxWrapper = _el.closest('.list__box-wrapper');
+		var bannerWrapper = listBoxWrapper.querySelector('.list__specification-wrapper');
+
+		var currentBannerSection = document.querySelector('.list__specification');
+		if (currentBannerSection) {
+			currentBannerSection.remove();
+		}
+
+		var bottomBanner = renderSiteBottomBanner(swiperWrapper.dataset.category, swiperSlide.dataset.index);
+		if (bottomBanner) {
+			console.log('Loading bottom banner');
+
+			bannerWrapper.innerHTML = bottomBanner;
+		}
+
+		var hideScrollContainer = document.querySelectorAll("html, body"),
+
+		//_specificationBox = _parentNode.querySelector('.list__specification[data-id="' + _boxID + '"]');
+		_specificationBox = _parentNode.querySelector('.list__specification');
+
+		var jInner = null,
+		    lInner = document.querySelectorAll('[video-toggle-js]').length;
+
+		for (jInner = 0; jInner < lInner; jInner++) {
+			document.querySelectorAll('[video-toggle-js]')[jInner].classList.remove('is-active');
+			document.querySelectorAll('[video-pause-js]')[jInner].classList.remove('is-active');
+
+			if (document.querySelectorAll('.list__specification video')[jInner].length) {
+				playPause(document.querySelectorAll('.list__specification video')[jInner]);
+			}
+		}
+
+		for (var k = 0; k < document.querySelectorAll('.list__box').length; k++) {
+			document.querySelectorAll('.list__box')[k].classList.remove('is-active');
+		}
+		for (var _k = 0; _k < document.querySelectorAll('.list__specification').length; _k++) {
+			document.querySelectorAll('.list__specification')[_k].classList.remove('is-open');
+		}
+
+		if (window.innerWidth < 1024) {
+			setTimeout(function () {
+				_parentNode.classList.add('is-open');
+				_boxParent.classList.add('is-active');
+
+				if (_specificationBox) {
+					_specificationBox.classList.add('is-open');
+				}
+			}, 500);
+		} else {
+			_parentNode.classList.add('is-open');
+			_boxParent.classList.add('is-active');
+
+			if (_specificationBox) {
+				_specificationBox.classList.add('is-open');
+			}
+		}
+
+		if (window.innerWidth <= 1023) {
+			hideScrollContainer.forEach(function (val, idx) {
+				val.classList.add("is-hideScroll");
+			});
+		}
+	}
+
+	function closeBanner(_el) {
+		parent = _el.closest('.list__specification');
+
+		_el.closest('.list__box-wrapper').classList.remove('is-open');
+		_el.closest('.list__specification').classList.remove('is-open');
+
+		if (window.innerWidth <= 1024) {
+			document.querySelectorAll("html, body").forEach(function (val, idx) {
+				val.classList.remove("is-hideScroll");
+			});
+		}
+
+		if (parent.querySelector('[video-toggle-js]')) {
+			parent.querySelector('[video-pause-js]').classList.remove('is-active');
+			parent.querySelector('[video-toggle-js]').classList.remove('is-active');
+
+			if (parent.querySelector('video')) {
+				playPause(parent.querySelector('video'));
+			}
+		}
+
+		var jInner = null,
+		    lInner = document.querySelectorAll('.list__box-more').length;
+
+		for (jInner = 0; jInner < lInner; jInner++) {
+			if (document.querySelectorAll('.list__box-more')[jInner].closest('.list__box').classList.contains('is-active')) {
+				document.querySelectorAll('.list__box-more')[jInner].closest('.list__box').classList.remove('is-active');
+			}
+		}
+	}
 
 	var videoToggle = function videoToggle() {
 		function playPause(vid) {
@@ -772,15 +813,8 @@ if (!Element.prototype.closest) {
 
 		for (var i = 0, len = favoritesBtns.length; i < len; i++) {
 			favoritesBtns[i].addEventListener('click', function (ev) {
-				var el = ev.currentTarget,
-				    elID = el.getAttribute('data-id'),
-				    elParent = el.closest('.list__box-wrapper');
-
-				var specificationBlock = elParent.querySelector('.list__specification[data-id="' + elID + '"]'),
-				    specificationFavoritesBtn = specificationBlock.querySelector('[data-favorites="' + elID + '"]');
-
-				ev.currentTarget.classList.toggle('is-active');
-				specificationFavoritesBtn.classList.toggle('is-active');
+				var el = ev.currentTarget;
+				onSiteBoxFavourite(el);
 			}, false);
 		}
 
@@ -792,96 +826,139 @@ if (!Element.prototype.closest) {
 
 		for (var _i3 = 0, _len3 = specFavoritesBtns.length; _i3 < _len3; _i3++) {
 			specFavoritesBtns[_i3].addEventListener('click', function (ev) {
-				var el = ev.currentTarget,
-				    elID = el.getAttribute('data-favorites'),
-				    elParent = el.closest('.list__box-wrapper');
-
-				var listBlock = elParent.querySelector('.list__box[data-id="' + elID + '"]'),
-				    listFavoritesBtn = listBlock.querySelector('.list__box-favorites[data-id="' + elID + '"]');
-
-				ev.currentTarget.classList.toggle('is-active');
-				listFavoritesBtn.classList.toggle('is-active');
+				var el = ev.currentTarget;
+				onBannerFavourite(el);
 			}, false);
 		}
 
 		for (var _i4 = 0, _len4 = likeBtns.length; _i4 < _len4; _i4++) {
 			likeBtns[_i4].addEventListener('click', function (ev) {
-				var el = ev.currentTarget,
-				    elID = el.getAttribute('data-id'),
-				    elParent = el.closest('.list__box-wrapper');
-
-				ev.currentTarget.classList.toggle('is-active');
-				elParent.querySelector('[dislike-toggle-js][data-id="' + elID + '"]').classList.toggle('is-hide');
-
-				var specificationBlock = elParent.querySelector('.list__specification[data-id="' + elID + '"]'),
-				    specificationLikeBtn = specificationBlock.querySelector('[data-like="' + elID + '"]'),
-				    specificationDislikeBtn = specificationBlock.querySelector('[data-dislike="' + elID + '"]');
-
-				specificationLikeBtn.classList.toggle('is-active');
-				specificationDislikeBtn.parentElement.classList.toggle('is-hide');
+				var el = ev.currentTarget;
+				onSiteBoxLikeClick(el);
 			}, false);
 		}
 
 		for (var _i5 = 0, _len5 = specLikeBtns.length; _i5 < _len5; _i5++) {
 			specLikeBtns[_i5].addEventListener('click', function (ev) {
-				var el = ev.currentTarget,
-				    elID = el.getAttribute('data-like'),
-				    elParent = el.closest('.list__box-wrapper'),
-				    elActionNode = el.closest('[spec-actionNode-js]'),
-				    dislikeBtn = elActionNode.querySelector('[spec-dislike-js]');
-
-				dislikeBtn.parentElement.classList.toggle('is-hide');
-
-				var listBlock = elParent.querySelector('.list__box[data-id="' + elID + '"]'),
-				    listLikeBtn = listBlock.querySelector('.list__box-like'),
-				    listDislikeBtn = listBlock.querySelector('.list__box-dislike');
-
-				ev.currentTarget.classList.toggle('is-active');
-
-				listLikeBtn.classList.toggle('is-active');
-				listDislikeBtn.classList.toggle('is-hide');
+				var el = ev.currentTarget;
+				onBannerLikeClick(el);
 			}, false);
 		}
 
 		for (var _i6 = 0, _len6 = dislikeBtns.length; _i6 < _len6; _i6++) {
 			dislikeBtns[_i6].addEventListener('click', function (ev) {
-				var el = ev.currentTarget,
-				    elID = el.getAttribute('data-id'),
-				    elParent = el.closest('.list__box-wrapper');
-
-				ev.currentTarget.classList.toggle('is-active');
-				elParent.querySelector('[like-toggle-js][data-id="' + elID + '"]').classList.toggle('is-hide');
-
-				var specificationBlock = elParent.querySelector('.list__specification[data-id="' + elID + '"]'),
-				    specificationDislikeBtn = specificationBlock.querySelector('[data-dislike="' + elID + '"]'),
-				    specificationLikeBtn = specificationBlock.querySelector('[data-like="' + elID + '"]');
-
-				specificationDislikeBtn.classList.toggle('is-active');
-				specificationLikeBtn.parentElement.classList.toggle('is-hide');
+				var el = ev.currentTarget;
+				onSiteBoxDislikeClick(el);
 			}, false);
 		}
 
 		for (var _i7 = 0, _len7 = specDislikeBtns.length; _i7 < _len7; _i7++) {
 			specDislikeBtns[_i7].addEventListener('click', function (ev) {
-				var el = ev.currentTarget,
-				    elID = el.getAttribute('data-dislike'),
-				    elParent = el.closest('.list__box-wrapper'),
-				    elActionNode = el.closest('[spec-actionNode-js]'),
-				    likeBtn = elActionNode.querySelector('[spec-like-js]');
-
-				likeBtn.parentElement.classList.toggle('is-hide');
-
-				var listBlock = elParent.querySelector('.list__box[data-id="' + elID + '"]'),
-				    listDislikeBtn = listBlock.querySelector('.list__box-dislike'),
-				    listLikeBtn = listBlock.querySelector('.list__box-like');
-
-				ev.currentTarget.classList.toggle('is-active');
-
-				listDislikeBtn.classList.toggle('is-active');
-				listLikeBtn.classList.toggle('is-hide');
+				var el = ev.currentTarget;
+				onBannerDislikeClick(el);
 			}, false);
 		}
 	};
+
+	function onSiteBoxFavourite(el) {
+		var elID = el.getAttribute('data-id'),
+		    elParent = el.closest('.list__box-wrapper');
+
+		console.log('Fav box ' + elID);
+
+		var specificationFavoritesBtn = elParent.querySelector('[data-favorites="' + elID + '"]');
+
+		el.classList.toggle('is-active');
+		specificationFavoritesBtn.classList.toggle('is-active');
+	}
+
+	function onBannerFavourite(el) {
+		var elID = el.getAttribute('data-favorites'),
+		    elParent = el.closest('.list__box-wrapper');
+
+		//const listBlock = elParent.querySelector('.list__box[data-id="' + elID + '"]'),
+		var listFavoritesBtn = elParent.querySelector('.list__box-favorites[data-id="' + elID + '"]');
+
+		el.classList.toggle('is-active');
+		if (listFavoritesBtn) {
+			listFavoritesBtn.classList.toggle('is-active');
+		}
+	}
+
+	function onSiteBoxLikeClick(el) {
+		var elID = el.getAttribute('data-id'),
+		    elParent = el.closest('.list__box-wrapper');
+
+		el.classList.toggle('is-active');
+		elParent.querySelector('[dislike-toggle-js][data-id="' + elID + '"]').classList.toggle('is-hide');
+
+		var specificationBlock = elParent.querySelector('.list__specification[data-id="' + elID + '"]');
+
+		if (specificationBlock) {
+			var specificationLikeBtn = specificationBlock.querySelector('[data-like="' + elID + '"]'),
+			    specificationDislikeBtn = specificationBlock.querySelector('[data-dislike="' + elID + '"]');
+
+			specificationLikeBtn.classList.toggle('is-active');
+			specificationDislikeBtn.parentElement.classList.toggle('is-hide');
+		}
+	}
+
+	function onBannerLikeClick(el) {
+		var elID = el.getAttribute('data-like'),
+		    elParent = el.closest('.list__box-wrapper'),
+		    elActionNode = el.closest('[spec-actionNode-js]'),
+		    dislikeBtn = elActionNode.querySelector('[spec-dislike-js]');
+
+		console.log('Trying to like ' + elID);
+
+		dislikeBtn.parentElement.classList.toggle('is-hide');
+
+		var listBlock = elParent.querySelector('.list__box[data-id="' + elID + '"]'),
+		    listLikeBtn = listBlock.querySelector('.list__box-like'),
+		    listDislikeBtn = listBlock.querySelector('.list__box-dislike');
+
+		el.classList.toggle('is-active');
+
+		listLikeBtn.classList.toggle('is-active');
+		listDislikeBtn.classList.toggle('is-hide');
+	}
+
+	function onSiteBoxDislikeClick(el) {
+		var elID = el.getAttribute('data-id'),
+		    elParent = el.closest('.list__box-wrapper');
+
+		console.log('Disliking ' + elID);
+
+		el.classList.toggle('is-active');
+		elParent.querySelector('[like-toggle-js][data-id="' + elID + '"]').classList.toggle('is-hide');
+
+		var specificationBlock = elParent.querySelector('.list__specification[data-id="' + elID + '"]');
+		if (specificationBlock) {
+			var specificationDislikeBtn = specificationBlock.querySelector('[data-dislike="' + elID + '"]'),
+			    specificationLikeBtn = specificationBlock.querySelector('[data-like="' + elID + '"]');
+
+			specificationDislikeBtn.classList.toggle('is-active');
+			specificationLikeBtn.parentElement.classList.toggle('is-hide');
+		}
+	}
+
+	function onBannerDislikeClick(el) {
+		var elID = el.getAttribute('data-dislike'),
+		    elParent = el.closest('.list__box-wrapper'),
+		    elActionNode = el.closest('[spec-actionNode-js]'),
+		    likeBtn = elActionNode.querySelector('[spec-like-js]');
+
+		likeBtn.parentElement.classList.toggle('is-hide');
+
+		var listBlock = elParent.querySelector('.list__box[data-id="' + elID + '"]'),
+		    listDislikeBtn = listBlock.querySelector('.list__box-dislike'),
+		    listLikeBtn = listBlock.querySelector('.list__box-like');
+
+		el.classList.toggle('is-active');
+
+		listDislikeBtn.classList.toggle('is-active');
+		listLikeBtn.classList.toggle('is-hide');
+	}
 
 	var listIndicator = function listIndicator() {
 		var listBoxes = document.querySelectorAll('[list-box-js]');
@@ -1129,10 +1206,13 @@ if (!Element.prototype.closest) {
 		sortCB();
 		search();
 		boxHover();
-		boxMore();
+
+		//		boxMore();
+
+
 		videoToggle();
 		listIndicator();
-		detailsToggleAction();
+		//detailsToggleAction();
 		skipModal();
 		toggleMoreBox();
 		// ==========================================

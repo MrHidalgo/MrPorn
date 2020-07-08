@@ -91,10 +91,10 @@ function renderSiteHoverContent(category, index){
 		'</div>'+
 		'</div>'+
 		'<div class="list__box-details-right">'+
-		'<button class="list__box-like" type="button" data-id="1" like-toggle-js><i class="icon-font icon-like"></i></button>'+
-		'<button class="list__box-dislike" type="button" data-id="1" dislike-toggle-js><i class="icon-font icon-like"></i></button>'+
+		'<button class="list__box-like" type="button" data-id="'+siteId+'" like-toggle-js><i class="icon-font icon-like"></i></button>'+
+		'<button class="list__box-dislike" type="button" data-id="'+siteId+'" dislike-toggle-js><i class="icon-font icon-like"></i></button>'+
 		'<div class="c-popper">'+
-		'<button class="list__box-favorites" type="button" data-id="1" favorites-toggle-js><i class="icon-font icon-star-fill"></i><i class="icon-font icon-star"></i></button>'+
+		'<button class="list__box-favorites" type="button" data-id="'+siteId+'" favorites-toggle-js><i class="icon-font icon-star-fill"></i><i class="icon-font icon-star"></i></button>'+
 		'<div class="c-poppertext">'+
 		'<u>Add To Favourites</u>'+
 		'<u>Remove From Favourites</u>'+
@@ -109,8 +109,11 @@ function renderSiteHoverContent(category, index){
 }
 
 function renderSiteBottomBanner(category, index){
+	console.log('rendering '+category+' - '+index);
+
 	let siteItem = homeData.categories[category].sites[index];
 	if(siteItem){
+		let siteId = siteItem.id;
 		let bannerType = siteItem.banner_type;
 		let bannerImage = siteItem.banner_image;
 		let bannerVideo = siteItem.banner_video;
@@ -141,7 +144,7 @@ function renderSiteBottomBanner(category, index){
 				'</div>';
 		}
 
-		var bannerHtml = '<div class="list__specification '+bannerClass+'" data-id="1">' +
+		var bannerHtml = '<div class="list__specification '+bannerClass+'" data-id="'+siteId+'">' +
 			'<a class="list__specification-close" href="#"><i class="icon-font icon-close"></i></a>'+
 			'<div>'+
 			'<div class="list__specification-header">' +
@@ -159,7 +162,7 @@ function renderSiteBottomBanner(category, index){
 			'<div class="list__specification-action-desc">'+
 			'<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eius mod tempor incididunt ut labore et dolore magna eutin... <a href="#">READ MORE</a></p>'+
 			'</div>'+
-			'<div class="list__specification-action-skip"><a class="list__specification-circle list__specification-skip" href="#" data-id="1" spec-skip-js><i class="icon-font icon-point"></i><span>Skip</span></a></div>'+
+			'<div class="list__specification-action-skip"><a class="list__specification-circle list__specification-skip" href="#" data-id="'+siteId+'" spec-skip-js><i class="icon-font icon-point"></i><span>Skip</span></a></div>'+
 			'<div class="list__specification-action-circle"><a class="list__specification-circle list__specification-like" href="#" data-like="1" spec-like-js><i class="icon-font icon-like"></i><span>Like</span></a></div>'+
 			'<div class="list__specification-action-circle"><a class="list__specification-circle list__specification-dislike" href="#" data-dislike="1" spec-dislike-js><i class="icon-font icon-like"></i><span>Dislike</span></a></div>'+
 			'<div class="list__specification-action-circle">'+
