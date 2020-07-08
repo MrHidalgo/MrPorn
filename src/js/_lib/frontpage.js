@@ -76,6 +76,10 @@ function renderHompageSiteSlide(category, index){
 }
 
 function renderSiteHoverContent(category, index){
+	if(!homeData.categories[category]){
+		return false;
+	}
+
 	let siteItem = homeData.categories[category].sites[index];
 	if(siteItem) {
 		let siteId = siteItem.id;
