@@ -56,7 +56,7 @@ function renderHompageSiteSlide(category, index) {
 		var siteName = siteItem.name;
 		var siteThumb = siteItem.thumb;
 
-		var slideHtml = '<div class="swiper-slide" data-index="' + index + '">' + '<a class="list__box" list-box-js href="' + siteLink + '" data-id="' + siteId + '" style="background-image: url(http://mpg.c2136.cloudnet.cloud/' + siteThumb + ')">' + '<div class="list__box-overlay"></div>' + '<div class="list__box-border"></div><img class="list__box-logo" src="img/img-brazzers-logo.svg" alt="">' + '<div class="list__box-details">' + '<div class="list__box-details-left">' + '<button class="list__box-external" type="button"><i class="icon-font icon-out"></i></button>' + '<p class="list__box-details-title">' + siteName + '</p>' + '<div class="list__rating"><span>User Rating:</span>' + '<div><i class="icon-font icon-star"></i><i class="icon-font icon-star"></i><i class="icon-font icon-star"></i><i class="icon-font icon-star"></i><i class="icon-font icon-star-fill"></i></div>' + '</div>' + '</div>' + '<div class="list__box-details-right">' + '<button class="list__box-like" type="button" data-id="1" like-toggle-js><i class="icon-font icon-like"></i></button>' + '<button class="list__box-dislike" type="button" data-id="1" dislike-toggle-js><i class="icon-font icon-like"></i></button>' + '<div class="c-popper">' + '<button class="list__box-favorites" type="button" data-id="1" favorites-toggle-js><i class="icon-font icon-star-fill"></i><i class="icon-font icon-star"></i></button>' + '<div class="c-poppertext">' + '<u>Add To Favourites</u>' + '<u>Remove From Favourites</u>' + '</div>' + '</div>' + '</div>' + '</div>' + '<button class="list__box-more" type="button"><i class="icon-font icon-arrow-angle"></i></button>' + '</a>' + '</div>';
+		var slideHtml = '<div class="swiper-slide" category_list_' + index + '>' + '<a class="list__box" list-box-js href="' + siteLink + '" data-id="' + siteId + '" style="background-image: url(http://mpg.c2136.cloudnet.cloud/' + siteThumb + ')">' + '<div class="list__box-overlay"></div>' + '<div class="list__box-border"></div><img class="list__box-logo" src="img/img-brazzers-logo.svg" alt="">' + '<div class="list__box-details">' + '<div class="list__box-details-left">' + '<button class="list__box-external" type="button"><i class="icon-font icon-out"></i></button>' + '<p class="list__box-details-title">' + siteName + '</p>' + '<div class="list__rating"><span>User Rating:</span>' + '<div><i class="icon-font icon-star"></i><i class="icon-font icon-star"></i><i class="icon-font icon-star"></i><i class="icon-font icon-star"></i><i class="icon-font icon-star-fill"></i></div>' + '</div>' + '</div>' + '<div class="list__box-details-right">' + '<button class="list__box-like" type="button" data-id="1" like-toggle-js><i class="icon-font icon-like"></i></button>' + '<button class="list__box-dislike" type="button" data-id="1" dislike-toggle-js><i class="icon-font icon-like"></i></button>' + '<div class="c-popper">' + '<button class="list__box-favorites" type="button" data-id="1" favorites-toggle-js><i class="icon-font icon-star-fill"></i><i class="icon-font icon-star"></i></button>' + '<div class="c-poppertext">' + '<u>Add To Favourites</u>' + '<u>Remove From Favourites</u>' + '</div>' + '</div>' + '</div>' + '</div>' + '<button class="list__box-more" type="button"><i class="icon-font icon-arrow-angle"></i></button>' + '</a>' + '</div>';
 		return slideHtml;
 	}
 	return false;
@@ -114,6 +114,20 @@ function renderSiteBottomBanner(category, index) {
 	}
 
 	return false;
+}
+
+function renderSiteCategory(categoryIndex) {
+	var categoryId = homeData.categories_indexes[categoryIndex];
+	var categoryData = homeData.categories[categoryId];
+
+	var categorySites = '';
+	homeData.categories[categoryId].sites.map(function (site, index) {
+		categorySites += '<div class="swiper-slide" data-index="' + index + '">' + '<a class="list__box" list-box-js href="' + site.link + '" data-id="' + site.id + '" style="background-image: url(' + site.thumb + ')">' + '<div class="list__box-overlay"></div>' + '<div class="list__box-border"></div><img class="list__box-logo" src="' + site.logo + '" alt="">' + '<div class="list__box-details">' + '</div>' + '<button class="list__box-more" type="button"><i class="icon-font icon-arrow-angle"></i></button></a>' + '</div>';
+	});
+
+	var categoryBoxHtml = '<div class="list__box-wrapper" list-parent-js data-name="category_' + categoryId + '" data-index="' + categoryIndex + '">' + '<div class="list__box-head">' + '<div class="list__info">' + '<div class="list__info-circle"><img src="img/img-premim-porn-icon.png" srcset="img/img-premim-porn-icon@2x.png 2x" alt=""></div>' + '<div>' + '<p>' + categoryData.title + '</p><span>' + categoryData.tagline + '</span>' + '</div>' + '</div>' + '<div><a class="list__btn" href="#"><p>SEE&nbsp;<span>' + categoryData.count + ' MORE</span></p><i class="icon-font icon-arrow-angle"></i></a></div>' + '</div>' + '<div class="list__box-line">' + '<u list-line-ind-js></u><span list-line-js></span>' + '</div>' + '<div class="list__box-body">' + '<div class="list__arrow-wrapper">' + '<a class="list__arrow list__arrow--prev" href="#">' + '<div class="list__arrow-box"><i class="icon-font icon-arrow-angle"></i></div>' + '</a>' + '<a class="list__arrow list__arrow--next" href="#">' + '<div class="list__arrow-box"><i class="icon-font icon-arrow-angle"></i></div>' + '</a>' + '</div>' + '<div class="swiper-container listSwiper" data-id="listSlider_' + categoryData.id + '" data-category="18">' + '<div class="swiper-wrapper" data-category="' + categoryData.id + '" data-count="' + categoryData.count + '" data-slidecount="' + categoryData.site_limit + '">' + categorySites + '</div>' + '</div>' + '</div>' + '<div class="list__specification-wrapper"></div>' + '</div>';
+
+	return categoryBoxHtml;
 }
 
 /**
@@ -484,6 +498,42 @@ if (!Element.prototype.closest) {
   * MAIN CALLBACK
   * ===================================
   */
+
+	var headerHeight = 0;
+
+	var homeScroll = function homeScroll() {
+		if (document.body.classList.contains('home')) {
+			window.addEventListener('scroll', function (e) {
+				onHomeScroll(e);
+			});
+		}
+	};
+
+	var onHomeScroll = function onHomeScroll(e) {
+		var wY = window.scrollY;
+		headerHeight = document.querySelector('#header').getBoundingClientRect().height;
+
+		var categoryListH = document.querySelector('#list').getBoundingClientRect().height;
+		var listBoxes = document.querySelectorAll('.list__box-wrapper');
+		var firstCategoryListHeight = listBoxes[0].getBoundingClientRect().height;
+
+		var expectedY = headerHeight + categoryListH - firstCategoryListHeight * 3;
+
+		var catListContainer = document.querySelector('#list .c-grid');
+
+		if (wY > expectedY) {
+			if (!document.querySelector('[category_list_' + (listBoxes.length + 1) + ']')) {
+
+				var catId = homeData.categories_indexes[listBoxes.length];
+
+				var categoryHtml = renderSiteCategory(listBoxes.length);
+				catListContainer.insertAdjacentHTML('beforeend', categoryHtml);
+
+				swiperCB('.swiper-container[data-id="listSlider_' + catId + '"]', '.list__box-wrapper[data-name=\'category_' + catId + '\']');
+			}
+		}
+	};
+
 	var bodyClick = function bodyClick() {
 		var className = '.header__view-wrapper, .sort';
 
@@ -1223,6 +1273,8 @@ if (!Element.prototype.closest) {
 		// callback
 		detectDevice();
 		bodyClick();
+
+		homeScroll();
 
 		renderFavourites();
 

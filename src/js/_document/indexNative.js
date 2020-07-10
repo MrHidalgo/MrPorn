@@ -33,8 +33,48 @@ if (!Element.prototype.closest) {
 	 * MAIN CALLBACK
 	 * ===================================
 	 */
+
+	let headerHeight = 0;
+
+	const homeScroll = () => {
+		if(document.body.classList.contains('home')){
+			window.addEventListener('scroll', function(e) {
+				onHomeScroll(e);
+			});
+		}
+	}
+
+	const onHomeScroll = (e) => {
+		let wY = window.scrollY;
+		headerHeight = document.querySelector('#header').getBoundingClientRect().height;
+
+		let categoryListH = document.querySelector('#list').getBoundingClientRect().height;
+		let listBoxes = document.querySelectorAll('.list__box-wrapper');
+		let firstCategoryListHeight = listBoxes[0].getBoundingClientRect().height;
+
+		let expectedY = headerHeight + categoryListH - (firstCategoryListHeight*3);
+
+		let catListContainer = document.querySelector('#list .c-grid');
+
+		if(wY > expectedY){
+			if(!document.querySelector('[category_list_'+(listBoxes.length+1)+']')){
+
+				let catId = homeData.categories_indexes[listBoxes.length];
+
+				let categoryHtml = renderSiteCategory(listBoxes.length);
+				catListContainer.insertAdjacentHTML( 'beforeend', categoryHtml );
+
+				swiperCB(
+					`.swiper-container[data-id="listSlider_${catId}"]`,
+					`.list__box-wrapper[data-name='category_${catId}']`
+				);
+			}
+		}
+	}
+
 	const bodyClick = () => {
 		const className = '.header__view-wrapper, .sort';
+
 
 		document.addEventListener('click', function(ev) {
 			const _ev = ev.target;
@@ -810,6 +850,8 @@ if (!Element.prototype.closest) {
 		// callback
 		detectDevice();
 		bodyClick();
+
+		homeScroll();
 
 		renderFavourites();
 
