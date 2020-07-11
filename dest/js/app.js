@@ -253,60 +253,60 @@ var renderSearch = function renderSearch() {
  *
  * @description initialize Swiper
  */
+function swiperCB(swiperName, sliderArrow) {
+	var categorySwiper = new Swiper(swiperName, {
+		loop: false,
+		grabCursor: false,
+		effect: 'slide',
+		speed: 900,
+		touchMoveStopPropagation: false,
+		simulateTouch: false,
+		allowSwipeToNext: true,
+		allowSwipeToPrev: true,
+		allowPageScroll: "auto",
+		slidesPerView: 'auto',
+		spaceBetween: 0,
+		slidesPerGroup: 3,
+		navigation: {
+			nextEl: sliderArrow + ' .list__arrow--next',
+			prevEl: sliderArrow + ' .list__arrow--prev'
+		},
+		on: {
+			init: function init() {
+				var swiperSlide = document.querySelectorAll('.swiper-slide');
+
+				document.querySelector(swiperName).closest('.list__box-wrapper').style.opacity = '1';
+				document.querySelector(swiperName).closest('.list__box-wrapper').classList.add('is-visible');
+
+				swiperSlide[swiperSlide.length - 1].classList.add('is-last');
+			},
+			/*slideChange: function (e, t) {
+   	let swipeWrapper = categorySwiper.$wrapperEl[0];
+   	let currentSlideIndex = categorySwiper.activeIndex;
+   		console.log('transisioning');
+   	console.log(e);
+   	console.log(t);
+   	fixPrevSlides(swipeWrapper.dataset.category, categorySwiper);
+   	fixNextSlides(swipeWrapper.dataset.category, categorySwiper);
+   		//console.log('changing slide -'+swipeWrapper.dataset.category+' - '+categorySwiper.slides.length+' - '+currentSlideIndex);
+   },*/
+			slidePrevTransitionEnd: function slidePrevTransitionEnd(e) {
+				var swipeWrapper = categorySwiper.$wrapperEl[0];
+
+				renderLeftAndRight(swipeWrapper.dataset.category, categorySwiper);
+			},
+			slideNextTransitionEnd: function slideNextTransitionEnd(e) {
+				var swipeWrapper = categorySwiper.$wrapperEl[0];
+
+				renderLeftAndRight(swipeWrapper.dataset.category, categorySwiper);
+			}
+		}
+	});
+}
+
 var initSwiper = function initSwiper() {
 	var sliders = document.querySelectorAll('.listSwiper'),
 	    slidersNode = document.querySelectorAll('.list__box-wrapper');
-
-	function swiperCB(swiperName, sliderArrow) {
-		var categorySwiper = new Swiper(swiperName, {
-			loop: false,
-			grabCursor: false,
-			effect: 'slide',
-			speed: 900,
-			touchMoveStopPropagation: false,
-			simulateTouch: false,
-			allowSwipeToNext: true,
-			allowSwipeToPrev: true,
-			allowPageScroll: "auto",
-			slidesPerView: 'auto',
-			spaceBetween: 0,
-			slidesPerGroup: 3,
-			navigation: {
-				nextEl: sliderArrow + ' .list__arrow--next',
-				prevEl: sliderArrow + ' .list__arrow--prev'
-			},
-			on: {
-				init: function init() {
-					var swiperSlide = document.querySelectorAll('.swiper-slide');
-
-					document.querySelector(swiperName).closest('.list__box-wrapper').style.opacity = '1';
-					document.querySelector(swiperName).closest('.list__box-wrapper').classList.add('is-visible');
-
-					swiperSlide[swiperSlide.length - 1].classList.add('is-last');
-				},
-				/*slideChange: function (e, t) {
-    	let swipeWrapper = categorySwiper.$wrapperEl[0];
-    	let currentSlideIndex = categorySwiper.activeIndex;
-    		console.log('transisioning');
-    	console.log(e);
-    	console.log(t);
-    	fixPrevSlides(swipeWrapper.dataset.category, categorySwiper);
-    	fixNextSlides(swipeWrapper.dataset.category, categorySwiper);
-    		//console.log('changing slide -'+swipeWrapper.dataset.category+' - '+categorySwiper.slides.length+' - '+currentSlideIndex);
-    },*/
-				slidePrevTransitionEnd: function slidePrevTransitionEnd(e) {
-					var swipeWrapper = categorySwiper.$wrapperEl[0];
-
-					renderLeftAndRight(swipeWrapper.dataset.category, categorySwiper);
-				},
-				slideNextTransitionEnd: function slideNextTransitionEnd(e) {
-					var swipeWrapper = categorySwiper.$wrapperEl[0];
-
-					renderLeftAndRight(swipeWrapper.dataset.category, categorySwiper);
-				}
-			}
-		});
-	}
 
 	var idx = null,
 	    len = sliders.length;
@@ -316,6 +316,8 @@ var initSwiper = function initSwiper() {
 		    sliderWrapper = slidersNode[idx].getAttribute('data-name');
 
 		swiperCB('.swiper-container[data-id="' + sliderName + '"]', '.list__box-wrapper[data-name=\'' + sliderWrapper + '\']');
+
+		console.log('init swiper ' + ('.swiper-container[data-id="' + sliderName + '"]') + ' ---- ' + ('.list__box-wrapper[data-name=\'' + sliderWrapper + '\']'));
 	}
 
 	//var mySwiper = document.querySelector('.swiper-container[data-category="18"]').swiper;
@@ -508,6 +510,13 @@ if (!Element.prototype.closest) {
 			});
 		}
 	};
+
+	document.querySelector('#list').addEventListener('mouseover', function (_ev) {
+		//console.log('mouseenter '+_ev.target.classList);
+		if (_ev.target.closest('[list-box-js]')) {
+			siteBoxHover(_ev.target.closest('[list-box-js]'));
+		}
+	});
 
 	var onHomeScroll = function onHomeScroll(e) {
 		var wY = window.scrollY;
@@ -819,10 +828,6 @@ if (!Element.prototype.closest) {
 		if (parent.querySelector('[video-toggle-js]')) {
 			parent.querySelector('[video-pause-js]').classList.remove('is-active');
 			parent.querySelector('[video-toggle-js]').classList.remove('is-active');
-
-			// if(parent.querySelector('video')){
-			// 	playPause(parent.querySelector('video'));
-			// }
 		}
 
 		var jInner = null,
@@ -1034,49 +1039,54 @@ if (!Element.prototype.closest) {
 		listLikeBtn.classList.toggle('is-hide');
 	}
 
-	var listIndicator = function listIndicator() {
-		var listBoxes = document.querySelectorAll('[list-box-js]');
+	/*const listIndicator = () => {
+ 	const listBoxes = document.querySelectorAll('[list-box-js]');
+ 		for(let i = 0, len = listBoxes.length; i < len; i++) {
+ 		listBoxes[i].addEventListener('mouseenter', function(ev) {
+ 			const el = ev.currentTarget;
+ 				siteBoxHover(el);
+ 		});
+ 	}
+ };*/
 
-		for (var i = 0, len = listBoxes.length; i < len; i++) {
-			listBoxes[i].addEventListener('mouseenter', function (ev) {
-				var el = ev.currentTarget,
-				    elID = el.getAttribute('data-id'),
-				    elWidth = el.clientWidth;
+	var siteBoxHover = function siteBoxHover(el) {
+		var elID = el.getAttribute('data-id'),
+		    elWidth = el.clientWidth;
 
-				var parent = el.closest('[list-parent-js]'),
-				    listIndicator = parent.querySelector('[list-line-js]');
+		var parent = el.closest('[list-parent-js]'),
+		    listIndicator = parent.querySelector('[list-line-js]');
 
-				var listIndicatorWidth = 0;
+		console.log('hover box ' + elID + ' - ' + elWidth);
 
-				if (window.innerWidth >= 1024) {
-					listIndicatorWidth = 64;
-				} else if (window.innerWidth >= 768) {
-					listIndicatorWidth = 34;
-				} else {
-					listIndicatorWidth = 14;
-				}
+		var listIndicatorWidth = 0;
 
-				var _elRect = el.getBoundingClientRect();
-
-				var _listContainer = document.querySelector('#list .list__box-wrapper'),
-				    _listContainerDimm = _listContainer.getBoundingClientRect();
-
-				var _sum = 0;
-
-				for (var idx = 1; idx < elID; idx++) {
-					if (_elRect.width * idx < _elRect.x - _listContainerDimm.x) {
-						_sum++;
-					} else {
-						break;
-					}
-				}
-
-				var _indicatorOffset = (elWidth - listIndicatorWidth) / 2,
-				    _lineOffset = _elRect.width * _sum + (_sum * 6 - 3) + _indicatorOffset;
-
-				listIndicator.setAttribute('style', 'transform: translateX(' + _lineOffset + 'px)');
-			});
+		if (window.innerWidth >= 1024) {
+			listIndicatorWidth = 64;
+		} else if (window.innerWidth >= 768) {
+			listIndicatorWidth = 34;
+		} else {
+			listIndicatorWidth = 14;
 		}
+
+		var _elRect = el.getBoundingClientRect();
+
+		var _listContainer = document.querySelector('#list .list__box-wrapper'),
+		    _listContainerDimm = _listContainer.getBoundingClientRect();
+
+		var _sum = 0;
+
+		for (var idx = 1; idx < elID; idx++) {
+			if (_elRect.width * idx < _elRect.x - _listContainerDimm.x) {
+				_sum++;
+			} else {
+				break;
+			}
+		}
+
+		var _indicatorOffset = (elWidth - listIndicatorWidth) / 2,
+		    _lineOffset = _elRect.width * _sum + (_sum * 6 - 3) + _indicatorOffset;
+
+		listIndicator.setAttribute('style', 'transform: translateX(' + _lineOffset + 'px)');
 	};
 
 	var boxHover = function boxHover() {
@@ -1287,7 +1297,7 @@ if (!Element.prototype.closest) {
 
 
 		videoToggle();
-		listIndicator();
+		//listIndicator();
 		//detailsToggleAction();
 		skipModal();
 		toggleMoreBox();

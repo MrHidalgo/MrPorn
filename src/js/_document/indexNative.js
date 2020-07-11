@@ -44,6 +44,13 @@ if (!Element.prototype.closest) {
 		}
 	}
 
+	document.querySelector('#list').addEventListener('mouseover', function(_ev) {
+		//console.log('mouseenter '+_ev.target.classList);
+		if(_ev.target.closest('[list-box-js]')){
+			siteBoxHover(_ev.target.closest('[list-box-js]'));
+		}
+	});
+
 	const onHomeScroll = (e) => {
 		let wY = window.scrollY;
 		headerHeight = document.querySelector('#header').getBoundingClientRect().height;
@@ -372,13 +379,6 @@ if (!Element.prototype.closest) {
 		if(parent.querySelector('[video-toggle-js]')) {
 			parent.querySelector('[video-pause-js]').classList.remove('is-active');
 			parent.querySelector('[video-toggle-js]').classList.remove('is-active');
-
-
-
-			// if(parent.querySelector('video')){
-			// 	playPause(parent.querySelector('video'));
-			// }
-
 		}
 
 		let jInner = null,
@@ -596,53 +596,59 @@ if (!Element.prototype.closest) {
 	}
 
 
-	const listIndicator = () => {
+	/*const listIndicator = () => {
 		const listBoxes = document.querySelectorAll('[list-box-js]');
 
 		for(let i = 0, len = listBoxes.length; i < len; i++) {
 			listBoxes[i].addEventListener('mouseenter', function(ev) {
-				const el = ev.currentTarget,
-					elID = el.getAttribute('data-id'),
-					elWidth = el.clientWidth;
-
-				const parent = el.closest('[list-parent-js]'),
-					listIndicator = parent.querySelector('[list-line-js]');
-
-				let listIndicatorWidth = 0;
-
-				if(window.innerWidth >= 1024) {
-					listIndicatorWidth = 64;
-				} else if(window.innerWidth >= 768) {
-					listIndicatorWidth = 34;
-				} else {
-					listIndicatorWidth = 14;
-				}
-
-				const _elRect = el.getBoundingClientRect();
-
-				const _listContainer = document.querySelector('#list .list__box-wrapper'),
-					_listContainerDimm = _listContainer.getBoundingClientRect();
-
-				let _sum = 0;
-
-				for(let idx = 1; idx < elID; idx++) {
-					if((_elRect.width * idx) < (_elRect.x - _listContainerDimm.x)) {
-						_sum++;
-					} else {
-						break;
-					}
-				}
-
-				let _indicatorOffset = (elWidth - listIndicatorWidth) / 2,
-					_lineOffset = ((_elRect.width * _sum) + ((_sum * 6) - 3)) + _indicatorOffset;
-
-				listIndicator.setAttribute(
-					'style',
-					'transform: translateX(' + _lineOffset + 'px)'
-				);
+				const el = ev.currentTarget;
+					siteBoxHover(el);
 			});
 		}
-	};
+	};*/
+
+	const siteBoxHover = (el) => {
+		let elID = el.getAttribute('data-id'),
+			elWidth = el.clientWidth;
+
+		const parent = el.closest('[list-parent-js]'),
+			listIndicator = parent.querySelector('[list-line-js]');
+
+		console.log('hover box '+elID+' - '+elWidth);
+
+		let listIndicatorWidth = 0;
+
+		if(window.innerWidth >= 1024) {
+			listIndicatorWidth = 64;
+		} else if(window.innerWidth >= 768) {
+			listIndicatorWidth = 34;
+		} else {
+			listIndicatorWidth = 14;
+		}
+
+		const _elRect = el.getBoundingClientRect();
+
+		const _listContainer = document.querySelector('#list .list__box-wrapper'),
+			_listContainerDimm = _listContainer.getBoundingClientRect();
+
+		let _sum = 0;
+
+		for(let idx = 1; idx < elID; idx++) {
+			if((_elRect.width * idx) < (_elRect.x - _listContainerDimm.x)) {
+				_sum++;
+			} else {
+				break;
+			}
+		}
+
+		let _indicatorOffset = (elWidth - listIndicatorWidth) / 2,
+			_lineOffset = ((_elRect.width * _sum) + ((_sum * 6) - 3)) + _indicatorOffset;
+
+		listIndicator.setAttribute(
+			'style',
+			'transform: translateX(' + _lineOffset + 'px)'
+		);
+	}
 
 
 	const boxHover = () => {
@@ -864,7 +870,7 @@ if (!Element.prototype.closest) {
 
 
 		videoToggle();
-		listIndicator();
+		//listIndicator();
 		//detailsToggleAction();
 		skipModal();
 		toggleMoreBox();
