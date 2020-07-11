@@ -1158,6 +1158,8 @@ if (!Element.prototype.closest) {
 				}
 			}, false);
 
+			swiperSlides[i].setAttribute('data-init', '1');
+
 			swiperSlides[i].addEventListener('mouseleave', function (ev) {
 				if (window.innerWidth >= 1280) {
 					var el = ev.currentTarget,
