@@ -11,6 +11,35 @@
 * ============================
 * */
 
+function postRequest() {
+	var url = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : '';
+	var data = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : {};
+	var callback = arguments[2];
+
+	var searchParams = Object.keys(data).map(function (key) {
+		return encodeURIComponent(key) + '=' + encodeURIComponent(data[key]);
+	}).join('&');
+
+	// Default options are marked with *
+	var response = fetch(url, {
+		method: 'POST', // *GET, POST, PUT, DELETE, etc.
+		headers: {
+			'Content-Type': 'application/x-www-form-urlencoded; charset=UTF-8'
+		},
+		mode: 'cors', // no-cors, *cors, same-origin
+		cache: 'no-cache', // *default, no-cache, reload, force-cache, only-if-cached
+		credentials: 'same-origin', // include, *same-origin, omit
+		redirect: 'follow', // manual, *follow, error
+		referrerPolicy: 'no-referrer', // no-referrer, *client
+		body: searchParams // body data type must match "Content-Type" header
+	}).then(function (out) {
+		console.log('Checkout this JSON! ', out);
+		callback(out);
+	}).catch(function (err) {
+		throw err;
+	});
+}
+
 var initHomeLazyLoad = function initHomeLazyLoad() {
 	var listElm = document.querySelector('#infinite-list');
 
@@ -130,7 +159,7 @@ function renderSiteCategory(categoryIndex) {
 
 	var categorySites = '';
 	homeData.categories[categoryId].sites.map(function (site, index) {
-		categorySites += '<div class="swiper-slide" data-index="' + index + '" data-init="0">' + '<a class="list__box" list-box-js href="' + site.link + '" data-id="' + site.id + '" style="background-image: url(' + site.thumb + ')">' + '<div class="list__box-overlay"></div>' + '<div class="list__box-border"></div><img class="list__box-logo" src="' + site.logo + '" alt="">' + '<div class="list__box-details">' + '</div>' + '<button class="list__box-more" type="button"><i class="icon-font icon-arrow-angle"></i></button></a>' + '</div>';
+		categorySites += '<div class="swiper-slide" data-index="' + index + '" data-init="0">' + '<div class="list__box" list-box-js  data-id="' + site.id + '" style="background-image: url(' + site.thumb + ')">' + '<div class="list__box-overlay"></div>' + '<div class="list__box-border"></div>' + '<a class="nav_link" href="' + site.link + '">' + '<img class="list__box-logo" src="' + site.logo + '" alt="">' + '</a>' + '<div class="list__box-details">' + '</div>' + '<button class="list__box-more" type="button"><i class="icon-font icon-arrow-angle"></i></button>' + '</div>' + '</div>';
 	});
 
 	var categoryBoxHtml = '<div class="list__box-wrapper" list-parent-js data-name="category_' + categoryId + '" data-index="' + categoryIndex + '">' + '<div class="list__box-head">' + '<div class="list__info">' + '<div class="list__info-circle"><img src="' + categoryLogo + '" alt=""></div>' + '<div>' + '<p>' + categoryData.title + '</p><span>' + categoryData.tagline + '</span>' + '</div>' + '</div>' + '<div><a class="list__btn" href="#"><p>SEE&nbsp;<span>' + categoryData.count + ' MORE</span></p><i class="icon-font icon-arrow-angle"></i></a></div>' + '</div>' + '<div class="list__box-line">' + '<u list-line-ind-js></u><span list-line-js></span>' + '</div>' + '<div class="list__box-body">' + '<div class="list__arrow-wrapper">' + '<a class="list__arrow list__arrow--prev" href="#">' + '<div class="list__arrow-box"><i class="icon-font icon-arrow-angle"></i></div>' + '</a>' + '<a class="list__arrow list__arrow--next" href="#">' + '<div class="list__arrow-box"><i class="icon-font icon-arrow-angle"></i></div>' + '</a>' + '</div>' + '<div class="swiper-container listSwiper" data-id="listSlider_' + categoryData.id + '" data-category="18">' + '<div class="swiper-wrapper" data-category="' + categoryData.id + '" data-count="' + categoryData.count + '" data-slidecount="' + categoryData.site_limit + '">' + categorySites + '</div>' + '</div>' + '</div>' + '<div class="list__specification-wrapper"></div>' + '</div>';
@@ -213,6 +242,17 @@ var renderFavourites = function renderFavourites() {
 	}
 
 	var favouritesDropDown = document.querySelector('[view-favorites-drop-js]');
+
+	var url = '/wp-content/themes/i-max/ajax-handler-wp.php';
+
+	postRequest(url, {
+		action: 'is_logged',
+		logout: '/',
+		is_fav: true
+	}, function (res) {
+		console.log('Favouroites');
+		console.log(res);
+	});
 
 	var favouriteData = [{ 'id': 1, 'name': 'Pornhub Premium', 'link': '#', 'image': 'img/img-black-porn-sites.png', 'image_2x': 'img/img-black-porn-sites@2x.png 2x' }, { 'id': 2, 'name': 'Pornhub Premium', 'link': '#', 'image': 'img/img-black-porn-sites.png', 'image_2x': 'img/img-black-porn-sites@2x.png 2x' }, { 'id': 3, 'name': 'Pornhub Premium', 'link': '#', 'image': 'img/img-black-porn-sites.png', 'image_2x': 'img/img-black-porn-sites@2x.png 2x' }, { 'id': 4, 'name': 'Pornhub Premium', 'link': '#', 'image': 'img/img-black-porn-sites.png', 'image_2x': 'img/img-black-porn-sites@2x.png 2x' }];
 
@@ -515,17 +555,9 @@ if (!Element.prototype.closest) {
 		homeScroll();
 
 		document.querySelector('#list').addEventListener('mouseover', function (_ev) {
-			//console.log('mouseenter '+_ev.target.classList);
 			if (_ev.target.closest('[list-box-js]')) {
 				siteBoxHover(_ev.target.closest('[list-box-js]'));
 			}
-		});
-
-		document.querySelector('#list').addEventListener('mouseenter', function (_ev) {
-			console.log('mouseenter ' + _ev.target.classList);
-			/*if(_ev.target.closest('[list-box-js]')){
-   	siteBoxHover(_ev.target.closest('[list-box-js]'));
-   }*/
 		});
 	};
 
@@ -569,8 +601,11 @@ if (!Element.prototype.closest) {
 
 		document.addEventListener('click', function (ev) {
 			var _ev = ev.target;
-			//ev.preventDefault();
+			console.log(_ev.closest('.nav_link'));
 
+			if (!_ev.closest('.nav_link')) {
+				ev.preventDefault();
+			}
 
 			if (_ev.closest('.list__specification-close')) {
 				console.log('clicked on a banner close');
@@ -758,8 +793,6 @@ if (!Element.prototype.closest) {
 	};
 
 	function showBanner(ev) {
-		console.log(ev.target);
-
 		var _el = ev.target,
 		    _boxParent = _el.closest('.list__box'),
 		    _boxID = _boxParent.getAttribute('data-id'),
@@ -777,8 +810,6 @@ if (!Element.prototype.closest) {
 
 		var bottomBanner = renderSiteBottomBanner(swiperWrapper.dataset.category, swiperSlide.dataset.index);
 		if (bottomBanner) {
-			console.log('Loading bottom banner');
-
 			bannerWrapper.innerHTML = bottomBanner;
 		}
 
@@ -1267,8 +1298,6 @@ if (!Element.prototype.closest) {
 				el.closest('.list__specification').querySelector('.list__specification-close').click();
 
 				if (elID + 6 <= listBoxCount) {
-					console.log('Good');
-
 					elParent.querySelector('.list__specification[data-id="' + (elID + elCount) + '"]').classList.add('is-open');
 				} else {
 					var remainder = 6 - (listBoxCount - elID);

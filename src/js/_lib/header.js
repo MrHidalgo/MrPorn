@@ -5,6 +5,21 @@ const renderFavourites = () => {
 
 	const favouritesDropDown = document.querySelector('[view-favorites-drop-js]');
 
+
+	let url = '/wp-content/themes/i-max/ajax-handler-wp.php';
+
+
+	postRequest(url, {
+		action:'is_logged',
+		logout:'/',
+		is_fav:true
+	}, function (res) {
+		console.log('Favouroites');
+		console.log(res);
+	});
+
+
+
 	const favouriteData = [
 		{'id':1, 'name':'Pornhub Premium', 'link':'#', 'image':'img/img-black-porn-sites.png', 'image_2x':'img/img-black-porn-sites@2x.png 2x'},
 		{'id':2, 'name':'Pornhub Premium', 'link':'#', 'image':'img/img-black-porn-sites.png', 'image_2x':'img/img-black-porn-sites@2x.png 2x'},

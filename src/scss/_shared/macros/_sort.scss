@@ -35,6 +35,8 @@
 		}
 	}
 
+
+
 	&__drop {
 		z-index: 1100;
 		opacity: 0;
@@ -155,6 +157,17 @@
 				transform: translateX(0);
 				@include transition(opacity, visibility, transform);
 			}
+		}
+	}
+
+	&:hover > &__drop {
+		z-index: 1650;
+		opacity: 1;
+		visibility: visible;
+		transform: translate(-50%, 0);
+		@include transition(opacity, visibility, transform);
+		@include adaptive(1023) {
+			transform: unset;
 		}
 	}
 

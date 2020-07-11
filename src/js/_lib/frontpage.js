@@ -225,13 +225,17 @@ function renderSiteCategory(categoryIndex){
 	let categorySites = '';
 	homeData.categories[categoryId].sites.map(function (site, index) {
 		categorySites += '<div class="swiper-slide" data-index="'+index+'" data-init="0">' +
-			'<a class="list__box" list-box-js href="'+site.link+'" data-id="'+site.id+'" style="background-image: url('+site.thumb+')">'+
+			'<div class="list__box" list-box-js  data-id="'+site.id+'" style="background-image: url('+site.thumb+')">'+
 			'<div class="list__box-overlay"></div>'+
-			'<div class="list__box-border"></div><img class="list__box-logo" src="'+site.logo+'" alt="">'+
+			'<div class="list__box-border"></div>'+
+			'<a class="nav_link" href="'+site.link+'">' +
+			'<img class="list__box-logo" src="'+site.logo+'" alt="">'+
+			'</a>'+
 			'<div class="list__box-details">'+
 
 			'</div>'+
-			'<button class="list__box-more" type="button"><i class="icon-font icon-arrow-angle"></i></button></a>'+
+			'<button class="list__box-more" type="button"><i class="icon-font icon-arrow-angle"></i></button>' +
+			'</div>'+
 			'</div>';
 	});
 
