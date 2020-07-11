@@ -213,6 +213,10 @@ function renderSiteBottomBanner(category, index){
 function renderSiteCategory(categoryIndex){
 	let categoryId = homeData.categories_indexes[categoryIndex];
 	let categoryData = homeData.categories[categoryId];
+	let categoryLogo = categoryData.logo;
+	if(categoryLogo){
+		categoryLogo = categoryLogo.url;
+	}
 
 	let categorySites = '';
 	homeData.categories[categoryId].sites.map(function (site, index) {
@@ -233,7 +237,7 @@ function renderSiteCategory(categoryIndex){
 	let categoryBoxHtml = '<div class="list__box-wrapper" list-parent-js data-name="category_'+categoryId+'" data-index="'+categoryIndex+'">'+
                   '<div class="list__box-head">'+
 										'<div class="list__info">'+
-											'<div class="list__info-circle"><img src="img/img-premim-porn-icon.png" srcset="img/img-premim-porn-icon@2x.png 2x" alt=""></div>'+
+											'<div class="list__info-circle"><img src="'+categoryLogo+'" alt=""></div>'+
 											'<div>'+
 												'<p>'+categoryData.title+'</p><span>'+categoryData.tagline+'</span>'+
 											'</div>'+
