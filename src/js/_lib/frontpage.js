@@ -131,21 +131,25 @@ function renderSiteBottomBanner(category, index){
 
 		if(bannerType=='image'){
 			bannerClass = 'list__specification--banner';
-			bannerRight = '<div class="list__specification-right">' +
-				'<div><img src="'+bannerImage.url+'"></div>' +
-				'</div>';
+			if(bannerImage!=''){
+				bannerRight = '<div class="list__specification-right">' +
+					'<div><img src="'+bannerImage.url+'"></div>' +
+					'</div>';
+			}
 		}else{
 			bannerClass = 'list__specification--video';
 
-			bannerRight = '<div class="list__specification-right">'+
-				'<div video-parent-js>'+
-				'<!--video(preload="none" video-js)-->'+
-				'<video preload="none" poster="'+bannerVideoPoster.url+'" video-js>'+
-				'<source src="'+bannerVideo.url+'" type="'+bannerVideo.mime_type+'">'+
-				'</video>' +
-				'<a class="list__specification-play" href="#" video-toggle-js><i class="icon-font icon-play-button" video-play-js></i></a><a class="list__specification-pause" href="#" video-pause-js><i class="icon-font icon-pause"></i></a>'+
-				'</div>'+
-				'</div>';
+			if(bannerVideo!=''){
+				bannerRight = '<div class="list__specification-right">'+
+					'<div video-parent-js>'+
+					'<!--video(preload="none" video-js)-->'+
+					'<video preload="none" poster="'+bannerVideoPoster.url+'" video-js>'+
+					'<source src="'+bannerVideo.url+'" type="'+bannerVideo.mime_type+'">'+
+					'</video>' +
+					'<a class="list__specification-play" href="#" video-toggle-js><i class="icon-font icon-play-button" video-play-js></i></a><a class="list__specification-pause" href="#" video-pause-js><i class="icon-font icon-pause"></i></a>'+
+					'</div>'+
+					'</div>';
+			}
 		}
 
 		var bannerHtml = '<div class="list__specification '+bannerClass+'" data-id="'+siteId+'">' +

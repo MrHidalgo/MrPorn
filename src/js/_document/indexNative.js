@@ -98,7 +98,7 @@ if (!Element.prototype.closest) {
 
 		document.addEventListener('click', function(ev) {
 			const _ev = ev.target;
-			ev.preventDefault();
+			//ev.preventDefault();
 
 
 
