@@ -36,6 +36,24 @@ if (!Element.prototype.closest) {
 
 	let headerHeight = 0;
 
+	const initHome = () =>{
+		homeScroll();
+
+		document.querySelector('#list').addEventListener('mouseover', function(_ev) {
+			//console.log('mouseenter '+_ev.target.classList);
+			if(_ev.target.closest('[list-box-js]')){
+				siteBoxHover(_ev.target.closest('[list-box-js]'));
+			}
+		});
+
+		document.querySelector('#list').addEventListener('mouseenter', function(_ev) {
+			console.log('mouseenter '+_ev.target.classList);
+			/*if(_ev.target.closest('[list-box-js]')){
+				siteBoxHover(_ev.target.closest('[list-box-js]'));
+			}*/
+		});
+	}
+
 	const homeScroll = () => {
 		if(document.body.classList.contains('home')){
 			window.addEventListener('scroll', function(e) {
@@ -43,13 +61,6 @@ if (!Element.prototype.closest) {
 			});
 		}
 	}
-
-	document.querySelector('#list').addEventListener('mouseover', function(_ev) {
-		//console.log('mouseenter '+_ev.target.classList);
-		if(_ev.target.closest('[list-box-js]')){
-			siteBoxHover(_ev.target.closest('[list-box-js]'));
-		}
-	});
 
 	const onHomeScroll = (e) => {
 		let wY = window.scrollY;
@@ -75,6 +86,8 @@ if (!Element.prototype.closest) {
 					`.swiper-container[data-id="listSlider_${catId}"]`,
 					`.list__box-wrapper[data-name='category_${catId}']`
 				);
+
+				boxHover();
 			}
 		}
 	}
@@ -614,8 +627,6 @@ if (!Element.prototype.closest) {
 		const parent = el.closest('[list-parent-js]'),
 			listIndicator = parent.querySelector('[list-line-js]');
 
-		console.log('hover box '+elID+' - '+elWidth);
-
 		let listIndicatorWidth = 0;
 
 		if(window.innerWidth >= 1024) {
@@ -652,7 +663,7 @@ if (!Element.prototype.closest) {
 
 
 	const boxHover = () => {
-		const swiperSlides = document.querySelectorAll('.swiper-slide'),
+		const swiperSlides = document.querySelectorAll('.swiper-slide[data-init="0"]'),
 			listBoxBody = document.querySelectorAll('.list__box-body');
 
 		let tOut = null,
@@ -753,6 +764,9 @@ if (!Element.prototype.closest) {
 		}
 	};
 
+	const initHomeSlideEvent = () => {
+
+	}
 
 	const detectDevice = () => {
 		let check = false;
@@ -857,7 +871,7 @@ if (!Element.prototype.closest) {
 		detectDevice();
 		bodyClick();
 
-		homeScroll();
+		initHome();
 
 		renderFavourites();
 

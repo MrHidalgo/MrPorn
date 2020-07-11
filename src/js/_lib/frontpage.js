@@ -220,7 +220,7 @@ function renderSiteCategory(categoryIndex){
 
 	let categorySites = '';
 	homeData.categories[categoryId].sites.map(function (site, index) {
-		categorySites += '<div class="swiper-slide" data-index="'+index+'">' +
+		categorySites += '<div class="swiper-slide" data-index="'+index+'" data-init="0">' +
 			'<a class="list__box" list-box-js href="'+site.link+'" data-id="'+site.id+'" style="background-image: url('+site.thumb+')">'+
 			'<div class="list__box-overlay"></div>'+
 			'<div class="list__box-border"></div><img class="list__box-logo" src="'+site.logo+'" alt="">'+

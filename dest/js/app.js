@@ -126,7 +126,7 @@ function renderSiteCategory(categoryIndex) {
 
 	var categorySites = '';
 	homeData.categories[categoryId].sites.map(function (site, index) {
-		categorySites += '<div class="swiper-slide" data-index="' + index + '">' + '<a class="list__box" list-box-js href="' + site.link + '" data-id="' + site.id + '" style="background-image: url(' + site.thumb + ')">' + '<div class="list__box-overlay"></div>' + '<div class="list__box-border"></div><img class="list__box-logo" src="' + site.logo + '" alt="">' + '<div class="list__box-details">' + '</div>' + '<button class="list__box-more" type="button"><i class="icon-font icon-arrow-angle"></i></button></a>' + '</div>';
+		categorySites += '<div class="swiper-slide" data-index="' + index + '" data-init="0">' + '<a class="list__box" list-box-js href="' + site.link + '" data-id="' + site.id + '" style="background-image: url(' + site.thumb + ')">' + '<div class="list__box-overlay"></div>' + '<div class="list__box-border"></div><img class="list__box-logo" src="' + site.logo + '" alt="">' + '<div class="list__box-details">' + '</div>' + '<button class="list__box-more" type="button"><i class="icon-font icon-arrow-angle"></i></button></a>' + '</div>';
 	});
 
 	var categoryBoxHtml = '<div class="list__box-wrapper" list-parent-js data-name="category_' + categoryId + '" data-index="' + categoryIndex + '">' + '<div class="list__box-head">' + '<div class="list__info">' + '<div class="list__info-circle"><img src="' + categoryLogo + '" alt=""></div>' + '<div>' + '<p>' + categoryData.title + '</p><span>' + categoryData.tagline + '</span>' + '</div>' + '</div>' + '<div><a class="list__btn" href="#"><p>SEE&nbsp;<span>' + categoryData.count + ' MORE</span></p><i class="icon-font icon-arrow-angle"></i></a></div>' + '</div>' + '<div class="list__box-line">' + '<u list-line-ind-js></u><span list-line-js></span>' + '</div>' + '<div class="list__box-body">' + '<div class="list__arrow-wrapper">' + '<a class="list__arrow list__arrow--prev" href="#">' + '<div class="list__arrow-box"><i class="icon-font icon-arrow-angle"></i></div>' + '</a>' + '<a class="list__arrow list__arrow--next" href="#">' + '<div class="list__arrow-box"><i class="icon-font icon-arrow-angle"></i></div>' + '</a>' + '</div>' + '<div class="swiper-container listSwiper" data-id="listSlider_' + categoryData.id + '" data-category="18">' + '<div class="swiper-wrapper" data-category="' + categoryData.id + '" data-count="' + categoryData.count + '" data-slidecount="' + categoryData.site_limit + '">' + categorySites + '</div>' + '</div>' + '</div>' + '<div class="list__specification-wrapper"></div>' + '</div>';
@@ -507,6 +507,24 @@ if (!Element.prototype.closest) {
 
 	var headerHeight = 0;
 
+	var initHome = function initHome() {
+		homeScroll();
+
+		document.querySelector('#list').addEventListener('mouseover', function (_ev) {
+			//console.log('mouseenter '+_ev.target.classList);
+			if (_ev.target.closest('[list-box-js]')) {
+				siteBoxHover(_ev.target.closest('[list-box-js]'));
+			}
+		});
+
+		document.querySelector('#list').addEventListener('mouseenter', function (_ev) {
+			console.log('mouseenter ' + _ev.target.classList);
+			/*if(_ev.target.closest('[list-box-js]')){
+   	siteBoxHover(_ev.target.closest('[list-box-js]'));
+   }*/
+		});
+	};
+
 	var homeScroll = function homeScroll() {
 		if (document.body.classList.contains('home')) {
 			window.addEventListener('scroll', function (e) {
@@ -514,13 +532,6 @@ if (!Element.prototype.closest) {
 			});
 		}
 	};
-
-	document.querySelector('#list').addEventListener('mouseover', function (_ev) {
-		//console.log('mouseenter '+_ev.target.classList);
-		if (_ev.target.closest('[list-box-js]')) {
-			siteBoxHover(_ev.target.closest('[list-box-js]'));
-		}
-	});
 
 	var onHomeScroll = function onHomeScroll(e) {
 		var wY = window.scrollY;
@@ -543,6 +554,8 @@ if (!Element.prototype.closest) {
 				catListContainer.insertAdjacentHTML('beforeend', categoryHtml);
 
 				swiperCB('.swiper-container[data-id="listSlider_' + catId + '"]', '.list__box-wrapper[data-name=\'category_' + catId + '\']');
+
+				boxHover();
 			}
 		}
 	};
@@ -1060,8 +1073,6 @@ if (!Element.prototype.closest) {
 		var parent = el.closest('[list-parent-js]'),
 		    listIndicator = parent.querySelector('[list-line-js]');
 
-		console.log('hover box ' + elID + ' - ' + elWidth);
-
 		var listIndicatorWidth = 0;
 
 		if (window.innerWidth >= 1024) {
@@ -1094,7 +1105,7 @@ if (!Element.prototype.closest) {
 	};
 
 	var boxHover = function boxHover() {
-		var swiperSlides = document.querySelectorAll('.swiper-slide'),
+		var swiperSlides = document.querySelectorAll('.swiper-slide[data-init="0"]'),
 		    listBoxBody = document.querySelectorAll('.list__box-body');
 
 		var tOut = null,
@@ -1187,6 +1198,8 @@ if (!Element.prototype.closest) {
 			}, false);
 		}
 	};
+
+	var initHomeSlideEvent = function initHomeSlideEvent() {};
 
 	var detectDevice = function detectDevice() {
 		var check = false;
@@ -1288,7 +1301,7 @@ if (!Element.prototype.closest) {
 		detectDevice();
 		bodyClick();
 
-		homeScroll();
+		initHome();
 
 		renderFavourites();
 
