@@ -15,8 +15,14 @@ function postRequest(url = '', data = {}, callback){
 		redirect: 'follow', // manual, *follow, error
 		referrerPolicy: 'no-referrer', // no-referrer, *client
 		body: searchParams // body data type must match "Content-Type" header
-	}).then((out) => {
+	})
+	.then(response => response.json())
+	.then((out) => {
 		console.log('Checkout this JSON! ', out);
+		console.log(data);
 		callback(out);
-	}).catch(err => { throw err });
+	}).catch(err => {
+		console.log(err);
+		throw err;
+	});
 }

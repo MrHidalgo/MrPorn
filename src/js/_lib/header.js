@@ -8,6 +8,7 @@ const renderFavourites = () => {
 
 	let url = '/wp-content/themes/i-max/ajax-handler-wp.php';
 
+	let favouritesHtml = '';
 
 	postRequest(url, {
 		action:'is_logged',
@@ -16,6 +17,16 @@ const renderFavourites = () => {
 	}, function (res) {
 		console.log('Favouroites');
 		console.log(res);
+		if(res.status){
+			res.fav_list.map(function (fav, index) {
+				favouritesHtml += '<a class="header__view-link" href="'+fav.permalink+'">' +
+					'<div><span>'+index+'.</span></div>' +
+					'<div><img src="'+fav.image+'" srcset="'+fav.image_2x+'" alt=""><p>'+fav.title+'</p></div>' +
+					'<div><button type="button"><i class="icon-font icon-delete"></i></button><button type="button"><i class="icon-font icon-search"></i></button></div>' +
+					'</a>';
+			})
+			favouritesDropDown.innerHTML = favouritesHtml;
+		}
 	});
 
 
@@ -27,11 +38,8 @@ const renderFavourites = () => {
 		{'id':4, 'name':'Pornhub Premium', 'link':'#', 'image':'img/img-black-porn-sites.png', 'image_2x':'img/img-black-porn-sites@2x.png 2x'},
 	];
 
-	let favouritesHtml = '';
-	favouriteData.map(function (fav, index) {
-		favouritesHtml += '<a class="header__view-link" href="'+fav.link+'"><div><span>'+index+'.</span></div><div><img src="'+fav.image+'" srcset="'+fav.image_2x+'" alt=""><p>'+fav.name+'</p></div><div><button type="button"><i class="icon-font icon-delete"></i></button><button type="button"><i class="icon-font icon-search"></i></button></div></a>';
-	})
-	favouritesDropDown.innerHTML = favouritesHtml;
+
+
 }
 
 const renderSorting = () => {

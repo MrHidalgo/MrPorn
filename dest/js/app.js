@@ -32,10 +32,14 @@ function postRequest() {
 		redirect: 'follow', // manual, *follow, error
 		referrerPolicy: 'no-referrer', // no-referrer, *client
 		body: searchParams // body data type must match "Content-Type" header
+	}).then(function (response) {
+		return response.json();
 	}).then(function (out) {
 		console.log('Checkout this JSON! ', out);
+		console.log(data);
 		callback(out);
 	}).catch(function (err) {
+		console.log(err);
 		throw err;
 	});
 }
@@ -69,7 +73,6 @@ var loadHomeData = function loadHomeData() {
 	fetch(url).then(function (res) {
 		return res.json();
 	}).then(function (out) {
-		console.log('Checkout this JSON! ', out);
 		homeData = out;
 	}).catch(function (err) {
 		throw err;
@@ -245,6 +248,8 @@ var renderFavourites = function renderFavourites() {
 
 	var url = '/wp-content/themes/i-max/ajax-handler-wp.php';
 
+	var favouritesHtml = '';
+
 	postRequest(url, {
 		action: 'is_logged',
 		logout: '/',
@@ -252,15 +257,15 @@ var renderFavourites = function renderFavourites() {
 	}, function (res) {
 		console.log('Favouroites');
 		console.log(res);
+		if (res.status) {
+			res.fav_list.map(function (fav, index) {
+				favouritesHtml += '<a class="header__view-link" href="' + fav.permalink + '">' + '<div><span>' + index + '.</span></div>' + '<div><img src="' + fav.image + '" srcset="' + fav.image_2x + '" alt=""><p>' + fav.title + '</p></div>' + '<div><button type="button"><i class="icon-font icon-delete"></i></button><button type="button"><i class="icon-font icon-search"></i></button></div>' + '</a>';
+			});
+			favouritesDropDown.innerHTML = favouritesHtml;
+		}
 	});
 
 	var favouriteData = [{ 'id': 1, 'name': 'Pornhub Premium', 'link': '#', 'image': 'img/img-black-porn-sites.png', 'image_2x': 'img/img-black-porn-sites@2x.png 2x' }, { 'id': 2, 'name': 'Pornhub Premium', 'link': '#', 'image': 'img/img-black-porn-sites.png', 'image_2x': 'img/img-black-porn-sites@2x.png 2x' }, { 'id': 3, 'name': 'Pornhub Premium', 'link': '#', 'image': 'img/img-black-porn-sites.png', 'image_2x': 'img/img-black-porn-sites@2x.png 2x' }, { 'id': 4, 'name': 'Pornhub Premium', 'link': '#', 'image': 'img/img-black-porn-sites.png', 'image_2x': 'img/img-black-porn-sites@2x.png 2x' }];
-
-	var favouritesHtml = '';
-	favouriteData.map(function (fav, index) {
-		favouritesHtml += '<a class="header__view-link" href="' + fav.link + '"><div><span>' + index + '.</span></div><div><img src="' + fav.image + '" srcset="' + fav.image_2x + '" alt=""><p>' + fav.name + '</p></div><div><button type="button"><i class="icon-font icon-delete"></i></button><button type="button"><i class="icon-font icon-search"></i></button></div></a>';
-	});
-	favouritesDropDown.innerHTML = favouritesHtml;
 };
 
 var renderSorting = function renderSorting() {

@@ -27,7 +27,6 @@ const loadHomeData = () => {
 	fetch(url)
 		.then(res => res.json())
 		.then((out) => {
-			console.log('Checkout this JSON! ', out);
 			homeData = out;
 		})
 		.catch(err => { throw err });
