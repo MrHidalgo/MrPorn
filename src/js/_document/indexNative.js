@@ -90,7 +90,6 @@ if (!Element.prototype.closest) {
 
 		document.addEventListener('click', function(ev) {
 			const _ev = ev.target;
-			console.log(_ev.closest('.nav_link'));
 
 			if(!_ev.closest('.nav_link')){
 				ev.preventDefault();

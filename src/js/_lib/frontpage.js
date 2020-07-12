@@ -151,7 +151,21 @@ function renderSiteBottomBanner(category, index){
 			}
 		}
 
-		var bannerHtml = '<div class="list__specification '+bannerClass+'" data-id="'+siteId+'">' +
+		let moreSites = '';
+		let moreSiteCount = 0;
+
+		homeData.categories[category].sites.map(function (moreSite, index) {
+			if(moreSiteCount<6 && moreSite.id!=siteId){
+				moreSites +='<a class="list__box" list-box-more-js href="'+moreSite.link+'" data-id="'+moreSite.id+'" data-count="1" style="background-image: url('+moreSite.thumb+')">'+
+					'<div class="list__box-overlay"></div>'+
+					'<div class="list__box-border"></div><img class="list__box-logo" src="'+moreSite.logo.sizes.medium+'" alt="">' +
+					'</a>';
+
+				moreSiteCount++;
+			}
+		});
+
+		let bannerHtml = '<div class="list__specification '+bannerClass+'" data-id="'+siteId+'">' +
 			'<a class="list__specification-close" href="#"><i class="icon-font icon-close"></i></a>'+
 			'<div>'+
 			'<div class="list__specification-header">' +
@@ -164,8 +178,8 @@ function renderSiteBottomBanner(category, index){
 			'<div>' +
 			'<img class="list__specification-logo" src="img/img-reality-kings.png" srcset="img/img-reality-kings@2x.png 2x" alt="">'+
 			'<div class="list__specification-action" spec-actionNode-js>'+
-			'<div><a class="list__specification-visit" href="#">VISIT WEBSITE</a></div>'+
-			'<div><a class="list__specification-read" href="#">READ REVIEW</a></div>'+
+			'<div><a class="list__specification-visit nav_link" href="#">VISIT WEBSITE</a></div>'+
+			'<div><a class="list__specification-read nav_link" href="'+siteItem.link+'">READ REVIEW</a></div>'+
 			'<div class="list__specification-action-desc">'+
 			'<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eius mod tempor incididunt ut labore et dolore magna eutin... <a href="#">READ MORE</a></p>'+
 			'</div>'+
@@ -189,19 +203,8 @@ function renderSiteBottomBanner(category, index){
 			'<div>'+
 			'<p>More Like This</p>'+
 			'</div>'+
-			'<div><a class="list__box" list-box-more-js href="#" data-id="1" data-count="1" style="background-image: url(&quot;img/img-view-bruzzers.png&quot;)">'+
-			'<div class="list__box-overlay"></div>'+
-			'<div class="list__box-border"></div><img class="list__box-logo" src="img/img-brazzers-logo.svg" alt=""></a><a class="list__box" list-box-more-js href="#" data-id="1" data-count="2" style="background-image: url(&quot;img/img-realitykings-view.png&quot;)">'+
-			'<div class="list__box-overlay"></div>'+
-			'<div class="list__box-border"></div><img class="list__box-logo" src="img/img-reliaty-kings-logo.png" alt=""></a><a class="list__box" list-box-more-js href="#" data-id="1" data-count="3" style="background-image: url(&quot;img/img-xvideo-red-view.png&quot;)">'+
-			'<div class="list__box-overlay"></div>'+
-			'<div class="list__box-border"></div><img class="list__box-logo" src="img/img-xvideo-red-logo.png" alt=""></a><a class="list__box" list-box-more-js href="#" data-id="1" data-count="4" style="background-image: url(&quot;img/img-view-pornhub-premium.png&quot;)">'+
-			'<div class="list__box-overlay"></div>'+
-			'<div class="list__box-border"></div><img class="list__box-logo" src="img/img-pornhub-premium-logo.png" alt=""></a><a class="list__box" list-box-more-js href="#" data-id="1" data-count="5" style="background-image: url(&quot;img/img-bang-bros-view.png&quot;)">'+
-			'<div class="list__box-overlay"></div>'+
-			'<div class="list__box-border"></div><img class="list__box-logo" src="img/img-bangbros-logo.png" alt=""></a><a class="list__box" list-box-more-js href="#" data-id="1" data-count="6" style="background-image: url(&quot;img/img-mofos-view.png&quot;)">'+
-			'<div class="list__box-overlay"></div>'+
-			'<div class="list__box-border"></div><img class="list__box-logo" src="img/img-mofos-logo.png" alt=""></a>'+
+			'<div>' +
+			moreSites+
 			'</div>'+
 			'</div>'+
 			'</div>'+
@@ -212,6 +215,26 @@ function renderSiteBottomBanner(category, index){
 
 	return false;
 }
+
+function shuffleArray(arra1){
+	var ctr = arra1.length, temp, index;
+
+
+
+// While there are elements in the array
+	while (ctr > 0) {
+// Pick a random index
+		index = Math.floor(Math.random() * ctr);
+// Decrease ctr by 1
+		ctr--;
+// And swap the last element with it
+		temp = arra1[ctr];
+		arra1[ctr] = arra1[index];
+		arra1[index] = temp;
+	}
+	return arra1;
+}
+
 
 function renderSiteCategory(categoryIndex){
 	let categoryId = homeData.categories_indexes[categoryIndex];

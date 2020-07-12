@@ -20,7 +20,7 @@ const renderFavourites = () => {
 		if(res.status){
 			res.fav_list.map(function (fav, index) {
 				favouritesHtml += '<a class="header__view-link" href="'+fav.permalink+'">' +
-					'<div><span>'+index+'.</span></div>' +
+					'<div><span>'+(index+1)+'.</span></div>' +
 					'<div><img src="'+fav.image+'" srcset="'+fav.image_2x+'" alt=""><p>'+fav.title+'</p></div>' +
 					'<div><button type="button"><i class="icon-font icon-delete"></i></button><button type="button"><i class="icon-font icon-search"></i></button></div>' +
 					'</a>';
@@ -29,16 +29,9 @@ const renderFavourites = () => {
 		}
 	});
 
+}
 
-
-	const favouriteData = [
-		{'id':1, 'name':'Pornhub Premium', 'link':'#', 'image':'img/img-black-porn-sites.png', 'image_2x':'img/img-black-porn-sites@2x.png 2x'},
-		{'id':2, 'name':'Pornhub Premium', 'link':'#', 'image':'img/img-black-porn-sites.png', 'image_2x':'img/img-black-porn-sites@2x.png 2x'},
-		{'id':3, 'name':'Pornhub Premium', 'link':'#', 'image':'img/img-black-porn-sites.png', 'image_2x':'img/img-black-porn-sites@2x.png 2x'},
-		{'id':4, 'name':'Pornhub Premium', 'link':'#', 'image':'img/img-black-porn-sites.png', 'image_2x':'img/img-black-porn-sites@2x.png 2x'},
-	];
-
-
+const addToFavourites = () => {
 
 }
 

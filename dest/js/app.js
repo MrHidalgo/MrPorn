@@ -144,12 +144,42 @@ function renderSiteBottomBanner(category, index) {
 			}
 		}
 
-		var bannerHtml = '<div class="list__specification ' + bannerClass + '" data-id="' + siteId + '">' + '<a class="list__specification-close" href="#"><i class="icon-font icon-close"></i></a>' + '<div>' + '<div class="list__specification-header">' + '<img class="list__specification-logo" src="img/img-reality-kings.png" srcset="img/img-reality-kings@2x.png 2x" alt="">' + '<a class="list__specification-close" href="#">' + '<i class="icon-font icon-close"></i>' + '</a>' + '</div>' + '<div class="list__specification-left">' + '<div>' + '<img class="list__specification-logo" src="img/img-reality-kings.png" srcset="img/img-reality-kings@2x.png 2x" alt="">' + '<div class="list__specification-action" spec-actionNode-js>' + '<div><a class="list__specification-visit" href="#">VISIT WEBSITE</a></div>' + '<div><a class="list__specification-read" href="#">READ REVIEW</a></div>' + '<div class="list__specification-action-desc">' + '<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eius mod tempor incididunt ut labore et dolore magna eutin... <a href="#">READ MORE</a></p>' + '</div>' + '<div class="list__specification-action-skip"><a class="list__specification-circle list__specification-skip" href="#" data-id="' + siteId + '" spec-skip-js><i class="icon-font icon-point"></i><span>Skip</span></a></div>' + '<div class="list__specification-action-circle"><a class="list__specification-circle list__specification-like" href="#" data-like="1" spec-like-js><i class="icon-font icon-like"></i><span>Like</span></a></div>' + '<div class="list__specification-action-circle"><a class="list__specification-circle list__specification-dislike" href="#" data-dislike="1" spec-dislike-js><i class="icon-font icon-like"></i><span>Dislike</span></a></div>' + '<div class="list__specification-action-circle">' + '<div class="c-popper"><a class="list__specification-circle list__specification-favorites" href="#" data-favorites="1" spec-favorites-js><i class="icon-font icon-star-fill"></i><i class="icon-font icon-star"></i><span>Favorites</span></a>' + '<div class="c-poppertext">' + '<u>Add To Favourites</u>' + '<u>Remove From Favourites</u>' + '</div>' + '</div>' + '</div>' + '</div>' + '<p class="list__specification-desc">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in.</p>' + '</div>' + '</div>' + bannerRight + '<div class="list__specification-more">' + '<div>' + '<p>More Like This</p>' + '</div>' + '<div><a class="list__box" list-box-more-js href="#" data-id="1" data-count="1" style="background-image: url(&quot;img/img-view-bruzzers.png&quot;)">' + '<div class="list__box-overlay"></div>' + '<div class="list__box-border"></div><img class="list__box-logo" src="img/img-brazzers-logo.svg" alt=""></a><a class="list__box" list-box-more-js href="#" data-id="1" data-count="2" style="background-image: url(&quot;img/img-realitykings-view.png&quot;)">' + '<div class="list__box-overlay"></div>' + '<div class="list__box-border"></div><img class="list__box-logo" src="img/img-reliaty-kings-logo.png" alt=""></a><a class="list__box" list-box-more-js href="#" data-id="1" data-count="3" style="background-image: url(&quot;img/img-xvideo-red-view.png&quot;)">' + '<div class="list__box-overlay"></div>' + '<div class="list__box-border"></div><img class="list__box-logo" src="img/img-xvideo-red-logo.png" alt=""></a><a class="list__box" list-box-more-js href="#" data-id="1" data-count="4" style="background-image: url(&quot;img/img-view-pornhub-premium.png&quot;)">' + '<div class="list__box-overlay"></div>' + '<div class="list__box-border"></div><img class="list__box-logo" src="img/img-pornhub-premium-logo.png" alt=""></a><a class="list__box" list-box-more-js href="#" data-id="1" data-count="5" style="background-image: url(&quot;img/img-bang-bros-view.png&quot;)">' + '<div class="list__box-overlay"></div>' + '<div class="list__box-border"></div><img class="list__box-logo" src="img/img-bangbros-logo.png" alt=""></a><a class="list__box" list-box-more-js href="#" data-id="1" data-count="6" style="background-image: url(&quot;img/img-mofos-view.png&quot;)">' + '<div class="list__box-overlay"></div>' + '<div class="list__box-border"></div><img class="list__box-logo" src="img/img-mofos-logo.png" alt=""></a>' + '</div>' + '</div>' + '</div>' + '</div>';
+		var moreSites = '';
+		var moreSiteCount = 0;
+
+		homeData.categories[category].sites.map(function (moreSite, index) {
+			if (moreSiteCount < 6 && moreSite.id != siteId) {
+				moreSites += '<a class="list__box" list-box-more-js href="' + moreSite.link + '" data-id="' + moreSite.id + '" data-count="1" style="background-image: url(' + moreSite.thumb + ')">' + '<div class="list__box-overlay"></div>' + '<div class="list__box-border"></div><img class="list__box-logo" src="' + moreSite.logo.sizes.medium + '" alt="">' + '</a>';
+
+				moreSiteCount++;
+			}
+		});
+
+		var bannerHtml = '<div class="list__specification ' + bannerClass + '" data-id="' + siteId + '">' + '<a class="list__specification-close" href="#"><i class="icon-font icon-close"></i></a>' + '<div>' + '<div class="list__specification-header">' + '<img class="list__specification-logo" src="img/img-reality-kings.png" srcset="img/img-reality-kings@2x.png 2x" alt="">' + '<a class="list__specification-close" href="#">' + '<i class="icon-font icon-close"></i>' + '</a>' + '</div>' + '<div class="list__specification-left">' + '<div>' + '<img class="list__specification-logo" src="img/img-reality-kings.png" srcset="img/img-reality-kings@2x.png 2x" alt="">' + '<div class="list__specification-action" spec-actionNode-js>' + '<div><a class="list__specification-visit nav_link" href="#">VISIT WEBSITE</a></div>' + '<div><a class="list__specification-read nav_link" href="' + siteItem.link + '">READ REVIEW</a></div>' + '<div class="list__specification-action-desc">' + '<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eius mod tempor incididunt ut labore et dolore magna eutin... <a href="#">READ MORE</a></p>' + '</div>' + '<div class="list__specification-action-skip"><a class="list__specification-circle list__specification-skip" href="#" data-id="' + siteId + '" spec-skip-js><i class="icon-font icon-point"></i><span>Skip</span></a></div>' + '<div class="list__specification-action-circle"><a class="list__specification-circle list__specification-like" href="#" data-like="1" spec-like-js><i class="icon-font icon-like"></i><span>Like</span></a></div>' + '<div class="list__specification-action-circle"><a class="list__specification-circle list__specification-dislike" href="#" data-dislike="1" spec-dislike-js><i class="icon-font icon-like"></i><span>Dislike</span></a></div>' + '<div class="list__specification-action-circle">' + '<div class="c-popper"><a class="list__specification-circle list__specification-favorites" href="#" data-favorites="1" spec-favorites-js><i class="icon-font icon-star-fill"></i><i class="icon-font icon-star"></i><span>Favorites</span></a>' + '<div class="c-poppertext">' + '<u>Add To Favourites</u>' + '<u>Remove From Favourites</u>' + '</div>' + '</div>' + '</div>' + '</div>' + '<p class="list__specification-desc">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in.</p>' + '</div>' + '</div>' + bannerRight + '<div class="list__specification-more">' + '<div>' + '<p>More Like This</p>' + '</div>' + '<div>' + moreSites + '</div>' + '</div>' + '</div>' + '</div>';
 
 		return bannerHtml;
 	}
 
 	return false;
+}
+
+function shuffleArray(arra1) {
+	var ctr = arra1.length,
+	    temp,
+	    index;
+
+	// While there are elements in the array
+	while (ctr > 0) {
+		// Pick a random index
+		index = Math.floor(Math.random() * ctr);
+		// Decrease ctr by 1
+		ctr--;
+		// And swap the last element with it
+		temp = arra1[ctr];
+		arra1[ctr] = arra1[index];
+		arra1[index] = temp;
+	}
+	return arra1;
 }
 
 function renderSiteCategory(categoryIndex) {
@@ -259,14 +289,14 @@ var renderFavourites = function renderFavourites() {
 		console.log(res);
 		if (res.status) {
 			res.fav_list.map(function (fav, index) {
-				favouritesHtml += '<a class="header__view-link" href="' + fav.permalink + '">' + '<div><span>' + index + '.</span></div>' + '<div><img src="' + fav.image + '" srcset="' + fav.image_2x + '" alt=""><p>' + fav.title + '</p></div>' + '<div><button type="button"><i class="icon-font icon-delete"></i></button><button type="button"><i class="icon-font icon-search"></i></button></div>' + '</a>';
+				favouritesHtml += '<a class="header__view-link" href="' + fav.permalink + '">' + '<div><span>' + (index + 1) + '.</span></div>' + '<div><img src="' + fav.image + '" srcset="' + fav.image_2x + '" alt=""><p>' + fav.title + '</p></div>' + '<div><button type="button"><i class="icon-font icon-delete"></i></button><button type="button"><i class="icon-font icon-search"></i></button></div>' + '</a>';
 			});
 			favouritesDropDown.innerHTML = favouritesHtml;
 		}
 	});
-
-	var favouriteData = [{ 'id': 1, 'name': 'Pornhub Premium', 'link': '#', 'image': 'img/img-black-porn-sites.png', 'image_2x': 'img/img-black-porn-sites@2x.png 2x' }, { 'id': 2, 'name': 'Pornhub Premium', 'link': '#', 'image': 'img/img-black-porn-sites.png', 'image_2x': 'img/img-black-porn-sites@2x.png 2x' }, { 'id': 3, 'name': 'Pornhub Premium', 'link': '#', 'image': 'img/img-black-porn-sites.png', 'image_2x': 'img/img-black-porn-sites@2x.png 2x' }, { 'id': 4, 'name': 'Pornhub Premium', 'link': '#', 'image': 'img/img-black-porn-sites.png', 'image_2x': 'img/img-black-porn-sites@2x.png 2x' }];
 };
+
+var addToFavourites = function addToFavourites() {};
 
 var renderSorting = function renderSorting() {
 	var sortingHtml = '<a class="sort__drop-link" href="#">A</a><a class="sort__drop-link" href="#">B</a><a class="sort__drop-link" href="#">C</a><a class="sort__drop-link" href="#">D</a><a class="sort__drop-link" href="#">E</a><a class="sort__drop-link" href="#">F</a><a class="sort__drop-link" href="#">G</a><a class="sort__drop-link" href="#">H</a><a class="sort__drop-link" href="#">I</a><a class="sort__drop-link" href="#">J</a><a class="sort__drop-link" href="#">K</a><a class="sort__drop-link" href="#">L</a><a class="sort__drop-link" href="#">M</a><a class="sort__drop-link" href="#">N</a><a class="sort__drop-link" href="#">O</a><a class="sort__drop-link" href="#">P</a><a class="sort__drop-link" href="#">Q</a><a class="sort__drop-link" href="#">R</a><a class="sort__drop-link" href="#">S</a><a class="sort__drop-link" href="#">T</a><a class="sort__drop-link" href="#">U</a><a class="sort__drop-link" href="#">V</a><a class="sort__drop-link" href="#">W</a><a class="sort__drop-link" href="#">X</a><a class="sort__drop-link" href="#">Y</a><a class="sort__drop-link" href="#">Z</a>' + '<div class="sort__drop-inner">' + '<div class="sort__collapse"><a class="sort__collapse-toggle" href="#" collapse-toggle-js data-container="sort-collapse-1">' + '<div><span>#1</span></div>' + '<div><img src="img/img-black-porn-sites.png" srcset="img/img-black-porn-sites@2x.png 2x" alt="">' + '<p><span>B</span>lack Porn Sites</p>' + '</div>' + '<div><i class="icon-font icon-arrow-angle"></i></div></a>' + '<div class="sort__collapse-body" id="sort-collapse-1" collapse-body-js>' + '<button type="button"><span>Free</span></button><img src="img/img-badge-premium.png" srcset="img/img-badge-premium@2x.png 2x" alt="">' + '</div>' + '</div>' + '<div class="sort__collapse"><a class="sort__collapse-toggle" href="#" collapse-toggle-js data-container="sort-collapse-2">' + '<div><span>#2</span></div>' + '<div><img src="img/img-blog.png" srcset="img/img-blog@2x.png 2x" alt="">' + '<p>Porn <span>B</span>logs</p>' + '</div>' + '<div><i class="icon-font icon-arrow-angle"></i></div></a>' + '<div class="sort__collapse-body" id="sort-collapse-2" collapse-body-js>' + '<button type="button"><span>Free</span></button><img src="img/img-badge-premium.png" srcset="img/img-badge-premium@2x.png 2x" alt="">' + '</div>' + '</div>' + '<div class="sort__collapse"><a class="sort__collapse-toggle" href="#" collapse-toggle-js data-container="sort-collapse-3">' + '<div><span>#3</span></div>' + '<div><img src="img/img-best-webcam-girls.png" srcset="img/img-best-webcam-girls@2x.png 2x" alt="">' + '<p><span>B</span>est Webcam Girls</p>' + '</div>' + '<div><i class="icon-font icon-arrow-angle"></i></div></a>' + '<div class="sort__collapse-body" id="sort-collapse-3" collapse-body-js>' + '<button type="button"><span>Free</span></button><img src="img/img-badge-premium.png" srcset="img/img-badge-premium@2x.png 2x" alt="">' + '</div>' + '</div>' + '<div class="sort__collapse"><a class="sort__collapse-toggle" href="#" collapse-toggle-js data-container="sort-collapse-4">' + '<div><span>#4</span></div>' + '<div><img src="img/img-best-adult-ad-networks.png" srcset="img/img-best-adult-ad-networks@2x.png 2x" alt="">' + '<p><span>B</span>est Adult Ad Networks</p>' + '</div>' + '<div><i class="icon-font icon-arrow-angle"></i></div></a>' + '<div class="sort__collapse-body" id="sort-collapse-4" collapse-body-js>' + '<button type="button"><span>Free</span></button><img src="img/img-badge-premium.png" srcset="img/img-badge-premium@2x.png 2x" alt="">' + '</div>' + '</div>' + '</div>';
@@ -606,7 +636,6 @@ if (!Element.prototype.closest) {
 
 		document.addEventListener('click', function (ev) {
 			var _ev = ev.target;
-			console.log(_ev.closest('.nav_link'));
 
 			if (!_ev.closest('.nav_link')) {
 				ev.preventDefault();
