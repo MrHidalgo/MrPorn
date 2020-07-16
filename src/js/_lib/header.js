@@ -6,11 +6,9 @@ const renderFavourites = () => {
 	const favouritesDropDown = document.querySelector('[view-favorites-drop-js]');
 
 
-	let url = '/wp-content/themes/i-max/ajax-handler-wp.php';
-
 	let favouritesHtml = '';
 
-	postRequest(url, {
+	postRequest(ajaxEndpoint, {
 		action:'is_logged',
 		logout:'/',
 		is_fav:true
@@ -21,17 +19,13 @@ const renderFavourites = () => {
 			res.fav_list.map(function (fav, index) {
 				favouritesHtml += '<a class="header__view-link" href="'+fav.permalink+'">' +
 					'<div><span>'+(index+1)+'.</span></div>' +
-					'<div><img src="'+fav.image+'" srcset="'+fav.image_2x+'" alt=""><p>'+fav.title+'</p></div>' +
+					'<div><img src="'+fav.favicon+'"/><p>'+fav.title+'</p></div>' +
 					'<div><button type="button"><i class="icon-font icon-delete"></i></button><button type="button"><i class="icon-font icon-search"></i></button></div>' +
 					'</a>';
 			})
 			favouritesDropDown.innerHTML = favouritesHtml;
 		}
 	});
-
-}
-
-const addToFavourites = () => {
 
 }
 

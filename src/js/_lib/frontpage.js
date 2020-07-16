@@ -298,3 +298,13 @@ function renderSiteCategory(categoryIndex){
 	return categoryBoxHtml;
 
 }
+
+function addToFavourites(siteId){
+	postRequest(ajaxEndpoint, {
+		action:'add_to_fav',
+		site:siteId
+	}, function (res) {
+		console.log('Favouroites');
+		console.log(res);
+	});
+}

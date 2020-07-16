@@ -22,6 +22,8 @@ if (!Element.prototype.closest) {
 	};
 }
 
+const ajaxEndpoint = '/wp-content/themes/mpg/ajax-handler-wp.php';
+
 /**
  * end POLYFILL
  * ===================================
@@ -508,7 +510,12 @@ if (!Element.prototype.closest) {
 		const specificationFavoritesBtn = elParent.querySelector('[data-favorites="' + elID + '"]');
 
 		el.classList.toggle('is-active');
-		specificationFavoritesBtn.classList.toggle('is-active');
+
+		if(specificationFavoritesBtn){
+			specificationFavoritesBtn.classList.toggle('is-active');
+		}
+
+		addToFavourites(elID);
 	}
 
 	function onBannerFavourite(el){
