@@ -207,6 +207,19 @@ function addToFavourites(siteId) {
 	}, function (res) {
 		console.log('Favouroites');
 		console.log(res);
+
+		renderFavourites();
+	});
+}
+
+function removeFavourite(favItem) {
+	var favId = favItem.dataset.id;
+	postRequest(ajaxEndpoint, {
+		action: 'remove_fav',
+		site: favId
+	}, function (res) {
+		console.log('Removed Favouroites');
+		renderFavourites();
 	});
 }
 
@@ -296,8 +309,17 @@ var renderFavourites = function renderFavourites() {
 		console.log('Favouroites');
 		console.log(res);
 		if (res.status) {
+			document.querySelectorAll('.is-active[favorites-toggle-js]').forEach(function (fav) {
+				fav.classList.remove('is-active');
+			});
+
 			res.fav_list.map(function (fav, index) {
-				favouritesHtml += '<a class="header__view-link" href="' + fav.permalink + '">' + '<div><span>' + (index + 1) + '.</span></div>' + '<div><img src="' + fav.favicon + '"/><p>' + fav.title + '</p></div>' + '<div><button type="button"><i class="icon-font icon-delete"></i></button><button type="button"><i class="icon-font icon-search"></i></button></div>' + '</a>';
+				favouritesHtml += '<a class="header__view-link" href="' + fav.permalink + '">' + '<div><span>' + (index + 1) + '.</span></div>' + '<div><img src="' + fav.favicon + '"/><p>' + fav.title + '</p></div>' + '<div><button type="button" data-id="' + fav.id + '" un-favorites-js><i class="icon-font icon-delete"></i></button><button type="button"><i class="icon-font icon-search"></i></button></div>' + '</a>';
+
+				var favLink = document.querySelector('[data-id="' + fav.id + '"] [favorites-toggle-js]');
+				if (favLink) {
+					favLink.classList.add('is-active');
+				}
 			});
 			favouritesDropDown.innerHTML = favouritesHtml;
 		}
@@ -664,6 +686,8 @@ var ajaxEndpoint = '/wp-content/themes/mpg/ajax-handler-wp.php';
 				onSiteBoxDislikeClick(_ev.closest('[dislike-toggle-js]'));
 			} else if (_ev.closest('[favorites-toggle-js]')) {
 				onSiteBoxFavourite(_ev.closest('[favorites-toggle-js]'));
+			} else if (_ev.closest('[un-favorites-js]')) {
+				removeFavourite(_ev.closest('[un-favorites-js]'));
 			} else if (_ev.closest('[spec-favorites-js]')) {
 				onBannerFavourite(_ev.closest('[spec-favorites-js]'));
 			} else if (_ev.closest('[video-toggle-js]')) {

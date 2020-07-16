@@ -306,5 +306,18 @@ function addToFavourites(siteId){
 	}, function (res) {
 		console.log('Favouroites');
 		console.log(res);
+
+		renderFavourites();
+	});
+}
+
+function removeFavourite(favItem){
+	let favId = favItem.dataset.id;
+	postRequest(ajaxEndpoint, {
+		action:'remove_fav',
+		site:favId
+	}, function (res) {
+		console.log('Removed Favouroites');
+		renderFavourites();
 	});
 }

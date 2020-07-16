@@ -115,6 +115,8 @@ const ajaxEndpoint = '/wp-content/themes/mpg/ajax-handler-wp.php';
 				onSiteBoxDislikeClick(_ev.closest('[dislike-toggle-js]'));
 			}else if(_ev.closest('[favorites-toggle-js]')){
 				onSiteBoxFavourite(_ev.closest('[favorites-toggle-js]'));
+			}else if(_ev.closest('[un-favorites-js]')){
+				removeFavourite(_ev.closest('[un-favorites-js]'));
 			}else if(_ev.closest('[spec-favorites-js]')){
 				onBannerFavourite(_ev.closest('[spec-favorites-js]'));
 			}else if(_ev.closest('[video-toggle-js]')){
