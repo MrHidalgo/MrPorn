@@ -7,7 +7,7 @@
 	&_item{
 		flex-grow: 1;
 		width: 20%;
-		padding: 0 15px;
+		padding: 0 10px 15px;
 
 		@include adaptive(1279) {
 			width: 25%;
@@ -19,6 +19,29 @@
 		&_inner{
 			background: #f2f2f2;
 			padding: 8px;
+		}
+
+		&_thumb img{
+			width: 100%;
+		}
+
+		&_title{
+			display: flex;
+			align-items: center;
+		}
+		&_title h2{
+			color: #337ab7;
+			font-weight: 600;
+			margin: 0;
+			white-space: nowrap;
+			font-size: 22px;
+			text-overflow: ellipsis;
+			text-align: left;
+			text-transform: capitalize;
+		}
+		&_title h2:active, &_title h2:hover{
+			text-decoration: none;
+			color: #337ab7;
 		}
 
 		&_summary{

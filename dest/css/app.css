@@ -492,22 +492,23 @@ html,
 body {
   width: 100%;
   min-height: 100vh;
+  font-family: helvetica neue,Helvetica,Arial,sans-serif;
 }
 
-/* line 6, src/scss/_shared/_main-setting-reset.scss */
+/* line 7, src/scss/_shared/_main-setting-reset.scss */
 html.is-hideScroll,
 body.is-hideScroll {
   width: 100%;
   overflow: hidden !important;
 }
 
-/* line 13, src/scss/_shared/_main-setting-reset.scss */
+/* line 14, src/scss/_shared/_main-setting-reset.scss */
 html {
   -ms-overflow-style: scrollbar;
   -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
 }
 
-/* line 19, src/scss/_shared/_main-setting-reset.scss */
+/* line 20, src/scss/_shared/_main-setting-reset.scss */
 body {
   overflow-x: hidden;
   position: relative;
@@ -530,9 +531,10 @@ body {
   font-family: 'Lato', sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  font-family: helvetica neue,Helvetica,Arial,sans-serif;
 }
 
-/* line 35, src/scss/_shared/_main-setting-reset.scss */
+/* line 38, src/scss/_shared/_main-setting-reset.scss */
 body > .body {
   display: -webkit-box;
   display: -webkit-flex;
@@ -553,7 +555,7 @@ body > .body {
           flex: 1 0 auto;
 }
 
-/* line 41, src/scss/_shared/_main-setting-reset.scss */
+/* line 44, src/scss/_shared/_main-setting-reset.scss */
 body > .body--start {
   -webkit-box-pack: start;
   -webkit-justify-content: flex-start;
@@ -561,19 +563,19 @@ body > .body--start {
           justify-content: flex-start;
 }
 
-/* line 48, src/scss/_shared/_main-setting-reset.scss */
+/* line 51, src/scss/_shared/_main-setting-reset.scss */
 * {
   -webkit-box-sizing: border-box;
           box-sizing: border-box;
 }
 
-/* line 51, src/scss/_shared/_main-setting-reset.scss */
+/* line 54, src/scss/_shared/_main-setting-reset.scss */
 *:before, *:after {
   -webkit-box-sizing: border-box;
           box-sizing: border-box;
 }
 
-/* line 58, src/scss/_shared/_main-setting-reset.scss */
+/* line 61, src/scss/_shared/_main-setting-reset.scss */
 button,
 input,
 optgroup,
@@ -583,36 +585,36 @@ textarea {
   margin: 0;
 }
 
-/* line 68, src/scss/_shared/_main-setting-reset.scss */
+/* line 71, src/scss/_shared/_main-setting-reset.scss */
 button,
 input {
   overflow: visible;
 }
 
-/* line 74, src/scss/_shared/_main-setting-reset.scss */
+/* line 77, src/scss/_shared/_main-setting-reset.scss */
 button[disabled] {
   opacity: 0.55;
   cursor: not-allowed;
 }
 
-/* line 80, src/scss/_shared/_main-setting-reset.scss */
+/* line 83, src/scss/_shared/_main-setting-reset.scss */
 [type="search"] {
   -webkit-appearance: textfield;
   outline-offset: -2px;
 }
 
-/* line 86, src/scss/_shared/_main-setting-reset.scss */
+/* line 89, src/scss/_shared/_main-setting-reset.scss */
 [type="search"]::-webkit-search-cancel-button,
 [type="search"]::-webkit-search-decoration {
   -webkit-appearance: none;
 }
 
-/* line 92, src/scss/_shared/_main-setting-reset.scss */
+/* line 95, src/scss/_shared/_main-setting-reset.scss */
 textarea {
   overflow: auto;
 }
 
-/* line 97, src/scss/_shared/_main-setting-reset.scss */
+/* line 100, src/scss/_shared/_main-setting-reset.scss */
 p,
 h1, h2, h3, h4, h5, h6,
 hr {
@@ -620,36 +622,36 @@ hr {
   padding: 0;
 }
 
-/* line 105, src/scss/_shared/_main-setting-reset.scss */
+/* line 108, src/scss/_shared/_main-setting-reset.scss */
 ul {
   margin: 0;
   padding: 0;
 }
 
-/* line 110, src/scss/_shared/_main-setting-reset.scss */
+/* line 113, src/scss/_shared/_main-setting-reset.scss */
 ul li {
   list-style: none;
 }
 
-/* line 116, src/scss/_shared/_main-setting-reset.scss */
+/* line 119, src/scss/_shared/_main-setting-reset.scss */
 a {
   outline: none;
   text-decoration: none;
 }
 
-/* line 121, src/scss/_shared/_main-setting-reset.scss */
+/* line 124, src/scss/_shared/_main-setting-reset.scss */
 a:hover, a:focus {
   text-decoration: none;
 }
 
-/* line 128, src/scss/_shared/_main-setting-reset.scss */
+/* line 131, src/scss/_shared/_main-setting-reset.scss */
 input[type="text"] {
   -webkit-appearance: none;
      -moz-appearance: none;
           appearance: none;
 }
 
-/* line 132, src/scss/_shared/_main-setting-reset.scss */
+/* line 135, src/scss/_shared/_main-setting-reset.scss */
 picture {
   display: -webkit-box;
   display: -webkit-flex;
