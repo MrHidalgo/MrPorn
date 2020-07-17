@@ -1,0 +1,15 @@
+// CATEGORY :: START
+
+.category_sites{
+	display: flex;
+	flex-wrap: wrap;
+
+	&_item{
+		flex-grow: 1;
+		width: 25%;
+
+		@include adaptive(767) {
+			width: 50%;
+		}
+	}
+}

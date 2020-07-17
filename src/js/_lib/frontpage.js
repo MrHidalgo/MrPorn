@@ -148,7 +148,8 @@ function renderSiteBottomBanner(category, index){
 					'<video preload="none" poster="'+bannerVideoPoster.url+'" video-js>'+
 					'<source src="'+bannerVideo.url+'" type="'+bannerVideo.mime_type+'">'+
 					'</video>' +
-					'<a class="list__specification-play" href="#" video-toggle-js><i class="icon-font icon-play-button" video-play-js></i></a><a class="list__specification-pause" href="#" video-pause-js><i class="icon-font icon-pause"></i></a>'+
+					'<a class="list__specification-play" video-toggle-js><i class="icon-font icon-play-button" video-play-js></i></a>' +
+					'<a class="list__specification-pause" video-pause-js><i class="icon-font icon-pause"></i></a>'+
 					'</div>'+
 					'</div>';
 			}
