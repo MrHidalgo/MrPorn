@@ -94,7 +94,7 @@ const ajaxEndpoint = '/wp-content/themes/mpg/ajax-handler-wp.php';
 			const _ev = ev.target;
 
 			if(!_ev.closest('.nav_link')){
-				ev.preventDefault();
+				//ev.preventDefault();
 			}
 
 

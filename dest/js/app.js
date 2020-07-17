@@ -668,7 +668,7 @@ var ajaxEndpoint = '/wp-content/themes/mpg/ajax-handler-wp.php';
 			var _ev = ev.target;
 
 			if (!_ev.closest('.nav_link')) {
-				ev.preventDefault();
+				//ev.preventDefault();
 			}
 
 			if (_ev.closest('.list__specification-close')) {
