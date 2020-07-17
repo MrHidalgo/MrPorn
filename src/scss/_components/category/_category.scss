@@ -6,10 +6,38 @@
 
 	&_item{
 		flex-grow: 1;
-		width: 25%;
+		width: 20%;
+		padding: 0 15px;
 
+		@include adaptive(1279) {
+			width: 25%;
+		}
 		@include adaptive(767) {
 			width: 50%;
+		}
+
+		&_inner{
+			background: #f2f2f2;
+			padding: 8px;
+		}
+
+		&_summary{
+			font-weight: 400;
+			font-size: 14px;
+			line-height: 20px;
+			height: 80px;
+			overflow: hidden;
+			text-overflow: ellipsis;
+			display: -webkit-box;
+			-webkit-line-clamp: 4;
+			-webkit-box-orient: vertical;
+
+			@include adaptive(767) {
+				font-size: 12px;
+				-webkit-line-clamp: 8;
+				line-height: 17px;
+				height: 137px;
+			}
 		}
 	}
 }
