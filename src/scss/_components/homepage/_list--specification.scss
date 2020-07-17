@@ -301,7 +301,7 @@
 
 	&-logo {
 		display: block;
-		max-width: 125px;
+		max-width: 250px;
 		height: auto;
 		margin-bottom: 10px;
 	}
@@ -461,6 +461,8 @@
 		border-style: solid;
 		border-radius: 50%;
 		transition: all 0.4s ease-in-out;
+		background-color: transparent;
+		outline: none;
 		@include adaptive(1279) {
 			width: 40px;
 			height: 40px;

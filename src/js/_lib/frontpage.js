@@ -40,11 +40,12 @@ function renderHompageSiteSlide(category, index){
 		let siteLink = siteItem.link;
 		let siteName = siteItem.name;
 		let siteThumb = siteItem.thumb;
+		let siteLogo = (siteItem.logo)?siteItem.logo.src:'';
 
 		let slideHtml = '<div class="swiper-slide" category_list_'+index+'>'+
 			'<a class="list__box" list-box-js href="'+siteLink+'" data-id="'+siteId+'" style="background-image: url(http://mpg.c2136.cloudnet.cloud/'+siteThumb+')">'+
 			'<div class="list__box-overlay"></div>'+
-			'<div class="list__box-border"></div><img class="list__box-logo" src="img/img-brazzers-logo.svg" alt="">'+
+			'<div class="list__box-border"></div><img class="list__box-logo" src="'+siteLogo+'" alt="">'+
 			'<div class="list__box-details">'+
 			'<div class="list__box-details-left">'+
 			'<button class="list__box-external" type="button"><i class="icon-font icon-out"></i></button>'+
@@ -121,6 +122,8 @@ function renderSiteBottomBanner(category, index){
 		let bannerImage = siteItem.banner_image;
 		let bannerVideo = siteItem.banner_video;
 		let bannerVideoPoster = siteItem.banner_video_poster;
+		let siteLogo = siteItem.logo?siteItem.logo.src:'';
+		let tagLIne = siteItem.tagline;
 
 		console.log(category+' - '+index);
 		console.log(siteItem);
@@ -156,9 +159,11 @@ function renderSiteBottomBanner(category, index){
 
 		homeData.categories[category].sites.map(function (moreSite, index) {
 			if(moreSiteCount<6 && moreSite.id!=siteId){
+				let moreSiteLogo = moreSite.logo ? moreSite.logo.src: '';
+
 				moreSites +='<a class="list__box" list-box-more-js href="'+moreSite.link+'" data-id="'+moreSite.id+'" data-count="1" style="background-image: url('+moreSite.thumb+')">'+
 					'<div class="list__box-overlay"></div>'+
-					'<div class="list__box-border"></div><img class="list__box-logo" src="'+moreSite.logo.sizes.medium+'" alt="">' +
+					'<div class="list__box-border"></div><img class="list__box-logo" src="'+moreSiteLogo+'" alt="">' +
 					'</a>';
 
 				moreSiteCount++;
@@ -169,25 +174,30 @@ function renderSiteBottomBanner(category, index){
 			'<a class="list__specification-close" href="#"><i class="icon-font icon-close"></i></a>'+
 			'<div>'+
 			'<div class="list__specification-header">' +
-			'<img class="list__specification-logo" src="img/img-reality-kings.png" srcset="img/img-reality-kings@2x.png 2x" alt="">' +
+			'<img class="list__specification-logo" src="'+siteLogo+'">' +
 			'<a class="list__specification-close" href="#">' +
 			'<i class="icon-font icon-close"></i>' +
 			'</a>' +
 			'</div>'+
 			'<div class="list__specification-left">'+
 			'<div>' +
-			'<img class="list__specification-logo" src="img/img-reality-kings.png" srcset="img/img-reality-kings@2x.png 2x" alt="">'+
+			'<img class="list__specification-logo" src="'+siteLogo+'">'+
 			'<div class="list__specification-action" spec-actionNode-js>'+
 			'<div><a class="list__specification-visit nav_link" href="#">VISIT WEBSITE</a></div>'+
 			'<div><a class="list__specification-read nav_link" href="'+siteItem.link+'">READ REVIEW</a></div>'+
 			'<div class="list__specification-action-desc">'+
-			'<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eius mod tempor incididunt ut labore et dolore magna eutin... <a href="#">READ MORE</a></p>'+
+			'<p>'+tagLIne+' <a href="#">READ MORE</a></p>'+
 			'</div>'+
 			'<div class="list__specification-action-skip"><a class="list__specification-circle list__specification-skip" href="#" data-id="'+siteId+'" spec-skip-js><i class="icon-font icon-point"></i><span>Skip</span></a></div>'+
-			'<div class="list__specification-action-circle"><a class="list__specification-circle list__specification-like" href="#" data-like="1" spec-like-js><i class="icon-font icon-like"></i><span>Like</span></a></div>'+
-			'<div class="list__specification-action-circle"><a class="list__specification-circle list__specification-dislike" href="#" data-dislike="1" spec-dislike-js><i class="icon-font icon-like"></i><span>Dislike</span></a></div>'+
+			'<div class="list__specification-action-circle">' +
+			'<button class="list__specification-circle list__specification-like" data-like="1" spec-like-js><i class="icon-font icon-like"></i><span>Like</span></button>' +
+			'</div>'+
+			'<div class="list__specification-action-circle">' +
+			'<button class="list__specification-circle list__specification-dislike" data-dislike="1" spec-dislike-js><i class="icon-font icon-like"></i><span>Dislike</span></button>' +
+			'</div>'+
 			'<div class="list__specification-action-circle">'+
-			'<div class="c-popper"><a class="list__specification-circle list__specification-favorites" href="#" data-favorites="1" spec-favorites-js><i class="icon-font icon-star-fill"></i><i class="icon-font icon-star"></i><span>Favorites</span></a>'+
+			'<div class="c-popper">' +
+			'<button class="list__specification-circle list__specification-favorites" data-id="'+siteId+'" data-favorites="1" spec-favorites-js><i class="icon-font icon-star-fill"></i><i class="icon-font icon-star"></i><span>Favorites</span></button>'+
 			'<div class="c-poppertext">'+
 			'<u>Add To Favourites</u>'+
 			'<u>Remove From Favourites</u>'+
@@ -195,7 +205,7 @@ function renderSiteBottomBanner(category, index){
 			'</div>'+
 			'</div>'+
 			'</div>'+
-			'<p class="list__specification-desc">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in.</p>'+
+			'<p class="list__specification-desc">'+tagLIne+'</p>'+
 			'</div>'+
 			'</div>'+
 			bannerRight+

@@ -521,8 +521,10 @@ const ajaxEndpoint = '/wp-content/themes/mpg/ajax-handler-wp.php';
 	}
 
 	function onBannerFavourite(el){
-		var elID = el.getAttribute('data-favorites'),
+		var elID = el.getAttribute('data-id'),
 			elParent = el.closest('.list__box-wrapper');
+
+		addToFavourites(elID);
 
 		//const listBlock = elParent.querySelector('.list__box[data-id="' + elID + '"]'),
 			const listFavoritesBtn = elParent.querySelector('.list__box-favorites[data-id="' + elID + '"]');

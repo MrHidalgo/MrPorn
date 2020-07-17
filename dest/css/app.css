@@ -6263,7 +6263,7 @@ picture {
 /* line 302, src/scss/_components/homepage/_list--specification.scss */
 .list__specification-logo {
   display: block;
-  max-width: 125px;
+  max-width: 250px;
   height: auto;
   margin-bottom: 10px;
 }
@@ -6518,6 +6518,8 @@ picture {
   -webkit-transition: all 0.4s ease-in-out;
   -o-transition: all 0.4s ease-in-out;
   transition: all 0.4s ease-in-out;
+  background-color: transparent;
+  outline: none;
 }
 
 @media screen and (max-width: 1279px) {
@@ -6544,7 +6546,7 @@ picture {
   }
 }
 
-/* line 476, src/scss/_components/homepage/_list--specification.scss */
+/* line 478, src/scss/_components/homepage/_list--specification.scss */
 .list__specification-circle:after {
   content: '';
   z-index: 0;
@@ -6573,7 +6575,7 @@ picture {
           animation-timing-function: ease-in-out;
 }
 
-/* line 494, src/scss/_components/homepage/_list--specification.scss */
+/* line 496, src/scss/_components/homepage/_list--specification.scss */
 .list__specification-circle:hover {
   background-color: rgba(0, 0, 0, 0.85);
   -webkit-transform: scale(1.05);
@@ -6585,7 +6587,7 @@ picture {
 }
 
 @media screen and (max-width: 1023px) {
-  /* line 494, src/scss/_components/homepage/_list--specification.scss */
+  /* line 496, src/scss/_components/homepage/_list--specification.scss */
   .list__specification-circle:hover {
     background-color: transparent;
     -webkit-transform: scale(1);
@@ -6594,7 +6596,7 @@ picture {
   }
 }
 
-/* line 504, src/scss/_components/homepage/_list--specification.scss */
+/* line 506, src/scss/_components/homepage/_list--specification.scss */
 .list__specification-circle.is-active {
   border-color: #c5f015;
   -webkit-transition: all 0.4s ease-in-out;
@@ -6603,37 +6605,37 @@ picture {
 }
 
 @media screen and (max-width: 1023px) {
-  /* line 504, src/scss/_components/homepage/_list--specification.scss */
+  /* line 506, src/scss/_components/homepage/_list--specification.scss */
   .list__specification-circle.is-active {
     border-color: transparent;
   }
 }
 
-/* line 511, src/scss/_components/homepage/_list--specification.scss */
+/* line 513, src/scss/_components/homepage/_list--specification.scss */
 .list__specification-circle.is-active:after {
   -webkit-animation-name: flashBlinking;
           animation-name: flashBlinking;
 }
 
 @media screen and (max-width: 1023px) {
-  /* line 511, src/scss/_components/homepage/_list--specification.scss */
+  /* line 513, src/scss/_components/homepage/_list--specification.scss */
   .list__specification-circle.is-active:after {
     -webkit-animation: unset;
             animation: unset;
   }
 }
 
-/* line 520, src/scss/_components/homepage/_list--specification.scss */
+/* line 522, src/scss/_components/homepage/_list--specification.scss */
 .list__specification-circle.is-active + .c-poppertext > u:nth-of-type(1) {
   display: none;
 }
 
-/* line 523, src/scss/_components/homepage/_list--specification.scss */
+/* line 525, src/scss/_components/homepage/_list--specification.scss */
 .list__specification-circle.is-active + .c-poppertext > u:nth-of-type(2) {
   display: block;
 }
 
-/* line 529, src/scss/_components/homepage/_list--specification.scss */
+/* line 531, src/scss/_components/homepage/_list--specification.scss */
 .list__specification-circle.is-active .icon-font {
   color: #c5f015;
   -webkit-transition: all 0.4s ease-in-out;
@@ -6641,7 +6643,7 @@ picture {
   transition: all 0.4s ease-in-out;
 }
 
-/* line 535, src/scss/_components/homepage/_list--specification.scss */
+/* line 537, src/scss/_components/homepage/_list--specification.scss */
 .list__specification-circle .icon-font {
   color: #ffffff;
   font-size: 24px;
@@ -6651,20 +6653,20 @@ picture {
 }
 
 @media screen and (max-width: 1279px) {
-  /* line 535, src/scss/_components/homepage/_list--specification.scss */
+  /* line 537, src/scss/_components/homepage/_list--specification.scss */
   .list__specification-circle .icon-font {
     font-size: 20px;
   }
 }
 
 @media screen and (max-width: 1023px) {
-  /* line 535, src/scss/_components/homepage/_list--specification.scss */
+  /* line 537, src/scss/_components/homepage/_list--specification.scss */
   .list__specification-circle .icon-font {
     font-size: 26px;
   }
 }
 
-/* line 547, src/scss/_components/homepage/_list--specification.scss */
+/* line 549, src/scss/_components/homepage/_list--specification.scss */
 .list__specification-circle span {
   display: none;
   padding-top: 3px;
@@ -6674,7 +6676,7 @@ picture {
 }
 
 @media screen and (max-width: 1023px) {
-  /* line 547, src/scss/_components/homepage/_list--specification.scss */
+  /* line 549, src/scss/_components/homepage/_list--specification.scss */
   .list__specification-circle span {
     display: -webkit-box;
     display: -webkit-flex;
@@ -6683,47 +6685,47 @@ picture {
   }
 }
 
-/* line 560, src/scss/_components/homepage/_list--specification.scss */
+/* line 562, src/scss/_components/homepage/_list--specification.scss */
 .list__specification-like .icon-font {
   -webkit-transform: scaleX(-1);
       -ms-transform: scaleX(-1);
           transform: scaleX(-1);
 }
 
-/* line 566, src/scss/_components/homepage/_list--specification.scss */
+/* line 568, src/scss/_components/homepage/_list--specification.scss */
 .list__specification-dislike .icon-font {
   -webkit-transform: scale(-1);
       -ms-transform: scale(-1);
           transform: scale(-1);
 }
 
-/* line 573, src/scss/_components/homepage/_list--specification.scss */
+/* line 575, src/scss/_components/homepage/_list--specification.scss */
 .list__specification-favorites.is-active .icon-font {
   -webkit-transition: all 0.4s ease-in-out;
   -o-transition: all 0.4s ease-in-out;
   transition: all 0.4s ease-in-out;
 }
 
-/* line 576, src/scss/_components/homepage/_list--specification.scss */
+/* line 578, src/scss/_components/homepage/_list--specification.scss */
 .list__specification-favorites.is-active .icon-font.icon-star-fill {
   opacity: 0;
   visibility: hidden;
 }
 
-/* line 580, src/scss/_components/homepage/_list--specification.scss */
+/* line 582, src/scss/_components/homepage/_list--specification.scss */
 .list__specification-favorites.is-active .icon-font.icon-star {
   opacity: 1;
   visibility: visible;
 }
 
-/* line 587, src/scss/_components/homepage/_list--specification.scss */
+/* line 589, src/scss/_components/homepage/_list--specification.scss */
 .list__specification-favorites .icon-font {
   -webkit-transition: all 0.4s ease-in-out;
   -o-transition: all 0.4s ease-in-out;
   transition: all 0.4s ease-in-out;
 }
 
-/* line 590, src/scss/_components/homepage/_list--specification.scss */
+/* line 592, src/scss/_components/homepage/_list--specification.scss */
 .list__specification-favorites .icon-font.icon-star {
   opacity: 0;
   visibility: hidden;
@@ -6731,13 +6733,13 @@ picture {
 }
 
 @media screen and (max-width: 1023px) {
-  /* line 590, src/scss/_components/homepage/_list--specification.scss */
+  /* line 592, src/scss/_components/homepage/_list--specification.scss */
   .list__specification-favorites .icon-font.icon-star {
     top: 3px;
   }
 }
 
-/* line 601, src/scss/_components/homepage/_list--specification.scss */
+/* line 603, src/scss/_components/homepage/_list--specification.scss */
 .list__specification-desc {
   width: 100%;
   max-width: 460px;
@@ -6746,13 +6748,13 @@ picture {
 }
 
 @media screen and (max-width: 1023px) {
-  /* line 601, src/scss/_components/homepage/_list--specification.scss */
+  /* line 603, src/scss/_components/homepage/_list--specification.scss */
   .list__specification-desc {
     display: none;
   }
 }
 
-/* line 611, src/scss/_components/homepage/_list--specification.scss */
+/* line 613, src/scss/_components/homepage/_list--specification.scss */
 .list__specification-play {
   z-index: 20;
   position: absolute;
@@ -6786,14 +6788,14 @@ picture {
 }
 
 @media screen and (max-width: 1023px) {
-  /* line 611, src/scss/_components/homepage/_list--specification.scss */
+  /* line 613, src/scss/_components/homepage/_list--specification.scss */
   .list__specification-play {
     width: 115px;
     height: 115px;
   }
 }
 
-/* line 630, src/scss/_components/homepage/_list--specification.scss */
+/* line 632, src/scss/_components/homepage/_list--specification.scss */
 .list__specification-play:hover {
   -webkit-transform: translate(-50%, -50%) scale(0.8);
       -ms-transform: translate(-50%, -50%) scale(0.8);
@@ -6805,7 +6807,7 @@ picture {
   transition: transform 0.55s ease-in-out, -webkit-transform 0.55s ease-in-out;
 }
 
-/* line 635, src/scss/_components/homepage/_list--specification.scss */
+/* line 637, src/scss/_components/homepage/_list--specification.scss */
 .list__specification-play.is-active {
   opacity: 0;
   visibility: hidden;
@@ -6814,7 +6816,7 @@ picture {
   transition: opacity 0.35s ease-in-out, visibility 0.35s ease-in-out;
 }
 
-/* line 641, src/scss/_components/homepage/_list--specification.scss */
+/* line 643, src/scss/_components/homepage/_list--specification.scss */
 .list__specification-play .icon-font {
   position: relative;
   left: 5px;
@@ -6823,13 +6825,13 @@ picture {
 }
 
 @media screen and (max-width: 1023px) {
-  /* line 641, src/scss/_components/homepage/_list--specification.scss */
+  /* line 643, src/scss/_components/homepage/_list--specification.scss */
   .list__specification-play .icon-font {
     font-size: 45px;
   }
 }
 
-/* line 652, src/scss/_components/homepage/_list--specification.scss */
+/* line 654, src/scss/_components/homepage/_list--specification.scss */
 .list__specification-pause {
   z-index: 20;
   opacity: 0;
@@ -6846,7 +6848,7 @@ picture {
   transition: opacity 0.35s ease-in-out, visibility 0.35s ease-in-out;
 }
 
-/* line 662, src/scss/_components/homepage/_list--specification.scss */
+/* line 664, src/scss/_components/homepage/_list--specification.scss */
 .list__specification-pause.is-active {
   opacity: 1;
   visibility: visible;
@@ -6855,13 +6857,13 @@ picture {
   transition: opacity 0.35s ease-in-out, visibility 0.35s ease-in-out;
 }
 
-/* line 668, src/scss/_components/homepage/_list--specification.scss */
+/* line 670, src/scss/_components/homepage/_list--specification.scss */
 .list__specification-pause .icon-font {
   color: #ffffff;
   font-size: 18px;
 }
 
-/* line 674, src/scss/_components/homepage/_list--specification.scss */
+/* line 676, src/scss/_components/homepage/_list--specification.scss */
 .list__specification-more {
   display: none;
   -webkit-box-ordinal-group: 5;
@@ -6883,7 +6885,7 @@ picture {
 }
 
 @media screen and (max-width: 1023px) {
-  /* line 674, src/scss/_components/homepage/_list--specification.scss */
+  /* line 676, src/scss/_components/homepage/_list--specification.scss */
   .list__specification-more {
     display: -webkit-box;
     display: -webkit-flex;
@@ -6893,14 +6895,14 @@ picture {
 }
 
 @media screen and (max-width: 767px) {
-  /* line 674, src/scss/_components/homepage/_list--specification.scss */
+  /* line 676, src/scss/_components/homepage/_list--specification.scss */
   .list__specification-more {
     min-height: 320px;
     padding: 10px;
   }
 }
 
-/* line 691, src/scss/_components/homepage/_list--specification.scss */
+/* line 693, src/scss/_components/homepage/_list--specification.scss */
 .list__specification-more > div:nth-of-type(1) {
   display: -webkit-box;
   display: -webkit-flex;
@@ -6910,7 +6912,7 @@ picture {
   padding-bottom: 20px;
 }
 
-/* line 696, src/scss/_components/homepage/_list--specification.scss */
+/* line 698, src/scss/_components/homepage/_list--specification.scss */
 .list__specification-more > div:nth-of-type(1) p {
   color: #ffffff;
   font-size: 18px;
@@ -6918,7 +6920,7 @@ picture {
   border-bottom: 2px solid #c5f015;
 }
 
-/* line 703, src/scss/_components/homepage/_list--specification.scss */
+/* line 705, src/scss/_components/homepage/_list--specification.scss */
 .list__specification-more > div:nth-of-type(2) {
   display: -webkit-box;
   display: -webkit-flex;
@@ -6930,7 +6932,7 @@ picture {
   height: 100%;
 }
 
-/* line 710, src/scss/_components/homepage/_list--specification.scss */
+/* line 712, src/scss/_components/homepage/_list--specification.scss */
 .list__specification-more .list__box {
   z-index: -1;
   position: relative;
@@ -6948,13 +6950,13 @@ picture {
 }
 
 @media screen and (max-width: 767px) {
-  /* line 710, src/scss/_components/homepage/_list--specification.scss */
+  /* line 712, src/scss/_components/homepage/_list--specification.scss */
   .list__specification-more .list__box {
     padding: 15px;
   }
 }
 
-/* line 724, src/scss/_components/homepage/_list--specification.scss */
+/* line 726, src/scss/_components/homepage/_list--specification.scss */
 .is-open .list__specification-more .list__box {
   z-index: auto;
 }
