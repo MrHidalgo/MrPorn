@@ -1,19 +1,33 @@
 // CATEGORY :: START
 
+.category_container{
+	display: flex;
+	flex-direction: column;
+
+	.bread-crumb{
+		padding: 5px 25px;
+		background: #eee;
+		font-size: 15px;
+		font-weight: 600;
+	}
+}
+
 .category_sites{
 	display: flex;
 	flex-wrap: wrap;
 
 	&_item{
 		flex-grow: 1;
-		width: 20%;
-		padding: 0 10px 15px;
+		width: 25%;
+		max-width: 25%;
+		padding: 15px 10px 0;
 
 		@include adaptive(1279) {
 			width: 25%;
 		}
 		@include adaptive(767) {
 			width: 50%;
+			max-width: 50%;
 		}
 
 		&_inner{
@@ -61,6 +75,19 @@
 				line-height: 17px;
 				height: 137px;
 			}
+		}
+	}
+
+	&_description{
+		flex-grow: 1;
+		width: 50%;
+		padding: 15px 10px 0;
+		position: relative;
+
+		.category_description{
+			position: absolute;
+			top: 0;
+			bottom: 15px;
 		}
 	}
 }

@@ -674,7 +674,7 @@ picture {
 
 /* line 20, src/scss/_shared/_grid.scss */
 .c-grid {
-  max-width: 1630px;
+  max-width: 1300px;
 }
 
 @media screen and (max-width: 767px) {
@@ -3193,10 +3193,11 @@ picture {
 
 /* line 25, src/scss/_components/common/_header--category.scss */
 .header__category-title, .header__category-link {
+  white-space: nowrap;
   padding-left: 12px;
   padding-right: 12px;
   text-transform: uppercase;
-  font-size: 14px;
+  font-size: 12px;
   font-weight: bold;
   line-height: 1.2;
 }
@@ -3231,12 +3232,12 @@ picture {
   }
 }
 
-/* line 49, src/scss/_components/common/_header--category.scss */
+/* line 50, src/scss/_components/common/_header--category.scss */
 .header__category-title {
   color: #fff;
 }
 
-/* line 53, src/scss/_components/common/_header--category.scss */
+/* line 54, src/scss/_components/common/_header--category.scss */
 .header__category-link {
   color: #35539c;
   -webkit-transition: color 0.35s ease-in-out;
@@ -3245,13 +3246,13 @@ picture {
 }
 
 @media screen and (max-width: 1023px) {
-  /* line 53, src/scss/_components/common/_header--category.scss */
+  /* line 54, src/scss/_components/common/_header--category.scss */
   .header__category-link {
     min-height: 30px;
   }
 }
 
-/* line 60, src/scss/_components/common/_header--category.scss */
+/* line 61, src/scss/_components/common/_header--category.scss */
 .header__category-link:hover {
   color: #ffffff;
   -webkit-transition: color 0.35s ease-in-out;
