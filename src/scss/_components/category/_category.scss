@@ -9,6 +9,10 @@
 		background: #eee;
 		font-size: 15px;
 		font-weight: 600;
+
+		@include adaptive(767) {
+			order: -1;
+		}
 	}
 }
 

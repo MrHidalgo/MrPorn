@@ -1,0 +1,95 @@
+// SECTION :: START
+
+.list {
+	padding-top: 25px;
+	padding-bottom: 25px;
+	@include adaptive(767) {
+		.c-grid {
+			padding-left: 5px;
+			padding-right: 5px;
+		}
+	}
+
+	.swiper {
+		&-container {
+			overflow: unset;
+		}
+
+		&-slide {
+			position: relative;
+			width: 230px !important;
+			height: 230px;
+			margin-left: 3px;
+			margin-right: 3px;
+			@include transition(width);
+			@include adaptive(1279) {
+				width: 195px !important;
+				height: 195px;
+			}
+			@include adaptive(1023) {
+				width: 150px !important;
+				height: 150px;
+			}
+			@include adaptive(767) {
+				width: 75px !important;
+				height: 75px;
+			}
+
+			.is-mobile & {
+				@media screen and (orientation: landscape) {
+					width: 150px !important;
+					height: 150px;
+				}
+			}
+
+			&:first-of-type {
+				margin-left: 0;
+			}
+			&:last-of-type {
+				margin-right: 0;
+			}
+
+			&.is-hover {
+				width: 350px !important;
+				@include transition(width);
+			}
+		}
+	}
+
+	/*@import "list--info";
+	@import "list--btn";
+	@import "list--arrow";
+	@import "list--rating";
+	@import "list--box";
+	@import "list--specification";*/
+}
+
+@keyframes slideToggle {
+	from {
+		transform: rotate(-90deg) translateX(5px);
+	}
+	50% {
+		transform: rotate(-90deg) translateX(0);
+	}
+	to {
+		transform: rotate(-90deg) translateX(5px);
+	}
+}
+@keyframes flashBlinking {
+	from {
+		opacity: 0;
+		visibility: hidden;
+		transform: translateX(-50%) translateY(-50%) scale(0);
+	}
+	50% {
+		opacity: 1;
+		visibility: visible;
+		transform: translateX(-50%) translateY(-50%) scale(2);
+	}
+	to {
+		opacity: 0;
+		visibility: hidden;
+		transform: translateX(-50%) translateY(-50%) scale(0);
+	}
+}
+// SECTION :: END
