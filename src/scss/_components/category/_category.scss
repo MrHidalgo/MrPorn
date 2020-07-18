@@ -12,6 +12,11 @@
 
 		@include adaptive(767) {
 			order: -1;
+
+			padding: 10px;
+			text-align: center;
+			font-size: 11px;
+			margin: 0 -10px 5px;
 		}
 	}
 }
@@ -88,10 +93,19 @@
 		padding: 15px 10px 0;
 		position: relative;
 
+		@include adaptive(767) {
+			width: 100%;
+			order: -1;
+		}
+
 		.category_description{
 			position: absolute;
 			top: 0;
 			bottom: 15px;
+
+			@include adaptive(767) {
+				position: relative;
+			}
 		}
 	}
 }
