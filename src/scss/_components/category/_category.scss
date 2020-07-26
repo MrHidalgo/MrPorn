@@ -226,14 +226,13 @@
 	.category_box{
 		padding-top: 15px;
 		display: flex;
+		flex-wrap: wrap;
 	}
 
 	.category_item{
 		display: block;
-		position: relative;
-		overflow: hidden;
-		outline: 1px solid #989898;
 		width: 25%;
+		padding: 0 15px 30px;
 
 		@include adaptive(1279) {
 			width: 25%;
@@ -242,45 +241,54 @@
 			width: 50%;
 			max-width: 50%;
 		}
-	}
 
-	.hdbadge {
-		position: absolute;
-		top: 10px;
-		right: 10px;
-		width: 43px;
-		height: 41px;
-		background: url(../images/cat-icons.png) 0 -34px no-repeat;
-	}
-
-	.catD {
-		position: absolute;
-		bottom: 0;
-		left: 0;
-		width: 100%;
-		font-size: 14px;
-		font-weight: 700;
-		color: #d1f34b;
-		padding: 5px 0;
-		background: rgba(0,0,0,.8);
-		text-align: center;
-
-		small {
+		&_inner{
 			display: block;
-			font-size: 12px;
-			font-weight: 400;
-			color: #fff;
-			line-height: 17px;
+			position: relative;
 			overflow: hidden;
-			text-overflow: ellipsis;
-			display: -webkit-box;
-			-webkit-line-clamp: 1;
-			-webkit-box-orient: vertical;
+			outline: 1px solid #989898;
 		}
 
-		img, video{
+		.hdbadge {
+			position: absolute;
+			top: 10px;
+			right: 10px;
+			width: 43px;
+			height: 41px;
+			background: url(../images/cat-icons.png) 0 -34px no-repeat;
+		}
+
+		.catD {
+			position: absolute;
+			bottom: 0;
+			left: 0;
 			width: 100%;
-			height: auto;
+			font-size: 14px;
+			font-weight: 700;
+			color: #d1f34b;
+			padding: 5px 0;
+			background: rgba(0,0,0,.8);
+			text-align: center;
+
+			small {
+				display: block;
+				font-size: 12px;
+				font-weight: 400;
+				color: #fff;
+				line-height: 17px;
+				overflow: hidden;
+				text-overflow: ellipsis;
+				display: -webkit-box;
+				-webkit-line-clamp: 1;
+				-webkit-box-orient: vertical;
+			}
+
+			img, video{
+				width: 100%;
+				height: auto;
+			}
 		}
 	}
+
+
 }
