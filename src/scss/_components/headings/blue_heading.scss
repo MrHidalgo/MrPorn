@@ -24,6 +24,28 @@
 		}
 	}
 
+	.other_categories_title{
+		font-size: 26px;
+		color: #d1f34b;
+		line-height: 48px;
+		font-weight: 800;
+		margin: 0;
+		display: inline;
+		padding-right: 40px;
+		flex: 1;
+
+		&:after{
+			content: ' ';
+			display: inline-block;
+			background: url(../images/icon-arrow-down.png) no-repeat;
+			background-position: center;
+			width: 34px;
+			height: 17px;
+			background-size: contain;
+			margin-left: 10px;
+		}
+	}
+
 	&_back{
 		background: url(../images/back_button_blue.png);
 		background-repeat: no-repeat;

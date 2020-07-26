@@ -1141,18 +1141,15 @@ picture {
   /* line 1, src/scss/_shared/macros/_category.scss */
   .category {
     padding-top: 0;
-  }
-  /* line 9, src/scss/_shared/macros/_category.scss */
-  .category:after {
-    content: '';
-    position: absolute;
-    top: -10px;
-    left: -20px;
-    width: -webkit-calc(100% + 40px);
-    width: calc(100% + 40px);
-    height: -webkit-calc(100% + 20px);
-    height: calc(100% + 20px);
-    background-color: #081b49;
+    /*&:after {
+			content: '';
+			position: absolute;
+			top: -10px;
+			left: -20px;
+			width: calc(100% + 40px);
+			height: calc(100% + 20px);
+			background-color: #081b49;
+		}*/
   }
 }
 

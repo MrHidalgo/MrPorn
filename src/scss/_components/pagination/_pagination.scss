@@ -1,0 +1,42 @@
+// PAGINATION :: START
+.pagi {
+	text-align: center;
+	margin: 20px 0;
+
+	span, a, a:visited{
+		display: inline-block;
+		padding: 10px 20px;
+		font-size: 18px;
+		border-radius: 3px;
+		margin: 3px 1px;
+		color: #fff;
+		border: 1px solid #8896a7;
+		background: #8896a7 url(../images/bg-pagi.png) left bottom repeat-x;
+	}
+	span, a:active{
+		border: 1px solid #285183;
+		background: #285183 url(../images/bg-pagi-ovr.png) left bottom repeat-x;
+		color: #fff;
+		text-decoration: none;
+	}
+}
+.mpg-pagenavi {
+	display: flex;
+	justify-content: center;
+	margin: 0 5px;
+
+	.page_left{
+		display: inline-block;
+		overflow-y: hidden;
+	}
+	.page_right{
+		display: inline-block;
+		overflow-y: hidden;
+	}
+	.page_middle {
+		display: inline-block;
+		overflow-y: hidden;
+		overflow-x: auto;
+		white-space: nowrap;
+	}
+}

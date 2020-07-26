@@ -36,6 +36,7 @@
 		&_thumb{
 			border: 1px solid #ccc;
 			border-radius: 5px;
+			line-height: 0;
 
 			img{
 				width: 100%;
@@ -45,27 +46,31 @@
 		&_title{
 			display: flex;
 			align-items: center;
-		}
-		&_title h2{
-			color: #337ab7;
-			font-weight: 600;
-			margin: 0;
-			white-space: nowrap;
-			font-size: 22px;
-			text-overflow: ellipsis;
-			text-align: left;
-			text-transform: capitalize;
+			margin: 15px 0 7px;
 
-			@include adaptive(767) {
-				font-size: 14px;
+			h2{
+				color: #337ab7;
+				font-weight: 600;
+				margin: 0;
 				white-space: nowrap;
-				overflow: hidden;
+				font-size: 22px;
 				text-overflow: ellipsis;
+				text-align: left;
+				text-transform: capitalize;
+
+				&:active,
+				&:hover{
+					text-decoration: none;
+					color: #337ab7;
+				}
+
+				@include adaptive(767) {
+					font-size: 14px;
+					white-space: nowrap;
+					overflow: hidden;
+					text-overflow: ellipsis;
+				}
 			}
-		}
-		&_title h2:active, &_title h2:hover{
-			text-decoration: none;
-			color: #337ab7;
 		}
 
 		&_summary{
@@ -108,6 +113,7 @@
 			@include adaptive(767) {
 				position: relative;
 				max-height: 200px;
+				top: 0;
 			}
 
 			h3{
@@ -127,6 +133,154 @@
 				font-size: 16px;
 				margin: 0 0 10px;
 			}
+		}
+	}
+}
+
+.click_for_more_games{
+	text-align: center;
+	padding: 15px 0 5px;
+
+	span{
+		display: inline-block;
+		border-radius: 5px;
+		cursor: pointer;
+		color: #fff;
+		font-family: roboto,sans-serif;
+		font-weight: 700;
+		font-size: 18px;
+		padding: 18px 10px;
+		background: #0660c0;
+		background: -moz-linear-gradient(top,rgba(6,96,192,1) 0%,rgba(5,80,159,1) 50%,rgba(4,60,121,1) 100%);
+		background: -webkit-linear-gradient(top,rgba(6,96,192,1) 0%,rgba(5,80,159,1) 50%,rgba(4,60,121,1) 100%);
+		background: linear-gradient(to bottom,rgba(6,96,192,1) 0%,rgba(5,80,159,1) 50%,rgba(4,60,121,1) 100%);
+		filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#0660c0',endColorstr='#043c79',GradientType=0 );
+	}
+}
+
+.category_site_container.category_55{
+	.category_site_lits.page_1{
+		.category_sites_item:nth-child(n+52){
+			display: none;
+		}
+
+		.pagi {
+			display: none;
+		}
+	}
+	.category_bottom_links.page_1{
+		display: none;
+	}
+
+	&.show_all{
+		.category_site_lits.page_1 .pagi{
+			display: block;
+		}
+
+		.click_for_more_games{
+			display: none;
+		}
+
+		.category_bottom_links{
+			display: block;
+			text-align: center;
+		}
+	}
+}
+
+.category_bottom_links{
+	text-align: center;
+	padding-bottom: 30px;
+
+	.go_back::before {
+		background: url(../images/geek_blue_button_head.png);
+		background-size: contain;
+		content: ' ';
+		display: inline-block;
+		height: 60px;
+		width: 97px;
+		position: absolute;
+		top: 0;
+		left: 0;
+	}
+
+	.go_back {
+		margin-top: 15px;
+		background: url(../images/geek_blue_button_bg.png);
+		color: #fff;
+		font-family: roboto,sans-serif;
+		font-weight: 700;
+		font-size: 18px;
+		padding: 18px 25px 18px 105px;
+		background-size: contain;
+		text-transform: uppercase;
+		display: inline-block;
+		border-radius: 5px;
+		position: relative;
+	}
+}
+
+#other_categories{
+	background: #fff;
+
+	.category_box{
+		padding-top: 15px;
+		display: flex;
+	}
+
+	.category_item{
+		display: block;
+		position: relative;
+		overflow: hidden;
+		outline: 1px solid #989898;
+		width: 25%;
+
+		@include adaptive(1279) {
+			width: 25%;
+		}
+		@include adaptive(767) {
+			width: 50%;
+			max-width: 50%;
+		}
+	}
+
+	.hdbadge {
+		position: absolute;
+		top: 10px;
+		right: 10px;
+		width: 43px;
+		height: 41px;
+		background: url(../images/cat-icons.png) 0 -34px no-repeat;
+	}
+
+	.catD {
+		position: absolute;
+		bottom: 0;
+		left: 0;
+		width: 100%;
+		font-size: 14px;
+		font-weight: 700;
+		color: #d1f34b;
+		padding: 5px 0;
+		background: rgba(0,0,0,.8);
+		text-align: center;
+
+		small {
+			display: block;
+			font-size: 12px;
+			font-weight: 400;
+			color: #fff;
+			line-height: 17px;
+			overflow: hidden;
+			text-overflow: ellipsis;
+			display: -webkit-box;
+			-webkit-line-clamp: 1;
+			-webkit-box-orient: vertical;
+		}
+
+		img, video{
+			width: 100%;
+			height: auto;
 		}
 	}
 }
