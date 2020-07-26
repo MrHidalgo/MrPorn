@@ -318,15 +318,18 @@ var renderFavourites = function renderFavourites() {
 				fav.classList.remove('is-active');
 			});
 
-			res.fav_list.map(function (fav, index) {
-				favouritesHtml += '<a class="header__view-link" href="' + fav.permalink + '">' + '<div><span>' + (index + 1) + '.</span></div>' + '<div><img src="' + fav.favicon + '"/><p>' + fav.title + '</p></div>' + '<div><button type="button" data-id="' + fav.id + '" un-favorites-js><i class="icon-font icon-delete"></i></button><button type="button"><i class="icon-font icon-search"></i></button></div>' + '</a>';
+			if (res.fav_list) {
+				res.fav_list.map(function (fav, index) {
+					favouritesHtml += '<a class="header__view-link" href="' + fav.permalink + '">' + '<div><span>' + (index + 1) + '.</span></div>' + '<div><img src="' + fav.favicon + '"/><p>' + fav.title + '</p></div>' + '<div><button type="button" data-id="' + fav.id + '" un-favorites-js><i class="icon-font icon-delete"></i></button><button type="button"><i class="icon-font icon-search"></i></button></div>' + '</a>';
 
-				var favLink = document.querySelector('[data-id="' + fav.id + '"] [favorites-toggle-js]');
-				if (favLink) {
-					favLink.classList.add('is-active');
-				}
-			});
-			favouritesDropDown.innerHTML = favouritesHtml;
+					var favLink = document.querySelector('[data-id="' + fav.id + '"] [favorites-toggle-js]');
+					if (favLink) {
+						favLink.classList.add('is-active');
+					}
+				});
+
+				favouritesDropDown.innerHTML = favouritesHtml;
+			}
 		}
 	});
 };
