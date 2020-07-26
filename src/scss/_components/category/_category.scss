@@ -33,8 +33,13 @@
 			padding: 8px;
 		}
 
-		&_thumb img{
-			width: 100%;
+		&_thumb{
+			border: 1px solid #ccc;
+			border-radius: 5px;
+
+			img{
+				width: 100%;
+			}
 		}
 
 		&_title{
@@ -96,8 +101,8 @@
 
 		.category_description{
 			position: absolute;
-			top: 0;
-			bottom: 15px;
+			top: 15px;
+			bottom: 0;
 			overflow: auto;
 
 			@include adaptive(767) {
@@ -109,6 +114,7 @@
 				font-size: 16px;
 				color: #698ab3;
 				margin: 0 0 10px;
+				font-weight: 700;
 
 				@include adaptive(767) {
 					font-size: 16px;
@@ -116,11 +122,10 @@
 					margin: 0 0 5px;
 				}
 			}
-			h3{
+			p{
+				padding: 0;
 				font-size: 16px;
-				line-height: 22px;
-				margin: 0 0 5px;
-
+				margin: 0 0 10px;
 			}
 		}
 	}
