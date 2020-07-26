@@ -45,7 +45,7 @@ function renderHompageSiteSlide(category, index){
 		let slideHtml = '<div class="swiper-slide" category_list_'+index+'>'+
 			'<a class="list__box" list-box-js href="'+siteLink+'" data-id="'+siteId+'" style="background-image: url(http://mpg.c2136.cloudnet.cloud/'+siteThumb+')">'+
 			'<div class="list__box-overlay"></div>'+
-			'<div class="list__box-border"></div><img class="list__box-logo" src="'+siteLogo+'" alt="">'+
+			'<div class="list__box-border"></div><images class="list__box-logo" src="'+siteLogo+'" alt="">'+
 			'<div class="list__box-details">'+
 			'<div class="list__box-details-left">'+
 			'<button class="list__box-external" type="button"><i class="icon-font icon-out"></i></button>'+
@@ -135,7 +135,7 @@ function renderSiteBottomBanner(category, index){
 			bannerClass = 'list__specification--banner';
 			if(bannerImage!=''){
 				bannerRight = '<div class="list__specification-right">' +
-					'<div><img src="'+bannerImage.url+'"></div>' +
+					'<div><images src="'+bannerImage.url+'"></div>' +
 					'</div>';
 			}
 		}else{
@@ -164,7 +164,7 @@ function renderSiteBottomBanner(category, index){
 
 				moreSites +='<a class="list__box" list-box-more-js href="'+moreSite.link+'" data-id="'+moreSite.id+'" data-count="1" style="background-image: url('+moreSite.thumb+')">'+
 					'<div class="list__box-overlay"></div>'+
-					'<div class="list__box-border"></div><img class="list__box-logo" src="'+moreSiteLogo+'" alt="">' +
+					'<div class="list__box-border"></div><images class="list__box-logo" src="'+moreSiteLogo+'" alt="">' +
 					'</a>';
 
 				moreSiteCount++;
@@ -175,14 +175,14 @@ function renderSiteBottomBanner(category, index){
 			'<a class="list__specification-close" href="#"><i class="icon-font icon-close"></i></a>'+
 			'<div>'+
 			'<div class="list__specification-header">' +
-			'<img class="list__specification-logo" src="'+siteLogo+'">' +
+			'<images class="list__specification-logo" src="'+siteLogo+'">' +
 			'<a class="list__specification-close" href="#">' +
 			'<i class="icon-font icon-close"></i>' +
 			'</a>' +
 			'</div>'+
 			'<div class="list__specification-left">'+
 			'<div>' +
-			'<img class="list__specification-logo" src="'+siteLogo+'">'+
+			'<images class="list__specification-logo" src="'+siteLogo+'">'+
 			'<div class="list__specification-action" spec-actionNode-js>'+
 			'<div><a class="list__specification-visit nav_link" href="#">VISIT WEBSITE</a></div>'+
 			'<div><a class="list__specification-read nav_link" href="'+siteItem.link+'">READ REVIEW</a></div>'+
@@ -262,7 +262,7 @@ function renderSiteCategory(categoryIndex){
 			'<div class="list__box-overlay"></div>'+
 			'<div class="list__box-border"></div>'+
 			'<a class="nav_link" href="'+site.link+'">' +
-			'<img class="list__box-logo" src="'+site.logo+'" alt="">'+
+			'<images class="list__box-logo" src="'+site.logo+'" alt="">'+
 			'</a>'+
 			'<div class="list__box-details">'+
 
@@ -278,7 +278,7 @@ function renderSiteCategory(categoryIndex){
 	let categoryBoxHtml = '<div class="list__box-wrapper" list-parent-js data-name="category_'+categoryId+'" data-index="'+categoryIndex+'">'+
                   '<div class="list__box-head">'+
 										'<div class="list__info">'+
-											'<div class="list__info-circle"><img src="'+categoryLogo+'" alt=""></div>'+
+											'<div class="list__info-circle"><images src="'+categoryLogo+'" alt=""></div>'+
 											'<div>'+
 												'<p>'+categoryData.title+'</p><span>'+categoryData.tagline+'</span>'+
 											'</div>'+

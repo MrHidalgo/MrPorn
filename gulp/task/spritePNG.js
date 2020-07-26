@@ -21,9 +21,9 @@ const srcPath = {
  * @description Gulp sprite SVG - generated PNG sprite.
  */
 task('spritePNG', (done) => {
-  const spImgPath = '../img/sprite.png',
-    retinaspImgPath = '../img/sprite@2x.png',
-    destImg = './dest/img/',
+  const spImgPath = '../images/sprite.png',
+    retinaspImgPath = '../images/sprite@2x.png',
+    destImg = './dest/images/',
     destCss = './src/scss/_generated/';
 
   let spriteData = src(srcPath[0])

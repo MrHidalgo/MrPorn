@@ -1,11 +1,11 @@
 // SECTION :: START
 
 mixin listSliderBox(idVal, bgVal, logoVal)
-	a.list__box(list-box-js href="#" data-id!= idVal style='background-image: url("img/' + bgVal + '")')
+	a.list__box(list-box-js href="#" data-id!= idVal style='background-image: url("images/' + bgVal + '")')
 		.list__box-overlay
 		.list__box-border
 
-		img.list__box-logo(src="img/" + logoVal alt="")
+		img.list__box-logo(src="images/" + logoVal alt="")
 
 		.list__box-details
 			.list__box-details-left
@@ -39,16 +39,16 @@ mixin listSliderBox(idVal, bgVal, logoVal)
 			i.icon-font.icon-arrow-angle
 
 mixin listSliderBoxMore(idVal, count, bgVal, logoVal)
-	a.list__box(list-box-more-js href="#" data-id!= idVal data-count!= count style='background-image: url("img/' + bgVal + '")')
+	a.list__box(list-box-more-js href="#" data-id!= idVal data-count!= count style='background-image: url("images/' + bgVal + '")')
 		.list__box-overlay
 		.list__box-border
 
-		img.list__box-logo(src="img/" + logoVal alt="")
+		img.list__box-logo(src="images/" + logoVal alt="")
 
 mixin listBoxLeftBar(val)
 	.list__specification-left
 		div
-			img.list__specification-logo(src="img/img-reality-kings.png" srcset="img/img-reality-kings@2x.png 2x" alt="")
+			img.list__specification-logo(src="images/images-reality-kings.png" srcset="images/images-reality-kings@2x.png 2x" alt="")
 
 			.list__specification-action(spec-actionNode-js)
 				div
@@ -84,7 +84,7 @@ mixin listBoxLeftBar(val)
 
 mixin listSpecificationHeader()
 	.list__specification-header
-		img.list__specification-logo(src="img/img-reality-kings.png" srcset="img/img-reality-kings@2x.png 2x" alt="")
+		img.list__specification-logo(src="images/images-reality-kings.png" srcset="images/images-reality-kings@2x.png 2x" alt="")
 
 		a.list__specification-close(href="#")
 			i.icon-font.icon-close
@@ -110,7 +110,7 @@ mixin listBox(sliderID, name)
 				.list__info
 					div
 						.list__info-circle
-							img(src="img/img-premim-porn-icon.png" srcset="img/img-premim-porn-icon@2x.png 2x" alt="")
+							img(src="images/images-premim-porn-icon.png" srcset="images/images-premim-porn-icon@2x.png 2x" alt="")
 					div
 						p Premium Porn
 						span Enjoy these best porn sites, all exclusive HD content starring beautiful pornstars.
@@ -168,12 +168,12 @@ mixin listBox(sliderID, name)
 									div(video-parent-js)
 										if(idx === 0 || idx === 4 || idx === 8 || idx === 12)
 											//video(preload="none" video-js)
-											video(preload="none" poster='img/img-poster-video.jpg' video-js)
-												source(src="img/video1.mp4" type="video/mp4")
+											video(preload="none" poster='images/images-poster-video.jpg' video-js)
+												source(src="images/video1.mp4" type="video/mp4")
 										else if (idx === 2 || idx === 6 || idx === 10)
 											//video(preload="none" video-js)
-											video(preload="none" poster='img/img-poster-video.jpg' video-js)
-												source(src="img/video2.mp4" type="video/mp4")
+											video(preload="none" poster='images/images-poster-video.jpg' video-js)
+												source(src="images/video2.mp4" type="video/mp4")
 
 										a.list__specification-play(href="#" video-toggle-js)
 											i.icon-font.icon-play-button(video-play-js)
@@ -194,7 +194,7 @@ mixin listBox(sliderID, name)
 
 								.list__specification-right
 									div
-										img(src="img/img-laptop.png" srcset="img/img-laptop@2x.png 2x" alt="")
+										img(src="images/images-laptop.png" srcset="images/images-laptop@2x.png 2x" alt="")
 
 								+listSpecificationMoreLike(val)
 

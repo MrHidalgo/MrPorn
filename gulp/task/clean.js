@@ -13,16 +13,16 @@ const configPath  = require('../config/configPath');
 task('clean', (done) => {
 	del.sync([
     configPath.dest.root + '/**/*',
-    configPath.src.root + '/img/**',
+    configPath.src.root + '/images/**',
     configPath.src.root + '/media/**',
     configPath.src.root + '/icon/**',
-    '!' + configPath.dest.root + '/img',
-    '!' + configPath.dest.root + '/img/**/*',
+    '!' + configPath.dest.root + '/images',
+    '!' + configPath.dest.root + '/images/**/*',
     '!' + configPath.dest.root + '/media',
     '!' + configPath.dest.root + '/media/**/*',
     '!' + configPath.dest.root + '/icon',
     '!' + configPath.dest.root + '/icon/**/*',
-    '!' + configPath.src.root + '/img',
+    '!' + configPath.src.root + '/images',
     '!' + configPath.src.root + '/icon',
     '!' + configPath.src.root + '/icon/**'
   ]);

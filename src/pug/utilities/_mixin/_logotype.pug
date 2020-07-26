@@ -17,7 +17,7 @@
 //- ========================
 mixin logotype(classMod, hrefVal, imgName, imgExt)
 	-
-		var imgSrcSet = "./img/" + imgName + "." + imgExt + ", ./img/" + imgName + "@2x." + imgExt;
+		var imgSrcSet = "./images/" + imgName + "." + imgExt + ", ./images/" + imgName + "@2x." + imgExt;
 
 	.logo(class!= "logo--" + classMod)
 		a(
@@ -39,7 +39,7 @@ mixin logotypeSVG(classMod, hrefVal, svgName)
 
 mixin logotypeImgText(classMod, hrefVal, imgName, imgExt, txtVal)
 	-
-		var imgSrcSet = "./img/" + imgName + "." + imgExt + ", ./img/" + imgName + "@2x." + imgExt;
+		var imgSrcSet = "./images/" + imgName + "." + imgExt + ", ./images/" + imgName + "@2x." + imgExt;
 
 	.logo(class!= "logo--" + classMod)
 		a(

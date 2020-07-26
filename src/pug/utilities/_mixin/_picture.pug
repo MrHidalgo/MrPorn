@@ -13,8 +13,8 @@
 //- ========================
 mixin pictureTag(ieSupport, classModPicture, classModImage, imgType, imgName)
 	-
-		var imgStringPathWebp = './img/' + imgName + '.webp, ./img/' + imgName + '@2x.webp 2x',
-						imgStringPath = './img/' + imgName + '.' + imgType + ', ./img/' + imgName + '@2x.' + imgType + ' 2x';
+		var imgStringPathWebp = './images/' + imgName + '.webp, ./images/' + imgName + '@2x.webp 2x',
+						imgStringPath = './images/' + imgName + '.' + imgType + ', ./images/' + imgName + '@2x.' + imgType + ' 2x';
 
 	picture(class!= classModPicture)
 		if(ieSupport)

@@ -4,85 +4,85 @@ const renderSearch = () => {
 		'                          <p class="category__title">Top Results (1257)</p>\n' +
 		'                        </div>\n' +
 		'                        <div>\n' +
-		'                          <div class="category__btn-wrapper"><a class="category__btn category__btn--1" href="#"><img src="img/img-black-porn-sites.png" srcset="img/img-black-porn-sites@2x.png 2x" alt=""><span>Black Porn Sites</span></a><a class="category__btn category__btn--2" href="#"><img src="img/img-blog.png" srcset="img/img-blog@2x.png 2x" alt=""><span>Porn Blogs</span></a><a class="category__btn category__btn--3" href="#"><img src="img/img-black-porn-sites.png" srcset="img/img-black-porn-sites@2x.png 2x" alt=""><span>Black Porn Sites</span></a><a class="category__btn category__btn--4" href="#"><img src="img/img-blog.png" srcset="img/img-blog@2x.png 2x" alt=""><span>Porn Blogs</span></a><a class="category__btn category__btn--5" href="#"><img src="img/img-blog.png" srcset="img/img-blog@2x.png 2x" alt=""><span>Amateur Porn Sites</span></a></div>\n' +
+		'                          <div class="category__btn-wrapper"><a class="category__btn category__btn--1" href="#"><images src="images/images-black-porn-sites.png" srcset="images/images-black-porn-sites@2x.png 2x" alt=""><span>Black Porn Sites</span></a><a class="category__btn category__btn--2" href="#"><images src="images/images-blog.png" srcset="images/images-blog@2x.png 2x" alt=""><span>Porn Blogs</span></a><a class="category__btn category__btn--3" href="#"><images src="images/images-black-porn-sites.png" srcset="images/images-black-porn-sites@2x.png 2x" alt=""><span>Black Porn Sites</span></a><a class="category__btn category__btn--4" href="#"><images src="images/images-blog.png" srcset="images/images-blog@2x.png 2x" alt=""><span>Porn Blogs</span></a><a class="category__btn category__btn--5" href="#"><images src="images/images-blog.png" srcset="images/images-blog@2x.png 2x" alt=""><span>Amateur Porn Sites</span></a></div>\n' +
 		'                        </div>\n' +
 		'                      </div>\n' +
 		'                      <div class="category__drop-body">\n' +
 		'                        <div class="category__list-wrapper">\n' +
 		'                          <div><a class="category__list" href="#">\n' +
 		'                              <div class="category__list-head">\n' +
-		'                                <div><img src="img/img-pornhub-icon.png" srcset="img/img-pornhub-icon@2x.png 2x" alt=""></div>\n' +
+		'                                <div><images src="images/images-pornhub-icon.png" srcset="images/images-pornhub-icon@2x.png 2x" alt=""></div>\n' +
 		'                                <div>\n' +
 		'                                  <p>Pornhub Premium</p>\n' +
 		'                                </div>\n' +
 		'                              </div>\n' +
 		'                              <div class="category__list-body">\n' +
-		'                                <div><img src="img/img-view-pornhub-premium.png" alt=""></div>\n' +
+		'                                <div><images src="images/images-view-pornhub-premium.png" alt=""></div>\n' +
 		'                                <div>\n' +
 		'                                  <p>Premium Porn</p>\n' +
 		'                                </div>\n' +
 		'                              </div></a></div>\n' +
 		'                          <div><a class="category__list" href="#">\n' +
 		'                              <div class="category__list-head">\n' +
-		'                                <div><img src="img/img-brazzers-icon.png" srcset="img/img-brazzers-icon@2x.png 2x" alt=""></div>\n' +
+		'                                <div><images src="images/images-brazzers-icon.png" srcset="images/images-brazzers-icon@2x.png 2x" alt=""></div>\n' +
 		'                                <div>\n' +
 		'                                  <p>Brazzers</p>\n' +
 		'                                </div>\n' +
 		'                              </div>\n' +
 		'                              <div class="category__list-body">\n' +
-		'                                <div><img src="img/img-view-bruzzers.png" alt=""></div>\n' +
+		'                                <div><images src="images/images-view-bruzzers.png" alt=""></div>\n' +
 		'                                <div>\n' +
 		'                                  <p>Premium Porn</p>\n' +
 		'                                </div>\n' +
 		'                              </div></a></div>\n' +
 		'                          <div><a class="category__list" href="#">\n' +
 		'                              <div class="category__list-head">\n' +
-		'                                <div><img src="img/img-pornhub-icon.png" srcset="img/img-pornhub-icon@2x.png 2x" alt=""></div>\n' +
+		'                                <div><images src="images/images-pornhub-icon.png" srcset="images/images-pornhub-icon@2x.png 2x" alt=""></div>\n' +
 		'                                <div>\n' +
 		'                                  <p>Pornhub Premium</p>\n' +
 		'                                </div>\n' +
 		'                              </div>\n' +
 		'                              <div class="category__list-body">\n' +
-		'                                <div><img src="img/img-view-pornhub-premium.png" alt=""></div>\n' +
+		'                                <div><images src="images/images-view-pornhub-premium.png" alt=""></div>\n' +
 		'                                <div>\n' +
 		'                                  <p>Premium Porn</p>\n' +
 		'                                </div>\n' +
 		'                              </div></a></div>\n' +
 		'                          <div><a class="category__list" href="#">\n' +
 		'                              <div class="category__list-head">\n' +
-		'                                <div><img src="img/img-pornhub-icon.png" srcset="img/img-pornhub-icon@2x.png 2x" alt=""></div>\n' +
+		'                                <div><images src="images/images-pornhub-icon.png" srcset="images/images-pornhub-icon@2x.png 2x" alt=""></div>\n' +
 		'                                <div>\n' +
 		'                                  <p>Pornhub Premium</p>\n' +
 		'                                </div>\n' +
 		'                              </div>\n' +
 		'                              <div class="category__list-body">\n' +
-		'                                <div><img src="img/img-view-pornhub-premium.png" alt=""></div>\n' +
+		'                                <div><images src="images/images-view-pornhub-premium.png" alt=""></div>\n' +
 		'                                <div>\n' +
 		'                                  <p>Premium Porn</p>\n' +
 		'                                </div>\n' +
 		'                              </div></a></div>\n' +
 		'                          <div><a class="category__list" href="#">\n' +
 		'                              <div class="category__list-head">\n' +
-		'                                <div><img src="img/img-brazzers-icon.png" srcset="img/img-brazzers-icon@2x.png 2x" alt=""></div>\n' +
+		'                                <div><images src="images/images-brazzers-icon.png" srcset="images/images-brazzers-icon@2x.png 2x" alt=""></div>\n' +
 		'                                <div>\n' +
 		'                                  <p>Brazzers</p>\n' +
 		'                                </div>\n' +
 		'                              </div>\n' +
 		'                              <div class="category__list-body">\n' +
-		'                                <div><img src="img/img-view-bruzzers.png" alt=""></div>\n' +
+		'                                <div><images src="images/images-view-bruzzers.png" alt=""></div>\n' +
 		'                                <div>\n' +
 		'                                  <p>Premium Porn</p>\n' +
 		'                                </div>\n' +
 		'                              </div></a></div>\n' +
 		'                          <div><a class="category__list" href="#">\n' +
 		'                              <div class="category__list-head">\n' +
-		'                                <div><img src="img/img-pornhub-icon.png" srcset="img/img-pornhub-icon@2x.png 2x" alt=""></div>\n' +
+		'                                <div><images src="images/images-pornhub-icon.png" srcset="images/images-pornhub-icon@2x.png 2x" alt=""></div>\n' +
 		'                                <div>\n' +
 		'                                  <p>Pornhub Premium</p>\n' +
 		'                                </div>\n' +
 		'                              </div>\n' +
 		'                              <div class="category__list-body">\n' +
-		'                                <div><img src="img/img-view-pornhub-premium.png" alt=""></div>\n' +
+		'                                <div><images src="images/images-view-pornhub-premium.png" alt=""></div>\n' +
 		'                                <div>\n' +
 		'                                  <p>Premium Porn</p>\n' +
 		'                                </div>\n' +
@@ -95,7 +95,7 @@ const renderSearch = () => {
 		'                                </div>\n' +
 		'                              </div>\n' +
 		'                              <div class="category__list-body">\n' +
-		'                                <div><img src="img/img-watchmygf.jpg" alt=""></div>\n' +
+		'                                <div><images src="images/images-watchmygf.jpg" alt=""></div>\n' +
 		'                                <div>\n' +
 		'                                  <p>Premium Porn</p>\n' +
 		'                                </div>\n' +
@@ -108,7 +108,7 @@ const renderSearch = () => {
 		'                                </div>\n' +
 		'                              </div>\n' +
 		'                              <div class="category__list-body">\n' +
-		'                                <div><img src="img/img-gfsex.jpg" alt=""></div>\n' +
+		'                                <div><images src="images/images-gfsex.jpg" alt=""></div>\n' +
 		'                                <div>\n' +
 		'                                  <p>Premium Porn</p>\n' +
 		'                                </div>\n' +
@@ -121,7 +121,7 @@ const renderSearch = () => {
 		'                                </div>\n' +
 		'                              </div>\n' +
 		'                              <div class="category__list-body">\n' +
-		'                                <div><img src="img/img-watchmygf.jpg" alt=""></div>\n' +
+		'                                <div><images src="images/images-watchmygf.jpg" alt=""></div>\n' +
 		'                                <div>\n' +
 		'                                  <p>Premium Porn</p>\n' +
 		'                                </div>\n' +
@@ -134,7 +134,7 @@ const renderSearch = () => {
 		'                                </div>\n' +
 		'                              </div>\n' +
 		'                              <div class="category__list-body">\n' +
-		'                                <div><img src="img/img-watchmygf.jpg" alt=""></div>\n' +
+		'                                <div><images src="images/images-watchmygf.jpg" alt=""></div>\n' +
 		'                                <div>\n' +
 		'                                  <p>Premium Porn</p>\n' +
 		'                                </div>\n' +
@@ -147,7 +147,7 @@ const renderSearch = () => {
 		'                                </div>\n' +
 		'                              </div>\n' +
 		'                              <div class="category__list-body">\n' +
-		'                                <div><img src="img/img-gfsex.jpg" alt=""></div>\n' +
+		'                                <div><images src="images/images-gfsex.jpg" alt=""></div>\n' +
 		'                                <div>\n' +
 		'                                  <p>Premium Porn</p>\n' +
 		'                                </div>\n' +
@@ -160,7 +160,7 @@ const renderSearch = () => {
 		'                                </div>\n' +
 		'                              </div>\n' +
 		'                              <div class="category__list-body">\n' +
-		'                                <div><img src="img/img-watchmygf.jpg" alt=""></div>\n' +
+		'                                <div><images src="images/images-watchmygf.jpg" alt=""></div>\n' +
 		'                                <div>\n' +
 		'                                  <p>Premium Porn</p>\n' +
 		'                                </div>\n' +
