@@ -4,21 +4,10 @@
 	display: flex;
 	flex-direction: column;
 
-	.bread-crumb{
-		padding: 5px 25px;
-		background: #eee;
-		font-size: 15px;
-		font-weight: 600;
+}
 
-		@include adaptive(767) {
-			order: -1;
-
-			padding: 10px;
-			text-align: center;
-			font-size: 11px;
-			margin: 0 -10px 5px;
-		}
-	}
+.main_con{
+	background: #fff;
 }
 
 .category_sites{
@@ -61,6 +50,13 @@
 			text-overflow: ellipsis;
 			text-align: left;
 			text-transform: capitalize;
+
+			@include adaptive(767) {
+				font-size: 14px;
+				white-space: nowrap;
+				overflow: hidden;
+				text-overflow: ellipsis;
+			}
 		}
 		&_title h2:active, &_title h2:hover{
 			text-decoration: none;
@@ -102,9 +98,29 @@
 			position: absolute;
 			top: 0;
 			bottom: 15px;
+			overflow: auto;
 
 			@include adaptive(767) {
 				position: relative;
+				max-height: 200px;
+			}
+
+			h3{
+				font-size: 16px;
+				color: #698ab3;
+				margin: 0 0 10px;
+
+				@include adaptive(767) {
+					font-size: 16px;
+					line-height: 22px;
+					margin: 0 0 5px;
+				}
+			}
+			h3{
+				font-size: 16px;
+				line-height: 22px;
+				margin: 0 0 5px;
+
 			}
 		}
 	}

@@ -1,0 +1,21 @@
+// Breadcrumb :: START
+
+.bread-crumb{
+	padding: 5px 25px;
+	background: #eee;
+	font-size: 15px;
+	font-weight: 600;
+
+	@include adaptive(767) {
+		order: -1;
+
+		padding: 10px;
+		text-align: center;
+		font-size: 11px;
+		margin: 0 -10px 5px;
+	}
+
+	a{
+		margin: 0 10px;
+	}
+}
