@@ -226,21 +226,37 @@
 		flex: 1;
 		position: relative;
 		font-size: 18px;
-		padding-top: 20px;
 		padding-bottom: 20px;
 		border-top: 1px solid #d6d6d6;
 		border-bottom: 1px solid #d6d6d6;
-		overflow: auto;
+		overflow: hidden;
 		padding-right: 10px;
 
 		#cs_com{
 			position: absolute;
 			height: 100%;
+
+			font-size: 18px;
+			padding-top: 20px;
+			padding-bottom: 20px;
+			border-top: 1px solid #d6d6d6;
+			border-bottom: 1px solid #d6d6d6;
 			overflow: auto;
+			padding-right: 10px;
+
 
 			-ms-overflow-style: none;
 			overflow: -moz-scrollbars-none;
 			scrollbar-width: none;
+
+			&::-webkit-scrollbar {
+				display: none;
+			}
+
+			p {
+				font-size: 18px;
+				margin: 0 0 10px;
+			}
 		}
 
 		.scroll_track {
