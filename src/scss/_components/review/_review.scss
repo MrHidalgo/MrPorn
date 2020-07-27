@@ -62,7 +62,7 @@
 .review_container{
 	background: #fff;
 	margin-bottom: 15px;
-	padding: 0 10px 10px;
+	padding: 10px 25px 10px;
 
 	.review_search {
 		background: #fff;
@@ -103,6 +103,27 @@
 	padding-top: 85.4729%;
 	position: relative;
 	background: #000;
+
+	img {
+		position: absolute;
+		height: 100%;
+		object-fit: cover;
+	}
+
+	.slider_inner {
+		position: absolute;
+		display: block;
+		top: 60px;
+		bottom: 60px;
+		left: 0;
+		width: 100%;
+		overflow: hidden;
+	}
+
+	.slider_inner.slide_0 {
+		top: 0;
+		bottom: 0;
+	}
 }
 
 .review_screenshot {
@@ -172,4 +193,224 @@
 	.review_column{
 		width: 50%;
 	}
+	.screen_shot{
+		padding-right: 15px;
+	}
+	.review_con{
+		padding-left: 35px;
+	}
 }
+
+.review_con{
+	display: flex;
+	flex-direction: column;
+
+
+
+	h1, h2 {
+		font-size: 45px;
+		color: #113d74;
+		margin: 0;
+		width: 100%;
+		font-weight: 600;
+	}
+
+	.site_review_title_content h3 {
+		padding: 0;
+		margin: -5px 0 0;
+		font-size: 18px;
+		color: #6e87a7;
+	}
+
+	.review_scroll_container{
+		flex: 1;
+		position: relative;
+		font-size: 18px;
+		padding-top: 20px;
+		padding-bottom: 20px;
+		border-top: 1px solid #d6d6d6;
+		border-bottom: 1px solid #d6d6d6;
+		overflow: auto;
+		padding-right: 10px;
+
+		#cs_com{
+			position: absolute;
+			height: 100%;
+			overflow: auto;
+
+			-ms-overflow-style: none;
+			overflow: -moz-scrollbars-none;
+			scrollbar-width: none;
+		}
+
+		.scroll_track {
+			background: rgba(0,0,0,.1);
+			position: absolute;
+			width: 10px;
+			right: 0;
+			top: 0;
+			height: 100%;
+		}
+		.scroll_thumb {
+			position: absolute;
+			top: 0;
+			right: 0;
+			background: #9c9b9c;
+			width: 10px;
+			content: ' ';
+		}
+		.scroll_progress {
+			position: absolute;
+			top: 0;
+			right: 0;
+			background: #225396;
+			width: 10px;
+			content: ' ';
+			display: none;
+		}
+	}
+}
+.ratingtu{
+	margin: 5px 0 0;
+	position: relative;
+
+	.rtu-ty {
+		font-size: 14px;
+		font-weight: 700;
+		color: #0641a3;
+		display: none;
+	}
+	.rtu-txt {
+		display: inline-block;
+		vertical-align: middle;
+		font-size: 20px;
+		font-weight: 900;
+		color: #4d4c4c;
+		margin-right: 10px;
+
+		.new-ratingt {
+			position: relative;
+			text-align: left;
+			width: 190px;
+			unicode-bidi: bidi-override;
+			direction: rtl;
+			display: inline-block;
+			vertical-align: middle;
+			cursor: pointer;
+			margin-left: 10px;
+
+			&:before{
+				width: 180px;
+				height: 36px;
+				background: url(../images/ratings.png) 0 -144px no-repeat;
+				position: absolute;
+				content: '';
+				left: 0;
+				top: 0;
+			}
+
+			&[data-percent="2"]:before {
+				background-position: 0 -108px;
+			}
+			&[data-percent="3"]:before {
+				background-position: 0 -72px;
+			}
+			&[data-percent="4"]:before {
+				background-position: 0 -36px;
+			}
+			&[data-percent="5"]:before {
+				background-position: 0 0;
+			}
+
+			span{
+				display: inline-block;
+				position: relative;
+				width: 36px;
+				height: 36px;
+				margin: 0;
+			}
+		}
+	}
+}
+
+.ratingtu_buttons {
+	position: absolute;
+	right: -31px;
+	top: 50%;
+	transform: translateY(-50%);
+
+	.cs_show_comments, .cs_hide_comments {
+		top: 5px;
+	}
+
+	.cs_hide_comments {
+		outline: none;
+		background: #5f5e5e;
+		color: #fff;
+		display: none;
+		width: 120px;
+		height: 29px;
+		right: 0;
+		line-height: 29px;
+		position: relative;
+		padding: 0 15px;
+		font-weight: 600;
+		text-transform: uppercase;
+		margin-bottom: 10px;
+	}
+
+	.cs_show_comments {
+		display: block;
+		width: 120px;
+		background: #fff;
+		right: 0;
+		color: #006ab5;
+		padding: 0 15px;
+		font-weight: 600;
+		text-transform: uppercase;
+		border: 1px solid #066db6;
+		margin-bottom: 10px;
+		position: relative;
+		outline: none;
+		text-align: center;
+		line-height: 29px;
+		height: 29px;
+		font-size: 12px;
+	}
+}
+
+.pros_container{
+	display: flex;
+	padding-bottom: 15px;
+
+	&_col{
+		width: 50%;
+	}
+
+	.pros_title{
+		font-weight: 600;
+		font-size: 18px;
+		margin: 20px 0 10px;
+		line-height: 19px;
+	}
+	ul{
+		padding: 0;
+		list-style-type: none;
+
+		li{
+			background: url(../images/icon_pro.png) no-repeat;
+			padding-left: 35px;
+			line-height: 30px;
+			color: #515050;
+			font-weight: 600;
+		}
+
+		&.conns{
+			li{
+				background: url(../images/icon_conn.png) no-repeat;
+			}
+		}
+	}
+}
+
+

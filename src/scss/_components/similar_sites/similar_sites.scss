@@ -1,0 +1,71 @@
+// SIMILAR_SITES :: START
+.related_sites_container{
+	background: #fff;
+}
+.similar_sites{
+	display: flex;
+	flex-wrap: wrap;
+	padding: 15px 0;
+
+	&_item{
+		width: 25%;
+		text-align: center;
+
+		@include adaptive(1279) {
+			width: 25%;
+		}
+		@include adaptive(767) {
+			width: 50%;
+			max-width: 50%;
+		}
+
+		&_inner{
+			padding: 0 15px 0;
+		}
+
+		&_thumb{
+			display: block;
+			width: 100%;
+			content: " ";
+			padding-top: 84.8%;
+			border: 1px solid #ccc;
+			background-size: contain!important;
+			position: relative;
+			overflow: hidden;
+
+			img {
+				width: auto;
+				height: 100%;
+				position: absolute;
+				top: 0;
+				left: 0;
+				max-width: inherit;
+				max-height: inherit;
+			}
+		}
+
+		.free_badge {
+			background: url(../images/free_ribbon.png);
+			width: 84px;
+			height: 86px;
+			content: ' ';
+			display: inline-block;
+			position: absolute;
+			right: -4px;
+			top: -4px;
+		}
+
+		.similar_link{
+			display: block;
+			font-size: 16px;
+			font-weight: 600;
+			margin: 0;
+			position: relative;
+			max-width: 100%;
+			line-height: 40px;
+			white-space: nowrap;
+			text-overflow: ellipsis;
+			overflow: hidden;
+		}
+	}
+}
