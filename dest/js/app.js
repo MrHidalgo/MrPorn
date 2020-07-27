@@ -11,6 +11,15 @@
 * ============================
 * */
 
+Function.prototype.extend = function () {
+	var fns = [this].concat([].slice.call(arguments));
+	return function () {
+		for (var i = 0; i < fns.length; i++) {
+			fns[i].apply(this, arguments);
+		}
+	};
+};
+
 function postRequest() {
 	var url = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : '';
 	var data = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : {};
