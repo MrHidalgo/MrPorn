@@ -14,6 +14,12 @@
 	@import "header--nav";
 	@import "header--recent";
 	@import "header--update";
+
+	@include adaptive(767) {
+		position: fixed;
+		width: 100%;
+		z-index: 10;
+	}
 }
 
 // HEADER :: END

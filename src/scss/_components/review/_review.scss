@@ -1,6 +1,13 @@
 // REVIEW :: START
+@include adaptive(767) {
+	.c-grid{
+		padding-left: 5px;
+		padding-right: 5px;
+	}
+}
 .site-content{
 	display: flex;
+	flex-direction: column;
 }
 
 .bread-crumb{
@@ -12,9 +19,13 @@
 	}
 
 	.show_similar_sites{
+		@include adaptive(767) {
+			display: none;
+		}
+
 		a{
 			color: #828282;
-			font-size: 16px;
+			font-size: 15px;
 			overflow: hidden;
 			white-space: nowrap;
 			text-overflow: ellipsis;
@@ -23,6 +34,10 @@
 			-webkit-box-orient: vertical;
 			overflow: hidden;
 			display: flex;
+
+			@include adaptive(767) {
+				color: #fff;
+			}
 		}
 
 		.left_content {
@@ -31,9 +46,20 @@
 			text-transform: capitalize;
 			padding-left: 8px;
 
+			@include adaptive(767) {
+				padding-left: 0;
+				line-height: 26px;
+			}
+
 			.arrow_down {
 				border: 1px solid #828282;
 				padding: 0 4px;
+
+				@include adaptive(767) {
+					border: 1px solid #fff;
+					padding: 2px 5px 1px;
+					background: #0caa26;
+				}
 
 				&:before{
 					content: ' ';
@@ -47,10 +73,18 @@
 			}
 			.site_count {
 				color: #568e00;
+
+				@include adaptive(767) {
+					color: #fff;
+				}
 			}
 			.site_name {
 				color: #656363;
 				font-weight: 900;
+
+				@include adaptive(767) {
+					color: #fff;
+				}
 			}
 		}
 		.icons {
@@ -77,6 +111,25 @@
 		}
 	}
 }
+
+.fixed_header{
+	.show_similar_sites{
+		display: block;
+		position: fixed;
+		top: 120px;
+		left: 0;
+		color: #fff;
+		z-index: 10;
+
+		@include adaptive(767) {
+			.deIcon{
+				border: 1px solid #828282;
+				background: #fff;
+			}
+		}
+	}
+}
+
 .review_container{
 	background: #fff;
 	margin-bottom: 15px;
@@ -235,7 +288,7 @@
 		padding-left: 35px;
 
 		@include adaptive(767) {
-			padding-right: 0;
+			padding-left: 0;
 		}
 	}
 }
@@ -254,6 +307,19 @@
 		margin: 0;
 		width: 100%;
 		font-weight: 600;
+
+		@include adaptive(767) {
+			font-size: 24px;
+			line-height: 25px;
+			margin-bottom: 10px;
+		}
+	}
+
+	h3{
+		font-size: 20px;
+		margin: 0 0 9px;
+		color: #698ab3;
+		font-weight: 700;
 	}
 
 	.site_review_title_content h3 {
@@ -290,6 +356,10 @@
 			overflow: -moz-scrollbars-none;
 			scrollbar-width: none;
 
+			@include adaptive(767) {
+				position: relative;
+			}
+
 			&::-webkit-scrollbar {
 				display: none;
 			}
@@ -307,6 +377,10 @@
 			right: 0;
 			top: 0;
 			height: 100%;
+
+			@include adaptive(767) {
+				display: none;
+			}
 		}
 		.scroll_thumb {
 			position: absolute;
@@ -356,6 +430,8 @@
 			cursor: pointer;
 			margin-left: 10px;
 
+
+
 			&:before{
 				width: 180px;
 				height: 36px;
@@ -364,6 +440,25 @@
 				content: '';
 				left: 0;
 				top: 0;
+
+				@include adaptive(767) {
+					height: 30px;
+					background-position: 0 -30px;
+					background-size: auto 500%;
+				}
+			}
+
+			span{
+				display: inline-block;
+				position: relative;
+				width: 36px;
+				height: 36px;
+				margin: 0;
+
+				@include adaptive(767) {
+					width: 30px;
+					height: 30px;
+				}
 			}
 
 			&[data-percent="2"]:before {
@@ -379,13 +474,7 @@
 				background-position: 0 0;
 			}
 
-			span{
-				display: inline-block;
-				position: relative;
-				width: 36px;
-				height: 36px;
-				margin: 0;
-			}
+
 		}
 	}
 }
@@ -396,9 +485,7 @@
 	top: 50%;
 	transform: translateY(-50%);
 
-	.cs_show_comments, .cs_hide_comments {
-		top: 5px;
-	}
+
 
 	.cs_hide_comments {
 		outline: none;
@@ -434,14 +521,26 @@
 		height: 29px;
 		font-size: 12px;
 	}
+
+	.cs_show_comments, .cs_hide_comments {
+		top: 5px;
+
+		@include adaptive(767) {
+			display: none;
+		}
+	}
 }
 
 .pros_container{
 	display: flex;
 	padding-bottom: 15px;
 
+	@include adaptive(767) {
+		flex-direction: column;
+	}
+
 	&_col{
-		width: 50%;
+		/*width: 50%;*/
 	}
 
 	.pros_title{

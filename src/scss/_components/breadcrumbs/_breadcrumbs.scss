@@ -32,7 +32,6 @@
 			color: #fff;
 			background: #77c28e;
 			display: flex;
-			padding: 5px 15px;
 			text-transform: capitalize;
 			font-size: 15px;
 			white-space: nowrap;
@@ -42,5 +41,11 @@
 
 	a{
 		margin: 0 10px;
+
+		@include adaptive(767) {
+			margin: 0;
+			padding: 5px 15px;
+			align-items: center;
+		}
 	}
 }

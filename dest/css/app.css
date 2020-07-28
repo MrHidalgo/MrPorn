@@ -3969,6 +3969,15 @@ picture {
   }
 }
 
+@media screen and (max-width: 767px) {
+  /* line 3, src/scss/_components/common/_header.scss */
+  .header {
+    position: fixed;
+    width: 100%;
+    z-index: 10;
+  }
+}
+
 /* line 3, src/scss/_components/common/_pre-header.scss */
 .pre-header {
   display: none;

@@ -11,17 +11,32 @@
 		width: 25%;
 		text-align: center;
 
+		&_inner{
+			padding: 0 15px 0;
+			@include adaptive(767) {
+				padding: 5px 0;
+			}
+		}
+
 		@include adaptive(1279) {
 			width: 25%;
 		}
 		@include adaptive(767) {
 			width: 50%;
 			max-width: 50%;
+
+			&:nth-child(2n){
+				&_inner{
+					padding-left: 0;
+				}
+			}
 		}
 
-		&_inner{
-			padding: 0 15px 0;
-		}
+
+
+
+
+
 
 		&_thumb{
 			display: block;

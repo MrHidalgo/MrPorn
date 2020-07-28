@@ -25,9 +25,7 @@
 		}
 	}
 
-	&.wide{
-		width: 100%;
-	}
+
 
 	a{
 		text-decoration: none;
@@ -44,6 +42,17 @@
 
 		&:visited{
 			text-decoration: none;
+		}
+	}
+
+	&.wide{
+		width: 100%;
+		padding: 0;
+
+		a{
+			@include adaptive(767) {
+				font-size: 19.5px;
+			}
 		}
 	}
 }
