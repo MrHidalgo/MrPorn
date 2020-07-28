@@ -1,7 +1,15 @@
 // REVIEW :: START
+.site-content{
+	display: flex;
+}
+
 .bread-crumb{
 	display: flex;
 	flex-wrap: wrap;
+
+	@include adaptive(767) {
+		order: -1;
+	}
 
 	.show_similar_sites{
 		a{
@@ -26,6 +34,16 @@
 			.arrow_down {
 				border: 1px solid #828282;
 				padding: 0 4px;
+
+				&:before{
+					content: ' ';
+					display: inline-block;
+					width: 0;
+					height: 0;
+					border-style: solid;
+					border-width: 9px 6.5px 0;
+					border-color: #828282 transparent transparent transparent;
+				}
 			}
 			.site_count {
 				color: #568e00;
@@ -87,6 +105,10 @@
 			border-radius: 20px;
 			padding: 2px 15px 2px 40px;
 			flex: 1;
+			position: absolute;
+			left: 100px;
+			right: 40px;
+			top: 3.5px;
 		}
 
 		&::after {
@@ -95,6 +117,7 @@
 			height: 32px;
 			content: ' ';
 			display: inline-block;
+			left: 10px;
 		}
 	}
 }
@@ -190,14 +213,30 @@
 	display: flex;
 	flex-wrap: wrap;
 
+	@include adaptive(767) {
+		flex-direction: column;
+	}
+
 	.review_column{
 		width: 50%;
+
+		@include adaptive(767) {
+			width: 100%;
+		}
 	}
 	.screen_shot{
 		padding-right: 15px;
+
+		@include adaptive(767) {
+			padding-right: 0;
+		}
 	}
 	.review_con{
 		padding-left: 35px;
+
+		@include adaptive(767) {
+			padding-right: 0;
+		}
 	}
 }
 
@@ -205,7 +244,9 @@
 	display: flex;
 	flex-direction: column;
 
-
+	.site_review_title_content{
+		position: relative;
+	}
 
 	h1, h2 {
 		font-size: 45px;
@@ -429,4 +470,85 @@
 	}
 }
 
+.cs_hide_comments {
+	outline: none;
+	background: #5f5e5e;
+	color: #fff;
+	display: none;
+	width: 120px;
+	height: 29px;
+	right: 0;
+	line-height: 29px;
+	position: relative;
+	padding: 0 15px;
+	font-weight: 600;
+	text-transform: uppercase;
+	margin-bottom: 10px;
+}
 
+.cs_show_comments {
+	display: block;
+	width: 120px;
+	background: #fff;
+	right: 0;
+	color: #006ab5;
+	padding: 0 15px;
+	font-weight: 600;
+	text-transform: uppercase;
+	border: 1px solid #066db6;
+	margin-bottom: 10px;
+	position: relative;
+	outline: none;
+	text-align: center;
+	line-height: 29px;
+	height: 29px;
+	font-size: 12px;
+
+	&::before{
+		content: '';
+		position: absolute;
+		top: 0;
+		left: 0;
+		width: 100%;
+		height: 100%;
+		z-index: 1;
+		opacity: 0;
+		background-color: #1e559a;
+		-webkit-transition: all .4s;
+		-moz-transition: all .4s;
+		-o-transition: all .4s;
+		transition: all .4s;
+		-webkit-transform: scale(1,.5);
+		transform: scale(1,.5);
+	}
+
+	span {
+		z-index: 2;
+		display: block;
+		position: absolute;
+		left: 0;
+		right: 0;
+		height: 100%;
+		top: 0;
+	}
+}
+
+.cs_comments_counter {
+	background-color: #3775c3;
+	background-image: url(../images/comments/circle.png);
+	background-repeat: no-repeat;
+	background-position: center;
+	content: " ";
+	border-radius: 61px;
+	width: 32px;
+	padding: 11px 0;
+	height: 32px;
+	text-align: center;
+	position: absolute;
+	top: -2px;
+	color: #fff;
+	left: -20px;
+	z-index: 1;
+	font-size: 9px;
+	line-height: 10px;
+}

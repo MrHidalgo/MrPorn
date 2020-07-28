@@ -33,6 +33,15 @@
 		text-decoration: none;
 		color: #fff;
 
+		&::before {
+			content: attr(data-label);
+			font-weight: bold;
+
+			@include adaptive(767) {
+				content: attr(data-label-mobile);
+			}
+		}
+
 		&:visited{
 			text-decoration: none;
 		}
