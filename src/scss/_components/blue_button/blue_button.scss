@@ -30,6 +30,11 @@
 	a{
 		text-decoration: none;
 		color: #fff;
+		font-weight: 600;
+
+		@include adaptive(767) {
+			font-size: 14px;
+		}
 
 		&::before {
 			content: attr(data-label);

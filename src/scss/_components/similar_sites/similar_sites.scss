@@ -7,6 +7,10 @@
 	flex-wrap: wrap;
 	padding: 15px 0;
 
+	@include adaptive(767) {
+		padding-top: 5px;
+	}
+
 	&_item{
 		width: 25%;
 		text-align: center;
@@ -14,7 +18,7 @@
 		&_inner{
 			padding: 0 15px 0;
 			@include adaptive(767) {
-				padding: 5px 0;
+				padding: 0 5px;
 			}
 		}
 
