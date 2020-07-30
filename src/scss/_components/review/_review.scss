@@ -19,6 +19,8 @@
 	}
 
 	.show_similar_sites{
+		position: relative;
+
 		@include adaptive(767) {
 			display: none;
 		}
@@ -115,13 +117,15 @@
 .fixed_header{
 	.show_similar_sites{
 		display: block;
-		position: fixed;
-		top: 120px;
-		left: 0;
-		color: #fff;
-		z-index: 10;
+
 
 		@include adaptive(767) {
+			position: fixed;
+			top: 120px;
+			left: 0;
+			color: #fff;
+			z-index: 10;
+
 			.deIcon{
 				border: 1px solid #828282;
 				background: #fff;
@@ -158,10 +162,12 @@
 			border-radius: 20px;
 			padding: 2px 15px 2px 40px;
 			flex: 1;
-			position: absolute;
-			left: 100px;
-			right: 40px;
-			top: 3.5px;
+			position: relative;
+
+			&:before{
+				left: 10px;
+				top: 4px;
+			}
 		}
 
 		&::after {

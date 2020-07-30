@@ -12,13 +12,14 @@
   "author": "Andrii Kovalenko <hkovalenko9@gmail.com>",
   "license": "ISC",
   "dependencies": {
-    "babel-core": "^6.26.3",
-    "babel-preset-env": "^1.7.0",
+    "@babel/core": "^7.0.0-bridge.0",
+    "@babel/preset-env": "^7.0.0-beta.44",
+    "@babel/runtime": "^7.10.5",
     "browser-sync": "^2.26.3",
     "del": "^3.0.0",
     "gulp": "^4.0.0",
     "gulp-autoprefixer": "^5.0.0",
-    "gulp-babel": "^7.0.1",
+    "gulp-babel": "^8.0.0-beta.2",
     "gulp-changed-in-place": "^2.3.0",
     "gulp-cheerio": "^0.6.3",
     "gulp-concat": "^2.6.1",
@@ -46,11 +47,19 @@
     "gulp-webp": "^3.0.0",
     "gulp.spritesmith": "^6.9.0",
     "pug": "^2.0.3",
+    "regenerator-runtime": "^0.13.7",
     "require-dir": "^1.0.0",
     "require-yaml": "0.0.1",
     "run-sequence": "^2.2.1",
     "vinyl-buffer": "^1.0.1",
     "yargs": "^12.0.2"
   },
-  "devDependencies": {}
+  "devDependencies": {
+    "@babel/core": "^7.0.0-bridge.0",
+    "@babel/plugin-transform-runtime": "^7.10.5",
+    "babel-plugin-transform-async-to-generator": "^6.24.1",
+    "babelify": "^10.0.0",
+    "browserify": "^16.5.1",
+    "vinyl-source-stream": "^2.0.0"
+  }
 }

@@ -21,6 +21,7 @@ task('js', (done) => {
 			'!' + configPath.src.js + '/**/_**.js',
 		])
 		.pipe(plumber(configOption.pipeBreaking.err))
+
 		.pipe(order([
 			"*",
 			"_lib/**",

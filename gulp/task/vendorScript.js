@@ -4,6 +4,8 @@ const { src, dest, task, watch, series } = require('gulp');
 
 const plumber = require('gulp-plumber'),
   concat = require('gulp-concat'),
+	browserify = require('browserify'),
+	source     = require('vinyl-source-stream'),
   order = require("gulp-order");
 
 const configPath = require('../config/configPath'),
@@ -32,6 +34,20 @@ task('vendorScript', function() {
 		]))
 		.pipe(concat('vendor.js'))
 		.pipe(dest(configPath.dest.js))
+
+
+
+	/*return browserify(files)
+		.transform("babelify", {plugins: ["transform-runtime"],presets: [["env"]]})
+		.bundle()
+		.pipe(plumber(configOption.pipeBreaking.err))
+		.pipe(order([
+			'jquery.js',
+			'popper.js',
+			'*'
+		]))
+		.pipe(concat('vendor.js'))
+		.pipe(dest(configPath.dest.js))*/
 });
 
 

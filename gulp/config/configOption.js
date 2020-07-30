@@ -38,7 +38,8 @@ const configOption = {
   },
 
   es6: {
-    "presets": ["env"]
+    "presets": ["@babel/preset-env"]
+		//"presets": ["env"]
   },
 
   svgMin: {
