@@ -22,6 +22,10 @@
 		@include adaptive(1279) {
 			width: 25%;
 		}
+		@include adaptive(1024) {
+			width: 33.333333%;
+			max-width: 33.33333%;
+		}
 		@include adaptive(767) {
 			width: 50%;
 			max-width: 50%;

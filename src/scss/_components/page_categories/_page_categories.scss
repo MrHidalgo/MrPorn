@@ -2,11 +2,17 @@
 .categories_container{
 	display: flex;
 	padding-top: 15px;
+	align-content: flex-start;
+	align-items: flex-start;
 
 	.leftCat{
 		flex: 0 0 235px;
 		background: #fff;
 		text-align: left;
+
+		@include adaptive(1024) {
+			display: none;
+		}
 
 		.lcatT{
 			background: #2663b0;
@@ -56,13 +62,25 @@
 	.rightCat{
 		padding-left: 10px;
 
+		@include adaptive(1024) {
+			padding-left: 0;
+		}
+
 		h1{
 			color: #fff;
-			margin: 20px 0 15px 0;
-			padding: 0;
+			padding: 20px 0 15px 0;
 			text-align: left;
 			font-size: 30px;
 			font-weight: 700;
+
+			@include adaptive(1024) {
+				font-size: 25px;
+				padding: 10px 0 10px 0;
+			}
+			@include adaptive(767) {
+				font-size: 17px;
+				padding: 20px 0 5px 0;
+			}
 		}
 	}
 }
@@ -94,10 +112,16 @@
 	.aw_site_list{
 		display: flex;
 		margin: 10px -5px;
+		flex-wrap: wrap;
+		flex-direction: row;
 
 		.aw_item{
 			width: 16.666667%;
 			padding: 0 5px;
+
+			@include adaptive(767) {
+				width: 33.3333334%;
+			}
 
 			.aw_item_inner {
 				position: relative;
@@ -109,6 +133,10 @@
 
 					a {
 						color: #fff;
+
+						@include adaptive(767) {
+							font-size: 12px;
+						}
 					}
 				}
 
@@ -192,6 +220,16 @@
 							&.rating_5 {
 								background-image: url(../images/rating_5.png);
 							}
+						}
+					}
+				}
+
+				&:hover{
+					.tip-content{
+						display: block;
+
+						@include adaptive(767) {
+							display: none;
 						}
 					}
 				}

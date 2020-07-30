@@ -23,6 +23,9 @@
 		@include adaptive(1279) {
 			width: 25%;
 		}
+		@include adaptive(1024) {
+			width: 33.333333%;
+		}
 		@include adaptive(767) {
 			width: 50%;
 			max-width: 50%;
@@ -127,6 +130,11 @@
 		padding: 15px 10px 0;
 		position: relative;
 
+		@include adaptive(1024) {
+			width: 100%;
+			order: -1;
+		}
+
 		@include adaptive(767) {
 			width: 100%;
 			order: -1;
@@ -138,10 +146,14 @@
 			bottom: 0;
 			overflow: auto;
 
-			@include adaptive(767) {
+			@include adaptive(1024) {
 				position: relative;
-				max-height: 200px;
 				top: 0;
+				max-height: 230px;
+			}
+
+			@include adaptive(767) {
+				max-height: 200px;
 			}
 
 			h3{

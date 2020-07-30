@@ -17,6 +17,13 @@
 		flex: 1;
 		line-height: 48px;
 
+		@include adaptive(1024) {
+			line-height: 26px;
+			padding: 10px 20px;
+			font-size: 24px;
+			white-space: normal;
+		}
+
 		@include adaptive(767) {
 			font-size: 17px;
 			line-height: 20px;
