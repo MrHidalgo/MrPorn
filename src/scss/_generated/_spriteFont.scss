@@ -8,6 +8,15 @@
 		url('../fonts/iconFont.svg#iconFont') format('svg');
 }
 
+@font-face {
+	font-family: "permanent_markerregular";
+	src: url('../fonts/Permanent-Marker.ttf.eot');
+	src: url('../fonts/Permanent-Marker.ttf.eot?#iefix') format('eot'),
+	url('../fonts/Permanent-Marker.ttf.woff') format('woff'),
+	url('../fonts/PermanentMarker.ttf') format('truetype'),
+	url('../fonts/Permanent-Marker.ttf.svg') format('svg');
+}
+
 @mixin icon-styles {
 	font-family: "iconFont", sans-serif;
 		-webkit-font-smoothing: antialiased;
@@ -160,4 +169,4 @@
 .icon-sun {
 	@include icon(sun);
 
-}
+}

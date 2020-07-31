@@ -1,0 +1,136 @@
+// BLOGS :: START
+.blog_list{
+
+	.blog_list_item{
+		border-top: 12px solid #d1f34b;
+		margin: 10px 0 20px;
+		background: #fff;
+		padding: 25px;
+		display: flex;
+		flex-direction: row;
+
+		.blog_thumb{
+			width: 46%;
+			vertical-align: top;
+			overflow: hidden;
+			text-align: center;
+			position: relative;
+
+			img{
+				min-height: 100%;
+				min-width: 100%;
+				margin: 0 auto;
+				position: absolute;
+				left: 50%;
+				transform: translateX(-50%);
+			}
+		}
+
+		.blog_details{
+			display: inline-block;
+			vertical-align: top;
+			width: 51%;
+			margin-left: 2%;
+
+			h2{
+				margin: 0 0 10px;
+				font-size: 24px;
+				font-weight: 700;
+				white-space: nowrap;
+				overflow: hidden;
+				text-overflow: ellipsis;
+			}
+			.blog_date{
+				font-size: 12px;
+				font-weight: 700;
+				margin: 5px 0;
+
+				.icon_date{
+					width: 18px;
+					height: 20px;
+					background: url(../images/var-icons.png) 0 0 no-repeat;
+					background-position: -223px 0;
+					margin: -2px 5px 0 0;
+				}
+			}
+
+			.short_desc {
+				background: #f4f4f4;
+				padding: 20px;
+				font-size: 14px;
+				line-height: 25px;
+				margin: 20px 0 15px;
+
+				.short_desc_inner{
+					max-height: 200px;
+					overflow: hidden;
+					line-height: 25px;
+					text-overflow: ellipsis;
+					display: -webkit-box;
+					-webkit-line-clamp: 10;
+					-webkit-box-orient: vertical;
+				}
+			}
+
+			.view_more{
+				display: inline-block;
+				padding: 10px 20px;
+				color: #fff;
+				font-size: 18px;
+				background: #0352b3;
+				background: -moz-linear-gradient(top, #0352b3 0%, #023a84 100%);
+				background: -webkit-gradient(left top, left bottom, color-stop(0%, #0352b3), color-stop(100%, #023a84));
+				background: -webkit-linear-gradient(top, #0352b3 0%, #023a84 100%);
+				background: -o-linear-gradient(top, #0352b3 0%, #023a84 100%);
+				background: -ms-linear-gradient(top, #0352b3 0%, #023a84 100%);
+				background: linear-gradient(to bottom, #0352b3 0%, #023a84 100%);
+				filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#0352b3', endColorstr='#023a84', GradientType=0 );
+				border-radius: 3px;
+			}
+		}
+	}
+}
+
+.blog_content{
+	background: #fff;
+	border-top: 12px solid #d1f34b;
+	margin: 10px 0 0;
+
+	&_inner{
+		padding: 25px;
+
+		h1, h2{
+			margin: 24px 0;
+		}
+
+		p{
+			font-size: 16px;
+			line-height: 30px;
+		}
+
+		img{
+			max-width: 100%;
+			height: auto;
+		}
+
+		.gallery-item{
+			margin: 10px 0;
+		}
+	}
+
+	.category_bottom_links {
+		padding-top: 0!important;
+		padding-bottom: 30px!important;
+		text-align: center;
+
+		.posted_on {
+			font-size: 20px;
+			color: #1e559a;
+			font-weight: 600;
+			font-family: permanent_markerregular,cursive;
+		}
+	}
+}
+#other_categories{
+	background: #efefef;
+}
