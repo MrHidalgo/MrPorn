@@ -3,6 +3,7 @@ body {
   width: 100%;
   min-height: 100vh;
 	font-family: helvetica neue,Helvetica,Arial,sans-serif;
+	color: #333;
 
   &.is-hideScroll {
     width: 100%;
@@ -75,7 +76,9 @@ h1, h2, h3, h4, h5, h6{
 	line-height: 1.1;
 	color: inherit;
 }
-
+p{
+	margin: 0 0 10px;
+}
 
 button,
 input,
@@ -116,7 +119,6 @@ textarea {
 }
 
 
-p,
 h1, h2, h3, h4, h5, h6,
 hr {
   margin: 0;
