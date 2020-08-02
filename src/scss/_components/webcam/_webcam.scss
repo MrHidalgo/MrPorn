@@ -243,7 +243,15 @@
 
 .video-wrapper{
 	display: flex;
-	padding: 25px 20px 0;
+	padding: 25px 20px 25px;
+
+	@include adaptive(767) {
+		padding: 0;
+	}
+
+	@include adaptive(767) {
+		flex-direction: column;
+	}
 
 	.item-player-wrap{
 		flex: 1;
@@ -309,6 +317,7 @@
 					background: url(../images/awe_icons.png);
 					background-position: -26px 0;
 					content: ' ';
+					display: inline-block;
 				}
 			}
 
@@ -356,8 +365,22 @@
 		padding: 38px;
 		background-color: #f3f8fe;
 
+		@include adaptive(767) {
+			padding: 15px;
+			margin: 0;
+		}
+
 		.col {
 			margin-bottom: 46px;
+
+			@include adaptive(767) {
+				margin: 0;
+				text-align: center;
+
+				&:nth-child(2){
+					display: none;
+				}
+			}
 		}
 	}
 }
@@ -400,7 +423,35 @@
 				margin-right:3px;
 			}
 		}
-
-
 	}
+
+	.view-tags{
+		padding: 0 16px;
+		color: #fff;
+		background-color: #1e559a;
+		-webkit-border-radius: 6px;
+		border-radius: 6px;
+		display: inline-block;
+		font-family: Arial,sans-serif;
+		font-weight: 700;
+		-webkit-transition: background .3s,color .3s,bordrer-color .3s;
+		-o-transition: background .3s,color .3s,bordrer-color .3s;
+		transition: background .3s,color .3s,bordrer-color .3s;
+	}
+}
+.ajax-more {
+	display: block;
+	text-align: center;
+	color: #fff;
+	text-transform: capitalize;
+	background-color: #1e559a;
+	border: 1px solid #1e559a;
+	-webkit-border-radius: 10px;
+	border-radius: 10px;
+	padding: 10px;
+	font-size: 18px;
+	margin-top: 6px;
+	-webkit-transition: background .3s,color .3s,border .3s;
+	-o-transition: background .3s,color .3s,border .3s;
+	transition: background .3s,color .3s,border .3s;
 }

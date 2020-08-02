@@ -1,0 +1,316 @@
+// WEBCAM :: START
+.pornstar_intro{
+	background: #e4f0ff;
+	padding: 15px 15px 3px;
+	font-size: 14px;
+	line-height: 24px;
+	margin: -15px 0 10px;
+	font-weight: 500;
+
+	@include adaptive(767) {
+		display: none;
+	}
+}
+.pornstar_container{
+	position: relative;
+	display: block;
+	background: #efefef;
+	margin-bottom: 10px;
+	padding: 15px 20px;
+
+	.pornstar_title{
+		font-size: 24px;
+		font-weight: 700;
+		color: #434e5b;
+		margin: 10px 0 13px;
+		padding: 0 0 20px;
+		border-bottom: 1px solid #bababa;
+
+		@include adaptive(767) {
+			text-align: center;
+		}
+
+		small{
+			font-size: 14px;
+			font-weight: 400;
+		}
+
+		.pornstar_sort{
+			position: absolute;
+			display: inline-block;
+			top: 20px;
+			right: 20px;
+
+			@include adaptive(767) {
+				position: relative;
+				top: 0;
+				right: 0;
+			}
+
+			span {
+				display: inline-block;
+				font-size: 18px;
+				text-transform: uppercase;
+				font-weight: 700;
+				vertical-align: middle;
+			}
+
+			.psSelect {
+				display: inline-block;
+				width: 150px;
+				margin-left: 10px;
+				vertical-align: middle;
+
+				select {
+					width: 100%!important;
+					outline: 0;
+					font-size: 16px;
+					font-weight: 400;
+					border: 1px solid #d0d0d0;
+					border-radius: 4px;
+					-webkit-appearance: none;
+					-moz-appearance: none;
+					text-overflow: '';
+					padding: 8px 26px 8px 10px!important;
+					background: #fff url(../images/select-arrw.png) no-repeat right 10px center;
+					margin: 0;
+				}
+			}
+		}
+	}
+
+}
+
+.alphaSort{
+	text-align: center;
+	font-size: 18px;
+	font-weight: 700;
+	margin: 0 0 20px;
+	padding: 0 0 13px;
+	border-bottom: 1px solid #bababa;
+
+	@include adaptive(767) {
+		font-size: 14px;
+	}
+
+	.pv_count_tooltip {
+		width: auto;
+		position: absolute;
+		top: 100%;
+		left: 50%;
+		margin-top: 10px;
+		transform: translateX(-50%);
+		background: #181818;
+		display: none;
+		color: #fff;
+		font-size: 12px;
+		padding: 8px 15px;
+		border-radius: 4px;
+	}
+
+	a {
+		display: inline-block;
+		padding: 3px 9px;
+		margin: 5px 1px;
+		border-radius: 3px;
+		background: #e0e0e0;
+		color: #000;
+		position: relative;
+
+		@include adaptive(767) {
+			padding: 3px 6px;
+		}
+
+		&:hover .pv_count_tooltip {
+			display: block;
+		}
+	}
+
+
+}
+.pornstar_row{
+	display: flex;
+
+	.avar_col{
+		width: 58.33333333%;
+		margin-right: 3px;
+
+		.avatar {
+			position: relative;
+			padding: 20px;
+			display: inline-block;
+			background: #003371;
+			margin: 10px 0 10px -13px;
+
+			&:before {
+				position: absolute;
+				bottom: -13px;
+				left: 0;
+				content: '';
+				width: 0;
+				height: 0;
+				border-style: solid;
+				border-width: 0 14px 14px 0;
+				border-color: transparent #004aa4 transparent transparent;
+			}
+
+			.ps_avatar {
+				width: 200px;
+				height: 200px;
+				content: ' ';
+				background-size: cover!important;
+			}
+
+			img{
+				border: 2px solid #fff;
+				height: 200px;
+			}
+		}
+
+		.bioN {
+			position: absolute;
+			bottom: 0;
+			left: 100%;
+			white-space: nowrap;
+			background: #001022;
+			padding: 5px 10px;
+			color: #70b7ff;
+			font-weight: 300;
+			font-size: 24px;
+
+			.checkIcon {
+				display: inline-block;
+				width: 26px;
+				height: 26px;
+				background: url(../images/pornstar/grn-check.png);
+				vertical-align: top;
+				margin-top: 4px;
+			}
+		}
+
+		.bioView {
+			position: absolute;
+			bottom: 38px;
+			right: 0;
+			background: #001022 url(../images/pornstar/view-icon.png);
+			background-position: left 15px center;
+			background-repeat: no-repeat;
+			padding: 9px 15px 9px 50px;
+			font-size: 14px;
+			color: #fff;
+		}
+	}
+	.pornstar_detail_col{
+		margin-left: 3px;
+		flex: 1;
+	}
+
+	.bioAva {
+		position: relative;
+		border-radius: 3px;
+		background: #001b3b url(../images/pornstar/mpg-bio-bg.jpg);
+		background-position: right 20px center;
+		background-repeat: no-repeat;
+		vertical-align: top;
+		padding: 20px 0;
+		background-size: 65%;
+		width: 100%;
+		height: 100%;
+	}
+
+	.bioDtls, .biorecomm {
+		border-radius: 3px;
+		background: #001b3b;
+		padding: 10px 20px;
+		min-height: 305px;
+		width: 100%;
+
+		h3 {
+			padding: 10px 0 10px 35px;
+			margin: 0;
+			font-size: 18px;
+			font-weight: 700;
+			color: #8cc0fe;
+			text-transform: uppercase;
+			border-bottom: 2px solid #193e6a;
+			background: url(../images/pornstar/user-icon.png);
+			background-position: left 5px center;
+			background-repeat: no-repeat;
+		}
+
+		ul {
+			display: inline-block;
+			vertical-align: top;
+			width: 49%;
+			margin: 10px 0;
+			padding: 0;
+			list-style: none;
+
+			li {
+				margin: 8px 0;
+				font-size: 14px;
+				color: #c5dfff;
+				font-weight: 300;
+
+				strong {
+					color: #fff;
+					font-weight: 400;
+				}
+			}
+		}
+	}
+
+	.bioIntro {
+		background: #fff;
+		padding: 20px 0 5px 20px;
+		margin: 0;
+		min-height: 100%;
+	}
+
+
+}
+.psList {
+	margin: 20px 0;
+	padding: 0;
+	text-align: center;
+	list-style: none;
+}
+.ps_list_scroll, .ps_list_container{
+	display: flex;
+	flex-wrap: wrap;
+
+	.pornstar_item{
+		padding: 5px;
+		width: 20%;
+		background: #fff;
+
+		img {
+			width: 100%;
+			height: auto;
+		}
+
+		.psD {
+			position: relative;
+			padding: 5px 0;
+			text-align: left;
+			font-size: 15px;
+			font-weight: 700;
+
+			@include adaptive(767) {
+				font-size: 12.5px;
+			}
+
+			small {
+				position: absolute;
+				top: 6px;
+				right: 8px;
+				font-size: 14px;
+				font-weight: 400;
+
+				@include adaptive(767) {
+					font-size: 12.5px;
+				}
+			}
+		}
+	}
+}
