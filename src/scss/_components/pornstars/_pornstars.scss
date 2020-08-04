@@ -131,16 +131,30 @@
 .pornstar_row{
 	display: flex;
 
+	@include adaptive(767) {
+		flex-direction: column;
+	}
+
 	.avar_col{
 		width: 58.33333333%;
 		margin-right: 3px;
 
+		@include adaptive(767) {
+			width: 100%;
+		}
+
 		.avatar {
 			position: relative;
-			padding: 20px;
-			display: inline-block;
-			background: #003371;
 			margin: 10px 0 10px -13px;
+			display: flex;
+			align-items: flex-end;
+
+			@include adaptive(767) {
+				margin: 30px 0;
+				flex-direction: column;
+				text-align: center;
+				align-items: center;
+			}
 
 			&:before {
 				position: absolute;
@@ -152,13 +166,25 @@
 				border-style: solid;
 				border-width: 0 14px 14px 0;
 				border-color: transparent #004aa4 transparent transparent;
+
+				@include adaptive(767) {
+					display: none;
+				}
 			}
 
 			.ps_avatar {
-				width: 200px;
-				height: 200px;
+				width: 240px;
+				height: 240px;
 				content: ' ';
-				background-size: cover!important;
+
+				padding: 20px;
+				display: inline-block;
+				background: #003371;
+
+
+				@include adaptive(767) {
+					margin: 30px 0;
+				}
 			}
 
 			img{
@@ -167,16 +193,19 @@
 			}
 		}
 
-		.bioN {
-			position: absolute;
-			bottom: 0;
-			left: 100%;
+		.bioN{
 			white-space: nowrap;
 			background: #001022;
 			padding: 5px 10px;
 			color: #70b7ff;
 			font-weight: 300;
 			font-size: 24px;
+
+			@include adaptive(767) {
+				position: relative;
+				left: auto;
+				width: 100%;
+			}
 
 			.checkIcon {
 				display: inline-block;
@@ -198,6 +227,11 @@
 			padding: 9px 15px 9px 50px;
 			font-size: 14px;
 			color: #fff;
+
+
+			@include adaptive(767) {
+				display: none;
+			}
 		}
 	}
 	.pornstar_detail_col{
@@ -216,6 +250,12 @@
 		background-size: 65%;
 		width: 100%;
 		height: 100%;
+
+		@include adaptive(767) {
+			text-align: center;
+			padding: 0;
+			background-image: none;
+		}
 	}
 
 	.bioDtls, .biorecomm {
@@ -260,20 +300,87 @@
 		}
 	}
 
+	.pornstar_intro_col{
+		width: 58.33333333%;
+		margin-right: 3px;
+	}
+	.pornstar_featured_website{
+		flex: 1;
+		margin-left: 3px;
+	}
 	.bioIntro {
 		background: #fff;
 		padding: 20px 0 5px 20px;
 		margin: 0;
 		min-height: 100%;
+		position: relative;
+
+		.bioIntroInner {
+			overflow: auto;
+			height: 315px;
+			position: relative;
+			padding-right: 15px;
+
+			p {
+				line-height: 24px;
+				margin: 20px 0;
+				font-size: 16px;
+			}
+		}
+
+		.shade {
+			content: " ";
+			display: block;
+			width: 100%;
+			position: absolute;
+			height: 60px;
+			left: 0;
+			bottom: 0;
+			background: -moz-linear-gradient(top,rgba(255,255,255,0) 0%,rgba(255,255,255,1) 100%);
+			background: -webkit-linear-gradient(top,rgba(255,255,255,0) 0%,rgba(255,255,255,1) 100%);
+			background: linear-gradient(to bottom,rgba(255,255,255,0) 0%,rgba(255,255,255,1) 100%);
+			filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#00ffffff',endColorstr='#ffffff',GradientType=0 );
+		}
 	}
 
+	.biorecomm {
+		background: #fff;
+		padding: 10px 20px;
+		min-height: inherit;
+		margin: 0;
+		height: 100%;
 
+		h3 {
+			padding: 15px 0 15px 40px;
+			margin: 0;
+			font-size: 18px;
+			font-weight: 700;
+			color: #023d85;
+			text-transform: uppercase;
+			border-bottom: 2px solid #bdd7dd;
+			background: url(../images/pornstar/recomm.png) left 5px center no-repeat;
+		}
+
+		.pornstar_adbanner {
+			padding: 10px;
+			text-align: center;
+		}
+	}
 }
+
+.bioIntroRow{
+	margin-top: 8px;
+}
+
 .psList {
 	margin: 20px 0;
 	padding: 0;
 	text-align: center;
 	list-style: none;
+}
+
+.more_pornstars{
+	background: #fff;
 }
 .ps_list_scroll, .ps_list_container{
 	display: flex;
@@ -312,5 +419,20 @@
 				}
 			}
 		}
+	}
+}
+
+.pornstar_link{
+	background: #007606;
+	padding: 8px;
+	border-radius: 3px;
+	text-align: center;
+	margin: 8px 0;
+	text-transform: capitalize;
+
+	a {
+		font-size: 38px;
+		font-weight: 600;
+		color: #fff;
 	}
 }
