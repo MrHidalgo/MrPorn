@@ -1,0 +1,78 @@
+// BLUE_SHADED_HEADING :: START
+.blue_shaded_heading{
+	background: url(../images/pornstar/bg-blu-bar.png) top repeat-x;
+	display: flex;
+	font-size: 24px;
+	align-items: center;
+	padding: 7px 15px;
+	width: 100%;
+
+	@include adaptive(767) {
+		padding: 5px 8px;
+	}
+
+	h1, h2{
+		font-size: 24px;
+		color: #d1f34b;
+		font-weight: 800;
+		white-space: nowrap;
+		flex: 1;
+		line-height: 48px;
+
+		@include adaptive(1024) {
+			line-height: 26px;
+			padding: 10px 20px;
+			font-size: 24px;
+			white-space: normal;
+		}
+
+		@include adaptive(767) {
+			font-size: 17px;
+			line-height: 20px;
+			white-space: normal;
+		}
+	}
+
+	.bar_title{
+		font-size: 24px;
+		color: #fff;
+		font-weight: 700;
+		flex: 1;
+
+		@include adaptive(767) {
+			font-size: 16px;
+		}
+
+		&.dropdown:after{
+			content: ' ';
+			display: inline-block;
+			background: url(../images/icon-arrow-down.png) no-repeat;
+			background-position: center;
+			width: 34px;
+			height: 17px;
+			background-size: contain;
+			margin-left: 10px;
+		}
+	}
+
+	&_back{
+		background: url(../images/back_button_blue.png);
+		background-repeat: no-repeat;
+		background-position: 0 center;
+		padding-left: 35px;
+		color: #fff;
+		font-weight: 600;
+		font-size: 14px;
+		line-height: 48px;
+
+		&:hover{
+			color: #fff;
+		}
+
+		@include adaptive(767) {
+			display: none;
+		}
+	}
+
+
+}

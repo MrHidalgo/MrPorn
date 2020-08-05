@@ -693,6 +693,31 @@ picture {
   height: 100%;
 }
 
+/* line 164, src/scss/_shared/_main-setting-reset.scss */
+div, ul {
+  scrollbar-color: #131313 #525252;
+}
+
+/* line 165, src/scss/_shared/_main-setting-reset.scss */
+div::-webkit-scrollbar, ul::-webkit-scrollbar {
+  width: 10px;
+}
+
+/* line 166, src/scss/_shared/_main-setting-reset.scss */
+div::-webkit-scrollbar-track, ul::-webkit-scrollbar-track {
+  background: rgba(0, 0, 0, 0.1);
+}
+
+/* line 167, src/scss/_shared/_main-setting-reset.scss */
+div::-webkit-scrollbar-thumb, ul::-webkit-scrollbar-thumb {
+  background: #9c9b9c;
+}
+
+/* line 168, src/scss/_shared/_main-setting-reset.scss */
+div:hover::-webkit-scrollbar-thumb, ul:hover::-webkit-scrollbar-thumb {
+  background: #225396;
+}
+
 /* line 8, src/scss/_shared/_grid.scss */
 .c-grid, .c-grid-fluid {
   width: 100%;

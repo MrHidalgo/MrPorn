@@ -1,4 +1,4 @@
-// WEBCAM :: START
+// PORNSTARS :: START
 .pornstar_intro{
 	background: #e4f0ff;
 	padding: 15px 15px 3px;
@@ -150,7 +150,7 @@
 			align-items: flex-end;
 
 			@include adaptive(767) {
-				margin: 30px 0;
+				margin: 0 0 10px;
 				flex-direction: column;
 				text-align: center;
 				align-items: center;
@@ -237,6 +237,23 @@
 	.pornstar_detail_col{
 		margin-left: 3px;
 		flex: 1;
+
+		.binsta, .btwtr, .bws {
+			display: inline-block;
+			width: 18px;
+			height: 18px;
+			background: url(../images/pornstar/b-insta.png);
+			vertical-align: top;
+			margin: 1px 3px 0 0;
+		}
+
+		.btwtr {
+			background: url(../images/pornstar/b-twtr.png);
+		}
+
+		.bws {
+			background: url(../images/pornstar/b-web.png);
+		}
 	}
 
 	.bioAva {
@@ -286,6 +303,10 @@
 			padding: 0;
 			list-style: none;
 
+			@include adaptive(767) {
+				width: 100%;
+			}
+
 			li {
 				margin: 8px 0;
 				font-size: 14px;
@@ -303,10 +324,18 @@
 	.pornstar_intro_col{
 		width: 58.33333333%;
 		margin-right: 3px;
+
+		@include adaptive(767) {
+			width: 100%;
+		}
 	}
 	.pornstar_featured_website{
 		flex: 1;
 		margin-left: 3px;
+
+		@include adaptive(767) {
+			display: none;
+		}
 	}
 	.bioIntro {
 		background: #fff;
@@ -314,6 +343,11 @@
 		margin: 0;
 		min-height: 100%;
 		position: relative;
+
+		@include adaptive(767) {
+			background: #001b3b;
+			color: #fff;
+		}
 
 		.bioIntroInner {
 			overflow: auto;
@@ -381,6 +415,14 @@
 
 .more_pornstars{
 	background: #fff;
+
+	@include adaptive(767) {
+		background: none;
+
+		.blue_button_solid{
+			width: 100%;
+		}
+	}
 }
 .ps_list_scroll, .ps_list_container{
 	display: flex;
@@ -390,6 +432,10 @@
 		padding: 5px;
 		width: 20%;
 		background: #fff;
+
+		@include adaptive(767) {
+			width: 100%;
+		}
 
 		img {
 			width: 100%;
@@ -434,5 +480,9 @@
 		font-size: 38px;
 		font-weight: 600;
 		color: #fff;
+
+		@include adaptive(767) {
+			font-size: 26px;
+		}
 	}
 }
