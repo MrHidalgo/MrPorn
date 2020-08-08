@@ -23,6 +23,7 @@ if (!Element.prototype.closest) {
 }
 
 const ajaxEndpoint = '/wp-content/themes/mpg/ajax-handler-wp.php';
+const ajaxAdminEndpoint = '/wp-admin/admin-ajax.php';
 
 /**
  * end POLYFILL

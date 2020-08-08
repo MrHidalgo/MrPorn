@@ -9,12 +9,27 @@
 		display: flex;
 		flex-direction: row;
 
+		@include adaptive(767){
+			flex-direction: column;
+			padding: 15px;
+		}
+
 		.blog_thumb{
 			width: 46%;
 			vertical-align: top;
 			overflow: hidden;
 			text-align: center;
 			position: relative;
+
+			@include adaptive(767){
+				width: 100%;
+				margin-bottom: 15px;
+			}
+
+			a{
+				display: block;
+				line-height: 0;
+			}
 
 			img{
 				min-height: 100%;
@@ -23,6 +38,13 @@
 				position: absolute;
 				left: 50%;
 				transform: translateX(-50%);
+
+				@include adaptive(767){
+					width: 100%;
+					position: relative;
+					left: auto;
+					transform: none;
+				}
 			}
 		}
 
@@ -31,6 +53,13 @@
 			vertical-align: top;
 			width: 51%;
 			margin-left: 2%;
+
+			@include adaptive(767){
+				width: 100%;
+				display: block;
+				margin: 0;
+				text-align: center;
+			}
 
 			h2{
 				margin: 0 0 10px;
@@ -44,6 +73,9 @@
 				font-size: 12px;
 				font-weight: 700;
 				margin: 5px 0;
+				display: flex;
+				justify-content: center;
+				align-items: center;
 
 				.icon_date{
 					width: 18px;

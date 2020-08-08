@@ -718,6 +718,25 @@ div:hover::-webkit-scrollbar-thumb, ul:hover::-webkit-scrollbar-thumb {
   background: #225396;
 }
 
+/* line 170, src/scss/_shared/_main-setting-reset.scss */
+[data-label-desc]::before {
+  content: attr(data-label-desc);
+}
+
+@media screen and (max-width: 767px) {
+  /* line 170, src/scss/_shared/_main-setting-reset.scss */
+  [data-label-desc]::before {
+    content: attr(data-label-mobile);
+  }
+}
+
+@media screen and (max-width: 767px) {
+  /* line 179, src/scss/_shared/_main-setting-reset.scss */
+  .hidden-xs {
+    display: none;
+  }
+}
+
 /* line 8, src/scss/_shared/_grid.scss */
 .c-grid, .c-grid-fluid {
   width: 100%;

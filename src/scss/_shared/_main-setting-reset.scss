@@ -166,3 +166,17 @@ div::-webkit-scrollbar, ul::-webkit-scrollbar {width: 10px; }
 div::-webkit-scrollbar-track, ul::-webkit-scrollbar-track{ background: rgba(0,0,0,0.1) }
 div::-webkit-scrollbar-thumb, ul::-webkit-scrollbar-thumb { background: #9c9b9c }
 div:hover::-webkit-scrollbar-thumb, ul:hover::-webkit-scrollbar-thumb { background: #225396 }
+
+[data-label-desc]::before{
+	content: attr(data-label-desc);
+
+	@include adaptive(767) {
+		content: attr(data-label-mobile);
+	}
+}
+
+@include adaptive(767) {
+	.hidden-xs{
+		display: none;
+	}
+}

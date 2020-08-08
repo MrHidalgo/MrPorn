@@ -10,6 +10,24 @@
 *
 * ============================
 * */
+Element.prototype.parents = function (selector) {
+  var elements = [];
+  var elem = this;
+  var ishaveselector = selector !== undefined;
+
+  while ((elem = elem.parentElement) !== null) {
+    if (elem.nodeType !== Node.ELEMENT_NODE) {
+      continue;
+    }
+
+    if (!ishaveselector || elem.matches(selector)) {
+      elements.push(elem);
+    }
+  }
+
+  return elements;
+};
+
 Function.prototype.extend = function () {
   var fns = [this].concat([].slice.call(arguments));
   return function () {
@@ -134,6 +152,44 @@ function postRequest() {
 
   }).then(function (response) {
     return response.json();
+  }).then(function (out) {
+    console.log('Checkout this JSON! ', out);
+    console.log(data);
+    callback(out);
+  })["catch"](function (err) {
+    console.log(err);
+    throw err;
+  });
+}
+
+function postTextRequest() {
+  var url = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : '';
+  var data = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : {};
+  var callback = arguments.length > 2 ? arguments[2] : undefined;
+  var searchParams = Object.keys(data).map(function (key) {
+    return encodeURIComponent(key) + '=' + encodeURIComponent(data[key]);
+  }).join('&'); // Default options are marked with *
+
+  var response = fetch(url, {
+    method: 'POST',
+    // *GET, POST, PUT, DELETE, etc.
+    headers: {
+      'Content-Type': 'application/x-www-form-urlencoded; charset=UTF-8'
+    },
+    mode: 'cors',
+    // no-cors, *cors, same-origin
+    cache: 'no-cache',
+    // *default, no-cache, reload, force-cache, only-if-cached
+    credentials: 'same-origin',
+    // include, *same-origin, omit
+    redirect: 'follow',
+    // manual, *follow, error
+    referrerPolicy: 'no-referrer',
+    // no-referrer, *client
+    body: searchParams // body data type must match "Content-Type" header
+
+  }).then(function (response) {
+    return response.text();
   }).then(function (out) {
     console.log('Checkout this JSON! ', out);
     console.log(data);
@@ -316,6 +372,90 @@ function removeFavourite(favItem) {
     renderFavourites();
   });
 }
+
+(function () {
+  var FX = {
+    easing: {
+      linear: function linear(progress) {
+        return progress;
+      },
+      quadratic: function quadratic(progress) {
+        return Math.pow(progress, 2);
+      },
+      swing: function swing(progress) {
+        return 0.5 - Math.cos(progress * Math.PI) / 2;
+      },
+      circ: function circ(progress) {
+        return 1 - Math.sin(Math.acos(progress));
+      },
+      back: function back(progress, x) {
+        return Math.pow(progress, 2) * ((x + 1) * progress - x);
+      },
+      bounce: function bounce(progress) {
+        for (var a = 0, b = 1, result; 1; a += b, b /= 2) {
+          if (progress >= (7 - 4 * a) / 11) {
+            return -Math.pow((11 - 6 * a - 11 * progress) / 4, 2) + Math.pow(b, 2);
+          }
+        }
+      },
+      elastic: function elastic(progress, x) {
+        return Math.pow(2, 10 * (progress - 1)) * Math.cos(20 * Math.PI * x / 3 * progress);
+      }
+    },
+    animate: function animate(options) {
+      var start = new Date();
+      var id = setInterval(function () {
+        var timePassed = new Date() - start;
+        var progress = timePassed / options.duration;
+
+        if (progress > 1) {
+          progress = 1;
+        }
+
+        options.progress = progress;
+        var delta = options.delta(progress);
+        options.step(delta);
+
+        if (progress == 1) {
+          clearInterval(id);
+
+          if (options.complete) {
+            options.complete();
+          }
+        }
+      }, options.delay || 10);
+    },
+    fadeOut: function fadeOut(element, options) {
+      var to = 1;
+      this.animate({
+        duration: options.duration,
+        delta: function delta(progress) {
+          progress = this.progress;
+          return FX.easing.swing(progress);
+        },
+        complete: options.complete,
+        step: function step(delta) {
+          element.style.opacity = to - delta;
+        }
+      });
+    },
+    fadeIn: function fadeIn(element, options) {
+      var to = 0;
+      this.animate({
+        duration: options.duration,
+        delta: function delta(progress) {
+          progress = this.progress;
+          return FX.easing.swing(progress);
+        },
+        complete: options.complete,
+        step: function step(delta) {
+          element.style.opacity = to + delta;
+        }
+      });
+    }
+  };
+  window.FX = FX;
+})();
 /**
  * @name initHamburger
  *
@@ -676,6 +816,7 @@ if (!Element.prototype.closest) {
 }
 
 var ajaxEndpoint = '/wp-content/themes/mpg/ajax-handler-wp.php';
+var ajaxAdminEndpoint = '/wp-admin/admin-ajax.php';
 /**
  * end POLYFILL
  * ===================================
