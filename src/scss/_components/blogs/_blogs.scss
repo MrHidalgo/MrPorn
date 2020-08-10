@@ -1,4 +1,10 @@
 // BLOGS :: START
+.site-content{
+	@include adaptive(767){
+		margin-top: 130px;
+	}
+}
+
 .blog_list{
 
 	.blog_list_item{
@@ -74,8 +80,11 @@
 				font-weight: 700;
 				margin: 5px 0;
 				display: flex;
-				justify-content: center;
-				align-items: center;
+
+				@include adaptive(767){
+					justify-content: center;
+					align-items: center;
+				}
 
 				.icon_date{
 					width: 18px;
@@ -91,7 +100,10 @@
 				padding: 20px;
 				font-size: 14px;
 				line-height: 25px;
-				margin: 20px 0 15px;
+
+				@include adaptive(767){
+					margin: 20px 0 15px;
+				}
 
 				.short_desc_inner{
 					max-height: 200px;
@@ -131,6 +143,10 @@
 	&_inner{
 		padding: 25px;
 
+		@include adaptive(767){
+			padding: 15px;
+		}
+
 		h1, h2{
 			margin: 24px 0;
 		}
@@ -165,4 +181,10 @@
 }
 #other_categories{
 	background: #efefef;
+}
+
+@include adaptive(767){
+	.bread-crumb{
+		display: none;
+	}
 }

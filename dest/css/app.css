@@ -601,11 +601,9 @@ h1, h2, h3, h4, h5, h6 {
   color: inherit;
 }
 
-/* line 79, src/scss/_shared/_main-setting-reset.scss */
-p {
-  margin: 0 0 10px;
-}
-
+/*p{
+	margin: 0 0 10px;
+}*/
 /* line 83, src/scss/_shared/_main-setting-reset.scss */
 button,
 input,
@@ -694,27 +692,27 @@ picture {
 }
 
 /* line 164, src/scss/_shared/_main-setting-reset.scss */
-div, ul {
+.custom_scroll {
   scrollbar-color: #131313 #525252;
 }
 
 /* line 165, src/scss/_shared/_main-setting-reset.scss */
-div::-webkit-scrollbar, ul::-webkit-scrollbar {
+.custom_scroll::-webkit-scrollbar {
   width: 10px;
 }
 
 /* line 166, src/scss/_shared/_main-setting-reset.scss */
-div::-webkit-scrollbar-track, ul::-webkit-scrollbar-track {
+.custom_scroll::-webkit-scrollbar-track {
   background: rgba(0, 0, 0, 0.1);
 }
 
 /* line 167, src/scss/_shared/_main-setting-reset.scss */
-div::-webkit-scrollbar-thumb, ul::-webkit-scrollbar-thumb {
+.custom_scroll::-webkit-scrollbar-thumb {
   background: #9c9b9c;
 }
 
 /* line 168, src/scss/_shared/_main-setting-reset.scss */
-div:hover::-webkit-scrollbar-thumb, ul:hover::-webkit-scrollbar-thumb {
+.custom_scroll:hover::-webkit-scrollbar-thumb {
   background: #225396;
 }
 
@@ -929,16 +927,14 @@ div:hover::-webkit-scrollbar-thumb, ul:hover::-webkit-scrollbar-thumb {
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
-  -webkit-box-orient: vertical;
-  -webkit-box-direction: normal;
-  -webkit-flex-direction: column;
-      -ms-flex-direction: column;
-          flex-direction: column;
   -webkit-box-align: start;
   -webkit-align-items: flex-start;
       -ms-flex-align: start;
           align-items: flex-start;
-  width: 50%;
+  -webkit-flex-wrap: wrap;
+      -ms-flex-wrap: wrap;
+          flex-wrap: wrap;
+  width: 100%;
   padding: 15px;
 }
 
@@ -949,6 +945,7 @@ div:hover::-webkit-scrollbar-thumb, ul:hover::-webkit-scrollbar-thumb {
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
+  width: 50%;
   -webkit-box-align: center;
   -webkit-align-items: center;
       -ms-flex-align: center;
@@ -957,7 +954,7 @@ div:hover::-webkit-scrollbar-thumb, ul:hover::-webkit-scrollbar-thumb {
   margin-bottom: 5px;
 }
 
-/* line 108, src/scss/_shared/macros/_lang.scss */
+/* line 109, src/scss/_shared/macros/_lang.scss */
 .lang__drop-link:hover:before, .lang__drop-link:hover:after {
   width: 50%;
   -webkit-transition: width 0.35s ease-in-out;
@@ -965,7 +962,7 @@ div:hover::-webkit-scrollbar-thumb, ul:hover::-webkit-scrollbar-thumb {
   transition: width 0.35s ease-in-out;
 }
 
-/* line 115, src/scss/_shared/macros/_lang.scss */
+/* line 116, src/scss/_shared/macros/_lang.scss */
 .lang__drop-link:before, .lang__drop-link:after {
   content: '';
   position: absolute;
@@ -978,22 +975,22 @@ div:hover::-webkit-scrollbar-thumb, ul:hover::-webkit-scrollbar-thumb {
   transition: width 0.35s ease-in-out;
 }
 
-/* line 126, src/scss/_shared/macros/_lang.scss */
+/* line 127, src/scss/_shared/macros/_lang.scss */
 .lang__drop-link:before {
   left: 50%;
 }
 
-/* line 129, src/scss/_shared/macros/_lang.scss */
+/* line 130, src/scss/_shared/macros/_lang.scss */
 .lang__drop-link:after {
   right: 50%;
 }
 
-/* line 133, src/scss/_shared/macros/_lang.scss */
+/* line 134, src/scss/_shared/macros/_lang.scss */
 .lang__drop-link span {
   color: #080915;
 }
 
-/* line 139, src/scss/_shared/macros/_lang.scss */
+/* line 140, src/scss/_shared/macros/_lang.scss */
 .lang__flag {
   display: -webkit-box;
   display: -webkit-flex;
@@ -1002,7 +999,7 @@ div:hover::-webkit-scrollbar-thumb, ul:hover::-webkit-scrollbar-thumb {
   margin-right: 5px;
 }
 
-/* line 143, src/scss/_shared/macros/_lang.scss */
+/* line 144, src/scss/_shared/macros/_lang.scss */
 .lang__flag:before {
   content: "";
   display: -webkit-box;
@@ -1015,162 +1012,162 @@ div:hover::-webkit-scrollbar-thumb, ul:hover::-webkit-scrollbar-thumb {
   background-repeat: no-repeat;
 }
 
-/* line 153, src/scss/_shared/macros/_lang.scss */
+/* line 154, src/scss/_shared/macros/_lang.scss */
 .lang__flag--en:before {
   background-position: -48px 0;
 }
 
-/* line 158, src/scss/_shared/macros/_lang.scss */
+/* line 159, src/scss/_shared/macros/_lang.scss */
 .lang__flag--de:before {
   background-position: 0 -22px;
 }
 
-/* line 163, src/scss/_shared/macros/_lang.scss */
+/* line 164, src/scss/_shared/macros/_lang.scss */
 .lang__flag--fr:before {
   background-position: -32px -33px;
 }
 
-/* line 168, src/scss/_shared/macros/_lang.scss */
+/* line 169, src/scss/_shared/macros/_lang.scss */
 .lang__flag--it:before {
   background-position: -16px -44px;
 }
 
-/* line 173, src/scss/_shared/macros/_lang.scss */
+/* line 174, src/scss/_shared/macros/_lang.scss */
 .lang__flag--ro:before {
   background-position: -64px -44px;
 }
 
-/* line 178, src/scss/_shared/macros/_lang.scss */
+/* line 179, src/scss/_shared/macros/_lang.scss */
 .lang__flag--pt:before {
   background-position: -64px -33px;
 }
 
-/* line 183, src/scss/_shared/macros/_lang.scss */
+/* line 184, src/scss/_shared/macros/_lang.scss */
 .lang__flag--ru:before {
   background-position: 0 -55px;
 }
 
-/* line 188, src/scss/_shared/macros/_lang.scss */
+/* line 189, src/scss/_shared/macros/_lang.scss */
 .lang__flag--es:before {
   background-position: 0 -33px;
 }
 
-/* line 193, src/scss/_shared/macros/_lang.scss */
+/* line 194, src/scss/_shared/macros/_lang.scss */
 .lang__flag--nl:before {
   background-position: -64px 0;
 }
 
-/* line 198, src/scss/_shared/macros/_lang.scss */
+/* line 199, src/scss/_shared/macros/_lang.scss */
 .lang__flag--tr:before {
   background-position: -64px -55px;
 }
 
-/* line 203, src/scss/_shared/macros/_lang.scss */
+/* line 204, src/scss/_shared/macros/_lang.scss */
 .lang__flag--sv:before {
   background-position: -32px -55px;
 }
 
-/* line 208, src/scss/_shared/macros/_lang.scss */
+/* line 209, src/scss/_shared/macros/_lang.scss */
 .lang__flag--no:before {
   background-position: -64px -11px;
 }
 
-/* line 213, src/scss/_shared/macros/_lang.scss */
+/* line 214, src/scss/_shared/macros/_lang.scss */
 .lang__flag--be:before {
   background-position: 0 -11px;
 }
 
-/* line 218, src/scss/_shared/macros/_lang.scss */
+/* line 219, src/scss/_shared/macros/_lang.scss */
 .lang__flag--ja:before {
   background-position: -32px -44px;
 }
 
-/* line 223, src/scss/_shared/macros/_lang.scss */
+/* line 224, src/scss/_shared/macros/_lang.scss */
 .lang__flag--el:before {
   background-position: -32px -22px;
 }
 
-/* line 228, src/scss/_shared/macros/_lang.scss */
+/* line 229, src/scss/_shared/macros/_lang.scss */
 .lang__flag--hi:before {
   background-position: -48px -11px;
 }
 
-/* line 233, src/scss/_shared/macros/_lang.scss */
+/* line 234, src/scss/_shared/macros/_lang.scss */
 .lang__flag--vi:before {
   background-position: -16px -66px;
 }
 
-/* line 238, src/scss/_shared/macros/_lang.scss */
+/* line 239, src/scss/_shared/macros/_lang.scss */
 .lang__flag--pl:before {
   background-position: -64px -22px;
 }
 
-/* line 243, src/scss/_shared/macros/_lang.scss */
+/* line 244, src/scss/_shared/macros/_lang.scss */
 .lang__flag--fi:before {
   background-position: -16px -33px;
 }
 
-/* line 248, src/scss/_shared/macros/_lang.scss */
+/* line 249, src/scss/_shared/macros/_lang.scss */
 .lang__flag--da:before {
   background-position: -32px -11px;
 }
 
-/* line 253, src/scss/_shared/macros/_lang.scss */
+/* line 254, src/scss/_shared/macros/_lang.scss */
 .lang__flag--sl:before {
   background-position: -16px -55px;
 }
 
-/* line 258, src/scss/_shared/macros/_lang.scss */
+/* line 259, src/scss/_shared/macros/_lang.scss */
 .lang__flag--hr:before {
   background-position: -48px -33px;
 }
 
-/* line 263, src/scss/_shared/macros/_lang.scss */
+/* line 264, src/scss/_shared/macros/_lang.scss */
 .lang__flag--ar:before {
   background-position: 0 0;
 }
 
-/* line 268, src/scss/_shared/macros/_lang.scss */
+/* line 269, src/scss/_shared/macros/_lang.scss */
 .lang__flag--hu:before {
   background-position: -48px -22px;
 }
 
-/* line 273, src/scss/_shared/macros/_lang.scss */
+/* line 274, src/scss/_shared/macros/_lang.scss */
 .lang__flag--cs:before {
   background-position: -32px 0;
 }
 
-/* line 278, src/scss/_shared/macros/_lang.scss */
+/* line 279, src/scss/_shared/macros/_lang.scss */
 .lang__flag--zh:before {
   background-position: -32px -66px;
 }
 
-/* line 283, src/scss/_shared/macros/_lang.scss */
+/* line 284, src/scss/_shared/macros/_lang.scss */
 .lang__flag--ko:before {
   background-position: -48px -44px;
 }
 
-/* line 288, src/scss/_shared/macros/_lang.scss */
+/* line 289, src/scss/_shared/macros/_lang.scss */
 .lang__flag--th:before {
   background-position: -48px -55px;
 }
 
-/* line 293, src/scss/_shared/macros/_lang.scss */
+/* line 294, src/scss/_shared/macros/_lang.scss */
 .lang__flag--id:before {
   background-position: 0 -44px;
 }
 
-/* line 298, src/scss/_shared/macros/_lang.scss */
+/* line 299, src/scss/_shared/macros/_lang.scss */
 .lang__flag--he:before {
   background-position: -64px -88px;
 }
 
-/* line 303, src/scss/_shared/macros/_lang.scss */
+/* line 304, src/scss/_shared/macros/_lang.scss */
 .lang__flag--bg:before {
   background-position: -16px -110px;
 }
 
-/* line 308, src/scss/_shared/macros/_lang.scss */
+/* line 309, src/scss/_shared/macros/_lang.scss */
 .lang__flag--hu:before {
   background-position: -32px -110px;
 }

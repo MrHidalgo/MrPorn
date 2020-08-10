@@ -76,9 +76,9 @@ h1, h2, h3, h4, h5, h6{
 	line-height: 1.1;
 	color: inherit;
 }
-p{
+/*p{
 	margin: 0 0 10px;
-}
+}*/
 
 button,
 input,
@@ -161,11 +161,11 @@ picture {
   height: 100%;
 }
 
-div, ul{scrollbar-color: #131313 #525252;}
-div::-webkit-scrollbar, ul::-webkit-scrollbar {width: 10px; }
-div::-webkit-scrollbar-track, ul::-webkit-scrollbar-track{ background: rgba(0,0,0,0.1) }
-div::-webkit-scrollbar-thumb, ul::-webkit-scrollbar-thumb { background: #9c9b9c }
-div:hover::-webkit-scrollbar-thumb, ul:hover::-webkit-scrollbar-thumb { background: #225396 }
+.custom_scroll{scrollbar-color: #131313 #525252;}
+.custom_scroll::-webkit-scrollbar{width: 10px; }
+.custom_scroll::-webkit-scrollbar-track{ background: rgba(0,0,0,0.1) }
+.custom_scroll::-webkit-scrollbar-thumb{ background: #9c9b9c }
+.custom_scroll:hover::-webkit-scrollbar-thumb{ background: #225396 }
 
 [data-label-desc]::before{
 	content: attr(data-label-desc);
