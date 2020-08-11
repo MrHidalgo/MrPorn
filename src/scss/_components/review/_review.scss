@@ -165,6 +165,10 @@
 		display: flex;
 		align-items: center;
 
+		@include adaptive(767){
+			padding: 0 15px;
+		}
+
 		&::before {
 			background: #fff url(../images/screenshot-tool-bar-left.jpg);
 			width: 90px;

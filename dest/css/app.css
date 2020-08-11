@@ -717,19 +717,24 @@ picture {
 }
 
 /* line 170, src/scss/_shared/_main-setting-reset.scss */
+strong {
+  font-weight: 700;
+}
+
+/* line 174, src/scss/_shared/_main-setting-reset.scss */
 [data-label-desc]::before {
   content: attr(data-label-desc);
 }
 
 @media screen and (max-width: 767px) {
-  /* line 170, src/scss/_shared/_main-setting-reset.scss */
+  /* line 174, src/scss/_shared/_main-setting-reset.scss */
   [data-label-desc]::before {
     content: attr(data-label-mobile);
   }
 }
 
 @media screen and (max-width: 767px) {
-  /* line 179, src/scss/_shared/_main-setting-reset.scss */
+  /* line 183, src/scss/_shared/_main-setting-reset.scss */
   .hidden-xs {
     display: none;
   }

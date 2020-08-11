@@ -64,6 +64,10 @@
 		&:focus{
 			color: #434e5b;
 		}
+
+		@include adaptive(767) {
+			display: none;
+		}
 	}
 
 

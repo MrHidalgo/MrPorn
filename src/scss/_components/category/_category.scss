@@ -325,6 +325,10 @@
 	padding-bottom: 30px;
 
 
+	@include adaptive(767) {
+		padding: 0 8px 30px;
+	}
+
 	.go_back {
 		margin-top: 15px;
 		background: url(../images/geek_blue_button_bg.png);
@@ -363,4 +367,8 @@
 	}
 }
 
-
+.view_all_categories{
+	@include adaptive(767) {
+		font-size: 16px;
+	}
+}

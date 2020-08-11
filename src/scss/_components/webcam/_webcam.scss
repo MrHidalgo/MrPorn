@@ -12,6 +12,14 @@
 		font: 400 14px/1.2 "Arial Black",sans-serif;
 		border: 3px solid #f6f6f6;
 		padding: 25px 20px;
+
+		&.no-border{
+			border: none;
+		}
+
+		@include adaptive(767) {
+			padding: 10px 20px;
+		}
 	}
 
 	.tag_item{
@@ -96,6 +104,7 @@
 		@include adaptive(767) {
 			width: 100%;
 			text-align: center;
+			font-size: 18px;
 		}
 	}
 
@@ -392,7 +401,6 @@
 	-ms-flex-pack: start;
 	justify-content: flex-start;
 	max-height: 100%;
-	margin-bottom: -15px;
 	display: flex;
 	list-style-type: none;
 	-webkit-flex-wrap: wrap;
@@ -454,4 +462,8 @@
 	-webkit-transition: background .3s,color .3s,border .3s;
 	-o-transition: background .3s,color .3s,border .3s;
 	transition: background .3s,color .3s,border .3s;
+
+	@include adaptive(767) {
+		margin: 6px 3px;
+	}
 }
