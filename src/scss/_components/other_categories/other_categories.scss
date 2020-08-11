@@ -1,6 +1,7 @@
 // OTHER_CATEGORIES :: START
 #other_categories{
 	padding-bottom: 30px;
+	background: #fff;
 
 	.category_box{
 		background: #fff;
@@ -29,6 +30,7 @@
 		@include adaptive(767) {
 			width: 50%;
 			max-width: 50%;
+			padding: 0 5px 10px;
 		}
 
 		&_inner{
@@ -58,6 +60,10 @@
 				background: rgba(0,0,0,.8);
 				text-align: center;
 
+				@include adaptive(767) {
+					font-size: 3vw;
+				}
+
 				small {
 					display: block;
 					font-size: 12px;
@@ -69,6 +75,10 @@
 					display: -webkit-box;
 					-webkit-line-clamp: 1;
 					-webkit-box-orient: vertical;
+
+					@include adaptive(767) {
+						font-size: 2.5vw;
+					}
 				}
 			}
 

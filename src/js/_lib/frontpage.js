@@ -42,7 +42,7 @@ function renderHompageSiteSlide(category, index){
 		let siteThumb = siteItem.thumb;
 		let siteLogo = (siteItem.logo)?siteItem.logo.src:'';
 
-		let slideHtml = '<div class="swiper-slide" category_list_'+index+'>'+
+		let slideHtml = '<div class="swiper-slide" data-siteid="'+siteId+'" category_list_'+index+'>'+
 			'<a class="list__box" list-box-js href="'+siteLink+'" target="_blank" data-id="'+siteId+'" style="background-image: url('+siteThumb+')">'+
 			'<div class="list__box-overlay"></div>'+
 			'<div class="list__box-border"></div><img class="list__box-logo" src="'+siteLogo+'" alt=""/>'+
@@ -259,7 +259,7 @@ function renderSiteCategory(categoryIndex){
 	homeData.categories[categoryId].sites.map(function (site, index) {
 		let siteLogo = site.logo?site.logo.src:'';
 
-		categorySites += '<div class="swiper-slide" data-index="'+index+'" data-init="0">' +
+		categorySites += '<div class="swiper-slide" data-index="'+index+'" data-siteid="'+site.id+'" data-init="0">' +
 			'<div class="list__box" list-box-js  data-id="'+site.id+'" style="background-image: url('+site.thumb+')">'+
 			'<div class="list__box-overlay"></div>'+
 			'<div class="list__box-border"></div>'+

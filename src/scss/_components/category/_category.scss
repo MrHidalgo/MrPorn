@@ -25,6 +25,10 @@
 	display: flex;
 	flex-wrap: wrap;
 
+	@include adaptive(767) {
+		padding: 0 8px;
+	}
+
 	&_item{
 		flex-grow: 1;
 		width: 25%;
@@ -42,11 +46,33 @@
 		@include adaptive(767) {
 			width: 50%;
 			max-width: 50%;
+			padding: 10px 5px 0;
 		}
 
 		&_inner{
 			background: #f2f2f2;
 			padding: 8px;
+			position: relative;
+
+			.free_to_play {
+				background: url(../images/free_to_play.png);
+				width: 84px;
+				height: 86px;
+				content: ' ';
+				display: inline-block;
+				position: absolute;
+				right: -4px;
+				top: -4px;
+			}
+
+			@include adaptive(767) {
+				padding: 0;
+
+				.category_site_content{
+					padding: 0 8px 8px;
+				}
+			}
+
 		}
 
 		&_thumb{
@@ -235,6 +261,10 @@
 	text-align: center;
 	padding: 15px 0 5px;
 
+	@include adaptive(767) {
+		padding: 15px 10px 5px;
+	}
+
 	span{
 		display: inline-block;
 		border-radius: 5px;
@@ -249,6 +279,10 @@
 		background: -webkit-linear-gradient(top,rgba(6,96,192,1) 0%,rgba(5,80,159,1) 50%,rgba(4,60,121,1) 100%);
 		background: linear-gradient(to bottom,rgba(6,96,192,1) 0%,rgba(5,80,159,1) 50%,rgba(4,60,121,1) 100%);
 		filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#0660c0',endColorstr='#043c79',GradientType=0 );
+
+		@include adaptive(767) {
+			display: block;
+		}
 	}
 }
 
@@ -278,6 +312,10 @@
 		.category_bottom_links{
 			display: block;
 			text-align: center;
+
+			@include adaptive(767) {
+				padding: 0 10px 5px;
+			}
 		}
 	}
 }
@@ -286,17 +324,6 @@
 	text-align: center;
 	padding-bottom: 30px;
 
-	.go_back::before {
-		background: url(../images/geek_blue_button_head.png);
-		background-size: contain;
-		content: ' ';
-		display: inline-block;
-		height: 60px;
-		width: 97px;
-		position: absolute;
-		top: 0;
-		left: 0;
-	}
 
 	.go_back {
 		margin-top: 15px;
@@ -311,6 +338,28 @@
 		display: inline-block;
 		border-radius: 5px;
 		position: relative;
+
+		&::before {
+			background: url(../images/geek_blue_button_head.png);
+			background-size: contain;
+			content: ' ';
+			display: inline-block;
+			height: 60px;
+			width: 97px;
+			position: absolute;
+			top: 0;
+			left: 0;
+
+			@include adaptive(767) {
+				display: none;
+			}
+		}
+
+		@include adaptive(767) {
+			padding: 15px;
+			display: block;
+			font-size: 14px;
+		}
 	}
 }
 

@@ -513,6 +513,7 @@
 				overflow: hidden;
 				display: -webkit-box;
 				line-height: 21px;
+				font-size: 18px;
 			}
 
 			.coupon_title{
@@ -1105,7 +1106,7 @@
 	font-weight: 700;
 	text-transform: uppercase;
 	color: #001d36;
-	font-family: Roboto,Georgia,serif;
+	font-family: 'Roboto', sans-serif;
 
 	&:hover{
 		color: #001d36;
@@ -1129,6 +1130,10 @@
 	background: -webkit-linear-gradient(top,#377917 0%,#2b6a01 51%,#245a02 100%);
 	background: linear-gradient(to bottom,#377917 0%,#2b6a01 51%,#245a02 100%);
 	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#377917',endColorstr='#245a02',GradientType=0 );
+
+	&:hover{
+		color: #fff;
+	}
 
 	@include adaptive(767){
 		font-size: 20px;

@@ -3,6 +3,12 @@
 	text-align: center;
 	margin: 20px 0;
 
+	@include adaptive(767) {
+		.pages{
+			display: none;
+		}
+	}
+
 	span, a, a:visited{
 		display: inline-block;
 		padding: 10px 20px;
@@ -12,6 +18,12 @@
 		color: #fff;
 		border: 1px solid #8896a7;
 		background: #8896a7 url(../images/bg-pagi.png) left bottom repeat-x;
+
+		@include adaptive(767) {
+			font-size: 24px;
+			padding: 3px 10px;
+			font-weight: 600;
+		}
 	}
 	span, a:active{
 		border: 1px solid #285183;
@@ -28,15 +40,35 @@
 	.page_left{
 		display: inline-block;
 		overflow-y: hidden;
+
+		@include adaptive(767) {
+			overflow-x: hidden;
+			flex: 0 0 95px;
+			white-space: nowrap;
+
+			&.page_1{
+				 flex: 0 0 0;
+				display: none;
+			}
+		}
 	}
 	.page_right{
 		display: inline-block;
 		overflow-y: hidden;
+
+		@include adaptive(767) {
+			overflow-x: hidden;
+			flex: 0 0 95px;
+			white-space: nowrap;
+		}
 	}
 	.page_middle {
 		display: inline-block;
 		overflow-y: hidden;
 		overflow-x: auto;
 		white-space: nowrap;
+
 	}
+
+
 }

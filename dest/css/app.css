@@ -4020,7 +4020,7 @@ picture {
   .header {
     position: fixed;
     width: 100%;
-    z-index: 10;
+    z-index: 100;
   }
 }
 
@@ -4600,25 +4600,32 @@ picture {
   transition: color 0.35s ease-in-out;
 }
 
-/* line 3, src/scss/_components/homepage/_list.scss */
+@media screen and (max-width: 767px) {
+  /* line 3, src/scss/_components/homepage/_list.scss */
+  .body.p-home {
+    margin-top: 120px;
+  }
+}
+
+/* line 9, src/scss/_components/homepage/_list.scss */
 .list {
   padding-top: 25px;
   padding-bottom: 25px;
 }
 
 @media screen and (max-width: 767px) {
-  /* line 7, src/scss/_components/homepage/_list.scss */
+  /* line 13, src/scss/_components/homepage/_list.scss */
   .list .c-grid {
     padding-right: 0;
   }
 }
 
-/* line 13, src/scss/_components/homepage/_list.scss */
+/* line 19, src/scss/_components/homepage/_list.scss */
 .list .swiper-container {
   overflow: unset;
 }
 
-/* line 17, src/scss/_components/homepage/_list.scss */
+/* line 23, src/scss/_components/homepage/_list.scss */
 .list .swiper-slide {
   position: relative;
   width: 230px !important;
@@ -4631,7 +4638,7 @@ picture {
 }
 
 @media screen and (max-width: 1279px) {
-  /* line 17, src/scss/_components/homepage/_list.scss */
+  /* line 23, src/scss/_components/homepage/_list.scss */
   .list .swiper-slide {
     width: 195px !important;
     height: 195px;
@@ -4639,7 +4646,7 @@ picture {
 }
 
 @media screen and (max-width: 1023px) {
-  /* line 17, src/scss/_components/homepage/_list.scss */
+  /* line 23, src/scss/_components/homepage/_list.scss */
   .list .swiper-slide {
     width: 150px !important;
     height: 150px;
@@ -4647,7 +4654,7 @@ picture {
 }
 
 @media screen and (max-width: 767px) {
-  /* line 17, src/scss/_components/homepage/_list.scss */
+  /* line 23, src/scss/_components/homepage/_list.scss */
   .list .swiper-slide {
     width: 75px !important;
     height: 75px;
@@ -4655,24 +4662,24 @@ picture {
 }
 
 @media screen and (orientation: landscape) {
-  /* line 37, src/scss/_components/homepage/_list.scss */
+  /* line 43, src/scss/_components/homepage/_list.scss */
   .is-mobile .list .swiper-slide {
     width: 150px !important;
     height: 150px;
   }
 }
 
-/* line 44, src/scss/_components/homepage/_list.scss */
+/* line 50, src/scss/_components/homepage/_list.scss */
 .list .swiper-slide:first-of-type {
   margin-left: 0;
 }
 
-/* line 47, src/scss/_components/homepage/_list.scss */
+/* line 53, src/scss/_components/homepage/_list.scss */
 .list .swiper-slide:last-of-type {
   margin-right: 0;
 }
 
-/* line 51, src/scss/_components/homepage/_list.scss */
+/* line 57, src/scss/_components/homepage/_list.scss */
 .list .swiper-slide.is-hover {
   width: 350px !important;
   -webkit-transition: width 0.35s ease-in-out;
@@ -5390,7 +5397,7 @@ picture {
 
 /* line 199, src/scss/_components/homepage/_list--box.scss */
 .list__box-body {
-  z-index: 100;
+  z-index: 10;
   position: relative;
   padding-bottom: 30px;
   -webkit-transition: padding-bottom 0.35s ease-in-out, -webkit-transform 0.35s ease-in-out;

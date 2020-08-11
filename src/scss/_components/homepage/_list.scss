@@ -1,5 +1,11 @@
 // SECTION :: START
-
+.body{
+	&.p-home{
+		@include adaptive(767) {
+			margin-top: 120px;
+		}
+	}
+}
 .list {
 	padding-top: 25px;
 	padding-bottom: 25px;
