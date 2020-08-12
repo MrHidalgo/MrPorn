@@ -171,7 +171,7 @@ strong{
 	font-weight: 700;
 }
 
-[data-label-desc]::before{
+[data-label-desc]::after{
 	content: attr(data-label-desc);
 
 	@include adaptive(767) {

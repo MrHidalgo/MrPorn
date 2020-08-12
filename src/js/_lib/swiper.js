@@ -179,13 +179,13 @@ function onSwiperRight(category, swiper){
 	let swipeWrapper = swiper.$wrapperEl[0];
 	let totalSites = swipeWrapper.dataset.count;
 
-	if(currentSlideIndex>6){
+	/*if(currentSlideIndex>6){
 		for(var i=0; i<(currentSlideIndex-8); i++){
 			if(swiper.slides[i]){
 				swiper.slides[i].innerHTML = '';
 			}
 		}
-	}
+	}*/
 
 	var nextSlideIndex = 0;
 
@@ -214,7 +214,7 @@ function renderLeftAndRight(category, swiper) {
 	let totalSites = swipeWrapper.dataset.count;
 
 	for (var i = 0; i < totalSites; i++) {
-		if(i>(currentSlideIndex-3) && i<(currentSlideIndex+8)){
+		if(i>(currentSlideIndex-6) && i<(currentSlideIndex+8)){
 			if(swiper.slides[i] && swiper.slides[i].innerHTML.trim()==''){
 				let slideItem = renderHompageSiteSlide(category, i);
 				if(slideItem){
@@ -223,7 +223,7 @@ function renderLeftAndRight(category, swiper) {
 			}
 		}else{
 			if(swiper.slides[i]){
-				swiper.slides[i].innerHTML = '';
+				//swiper.slides[i].innerHTML = '';
 			}
 		}
 	}

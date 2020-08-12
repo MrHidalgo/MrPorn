@@ -71,6 +71,25 @@ var toggleClass = function toggleClass(element, className) {
   }
 };
 
+function doScrolling(elementY, duration) {
+  var startingY = window.pageYOffset;
+  var diff = elementY - startingY;
+  var start; // Bootstrap our animation - it will get called right before next frame shall be rendered.
+
+  window.requestAnimationFrame(function step(timestamp) {
+    if (!start) start = timestamp; // Elapsed milliseconds since start of scrolling.
+
+    var time = timestamp - start; // Get percent of completion in range [0, 1].
+
+    var percent = Math.min(time / duration, 1);
+    window.scrollTo(0, startingY + diff * percent); // Proceed with animation as long as we wanted it to.
+
+    if (time < duration) {
+      window.requestAnimationFrame(step);
+    }
+  });
+}
+
 function getRequest() {
   var url = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : '';
   var data = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : {};
@@ -138,8 +157,6 @@ function postRequest() {
   }).then(function (response) {
     return response.json();
   }).then(function (out) {
-    console.log('Checkout this JSON! ', out);
-    console.log(data);
     callback(out);
   })["catch"](function (err) {
     console.log(err);
@@ -212,7 +229,7 @@ var loadHomeData = function loadHomeData() {
   fetch(url).then(function (res) {
     return res.json();
   }).then(function (out) {
-    homeData = out;
+    homeData = out; //renderAllOtherCategories();
   })["catch"](function (err) {
     throw err;
   });
@@ -227,7 +244,7 @@ function renderHompageSiteSlide(category, index) {
     var siteName = siteItem.name;
     var siteThumb = siteItem.thumb;
     var siteLogo = siteItem.logo ? siteItem.logo.src : '';
-    var slideHtml = '<div class="swiper-slide" data-siteid="' + siteId + '" category_list_' + index + '>' + '<a class="list__box" list-box-js href="' + siteLink + '" target="_blank" data-id="' + siteId + '" style="background-image: url(' + siteThumb + ')">' + '<div class="list__box-overlay"></div>' + '<div class="list__box-border"></div><img class="list__box-logo" src="' + siteLogo + '" alt=""/>' + '<div class="list__box-details">' + '<div class="list__box-details-left">' + '<button class="list__box-external" type="button"><i class="icon-font icon-out"></i></button>' + '<p class="list__box-details-title"><a href="' + siteLink + '" target="_blank">' + siteName + '</a></p>' + '<div class="list__rating"><span>User Rating:</span>' + '<div><i class="icon-font icon-star"></i><i class="icon-font icon-star"></i><i class="icon-font icon-star"></i><i class="icon-font icon-star"></i><i class="icon-font icon-star-fill"></i></div>' + '</div>' + '</div>' + '<div class="list__box-details-right">' + '<button class="list__box-like" type="button" data-id="1" like-toggle-js><i class="icon-font icon-like"></i></button>' + '<button class="list__box-dislike" type="button" data-id="1" dislike-toggle-js><i class="icon-font icon-like"></i></button>' + '<div class="c-popper">' + '<button class="list__box-favorites" type="button" data-id="1" favorites-toggle-js><i class="icon-font icon-star-fill"></i><i class="icon-font icon-star"></i></button>' + '<div class="c-poppertext">' + '<u>Add To Favourites</u>' + '<u>Remove From Favourites</u>' + '</div>' + '</div>' + '</div>' + '</div>' + '<button class="list__box-more" type="button"><i class="icon-font icon-arrow-angle"></i></button>' + '</a>' + '</div>';
+    var slideHtml = '<div class="swiper-slide" data-siteid="' + siteId + '" category_list_' + index + '>' + '<a class="list__box nolazy" list-box-js href="' + siteLink + '" target="_blank" data-id="' + siteId + '" style="background-image: url(' + siteThumb + ')">' + '<div class="list__box-overlay"></div>' + '<div class="list__box-border"></div><img class="list__box-logo nolazy" src="' + siteLogo + '" alt=""/>' + '<div class="list__box-details">' + '<div class="list__box-details-left">' + '<button class="list__box-external" type="button"><i class="icon-font icon-out"></i></button>' + '<p class="list__box-details-title"><a href="' + siteLink + '" target="_blank">' + siteName + '</a></p>' + '<div class="list__rating"><span>User Rating:</span>' + '<div><i class="icon-font icon-star"></i><i class="icon-font icon-star"></i><i class="icon-font icon-star"></i><i class="icon-font icon-star"></i><i class="icon-font icon-star-fill"></i></div>' + '</div>' + '</div>' + '<div class="list__box-details-right">' + '<button class="list__box-like" type="button" data-id="1" like-toggle-js><i class="icon-font icon-like"></i></button>' + '<button class="list__box-dislike" type="button" data-id="1" dislike-toggle-js><i class="icon-font icon-like"></i></button>' + '<div class="c-popper">' + '<button class="list__box-favorites" type="button" data-id="1" favorites-toggle-js><i class="icon-font icon-star-fill"></i><i class="icon-font icon-star"></i></button>' + '<div class="c-poppertext">' + '<u>Add To Favourites</u>' + '<u>Remove From Favourites</u>' + '</div>' + '</div>' + '</div>' + '</div>' + '<button class="list__box-more" type="button"><i class="icon-font icon-arrow-angle"></i></button>' + '</a>' + '</div>';
     return slideHtml;
   }
 
@@ -322,6 +339,11 @@ function shuffleArray(arra1) {
 function renderSiteCategory(categoryIndex) {
   var categoryId = homeData.categories_indexes[categoryIndex];
   var categoryData = homeData.categories[categoryId];
+
+  if (!categoryData) {
+    return;
+  }
+
   var categoryLogo = categoryData.logo;
 
   if (categoryLogo) {
@@ -331,11 +353,120 @@ function renderSiteCategory(categoryIndex) {
   var categorySites = '';
   homeData.categories[categoryId].sites.map(function (site, index) {
     var siteLogo = site.logo ? site.logo.src : '';
-    categorySites += '<div class="swiper-slide" data-index="' + index + '" data-siteid="' + site.id + '" data-init="0">' + '<div class="list__box" list-box-js  data-id="' + site.id + '" style="background-image: url(' + site.thumb + ')">' + '<div class="list__box-overlay"></div>' + '<div class="list__box-border"></div>' + '<a class="nav_link" href="' + site.link + '">' + '<img class="list__box-logo" src="' + siteLogo + '" alt=""/>' + '</a>' + '<div class="list__box-details">' + '</div>' + '<button class="list__box-more" type="button"><i class="icon-font icon-arrow-angle"></i></button>' + '</div>' + '</div>';
+    categorySites += '<div class="swiper-slide" data-index="' + index + '" data-siteid="' + site.id + '" data-init="0">' + '<div class="list__box" list-box-js  data-id="' + site.id + '" style="background-image: url(' + site.thumb + ')">' + '<div class="list__box-overlay"></div>' + '<div class="list__box-border"></div>' + '<a class="nav_link" href="' + site.link + '">' + '<img class="list__box-logo nolazy" src="' + siteLogo + '" alt=""/>' + '</a>' + '<div class="list__box-details">' + '</div>' + '<button class="list__box-more" type="button"><i class="icon-font icon-arrow-angle"></i></button>' + '</div>' + '</div>';
   });
   var categoryBoxHtml = '<div class="list__box-wrapper" list-parent-js data-name="category_' + categoryId + '" data-index="' + categoryIndex + '">' + '<div class="list__box-head">' + '<div class="list__info">' + '<div class="list__info-circle"><img src="' + categoryLogo + '" alt=""/></div>' + '<div>' + '<p>' + categoryData.title + '</p><span>' + categoryData.tagline + '</span>' + '</div>' + '</div>' + '<div><a class="list__btn" href="#"><p>SEE&nbsp;<span>' + categoryData.count + ' MORE</span></p><i class="icon-font icon-arrow-angle"></i></a></div>' + '</div>' + '<div class="list__box-line">' + '<u list-line-ind-js></u><span list-line-js></span>' + '</div>' + '<div class="list__box-body">' + '<div class="list__arrow-wrapper">' + '<a class="list__arrow list__arrow--prev" href="#">' + '<div class="list__arrow-box"><i class="icon-font icon-arrow-angle"></i></div>' + '</a>' + '<a class="list__arrow list__arrow--next" href="#">' + '<div class="list__arrow-box"><i class="icon-font icon-arrow-angle"></i></div>' + '</a>' + '</div>' + '<div class="swiper-container listSwiper" data-id="listSlider_' + categoryData.id + '" data-category="18">' + '<div class="swiper-wrapper" data-category="' + categoryData.id + '" data-count="' + categoryData.count + '" data-slidecount="' + categoryData.site_limit + '">' + categorySites + '</div>' + '</div>' + '</div>' + '<div class="list__specification-wrapper"></div>' + '</div>';
   return categoryBoxHtml;
 }
+
+function renderAllOtherCategories() {
+  var catListContainer = document.querySelector('#list .c-grid');
+
+  for (var i = 0; i < homeData.categories_count; i++) {
+    var catId = homeData.categories_indexes[i];
+    var catBox = document.querySelector('.list__box-wrapper[data-name="category_' + catId + '"]');
+
+    if (!catBox) {
+      var listBoxes = document.querySelectorAll('.list__box-wrapper');
+      var categoryHtml = renderSiteCategory(i);
+      catListContainer.insertAdjacentHTML('beforeend', categoryHtml);
+      swiperCB(".swiper-container[data-id=\"listSlider_".concat(catId, "\"]"), ".list__box-wrapper[data-name='category_".concat(catId, "']"));
+    }
+  }
+
+  boxHover();
+}
+
+var boxHover = function boxHover() {
+  var swiperSlides = document.querySelectorAll('.swiper-slide[data-init="0"]'),
+      listBoxBody = document.querySelectorAll('.list__box-body');
+  var tOut = null,
+      hoverBool = false;
+
+  for (var i = 0, len = swiperSlides.length; i < len; i++) {
+    swiperSlides[i].addEventListener('mouseenter', function (ev) {
+      if (window.innerWidth >= 1280) {
+        var el = ev.currentTarget,
+            elParent = el.closest('[list-parent-js]'),
+            lineInd = elParent.querySelector('[list-line-js]');
+        var swiperParent = el.parentNode;
+        var slideIndex = el.dataset.index;
+        var slideCategory = swiperParent.dataset.category;
+        var slideHoverContainer = el.querySelector('.list__box-details');
+
+        if (slideHoverContainer && slideHoverContainer.innerHTML.trim() == '') {
+          var slideHoverContent = renderSiteHoverContent(slideCategory, slideIndex);
+
+          if (slideHoverContent) {
+            slideHoverContainer.innerHTML = slideHoverContent;
+          }
+        }
+        /*setTimeout(function() {
+        	}, 0);*/
+
+
+        var transformVal = '';
+
+        if (lineInd.getAttribute("style")) {
+          var val = lineInd.getAttribute("style");
+
+          if (val.indexOf(';') === -1) {
+            transformVal = val;
+          } else {
+            transformVal = val.substring(0, val.indexOf(';'));
+          }
+        }
+
+        if (hoverBool) {
+          el.classList.add('is-hover');
+          lineInd.setAttribute('style', transformVal + ';width: 189px');
+        } else {
+          tOut = setTimeout(function () {
+            hoverBool = true;
+            el.classList.add('is-hover');
+            lineInd.setAttribute('style', transformVal + ';width: 189px');
+          }, 750);
+        }
+      }
+    }, false);
+    swiperSlides[i].setAttribute('data-init', '1');
+    swiperSlides[i].addEventListener('mouseleave', function (ev) {
+      if (window.innerWidth >= 1280) {
+        var el = ev.currentTarget,
+            elParent = el.closest('[list-parent-js]'),
+            lineInd = elParent.querySelector('[list-line-js]');
+        var transformVal = '';
+
+        if (lineInd.getAttribute("style")) {
+          var val = lineInd.getAttribute("style");
+
+          if (val.indexOf(';') === -1) {
+            transformVal = val;
+          } else {
+            transformVal = val.substring(0, val.indexOf(';'));
+          }
+        }
+
+        clearTimeout(tOut);
+        el.classList.remove('is-hover');
+        lineInd.setAttribute('style', transformVal + ';width: 64px');
+      }
+    }, false);
+  }
+
+  for (var _i = 0, _len = listBoxBody.length; _i < _len; _i++) {
+    listBoxBody[_i].addEventListener('mouseleave', function (ev) {
+      if (window.innerWidth >= 1280) {
+        hoverBool = false;
+        clearTimeout(tOut);
+
+        for (var j = 0, l = swiperSlides.length; j < l; j++) {
+          swiperSlides[j].classList.remove('is-hover');
+        }
+      }
+    }, false);
+  }
+};
 
 function addToFavourites(siteId) {
   postRequest(ajaxEndpoint, {
@@ -726,14 +857,13 @@ function onSwiperRight(category, swiper) {
   var currentSlideIndex = swiper.activeIndex;
   var swipeWrapper = swiper.$wrapperEl[0];
   var totalSites = swipeWrapper.dataset.count;
-
-  if (currentSlideIndex > 6) {
-    for (var i = 0; i < currentSlideIndex - 8; i++) {
-      if (swiper.slides[i]) {
-        swiper.slides[i].innerHTML = '';
-      }
-    }
-  }
+  /*if(currentSlideIndex>6){
+  	for(var i=0; i<(currentSlideIndex-8); i++){
+  		if(swiper.slides[i]){
+  			swiper.slides[i].innerHTML = '';
+  		}
+  	}
+  }*/
 
   var nextSlideIndex = 0;
   console.log("next start " + currentSlideIndex);
@@ -760,7 +890,7 @@ function renderLeftAndRight(category, swiper) {
   var totalSites = swipeWrapper.dataset.count;
 
   for (var i = 0; i < totalSites; i++) {
-    if (i > currentSlideIndex - 3 && i < currentSlideIndex + 8) {
+    if (i > currentSlideIndex - 6 && i < currentSlideIndex + 8) {
       if (swiper.slides[i] && swiper.slides[i].innerHTML.trim() == '') {
         var slideItem = renderHompageSiteSlide(category, i);
 
@@ -769,8 +899,7 @@ function renderLeftAndRight(category, swiper) {
         }
       }
     } else {
-      if (swiper.slides[i]) {
-        swiper.slides[i].innerHTML = '';
+      if (swiper.slides[i]) {//swiper.slides[i].innerHTML = '';
       }
     }
   }
@@ -838,16 +967,18 @@ var ajaxAdminEndpoint = '/wp-admin/admin-ajax.php';
     var categoryListH = document.querySelector('#list').getBoundingClientRect().height;
     var listBoxes = document.querySelectorAll('.list__box-wrapper');
     var firstCategoryListHeight = listBoxes[0].getBoundingClientRect().height;
-    var expectedY = headerHeight + categoryListH - firstCategoryListHeight * 3;
+    var expectedY = headerHeight + categoryListH - firstCategoryListHeight * 8;
     var catListContainer = document.querySelector('#list .c-grid');
 
     if (wY > expectedY) {
       if (!document.querySelector('[category_list_' + (listBoxes.length + 1) + ']')) {
-        var catId = homeData.categories_indexes[listBoxes.length];
-        var categoryHtml = renderSiteCategory(listBoxes.length);
-        catListContainer.insertAdjacentHTML('beforeend', categoryHtml);
-        swiperCB(".swiper-container[data-id=\"listSlider_".concat(catId, "\"]"), ".list__box-wrapper[data-name='category_".concat(catId, "']"));
-        boxHover();
+        if (homeData.categories_indexes) {
+          var catId = homeData.categories_indexes[listBoxes.length];
+          var categoryHtml = renderSiteCategory(listBoxes.length);
+          catListContainer.insertAdjacentHTML('beforeend', categoryHtml);
+          swiperCB(".swiper-container[data-id=\"listSlider_".concat(catId, "\"]"), ".list__box-wrapper[data-name='category_".concat(catId, "']"));
+          boxHover();
+        }
       }
     }
   };
@@ -1159,8 +1290,8 @@ var ajaxAdminEndpoint = '/wp-admin/admin-ajax.php';
       }, false);
     }
 
-    for (var _i = 0, _len = videoPauseBtns.length; _i < _len; _i++) {
-      videoPauseBtns[_i].addEventListener('click', function (ev) {
+    for (var _i2 = 0, _len2 = videoPauseBtns.length; _i2 < _len2; _i2++) {
+      videoPauseBtns[_i2].addEventListener('click', function (ev) {
         var el = ev.currentTarget;
         onPauseClick(el);
       }, false);
@@ -1183,42 +1314,42 @@ var ajaxAdminEndpoint = '/wp-admin/admin-ajax.php';
       }, false);
     }
 
-    for (var _i2 = 0, _len2 = skipBtns.length; _i2 < _len2; _i2++) {
-      skipBtns[_i2].addEventListener('click', function (ev) {
+    for (var _i3 = 0, _len3 = skipBtns.length; _i3 < _len3; _i3++) {
+      skipBtns[_i3].addEventListener('click', function (ev) {
         ev.currentTarget.classList.toggle('is-active');
       }, false);
     }
 
-    for (var _i3 = 0, _len3 = specFavoritesBtns.length; _i3 < _len3; _i3++) {
-      specFavoritesBtns[_i3].addEventListener('click', function (ev) {
+    for (var _i4 = 0, _len4 = specFavoritesBtns.length; _i4 < _len4; _i4++) {
+      specFavoritesBtns[_i4].addEventListener('click', function (ev) {
         var el = ev.currentTarget;
         onBannerFavourite(el);
       }, false);
     }
 
-    for (var _i4 = 0, _len4 = likeBtns.length; _i4 < _len4; _i4++) {
-      likeBtns[_i4].addEventListener('click', function (ev) {
+    for (var _i5 = 0, _len5 = likeBtns.length; _i5 < _len5; _i5++) {
+      likeBtns[_i5].addEventListener('click', function (ev) {
         var el = ev.currentTarget;
         onSiteBoxLikeClick(el);
       }, false);
     }
 
-    for (var _i5 = 0, _len5 = specLikeBtns.length; _i5 < _len5; _i5++) {
-      specLikeBtns[_i5].addEventListener('click', function (ev) {
+    for (var _i6 = 0, _len6 = specLikeBtns.length; _i6 < _len6; _i6++) {
+      specLikeBtns[_i6].addEventListener('click', function (ev) {
         var el = ev.currentTarget;
         onBannerLikeClick(el);
       }, false);
     }
 
-    for (var _i6 = 0, _len6 = dislikeBtns.length; _i6 < _len6; _i6++) {
-      dislikeBtns[_i6].addEventListener('click', function (ev) {
+    for (var _i7 = 0, _len7 = dislikeBtns.length; _i7 < _len7; _i7++) {
+      dislikeBtns[_i7].addEventListener('click', function (ev) {
         var el = ev.currentTarget;
         onSiteBoxDislikeClick(el);
       }, false);
     }
 
-    for (var _i7 = 0, _len7 = specDislikeBtns.length; _i7 < _len7; _i7++) {
-      specDislikeBtns[_i7].addEventListener('click', function (ev) {
+    for (var _i8 = 0, _len8 = specDislikeBtns.length; _i8 < _len8; _i8++) {
+      specDislikeBtns[_i8].addEventListener('click', function (ev) {
         var el = ev.currentTarget;
         onBannerDislikeClick(el);
       }, false);
@@ -1372,96 +1503,6 @@ var ajaxAdminEndpoint = '/wp-admin/admin-ajax.php';
         _lineOffset = _elRect.width * _sum + (_sum * 6 - 3) + _indicatorOffset;
 
     listIndicator.setAttribute('style', 'transform: translateX(' + _lineOffset + 'px)');
-  };
-
-  var boxHover = function boxHover() {
-    var swiperSlides = document.querySelectorAll('.swiper-slide[data-init="0"]'),
-        listBoxBody = document.querySelectorAll('.list__box-body');
-    var tOut = null,
-        hoverBool = false;
-
-    for (var i = 0, len = swiperSlides.length; i < len; i++) {
-      swiperSlides[i].addEventListener('mouseenter', function (ev) {
-        if (window.innerWidth >= 1280) {
-          var el = ev.currentTarget,
-              elParent = el.closest('[list-parent-js]'),
-              lineInd = elParent.querySelector('[list-line-js]');
-          var swiperParent = el.parentNode;
-          var slideIndex = el.dataset.index;
-          var slideCategory = swiperParent.dataset.category;
-          var slideHoverContainer = el.querySelector('.list__box-details');
-
-          if (slideHoverContainer.innerHTML.trim() == '') {
-            var slideHoverContent = renderSiteHoverContent(slideCategory, slideIndex);
-
-            if (slideHoverContent) {
-              slideHoverContainer.innerHTML = slideHoverContent;
-            }
-          }
-
-          setTimeout(function () {
-            var transformVal = '';
-
-            if (lineInd.getAttribute("style")) {
-              var val = lineInd.getAttribute("style");
-
-              if (val.indexOf(';') === -1) {
-                transformVal = val;
-              } else {
-                transformVal = val.substring(0, val.indexOf(';'));
-              }
-            }
-
-            if (hoverBool) {
-              el.classList.add('is-hover');
-              lineInd.setAttribute('style', transformVal + ';width: 189px');
-            } else {
-              tOut = setTimeout(function () {
-                hoverBool = true;
-                el.classList.add('is-hover');
-                lineInd.setAttribute('style', transformVal + ';width: 189px');
-              }, 750);
-            }
-          }, 0);
-        }
-      }, false);
-      swiperSlides[i].setAttribute('data-init', '1');
-      swiperSlides[i].addEventListener('mouseleave', function (ev) {
-        if (window.innerWidth >= 1280) {
-          var el = ev.currentTarget,
-              elParent = el.closest('[list-parent-js]'),
-              lineInd = elParent.querySelector('[list-line-js]');
-          var transformVal = '';
-
-          if (lineInd.getAttribute("style")) {
-            var val = lineInd.getAttribute("style");
-
-            if (val.indexOf(';') === -1) {
-              transformVal = val;
-            } else {
-              transformVal = val.substring(0, val.indexOf(';'));
-            }
-          }
-
-          clearTimeout(tOut);
-          el.classList.remove('is-hover');
-          lineInd.setAttribute('style', transformVal + ';width: 64px');
-        }
-      }, false);
-    }
-
-    for (var _i8 = 0, _len8 = listBoxBody.length; _i8 < _len8; _i8++) {
-      listBoxBody[_i8].addEventListener('mouseleave', function (ev) {
-        if (window.innerWidth >= 1280) {
-          hoverBool = false;
-          clearTimeout(tOut);
-
-          for (var j = 0, l = swiperSlides.length; j < l; j++) {
-            swiperSlides[j].classList.remove('is-hover');
-          }
-        }
-      }, false);
-    }
   };
 
   var initHomeSlideEvent = function initHomeSlideEvent() {};

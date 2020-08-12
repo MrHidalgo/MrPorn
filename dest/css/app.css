@@ -722,13 +722,13 @@ strong {
 }
 
 /* line 174, src/scss/_shared/_main-setting-reset.scss */
-[data-label-desc]::before {
+[data-label-desc]::after {
   content: attr(data-label-desc);
 }
 
 @media screen and (max-width: 767px) {
   /* line 174, src/scss/_shared/_main-setting-reset.scss */
-  [data-label-desc]::before {
+  [data-label-desc]::after {
     content: attr(data-label-mobile);
   }
 }

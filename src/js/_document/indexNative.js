@@ -65,24 +65,26 @@ const ajaxAdminEndpoint = '/wp-admin/admin-ajax.php';
 		let listBoxes = document.querySelectorAll('.list__box-wrapper');
 		let firstCategoryListHeight = listBoxes[0].getBoundingClientRect().height;
 
-		let expectedY = headerHeight + categoryListH - (firstCategoryListHeight*3);
+		let expectedY = headerHeight + categoryListH - (firstCategoryListHeight*8);
 
 		let catListContainer = document.querySelector('#list .c-grid');
 
 		if(wY > expectedY){
 			if(!document.querySelector('[category_list_'+(listBoxes.length+1)+']')){
 
-				let catId = homeData.categories_indexes[listBoxes.length];
+				if(homeData.categories_indexes){
+					let catId = homeData.categories_indexes[listBoxes.length];
 
-				let categoryHtml = renderSiteCategory(listBoxes.length);
-				catListContainer.insertAdjacentHTML( 'beforeend', categoryHtml );
+					let categoryHtml = renderSiteCategory(listBoxes.length);
+					catListContainer.insertAdjacentHTML( 'beforeend', categoryHtml );
 
-				swiperCB(
-					`.swiper-container[data-id="listSlider_${catId}"]`,
-					`.list__box-wrapper[data-name='category_${catId}']`
-				);
+					swiperCB(
+						`.swiper-container[data-id="listSlider_${catId}"]`,
+						`.list__box-wrapper[data-name='category_${catId}']`
+					);
 
-				boxHover();
+					boxHover();
+				}
 			}
 		}
 	}
@@ -666,109 +668,7 @@ const ajaxAdminEndpoint = '/wp-admin/admin-ajax.php';
 	}
 
 
-	const boxHover = () => {
-		const swiperSlides = document.querySelectorAll('.swiper-slide[data-init="0"]'),
-			listBoxBody = document.querySelectorAll('.list__box-body');
 
-		let tOut = null,
-			hoverBool = false;
-
-		for(let i = 0, len = swiperSlides.length; i < len; i++) {
-			swiperSlides[i].addEventListener('mouseenter', function(ev) {
-				if(window.innerWidth >= 1280) {
-					const el = ev.currentTarget,
-						elParent = el.closest('[list-parent-js]'),
-						lineInd = elParent.querySelector('[list-line-js]');
-
-
-					const swiperParent  = el.parentNode;
-					var slideIndex = el.dataset.index;
-					var slideCategory = swiperParent.dataset.category;
-
-
-					var slideHoverContainer = el.querySelector('.list__box-details');
-					if(slideHoverContainer.innerHTML.trim()==''){
-						var slideHoverContent = renderSiteHoverContent(slideCategory, slideIndex);
-						if(slideHoverContent){
-							slideHoverContainer.innerHTML = slideHoverContent;
-						}
-					}
-
-
-					setTimeout(function() {
-						let transformVal = '';
-
-						if(lineInd.getAttribute("style")) {
-							let val = lineInd.getAttribute("style");
-
-
-							if(val.indexOf(';') === -1) {
-								transformVal = val;
-							} else {
-								transformVal = val.substring(0, val.indexOf(';'));
-							}
-						}
-
-
-
-						if(hoverBool) {
-							el.classList.add('is-hover');
-							lineInd.setAttribute('style', transformVal + ';width: 189px');
-						} else {
-							tOut = setTimeout(function() {
-								hoverBool = true;
-								el.classList.add('is-hover');
-
-								lineInd.setAttribute('style', transformVal + ';width: 189px');
-							}, 750);
-						}
-					}, 0);
-				}
-			}, false);
-
-			swiperSlides[i].setAttribute('data-init', '1');
-
-			swiperSlides[i].addEventListener('mouseleave', function(ev) {
-				if(window.innerWidth >= 1280) {
-					const el = ev.currentTarget,
-						elParent = el.closest('[list-parent-js]'),
-						lineInd = elParent.querySelector('[list-line-js]');
-
-					let transformVal = '';
-
-					if(lineInd.getAttribute("style")) {
-						let val = lineInd.getAttribute("style");
-
-
-						if(val.indexOf(';') === -1) {
-							transformVal = val;
-						} else {
-							transformVal = val.substring(0, val.indexOf(';'));
-						}
-					}
-
-					clearTimeout(tOut);
-					el.classList.remove('is-hover');
-
-					lineInd.setAttribute('style', transformVal + ';width: 64px');
-				}
-			}, false);
-		}
-
-		for(let i = 0, len = listBoxBody.length; i < len; i++) {
-			listBoxBody[i].addEventListener('mouseleave', function(ev) {
-				if(window.innerWidth >= 1280) {
-					hoverBool = false;
-
-					clearTimeout(tOut);
-
-					for(let j = 0, l = swiperSlides.length; j < l; j++) {
-						swiperSlides[j].classList.remove('is-hover');
-					}
-				}
-			}, false);
-		}
-	};
 
 	const initHomeSlideEvent = () => {
 

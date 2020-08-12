@@ -65,8 +65,10 @@
 			color: #434e5b;
 		}
 
-		@include adaptive(767) {
-			display: none;
+		&:not(.show_in_mobile){
+			@include adaptive(767) {
+				display: none;
+			}
 		}
 	}
 

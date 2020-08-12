@@ -1,4 +1,11 @@
 // PORN_DEALS :: START
+
+.site-content{
+	@include adaptive(767) {
+		margin-top: 90px;
+	}
+}
+
 .coupon_container{
 	background: #b0bcca;
 	padding-bottom: 20px;
@@ -299,11 +306,13 @@
 	color: #fff;
 	margin-bottom: 15px;
 	background: #2b333c url(../images/coupon/lytblck-bar.png) top repeat-x;
+	min-height: 48px;
+	display: flex;
+	align-items: center;
 
 	@include adaptive(767) {
-		padding: 3px 20px 0;
+		padding: 0 20px 0;
 		font-size: 16px;
-		line-height: 48px;
 	}
 
 	h2{
@@ -1201,4 +1210,23 @@
 .coupon_bottom_description {
 	padding: 15px 25px;
 	text-align: center;
+}
+.coupon_loader{
+	position: absolute;
+	left: 0;
+	right: 0;
+	height: 100%;
+	top: 0;
+	background: rgba(255, 255, 255, 0.5);
+	text-align: center;
+	padding-top: 300px;
+}
+.green_link{
+	@include adaptive(767) {
+		padding: 0 5px 5px;
+		.lgrnbtn{
+			width: auto;
+			font-size: 15px;
+		}
+	}
 }

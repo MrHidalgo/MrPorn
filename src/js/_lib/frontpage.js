@@ -28,6 +28,8 @@ const loadHomeData = () => {
 		.then(res => res.json())
 		.then((out) => {
 			homeData = out;
+
+			//renderAllOtherCategories();
 		})
 		.catch(err => { throw err });
 }
@@ -43,9 +45,9 @@ function renderHompageSiteSlide(category, index){
 		let siteLogo = (siteItem.logo)?siteItem.logo.src:'';
 
 		let slideHtml = '<div class="swiper-slide" data-siteid="'+siteId+'" category_list_'+index+'>'+
-			'<a class="list__box" list-box-js href="'+siteLink+'" target="_blank" data-id="'+siteId+'" style="background-image: url('+siteThumb+')">'+
+			'<a class="list__box nolazy" list-box-js href="'+siteLink+'" target="_blank" data-id="'+siteId+'" style="background-image: url('+siteThumb+')">'+
 			'<div class="list__box-overlay"></div>'+
-			'<div class="list__box-border"></div><img class="list__box-logo" src="'+siteLogo+'" alt=""/>'+
+			'<div class="list__box-border"></div><img class="list__box-logo nolazy" src="'+siteLogo+'" alt=""/>'+
 			'<div class="list__box-details">'+
 			'<div class="list__box-details-left">'+
 			'<button class="list__box-external" type="button"><i class="icon-font icon-out"></i></button>'+
@@ -250,6 +252,10 @@ function shuffleArray(arra1){
 function renderSiteCategory(categoryIndex){
 	let categoryId = homeData.categories_indexes[categoryIndex];
 	let categoryData = homeData.categories[categoryId];
+	if(!categoryData){
+		return ;
+	}
+
 	let categoryLogo = categoryData.logo;
 	if(categoryLogo){
 		categoryLogo = categoryLogo.url;
@@ -264,7 +270,7 @@ function renderSiteCategory(categoryIndex){
 			'<div class="list__box-overlay"></div>'+
 			'<div class="list__box-border"></div>'+
 			'<a class="nav_link" href="'+site.link+'">' +
-			'<img class="list__box-logo" src="'+siteLogo+'" alt=""/>'+
+			'<img class="list__box-logo nolazy" src="'+siteLogo+'" alt=""/>'+
 			'</a>'+
 			'<div class="list__box-details">'+
 
@@ -311,6 +317,133 @@ function renderSiteCategory(categoryIndex){
 	return categoryBoxHtml;
 
 }
+
+function renderAllOtherCategories(){
+	let catListContainer = document.querySelector('#list .c-grid');
+
+	for (let i=0; i<homeData.categories_count; i++){
+		let catId = homeData.categories_indexes[i];
+		let catBox = document.querySelector('.list__box-wrapper[data-name="category_'+catId+'"]');
+		if(!catBox){
+			let listBoxes = document.querySelectorAll('.list__box-wrapper');
+			let categoryHtml = renderSiteCategory(i);
+			catListContainer.insertAdjacentHTML( 'beforeend', categoryHtml );
+
+			swiperCB(
+				`.swiper-container[data-id="listSlider_${catId}"]`,
+				`.list__box-wrapper[data-name='category_${catId}']`
+			);
+		}
+	}
+
+	boxHover();
+}
+
+const boxHover = () => {
+	const swiperSlides = document.querySelectorAll('.swiper-slide[data-init="0"]'),
+		listBoxBody = document.querySelectorAll('.list__box-body');
+
+	let tOut = null,
+		hoverBool = false;
+
+	for(let i = 0, len = swiperSlides.length; i < len; i++) {
+		swiperSlides[i].addEventListener('mouseenter', function(ev) {
+			if(window.innerWidth >= 1280) {
+				const el = ev.currentTarget,
+					elParent = el.closest('[list-parent-js]'),
+					lineInd = elParent.querySelector('[list-line-js]');
+
+
+				const swiperParent  = el.parentNode;
+				var slideIndex = el.dataset.index;
+				var slideCategory = swiperParent.dataset.category;
+
+
+				var slideHoverContainer = el.querySelector('.list__box-details');
+				if(slideHoverContainer && slideHoverContainer.innerHTML.trim()==''){
+					var slideHoverContent = renderSiteHoverContent(slideCategory, slideIndex);
+					if(slideHoverContent){
+						slideHoverContainer.innerHTML = slideHoverContent;
+					}
+				}
+
+
+				/*setTimeout(function() {
+
+				}, 0);*/
+
+				let transformVal = '';
+
+				if(lineInd.getAttribute("style")) {
+					let val = lineInd.getAttribute("style");
+
+
+					if(val.indexOf(';') === -1) {
+						transformVal = val;
+					} else {
+						transformVal = val.substring(0, val.indexOf(';'));
+					}
+				}
+
+
+
+				if(hoverBool) {
+					el.classList.add('is-hover');
+					lineInd.setAttribute('style', transformVal + ';width: 189px');
+				} else {
+					tOut = setTimeout(function() {
+						hoverBool = true;
+						el.classList.add('is-hover');
+
+						lineInd.setAttribute('style', transformVal + ';width: 189px');
+					}, 750);
+				}
+			}
+		}, false);
+
+		swiperSlides[i].setAttribute('data-init', '1');
+
+		swiperSlides[i].addEventListener('mouseleave', function(ev) {
+			if(window.innerWidth >= 1280) {
+				const el = ev.currentTarget,
+					elParent = el.closest('[list-parent-js]'),
+					lineInd = elParent.querySelector('[list-line-js]');
+
+				let transformVal = '';
+
+				if(lineInd.getAttribute("style")) {
+					let val = lineInd.getAttribute("style");
+
+
+					if(val.indexOf(';') === -1) {
+						transformVal = val;
+					} else {
+						transformVal = val.substring(0, val.indexOf(';'));
+					}
+				}
+
+				clearTimeout(tOut);
+				el.classList.remove('is-hover');
+
+				lineInd.setAttribute('style', transformVal + ';width: 64px');
+			}
+		}, false);
+	}
+
+	for(let i = 0, len = listBoxBody.length; i < len; i++) {
+		listBoxBody[i].addEventListener('mouseleave', function(ev) {
+			if(window.innerWidth >= 1280) {
+				hoverBool = false;
+
+				clearTimeout(tOut);
+
+				for(let j = 0, l = swiperSlides.length; j < l; j++) {
+					swiperSlides[j].classList.remove('is-hover');
+				}
+			}
+		}, false);
+	}
+};
 
 function addToFavourites(siteId){
 	postRequest(ajaxEndpoint, {
