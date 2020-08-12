@@ -202,6 +202,8 @@ function postTextRequest() {
   });
 }
 
+var webworkerFrontpage;
+
 var initHomeLazyLoad = function initHomeLazyLoad() {
   var listElm = document.querySelector('#infinite-list');
   var nextItem = 1;
@@ -230,6 +232,8 @@ var loadHomeData = function loadHomeData() {
     return res.json();
   }).then(function (out) {
     homeData = out; //renderAllOtherCategories();
+
+    setTimeout(renderAllOtherCategories, 100);
   })["catch"](function (err) {
     throw err;
   });
@@ -353,7 +357,12 @@ function renderSiteCategory(categoryIndex) {
   var categorySites = '';
   homeData.categories[categoryId].sites.map(function (site, index) {
     var siteLogo = site.logo ? site.logo.src : '';
-    categorySites += '<div class="swiper-slide" data-index="' + index + '" data-siteid="' + site.id + '" data-init="0">' + '<div class="list__box" list-box-js  data-id="' + site.id + '" style="background-image: url(' + site.thumb + ')">' + '<div class="list__box-overlay"></div>' + '<div class="list__box-border"></div>' + '<a class="nav_link" href="' + site.link + '">' + '<img class="list__box-logo nolazy" src="' + siteLogo + '" alt=""/>' + '</a>' + '<div class="list__box-details">' + '</div>' + '<button class="list__box-more" type="button"><i class="icon-font icon-arrow-angle"></i></button>' + '</div>' + '</div>';
+
+    if (siteLogo != '') {
+      siteLogo = '<img class="list__box-logo nolazy" src="' + siteLogo + '" alt=""/>';
+    }
+
+    categorySites += '<div class="swiper-slide" data-index="' + index + '" data-siteid="' + site.id + '" data-init="0">' + '<div class="list__box" list-box-js  data-id="' + site.id + '" style="background-image: url(' + site.thumb + ')">' + '<div class="list__box-overlay"></div>' + '<div class="list__box-border"></div>' + '<a class="nav_link" href="' + site.link + '">' + siteLogo + '</a>' + '<div class="list__box-details">' + '</div>' + '<button class="list__box-more" type="button"><i class="icon-font icon-arrow-angle"></i></button>' + '</div>' + '</div>';
   });
   var categoryBoxHtml = '<div class="list__box-wrapper" list-parent-js data-name="category_' + categoryId + '" data-index="' + categoryIndex + '">' + '<div class="list__box-head">' + '<div class="list__info">' + '<div class="list__info-circle"><img src="' + categoryLogo + '" alt=""/></div>' + '<div>' + '<p>' + categoryData.title + '</p><span>' + categoryData.tagline + '</span>' + '</div>' + '</div>' + '<div><a class="list__btn" href="#"><p>SEE&nbsp;<span>' + categoryData.count + ' MORE</span></p><i class="icon-font icon-arrow-angle"></i></a></div>' + '</div>' + '<div class="list__box-line">' + '<u list-line-ind-js></u><span list-line-js></span>' + '</div>' + '<div class="list__box-body">' + '<div class="list__arrow-wrapper">' + '<a class="list__arrow list__arrow--prev" href="#">' + '<div class="list__arrow-box"><i class="icon-font icon-arrow-angle"></i></div>' + '</a>' + '<a class="list__arrow list__arrow--next" href="#">' + '<div class="list__arrow-box"><i class="icon-font icon-arrow-angle"></i></div>' + '</a>' + '</div>' + '<div class="swiper-container listSwiper" data-id="listSlider_' + categoryData.id + '" data-category="18">' + '<div class="swiper-wrapper" data-category="' + categoryData.id + '" data-count="' + categoryData.count + '" data-slidecount="' + categoryData.site_limit + '">' + categorySites + '</div>' + '</div>' + '</div>' + '<div class="list__specification-wrapper"></div>' + '</div>';
   return categoryBoxHtml;
@@ -361,18 +370,19 @@ function renderSiteCategory(categoryIndex) {
 
 function renderAllOtherCategories() {
   var catListContainer = document.querySelector('#list .c-grid');
-
-  for (var i = 0; i < homeData.categories_count; i++) {
-    var catId = homeData.categories_indexes[i];
-    var catBox = document.querySelector('.list__box-wrapper[data-name="category_' + catId + '"]');
-
-    if (!catBox) {
-      var listBoxes = document.querySelectorAll('.list__box-wrapper');
-      var categoryHtml = renderSiteCategory(i);
-      catListContainer.insertAdjacentHTML('beforeend', categoryHtml);
-      swiperCB(".swiper-container[data-id=\"listSlider_".concat(catId, "\"]"), ".list__box-wrapper[data-name='category_".concat(catId, "']"));
-    }
-  }
+  /*for (let i=0; i<homeData.categories_count; i++){
+  	let catId = homeData.categories_indexes[i];
+  	let catBox = document.querySelector('.list__box-wrapper[data-name="category_'+catId+'"]');
+  	if(!catBox){
+  		let listBoxes = document.querySelectorAll('.list__box-wrapper');
+  		let categoryHtml = renderSiteCategory(i);
+  		catListContainer.insertAdjacentHTML( 'beforeend', categoryHtml );
+  			swiperCB(
+  			`.swiper-container[data-id="listSlider_${catId}"]`,
+  			`.list__box-wrapper[data-name='category_${catId}']`
+  		);
+  	}
+  }*/
 
   boxHover();
 }
@@ -401,32 +411,31 @@ var boxHover = function boxHover() {
             slideHoverContainer.innerHTML = slideHoverContent;
           }
         }
-        /*setTimeout(function() {
-        	}, 0);*/
 
+        setTimeout(function () {
+          var transformVal = '';
 
-        var transformVal = '';
+          if (lineInd.getAttribute("style")) {
+            var val = lineInd.getAttribute("style");
 
-        if (lineInd.getAttribute("style")) {
-          var val = lineInd.getAttribute("style");
-
-          if (val.indexOf(';') === -1) {
-            transformVal = val;
-          } else {
-            transformVal = val.substring(0, val.indexOf(';'));
+            if (val.indexOf(';') === -1) {
+              transformVal = val;
+            } else {
+              transformVal = val.substring(0, val.indexOf(';'));
+            }
           }
-        }
 
-        if (hoverBool) {
-          el.classList.add('is-hover');
-          lineInd.setAttribute('style', transformVal + ';width: 189px');
-        } else {
-          tOut = setTimeout(function () {
-            hoverBool = true;
+          if (hoverBool) {
             el.classList.add('is-hover');
             lineInd.setAttribute('style', transformVal + ';width: 189px');
-          }, 750);
-        }
+          } else {
+            tOut = setTimeout(function () {
+              hoverBool = true;
+              el.classList.add('is-hover');
+              lineInd.setAttribute('style', transformVal + ';width: 189px');
+            }, 750);
+          }
+        }, 0);
       }
     }, false);
     swiperSlides[i].setAttribute('data-init', '1');
@@ -488,6 +497,24 @@ function removeFavourite(favItem) {
     console.log('Removed Favouroites');
     renderFavourites();
   });
+}
+
+function initWebWorker() {
+  if (typeof Worker !== "undefined") {// Yes! Web worker support!
+    // Some code.....
+  } else {// Sorry! No Web Worker support..
+    }
+
+  if (typeof w == "undefined") {
+    webworkerFrontpage = new Worker("./wp-content/themes/mpg/js/worker.js");
+  }
+
+  webworkerFrontpage.onmessage = function (event) {
+    //document.getElementById("result").innerHTML = event.data;
+    console.log('Webworker data');
+    console.log(event.data);
+    loadHomeData();
+  };
 }
 
 (function () {
@@ -1613,8 +1640,9 @@ var ajaxAdminEndpoint = '/wp-admin/admin-ajax.php';
 
     skipModal();
     toggleMoreBox(); // ==========================================
+    //loadHomeData();
 
-    loadHomeData();
+    initWebWorker();
   };
   /**
    * @description Init all CB after page load

@@ -794,7 +794,8 @@ const ajaxAdminEndpoint = '/wp-admin/admin-ajax.php';
 		toggleMoreBox();
 		// ==========================================
 
-		loadHomeData();
+		//loadHomeData();
+		initWebWorker();
 	};
 
 	/**

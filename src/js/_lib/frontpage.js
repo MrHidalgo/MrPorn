@@ -1,3 +1,5 @@
+var webworkerFrontpage;
+
 const initHomeLazyLoad = () =>{
 	let listElm = document.querySelector('#infinite-list');
 
@@ -30,6 +32,8 @@ const loadHomeData = () => {
 			homeData = out;
 
 			//renderAllOtherCategories();
+
+			setTimeout(renderAllOtherCategories, 100);
 		})
 		.catch(err => { throw err });
 }
@@ -264,13 +268,16 @@ function renderSiteCategory(categoryIndex){
 	let categorySites = '';
 	homeData.categories[categoryId].sites.map(function (site, index) {
 		let siteLogo = site.logo?site.logo.src:'';
+		if(siteLogo!=''){
+			siteLogo = '<img class="list__box-logo nolazy" src="'+siteLogo+'" alt=""/>';
+		}
 
 		categorySites += '<div class="swiper-slide" data-index="'+index+'" data-siteid="'+site.id+'" data-init="0">' +
 			'<div class="list__box" list-box-js  data-id="'+site.id+'" style="background-image: url('+site.thumb+')">'+
 			'<div class="list__box-overlay"></div>'+
 			'<div class="list__box-border"></div>'+
 			'<a class="nav_link" href="'+site.link+'">' +
-			'<img class="list__box-logo nolazy" src="'+siteLogo+'" alt=""/>'+
+			siteLogo+
 			'</a>'+
 			'<div class="list__box-details">'+
 
@@ -321,7 +328,7 @@ function renderSiteCategory(categoryIndex){
 function renderAllOtherCategories(){
 	let catListContainer = document.querySelector('#list .c-grid');
 
-	for (let i=0; i<homeData.categories_count; i++){
+	/*for (let i=0; i<homeData.categories_count; i++){
 		let catId = homeData.categories_indexes[i];
 		let catBox = document.querySelector('.list__box-wrapper[data-name="category_'+catId+'"]');
 		if(!catBox){
@@ -334,7 +341,7 @@ function renderAllOtherCategories(){
 				`.list__box-wrapper[data-name='category_${catId}']`
 			);
 		}
-	}
+	}*/
 
 	boxHover();
 }
@@ -368,36 +375,36 @@ const boxHover = () => {
 				}
 
 
-				/*setTimeout(function() {
+				setTimeout(function() {
+					let transformVal = '';
 
-				}, 0);*/
-
-				let transformVal = '';
-
-				if(lineInd.getAttribute("style")) {
-					let val = lineInd.getAttribute("style");
+					if(lineInd.getAttribute("style")) {
+						let val = lineInd.getAttribute("style");
 
 
-					if(val.indexOf(';') === -1) {
-						transformVal = val;
-					} else {
-						transformVal = val.substring(0, val.indexOf(';'));
+						if(val.indexOf(';') === -1) {
+							transformVal = val;
+						} else {
+							transformVal = val.substring(0, val.indexOf(';'));
+						}
 					}
-				}
 
 
 
-				if(hoverBool) {
-					el.classList.add('is-hover');
-					lineInd.setAttribute('style', transformVal + ';width: 189px');
-				} else {
-					tOut = setTimeout(function() {
-						hoverBool = true;
+					if(hoverBool) {
 						el.classList.add('is-hover');
-
 						lineInd.setAttribute('style', transformVal + ';width: 189px');
-					}, 750);
-				}
+					} else {
+						tOut = setTimeout(function() {
+							hoverBool = true;
+							el.classList.add('is-hover');
+
+							lineInd.setAttribute('style', transformVal + ';width: 189px');
+						}, 750);
+					}
+				}, 0);
+
+
 			}
 		}, false);
 
@@ -466,4 +473,25 @@ function removeFavourite(favItem){
 		console.log('Removed Favouroites');
 		renderFavourites();
 	});
+}
+
+function initWebWorker(){
+
+	if (typeof(Worker) !== "undefined") {
+		// Yes! Web worker support!
+		// Some code.....
+	} else {
+		// Sorry! No Web Worker support..
+	}
+
+	if (typeof(w) == "undefined") {
+		webworkerFrontpage = new Worker("./wp-content/themes/mpg/js/worker.js");
+	}
+	webworkerFrontpage.onmessage = function(event) {
+		//document.getElementById("result").innerHTML = event.data;
+		console.log('Webworker data');
+		console.log(event.data);
+
+		loadHomeData();
+	};
 }
