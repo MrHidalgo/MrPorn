@@ -3,6 +3,9 @@
 	padding-bottom: 30px;
 	background: #fff;
 
+	@include respond('ipad'){
+		padding-bottom: 0;
+	}
 	@include adaptive(767) {
 		padding-bottom: 10px;
 	}
@@ -28,8 +31,9 @@
 		width: 25%;
 		padding: 0 15px 30px;
 
-		@include adaptive(1279) {
+		@include respond('ipad_landscape'){
 			width: 25%;
+			padding: 0 5px 10px;
 		}
 		@include respond('ipad_portrait'){
 			width: 33.333333%;
@@ -69,6 +73,10 @@
 				background: rgba(0,0,0,.8);
 				text-align: center;
 				z-index: 50;
+
+				@include respond('ipad'){
+					font-size: 12.5px;
+				}
 
 				@include adaptive(767) {
 					font-size: 3vw;

@@ -17,6 +17,10 @@
 		width: 25%;
 		text-align: center;
 
+		@include respond('ipad_portrait'){
+			width: 33.333333%;
+		}
+
 		&_inner{
 			padding: 0 15px 0;
 			@include adaptive(767) {
@@ -24,9 +28,6 @@
 			}
 		}
 
-		@include adaptive(1279) {
-			width: 25%;
-		}
 		@include adaptive(767) {
 			width: 50%;
 			max-width: 50%;

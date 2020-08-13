@@ -1,4 +1,9 @@
 // PAGE_CATEGORIES :: START
+@include adaptive(767) {
+	.categories_container{
+		margin-top: 85px;
+	}
+}
 .categories_container{
 	display: flex;
 	padding-top: 15px;
@@ -10,7 +15,10 @@
 		background: #fff;
 		text-align: left;
 
-		@include adaptive(1024) {
+		@include respond('ipad_portrait'){
+			display: none;
+		}
+		@include respond('max-small'){
 			display: none;
 		}
 
@@ -45,6 +53,10 @@
 				border-bottom: 1px solid #f5f5f5;
 				padding: 10px 15px;
 
+				@include respond('ipad'){
+					padding: 8px 15px;
+				}
+
 				a{
 					font-size: 14px;
 					font-weight: 700;
@@ -55,6 +67,10 @@
 					display: -webkit-box;
 					-webkit-line-clamp: 1;
 					-webkit-box-orient: vertical;
+
+					@include respond('ipad'){
+						font-size: 12px;
+					}
 				}
 			}
 		}
@@ -62,7 +78,10 @@
 	.rightCat{
 		padding-left: 10px;
 
-		@include adaptive(1024) {
+		@include respond('ipad_portrait'){
+			padding-left: 0;
+		}
+		@include respond('max-small'){
 			padding-left: 0;
 		}
 
@@ -73,13 +92,14 @@
 			font-size: 30px;
 			font-weight: 700;
 
-			@include adaptive(1024) {
+			@include respond('ipad'){
 				font-size: 25px;
 				padding: 10px 0 10px 0;
 			}
 			@include adaptive(767) {
 				font-size: 17px;
-				padding: 20px 0 5px 0;
+				padding: 25px 0 10px 0;
+				text-align: center;
 			}
 		}
 	}
@@ -98,6 +118,10 @@
 		overflow: hidden;
 		white-space: nowrap;
 
+		@include adaptive(767) {
+			font-size: 16px;
+		}
+
 		&::before{
 			content: ' ';
 			background: url(../images/icon_award.png);
@@ -114,6 +138,10 @@
 		margin: 10px -5px;
 		flex-wrap: wrap;
 		flex-direction: row;
+
+		@include adaptive(767) {
+			margin: 10px -5px 0;
+		}
 
 		.aw_item{
 			width: 16.666667%;
@@ -227,6 +255,10 @@
 				&:hover{
 					.tip-content{
 						display: block;
+
+						@include respond('ipad'){
+							display: none;
+						}
 
 						@include adaptive(767) {
 							display: none;

@@ -1,4 +1,9 @@
 // REVIEW :: START
+@include respond('ipad_portrait'){
+	#primary{
+		margin-top: 120px;
+	}
+}
 @include adaptive(767) {
 	.site-content{
 		margin-top: 120px;
@@ -32,6 +37,10 @@
 
 	.show_similar_sites{
 		position: relative;
+
+		@include respond('ipad_portrait'){
+			display: none;
+		}
 
 		@include adaptive(767) {
 			display: none;
@@ -134,6 +143,18 @@
 	.show_similar_sites{
 		display: block;
 
+		@include respond('ipad_portrait'){
+			position: fixed;
+			top: 120px;
+			left: 0;
+			color: #fff;
+			z-index: 10;
+
+			.deIcon{
+				border: 1px solid #828282;
+				background: #fff;
+			}
+		}
 
 		@include adaptive(767) {
 			position: fixed;
@@ -324,12 +345,20 @@
 	display: flex;
 	flex-wrap: wrap;
 
+	@include respond('ipad_portrait'){
+		flex-direction: column;
+	}
+
 	@include adaptive(767) {
 		flex-direction: column;
 	}
 
 	.review_column{
 		width: 50%;
+
+		@include respond('ipad_portrait'){
+			width: 100%;
+		}
 
 		@include adaptive(767) {
 			width: 100%;
@@ -344,6 +373,10 @@
 	}
 	.review_con{
 		padding-left: 35px;
+
+		@include respond('ipad_portrait'){
+			padding-left: 0;
+		}
 
 		@include adaptive(767) {
 			padding-left: 0;
@@ -427,6 +460,14 @@
 			overflow: -moz-scrollbars-none;
 			scrollbar-width: none;
 
+			@include respond('ipad_portrait'){
+				position: relative;
+				padding-right: 0;
+				padding-top: 10px;
+				padding-bottom: 0;
+				border-bottom: none;
+			}
+
 			@include adaptive(767) {
 				position: relative;
 				padding-right: 0;
@@ -452,6 +493,10 @@
 			right: 0;
 			top: 0;
 			height: 100%;
+
+			@include respond('ipad_portrait'){
+				display: none;
+			}
 
 			@include adaptive(767) {
 				display: none;
@@ -581,6 +626,9 @@
 	top: 50%;
 	transform: translateY(-50%);
 
+	@include respond('ipad_portrait'){
+		display: none;
+	}
 
 
 	.cs_hide_comments {

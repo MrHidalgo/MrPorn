@@ -15,6 +15,12 @@
 	@import "header--recent";
 	@import "header--update";
 
+	@include respond('ipad_portrait'){
+		position: fixed;
+		width: 100%;
+		z-index: 100;
+	}
+
 	@include adaptive(767) {
 		position: fixed;
 		width: 100%;

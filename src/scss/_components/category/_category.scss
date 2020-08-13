@@ -1,4 +1,20 @@
 // CATEGORY :: START
+
+@include respond('ipad'){
+	.blue_heading_back{
+		display: none;
+	}
+}
+@include respond('ipad_portrait'){
+	.c-grid{
+		padding-left: 15px;
+		padding-right: 15px;
+	}
+	#primary{
+		margin-top: 120px;
+	}
+}
+
 .site-content{
 	@include adaptive(767) {
 		margin-top: 95px;
@@ -35,13 +51,15 @@
 		max-width: 25%;
 		padding: 15px 10px 0;
 
-		@include adaptive(1279) {
+		@include respond('ipad_landscape'){
 			width: 25%;
 			max-width: 25%;
+			padding: 15px 4px 0;
 		}
-		@include adaptive(1024) {
+		@include respond('ipad_portrait'){
 			width: 33.333333%;
 			max-width: 33.333333%;
+			padding: 15px 4px 0;
 		}
 		@include adaptive(767) {
 			width: 50%;
@@ -102,6 +120,10 @@
 				text-align: left;
 				text-transform: capitalize;
 
+				@include respond('ipad'){
+					font-size: 16px;
+				}
+
 				&:active,
 				&:hover{
 					text-decoration: none;
@@ -127,6 +149,10 @@
 			display: -webkit-box;
 			-webkit-line-clamp: 4;
 			-webkit-box-orient: vertical;
+
+			@include respond('ipad'){
+				font-size: 12px;
+			}
 
 			@include adaptive(767) {
 				font-size: 12px;
@@ -171,7 +197,7 @@
 		padding: 15px 10px 0;
 		position: relative;
 
-		@include adaptive(1024) {
+		@include respond('ipad_portrait'){
 			width: 100%;
 			order: -1;
 		}
@@ -221,7 +247,7 @@
 			left: 10px;
 			overflow: auto;
 
-			@include adaptive(1024) {
+			@include respond('ipad_portrait'){
 				position: relative;
 				top: 0;
 				max-height: 230px;
@@ -354,6 +380,11 @@
 		border-radius: 5px;
 		position: relative;
 
+		@include respond('ipad'){
+			font-size: 14px;
+			padding: 21px 20px 20px 100px;
+		}
+
 		@include adaptive(767) {
 			margin-top: 10px;
 		}
@@ -388,13 +419,10 @@
 	}
 }
 .dropAll{
-	position: absolute;
-	top: 50%;
-	right: 5px;
-	transform: translateY(-50%);
+	margin-right: 5px;
 	font-size: 20px;
 	color: #fff;
-	z-index: 999;
+	position: relative;
 
 	span{
 		cursor: pointer;
@@ -416,7 +444,8 @@
 
 	ul {
 		position: absolute;
-		top: 35px;
+		z-index: 10;
+		top: 38px;
 		right: 0;
 		background: #f1f1f1;
 		width: 200px;
@@ -444,6 +473,9 @@
 }
 .discounted_deals_container{
 	width: 100%;
+	@include respond('ipad_portrait'){
+		display: none;
+	}
 
 	@include adaptive(767) {
 		display: none;
@@ -536,3 +568,14 @@
 	}
 }
 
+@include respond('ipad'){
+	#other_categories{
+		.bottom_back{
+			padding: 10px 0 20px;
+
+			.link_btn{
+				font-size: 16px;
+			}
+		}
+	}
+}
