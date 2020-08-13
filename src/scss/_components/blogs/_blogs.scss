@@ -15,6 +15,11 @@
 		display: flex;
 		flex-direction: row;
 
+		@include respond('ipad_portrait'){
+			flex-direction: column;
+			padding: 15px;
+		}
+
 		@include adaptive(767){
 			flex-direction: column;
 			padding: 15px;
@@ -27,6 +32,10 @@
 			text-align: center;
 			position: relative;
 
+			@include respond('ipad_portrait'){
+				width: 100%;
+				margin-bottom: 15px;
+			}
 			@include adaptive(767){
 				width: 100%;
 				margin-bottom: 15px;
@@ -45,6 +54,13 @@
 				left: 50%;
 				transform: translateX(-50%);
 
+				@include respond('ipad_portrait'){
+					width: 100%;
+					position: relative;
+					left: auto;
+					transform: none;
+				}
+
 				@include adaptive(767){
 					width: 100%;
 					position: relative;
@@ -60,6 +76,12 @@
 			width: 51%;
 			margin-left: 2%;
 
+			@include respond('ipad_portrait'){
+				width: 100%;
+				display: block;
+				margin: 0;
+				text-align: center;
+			}
 			@include adaptive(767){
 				width: 100%;
 				display: block;
@@ -81,6 +103,10 @@
 				margin: 5px 0;
 				display: flex;
 
+				@include respond('ipad_portrait'){
+					justify-content: center;
+					align-items: center;
+				}
 				@include adaptive(767){
 					justify-content: center;
 					align-items: center;
@@ -101,6 +127,9 @@
 				font-size: 14px;
 				line-height: 25px;
 
+				@include respond('ipad_portrait'){
+					margin: 0;
+				}
 				@include adaptive(767){
 					margin: 0 0 0;
 				}
@@ -138,11 +167,14 @@
 .blog_content{
 	background: #fff;
 	border-top: 12px solid #d1f34b;
-	margin: 10px 0 0;
+	margin: 10px 0 -1px;
 
 	&_inner{
 		padding: 25px;
 
+		@include respond('ipad_portrait'){
+			padding: 15px;
+		}
 		@include adaptive(767){
 			padding: 15px;
 		}
@@ -168,22 +200,35 @@
 	}
 
 	.category_bottom_links {
-		padding-top: 0!important;
-		padding-bottom: 30px!important;
+		padding-top: 0;
+		padding-bottom: 5px;
 		text-align: center;
 
 		.posted_on {
 			font-size: 20px;
 			color: #1e559a;
+			padding: 0 15px;
 			font-weight: 600;
-			font-family: permanent_markerregular,cursive;
+			font-family: 'Permanent Marker', cursive;
 		}
 	}
 }
 #other_categories{
 	background: #efefef;
+
+	@include respond('ipad_portrait'){
+		padding-bottom: 0;
+	}
+	@include adaptive(767){
+		padding-bottom: 0;
+	}
 }
 
+@include respond('ipad_portrait'){
+	.bread-crumb{
+		display: none;
+	}
+}
 @include adaptive(767){
 	.bread-crumb{
 		display: none;

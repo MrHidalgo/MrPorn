@@ -2046,14 +2046,21 @@ strong {
           transform: scaleX(-1);
 }
 
-/* line 1, src/scss/_shared/macros/_sort.scss */
+@media screen and (max-width: 767px) {
+  /* line 2, src/scss/_shared/macros/_sort.scss */
+  .category.search_form {
+    height: 54px;
+  }
+}
+
+/* line 7, src/scss/_shared/macros/_sort.scss */
 .sort {
   position: relative;
   width: 100%;
   height: 100%;
 }
 
-/* line 6, src/scss/_shared/macros/_sort.scss */
+/* line 12, src/scss/_shared/macros/_sort.scss */
 .sort__toggle {
   display: -webkit-box;
   display: -webkit-flex;
@@ -2075,14 +2082,14 @@ strong {
 }
 
 @media screen and (max-width: 1023px) {
-  /* line 6, src/scss/_shared/macros/_sort.scss */
+  /* line 12, src/scss/_shared/macros/_sort.scss */
   .sort__toggle {
     -webkit-border-radius: 0;
             border-radius: 0;
   }
 }
 
-/* line 18, src/scss/_shared/macros/_sort.scss */
+/* line 24, src/scss/_shared/macros/_sort.scss */
 .sort__toggle .icon-font {
   color: #ffffff;
   font-size: 20px;
@@ -2091,7 +2098,7 @@ strong {
           transform: rotate(-90deg);
 }
 
-/* line 24, src/scss/_shared/macros/_sort.scss */
+/* line 30, src/scss/_shared/macros/_sort.scss */
 .sort__toggle p {
   display: -webkit-box;
   display: -webkit-flex;
@@ -2107,7 +2114,7 @@ strong {
           transform: translateX(-3px);
 }
 
-/* line 29, src/scss/_shared/macros/_sort.scss */
+/* line 35, src/scss/_shared/macros/_sort.scss */
 .sort__toggle p span {
   font-weight: 700;
   font-size: 12px;
@@ -2115,7 +2122,7 @@ strong {
   line-height: 1;
 }
 
-/* line 40, src/scss/_shared/macros/_sort.scss */
+/* line 46, src/scss/_shared/macros/_sort.scss */
 .sort__drop {
   z-index: 1100;
   opacity: 0;
@@ -2149,7 +2156,7 @@ strong {
 }
 
 @media screen and (max-width: 1023px) {
-  /* line 40, src/scss/_shared/macros/_sort.scss */
+  /* line 46, src/scss/_shared/macros/_sort.scss */
   .sort__drop {
     position: relative;
     top: 5px;
@@ -2165,7 +2172,7 @@ strong {
   }
 }
 
-/* line 66, src/scss/_shared/macros/_sort.scss */
+/* line 72, src/scss/_shared/macros/_sort.scss */
 .sort__drop.is-open {
   z-index: 1650;
   opacity: 1;
@@ -2181,7 +2188,7 @@ strong {
 }
 
 @media screen and (max-width: 1023px) {
-  /* line 66, src/scss/_shared/macros/_sort.scss */
+  /* line 72, src/scss/_shared/macros/_sort.scss */
   .sort__drop.is-open {
     -webkit-transform: unset;
         -ms-transform: unset;
@@ -2189,7 +2196,7 @@ strong {
   }
 }
 
-/* line 77, src/scss/_shared/macros/_sort.scss */
+/* line 83, src/scss/_shared/macros/_sort.scss */
 .sort__drop:after {
   content: '';
   position: absolute;
@@ -2206,7 +2213,7 @@ strong {
 }
 
 @media screen and (max-width: 1023px) {
-  /* line 77, src/scss/_shared/macros/_sort.scss */
+  /* line 83, src/scss/_shared/macros/_sort.scss */
   .sort__drop:after {
     top: -10px;
     left: 35px;
@@ -2217,7 +2224,7 @@ strong {
   }
 }
 
-/* line 96, src/scss/_shared/macros/_sort.scss */
+/* line 102, src/scss/_shared/macros/_sort.scss */
 .sort__drop-link {
   display: -webkit-box;
   display: -webkit-flex;
@@ -2246,14 +2253,14 @@ strong {
 }
 
 @media screen and (max-width: 1023px) {
-  /* line 96, src/scss/_shared/macros/_sort.scss */
+  /* line 102, src/scss/_shared/macros/_sort.scss */
   .sort__drop-link {
     max-width: -webkit-calc(100% / 7);
     max-width: calc(100% / 7);
   }
 }
 
-/* line 113, src/scss/_shared/macros/_sort.scss */
+/* line 119, src/scss/_shared/macros/_sort.scss */
 .sort__drop-link:hover {
   color: #004eb4;
   -webkit-transition: color 0.35s ease-in-out;
@@ -2261,7 +2268,7 @@ strong {
   transition: color 0.35s ease-in-out;
 }
 
-/* line 118, src/scss/_shared/macros/_sort.scss */
+/* line 124, src/scss/_shared/macros/_sort.scss */
 .sort__drop-link.is-active {
   text-decoration: underline;
   color: #004eb4;
@@ -2270,7 +2277,7 @@ strong {
   transition: color 0.35s ease-in-out;
 }
 
-/* line 125, src/scss/_shared/macros/_sort.scss */
+/* line 131, src/scss/_shared/macros/_sort.scss */
 .sort__drop-inner {
   z-index: 1000;
   opacity: 0;
@@ -2299,7 +2306,7 @@ strong {
 }
 
 @media screen and (max-width: 1023px) {
-  /* line 125, src/scss/_shared/macros/_sort.scss */
+  /* line 131, src/scss/_shared/macros/_sort.scss */
   .sort__drop-inner {
     position: relative;
     top: 10px;
@@ -2317,7 +2324,7 @@ strong {
   }
 }
 
-/* line 153, src/scss/_shared/macros/_sort.scss */
+/* line 159, src/scss/_shared/macros/_sort.scss */
 .sort__drop-inner.is-open {
   opacity: 1;
   visibility: visible;
@@ -2332,7 +2339,7 @@ strong {
   transition: opacity 0.35s ease-in-out, visibility 0.35s ease-in-out, transform 0.35s ease-in-out, -webkit-transform 0.35s ease-in-out;
 }
 
-/* line 163, src/scss/_shared/macros/_sort.scss */
+/* line 169, src/scss/_shared/macros/_sort.scss */
 .sort:hover > .sort__drop {
   z-index: 1650;
   opacity: 1;
@@ -2348,7 +2355,7 @@ strong {
 }
 
 @media screen and (max-width: 1023px) {
-  /* line 163, src/scss/_shared/macros/_sort.scss */
+  /* line 169, src/scss/_shared/macros/_sort.scss */
   .sort:hover > .sort__drop {
     -webkit-transform: unset;
         -ms-transform: unset;
@@ -2356,7 +2363,7 @@ strong {
   }
 }
 
-/* line 174, src/scss/_shared/macros/_sort.scss */
+/* line 180, src/scss/_shared/macros/_sort.scss */
 .sort__collapse {
   position: relative;
   display: -webkit-box;
@@ -2370,12 +2377,12 @@ strong {
           flex-direction: column;
 }
 
-/* line 180, src/scss/_shared/macros/_sort.scss */
+/* line 186, src/scss/_shared/macros/_sort.scss */
 .sort__collapse:not(:last-of-type) .sort__collapse-toggle {
   border-bottom: 1px solid #bac4dd;
 }
 
-/* line 185, src/scss/_shared/macros/_sort.scss */
+/* line 191, src/scss/_shared/macros/_sort.scss */
 .sort__collapse-toggle {
   display: -webkit-box;
   display: -webkit-flex;
@@ -2388,7 +2395,7 @@ strong {
   transition: background-color 0.35s ease-in-out;
 }
 
-/* line 191, src/scss/_shared/macros/_sort.scss */
+/* line 197, src/scss/_shared/macros/_sort.scss */
 .sort__collapse-toggle:hover, .sort__collapse-toggle.is-active {
   background-color: #778098;
   -webkit-transition: background-color 0.35s ease-in-out;
@@ -2396,7 +2403,7 @@ strong {
   transition: background-color 0.35s ease-in-out;
 }
 
-/* line 197, src/scss/_shared/macros/_sort.scss */
+/* line 203, src/scss/_shared/macros/_sort.scss */
 .sort__collapse-toggle:hover > div > span, .sort__collapse-toggle.is-active > div > span {
   color: #c7f228;
   -webkit-transition: color 0.35s ease-in-out;
@@ -2404,7 +2411,7 @@ strong {
   transition: color 0.35s ease-in-out;
 }
 
-/* line 203, src/scss/_shared/macros/_sort.scss */
+/* line 209, src/scss/_shared/macros/_sort.scss */
 .sort__collapse-toggle:hover .icon-font, .sort__collapse-toggle.is-active .icon-font {
   opacity: 1;
   visibility: visible;
@@ -2413,7 +2420,7 @@ strong {
   transition: opacity 0.35s ease-in-out, visibility 0.35s ease-in-out;
 }
 
-/* line 210, src/scss/_shared/macros/_sort.scss */
+/* line 216, src/scss/_shared/macros/_sort.scss */
 .sort__collapse-toggle > div {
   display: -webkit-box;
   display: -webkit-flex;
@@ -2426,7 +2433,7 @@ strong {
   height: 100%;
 }
 
-/* line 215, src/scss/_shared/macros/_sort.scss */
+/* line 221, src/scss/_shared/macros/_sort.scss */
 .sort__collapse-toggle > div:nth-of-type(1), .sort__collapse-toggle > div:nth-of-type(3) {
   -webkit-box-pack: center;
   -webkit-justify-content: center;
@@ -2435,12 +2442,12 @@ strong {
   width: 50px;
 }
 
-/* line 221, src/scss/_shared/macros/_sort.scss */
+/* line 227, src/scss/_shared/macros/_sort.scss */
 .sort__collapse-toggle > div:nth-of-type(1) {
   border-right: 1px solid #bac4dd;
 }
 
-/* line 225, src/scss/_shared/macros/_sort.scss */
+/* line 231, src/scss/_shared/macros/_sort.scss */
 .sort__collapse-toggle > div:nth-of-type(2) {
   -webkit-box-flex: 1;
   -webkit-flex: 1;
@@ -2451,7 +2458,7 @@ strong {
   padding-left: 19px;
 }
 
-/* line 233, src/scss/_shared/macros/_sort.scss */
+/* line 239, src/scss/_shared/macros/_sort.scss */
 .sort__collapse-toggle span {
   color: #dbe2f1;
   font-size: 16px;
@@ -2461,7 +2468,7 @@ strong {
   transition: color 0.35s ease-in-out;
 }
 
-/* line 240, src/scss/_shared/macros/_sort.scss */
+/* line 246, src/scss/_shared/macros/_sort.scss */
 .sort__collapse-toggle img {
   display: block;
   max-width: 100%;
@@ -2470,7 +2477,7 @@ strong {
   margin-right: 7px;
 }
 
-/* line 248, src/scss/_shared/macros/_sort.scss */
+/* line 254, src/scss/_shared/macros/_sort.scss */
 .sort__collapse-toggle p {
   color: #ffffff;
   font-size: 16px;
@@ -2480,12 +2487,12 @@ strong {
   transition: color 0.35s ease-in-out;
 }
 
-/* line 254, src/scss/_shared/macros/_sort.scss */
+/* line 260, src/scss/_shared/macros/_sort.scss */
 .sort__collapse-toggle p span {
   color: #0a3e83;
 }
 
-/* line 259, src/scss/_shared/macros/_sort.scss */
+/* line 265, src/scss/_shared/macros/_sort.scss */
 .sort__collapse-toggle .icon-font {
   opacity: 0;
   visibility: hidden;
@@ -2500,14 +2507,14 @@ strong {
 }
 
 @media screen and (max-width: 1023px) {
-  /* line 259, src/scss/_shared/macros/_sort.scss */
+  /* line 265, src/scss/_shared/macros/_sort.scss */
   .sort__collapse-toggle .icon-font {
     opacity: 1;
     visibility: visible;
   }
 }
 
-/* line 273, src/scss/_shared/macros/_sort.scss */
+/* line 279, src/scss/_shared/macros/_sort.scss */
 .sort__collapse-body {
   overflow: hidden;
   display: none;
@@ -2525,7 +2532,7 @@ strong {
   background-color: #262e45;
 }
 
-/* line 283, src/scss/_shared/macros/_sort.scss */
+/* line 289, src/scss/_shared/macros/_sort.scss */
 .sort__collapse-body.is-open {
   display: -webkit-box;
   display: -webkit-flex;
@@ -2533,7 +2540,7 @@ strong {
   display: flex;
 }
 
-/* line 287, src/scss/_shared/macros/_sort.scss */
+/* line 293, src/scss/_shared/macros/_sort.scss */
 .sort__collapse-body button {
   outline: none;
   cursor: pointer;
@@ -2564,7 +2571,7 @@ strong {
   transition: background-color 0.35s ease-in-out;
 }
 
-/* line 303, src/scss/_shared/macros/_sort.scss */
+/* line 309, src/scss/_shared/macros/_sort.scss */
 .sort__collapse-body button:hover {
   background-color: #004aac;
   -webkit-transition: background-color 0.35s ease-in-out;
@@ -2572,7 +2579,7 @@ strong {
   transition: background-color 0.35s ease-in-out;
 }
 
-/* line 308, src/scss/_shared/macros/_sort.scss */
+/* line 314, src/scss/_shared/macros/_sort.scss */
 .sort__collapse-body button span {
   color: #ffffff;
   text-transform: uppercase;
@@ -2580,7 +2587,7 @@ strong {
   font-weight: 700;
 }
 
-/* line 316, src/scss/_shared/macros/_sort.scss */
+/* line 322, src/scss/_shared/macros/_sort.scss */
 .sort__collapse-body img {
   display: block;
   max-width: 100%;

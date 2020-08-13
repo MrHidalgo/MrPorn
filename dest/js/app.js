@@ -314,7 +314,7 @@ function renderSiteBottomBanner(category, index) {
         moreSiteCount++;
       }
     });
-    var bannerHtml = '<div class="list__specification ' + bannerClass + '" data-id="' + siteId + '">' + '<a class="list__specification-close" ><i class="icon-font icon-close"></i></a>' + '<div>' + '<div class="list__specification-header">' + '<img class="list__specification-logo" src="' + siteLogo + '"/>' + '<a class="list__specification-close" >' + '<i class="icon-font icon-close"></i>' + '</a>' + '</div>' + '<div class="list__specification-left">' + '<div>' + '<img class="list__specification-logo" src="' + siteLogo + '"/>' + '<div class="list__specification-action" spec-actionNode-js>' + '<div><a class="list__specification-visit nav_link" href="#">VISIT WEBSITE</a></div>' + '<div><a class="list__specification-read nav_link" href="' + siteItem.link + '">READ REVIEW</a></div>' + '<div class="list__specification-action-desc">' + '<p>' + tagLIne + ' <a href="#">READ MORE</a></p>' + '</div>' + '<div class="list__specification-action-skip"><a class="list__specification-circle list__specification-skip" href="#" data-id="' + siteId + '" spec-skip-js><i class="icon-font icon-point"></i><span>Skip</span></a></div>' + '<div class="list__specification-action-circle">' + '<button class="list__specification-circle list__specification-like" data-like="' + siteId + '" spec-like-js><i class="icon-font icon-like"></i><span>Like</span></button>' + '</div>' + '<div class="list__specification-action-circle">' + '<button class="list__specification-circle list__specification-dislike" data-dislike="' + siteId + '" spec-dislike-js><i class="icon-font icon-like"></i><span>Dislike</span></button>' + '</div>' + '<div class="list__specification-action-circle">' + '<div class="c-popper">' + '<button class="list__specification-circle list__specification-favorites" data-id="' + siteId + '" data-favorites="' + siteId + '" spec-favorites-js><i class="icon-font icon-star-fill"></i><i class="icon-font icon-star"></i><span>Favorites</span></button>' + '<div class="c-poppertext">' + '<u>Add To Favourites</u>' + '<u>Remove From Favourites</u>' + '</div>' + '</div>' + '</div>' + '</div>' + '<p class="list__specification-desc">' + tagLIne + '</p>' + '</div>' + '</div>' + bannerRight + '<div class="list__specification-more">' + '<div>' + '<p>More Like This</p>' + '</div>' + '<div>' + moreSites + '</div>' + '</div>' + '</div>' + '</div>';
+    var bannerHtml = '<div class="list__specification ' + bannerClass + '" data-id="' + siteId + '">' + '<a class="list__specification-close" ><i class="icon-font icon-close"></i></a>' + '<div>' + '<div class="list__specification-header">' + '<img class="list__specification-logo" src="' + siteLogo + '"/>' + '<a class="list__specification-close" >' + '<i class="icon-font icon-close"></i>' + '</a>' + '</div>' + '<div class="list__specification-left">' + '<div>' + '<img class="list__specification-logo" src="' + siteLogo + '"/>' + '<div class="list__specification-action" spec-actionNode-js>' + '<div><a class="list__specification-visit nav_link" href="#">VISIT WEBSITE</a></div>' + '<div><a class="list__specification-read nav_link" href="' + siteItem.link + '">READ REVIEW</a></div>' + '<div class="list__specification-action-desc">' + '<p>' + tagLIne + ' <a href="#">READ MORE</a></p>' + '</div>' + '<div class="list__specification-action-skip"><a class="list__specification-circle list__specification-skip" data-id="' + siteId + '" spec-skip-js><i class="icon-font icon-point"></i><span>Skip</span></a></div>' + '<div class="list__specification-action-circle">' + '<button class="list__specification-circle list__specification-like" data-like="' + siteId + '" spec-like-js><i class="icon-font icon-like"></i><span>Like</span></button>' + '</div>' + '<div class="list__specification-action-circle">' + '<button class="list__specification-circle list__specification-dislike" data-dislike="' + siteId + '" spec-dislike-js><i class="icon-font icon-like"></i><span>Dislike</span></button>' + '</div>' + '<div class="list__specification-action-circle">' + '<div class="c-popper">' + '<button class="list__specification-circle list__specification-favorites" data-id="' + siteId + '" data-favorites="' + siteId + '" spec-favorites-js><i class="icon-font icon-star-fill"></i><i class="icon-font icon-star"></i><span>Favorites</span></button>' + '<div class="c-poppertext">' + '<u>Add To Favourites</u>' + '<u>Remove From Favourites</u>' + '</div>' + '</div>' + '</div>' + '</div>' + '<p class="list__specification-desc">' + tagLIne + '</p>' + '</div>' + '</div>' + bannerRight + '<div class="list__specification-more">' + '<div>' + '<p>More Like This</p>' + '</div>' + '<div>' + moreSites + '</div>' + '</div>' + '</div>' + '</div>';
     return bannerHtml;
   }
 
@@ -345,7 +345,7 @@ function renderSiteCategory(categoryIndex) {
   var categoryData = homeData.categories[categoryId];
 
   if (!categoryData) {
-    return;
+    return '';
   }
 
   var categoryLogo = categoryData.logo;
@@ -370,19 +370,18 @@ function renderSiteCategory(categoryIndex) {
 
 function renderAllOtherCategories() {
   var catListContainer = document.querySelector('#list .c-grid');
-  /*for (let i=0; i<homeData.categories_count; i++){
-  	let catId = homeData.categories_indexes[i];
-  	let catBox = document.querySelector('.list__box-wrapper[data-name="category_'+catId+'"]');
-  	if(!catBox){
-  		let listBoxes = document.querySelectorAll('.list__box-wrapper');
-  		let categoryHtml = renderSiteCategory(i);
-  		catListContainer.insertAdjacentHTML( 'beforeend', categoryHtml );
-  			swiperCB(
-  			`.swiper-container[data-id="listSlider_${catId}"]`,
-  			`.list__box-wrapper[data-name='category_${catId}']`
-  		);
-  	}
-  }*/
+
+  for (var i = 0; i < homeData.categories_count; i++) {
+    var catId = homeData.categories_indexes[i];
+    var catBox = document.querySelector('.list__box-wrapper[data-name="category_' + catId + '"]');
+
+    if (!catBox) {
+      var listBoxes = document.querySelectorAll('.list__box-wrapper');
+      var categoryHtml = renderSiteCategory(i);
+      catListContainer.insertAdjacentHTML('beforeend', categoryHtml);
+      swiperCB(".swiper-container[data-id=\"listSlider_".concat(catId, "\"]"), ".list__box-wrapper[data-name='category_".concat(catId, "']"));
+    }
+  }
 
   boxHover();
 }
@@ -1019,10 +1018,9 @@ var ajaxAdminEndpoint = '/wp-admin/admin-ajax.php';
       }
 
       if (_ev.closest('.list__specification-close')) {
-        console.log('clicked on a banner close');
         closeBanner(_ev);
       } else if (_ev.closest('.list__box-more')) {
-        showBanner(ev);
+        showBanner(_ev);
       } else if (_ev.closest('[spec-like-js]')) {
         onBannerLikeClick(_ev.closest('[spec-like-js]'));
       } else if (_ev.closest('[spec-dislike-js]')) {
@@ -1041,6 +1039,8 @@ var ajaxAdminEndpoint = '/wp-admin/admin-ajax.php';
         onPlayClick(_ev.closest('[video-toggle-js]'));
       } else if (_ev.closest('[video-pause-js]')) {
         onPauseClick(_ev.closest('[video-pause-js]'));
+      } else if (_ev.closest('[spec-skip-js]')) {
+        onSkip(_ev.closest('[spec-skip-js]'));
       }
 
       if (!_ev.closest(className)) {
@@ -1198,9 +1198,8 @@ var ajaxAdminEndpoint = '/wp-admin/admin-ajax.php';
     }
   };
 
-  function showBanner(ev) {
-    var _el = ev.target,
-        _boxParent = _el.closest('.list__box'),
+  function showBanner(_el) {
+    var _boxParent = _el.closest('.list__box'),
         _boxID = _boxParent.getAttribute('data-id'),
         _parentNode = _el.closest('.list__box-wrapper');
 
@@ -1576,6 +1575,21 @@ var ajaxAdminEndpoint = '/wp-admin/admin-ajax.php';
       }, false);
     }
   };
+
+  function onSkip(el) {
+    var elID = el.getAttribute('data-id'),
+        elParent = el.closest('.list__box-wrapper');
+    setTimeout(function () {
+      el.closest('.list__specification').querySelector('.list__specification-close').click();
+    }, 0);
+    var nextSite = elParent.querySelector('.swiper-slide[data-siteid="' + elID + '"]').nextSibling;
+
+    if (nextSite) {
+      if (nextSite.querySelector('.list__box-more')) {
+        showBanner(nextSite.querySelector('.list__box-more'));
+      }
+    }
+  }
 
   var toggleMoreBox = function toggleMoreBox() {
     var moreBoxes = document.querySelectorAll('[list-box-more-js]');

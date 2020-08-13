@@ -4,6 +4,7 @@
 	display: flex;
 	align-items: center;
 	width: 100%;
+	min-height: 48px;
 
 	@include adaptive(767) {
 	}
@@ -59,6 +60,12 @@
 			height: 17px;
 			background-size: contain;
 			margin-left: 10px;
+
+			@include adaptive(767) {
+				background-position: center;
+				width: 28px;
+				height: 15px;
+			}
 		}
 	}
 

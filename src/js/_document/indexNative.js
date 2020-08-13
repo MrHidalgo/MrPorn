@@ -104,10 +104,9 @@ const ajaxAdminEndpoint = '/wp-admin/admin-ajax.php';
 
 
 			if(_ev.closest('.list__specification-close')){
-				console.log('clicked on a banner close');
 				closeBanner(_ev);
 			}else if(_ev.closest('.list__box-more')){
-				showBanner(ev);
+				showBanner(_ev);
 			}else if(_ev.closest('[spec-like-js]')){
 				onBannerLikeClick(_ev.closest('[spec-like-js]'));
 			}else if(_ev.closest('[spec-dislike-js]')){
@@ -126,6 +125,8 @@ const ajaxAdminEndpoint = '/wp-admin/admin-ajax.php';
 				onPlayClick(_ev.closest('[video-toggle-js]'));
 			}else if(_ev.closest('[video-pause-js]')){
 				onPauseClick(_ev.closest('[video-pause-js]'));
+			}else if(_ev.closest('[spec-skip-js]')){
+				onSkip(_ev.closest('[spec-skip-js]'));
 			}
 
 
@@ -299,10 +300,9 @@ const ajaxAdminEndpoint = '/wp-admin/admin-ajax.php';
 		}
 	};
 
-	function showBanner(ev){
-		const _el = ev.target,
+	function showBanner(_el){
 
-		_boxParent = _el.closest('.list__box'),
+		var _boxParent = _el.closest('.list__box'),
 			_boxID = _boxParent.getAttribute('data-id'),
 			_parentNode = _el.closest('.list__box-wrapper');
 
@@ -717,6 +717,26 @@ const ajaxAdminEndpoint = '/wp-admin/admin-ajax.php';
 			}, false);
 		}
 	};
+
+	function onSkip(el){
+			var elID = el.getAttribute('data-id'),
+			elParent = el.closest('.list__box-wrapper');
+
+		setTimeout(() => {
+			el.closest('.list__specification').querySelector('.list__specification-close').click();
+		}, 0);
+
+
+
+
+		var nextSite = elParent.querySelector('.swiper-slide[data-siteid="'+elID+'"]').nextSibling;
+
+		if(nextSite){
+			if(nextSite.querySelector('.list__box-more')){
+				showBanner(nextSite.querySelector('.list__box-more'));
+			}
+		}
+	}
 
 
 	const toggleMoreBox = () => {

@@ -195,7 +195,7 @@ function renderSiteBottomBanner(category, index){
 			'<div class="list__specification-action-desc">'+
 			'<p>'+tagLIne+' <a href="#">READ MORE</a></p>'+
 			'</div>'+
-			'<div class="list__specification-action-skip"><a class="list__specification-circle list__specification-skip" href="#" data-id="'+siteId+'" spec-skip-js><i class="icon-font icon-point"></i><span>Skip</span></a></div>'+
+			'<div class="list__specification-action-skip"><a class="list__specification-circle list__specification-skip" data-id="'+siteId+'" spec-skip-js><i class="icon-font icon-point"></i><span>Skip</span></a></div>'+
 			'<div class="list__specification-action-circle">' +
 			'<button class="list__specification-circle list__specification-like" data-like="'+siteId+'" spec-like-js><i class="icon-font icon-like"></i><span>Like</span></button>' +
 			'</div>'+
@@ -257,7 +257,7 @@ function renderSiteCategory(categoryIndex){
 	let categoryId = homeData.categories_indexes[categoryIndex];
 	let categoryData = homeData.categories[categoryId];
 	if(!categoryData){
-		return ;
+		return '';
 	}
 
 	let categoryLogo = categoryData.logo;
@@ -328,7 +328,7 @@ function renderSiteCategory(categoryIndex){
 function renderAllOtherCategories(){
 	let catListContainer = document.querySelector('#list .c-grid');
 
-	/*for (let i=0; i<homeData.categories_count; i++){
+	for (let i=0; i<homeData.categories_count; i++){
 		let catId = homeData.categories_indexes[i];
 		let catBox = document.querySelector('.list__box-wrapper[data-name="category_'+catId+'"]');
 		if(!catBox){
@@ -341,7 +341,7 @@ function renderAllOtherCategories(){
 				`.list__box-wrapper[data-name='category_${catId}']`
 			);
 		}
-	}*/
+	}
 
 	boxHover();
 }

@@ -276,7 +276,10 @@ $breakpointsMedia: (
 	max-wide-medium 	: "(max-width: 1599px)",
 	wide-large      	: "(min-width: 1600px)",	/// wide-large
 	max-wide-large    : "(max-width: 1919px)",
-	hd        				: "(min-width: 1920px)"		/// hd
+	hd        				: "(min-width: 1920px)",		/// hd
+	ipad							:	"(min-device-width: 768px) and (max-device-width: 1024px) and (-webkit-min-device-pixel-ratio: 2)", //ipad
+	ipad_portrait			:	"(min-device-width: 768px) and (max-device-width: 1024px) and (orientation: portrait) and (-webkit-min-device-pixel-ratio: 2)", //ipad portrait
+	ipad_landscape		: "(min-device-width: 768px) and (max-device-width: 1024px) and (orientation: landscape) and (-webkit-min-device-pixel-ratio: 2)", //ipad landscape
 ) !default;
 
 @mixin respond($name) {

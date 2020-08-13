@@ -31,17 +31,24 @@
 		text-decoration: none;
 		color: #fff;
 
+		&.grey{
+			color: #d6d6d6;
+		}
+
 		&.bold{
 			font-weight: 600;
+
+			&::before {
+				font-weight: bold;
+			}
 		}
 
 		@include adaptive(767) {
-			font-size: 14px;
+			font-size: 16px;
 		}
 
 		&::before {
 			content: attr(data-label);
-			font-weight: bold;
 
 			@include adaptive(767) {
 				content: attr(data-label-mobile);
