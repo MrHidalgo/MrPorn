@@ -53,6 +53,11 @@ var hide = function (elem) {
 		elem.style.display = 'none';
 	}
 };
+var removeElement = function (elem) {
+	if(elem){
+		elem.remove();
+	}
+};
 var toggleClass = function (element, className) {
 
 	if (element.classList) {

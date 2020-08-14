@@ -59,6 +59,12 @@ var hide = function hide(elem) {
   }
 };
 
+var removeElement = function removeElement(elem) {
+  if (elem) {
+    elem.remove();
+  }
+};
+
 var toggleClass = function toggleClass(element, className) {
   if (element.classList) {
     element.classList.toggle(className);
@@ -1056,9 +1062,7 @@ var ajaxAdminEndpoint = '/wp-admin/admin-ajax.php';
           document.querySelector('.sort__drop-inner').classList.remove('is-open');
         }
 
-        for (var i = 0; i < document.querySelectorAll('.sort__drop-link').length; i++) {
-          document.querySelectorAll('.sort__drop-link')[i].classList.remove('is-active');
-        }
+        document.querySelector('.sort__drop-link.is-active').classList.toggle('is-active');
       }
     }, false);
   };

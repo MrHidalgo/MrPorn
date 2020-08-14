@@ -1,0 +1,132 @@
+// LOGIN :: START
+.login_panel_container {
+	padding: 0 15px;
+}
+.login_panel {
+	background: #fff;
+	margin-left: auto;
+	margin-right: auto;
+	margin-bottom: 15px;
+	ul {
+		font-family: gloria hallelujah,cursive;
+		color: #d6ff23;
+		background: #0e478d;
+		background: -moz-linear-gradient(top,#0e478d 0%,#0a3365 100%);
+		background: -webkit-gradient(left top,left bottom,color-stop(0%,#0e478d),color-stop(100%,#0a3365));
+		background: -webkit-linear-gradient(top,#0e478d 0%,#0a3365 100%);
+		background: -o-linear-gradient(top,#0e478d 0%,#0a3365 100%);
+		background: -ms-linear-gradient(top,#0e478d 0%,#0a3365 100%);
+		background: linear-gradient(to bottom,#0e478d 0%,#0a3365 100%);
+		filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#0e478d',endColorstr='#0a3365',GradientType=0);
+		padding: 10px 10px 0;
+		margin: 25px 0 0;
+		text-align: center;
+		font-size: 28px;
+		border-bottom: 8px solid #90b0ca;
+
+		list-style-type: none;
+
+		@include adaptive(767){
+			font-size: 16px;
+		}
+
+		li{
+			width: 50%;
+			text-align: center;
+			display: inline-block;
+			padding: 10px 15px;
+
+			&.active {
+				background: #90b0ca;
+			}
+		}
+
+		a{
+			color: #fff!important;
+			text-transform: uppercase;
+		}
+	}
+
+	.tab-content{
+		background: #fff;
+	}
+}
+.signup_tip_conainer{
+	padding-bottom: 10px;
+	display: flex;
+	flex-wrap: wrap;
+
+	.signup_tip {
+		width: 33.3333334%;
+		color: #0a3862;
+		text-align: left;
+		position: relative;
+		padding: 0 25px 0 80px;
+		margin-top: 15px;
+		font-size: 22px;
+		display: inline-block;
+		font-weight: 700;
+		line-height: 28px;
+		text-transform: uppercase;
+		border-right: 2px solid #eaeaea;
+
+		i{
+			background: url(../images/green_tick.png);
+			width: 50px;
+			height: 50px;
+			display: inline-block;
+			position: absolute;
+			left: 20px;
+			top: 0;
+		}
+	}
+}
+.cleanlogin-container{
+	padding: 15px;
+
+	.join_button, input[type=submit]{
+		width: 100%!important;
+		border: none;
+		height: 60px!important;
+		line-height: 60px;
+		padding: 0!important;
+		font-size: 26px;
+		background: #327d00;
+		color: #fff;
+		text-transform: uppercase;
+		cursor: pointer;
+		background: -moz-linear-gradient(top,#327d00 0%,#225600 100%);
+		background: -webkit-gradient(left top,left bottom,color-stop(0%,#327d00),color-stop(100%,#225600));
+		background: -webkit-linear-gradient(top,#327d00 0%,#225600 100%);
+		background: -o-linear-gradient(top,#327d00 0%,#225600 100%);
+		background: -ms-linear-gradient(top,#327d00 0%,#225600 100%);
+		background: linear-gradient(to bottom,#327d00 0%,#225600 100%);
+		filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#327d00',endColorstr='#225600',GradientType=0);
+
+		@include adaptive(767){
+			font-size: 18px;
+		}
+	}
+	form{
+		label{
+			font-weight: 700;
+		}
+	}
+	.forgot{
+		float: right;
+	}
+}
+.cleanlogin-field{
+	margin-bottom: 15px;
+
+	input{
+		padding: 15px 25px;
+		border-color: #333;
+		border-radius: 3px;
+		width: 100%;
+
+		&.error{
+			border-color: red;
+		}
+	}
+}

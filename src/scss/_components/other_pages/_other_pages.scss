@@ -1,0 +1,402 @@
+// OTHER_PAGES :: START
+.other_page{
+	&_content{
+		padding: 30px 35px;
+		background: #fff;
+
+		@include respond('ipad_portrait'){
+			padding: 15px;
+		}
+		@include adaptive(767){
+			padding: 15px;
+		}
+	}
+}
+ul{
+	margin: 0;
+	padding: 0;
+	list-style: none;
+}
+//About us
+.abouticon1, .abouticon2, .abouticon3, .abouticon4, .abouticon5, .abouticon6, .abouticon7, .abouticon8, .abouticon9, .abouticon10 {
+	position: absolute;
+	top: 15px;
+	left: 0;
+	width: 81px;
+	height: 82px;
+	background-image: url(../images/about-icon1.png);
+	background-size: 100%;
+}
+.abouticon2{
+	background-image: url(../images/about-icon2.png);
+}
+.abouticon3{
+	background-image: url(../images/about-icon3.png);
+}
+.abouticon4{
+	background-image: url(../images/about-icon4.png);
+}
+.abouticon5{
+	background-image: url(../images/about-icon5.png);
+}
+.abouticon6{
+	background-image: url(../images/about-icon6.png);
+}
+.abouticon7{
+	background-image: url(../images/about-icon7.png);
+}
+.abouticon8{
+	background-image: url(../images/about-icon8.png);
+}
+.abouticon9{
+	background-image: url(../images/about-icon9.png);
+}
+.abouticon10{
+	background-image: url(../images/about-icon10.png);
+}
+
+
+.aboutusC{
+	li{
+		position: relative;
+		margin-bottom: 20px;
+	}
+	.aboutp{
+		border-radius: 10px;
+		background: #eff5fd;
+		padding: 20px 20px 20px 40px;
+		margin-left: 60px;
+		border: 2px solid #eff5fd;
+
+		h5{
+			font-size: 24px;
+			color: #1657a8;
+			margin-top: 23px;
+			margin-bottom: 40px;
+
+			@include respond('ipad_portrait'){
+				margin: 13px 0;
+			}
+			@include adaptive(767){
+				margin: 13px 0;
+			}
+		}
+
+		p{
+			font-size: 16px;
+			color: #3f3f3f;
+			line-height: 24px;
+		}
+	}
+}
+.acontact {
+	text-align: center;
+	margin: 40px auto 10px;
+
+	img{
+		max-width: 90%;
+		margin: 5px;
+	}
+}
+.whtbox{
+	h5{
+		font-size: 24px;
+		color: #1657a8;
+		margin-top: 23px;
+		margin-bottom: 40px;
+		font-weight: 700;
+
+		&:first-child{
+			margin-top: 0;
+		}
+
+		@include respond('ipad_portrait'){
+			margin: 13px 0;
+		}
+		@include adaptive(767){
+			margin: 13px 0;
+		}
+	}
+
+	p{
+		margin: 20px 0;
+		font-size: 14px;
+		line-height: 18px;
+		color: #3f3f3f;
+	}
+	ul{
+		margin: 20px 0;
+		padding: 0;
+		list-style: none;
+
+		li{
+			margin: 15px 0;
+			padding-left: 27px;
+			position: relative;
+
+			&:before{
+				position: absolute;
+				top: 3px;
+				left: 0;
+				content: '•';
+				font-size: 30px;
+				color: #3f3f3f;
+				line-height: 13px;
+			}
+		}
+	}
+}
+
+//Contact us page
+.contactusC{
+	li{
+		h5{
+			font-size: 36px;
+			color: #0047a0;
+			font-weight: 700;
+			display: inline-block;
+			vertical-align: middle;
+			margin: 15px 10px;
+
+			@include respond('ipad'){
+				font-size: 30px;
+			}
+			@include adaptive(767){
+				font-size: 28px;
+			}
+		}
+	}
+
+	.cont-icon1, .cont-icon2, .cont-icon3, .cont-icon4, .cont-icon5, .cont-icon6 {
+		display: inline-block;
+		vertical-align: middle;
+		width: 59px;
+		height: 53px;
+		background-image: url(../images/contact-icon1.png);
+		background-size: 100%;
+		margin: -7px 5px 0;
+	}
+	.cont-icon2{
+		background-image: url(../images/contact-icon2.png);
+	}
+	.cont-icon3{
+		background-image: url(../images/contact-icon3.png);
+	}
+	.cont-icon4{
+		background-image: url(../images/contact-icon4.png);
+	}
+	.cont-icon5{
+		background-image: url(../images/contact-icon5.png);
+	}
+	.cont-icon6{
+		background-image: url(../images/contact-icon6.png);
+	}
+
+	p{
+		margin: 10px 0 20px;
+		font-size: 18px;
+		line-height: 30px;
+
+		strong{
+			font-weight: 700;
+		}
+
+		&.aligncenter{
+			text-align: center;
+		}
+	}
+
+	img{
+		max-width: 100%;
+		height: auto;
+
+		&.aligncenter {
+			margin: 5px auto;
+			display: block;
+		}
+	}
+
+	.birdc {
+		position: absolute;
+		top: -20px;
+		left: 10px;
+		width: 250px;
+
+		@include respond('mobile_portrait'){
+			position: relative;
+		}
+	}
+
+
+
+	.contblu {
+		margin: 5px 0 15px;
+		border-radius: 10px;
+		background: #eff5fd url(images/bg-lyt-blu.png) left top repeat-x;
+		padding: 20px 20px 20px 40px;
+		border: 2px solid #eff5fd;
+	}
+	.aligncenter{
+		text-align: center;
+	}
+
+	.donationmsg {
+		position: fixed;
+		left: 10%;
+		top: 15%;
+		background: #082248;
+		padding: 30px;
+		text-align: center;
+		width: 80%;
+		color: #fff;
+		z-index: 9999;
+		display: none;
+	}
+	i.closex {
+		position: absolute;
+		top: 30px;
+		right: 30px;
+		background: url(../images/closex.png);
+		width: 29px;
+		height: 29px;
+		cursor: pointer;
+		z-index: 9999;
+	}
+
+	.msg {
+		padding: 30px;
+
+		h2{
+			font-size: 72px;
+			font-weight: 700;
+			margin-bottom: 30px;
+		}
+	}
+}
+.contgry {
+	border: 2px solid #f6f6f6;
+	border-radius: 10px;
+	background: #f6f6f6 url(../images/bg-lyt-gry.png) center top repeat-x;
+	padding: 20px 30px;
+	position: relative;
+	margin-bottom: 15px;
+
+	p{
+		display: block;
+		vertical-align: middle;
+		font-size: 26px;
+		line-height: 48px;
+		color: #474841;
+		margin-left: 280px;
+
+		@include respond('ipad'){
+			font-size: 20px;
+		}
+
+		@include adaptive(767){
+			font-size: 26px;
+			line-height: 38px;
+			margin: 0;
+		}
+	}
+}
+//Contact us end
+
+//Advertising
+.page-template-advertising{
+	section.list{
+		background: #030a16 url(../images/anuncio-bg.jpg) top no-repeat;
+		background-size: 100%;
+	}
+}
+.advC {
+	text-align: center;
+	padding: 10px 0;
+	color: #fff;
+
+	@include respond('ipad_portrait'){
+		padding: 20px 0 10px;
+	}
+	@include adaptive(767){
+		padding: 20px 0 10px;
+	}
+
+	h2{
+		font-size: 60px;
+		font-weight: 700;
+		color: #09a0ff;
+		margin: 20px 0 30px;
+
+		@include adaptive(767){
+			font-size: 36px;
+		}
+	}
+	h4{
+		position: relative;
+		border: 1px solid #5a83a8;
+		padding: 25px 30px;
+		font-size: 22px;
+		line-height: 36px;
+		margin: 0 5% 30px;
+
+		&:after{
+			position: absolute;
+			left: 50%;
+			bottom: -42px;
+			width: 43px;
+			height: 50px;
+			background-image: url(../images/anuncio-arrw.png);
+			content: '';
+			background-size: 100%;
+			margin-left: -21px;
+		}
+	}
+	img{
+		max-width: 100%;
+	}
+	ul{
+		margin-bottom: 80px;
+	}
+	li{
+		text-align: left;
+		position: relative;
+		margin: 40px 5%;
+
+		p{
+			font-size: 18px;
+			line-height: 30px;
+		}
+	}
+
+	.adttl {
+		font-size: 30px;
+		font-weight: 700;
+		color: #10b3ff;
+
+		@include adaptive(767){
+			font-size: 20px;
+		}
+
+		.numc {
+			display: inline-block;
+			width: 37px;
+			height: 38px;
+			background-image: url(../images/anuncio-num.png);
+			margin-right: 10px;
+			text-align: center;
+			color: #040c1a;
+			font-weight: 900;
+			text-shadow: 1px 1px 0 rgba(255,255,255,.3);
+			line-height: 37px;
+			background-size: 100%;
+		}
+	}
+
+	small{
+		text-align: center;
+		font-size: 18px;
+		color: #fff;
+		display: block;
+		margin: 20px 10px 30px;
+	}
+}

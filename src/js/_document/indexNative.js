@@ -144,9 +144,7 @@ const ajaxAdminEndpoint = '/wp-admin/admin-ajax.php';
 					document.querySelector('.sort__drop-inner').classList.remove('is-open');
 				}
 
-				for(let i = 0; i < document.querySelectorAll('.sort__drop-link').length; i++) {
-					document.querySelectorAll('.sort__drop-link')[i].classList.remove('is-active');
-				}
+				document.querySelector('.sort__drop-link.is-active').classList.toggle('is-active');
 			}
 		}, false);
 	};
