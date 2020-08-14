@@ -6,6 +6,7 @@
 	align-items: center;
 	padding: 7px 15px;
 	width: 100%;
+	min-height: 48px;
 
 	@include adaptive(767) {
 		padding: 5px 8px;
@@ -38,6 +39,10 @@
 		color: #fff;
 		font-weight: 700;
 		flex: 1;
+
+		@include respond('ipad_portrait'){
+			font-size: 22px;
+		}
 
 		@include adaptive(767) {
 			font-size: 16px;

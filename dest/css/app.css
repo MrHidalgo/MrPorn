@@ -733,8 +733,20 @@ strong {
   }
 }
 
+/* line 182, src/scss/_shared/_main-setting-reset.scss */
+.visible-xs-inline {
+  display: none;
+}
+
 @media screen and (max-width: 767px) {
-  /* line 183, src/scss/_shared/_main-setting-reset.scss */
+  /* line 182, src/scss/_shared/_main-setting-reset.scss */
+  .visible-xs-inline {
+    display: inline-block;
+  }
+}
+
+@media screen and (max-width: 767px) {
+  /* line 191, src/scss/_shared/_main-setting-reset.scss */
   .hidden-xs {
     display: none;
   }

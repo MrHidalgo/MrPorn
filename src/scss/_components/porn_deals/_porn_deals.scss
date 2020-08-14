@@ -1,11 +1,4 @@
 // PORN_DEALS :: START
-
-.site-content{
-	@include adaptive(767) {
-		margin-top: 90px;
-	}
-}
-
 .coupon_container{
 	background: #b0bcca;
 	padding-bottom: 20px;
@@ -17,6 +10,10 @@
 		color: #b3ff00;
 		font-size: 36px;
 		padding: 10px 30px;
+
+		@include respond('ipad'){
+			font-size: 30px;
+		}
 
 		p{
 			color: #fff;
@@ -104,29 +101,31 @@
 			border-bottom: 1px solid #000;
 		}
 
+		i{
+			width: 40px;
+			height: 40px;
+			background-image: url(../images/coupon/prem-icon.png);
+			background-repeat: no-repeat!important;
+		}
 		.premIcon, .vrIcon, .liveIcon, .adultIcon, .toyIcon, .hentaiIcon, .gayIcon {
 			display: inline-block;
 			vertical-align: middle;
-			width: 40px;
-			height: 40px;
-			background: url(../images/coupon/prem-icon.png);
-			background-repeat: no-repeat!important;
 			margin-right: 8px;
 		}
 
 		i.vrIcon {
-			background: url(../images/coupon/vr-icon.png);
+			background-image: url(../images/coupon/vr-icon.png);
 		}
 
 		i.liveIcon {
-			background: url(../images/coupon/live-icon.png);
+			background-image: url(../images/coupon/live-icon.png);
 		}
 
 		i.adultIcon {
-			background: url(../images/coupon/adult-icon.png);
+			background-image: url(../images/coupon/adult-icon.png);
 		}
 		i.hentaiIcon {
-			background: url(../images/coupon/hentai-icon.png);
+			background-image: url(../images/coupon/hentai-icon.png);
 		}
 
 		a{
@@ -144,6 +143,27 @@
 				margin-left: 30px;
 			}
 		}
+
+		@include respond('ipad'){
+			li{
+				padding: 8px 5px;
+				font-size: 12px;
+
+				i{
+					width: 25px;
+					height: 25px;
+					background-size: 100%;
+				}
+			}
+		}
+
+		@include respond('ipad_landscape'){
+			width: 185px;
+		}
+
+		@include respond('ipad_portrait'){
+			width: 150px;
+		}
 	}
 
 	.check_coupons {
@@ -151,6 +171,10 @@
 		right: 4.5%;
 		bottom: 0;
 		width: 31.8%;
+
+		img{
+			max-width: 100%;
+		}
 	}
 }
 .banner_bottom{
@@ -170,11 +194,24 @@
 		background: url(../images/coupon/head-icon.png) left center no-repeat;
 		padding: 19px 0 19px 105px;
 		display: inline-block;
+
+		@include respond('ipad_landscape'){
+			font-size: 28px;
+		}
+
+		@include respond('ipad_portrait'){
+			font-size: 24px;
+		}
 	}
+
 	p{
 		font-size: 18px;
 		color: #fff;
 		line-height: 30px;
+
+		@include respond('ipad_portrait'){
+			font-size: 16px;
+		}
 	}
 }
 .coupon_search{
@@ -207,6 +244,15 @@
 		height: 45px;
 		position: relative;
 
+		@include respond('ipad_portrait'){
+			position: absolute;
+			width: 50px;
+			right: 0;
+			height: 36px;
+			top: 0;
+			background-size: 24px;
+		}
+
 		@include adaptive(767) {
 			position: absolute;
 			width: 50px;
@@ -231,6 +277,13 @@
 			&:focus, &:active{
 				outline: none;
 			}
+
+			@include respond('ipad_portrait'){
+				visibility: hidden;
+			}
+			@include adaptive(767) {
+				visibility: hidden;
+			}
 		}
 
 		.groupon-ajax-search{
@@ -254,6 +307,12 @@
 		display: inline-block;
 		margin-left: 1.5%;
 
+		@include respond('ipad_portrait'){
+			width: 100%;
+			margin: 0;
+			padding-right: 50px;
+		}
+
 		@include adaptive(767) {
 			width: 100%;
 			margin: 0;
@@ -275,6 +334,9 @@
 			color: #fff;
 			font-size: 24px;
 
+			@include respond('ipad_portrait'){
+				font-size: 14px;
+			}
 			@include adaptive(767) {
 				 font-size: 14px;
 			}
@@ -288,8 +350,18 @@
 	.close_search{
 		display: none;
 
+		@include respond('ipad_portrait'){
+			display: none;
+			position: absolute;
+			right: 10px;
+			top: 0;
+			line-height: 35px;
+			font-size: 28px;
+			cursor: pointer;
+		}
+
 		@include  adaptive(767){
-			display: none!important;
+			display: none;
 			position: absolute;
 			right: 10px;
 			top: 0;
@@ -310,9 +382,14 @@
 	display: flex;
 	align-items: center;
 
+	@include respond('ipad_portrait'){
+		align-items: flex-start;
+	}
+
 	@include adaptive(767) {
-		padding: 0 20px 0;
 		font-size: 16px;
+		flex-direction: column;
+		padding: 3px 20px 3px;
 	}
 
 	h2{
@@ -321,6 +398,10 @@
 		display: inline-block;
 		font-size: 25px;
 		line-height: 48px;
+
+		@include respond('ipad_portrait'){
+			font-size: 18px;
+		}
 
 		@include adaptive(767){
 			font-size: 18px;
@@ -389,6 +470,9 @@
 	position: relative;
 	padding: 0 35px;
 
+	@include respond('ipad'){
+		padding: 5px 20px;
+	}
 	@include adaptive(767) {
 		padding: 0 5px;
 	}
@@ -400,11 +484,21 @@
 	.coupon_list_item{
 		width: 25%;
 
+		@include respond('ipad_landscape'){
+			width: 33.3333334%;
+		}
+		@include respond('ipad_portrait'){
+			width: 50%;
+		}
+
 		&:hover .coupon_hover {
 			display: block;
 		}
 
 		@include adaptive(767) {
+			width: 50%;
+		}
+		@include respond('mobile_portrait'){
 			width: 100%;
 		}
 
@@ -470,22 +564,31 @@
 				max-width: 240px;
 			}
 
+			&:after {
+				display: none;
+				position: absolute;
+				content: ' ';
+				background: url(../images/icon_swipe.png) no-repeat;
+				right: -8px;
+				top: 1px;
+				height: 39px;
+				width: 55px;
+				background-size: contain;
+				background-position: center;
+
+				@include respond('ipad'){
+					display: block;
+				}
+				@include adaptive(767){
+					display: block;
+				}
+			}
+
 			@include adaptive(767) {
 				height: 160px;
 				overflow: hidden;
 
-				&:after {
-					display: block;
-					position: absolute;
-					content: ' ';
-					background: url(../images/icon_swipe.png) no-repeat;
-					right: -8px;
-					top: 1px;
-					height: 39px;
-					width: 55px;
-					background-size: contain;
-					background-position: center;
-				}
+
 			}
 		}
 
@@ -501,7 +604,6 @@
 
 			.img_cover {
 				max-height: 135px;
-				overflow: hidden;
 
 				img{
 					width: 100%;
@@ -522,7 +624,7 @@
 				overflow: hidden;
 				display: -webkit-box;
 				line-height: 21px;
-				font-size: 18px;
+				font-size: 14px;
 			}
 
 			.coupon_title{
@@ -547,12 +649,28 @@
 			.coupon_views{
 				display: flex;
 				padding: 0 10px;
+
+				@include respond('ipad'){
+					justify-content: center;
+				}
+				@include adaptive(767) {
+					justify-content: center;
+				}
 			}
 			.coupon_total{
 				flex: 1;
 				width: 60%;
 				text-align: left;
 				color: #727272;
+
+				@include respond('ipad'){
+					width: 100%;
+					text-align: center;
+				}
+				@include adaptive(767) {
+					width: 100%;
+					text-align: center;
+				}
 
 				strong{
 					color: #000;
@@ -562,6 +680,13 @@
 
 			.coupon_share{
 				text-align: right;
+
+				@include respond('ipad'){
+					display: none;
+				}
+				@include adaptive(767) {
+					display: none;
+				}
 			}
 		}
 
@@ -605,6 +730,12 @@
 	display: flex;
 	padding: 15px;
 
+	@include respond('ipad_portrait'){
+		padding: 0;
+		margin: 0;
+		flex-direction: column;
+		width: 100%;
+	}
 	@include adaptive(767){
 		padding: 0;
 		margin: 0;
@@ -615,6 +746,15 @@
 .deal_left{
 	width: 46%;
 	margin-right: 15px;
+
+	@include respond('ipad_landscape'){
+		width: 45%;
+	}
+
+	@include respond('ipad_portrait'){
+		width: 100%;
+		margin: 0;
+	}
 
 	@include adaptive(767){
 		width: 100%;
@@ -721,6 +861,10 @@
 			vertical-align: top;
 			line-height: 22px;
 
+			@include respond('ipad'){
+				font-size: 13px;
+			}
+
 			@include adaptive(767){
 				width: 100%;
 			}
@@ -735,6 +879,10 @@
 		text-align: center;
 		color: #636363;
 		padding-bottom: 10px;
+
+		@include respond('ipad_portrait'){
+			display: none;
+		}
 
 		span{
 			font-size: 16px;
@@ -762,6 +910,10 @@
 		background: linear-gradient(to bottom,#d0f44d 0%,#99b438 100%);
 		filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#d0f44d',endColorstr='#99b438',GradientType=0 );
 		text-align: center;
+
+		@include respond('ipad'){
+			font-size: 19px;
+		}
 	}
 
 	.send_to_friend {
@@ -814,6 +966,18 @@
 .deal_image {
 	margin: 20px 20px 15px;
 
+	img{
+		max-width: 100%;
+	}
+
+	@include respond('ipad_portrait'){
+		margin: 0 15px 15px;
+
+		img{
+			width: 100%;
+		}
+	}
+
 	@include adaptive(767){
 		margin: 0 15px 15px;
 
@@ -823,6 +987,13 @@
 	}
 }
 .deal_center{
+	@include respond('ipad'){
+		flex: 0 0 320px;
+	}
+
+	@include respond('ipad_portrait'){
+		display: none;
+	}
 	@include adaptive(767){
 		display: none;
 	}
@@ -861,6 +1032,13 @@
 	flex: 0 0 230px;
 	padding: 0 0 0 15px;
 
+	@include respond('ipad_landscape'){
+		flex: 0 0 215px;
+	}
+	@include respond('ipad_portrait'){
+		padding: 0 0 0 0;
+	}
+
 	@include adaptive(767){
 		padding: 0;
 	}
@@ -883,6 +1061,7 @@
 .deal_inner_col{
 	background: #fff;
 	position: relative;
+	height: 100%;
 }
 
 .btn_redeem {
@@ -1012,6 +1191,11 @@
 	}
 	.more_deal_item{
 
+		@include respond('ipad_portrait'){
+			width: 25%;
+			padding: 5px;
+		}
+
 		@include adaptive(767){
 			width: 50%;
 			padding: 5px;
@@ -1050,6 +1234,10 @@
 				background: #ffe52c;
 				position: relative;
 
+				@include respond('ipad_portrait'){
+					font-size: 12px;
+					width: 55%;
+				}
 				@include adaptive(767){
 					font-size: 12px;
 					width: 55%;
@@ -1074,6 +1262,10 @@
 				color: #000;
 				line-height: 14px;
 
+				@include respond('ipad_portrait'){
+					font-size: 11px;
+					width: 45%;
+				}
 				@include adaptive(767){
 					font-size: 11px;
 					width: 45%;
@@ -1121,6 +1313,17 @@
 		color: #001d36;
 	}
 
+	@include respond('ipad_landscape'){
+		width: 97%;
+	}
+
+	@include respond('ipad_portrait'){
+		width: 97%;
+		font-size: 15px;
+		background: #6aaf3f;
+		color: #fff;
+	}
+
 	@include adaptive(767){
 		background: #6aaf3f;
 		color: #fff;
@@ -1150,6 +1353,23 @@
 	}
 }
 
+@include respond('ipad_portrait'){
+	body.search_open .search_input{
+		width: 100%;
+		background-position-x: 10px;
+	}
+
+	body.search_open .close_search{
+		position: absolute;
+		right: 10px;
+		top: 0;
+		line-height: 35px;
+		font-size: 28px;
+		cursor: pointer;
+		display: block;
+	}
+}
+
 @include adaptive(767) {
 	body.search_open .search_input{
 		width: 100%;
@@ -1169,6 +1389,41 @@
 
 .mobile_claim_deal {
 	display: none;
+
+	@include respond('ipad_portrait'){
+		position: fixed;
+		bottom: 0;
+		z-index: 10000;
+		background: #fff;
+		width: 100%;
+		z-index: 10000;
+		left: 0;
+		border-top: 1px solid #999;
+		padding: 0 15px;
+		display: block;
+
+		a{
+			display: block;
+			padding: 3px 10px;
+			margin: 5px 5px 2px;
+			background: #55a126;
+			color: #fff;
+			font-family: inherit;
+			font-size: 15px;
+			text-transform: uppercase;
+			text-align: center;
+		}
+
+		p{
+			text-align: center;
+			color: #747778;
+			margin-bottom: 0;
+
+			b{
+				display: block;
+			}
+		}
+	}
 
 	@include adaptive(767){
 		position: fixed;
@@ -1210,6 +1465,10 @@
 .coupon_bottom_description {
 	padding: 15px 25px;
 	text-align: center;
+
+	p{
+		margin-bottom: 15px;
+	}
 }
 .coupon_loader{
 	position: absolute;
@@ -1227,6 +1486,17 @@
 		.lgrnbtn{
 			width: auto;
 			font-size: 15px;
+		}
+	}
+}
+
+.single-coupon{
+	.site-content{
+		@include respond('ipad_portrait'){
+			padding-bottom: 35px;
+		}
+		@include adaptive(767) {
+			padding-bottom: 35px;
 		}
 	}
 }

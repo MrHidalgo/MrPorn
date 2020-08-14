@@ -1,5 +1,8 @@
 // BLOGS :: START
 .site-content{
+	@include respond('ipad_portrait'){
+		margin-top: 130px;
+	}
 	@include adaptive(767){
 		margin-top: 130px;
 	}
@@ -96,6 +99,10 @@
 				white-space: nowrap;
 				overflow: hidden;
 				text-overflow: ellipsis;
+
+				@include respond('ipad_portrait'){
+					font-size: 22px;
+				}
 			}
 			.blog_date{
 				font-size: 12px;

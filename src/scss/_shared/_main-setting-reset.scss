@@ -179,6 +179,14 @@ strong{
 	}
 }
 
+.visible-xs-inline{
+	display: none;
+
+	@include adaptive(767) {
+		display: inline-block;
+	}
+}
+
 @include adaptive(767) {
 	.hidden-xs{
 		display: none;

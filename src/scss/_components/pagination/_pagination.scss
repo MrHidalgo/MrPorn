@@ -20,10 +20,24 @@
 		background: #8896a7 url(../images/bg-pagi.png) left bottom repeat-x;
 		font-family: Arial,san-serif;
 
+		&.visible-xs-inline{
+			display: none;
+		}
+
+		@include respond('ipad_portrait'){
+			font-size: 24px;
+			padding: 3px 10px;
+			font-weight: 600;
+		}
+
 		@include adaptive(767) {
 			font-size: 24px;
 			padding: 3px 10px;
 			font-weight: 600;
+
+			&.visible-xs-inline{
+				display: inline-block;
+			}
 		}
 	}
 	span, a.active{
@@ -42,6 +56,17 @@
 		display: inline-block;
 		overflow-y: hidden;
 
+		@include respond('ipad_portrait'){
+			overflow-x: hidden;
+			flex: 0 0 95px;
+			white-space: nowrap;
+
+			&.page_1{
+				flex: 0 0 0;
+				display: none;
+			}
+		}
+
 		@include adaptive(767) {
 			overflow-x: hidden;
 			flex: 0 0 95px;
@@ -56,6 +81,12 @@
 	.page_right{
 		display: inline-block;
 		overflow-y: hidden;
+
+		@include respond('ipad_portrait'){
+			overflow-x: hidden;
+			flex: 0 0 95px;
+			white-space: nowrap;
+		}
 
 		@include adaptive(767) {
 			overflow-x: hidden;

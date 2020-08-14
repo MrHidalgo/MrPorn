@@ -1,6 +1,15 @@
 // WEBCAM :: START
+.site-content{
+	@include respond('ipad_portrait'){
+		margin-top: 130px;
+	}
+	@include adaptive(767){
+		margin-top: 130px;
+	}
+}
 .webcams_content{
 	background: #fff;
+	margin-top: -1px;
 }
 .tags_container{
 	padding: 25px;
@@ -102,9 +111,11 @@
 		filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#57a401', endColorstr='#247b02', GradientType=0);
 
 		@include adaptive(767) {
+			font-size: 18px;
+		}
+		@include respond('mobile_portrait') {
 			width: 100%;
 			text-align: center;
-			font-size: 18px;
 		}
 	}
 
@@ -116,6 +127,10 @@
 .video_list_container{
 	padding: 0 20px 25px;
 	font: 400 12px/1.2 "Arial Black",sans-serif;
+
+	@include respond('ipad_portrait'){
+		padding: 20px 20px 25px;
+	}
 
 	@include adaptive(767) {
 		padding: 0 0 25px;
@@ -147,7 +162,10 @@
 	&_item{
 		width: 20%;
 
-		@include adaptive(1024) {
+		@include respond('ipad_landscape'){
+			width: 33.3333334%;
+		}
+		@include respond('ipad_portrait'){
 			width: 33.3333334%;
 		}
 
@@ -160,6 +178,10 @@
 			margin: 0 3px 6px;
 			border: 1px solid #e0e0e0;
 			background-color: #f4f4f4;
+
+			@include respond('ipad'){
+				padding: 0;
+			}
 
 			@include adaptive(767) {
 				padding: 0;
@@ -234,6 +256,13 @@
 			transition: color .3s;
 			text-overflow: ellipsis;
 
+			@include respond('ipad'){
+				overflow: hidden;
+				white-space: nowrap;
+				padding: 5px 10px;
+				max-height: 25px;
+			}
+
 			@include adaptive(767) {
 				overflow: hidden;
 				white-space: nowrap;
@@ -254,12 +283,14 @@
 	display: flex;
 	padding: 25px 20px 25px;
 
-	@include adaptive(767) {
+	@include respond('ipad_portrait'){
+		flex-direction: column;
 		padding: 0;
 	}
 
 	@include adaptive(767) {
 		flex-direction: column;
+		padding: 0;
 	}
 
 	.item-player-wrap{
@@ -374,18 +405,49 @@
 		padding: 38px;
 		background-color: #f3f8fe;
 
+
+
+		@include respond('ipad_portrait'){
+			margin: 0;
+			width: 100%;
+			display: flex;
+			padding: 15px;
+		}
+
+		@include respond('ipad_landscape'){
+
+		}
+
 		@include adaptive(767) {
 			padding: 15px;
 			margin: 0;
+			display: flex;
+			justify-content: center;
 		}
 
 		.col {
 			margin-bottom: 46px;
 
+			@include respond('ipad_landscape'){
+				&:nth-child(2){
+					margin-bottom: 0;
+				}
+			}
+
+			@include respond('ipad_portrait'){
+				padding: 0 15px;
+				width: 50%;
+				text-align: center;
+				margin: 0;
+			}
+
 			@include adaptive(767) {
 				margin: 0;
 				text-align: center;
+				padding: 0 15px;
+			}
 
+			@include respond('mobile_portrait'){
 				&:nth-child(2){
 					display: none;
 				}

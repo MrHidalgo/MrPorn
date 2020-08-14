@@ -57,9 +57,17 @@
 			-webkit-box-orient: vertical;
 			overflow: hidden;
 			display: flex;
+			align-items: center;
+
+			@include respond('ipad_portrait'){
+				justify-content: center;
+				color: #fff;
+			}
 
 			@include adaptive(767) {
+				justify-content: center;
 				color: #fff;
+				padding: 5px 15px;
 			}
 		}
 
@@ -69,6 +77,10 @@
 			text-transform: capitalize;
 			padding-left: 8px;
 
+			@include respond('ipad_portrait'){
+				flex-grow: 0;
+			}
+
 			@include adaptive(767) {
 				padding-left: 0;
 				line-height: 26px;
@@ -77,6 +89,12 @@
 			.arrow_down {
 				border: 1px solid #828282;
 				padding: 0 4px;
+
+				@include respond('ipad_portrait'){
+					border: 1px solid #fff;
+					padding: 2px 5px 1px;
+					background: #0caa26;
+				}
 
 				@include adaptive(767) {
 					border: 1px solid #fff;
@@ -93,6 +111,10 @@
 					border-width: 9px 6.5px 0;
 					border-color: #828282 transparent transparent transparent;
 
+					@include respond('ipad_portrait'){
+						border-color: #fff transparent transparent transparent;
+					}
+
 					@include adaptive(767) {
 						border-color: #fff transparent transparent transparent;
 					}
@@ -101,6 +123,9 @@
 			.site_count {
 				color: #568e00;
 
+				@include respond('ipad_portrait'){
+					color: #fff;
+				}
 				@include adaptive(767) {
 					color: #fff;
 				}
@@ -108,6 +133,10 @@
 			.site_name {
 				color: #656363;
 				font-weight: 900;
+
+				@include respond('ipad_portrait'){
+					color: #fff;
+				}
 
 				@include adaptive(767) {
 					color: #fff;
@@ -136,6 +165,19 @@
 				}
 			}
 		}
+	}
+}
+
+.click_visit_mobile_top{
+	display: none;
+
+	@include respond('max-small'){
+		display: block;
+		color: #53ad51;
+		text-align: center;
+		font-size: 16px;
+		font-weight: 600;
+		text-decoration: underline;
 	}
 }
 
@@ -213,6 +255,10 @@
 				left: 10px;
 				top: 4px;
 			}
+
+			a{
+				color: #000;
+			}
 		}
 
 		&::after {
@@ -271,6 +317,10 @@
 
 	.swiper-slide{
 		max-width: 140px;
+		opacity: 0.4;
+	}
+	.swiper-slide-thumb-active{
+		opacity: 1;
 	}
 }
 .swiper-container-horizontal>.swiper-scrollbar{
@@ -358,15 +408,20 @@
 
 		@include respond('ipad_portrait'){
 			width: 100%;
+			padding: 0;
 		}
 
 		@include adaptive(767) {
 			width: 100%;
+			padding: 0;
 		}
 	}
 	.screen_shot{
 		padding-right: 15px;
 
+		@include respond('ipad_portrait'){
+			padding-right: 0;
+		}
 		@include adaptive(767) {
 			padding-right: 0;
 		}
@@ -483,6 +538,10 @@
 			p {
 				font-size: 18px;
 				margin: 0 0 10px;
+
+				@include respond('ipad_portrait'){
+					font-size: 14px;
+				}
 			}
 		}
 

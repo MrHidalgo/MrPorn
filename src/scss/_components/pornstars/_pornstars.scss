@@ -1,4 +1,5 @@
 // PORNSTARS :: START
+
 .pornstar_intro{
 	background: #e4f0ff;
 	padding: 15px 15px 15px;
@@ -6,6 +7,10 @@
 	line-height: 24px;
 	margin: -15px 0 10px;
 	font-weight: 500;
+
+	@include respond('ipad'){
+		font-size: 13px;
+	}
 
 	@include adaptive(767) {
 		display: none;
@@ -17,6 +22,7 @@
 	background: #efefef;
 	margin-bottom: 10px;
 	padding: 15px 20px;
+
 
 	@include adaptive(767) {
 		padding: 15px 10px;
@@ -30,6 +36,10 @@
 		padding: 0 0 20px;
 		border-bottom: 1px solid #bababa;
 
+		@include respond('ipad'){
+			font-size: 20px;
+		}
+
 		@include adaptive(767) {
 			text-align: center;
 		}
@@ -37,6 +47,10 @@
 		small{
 			font-size: 14px;
 			font-weight: 400;
+
+			@include respond('ipad_portrait'){
+				font-size: 13px;
+			}
 		}
 
 		.pornstar_sort{
@@ -49,6 +63,7 @@
 				position: relative;
 				top: 0;
 				right: 0;
+				margin-top: 10px;
 			}
 
 			span {
@@ -93,6 +108,10 @@
 	padding: 0 0 13px;
 	border-bottom: 1px solid #bababa;
 
+	@include respond('ipad'){
+		font-size: 16px;
+	}
+
 	@include adaptive(767) {
 		font-size: 14px;
 	}
@@ -127,7 +146,16 @@
 
 		&:hover .pv_count_tooltip {
 			display: block;
+
+			@include respond('ipad_portrait'){
+				display: none;
+			}
+
+			@include adaptive(767) {
+				display: none;
+			}
 		}
+
 	}
 
 
@@ -140,8 +168,12 @@
 	}
 
 	.avar_col{
-		width: 58.33333333%;
+		width: 57.5%;
 		margin-right: 3px;
+
+		@include respond('ipad_portrait'){
+			width: auto;
+		}
 
 		@include adaptive(767) {
 			width: 100%;
@@ -152,9 +184,10 @@
 			margin: 10px 0 10px -13px;
 			display: flex;
 			align-items: flex-end;
+			width: 100%;
 
 			@include adaptive(767) {
-				margin: 0 0 10px;
+				margin: 0 0 0;
 				flex-direction: column;
 				text-align: center;
 				align-items: center;
@@ -205,6 +238,10 @@
 			font-weight: 300;
 			font-size: 24px;
 
+			@include respond('ipad_portrait'){
+				display: none;
+			}
+
 			@include adaptive(767) {
 				position: relative;
 				left: auto;
@@ -223,8 +260,8 @@
 
 		.bioView {
 			position: absolute;
-			bottom: 38px;
-			right: 0;
+			bottom: 0;
+			right: -13px;
 			background: #001022 url(../images/pornstar/view-icon.png);
 			background-position: left 15px center;
 			background-repeat: no-repeat;
@@ -232,6 +269,9 @@
 			font-size: 14px;
 			color: #fff;
 
+			@include respond('ipad_portrait'){
+				display: none;
+			}
 
 			@include adaptive(767) {
 				display: none;
@@ -241,6 +281,12 @@
 	.pornstar_detail_col{
 		margin-left: 3px;
 		flex: 1;
+
+		@include respond('max-small'){
+			margin-left: auto;
+			margin-top: 8px;
+			width: 100%;
+		}
 
 		.binsta, .btwtr, .bws {
 			display: inline-block;
@@ -271,6 +317,12 @@
 		background-size: 65%;
 		width: 100%;
 		height: 100%;
+		display: flex;
+		align-items: center;
+
+		@include respond('ipad_portrait'){
+			padding-right: 15px;
+		}
 
 		@include adaptive(767) {
 			text-align: center;
@@ -326,9 +378,12 @@
 	}
 
 	.pornstar_intro_col{
-		width: 58.33333333%;
+		width: 57.5%;
 		margin-right: 3px;
 
+		@include respond('ipad_portrait'){
+			width: 100%;
+		}
 		@include adaptive(767) {
 			width: 100%;
 		}
@@ -336,6 +391,10 @@
 	.pornstar_featured_website{
 		flex: 1;
 		margin-left: 3px;
+
+		@include respond('ipad_portrait'){
+			display: none;
+		}
 
 		@include adaptive(767) {
 			display: none;
@@ -397,6 +456,10 @@
 			text-transform: uppercase;
 			border-bottom: 2px solid #bdd7dd;
 			background: url(../images/pornstar/recomm.png) left 5px center no-repeat;
+
+			@include respond('ipad'){
+				font-size: 16px;
+			}
 		}
 
 		.pornstar_adbanner {
@@ -420,6 +483,18 @@
 .more_pornstars{
 	background: #fff;
 
+	@include respond('ipad_portrait'){
+		background: transparent;
+
+		.ps_list_container{
+			background: #fff;
+		}
+
+		.blue_button_solid{
+			width: 100%;
+		}
+	}
+
 	@include adaptive(767) {
 		background: none;
 
@@ -437,8 +512,37 @@
 		width: 20%;
 		background: #fff;
 
+		@include respond('ipad_landscape'){
+			width: 25%;
+
+			&:nth-child(9){
+				display: none;
+			}
+
+			&:nth-child(10){
+				display: none;
+			}
+		}
+		@include respond('ipad_portrait'){
+			width: 33.333333334%;
+
+			&:nth-child(10){
+				display: none;
+			}
+		}
+
 		@include adaptive(767) {
+			width: 50%;
+		}
+		@include respond('mobile_portrait'){
 			width: 100%;
+		}
+
+		.pornstar_inner{
+			padding: 10px;
+			border-radius: 3px;
+			background: #ebf4ff;
+			border: 1px solid #ebf4ff;
 		}
 
 		img {
@@ -453,8 +557,12 @@
 			font-size: 15px;
 			font-weight: 700;
 
-			@include adaptive(767) {
+			@include respond('ipad'){
 				font-size: 12.5px;
+			}
+
+			@include adaptive(767) {
+				font-size: 14px;
 			}
 
 			small {
@@ -463,6 +571,10 @@
 				right: 8px;
 				font-size: 14px;
 				font-weight: 400;
+
+				@include respond('ipad'){
+					font-size: 12.5px;
+				}
 
 				@include adaptive(767) {
 					font-size: 12.5px;
@@ -484,6 +596,10 @@
 		font-size: 38px;
 		font-weight: 600;
 		color: #fff;
+
+		@include respond('ipad_portrait'){
+			font-size: 26px;
+		}
 
 		@include adaptive(767) {
 			font-size: 26px;

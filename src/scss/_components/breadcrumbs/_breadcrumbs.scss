@@ -19,12 +19,20 @@
 		font-size: 11px;
 		margin: 0 -20px 10px;
 	}
+	@include respond('max-small'){
+
+	}
 
 	&-links{
 		width: 50%;
 
 		@include respond('ipad_portrait'){
 			width: 100%;
+		}
+		@include respond('max-small'){
+			width: 100%;
+			font-size: 11px;
+			text-align: center;
 		}
 	}
 	.show_similar_sites{
@@ -42,6 +50,19 @@
 			white-space: nowrap;
 			justify-content: center;
 		}
+		@include respond('max-small'){
+			width: 100%;
+			position: absolute;
+
+			color: #fff;
+			background: #77c28e;
+			display: flex;
+			text-transform: capitalize;
+			font-size: 15px;
+			white-space: nowrap;
+			justify-content: center;
+		}
+
 	}
 
 	a{

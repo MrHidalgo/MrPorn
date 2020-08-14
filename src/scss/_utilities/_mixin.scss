@@ -277,9 +277,14 @@ $breakpointsMedia: (
 	wide-large      	: "(min-width: 1600px)",	/// wide-large
 	max-wide-large    : "(max-width: 1919px)",
 	hd        				: "(min-width: 1920px)",		/// hd
+	mobile_portrait		:	"(max-width: 767px) and (orientation: portrait)",
 	ipad							:	"(min-device-width: 768px) and (max-device-width: 1024px) and (-webkit-min-device-pixel-ratio: 2)", //ipad
 	ipad_portrait			:	"(min-device-width: 768px) and (max-device-width: 1024px) and (orientation: portrait) and (-webkit-min-device-pixel-ratio: 2)", //ipad portrait
 	ipad_landscape		: "(min-device-width: 768px) and (max-device-width: 1024px) and (orientation: landscape) and (-webkit-min-device-pixel-ratio: 2)", //ipad landscape
+	iphone_landscape	:	"(min-device-width: 320px) and (max-device-width: 480px) and (-webkit-min-device-pixel-ratio: 2) and (orientation: landscape)",
+	iphone_8_landscape:	"(min-device-width: 414px) and (max-device-width: 736px) and (-webkit-min-device-pixel-ratio: 3) and (orientation: landscape) ",
+	iphone_x_landscape:	"(min-device-width: 375px) and (max-device-width: 812px) and (-webkit-min-device-pixel-ratio: 3) and (orientation: landscape)",
+	galaxy_landscape	: "(device-width: 320px) and (device-height: 640px) and (-webkit-device-pixel-ratio: 2) and (orientation: landscape)", //galaxy landscape
 ) !default;
 
 @mixin respond($name) {

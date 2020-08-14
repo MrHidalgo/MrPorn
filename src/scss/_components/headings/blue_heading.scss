@@ -43,6 +43,10 @@
 		padding-left: 15px;
 		flex: 1;
 
+		@include respond('ipad_portrait'){
+			font-size: 22px;
+		}
+
 		@include adaptive(767) {
 			padding: 0 8px;
 			font-size: 17px;

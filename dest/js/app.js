@@ -499,21 +499,23 @@ function removeFavourite(favItem) {
 }
 
 function initWebWorker() {
-  if (typeof Worker !== "undefined") {// Yes! Web worker support!
-    // Some code.....
-  } else {// Sorry! No Web Worker support..
+  if (document.body.classList.contains('home')) {
+    if (typeof Worker !== "undefined") {// Yes! Web worker support!
+      // Some code.....
+    } else {// Sorry! No Web Worker support..
+      }
+
+    if (typeof w == "undefined") {
+      webworkerFrontpage = new Worker("/wp-content/themes/mpg/js/worker.js");
     }
 
-  if (typeof w == "undefined") {
-    webworkerFrontpage = new Worker("./wp-content/themes/mpg/js/worker.js");
+    webworkerFrontpage.onmessage = function (event) {
+      //document.getElementById("result").innerHTML = event.data;
+      console.log('Webworker data');
+      console.log(event.data);
+      loadHomeData();
+    };
   }
-
-  webworkerFrontpage.onmessage = function (event) {
-    //document.getElementById("result").innerHTML = event.data;
-    console.log('Webworker data');
-    console.log(event.data);
-    loadHomeData();
-  };
 }
 
 (function () {
