@@ -7,47 +7,156 @@
 	display: flex;
 	flex-wrap: wrap;
 }
-.search_results{background: #fff;}
-.search_results_top{display: flex; background: #0a3e83; color: #fff; align-items: center; padding: 5px 5px 5px 0;}
-.search_results_top .top_results{ padding: 0 10px;}
-.search_results_tags{flex: 1; overflow: hidden; white-space: nowrap; display: flex;}
-.search_results_tags .search_category_item{text-decoration: none; background: #090b27; border-radius: 5px; margin: 0 5px; padding: 8px 15px; display: flex; align-items: center;}
-.search_results_tags .search_category_item:before{margin-left: 0; zoom: 0.8;}
-.search_results_sites .search_site_item{padding: 5px; text-align: center; width: 25%; flex: 25% 1;}
-.search_results_sites .search_site_item .title{
-	position: relative; color: #0a3e83; font-size: 14px; white-space: nowrap; text-overflow: ellipsis; overflow: hidden;
+.search_results{
+	background: #fff;
+	-webkit-box-shadow: 0px 5px 14px 0px rgba(0,0,0,0.75);
+	-moz-box-shadow: 0px 5px 14px 0px rgba(0,0,0,0.75);
+	box-shadow: 0px 5px 14px 0px rgba(0,0,0,0.75);
+}
+.search_results_top{
 	display: flex;
-	justify-content: center;
+	background: #0a3e83;
+	color: #fff;
+	align-items: center;
+	padding: 5px 5px 5px 0;
+
+	.top_results{
+		padding: 0 25px 0 10px;
+		font-size: 18px;
+		font-weight: 700;
+	}
+}
+.search_results_tags{
+	flex: 1;
+	overflow: hidden;
+	white-space: nowrap;
+	display: flex;
+
+	.search_category_item{
+		text-decoration: none;
+		background: #090b27;
+		color: #fff;
+		font-size: 13px;
+		font-weight: 700;
+		border-radius: 5px;
+		margin: 0 2px;
+		padding: 4px 13px 4px 5px;
+		display: flex;
+		align-items: center;
+
+		&:before{margin-left: 0; zoom: 0.8;}
+
+		&:nth-child(5n+1){
+			background: #0677ce;
+		}
+		&:nth-child(5n+2){
+			background: #767676;
+		}
+		&:nth-child(5n+3){
+			background: #625e73;
+		}
+		&:nth-child(5n+4){
+			background: #65a6bb;
+		}
+	}
+}
+
+.search_site_item{
+	padding: 5px;
+	text-align: center;
+	width: 25%;
+	flex: 25% 1;
+
+	.title{
+		position: relative;
+		color: #0a3e83;
+		white-space: nowrap;
+		text-overflow: ellipsis;
+		overflow: hidden;
+		display: flex;
+		justify-content: center;
+		padding: 5px 0;
+
+		color: #0a3e83;
+		font-size: 12px;
+		font-weight: 700;
+
+		&:before{
+			position: relative;
+			top: 0;
+			left: 0;
+			border-radius: 12px;
+			margin-right: 5px;
+		}
+		&:after{
+			display: none;
+		}
+		span{
+			max-width: 100%;
+		}
+		img{
+			max-width: 100%;
+		}
+	}
+
+	.thumb{
+		line-height: 0;
+		border-top: 1px solid #9ca4ad;
+		border-left: 1px solid #9ca4ad;
+		border-right: 1px solid #9ca4ad;
+
+		img{
+			max-width: 100%;
+		}
+	}
+
+	.site_category{
+		background: #0a3e83;
+		color: #fff;
+		font-size: 10px;
+		padding: 1px;
+	}
+}
+
+
+.search_pagination{
+	text-align: center;
 	padding: 10px 0;
-}
-.search_site_item .title:before{position: relative; top: 0; left: 0; border-radius: 12px;}
-.search_site_item .title:after{display: none;}
-.search_site_item .title span{max-width: 100%;}
-.search_results_sites .search_site_item img{max-width: 100%;}
 
-.search_site_item .site_category{background: #0a3e83; color: #fff; font-size: 12px; padding: 3px;}
+	.item{
+		background: #e4e4e4;
+		color: #8a8a8a;
+		padding: 3px 8px;
+		margin: 0 3px;
+		display: inline-block;
+		cursor: pointer;
 
-.search_pagination{text-align: center; padding: 10px 0;}
-.search_pagination .item{background: #e4e4e4; color: #8a8a8a; padding: 3px 8px; margin: 0 3px; display: inline-block; cursor: pointer;}
-.search_pagination .item.active{background: #07113b; color: #d5f34a;}
-.search_pagination .item.prev:after, .search_pagination .item.next:after {
-	content: "";
-	display: inline-block;
-	width: 10px;
-	height: 10px;
-	border: solid #000;
-	border-width: 0 2px 2px 0;
-}
-.search_pagination .item.prev:after{
-	transform: rotate(135deg);
-	-webkit-transform: rotate(135deg);
-	margin: 0 -4px 0 0;
-}
-.search_pagination .item.next:after {
-	transform: rotate(-45deg);
-	-webkit-transform: rotate(-45deg);
-	margin: 0 0 0 -4px;
-}
-.search_pagination .item.prev:hover:after, .search_pagination .item.next:hover:after {
-	border-color: #fff;
+		&.active{
+			background: #07113b;
+			color: #d5f34a;
+		}
+
+		&.prev:after, &.next:after{
+			content: "";
+			display: inline-block;
+			width: 10px;
+			height: 10px;
+			border: solid #000;
+			border-width: 0 2px 2px 0;
+		}
+		&.prev:after{
+			transform: rotate(135deg);
+			-webkit-transform: rotate(135deg);
+			margin: 0 -4px 0 0;
+		}
+		&.next:after {
+			transform: rotate(-45deg);
+			-webkit-transform: rotate(-45deg);
+			margin: 0 0 0 -4px;
+		}
+
+		&.prev:hover:after, &.next:hover:after{
+			border-color: #fff;
+		}
+	}
 }
