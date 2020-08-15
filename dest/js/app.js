@@ -1243,14 +1243,17 @@ var ajaxAdminEndpoint = '/wp-admin/admin-ajax.php';
         playPause(document.querySelectorAll('.list__specification video')[jInner]);
       }
     }
+    /*for(let k = 0; k < document.querySelectorAll('.list__box').length; k++) {
+    	document.querySelectorAll('.list__box')[k].classList.remove('is-active');
+    }*/
 
-    for (var k = 0; k < document.querySelectorAll('.list__box').length; k++) {
-      document.querySelectorAll('.list__box')[k].classList.remove('is-active');
-    }
 
-    for (var _k = 0; _k < document.querySelectorAll('.list__specification').length; _k++) {
-      document.querySelectorAll('.list__specification')[_k].classList.remove('is-open');
-    }
+    document.querySelector('.list__box.is-active').classList.remove('is-active');
+    /*for(let k = 0; k < document.querySelectorAll('.list__specification').length; k++) {
+    	document.querySelectorAll('.list__specification')[k].classList.remove('is-open');
+    }*/
+
+    document.querySelectorAll('.list__specification.is-open').classList.remove('is-open');
 
     if (window.innerWidth < 1024) {
       setTimeout(function () {

@@ -1,5 +1,12 @@
 // SEARCH :: START
+.search_form{
+	@include respond('ipad_portrait'){
+		height: 54px;
+	}
+	@include adaptive(767) {
 
+	}
+}
 .search_results_sites{
 	/*display: grid;
 	grid-template-columns: 1fr 1fr 1fr 1fr;*/
@@ -7,11 +14,21 @@
 	display: flex;
 	flex-wrap: wrap;
 }
+.search_results_box.category__drop{
+	background: #000;
+}
 .search_results{
 	background: #fff;
 	-webkit-box-shadow: 0px 5px 14px 0px rgba(0,0,0,0.75);
 	-moz-box-shadow: 0px 5px 14px 0px rgba(0,0,0,0.75);
 	box-shadow: 0px 5px 14px 0px rgba(0,0,0,0.75);
+
+	@include respond('ipad_portrait'){
+		background: #000;
+	}
+	@include adaptive(767) {
+		background: #000;
+	}
 }
 .search_results_top{
 	display: flex;
@@ -67,19 +84,35 @@
 	width: 25%;
 	flex: 25% 1;
 
+	@include respond('ipad_portrait'){
+		width: 33.333334%;
+		max-width: 33.333334%;
+		flex: 33.333334% 1;
+	}
+	@include adaptive(767) {
+		width: 33.333334%;
+		max-width: 33.333334%;
+		flex: 33.333334% 1;
+	}
+
 	.title{
 		position: relative;
-		color: #0a3e83;
 		white-space: nowrap;
 		text-overflow: ellipsis;
 		overflow: hidden;
 		display: flex;
 		justify-content: center;
 		padding: 5px 0;
-
 		color: #0a3e83;
 		font-size: 12px;
 		font-weight: 700;
+
+		@include respond('ipad_portrait'){
+			color: #fff;
+		}
+		@include adaptive(767) {
+			color: #fff;
+		}
 
 		&:before{
 			position: relative;
