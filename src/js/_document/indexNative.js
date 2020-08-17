@@ -144,7 +144,10 @@ const ajaxAdminEndpoint = '/wp-admin/admin-ajax.php';
 					document.querySelector('.sort__drop-inner').classList.remove('is-open');
 				}
 
-				document.querySelector('.sort__drop-link.is-active').classList.toggle('is-active');
+				var _isActive = document.querySelector('.sort__drop-link.is-active');
+				if(_isActive){
+					_isActive.classList.toggle('is-active');
+				}
 			}
 		}, false);
 	};
@@ -270,34 +273,6 @@ const ajaxAdminEndpoint = '/wp-admin/admin-ajax.php';
 		}
 	}
 
-	const boxMore = () => {
-
-
-		const btns = document.querySelectorAll('.list__box-more'),
-			closeBtns = document.querySelectorAll('.list__specification-close');
-
-		let i = null,
-			len = btns.length;
-
-		for(i = 0; i < len; i++) {
-			btns[i].addEventListener('click', (ev) => {
-
-					showBanner(ev);
-			}, false);
-		}
-
-		let idx = null,
-			lenClose = closeBtns.length;
-
-		for(idx = 0; idx < lenClose; idx++) {
-			closeBtns[idx].addEventListener('click', (ev) => {
-				const _el = ev.currentTarget;
-					closeBanner(_el);
-
-			}, false);
-		}
-	};
-
 	function showBanner(_el){
 
 		var _boxParent = _el.closest('.list__box'),
@@ -327,6 +302,7 @@ const ajaxAdminEndpoint = '/wp-admin/admin-ajax.php';
 		let jInner = null,
 			lInner = document.querySelectorAll('[video-toggle-js]').length;
 
+
 		for(jInner = 0; jInner < lInner; jInner++) {
 			document.querySelectorAll('[video-toggle-js]')[jInner].classList.remove('is-active');
 			document.querySelectorAll('[video-pause-js]')[jInner].classList.remove('is-active');
@@ -339,12 +315,20 @@ const ajaxAdminEndpoint = '/wp-admin/admin-ajax.php';
 		/*for(let k = 0; k < document.querySelectorAll('.list__box').length; k++) {
 			document.querySelectorAll('.list__box')[k].classList.remove('is-active');
 		}*/
-		document.querySelector('.list__box.is-active').classList.remove('is-active');
+
+		var _isActive = document.querySelector('.list__box.is-active')
+		if(_isActive){
+			_isActive.classList.remove('is-active');
+		}
+
 
 		/*for(let k = 0; k < document.querySelectorAll('.list__specification').length; k++) {
 			document.querySelectorAll('.list__specification')[k].classList.remove('is-open');
 		}*/
-		document.querySelectorAll('.list__specification.is-open').classList.remove('is-open');
+		var _isOpen = document.querySelector('.list__specification.is-open')
+		if(_isOpen){
+			_isOpen.classList.remove('is-open');
+		}
 
 		if(window.innerWidth < 1024) {
 			setTimeout(() => {
@@ -355,7 +339,7 @@ const ajaxAdminEndpoint = '/wp-admin/admin-ajax.php';
 					_specificationBox.classList.add('is-open');
 				}
 
-			}, 500);
+			}, 100);
 		} else {
 			_parentNode.classList.add('is-open');
 			_boxParent.classList.add('is-active');
@@ -662,18 +646,13 @@ const ajaxAdminEndpoint = '/wp-admin/admin-ajax.php';
 		let _indicatorOffset = (elWidth - listIndicatorWidth) / 2,
 			_lineOffset = ((_elRect.width * _sum) + ((_sum * 6) - 3)) + _indicatorOffset;
 
-		listIndicator.setAttribute(
+		/*listIndicator.setAttribute(
 			'style',
 			'transform: translateX(' + _lineOffset + 'px)'
-		);
-	}
-
-
-
-
-	const initHomeSlideEvent = () => {
+		);*/
 
 	}
+
 
 	const detectDevice = () => {
 		let check = false;

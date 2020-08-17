@@ -148,6 +148,18 @@
 		color: #fff;
 		font-size: 10px;
 		padding: 1px;
+
+
+		@include respond('ipad_portrait'){
+			border-left:1px solid #9ca4ad;
+			border-right:1px solid #9ca4ad;
+			border-bottom:1px solid #9ca4ad;
+		}
+		@include adaptive(767) {
+			border-left:1px solid #9ca4ad;
+			border-right:1px solid #9ca4ad;
+			border-bottom:1px solid #9ca4ad;
+		}
 	}
 }
 

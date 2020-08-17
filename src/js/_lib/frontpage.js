@@ -119,8 +119,6 @@ function renderSiteHoverContent(category, index){
 }
 
 function renderSiteBottomBanner(category, index){
-	console.log('rendering '+category+' - '+index);
-
 	let siteItem = homeData.categories[category].sites[index];
 	if(siteItem){
 		let siteId = siteItem.id;
@@ -130,9 +128,6 @@ function renderSiteBottomBanner(category, index){
 		let bannerVideoPoster = siteItem.banner_video_poster;
 		let siteLogo = siteItem.logo?siteItem.logo.src:'';
 		let tagLIne = siteItem.tagline;
-
-		console.log(category+' - '+index);
-		console.log(siteItem);
 
 		var bannerRight = '';
 		var bannerClass = '';
@@ -298,10 +293,10 @@ function renderSiteCategory(categoryIndex){
 												'<p>'+categoryData.title+'</p><span>'+categoryData.tagline+'</span>'+
 											'</div>'+
 										'</div>'+
-                    '<div><a class="list__btn" href="#"><p>SEE&nbsp;<span>'+categoryData.count+' MORE</span></p><i class="icon-font icon-arrow-angle"></i></a></div>'+
+                    '<a class="list__btn" href="'+categoryData.link+'">SEE&nbsp;<span>'+categoryData.count+' MORE</span><i class="icon-font icon-arrow-angle"></i></a>'+
                   '</div>'+
                   '<div class="list__box-line">'+
-                    '<u list-line-ind-js></u><span list-line-js></span>'+
+                    '<u list-line-ind-js></u><span class="list_green_line" list-line-js></span>'+
                   '</div>'+
 									'<div class="list__box-body">'+
 										'<div class="list__arrow-wrapper">'+
@@ -358,6 +353,7 @@ const boxHover = () => {
 			if(window.innerWidth >= 1280) {
 				const el = ev.currentTarget,
 					elParent = el.closest('[list-parent-js]'),
+					elBox = el.querySelector('.list__box'),
 					lineInd = elParent.querySelector('[list-line-js]');
 
 
@@ -375,34 +371,55 @@ const boxHover = () => {
 				}
 
 
-				setTimeout(function() {
-					let transformVal = '';
+				/*setTimeout(function() {
 
-					if(lineInd.getAttribute("style")) {
-						let val = lineInd.getAttribute("style");
+				}, 0);*/
 
+				let transformVal = '';
 
-						if(val.indexOf(';') === -1) {
-							transformVal = val;
-						} else {
-							transformVal = val.substring(0, val.indexOf(';'));
-						}
-					}
+				if(lineInd.getAttribute("style")) {
+					let val = lineInd.getAttribute("style");
 
 
-
-					if(hoverBool) {
-						el.classList.add('is-hover');
-						lineInd.setAttribute('style', transformVal + ';width: 189px');
+					if(val.indexOf(';') === -1) {
+						transformVal = val;
 					} else {
-						tOut = setTimeout(function() {
-							hoverBool = true;
-							el.classList.add('is-hover');
-
-							lineInd.setAttribute('style', transformVal + ';width: 189px');
-						}, 750);
+						transformVal = val.substring(0, val.indexOf(';'));
 					}
-				}, 0);
+				}
+
+
+
+				if(hoverBool) {
+					el.classList.add('is-hover');
+
+
+					tOut = setTimeout(function() {
+						var hoverBounds = elBox.getBoundingClientRect();
+						var boxParentBou
+						var _lineLeft = hoverBounds.left - elParent.getBoundingClientRect().left;
+						console.log(hoverBounds, );
+						//transformVal = 'transform: translateX('+_lineLeft+'px)';
+						transformVal = 'left: '+_lineLeft+'px';
+
+						lineInd.setAttribute('style', transformVal + ';width: 189px');
+					}, 750);
+				} else {
+
+
+					hoverBool = true;
+					el.classList.add('is-hover');
+
+					tOut = setTimeout(function() {
+						var hoverBounds = elBox.getBoundingClientRect();
+						console.log(hoverBounds.left, );
+						var _lineLeft = hoverBounds.left - elParent.getBoundingClientRect().left;
+						//transformVal = 'transform: translateX('+_lineLeft+'px)';
+						transformVal = 'left: '+_lineLeft+'px';
+
+						lineInd.setAttribute('style', transformVal + ';width: 189px');
+					}, 750);
+				}
 
 
 			}
@@ -431,6 +448,7 @@ const boxHover = () => {
 
 				clearTimeout(tOut);
 				el.classList.remove('is-hover');
+
 
 				lineInd.setAttribute('style', transformVal + ';width: 64px');
 			}

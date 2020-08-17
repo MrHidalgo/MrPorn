@@ -281,7 +281,6 @@ function renderSiteHoverContent(category, index) {
 }
 
 function renderSiteBottomBanner(category, index) {
-  console.log('rendering ' + category + ' - ' + index);
   var siteItem = homeData.categories[category].sites[index];
 
   if (siteItem) {
@@ -292,8 +291,6 @@ function renderSiteBottomBanner(category, index) {
     var bannerVideoPoster = siteItem.banner_video_poster;
     var siteLogo = siteItem.logo ? siteItem.logo.src : '';
     var tagLIne = siteItem.tagline;
-    console.log(category + ' - ' + index);
-    console.log(siteItem);
     var bannerRight = '';
     var bannerClass = '';
 
@@ -370,7 +367,7 @@ function renderSiteCategory(categoryIndex) {
 
     categorySites += '<div class="swiper-slide" data-index="' + index + '" data-siteid="' + site.id + '" data-init="0">' + '<div class="list__box" list-box-js  data-id="' + site.id + '" style="background-image: url(' + site.thumb + ')">' + '<div class="list__box-overlay"></div>' + '<div class="list__box-border"></div>' + '<a class="nav_link" href="' + site.link + '">' + siteLogo + '</a>' + '<div class="list__box-details">' + '</div>' + '<button class="list__box-more" type="button"><i class="icon-font icon-arrow-angle"></i></button>' + '</div>' + '</div>';
   });
-  var categoryBoxHtml = '<div class="list__box-wrapper" list-parent-js data-name="category_' + categoryId + '" data-index="' + categoryIndex + '">' + '<div class="list__box-head">' + '<div class="list__info">' + '<div class="list__info-circle"><img src="' + categoryLogo + '" alt=""/></div>' + '<div>' + '<p>' + categoryData.title + '</p><span>' + categoryData.tagline + '</span>' + '</div>' + '</div>' + '<div><a class="list__btn" href="#"><p>SEE&nbsp;<span>' + categoryData.count + ' MORE</span></p><i class="icon-font icon-arrow-angle"></i></a></div>' + '</div>' + '<div class="list__box-line">' + '<u list-line-ind-js></u><span list-line-js></span>' + '</div>' + '<div class="list__box-body">' + '<div class="list__arrow-wrapper">' + '<a class="list__arrow list__arrow--prev" href="#">' + '<div class="list__arrow-box"><i class="icon-font icon-arrow-angle"></i></div>' + '</a>' + '<a class="list__arrow list__arrow--next" href="#">' + '<div class="list__arrow-box"><i class="icon-font icon-arrow-angle"></i></div>' + '</a>' + '</div>' + '<div class="swiper-container listSwiper" data-id="listSlider_' + categoryData.id + '" data-category="18">' + '<div class="swiper-wrapper" data-category="' + categoryData.id + '" data-count="' + categoryData.count + '" data-slidecount="' + categoryData.site_limit + '">' + categorySites + '</div>' + '</div>' + '</div>' + '<div class="list__specification-wrapper"></div>' + '</div>';
+  var categoryBoxHtml = '<div class="list__box-wrapper" list-parent-js data-name="category_' + categoryId + '" data-index="' + categoryIndex + '">' + '<div class="list__box-head">' + '<div class="list__info">' + '<div class="list__info-circle"><img src="' + categoryLogo + '" alt=""/></div>' + '<div>' + '<p>' + categoryData.title + '</p><span>' + categoryData.tagline + '</span>' + '</div>' + '</div>' + '<a class="list__btn" href="' + categoryData.link + '">SEE&nbsp;<span>' + categoryData.count + ' MORE</span><i class="icon-font icon-arrow-angle"></i></a>' + '</div>' + '<div class="list__box-line">' + '<u list-line-ind-js></u><span class="list_green_line" list-line-js></span>' + '</div>' + '<div class="list__box-body">' + '<div class="list__arrow-wrapper">' + '<a class="list__arrow list__arrow--prev" href="#">' + '<div class="list__arrow-box"><i class="icon-font icon-arrow-angle"></i></div>' + '</a>' + '<a class="list__arrow list__arrow--next" href="#">' + '<div class="list__arrow-box"><i class="icon-font icon-arrow-angle"></i></div>' + '</a>' + '</div>' + '<div class="swiper-container listSwiper" data-id="listSlider_' + categoryData.id + '" data-category="18">' + '<div class="swiper-wrapper" data-category="' + categoryData.id + '" data-count="' + categoryData.count + '" data-slidecount="' + categoryData.site_limit + '">' + categorySites + '</div>' + '</div>' + '</div>' + '<div class="list__specification-wrapper"></div>' + '</div>';
   return categoryBoxHtml;
 }
 
@@ -403,6 +400,7 @@ var boxHover = function boxHover() {
       if (window.innerWidth >= 1280) {
         var el = ev.currentTarget,
             elParent = el.closest('[list-parent-js]'),
+            elBox = el.querySelector('.list__box'),
             lineInd = elParent.querySelector('[list-line-js]');
         var swiperParent = el.parentNode;
         var slideIndex = el.dataset.index;
@@ -416,31 +414,49 @@ var boxHover = function boxHover() {
             slideHoverContainer.innerHTML = slideHoverContent;
           }
         }
+        /*setTimeout(function() {
+        	}, 0);*/
 
-        setTimeout(function () {
-          var transformVal = '';
 
-          if (lineInd.getAttribute("style")) {
-            var val = lineInd.getAttribute("style");
+        var transformVal = '';
 
-            if (val.indexOf(';') === -1) {
-              transformVal = val;
-            } else {
-              transformVal = val.substring(0, val.indexOf(';'));
-            }
-          }
+        if (lineInd.getAttribute("style")) {
+          var val = lineInd.getAttribute("style");
 
-          if (hoverBool) {
-            el.classList.add('is-hover');
-            lineInd.setAttribute('style', transformVal + ';width: 189px');
+          if (val.indexOf(';') === -1) {
+            transformVal = val;
           } else {
-            tOut = setTimeout(function () {
-              hoverBool = true;
-              el.classList.add('is-hover');
-              lineInd.setAttribute('style', transformVal + ';width: 189px');
-            }, 750);
+            transformVal = val.substring(0, val.indexOf(';'));
           }
-        }, 0);
+        }
+
+        if (hoverBool) {
+          el.classList.add('is-hover');
+          tOut = setTimeout(function () {
+            var hoverBounds = elBox.getBoundingClientRect();
+            var boxParentBou;
+
+            var _lineLeft = hoverBounds.left - elParent.getBoundingClientRect().left;
+
+            console.log(hoverBounds); //transformVal = 'transform: translateX('+_lineLeft+'px)';
+
+            transformVal = 'left: ' + _lineLeft + 'px';
+            lineInd.setAttribute('style', transformVal + ';width: 189px');
+          }, 750);
+        } else {
+          hoverBool = true;
+          el.classList.add('is-hover');
+          tOut = setTimeout(function () {
+            var hoverBounds = elBox.getBoundingClientRect();
+            console.log(hoverBounds.left);
+
+            var _lineLeft = hoverBounds.left - elParent.getBoundingClientRect().left; //transformVal = 'transform: translateX('+_lineLeft+'px)';
+
+
+            transformVal = 'left: ' + _lineLeft + 'px';
+            lineInd.setAttribute('style', transformVal + ';width: 189px');
+          }, 750);
+        }
       }
     }, false);
     swiperSlides[i].setAttribute('data-init', '1');
@@ -1062,7 +1078,11 @@ var ajaxAdminEndpoint = '/wp-admin/admin-ajax.php';
           document.querySelector('.sort__drop-inner').classList.remove('is-open');
         }
 
-        document.querySelector('.sort__drop-link.is-active').classList.toggle('is-active');
+        var _isActive = document.querySelector('.sort__drop-link.is-active');
+
+        if (_isActive) {
+          _isActive.classList.toggle('is-active');
+        }
       }
     }, false);
   };
@@ -1181,29 +1201,6 @@ var ajaxAdminEndpoint = '/wp-admin/admin-ajax.php';
     }
   }
 
-  var boxMore = function boxMore() {
-    var btns = document.querySelectorAll('.list__box-more'),
-        closeBtns = document.querySelectorAll('.list__specification-close');
-    var i = null,
-        len = btns.length;
-
-    for (i = 0; i < len; i++) {
-      btns[i].addEventListener('click', function (ev) {
-        showBanner(ev);
-      }, false);
-    }
-
-    var idx = null,
-        lenClose = closeBtns.length;
-
-    for (idx = 0; idx < lenClose; idx++) {
-      closeBtns[idx].addEventListener('click', function (ev) {
-        var _el = ev.currentTarget;
-        closeBanner(_el);
-      }, false);
-    }
-  };
-
   function showBanner(_el) {
     var _boxParent = _el.closest('.list__box'),
         _boxID = _boxParent.getAttribute('data-id'),
@@ -1248,12 +1245,21 @@ var ajaxAdminEndpoint = '/wp-admin/admin-ajax.php';
     }*/
 
 
-    document.querySelector('.list__box.is-active').classList.remove('is-active');
+    var _isActive = document.querySelector('.list__box.is-active');
+
+    if (_isActive) {
+      _isActive.classList.remove('is-active');
+    }
     /*for(let k = 0; k < document.querySelectorAll('.list__specification').length; k++) {
     	document.querySelectorAll('.list__specification')[k].classList.remove('is-open');
     }*/
 
-    document.querySelectorAll('.list__specification.is-open').classList.remove('is-open');
+
+    var _isOpen = document.querySelector('.list__specification.is-open');
+
+    if (_isOpen) {
+      _isOpen.classList.remove('is-open');
+    }
 
     if (window.innerWidth < 1024) {
       setTimeout(function () {
@@ -1264,7 +1270,7 @@ var ajaxAdminEndpoint = '/wp-admin/admin-ajax.php';
         if (_specificationBox) {
           _specificationBox.classList.add('is-open');
         }
-      }, 500);
+      }, 100);
     } else {
       _parentNode.classList.add('is-open');
 
@@ -1536,11 +1542,12 @@ var ajaxAdminEndpoint = '/wp-admin/admin-ajax.php';
 
     var _indicatorOffset = (elWidth - listIndicatorWidth) / 2,
         _lineOffset = _elRect.width * _sum + (_sum * 6 - 3) + _indicatorOffset;
+    /*listIndicator.setAttribute(
+    	'style',
+    	'transform: translateX(' + _lineOffset + 'px)'
+    );*/
 
-    listIndicator.setAttribute('style', 'transform: translateX(' + _lineOffset + 'px)');
   };
-
-  var initHomeSlideEvent = function initHomeSlideEvent() {};
 
   var detectDevice = function detectDevice() {
     var check = false;

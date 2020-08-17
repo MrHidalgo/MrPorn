@@ -168,7 +168,8 @@
 			background-color: #d5f34a;
 			transform: translateX(83px);
 			transform-origin: center;
-			@include transition(width, transform);
+			//@include transition(width, transform);
+			@include transition(width, transform, left);
 			@include adaptive(1279) {
 				transform: translateX(65.5px);
 			}
