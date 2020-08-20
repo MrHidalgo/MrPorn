@@ -61,8 +61,37 @@
 		display: flex;
 		align-items: center;
 		justify-content: center;
+		color: rgb(70, 128, 202);
+		font-size: 16px;
+
+		@include adaptive(1023) {
+			font-size: 14px;
+		}
+
 		@include adaptive(767) {
 			flex-wrap: wrap;
+		}
+
+		a {
+			font-size: 16px;
+			color: rgb(70, 128, 202);
+			line-height: 2.273;
+			padding: 0 10px;
+			@include transition(color);
+			@include adaptive(1023) {
+				font-size: 14px;
+			}
+			@include adaptive(767) {
+				display: flex;
+				align-items: center;
+				min-height: 25px;
+				font-size: 12px;
+			}
+
+			&:hover {
+				color: #ffffff;
+				@include transition(color);
+			}
 		}
 
 		&-item {

@@ -10,6 +10,7 @@
 * */
 
 
+
 Element.prototype.parents = function(selector) {
 	var elements = [];
 	var elem = this;
@@ -96,3 +97,4 @@ function doScrolling(elementY, duration) {
 		}
 	})
 }
+var isMobileOrTablet = window.mobileAndTabletcheck();

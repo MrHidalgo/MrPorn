@@ -96,6 +96,8 @@ function doScrolling(elementY, duration) {
   });
 }
 
+var isMobileOrTablet = window.mobileAndTabletcheck();
+
 function getRequest() {
   var url = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : '';
   var data = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : {};
@@ -673,6 +675,7 @@ var initHamburger = function initHamburger() {
       val.classList.toggle("is-hideScroll");
     });
     document.querySelector('[search-js]').value = '';
+    hide(document.querySelector('[search-drop-mobile-js]'));
     document.querySelector('.category__drop').classList.remove('is-open');
   });
 };
@@ -1065,7 +1068,7 @@ var ajaxAdminEndpoint = '/wp-admin/admin-ajax.php';
         onPauseClick(_ev.closest('[video-pause-js]'));
       } else if (_ev.closest('[spec-skip-js]')) {
         onSkip(_ev.closest('[spec-skip-js]'));
-      }
+      } else if (!_ev.closest('.search_form')) {}
 
       if (!_ev.closest(className)) {
         // VIEW FAVORITES

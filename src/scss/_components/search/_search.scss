@@ -17,6 +17,32 @@
 .search_results_box.category__drop{
 	background: #000;
 }
+.search_results_box_mobile{
+	display: none;
+}
+.header__container-2.is-open{
+	.search_results_box_mobile{
+		display: block;
+
+		@include respond('ipad_portrait'){
+			position: absolute;
+			left: -20px;
+			right: -20px;
+			top: 54px;
+			bottom: 0;
+			z-index: 2;
+		}
+		@include adaptive(767) {
+			position: absolute;
+			left: -20px;
+			right: -20px;
+			top: 54px;
+			bottom: 0;
+			z-index: 2;
+		}
+	}
+}
+
 .search_results{
 	background: #fff;
 	-webkit-box-shadow: 0px 5px 14px 0px rgba(0,0,0,0.75);
@@ -28,6 +54,14 @@
 	}
 	@include adaptive(767) {
 		background: #000;
+	}
+}
+.search_result_box{
+	overflow: auto;
+	@include adaptive(767) {
+		position: absolute;
+		top: 36px;
+		bottom: 0;
 	}
 }
 .search_results_top{
@@ -83,6 +117,8 @@
 	text-align: center;
 	width: 25%;
 	flex: 25% 1;
+	display: flex;
+	flex-direction: column;
 
 	@include respond('ipad_portrait'){
 		width: 33.333334%;
@@ -137,9 +173,12 @@
 		border-top: 1px solid #9ca4ad;
 		border-left: 1px solid #9ca4ad;
 		border-right: 1px solid #9ca4ad;
+		flex: 1;
+		display: flex;
 
 		img{
 			max-width: 100%;
+			object-fit: cover;
 		}
 	}
 
@@ -167,6 +206,10 @@
 .search_pagination{
 	text-align: center;
 	padding: 10px 0;
+
+	@include adaptive(1023) {
+		padding: 0;
+	}
 
 	.item{
 		background: #e4e4e4;

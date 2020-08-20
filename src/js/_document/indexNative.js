@@ -127,10 +127,9 @@ const ajaxAdminEndpoint = '/wp-admin/admin-ajax.php';
 				onPauseClick(_ev.closest('[video-pause-js]'));
 			}else if(_ev.closest('[spec-skip-js]')){
 				onSkip(_ev.closest('[spec-skip-js]'));
+			}else if(!_ev.closest('.search_form')){
+
 			}
-
-
-
 
 			if (!_ev.closest(className)) {
 				// VIEW FAVORITES
