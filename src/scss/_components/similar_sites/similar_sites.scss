@@ -1,6 +1,6 @@
 // SIMILAR_SITES :: START
 .related_sites_container{
-	background: #fff;
+	background: #3b3b3b;
 	padding-bottom: 25px;
 	margin-bottom: 20px;
 }
@@ -38,12 +38,6 @@
 				}
 			}
 		}
-
-
-
-
-
-
 
 		&_thumb{
 			display: block;
@@ -88,6 +82,16 @@
 			white-space: nowrap;
 			text-overflow: ellipsis;
 			overflow: hidden;
+			color: #d1f34b;
 		}
+	}
+}
+
+.light{
+	.related_sites_container{
+		background: #fff;
+	}
+	.similar_sites_item .similar_link{
+		color: #337ab7;
 	}
 }

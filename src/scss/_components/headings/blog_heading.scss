@@ -1,12 +1,20 @@
 // BLOG_HEADING :: START
 .blog_heading{
-	background: #fff url(../images/bg-title-wht.png) left bottom repeat-x;
+	background: #1c3f87;
+	background: -moz-linear-gradient(top, #1c3f87 0%, #121f5e 39%, #0e285d 100%);
+	background: -webkit-linear-gradient(top, #1c3f87 0%,#121f5e 39%,#0e285d 100%);
+	background: linear-gradient(to bottom, #1c3f87 0%,#121f5e 39%,#0e285d 100%);
+	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#1c3f87', endColorstr='#0e285d',GradientType=0 );
+	color: #d1f34b;
+	text-shadow: none;
+
+
 	font-size: 20px;
 	font-weight: 800;
-	color: #014293;
+
 	position: relative;
 	padding: 10px 20px;
-	text-shadow: 1px 1px 0 #fff;
+
 	text-transform: uppercase;
 	margin: 5px 0 10px;
 	display: flex;
@@ -40,8 +48,7 @@
 
 	&_back{
 		padding-left: 35px;
-		color: #434e5b;
-
+		color: #fff;
 		font-weight: 600;
 		font-size: 15px;
 		text-decoration: none;
@@ -74,6 +81,18 @@
 			@include adaptive(767) {
 				display: none;
 			}
+		}
+	}
+}
+
+.light{
+	.blog_heading{
+		background: #fff url(../images/bg-title-wht.png) left bottom repeat-x;
+		color: #014293;
+		text-shadow: 1px 1px 0 #fff;
+
+		&_back{
+			color: #434e5b;
 		}
 	}
 }

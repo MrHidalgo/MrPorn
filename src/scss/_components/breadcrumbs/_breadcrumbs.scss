@@ -2,9 +2,10 @@
 
 .bread-crumb{
 	padding: 5px 25px;
-	background: #eee;
+	background: #4a4a4a;
 	font-size: 15px;
 	font-weight: 600;
+	color: #fff;
 
 	@include respond('ipad'){
 		font-size: 12px;
@@ -25,6 +26,7 @@
 
 	&-links{
 		width: 50%;
+		color: #fff;
 
 		@include respond('ipad_portrait'){
 			width: 100%;
@@ -67,11 +69,25 @@
 
 	a{
 		margin: 0 10px;
+		color: #fff;
 
 		@include respond('ipad_portrait'){
 			margin: 0;
 			padding: 5px 15px;
 			align-items: center;
+		}
+	}
+}
+.light{
+	.bread-crumb{
+		background: #eee;
+		color: #333;
+	}
+	.bread-crumb-links{
+		color: #333;
+
+		a{
+			color: #337ab7;
 		}
 	}
 }

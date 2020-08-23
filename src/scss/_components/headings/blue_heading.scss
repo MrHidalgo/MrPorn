@@ -1,10 +1,15 @@
 // BLUE_HEADING :: START
 .blue_heading{
-	background: #1e559a;
 	display: flex;
 	align-items: center;
 	width: 100%;
 	min-height: 48px;
+
+	background: #1c3f87;
+	background: -moz-linear-gradient(top,#1c3f87 0%,#121f5e 39%,#0e285d 100%);
+	background: -webkit-linear-gradient(top,#1c3f87 0%,#121f5e 39%,#0e285d 100%);
+	background: linear-gradient(to bottom,#1c3f87 0%,#121f5e 39%,#0e285d 100%);
+	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#1c3f87',endColorstr='#0e285d',GradientType=0 );
 
 	@include adaptive(767) {
 	}
@@ -92,6 +97,10 @@
 			display: none;
 		}
 	}
+}
 
-
+.light{
+	.blue_heading{
+		background: #1e559a;
+	}
 }

@@ -47,9 +47,14 @@ body {
 		}
 	}
 }
+.light{
+	body {
+		background: #cad4df;
+	}
+}
 
 a{
-	color: #337ab7;
+	color:#4099f9;
 
 	&:hover{
 		color: #337ab7;
@@ -58,6 +63,11 @@ a{
 	&:focus{
 		color: #337ab7;
 		text-transform: none;
+	}
+}
+.light{
+	a{
+		color: #337ab7;
 	}
 }
 

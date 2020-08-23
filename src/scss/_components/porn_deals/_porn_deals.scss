@@ -1,12 +1,16 @@
 // PORN_DEALS :: START
 .coupon_container{
-	background: #b0bcca;
+	background: #303030;
 	padding-bottom: 20px;
 	margin: 10px 0 0;
 
 	.coupon_black_title{
 		position: relative;
-		background: #000 url(../images/coupon/blck-bar.png) top repeat-x;
+		background: #1c3f87;
+		background: -moz-linear-gradient(top,#1c3f87 0%,#121f5e 39%,#0e285d 100%);
+		background: -webkit-linear-gradient(top,#1c3f87 0%,#121f5e 39%,#0e285d 100%);
+		background: linear-gradient(to bottom,#1c3f87 0%,#121f5e 39%,#0e285d 100%);
+		filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#1c3f87',endColorstr='#0e285d',GradientType=0 );
 		color: #b3ff00;
 		font-size: 36px;
 		padding: 10px 30px;
@@ -218,7 +222,7 @@
 	display: block;
 	margin: 30px 35px 20px;
 	padding: 20px 30px;
-	background: #929ca8;
+	background: #666;
 
 	@include adaptive(767) {
 		margin: 0 0 10px;
@@ -230,10 +234,11 @@
 	}
 
 	.search_input{
-		background: #fff;
-		background-image: url(../images/coupon/search-icon.png);
+		background-color: #515151;
+		background-image: url(../images/coupon/search-icon-white.png);
 		background-position: right 15px center;
 		background-repeat: no-repeat;
+		border: 1px solid #8c8c8c;
 		display: inline-block;
 		width: 65%;
 		vertical-align: top;
@@ -273,6 +278,7 @@
 			width: 91%;
 			display: inline-block;
 			vertical-align: top;
+			color: #afafaf;
 
 			&:focus, &:active{
 				outline: none;
@@ -426,7 +432,7 @@
 	display: flex;
 }
 .coupon_description{
-	background: #fff;
+	background: #3b3b3b;
 	margin: 25px 25px 10px;
 	padding: 20px;
 
@@ -452,7 +458,7 @@
 			display: inline-block;
 			font-size: 24px;
 			font-weight: 700;
-			color: #375590;
+			color: #dcecff;
 			padding-left: 10px;
 			vertical-align: middle;
 			margin: 10px 0;
@@ -460,7 +466,7 @@
 		p{
 			margin: 15px 0;
 			font-size: 14px;
-			color: #333;
+			color: #bbb;
 			line-height: 25px;
 		}
 	}
@@ -469,6 +475,10 @@
 .coupon_list_container{
 	position: relative;
 	padding: 0 35px;
+
+	&.similar_coupons{
+		padding: 0 10px;
+	}
 
 	@include respond('ipad'){
 		padding: 5px 20px;
@@ -613,7 +623,7 @@
 			}
 		}
 		.coupon_details{
-			background: #ebebeb;
+			background: #d6d6d6;
 			text-align: center;
 			padding: 10px 5px;
 
@@ -637,7 +647,7 @@
 				font-weight: 700;
 
 				span{
-					color: #0e458b;
+					color: #07a95f;
 				}
 			}
 
@@ -1465,6 +1475,7 @@
 .coupon_bottom_description {
 	padding: 15px 25px;
 	text-align: center;
+	color: #fff;
 
 	p{
 		margin-bottom: 15px;
@@ -1497,6 +1508,55 @@
 		}
 		@include adaptive(767) {
 			padding-bottom: 35px;
+		}
+	}
+}
+
+.light{
+	.coupon_container{
+		background: #b0bcca;
+
+		.coupon_black_title{
+			background: #000 url(../images/coupon/blck-bar.png) top repeat-x;
+		}
+	}
+	.coupon_bottom_description{
+		color: #333;
+	}
+	.coupon_list_item{
+		.coupon_details{
+			background: #ebebeb;
+
+			.coupon_price{
+				span{
+					color: #0e458b;
+				}
+			}
+		}
+	}
+	.coupon_description{
+		background: #fff;
+
+		.coupon_description_item{
+			p{
+				color: #333;
+			}
+
+			h4{
+				color: #375590;
+			}
+		}
+	}
+	.coupon_search{
+		background: #929ca8;
+
+		.search_input{
+			background-color: #fff;
+			background-image: url(../images/coupon/search-icon.png);
+
+			input{
+				color: inherit;
+			}
 		}
 	}
 }

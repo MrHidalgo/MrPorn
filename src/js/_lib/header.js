@@ -1,3 +1,28 @@
+const initTheme = () => {
+	let toggleSwitch = document.querySelector('#toggle-mode');
+	if(toggleSwitch){
+		toggleSwitch.addEventListener('change', (event) => {
+			if (event.target.checked) {
+				createCookie("is_dark", "1", 7);
+				document.documentElement.classList.remove('light');
+			} else {
+				createCookie("is_dark", "0", 7);
+				document.documentElement.classList.add('light');
+			}
+		})
+	}
+
+	var isDark = getCookieMpgCookie("is_dark");
+	if(isDark=='1'){
+		document.documentElement.classList.remove('light');
+		toggleSwitch.checked = false;
+	}else{
+		document.documentElement.classList.add('light');
+		toggleSwitch.checked = true;
+	}
+}
+initTheme();
+
 const renderFavourites = () => {
 	if(isMobileDevice){
 		return;

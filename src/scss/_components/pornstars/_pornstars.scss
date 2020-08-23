@@ -1,7 +1,8 @@
 // PORNSTARS :: START
 
 .pornstar_intro{
-	background: #e4f0ff;
+	background: #2f2f2f;
+	color: #bbb;
 	padding: 15px 15px 15px;
 	font-size: 14px;
 	line-height: 24px;
@@ -19,7 +20,8 @@
 .pornstar_container{
 	position: relative;
 	display: block;
-	background: #efefef;
+	background: #3b3b3b;
+	color: #fff;
 	margin-bottom: 10px;
 	padding: 15px 20px;
 
@@ -31,10 +33,10 @@
 	.pornstar_title{
 		font-size: 24px;
 		font-weight: 700;
-		color: #434e5b;
+		color: #fff;
 		margin: 10px 0 13px;
 		padding: 0 0 20px;
-		border-bottom: 1px solid #bababa;
+		border-bottom: 1px solid #777;
 
 		@include respond('ipad'){
 			font-size: 20px;
@@ -106,7 +108,9 @@
 	font-weight: 700;
 	margin: 0 0 20px;
 	padding: 0 0 13px;
-	border-bottom: 1px solid #bababa;
+	border-bottom: 1px solid #777;
+
+
 
 	@include respond('ipad'){
 		font-size: 16px;
@@ -136,9 +140,14 @@
 		padding: 3px 9px;
 		margin: 5px 1px;
 		border-radius: 3px;
-		background: #e0e0e0;
-		color: #000;
+		background: #292929;
+		color: #fff;
 		position: relative;
+
+		&:first-child{
+			background: #fff;
+			color: #004ba9;
+		}
 
 		@include adaptive(767) {
 			padding: 3px 6px;
@@ -369,6 +378,11 @@
 				color: #c5dfff;
 				font-weight: 300;
 
+				a{
+					color: #88c3ff;
+					font-weight: 800;
+				}
+
 				strong {
 					color: #fff;
 					font-weight: 400;
@@ -401,7 +415,8 @@
 		}
 	}
 	.bioIntro {
-		background: #fff;
+		background: #2f2f2f;
+		color: #e8e8e8;
 		padding: 20px 0 5px 20px;
 		margin: 0;
 		min-height: 100%;
@@ -418,6 +433,9 @@
 			position: relative;
 			padding-right: 15px;
 
+			a{
+				color: #4d99f9;
+			}
 			p {
 				line-height: 24px;
 				margin: 20px 0;
@@ -427,7 +445,7 @@
 
 		.shade {
 			content: " ";
-			display: block;
+			display: none;
 			width: 100%;
 			position: absolute;
 			height: 60px;
@@ -441,7 +459,8 @@
 	}
 
 	.biorecomm {
-		background: #fff;
+		background: #2f2f2f;
+		color: #e8e8e8;
 		padding: 10px 20px;
 		min-height: inherit;
 		margin: 0;
@@ -452,7 +471,7 @@
 			margin: 0;
 			font-size: 18px;
 			font-weight: 700;
-			color: #023d85;
+			color: #fff;
 			text-transform: uppercase;
 			border-bottom: 2px solid #bdd7dd;
 			background: url(../images/pornstar/recomm.png) left 5px center no-repeat;
@@ -481,7 +500,7 @@
 }
 
 .more_pornstars{
-	background: #fff;
+	background: #3b3b3b;
 
 	@include respond('ipad_portrait'){
 		background: transparent;
@@ -510,7 +529,6 @@
 	.pornstar_item{
 		padding: 5px;
 		width: 20%;
-		background: #fff;
 
 		@include respond('ipad_landscape'){
 			width: 25%;
@@ -541,7 +559,7 @@
 		.pornstar_inner{
 			padding: 10px;
 			border-radius: 3px;
-			background: #ebf4ff;
+			background: #666;
 			border: 1px solid #ebf4ff;
 		}
 
@@ -556,6 +574,7 @@
 			text-align: left;
 			font-size: 15px;
 			font-weight: 700;
+			color: #dcecff;
 
 			@include respond('ipad'){
 				font-size: 12.5px;
@@ -571,6 +590,7 @@
 				right: 8px;
 				font-size: 14px;
 				font-weight: 400;
+				color: #fff;
 
 				@include respond('ipad'){
 					font-size: 12.5px;
@@ -604,5 +624,84 @@
 		@include adaptive(767) {
 			font-size: 26px;
 		}
+	}
+}
+
+.light{
+	.pornstar_intro{
+		background: #e4f0ff;
+		color: #333;
+	}
+	.pornstar_container{
+		background: #efefef;
+		color: #333;
+
+		.pornstar_title{
+			color: #434e5b;
+			border-bottom: 1px solid #bababa;
+		}
+	}
+
+	.alphaSort{
+		border-bottom: 1px solid #bababa;
+
+		a{
+			background: #e0e0e0;
+			color: #000;
+
+			&:first-child{
+				background: #fff;
+				color: #004ba9;
+			}
+		}
+	}
+
+	.ps_list_scroll, .ps_list_container{
+		.pornstar_item{
+			background: #fff;
+
+			.pornstar_inner{
+				background: #ebf4ff;
+			}
+		}
+	}
+}
+
+.light{
+	.pornstar_row{
+		.bioIntro{
+			background: #fff;
+			color: #333;
+
+			.bioIntroInner{
+				a{
+					color: #337ab7;
+				}
+			}
+
+			.shade{
+				display: block;
+			}
+		}
+		.biorecomm{
+			background: #fff;
+			color: #333;
+
+			h3{
+				color: #023d85;
+			}
+		}
+	}
+	.pornstar_item{
+		.psD{
+			color: #333;
+
+			small{
+				color: #333;
+			}
+		}
+	}
+	.more_pornstars{
+		background: #fff;
 	}
 }

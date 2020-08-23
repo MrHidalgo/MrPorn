@@ -11,9 +11,9 @@
 .blog_list{
 
 	.blog_list_item{
-		border-top: 12px solid #d1f34b;
+		border-top: 12px solid #1e559a;
 		margin: 10px 0 20px;
-		background: #fff;
+		background: #3b3b3b;
 		padding: 25px;
 		display: flex;
 		flex-direction: row;
@@ -100,6 +100,10 @@
 				overflow: hidden;
 				text-overflow: ellipsis;
 
+				a{
+					color: #e8e8e8;
+				}
+
 				@include respond('ipad_portrait'){
 					font-size: 22px;
 				}
@@ -109,6 +113,7 @@
 				font-weight: 700;
 				margin: 5px 0;
 				display: flex;
+				color: #fff;
 
 				@include respond('ipad_portrait'){
 					justify-content: center;
@@ -129,10 +134,11 @@
 			}
 
 			.short_desc {
-				background: #f4f4f4;
+				background: #666;
 				padding: 20px;
 				font-size: 14px;
 				line-height: 25px;
+				color: #e8e8e8;
 
 				@include respond('ipad_portrait'){
 					margin: 0;
@@ -172,12 +178,17 @@
 }
 
 .blog_content{
-	background: #fff;
-	border-top: 12px solid #d1f34b;
+	background: #3b3b3b;
+	border-top: 12px solid #1e559a;
 	margin: 10px 0 -1px;
 
 	&_inner{
 		padding: 25px;
+		color: #bbb;
+
+		a{
+			color: #337ab7;
+		}
 
 		@include respond('ipad_portrait'){
 			padding: 15px;
@@ -208,12 +219,12 @@
 
 	.category_bottom_links {
 		padding-top: 0;
-		padding-bottom: 5px;
+		padding-bottom: 25px;
 		text-align: center;
 
 		.posted_on {
 			font-size: 20px;
-			color: #1e559a;
+			color: #dcecff;
 			padding: 0 15px;
 			font-weight: 600;
 			font-family: 'Permanent Marker', cursive;
@@ -239,5 +250,47 @@
 @include adaptive(767){
 	.bread-crumb{
 		display: none;
+	}
+}
+
+.light{
+	.bread-crumb{
+		a{
+			color: #333;
+		}
+	}
+	.blog_list .blog_list_item{
+		border-top: 12px solid #d1f34b;
+		background: #fff;
+
+		.blog_details h2 {
+			a{
+				color: #337ab7;
+			}
+		}
+		.blog_date{
+			color: #333;
+		}
+		.short_desc {
+			background: #f4f4f4;
+			color: #333;
+		}
+	}
+	.blog_content{
+		background: #fff;
+		border-top: 12px solid #d1f34b;
+
+		&_inner{
+			color: #333;
+
+			a{
+				color: #fff;
+			}
+		}
+	}
+	.category_bottom_links{
+		.posted_on{
+			color: #1e559a;
+		}
 	}
 }
