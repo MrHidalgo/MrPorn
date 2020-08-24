@@ -22,6 +22,7 @@ if (!Element.prototype.closest) {
 	};
 }
 
+const themeBase = '/wp-content/themes/mpg/';
 const ajaxEndpoint = '/wp-content/themes/mpg/ajax-handler-wp.php';
 const ajaxAdminEndpoint = '/wp-admin/admin-ajax.php';
 
@@ -127,6 +128,10 @@ const ajaxAdminEndpoint = '/wp-admin/admin-ajax.php';
 				onPauseClick(_ev.closest('[video-pause-js]'));
 			}else if(_ev.closest('[spec-skip-js]')){
 				onSkip(_ev.closest('[spec-skip-js]'));
+			}else if(_ev.closest('[sort-letter-collapse-js]')){
+				onSortLetterClick(_ev.closest('[sort-letter-collapse-js]'));
+			}else if(_ev.closest('[collapse-toggle-js]')){
+				onSortToggle(_ev.closest('[collapse-toggle-js]'));
 			}else if(!_ev.closest('.search_form')){
 
 			}
@@ -781,7 +786,11 @@ const ajaxAdminEndpoint = '/wp-admin/admin-ajax.php';
 		renderFavourites();
 
 		viewFavoritesToggle();
-		sortCB();
+		//sortCB();
+
+
+		letterSearch();
+
 		search();
 		boxHover();
 

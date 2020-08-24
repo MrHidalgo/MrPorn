@@ -1,3 +1,5 @@
+let letterData = [];
+
 const initTheme = () => {
 	let toggleSwitch = document.querySelector('#toggle-mode');
 	if(toggleSwitch){
@@ -15,10 +17,10 @@ const initTheme = () => {
 	var isDark = getCookieMpgCookie("is_dark");
 	if(isDark=='1'){
 		document.documentElement.classList.remove('light');
-		toggleSwitch.checked = false;
+		toggleSwitch.checked = true;
 	}else{
 		document.documentElement.classList.add('light');
-		toggleSwitch.checked = true;
+		toggleSwitch.checked = false;
 	}
 }
 initTheme();
@@ -47,11 +49,11 @@ const renderFavourites = () => {
 
 			if(res.fav_list){
 				res.fav_list.map(function (fav, index) {
-					favouritesHtml += '<a class="header__view-link" href="'+fav.permalink+'">' +
+					favouritesHtml += '<div class="header__view-link" >' +
 						'<div><span>'+(index+1)+'.</span></div>' +
-						'<div><img src="'+fav.favicon+'"/><p>'+fav.title+'</p></div>' +
+						'<div><img src="'+fav.favicon+'"/><p><a href="'+fav.permalink+'">'+fav.title+'</a></p></div>' +
 						'<div><button type="button" data-id="'+fav.id+'" un-favorites-js><i class="icon-font icon-delete"></i></button><button type="button"><i class="icon-font icon-search"></i></button></div>' +
-						'</a>';
+						'</div>';
 
 					let favLink = document.querySelector('[data-id="'+fav.id+'"] [favorites-toggle-js]');
 					if(favLink){
@@ -66,51 +68,106 @@ const renderFavourites = () => {
 
 }
 
+const letterSearch = () => {
+	postRequest(ajaxEndpoint, {
+		action:'letter_search'
+	}, function (result) {
+		Object.keys(result).forEach(function (key) {
+			var letter = key;
+			var suggestions = result[key];
+
+			var letterSuggestions = [];
+
+			suggestions.map(function (suggestion) {
+				let sName = suggestion.name;
+				let sIcon = suggestion.icon;
+				let sHd = suggestion.hd;
+				let sFree = suggestion.free;
+
+				letterSuggestions.push(suggestion);
+			});
+
+			letterData[letter] = letterSuggestions;
+		});
+		renderSorting();
+		//initLetterHover();
+	});
+}
+
 const renderSorting = () => {
-		const sortingHtml = '<a class="sort__drop-link" href="#">A</a><a class="sort__drop-link" href="#">B</a><a class="sort__drop-link" href="#">C</a><a class="sort__drop-link" href="#">D</a><a class="sort__drop-link" href="#">E</a><a class="sort__drop-link" href="#">F</a><a class="sort__drop-link" href="#">G</a><a class="sort__drop-link" href="#">H</a><a class="sort__drop-link" href="#">I</a><a class="sort__drop-link" href="#">J</a><a class="sort__drop-link" href="#">K</a><a class="sort__drop-link" href="#">L</a><a class="sort__drop-link" href="#">M</a><a class="sort__drop-link" href="#">N</a><a class="sort__drop-link" href="#">O</a><a class="sort__drop-link" href="#">P</a><a class="sort__drop-link" href="#">Q</a><a class="sort__drop-link" href="#">R</a><a class="sort__drop-link" href="#">S</a><a class="sort__drop-link" href="#">T</a><a class="sort__drop-link" href="#">U</a><a class="sort__drop-link" href="#">V</a><a class="sort__drop-link" href="#">W</a><a class="sort__drop-link" href="#">X</a><a class="sort__drop-link" href="#">Y</a><a class="sort__drop-link" href="#">Z</a>'+
-                      '<div class="sort__drop-inner">'+
-                        '<div class="sort__collapse"><a class="sort__collapse-toggle" href="#" collapse-toggle-js data-container="sort-collapse-1">'+
-                            '<div><span>#1</span></div>'+
-                            '<div><images src="images/images-black-porn-sites.png" srcset="images/images-black-porn-sites@2x.png 2x" alt="">'+
-                              '<p><span>B</span>lack Porn Sites</p>'+
-                            '</div>'+
-                            '<div><i class="icon-font icon-arrow-angle"></i></div></a>'+
-                          '<div class="sort__collapse-body" id="sort-collapse-1" collapse-body-js>'+
-                            '<button type="button"><span>Free</span></button><images src="images/images-badge-premium.png" srcset="images/images-badge-premium@2x.png 2x" alt="">'+
-                          '</div>'+
-                        '</div>'+
-                        '<div class="sort__collapse"><a class="sort__collapse-toggle" href="#" collapse-toggle-js data-container="sort-collapse-2">'+
-                            '<div><span>#2</span></div>'+
-                            '<div><images src="images/images-blog.png" srcset="images/images-blog@2x.png 2x" alt="">'+
-                              '<p>Porn <span>B</span>logs</p>'+
-                            '</div>'+
-                            '<div><i class="icon-font icon-arrow-angle"></i></div></a>'+
-                          '<div class="sort__collapse-body" id="sort-collapse-2" collapse-body-js>'+
-                            '<button type="button"><span>Free</span></button><images src="images/images-badge-premium.png" srcset="images/images-badge-premium@2x.png 2x" alt="">'+
-                          '</div>'+
-                        '</div>'+
-                        '<div class="sort__collapse"><a class="sort__collapse-toggle" href="#" collapse-toggle-js data-container="sort-collapse-3">'+
-                            '<div><span>#3</span></div>'+
-                            '<div><images src="images/images-best-webcam-girls.png" srcset="images/images-best-webcam-girls@2x.png 2x" alt="">'+
-                              '<p><span>B</span>est Webcam Girls</p>'+
-                            '</div>'+
-                            '<div><i class="icon-font icon-arrow-angle"></i></div></a>'+
-                          '<div class="sort__collapse-body" id="sort-collapse-3" collapse-body-js>'+
-                            '<button type="button"><span>Free</span></button><images src="images/images-badge-premium.png" srcset="images/images-badge-premium@2x.png 2x" alt="">'+
-                          '</div>'+
-                        '</div>'+
-                        '<div class="sort__collapse"><a class="sort__collapse-toggle" href="#" collapse-toggle-js data-container="sort-collapse-4">'+
-                            '<div><span>#4</span></div>'+
-                            '<div><images src="images/images-best-adult-ad-networks.png" srcset="images/images-best-adult-ad-networks@2x.png 2x" alt="">'+
-                              '<p><span>B</span>est Adult Ad Networks</p>'+
-                            '</div>'+
-                            '<div><i class="icon-font icon-arrow-angle"></i></div></a>'+
-                          '<div class="sort__collapse-body" id="sort-collapse-4" collapse-body-js>'+
-                            '<button type="button"><span>Free</span></button><images src="images/images-badge-premium.png" srcset="images/images-badge-premium@2x.png 2x" alt="">'+
-                          '</div>'+
-                        '</div>'+
-                      '</div>';
+	let letterHtml = '';
+
+	Object.entries(letterData).forEach(function (letter){
+		letterHtml += '<a class="sort__drop-link" sort-letter-collapse-js data-letter="'+letter[0]+'">'+letter[0].toUpperCase()+'</a>';
+	});
+	letterHtml += '<div class="sort__drop-inner"></div>';
 
 	const sortcontainer = document.querySelector('[sort-node-js]');
-	sortcontainer.innerHTML = sortingHtml;
+	sortcontainer.innerHTML = letterHtml;
 }
+
+const onSortLetterClick = (letterItem) => {
+	let letter = letterItem.dataset.letter;
+	let suggessionIndex = 1;
+	let letterSuggessions = '';
+
+	letterData[letter].forEach(function (suggession){
+		let suggessionName = suggession.name;
+		let uL = letter.toUpperCase();
+		suggessionName = suggessionName.replace(letter, '<span>'+letter+'</span>');
+		suggessionName = suggessionName.replace(uL, '<span>'+uL+'</span>');
+
+		let siteFree = suggession.free;
+		let siteHd = suggession.hd;
+
+		let htmlFree = '';
+		if(siteFree){
+			htmlFree = '<a href="'+siteFree+'" class="site_free"><span>Free</span></a>';
+		}
+		let htmlHd = '';
+		if(siteHd){
+			htmlHd = '<a href="'+siteHd+'"><img src="'+themeBase +'images/img-badge-premium.png" srcset="'+themeBase+'images/img-badge-premium@2x.png 2x" alt=""/></a>';
+		}
+
+
+		letterSuggessions += '<div class="sort__collapse">' +
+			'<a class="sort__collapse-toggle" href="#" collapse-toggle-js data-container="sort-collapse-'+suggessionIndex+'">'+
+			'<div><span>#'+suggessionIndex+'</span></div>'+
+			'<div><img src="images/images-black-porn-sites.png" srcset="images/images-black-porn-sites@2x.png 2x" alt=""/>'+
+			'<p>'+suggessionName+'</p>'+
+			'</div>'+
+			'<div><i class="icon-font icon-arrow-angle"></i></div></a>'+
+			'<div class="sort__collapse-body" id="sort-collapse-'+suggessionIndex+'" collapse-body-js>'+
+			htmlFree +
+			htmlHd+
+			'</div>'+
+			'</div>';
+
+		suggessionIndex++;
+	});
+
+	const sortSuggesionContainer = document.querySelector('.sort__drop-inner');
+	sortSuggesionContainer.classList.add('is-open');
+	letterItem.classList.add('is-active');
+	sortSuggesionContainer.innerHTML = letterSuggessions;
+
+}
+
+const onSortToggle = (sortToggle) => {
+	let sortContainer = sortToggle.dataset.container;
+
+	let activeSortCollapse = document.querySelector('.sort__collapse-body.is-open');
+	if(activeSortCollapse){
+		activeSortCollapse.classList.remove('is-open');
+	}
+	let sC = document.querySelector('#'+sortContainer);
+	if(sC){
+		if(sC.classList.contains('is-open')){
+			sC.classList.remove('is-open');
+		}else{
+			sC.classList.add('is-open');
+		}
+	}
+}
+
+
