@@ -495,7 +495,7 @@ function removeFavourite(favItem){
 
 function initWebWorker(){
 
-	if(navigator.userAgent.toLowerCase().includes('lighthouse')){
+	if(!navigator.userAgent.toLowerCase().includes('lighthouse')){
 		if(document.body.classList.contains('home')){
 			if (typeof(Worker) !== "undefined") {
 				// Yes! Web worker support!

@@ -557,7 +557,7 @@ function removeFavourite(favItem) {
 }
 
 function initWebWorker() {
-  if (navigator.userAgent.toLowerCase().includes('lighthouse')) {
+  if (!navigator.userAgent.toLowerCase().includes('lighthouse')) {
     if (document.body.classList.contains('home')) {
       if (typeof Worker !== "undefined") {// Yes! Web worker support!
         // Some code.....
@@ -741,6 +741,10 @@ var initTheme = function initTheme() {
   }
 
   var isDark = getCookieMpgCookie("is_dark");
+
+  if (isDark == '') {
+    isDark = '1';
+  }
 
   if (isDark == '1') {
     document.documentElement.classList.remove('light');
@@ -1215,7 +1219,10 @@ var ajaxAdminEndpoint = '/wp-admin/admin-ajax.php';
         onSortLetterClick(_ev.closest('[sort-letter-collapse-js]'));
       } else if (_ev.closest('[collapse-toggle-js]')) {
         onSortToggle(_ev.closest('[collapse-toggle-js]'));
-      } else if (!_ev.closest('.search_form')) {}
+      } else if (!_ev.closest('.search_form')) {
+        document.querySelector('[search-js]').value = '';
+        hide(document.querySelector('[search-drop-js]'));
+      } else {}
 
       if (!_ev.closest(className)) {
         // VIEW FAVORITES

@@ -133,6 +133,9 @@ const ajaxAdminEndpoint = '/wp-admin/admin-ajax.php';
 			}else if(_ev.closest('[collapse-toggle-js]')){
 				onSortToggle(_ev.closest('[collapse-toggle-js]'));
 			}else if(!_ev.closest('.search_form')){
+				document.querySelector('[search-js]').value='';
+				hide(document.querySelector('[search-drop-js]'));
+			}else{
 
 			}
 

@@ -15,6 +15,9 @@ const initTheme = () => {
 	}
 
 	var isDark = getCookieMpgCookie("is_dark");
+	if(isDark==''){
+		isDark = '1';
+	}
 	if(isDark=='1'){
 		document.documentElement.classList.remove('light');
 		toggleSwitch.checked = true;
