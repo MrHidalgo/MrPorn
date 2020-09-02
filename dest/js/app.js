@@ -724,6 +724,8 @@ var renderMobileMenu = function renderMobileMenu() {
 };
 
 var letterData = [];
+var loggedUsername = '';
+var logoutUrl = '';
 
 var initTheme = function initTheme() {
   var toggleSwitch = document.querySelector('#toggle-mode');
@@ -756,6 +758,15 @@ var initTheme = function initTheme() {
 };
 
 initTheme();
+
+var initLoggedUser = function initLoggedUser() {
+  loggedUsername = getCookieMpgCookie("logged_username");
+
+  if (loggedUsername != '') {
+    logoutUrl = getCookieMpgCookie("logout_url");
+    document.documentElement.classList.add('is_logged');
+  }
+};
 
 var renderFavourites = function renderFavourites() {
   if (isMobileDevice) {

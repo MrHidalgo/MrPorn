@@ -17,9 +17,18 @@
 	&-wrapper {
 		position: relative;
 		display: flex;
+		padding-bottom: 10px;
+		display: none;
 		@include adaptive(1023) {
 			display: none;
 		}
+	}
+
+	&-text{
+		font-size: 15px;
+		color: #fff;
+		margin-top: -5px;
+		padding-bottom: 5px;
 	}
 
 	&-left,
@@ -207,5 +216,14 @@
 				@include transition(color);
 			}
 		}
+	}
+}
+
+.is_logged{
+	.header__view-wrapper{
+		display: block;
+	}
+	.header__view-text{
+		display: none;
 	}
 }
