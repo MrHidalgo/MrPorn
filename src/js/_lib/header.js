@@ -30,14 +30,7 @@ const initTheme = () => {
 }
 initTheme();
 
-const initLoggedUser = () =>{
-	loggedUsername = getCookieMpgCookie("logged_username");
-	if(loggedUsername!=''){
-		logoutUrl = getCookieMpgCookie("logout_url");
 
-		document.documentElement.classList.add('is_logged');
-	}
-}
 
 const renderFavourites = () => {
 	if(isMobileDevice){

@@ -71,8 +71,8 @@ const renderMobileMenu = () => {
 
 	const mobileNavHtml = '<div>' +
 		'            <div class="pre-header__mobile-top">' +
-		'              <div><a class="pre-header__signin" href="#"><i class="icon-font icon-enter"></i><span>Sign In</span></a></div>' +
-		'              <div><a class="pre-header__signup" href="#"><i class="icon-font icon-key"></i><span>Sign Up</span></a></div>' +
+		'              <div><a class="pre-header__signin mobile_login_link" href="/login/"><i class="icon-font icon-enter"></i><span>Sign In</span></a></div>' +
+		'              <div><a class="pre-header__signup mobile_signup_link" href="/sign-up/"><i class="icon-font icon-key"></i><span>Sign Up</span></a></div>' +
 		'            </div>' +
 		'            <div class="pre-header__mobile-middle">' +
 									'<p class="pre-header__heading"><i></i><span>Main</span></p>'+
@@ -138,5 +138,9 @@ const renderMobileMenu = () => {
 		'          </div>';
 
 	mobileContainer.innerHTML = mobileNavHtml;
+
+	if(typeof initLoggedUser === "function"){
+		initLoggedUser();
+	}
 }
 
