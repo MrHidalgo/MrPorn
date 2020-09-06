@@ -31,6 +31,10 @@
 .is_logged{
 	.header__view-wrapper{
 		display: block;
+
+		@include adaptive(1023) {
+			display: none;
+		}
 	}
 	.header__view-text{
 		display: none;

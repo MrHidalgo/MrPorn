@@ -4090,7 +4090,14 @@ strong {
   display: block;
 }
 
-/* line 35, src/scss/_components/common/_header.scss */
+@media screen and (max-width: 1023px) {
+  /* line 32, src/scss/_components/common/_header.scss */
+  .is_logged .header__view-wrapper {
+    display: none;
+  }
+}
+
+/* line 39, src/scss/_components/common/_header.scss */
 .is_logged .header__view-text {
   display: none;
 }
@@ -5114,6 +5121,72 @@ strong {
 }
 
 /* line 141, src/scss/_components/common/_footer.scss */
+.footer_description h2 {
+  padding-bottom: 10px;
+  color: #ffffff;
+  font-size: 24px;
+  font-weight: 700;
+}
+
+@media screen and (max-width: 1023px) {
+  /* line 141, src/scss/_components/common/_footer.scss */
+  .footer_description h2 {
+    font-size: 20px;
+  }
+}
+
+@media screen and (max-width: 767px) {
+  /* line 141, src/scss/_components/common/_footer.scss */
+  .footer_description h2 {
+    font-size: 14px;
+  }
+}
+
+/* line 154, src/scss/_components/common/_footer.scss */
+.footer_description h3 {
+  padding-bottom: 10px;
+  color: #ffffff;
+  font-size: 24px;
+  font-weight: 700;
+}
+
+@media screen and (max-width: 1023px) {
+  /* line 154, src/scss/_components/common/_footer.scss */
+  .footer_description h3 {
+    font-size: 20px;
+  }
+}
+
+@media screen and (max-width: 767px) {
+  /* line 154, src/scss/_components/common/_footer.scss */
+  .footer_description h3 {
+    font-size: 14px;
+  }
+}
+
+/* line 167, src/scss/_components/common/_footer.scss */
+.footer_description p {
+  padding-bottom: 30px;
+  color: #4b4e6b;
+  line-height: 1.8;
+  font-size: 16px;
+}
+
+@media screen and (max-width: 1023px) {
+  /* line 167, src/scss/_components/common/_footer.scss */
+  .footer_description p {
+    font-size: 14px;
+  }
+}
+
+@media screen and (max-width: 767px) {
+  /* line 167, src/scss/_components/common/_footer.scss */
+  .footer_description p {
+    font-size: 12px;
+  }
+}
+
+/* line 182, src/scss/_components/common/_footer.scss */
 .light .footer__title {
   color: #576576;
 }

@@ -249,7 +249,13 @@ var initHomeLazyLoad = function initHomeLazyLoad() {
 };
 
 var loadHomeData = function loadHomeData() {
+  var currentLang = document.documentElement.getAttribute('lang');
   var url = 'http://mpg.c2136.cloudnet.cloud/wp-json/mpg/home/';
+
+  if (currentLang != 'en') {
+    url = 'http://mpg.c2136.cloudnet.cloud/wp-json/mpg/home/?lang=' + currentLang;
+  }
+
   fetch(url).then(function (res) {
     return res.json();
   }).then(function (out) {

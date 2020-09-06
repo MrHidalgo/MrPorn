@@ -24,7 +24,14 @@ const initHomeLazyLoad = () =>{
 }
 
 const loadHomeData = () => {
+	let currentLang = document.documentElement.getAttribute('lang');
+
 	let url = 'http://mpg.c2136.cloudnet.cloud/wp-json/mpg/home/';
+	if(currentLang!='en'){
+		url = 'http://mpg.c2136.cloudnet.cloud/wp-json/mpg/home/?lang='+currentLang;
+	}
+
+
 
 	fetch(url)
 		.then(res => res.json())
