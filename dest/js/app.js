@@ -288,6 +288,10 @@ function renderSiteHoverContent(category, index) {
     return false;
   }
 
+  if (homeData.categories === undefined) {
+    return false;
+  }
+
   if (!homeData.categories[category]) {
     return false;
   }
@@ -743,10 +747,10 @@ var initTheme = function initTheme() {
   }
 
   if (isDark == '1') {
-    document.documentElement.classList.remove('light');
+    //document.documentElement.classList.remove('light');
     toggleSwitch.checked = true;
   } else {
-    document.documentElement.classList.add('light');
+    //document.documentElement.classList.add('light');
     toggleSwitch.checked = false;
   }
 };
@@ -859,13 +863,18 @@ var onSortLetterClick = function onSortLetterClick(letterItem) {
 
 var onSortToggle = function onSortToggle(sortToggle) {
   var sortContainer = sortToggle.dataset.container;
+  var sC = document.querySelector('#' + sortContainer);
+
+  if (sC != undefined && sC.classList.contains('is-open')) {
+    sC.classList.remove('is-open');
+    return;
+  }
+
   var activeSortCollapse = document.querySelector('.sort__collapse-body.is-open');
 
   if (activeSortCollapse) {
     activeSortCollapse.classList.remove('is-open');
   }
-
-  var sC = document.querySelector('#' + sortContainer);
 
   if (sC) {
     sC.classList.toggle('is-open');

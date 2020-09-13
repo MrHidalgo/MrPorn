@@ -21,10 +21,10 @@ const initTheme = () => {
 		isDark = '1';
 	}
 	if(isDark=='1'){
-		document.documentElement.classList.remove('light');
+		//document.documentElement.classList.remove('light');
 		toggleSwitch.checked = true;
 	}else{
-		document.documentElement.classList.add('light');
+		//document.documentElement.classList.add('light');
 		toggleSwitch.checked = false;
 	}
 }
@@ -167,12 +167,17 @@ const onSortLetterClick = (letterItem) => {
 
 const onSortToggle = (sortToggle) => {
 	let sortContainer = sortToggle.dataset.container;
+	let sC = document.querySelector('#'+sortContainer);
+	if(sC != undefined && sC.classList.contains('is-open')){
+		sC.classList.remove('is-open');
+		return;
+	}
 
 	let activeSortCollapse = document.querySelector('.sort__collapse-body.is-open');
 	if(activeSortCollapse){
 		activeSortCollapse.classList.remove('is-open');
 	}
-	let sC = document.querySelector('#'+sortContainer);
+
 	if(sC){
 		sC.classList.toggle('is-open');
 		/*if(sC.classList.contains('is-open')){

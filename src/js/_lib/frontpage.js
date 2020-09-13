@@ -93,6 +93,10 @@ function renderSiteHoverContent(category, index){
 		return false;
 	}
 
+	if(homeData.categories === undefined){
+		return false;
+	}
+
 	if(!homeData.categories[category]){
 		return false;
 	}
