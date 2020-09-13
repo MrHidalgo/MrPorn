@@ -132,9 +132,10 @@ const ajaxAdminEndpoint = '/wp-admin/admin-ajax.php';
 				onSortLetterClick(_ev.closest('[sort-letter-collapse-js]'));
 			}else if(_ev.closest('[collapse-toggle-js]')){
 				onSortToggle(_ev.closest('[collapse-toggle-js]'));
-			}else if(!_ev.closest('.search_form')){
+			}else if(!_ev.closest('[search-parent-js]')){
 				document.querySelector('[search-js]').value='';
-				hide(document.querySelector('[search-drop-js]'));
+				console.log('hiding search box ', _ev.closest('[search-parent-js]'));
+				//hide(document.querySelector('[search-drop-js]'));
 			}else{
 
 			}
