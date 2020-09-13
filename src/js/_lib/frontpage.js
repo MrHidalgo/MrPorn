@@ -89,6 +89,10 @@ function renderHompageSiteSlide(category, index){
 }
 
 function renderSiteHoverContent(category, index){
+	if(!homeData){
+		return false;
+	}
+
 	if(!homeData.categories[category]){
 		return false;
 	}

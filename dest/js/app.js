@@ -284,6 +284,10 @@ function renderHompageSiteSlide(category, index) {
 }
 
 function renderSiteHoverContent(category, index) {
+  if (!homeData) {
+    return false;
+  }
+
   if (!homeData.categories[category]) {
     return false;
   }
@@ -821,9 +825,9 @@ var onSortLetterClick = function onSortLetterClick(letterItem) {
   var letterSuggessions = '';
   letterData[letter].forEach(function (suggession) {
     var suggessionName = suggession.name;
-    var uL = letter.toUpperCase();
-    suggessionName = suggessionName.replace(letter, '<span>' + letter + '</span>');
-    suggessionName = suggessionName.replace(uL, '<span>' + uL + '</span>');
+    var uL = letter.toUpperCase(); //suggessionName = suggessionName.replace(letter, '<span>'+letter+'</span>');
+    //suggessionName = suggessionName.replace(uL, '<span>'+uL+'</span>');
+
     var siteFree = suggession.free;
     var siteHd = suggession.hd;
     var htmlFree = '';
@@ -841,6 +845,12 @@ var onSortLetterClick = function onSortLetterClick(letterItem) {
     letterSuggessions += '<div class="sort__collapse">' + '<a class="sort__collapse-toggle" href="#" collapse-toggle-js data-container="sort-collapse-' + suggessionIndex + '">' + '<div><span>#' + suggessionIndex + '</span></div>' + '<div><img src="images/images-black-porn-sites.png" srcset="images/images-black-porn-sites@2x.png 2x" alt=""/>' + '<p>' + suggessionName + '</p>' + '</div>' + '<div><i class="icon-font icon-arrow-angle"></i></div></a>' + '<div class="sort__collapse-body" id="sort-collapse-' + suggessionIndex + '" collapse-body-js>' + htmlFree + htmlHd + '</div>' + '</div>';
     suggessionIndex++;
   });
+  var activeSortLetter = document.querySelector('.sort__drop-link.is-active');
+
+  if (activeSortLetter) {
+    activeSortLetter.classList.remove('is-active');
+  }
+
   var sortSuggesionContainer = document.querySelector('.sort__drop-inner');
   sortSuggesionContainer.classList.add('is-open');
   letterItem.classList.add('is-active');
@@ -858,11 +868,12 @@ var onSortToggle = function onSortToggle(sortToggle) {
   var sC = document.querySelector('#' + sortContainer);
 
   if (sC) {
-    if (sC.classList.contains('is-open')) {
-      sC.classList.remove('is-open');
-    } else {
-      sC.classList.add('is-open');
-    }
+    sC.classList.toggle('is-open');
+    /*if(sC.classList.contains('is-open')){
+    	sC.classList.remove('is-open');
+    }else{
+    	sC.classList.add('is-open');
+    }*/
   }
 };
 /**

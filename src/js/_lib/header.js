@@ -121,8 +121,8 @@ const onSortLetterClick = (letterItem) => {
 	letterData[letter].forEach(function (suggession){
 		let suggessionName = suggession.name;
 		let uL = letter.toUpperCase();
-		suggessionName = suggessionName.replace(letter, '<span>'+letter+'</span>');
-		suggessionName = suggessionName.replace(uL, '<span>'+uL+'</span>');
+		//suggessionName = suggessionName.replace(letter, '<span>'+letter+'</span>');
+		//suggessionName = suggessionName.replace(uL, '<span>'+uL+'</span>');
 
 		let siteFree = suggession.free;
 		let siteHd = suggession.hd;
@@ -153,6 +153,11 @@ const onSortLetterClick = (letterItem) => {
 		suggessionIndex++;
 	});
 
+	let activeSortLetter = document.querySelector('.sort__drop-link.is-active');
+	if(activeSortLetter){
+		activeSortLetter.classList.remove('is-active');
+	}
+
 	const sortSuggesionContainer = document.querySelector('.sort__drop-inner');
 	sortSuggesionContainer.classList.add('is-open');
 	letterItem.classList.add('is-active');
@@ -169,11 +174,12 @@ const onSortToggle = (sortToggle) => {
 	}
 	let sC = document.querySelector('#'+sortContainer);
 	if(sC){
-		if(sC.classList.contains('is-open')){
+		sC.classList.toggle('is-open');
+		/*if(sC.classList.contains('is-open')){
 			sC.classList.remove('is-open');
 		}else{
 			sC.classList.add('is-open');
-		}
+		}*/
 	}
 }
 

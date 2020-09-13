@@ -1,0 +1,174 @@
+// 404 :: START
+.top_404 {
+	padding-bottom: 40px;
+	position: relative;
+	margin: 0 1rem 0 0;
+	display: flex;
+
+	@include adaptive(1023) {
+		flex-direction: column;
+		margin-bottom: 10px;
+	}
+
+	.logo_404 {
+		text-align: center;
+		width: 50%;
+		position: relative;
+
+		@include adaptive(1023) {
+			width: 100%;
+		}
+
+		img{
+			width: 98%;
+			position: absolute;
+			top: -2.1rem;
+			left: 55px;
+
+			@include adaptive(1023) {
+				position: relative;
+				top: 0;
+				left: 0;
+				width: 50%;
+			}
+		}
+	}
+	.content_404 {
+		padding-top: 30px;
+		text-align: center;
+		width: 50%;
+		position: relative;
+
+		@include adaptive(1023) {
+			width: 100%;
+			padding-top: 0;
+		}
+
+		.title_1_404 {
+			font-family: yantramanav,cursive;
+			font-weight: 700;
+			font-size: 60px;
+			text-transform: uppercase;
+			letter-spacing: 4px;
+			text-align: center;
+			text-shadow: 1px 1px 4px #fff;
+		}
+		.title_2_404{
+			font-family: yantramanav,cursive;
+			font-weight: 400;
+		}
+		.title_mobile_404 {
+			display: none;
+			font-family: yantramanav,cursive;
+			font-size: 2.4rem;
+			line-height: 3rem;
+			color: #213569;
+			font-weight: 700;
+			text-transform: capitalize;
+			letter-spacing: 1px;
+			text-align: center;
+			text-shadow: 1px 1px 4px #fff;
+			margin-bottom: 20px;
+
+			@include adaptive(1023) {
+				display: block;
+				font-size: 24px;
+				margin-bottom: 8px;
+			}
+		}
+		.text-red {
+			color: red;
+		}
+
+		p{
+			font-family: yantramanav,cursive;
+			font-weight: 400;
+			font-size: 20.5px;
+			text-transform: capitalize;
+			letter-spacing: 4px;
+			text-align: center;
+			text-shadow: 1px 1px 4px #fff;
+			color: #213569;
+
+			@include adaptive(1023) {
+				font-size: 17px;
+				letter-spacing: 1px;
+			}
+		}
+
+		.home_link {
+			color: #213569;
+			font-family: alfa slab one,cursive;
+			font-size: 18px;
+			display: inline-block;
+			background: url(../images/bt_green_bg.png);
+			padding: 10px 20px;
+			border-radius: 5px;
+			margin: 20px auto 0;
+
+			@include adaptive(1023) {
+				font-weight: 400;
+				font-family: yantramanav,cursive;
+				margin-top: 10px;
+			}
+		}
+	}
+
+	.wave_404 {
+		position: absolute;
+		bottom: 0;
+		width: 100%;
+		z-index: 3;
+	}
+
+	.foreground {
+		border: 2px solid #192b58;
+		border-radius: 25px;
+		background: #dfeaf5;
+		height: 100%;
+		width: 100%;
+		top: 0;
+		left: 0;
+		position: absolute;
+		z-index: 2;
+
+		@include adaptive(1023) {
+			width: 101%;
+		}
+	}
+	.background {
+		border: 2px solid #192b58;
+		border-radius: 25px;
+		background: #849ebb;
+		height: 100%;
+		width: 100%;
+		top: 1rem;
+		left: 1rem;
+		position: absolute;
+		z-index: 1;
+
+		@include adaptive(1023) {
+			top: 10px;
+			left: 10px;
+		}
+	}
+}
+.site-content-404{
+	margin-top: 20px;
+
+	@include adaptive(1023) {
+		margin-top: 140px;
+	}
+
+	h2{
+		font-family: alfa slab one,cursive;
+		font-size: 35px;
+		color: #e2e2e2;
+		font-weight: 700;
+		text-transform: capitalize;
+		letter-spacing: 4px;
+		text-align: center;
+		margin: 35px 0 30px;
+		text-shadow: 1px 1px 4px #484848;
+	}
+}

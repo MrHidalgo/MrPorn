@@ -3,6 +3,8 @@
 	padding-bottom: 30px;
 	background: #fff;
 
+
+
 	@include respond('ipad'){
 		padding-bottom: 0;
 	}
@@ -23,6 +25,15 @@
 		&.no_bg{
 			background: transparent;
 			margin: 0 -5px;
+		}
+	}
+
+	&.transparent{
+		background: transparent;
+		margin: 0 -15px;
+
+		.category_box{
+			background: transparent;
 		}
 	}
 
