@@ -12,23 +12,28 @@ var Pagination = {
 		Pagination.size = data.size || 300;
 		Pagination.page = data.page || 1;
 		Pagination.step = data.step || 3;
+		Pagination.onChange = data.onChange || onChangePage
+	},
+
+	onChangePage: function (page){
+
 	},
 
 	// add pages by number (from [s] to [f])
 	Add: function(s, f) {
 		for (var i = s; i < f; i++) {
-			Pagination.code += '<a>' + i + '</a>';
+			Pagination.code += '<a class="item">' + i + '</a>';
 		}
 	},
 
 	// add last page with separator
 	Last: function() {
-		Pagination.code += '<i>...</i><a>' + Pagination.size + '</a>';
+		Pagination.code += '<i>...</i><a class="item">' + Pagination.size + '</a>';
 	},
 
 	// add first page with separator
 	First: function() {
-		Pagination.code += '<a>1</a><i>...</i>';
+		Pagination.code += '<a class="item">1</a><i>...</i>';
 	},
 
 
@@ -41,6 +46,11 @@ var Pagination = {
 	Click: function() {
 		Pagination.page = +this.innerHTML;
 		Pagination.Start();
+
+		console.log('changing page '+Pagination.page);
+		if(Pagination.onChange !=undefined){
+			Pagination.onChange(Pagination.page);
+		}
 	},
 
 	// previous page
@@ -50,6 +60,10 @@ var Pagination = {
 			Pagination.page = 1;
 		}
 		Pagination.Start();
+
+		if(Pagination.onChange !=undefined){
+			Pagination.onChange(Pagination.page);
+		}
 	},
 
 	// next page
@@ -59,6 +73,10 @@ var Pagination = {
 			Pagination.page = Pagination.size;
 		}
 		Pagination.Start();
+
+		if(Pagination.onChange !=undefined){
+			Pagination.onChange(Pagination.page);
+		}
 	},
 
 
@@ -71,7 +89,7 @@ var Pagination = {
 	Bind: function() {
 		var a = Pagination.e.getElementsByTagName('a');
 		for (var i = 0; i < a.length; i++) {
-			if (+a[i].innerHTML === Pagination.page) a[i].className = 'current';
+			if (+a[i].innerHTML === Pagination.page) a[i].className = 'item active';
 			a[i].addEventListener('click', Pagination.Click, false);
 		}
 	},
@@ -85,11 +103,11 @@ var Pagination = {
 
 	// find pagination type
 	Start: function() {
-		if (Pagination.size < Pagination.step * 2 + 6) {
+		if (Pagination.size < Pagination.step * 2 + 4) {
 			Pagination.Add(1, Pagination.size + 1);
 		}
 		else if (Pagination.page < Pagination.step * 2 + 1) {
-			Pagination.Add(1, Pagination.step * 2 + 4);
+			Pagination.Add(1, Pagination.step * 2 + 3);
 			Pagination.Last();
 		}
 		else if (Pagination.page > Pagination.size - Pagination.step * 2) {
@@ -121,9 +139,9 @@ var Pagination = {
 	Create: function(e) {
 
 		var html = [
-			'<a>&#9668;</a>', // previous button
+			'<a class="item prev"></a>', // previous button
 			'<span></span>',  // pagination container
-			'<a>&#9658;</a>'  // next button
+			'<a class="item next"></a>'  // next button
 		];
 
 		e.innerHTML = html.join('');

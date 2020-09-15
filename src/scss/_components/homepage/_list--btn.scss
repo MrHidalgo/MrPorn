@@ -10,6 +10,11 @@
 	color: #080915;
 	font-size: 16px;
 	font-weight: 700;
+
+	&:hover, &:focus{
+		color: #d5f34a;
+	}
+
 	@include adaptive(1279) {
 		min-width: 125px;
 		height: 40px;

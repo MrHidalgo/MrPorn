@@ -1110,6 +1110,10 @@
 	transition: transform .3s;
 	z-index: 11100;
 
+	@include adaptive(767) {
+		display: none;
+	}
+
 	a{
 		color: #fff;
 	}

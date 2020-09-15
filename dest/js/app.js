@@ -713,7 +713,10 @@ var initHamburger = function initHamburger() {
 var renderMobileMenu = function renderMobileMenu() {
   var langHtml = document.querySelector('.lang').outerHTML;
   var mobileContainer = document.querySelector("[mobile-block-js]");
-  var mobileNavHtml = '<div>' + '            <div class="pre-header__mobile-top">' + '              <div><a class="pre-header__signin mobile_login_link" href="/login/"><i class="icon-font icon-enter"></i><span>Sign In</span></a></div>' + '              <div><a class="pre-header__signup mobile_signup_link" href="/sign-up/"><i class="icon-font icon-key"></i><span>Sign Up</span></a></div>' + '            </div>' + '            <div class="pre-header__mobile-middle">' + '<p class="pre-header__heading"><i></i><span>Main</span></p>' + '              <div>' + langHtml + '</div>' + '            </div>' + '            <div class="pre-header__mobile-bottom">' + '              <ul class="header__nav">' + '                <li class="header__nav-item"><a class="header__nav-link" href="/categories/">' + '                    <div><i class="icon-png header-nav-folder"></i></div>' + '                    <div><span>View All Categories</span></div></a></li>' + '                <li class="header__nav-item"><a class="header__nav-link" href="/">' + '                    <div><i class="icon-png header-nav-home"></i></div>' + '                    <div><span>Home</span></div></a></li>' + '                <li class="header__nav-item header__nav-item--saparator"><span class="header__nav-separator"></span></li>' + '                <li class="header__nav-item"><a class="header__nav-link" href="/blog/">' + '                    <div><i class="icon-png header-nav-blog"></i></div>' + '                    <div><span>Blog</span></div></a></li>' + '                <li class="header__nav-item header__nav-item--saparator"><span class="header__nav-separator"></span></li>' + '                <li class="header__nav-item"><a class="header__nav-link" href="/webcam-videos/">' + '                    <div><i class="icon-png header-nav-videos"></i></div>' + '                    <div><span>Videos</span></div></a></li>' + '                <li class="header__nav-item header__nav-item--saparator"><span class="header__nav-separator"></span></li>' + '                <li class="header__nav-item"><a class="header__nav-link" href="/pornstars/">' + '                    <div><i class="icon-png header-nav-pornstars"></i></div>' + '                    <div><span>Pornstars</span></div></a></li>' + '                <li class="header__nav-item header__nav-item--saparator"><span class="header__nav-separator"></span></li>' + '                <li class="header__nav-item"><a class="header__nav-link" href="/coupons/">' + '                    <div><i class="icon-png header-nav-porncoupons"></i></div>' + '                    <div><span>Porn Coupons</span></div></a></li>' + '                <li class="header__nav-item header__nav-item--saparator"><span class="header__nav-separator"></span></li>' + '                <li class="header__nav-item"><a class="header__nav-link" href="#">' + '                    <div><i class="icon-png header-nav-porngames"></i></div>' + '                    <div><span>Porn Games</span></div></a></li>' + '                <li class="header__nav-item header__nav-item--saparator"><span class="header__nav-separator"></span></li>' + '                <li class="header__nav-item"><a class="header__nav-link" href="#">' + '                    <div><i class="icon-png header-nav-meetfuck"></i></div>' + '                    <div><span>Meet & Fuck</span></div></a></li>' + '                <li class="header__nav-item header__nav-item--saparator"><span class="header__nav-separator"></span></li>' + '                <li class="header__nav-item"><a class="header__nav-link" href="#">' + '                    <div><i class="icon-png header-nav-livesex"></i></div>' + '                    <div><span>Live sex</span></div></a></li>' + '              </ul>' + '            </div>' + '            <div class="pre-header__mobile-middle">' + '              <div>' + '                <p class="pre-header__heading"><i></i><span>Connect With Us</span></p>' + '              </div>' + '              <div></div>' + '            </div>' + '            <div class="pre-header__mobile-bottom">' + '              <ul class="header__nav">' + '                <li class="header__nav-item"><a class="header__nav-link" href="#">' + '                    <div><i class="icon-png header-nav-info"></i></div>' + '                    <div><span>About Us</span></div></a></li>' + '                <li class="header__nav-item"><a class="header__nav-link" href="#">' + '                    <div><i class="icon-png header-nav-email"></i></div>' + '                    <div><span>Contact Us</span></div></a></li>' + '                <li class="header__nav-item"><a class="header__nav-link" href="#">' + '                    <div><i class="icon-png header-nav-megaphone"></i></div>' + '                    <div><span>Advertising</span></div></a></li>' + '              </ul>' + '            </div>' + '          </div>';
+  var navLinkGames = document.querySelector('.header_nav_games').getAttribute('href');
+  var navLinkMeet = document.querySelector('.header_nav_meet').getAttribute('href');
+  var navLinkLiveSex = document.querySelector('.header_nav_dating').getAttribute('href');
+  var mobileNavHtml = '<div>' + '            <div class="pre-header__mobile-top">' + '              <div><a class="pre-header__signin mobile_login_link" href="/login/"><i class="icon-font icon-enter"></i><span>Sign In</span></a></div>' + '              <div><a class="pre-header__signup mobile_signup_link" href="/sign-up/"><i class="icon-font icon-key"></i><span>Sign Up</span></a></div>' + '            </div>' + '            <div class="pre-header__mobile-middle">' + '<p class="pre-header__heading"><i></i><span>Main</span></p>' + '              <div>' + langHtml + '</div>' + '            </div>' + '            <div class="pre-header__mobile-bottom">' + '              <ul class="header__nav">' + '                <li class="header__nav-item"><a class="header__nav-link" href="/categories/">' + '                    <div><i class="icon-png header-nav-folder"></i></div>' + '                    <div><span>View All Categories</span></div></a></li>' + '                <li class="header__nav-item"><a class="header__nav-link" href="/">' + '                    <div><i class="icon-png header-nav-home"></i></div>' + '                    <div><span>Home</span></div></a></li>' + '                <li class="header__nav-item header__nav-item--saparator"><span class="header__nav-separator"></span></li>' + '                <li class="header__nav-item"><a class="header__nav-link" href="/blog/">' + '                    <div><i class="icon-png header-nav-blog"></i></div>' + '                    <div><span>Blog</span></div></a></li>' + '                <li class="header__nav-item header__nav-item--saparator"><span class="header__nav-separator"></span></li>' + '                <li class="header__nav-item"><a class="header__nav-link" href="/webcam-videos/">' + '                    <div><i class="icon-png header-nav-videos"></i></div>' + '                    <div><span>Videos</span></div></a></li>' + '                <li class="header__nav-item header__nav-item--saparator"><span class="header__nav-separator"></span></li>' + '                <li class="header__nav-item"><a class="header__nav-link" href="/pornstars/">' + '                    <div><i class="icon-png header-nav-pornstars"></i></div>' + '                    <div><span>Pornstars</span></div></a></li>' + '                <li class="header__nav-item header__nav-item--saparator"><span class="header__nav-separator"></span></li>' + '                <li class="header__nav-item"><a class="header__nav-link" href="/coupons/">' + '                    <div><i class="icon-png header-nav-porncoupons"></i></div>' + '                    <div><span>Porn Coupons</span></div></a></li>' + '                <li class="header__nav-item header__nav-item--saparator"><span class="header__nav-separator"></span></li>' + '                <li class="header__nav-item"><a class="header__nav-link" href="' + navLinkGames + '" target="_blank">' + '                    <div><i class="icon-png header-nav-porngames"></i></div>' + '                    <div><span>Porn Games</span></div></a></li>' + '                <li class="header__nav-item header__nav-item--saparator"><span class="header__nav-separator"></span></li>' + '                <li class="header__nav-item"><a class="header__nav-link" href="' + navLinkMeet + '" target="_blank">' + '                    <div><i class="icon-png header-nav-meetfuck"></i></div>' + '                    <div><span>Meet & Fuck</span></div></a></li>' + '                <li class="header__nav-item header__nav-item--saparator"><span class="header__nav-separator"></span></li>' + '                <li class="header__nav-item"><a class="header__nav-link" href="' + navLinkLiveSex + '" target="_blank">' + '                    <div><i class="icon-png header-nav-livesex"></i></div>' + '                    <div><span>Live sex</span></div></a></li>' + '              </ul>' + '            </div>' + '            <div class="pre-header__mobile-middle">' + '              <div>' + '                <p class="pre-header__heading"><i></i><span>Connect With Us</span></p>' + '              </div>' + '              <div></div>' + '            </div>' + '            <div class="pre-header__mobile-bottom">' + '              <ul class="header__nav">' + '                <li class="header__nav-item"><a class="header__nav-link" href="/about-us/">' + '                    <div><i class="icon-png header-nav-info"></i></div>' + '                    <div><span>About Us</span></div></a></li>' + '                <li class="header__nav-item"><a class="header__nav-link" href="/contact/">' + '                    <div><i class="icon-png header-nav-email"></i></div>' + '                    <div><span>Contact Us</span></div></a></li>' + '                <li class="header__nav-item"><a class="header__nav-link" href="/advertising/">' + '                    <div><i class="icon-png header-nav-megaphone"></i></div>' + '                    <div><span>Advertising</span></div></a></li>' + '              </ul>' + '            </div>' + '          </div>';
   mobileContainer.innerHTML = mobileNavHtml;
 
   if (typeof initLoggedUser === "function") {
@@ -897,20 +900,22 @@ var Pagination = {
     Pagination.size = data.size || 300;
     Pagination.page = data.page || 1;
     Pagination.step = data.step || 3;
+    Pagination.onChange = data.onChange || onChangePage;
   },
+  onChangePage: function onChangePage(page) {},
   // add pages by number (from [s] to [f])
   Add: function Add(s, f) {
     for (var i = s; i < f; i++) {
-      Pagination.code += '<a>' + i + '</a>';
+      Pagination.code += '<a class="item">' + i + '</a>';
     }
   },
   // add last page with separator
   Last: function Last() {
-    Pagination.code += '<i>...</i><a>' + Pagination.size + '</a>';
+    Pagination.code += '<i>...</i><a class="item">' + Pagination.size + '</a>';
   },
   // add first page with separator
   First: function First() {
-    Pagination.code += '<a>1</a><i>...</i>';
+    Pagination.code += '<a class="item">1</a><i>...</i>';
   },
   // --------------------
   // Handlers
@@ -919,6 +924,11 @@ var Pagination = {
   Click: function Click() {
     Pagination.page = +this.innerHTML;
     Pagination.Start();
+    console.log('changing page ' + Pagination.page);
+
+    if (Pagination.onChange != undefined) {
+      Pagination.onChange(Pagination.page);
+    }
   },
   // previous page
   Prev: function Prev() {
@@ -929,6 +939,10 @@ var Pagination = {
     }
 
     Pagination.Start();
+
+    if (Pagination.onChange != undefined) {
+      Pagination.onChange(Pagination.page);
+    }
   },
   // next page
   Next: function Next() {
@@ -939,6 +953,10 @@ var Pagination = {
     }
 
     Pagination.Start();
+
+    if (Pagination.onChange != undefined) {
+      Pagination.onChange(Pagination.page);
+    }
   },
   // --------------------
   // Script
@@ -948,7 +966,7 @@ var Pagination = {
     var a = Pagination.e.getElementsByTagName('a');
 
     for (var i = 0; i < a.length; i++) {
-      if (+a[i].innerHTML === Pagination.page) a[i].className = 'current';
+      if (+a[i].innerHTML === Pagination.page) a[i].className = 'item active';
       a[i].addEventListener('click', Pagination.Click, false);
     }
   },
@@ -960,10 +978,10 @@ var Pagination = {
   },
   // find pagination type
   Start: function Start() {
-    if (Pagination.size < Pagination.step * 2 + 6) {
+    if (Pagination.size < Pagination.step * 2 + 4) {
       Pagination.Add(1, Pagination.size + 1);
     } else if (Pagination.page < Pagination.step * 2 + 1) {
-      Pagination.Add(1, Pagination.step * 2 + 4);
+      Pagination.Add(1, Pagination.step * 2 + 3);
       Pagination.Last();
     } else if (Pagination.page > Pagination.size - Pagination.step * 2) {
       Pagination.First();
@@ -987,9 +1005,9 @@ var Pagination = {
   },
   // create skeleton
   Create: function Create(e) {
-    var html = ['<a>&#9668;</a>', // previous button
+    var html = ['<a class="item prev"></a>', // previous button
     '<span></span>', // pagination container
-    '<a>&#9658;</a>' // next button
+    '<a class="item next"></a>' // next button
     ];
     e.innerHTML = html.join('');
     Pagination.e = e.getElementsByTagName('span')[0];
@@ -1346,11 +1364,17 @@ var ajaxAdminEndpoint = '/wp-admin/admin-ajax.php';
       } else if (_ev.closest('[sort-letter-collapse-js]')) {
         onSortLetterClick(_ev.closest('[sort-letter-collapse-js]'));
       } else if (_ev.closest('[collapse-toggle-js]')) {
-        onSortToggle(_ev.closest('[collapse-toggle-js]'));
-      } else if (!_ev.closest('[search-parent-js]')) {
+        onSortToggle(_ev.closest('[collapse-toggle-donationmsgjs]'));
+      } else if (_ev.parentNode && !_ev.closest('[search-parent-js]')) {
         document.querySelector('[search-js]').value = '';
-        console.log('hiding search box ', _ev.closest('[search-parent-js]')); //hide(document.querySelector('[search-drop-js]'));
-      } else {}
+        console.log('hiding search box ', _ev.closest('[search-parent-js]'));
+
+        if (!_ev.closest('[search-parent-js]')) {
+          hide(document.querySelector('[search-drop-js]'));
+        }
+      } else {
+        console.log(ev, _ev.closest('[search-parent-js]'));
+      }
 
       if (!_ev.closest(className)) {
         // VIEW FAVORITES

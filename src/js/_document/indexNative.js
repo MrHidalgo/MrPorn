@@ -131,13 +131,16 @@ const ajaxAdminEndpoint = '/wp-admin/admin-ajax.php';
 			}else if(_ev.closest('[sort-letter-collapse-js]')){
 				onSortLetterClick(_ev.closest('[sort-letter-collapse-js]'));
 			}else if(_ev.closest('[collapse-toggle-js]')){
-				onSortToggle(_ev.closest('[collapse-toggle-js]'));
-			}else if(!_ev.closest('[search-parent-js]')){
+				onSortToggle(_ev.closest('[collapse-toggle-donationmsgjs]'));
+			}else if(_ev.parentNode && !_ev.closest('[search-parent-js]')){
 				document.querySelector('[search-js]').value='';
 				console.log('hiding search box ', _ev.closest('[search-parent-js]'));
-				//hide(document.querySelector('[search-drop-js]'));
-			}else{
 
+				if(!_ev.closest('[search-parent-js]')){
+					hide(document.querySelector('[search-drop-js]'));
+				}
+			}else{
+				console.log(ev, _ev.closest('[search-parent-js]'));
 			}
 
 			if (!_ev.closest(className)) {
