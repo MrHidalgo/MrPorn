@@ -10,6 +10,37 @@
 *
 * ============================
 * */
+function setWithExpiry(key, value, ttl) {
+  var now = new Date(); // `item` is an object which contains the original value
+  // as well as the time when it's supposed to expire
+
+  var item = {
+    value: value,
+    expiry: now.getTime() + ttl
+  };
+  localStorage.setItem(key, JSON.stringify(item));
+}
+
+function getWithExpiry(key) {
+  var itemStr = localStorage.getItem(key); // if the item doesn't exist, return null
+
+  if (!itemStr) {
+    return null;
+  }
+
+  var item = JSON.parse(itemStr);
+  var now = new Date(); // compare the expiry time of the item with the current time
+
+  if (now.getTime() > item.expiry) {
+    // If the item is expired, delete the item from storage
+    // and return null
+    localStorage.removeItem(key);
+    return null;
+  }
+
+  return item.value;
+}
+
 Element.prototype.parents = function (selector) {
   var elements = [];
   var elem = this;
@@ -256,15 +287,22 @@ var loadHomeData = function loadHomeData() {
     url = 'http://mpg.c2136.cloudnet.cloud/wp-json/mpg/home/?lang=' + currentLang;
   }
 
-  fetch(url).then(function (res) {
-    return res.json();
-  }).then(function (out) {
-    homeData = out; //renderAllOtherCategories();
+  var homeData = getWithExpiry("home_data_1");
 
-    setTimeout(renderAllOtherCategories, 100);
-  })["catch"](function (err) {
-    throw err;
-  });
+  if (homeData) {
+    renderAllOtherCategories();
+  } else {
+    fetch(url).then(function (res) {
+      return res.json();
+    }).then(function (out) {
+      homeData = out;
+      setWithExpiry("home_data_1", homeData, 30 * 60 * 1000); //renderAllOtherCategories();
+
+      setTimeout(renderAllOtherCategories, 100);
+    })["catch"](function (err) {
+      throw err;
+    });
+  }
 };
 
 function renderHompageSiteSlide(category, index) {
@@ -276,7 +314,9 @@ function renderHompageSiteSlide(category, index) {
     var siteName = siteItem.name;
     var siteThumb = siteItem.thumb;
     var siteLogo = siteItem.logo ? siteItem.logo.src : '';
-    var slideHtml = '<div class="swiper-slide" data-siteid="' + siteId + '" category_list_' + index + '>' + '<a class="list__box nolazy" list-box-js href="' + siteLink + '" target="_blank" data-id="' + siteId + '" style="background-image: url(' + siteThumb + ')">' + '<div class="list__box-overlay"></div>' + '<div class="list__box-border"></div><img class="list__box-logo nolazy" src="' + siteLogo + '" alt=""/>' + '<div class="list__box-details">' + '<div class="list__box-details-left">' + '<button class="list__box-external" type="button"><i class="icon-font icon-out"></i></button>' + '<p class="list__box-details-title"><a href="' + siteLink + '" target="_blank">' + siteName + '</a></p>' + '<div class="list__rating"><span>User Rating:</span>' + '<div><i class="icon-font icon-star"></i><i class="icon-font icon-star"></i><i class="icon-font icon-star"></i><i class="icon-font icon-star"></i><i class="icon-font icon-star-fill"></i></div>' + '</div>' + '</div>' + '<div class="list__box-details-right">' + '<button class="list__box-like" type="button" data-id="1" like-toggle-js><i class="icon-font icon-like"></i></button>' + '<button class="list__box-dislike" type="button" data-id="1" dislike-toggle-js><i class="icon-font icon-like"></i></button>' + '<div class="c-popper">' + '<button class="list__box-favorites" type="button" data-id="1" favorites-toggle-js><i class="icon-font icon-star-fill"></i><i class="icon-font icon-star"></i></button>' + '<div class="c-poppertext">' + '<u>Add To Favourites</u>' + '<u>Remove From Favourites</u>' + '</div>' + '</div>' + '</div>' + '</div>' + '<button class="list__box-more" type="button"><i class="icon-font icon-arrow-angle"></i></button>' + '</a>' + '</div>';
+    var slideHtml = '<div class="swiper-slide" data-siteid="' + siteId + '" category_list_' + index + '>' + '<a class="list__box nolazy" list-box-js href="' + siteLink + '" target="_blank" data-id="' + siteId + '" style="background-image: url(' + siteThumb + ')">' +
+    /*'<div class="list__box-overlay"></div>'+*/
+    '<div class="list__box-border"></div><img class="list__box-logo nolazy" src="' + siteLogo + '" alt=""/>' + '<div class="list__box-details">' + '<div class="list__box-details-left">' + '<button class="list__box-external" type="button"><i class="icon-font icon-out"></i></button>' + '<p class="list__box-details-title"><a href="' + siteLink + '" target="_blank">' + siteName + '</a></p>' + '<div class="list__rating"><span>User Rating:</span>' + '<div><i class="icon-font icon-star"></i><i class="icon-font icon-star"></i><i class="icon-font icon-star"></i><i class="icon-font icon-star"></i><i class="icon-font icon-star-fill"></i></div>' + '</div>' + '</div>' + '<div class="list__box-details-right">' + '<button class="list__box-like" type="button" data-id="1" like-toggle-js><i class="icon-font icon-like"></i></button>' + '<button class="list__box-dislike" type="button" data-id="1" dislike-toggle-js><i class="icon-font icon-like"></i></button>' + '<div class="c-popper">' + '<button class="list__box-favorites" type="button" data-id="1" favorites-toggle-js><i class="icon-font icon-star-fill"></i><i class="icon-font icon-star"></i></button>' + '<div class="c-poppertext">' + '<u>Add To Favourites</u>' + '<u>Remove From Favourites</u>' + '</div>' + '</div>' + '</div>' + '</div>' + '<button class="list__box-more" type="button"><i class="icon-font icon-arrow-angle"></i></button>' + '</a>' + '</div>';
     return slideHtml;
   }
 
@@ -321,6 +361,7 @@ function renderSiteBottomBanner(category, index) {
     var bannerVideoPoster = siteItem.banner_video_poster;
     var siteLogo = siteItem.logo ? siteItem.logo.src : '';
     var tagLIne = siteItem.tagline;
+    var siteUrl = siteItem.url;
     var bannerRight = '';
     var bannerClass = '';
 
@@ -328,7 +369,7 @@ function renderSiteBottomBanner(category, index) {
       bannerClass = 'list__specification--banner';
 
       if (bannerImage != '') {
-        bannerRight = '<div class="list__specification-right">' + '<div><img src="' + bannerImage.url + '"/></div>' + '</div>';
+        bannerRight = '<div class="list__specification-right">' + '<div><img src="' + contentBase + 'screenshots/' + siteId + '.png"/></div>' + '</div>';
       }
     } else {
       bannerClass = 'list__specification--video';
@@ -343,11 +384,13 @@ function renderSiteBottomBanner(category, index) {
     homeData.categories[category].sites.map(function (moreSite, index) {
       if (moreSiteCount < 6 && moreSite.id != siteId) {
         var moreSiteLogo = moreSite.logo ? moreSite.logo.src : '';
-        moreSites += '<a class="list__box" list-box-more-js href="' + moreSite.link + '" data-id="' + moreSite.id + '" data-count="1" style="background-image: url(' + moreSite.thumb + ')">' + '<div class="list__box-overlay"></div>' + '<div class="list__box-border"></div><img class="list__box-logo" src="' + moreSiteLogo + '" alt=""/>' + '</a>';
+        moreSites += '<a class="list__box" list-box-more-js href="' + moreSite.link + '" data-id="' + moreSite.id + '" data-count="1" style="background-image: url(' + moreSite.banner_image + ')">' +
+        /*'<div class="list__box-overlay"></div>'+*/
+        '<div class="list__box-border"></div><img class="list__box-logo" src="' + moreSiteLogo + '" alt=""/>' + '</a>';
         moreSiteCount++;
       }
     });
-    var bannerHtml = '<div class="list__specification ' + bannerClass + '" data-id="' + siteId + '">' + '<a class="list__specification-close" ><i class="icon-font icon-close"></i></a>' + '<div>' + '<div class="list__specification-header">' + '<img class="list__specification-logo" src="' + siteLogo + '"/>' + '<a class="list__specification-close" >' + '<i class="icon-font icon-close"></i>' + '</a>' + '</div>' + '<div class="list__specification-left">' + '<div>' + '<img class="list__specification-logo" src="' + siteLogo + '"/>' + '<div class="list__specification-action" spec-actionNode-js>' + '<div><a class="list__specification-visit nav_link" href="#">VISIT WEBSITE</a></div>' + '<div><a class="list__specification-read nav_link" href="' + siteItem.link + '">READ REVIEW</a></div>' + '<div class="list__specification-action-desc">' + '<p>' + tagLIne + ' <a href="#">READ MORE</a></p>' + '</div>' + '<div class="list__specification-action-skip"><a class="list__specification-circle list__specification-skip" data-id="' + siteId + '" spec-skip-js><i class="icon-font icon-point"></i><span>Skip</span></a></div>' + '<div class="list__specification-action-circle">' + '<button class="list__specification-circle list__specification-like" data-like="' + siteId + '" spec-like-js><i class="icon-font icon-like"></i><span>Like</span></button>' + '</div>' + '<div class="list__specification-action-circle">' + '<button class="list__specification-circle list__specification-dislike" data-dislike="' + siteId + '" spec-dislike-js><i class="icon-font icon-like"></i><span>Dislike</span></button>' + '</div>' + '<div class="list__specification-action-circle">' + '<div class="c-popper">' + '<button class="list__specification-circle list__specification-favorites" data-id="' + siteId + '" data-favorites="' + siteId + '" spec-favorites-js><i class="icon-font icon-star-fill"></i><i class="icon-font icon-star"></i><span>Favorites</span></button>' + '<div class="c-poppertext">' + '<u>Add To Favourites</u>' + '<u>Remove From Favourites</u>' + '</div>' + '</div>' + '</div>' + '</div>' + '<p class="list__specification-desc">' + tagLIne + '</p>' + '</div>' + '</div>' + bannerRight + '<div class="list__specification-more">' + '<div>' + '<p>More Like This</p>' + '</div>' + '<div>' + moreSites + '</div>' + '</div>' + '</div>' + '</div>';
+    var bannerHtml = '<div class="list__specification ' + bannerClass + '" data-id="' + siteId + '">' + '<a class="list__specification-close" ><i class="icon-font icon-close"></i></a>' + '<div>' + '<div class="list__specification-header">' + '<img class="list__specification-logo" src="' + siteLogo + '"/>' + '<a class="list__specification-close" >' + '<i class="icon-font icon-close"></i>' + '</a>' + '</div>' + '<div class="list__specification-left">' + '<div>' + '<img class="list__specification-logo" src="' + siteLogo + '"/>' + '<div class="list__specification-action" spec-actionNode-js>' + '<div><a class="list__specification-visit nav_link" href="' + siteUrl + '" target="_blank">VISIT WEBSITE</a></div>' + '<div><a class="list__specification-read nav_link" href="' + siteItem.link + '">READ REVIEW</a></div>' + '<div class="list__specification-action-desc">' + '<p>' + tagLIne + ' <a href="#">READ MORE</a></p>' + '</div>' + '<div class="list__specification-action-skip"><a class="list__specification-circle list__specification-skip" data-id="' + siteId + '" spec-skip-js><i class="icon-font icon-point"></i><span>Skip</span></a></div>' + '<div class="list__specification-action-circle">' + '<button class="list__specification-circle list__specification-like" data-like="' + siteId + '" spec-like-js><i class="icon-font icon-like"></i><span>Like</span></button>' + '</div>' + '<div class="list__specification-action-circle">' + '<button class="list__specification-circle list__specification-dislike" data-dislike="' + siteId + '" spec-dislike-js><i class="icon-font icon-like"></i><span>Dislike</span></button>' + '</div>' + '<div class="list__specification-action-circle">' + '<div class="c-popper">' + '<button class="list__specification-circle list__specification-favorites" data-id="' + siteId + '" data-favorites="' + siteId + '" spec-favorites-js><i class="icon-font icon-star-fill"></i><i class="icon-font icon-star"></i><span>Favorites</span></button>' + '<div class="c-poppertext">' + '<u>Add To Favourites</u>' + '<u>Remove From Favourites</u>' + '</div>' + '</div>' + '</div>' + '</div>' + '<p class="list__specification-desc">' + tagLIne + '</p>' + '</div>' + '</div>' + bannerRight + '<div class="list__specification-more">' + '<div>' + '<p>More Like This</p>' + '</div>' + '<div>' + moreSites + '</div>' + '</div>' + '</div>' + '</div>';
     return bannerHtml;
   }
 
@@ -395,7 +438,9 @@ function renderSiteCategory(categoryIndex) {
       siteLogo = '<img class="list__box-logo nolazy" src="' + siteLogo + '" alt=""/>';
     }
 
-    categorySites += '<div class="swiper-slide" data-index="' + index + '" data-siteid="' + site.id + '" data-init="0">' + '<div class="list__box" list-box-js  data-id="' + site.id + '" style="background-image: url(' + site.thumb + ')">' + '<div class="list__box-overlay"></div>' + '<div class="list__box-border"></div>' + '<a class="nav_link" href="' + site.link + '">' + siteLogo + '</a>' + '<div class="list__box-details">' + '</div>' + '<button class="list__box-more" type="button"><i class="icon-font icon-arrow-angle"></i></button>' + '</div>' + '</div>';
+    categorySites += '<div class="swiper-slide" data-index="' + index + '" data-siteid="' + site.id + '" data-init="0">' + '<div class="list__box" list-box-js  data-id="' + site.id + '" style="background-image: url(' + site.banner_image + ')">' +
+    /*'<div class="list__box-overlay"></div>'+*/
+    '<div class="list__box-border"></div>' + '<a class="nav_link" href="' + site.link + '">' + siteLogo + '</a>' + '<div class="list__box-details">' + '</div>' + '<button class="list__box-more" type="button"><i class="icon-font icon-arrow-angle"></i></button>' + '</div>' + '</div>';
   });
   var categoryBoxHtml = '<div class="list__box-wrapper" list-parent-js data-name="category_' + categoryId + '" data-index="' + categoryIndex + '">' + '<div class="list__box-head">' + '<div class="list__info">' + '<div class="list__info-circle"><img src="' + categoryLogo + '" alt=""/></div>' + '<div>' + '<p>' + categoryData.title + '</p><span>' + categoryData.tagline + '</span>' + '</div>' + '</div>' + '<a class="list__btn" href="' + categoryData.link + '">SEE&nbsp;<span>' + categoryData.count + ' MORE</span><i class="icon-font icon-arrow-angle"></i></a>' + '</div>' + '<div class="list__box-line">' + '<u list-line-ind-js></u><span class="list_green_line" list-line-js></span>' + '</div>' + '<div class="list__box-body">' + '<div class="list__arrow-wrapper">' + '<a class="list__arrow list__arrow--prev" href="#">' + '<div class="list__arrow-box"><i class="icon-font icon-arrow-angle"></i></div>' + '</a>' + '<a class="list__arrow list__arrow--next" href="#">' + '<div class="list__arrow-box"><i class="icon-font icon-arrow-angle"></i></div>' + '</a>' + '</div>' + '<div class="swiper-container listSwiper" data-id="listSlider_' + categoryData.id + '" data-category="18">' + '<div class="swiper-wrapper" data-category="' + categoryData.id + '" data-count="' + categoryData.count + '" data-slidecount="' + categoryData.site_limit + '">' + categorySites + '</div>' + '</div>' + '</div>' + '<div class="list__specification-wrapper"></div>' + '</div>';
   return categoryBoxHtml;
@@ -1275,6 +1320,7 @@ if (!Element.prototype.closest) {
   };
 }
 
+var contentBase = '/wp-content/';
 var themeBase = '/wp-content/themes/mpg/';
 var ajaxEndpoint = '/wp-content/themes/mpg/ajax-handler-wp.php';
 var ajaxAdminEndpoint = '/wp-admin/admin-ajax.php';

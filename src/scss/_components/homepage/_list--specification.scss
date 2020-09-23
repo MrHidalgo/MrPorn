@@ -147,14 +147,14 @@
 					background-size: 175%;
 				}
 
-				img {
+				/*img {
 					display: block;
 					max-width: 100%;
 					height: auto;
 					margin-left: auto;
 					margin-right: auto;
 					max-height: 100%;
-				}
+				}*/
 			}
 		}
 	}
@@ -247,8 +247,49 @@
 			}
 		}
 
+		@include adaptive(767) {
+			img{
+				max-width: 100%;
+				max-height: 100%;
+			}
+		}
+
 		video {
 			@extend %imageResCoverAbs;
+		}
+
+		.screenshot_box{
+			position: absolute;
+			top: 15px;
+			bottom: 15px;
+
+			&:after{
+				padding-top: 56.19223659889094%;
+				display: block;
+				content: ' ';
+			}
+		}
+		.screenshot_desktop{
+			position: absolute;
+			left: 10.16635859519409%;
+			top:5.59210526315789%;
+			width: 69.68576709796673%;
+			height: 76.97368421052632%;
+			object-fit: cover;
+		}
+		.screenshot_mobile{
+			position: absolute;
+			right: 1.66358595194085%;
+			top:21.38157894736842%;
+			width: 34.53947368421053%;
+			height: 68.09210526315789%;
+			object-fit: cover;
+		}
+		.screenshot_frame{
+			z-index: 100;
+			width: 100%;
+			height: 100%;
+			top: 0;
 		}
 	}
 

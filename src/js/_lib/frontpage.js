@@ -31,18 +31,26 @@ const loadHomeData = () => {
 		url = 'http://mpg.c2136.cloudnet.cloud/wp-json/mpg/home/?lang='+currentLang;
 	}
 
+	let homeData = getWithExpiry("home_data_1");
+
+	if(homeData){
+		renderAllOtherCategories();
+	}else{
+		fetch(url)
+			.then(res => res.json())
+			.then((out) => {
+				homeData = out;
+
+				setWithExpiry("home_data_1", homeData, 30*60*1000);
+
+				//renderAllOtherCategories();
+
+				setTimeout(renderAllOtherCategories, 100);
+			})
+			.catch(err => { throw err });
+	}
 
 
-	fetch(url)
-		.then(res => res.json())
-		.then((out) => {
-			homeData = out;
-
-			//renderAllOtherCategories();
-
-			setTimeout(renderAllOtherCategories, 100);
-		})
-		.catch(err => { throw err });
 }
 
 function renderHompageSiteSlide(category, index){
@@ -57,7 +65,7 @@ function renderHompageSiteSlide(category, index){
 
 		let slideHtml = '<div class="swiper-slide" data-siteid="'+siteId+'" category_list_'+index+'>'+
 			'<a class="list__box nolazy" list-box-js href="'+siteLink+'" target="_blank" data-id="'+siteId+'" style="background-image: url('+siteThumb+')">'+
-			'<div class="list__box-overlay"></div>'+
+			/*'<div class="list__box-overlay"></div>'+*/
 			'<div class="list__box-border"></div><img class="list__box-logo nolazy" src="'+siteLogo+'" alt=""/>'+
 			'<div class="list__box-details">'+
 			'<div class="list__box-details-left">'+
@@ -143,6 +151,7 @@ function renderSiteBottomBanner(category, index){
 		let bannerVideoPoster = siteItem.banner_video_poster;
 		let siteLogo = siteItem.logo?siteItem.logo.src:'';
 		let tagLIne = siteItem.tagline;
+		let siteUrl = siteItem.url;
 
 		var bannerRight = '';
 		var bannerClass = '';
@@ -151,8 +160,9 @@ function renderSiteBottomBanner(category, index){
 			bannerClass = 'list__specification--banner';
 			if(bannerImage!=''){
 				bannerRight = '<div class="list__specification-right">' +
-					'<div><img src="'+bannerImage.url+'"/></div>' +
+					'<div><img src="'+contentBase+'screenshots/'+siteId+'.png"/></div>' +
 					'</div>';
+
 			}
 		}else{
 			bannerClass = 'list__specification--video';
@@ -178,8 +188,8 @@ function renderSiteBottomBanner(category, index){
 			if(moreSiteCount<6 && moreSite.id!=siteId){
 				let moreSiteLogo = moreSite.logo ? moreSite.logo.src: '';
 
-				moreSites +='<a class="list__box" list-box-more-js href="'+moreSite.link+'" data-id="'+moreSite.id+'" data-count="1" style="background-image: url('+moreSite.thumb+')">'+
-					'<div class="list__box-overlay"></div>'+
+				moreSites +='<a class="list__box" list-box-more-js href="'+moreSite.link+'" data-id="'+moreSite.id+'" data-count="1" style="background-image: url('+moreSite.banner_image+')">'+
+					/*'<div class="list__box-overlay"></div>'+*/
 					'<div class="list__box-border"></div><img class="list__box-logo" src="'+moreSiteLogo+'" alt=""/>' +
 					'</a>';
 
@@ -200,7 +210,7 @@ function renderSiteBottomBanner(category, index){
 			'<div>' +
 			'<img class="list__specification-logo" src="'+siteLogo+'"/>'+
 			'<div class="list__specification-action" spec-actionNode-js>'+
-			'<div><a class="list__specification-visit nav_link" href="#">VISIT WEBSITE</a></div>'+
+			'<div><a class="list__specification-visit nav_link" href="'+siteUrl+'" target="_blank">VISIT WEBSITE</a></div>'+
 			'<div><a class="list__specification-read nav_link" href="'+siteItem.link+'">READ REVIEW</a></div>'+
 			'<div class="list__specification-action-desc">'+
 			'<p>'+tagLIne+' <a href="#">READ MORE</a></p>'+
@@ -283,8 +293,8 @@ function renderSiteCategory(categoryIndex){
 		}
 
 		categorySites += '<div class="swiper-slide" data-index="'+index+'" data-siteid="'+site.id+'" data-init="0">' +
-			'<div class="list__box" list-box-js  data-id="'+site.id+'" style="background-image: url('+site.thumb+')">'+
-			'<div class="list__box-overlay"></div>'+
+			'<div class="list__box" list-box-js  data-id="'+site.id+'" style="background-image: url('+site.banner_image+')">'+
+			/*'<div class="list__box-overlay"></div>'+*/
 			'<div class="list__box-border"></div>'+
 			'<a class="nav_link" href="'+site.link+'">' +
 			siteLogo+

@@ -22,6 +22,7 @@ if (!Element.prototype.closest) {
 	};
 }
 
+const contentBase = '/wp-content/';
 const themeBase = '/wp-content/themes/mpg/';
 const ajaxEndpoint = '/wp-content/themes/mpg/ajax-handler-wp.php';
 const ajaxAdminEndpoint = '/wp-admin/admin-ajax.php';
