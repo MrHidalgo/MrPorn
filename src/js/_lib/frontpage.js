@@ -522,7 +522,9 @@ function initWebWorker(){
 
 	homeData = getWithExpiry("home_data_1");
 	if(homeData){
-		renderAllOtherCategories();
+		if(document.body.classList.contains('home')) {
+			renderAllOtherCategories();
+		}
 	}else{
 		if(!navigator.userAgent.toLowerCase().includes('lighthouse')){
 			if(document.body.classList.contains('home')){
