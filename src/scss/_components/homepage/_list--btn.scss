@@ -15,6 +15,14 @@
 		color: #d5f34a;
 	}
 
+	&.nav_link{
+		color: #080915;
+
+		&:hover, &:focus{
+			color: #080915;
+		}
+	}
+
 	@include adaptive(1279) {
 		min-width: 125px;
 		height: 40px;
