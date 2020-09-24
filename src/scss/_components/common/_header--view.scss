@@ -29,6 +29,10 @@
 		color: #fff;
 		margin-top: -5px;
 		padding-bottom: 5px;
+
+		@include adaptive(1023) {
+			display: none;
+		}
 	}
 
 	&-left,

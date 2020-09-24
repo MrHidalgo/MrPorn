@@ -58,10 +58,15 @@
 }
 .search_result_box{
 	overflow: auto;
+
+	@include respond('ipad_portrait'){
+		background: #000;
+	}
 	@include adaptive(767) {
 		position: absolute;
 		top: 36px;
 		bottom: 0;
+		background: #000;
 	}
 }
 .search_results_top{
