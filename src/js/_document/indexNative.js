@@ -134,27 +134,34 @@ const ajaxAdminEndpoint = '/wp-admin/admin-ajax.php';
 			}else if(_ev.closest('[collapse-toggle-js]')){
 				onSortToggle(_ev.closest('[collapse-toggle-donationmsgjs]'));
 			}else if(_ev.parentNode && !_ev.closest('[search-parent-js]')){
-				document.querySelector('[search-js]').value='';
-				console.log('hiding search box ', _ev.closest('[search-parent-js]'));
 
-				if(!_ev.closest('[search-parent-js]')){
-					hide(document.querySelector('[search-drop-js]'));
+				if(!isMobileOrTablet){
+					document.querySelector('[search-js]').value='';
+
+					if(!_ev.closest('[search-parent-js]')){
+						hide(document.querySelector('[search-drop-js]'));
+					}
 				}
+
+
 			}else{
 				console.log(ev, _ev.closest('[search-parent-js]'));
 			}
 
 			if (!_ev.closest(className)) {
 				// VIEW FAVORITES
+
 				document.querySelector('[view-favorites-toggle-js]').classList.remove('is-active');
 				document.querySelector('[view-favorites-drop-js]').classList.remove('is-open');
 
 				// SORT
-				document.querySelector('[sort-node-js]').classList.remove('is-open');
-
+				if(!isMobileOrTablet){
+					document.querySelector('[sort-node-js]').classList.remove('is-open');
+				}
 				if(document.querySelector('.sort__drop-inner')){
 					document.querySelector('.sort__drop-inner').classList.remove('is-open');
 				}
+
 
 				var _isActive = document.querySelector('.sort__drop-link.is-active');
 				if(_isActive){
@@ -795,6 +802,10 @@ const ajaxAdminEndpoint = '/wp-admin/admin-ajax.php';
 
 		viewFavoritesToggle();
 		//sortCB();
+
+		if(isMobileOrTablet){
+			sortCB();
+		}
 
 
 		letterSearch();

@@ -167,7 +167,8 @@
 		}
 	}
 
-	&:hover > &__drop {
+	&:hover > &__drop,
+	&.is-open > &__drop{
 		z-index: 1650;
 		opacity: 1;
 		visibility: visible;

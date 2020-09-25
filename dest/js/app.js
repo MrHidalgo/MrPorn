@@ -599,7 +599,9 @@ function initWebWorker() {
   homeData = getWithExpiry("home_data_1");
 
   if (homeData) {
-    renderAllOtherCategories();
+    if (document.body.classList.contains('home')) {
+      renderAllOtherCategories();
+    }
   } else {
     if (!navigator.userAgent.toLowerCase().includes('lighthouse')) {
       if (document.body.classList.contains('home')) {
@@ -1418,11 +1420,12 @@ var ajaxAdminEndpoint = '/wp-admin/admin-ajax.php';
       } else if (_ev.closest('[collapse-toggle-js]')) {
         onSortToggle(_ev.closest('[collapse-toggle-donationmsgjs]'));
       } else if (_ev.parentNode && !_ev.closest('[search-parent-js]')) {
-        document.querySelector('[search-js]').value = '';
-        console.log('hiding search box ', _ev.closest('[search-parent-js]'));
+        if (!isMobileOrTablet) {
+          document.querySelector('[search-js]').value = '';
 
-        if (!_ev.closest('[search-parent-js]')) {
-          hide(document.querySelector('[search-drop-js]'));
+          if (!_ev.closest('[search-parent-js]')) {
+            hide(document.querySelector('[search-drop-js]'));
+          }
         }
       } else {
         console.log(ev, _ev.closest('[search-parent-js]'));
@@ -1433,7 +1436,9 @@ var ajaxAdminEndpoint = '/wp-admin/admin-ajax.php';
         document.querySelector('[view-favorites-toggle-js]').classList.remove('is-active');
         document.querySelector('[view-favorites-drop-js]').classList.remove('is-open'); // SORT
 
-        document.querySelector('[sort-node-js]').classList.remove('is-open');
+        if (!isMobileOrTablet) {
+          document.querySelector('[sort-node-js]').classList.remove('is-open');
+        }
 
         if (document.querySelector('.sort__drop-inner')) {
           document.querySelector('.sort__drop-inner').classList.remove('is-open');
@@ -2022,6 +2027,10 @@ var ajaxAdminEndpoint = '/wp-admin/admin-ajax.php';
     initHome();
     renderFavourites();
     viewFavoritesToggle(); //sortCB();
+
+    if (isMobileOrTablet) {
+      sortCB();
+    }
 
     letterSearch();
     search();
