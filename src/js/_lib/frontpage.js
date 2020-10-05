@@ -375,6 +375,8 @@ const boxHover = () => {
 
 	for(let i = 0, len = swiperSlides.length; i < len; i++) {
 		swiperSlides[i].addEventListener('mouseenter', function(ev) {
+			console.log('mouse enter');
+
 			if(window.innerWidth >= 1280) {
 				const el = ev.currentTarget,
 					elParent = el.closest('[list-parent-js]'),
@@ -428,7 +430,7 @@ const boxHover = () => {
 						transformVal = 'left: '+_lineLeft+'px';
 
 						lineInd.setAttribute('style', transformVal + ';width: 189px');
-					}, 750);
+					}, 100);
 				} else {
 
 
@@ -443,7 +445,7 @@ const boxHover = () => {
 						transformVal = 'left: '+_lineLeft+'px';
 
 						lineInd.setAttribute('style', transformVal + ';width: 189px');
-					}, 750);
+					}, 100);
 				}
 
 

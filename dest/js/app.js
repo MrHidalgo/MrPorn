@@ -473,6 +473,8 @@ var boxHover = function boxHover() {
 
   for (var i = 0, len = swiperSlides.length; i < len; i++) {
     swiperSlides[i].addEventListener('mouseenter', function (ev) {
+      console.log('mouse enter');
+
       if (window.innerWidth >= 1280) {
         var el = ev.currentTarget,
             elParent = el.closest('[list-parent-js]'),
@@ -518,7 +520,7 @@ var boxHover = function boxHover() {
 
             transformVal = 'left: ' + _lineLeft + 'px';
             lineInd.setAttribute('style', transformVal + ';width: 189px');
-          }, 750);
+          }, 100);
         } else {
           hoverBool = true;
           el.classList.add('is-hover');
@@ -531,7 +533,7 @@ var boxHover = function boxHover() {
 
             transformVal = 'left: ' + _lineLeft + 'px';
             lineInd.setAttribute('style', transformVal + ';width: 189px');
-          }, 750);
+          }, 100);
         }
       }
     }, false);
