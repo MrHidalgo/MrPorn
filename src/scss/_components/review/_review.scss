@@ -1,15 +1,38 @@
 // REVIEW :: START
+.list {
+	padding-top: 15px;
+	padding-bottom: 25px;
+
+	@include respond('ipad_portrait'){
+		padding-top: 0;
+	}
+	@include adaptive(767) {
+		padding-top: 0;
+		padding-bottom: 0;
+	}
+}
+
 @include respond('ipad_portrait'){
 	#primary{
 		margin-top: 120px;
 	}
 }
-@include adaptive(767) {
-	.site-content{
+
+.site-content{
+	@include adaptive(1023.98) {
 		margin-top: 120px;
 	}
-	.gaming_cat_1{
-		.site-content {
+	@include adaptive(767) {
+		margin-top: 120px;
+	}
+}
+.gaming_cat_1{
+	.site-content{
+		@include adaptive(1023.98) {
+			margin-top: 80px;
+		}
+
+		@include adaptive(767) {
 			margin-top: 80px;
 		}
 	}
@@ -37,6 +60,11 @@
 
 	.show_similar_sites{
 		position: relative;
+		padding-left: 35px;
+
+		@include adaptive(1449.98){
+			padding-left: 15px;
+		}
 
 		@include respond('ipad_portrait'){
 			display: none;
@@ -58,10 +86,15 @@
 			overflow: hidden;
 			display: flex;
 			align-items: center;
+			margin: 0;
 
 			@include respond('ipad_portrait'){
 				justify-content: center;
 				color: #fff;
+			}
+
+			@include adaptive(1023.98) {
+				justify-content: center;
 			}
 
 			@include adaptive(767) {
@@ -75,9 +108,14 @@
 			flex-grow: 8;
 			display: inline-block;
 			text-transform: capitalize;
-			padding-left: 8px;
+			color: #fff;
 
 			@include respond('ipad_portrait'){
+				flex-grow: 0;
+			}
+
+			@include adaptive(1023.98) {
+				color: #fff;
 				flex-grow: 0;
 			}
 
@@ -87,7 +125,7 @@
 			}
 
 			.arrow_down {
-				border: 1px solid #828282;
+				border: 1px solid #fff;
 				padding: 0 4px;
 
 				@include respond('ipad_portrait'){
@@ -109,7 +147,7 @@
 					height: 0;
 					border-style: solid;
 					border-width: 9px 6.5px 0;
-					border-color: #828282 transparent transparent transparent;
+					border-color: #fff transparent transparent transparent;
 
 					@include respond('ipad_portrait'){
 						border-color: #fff transparent transparent transparent;
@@ -131,7 +169,7 @@
 				}
 			}
 			.site_name {
-				color: #656363;
+				color: #fff;
 				font-weight: 900;
 
 				@include respond('ipad_portrait'){
@@ -178,38 +216,6 @@
 		font-size: 16px;
 		font-weight: 600;
 		text-decoration: underline;
-	}
-}
-
-.fixed_header{
-	.show_similar_sites{
-		display: block;
-
-		@include respond('ipad_portrait'){
-			position: fixed;
-			top: 120px;
-			left: 0;
-			color: #fff;
-			z-index: 10;
-
-			.deIcon{
-				border: 1px solid #828282;
-				background: #fff;
-			}
-		}
-
-		@include adaptive(767) {
-			position: fixed;
-			top: 120px;
-			left: 0;
-			color: #fff;
-			z-index: 10;
-
-			.deIcon{
-				border: 1px solid #828282;
-				background: #fff;
-			}
-		}
 	}
 }
 
@@ -309,6 +315,12 @@
 				display: none;
 			}
 		}
+	}
+
+	.no_sneak_peek{
+		height: 140px;
+		content: ' ';
+		display: block;
 	}
 }
 
@@ -435,12 +447,20 @@
 		flex-direction: column;
 	}
 
+	@include adaptive(991.98) {
+		flex-direction: column;
+	}
+
 	@include adaptive(767) {
 		flex-direction: column;
 	}
 
 	.review_column{
 		width: 50%;
+
+		@include adaptive(991.98) {
+			width: 100%;
+		}
 
 		@include respond('ipad_portrait'){
 			width: 100%;
@@ -455,6 +475,9 @@
 	.screen_shot{
 		padding-right: 15px;
 
+		@include adaptive(1023.98) {
+			padding-right: 0;
+		}
 		@include respond('ipad_portrait'){
 			padding-right: 0;
 		}
@@ -464,6 +487,10 @@
 	}
 	.review_con{
 		padding-left: 35px;
+
+		@include adaptive(1199.98){
+			padding-left: 15px;
+		}
 
 		@include respond('ipad_portrait'){
 			padding-left: 0;
@@ -500,6 +527,10 @@
 		margin: 0;
 		width: 100%;
 		font-weight: 600;
+
+		@include adaptive(1449.98){
+			font-size: 36px;
+		}
 
 		@include adaptive(767) {
 			font-size: 24px;
@@ -566,6 +597,12 @@
 				border-bottom: none;
 			}
 
+			@include adaptive(991.98) {
+				position: relative;
+				border-bottom: none;
+				padding-bottom: 0;
+			}
+
 			@include adaptive(767) {
 				position: relative;
 				padding-right: 0;
@@ -581,6 +618,10 @@
 			p {
 				font-size: 18px;
 				margin: 0 0 10px;
+
+				@include adaptive(1449.98){
+					font-size: 14px;
+				}
 
 				@include respond('ipad_portrait'){
 					font-size: 14px;
@@ -600,6 +641,10 @@
 				display: none;
 			}
 
+			@include adaptive(991.98) {
+				display: none;
+			}
+
 			@include adaptive(767) {
 				display: none;
 			}
@@ -616,7 +661,6 @@
 			position: absolute;
 			top: 0;
 			right: 0;
-			background: #225396;
 			width: 10px;
 			content: ' ';
 			display: none;
@@ -627,7 +671,6 @@
 				display: block;
 			}
 			.scroll_thumb{
-				background: url(../images/scrollbar-hover.gif) no-repeat;
 				background-position: bottom;
 				background-size: contain;
 				border: none;
@@ -747,6 +790,7 @@
 		font-weight: 600;
 		text-transform: uppercase;
 		margin-bottom: 10px;
+		border: none;
 	}
 
 	.cs_show_comments {
@@ -766,6 +810,10 @@
 		line-height: 29px;
 		height: 29px;
 		font-size: 12px;
+
+		@include adaptive(1198.98) {
+			display: none;
+		}
 	}
 
 	.cs_show_comments, .cs_hide_comments {
@@ -803,6 +851,10 @@
 	ul{
 		padding: 0;
 		list-style-type: none;
+
+		@include adaptive(1449.98){
+			font-size: 12.5px;
+		}
 
 		li{
 			background: url(../images/icon_pro.png) no-repeat;
@@ -901,6 +953,11 @@
 	z-index: 1;
 	font-size: 9px;
 	line-height: 10px;
+
+	&.close{
+		top: -1px;
+		left: -19px;
+	}
 }
 
 .long_next .swiper_long_next {
@@ -988,6 +1045,10 @@
 		-webkit-box-orient: vertical;
 		line-height: 70px;
 
+		@include adaptive(767) {
+			line-height: 40px;
+		}
+
 		span{
 			font-weight: 600;
 		}
@@ -1011,6 +1072,10 @@
 				display: block;
 				background: url(../images/icon_review_floating.png)no-repeat;
 				background-position: center;
+			}
+
+			@include adaptive(767) {
+				height: 40px;
 			}
 		}
 	}
@@ -1110,6 +1175,14 @@
 	transition: transform .3s;
 	z-index: 11100;
 
+	@include adaptive(1449.98){
+		padding: 5px 15px;
+	}
+
+	@include adaptive(1023.98) {
+		display: none;
+	}
+
 	@include adaptive(767) {
 		display: none;
 	}
@@ -1123,6 +1196,10 @@
 		position: relative;
 		margin: 0 auto;
 		color: #fff;
+
+		@include adaptive(1449.98){
+			max-width: 1149px;
+		}
 	}
 
 	.btn-menu {
@@ -1219,6 +1296,27 @@
 				padding: 4px 6px;
 				border-radius: 7px;
 			}
+
+			.link-icon-base{
+				position: absolute;
+				left: 50%;
+				top: 50%;
+				transform: translateX(-50%) translateY(-50%);
+				margin: 0;
+				width: 16px;
+				height: 16px;
+
+				&::before{
+					position: relative;
+				}
+			}
+
+			.iconCat{
+				&:before{
+					margin-left: 0;
+					margin-right: 0;
+				}
+			}
 		}
 
 		.item-text {
@@ -1265,10 +1363,14 @@
 		top: 50px;
 		bottom: 0;
 		background-color: #021a37;
-		background-image: url(../images/review/coming_soon.png);
+		/*background-image: url(../images/review/coming_soon.png);*/
 		background-position: center;
 		background-repeat: no-repeat;
 		background-size: 80%;
+
+		img{
+			max-width: 100%;
+		}
 	}
 
 	.view_all_categories {
@@ -1343,6 +1445,7 @@
 .header_opend .review_header .dropdown-menu {
 	display: block;
 }
+
 .light{
 	.review_container{
 		background: #fff;
@@ -1357,6 +1460,17 @@
 		}
 		.review_scroll_container{
 			color: #333;
+
+			.scroll_progress{
+				background: #225396;
+			}
+
+			&:hover .scroll_thumb {
+				background: url(../images/scrollbar-hover.gif) no-repeat;
+				background-position: bottom;
+				-webkit-background-size: contain;
+				background-size: contain;
+			}
 		}
 	}
 	.ratingtu .rtu-txt{
@@ -1371,6 +1485,102 @@
 		}
 		.pros_title{
 			color: #333;
+		}
+	}
+
+	.bread-crumb .show_similar_sites .left_content{
+		color: #828282;
+
+
+
+		.arrow_down{
+			border: 1px solid #828282;
+
+			&:before{
+				border-color: #828282 transparent transparent transparent;
+			}
+		}
+
+		.site_name{
+			color: #656363;
+		}
+	}
+}
+
+.footer {
+	@include adaptive(767) {
+		padding-bottom: 40px;
+	}
+}
+
+.fixed_header{
+	.bread-crumb{
+		.show_similar_sites{
+			display: block;
+
+			@include respond('ipad_portrait'){
+				position: fixed;
+				top: 120px;
+				left: 0;
+				color: #fff;
+				z-index: 10;
+
+				.deIcon{
+					border: 1px solid #828282;
+					background: #fff;
+				}
+			}
+
+			@include adaptive(1023.98) {
+				position: fixed;
+				top: 120px;
+				left: 0;
+				color: #fff;
+				background: #77c28e;
+				padding: 5px 15px;
+				z-index: 10;
+				width: 100%;
+				justify-content: center;
+
+				.left_content{
+					flex-grow: 0;
+
+					@include adaptive(1023.98) {
+						color: #fff;
+					}
+
+					.arrow_down{
+						@include adaptive(1023.98) {
+							border: 1px solid #fff;
+
+							&:before{
+								border-color: #fff transparent transparent transparent;
+							}
+						}
+					}
+
+					.site_name{
+						@include adaptive(1023.98) {
+							color: #fff;
+						}
+					}
+
+					.site_count{
+						@include adaptive(1023.98) {
+							color: #fff;
+						}
+					}
+				}
+
+				.deIcon{
+					border: 1px solid #828282;
+					background: #fff;
+				}
+			}
+
+			@include adaptive(767) {
+				padding: 0 15px;
+			}
 		}
 	}
 }

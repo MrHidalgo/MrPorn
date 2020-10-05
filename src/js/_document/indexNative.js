@@ -103,7 +103,12 @@ const ajaxAdminEndpoint = '/wp-admin/admin-ajax.php';
 			}
 
 
-
+			if(!_ev.closest('[sort-node-js]')){
+				let openSort = document.querySelector('.sort__drop.is-open');
+				if(openSort){
+					openSort.classList.remove('is-open');
+				}
+			}
 
 			if(_ev.closest('.list__specification-close')){
 				closeBanner(_ev);
@@ -132,7 +137,7 @@ const ajaxAdminEndpoint = '/wp-admin/admin-ajax.php';
 			}else if(_ev.closest('[sort-letter-collapse-js]')){
 				onSortLetterClick(_ev.closest('[sort-letter-collapse-js]'));
 			}else if(_ev.closest('[collapse-toggle-js]')){
-				onSortToggle(_ev.closest('[collapse-toggle-donationmsgjs]'));
+				onSortToggle(_ev.closest('[collapse-toggle-js]'));
 			}else if(_ev.parentNode && !_ev.closest('[search-parent-js]')){
 
 				if(!isMobileOrTablet){

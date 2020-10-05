@@ -126,6 +126,7 @@ const onSortLetterClick = (letterItem) => {
 
 		let siteFree = suggession.free;
 		let siteHd = suggession.hd;
+		let catIcon = suggession.icon;
 
 		let htmlFree = '';
 		if(siteFree){
@@ -136,19 +137,41 @@ const onSortLetterClick = (letterItem) => {
 			htmlHd = '<a href="'+siteHd+'"><img src="'+themeBase +'images/img-badge-premium.png" srcset="'+themeBase+'images/img-badge-premium@2x.png 2x" alt=""/></a>';
 		}
 
+		let showLetterToggle = false;
+		if(siteFree!='' && siteHd!=''){
+			showLetterToggle = true;
+		}
 
-		letterSuggessions += '<div class="sort__collapse">' +
-			'<a class="sort__collapse-toggle" href="#" collapse-toggle-js data-container="sort-collapse-'+suggessionIndex+'">'+
-			'<div><span>#'+suggessionIndex+'</span></div>'+
-			'<div><img src="images/images-black-porn-sites.png" srcset="images/images-black-porn-sites@2x.png 2x" alt=""/>'+
-			'<p>'+suggessionName+'</p>'+
-			'</div>'+
-			'<div><i class="icon-font icon-arrow-angle"></i></div></a>'+
-			'<div class="sort__collapse-body" id="sort-collapse-'+suggessionIndex+'" collapse-body-js>'+
-			htmlFree +
-			htmlHd+
-			'</div>'+
-			'</div>';
+		if(showLetterToggle) {
+			letterSuggessions += '<div class="sort__collapse">' +
+				'<a class="sort__collapse-toggle" href="#" collapse-toggle-js data-container="sort-collapse-'+suggessionIndex+'">'+
+				'<div><span>#'+suggessionIndex+'</span></div>'+
+				'<div><img src="'+catIcon+'" />'+
+				'<p>'+suggessionName+'</p>'+
+				'</div>'+
+				'<div><i class="icon-font icon-arrow-angle"></i></div></a>'+
+				'<div class="sort__collapse-body" id="sort-collapse-'+suggessionIndex+'" collapse-body-js>'+
+				htmlFree +
+				htmlHd+
+				'</div>'+
+				'</div>';
+		}else{
+			letterSuggessions += '<div class="sort__collapse">' +
+				'<a class="sort__collapse-toggle" href="'+((siteHd!='')?siteHd:siteFree)+'">'+
+				'<div><span>#'+suggessionIndex+'</span></div>'+
+				'<div><img src="'+catIcon+'" />'+
+				'<p>'+suggessionName+'</p>'+
+				'</div>'+
+				'</a>'+
+				'<div class="sort__collapse-body" id="sort-collapse-'+suggessionIndex+'" collapse-body-js>'+
+				htmlFree +
+				htmlHd+
+				'</div>'+
+				'</div>';
+		}
+
+
+
 
 		suggessionIndex++;
 	});

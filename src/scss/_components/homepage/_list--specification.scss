@@ -146,6 +146,10 @@
 					background-repeat: no-repeat;
 					background-size: 175%;
 				}
+				img{
+					max-height: 95%;
+					max-width: 95%;
+				}
 
 				/*img {
 					display: block;
@@ -238,8 +242,8 @@
 			overflow: hidden;
 			position: absolute;
 			top: 0;
-			left: -10%;
-			width: calc(100% + 10%);
+			/*left: -10%;
+			width: calc(100% + 10%);*/
 			height: 100%;
 			@include adaptive(1023) {
 				left: 0;

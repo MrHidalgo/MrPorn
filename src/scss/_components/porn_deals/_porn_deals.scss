@@ -284,6 +284,11 @@
 				outline: none;
 			}
 
+			&:-moz-placeholder { color: #fff; }
+			&::-moz-placeholder { color: #fff; }
+			&:-ms-input-placeholder { color: #fff; }
+			&::-webkit-input-placeholder { color: #fff; }
+
 			@include respond('ipad_portrait'){
 				visibility: hidden;
 			}
@@ -420,13 +425,17 @@
 		font-size: 18px;
 		display: inline-block;
 		vertical-align: top;
-		margin-top: 13px;
+		margin-top: 5px;
+		margin-left: 5px;
 
 		@include adaptive(767){
 			font-size: 14px;
 			margin-top: 0;
 		}
 	}
+}
+.buyC{
+	padding-bottom: 15px;
 }
 .deal_container{
 	display: flex;
@@ -1556,6 +1565,12 @@
 
 			input{
 				color: inherit;
+
+
+				&:-moz-placeholder { color: #333; }
+				&::-moz-placeholder { color: #333; }
+				&:-ms-input-placeholder { color: #333; }
+				&::-webkit-input-placeholder { color: #333 }
 			}
 		}
 	}

@@ -9,6 +9,10 @@
 	flex-wrap: wrap;
 	padding: 15px 0;
 
+	@include adaptive(991.98) {
+		padding: 15px 5px;
+	}
+
 	@include adaptive(767) {
 		padding-top: 5px;
 	}
@@ -23,9 +27,19 @@
 
 		&_inner{
 			padding: 0 15px 0;
+
+			@include adaptive(991.98) {
+				padding: 0 8px;
+			}
+
 			@include adaptive(767) {
 				padding: 0 5px;
 			}
+		}
+
+		@include adaptive(991.98) {
+			width: 33.3333333%;
+			max-width: 33.3333333%;
 		}
 
 		@include adaptive(767) {

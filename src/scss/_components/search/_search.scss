@@ -16,6 +16,13 @@
 }
 .search_results_box.category__drop{
 	background: #000;
+
+	@include respond('ipad_portrait'){
+		display: none;
+	}
+	@include adaptive(767) {
+		display: none;
+	}
 }
 .search_results_box_mobile{
 	display: none;

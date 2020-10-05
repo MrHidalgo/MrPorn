@@ -440,7 +440,8 @@ function renderSiteCategory(categoryIndex) {
 
     categorySites += '<div class="swiper-slide" data-index="' + index + '" data-siteid="' + site.id + '" data-init="0">' + '<div class="list__box" list-box-js  data-id="' + site.id + '" style="background-image: url(' + site.banner_image + ')">' +
     /*'<div class="list__box-overlay"></div>'+*/
-    '<div class="list__box-border"></div>' + '<a class="nav_link" href="' + site.link + '">' + siteLogo + '</a>' + '<div class="list__box-details">' + '</div>' + '<button class="list__box-more" type="button"><i class="icon-font icon-arrow-angle"></i></button>' + '</div>' + '</div>';
+    '<div class="list__box-border"></div>' + '<a class="nav_link" href="' + site.link + '">' + //siteLogo+
+    '</a>' + '<div class="list__box-details">' + '</div>' + '<button class="list__box-more" type="button"><i class="icon-font icon-arrow-angle"></i></button>' + '</div>' + '</div>';
   });
   var categoryBoxHtml = '<div class="list__box-wrapper" list-parent-js data-name="category_' + categoryId + '" data-index="' + categoryIndex + '">' + '<div class="list__box-head">' + '<div class="list__info">' + '<div class="list__info-circle"><img src="' + categoryLogo + '" alt=""/></div>' + '<div>' + '<p>' + categoryData.title + '</p><span>' + categoryData.tagline + '</span>' + '</div>' + '</div>' + '<a class="list__btn" href="' + categoryData.link + '">SEE&nbsp;<span>' + categoryData.count + ' MORE</span><i class="icon-font icon-arrow-angle"></i></a>' + '</div>' + '<div class="list__box-line">' + '<u list-line-ind-js></u><span class="list_green_line" list-line-js></span>' + '</div>' + '<div class="list__box-body">' + '<div class="list__arrow-wrapper">' + '<a class="list__arrow list__arrow--prev" href="#">' + '<div class="list__arrow-box"><i class="icon-font icon-arrow-angle"></i></div>' + '</a>' + '<a class="list__arrow list__arrow--next" href="#">' + '<div class="list__arrow-box"><i class="icon-font icon-arrow-angle"></i></div>' + '</a>' + '</div>' + '<div class="swiper-container listSwiper" data-id="listSlider_' + categoryData.id + '" data-category="18">' + '<div class="swiper-wrapper" data-category="' + categoryData.id + '" data-count="' + categoryData.count + '" data-slidecount="' + categoryData.site_limit + '">' + categorySites + '</div>' + '</div>' + '</div>' + '<div class="list__specification-wrapper"></div>' + '</div>';
   return categoryBoxHtml;
@@ -890,6 +891,7 @@ var onSortLetterClick = function onSortLetterClick(letterItem) {
 
     var siteFree = suggession.free;
     var siteHd = suggession.hd;
+    var catIcon = suggession.icon;
     var htmlFree = '';
 
     if (siteFree) {
@@ -902,7 +904,18 @@ var onSortLetterClick = function onSortLetterClick(letterItem) {
       htmlHd = '<a href="' + siteHd + '"><img src="' + themeBase + 'images/img-badge-premium.png" srcset="' + themeBase + 'images/img-badge-premium@2x.png 2x" alt=""/></a>';
     }
 
-    letterSuggessions += '<div class="sort__collapse">' + '<a class="sort__collapse-toggle" href="#" collapse-toggle-js data-container="sort-collapse-' + suggessionIndex + '">' + '<div><span>#' + suggessionIndex + '</span></div>' + '<div><img src="images/images-black-porn-sites.png" srcset="images/images-black-porn-sites@2x.png 2x" alt=""/>' + '<p>' + suggessionName + '</p>' + '</div>' + '<div><i class="icon-font icon-arrow-angle"></i></div></a>' + '<div class="sort__collapse-body" id="sort-collapse-' + suggessionIndex + '" collapse-body-js>' + htmlFree + htmlHd + '</div>' + '</div>';
+    var showLetterToggle = false;
+
+    if (siteFree != '' && siteHd != '') {
+      showLetterToggle = true;
+    }
+
+    if (showLetterToggle) {
+      letterSuggessions += '<div class="sort__collapse">' + '<a class="sort__collapse-toggle" href="#" collapse-toggle-js data-container="sort-collapse-' + suggessionIndex + '">' + '<div><span>#' + suggessionIndex + '</span></div>' + '<div><img src="' + catIcon + '" />' + '<p>' + suggessionName + '</p>' + '</div>' + '<div><i class="icon-font icon-arrow-angle"></i></div></a>' + '<div class="sort__collapse-body" id="sort-collapse-' + suggessionIndex + '" collapse-body-js>' + htmlFree + htmlHd + '</div>' + '</div>';
+    } else {
+      letterSuggessions += '<div class="sort__collapse">' + '<a class="sort__collapse-toggle" href="' + (siteHd != '' ? siteHd : siteFree) + '">' + '<div><span>#' + suggessionIndex + '</span></div>' + '<div><img src="' + catIcon + '" />' + '<p>' + suggessionName + '</p>' + '</div>' + '</a>' + '<div class="sort__collapse-body" id="sort-collapse-' + suggessionIndex + '" collapse-body-js>' + htmlFree + htmlHd + '</div>' + '</div>';
+    }
+
     suggessionIndex++;
   });
   var activeSortLetter = document.querySelector('.sort__drop-link.is-active');
@@ -1391,6 +1404,14 @@ var ajaxAdminEndpoint = '/wp-admin/admin-ajax.php';
       if (!_ev.closest('.nav_link')) {//ev.preventDefault();
       }
 
+      if (!_ev.closest('[sort-node-js]')) {
+        var openSort = document.querySelector('.sort__drop.is-open');
+
+        if (openSort) {
+          openSort.classList.remove('is-open');
+        }
+      }
+
       if (_ev.closest('.list__specification-close')) {
         closeBanner(_ev);
       } else if (_ev.closest('.list__box-more')) {
@@ -1418,7 +1439,7 @@ var ajaxAdminEndpoint = '/wp-admin/admin-ajax.php';
       } else if (_ev.closest('[sort-letter-collapse-js]')) {
         onSortLetterClick(_ev.closest('[sort-letter-collapse-js]'));
       } else if (_ev.closest('[collapse-toggle-js]')) {
-        onSortToggle(_ev.closest('[collapse-toggle-donationmsgjs]'));
+        onSortToggle(_ev.closest('[collapse-toggle-js]'));
       } else if (_ev.parentNode && !_ev.closest('[search-parent-js]')) {
         if (!isMobileOrTablet) {
           document.querySelector('[search-js]').value = '';

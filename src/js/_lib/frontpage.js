@@ -297,7 +297,7 @@ function renderSiteCategory(categoryIndex){
 			/*'<div class="list__box-overlay"></div>'+*/
 			'<div class="list__box-border"></div>'+
 			'<a class="nav_link" href="'+site.link+'">' +
-			siteLogo+
+			//siteLogo+
 			'</a>'+
 			'<div class="list__box-details">'+
 
