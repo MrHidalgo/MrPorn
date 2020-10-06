@@ -373,10 +373,37 @@ const boxHover = () => {
 	let tOut = null,
 		hoverBool = false;
 
-	for(let i = 0, len = swiperSlides.length; i < len; i++) {
-		swiperSlides[i].addEventListener('mouseenter', function(ev) {
-			console.log('mouse enter');
+	let previousHoverBox = null;
 
+	for(let i = 0, len = swiperSlides.length; i < len; i++) {
+		swiperSlides[i].addEventListener('mouseleave', function(ev) {
+			if(window.innerWidth >= 1280) {
+				const el = ev.currentTarget,
+					elParent = el.closest('[list-parent-js]'),
+					lineInd = elParent.querySelector('[list-line-js]');
+
+				let transformVal = '';
+
+				if(lineInd.getAttribute("style")) {
+					let val = lineInd.getAttribute("style");
+
+
+					if(val.indexOf(';') === -1) {
+						transformVal = val;
+					} else {
+						transformVal = val.substring(0, val.indexOf(';'));
+					}
+				}
+
+				//clearTimeout(tOut);
+				el.classList.remove('is-hover');
+
+
+				lineInd.setAttribute('style', transformVal + ';width: 64px');
+			}
+		}, false);
+
+		swiperSlides[i].addEventListener('mouseenter', function(ev) {
 			if(window.innerWidth >= 1280) {
 				const el = ev.currentTarget,
 					elParent = el.closest('[list-parent-js]'),
@@ -420,66 +447,53 @@ const boxHover = () => {
 				if(hoverBool) {
 					el.classList.add('is-hover');
 
+					var hoverBounds = 0;
+					var _lineLeft = 0;
 
-					tOut = setTimeout(function() {
-						var hoverBounds = elBox.getBoundingClientRect();
-						var boxParentBou
-						var _lineLeft = hoverBounds.left - elParent.getBoundingClientRect().left;
-						console.log(hoverBounds, );
-						//transformVal = 'transform: translateX('+_lineLeft+'px)';
+
+
+					if(previousHoverBox == el.previousSibling){
+						hoverBounds = elBox.getBoundingClientRect();
+						_lineLeft = hoverBounds.left - elParent.getBoundingClientRect().left - (parseFloat(hoverBounds.width)/1.5);
+						transformVal = 'left: '+_lineLeft+'px';
+						lineInd.setAttribute('style', transformVal + ';width: 189px');
+
+						tOut = setTimeout(function() {
+							hoverBounds = elBox.getBoundingClientRect();
+							_lineLeft = hoverBounds.left - elParent.getBoundingClientRect().left;
+							transformVal = 'left: '+_lineLeft+'px';
+
+							lineInd.setAttribute('style', transformVal + ';width: 189px');
+						}, 400);
+					}else{
+						hoverBounds = elBox.getBoundingClientRect();
+						_lineLeft = hoverBounds.left - elParent.getBoundingClientRect().left;
 						transformVal = 'left: '+_lineLeft+'px';
 
 						lineInd.setAttribute('style', transformVal + ';width: 189px');
-					}, 100);
+					}
+
+
 				} else {
-
-
 					hoverBool = true;
 					el.classList.add('is-hover');
 
-					tOut = setTimeout(function() {
-						var hoverBounds = elBox.getBoundingClientRect();
-						console.log(hoverBounds.left, );
-						var _lineLeft = hoverBounds.left - elParent.getBoundingClientRect().left;
-						//transformVal = 'transform: translateX('+_lineLeft+'px)';
-						transformVal = 'left: '+_lineLeft+'px';
+					var hoverBounds = elBox.getBoundingClientRect();
+					console.log('is hover else', hoverBounds.left);
+					var _lineLeft = hoverBounds.left - elParent.getBoundingClientRect().left;
+					//transformVal = 'transform: translateX('+_lineLeft+'px)';
+					transformVal = 'left: '+_lineLeft+'px';
 
-						lineInd.setAttribute('style', transformVal + ';width: 189px');
-					}, 100);
+					lineInd.setAttribute('style', transformVal + ';width: 189px');
 				}
 
-
+				previousHoverBox = el;
 			}
 		}, false);
 
 		swiperSlides[i].setAttribute('data-init', '1');
 
-		swiperSlides[i].addEventListener('mouseleave', function(ev) {
-			if(window.innerWidth >= 1280) {
-				const el = ev.currentTarget,
-					elParent = el.closest('[list-parent-js]'),
-					lineInd = elParent.querySelector('[list-line-js]');
 
-				let transformVal = '';
-
-				if(lineInd.getAttribute("style")) {
-					let val = lineInd.getAttribute("style");
-
-
-					if(val.indexOf(';') === -1) {
-						transformVal = val;
-					} else {
-						transformVal = val.substring(0, val.indexOf(';'));
-					}
-				}
-
-				clearTimeout(tOut);
-				el.classList.remove('is-hover');
-
-
-				lineInd.setAttribute('style', transformVal + ';width: 64px');
-			}
-		}, false);
 	}
 
 	for(let i = 0, len = listBoxBody.length; i < len; i++) {
