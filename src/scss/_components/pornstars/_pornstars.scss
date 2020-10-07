@@ -575,29 +575,36 @@
 			font-size: 15px;
 			font-weight: 700;
 			color: #dcecff;
+			display: flex;
+			align-items: center;
 
 			@include respond('ipad'){
 				font-size: 12.5px;
 			}
 
 			@include adaptive(767) {
-				font-size: 14px;
+				font-size: 10.5px;
+			}
+
+			.name{
+				white-space: nowrap;
+				text-overflow: ellipsis;
+				overflow: hidden;
+				flex: 1;
 			}
 
 			small {
-				position: absolute;
-				top: 6px;
-				right: 8px;
 				font-size: 14px;
 				font-weight: 400;
 				color: #fff;
+				white-space: nowrap;
 
 				@include respond('ipad'){
 					font-size: 12.5px;
 				}
 
 				@include adaptive(767) {
-					font-size: 12.5px;
+					font-size: 10.5px;
 				}
 			}
 		}
@@ -662,6 +669,12 @@
 
 			.pornstar_inner{
 				background: #ebf4ff;
+
+				@include adaptive(767) {
+					background: #fff;
+					padding: 0;
+					border: none;
+				}
 			}
 		}
 	}

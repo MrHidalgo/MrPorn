@@ -60,17 +60,18 @@ function renderHompageSiteSlide(category, index){
 		let siteId = siteItem.id;
 		let siteLink = siteItem.link;
 		let siteName = siteItem.name;
-		let siteThumb = siteItem.thumb;
+		let siteThumb = (siteItem.banner_image)?siteItem.banner_image:siteItem.thumb;
 		let siteLogo = (siteItem.logo)?siteItem.logo.src:'';
 
-		let slideHtml = '<div class="swiper-slide" data-siteid="'+siteId+'" category_list_'+index+'>'+
-			'<a class="list__box nolazy" list-box-js href="'+siteLink+'" target="_blank" data-id="'+siteId+'" style="background-image: url('+siteThumb+')">'+
+		let slideHtml = '<div class="list__box nolazy" list-box-js data-id="'+siteId+'" style="background-image: url('+siteThumb+')">'+
 			/*'<div class="list__box-overlay"></div>'+*/
-			'<div class="list__box-border"></div><img class="list__box-logo nolazy" src="'+siteLogo+'" alt=""/>'+
+			'<div class="list__box-border"></div>' +
+			'<a href="'+siteLink+'"></a>'+
+			//'<img class="list__box-logo nolazy" src="'+siteLogo+'" alt=""/>'+
 			'<div class="list__box-details">'+
 			'<div class="list__box-details-left">'+
 			'<button class="list__box-external" type="button"><i class="icon-font icon-out"></i></button>'+
-			'<p class="list__box-details-title"><a href="'+siteLink+'" target="_blank">'+siteName+'</a></p>'+
+			'<p class="list__box-details-title">'+siteName+'</p>'+
 			'<div class="list__rating"><span>User Rating:</span>'+
 			'<div><i class="icon-font icon-star"></i><i class="icon-font icon-star"></i><i class="icon-font icon-star"></i><i class="icon-font icon-star"></i><i class="icon-font icon-star-fill"></i></div>'+
 			'</div>'+
@@ -88,7 +89,6 @@ function renderHompageSiteSlide(category, index){
 			'</div>'+
 			'</div>'+
 			'<button class="list__box-more" type="button"><i class="icon-font icon-arrow-angle"></i></button>'+
-			'</a>'+
 			'</div>';
 		return slideHtml;
 	}
