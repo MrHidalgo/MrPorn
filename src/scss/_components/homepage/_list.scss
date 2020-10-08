@@ -58,6 +58,18 @@
 				width: 350px !important;
 				@include transition(width);
 
+				/*&:last-of-type {
+					.list__box{
+						transform: translate(calc(-50% - 120px), -50%);
+					}
+				}*/
+			}
+		}
+	}
+
+	.swiper-wrapper:not(.short_list){
+		.swiper-slide{
+			&.is-hover {
 				&:last-of-type {
 					.list__box{
 						transform: translate(calc(-50% - 120px), -50%);

@@ -333,7 +333,7 @@ function renderSiteCategory(categoryIndex){
 											'</a>'+
 										'</div>'+
 										'<div class="swiper-container listSwiper" data-id="listSlider_'+categoryData.id+'" data-category="18">'+
-											'<div class="swiper-wrapper" data-category="'+categoryData.id+'" data-count="'+categoryData.count+'" data-slidecount="'+categoryData.site_limit+'">'+
+											'<div class="swiper-wrapper'+(parseInt(categoryData.count)<6?' short_list':'')+'" data-category="'+categoryData.id+'" data-count="'+categoryData.count+'" data-slidecount="'+categoryData.site_limit+'">'+
 												categorySites+
 											'</div>'+
 										'</div>'+
@@ -479,7 +479,6 @@ const boxHover = () => {
 					el.classList.add('is-hover');
 
 					var hoverBounds = elBox.getBoundingClientRect();
-					console.log('is hover else', hoverBounds.left);
 					var _lineLeft = hoverBounds.left - elParent.getBoundingClientRect().left;
 					//transformVal = 'transform: translateX('+_lineLeft+'px)';
 					transformVal = 'left: '+_lineLeft+'px';

@@ -149,6 +149,15 @@
 				img{
 					max-height: 95%;
 					max-width: 95%;
+					margin-left: 60px;
+
+					@include respond('ipad_portrait'){
+						margin-left: 0;
+					}
+
+					@include adaptive(767) {
+						margin-left: 0;
+					}
 				}
 
 				/*img {
@@ -245,6 +254,8 @@
 			/*left: -10%;
 			width: calc(100% + 10%);*/
 			height: 100%;
+			left: -60px;
+			right: 0;
 			@include adaptive(1023) {
 				left: 0;
 				width: 100%;

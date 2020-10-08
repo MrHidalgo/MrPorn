@@ -39,6 +39,8 @@ const ajaxAdminEndpoint = '/wp-admin/admin-ajax.php';
 	 * ===================================
 	 */
 
+	initLoggedUser();
+
 	let headerHeight = 0;
 
 	const initHome = () =>{
