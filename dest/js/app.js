@@ -536,16 +536,17 @@ var boxHover = function boxHover() {
           var _lineLeft = 0;
 
           if (previousHoverBox == el.previousSibling) {
-            hoverBounds = elBox.getBoundingClientRect();
-            _lineLeft = hoverBounds.left - elParent.getBoundingClientRect().left - parseFloat(hoverBounds.width) / 1.5;
+            hoverBounds = elBox.getBoundingClientRect(); //_lineLeft = hoverBounds.left - elParent.getBoundingClientRect().left - (parseFloat(hoverBounds.width)/1.5);
+
+            _lineLeft = hoverBounds.left - elParent.getBoundingClientRect().left - 120;
             transformVal = 'left: ' + _lineLeft + 'px';
             lineInd.setAttribute('style', transformVal + ';width: 189px');
-            tOut = setTimeout(function () {
-              hoverBounds = elBox.getBoundingClientRect();
-              _lineLeft = hoverBounds.left - elParent.getBoundingClientRect().left;
-              transformVal = 'left: ' + _lineLeft + 'px';
-              lineInd.setAttribute('style', transformVal + ';width: 189px');
-            }, 400);
+            /*tOut = setTimeout(function() {
+            	hoverBounds = elBox.getBoundingClientRect();
+            	_lineLeft = hoverBounds.left - elParent.getBoundingClientRect().left;
+            	transformVal = 'left: '+_lineLeft+'px';
+            		lineInd.setAttribute('style', transformVal + ';width: 189px');
+            }, 400);*/
           } else {
             hoverBounds = elBox.getBoundingClientRect();
             _lineLeft = hoverBounds.left - elParent.getBoundingClientRect().left;
