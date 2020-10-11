@@ -363,7 +363,8 @@
 
 	&-logo {
 		display: block;
-		max-width: 250px;
+		max-width: 350px;
+		max-height: 120px;
 		height: auto;
 		margin-bottom: 10px;
 	}
@@ -472,6 +473,11 @@
 		color: #ffffff;
 		font-size: 15px;
 		font-weight: 700;
+
+		&:hover{
+			color: #fff;
+		}
+
 		@include adaptive(1279) {
 			min-width: 100px;
 			height: 40px;

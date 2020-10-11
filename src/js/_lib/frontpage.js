@@ -119,7 +119,7 @@ function renderSiteHoverContent(category, index){
 		let siteThumb = siteItem.thumb;
 
 		var hoverContent = '<div class="list__box-details-left">'+
-			'<a href="'+siteLink+'" target="_blank">' +
+			'<a class="site_link" href="'+siteLink+'" target="_blank">' +
 			'<button class="list__box-external" type="button"><i class="icon-font icon-out"></i></button>'+
 			'<p class="list__box-details-title">'+siteName+'</p>'+
 			'</a>'+
