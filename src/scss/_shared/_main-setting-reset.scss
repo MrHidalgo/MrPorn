@@ -50,19 +50,21 @@ body {
 .light{
 	body {
 		background: #cad4df;
+
+		a{
+			color:#4099f9;
+
+			&:hover{
+				color: #337ab7;
+			}
+			&:focus{
+				color: #337ab7;
+			}
+		}
 	}
 }
 
-a{
-	color:#4099f9;
 
-	&:hover{
-		color: #337ab7;
-	}
-	&:focus{
-		color: #337ab7;
-	}
-}
 /*.light{
 	a{
 		color: #337ab7;

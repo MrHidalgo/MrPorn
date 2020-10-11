@@ -66,12 +66,14 @@ function renderHompageSiteSlide(category, index){
 		let slideHtml = '<div class="list__box nolazy" list-box-js data-id="'+siteId+'" style="background-image: url('+siteThumb+')">'+
 			/*'<div class="list__box-overlay"></div>'+*/
 			'<div class="list__box-border"></div>' +
-			'<a href="'+siteLink+'"></a>'+
+			'<a href="'+siteLink+'" target="_blank"></a>'+
 			//'<img class="list__box-logo nolazy" src="'+siteLogo+'" alt=""/>'+
 			'<div class="list__box-details">'+
 			'<div class="list__box-details-left">'+
+			'<a href="'+siteLink+'" target="_blank">' +
 			'<button class="list__box-external" type="button"><i class="icon-font icon-out"></i></button>'+
 			'<p class="list__box-details-title">'+siteName+'</p>'+
+			'</a>'+
 			'<div class="list__rating"><span>User Rating:</span>'+
 			'<div><i class="icon-font icon-star"></i><i class="icon-font icon-star"></i><i class="icon-font icon-star"></i><i class="icon-font icon-star"></i><i class="icon-font icon-star-fill"></i></div>'+
 			'</div>'+
