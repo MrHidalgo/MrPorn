@@ -138,14 +138,17 @@
 				text-align: left;
 				text-transform: capitalize;
 
+				@include adaptive(1449.98){
+					font-size: 18px;
+				}
+
 				@include respond('ipad'){
 					font-size: 16px;
 				}
 
 				&:active,
 				&:hover{
-					text-decoration: none;
-					color: #337ab7;
+					text-decoration: underline;
 				}
 
 				@include adaptive(767) {

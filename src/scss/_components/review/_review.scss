@@ -1399,8 +1399,13 @@
 		background-repeat: no-repeat;
 		background-size: 80%;
 
+		@include adaptive(1449.98){
+			top: 36px;
+		}
+
 		img{
 			max-width: 100%;
+			max-height: 100%;
 		}
 	}
 
@@ -1415,6 +1420,11 @@
 		font-weight: 600;
 		line-height: 55px;
 		text-transform: uppercase;
+
+		@include adaptive(1449.98){
+			font-size: 22px;
+			line-height: 45px;
+		}
 	}
 }
 .site_nav_cat_col{
@@ -1432,6 +1442,11 @@
 		border-right: 7px solid #011732;
 		white-space: nowrap;
 		text-overflow: ellipsis;
+
+		@include adaptive(1449.98){
+			font-size: 17px;
+			line-height: 36px;
+		}
 
 		&::after {
 			position: absolute;
@@ -1458,6 +1473,12 @@
 		white-space: nowrap;
 		text-overflow: ellipsis;
 		overflow: hidden;
+
+		@include adaptive(1449.98){
+			font-size: 16px;
+			line-height: 40px;
+			height: 40px;
+		}
 
 		&::before {
 			position: absolute;

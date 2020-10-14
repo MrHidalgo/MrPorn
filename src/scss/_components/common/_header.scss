@@ -47,5 +47,16 @@
 	}
 }
 
+[data-label-lg]::after {
+	content: attr(data-label-lg);
+}
+
+@media screen and (max-width: 767px) {
+	/* line 189, src/scss/_shared/_main-setting-reset.scss */
+	[data-label-xs]::after {
+		content: attr(data-label-xs);
+	}
+}
+
 
 // HEADER :: END

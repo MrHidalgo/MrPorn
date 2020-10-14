@@ -1,7 +1,211 @@
 // LOGIN :: START
+.show_2nd_header_1 .site-content{
+	@include adaptive(767) {
+		margin-top: 120px;
+	}
+}
+
+.c-grid{
+	@include adaptive(767) {
+		padding: 0;
+	}
+}
+
 .login_panel_container {
 	padding: 0 15px;
+
+	@include adaptive(767) {
+		padding: 0;
+	}
 }
+
+.login_container{
+	background-color: #0e123c;
+	padding: 15px;
+	margin-bottom: 150px;
+
+	@include adaptive(767) {
+		padding: 0;
+	}
+
+	.login_top{
+		@include adaptive(767) {
+			padding: 15px;
+			position: relative;
+
+			&:after{
+				position: absolute;
+				top: 100%;
+				left: 50%;
+				transform: translateX(-50%);
+				content: ' ';
+				display: inline-block;
+				width: 0;
+				height: 0;
+				border-style: solid;
+				border-width: 20px 20px 0 20px;
+				border-color: #0e123c transparent transparent transparent;
+			}
+		}
+	}
+
+	.login_container_inner{
+		background-position: right;
+		background-size: contain;
+		background-repeat: no-repeat;
+		display: flex;
+
+		&.forgot{
+			p{
+				color: #9294ad;
+				font-size: 11px;
+				text-align: center;
+				margin-bottom: 15px;
+				margin-top: 20px;
+
+				@include adaptive(767) {
+					font-size: 17px;
+					color: #d2d2d2;
+				}
+
+				a{
+					color: #c7f928;
+
+					@include adaptive(767) {
+						display: block;
+						border: 3px solid #003b85;
+						color: #fff;
+						padding: 10px;
+					}
+				}
+			}
+		}
+
+		.info_create_mobile{
+			color: #a4a4a4;
+			padding: 15px 0;
+
+			@include adaptive(767) {
+				background: #080915;
+				padding: 15px 30px;
+				text-align: center;
+			}
+
+			a{
+				color: #c7f928;
+
+				@include adaptive(767) {
+					margin-top: 10px;
+					display: block;
+					border: 3px solid #003b85;
+					color: #fff;
+					padding: 10px;
+					text-align: center;
+					font-weight: 600;
+				}
+			}
+		}
+	}
+	.login_form{
+		width: 50%;
+		padding: 20px 70px;
+
+		@include adaptive(767) {
+			width: 100%;
+			padding: 0;
+		}
+
+		input{
+			border-radius: 5px;
+		}
+
+		.signup{
+			color: #c7f928;
+		}
+		.forgot{
+			color: #999999;
+
+			@include adaptive(767) {
+				text-align: center;
+				display: block;
+				float: none;
+				margin-top: 10px;
+			}
+		}
+
+		.already_have{
+			color: #999;
+			text-align: center;
+			margin-top: 15px;
+
+			@include adaptive(767) {
+				color: #d2d2d2;
+				line-height: 23px;
+			}
+
+			a{
+				color: #c7f928;
+
+				@include adaptive(767) {
+					color: #157dff;
+				}
+			}
+		}
+	}
+
+	.remeber_me{
+		@include adaptive(767) {
+			text-align: center;
+		}
+	}
+
+	.login_banner{
+		width: 50%;
+
+		@include adaptive(767) {
+			display: none;
+		}
+	}
+
+	.title{
+		text-align: center;
+		color: #fff;
+		font-size: 34px;
+		font-weight: 600;
+		margin: 20px 0 40px;
+
+		@include adaptive(767) {
+			font-size: 22px;
+			color: #4296ff;
+			text-transform: uppercase;
+			margin: 0 0 0;
+		}
+	}
+	.signup{
+		margin: 0;
+	}
+}
+
+.is_desktop{
+	display: block;
+
+	@include adaptive(767) {
+		display: none;
+	}
+}
+.is_mobile{
+	display: none;
+
+	@include adaptive(767) {
+		display: block;
+	}
+}
+.login_bottom{
+	@include adaptive(767) {
+		background: #000;
+	}
+}
+
 .login_panel {
 	background: #fff;
 	margin-left: auto;
@@ -84,32 +288,36 @@
 .cleanlogin-container{
 	padding: 15px;
 
-	.join_button, input[type=submit]{
+	@include adaptive(767){
+		padding: 35px 30px 15px;
+	}
+
+	.join_button, input[type=submit], .submit{
 		width: 100%!important;
 		border: none;
 		height: 60px!important;
 		line-height: 60px;
 		padding: 0!important;
 		font-size: 26px;
-		background: #327d00;
-		color: #fff;
+		font-weight: 600;
+		color: #021b3b;
 		text-transform: uppercase;
 		cursor: pointer;
-		background: -moz-linear-gradient(top,#327d00 0%,#225600 100%);
-		background: -webkit-gradient(left top,left bottom,color-stop(0%,#327d00),color-stop(100%,#225600));
-		background: -webkit-linear-gradient(top,#327d00 0%,#225600 100%);
-		background: -o-linear-gradient(top,#327d00 0%,#225600 100%);
-		background: -ms-linear-gradient(top,#327d00 0%,#225600 100%);
-		background: linear-gradient(to bottom,#327d00 0%,#225600 100%);
-		filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#327d00',endColorstr='#225600',GradientType=0);
+		background: #c7f928;
 
 		@include adaptive(767){
 			font-size: 18px;
+			background: #003b85;
+			color: #fff;
 		}
 	}
 	form{
 		label{
 			font-weight: 700;
+
+			@include adaptive(767) {
+				color: #fff;
+			}
 		}
 	}
 	.forgot{
@@ -117,7 +325,8 @@
 	}
 }
 .cleanlogin-field{
-	margin-bottom: 15px;
+	margin-bottom: 25px;
+	border-radius: 8px;
 
 	input{
 		padding: 15px 25px;

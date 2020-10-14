@@ -761,7 +761,7 @@ strong {
 }
 
 /* line 8, src/scss/_shared/_grid.scss */
-.c-grid, .c-grid-fluid {
+.page-id-17 .c-grid, .page-id-17-fluid, .c-grid, .c-grid-fluid {
   width: 100%;
   margin-right: auto;
   margin-left: auto;
@@ -769,14 +769,14 @@ strong {
   padding-left: 20px;
 }
 
-/* line 20, src/scss/_shared/_grid.scss */
-.c-grid {
-  max-width: 1300px;
+/* line 21, src/scss/_shared/_grid.scss */
+.page-id-17 .c-grid {
+  max-width: 95%;
 }
 
 @media screen and (max-width: 1449.98px) {
   /* line 20, src/scss/_shared/_grid.scss */
-  .c-grid {
+  .page-id-17 {
     max-width: 1149px;
     padding-left: 0;
     padding-right: 0;
@@ -785,7 +785,7 @@ strong {
 
 @media screen and (max-width: 1199.98px) {
   /* line 20, src/scss/_shared/_grid.scss */
-  .c-grid {
+  .page-id-17 {
     padding-left: 15px;
     padding-right: 15px;
   }
@@ -793,13 +793,48 @@ strong {
 
 @media screen and (max-width: 767px) {
   /* line 20, src/scss/_shared/_grid.scss */
+  .page-id-17 {
+    padding-left: 10px;
+    padding-right: 10px;
+  }
+}
+
+/* line 43, src/scss/_shared/_grid.scss */
+.page-id-17-fluid {
+  max-width: 100%;
+}
+
+/* line 49, src/scss/_shared/_grid.scss */
+.c-grid {
+  max-width: 1300px;
+}
+
+@media screen and (max-width: 1449.98px) {
+  /* line 49, src/scss/_shared/_grid.scss */
+  .c-grid {
+    max-width: 1149px;
+    padding-left: 0;
+    padding-right: 0;
+  }
+}
+
+@media screen and (max-width: 1199.98px) {
+  /* line 49, src/scss/_shared/_grid.scss */
+  .c-grid {
+    padding-left: 15px;
+    padding-right: 15px;
+  }
+}
+
+@media screen and (max-width: 767px) {
+  /* line 49, src/scss/_shared/_grid.scss */
   .c-grid {
     padding-left: 10px;
     padding-right: 10px;
   }
 }
 
-/* line 49, src/scss/_shared/_grid.scss */
+/* line 78, src/scss/_shared/_grid.scss */
 .c-grid-fluid {
   max-width: 100%;
 }
@@ -3453,7 +3488,7 @@ strong {
 
 /* line 27, src/scss/_components/common/_header--view.scss */
 .header__view-text {
-  font-size: 15px;
+  font-size: 14px;
   font-weight: 600;
   color: #fff;
   margin-top: -5px;
@@ -4158,6 +4193,19 @@ strong {
 /* line 45, src/scss/_components/common/_header.scss */
 .is_logged .header__view-text {
   display: none;
+}
+
+/* line 50, src/scss/_components/common/_header.scss */
+[data-label-lg]::after {
+  content: attr(data-label-lg);
+}
+
+@media screen and (max-width: 767px) {
+  /* line 189, src/scss/_shared/_main-setting-reset.scss */
+  /* line 56, src/scss/_components/common/_header.scss */
+  [data-label-xs]::after {
+    content: attr(data-label-xs);
+  }
 }
 
 /* line 3, src/scss/_components/common/_pre-header.scss */
