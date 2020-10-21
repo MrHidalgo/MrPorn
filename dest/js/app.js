@@ -281,6 +281,7 @@ var initHomeLazyLoad = function initHomeLazyLoad() {
 
 var loadHomeData = function loadHomeData() {
   var currentLang = document.documentElement.getAttribute('lang');
+  console.log('Loading home data');
   var url = 'http://mpg.c2136.cloudnet.cloud/wp-json/mpg/home/';
 
   if (currentLang != 'en') {
@@ -317,7 +318,7 @@ function renderHompageSiteSlide(category, index) {
     var slideHtml = '<div class="list__box nolazy" list-box-js data-id="' + siteId + '" style="background-image: url(' + siteThumb + ')">' +
     /*'<div class="list__box-overlay"></div>'+*/
     '<div class="list__box-border"></div>' + '<a href="' + siteLink + '" target="_blank"></a>' + //'<img class="list__box-logo nolazy" src="'+siteLogo+'" alt=""/>'+
-    '<div class="list__box-details">' + '<div class="list__box-details-left">' + '<a href="' + siteLink + '" target="_blank">' + '<button class="list__box-external" type="button"><i class="icon-font icon-out"></i></button>' + '<p class="list__box-details-title">' + siteName + '</p>' + '</a>' + '<div class="list__rating"><span>User Rating:</span>' + '<div><i class="icon-font icon-star"></i><i class="icon-font icon-star"></i><i class="icon-font icon-star"></i><i class="icon-font icon-star"></i><i class="icon-font icon-star-fill"></i></div>' + '</div>' + '</div>' + '<div class="list__box-details-right">' + '<button class="list__box-like" type="button" data-id="1" like-toggle-js><i class="icon-font icon-like"></i></button>' + '<button class="list__box-dislike" type="button" data-id="1" dislike-toggle-js><i class="icon-font icon-like"></i></button>' + '<div class="c-popper">' + '<button class="list__box-favorites" type="button" data-id="1" favorites-toggle-js><i class="icon-font icon-star-fill"></i><i class="icon-font icon-star"></i></button>' + '<div class="c-poppertext">' + '<u>Add To Favourites</u>' + '<u>Remove From Favourites</u>' + '</div>' + '</div>' + '</div>' + '</div>' + '<button class="list__box-more" type="button"><i class="icon-font icon-arrow-angle"></i></button>' + '</div>';
+    '<div class="list__box-details">' + '<div class="list__box-details-left">' + '<a href="' + siteLink + '" target="_blank">' + '<i class="icon-font icon-out"></i>' + '<p class="list__box-details-title">' + siteName + '</p>' + '</a>' + '<div class="list__rating"><span>User Rating:</span>' + '<div><i class="icon-font icon-star"></i><i class="icon-font icon-star"></i><i class="icon-font icon-star"></i><i class="icon-font icon-star"></i><i class="icon-font icon-star-fill"></i></div>' + '</div>' + '</div>' + '<div class="list__box-details-right">' + '<button class="list__box-like" type="button" data-id="1" like-toggle-js><i class="icon-font icon-like"></i></button>' + '<button class="list__box-dislike" type="button" data-id="1" dislike-toggle-js><i class="icon-font icon-like"></i></button>' + '<div class="c-popper">' + '<button class="list__box-favorites" type="button" data-id="1" favorites-toggle-js><i class="icon-font icon-star-fill"></i><i class="icon-font icon-star"></i></button>' + '<div class="c-poppertext">' + '<u>Add To Favourites</u>' + '<u>Remove From Favourites</u>' + '</div>' + '</div>' + '</div>' + '</div>' + '<button class="list__box-more" type="button"><i class="icon-font icon-arrow-angle"></i></button>' + '</div>';
     return slideHtml;
   }
 
@@ -344,7 +345,7 @@ function renderSiteHoverContent(category, index) {
     var siteLink = siteItem.link;
     var siteName = siteItem.name;
     var siteThumb = siteItem.thumb;
-    var hoverContent = '<div class="list__box-details-left">' + '<a class="site_link" href="' + siteLink + '" target="_blank">' + '<button class="list__box-external" type="button"><i class="icon-font icon-out"></i></button>' + '<p class="list__box-details-title">' + siteName + '</p>' + '</a>' + '<div class="list__rating"><span>User Rating:</span>' + '<div><i class="icon-font icon-star"></i><i class="icon-font icon-star"></i><i class="icon-font icon-star"></i><i class="icon-font icon-star"></i><i class="icon-font icon-star-fill"></i></div>' + '</div>' + '</div>' + '<div class="list__box-details-right">' + '<button class="list__box-like" type="button" data-id="' + siteId + '" like-toggle-js><i class="icon-font icon-like"></i></button>' + '<button class="list__box-dislike" type="button" data-id="' + siteId + '" dislike-toggle-js><i class="icon-font icon-like"></i></button>' + '<div class="c-popper">' + '<button class="list__box-favorites" type="button" data-id="' + siteId + '" favorites-toggle-js><i class="icon-font icon-star-fill"></i><i class="icon-font icon-star"></i></button>' + '<div class="c-poppertext">' + '<u>Add To Favourites</u>' + '<u>Remove From Favourites</u>' + '</div>' + '</div>' + '</div>';
+    var hoverContent = '<div class="list__box-details-left">' + '<a class="site_link" href="' + siteLink + '" target="_blank">' + '<i class="icon-font icon-out"></i>' + '<p class="list__box-details-title">' + siteName + '</p>' + '</a>' + '<div class="list__rating"><span>User Rating:</span>' + '<div><i class="icon-font icon-star"></i><i class="icon-font icon-star"></i><i class="icon-font icon-star"></i><i class="icon-font icon-star"></i><i class="icon-font icon-star-fill"></i></div>' + '</div>' + '</div>' + '<div class="list__box-details-right">' + '<button class="list__box-like" type="button" data-id="' + siteId + '" like-toggle-js><i class="icon-font icon-like"></i></button>' + '<button class="list__box-dislike" type="button" data-id="' + siteId + '" dislike-toggle-js><i class="icon-font icon-like"></i></button>' + '<div class="c-popper">' + '<button class="list__box-favorites" type="button" data-id="' + siteId + '" favorites-toggle-js><i class="icon-font icon-star-fill"></i><i class="icon-font icon-star"></i></button>' + '<div class="c-poppertext">' + '<u>Add To Favourites</u>' + '<u>Remove From Favourites</u>' + '</div>' + '</div>' + '</div>';
     return hoverContent;
   }
 
@@ -617,21 +618,21 @@ function initWebWorker() {
   } else {
     if (!navigator.userAgent.toLowerCase().includes('lighthouse')) {
       if (document.body.classList.contains('home')) {
-        if (typeof Worker !== "undefined") {// Yes! Web worker support!
-          // Some code.....
-        } else {// Sorry! No Web Worker support..
-          }
-
-        if (typeof w == "undefined") {
-          webworkerFrontpage = new Worker("/wp-content/themes/mpg/js/worker.js");
+        loadHomeData();
+        /*if (typeof(Worker) !== "undefined") {
+        	// Yes! Web worker support!
+        	// Some code.....
+        } else {
+        	// Sorry! No Web Worker support..
         }
-
-        webworkerFrontpage.onmessage = function (event) {
-          //document.getElementById("result").innerHTML = event.data;
-          console.log('Webworker data');
-          console.log(event.data);
-          loadHomeData();
-        };
+        	if (typeof(w) == "undefined") {
+        	webworkerFrontpage = new Worker("/wp-content/themes/mpg/js/worker.js");
+        }
+        webworkerFrontpage.onmessage = function(event) {
+        	//document.getElementById("result").innerHTML = event.data;
+        	console.log('Webworker data');
+        	console.log(event.data);
+        		};*/
       }
     }
   }
@@ -2075,7 +2076,8 @@ var ajaxAdminEndpoint = '/wp-admin/admin-ajax.php';
 
 
   var initNative = function initNative() {
-    // default
+    console.log('initNative'); // default
+
     initPreventBehavior(); // ==========================================
     // lib
 

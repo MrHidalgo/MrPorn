@@ -149,6 +149,11 @@
 			color: #004ba9;
 		}
 
+		&.active{
+			color: #004ba9;
+			background: #e0e0e0;
+		}
+
 		@include adaptive(767) {
 			padding: 3px 6px;
 		}
@@ -659,6 +664,11 @@
 			&:first-child{
 				background: #fff;
 				color: #004ba9;
+			}
+
+			&.active{
+				background: #fff;
+				color: #000;
 			}
 		}
 	}

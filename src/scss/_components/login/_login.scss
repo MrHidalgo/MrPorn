@@ -6,7 +6,7 @@
 }
 
 .c-grid{
-	@include adaptive(767) {
+	@include adaptive(1023) {
 		padding: 0;
 	}
 }
@@ -14,7 +14,7 @@
 .login_panel_container {
 	padding: 0 15px;
 
-	@include adaptive(767) {
+	@include adaptive(1023) {
 		padding: 0;
 	}
 }
@@ -24,12 +24,13 @@
 	padding: 15px;
 	margin-bottom: 150px;
 
-	@include adaptive(767) {
+	@include adaptive(1023) {
 		padding: 0;
 	}
 
+
 	.login_top{
-		@include adaptive(767) {
+		@include adaptive(1023) {
 			padding: 15px;
 			position: relative;
 
@@ -63,7 +64,7 @@
 				margin-bottom: 15px;
 				margin-top: 20px;
 
-				@include adaptive(767) {
+				@include adaptive(1023) {
 					font-size: 17px;
 					color: #d2d2d2;
 				}
@@ -71,7 +72,7 @@
 				a{
 					color: #c7f928;
 
-					@include adaptive(767) {
+					@include adaptive(1023) {
 						display: block;
 						border: 3px solid #003b85;
 						color: #fff;
@@ -85,7 +86,7 @@
 			color: #a4a4a4;
 			padding: 15px 0;
 
-			@include adaptive(767) {
+			@include adaptive(1023) {
 				background: #080915;
 				padding: 15px 30px;
 				text-align: center;
@@ -94,7 +95,7 @@
 			a{
 				color: #c7f928;
 
-				@include adaptive(767) {
+				@include adaptive(1023) {
 					margin-top: 10px;
 					display: block;
 					border: 3px solid #003b85;
@@ -110,7 +111,7 @@
 		width: 50%;
 		padding: 20px 70px;
 
-		@include adaptive(767) {
+		@include adaptive(1023) {
 			width: 100%;
 			padding: 0;
 		}
@@ -121,11 +122,12 @@
 
 		.signup{
 			color: #c7f928;
+			float: left;
 		}
 		.forgot{
 			color: #999999;
 
-			@include adaptive(767) {
+			@include adaptive(1023) {
 				text-align: center;
 				display: block;
 				float: none;
@@ -138,7 +140,7 @@
 			text-align: center;
 			margin-top: 15px;
 
-			@include adaptive(767) {
+			@include adaptive(1023) {
 				color: #d2d2d2;
 				line-height: 23px;
 			}
@@ -146,7 +148,7 @@
 			a{
 				color: #c7f928;
 
-				@include adaptive(767) {
+				@include adaptive(1023) {
 					color: #157dff;
 				}
 			}
@@ -154,7 +156,7 @@
 	}
 
 	.remeber_me{
-		@include adaptive(767) {
+		@include adaptive(1023) {
 			text-align: center;
 		}
 	}
@@ -162,7 +164,7 @@
 	.login_banner{
 		width: 50%;
 
-		@include adaptive(767) {
+		@include adaptive(1023) {
 			display: none;
 		}
 	}
@@ -174,7 +176,7 @@
 		font-weight: 600;
 		margin: 20px 0 40px;
 
-		@include adaptive(767) {
+		@include adaptive(1023) {
 			font-size: 22px;
 			color: #4296ff;
 			text-transform: uppercase;
@@ -189,19 +191,19 @@
 .is_desktop{
 	display: block;
 
-	@include adaptive(767) {
+	@include adaptive(1023) {
 		display: none;
 	}
 }
 .is_mobile{
 	display: none;
 
-	@include adaptive(767) {
+	@include adaptive(1023) {
 		display: block;
 	}
 }
 .login_bottom{
-	@include adaptive(767) {
+	@include adaptive(1023) {
 		background: #000;
 	}
 }
@@ -230,7 +232,7 @@
 
 		list-style-type: none;
 
-		@include adaptive(767){
+		@include adaptive(1023){
 			font-size: 16px;
 		}
 
@@ -288,7 +290,7 @@
 .cleanlogin-container{
 	padding: 15px;
 
-	@include adaptive(767){
+	@include adaptive(1023){
 		padding: 35px 30px 15px;
 	}
 
@@ -305,7 +307,7 @@
 		cursor: pointer;
 		background: #c7f928;
 
-		@include adaptive(767){
+		@include adaptive(1023){
 			font-size: 18px;
 			background: #003b85;
 			color: #fff;
@@ -315,7 +317,7 @@
 		label{
 			font-weight: 700;
 
-			@include adaptive(767) {
+			@include adaptive(1023) {
 				color: #fff;
 			}
 		}

@@ -103,6 +103,11 @@
 			font-size: 18px;
 			font-weight: 700;
 			border-bottom: 1px solid #000;
+
+			@include adaptive(1198.98) {
+				padding: 8px 5px;
+				font-size: 12px;
+			}
 		}
 
 		i{
@@ -110,6 +115,12 @@
 			height: 40px;
 			background-image: url(../images/coupon/prem-icon.png);
 			background-repeat: no-repeat!important;
+
+			@include adaptive(1198.98) {
+				width: 25px;
+				height: 25px;
+				background-size: 100%;
+			}
 		}
 		.premIcon, .vrIcon, .liveIcon, .adultIcon, .toyIcon, .hentaiIcon, .gayIcon {
 			display: inline-block;
@@ -131,6 +142,16 @@
 		i.hentaiIcon {
 			background-image: url(../images/coupon/hentai-icon.png);
 		}
+
+		i.vrIcon, i.liveIcon, i.adultIcon, i.hentaiIcon {
+			@include adaptive(1198.98) {
+				width: 25px;
+				height: 25px;
+				background-size: 100%;
+			}
+		}
+
+
 
 		a{
 			color: #fff;
@@ -505,6 +526,10 @@
 
 	.coupon_list_item{
 		width: 25%;
+
+		@include adaptive(1260) {
+			width: 33.3333333333%;
+		}
 
 		@include respond('ipad_landscape'){
 			width: 33.3333334%;

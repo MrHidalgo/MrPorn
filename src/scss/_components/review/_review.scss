@@ -56,6 +56,7 @@
 	@include adaptive(767) {
 		order: -1;
 		z-index: 60;
+		padding: 5px 5px;
 	}
 
 	.show_similar_sites{
@@ -1473,6 +1474,10 @@
 		white-space: nowrap;
 		text-overflow: ellipsis;
 		overflow: hidden;
+
+		&:hover{
+			text-decoration: underline;
+		}
 
 		@include adaptive(1449.98){
 			font-size: 16px;

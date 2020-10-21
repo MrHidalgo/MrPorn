@@ -814,6 +814,8 @@ const ajaxAdminEndpoint = '/wp-admin/admin-ajax.php';
 	 * @description Init all method
 	 */
 	const initNative = () => {
+		console.log('initNative');
+
 		// default
 		initPreventBehavior();
 		// ==========================================

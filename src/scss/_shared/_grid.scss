@@ -17,35 +17,6 @@ $paddingRight: $paddingLeft;
 ///
 /// MAIN
 /// ===============
-.page-id-17{
-	.c-grid {
-		@extend %grid;
-		@if ($maxWidth) {
-			max-width: 95%;
-		}
-	}
-
-	@include adaptive(1449.98){
-		max-width: 1149px;
-		padding-left: 0;
-		padding-right: 0;
-	}
-	@include adaptive(1199.98){
-		padding-left: 15px;
-		padding-right: 15px;
-	}
-
-	@include adaptive(767) {
-		padding-left: 10px;
-		padding-right: 10px;
-	}
-
-	&-fluid {
-		@extend %grid;
-		max-width: 100%;
-	}
-}
-
 .c-grid {
   @extend %grid;
   @if($maxWidth) {
@@ -81,4 +52,10 @@ $paddingRight: $paddingLeft;
   }
 }
 
-
+.page-id-17{
+	.c-grid {
+		@media screen and (min-width: 1450px) {
+			max-width: 75%;
+		}
+	}
+}

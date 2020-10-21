@@ -26,6 +26,8 @@ const initHomeLazyLoad = () =>{
 const loadHomeData = () => {
 	let currentLang = document.documentElement.getAttribute('lang');
 
+	console.log('Loading home data');
+
 	let url = 'http://mpg.c2136.cloudnet.cloud/wp-json/mpg/home/';
 	if(currentLang!='en'){
 		url = 'http://mpg.c2136.cloudnet.cloud/wp-json/mpg/home/?lang='+currentLang;
@@ -71,7 +73,7 @@ function renderHompageSiteSlide(category, index){
 			'<div class="list__box-details">'+
 			'<div class="list__box-details-left">'+
 			'<a href="'+siteLink+'" target="_blank">' +
-			'<button class="list__box-external" type="button"><i class="icon-font icon-out"></i></button>'+
+			'<i class="icon-font icon-out"></i>'+
 			'<p class="list__box-details-title">'+siteName+'</p>'+
 			'</a>'+
 			'<div class="list__rating"><span>User Rating:</span>'+
@@ -120,7 +122,7 @@ function renderSiteHoverContent(category, index){
 
 		var hoverContent = '<div class="list__box-details-left">'+
 			'<a class="site_link" href="'+siteLink+'" target="_blank">' +
-			'<button class="list__box-external" type="button"><i class="icon-font icon-out"></i></button>'+
+			'<i class="icon-font icon-out"></i>'+
 			'<p class="list__box-details-title">'+siteName+'</p>'+
 			'</a>'+
 		'<div class="list__rating"><span>User Rating:</span>'+
@@ -548,7 +550,10 @@ function initWebWorker(){
 	}else{
 		if(!navigator.userAgent.toLowerCase().includes('lighthouse')){
 			if(document.body.classList.contains('home')){
-				if (typeof(Worker) !== "undefined") {
+				loadHomeData();
+
+
+				/*if (typeof(Worker) !== "undefined") {
 					// Yes! Web worker support!
 					// Some code.....
 				} else {
@@ -563,8 +568,8 @@ function initWebWorker(){
 					console.log('Webworker data');
 					console.log(event.data);
 
-					loadHomeData();
-				};
+
+				};*/
 			}
 		}
 	}

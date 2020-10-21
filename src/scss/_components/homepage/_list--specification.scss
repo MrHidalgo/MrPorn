@@ -9,6 +9,10 @@
 	border-radius: 5px;
 	background-color: rgb(0, 74, 172);
 	box-shadow: 1.047px 19.973px 43px 0px rgba(8, 9, 21, 0.3);
+
+	@media screen and (min-width: 1450px) {
+		height: 360px;
+	}
 	@include adaptive(1023) {
 		opacity: 0;
 		visibility: hidden;
@@ -319,6 +323,8 @@
 		top: 10px;
 		right: 10px;
 		display: flex;
+		cursor: pointer;
+
 		@include adaptive(1023) {
 			display: none;
 		}
@@ -496,7 +502,7 @@
 		background-color: rgb(0, 74, 172);
 		@include transition(background-color);
 
-		&:hover {
+		&:hover, &:active, &:focus {
 			background-color: transparent;
 			@include transition(background-color);
 		}
