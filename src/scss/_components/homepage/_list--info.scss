@@ -52,6 +52,31 @@
 		}
 	}
 
+	.category_title{
+		a {
+			color: #ffffff;
+			font-size: 28px;
+			font-weight: 700;
+			display: block;
+
+			&:hover{
+				text-decoration: underline;
+			}
+			@include adaptive(1279) {
+				font-size: 24px;
+			}
+			@include adaptive(767) {
+				padding-right: 120px;
+				font-size: 18px;
+			}
+
+			@include adaptive(375) {
+				padding-right: 95px;
+				font-size: 16px;
+			}
+		}
+	}
+
 	span {
 		position: relative;
 		color: #4b4e6b;

@@ -24,6 +24,7 @@
 		left: 0;
 		display: flex !important;
 		width: 100vw;
+		height: auto;
 		min-height: 100%;
 		border: none;
 		border-radius: 0;
@@ -60,6 +61,11 @@
 		}
 	}
 
+	@include adaptive(767) {
+		height: 100vh;
+		overflow: auto;
+	}
+
 	> div {
 		overflow-y: auto;
 		display: flex;
@@ -67,6 +73,9 @@
 		height: 100%;
 		@include adaptive(1023) {
 			flex-direction: column;
+
+			min-height: 100%;
+			height: auto;
 		}
 	}
 
@@ -233,6 +242,7 @@
 		@include adaptive(767) {
 			padding: 10px;
 			min-height: auto;
+			background: #f00;
 		}
 	}
 
@@ -263,7 +273,7 @@
 			/*left: -10%;
 			width: calc(100% + 10%);*/
 			height: 100%;
-			left: -60px;
+			left: -65px;
 			right: 0;
 			@include adaptive(1023) {
 				left: 0;
@@ -481,6 +491,9 @@
 		font-weight: 700;
 
 		&:hover{
+			color: #fff;
+		}
+		&:focus{
 			color: #fff;
 		}
 

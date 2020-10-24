@@ -565,7 +565,6 @@
 		overflow: hidden;
 		padding-right: 10px;
 		color: #d7d7d7;
-		background: #303030;
 
 		@include adaptive(767){
 			padding-right: 0;
@@ -686,97 +685,78 @@
 	.rtu-ty {
 		font-size: 14px;
 		font-weight: 700;
-		color: #fff;
+		color: #dcecff;
 		display: none;
 	}
 	.rtu-txt {
-		display: inline-block;
-		vertical-align: middle;
+		display: flex;
+		align-items: center;
 		font-size: 20px;
 		font-weight: 900;
 		color: #fff;
 		margin-right: 10px;
 
-		/*.new-ratingt {
-			position: relative;
-			text-align: left;
-			width: 190px;
-			unicode-bidi: bidi-override;
-			direction: rtl;
-			display: inline-block;
-			vertical-align: middle;
-			cursor: pointer;
-			margin-left: 10px;
-
-
-
-			&:before{
-				width: 180px;
-				height: 36px;
-				background: url(../images/ratings.png) 0 -144px no-repeat;
-				position: absolute;
-				content: '';
-				left: 0;
-				top: 0;
-
-				@include adaptive(767) {
-					height: 30px;
-					background-position: 0 -30px;
-					background-size: auto 500%;
-				}
-			}
-
-			span{
-				display: inline-block;
-				position: relative;
-				width: 36px;
-				height: 36px;
-				margin: 0;
-
-				@include adaptive(767) {
-					width: 30px;
-					height: 30px;
-				}
-			}
-
-			&[data-percent="2"]:before {
-				background-position: 0 -108px;
-				@include adaptive(767) {
-					background-position: 0 -90px;
-				}
-			}
-			&[data-percent="3"]:before {
-				background-position: 0 -72px;
-				@include adaptive(767) {
-					background-position: 0 -60px;
-				}
-			}
-			&[data-percent="4"]:before {
-				background-position: 0 -36px;
-				@include adaptive(767) {
-					background-position: 0 -30px;
-				}
-			}
-			&[data-percent="5"]:before {
-				background-position: 0 0;
-			}
-
-			&:hover{
-				span{
-					background: url(../images/ratings_2.png) 0 -30px no-repeat;
-					background-size: 30px;
-				}
-			}
-		}*/
+		@include adaptive(767) {
+			font-size: 14px;
+			margin-bottom: 10px;
+		}
 	}
 }
 
-.new-ratingt{position: relative;text-align: left;width:190px;unicode-bidi: bidi-override;direction: rtl;display: inline-block;vertical-align: middle;cursor: pointer; margin-left:10px;}
-.new-ratingt > span {display: inline-block;position: relative;width: 36px;height: 36px;margin: 0 0 0 0;}
-.new-ratingt:hover > span{background: url(../images/ratings_2.png) 0 -30px no-repeat; background-size: 30px;}
-.new-ratingt > span:hover:before, .new-ratingt > span:hover ~ span:before {width: 36px;height: 36px;background: url(../images/ratings_2.png) 0 0 no-repeat;position: absolute;content: '';left:0;top: 0;}
+.new-ratingt{
+	position: relative;
+	text-align: left;
+	width:180px;
+	height: 36px;
+	unicode-bidi: bidi-override;
+	direction: rtl;
+	display: flex;
+	vertical-align: middle;
+	cursor: pointer;
+	margin-left: 10px;
+
+	@include adaptive(767) {
+		width: 150px;
+		height: 30px;
+		margin-left: 15px;
+	}
+}
+.new-ratingt > span {
+	position: relative;width: 36px;height: 36px;margin: 0 0 0 0;
+
+	@include adaptive(767) {
+		width: 30px;
+		height: 30px;
+	}
+}
+.new-ratingt:hover > span{
+	background: url(../images/ratings_2.png) 0 -36px no-repeat;
+	background-size: 36px;
+
+	@include adaptive(767) {
+		background: url(../images/ratings_2.png) 0 -30px no-repeat;
+		background-size: 30px;
+	}
+}
+.new-ratingt > span:hover:before, .new-ratingt > span:hover ~ span:before {
+	width: 36px;height: 36px;background: url(../images/ratings_2.png) 0 0 no-repeat;position: absolute;content: '';left:0;top: 0;
+
+	@include adaptive(767) {
+		width: 30px;
+		height: 30px;
+		background-size: auto 200%;
+	}
+}
 .new-ratingt:NOT([data-percent]):BEFORE, .new-ratingt[data-percent="0"]:BEFORE {display:none;}
-.new-ratingt[data-percent="1"]:BEFORE, .new-ratingt[data-percent="2"]:BEFORE, .new-ratingt[data-percent="3"]:BEFORE, .new-ratingt[data-percent="4"]:BEFORE, .new-ratingt[data-percent="5"]:BEFORE {width:180px;height: 36px;background: url(../images/ratings.png) 0 -144px no-repeat;position: absolute;content: '';left: 0;top: 0;}
+.new-ratingt[data-percent="1"]:BEFORE, .new-ratingt[data-percent="2"]:BEFORE, .new-ratingt[data-percent="3"]:BEFORE, .new-ratingt[data-percent="4"]:BEFORE, .new-ratingt[data-percent="5"]:BEFORE {
+	width:180px;height: 36px;background: url(../images/ratings.png) 0 -144px no-repeat;position: absolute;content: '';left: 0;top: 0;
+
+	@include adaptive(767) {
+		height: 30px;
+		background-position: 0 -30px;
+		background-size: auto 500%;
+	}
+}
 .new-ratingt[data-percent="2"]:BEFORE {background-position: 0 -108px;}
 .new-ratingt[data-percent="3"]:BEFORE {background-position: 0 -72px;}
 .new-ratingt[data-percent="4"]:BEFORE {background-position: 0 -36px;}

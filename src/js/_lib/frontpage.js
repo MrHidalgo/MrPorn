@@ -320,8 +320,8 @@ function renderSiteCategory(categoryIndex){
                   '<div class="list__box-head">'+
 										'<div class="list__info">'+
 											'<div class="list__info-circle"><img src="'+categoryLogo+'" alt=""/></div>'+
-											'<div>'+
-												'<p>'+categoryData.title+'</p><span>'+categoryData.tagline+'</span>'+
+											'<div class="category_title">'+
+												'<a href="'+categoryData.link+'">'+categoryData.title+'</a><span>'+categoryData.tagline+'</span>'+
 											'</div>'+
 										'</div>'+
                     '<a class="list__btn" href="'+categoryData.link+'">SEE&nbsp;<span>'+categoryData.count+' MORE</span><i class="icon-font icon-arrow-angle"></i></a>'+

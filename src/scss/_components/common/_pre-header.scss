@@ -13,6 +13,10 @@
 		@include adaptive(767) {
 			font-size: 10px;
 		}
+
+		@include adaptive(375) {
+			display: none;
+		}
 	}
 
 	&__hamburger {
