@@ -515,9 +515,6 @@ var boxHover = function boxHover() {
             slideHoverContainer.innerHTML = slideHoverContent;
           }
         }
-        /*setTimeout(function() {
-        	}, 0);*/
-
 
         var transformVal = '';
 
@@ -537,17 +534,10 @@ var boxHover = function boxHover() {
           var _lineLeft = 0;
 
           if (previousHoverBox == el.previousSibling) {
-            hoverBounds = elBox.getBoundingClientRect(); //_lineLeft = hoverBounds.left - elParent.getBoundingClientRect().left - (parseFloat(hoverBounds.width)/1.5);
-
+            hoverBounds = elBox.getBoundingClientRect();
             _lineLeft = hoverBounds.left - elParent.getBoundingClientRect().left - 120;
             transformVal = 'left: ' + _lineLeft + 'px';
             lineInd.setAttribute('style', transformVal + ';width: 189px');
-            /*tOut = setTimeout(function() {
-            	hoverBounds = elBox.getBoundingClientRect();
-            	_lineLeft = hoverBounds.left - elParent.getBoundingClientRect().left;
-            	transformVal = 'left: '+_lineLeft+'px';
-            		lineInd.setAttribute('style', transformVal + ';width: 189px');
-            }, 400);*/
           } else {
             hoverBounds = elBox.getBoundingClientRect();
             _lineLeft = hoverBounds.left - elParent.getBoundingClientRect().left;
@@ -559,8 +549,7 @@ var boxHover = function boxHover() {
           el.classList.add('is-hover');
           var hoverBounds = elBox.getBoundingClientRect();
 
-          var _lineLeft = hoverBounds.left - elParent.getBoundingClientRect().left; //transformVal = 'transform: translateX('+_lineLeft+'px)';
-
+          var _lineLeft = hoverBounds.left - elParent.getBoundingClientRect().left;
 
           transformVal = 'left: ' + _lineLeft + 'px';
           lineInd.setAttribute('style', transformVal + ';width: 189px');
@@ -1670,6 +1659,18 @@ var ajaxAdminEndpoint = '/wp-admin/admin-ajax.php';
 
         if (_specificationBox) {
           _specificationBox.classList.add('is-open');
+
+          var lineInd = listBoxWrapper.querySelector('[list-line-js]');
+
+          var hoverBounds = _boxParent.getBoundingClientRect();
+
+          var lineWidth = window.innerWidth < 767 ? 34 : 19; //var _lineLeft = hoverBounds.left - listBoxWrapper.getBoundingClientRect().left -(hoverBounds.width/2);
+
+          var _lineLeft = hoverBounds.left + hoverBounds.width / 2 - lineWidth / 2;
+
+          _lineLeft = hoverBounds.left - 18;
+          var transformVal = 'left: ' + _lineLeft + 'px';
+          lineInd.setAttribute('style', transformVal + ';width: ' + lineWidth + 'px;'); //console.log('Opening banner in mobile');
         }
       }, 100);
     } else {
