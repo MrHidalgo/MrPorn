@@ -219,9 +219,9 @@ function renderSiteBottomBanner(category, index){
 			'<div><a class="list__specification-visit nav_link" href="'+siteUrl+'" target="_blank">VISIT WEBSITE</a></div>'+
 			'<div><a class="list__specification-read nav_link" href="'+siteItem.link+'">READ REVIEW</a></div>'+
 			'<div class="list__specification-action-desc">'+
-			'<p>'+tagLIne+' <a href="#">READ MORE</a></p>'+
+			'<p>'+tagLIne+' <a href="'+siteUrl+'">READ MORE</a></p>'+
 			'</div>'+
-			'<div class="list__specification-action-skip"><a class="list__specification-circle list__specification-skip" data-id="'+siteId+'" spec-skip-js><i class="icon-font icon-point"></i><span>Skip</span></a></div>'+
+			'<div class="list__specification-action-skip"><a class="list__specification-circle list__specification-skip" data-id="'+siteId+'" data-category="'+category+'" data-index="'+index+'" spec-skip-js><i class="icon-font icon-point"></i><span>Skip</span></a></div>'+
 			'<div class="list__specification-action-circle">' +
 			'<button class="list__specification-circle list__specification-like" data-like="'+siteId+'" spec-like-js><i class="icon-font icon-like"></i><span>Like</span></button>' +
 			'</div>'+
@@ -246,7 +246,7 @@ function renderSiteBottomBanner(category, index){
 			'<div>'+
 			'<p>More Like This</p>'+
 			'</div>'+
-			'<div>' +
+			'<div class="site_banner_more_sites">' +
 			moreSites+
 			'</div>'+
 			'</div>'+
@@ -257,6 +257,83 @@ function renderSiteBottomBanner(category, index){
 	}
 
 	return false;
+}
+
+function renderSkipSiteBottomBanner(category, index){
+
+
+	let siteItem = homeData.categories[category].sites[index];
+	if(siteItem){
+		let siteId = siteItem.id;
+		let bannerType = siteItem.banner_type;
+		let bannerImage = siteItem.banner_image;
+		let bannerVideo = siteItem.banner_video;
+		let bannerVideoPoster = siteItem.banner_video_poster;
+		let siteLogo = siteItem.logo?siteItem.logo.src:'';
+		let tagLIne = siteItem.tagline;
+		let siteExternalUrl = siteItem.url;
+		let siteLink = siteItem.link;
+
+
+		let popupBanner = document.querySelector('.list__specification');
+
+		var bannerRight = '';
+		var bannerClass = '';
+
+		if(bannerType=='image'){
+			bannerClass = 'list__specification--banner';
+			if(bannerImage!=''){
+				bannerRight = '<div><img src="'+contentBase+'screenshots/'+siteId+'.png"/></div>';
+
+				popupBanner.classList.remove('list__specification--video');
+				popupBanner.classList.add('list__specification--banner');
+			}
+		}else{
+			bannerClass = 'list__specification--video';
+
+			if(bannerVideo!=''){
+				popupBanner.classList.remove('list__specification--banner');
+				popupBanner.classList.add('list__specification--video');
+
+				bannerRight = '<div video-parent-js>'+
+					'<video preload="none" poster="'+bannerVideoPoster.url+'" video-js>'+
+					'<source src="'+bannerVideo.url+'" type="'+bannerVideo.mime_type+'">'+
+					'</video>' +
+					'<a class="list__specification-play" video-toggle-js><i class="icon-font icon-play-button" video-play-js></i></a>' +
+					'<a class="list__specification-pause" video-pause-js><i class="icon-font icon-pause"></i></a>'+
+					'</div>';
+			}
+		}
+
+		let moreSites = '';
+		let moreSiteCount = 0;
+
+		homeData.categories[category].sites.map(function (moreSite, index) {
+			if(moreSiteCount<6 && moreSite.id!=siteId){
+				let moreSiteLogo = moreSite.logo ? moreSite.logo.src: '';
+
+				moreSites +='<a class="list__box" list-box-more-js href="'+moreSite.link+'" data-id="'+moreSite.id+'" data-count="1" style="background-image: url('+moreSite.banner_image+')">'+
+					'<div class="list__box-border"></div><img class="list__box-logo" src="'+moreSiteLogo+'" alt=""/>' +
+					'</a>';
+
+				moreSiteCount++;
+			}
+		});
+
+		document.querySelector('.list__specification-right').innerHTML = bannerRight;
+		document.querySelector('.list__specification-logo').setAttribute('src', siteLogo);
+		document.querySelector('.list__specification-action-desc').innerHTML ='<p>'+tagLIne+' <a href="'+siteLink+'">READ MORE</a></p>';
+		document.querySelector('.list__specification-visit').setAttribute('href', siteExternalUrl);
+		document.querySelector('.list__specification').setAttribute('href', siteLink);
+
+		document.querySelector('.list__specification-skip').setAttribute('data-id', siteId);
+		document.querySelector('.list__specification-like').setAttribute('data-like', siteId);
+		document.querySelector('.list__specification-dislike').setAttribute('data-dislike', siteId);
+		document.querySelector('.list__specification-favorites').setAttribute('data-id', siteId);
+
+		document.querySelector('.site_banner_more_sites').innerHTML = moreSites;
+
+	}
 }
 
 function shuffleArray(arra1){
