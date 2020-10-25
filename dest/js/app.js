@@ -745,11 +745,17 @@ var initHamburger = function initHamburger() {
   if (searchHamburger) {
     searchHamburger.addEventListener("click", function (ev) {
       btnHamburger.classList.remove("is-active");
-      mobileContainer.classList.remove("is-open");
-      searchContainer.classList.toggle("is-open");
-      hideScrollContainer.forEach(function (val, idx) {
-        val.classList.toggle("is-hideScroll");
-      });
+
+      if (mobileContainer.classList.contains('is-open')) {
+        mobileContainer.classList.remove("is-open");
+        searchContainer.classList.toggle("is-open");
+      } else {
+        mobileContainer.classList.remove("is-open");
+        searchContainer.classList.toggle("is-open");
+        hideScrollContainer.forEach(function (val, idx) {
+          val.classList.toggle("is-hideScroll");
+        });
+      }
     });
   }
 

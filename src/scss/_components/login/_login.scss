@@ -28,6 +28,10 @@
 		padding: 0;
 	}
 
+	@include adaptive(767) {
+		margin-bottom: 20px;
+	}
+
 
 	.login_top{
 		@include adaptive(1023) {
@@ -67,6 +71,10 @@
 				@include adaptive(1023) {
 					font-size: 17px;
 					color: #d2d2d2;
+				}
+
+				@include adaptive(767) {
+					margin-bottom: 10px;
 				}
 
 				a{

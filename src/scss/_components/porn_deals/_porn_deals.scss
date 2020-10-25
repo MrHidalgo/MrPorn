@@ -318,6 +318,7 @@
 			}
 			@include adaptive(767) {
 				visibility: hidden;
+				height: 36px;
 			}
 		}
 
@@ -425,6 +426,10 @@
 		font-size: 16px;
 		flex-direction: column;
 		padding: 3px 20px 3px;
+
+		&.single_line{
+			flex-direction: row;
+		}
 	}
 
 	h2{
@@ -441,6 +446,15 @@
 		@include adaptive(767){
 			font-size: 18px;
 			line-height: 20px;
+		}
+	}
+
+	&.single_line{
+		@include adaptive(767){
+			h2{
+				font-size: 16px;
+				line-height: 20px;
+			}
 		}
 	}
 
@@ -1418,20 +1432,29 @@
 }
 
 @include adaptive(767) {
-	body.search_open .search_input{
-		width: 100%;
-		background-position-x: 10px;
+	body.search_open{
+		.search_input{
+			width: 100%;
+			background-position-x: 10px;
+		}
+
+		.close_search{
+			position: absolute;
+			right: 10px;
+			top: 0;
+			line-height: 35px;
+			font-size: 28px;
+			cursor: pointer;
+			display: block;
+		}
+
+		.coupon_search .search_input input{
+			visibility: visible;
+			padding-left: 50px;
+		}
 	}
 
-	body.search_open .close_search{
-		position: absolute;
-		right: 10px;
-		top: 0;
-		line-height: 35px;
-		font-size: 28px;
-		cursor: pointer;
-		display: block;
-	}
+
 }
 
 .mobile_claim_deal {
@@ -1503,6 +1526,7 @@
 
 			b{
 				display: block;
+				font-weight: 700;
 			}
 		}
 	}
@@ -1533,7 +1557,7 @@
 		padding: 0 5px 5px;
 		.lgrnbtn{
 			width: auto;
-			font-size: 15px;
+			font-size: 12px;
 		}
 	}
 }

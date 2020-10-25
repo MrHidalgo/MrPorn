@@ -177,6 +177,11 @@
 		@include adaptive(1023) {
 			transform: unset;
 		}
+
+		@include adaptive(767){
+			max-height: calc(100vh - 64px);
+			overflow: auto;
+		}
 	}
 
 	&__collapse {

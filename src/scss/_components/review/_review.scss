@@ -56,7 +56,8 @@
 	@include adaptive(767) {
 		order: -1;
 		z-index: 60;
-		padding: 5px 5px;
+		padding: 10px 5px;
+		margin: 0 -5px 5px;
 	}
 
 	.show_similar_sites{
@@ -697,7 +698,6 @@
 		margin-right: 10px;
 
 		@include adaptive(767) {
-			font-size: 14px;
 			margin-bottom: 10px;
 		}
 	}
@@ -1016,7 +1016,7 @@
 	left: 0;
 	background: #55a126;
 	text-align: center;
-	z-index: 11000;
+	z-index: 12;
 	line-height: 70px;
 	background: #59c404;
 	background: -moz-linear-gradient(top,#59c404 0%,#4dab03 60%,#367602 100%);
@@ -1044,7 +1044,7 @@
 		line-height: 70px;
 
 		@include adaptive(767) {
-			line-height: 40px;
+
 		}
 
 		span{
@@ -1073,7 +1073,7 @@
 			}
 
 			@include adaptive(767) {
-				height: 40px;
+				/*height: 40px;*/
 			}
 		}
 	}
