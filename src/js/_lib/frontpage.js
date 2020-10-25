@@ -177,7 +177,7 @@ function renderSiteBottomBanner(category, index){
 				bannerRight = '<div class="list__specification-right">'+
 					'<div video-parent-js>'+
 					'<!--video(preload="none" video-js)-->'+
-					'<video preload="none" poster="'+bannerVideoPoster.url+'" video-js>'+
+					'<video preload="none" autoplay loop playsinline poster="'+bannerVideoPoster.url+'" video-js>'+
 					'<source src="'+bannerVideo.url+'" type="'+bannerVideo.mime_type+'">'+
 					'</video>' +
 					'<a class="list__specification-play" video-toggle-js><i class="icon-font icon-play-button" video-play-js></i></a>' +
@@ -296,7 +296,7 @@ function renderSkipSiteBottomBanner(category, index){
 				popupBanner.classList.add('list__specification--video');
 
 				bannerRight = '<div video-parent-js>'+
-					'<video preload="none" poster="'+bannerVideoPoster.url+'" video-js>'+
+					'<video preload="none" autoplay loop playsinline poster="'+bannerVideoPoster.url+'" video-js>'+
 					'<source src="'+bannerVideo.url+'" type="'+bannerVideo.mime_type+'">'+
 					'</video>' +
 					'<a class="list__specification-play" video-toggle-js><i class="icon-font icon-play-button" video-play-js></i></a>' +
