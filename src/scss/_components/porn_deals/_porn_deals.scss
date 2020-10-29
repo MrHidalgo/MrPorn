@@ -319,6 +319,7 @@
 			@include adaptive(767) {
 				visibility: hidden;
 				height: 36px;
+				line-height: 36px;
 			}
 		}
 
@@ -390,8 +391,8 @@
 			display: none;
 			position: absolute;
 			right: 10px;
-			top: 0;
-			line-height: 35px;
+			top: 50%;
+			transform: translateY(-50%);
 			font-size: 28px;
 			cursor: pointer;
 		}
@@ -400,8 +401,8 @@
 			display: none;
 			position: absolute;
 			right: 10px;
-			top: 0;
-			line-height: 35px;
+			top: 50%;
+			transform: translateY(-50%);
 			font-size: 28px;
 			cursor: pointer;
 		}
@@ -1423,8 +1424,6 @@
 	body.search_open .close_search{
 		position: absolute;
 		right: 10px;
-		top: 0;
-		line-height: 35px;
 		font-size: 28px;
 		cursor: pointer;
 		display: block;
@@ -1441,8 +1440,6 @@
 		.close_search{
 			position: absolute;
 			right: 10px;
-			top: 0;
-			line-height: 35px;
 			font-size: 28px;
 			cursor: pointer;
 			display: block;
@@ -1557,7 +1554,6 @@
 		padding: 0 5px 5px;
 		.lgrnbtn{
 			width: auto;
-			font-size: 12px;
 		}
 	}
 }

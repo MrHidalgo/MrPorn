@@ -323,6 +323,10 @@
 		height: 140px;
 		content: ' ';
 		display: block;
+
+		@include adaptive(767){
+			display: none;
+		}
 	}
 }
 
@@ -1555,7 +1559,7 @@
 
 .footer {
 	@include adaptive(767) {
-		padding-bottom: 40px;
+		padding-bottom: 70px;
 	}
 }
 

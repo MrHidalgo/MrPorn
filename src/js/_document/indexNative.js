@@ -338,14 +338,14 @@ const ajaxAdminEndpoint = '/wp-admin/admin-ajax.php';
 			lInner = document.querySelectorAll('[video-toggle-js]').length;
 
 
-		for(jInner = 0; jInner < lInner; jInner++) {
+		/*for(jInner = 0; jInner < lInner; jInner++) {
 			document.querySelectorAll('[video-toggle-js]')[jInner].classList.remove('is-active');
 			document.querySelectorAll('[video-pause-js]')[jInner].classList.remove('is-active');
 
 			if(document.querySelectorAll('.list__specification video')[jInner].length){
 				playPause(document.querySelectorAll('.list__specification video')[jInner]);
 			}
-		}
+		}*/
 
 		/*for(let k = 0; k < document.querySelectorAll('.list__box').length; k++) {
 			document.querySelectorAll('.list__box')[k].classList.remove('is-active');

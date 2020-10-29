@@ -3287,7 +3287,7 @@ strong {
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
-  font-size: 14px;
+  font-size: 12px;
   font-weight: 700;
 }
 
@@ -5023,17 +5023,22 @@ strong {
 }
 
 /* line 24, src/scss/_components/common/_footer.scss */
+body.chatbot_active .go-top {
+  display: none;
+}
+
+/* line 29, src/scss/_components/common/_footer.scss */
 .light .go-top {
   background-color: rgba(0, 0, 0, 0.3);
 }
 
-/* line 27, src/scss/_components/common/_footer.scss */
+/* line 32, src/scss/_components/common/_footer.scss */
 .light .go-top:hover {
   background-color: rgba(0, 0, 0, 0.6);
   text-decoration: none;
 }
 
-/* line 34, src/scss/_components/common/_footer.scss */
+/* line 39, src/scss/_components/common/_footer.scss */
 .footer {
   display: -webkit-box;
   display: -webkit-flex;
@@ -5046,7 +5051,7 @@ strong {
           flex-direction: column;
 }
 
-/* line 39, src/scss/_components/common/_footer.scss */
+/* line 44, src/scss/_components/common/_footer.scss */
 .footer__wrapper-1 {
   display: -webkit-box;
   display: -webkit-flex;
@@ -5057,13 +5062,13 @@ strong {
 }
 
 @media screen and (max-width: 767px) {
-  /* line 39, src/scss/_components/common/_footer.scss */
+  /* line 44, src/scss/_components/common/_footer.scss */
   .footer__wrapper-1 {
     padding-bottom: 15px;
   }
 }
 
-/* line 47, src/scss/_components/common/_footer.scss */
+/* line 52, src/scss/_components/common/_footer.scss */
 .footer__wrapper-2 {
   display: -webkit-box;
   display: -webkit-flex;
@@ -5079,7 +5084,7 @@ strong {
   background-color: #081b49;
 }
 
-/* line 58, src/scss/_components/common/_footer.scss */
+/* line 63, src/scss/_components/common/_footer.scss */
 .footer__container-1 {
   display: -webkit-box;
   display: -webkit-flex;
@@ -5096,7 +5101,7 @@ strong {
           align-items: center;
 }
 
-/* line 65, src/scss/_components/common/_footer.scss */
+/* line 70, src/scss/_components/common/_footer.scss */
 .footer__title {
   padding-bottom: 10px;
   color: #ffffff;
@@ -5105,20 +5110,20 @@ strong {
 }
 
 @media screen and (max-width: 1023px) {
-  /* line 65, src/scss/_components/common/_footer.scss */
+  /* line 70, src/scss/_components/common/_footer.scss */
   .footer__title {
     font-size: 20px;
   }
 }
 
 @media screen and (max-width: 767px) {
-  /* line 65, src/scss/_components/common/_footer.scss */
+  /* line 70, src/scss/_components/common/_footer.scss */
   .footer__title {
     font-size: 14px;
   }
 }
 
-/* line 78, src/scss/_components/common/_footer.scss */
+/* line 83, src/scss/_components/common/_footer.scss */
 .footer__desc {
   padding-bottom: 30px;
   color: #4b4e6b;
@@ -5127,20 +5132,20 @@ strong {
 }
 
 @media screen and (max-width: 1023px) {
-  /* line 78, src/scss/_components/common/_footer.scss */
+  /* line 83, src/scss/_components/common/_footer.scss */
   .footer__desc {
     font-size: 14px;
   }
 }
 
 @media screen and (max-width: 767px) {
-  /* line 78, src/scss/_components/common/_footer.scss */
+  /* line 83, src/scss/_components/common/_footer.scss */
   .footer__desc {
     font-size: 12px;
   }
 }
 
-/* line 91, src/scss/_components/common/_footer.scss */
+/* line 96, src/scss/_components/common/_footer.scss */
 .footer__nav {
   display: -webkit-box;
   display: -webkit-flex;
@@ -5159,14 +5164,14 @@ strong {
 }
 
 @media screen and (max-width: 1023px) {
-  /* line 91, src/scss/_components/common/_footer.scss */
+  /* line 96, src/scss/_components/common/_footer.scss */
   .footer__nav {
     font-size: 14px;
   }
 }
 
 @media screen and (max-width: 767px) {
-  /* line 91, src/scss/_components/common/_footer.scss */
+  /* line 96, src/scss/_components/common/_footer.scss */
   .footer__nav {
     -webkit-flex-wrap: wrap;
         -ms-flex-wrap: wrap;
@@ -5174,7 +5179,7 @@ strong {
   }
 }
 
-/* line 106, src/scss/_components/common/_footer.scss */
+/* line 111, src/scss/_components/common/_footer.scss */
 .footer__nav p {
   display: -webkit-box;
   display: -webkit-flex;
@@ -5194,13 +5199,13 @@ strong {
 }
 
 @media screen and (max-width: 767px) {
-  /* line 106, src/scss/_components/common/_footer.scss */
+  /* line 111, src/scss/_components/common/_footer.scss */
   .footer__nav p {
     font-size: 0;
   }
 }
 
-/* line 117, src/scss/_components/common/_footer.scss */
+/* line 122, src/scss/_components/common/_footer.scss */
 .footer__nav a {
   font-size: 16px;
   color: #4680ca;
@@ -5212,14 +5217,14 @@ strong {
 }
 
 @media screen and (max-width: 1023px) {
-  /* line 117, src/scss/_components/common/_footer.scss */
+  /* line 122, src/scss/_components/common/_footer.scss */
   .footer__nav a {
     font-size: 14px;
   }
 }
 
 @media screen and (max-width: 767px) {
-  /* line 117, src/scss/_components/common/_footer.scss */
+  /* line 122, src/scss/_components/common/_footer.scss */
   .footer__nav a {
     display: -webkit-box;
     display: -webkit-flex;
@@ -5234,7 +5239,7 @@ strong {
   }
 }
 
-/* line 133, src/scss/_components/common/_footer.scss */
+/* line 138, src/scss/_components/common/_footer.scss */
 .footer__nav a:hover {
   color: #ffffff;
   -webkit-transition: color 0.35s ease-in-out;
@@ -5242,7 +5247,7 @@ strong {
   transition: color 0.35s ease-in-out;
 }
 
-/* line 139, src/scss/_components/common/_footer.scss */
+/* line 144, src/scss/_components/common/_footer.scss */
 .footer__nav-item {
   display: -webkit-box;
   display: -webkit-flex;
@@ -5250,7 +5255,7 @@ strong {
   display: flex;
 }
 
-/* line 142, src/scss/_components/common/_footer.scss */
+/* line 147, src/scss/_components/common/_footer.scss */
 .footer__nav-item span {
   margin-left: 15px;
   margin-right: 15px;
@@ -5260,7 +5265,7 @@ strong {
 }
 
 @media screen and (max-width: 1023px) {
-  /* line 142, src/scss/_components/common/_footer.scss */
+  /* line 147, src/scss/_components/common/_footer.scss */
   .footer__nav-item span {
     margin-left: 10px;
     margin-right: 10px;
@@ -5269,13 +5274,13 @@ strong {
 }
 
 @media screen and (max-width: 767px) {
-  /* line 142, src/scss/_components/common/_footer.scss */
+  /* line 147, src/scss/_components/common/_footer.scss */
   .footer__nav-item span {
     font-size: 0;
   }
 }
 
-/* line 159, src/scss/_components/common/_footer.scss */
+/* line 164, src/scss/_components/common/_footer.scss */
 .footer__nav-link {
   font-size: 16px;
   color: #4680ca;
@@ -5286,14 +5291,14 @@ strong {
 }
 
 @media screen and (max-width: 1023px) {
-  /* line 159, src/scss/_components/common/_footer.scss */
+  /* line 164, src/scss/_components/common/_footer.scss */
   .footer__nav-link {
     font-size: 14px;
   }
 }
 
 @media screen and (max-width: 767px) {
-  /* line 159, src/scss/_components/common/_footer.scss */
+  /* line 164, src/scss/_components/common/_footer.scss */
   .footer__nav-link {
     display: -webkit-box;
     display: -webkit-flex;
@@ -5308,7 +5313,7 @@ strong {
   }
 }
 
-/* line 174, src/scss/_components/common/_footer.scss */
+/* line 179, src/scss/_components/common/_footer.scss */
 .footer__nav-link:hover {
   color: #ffffff;
   -webkit-transition: color 0.35s ease-in-out;
@@ -5316,7 +5321,7 @@ strong {
   transition: color 0.35s ease-in-out;
 }
 
-/* line 183, src/scss/_components/common/_footer.scss */
+/* line 188, src/scss/_components/common/_footer.scss */
 .footer_description h2 {
   padding-bottom: 10px;
   color: #ffffff;
@@ -5325,20 +5330,20 @@ strong {
 }
 
 @media screen and (max-width: 1023px) {
-  /* line 183, src/scss/_components/common/_footer.scss */
+  /* line 188, src/scss/_components/common/_footer.scss */
   .footer_description h2 {
     font-size: 20px;
   }
 }
 
 @media screen and (max-width: 767px) {
-  /* line 183, src/scss/_components/common/_footer.scss */
+  /* line 188, src/scss/_components/common/_footer.scss */
   .footer_description h2 {
     font-size: 14px;
   }
 }
 
-/* line 196, src/scss/_components/common/_footer.scss */
+/* line 201, src/scss/_components/common/_footer.scss */
 .footer_description h3 {
   padding-bottom: 10px;
   color: #ffffff;
@@ -5347,20 +5352,20 @@ strong {
 }
 
 @media screen and (max-width: 1023px) {
-  /* line 196, src/scss/_components/common/_footer.scss */
+  /* line 201, src/scss/_components/common/_footer.scss */
   .footer_description h3 {
     font-size: 20px;
   }
 }
 
 @media screen and (max-width: 767px) {
-  /* line 196, src/scss/_components/common/_footer.scss */
+  /* line 201, src/scss/_components/common/_footer.scss */
   .footer_description h3 {
     font-size: 14px;
   }
 }
 
-/* line 209, src/scss/_components/common/_footer.scss */
+/* line 214, src/scss/_components/common/_footer.scss */
 .footer_description p {
   padding-bottom: 30px;
   color: #4b4e6b;
@@ -5369,20 +5374,20 @@ strong {
 }
 
 @media screen and (max-width: 1023px) {
-  /* line 209, src/scss/_components/common/_footer.scss */
+  /* line 214, src/scss/_components/common/_footer.scss */
   .footer_description p {
     font-size: 14px;
   }
 }
 
 @media screen and (max-width: 767px) {
-  /* line 209, src/scss/_components/common/_footer.scss */
+  /* line 214, src/scss/_components/common/_footer.scss */
   .footer_description p {
     font-size: 12px;
   }
 }
 
-/* line 224, src/scss/_components/common/_footer.scss */
+/* line 229, src/scss/_components/common/_footer.scss */
 .light .footer__title {
   color: #576576;
 }
@@ -8140,6 +8145,16 @@ strong {
     -webkit-transform: translateX(-50%) translateY(-50%) scale(0);
             transform: translateX(-50%) translateY(-50%) scale(0);
   }
+}
+
+/* line 135, src/scss/_components/homepage/_list.scss */
+.light .list__info .category_title a {
+  color: #000;
+}
+
+/* line 139, src/scss/_components/homepage/_list.scss */
+.light .list__info span {
+  color: #636471;
 }
 
 /*# sourceMappingURL=maps/app.css.map */

@@ -212,6 +212,10 @@ ul{
 		max-width: 100%;
 		height: auto;
 
+		@include adaptive(767) {
+			max-height: 120px;
+		}
+
 		&.aligncenter {
 			margin: 5px auto;
 			display: block;
@@ -253,6 +257,18 @@ ul{
 		color: #fff;
 		z-index: 9999;
 		display: none;
+
+		@include adaptive(767) {
+			overflow: auto;
+			top: 120px;
+			bottom: 5px;
+			left: 10px;
+			right: 10px;
+			height: auto;
+			margin-top: 0;
+			width: auto;
+			padding: 5px;
+		}
 	}
 	i.closex {
 		position: absolute;
@@ -272,6 +288,10 @@ ul{
 			font-size: 72px;
 			font-weight: 700;
 			margin-bottom: 30px;
+
+			@include adaptive(767) {
+				font-size: 62px;
+			}
 		}
 
 		p{
@@ -457,6 +477,10 @@ ul{
 
 		p{
 			color: #474841;
+
+			@include adaptive(767) {
+				
+			}
 		}
 		.msg{
 			p{

@@ -318,7 +318,7 @@ function renderHompageSiteSlide(category, index) {
     var slideHtml = '<div class="list__box nolazy" list-box-js data-id="' + siteId + '" style="background-image: url(' + siteThumb + ')">' +
     /*'<div class="list__box-overlay"></div>'+*/
     '<div class="list__box-border"></div>' + '<a href="' + siteLink + '" target="_blank"></a>' + //'<img class="list__box-logo nolazy" src="'+siteLogo+'" alt=""/>'+
-    '<div class="list__box-details">' + '<div class="list__box-details-left">' + '<a href="' + siteLink + '" target="_blank">' + '<i class="icon-font icon-out"></i>' + '<p class="list__box-details-title">' + siteName + '</p>' + '</a>' + '<div class="list__rating"><span>User Rating:</span>' + '<div><i class="icon-font icon-star"></i><i class="icon-font icon-star"></i><i class="icon-font icon-star"></i><i class="icon-font icon-star"></i><i class="icon-font icon-star-fill"></i></div>' + '</div>' + '</div>' + '<div class="list__box-details-right">' + '<button class="list__box-like" type="button" data-id="1" like-toggle-js><i class="icon-font icon-like"></i></button>' + '<button class="list__box-dislike" type="button" data-id="1" dislike-toggle-js><i class="icon-font icon-like"></i></button>' + '<div class="c-popper">' + '<button class="list__box-favorites" type="button" data-id="1" favorites-toggle-js><i class="icon-font icon-star-fill"></i><i class="icon-font icon-star"></i></button>' + '<div class="c-poppertext">' + '<u>Add To Favourites</u>' + '<u>Remove From Favourites</u>' + '</div>' + '</div>' + '</div>' + '</div>' + '<button class="list__box-more" type="button"><i class="icon-font icon-arrow-angle"></i></button>' + '</div>';
+    '<div class="list__box-details">' + '<div class="list__box-details-left">' + '<a class="site_link" href="' + siteLink + '" target="_blank">' + '<i class="icon-font icon-out"></i>' + '<p class="list__box-details-title">' + siteName + '</p>' + '</a>' + '<div class="list__rating"><span>User Rating:</span>' + '<div><i class="icon-font icon-star"></i><i class="icon-font icon-star"></i><i class="icon-font icon-star"></i><i class="icon-font icon-star"></i><i class="icon-font icon-star-fill"></i></div>' + '</div>' + '</div>' + '<div class="list__box-details-right">' + '<button class="list__box-like" type="button" data-id="1" like-toggle-js><i class="icon-font icon-like"></i></button>' + '<button class="list__box-dislike" type="button" data-id="1" dislike-toggle-js><i class="icon-font icon-like"></i></button>' + '<div class="c-popper">' + '<button class="list__box-favorites" type="button" data-id="1" favorites-toggle-js><i class="icon-font icon-star-fill"></i><i class="icon-font icon-star"></i></button>' + '<div class="c-poppertext">' + '<u>Add To Favourites</u>' + '<u>Remove From Favourites</u>' + '</div>' + '</div>' + '</div>' + '</div>' + '<button class="list__box-more" type="button"><i class="icon-font icon-arrow-angle"></i></button>' + '</div>';
     return slideHtml;
   }
 
@@ -377,7 +377,7 @@ function renderSiteBottomBanner(category, index) {
       bannerClass = 'list__specification--video';
 
       if (bannerVideo != '') {
-        bannerRight = '<div class="list__specification-right">' + '<div video-parent-js>' + '<!--video(preload="none" video-js)-->' + '<video preload="none" autoplay loop playsinline poster="' + bannerVideoPoster.url + '" video-js>' + '<source src="' + bannerVideo.url + '" type="' + bannerVideo.mime_type + '">' + '</video>' + '<a class="list__specification-play" video-toggle-js><i class="icon-font icon-play-button" video-play-js></i></a>' + '<a class="list__specification-pause" video-pause-js><i class="icon-font icon-pause"></i></a>' + '</div>' + '</div>';
+        bannerRight = '<div class="list__specification-right">' + '<div video-parent-js>' + '<!--video(preload="none" video-js)-->' + '<video preload="none" autoplay loop playsinline poster="' + bannerVideoPoster.url + '" video-js>' + '<source src="' + bannerVideo.url + '" type="' + bannerVideo.mime_type + '">' + '</video>' + '<a class="list__specification-play is-active" video-toggle-js><i class="icon-font icon-play-button" video-play-js></i></a>' + '<a class="list__specification-pause is-active" video-pause-js><i class="icon-font icon-pause"></i></a>' + '</div>' + '</div>';
       }
     }
 
@@ -430,7 +430,7 @@ function renderSkipSiteBottomBanner(category, index) {
       if (bannerVideo != '') {
         popupBanner.classList.remove('list__specification--banner');
         popupBanner.classList.add('list__specification--video');
-        bannerRight = '<div video-parent-js>' + '<video preload="none" autoplay loop playsinline poster="' + bannerVideoPoster.url + '" video-js>' + '<source src="' + bannerVideo.url + '" type="' + bannerVideo.mime_type + '">' + '</video>' + '<a class="list__specification-play" video-toggle-js><i class="icon-font icon-play-button" video-play-js></i></a>' + '<a class="list__specification-pause" video-pause-js><i class="icon-font icon-pause"></i></a>' + '</div>';
+        bannerRight = '<div video-parent-js>' + '<video preload="none" autoplay loop playsinline poster="' + bannerVideoPoster.url + '" video-js>' + '<source src="' + bannerVideo.url + '" type="' + bannerVideo.mime_type + '">' + '</video>' + '<a class="list__specification-play is-active" video-toggle-js><i class="icon-font icon-play-button" video-play-js></i></a>' + '<a class="list__specification-pause is-active" video-pause-js><i class="icon-font icon-pause"></i></a>' + '</div>';
       }
     }
 
@@ -1691,19 +1691,17 @@ var ajaxAdminEndpoint = '/wp-admin/admin-ajax.php';
 
     var jInner = null,
         lInner = document.querySelectorAll('[video-toggle-js]').length;
+    /*for(jInner = 0; jInner < lInner; jInner++) {
+    	document.querySelectorAll('[video-toggle-js]')[jInner].classList.remove('is-active');
+    	document.querySelectorAll('[video-pause-js]')[jInner].classList.remove('is-active');
+    		if(document.querySelectorAll('.list__specification video')[jInner].length){
+    		playPause(document.querySelectorAll('.list__specification video')[jInner]);
+    	}
+    }*/
 
-    for (jInner = 0; jInner < lInner; jInner++) {
-      document.querySelectorAll('[video-toggle-js]')[jInner].classList.remove('is-active');
-      document.querySelectorAll('[video-pause-js]')[jInner].classList.remove('is-active');
-
-      if (document.querySelectorAll('.list__specification video')[jInner].length) {
-        playPause(document.querySelectorAll('.list__specification video')[jInner]);
-      }
-    }
     /*for(let k = 0; k < document.querySelectorAll('.list__box').length; k++) {
     	document.querySelectorAll('.list__box')[k].classList.remove('is-active');
     }*/
-
 
     var _isActive = document.querySelector('.list__box.is-active');
 

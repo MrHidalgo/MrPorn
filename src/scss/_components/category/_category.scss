@@ -28,7 +28,7 @@
 
 .site-content{
 	@include adaptive(767) {
-		margin-top: 95px;
+		margin-top: 110px;
 	}
 }
 .gaming_cat_1{
@@ -235,7 +235,6 @@
 			bottom: -1px;
 			left: 10px;
 			right: 10px;
-			height: 50px;
 			padding-top: 20px;
 			text-align: center;
 			color: #a8a8a8;
@@ -243,7 +242,7 @@
 			cursor: pointer;
 
 			background: rgb(59,59,59);
-			background: linear-gradient(0deg, rgba(59,59,59,1) 0%, rgba(59,59,59,0.8) 62%, rgba(255,255,255,0) 100%);
+			background: linear-gradient(0deg, rgba(59,59,59,1) 0%, rgba(59,59,59,0.8) 85%, rgba(255,255,255,0) 100%);
 
 			&:after{
 				display: inline-block;
@@ -293,7 +292,7 @@
 
 			h3{
 				font-size: 16px;
-				color: #dcecff;
+				color: #fff;
 				margin: 0 0 10px;
 				font-weight: 700;
 
@@ -392,6 +391,14 @@
 			@include adaptive(767) {
 				padding: 0 10px 5px;
 			}
+		}
+	}
+}
+
+.category_site_container.category_55.show_all{
+	.category_site_lits.page_1 {
+		.category_sites_item:nth-child(n+52) {
+			display: block;
 		}
 	}
 }

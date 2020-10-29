@@ -72,7 +72,7 @@ function renderHompageSiteSlide(category, index){
 			//'<img class="list__box-logo nolazy" src="'+siteLogo+'" alt=""/>'+
 			'<div class="list__box-details">'+
 			'<div class="list__box-details-left">'+
-			'<a href="'+siteLink+'" target="_blank">' +
+			'<a class="site_link" href="'+siteLink+'" target="_blank">' +
 			'<i class="icon-font icon-out"></i>'+
 			'<p class="list__box-details-title">'+siteName+'</p>'+
 			'</a>'+
@@ -180,8 +180,8 @@ function renderSiteBottomBanner(category, index){
 					'<video preload="none" autoplay loop playsinline poster="'+bannerVideoPoster.url+'" video-js>'+
 					'<source src="'+bannerVideo.url+'" type="'+bannerVideo.mime_type+'">'+
 					'</video>' +
-					'<a class="list__specification-play" video-toggle-js><i class="icon-font icon-play-button" video-play-js></i></a>' +
-					'<a class="list__specification-pause" video-pause-js><i class="icon-font icon-pause"></i></a>'+
+					'<a class="list__specification-play is-active" video-toggle-js><i class="icon-font icon-play-button" video-play-js></i></a>' +
+					'<a class="list__specification-pause is-active" video-pause-js><i class="icon-font icon-pause"></i></a>'+
 					'</div>'+
 					'</div>';
 			}
@@ -299,8 +299,8 @@ function renderSkipSiteBottomBanner(category, index){
 					'<video preload="none" autoplay loop playsinline poster="'+bannerVideoPoster.url+'" video-js>'+
 					'<source src="'+bannerVideo.url+'" type="'+bannerVideo.mime_type+'">'+
 					'</video>' +
-					'<a class="list__specification-play" video-toggle-js><i class="icon-font icon-play-button" video-play-js></i></a>' +
-					'<a class="list__specification-pause" video-pause-js><i class="icon-font icon-pause"></i></a>'+
+					'<a class="list__specification-play is-active" video-toggle-js><i class="icon-font icon-play-button" video-play-js></i></a>' +
+					'<a class="list__specification-pause is-active" video-pause-js><i class="icon-font icon-pause"></i></a>'+
 					'</div>';
 			}
 		}
