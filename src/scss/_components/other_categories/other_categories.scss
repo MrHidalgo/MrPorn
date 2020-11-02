@@ -19,7 +19,7 @@
 
 	.category_box{
 		/*background: #052449;*/
-		padding-top: 15px;
+		padding: 15px 10px 0;
 		display: flex;
 		flex-wrap: wrap;
 
@@ -45,7 +45,7 @@
 	.category_item{
 		display: block;
 		width: 25%;
-		padding: 0 15px 30px;
+		padding: 0 5px 10px;
 
 		@include respond('ipad_landscape'){
 			width: 25%;

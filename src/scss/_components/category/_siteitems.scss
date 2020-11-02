@@ -1,0 +1,404 @@
+// SITE_ITEM :: START
+
+.category_sites{
+	display: flex;
+	flex-wrap: wrap;
+	counter-reset: number;
+	padding: 0 10px;
+
+	@include adaptive(767) {
+		padding: 0 8px;
+	}
+
+	&_item{
+		flex-grow: 1;
+		width: 25%;
+		max-width: 25%;
+		padding: 15px 5px 0;
+
+		@include respond('ipad_landscape'){
+			width: 25%;
+			max-width: 25%;
+			padding: 15px 4px 0;
+		}
+		@include respond('ipad_portrait'){
+			width: 33.333333%;
+			max-width: 33.333333%;
+			padding: 15px 4px 0;
+		}
+		@include adaptive(767) {
+			width: 50%;
+			max-width: 50%;
+			padding: 10px 5px 0;
+		}
+
+
+
+		&_inner{
+			padding: 0;
+			position: relative;
+
+			.free_to_play {
+				background: url(../images/free_to_play.png);
+				width: 84px;
+				height: 86px;
+				content: ' ';
+				display: inline-block;
+				position: absolute;
+				right: -4px;
+				top: -4px;
+			}
+
+			@include adaptive(767) {
+				padding: 0;
+
+				.category_site_content{
+					padding: 0 8px 8px;
+				}
+			}
+
+		}
+
+		&_overlay{
+			position: absolute;
+			justify-content: center;
+			align-items: center;
+			background: rgba(0,0,0,.6);
+			display: none;
+			width: 100%;
+			height: 100%;
+			top: 0;
+			flex-direction: column;
+			z-index: 2;
+
+			a{
+				padding: 16px 0;
+				justify-content: center;
+				color: #fff;
+				background: #004aad;
+				text-decoration: none;
+				border-radius: 5px;
+				width: 80%;
+				position: relative;
+				text-transform: uppercase;
+				font-size: 18px;
+				font-weight: 600;
+				display: flex;
+				align-items: center;
+
+				@include adaptive(1024) {
+					padding: 10px 0;
+					font-size: 14px;
+				}
+
+				i{
+					margin-left: 10px;
+
+					&.right_angle{
+						transform: rotateZ(180deg);
+						color: #c4f015;
+					}
+				}
+			}
+
+			.link_site{
+				background: #c4f015;
+				color: #000;
+				margin-top: 15px;
+			}
+		}
+
+		&_content{
+			position: relative;
+
+			&:after{
+				content: '';
+				position: absolute;
+				display: block;
+				top: 0;
+				left: 0;
+				bottom: 0;
+				right: 0;
+				z-index: 1;
+				background: #000;
+				background: -moz-linear-gradient(0deg,#000 0,rgba(0,0,0,.58) 25%,rgba(107,107,107,0) 50%,rgba(255,255,255,0) 100%);
+				background: -webkit-linear-gradient(0deg,#000 0,rgba(0,0,0,.58) 25%,rgba(107,107,107,0) 50%,rgba(255,255,255,0) 100%);
+				background: linear-gradient(0deg,#000 0,rgba(0,0,0,.58) 25%,rgba(107,107,107,0) 50%,rgba(255,255,255,0) 100%);
+			}
+
+			&:hover{
+				.category_sites_item_overlay{
+					display: flex;
+
+					@include adaptive(767) {
+						display: none;
+					}
+				}
+			}
+		}
+
+		&_thumb{
+			line-height: 0;
+			img{
+				width: 100%;
+			}
+		}
+
+
+
+		&_title{
+			position: absolute;
+			z-index: 2;
+			bottom: 0;
+			width: 100%;
+			display: flex;
+			align-items: center;
+			margin: 15px 0 7px;
+			font-size: 15px;
+			font-weight: 600;
+			justify-content: center;
+			color: #fff;
+
+			&:hover, &:focus{
+				color: #fff;
+			}
+
+			&:before{
+				counter-increment: number;
+				position: absolute;
+				top: 50%;
+				-webkit-transform: translateY(-50%);
+				-ms-transform: translateY(-50%);
+				transform: translateY(-50%);
+				left: 10px;
+				content: counter(number);
+				display: inline-block;
+				margin: -1px 1px 0 0;
+				text-align: right;
+				color: #bbbcc0;
+				font-weight: 400;
+
+				@include adaptive(767) {
+					font-size: 12px;
+				}
+			}
+
+			.deIcon{
+				&:before{
+					content: ' ';
+					display: block;
+					width: 16px;
+					height: 16px;
+					margin-right: 5px;
+				}
+			}
+
+			h2{
+				color: #fff;
+				font-weight: 600;
+				margin: 0;
+				white-space: nowrap;
+				font-size: 15px;
+				text-overflow: ellipsis;
+				text-align: center;
+				text-transform: capitalize;
+
+				@include adaptive(1449.98){
+					font-size: 18px;
+				}
+
+				@include respond('ipad'){
+					font-size: 16px;
+				}
+
+
+
+				&:active,
+				&:hover{
+					text-decoration: underline;
+				}
+
+				@include adaptive(767) {
+					font-size: 14px;
+					white-space: nowrap;
+					overflow: hidden;
+					max-width: 55%;
+					text-overflow: ellipsis;
+				}
+			}
+		}
+
+
+
+		&_summary{
+			font-weight: 400;
+			font-size: 12px;
+			padding-top: 5px;
+			line-height: 20px;
+			height: 80px;
+			overflow: hidden;
+			text-overflow: ellipsis;
+			display: -webkit-box;
+			-webkit-line-clamp: 4;
+			-webkit-box-orient: vertical;
+
+			@include respond('ipad'){
+				font-size: 12px;
+			}
+
+			@include adaptive(767) {
+				font-size: 12px;
+				-webkit-line-clamp: 8;
+				line-height: 17px;
+				height: 137px;
+			}
+		}
+
+		.ratings {
+			display: block;
+			content: ' ';
+			height: 16px;
+			background-repeat: no-repeat;
+			margin-bottom: 10px;
+			margin-top: -3px;
+		}
+		.rating_1 {
+			background-image: url(../images/rating_1.png)
+		}
+
+		.rating_2 {
+			background-image: url(../images/rating_2.png)
+		}
+
+		.rating_3 {
+			background-image: url(../images/rating_3.png)
+		}
+
+		.rating_4 {
+			background-image: url(../images/rating_4.png)
+		}
+
+		.rating_5 {
+			background-image: url(../images/rating_5.png)
+		}
+	}
+
+	&_description{
+		flex-grow: 1;
+		width: 50%;
+		padding: 15px 0 0 10px;
+		position: relative;
+
+		@include respond('ipad_portrait'){
+			width: 100%;
+			order: -1;
+		}
+
+		@include adaptive(767) {
+			width: 100%;
+			order: -1;
+			padding: 15px 5px 0;
+		}
+
+		.readmore{
+			display: none;
+			position: absolute;
+			bottom: -1px;
+			left: 10px;
+			right: 10px;
+			padding-top: 20px;
+			text-align: center;
+			color: #a8a8a8;
+			font-size: 24px;
+			cursor: pointer;
+
+			background: rgb(59,59,59);
+			background: linear-gradient(0deg, rgba(59,59,59,1) 0%, rgba(59,59,59,0.8) 85%, rgba(255,255,255,0) 100%);
+
+			&:after{
+				display: inline-block;
+				background: url(../images/icon_read_more.png);
+				width: 30px;
+				height: 11px;
+				content: ' ';
+				margin-left: 5px;
+				vertical-align: middle;
+			}
+
+			@include adaptive(767) {
+				display: block;
+				left: 5px;
+				right: 5px;
+			}
+		}
+
+		.category_description{
+			position: absolute;
+			top: 15px;
+			bottom: 0;
+			right: 0px;
+			left: 10px;
+			overflow: auto;
+
+			@include respond('ipad_portrait'){
+				position: relative;
+				top: 0;
+				max-height: 230px;
+			}
+
+			@include adaptive(767) {
+				max-height: 200px;
+				overflow: hidden;
+				position: relative;
+				top: 0;
+				left: 0;
+			}
+
+			&.tubes h2 {
+				margin: 0 0 10px;
+				color: #698ab3;
+				font-size: 20px;
+				font-weight: 600;
+			}
+
+			h3{
+				font-size: 16px;
+				color: #fff;
+				margin: 0 0 10px;
+				font-weight: 700;
+
+				@include adaptive(767) {
+					font-size: 16px;
+					line-height: 22px;
+					margin: 0 0 5px;
+				}
+			}
+			p{
+				padding: 0;
+				font-size: 16px;
+				margin: 0 0 10px;
+			}
+
+			&.show_all{
+				max-height: inherit;
+
+				.readmore{
+					display: none;
+				}
+			}
+		}
+	}
+}
+
+.light{
+
+	.category_sites_item_inner{
+		background: #f2f2f2;
+	}
+	.category_sites_description .category_description h3{
+		color: #698ab3;
+	}
+	.category_sites_item_title h2{
+		color: #337ab7;
+	}
+}
