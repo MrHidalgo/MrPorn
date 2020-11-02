@@ -605,7 +605,9 @@ function removeFavourite(favItem){
 
 function initWebWorker(){
 
-	homeData = getWithExpiry("home_data_1");
+	let currentLang = document.documentElement.getAttribute('lang');
+
+	homeData = getWithExpiry("home_data_"+currentLang);
 	if(homeData){
 		if(document.body.classList.contains('home')) {
 			renderAllOtherCategories();
@@ -614,25 +616,6 @@ function initWebWorker(){
 		if(!navigator.userAgent.toLowerCase().includes('lighthouse')){
 			if(document.body.classList.contains('home')){
 				loadHomeData();
-
-
-				/*if (typeof(Worker) !== "undefined") {
-					// Yes! Web worker support!
-					// Some code.....
-				} else {
-					// Sorry! No Web Worker support..
-				}
-
-				if (typeof(w) == "undefined") {
-					webworkerFrontpage = new Worker("/wp-content/themes/mpg/js/worker.js");
-				}
-				webworkerFrontpage.onmessage = function(event) {
-					//document.getElementById("result").innerHTML = event.data;
-					console.log('Webworker data');
-					console.log(event.data);
-
-
-				};*/
 			}
 		}
 	}

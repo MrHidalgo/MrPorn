@@ -288,7 +288,7 @@ var loadHomeData = function loadHomeData() {
     url = 'http://mpg.c2136.cloudnet.cloud/wp-json/mpg/home/?lang=' + currentLang;
   }
 
-  homeData = getWithExpiry("home_data_1");
+  homeData = getWithExpiry("home_data_" + currentLang);
 
   if (homeData) {
     renderAllOtherCategories();
@@ -297,7 +297,7 @@ var loadHomeData = function loadHomeData() {
       return res.json();
     }).then(function (out) {
       homeData = out;
-      setWithExpiry("home_data_1", homeData, 30 * 60 * 1000); //renderAllOtherCategories();
+      setWithExpiry("home_data_" + currentLang, homeData, 30 * 60 * 1000); //renderAllOtherCategories();
 
       setTimeout(renderAllOtherCategories, 100);
     })["catch"](function (err) {
@@ -655,7 +655,8 @@ function removeFavourite(favItem) {
 }
 
 function initWebWorker() {
-  homeData = getWithExpiry("home_data_1");
+  var currentLang = document.documentElement.getAttribute('lang');
+  homeData = getWithExpiry("home_data_" + currentLang);
 
   if (homeData) {
     if (document.body.classList.contains('home')) {
@@ -665,20 +666,6 @@ function initWebWorker() {
     if (!navigator.userAgent.toLowerCase().includes('lighthouse')) {
       if (document.body.classList.contains('home')) {
         loadHomeData();
-        /*if (typeof(Worker) !== "undefined") {
-        	// Yes! Web worker support!
-        	// Some code.....
-        } else {
-        	// Sorry! No Web Worker support..
-        }
-        	if (typeof(w) == "undefined") {
-        	webworkerFrontpage = new Worker("/wp-content/themes/mpg/js/worker.js");
-        }
-        webworkerFrontpage.onmessage = function(event) {
-        	//document.getElementById("result").innerHTML = event.data;
-        	console.log('Webworker data');
-        	console.log(event.data);
-        		};*/
       }
     }
   }
