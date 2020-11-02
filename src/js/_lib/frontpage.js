@@ -33,7 +33,7 @@ const loadHomeData = () => {
 		url = 'http://mpg.c2136.cloudnet.cloud/wp-json/mpg/home/?lang='+currentLang;
 	}
 
-	homeData = getWithExpiry("home_data_1");
+	homeData = getWithExpiry("home_data_"+currentLang);
 
 	if(homeData){
 		renderAllOtherCategories();
@@ -43,7 +43,7 @@ const loadHomeData = () => {
 			.then((out) => {
 				homeData = out;
 
-				setWithExpiry("home_data_1", homeData, 30*60*1000);
+				setWithExpiry("home_data_"+currentLang, homeData, 30*60*1000);
 
 				//renderAllOtherCategories();
 
