@@ -5,6 +5,7 @@
 	flex-wrap: wrap;
 	counter-reset: number;
 	padding: 0 10px;
+	font:400 14px/1.2 Roboto,sans-serif,sans-serif;
 
 	@include adaptive(767) {
 		padding: 0 8px;
@@ -111,19 +112,8 @@
 		&_content{
 			position: relative;
 
-			&:after{
-				content: '';
-				position: absolute;
+			.site_thumb{
 				display: block;
-				top: 0;
-				left: 0;
-				bottom: 0;
-				right: 0;
-				z-index: 1;
-				background: #000;
-				background: -moz-linear-gradient(0deg,#000 0,rgba(0,0,0,.58) 25%,rgba(107,107,107,0) 50%,rgba(255,255,255,0) 100%);
-				background: -webkit-linear-gradient(0deg,#000 0,rgba(0,0,0,.58) 25%,rgba(107,107,107,0) 50%,rgba(255,255,255,0) 100%);
-				background: linear-gradient(0deg,#000 0,rgba(0,0,0,.58) 25%,rgba(107,107,107,0) 50%,rgba(255,255,255,0) 100%);
 			}
 
 			&:hover{
@@ -139,8 +129,27 @@
 
 		&_thumb{
 			line-height: 0;
+
+			@include adaptive(767) {
+				line-height: inherit;
+			}
 			img{
 				width: 100%;
+			}
+
+			&:after{
+				content: '';
+				position: absolute;
+				display: block;
+				top: 0;
+				left: 0;
+				bottom: 0;
+				right: 0;
+				z-index: 1;
+				background: #000;
+				background: -moz-linear-gradient(0deg,#000 0,rgba(0,0,0,.58) 25%,rgba(107,107,107,0) 50%,rgba(255,255,255,0) 100%);
+				background: -webkit-linear-gradient(0deg,#000 0,rgba(0,0,0,.58) 25%,rgba(107,107,107,0) 50%,rgba(255,255,255,0) 100%);
+				background: linear-gradient(0deg,#000 0,rgba(0,0,0,.58) 25%,rgba(107,107,107,0) 50%,rgba(255,255,255,0) 100%);
 			}
 		}
 
@@ -393,12 +402,10 @@
 .light{
 
 	.category_sites_item_inner{
-		background: #f2f2f2;
 	}
 	.category_sites_description .category_description h3{
 		color: #698ab3;
 	}
 	.category_sites_item_title h2{
-		color: #337ab7;
 	}
 }

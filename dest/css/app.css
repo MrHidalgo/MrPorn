@@ -536,12 +536,13 @@ body {
   font-size: 14px;
   font-weight: normal;
   font-family: 'Lato', sans-serif;
+  text-rendering: optimizeSpeed;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   font-family: helvetica neue,Helvetica,Arial,sans-serif;
 }
 
-/* line 43, src/scss/_shared/_main-setting-reset.scss */
+/* line 45, src/scss/_shared/_main-setting-reset.scss */
 body > .body {
   display: -webkit-box;
   display: -webkit-flex;
@@ -562,7 +563,7 @@ body > .body {
           flex: 1 0 auto;
 }
 
-/* line 49, src/scss/_shared/_main-setting-reset.scss */
+/* line 51, src/scss/_shared/_main-setting-reset.scss */
 body > .body--start {
   -webkit-box-pack: start;
   -webkit-justify-content: flex-start;
@@ -570,22 +571,22 @@ body > .body--start {
           justify-content: flex-start;
 }
 
-/* line 55, src/scss/_shared/_main-setting-reset.scss */
+/* line 57, src/scss/_shared/_main-setting-reset.scss */
 .light body {
   background: #cad4df;
 }
 
-/* line 62, src/scss/_shared/_main-setting-reset.scss */
+/* line 64, src/scss/_shared/_main-setting-reset.scss */
 a {
   color: #4099f9;
 }
 
-/* line 65, src/scss/_shared/_main-setting-reset.scss */
+/* line 67, src/scss/_shared/_main-setting-reset.scss */
 a:hover {
   color: #337ab7;
 }
 
-/* line 68, src/scss/_shared/_main-setting-reset.scss */
+/* line 70, src/scss/_shared/_main-setting-reset.scss */
 a:focus {
   color: #337ab7;
 }
@@ -595,19 +596,19 @@ a:focus {
 		color: #337ab7;
 	}
 }*/
-/* line 80, src/scss/_shared/_main-setting-reset.scss */
+/* line 82, src/scss/_shared/_main-setting-reset.scss */
 * {
   -webkit-box-sizing: border-box;
           box-sizing: border-box;
 }
 
-/* line 83, src/scss/_shared/_main-setting-reset.scss */
+/* line 85, src/scss/_shared/_main-setting-reset.scss */
 *:before, *:after {
   -webkit-box-sizing: border-box;
           box-sizing: border-box;
 }
 
-/* line 89, src/scss/_shared/_main-setting-reset.scss */
+/* line 91, src/scss/_shared/_main-setting-reset.scss */
 h1, h2, h3, h4, h5, h6 {
   font-family: inherit;
   font-weight: 500;
@@ -618,7 +619,7 @@ h1, h2, h3, h4, h5, h6 {
 /*p{
 	margin: 0 0 10px;
 }*/
-/* line 99, src/scss/_shared/_main-setting-reset.scss */
+/* line 101, src/scss/_shared/_main-setting-reset.scss */
 button,
 input,
 optgroup,
@@ -628,72 +629,72 @@ textarea {
   margin: 0;
 }
 
-/* line 109, src/scss/_shared/_main-setting-reset.scss */
+/* line 111, src/scss/_shared/_main-setting-reset.scss */
 button,
 input {
   overflow: visible;
 }
 
-/* line 115, src/scss/_shared/_main-setting-reset.scss */
+/* line 117, src/scss/_shared/_main-setting-reset.scss */
 button[disabled] {
   opacity: 0.55;
   cursor: not-allowed;
 }
 
-/* line 121, src/scss/_shared/_main-setting-reset.scss */
+/* line 123, src/scss/_shared/_main-setting-reset.scss */
 [type="search"] {
   -webkit-appearance: textfield;
   outline-offset: -2px;
 }
 
-/* line 127, src/scss/_shared/_main-setting-reset.scss */
+/* line 129, src/scss/_shared/_main-setting-reset.scss */
 [type="search"]::-webkit-search-cancel-button,
 [type="search"]::-webkit-search-decoration {
   -webkit-appearance: none;
 }
 
-/* line 133, src/scss/_shared/_main-setting-reset.scss */
+/* line 135, src/scss/_shared/_main-setting-reset.scss */
 textarea {
   overflow: auto;
 }
 
-/* line 138, src/scss/_shared/_main-setting-reset.scss */
+/* line 140, src/scss/_shared/_main-setting-reset.scss */
 h1, h2, h3, h4, h5, h6,
 hr {
   margin: 0;
   padding: 0;
 }
 
-/* line 145, src/scss/_shared/_main-setting-reset.scss */
+/* line 147, src/scss/_shared/_main-setting-reset.scss */
 ul {
   margin: 0;
   padding: 0;
 }
 
-/* line 150, src/scss/_shared/_main-setting-reset.scss */
+/* line 152, src/scss/_shared/_main-setting-reset.scss */
 ul li {
   list-style: none;
 }
 
-/* line 156, src/scss/_shared/_main-setting-reset.scss */
+/* line 158, src/scss/_shared/_main-setting-reset.scss */
 a {
   outline: none;
   text-decoration: none;
 }
 
-/* line 161, src/scss/_shared/_main-setting-reset.scss */
+/* line 163, src/scss/_shared/_main-setting-reset.scss */
 a:hover, a:focus {
   text-decoration: none;
 }
 
-/* line 168, src/scss/_shared/_main-setting-reset.scss */
+/* line 170, src/scss/_shared/_main-setting-reset.scss */
 input[type="text"] {
   -webkit-appearance: none;
      -moz-appearance: none;
           appearance: none;
 }
 
-/* line 172, src/scss/_shared/_main-setting-reset.scss */
+/* line 174, src/scss/_shared/_main-setting-reset.scss */
 picture {
   display: -webkit-box;
   display: -webkit-flex;
@@ -705,62 +706,62 @@ picture {
   height: 100%;
 }
 
-/* line 180, src/scss/_shared/_main-setting-reset.scss */
+/* line 182, src/scss/_shared/_main-setting-reset.scss */
 .custom_scroll {
   scrollbar-color: #131313 #525252;
 }
 
-/* line 181, src/scss/_shared/_main-setting-reset.scss */
+/* line 183, src/scss/_shared/_main-setting-reset.scss */
 .custom_scroll::-webkit-scrollbar {
   width: 10px;
 }
 
-/* line 182, src/scss/_shared/_main-setting-reset.scss */
+/* line 184, src/scss/_shared/_main-setting-reset.scss */
 .custom_scroll::-webkit-scrollbar-track {
   background: rgba(0, 0, 0, 0.1);
 }
 
-/* line 183, src/scss/_shared/_main-setting-reset.scss */
+/* line 185, src/scss/_shared/_main-setting-reset.scss */
 .custom_scroll::-webkit-scrollbar-thumb {
   background: #9c9b9c;
 }
 
-/* line 186, src/scss/_shared/_main-setting-reset.scss */
+/* line 188, src/scss/_shared/_main-setting-reset.scss */
 .light .custom_scroll:hover::-webkit-scrollbar-thumb {
   background: #225396;
 }
 
-/* line 189, src/scss/_shared/_main-setting-reset.scss */
+/* line 191, src/scss/_shared/_main-setting-reset.scss */
 strong {
   font-weight: 700;
 }
 
-/* line 193, src/scss/_shared/_main-setting-reset.scss */
+/* line 195, src/scss/_shared/_main-setting-reset.scss */
 [data-label-desc]::after {
   content: attr(data-label-desc);
 }
 
 @media screen and (max-width: 767px) {
-  /* line 193, src/scss/_shared/_main-setting-reset.scss */
+  /* line 195, src/scss/_shared/_main-setting-reset.scss */
   [data-label-desc]::after {
     content: attr(data-label-mobile);
   }
 }
 
-/* line 201, src/scss/_shared/_main-setting-reset.scss */
+/* line 203, src/scss/_shared/_main-setting-reset.scss */
 .visible-xs-inline {
   display: none;
 }
 
 @media screen and (max-width: 767px) {
-  /* line 201, src/scss/_shared/_main-setting-reset.scss */
+  /* line 203, src/scss/_shared/_main-setting-reset.scss */
   .visible-xs-inline {
     display: inline-block;
   }
 }
 
 @media screen and (max-width: 767px) {
-  /* line 210, src/scss/_shared/_main-setting-reset.scss */
+  /* line 212, src/scss/_shared/_main-setting-reset.scss */
   .hidden-xs {
     display: none;
   }
@@ -2710,6 +2711,15 @@ strong {
   }
 }
 
+/* line 27, src/scss/_shared/_common.scss */
+.deIcon::before {
+  content: ' ';
+  width: 16px;
+  height: 16px;
+  margin: 1px 5px 0;
+  display: inline-block;
+}
+
 /* line 4, src/scss/_shared/_iconPNG.scss */
 .icon-png:before {
   content: "";
@@ -4128,7 +4138,7 @@ strong {
 /* line 1, src/scss/_components/common/_header--update.scss */
 .header__update {
   color: #35539c;
-  font-size: 10px;
+  font-size: 12px;
   font-weight: 700;
 }
 
@@ -5390,6 +5400,11 @@ body.chatbot_active .go-top {
 /* line 229, src/scss/_components/common/_footer.scss */
 .light .footer__title {
   color: #576576;
+}
+
+/* line 233, src/scss/_components/common/_footer.scss */
+.light .footer_description h2 {
+  color: #000;
 }
 
 @media screen and (max-width: 1023px) {

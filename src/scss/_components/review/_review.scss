@@ -295,8 +295,10 @@
 		.favicon-bar-addressbar {
 			border: 1px solid #a8c7fa;
 			border-radius: 20px;
-			padding: 2px 15px 2px 40px;
+			padding: 2px 15px 2px 6px;
 			flex: 1;
+			display: flex;
+			align-items: center;
 			position: relative;
 
 			&:before{
@@ -306,6 +308,7 @@
 
 			a{
 				color: #000;
+				margin-left: 5px;
 			}
 		}
 
@@ -446,6 +449,15 @@
 		}
 	}
 
+	&:hover {
+		.review_screenshot_hover{
+			display: block;
+
+			@include adaptive(991.98) {
+				display: none;
+			}
+		}
+	}
 
 }
 
@@ -556,7 +568,7 @@
 	h3{
 		font-size: 20px;
 		margin: 0 0 9px;
-		color: #698ab3;
+		color: #fff;
 		font-weight: 700;
 	}
 
@@ -1511,6 +1523,10 @@
 	.review_con{
 		h1, h2{
 			color: #113d74;
+		}
+
+		h3{
+			color: #698ab3;
 		}
 
 		.site_review_title_content h3{
