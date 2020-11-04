@@ -18,6 +18,8 @@
 	display: none;
 	height: 100%;
 	width: 100%;
+	font-size: 14px;
+	color: #333;
 }
 
 #got_something {
@@ -111,6 +113,7 @@
 .comments_header h4 {
 	font-size: 16px;
 	margin: 0;
+	color: #333;
 }
 
 .comments_header p {
@@ -382,6 +385,7 @@ hr {
 	overflow-y: scroll;
 	overflow-x: hidden;
 	-webkit-user-select: text;
+	padding: 5px;
 }
 .dark .sc_comment_form{color:#000;}
 
@@ -404,13 +408,22 @@ hr {
 	background: #fff;
 	display: flex;
 	align-items: center;
+	justify-content: center;
 	flex-direction: column;
 	padding: 20px;
 	text-align: center;
 	color: #4e4e4e;
-}
 
-.no_comments_text p {
+	h4{
+		font-size: 18px;
+		margin-block-start: 1.33em;
+		margin-block-end: 1.33em;
+		margin-inline-start: 0px;
+		margin-inline-end: 0px;
+	}
+	p{
+		font-size: 14px;
+	}
 }
 
 .no_comments_button {

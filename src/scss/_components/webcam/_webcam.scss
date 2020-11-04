@@ -525,6 +525,10 @@
 	-o-transition: background .3s,color .3s,border .3s;
 	transition: background .3s,color .3s,border .3s;
 
+	&:hover, &:focus{
+		color: #fff;
+	}
+
 	@include adaptive(767) {
 		margin: 6px 3px;
 	}

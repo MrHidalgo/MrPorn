@@ -1,7 +1,6 @@
 // REVIEW :: START
 .list {
 	padding-top: 15px;
-	padding-bottom: 25px;
 
 	@include respond('ipad_portrait'){
 		padding-top: 0;
@@ -587,7 +586,6 @@
 		padding-bottom: 20px;
 		border-top: 1px solid #d6d6d6;
 		border-bottom: 1px solid #d6d6d6;
-		overflow: hidden;
 		padding-right: 10px;
 		color: #d7d7d7;
 
@@ -954,6 +952,18 @@
 		right: 0;
 		height: 100%;
 		top: 0;
+	}
+
+	&:hover{
+		cursor: pointer;
+
+		&::before{
+			opacity: 1;
+			transform: scale(1, 1);
+		}
+		span{
+			color: #fff;
+		}
 	}
 }
 

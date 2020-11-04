@@ -34,10 +34,15 @@
 
 		&.categories_list{
 			margin: 0;
+			background: transparent;
 		}
 
 		.category_box{
 			background: transparent;
+
+			&.no_bg{
+				margin:0 -15px;
+			}
 		}
 	}
 

@@ -1235,7 +1235,6 @@ strong {
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
-  padding-bottom: 10px;
 }
 
 @media screen and (max-width: 1023px) {
@@ -3487,7 +3486,7 @@ strong {
 /* line 27, src/scss/_components/common/_header--view.scss */
 .header__view-text {
   font-size: 14px;
-  font-weight: 600;
+  font-weight: 500;
   color: #fff;
   margin-top: -5px;
   padding-bottom: 5px;
@@ -5091,10 +5090,11 @@ body.chatbot_active .go-top {
   min-height: 55px;
   padding-top: 10px;
   padding-bottom: 10px;
+  margin-top: 10px;
   background-color: #081b49;
 }
 
-/* line 63, src/scss/_components/common/_footer.scss */
+/* line 64, src/scss/_components/common/_footer.scss */
 .footer__container-1 {
   display: -webkit-box;
   display: -webkit-flex;
@@ -5111,7 +5111,7 @@ body.chatbot_active .go-top {
           align-items: center;
 }
 
-/* line 70, src/scss/_components/common/_footer.scss */
+/* line 71, src/scss/_components/common/_footer.scss */
 .footer__title {
   padding-bottom: 10px;
   color: #ffffff;
@@ -5120,20 +5120,20 @@ body.chatbot_active .go-top {
 }
 
 @media screen and (max-width: 1023px) {
-  /* line 70, src/scss/_components/common/_footer.scss */
+  /* line 71, src/scss/_components/common/_footer.scss */
   .footer__title {
     font-size: 20px;
   }
 }
 
 @media screen and (max-width: 767px) {
-  /* line 70, src/scss/_components/common/_footer.scss */
+  /* line 71, src/scss/_components/common/_footer.scss */
   .footer__title {
     font-size: 14px;
   }
 }
 
-/* line 83, src/scss/_components/common/_footer.scss */
+/* line 84, src/scss/_components/common/_footer.scss */
 .footer__desc {
   padding-bottom: 30px;
   color: #4b4e6b;
@@ -5142,20 +5142,20 @@ body.chatbot_active .go-top {
 }
 
 @media screen and (max-width: 1023px) {
-  /* line 83, src/scss/_components/common/_footer.scss */
+  /* line 84, src/scss/_components/common/_footer.scss */
   .footer__desc {
     font-size: 14px;
   }
 }
 
 @media screen and (max-width: 767px) {
-  /* line 83, src/scss/_components/common/_footer.scss */
+  /* line 84, src/scss/_components/common/_footer.scss */
   .footer__desc {
     font-size: 12px;
   }
 }
 
-/* line 96, src/scss/_components/common/_footer.scss */
+/* line 97, src/scss/_components/common/_footer.scss */
 .footer__nav {
   display: -webkit-box;
   display: -webkit-flex;
@@ -5174,14 +5174,14 @@ body.chatbot_active .go-top {
 }
 
 @media screen and (max-width: 1023px) {
-  /* line 96, src/scss/_components/common/_footer.scss */
+  /* line 97, src/scss/_components/common/_footer.scss */
   .footer__nav {
     font-size: 14px;
   }
 }
 
 @media screen and (max-width: 767px) {
-  /* line 96, src/scss/_components/common/_footer.scss */
+  /* line 97, src/scss/_components/common/_footer.scss */
   .footer__nav {
     -webkit-flex-wrap: wrap;
         -ms-flex-wrap: wrap;
@@ -5189,7 +5189,7 @@ body.chatbot_active .go-top {
   }
 }
 
-/* line 111, src/scss/_components/common/_footer.scss */
+/* line 112, src/scss/_components/common/_footer.scss */
 .footer__nav p {
   display: -webkit-box;
   display: -webkit-flex;
@@ -5209,13 +5209,13 @@ body.chatbot_active .go-top {
 }
 
 @media screen and (max-width: 767px) {
-  /* line 111, src/scss/_components/common/_footer.scss */
+  /* line 112, src/scss/_components/common/_footer.scss */
   .footer__nav p {
     font-size: 0;
   }
 }
 
-/* line 122, src/scss/_components/common/_footer.scss */
+/* line 123, src/scss/_components/common/_footer.scss */
 .footer__nav a {
   font-size: 16px;
   color: #4680ca;
@@ -5227,14 +5227,14 @@ body.chatbot_active .go-top {
 }
 
 @media screen and (max-width: 1023px) {
-  /* line 122, src/scss/_components/common/_footer.scss */
+  /* line 123, src/scss/_components/common/_footer.scss */
   .footer__nav a {
     font-size: 14px;
   }
 }
 
 @media screen and (max-width: 767px) {
-  /* line 122, src/scss/_components/common/_footer.scss */
+  /* line 123, src/scss/_components/common/_footer.scss */
   .footer__nav a {
     display: -webkit-box;
     display: -webkit-flex;
@@ -5249,7 +5249,7 @@ body.chatbot_active .go-top {
   }
 }
 
-/* line 138, src/scss/_components/common/_footer.scss */
+/* line 139, src/scss/_components/common/_footer.scss */
 .footer__nav a:hover {
   color: #ffffff;
   -webkit-transition: color 0.35s ease-in-out;
@@ -5257,7 +5257,7 @@ body.chatbot_active .go-top {
   transition: color 0.35s ease-in-out;
 }
 
-/* line 144, src/scss/_components/common/_footer.scss */
+/* line 145, src/scss/_components/common/_footer.scss */
 .footer__nav-item {
   display: -webkit-box;
   display: -webkit-flex;
@@ -5265,7 +5265,7 @@ body.chatbot_active .go-top {
   display: flex;
 }
 
-/* line 147, src/scss/_components/common/_footer.scss */
+/* line 148, src/scss/_components/common/_footer.scss */
 .footer__nav-item span {
   margin-left: 15px;
   margin-right: 15px;
@@ -5275,7 +5275,7 @@ body.chatbot_active .go-top {
 }
 
 @media screen and (max-width: 1023px) {
-  /* line 147, src/scss/_components/common/_footer.scss */
+  /* line 148, src/scss/_components/common/_footer.scss */
   .footer__nav-item span {
     margin-left: 10px;
     margin-right: 10px;
@@ -5284,13 +5284,13 @@ body.chatbot_active .go-top {
 }
 
 @media screen and (max-width: 767px) {
-  /* line 147, src/scss/_components/common/_footer.scss */
+  /* line 148, src/scss/_components/common/_footer.scss */
   .footer__nav-item span {
     font-size: 0;
   }
 }
 
-/* line 164, src/scss/_components/common/_footer.scss */
+/* line 165, src/scss/_components/common/_footer.scss */
 .footer__nav-link {
   font-size: 16px;
   color: #4680ca;
@@ -5301,14 +5301,14 @@ body.chatbot_active .go-top {
 }
 
 @media screen and (max-width: 1023px) {
-  /* line 164, src/scss/_components/common/_footer.scss */
+  /* line 165, src/scss/_components/common/_footer.scss */
   .footer__nav-link {
     font-size: 14px;
   }
 }
 
 @media screen and (max-width: 767px) {
-  /* line 164, src/scss/_components/common/_footer.scss */
+  /* line 165, src/scss/_components/common/_footer.scss */
   .footer__nav-link {
     display: -webkit-box;
     display: -webkit-flex;
@@ -5323,7 +5323,7 @@ body.chatbot_active .go-top {
   }
 }
 
-/* line 179, src/scss/_components/common/_footer.scss */
+/* line 180, src/scss/_components/common/_footer.scss */
 .footer__nav-link:hover {
   color: #ffffff;
   -webkit-transition: color 0.35s ease-in-out;
@@ -5331,7 +5331,7 @@ body.chatbot_active .go-top {
   transition: color 0.35s ease-in-out;
 }
 
-/* line 188, src/scss/_components/common/_footer.scss */
+/* line 189, src/scss/_components/common/_footer.scss */
 .footer_description h2 {
   padding-bottom: 10px;
   color: #ffffff;
@@ -5340,20 +5340,20 @@ body.chatbot_active .go-top {
 }
 
 @media screen and (max-width: 1023px) {
-  /* line 188, src/scss/_components/common/_footer.scss */
+  /* line 189, src/scss/_components/common/_footer.scss */
   .footer_description h2 {
     font-size: 20px;
   }
 }
 
 @media screen and (max-width: 767px) {
-  /* line 188, src/scss/_components/common/_footer.scss */
+  /* line 189, src/scss/_components/common/_footer.scss */
   .footer_description h2 {
     font-size: 14px;
   }
 }
 
-/* line 201, src/scss/_components/common/_footer.scss */
+/* line 202, src/scss/_components/common/_footer.scss */
 .footer_description h3 {
   padding-bottom: 10px;
   color: #ffffff;
@@ -5362,20 +5362,20 @@ body.chatbot_active .go-top {
 }
 
 @media screen and (max-width: 1023px) {
-  /* line 201, src/scss/_components/common/_footer.scss */
+  /* line 202, src/scss/_components/common/_footer.scss */
   .footer_description h3 {
     font-size: 20px;
   }
 }
 
 @media screen and (max-width: 767px) {
-  /* line 201, src/scss/_components/common/_footer.scss */
+  /* line 202, src/scss/_components/common/_footer.scss */
   .footer_description h3 {
     font-size: 14px;
   }
 }
 
-/* line 214, src/scss/_components/common/_footer.scss */
+/* line 215, src/scss/_components/common/_footer.scss */
 .footer_description p {
   padding-bottom: 30px;
   color: #4b4e6b;
@@ -5384,25 +5384,25 @@ body.chatbot_active .go-top {
 }
 
 @media screen and (max-width: 1023px) {
-  /* line 214, src/scss/_components/common/_footer.scss */
+  /* line 215, src/scss/_components/common/_footer.scss */
   .footer_description p {
     font-size: 14px;
   }
 }
 
 @media screen and (max-width: 767px) {
-  /* line 214, src/scss/_components/common/_footer.scss */
+  /* line 215, src/scss/_components/common/_footer.scss */
   .footer_description p {
     font-size: 12px;
   }
 }
 
-/* line 229, src/scss/_components/common/_footer.scss */
+/* line 230, src/scss/_components/common/_footer.scss */
 .light .footer__title {
   color: #576576;
 }
 
-/* line 233, src/scss/_components/common/_footer.scss */
+/* line 234, src/scss/_components/common/_footer.scss */
 .light .footer_description h2 {
   color: #000;
 }
