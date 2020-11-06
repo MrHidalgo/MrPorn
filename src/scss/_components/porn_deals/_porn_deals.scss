@@ -1,4 +1,10 @@
 // PORN_DEALS :: START
+.single-coupon{
+	@include adaptive(767){
+		padding-bottom: 75px;
+	}
+}
+
 .coupon_container{
 	background: #303030;
 	padding-bottom: 20px;
@@ -275,7 +281,8 @@
 			position: absolute;
 			width: 50px;
 			right: 0;
-			height: 36px;
+			height: 34px;
+			border: none;
 			top: 0;
 			background-size: 24px;
 		}

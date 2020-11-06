@@ -139,7 +139,7 @@ const ajaxAdminEndpoint = '/wp-admin/admin-ajax.php';
 			}else if(_ev.closest('[spec-skip-js]')){
 				onSkip(_ev.closest('[spec-skip-js]'));
 			}else if(_ev.closest('[sort-letter-collapse-js]')){
-				onSortLetterClick(_ev.closest('[sort-letter-collapse-js]'));
+				//onSortLetterClick(_ev.closest('[sort-letter-collapse-js]'));
 			}else if(_ev.closest('[collapse-toggle-js]')){
 				onSortToggle(_ev.closest('[collapse-toggle-js]'));
 			}else if(_ev.parentNode && !_ev.closest('[search-parent-js]')){

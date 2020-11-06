@@ -111,6 +111,16 @@ const renderSorting = () => {
 
 	const sortcontainer = document.querySelector('[sort-node-js]');
 	sortcontainer.innerHTML = letterHtml;
+
+	//onSortLetterClick(_ev.closest('[sort-letter-collapse-js]'));
+
+	document.querySelectorAll('[sort-letter-collapse-js]').forEach(function (searchLetter){
+		searchLetter.addEventListener('mouseenter', function (_ev) {
+			onSortLetterClick(_ev.target);
+		});
+	});
+
+
 }
 
 const onSortLetterClick = (letterItem) => {

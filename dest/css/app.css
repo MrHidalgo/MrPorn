@@ -3485,11 +3485,13 @@ strong {
 
 /* line 27, src/scss/_components/common/_header--view.scss */
 .header__view-text {
-  font-size: 14px;
-  font-weight: 500;
+  font-size: 13.5px;
+  font-weight: 600;
   color: #fff;
   margin-top: -5px;
   padding-bottom: 5px;
+  line-height: 22px;
+  letter-spacing: 0.1px;
 }
 
 @media screen and (max-width: 1023px) {
@@ -3499,7 +3501,7 @@ strong {
   }
 }
 
-/* line 39, src/scss/_components/common/_header--view.scss */
+/* line 41, src/scss/_components/common/_header--view.scss */
 .header__view-left, .header__view-right {
   display: -webkit-box;
   display: -webkit-flex;
@@ -3515,7 +3517,7 @@ strong {
           justify-content: center;
 }
 
-/* line 46, src/scss/_components/common/_header--view.scss */
+/* line 48, src/scss/_components/common/_header--view.scss */
 .header__view-left {
   -webkit-box-flex: 1;
   -webkit-flex: 1;
@@ -3525,7 +3527,7 @@ strong {
   max-width: 100%;
 }
 
-/* line 51, src/scss/_components/common/_header--view.scss */
+/* line 53, src/scss/_components/common/_header--view.scss */
 .header__view-left p,
 .header__view-left span {
   -webkit-box-flex: 1;
@@ -3537,7 +3539,7 @@ strong {
   text-align: center;
 }
 
-/* line 59, src/scss/_components/common/_header--view.scss */
+/* line 61, src/scss/_components/common/_header--view.scss */
 .header__view-left p {
   color: #ffffff;
   font-weight: 700;
@@ -3546,13 +3548,13 @@ strong {
 }
 
 @media screen and (max-width: 1279px) {
-  /* line 59, src/scss/_components/common/_header--view.scss */
+  /* line 61, src/scss/_components/common/_header--view.scss */
   .header__view-left p {
     font-size: 12px;
   }
 }
 
-/* line 69, src/scss/_components/common/_header--view.scss */
+/* line 71, src/scss/_components/common/_header--view.scss */
 .header__view-left u {
   width: 1px;
   height: -webkit-calc(100% - 10px);
@@ -3560,19 +3562,19 @@ strong {
   background-color: #3672c1;
 }
 
-/* line 75, src/scss/_components/common/_header--view.scss */
+/* line 77, src/scss/_components/common/_header--view.scss */
 .header__view-left span {
   color: #ffffff;
   font-size: 12px;
 }
 
-/* line 81, src/scss/_components/common/_header--view.scss */
+/* line 83, src/scss/_components/common/_header--view.scss */
 .header__view-right {
   width: 60px;
   height: 100%;
 }
 
-/* line 85, src/scss/_components/common/_header--view.scss */
+/* line 87, src/scss/_components/common/_header--view.scss */
 .header__view-right .icon-font {
   color: #ffffff;
   font-size: 18px;
@@ -3591,7 +3593,7 @@ strong {
   transition: transform 0.35s ease-in-out, -webkit-transform 0.35s ease-in-out;
 }
 
-/* line 95, src/scss/_components/common/_header--view.scss */
+/* line 97, src/scss/_components/common/_header--view.scss */
 .header__view-drop {
   opacity: 0;
   visibility: hidden;
@@ -3624,7 +3626,7 @@ strong {
   transition: opacity 0.35s ease-in-out, visibility 0.35s ease-in-out, transform 0.35s ease-in-out, -webkit-transform 0.35s ease-in-out;
 }
 
-/* line 114, src/scss/_components/common/_header--view.scss */
+/* line 116, src/scss/_components/common/_header--view.scss */
 .header__view-drop.is-open {
   opacity: 1;
   visibility: visible;
@@ -3638,7 +3640,7 @@ strong {
   transition: opacity 0.35s ease-in-out, visibility 0.35s ease-in-out, transform 0.35s ease-in-out, -webkit-transform 0.35s ease-in-out;
 }
 
-/* line 122, src/scss/_components/common/_header--view.scss */
+/* line 124, src/scss/_components/common/_header--view.scss */
 .header__view-link {
   display: -webkit-box;
   display: -webkit-flex;
@@ -3659,7 +3661,7 @@ strong {
   transition: background-color 0.35s ease-in-out;
 }
 
-/* line 130, src/scss/_components/common/_header--view.scss */
+/* line 132, src/scss/_components/common/_header--view.scss */
 .header__view-link:hover {
   background-color: #778098;
   -webkit-transition: background-color 0.35s ease-in-out;
@@ -3667,7 +3669,7 @@ strong {
   transition: background-color 0.35s ease-in-out;
 }
 
-/* line 134, src/scss/_components/common/_header--view.scss */
+/* line 136, src/scss/_components/common/_header--view.scss */
 .header__view-link:hover span {
   color: #c7f228;
   -webkit-transition: color 0.35s ease-in-out;
@@ -3675,7 +3677,7 @@ strong {
   transition: color 0.35s ease-in-out;
 }
 
-/* line 139, src/scss/_components/common/_header--view.scss */
+/* line 141, src/scss/_components/common/_header--view.scss */
 .header__view-link:hover p {
   color: #ffffff;
   -webkit-transition: color 0.35s ease-in-out;
@@ -3683,7 +3685,7 @@ strong {
   transition: color 0.35s ease-in-out;
 }
 
-/* line 145, src/scss/_components/common/_header--view.scss */
+/* line 147, src/scss/_components/common/_header--view.scss */
 .header__view-link:hover button .icon-font {
   color: #ffffff;
   -webkit-transition: color 0.35s ease-in-out;
@@ -3691,12 +3693,12 @@ strong {
   transition: color 0.35s ease-in-out;
 }
 
-/* line 152, src/scss/_components/common/_header--view.scss */
+/* line 154, src/scss/_components/common/_header--view.scss */
 .header__view-link:not(:last-of-type) {
   border-bottom: 1px solid #dce3f3;
 }
 
-/* line 156, src/scss/_components/common/_header--view.scss */
+/* line 158, src/scss/_components/common/_header--view.scss */
 .header__view-link > div {
   display: -webkit-box;
   display: -webkit-flex;
@@ -3711,13 +3713,13 @@ strong {
   padding-bottom: 5px;
 }
 
-/* line 163, src/scss/_components/common/_header--view.scss */
+/* line 165, src/scss/_components/common/_header--view.scss */
 .header__view-link > div:nth-of-type(1) {
   padding-left: 18px;
   width: 55px;
 }
 
-/* line 167, src/scss/_components/common/_header--view.scss */
+/* line 169, src/scss/_components/common/_header--view.scss */
 .header__view-link > div:nth-of-type(2) {
   -webkit-box-flex: 1;
   -webkit-flex: 1;
@@ -3727,7 +3729,7 @@ strong {
   max-width: 100%;
 }
 
-/* line 172, src/scss/_components/common/_header--view.scss */
+/* line 174, src/scss/_components/common/_header--view.scss */
 .header__view-link > div:nth-of-type(3) {
   -webkit-box-pack: center;
   -webkit-justify-content: center;
@@ -3736,7 +3738,7 @@ strong {
   width: 90px;
 }
 
-/* line 178, src/scss/_components/common/_header--view.scss */
+/* line 180, src/scss/_components/common/_header--view.scss */
 .header__view-link span {
   color: #757a85;
   font-size: 16px;
@@ -3746,7 +3748,7 @@ strong {
   transition: color 0.35s ease-in-out;
 }
 
-/* line 185, src/scss/_components/common/_header--view.scss */
+/* line 187, src/scss/_components/common/_header--view.scss */
 .header__view-link img {
   display: block;
   max-width: 100%;
@@ -3755,7 +3757,7 @@ strong {
   margin-right: 7px;
 }
 
-/* line 193, src/scss/_components/common/_header--view.scss */
+/* line 195, src/scss/_components/common/_header--view.scss */
 .header__view-link p {
   color: #0a3e83;
   font-size: 16px;
@@ -3765,12 +3767,12 @@ strong {
   transition: color 0.35s ease-in-out;
 }
 
-/* line 200, src/scss/_components/common/_header--view.scss */
+/* line 202, src/scss/_components/common/_header--view.scss */
 .header__view-link a {
   color: #0a3e83;
 }
 
-/* line 204, src/scss/_components/common/_header--view.scss */
+/* line 206, src/scss/_components/common/_header--view.scss */
 .header__view-link button {
   outline: none;
   cursor: pointer;
@@ -3797,7 +3799,7 @@ strong {
   background-color: transparent;
 }
 
-/* line 218, src/scss/_components/common/_header--view.scss */
+/* line 220, src/scss/_components/common/_header--view.scss */
 .header__view-link button .icon-font {
   color: #0a3e83;
   font-size: 21px;

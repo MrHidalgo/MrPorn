@@ -928,7 +928,13 @@ var renderSorting = function renderSorting() {
   });
   letterHtml += '<div class="sort__drop-inner"></div>';
   var sortcontainer = document.querySelector('[sort-node-js]');
-  sortcontainer.innerHTML = letterHtml;
+  sortcontainer.innerHTML = letterHtml; //onSortLetterClick(_ev.closest('[sort-letter-collapse-js]'));
+
+  document.querySelectorAll('[sort-letter-collapse-js]').forEach(function (searchLetter) {
+    searchLetter.addEventListener('mouseenter', function (_ev) {
+      onSortLetterClick(_ev.target);
+    });
+  });
 };
 
 var onSortLetterClick = function onSortLetterClick(letterItem) {
@@ -1489,8 +1495,7 @@ var ajaxAdminEndpoint = '/wp-admin/admin-ajax.php';
         onPauseClick(_ev.closest('[video-pause-js]'));
       } else if (_ev.closest('[spec-skip-js]')) {
         onSkip(_ev.closest('[spec-skip-js]'));
-      } else if (_ev.closest('[sort-letter-collapse-js]')) {
-        onSortLetterClick(_ev.closest('[sort-letter-collapse-js]'));
+      } else if (_ev.closest('[sort-letter-collapse-js]')) {//onSortLetterClick(_ev.closest('[sort-letter-collapse-js]'));
       } else if (_ev.closest('[collapse-toggle-js]')) {
         onSortToggle(_ev.closest('[collapse-toggle-js]'));
       } else if (_ev.parentNode && !_ev.closest('[search-parent-js]')) {

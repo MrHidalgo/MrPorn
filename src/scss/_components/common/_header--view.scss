@@ -25,11 +25,13 @@
 	}
 
 	&-text{
-		font-size: 14px;
-		font-weight: 500;
+		font-size: 13.5px;
+		font-weight: 600;
 		color: #fff;
 		margin-top: -5px;
 		padding-bottom: 5px;
+		line-height: 22px;
+		letter-spacing: 0.1px;
 
 		@include adaptive(1023) {
 			display: none;
