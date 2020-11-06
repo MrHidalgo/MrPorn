@@ -18,7 +18,7 @@
 
 	.category_box{
 		/*background: #052449;*/
-		padding: 15px 10px 15px;
+		padding: 0;
 		display: flex;
 		flex-wrap: wrap;
 
@@ -30,7 +30,7 @@
 
 	&.transparent{
 		background: transparent;
-		margin: 0 -15px;
+		margin: 0 -5px 0;
 
 		&.categories_list{
 			margin: 0;
@@ -41,7 +41,7 @@
 			background: transparent;
 
 			&.no_bg{
-				margin:0 -15px;
+				margin:0 -5px 0;
 			}
 		}
 	}
@@ -70,7 +70,7 @@
 		}
 
 		&_inner{
-			display: block;
+			display: inline-flex;
 			position: relative;
 			overflow: hidden;
 			outline: 1px solid #989898;
@@ -102,7 +102,7 @@
 				}
 
 				@include adaptive(767) {
-					font-size: 14px;
+					font-size: 12px;
 				}
 
 				small {
@@ -118,7 +118,7 @@
 					-webkit-box-orient: vertical;
 
 					@include adaptive(767) {
-						font-size: 12px;
+						font-size: 10px;
 					}
 				}
 			}
