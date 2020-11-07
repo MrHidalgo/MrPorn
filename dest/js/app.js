@@ -1412,6 +1412,8 @@ var ajaxAdminEndpoint = '/wp-admin/admin-ajax.php';
    * MAIN CALLBACK
    * ===================================
    */
+  var vh = window.innerHeight * 0.01;
+  document.documentElement.style.setProperty('--vh', "".concat(vh, "px"));
   initLoggedUser();
   initGotoTop();
   var headerHeight = 0;
