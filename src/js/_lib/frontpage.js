@@ -65,7 +65,7 @@ function renderHompageSiteSlide(category, index){
 		let siteThumb = (siteItem.banner_image)?siteItem.banner_image:siteItem.thumb;
 		let siteLogo = (siteItem.logo)?siteItem.logo.src:'';
 
-		let slideHtml = '<div class="list__box nolazy" list-box-js data-id="'+siteId+'" style="background-image: url('+siteThumb+')">'+
+		let slideHtml = '<div class="list__box nolazy" list-box-js data-id="'+siteId+'" style="background-image: url('+cdnLink+siteThumb+')">'+
 			/*'<div class="list__box-overlay"></div>'+*/
 			'<div class="list__box-border"></div>' +
 			'<a href="'+siteLink+'" target="_blank"></a>'+
@@ -152,10 +152,12 @@ function renderSiteBottomBanner(category, index){
 	if(siteItem){
 		let siteId = siteItem.id;
 		let bannerType = siteItem.banner_type;
-		let bannerImage = siteItem.banner_image;
+		let bannerImage = cdnLink + siteItem.banner_image;
 		let bannerVideo = siteItem.banner_video;
-		let bannerVideoPoster = siteItem.banner_video_poster;
-		let siteLogo = siteItem.logo?siteItem.logo.src:'';
+		let bannerVideoPoster = cdnLink + siteItem.banner_video_poster;
+		let siteLogo = siteItem.logo;
+		siteLogo = cdnLink +siteLogo;
+
 		let tagLIne = siteItem.tagline;
 		let siteUrl = siteItem.url;
 
@@ -177,8 +179,8 @@ function renderSiteBottomBanner(category, index){
 				bannerRight = '<div class="list__specification-right">'+
 					'<div video-parent-js>'+
 					'<!--video(preload="none" video-js)-->'+
-					'<video preload="none" autoplay loop playsinline poster="'+bannerVideoPoster.url+'" video-js>'+
-					'<source src="'+bannerVideo.url+'" type="'+bannerVideo.mime_type+'">'+
+					'<video preload="none" autoplay loop playsinline poster="'+bannerVideoPoster+'" video-js>'+
+					'<source src="'+cdnLink + bannerVideo.url+'" type="'+bannerVideo.mime_type+'">'+
 					'</video>' +
 					'<a class="list__specification-play is-active" video-toggle-js><i class="icon-font icon-play-button" video-play-js></i></a>' +
 					'<a class="list__specification-pause is-active" video-pause-js><i class="icon-font icon-pause"></i></a>'+
@@ -194,7 +196,7 @@ function renderSiteBottomBanner(category, index){
 			if(moreSiteCount<6 && moreSite.id!=siteId){
 				let moreSiteLogo = moreSite.logo ? moreSite.logo.src: '';
 
-				moreSites +='<a class="list__box" list-box-more-js href="'+moreSite.link+'" data-id="'+moreSite.id+'" data-count="1" style="background-image: url('+moreSite.banner_image+')">'+
+				moreSites +='<a class="list__box" list-box-more-js href="'+moreSite.link+'" data-id="'+moreSite.id+'" data-count="1" style="background-image: url('+cdnLink+moreSite.banner_image+')">'+
 					/*'<div class="list__box-overlay"></div>'+*/
 					'<div class="list__box-border"></div><img class="list__box-logo" src="'+moreSiteLogo+'" alt=""/>' +
 					'</a>';
@@ -269,8 +271,10 @@ function renderSkipSiteBottomBanner(category, index){
 		let bannerImage = siteItem.banner_image;
 		let bannerVideo = siteItem.banner_video;
 		let bannerVideoPoster = siteItem.banner_video_poster;
-		let siteLogo = siteItem.logo?siteItem.logo.src:'';
-		let tagLIne = siteItem.tagline;
+		let siteLogo = siteItem.logo;
+		siteLogo = cdnLink + siteLogo;
+
+			let tagLIne = siteItem.tagline;
 		let siteExternalUrl = siteItem.url;
 		let siteLink = siteItem.link;
 
@@ -296,8 +300,8 @@ function renderSkipSiteBottomBanner(category, index){
 				popupBanner.classList.add('list__specification--video');
 
 				bannerRight = '<div video-parent-js>'+
-					'<video preload="none" autoplay loop playsinline poster="'+bannerVideoPoster.url+'" video-js>'+
-					'<source src="'+bannerVideo.url+'" type="'+bannerVideo.mime_type+'">'+
+					'<video preload="none" autoplay loop playsinline poster="'+bannerVideoPoster+'" video-js>'+
+					'<source src="'+cdnLink + bannerVideo.url+'" type="'+bannerVideo.mime_type+'">'+
 					'</video>' +
 					'<a class="list__specification-play is-active" video-toggle-js><i class="icon-font icon-play-button" video-play-js></i></a>' +
 					'<a class="list__specification-pause is-active" video-pause-js><i class="icon-font icon-pause"></i></a>'+
@@ -312,7 +316,7 @@ function renderSkipSiteBottomBanner(category, index){
 			if(moreSiteCount<6 && moreSite.id!=siteId){
 				let moreSiteLogo = moreSite.logo ? moreSite.logo.src: '';
 
-				moreSites +='<a class="list__box" list-box-more-js href="'+moreSite.link+'" data-id="'+moreSite.id+'" data-count="1" style="background-image: url('+moreSite.banner_image+')">'+
+				moreSites +='<a class="list__box" list-box-more-js href="'+moreSite.link+'" data-id="'+moreSite.id+'" data-count="1" style="background-image: url('+cdnLink+moreSite.banner_image+')">'+
 					'<div class="list__box-border"></div><img class="list__box-logo" src="'+moreSiteLogo+'" alt=""/>' +
 					'</a>';
 
@@ -376,7 +380,7 @@ function renderSiteCategory(categoryIndex){
 		}
 
 		categorySites += '<div class="swiper-slide" data-index="'+index+'" data-siteid="'+site.id+'" data-init="0">' +
-			'<div class="list__box" list-box-js  data-id="'+site.id+'" style="background-image: url('+site.banner_image+')">'+
+			'<div class="list__box" list-box-js  data-id="'+site.id+'" style="background-image: url('+cdnLink+site.banner_image+')">'+
 			/*'<div class="list__box-overlay"></div>'+*/
 			'<div class="list__box-border"></div>'+
 			'<a class="nav_link" href="'+site.link+'">' +

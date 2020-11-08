@@ -315,7 +315,7 @@ function renderHompageSiteSlide(category, index) {
     var siteName = siteItem.name;
     var siteThumb = siteItem.banner_image ? siteItem.banner_image : siteItem.thumb;
     var siteLogo = siteItem.logo ? siteItem.logo.src : '';
-    var slideHtml = '<div class="list__box nolazy" list-box-js data-id="' + siteId + '" style="background-image: url(' + siteThumb + ')">' +
+    var slideHtml = '<div class="list__box nolazy" list-box-js data-id="' + siteId + '" style="background-image: url(' + cdnLink + siteThumb + ')">' +
     /*'<div class="list__box-overlay"></div>'+*/
     '<div class="list__box-border"></div>' + '<a href="' + siteLink + '" target="_blank"></a>' + //'<img class="list__box-logo nolazy" src="'+siteLogo+'" alt=""/>'+
     '<div class="list__box-details">' + '<div class="list__box-details-left">' + '<a class="site_link" href="' + siteLink + '" target="_blank">' + '<i class="icon-font icon-out"></i>' + '<p class="list__box-details-title">' + siteName + '</p>' + '</a>' + '<div class="list__rating"><span>User Rating:</span>' + '<div><i class="icon-font icon-star"></i><i class="icon-font icon-star"></i><i class="icon-font icon-star"></i><i class="icon-font icon-star"></i><i class="icon-font icon-star-fill"></i></div>' + '</div>' + '</div>' + '<div class="list__box-details-right">' + '<button class="list__box-like" type="button" data-id="1" like-toggle-js><i class="icon-font icon-like"></i></button>' + '<button class="list__box-dislike" type="button" data-id="1" dislike-toggle-js><i class="icon-font icon-like"></i></button>' + '<div class="c-popper">' + '<button class="list__box-favorites" type="button" data-id="1" favorites-toggle-js><i class="icon-font icon-star-fill"></i><i class="icon-font icon-star"></i></button>' + '<div class="c-poppertext">' + '<u>Add To Favourites</u>' + '<u>Remove From Favourites</u>' + '</div>' + '</div>' + '</div>' + '</div>' + '<button class="list__box-more" type="button"><i class="icon-font icon-arrow-angle"></i></button>' + '</div>';
@@ -358,10 +358,11 @@ function renderSiteBottomBanner(category, index) {
   if (siteItem) {
     var siteId = siteItem.id;
     var bannerType = siteItem.banner_type;
-    var bannerImage = siteItem.banner_image;
+    var bannerImage = cdnLink + siteItem.banner_image;
     var bannerVideo = siteItem.banner_video;
-    var bannerVideoPoster = siteItem.banner_video_poster;
-    var siteLogo = siteItem.logo ? siteItem.logo.src : '';
+    var bannerVideoPoster = cdnLink + siteItem.banner_video_poster;
+    var siteLogo = siteItem.logo;
+    siteLogo = cdnLink + siteLogo;
     var tagLIne = siteItem.tagline;
     var siteUrl = siteItem.url;
     var bannerRight = '';
@@ -377,7 +378,7 @@ function renderSiteBottomBanner(category, index) {
       bannerClass = 'list__specification--video';
 
       if (bannerVideo != '') {
-        bannerRight = '<div class="list__specification-right">' + '<div video-parent-js>' + '<!--video(preload="none" video-js)-->' + '<video preload="none" autoplay loop playsinline poster="' + bannerVideoPoster.url + '" video-js>' + '<source src="' + bannerVideo.url + '" type="' + bannerVideo.mime_type + '">' + '</video>' + '<a class="list__specification-play is-active" video-toggle-js><i class="icon-font icon-play-button" video-play-js></i></a>' + '<a class="list__specification-pause is-active" video-pause-js><i class="icon-font icon-pause"></i></a>' + '</div>' + '</div>';
+        bannerRight = '<div class="list__specification-right">' + '<div video-parent-js>' + '<!--video(preload="none" video-js)-->' + '<video preload="none" autoplay loop playsinline poster="' + bannerVideoPoster + '" video-js>' + '<source src="' + cdnLink + bannerVideo.url + '" type="' + bannerVideo.mime_type + '">' + '</video>' + '<a class="list__specification-play is-active" video-toggle-js><i class="icon-font icon-play-button" video-play-js></i></a>' + '<a class="list__specification-pause is-active" video-pause-js><i class="icon-font icon-pause"></i></a>' + '</div>' + '</div>';
       }
     }
 
@@ -386,7 +387,7 @@ function renderSiteBottomBanner(category, index) {
     homeData.categories[category].sites.map(function (moreSite, index) {
       if (moreSiteCount < 6 && moreSite.id != siteId) {
         var moreSiteLogo = moreSite.logo ? moreSite.logo.src : '';
-        moreSites += '<a class="list__box" list-box-more-js href="' + moreSite.link + '" data-id="' + moreSite.id + '" data-count="1" style="background-image: url(' + moreSite.banner_image + ')">' +
+        moreSites += '<a class="list__box" list-box-more-js href="' + moreSite.link + '" data-id="' + moreSite.id + '" data-count="1" style="background-image: url(' + cdnLink + moreSite.banner_image + ')">' +
         /*'<div class="list__box-overlay"></div>'+*/
         '<div class="list__box-border"></div><img class="list__box-logo" src="' + moreSiteLogo + '" alt=""/>' + '</a>';
         moreSiteCount++;
@@ -408,7 +409,8 @@ function renderSkipSiteBottomBanner(category, index) {
     var bannerImage = siteItem.banner_image;
     var bannerVideo = siteItem.banner_video;
     var bannerVideoPoster = siteItem.banner_video_poster;
-    var siteLogo = siteItem.logo ? siteItem.logo.src : '';
+    var siteLogo = siteItem.logo;
+    siteLogo = cdnLink + siteLogo;
     var tagLIne = siteItem.tagline;
     var siteExternalUrl = siteItem.url;
     var siteLink = siteItem.link;
@@ -430,7 +432,7 @@ function renderSkipSiteBottomBanner(category, index) {
       if (bannerVideo != '') {
         popupBanner.classList.remove('list__specification--banner');
         popupBanner.classList.add('list__specification--video');
-        bannerRight = '<div video-parent-js>' + '<video preload="none" autoplay loop playsinline poster="' + bannerVideoPoster.url + '" video-js>' + '<source src="' + bannerVideo.url + '" type="' + bannerVideo.mime_type + '">' + '</video>' + '<a class="list__specification-play is-active" video-toggle-js><i class="icon-font icon-play-button" video-play-js></i></a>' + '<a class="list__specification-pause is-active" video-pause-js><i class="icon-font icon-pause"></i></a>' + '</div>';
+        bannerRight = '<div video-parent-js>' + '<video preload="none" autoplay loop playsinline poster="' + bannerVideoPoster + '" video-js>' + '<source src="' + cdnLink + bannerVideo.url + '" type="' + bannerVideo.mime_type + '">' + '</video>' + '<a class="list__specification-play is-active" video-toggle-js><i class="icon-font icon-play-button" video-play-js></i></a>' + '<a class="list__specification-pause is-active" video-pause-js><i class="icon-font icon-pause"></i></a>' + '</div>';
       }
     }
 
@@ -439,7 +441,7 @@ function renderSkipSiteBottomBanner(category, index) {
     homeData.categories[category].sites.map(function (moreSite, index) {
       if (moreSiteCount < 6 && moreSite.id != siteId) {
         var moreSiteLogo = moreSite.logo ? moreSite.logo.src : '';
-        moreSites += '<a class="list__box" list-box-more-js href="' + moreSite.link + '" data-id="' + moreSite.id + '" data-count="1" style="background-image: url(' + moreSite.banner_image + ')">' + '<div class="list__box-border"></div><img class="list__box-logo" src="' + moreSiteLogo + '" alt=""/>' + '</a>';
+        moreSites += '<a class="list__box" list-box-more-js href="' + moreSite.link + '" data-id="' + moreSite.id + '" data-count="1" style="background-image: url(' + cdnLink + moreSite.banner_image + ')">' + '<div class="list__box-border"></div><img class="list__box-logo" src="' + moreSiteLogo + '" alt=""/>' + '</a>';
         moreSiteCount++;
       }
     });
@@ -497,7 +499,7 @@ function renderSiteCategory(categoryIndex) {
       siteLogo = '<img class="list__box-logo nolazy" src="' + siteLogo + '" alt=""/>';
     }
 
-    categorySites += '<div class="swiper-slide" data-index="' + index + '" data-siteid="' + site.id + '" data-init="0">' + '<div class="list__box" list-box-js  data-id="' + site.id + '" style="background-image: url(' + site.banner_image + ')">' +
+    categorySites += '<div class="swiper-slide" data-index="' + index + '" data-siteid="' + site.id + '" data-init="0">' + '<div class="list__box" list-box-js  data-id="' + site.id + '" style="background-image: url(' + cdnLink + site.banner_image + ')">' +
     /*'<div class="list__box-overlay"></div>'+*/
     '<div class="list__box-border"></div>' + '<a class="nav_link" href="' + site.link + '">' + //siteLogo+
     '</a>' + '<div class="list__box-details">' + '</div>' + '<button class="list__box-more" type="button"><i class="icon-font icon-arrow-angle"></i></button>' + '</div>' + '</div>';
@@ -832,6 +834,7 @@ var renderMobileMenu = function renderMobileMenu() {
 var letterData = [];
 var loggedUsername = '';
 var logoutUrl = '';
+var sortTimout;
 
 var initTheme = function initTheme() {
   var toggleSwitch = document.querySelector('#toggle-mode');
@@ -931,8 +934,14 @@ var renderSorting = function renderSorting() {
   sortcontainer.innerHTML = letterHtml; //onSortLetterClick(_ev.closest('[sort-letter-collapse-js]'));
 
   document.querySelectorAll('[sort-letter-collapse-js]').forEach(function (searchLetter) {
-    searchLetter.addEventListener('mouseenter', function (_ev) {
+    searchLetter.addEventListener('click', function (_ev) {
       onSortLetterClick(_ev.target);
+      /*if(sortTimout){
+      	clearTimeout(sortTimout);
+      }
+      	sortTimout = setTimeout(function (){
+      	onSortLetterClick(_ev.target);
+      }, 1000);*/
     });
   });
 };
@@ -1380,6 +1389,8 @@ function renderLeftAndRight(category, swiper) {
 
 var isMobileDevice = false;
 var homeData = [];
+var currentPopupBanner;
+var clonedPopupBanner;
 
 if (!Element.prototype.matches) {
   Element.prototype.matches = Element.prototype.msMatchesSelector || Element.prototype.webkitMatchesSelector;
@@ -1398,8 +1409,9 @@ if (!Element.prototype.closest) {
   };
 }
 
-var contentBase = '/wp-content/';
-var themeBase = '/wp-content/themes/mpg/';
+var cdnLink = '//mpgcdn.b-cdn.net';
+var contentBase = cdnLink + '/wp-content/';
+var themeBase = cdnLink + '/wp-content/themes/mpg/';
 var ajaxEndpoint = '/wp-content/themes/mpg/ajax-handler-wp.php';
 var ajaxAdminEndpoint = '/wp-admin/admin-ajax.php';
 /**
@@ -1663,11 +1675,10 @@ var ajaxAdminEndpoint = '/wp-admin/admin-ajax.php';
 
     var bannerWrapper = listBoxWrapper.querySelector('.list__specification-wrapper');
     var currentBannerSection = document.querySelector('.list__specification');
-
-    if (currentBannerSection && !isSkip) {
-      currentBannerSection.remove();
-    } //homeData.categories[category].sites[index];
-
+    /*if(currentBannerSection && !isSkip){
+    	currentBannerSection.remove();
+    }*/
+    //homeData.categories[category].sites[index];
 
     if (isSkip) {
       renderSkipSiteBottomBanner(swiperWrapper.dataset.category, swiperSlide.dataset.index);
@@ -1685,17 +1696,6 @@ var ajaxAdminEndpoint = '/wp-admin/admin-ajax.php';
 
     var jInner = null,
         lInner = document.querySelectorAll('[video-toggle-js]').length;
-    /*for(jInner = 0; jInner < lInner; jInner++) {
-    	document.querySelectorAll('[video-toggle-js]')[jInner].classList.remove('is-active');
-    	document.querySelectorAll('[video-pause-js]')[jInner].classList.remove('is-active');
-    		if(document.querySelectorAll('.list__specification video')[jInner].length){
-    		playPause(document.querySelectorAll('.list__specification video')[jInner]);
-    	}
-    }*/
-
-    /*for(let k = 0; k < document.querySelectorAll('.list__box').length; k++) {
-    	document.querySelectorAll('.list__box')[k].classList.remove('is-active');
-    }*/
 
     var _isActive = document.querySelector('.list__box.is-active');
 
@@ -1734,6 +1734,10 @@ var ajaxAdminEndpoint = '/wp-admin/admin-ajax.php';
           var transformVal = 'left: ' + _lineLeft + 'px';
           lineInd.setAttribute('style', transformVal + ';width: ' + lineWidth + 'px;'); //console.log('Opening banner in mobile');
         }
+        /*if(clonedPopupBanner && window.innerWidth < 1024){
+        	clonedPopupBanner.remove();
+        }*/
+
       }, 100);
     } else {
       _parentNode.classList.add('is-open');
@@ -1749,6 +1753,23 @@ var ajaxAdminEndpoint = '/wp-admin/admin-ajax.php';
       hideScrollContainer.forEach(function (val, idx) {
         val.classList.add("is-hideScroll");
       });
+    }
+  }
+
+  function cloneCurrentPopupBanner() {
+    currentPopupBanner = document.querySelector('.list__specification--banner.is-open');
+
+    if (currentPopupBanner) {
+      var popupBannerWrapper = currentPopupBanner.closest('.list__specification-wrapper');
+
+      if (popupBannerWrapper) {
+        clonedPopupBanner = currentPopupBanner.cloneNode(true);
+        clonedPopupBanner.setAttribute('class', 'list__snapshot is-snapshot');
+        /*clonedPopupBanner.classList.remove('is-open');
+        clonedPopupBanner.classList.add('is-snapshot');*/
+
+        popupBannerWrapper.insertBefore(clonedPopupBanner, currentPopupBanner);
+      }
     }
   }
 
@@ -2085,33 +2106,37 @@ var ajaxAdminEndpoint = '/wp-admin/admin-ajax.php';
     var elID = el.getAttribute('data-id'),
         elParent = el.closest('.list__box-wrapper');
     var currentCategory = el.dataset.category;
-    /*setTimeout(() => {
-    	el.closest('.list__specification').querySelector('.list__specification-close').click();
-    }, 0);*/
 
-    var nextSite = elParent.querySelector('.swiper-slide[data-siteid="' + elID + '"]').nextSibling;
-
-    if (nextSite) {
-      if (nextSite.querySelector('.list__box-more')) {
-        showBanner(nextSite.querySelector('.list__box-more'), true);
-      } else {
-        var nextIndex = nextSite.dataset.index;
-        var prevItem = renderHompageSiteSlide(currentCategory, nextIndex);
-
-        if (prevItem && nextSite) {
-          nextSite.innerHTML = prevItem;
-          showBanner(nextSite.querySelector('.list__box-more'), true);
-        }
-      }
-    } else {
-      var firstSite = elParent.querySelector('.swiper-slide').firstChild;
-
-      if (firstSite) {
-        if (firstSite.querySelector('.list__box-more')) {
-          showBanner(firstSite.querySelector('.list__box-more'), true);
-        }
-      }
+    if (window.innerWidth < 1024) {
+      cloneCurrentPopupBanner();
     }
+
+    el.closest('.list__specification:not(.is_snapshot)').querySelector('.list__specification-close').click();
+    setTimeout(function () {
+      var nextSite = elParent.querySelector('.swiper-slide[data-siteid="' + elID + '"]').nextSibling;
+
+      if (nextSite) {
+        if (nextSite.querySelector('.list__box-more')) {
+          showBanner(nextSite.querySelector('.list__box-more'), true);
+        } else {
+          var nextIndex = nextSite.dataset.index;
+          var prevItem = renderHompageSiteSlide(currentCategory, nextIndex);
+
+          if (prevItem && nextSite) {
+            nextSite.innerHTML = prevItem;
+            showBanner(nextSite.querySelector('.list__box-more'), true);
+          }
+        }
+      } else {
+        var firstSite = elParent.querySelector('.swiper-slide').firstChild;
+
+        if (firstSite) {
+          if (firstSite.querySelector('.list__box-more')) {
+            showBanner(firstSite.querySelector('.list__box-more'), true);
+          }
+        }
+      }
+    }, 100);
   }
 
   var toggleMoreBox = function toggleMoreBox() {

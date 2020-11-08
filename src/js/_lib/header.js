@@ -1,6 +1,7 @@
 let letterData = [];
 let loggedUsername='';
 let logoutUrl='';
+let sortTimout;
 
 const initTheme = () => {
 	let toggleSwitch = document.querySelector('#toggle-mode');
@@ -115,8 +116,17 @@ const renderSorting = () => {
 	//onSortLetterClick(_ev.closest('[sort-letter-collapse-js]'));
 
 	document.querySelectorAll('[sort-letter-collapse-js]').forEach(function (searchLetter){
-		searchLetter.addEventListener('mouseenter', function (_ev) {
+		searchLetter.addEventListener('click', function (_ev) {
+
 			onSortLetterClick(_ev.target);
+
+			/*if(sortTimout){
+				clearTimeout(sortTimout);
+			}
+
+			sortTimout = setTimeout(function (){
+				onSortLetterClick(_ev.target);
+			}, 1000);*/
 		});
 	});
 
