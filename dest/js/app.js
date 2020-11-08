@@ -358,11 +358,10 @@ function renderSiteBottomBanner(category, index) {
   if (siteItem) {
     var siteId = siteItem.id;
     var bannerType = siteItem.banner_type;
-    var bannerImage = cdnLink + siteItem.banner_image;
+    var bannerImage = siteItem.banner_image;
     var bannerVideo = siteItem.banner_video;
-    var bannerVideoPoster = cdnLink + siteItem.banner_video_poster;
+    var bannerVideoPoster = siteItem.banner_video_poster;
     var siteLogo = siteItem.logo;
-    siteLogo = cdnLink + siteLogo;
     var tagLIne = siteItem.tagline;
     var siteUrl = siteItem.url;
     var bannerRight = '';
@@ -378,7 +377,7 @@ function renderSiteBottomBanner(category, index) {
       bannerClass = 'list__specification--video';
 
       if (bannerVideo != '') {
-        bannerRight = '<div class="list__specification-right">' + '<div video-parent-js>' + '<!--video(preload="none" video-js)-->' + '<video preload="none" autoplay loop playsinline poster="' + bannerVideoPoster + '" video-js>' + '<source src="' + cdnLink + bannerVideo.url + '" type="' + bannerVideo.mime_type + '">' + '</video>' + '<a class="list__specification-play is-active" video-toggle-js><i class="icon-font icon-play-button" video-play-js></i></a>' + '<a class="list__specification-pause is-active" video-pause-js><i class="icon-font icon-pause"></i></a>' + '</div>' + '</div>';
+        bannerRight = '<div class="list__specification-right">' + '<div video-parent-js>' + '<!--video(preload="none" video-js)-->' + '<video preload="none" autoplay loop playsinline poster="' + bannerVideoPoster + '" video-js>' + '<source src="' + bannerVideo + '" type="video/mp4">' + '</video>' + '<a class="list__specification-play is-active" video-toggle-js><i class="icon-font icon-play-button" video-play-js></i></a>' + '<a class="list__specification-pause is-active" video-pause-js><i class="icon-font icon-pause"></i></a>' + '</div>' + '</div>';
       }
     }
 
@@ -410,7 +409,6 @@ function renderSkipSiteBottomBanner(category, index) {
     var bannerVideo = siteItem.banner_video;
     var bannerVideoPoster = siteItem.banner_video_poster;
     var siteLogo = siteItem.logo;
-    siteLogo = cdnLink + siteLogo;
     var tagLIne = siteItem.tagline;
     var siteExternalUrl = siteItem.url;
     var siteLink = siteItem.link;
@@ -432,7 +430,7 @@ function renderSkipSiteBottomBanner(category, index) {
       if (bannerVideo != '') {
         popupBanner.classList.remove('list__specification--banner');
         popupBanner.classList.add('list__specification--video');
-        bannerRight = '<div video-parent-js>' + '<video preload="none" autoplay loop playsinline poster="' + bannerVideoPoster + '" video-js>' + '<source src="' + cdnLink + bannerVideo.url + '" type="' + bannerVideo.mime_type + '">' + '</video>' + '<a class="list__specification-play is-active" video-toggle-js><i class="icon-font icon-play-button" video-play-js></i></a>' + '<a class="list__specification-pause is-active" video-pause-js><i class="icon-font icon-pause"></i></a>' + '</div>';
+        bannerRight = '<div video-parent-js>' + '<video preload="none" autoplay loop playsinline poster="' + bannerVideoPoster + '" video-js>' + '<source src="' + bannerVideo + '" type="video/mp4">' + '</video>' + '<a class="list__specification-play is-active" video-toggle-js><i class="icon-font icon-play-button" video-play-js></i></a>' + '<a class="list__specification-pause is-active" video-pause-js><i class="icon-font icon-pause"></i></a>' + '</div>';
       }
     }
 

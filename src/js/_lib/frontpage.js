@@ -152,11 +152,10 @@ function renderSiteBottomBanner(category, index){
 	if(siteItem){
 		let siteId = siteItem.id;
 		let bannerType = siteItem.banner_type;
-		let bannerImage = cdnLink + siteItem.banner_image;
+		let bannerImage = siteItem.banner_image;
 		let bannerVideo = siteItem.banner_video;
-		let bannerVideoPoster = cdnLink + siteItem.banner_video_poster;
+		let bannerVideoPoster = siteItem.banner_video_poster;
 		let siteLogo = siteItem.logo;
-		siteLogo = cdnLink +siteLogo;
 
 		let tagLIne = siteItem.tagline;
 		let siteUrl = siteItem.url;
@@ -180,7 +179,7 @@ function renderSiteBottomBanner(category, index){
 					'<div video-parent-js>'+
 					'<!--video(preload="none" video-js)-->'+
 					'<video preload="none" autoplay loop playsinline poster="'+bannerVideoPoster+'" video-js>'+
-					'<source src="'+cdnLink + bannerVideo.url+'" type="'+bannerVideo.mime_type+'">'+
+					'<source src="'+bannerVideo+'" type="video/mp4">'+
 					'</video>' +
 					'<a class="list__specification-play is-active" video-toggle-js><i class="icon-font icon-play-button" video-play-js></i></a>' +
 					'<a class="list__specification-pause is-active" video-pause-js><i class="icon-font icon-pause"></i></a>'+
@@ -272,7 +271,6 @@ function renderSkipSiteBottomBanner(category, index){
 		let bannerVideo = siteItem.banner_video;
 		let bannerVideoPoster = siteItem.banner_video_poster;
 		let siteLogo = siteItem.logo;
-		siteLogo = cdnLink + siteLogo;
 
 			let tagLIne = siteItem.tagline;
 		let siteExternalUrl = siteItem.url;
@@ -301,7 +299,7 @@ function renderSkipSiteBottomBanner(category, index){
 
 				bannerRight = '<div video-parent-js>'+
 					'<video preload="none" autoplay loop playsinline poster="'+bannerVideoPoster+'" video-js>'+
-					'<source src="'+cdnLink + bannerVideo.url+'" type="'+bannerVideo.mime_type+'">'+
+					'<source src="'+bannerVideo+'" type="video/mp4">'+
 					'</video>' +
 					'<a class="list__specification-play is-active" video-toggle-js><i class="icon-font icon-play-button" video-play-js></i></a>' +
 					'<a class="list__specification-pause is-active" video-pause-js><i class="icon-font icon-pause"></i></a>'+
