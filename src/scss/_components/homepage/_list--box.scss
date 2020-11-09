@@ -125,24 +125,28 @@
 		overflow: hidden;
 		display: flex;
 		flex-direction: column;
+		padding-bottom: 30px;
+		margin-bottom: 0;
 		@include transition(opacity);
 		@include transition(padding-bottom);
 		@include adaptive(767) {
 			overflow: unset;
+			padding-bottom: 10px;
 		}
 
 		&.is-open {
-			padding-bottom: 30px;
+			padding-bottom: 0;
+			margin-bottom: 30px;
 			@include transition(padding-bottom);
 			@include adaptive(767) {
-				padding-bottom: 0;
+				margin-bottom: 0;
 			}
 
 			.list__box-body {
 				padding-bottom: 0;
 				@include transition(padding-bottom);
 				@include adaptive(767) {
-					padding-bottom: 10px;
+					/*padding-bottom: 10px;*/
 				}
 			}
 		}
@@ -209,11 +213,11 @@
 	&-body {
 		z-index: 100;
 		position: relative;
-		padding-bottom: 30px;
+		/*padding-bottom: 30px;*/
 		@include transition(transform, padding-bottom);
 		@include adaptive(767) {
 			overflow: hidden;
-			padding-bottom: 10px;
+			padding-bottom: 0;
 		}
 
 		&.is-transition {

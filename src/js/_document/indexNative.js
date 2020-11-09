@@ -150,6 +150,8 @@ const ajaxAdminEndpoint = '/wp-admin/admin-ajax.php';
 				//onSortLetterClick(_ev.closest('[sort-letter-collapse-js]'));
 			}else if(_ev.closest('[collapse-toggle-js]')){
 				onSortToggle(_ev.closest('[collapse-toggle-js]'));
+			}else if(_ev.classList.contains('list__box-details')){
+				onSiteBoxHoverClick(_ev);
 			}else if(_ev.parentNode && !_ev.closest('[search-parent-js]')){
 
 				if(!isMobileOrTablet){
@@ -188,6 +190,13 @@ const ajaxAdminEndpoint = '/wp-admin/admin-ajax.php';
 		}, false);
 	};
 
+	function onSiteBoxHoverClick(_el){
+		let siteBoxLink = _el.previousSibling;
+
+		if(siteBoxLink && siteBoxLink.tagName=='A'){
+			siteBoxLink.click();
+		}
+	}
 
 	const viewFavoritesToggle = () => {
 		const _btn = document.querySelector('[view-favorites-toggle-js]'),

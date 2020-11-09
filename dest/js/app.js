@@ -1522,6 +1522,8 @@ var ajaxAdminEndpoint = '/wp-admin/admin-ajax.php';
       } else if (_ev.closest('[sort-letter-collapse-js]')) {//onSortLetterClick(_ev.closest('[sort-letter-collapse-js]'));
       } else if (_ev.closest('[collapse-toggle-js]')) {
         onSortToggle(_ev.closest('[collapse-toggle-js]'));
+      } else if (_ev.classList.contains('list__box-details')) {
+        onSiteBoxHoverClick(_ev);
       } else if (_ev.parentNode && !_ev.closest('[search-parent-js]')) {
         if (!isMobileOrTablet) {
           document.querySelector('[search-js]').value = '';
@@ -1555,6 +1557,14 @@ var ajaxAdminEndpoint = '/wp-admin/admin-ajax.php';
       }
     }, false);
   };
+
+  function onSiteBoxHoverClick(_el) {
+    var siteBoxLink = _el.previousSibling;
+
+    if (siteBoxLink && siteBoxLink.tagName == 'A') {
+      siteBoxLink.click();
+    }
+  }
 
   var viewFavoritesToggle = function viewFavoritesToggle() {
     var _btn = document.querySelector('[view-favorites-toggle-js]'),

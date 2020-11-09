@@ -138,6 +138,13 @@
 		}
 		span{
 			color: #636471;
+
+			@include adaptive(767) {
+				&:after {
+					display: none;
+				}
+			}
 		}
+
 	}
 }
