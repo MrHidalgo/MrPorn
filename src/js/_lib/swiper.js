@@ -75,11 +75,7 @@ const initSwiper = () => {
 			`.swiper-container[data-id="${sliderName}"]`,
 			`.list__box-wrapper[data-name='${sliderWrapper}']`
 		);
-
-		console.log('init swiper '+`.swiper-container[data-id="${sliderName}"]`+ ' ---- '+`.list__box-wrapper[data-name='${sliderWrapper}']`);
 	}
-
-	//var mySwiper = document.querySelector('.swiper-container[data-category="18"]').swiper;
 };
 
 function fixPrevSlides(category, swiper){

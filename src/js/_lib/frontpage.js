@@ -220,7 +220,7 @@ function renderSiteBottomBanner(category, index){
 			'<div><a class="list__specification-visit nav_link" href="'+siteUrl+'" target="_blank">VISIT WEBSITE</a></div>'+
 			'<div><a class="list__specification-read nav_link" href="'+siteItem.link+'">READ REVIEW</a></div>'+
 			'<div class="list__specification-action-desc">'+
-			'<p>'+tagLIne+' <a href="'+siteUrl+'">READ MORE</a></p>'+
+			'<p>'+tagLIne+'</p>'+
 			'</div>'+
 			'<div class="list__specification-action-skip"><a class="list__specification-circle list__specification-skip" data-id="'+siteId+'" data-category="'+category+'" data-index="'+index+'" spec-skip-js><i class="icon-font icon-point"></i><span>Skip</span></a></div>'+
 			'<div class="list__specification-action-circle">' +
@@ -325,7 +325,7 @@ function renderSkipSiteBottomBanner(category, index){
 		document.querySelector('.list__specification .list__specification-right').innerHTML = bannerRight;
 		document.querySelector('.list__specification .list__specification-logo').setAttribute('src', '');
 		document.querySelector('.list__specification .list__specification-logo').setAttribute('src', siteLogo);
-		document.querySelector('.list__specification .list__specification-action-desc').innerHTML ='<p>'+tagLIne+' <a href="'+siteLink+'">READ MORE</a></p>';
+		//document.querySelector('.list__specification .list__specification-action-desc').innerHTML ='<p>'+tagLIne+' <a href="'+siteLink+'">READ MORE</a></p>';
 		document.querySelector('.list__specification .list__specification-visit').setAttribute('href', siteExternalUrl);
 		document.querySelector('.list__specification').setAttribute('href', siteLink);
 
@@ -415,7 +415,7 @@ function renderSiteCategory(categoryIndex){
 												'<a href="'+categoryData.link+'">'+categoryData.title+'</a><span>'+categoryData.tagline+'</span>'+
 											'</div>'+
 										'</div>'+
-                    '<a class="list__btn" href="'+categoryData.link+'">SEE&nbsp;<span>'+categoryData.count+' MORE</span><i class="icon-font icon-arrow-angle"></i></a>'+
+                    '<a class="list__btn nav_link" href="'+categoryData.link+'">SEE&nbsp;<span>'+categoryData.count+' MORE</span><i class="icon-font icon-arrow-angle"></i></a>'+
                   '</div>'+
                   '<div class="list__box-line">'+
                     '<u list-line-ind-js></u><span class="list_green_line" list-line-js></span>'+
@@ -463,116 +463,32 @@ function renderAllOtherCategories(){
 	boxHover();
 }
 
+let tOut = null,
+	hoverBool = false;
+let previousHoverBox = null;
+
 const boxHover = () => {
 	const swiperSlides = document.querySelectorAll('.swiper-slide[data-init="0"]'),
 		listBoxBody = document.querySelectorAll('.list__box-body');
 
-	let tOut = null,
-		hoverBool = false;
 
-	let previousHoverBox = null;
+
+
 
 	for(let i = 0, len = swiperSlides.length; i < len; i++) {
-		swiperSlides[i].addEventListener('mouseleave', function(ev) {
-			if(window.innerWidth >= 1280) {
-				const el = ev.currentTarget,
-					elParent = el.closest('[list-parent-js]'),
-					lineInd = elParent.querySelector('[list-line-js]');
 
-				let transformVal = '';
-
-				if(lineInd.getAttribute("style")) {
-					let val = lineInd.getAttribute("style");
+		swiperSlides[i].removeEventListener('mouseleave', onSlideLeave);
+		swiperSlides[i].addEventListener('mouseleave', onSlideLeave, false);
 
 
-					if(val.indexOf(';') === -1) {
-						transformVal = val;
-					} else {
-						transformVal = val.substring(0, val.indexOf(';'));
-					}
-				}
-
-				//clearTimeout(tOut);
-				el.classList.remove('is-hover');
+		swiperSlides[i].removeEventListener('mouseenter', onSlideEnter);
+		swiperSlides[i].addEventListener('mouseenter', onSlideEnter, false);
 
 
-				lineInd.setAttribute('style', transformVal + ';width: 64px');
-			}
-		}, false);
-
-		swiperSlides[i].addEventListener('mouseenter', function(ev) {
-			if(window.innerWidth >= 1280) {
-				const el = ev.currentTarget,
-					elParent = el.closest('[list-parent-js]'),
-					elBox = el.querySelector('.list__box'),
-					lineInd = elParent.querySelector('[list-line-js]');
-
-
-				const swiperParent  = el.parentNode;
-				var slideIndex = el.dataset.index;
-				var slideCategory = swiperParent.dataset.category;
-
-
-				var slideHoverContainer = el.querySelector('.list__box-details');
-				if(slideHoverContainer && slideHoverContainer.innerHTML.trim()==''){
-					var slideHoverContent = renderSiteHoverContent(slideCategory, slideIndex);
-					if(slideHoverContent){
-						slideHoverContainer.innerHTML = slideHoverContent;
-					}
-				}
-
-				let transformVal = '';
-
-				if(lineInd.getAttribute("style")) {
-					let val = lineInd.getAttribute("style");
-
-
-					if(val.indexOf(';') === -1) {
-						transformVal = val;
-					} else {
-						transformVal = val.substring(0, val.indexOf(';'));
-					}
-				}
-
-
-
-				if(hoverBool) {
-					el.classList.add('is-hover');
-
-					var hoverBounds = 0;
-					var _lineLeft = 0;
-
-
-
-					if(previousHoverBox == el.previousSibling){
-						hoverBounds = elBox.getBoundingClientRect();
-						_lineLeft = hoverBounds.left - elParent.getBoundingClientRect().left-120;
-						transformVal = 'left: '+_lineLeft+'px';
-						lineInd.setAttribute('style', transformVal + ';width: 189px');
-
-					}else{
-						hoverBounds = elBox.getBoundingClientRect();
-						_lineLeft = hoverBounds.left - elParent.getBoundingClientRect().left;
-						transformVal = 'left: '+_lineLeft+'px';
-
-						lineInd.setAttribute('style', transformVal + ';width: 189px');
-					}
-
-
-				} else {
-					hoverBool = true;
-					el.classList.add('is-hover');
-
-					var hoverBounds = elBox.getBoundingClientRect();
-					var _lineLeft = hoverBounds.left - elParent.getBoundingClientRect().left;
-					transformVal = 'left: '+_lineLeft+'px';
-
-					lineInd.setAttribute('style', transformVal + ';width: 189px');
-				}
-
-				previousHoverBox = el;
-			}
-		}, false);
+		if(swiperSlides[i].querySelector('.list__box-more')){
+			swiperSlides[i].querySelector('.list__box-more').removeEventListener('mouseenter', onShowBannerEnter);
+			swiperSlides[i].querySelector('.list__box-more').addEventListener('mouseenter', onShowBannerEnter, false);
+		}
 
 		swiperSlides[i].setAttribute('data-init', '1');
 
@@ -593,6 +509,206 @@ const boxHover = () => {
 		}, false);
 	}
 };
+
+function onSlideLeave(ev){
+	if(window.innerWidth >= 1280) {
+		const el = ev.currentTarget,
+			elParent = el.closest('[list-parent-js]'),
+			lineInd = elParent.querySelector('[list-line-js]');
+
+		let transformVal = '';
+
+		if(lineInd.getAttribute("style")) {
+			let val = lineInd.getAttribute("style");
+
+
+			if(val.indexOf(';') === -1) {
+				transformVal = val;
+			} else {
+				transformVal = val.substring(0, val.indexOf(';'));
+			}
+		}
+
+		//clearTimeout(tOut);
+		el.classList.remove('is-hover');
+
+
+		lineInd.setAttribute('style', transformVal + ';width: 64px');
+	}
+}
+
+function onSlideEnter(ev){
+	if(window.innerWidth >= 1280) {
+		const el = ev.currentTarget,
+			elParent = el.closest('[list-parent-js]'),
+			elBox = el.querySelector('.list__box'),
+			lineInd = elParent.querySelector('[list-line-js]');
+
+
+		const swiperParent  = el.parentNode;
+		var slideIndex = el.dataset.index;
+		var slideCategory = swiperParent.dataset.category;
+
+
+		var slideHoverContainer = el.querySelector('.list__box-details');
+		if(slideHoverContainer && slideHoverContainer.innerHTML.trim()==''){
+			var slideHoverContent = renderSiteHoverContent(slideCategory, slideIndex);
+			if(slideHoverContent){
+				slideHoverContainer.innerHTML = slideHoverContent;
+			}
+		}
+
+		let transformVal = '';
+
+		if(lineInd.getAttribute("style")) {
+			let val = lineInd.getAttribute("style");
+
+
+			if(val.indexOf(';') === -1) {
+				transformVal = val;
+			} else {
+				transformVal = val.substring(0, val.indexOf(';'));
+			}
+		}
+
+
+
+		if(hoverBool) {
+			el.classList.add('is-hover');
+
+			var hoverBounds = 0;
+			var _lineLeft = 0;
+
+
+
+			if(previousHoverBox == el.previousSibling){
+				hoverBounds = elBox.getBoundingClientRect();
+				_lineLeft = hoverBounds.left - elParent.getBoundingClientRect().left-120;
+				transformVal = 'left: '+_lineLeft+'px';
+				lineInd.setAttribute('style', transformVal + ';width: 189px');
+
+			}else{
+				hoverBounds = elBox.getBoundingClientRect();
+				_lineLeft = hoverBounds.left - elParent.getBoundingClientRect().left;
+				transformVal = 'left: '+_lineLeft+'px';
+
+				lineInd.setAttribute('style', transformVal + ';width: 189px');
+			}
+
+
+		} else {
+			hoverBool = true;
+			el.classList.add('is-hover');
+
+			var hoverBounds = elBox.getBoundingClientRect();
+			var _lineLeft = hoverBounds.left - elParent.getBoundingClientRect().left;
+			transformVal = 'left: '+_lineLeft+'px';
+
+			lineInd.setAttribute('style', transformVal + ';width: 189px');
+		}
+
+		previousHoverBox = el;
+	}
+}
+
+function onShowBannerEnter(__ev){
+	let moreBox = __ev.target;
+	let siteList = moreBox.closest('.list__box-wrapper');
+	if(siteList.classList.contains('is-open')){
+		showBanner(__ev.target);
+	}
+}
+
+function showBanner(_el, isSkip = false){
+
+	var _boxParent = _el.closest('.list__box'),
+		_boxID = _boxParent.getAttribute('data-id'),
+		_parentNode = _el.closest('.list__box-wrapper');
+
+	var swiperSlide = _el.closest('.swiper-slide');
+	var swiperWrapper = _el.closest('.swiper-wrapper');
+	var listBoxWrapper = _el.closest('.list__box-wrapper');
+	var bannerWrapper = listBoxWrapper.querySelector('.list__specification-wrapper');
+
+	var currentBannerSection = document.querySelector('.list__specification');
+	if(currentBannerSection && !isSkip){
+		currentBannerSection.remove();
+	}
+
+
+	//homeData.categories[category].sites[index];
+
+	if(isSkip){
+		renderSkipSiteBottomBanner(swiperWrapper.dataset.category, swiperSlide.dataset.index);
+	}else{
+		var bottomBanner = renderSiteBottomBanner(swiperWrapper.dataset.category, swiperSlide.dataset.index);
+		if(bottomBanner){
+			bannerWrapper.innerHTML = bottomBanner;
+		}
+	}
+
+
+	const hideScrollContainer = document.querySelectorAll("html, body"),
+		//_specificationBox = _parentNode.querySelector('.list__specification[data-id="' + _boxID + '"]');
+		_specificationBox = _parentNode.querySelector('.list__specification');
+
+	let jInner = null,
+		lInner = document.querySelectorAll('[video-toggle-js]').length;
+
+
+	var _isActive = document.querySelector('.list__box.is-active')
+	if(_isActive){
+		_isActive.classList.remove('is-active');
+	}
+
+
+	var _isOpen = document.querySelector('.list__specification.is-open')
+	if(_isOpen && !isSkip){
+		_isOpen.classList.remove('is-open');
+	}
+
+	if(window.innerWidth < 1024) {
+
+		setTimeout(() => {
+			_parentNode.classList.add('is-open');
+			_boxParent.classList.add('is-active');
+
+			if(_specificationBox){
+				_specificationBox.classList.add('is-open');
+
+
+
+				var lineInd = listBoxWrapper.querySelector('[list-line-js]');
+
+				var hoverBounds = _boxParent.getBoundingClientRect();
+				var lineWidth = (window.innerWidth < 767)?34:19;
+				//var _lineLeft = hoverBounds.left - listBoxWrapper.getBoundingClientRect().left -(hoverBounds.width/2);
+				var _lineLeft = hoverBounds.left + (hoverBounds.width/2) - (lineWidth/2);
+				_lineLeft = hoverBounds.left - 18;
+				var transformVal = 'left: '+_lineLeft+'px';
+
+				lineInd.setAttribute('style', transformVal + ';width: '+lineWidth+'px;');
+
+				//console.log('Opening banner in mobile');
+			}
+
+		}, 100);
+	} else {
+		_parentNode.classList.add('is-open');
+		_boxParent.classList.add('is-active');
+
+		if(_specificationBox){
+			_specificationBox.classList.add('is-open');
+		}
+	}
+
+
+	if(window.innerWidth <= 1023) {
+		hideScrollContainer.forEach((val, idx) => {
+			val.classList.add("is-hideScroll");
+		});
+	}
+}
 
 function addToFavourites(siteId){
 	postRequest(ajaxEndpoint, {
