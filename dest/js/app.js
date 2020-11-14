@@ -1577,7 +1577,7 @@ var ajaxAdminEndpoint = '/wp-admin/admin-ajax.php';
 
     if (wY > expectedY) {
       if (!document.querySelector('[category_list_' + (listBoxes.length + 1) + ']')) {
-        if (homeData.categories_indexes) {
+        if (homeData && homeData.categories_indexes) {
           var catId = homeData.categories_indexes[listBoxes.length];
           var categoryHtml = renderSiteCategory(listBoxes.length);
           catListContainer.insertAdjacentHTML('beforeend', categoryHtml);

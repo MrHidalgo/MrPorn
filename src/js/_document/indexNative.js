@@ -86,7 +86,7 @@ const ajaxAdminEndpoint = '/wp-admin/admin-ajax.php';
 		if(wY > expectedY){
 			if(!document.querySelector('[category_list_'+(listBoxes.length+1)+']')){
 
-				if(homeData.categories_indexes){
+				if(homeData && homeData.categories_indexes){
 					let catId = homeData.categories_indexes[listBoxes.length];
 
 					let categoryHtml = renderSiteCategory(listBoxes.length);
