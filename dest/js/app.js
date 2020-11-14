@@ -1016,6 +1016,14 @@ var renderFavourites = function renderFavourites() {
           if (favLink) {
             favLink.classList.add('is-active');
           }
+
+          if (document.querySelector('.list__box-favorites[data-id="' + fav.id + '"]')) {
+            document.querySelector('.list__box-favorites[data-id="' + fav.id + '"]').classList.add('is-active');
+          }
+
+          if (document.querySelector('.list__specification-circle[data-id="' + fav.id + '"]')) {
+            document.querySelector('.list__specification-circle[data-id="' + fav.id + '"]').classList.add('is-active');
+          }
         });
         favouritesDropDown.innerHTML = favouritesHtml;
       }
