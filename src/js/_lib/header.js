@@ -2,6 +2,7 @@ let letterData = [];
 let loggedUsername='';
 let logoutUrl='';
 let sortTimout;
+let favouriteList = [];
 
 const initTheme = () => {
 	let toggleSwitch = document.querySelector('#toggle-mode');
@@ -57,6 +58,11 @@ const renderFavourites = () => {
 
 			if(res.fav_list){
 				res.fav_list.map(function (fav, index) {
+					if(!favouriteList.includes(fav.id)){
+						favouriteList.push(fav.id);
+					}
+
+
 					favouritesHtml += '<div class="header__view-link" >' +
 						'<div><span>'+(index+1)+'.</span></div>' +
 						'<div><img src="'+fav.favicon+'"/><p><a href="'+fav.permalink+'">'+fav.title+'</a></p></div>' +
@@ -80,8 +86,26 @@ const renderFavourites = () => {
 				favouritesDropDown.innerHTML = favouritesHtml;
 			}
 		}
+
+		markFavourites();
 	});
 
+}
+
+const markFavourites = () =>{
+	favouriteList.map(fav=>{
+		let favLink = document.querySelector('[data-id="'+fav+'"] [favorites-toggle-js]');
+		if(favLink){
+			favLink.classList.add('is-active');
+		}
+
+		if(document.querySelector('.list__box-favorites[data-id="'+fav+'"]')){
+			document.querySelector('.list__box-favorites[data-id="'+fav+'"]').classList.add('is-active');
+		}
+		if(document.querySelector('.list__specification-favorites[data-id="'+fav+'"]')){
+			document.querySelector('.list__specification-favorites[data-id="'+fav+'"]').classList.add('is-active');
+		}
+	})
 }
 
 const letterSearch = () => {

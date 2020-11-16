@@ -9,6 +9,7 @@ let currentPopupBanner;
 let clonedPopupBanner;
 let clonedPopupTimeout;
 
+
 if (!Element.prototype.matches) {
 	Element.prototype.matches = Element.prototype.msMatchesSelector ||
 		Element.prototype.webkitMatchesSelector;
@@ -605,11 +606,13 @@ const ajaxAdminEndpoint = '/wp-admin/admin-ajax.php';
 			}
 		}
 		document.querySelector('body').ontouchmove = function(){
-			var mainScroll = -document.querySelector(".main-outer").getBoundingClientRect().top;
-			if (mainScroll > 200) {
-				show(goTop);
-			} else {
-				hide(goTop);
+			if(document.querySelector(".main-outer")){
+				var mainScroll = -document.querySelector(".main-outer").getBoundingClientRect().top;
+				if (mainScroll > 200) {
+					show(goTop);
+				} else {
+					hide(goTop);
+				}
 			}
 		}
 		goTop.onclick = function(event) {

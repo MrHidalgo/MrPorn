@@ -582,17 +582,21 @@ function onSlideEnter(ev){
 
 
 			if(previousHoverBox == el.previousSibling){
-				hoverBounds = elBox.getBoundingClientRect();
-				_lineLeft = hoverBounds.left - elParent.getBoundingClientRect().left-120;
-				transformVal = 'left: '+_lineLeft+'px';
-				lineInd.setAttribute('style', transformVal + ';width: 189px');
-
+				if(elBox){
+					hoverBounds = elBox.getBoundingClientRect();
+					_lineLeft = hoverBounds.left - elParent.getBoundingClientRect().left-120;
+					transformVal = 'left: '+_lineLeft+'px';
+					lineInd.setAttribute('style', transformVal + ';width: 189px');
+				}
 			}else{
-				hoverBounds = elBox.getBoundingClientRect();
-				_lineLeft = hoverBounds.left - elParent.getBoundingClientRect().left;
-				transformVal = 'left: '+_lineLeft+'px';
+				if(elBox){
+					hoverBounds = elBox.getBoundingClientRect();
+					_lineLeft = hoverBounds.left - elParent.getBoundingClientRect().left;
+					transformVal = 'left: '+_lineLeft+'px';
 
-				lineInd.setAttribute('style', transformVal + ';width: 189px');
+					lineInd.setAttribute('style', transformVal + ';width: 189px');
+				}
+
 			}
 
 
@@ -609,14 +613,18 @@ function onSlideEnter(ev){
 
 		previousHoverBox = el;
 	}
+
+	markFavourites();
 }
 
 function onShowBannerEnter(__ev){
-	let moreBox = __ev.target;
+	/*let moreBox = __ev.target;
 	let siteList = moreBox.closest('.list__box-wrapper');
 	if(siteList.classList.contains('is-open')){
 		showBanner(__ev.target);
-	}
+	}*/
+
+	showBanner(__ev.target);
 }
 
 function showBanner(_el, isSkip = false){
@@ -708,6 +716,8 @@ function showBanner(_el, isSkip = false){
 			val.classList.add("is-hideScroll");
 		});
 	}
+
+	markFavourites();
 }
 
 function addToFavourites(siteId){

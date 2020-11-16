@@ -631,15 +631,19 @@ function onSlideEnter(ev) {
       var _lineLeft = 0;
 
       if (previousHoverBox == el.previousSibling) {
-        hoverBounds = elBox.getBoundingClientRect();
-        _lineLeft = hoverBounds.left - elParent.getBoundingClientRect().left - 120;
-        transformVal = 'left: ' + _lineLeft + 'px';
-        lineInd.setAttribute('style', transformVal + ';width: 189px');
+        if (elBox) {
+          hoverBounds = elBox.getBoundingClientRect();
+          _lineLeft = hoverBounds.left - elParent.getBoundingClientRect().left - 120;
+          transformVal = 'left: ' + _lineLeft + 'px';
+          lineInd.setAttribute('style', transformVal + ';width: 189px');
+        }
       } else {
-        hoverBounds = elBox.getBoundingClientRect();
-        _lineLeft = hoverBounds.left - elParent.getBoundingClientRect().left;
-        transformVal = 'left: ' + _lineLeft + 'px';
-        lineInd.setAttribute('style', transformVal + ';width: 189px');
+        if (elBox) {
+          hoverBounds = elBox.getBoundingClientRect();
+          _lineLeft = hoverBounds.left - elParent.getBoundingClientRect().left;
+          transformVal = 'left: ' + _lineLeft + 'px';
+          lineInd.setAttribute('style', transformVal + ';width: 189px');
+        }
       }
     } else {
       hoverBool = true;
@@ -654,15 +658,17 @@ function onSlideEnter(ev) {
 
     previousHoverBox = el;
   }
+
+  markFavourites();
 }
 
 function onShowBannerEnter(__ev) {
-  var moreBox = __ev.target;
-  var siteList = moreBox.closest('.list__box-wrapper');
-
-  if (siteList.classList.contains('is-open')) {
-    showBanner(__ev.target);
-  }
+  /*let moreBox = __ev.target;
+  let siteList = moreBox.closest('.list__box-wrapper');
+  if(siteList.classList.contains('is-open')){
+  	showBanner(__ev.target);
+  }*/
+  showBanner(__ev.target);
 }
 
 function showBanner(_el) {
@@ -752,6 +758,8 @@ function showBanner(_el) {
       val.classList.add("is-hideScroll");
     });
   }
+
+  markFavourites();
 }
 
 function addToFavourites(siteId) {
@@ -955,6 +963,7 @@ var letterData = [];
 var loggedUsername = '';
 var logoutUrl = '';
 var sortTimout;
+var favouriteList = [];
 
 var initTheme = function initTheme() {
   var toggleSwitch = document.querySelector('#toggle-mode');
@@ -1010,6 +1019,10 @@ var renderFavourites = function renderFavourites() {
 
       if (res.fav_list) {
         res.fav_list.map(function (fav, index) {
+          if (!favouriteList.includes(fav.id)) {
+            favouriteList.push(fav.id);
+          }
+
           favouritesHtml += '<div class="header__view-link" >' + '<div><span>' + (index + 1) + '.</span></div>' + '<div><img src="' + fav.favicon + '"/><p><a href="' + fav.permalink + '">' + fav.title + '</a></p></div>' + '<div><button type="button" data-id="' + fav.id + '" un-favorites-js><i class="icon-font icon-delete"></i></button><button type="button"><i class="icon-font icon-search"></i></button></div>' + '</div>';
           var favLink = document.querySelector('[data-id="' + fav.id + '"] [favorites-toggle-js]');
 
@@ -1027,6 +1040,26 @@ var renderFavourites = function renderFavourites() {
         });
         favouritesDropDown.innerHTML = favouritesHtml;
       }
+    }
+
+    markFavourites();
+  });
+};
+
+var markFavourites = function markFavourites() {
+  favouriteList.map(function (fav) {
+    var favLink = document.querySelector('[data-id="' + fav + '"] [favorites-toggle-js]');
+
+    if (favLink) {
+      favLink.classList.add('is-active');
+    }
+
+    if (document.querySelector('.list__box-favorites[data-id="' + fav + '"]')) {
+      document.querySelector('.list__box-favorites[data-id="' + fav + '"]').classList.add('is-active');
+    }
+
+    if (document.querySelector('.list__specification-favorites[data-id="' + fav + '"]')) {
+      document.querySelector('.list__specification-favorites[data-id="' + fav + '"]').classList.add('is-active');
     }
   });
 };
@@ -1506,6 +1539,8 @@ function renderLeftAndRight(category, swiper) {
       }
     }
   }
+
+  boxHover();
 }
 /**
  * POLYFILL
@@ -2054,12 +2089,14 @@ var ajaxAdminEndpoint = '/wp-admin/admin-ajax.php';
     };
 
     document.querySelector('body').ontouchmove = function () {
-      var mainScroll = -document.querySelector(".main-outer").getBoundingClientRect().top;
+      if (document.querySelector(".main-outer")) {
+        var mainScroll = -document.querySelector(".main-outer").getBoundingClientRect().top;
 
-      if (mainScroll > 200) {
-        show(goTop);
-      } else {
-        hide(goTop);
+        if (mainScroll > 200) {
+          show(goTop);
+        } else {
+          hide(goTop);
+        }
       }
     };
 

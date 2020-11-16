@@ -223,4 +223,6 @@ function renderLeftAndRight(category, swiper) {
 			}
 		}
 	}
+
+	boxHover();
 }

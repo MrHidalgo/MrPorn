@@ -37,6 +37,16 @@
 			width: 100%;
 			font-size: 11px;
 			text-align: center;
+			text-overflow: unset;
+			overflow: auto;
+			-ms-overflow-style: none;
+			overflow: -moz-scrollbars-none;
+			scrollbar-width: none;
+
+			&::-webkit-scrollbar {
+				width: 0px;
+				background: transparent; /* make scrollbar transparent */
+			}
 		}
 	}
 	.show_similar_sites{
