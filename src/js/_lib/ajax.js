@@ -75,8 +75,6 @@ function postTextRequest(url = '', data = {}, callback){
 	})
 		.then(response => response.text())
 		.then((out) => {
-			console.log('Checkout this JSON! ', out);
-			console.log(data);
 			callback(out);
 		}).catch(err => {
 			console.log(err);

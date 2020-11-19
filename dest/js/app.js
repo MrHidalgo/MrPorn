@@ -246,8 +246,6 @@ function postTextRequest() {
   }).then(function (response) {
     return response.text();
   }).then(function (out) {
-    console.log('Checkout this JSON! ', out);
-    console.log(data);
     callback(out);
   })["catch"](function (err) {
     console.log(err);
@@ -256,6 +254,7 @@ function postTextRequest() {
 }
 
 var webworkerFrontpage;
+var currentBannerTimeout;
 
 var initHomeLazyLoad = function initHomeLazyLoad() {
   var listElm = document.querySelector('#infinite-list');
@@ -540,7 +539,8 @@ var tOut = null,
 var previousHoverBox = null;
 
 var boxHover = function boxHover() {
-  var swiperSlides = document.querySelectorAll('.swiper-slide[data-init="0"]'),
+  //const swiperSlides = document.querySelectorAll('.swiper-slide[data-init="0"]'),
+  var swiperSlides = document.querySelectorAll('.swiper-slide'),
       listBoxBody = document.querySelectorAll('.list__box-body');
 
   for (var i = 0, len = swiperSlides.length; i < len; i++) {
@@ -668,7 +668,13 @@ function onShowBannerEnter(__ev) {
   if(siteList.classList.contains('is-open')){
   	showBanner(__ev.target);
   }*/
-  showBanner(__ev.target);
+  if (!currentBannerTimeout) {
+    clearTimeout(currentBannerTimeout);
+  }
+
+  currentBannerTimeout = setTimeout(function () {
+    showBanner(__ev.target);
+  }, 1000);
 }
 
 function showBanner(_el) {
@@ -677,6 +683,12 @@ function showBanner(_el) {
   var _boxParent = _el.closest('.list__box'),
       _boxID = _boxParent.getAttribute('data-id'),
       _parentNode = _el.closest('.list__box-wrapper');
+
+  var currentBannerBox = document.querySelector('.list__specification[data-id="' + _boxID + '"]');
+
+  if (currentBannerBox && currentBannerBox.classList.contains('is-open')) {
+    return;
+  }
 
   var swiperSlide = _el.closest('.swiper-slide');
 
@@ -1013,6 +1025,10 @@ var renderFavourites = function renderFavourites() {
     console.log(res);
 
     if (res.status) {
+      if (res.status == 'true') {
+        isLoggedUser = true;
+      }
+
       document.querySelectorAll('.is-active[favorites-toggle-js]').forEach(function (fav) {
         fav.classList.remove('is-active');
       });
@@ -1179,6 +1195,30 @@ var onSortToggle = function onSortToggle(sortToggle) {
     }else{
     	sC.classList.add('is-open');
     }*/
+  }
+};
+
+var loadLoginForm = function loadLoginForm() {
+  if (!isLoggedUser) {
+    if (!document.querySelector('#login_popup')) {
+      postTextRequest(ajaxAdminEndpoint, {
+        action: 'get_login_form'
+      }, function (result) {
+        var e = document.createElement('div');
+        e.setAttribute('id', 'login_popup');
+        e.innerHTML = result;
+        document.body.appendChild(e);
+      });
+    }
+  }
+};
+
+var renderLoginForm = function renderLoginForm() {
+  if (!isLoggedUser) {
+    if (document.querySelector('#login_popup')) {
+      document.querySelector('#login_popup').classList.toggle('is-open');
+      initLoginScripts();
+    }
   }
 };
 
@@ -1553,6 +1593,7 @@ var homeData = [];
 var currentPopupBanner;
 var clonedPopupBanner;
 var clonedPopupTimeout;
+var isLoggedUser = false;
 
 if (!Element.prototype.matches) {
   Element.prototype.matches = Element.prototype.msMatchesSelector || Element.prototype.webkitMatchesSelector;
@@ -1991,6 +2032,11 @@ var ajaxAdminEndpoint = '/wp-admin/admin-ajax.php';
   }
 
   function onSiteBoxFavourite(el) {
+    if (!isLoggedUser) {
+      renderLoginForm();
+      return;
+    }
+
     var elID = el.getAttribute('data-id'),
         elParent = el.closest('.list__box-wrapper');
     console.log('Fav box ' + elID);
@@ -2005,6 +2051,11 @@ var ajaxAdminEndpoint = '/wp-admin/admin-ajax.php';
   }
 
   function onBannerFavourite(el) {
+    if (!isLoggedUser) {
+      renderLoginForm();
+      return;
+    }
+
     var elID = el.getAttribute('data-id'),
         elParent = el.closest('.list__box-wrapper');
     addToFavourites(elID); //const listBlock = elParent.querySelector('.list__box[data-id="' + elID + '"]'),
@@ -2018,6 +2069,11 @@ var ajaxAdminEndpoint = '/wp-admin/admin-ajax.php';
   }
 
   function onSiteBoxLikeClick(el) {
+    if (!isLoggedUser) {
+      renderLoginForm();
+      return;
+    }
+
     var elID = el.getAttribute('data-id'),
         elParent = el.closest('.list__box-wrapper');
     el.classList.toggle('is-active');
@@ -2297,6 +2353,7 @@ var ajaxAdminEndpoint = '/wp-admin/admin-ajax.php';
     //loadHomeData();
 
     initWebWorker();
+    loadLoginForm();
   };
   /**
    * @description Init all CB after page load

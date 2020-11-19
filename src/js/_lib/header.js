@@ -52,6 +52,10 @@ const renderFavourites = () => {
 		console.log('Favouroites');
 		console.log(res);
 		if(res.status){
+			if(res.status=='true'){
+				isLoggedUser = true;
+			}
+
 			document.querySelectorAll('.is-active[favorites-toggle-js]').forEach(function (fav) {
 				fav.classList.remove('is-active');
 			})
@@ -261,6 +265,33 @@ const onSortToggle = (sortToggle) => {
 			sC.classList.add('is-open');
 		}*/
 	}
+}
+
+const loadLoginForm = () => {
+	if(!isLoggedUser){
+		if(!document.querySelector('#login_popup')){
+			postTextRequest(ajaxAdminEndpoint, {
+				action:'get_login_form'
+			}, function (result) {
+
+				var e = document.createElement('div');
+				e.setAttribute('id', 'login_popup');
+				e.innerHTML = result;
+
+				document.body.appendChild(e);
+			});
+		}
+	}
+}
+const renderLoginForm = () => {
+	if(!isLoggedUser){
+		if(document.querySelector('#login_popup')){
+			document.querySelector('#login_popup').classList.toggle('is-open');
+
+			initLoginScripts();
+		}
+	}
+
 }
 
 

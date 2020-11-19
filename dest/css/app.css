@@ -784,7 +784,7 @@ strong {
 @media screen and (max-width: 1449.98px) {
   /* line 20, src/scss/_shared/_grid.scss */
   .c-grid {
-    max-width: 1149px;
+    /*max-width: 1149px;*/
     padding-left: 0;
     padding-right: 0;
   }
@@ -5407,6 +5407,508 @@ body.chatbot_active .go-top {
 /* line 234, src/scss/_components/common/_footer.scss */
 .light .footer_description h2 {
   color: #000;
+}
+
+/* line 1, src/scss/_components/common/_login.scss */
+.login_container {
+  background-color: #0e123c;
+  padding: 15px;
+  margin-bottom: 150px;
+}
+
+@media screen and (max-width: 1023px) {
+  /* line 1, src/scss/_components/common/_login.scss */
+  .login_container {
+    padding: 0;
+  }
+}
+
+@media screen and (max-width: 767px) {
+  /* line 1, src/scss/_components/common/_login.scss */
+  .login_container {
+    margin-bottom: 20px;
+  }
+}
+
+@media screen and (max-width: 1023px) {
+  /* line 15, src/scss/_components/common/_login.scss */
+  .login_container .login_top {
+    padding: 15px;
+    position: relative;
+  }
+  /* line 20, src/scss/_components/common/_login.scss */
+  .login_container .login_top:after {
+    position: absolute;
+    top: 100%;
+    left: 50%;
+    -webkit-transform: translateX(-50%);
+        -ms-transform: translateX(-50%);
+            transform: translateX(-50%);
+    content: ' ';
+    display: inline-block;
+    width: 0;
+    height: 0;
+    border-style: solid;
+    border-width: 20px 20px 0 20px;
+    border-color: #0e123c transparent transparent transparent;
+  }
+}
+
+/* line 36, src/scss/_components/common/_login.scss */
+.login_container .login_container_inner {
+  background-position: right;
+  -webkit-background-size: contain;
+          background-size: contain;
+  background-repeat: no-repeat;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+  -webkit-align-items: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+/* line 44, src/scss/_components/common/_login.scss */
+.login_container .login_container_inner.forgot .info {
+  color: #9294ad;
+  font-size: 11px;
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+@media screen and (max-width: 1023px) {
+  /* line 44, src/scss/_components/common/_login.scss */
+  .login_container .login_container_inner.forgot .info {
+    font-size: 17px;
+    color: #d2d2d2;
+  }
+}
+
+@media screen and (max-width: 767px) {
+  /* line 44, src/scss/_components/common/_login.scss */
+  .login_container .login_container_inner.forgot .info {
+    margin-bottom: 10px;
+  }
+}
+
+/* line 59, src/scss/_components/common/_login.scss */
+.login_container .login_container_inner.forgot .info a {
+  color: #c7f928;
+}
+
+@media screen and (max-width: 1023px) {
+  /* line 59, src/scss/_components/common/_login.scss */
+  .login_container .login_container_inner.forgot .info a {
+    display: block;
+    border: 3px solid #003b85;
+    color: #fff;
+    padding: 10px;
+  }
+}
+
+/* line 70, src/scss/_components/common/_login.scss */
+.login_container .login_container_inner.forgot .info .status {
+  color: #f00;
+  font-size: 18px;
+  font-weight: 600;
+  margin: 15px 0 5px;
+  line-height: 25px;
+}
+
+/* line 80, src/scss/_components/common/_login.scss */
+.login_container .login_container_inner .info_create_mobile {
+  color: #a4a4a4;
+  padding: 15px 0;
+}
+
+@media screen and (max-width: 1023px) {
+  /* line 80, src/scss/_components/common/_login.scss */
+  .login_container .login_container_inner .info_create_mobile {
+    background: #080915;
+    padding: 15px 30px;
+    text-align: center;
+  }
+}
+
+/* line 90, src/scss/_components/common/_login.scss */
+.login_container .login_container_inner .info_create_mobile a {
+  color: #c7f928;
+}
+
+@media screen and (max-width: 1023px) {
+  /* line 90, src/scss/_components/common/_login.scss */
+  .login_container .login_container_inner .info_create_mobile a {
+    margin-top: 10px;
+    display: block;
+    border: 3px solid #003b85;
+    color: #fff;
+    padding: 10px;
+    text-align: center;
+    font-weight: 600;
+  }
+}
+
+/* line 105, src/scss/_components/common/_login.scss */
+.login_container .login_form {
+  width: 50%;
+  padding: 0 70px;
+}
+
+@media screen and (max-width: 1023px) {
+  /* line 105, src/scss/_components/common/_login.scss */
+  .login_container .login_form {
+    width: 100%;
+    padding: 0;
+  }
+}
+
+/* line 114, src/scss/_components/common/_login.scss */
+.login_container .login_form input {
+  -webkit-border-radius: 5px;
+          border-radius: 5px;
+}
+
+/* line 118, src/scss/_components/common/_login.scss */
+.login_container .login_form .signup {
+  color: #c7f928;
+  float: left;
+}
+
+/* line 122, src/scss/_components/common/_login.scss */
+.login_container .login_form .forgot {
+  color: #999999;
+}
+
+@media screen and (max-width: 1023px) {
+  /* line 122, src/scss/_components/common/_login.scss */
+  .login_container .login_form .forgot {
+    text-align: center;
+    display: block;
+    float: none;
+    margin-top: 10px;
+    color: #3b92ff;
+  }
+}
+
+/* line 135, src/scss/_components/common/_login.scss */
+.login_container .login_form .already_have {
+  color: #999;
+  text-align: center;
+  margin-top: 15px;
+}
+
+@media screen and (max-width: 1023px) {
+  /* line 135, src/scss/_components/common/_login.scss */
+  .login_container .login_form .already_have {
+    color: #d2d2d2;
+    line-height: 23px;
+  }
+}
+
+/* line 145, src/scss/_components/common/_login.scss */
+.login_container .login_form .already_have a {
+  color: #c7f928;
+}
+
+@media screen and (max-width: 1023px) {
+  /* line 145, src/scss/_components/common/_login.scss */
+  .login_container .login_form .already_have a {
+    color: #157dff;
+  }
+}
+
+@media screen and (max-width: 1023px) {
+  /* line 155, src/scss/_components/common/_login.scss */
+  .login_container .remeber_me {
+    text-align: center;
+    color: #fff;
+  }
+}
+
+/* line 162, src/scss/_components/common/_login.scss */
+.login_container .login_banner {
+  width: 50%;
+}
+
+@media screen and (max-width: 1023px) {
+  /* line 162, src/scss/_components/common/_login.scss */
+  .login_container .login_banner {
+    display: none;
+  }
+}
+
+/* line 170, src/scss/_components/common/_login.scss */
+.login_container .title {
+  text-align: center;
+  color: #fff;
+  font-size: 34px;
+  font-weight: 600;
+  margin: 20px 0 40px;
+}
+
+@media screen and (max-width: 1023px) {
+  /* line 170, src/scss/_components/common/_login.scss */
+  .login_container .title {
+    font-size: 22px;
+    color: #4296ff;
+    text-transform: uppercase;
+    margin: 0 0 0;
+  }
+}
+
+/* line 184, src/scss/_components/common/_login.scss */
+.login_container .signup {
+  margin: 0;
+}
+
+/* line 189, src/scss/_components/common/_login.scss */
+.is_desktop {
+  display: block;
+}
+
+@media screen and (max-width: 1023px) {
+  /* line 189, src/scss/_components/common/_login.scss */
+  .is_desktop {
+    display: none;
+  }
+}
+
+/* line 196, src/scss/_components/common/_login.scss */
+.is_mobile {
+  display: none;
+}
+
+@media screen and (max-width: 1023px) {
+  /* line 196, src/scss/_components/common/_login.scss */
+  .is_mobile {
+    display: block;
+  }
+}
+
+@media screen and (max-width: 1023px) {
+  /* line 203, src/scss/_components/common/_login.scss */
+  .login_bottom {
+    background: #000;
+  }
+}
+
+/* line 209, src/scss/_components/common/_login.scss */
+.login_panel {
+  background: #fff;
+  margin-left: auto;
+  margin-right: auto;
+  margin-bottom: 15px;
+}
+
+/* line 214, src/scss/_components/common/_login.scss */
+.login_panel ul {
+  font-family: gloria hallelujah,cursive;
+  color: #d6ff23;
+  background: #0e478d;
+  background: -webkit-gradient(left top, left bottom, color-stop(0%, #0e478d), color-stop(100%, #0a3365));
+  background: -webkit-linear-gradient(top, #0e478d 0%, #0a3365 100%);
+  background: -o-linear-gradient(top, #0e478d 0%, #0a3365 100%);
+  background: -webkit-gradient(linear, left top, left bottom, from(#0e478d), to(#0a3365));
+  background: linear-gradient(to bottom, #0e478d 0%, #0a3365 100%);
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#0e478d',endColorstr='#0a3365',GradientType=0);
+  padding: 10px 10px 0;
+  margin: 25px 0 0;
+  text-align: center;
+  font-size: 28px;
+  border-bottom: 8px solid #90b0ca;
+  list-style-type: none;
+}
+
+@media screen and (max-width: 1023px) {
+  /* line 214, src/scss/_components/common/_login.scss */
+  .login_panel ul {
+    font-size: 16px;
+  }
+}
+
+/* line 237, src/scss/_components/common/_login.scss */
+.login_panel ul li {
+  width: 50%;
+  text-align: center;
+  display: inline-block;
+  padding: 10px 15px;
+}
+
+/* line 243, src/scss/_components/common/_login.scss */
+.login_panel ul li.active {
+  background: #90b0ca;
+}
+
+/* line 248, src/scss/_components/common/_login.scss */
+.login_panel ul a {
+  color: #fff !important;
+  text-transform: uppercase;
+}
+
+/* line 254, src/scss/_components/common/_login.scss */
+.login_panel .tab-content {
+  background: #fff;
+}
+
+/* line 258, src/scss/_components/common/_login.scss */
+.signup_tip_conainer {
+  padding-bottom: 10px;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-wrap: wrap;
+      -ms-flex-wrap: wrap;
+          flex-wrap: wrap;
+}
+
+/* line 263, src/scss/_components/common/_login.scss */
+.signup_tip_conainer .signup_tip {
+  width: 33.3333334%;
+  color: #0a3862;
+  text-align: left;
+  position: relative;
+  padding: 0 25px 0 80px;
+  margin-top: 15px;
+  font-size: 22px;
+  display: inline-block;
+  font-weight: 700;
+  line-height: 28px;
+  text-transform: uppercase;
+  border-right: 2px solid #eaeaea;
+}
+
+/* line 277, src/scss/_components/common/_login.scss */
+.signup_tip_conainer .signup_tip i {
+  background: url(../images/green_tick.png);
+  width: 50px;
+  height: 50px;
+  display: inline-block;
+  position: absolute;
+  left: 20px;
+  top: 0;
+}
+
+/* line 288, src/scss/_components/common/_login.scss */
+.cleanlogin-container {
+  padding: 15px;
+}
+
+@media screen and (max-width: 1023px) {
+  /* line 288, src/scss/_components/common/_login.scss */
+  .cleanlogin-container {
+    padding: 35px 30px 15px;
+  }
+}
+
+/* line 295, src/scss/_components/common/_login.scss */
+.cleanlogin-container .join_button, .cleanlogin-container input[type=submit], .cleanlogin-container .submit {
+  width: 100% !important;
+  border: none;
+  height: 60px !important;
+  line-height: 60px;
+  padding: 0 !important;
+  font-size: 26px;
+  font-weight: 600;
+  color: #021b3b;
+  text-transform: uppercase;
+  cursor: pointer;
+  background: #c7f928;
+}
+
+@media screen and (max-width: 1023px) {
+  /* line 295, src/scss/_components/common/_login.scss */
+  .cleanlogin-container .join_button, .cleanlogin-container input[type=submit], .cleanlogin-container .submit {
+    font-size: 18px;
+    background: #003b85;
+    color: #fff;
+  }
+}
+
+/* line 315, src/scss/_components/common/_login.scss */
+.cleanlogin-container form label {
+  font-weight: 700;
+}
+
+@media screen and (max-width: 1023px) {
+  /* line 315, src/scss/_components/common/_login.scss */
+  .cleanlogin-container form label {
+    color: #fff;
+  }
+}
+
+/* line 323, src/scss/_components/common/_login.scss */
+.cleanlogin-container .forgot {
+  float: right;
+}
+
+/* line 327, src/scss/_components/common/_login.scss */
+.cleanlogin-field {
+  margin-bottom: 25px;
+  -webkit-border-radius: 8px;
+          border-radius: 8px;
+}
+
+/* line 331, src/scss/_components/common/_login.scss */
+.cleanlogin-field input {
+  padding: 15px 25px;
+  border-color: #333;
+  -webkit-border-radius: 3px;
+          border-radius: 3px;
+  width: 100%;
+}
+
+/* line 337, src/scss/_components/common/_login.scss */
+.cleanlogin-field input.error {
+  border-color: red;
+}
+
+/* line 243, src/scss/_components/common/_footer.scss */
+#login_popup {
+  position: fixed;
+  display: none;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  z-index: 10000;
+  background: rgba(0, 0, 0, 0.9);
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-flex-shrink: 0;
+      -ms-flex-negative: 0;
+          flex-shrink: 0;
+  -webkit-flex-basis: auto;
+      -ms-flex-preferred-size: auto;
+          flex-basis: auto;
+  -webkit-box-flex: unset;
+  -webkit-flex-grow: unset;
+      -ms-flex-positive: unset;
+          flex-grow: unset;
+  -webkit-box-align: center;
+  -webkit-align-items: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+/* line 258, src/scss/_components/common/_footer.scss */
+#login_popup.is-open {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+/* line 262, src/scss/_components/common/_footer.scss */
+#login_popup .login_container {
+  background-color: #0e123c;
+  padding: 15px;
+  max-width: 1000px;
+  margin-bottom: 0;
 }
 
 @media screen and (max-width: 1023px) {

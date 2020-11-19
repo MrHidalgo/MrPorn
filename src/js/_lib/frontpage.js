@@ -1,4 +1,5 @@
 var webworkerFrontpage;
+let currentBannerTimeout;
 
 const initHomeLazyLoad = () =>{
 	let listElm = document.querySelector('#infinite-list');
@@ -468,7 +469,8 @@ let tOut = null,
 let previousHoverBox = null;
 
 const boxHover = () => {
-	const swiperSlides = document.querySelectorAll('.swiper-slide[data-init="0"]'),
+	//const swiperSlides = document.querySelectorAll('.swiper-slide[data-init="0"]'),
+	const swiperSlides = document.querySelectorAll('.swiper-slide'),
 		listBoxBody = document.querySelectorAll('.list__box-body');
 
 
@@ -624,7 +626,13 @@ function onShowBannerEnter(__ev){
 		showBanner(__ev.target);
 	}*/
 
-	showBanner(__ev.target);
+	if(!currentBannerTimeout){
+		clearTimeout(currentBannerTimeout);
+	}
+
+	currentBannerTimeout= setTimeout(function (){
+		showBanner(__ev.target);
+	}, 1000);
 }
 
 function showBanner(_el, isSkip = false){
@@ -632,6 +640,12 @@ function showBanner(_el, isSkip = false){
 	var _boxParent = _el.closest('.list__box'),
 		_boxID = _boxParent.getAttribute('data-id'),
 		_parentNode = _el.closest('.list__box-wrapper');
+
+	let currentBannerBox = document.querySelector('.list__specification[data-id="'+_boxID+'"]')
+
+	if(currentBannerBox && currentBannerBox.classList.contains('is-open')){
+		return;
+	}
 
 	var swiperSlide = _el.closest('.swiper-slide');
 	var swiperWrapper = _el.closest('.swiper-wrapper');

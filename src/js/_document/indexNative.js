@@ -8,6 +8,7 @@ let homeData = [];
 let currentPopupBanner;
 let clonedPopupBanner;
 let clonedPopupTimeout;
+let isLoggedUser = false;
 
 
 if (!Element.prototype.matches) {
@@ -488,6 +489,11 @@ const ajaxAdminEndpoint = '/wp-admin/admin-ajax.php';
 	}
 
 	function onSiteBoxFavourite(el) {
+		if(!isLoggedUser){
+			renderLoginForm();
+			return ;
+		}
+
 		var elID = el.getAttribute('data-id'),
 			elParent = el.closest('.list__box-wrapper');
 
@@ -505,6 +511,11 @@ const ajaxAdminEndpoint = '/wp-admin/admin-ajax.php';
 	}
 
 	function onBannerFavourite(el){
+		if(!isLoggedUser){
+			renderLoginForm();
+			return ;
+		}
+
 		var elID = el.getAttribute('data-id'),
 			elParent = el.closest('.list__box-wrapper');
 
@@ -520,6 +531,11 @@ const ajaxAdminEndpoint = '/wp-admin/admin-ajax.php';
 	}
 
 	function onSiteBoxLikeClick(el){
+		if(!isLoggedUser){
+			renderLoginForm();
+			return ;
+		}
+
 		var elID = el.getAttribute('data-id'),
 			elParent = el.closest('.list__box-wrapper');
 
@@ -844,6 +860,9 @@ const ajaxAdminEndpoint = '/wp-admin/admin-ajax.php';
 
 		//loadHomeData();
 		initWebWorker();
+
+
+		loadLoginForm();
 	};
 
 	/**
