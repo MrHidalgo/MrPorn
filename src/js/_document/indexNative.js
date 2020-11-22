@@ -158,7 +158,13 @@ const ajaxAdminEndpoint = '/wp-admin/admin-ajax.php';
 				onSortToggle(_ev.closest('[collapse-toggle-js]'));
 			}else if(_ev.classList.contains('list__box-details')){
 				onSiteBoxHoverClick(_ev);
-			}else if(_ev.parentNode && !_ev.closest('[search-parent-js]')){
+			}else if(_ev.closest('.login_popup_close')){
+				closeLoginPopups();
+			}
+
+
+
+			else if(_ev.parentNode && !_ev.closest('[search-parent-js]')){
 
 				if(!isMobileOrTablet){
 					document.querySelector('[search-js]').value='';
@@ -194,6 +200,32 @@ const ajaxAdminEndpoint = '/wp-admin/admin-ajax.php';
 				}
 			}
 		}, false);
+
+		/*let cGrid = document.querySelector('#list .c-grid');
+		if(cGrid){
+			cGrid.addEventListener('mouseenter', function(ev) {
+				const _ev = ev.target;
+				if(_ev){
+					console.log(_ev.classList);
+					if(_ev.classList.contains('list__box-more') | _ev.closest('.list__box-more')){
+						onShowBannerEnter(_ev);
+					}
+				}
+			}, false);
+
+			cGrid.addEventListener('mouseout', function(ev) {
+				const _ev = ev.target;
+				if(_ev){
+					console.log(_ev.classList);
+					if(_ev.classList.contains('list__box-more') | _ev.closest('.list__box-more')){
+						onShowBannerLeave(_ev);
+					}
+				}
+			}, false);
+		}*/
+
+
+
 	};
 
 	function onSiteBoxHoverClick(_el){
@@ -862,7 +894,7 @@ const ajaxAdminEndpoint = '/wp-admin/admin-ajax.php';
 		initWebWorker();
 
 
-		loadLoginForm();
+
 	};
 
 	/**

@@ -488,8 +488,10 @@ const boxHover = () => {
 
 
 		if(swiperSlides[i].querySelector('.list__box-more')){
-			swiperSlides[i].querySelector('.list__box-more').removeEventListener('mouseenter', onShowBannerEnter);
-			swiperSlides[i].querySelector('.list__box-more').addEventListener('mouseenter', onShowBannerEnter, false);
+			swiperSlides[i].querySelector('.list__box-more').removeEventListener('mouseover', onShowBannerEnter);
+			swiperSlides[i].querySelector('.list__box-more').addEventListener('mouseover', onShowBannerEnter, false);
+
+			swiperSlides[i].querySelector('.list__box-more').addEventListener('mouseout', onShowBannerLeave, false);
 		}
 
 		swiperSlides[i].setAttribute('data-init', '1');
@@ -626,13 +628,22 @@ function onShowBannerEnter(__ev){
 		showBanner(__ev.target);
 	}*/
 
-	if(!currentBannerTimeout){
+	/*if(!currentBannerTimeout){
 		clearTimeout(currentBannerTimeout);
-	}
+	}*/
 
-	currentBannerTimeout= setTimeout(function (){
+
+	currentBannerTimeout = window.setTimeout(function(){
 		showBanner(__ev.target);
 	}, 1000);
+
+	/*currentBannerTimeout= setTimeout(function (){
+		showBanner(__ev.target);
+	}, 1000);*/
+}
+
+function onShowBannerLeave(__ev){
+	window.clearTimeout(currentBannerTimeout)
 }
 
 function showBanner(_el, isSkip = false){

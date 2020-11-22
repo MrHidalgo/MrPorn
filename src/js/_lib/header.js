@@ -54,6 +54,8 @@ const renderFavourites = () => {
 		if(res.status){
 			if(res.status=='true'){
 				isLoggedUser = true;
+			}else{
+				loadLoginForm();
 			}
 
 			document.querySelectorAll('.is-active[favorites-toggle-js]').forEach(function (fav) {
@@ -274,9 +276,11 @@ const loadLoginForm = () => {
 				action:'get_login_form'
 			}, function (result) {
 
+				let loginHtml = '<a class="login_popup_close"><img src="'+themeBase+'images/btn_close.png"/></a>'+result;
+
 				var e = document.createElement('div');
 				e.setAttribute('id', 'login_popup');
-				e.innerHTML = result;
+				e.innerHTML = loginHtml;
 
 				document.body.appendChild(e);
 			});
@@ -292,6 +296,11 @@ const renderLoginForm = () => {
 		}
 	}
 
+}
+const closeLoginPopups = () => {
+	if(document.querySelector('#login_popup')){
+		document.querySelector('#login_popup').classList.remove('is-open');
+	}
 }
 
 

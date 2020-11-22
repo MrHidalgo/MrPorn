@@ -550,8 +550,9 @@ var boxHover = function boxHover() {
     swiperSlides[i].addEventListener('mouseenter', onSlideEnter, false);
 
     if (swiperSlides[i].querySelector('.list__box-more')) {
-      swiperSlides[i].querySelector('.list__box-more').removeEventListener('mouseenter', onShowBannerEnter);
-      swiperSlides[i].querySelector('.list__box-more').addEventListener('mouseenter', onShowBannerEnter, false);
+      swiperSlides[i].querySelector('.list__box-more').removeEventListener('mouseover', onShowBannerEnter);
+      swiperSlides[i].querySelector('.list__box-more').addEventListener('mouseover', onShowBannerEnter, false);
+      swiperSlides[i].querySelector('.list__box-more').addEventListener('mouseout', onShowBannerLeave, false);
     }
 
     swiperSlides[i].setAttribute('data-init', '1');
@@ -668,13 +669,20 @@ function onShowBannerEnter(__ev) {
   if(siteList.classList.contains('is-open')){
   	showBanner(__ev.target);
   }*/
-  if (!currentBannerTimeout) {
-    clearTimeout(currentBannerTimeout);
-  }
 
-  currentBannerTimeout = setTimeout(function () {
+  /*if(!currentBannerTimeout){
+  	clearTimeout(currentBannerTimeout);
+  }*/
+  currentBannerTimeout = window.setTimeout(function () {
     showBanner(__ev.target);
   }, 1000);
+  /*currentBannerTimeout= setTimeout(function (){
+  	showBanner(__ev.target);
+  }, 1000);*/
+}
+
+function onShowBannerLeave(__ev) {
+  window.clearTimeout(currentBannerTimeout);
 }
 
 function showBanner(_el) {
@@ -1027,6 +1035,8 @@ var renderFavourites = function renderFavourites() {
     if (res.status) {
       if (res.status == 'true') {
         isLoggedUser = true;
+      } else {
+        loadLoginForm();
       }
 
       document.querySelectorAll('.is-active[favorites-toggle-js]').forEach(function (fav) {
@@ -1204,9 +1214,10 @@ var loadLoginForm = function loadLoginForm() {
       postTextRequest(ajaxAdminEndpoint, {
         action: 'get_login_form'
       }, function (result) {
+        var loginHtml = '<a class="login_popup_close"><img src="' + themeBase + 'images/btn_close.png"/></a>' + result;
         var e = document.createElement('div');
         e.setAttribute('id', 'login_popup');
-        e.innerHTML = result;
+        e.innerHTML = loginHtml;
         document.body.appendChild(e);
       });
     }
@@ -1219,6 +1230,12 @@ var renderLoginForm = function renderLoginForm() {
       document.querySelector('#login_popup').classList.toggle('is-open');
       initLoginScripts();
     }
+  }
+};
+
+var closeLoginPopups = function closeLoginPopups() {
+  if (document.querySelector('#login_popup')) {
+    document.querySelector('#login_popup').classList.remove('is-open');
   }
 };
 
@@ -1721,6 +1738,8 @@ var ajaxAdminEndpoint = '/wp-admin/admin-ajax.php';
         onSortToggle(_ev.closest('[collapse-toggle-js]'));
       } else if (_ev.classList.contains('list__box-details')) {
         onSiteBoxHoverClick(_ev);
+      } else if (_ev.closest('.login_popup_close')) {
+        closeLoginPopups();
       } else if (_ev.parentNode && !_ev.closest('[search-parent-js]')) {
         if (!isMobileOrTablet) {
           document.querySelector('[search-js]').value = '';
@@ -1753,6 +1772,27 @@ var ajaxAdminEndpoint = '/wp-admin/admin-ajax.php';
         }
       }
     }, false);
+    /*let cGrid = document.querySelector('#list .c-grid');
+    if(cGrid){
+    	cGrid.addEventListener('mouseenter', function(ev) {
+    		const _ev = ev.target;
+    		if(_ev){
+    			console.log(_ev.classList);
+    			if(_ev.classList.contains('list__box-more') | _ev.closest('.list__box-more')){
+    				onShowBannerEnter(_ev);
+    			}
+    		}
+    	}, false);
+    		cGrid.addEventListener('mouseout', function(ev) {
+    		const _ev = ev.target;
+    		if(_ev){
+    			console.log(_ev.classList);
+    			if(_ev.classList.contains('list__box-more') | _ev.closest('.list__box-more')){
+    				onShowBannerLeave(_ev);
+    			}
+    		}
+    	}, false);
+    }*/
   };
 
   function onSiteBoxHoverClick(_el) {
@@ -2353,7 +2393,6 @@ var ajaxAdminEndpoint = '/wp-admin/admin-ajax.php';
     //loadHomeData();
 
     initWebWorker();
-    loadLoginForm();
   };
   /**
    * @description Init all CB after page load

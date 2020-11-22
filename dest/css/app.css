@@ -3272,7 +3272,6 @@ strong {
   -webkit-justify-content: space-between;
       -ms-flex-pack: justify;
           justify-content: space-between;
-  width: 149px;
   height: 29px;
   padding-left: 10px;
   padding-right: 10px;
@@ -3290,7 +3289,7 @@ strong {
   }
 }
 
-/* line 17, src/scss/_components/common/_header--action.scss */
+/* line 16, src/scss/_components/common/_header--action.scss */
 .header__action-link {
   display: -webkit-box;
   display: -webkit-flex;
@@ -3300,19 +3299,24 @@ strong {
   font-weight: 700;
 }
 
+/* line 21, src/scss/_components/common/_header--action.scss */
+.header__action-link:first-child {
+  margin-right: 10px;
+}
+
 @media screen and (max-width: 1279px) {
-  /* line 17, src/scss/_components/common/_header--action.scss */
+  /* line 16, src/scss/_components/common/_header--action.scss */
   .header__action-link {
     font-size: 12px;
   }
 }
 
-/* line 25, src/scss/_components/common/_header--action.scss */
+/* line 29, src/scss/_components/common/_header--action.scss */
 .header__action-link--logout {
   color: #9294ad;
 }
 
-/* line 28, src/scss/_components/common/_header--action.scss */
+/* line 32, src/scss/_components/common/_header--action.scss */
 .header__action-link--admin {
   color: #91a538;
 }
@@ -4141,6 +4145,7 @@ strong {
   color: #35539c;
   font-size: 12px;
   font-weight: 700;
+  margin-top: 5px;
 }
 
 @media screen and (max-width: 1023px) {
@@ -5049,7 +5054,12 @@ body.chatbot_active .go-top {
   text-decoration: none;
 }
 
-/* line 39, src/scss/_components/common/_footer.scss */
+/* line 38, src/scss/_components/common/_footer.scss */
+.light .footer__nav a:hover {
+  color: #000;
+}
+
+/* line 43, src/scss/_components/common/_footer.scss */
 .footer {
   display: -webkit-box;
   display: -webkit-flex;
@@ -5062,7 +5072,7 @@ body.chatbot_active .go-top {
           flex-direction: column;
 }
 
-/* line 44, src/scss/_components/common/_footer.scss */
+/* line 48, src/scss/_components/common/_footer.scss */
 .footer__wrapper-1 {
   display: -webkit-box;
   display: -webkit-flex;
@@ -5073,13 +5083,13 @@ body.chatbot_active .go-top {
 }
 
 @media screen and (max-width: 767px) {
-  /* line 44, src/scss/_components/common/_footer.scss */
+  /* line 48, src/scss/_components/common/_footer.scss */
   .footer__wrapper-1 {
     padding-bottom: 15px;
   }
 }
 
-/* line 52, src/scss/_components/common/_footer.scss */
+/* line 56, src/scss/_components/common/_footer.scss */
 .footer__wrapper-2 {
   display: -webkit-box;
   display: -webkit-flex;
@@ -5096,7 +5106,7 @@ body.chatbot_active .go-top {
   background-color: #081b49;
 }
 
-/* line 64, src/scss/_components/common/_footer.scss */
+/* line 68, src/scss/_components/common/_footer.scss */
 .footer__container-1 {
   display: -webkit-box;
   display: -webkit-flex;
@@ -5113,7 +5123,7 @@ body.chatbot_active .go-top {
           align-items: center;
 }
 
-/* line 71, src/scss/_components/common/_footer.scss */
+/* line 75, src/scss/_components/common/_footer.scss */
 .footer__title {
   padding-bottom: 10px;
   color: #ffffff;
@@ -5122,20 +5132,20 @@ body.chatbot_active .go-top {
 }
 
 @media screen and (max-width: 1023px) {
-  /* line 71, src/scss/_components/common/_footer.scss */
+  /* line 75, src/scss/_components/common/_footer.scss */
   .footer__title {
     font-size: 20px;
   }
 }
 
 @media screen and (max-width: 767px) {
-  /* line 71, src/scss/_components/common/_footer.scss */
+  /* line 75, src/scss/_components/common/_footer.scss */
   .footer__title {
     font-size: 14px;
   }
 }
 
-/* line 84, src/scss/_components/common/_footer.scss */
+/* line 88, src/scss/_components/common/_footer.scss */
 .footer__desc {
   padding-bottom: 30px;
   color: #4b4e6b;
@@ -5144,20 +5154,20 @@ body.chatbot_active .go-top {
 }
 
 @media screen and (max-width: 1023px) {
-  /* line 84, src/scss/_components/common/_footer.scss */
+  /* line 88, src/scss/_components/common/_footer.scss */
   .footer__desc {
     font-size: 14px;
   }
 }
 
 @media screen and (max-width: 767px) {
-  /* line 84, src/scss/_components/common/_footer.scss */
+  /* line 88, src/scss/_components/common/_footer.scss */
   .footer__desc {
     font-size: 12px;
   }
 }
 
-/* line 97, src/scss/_components/common/_footer.scss */
+/* line 101, src/scss/_components/common/_footer.scss */
 .footer__nav {
   display: -webkit-box;
   display: -webkit-flex;
@@ -5176,14 +5186,14 @@ body.chatbot_active .go-top {
 }
 
 @media screen and (max-width: 1023px) {
-  /* line 97, src/scss/_components/common/_footer.scss */
+  /* line 101, src/scss/_components/common/_footer.scss */
   .footer__nav {
     font-size: 14px;
   }
 }
 
 @media screen and (max-width: 767px) {
-  /* line 97, src/scss/_components/common/_footer.scss */
+  /* line 101, src/scss/_components/common/_footer.scss */
   .footer__nav {
     -webkit-flex-wrap: wrap;
         -ms-flex-wrap: wrap;
@@ -5191,7 +5201,7 @@ body.chatbot_active .go-top {
   }
 }
 
-/* line 112, src/scss/_components/common/_footer.scss */
+/* line 116, src/scss/_components/common/_footer.scss */
 .footer__nav p {
   display: -webkit-box;
   display: -webkit-flex;
@@ -5211,13 +5221,13 @@ body.chatbot_active .go-top {
 }
 
 @media screen and (max-width: 767px) {
-  /* line 112, src/scss/_components/common/_footer.scss */
+  /* line 116, src/scss/_components/common/_footer.scss */
   .footer__nav p {
     font-size: 0;
   }
 }
 
-/* line 123, src/scss/_components/common/_footer.scss */
+/* line 127, src/scss/_components/common/_footer.scss */
 .footer__nav a {
   font-size: 16px;
   color: #4680ca;
@@ -5229,14 +5239,14 @@ body.chatbot_active .go-top {
 }
 
 @media screen and (max-width: 1023px) {
-  /* line 123, src/scss/_components/common/_footer.scss */
+  /* line 127, src/scss/_components/common/_footer.scss */
   .footer__nav a {
     font-size: 14px;
   }
 }
 
 @media screen and (max-width: 767px) {
-  /* line 123, src/scss/_components/common/_footer.scss */
+  /* line 127, src/scss/_components/common/_footer.scss */
   .footer__nav a {
     display: -webkit-box;
     display: -webkit-flex;
@@ -5251,7 +5261,7 @@ body.chatbot_active .go-top {
   }
 }
 
-/* line 139, src/scss/_components/common/_footer.scss */
+/* line 143, src/scss/_components/common/_footer.scss */
 .footer__nav a:hover {
   color: #ffffff;
   -webkit-transition: color 0.35s ease-in-out;
@@ -5259,7 +5269,7 @@ body.chatbot_active .go-top {
   transition: color 0.35s ease-in-out;
 }
 
-/* line 145, src/scss/_components/common/_footer.scss */
+/* line 149, src/scss/_components/common/_footer.scss */
 .footer__nav-item {
   display: -webkit-box;
   display: -webkit-flex;
@@ -5267,7 +5277,7 @@ body.chatbot_active .go-top {
   display: flex;
 }
 
-/* line 148, src/scss/_components/common/_footer.scss */
+/* line 152, src/scss/_components/common/_footer.scss */
 .footer__nav-item span {
   margin-left: 15px;
   margin-right: 15px;
@@ -5277,7 +5287,7 @@ body.chatbot_active .go-top {
 }
 
 @media screen and (max-width: 1023px) {
-  /* line 148, src/scss/_components/common/_footer.scss */
+  /* line 152, src/scss/_components/common/_footer.scss */
   .footer__nav-item span {
     margin-left: 10px;
     margin-right: 10px;
@@ -5286,13 +5296,13 @@ body.chatbot_active .go-top {
 }
 
 @media screen and (max-width: 767px) {
-  /* line 148, src/scss/_components/common/_footer.scss */
+  /* line 152, src/scss/_components/common/_footer.scss */
   .footer__nav-item span {
     font-size: 0;
   }
 }
 
-/* line 165, src/scss/_components/common/_footer.scss */
+/* line 169, src/scss/_components/common/_footer.scss */
 .footer__nav-link {
   font-size: 16px;
   color: #4680ca;
@@ -5303,14 +5313,14 @@ body.chatbot_active .go-top {
 }
 
 @media screen and (max-width: 1023px) {
-  /* line 165, src/scss/_components/common/_footer.scss */
+  /* line 169, src/scss/_components/common/_footer.scss */
   .footer__nav-link {
     font-size: 14px;
   }
 }
 
 @media screen and (max-width: 767px) {
-  /* line 165, src/scss/_components/common/_footer.scss */
+  /* line 169, src/scss/_components/common/_footer.scss */
   .footer__nav-link {
     display: -webkit-box;
     display: -webkit-flex;
@@ -5325,7 +5335,7 @@ body.chatbot_active .go-top {
   }
 }
 
-/* line 180, src/scss/_components/common/_footer.scss */
+/* line 184, src/scss/_components/common/_footer.scss */
 .footer__nav-link:hover {
   color: #ffffff;
   -webkit-transition: color 0.35s ease-in-out;
@@ -5333,7 +5343,7 @@ body.chatbot_active .go-top {
   transition: color 0.35s ease-in-out;
 }
 
-/* line 189, src/scss/_components/common/_footer.scss */
+/* line 193, src/scss/_components/common/_footer.scss */
 .footer_description h2 {
   padding-bottom: 10px;
   color: #ffffff;
@@ -5342,20 +5352,20 @@ body.chatbot_active .go-top {
 }
 
 @media screen and (max-width: 1023px) {
-  /* line 189, src/scss/_components/common/_footer.scss */
+  /* line 193, src/scss/_components/common/_footer.scss */
   .footer_description h2 {
     font-size: 20px;
   }
 }
 
 @media screen and (max-width: 767px) {
-  /* line 189, src/scss/_components/common/_footer.scss */
+  /* line 193, src/scss/_components/common/_footer.scss */
   .footer_description h2 {
     font-size: 14px;
   }
 }
 
-/* line 202, src/scss/_components/common/_footer.scss */
+/* line 206, src/scss/_components/common/_footer.scss */
 .footer_description h3 {
   padding-bottom: 10px;
   color: #ffffff;
@@ -5364,20 +5374,20 @@ body.chatbot_active .go-top {
 }
 
 @media screen and (max-width: 1023px) {
-  /* line 202, src/scss/_components/common/_footer.scss */
+  /* line 206, src/scss/_components/common/_footer.scss */
   .footer_description h3 {
     font-size: 20px;
   }
 }
 
 @media screen and (max-width: 767px) {
-  /* line 202, src/scss/_components/common/_footer.scss */
+  /* line 206, src/scss/_components/common/_footer.scss */
   .footer_description h3 {
     font-size: 14px;
   }
 }
 
-/* line 215, src/scss/_components/common/_footer.scss */
+/* line 219, src/scss/_components/common/_footer.scss */
 .footer_description p {
   padding-bottom: 30px;
   color: #4b4e6b;
@@ -5386,25 +5396,25 @@ body.chatbot_active .go-top {
 }
 
 @media screen and (max-width: 1023px) {
-  /* line 215, src/scss/_components/common/_footer.scss */
+  /* line 219, src/scss/_components/common/_footer.scss */
   .footer_description p {
     font-size: 14px;
   }
 }
 
 @media screen and (max-width: 767px) {
-  /* line 215, src/scss/_components/common/_footer.scss */
+  /* line 219, src/scss/_components/common/_footer.scss */
   .footer_description p {
     font-size: 12px;
   }
 }
 
-/* line 230, src/scss/_components/common/_footer.scss */
+/* line 234, src/scss/_components/common/_footer.scss */
 .light .footer__title {
   color: #576576;
 }
 
-/* line 234, src/scss/_components/common/_footer.scss */
+/* line 238, src/scss/_components/common/_footer.scss */
 .light .footer_description h2 {
   color: #000;
 }
@@ -5865,15 +5875,20 @@ body.chatbot_active .go-top {
   border-color: red;
 }
 
-/* line 243, src/scss/_components/common/_footer.scss */
+/* line 247, src/scss/_components/common/_footer.scss */
 #login_popup {
   position: fixed;
-  display: none;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
   width: 100%;
-  height: 100%;
-  top: 0;
+  height: 0;
+  top: 100%;
+  opacity: 0;
   left: 0;
-  z-index: 10000;
+  z-index: 100000;
+  overflow: hidden;
   background: rgba(0, 0, 0, 0.9);
   -webkit-box-pack: center;
   -webkit-justify-content: center;
@@ -5893,17 +5908,19 @@ body.chatbot_active .go-top {
   -webkit-align-items: center;
       -ms-flex-align: center;
           align-items: center;
+  -webkit-transition: all 0.8s;
+  -o-transition: all 0.8s;
+  transition: all 0.8s;
 }
 
-/* line 258, src/scss/_components/common/_footer.scss */
+/* line 265, src/scss/_components/common/_footer.scss */
 #login_popup.is-open {
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
+  height: 100%;
+  top: 0;
+  opacity: 1;
 }
 
-/* line 262, src/scss/_components/common/_footer.scss */
+/* line 271, src/scss/_components/common/_footer.scss */
 #login_popup .login_container {
   background-color: #0e123c;
   padding: 15px;
@@ -5967,8 +5984,8 @@ body.chatbot_active .go-top {
 @media screen and (max-width: 767px) {
   /* line 23, src/scss/_components/homepage/_list.scss */
   .list .swiper-slide {
-    width: 75px !important;
-    height: 75px;
+    width: 100px !important;
+    height: 100px;
   }
 }
 
