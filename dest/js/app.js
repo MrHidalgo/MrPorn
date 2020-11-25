@@ -591,6 +591,8 @@ function onSlideLeave(ev) {
 
 
     el.classList.remove('is-hover');
+    el.classList.remove('last-box');
+    elParent.classList.remove('last-box-selected');
     lineInd.setAttribute('style', transformVal + ';width: 64px');
   }
 }
@@ -600,7 +602,9 @@ function onSlideEnter(ev) {
     var el = ev.currentTarget,
         elParent = el.closest('[list-parent-js]'),
         elBox = el.querySelector('.list__box'),
-        lineInd = elParent.querySelector('[list-line-js]');
+        lineInd = elParent.querySelector('[list-line-js]'),
+        slideSwiper = elParent.querySelector('.swiper-container'); //.activeIndex;
+
     var swiperParent = el.parentNode;
     var slideIndex = el.dataset.index;
     var slideCategory = swiperParent.dataset.category;
@@ -626,8 +630,28 @@ function onSlideEnter(ev) {
       }
     }
 
+    var activeSlide = 0;
+
+    if (slideSwiper) {
+      activeSlide = slideSwiper.swiper.activeIndex;
+    }
+
+    if (slideIndex - activeSlide == 4) {
+      elParent.classList.add('last-box-selected');
+    } else {
+      elParent.classList.remove('last-box-selected');
+    }
+
+    if (window.innerWidth < 1449) {
+      if (slideIndex - activeSlide == 4) {
+        console.log('Active swiper ' + slideIndex + " - " + activeSlide);
+        el.classList.add('last-box');
+      }
+    }
+
     if (hoverBool) {
       el.classList.add('is-hover');
+      slideIndex = el.dataset.index;
       var hoverBounds = 0;
       var _lineLeft = 0;
 
@@ -1018,10 +1042,9 @@ var initTheme = function initTheme() {
 initTheme();
 
 var renderFavourites = function renderFavourites() {
-  if (isMobileDevice) {
-    return;
-  }
-
+  /*if(isMobileDevice){
+  	return;
+  }*/
   var favouritesDropDown = document.querySelector('[view-favorites-drop-js]');
   var favouritesHtml = '';
   postRequest(ajaxEndpoint, {
@@ -1035,6 +1058,10 @@ var renderFavourites = function renderFavourites() {
     if (res.status) {
       if (res.status == 'true') {
         isLoggedUser = true;
+
+        if (document.querySelector('.header__action-link--logout')) {
+          document.querySelector('.header__action-link--logout').setAttribute('href', res.logout);
+        }
       } else {
         loadLoginForm();
       }
@@ -1238,6 +1265,26 @@ var closeLoginPopups = function closeLoginPopups() {
     document.querySelector('#login_popup').classList.remove('is-open');
   }
 };
+
+function toggleLoginPopups(type) {
+  var userPopup = document.querySelector('.user_container_popup');
+
+  if (userPopup) {
+    if (type == 'login') {
+      userPopup.classList.remove('join');
+      userPopup.classList.remove('forgot');
+      userPopup.classList.add('login');
+    } else if (type == 'join') {
+      userPopup.classList.remove('login');
+      userPopup.classList.remove('forgot');
+      userPopup.classList.add('join');
+    } else if (type == 'forgot') {
+      userPopup.classList.remove('login');
+      userPopup.classList.remove('join');
+      userPopup.classList.add('forgot');
+    }
+  }
+}
 
 var Pagination = {
   code: '',
@@ -1740,6 +1787,15 @@ var ajaxAdminEndpoint = '/wp-admin/admin-ajax.php';
         onSiteBoxHoverClick(_ev);
       } else if (_ev.closest('.login_popup_close')) {
         closeLoginPopups();
+      } else if (_ev.classList.contains('popup_link_signup')) {
+        ev.preventDefault();
+        toggleLoginPopups('join');
+      } else if (_ev.classList.contains('popup_link_login')) {
+        ev.preventDefault();
+        toggleLoginPopups('login');
+      } else if (_ev.classList.contains('popup_link_forgot')) {
+        ev.preventDefault();
+        toggleLoginPopups('forgot');
       } else if (_ev.parentNode && !_ev.closest('[search-parent-js]')) {
         if (!isMobileOrTablet) {
           document.querySelector('[search-js]').value = '';
@@ -2101,6 +2157,7 @@ var ajaxAdminEndpoint = '/wp-admin/admin-ajax.php';
     addToFavourites(elID); //const listBlock = elParent.querySelector('.list__box[data-id="' + elID + '"]'),
 
     var listFavoritesBtn = elParent.querySelector('.list__box-favorites[data-id="' + elID + '"]');
+    console.log('Clicking favourite button');
     el.classList.toggle('is-active');
 
     if (listFavoritesBtn) {
@@ -2109,11 +2166,6 @@ var ajaxAdminEndpoint = '/wp-admin/admin-ajax.php';
   }
 
   function onSiteBoxLikeClick(el) {
-    if (!isLoggedUser) {
-      renderLoginForm();
-      return;
-    }
-
     var elID = el.getAttribute('data-id'),
         elParent = el.closest('.list__box-wrapper');
     el.classList.toggle('is-active');

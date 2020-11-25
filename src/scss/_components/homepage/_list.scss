@@ -58,6 +58,12 @@
 				width: 350px !important;
 				@include transition(width);
 
+				&.last-box{
+					.list__box{
+						transform: translate(calc(-50% - 55px), -50%);
+					}
+				}
+
 				/*&:last-of-type {
 					.list__box{
 						transform: translate(calc(-50% - 120px), -50%);
@@ -129,6 +135,12 @@
 // SECTION :: END
 
 
+.list__box-wrapper.last-box-selected{
+	.list__arrow--next{
+		width: 75px;
+	}
+}
+
 .light{
 	.list__info{
 		.category_title{
@@ -145,6 +157,18 @@
 				}
 			}
 		}
+	}
 
+	.list__btn{
+		background: #004cb0;
+		color: #fff;
+
+		&:hover, &:active, &:focus{
+			color: #fff;
+		}
+
+		span{
+			color: #c3f228;
+		}
 	}
 }

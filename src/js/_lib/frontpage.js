@@ -535,7 +535,9 @@ function onSlideLeave(ev){
 
 		//clearTimeout(tOut);
 		el.classList.remove('is-hover');
+		el.classList.remove('last-box');
 
+		elParent.classList.remove('last-box-selected');
 
 		lineInd.setAttribute('style', transformVal + ';width: 64px');
 	}
@@ -546,12 +548,23 @@ function onSlideEnter(ev){
 		const el = ev.currentTarget,
 			elParent = el.closest('[list-parent-js]'),
 			elBox = el.querySelector('.list__box'),
-			lineInd = elParent.querySelector('[list-line-js]');
+			lineInd = elParent.querySelector('[list-line-js]'),
+			slideSwiper = elParent.querySelector('.swiper-container');
 
+
+
+
+		//.activeIndex;
 
 		const swiperParent  = el.parentNode;
 		var slideIndex = el.dataset.index;
 		var slideCategory = swiperParent.dataset.category;
+
+
+
+
+
+
 
 
 		var slideHoverContainer = el.querySelector('.list__box-details');
@@ -575,10 +588,29 @@ function onSlideEnter(ev){
 			}
 		}
 
+		let activeSlide = 0;
+		if(slideSwiper){
+			activeSlide = slideSwiper.swiper.activeIndex;
+		}
 
+		if((slideIndex - activeSlide)==4){
+			elParent.classList.add('last-box-selected');
+		}else{
+			elParent.classList.remove('last-box-selected');
+		}
+
+		if(window.innerWidth<1449){
+			if((slideIndex - activeSlide)==4){
+				console.log('Active swiper '+slideIndex+" - "+activeSlide);
+				el.classList.add('last-box');
+			}
+		}
 
 		if(hoverBool) {
 			el.classList.add('is-hover');
+			slideIndex = el.dataset.index;
+
+
 
 			var hoverBounds = 0;
 			var _lineLeft = 0;

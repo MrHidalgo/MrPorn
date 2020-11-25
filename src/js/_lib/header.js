@@ -35,9 +35,9 @@ initTheme();
 
 
 const renderFavourites = () => {
-	if(isMobileDevice){
+	/*if(isMobileDevice){
 		return;
-	}
+	}*/
 
 	const favouritesDropDown = document.querySelector('[view-favorites-drop-js]');
 
@@ -54,6 +54,10 @@ const renderFavourites = () => {
 		if(res.status){
 			if(res.status=='true'){
 				isLoggedUser = true;
+
+				if(document.querySelector('.header__action-link--logout')){
+					document.querySelector('.header__action-link--logout').setAttribute('href', res.logout);
+				}
 			}else{
 				loadLoginForm();
 			}
@@ -302,5 +306,22 @@ const closeLoginPopups = () => {
 		document.querySelector('#login_popup').classList.remove('is-open');
 	}
 }
-
+function toggleLoginPopups(type){
+	let userPopup = document.querySelector('.user_container_popup');
+	if(userPopup){
+		if(type=='login'){
+			userPopup.classList.remove('join');
+			userPopup.classList.remove('forgot');
+			userPopup.classList.add('login');
+		}else if(type=='join'){
+			userPopup.classList.remove('login');
+			userPopup.classList.remove('forgot');
+			userPopup.classList.add('join');
+		}else if(type=='forgot'){
+			userPopup.classList.remove('login');
+			userPopup.classList.remove('join');
+			userPopup.classList.add('forgot');
+		}
+	}
+}
 

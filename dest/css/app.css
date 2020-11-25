@@ -5673,38 +5673,91 @@ body.chatbot_active .go-top {
   margin: 0;
 }
 
-/* line 189, src/scss/_components/common/_login.scss */
+/* line 188, src/scss/_components/common/_login.scss */
+.login_container .top_forgot_text {
+  color: #d2d2d2;
+}
+
+/* line 194, src/scss/_components/common/_login.scss */
+.user_container_popup .user_tab_login, .user_container_popup .user_tab_join, .user_container_popup .user_tab_forgot {
+  display: none;
+  -webkit-box-align: center;
+  -webkit-align-items: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+/* line 199, src/scss/_components/common/_login.scss */
+.user_container_popup.login .user_tab_join, .user_container_popup.login .user_tab_forgot {
+  display: none;
+}
+
+/* line 202, src/scss/_components/common/_login.scss */
+.user_container_popup.login .user_tab_login {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+/* line 207, src/scss/_components/common/_login.scss */
+.user_container_popup.join .user_tab_login, .user_container_popup.join .user_tab_forgot {
+  display: none;
+}
+
+/* line 210, src/scss/_components/common/_login.scss */
+.user_container_popup.join .user_tab_join {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+/* line 215, src/scss/_components/common/_login.scss */
+.user_container_popup.forgot .user_tab_join, .user_container_popup.forgot .user_tab_login {
+  display: none;
+}
+
+/* line 218, src/scss/_components/common/_login.scss */
+.user_container_popup.forgot .user_tab_forgot {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+/* line 224, src/scss/_components/common/_login.scss */
 .is_desktop {
   display: block;
 }
 
 @media screen and (max-width: 1023px) {
-  /* line 189, src/scss/_components/common/_login.scss */
+  /* line 224, src/scss/_components/common/_login.scss */
   .is_desktop {
     display: none;
   }
 }
 
-/* line 196, src/scss/_components/common/_login.scss */
+/* line 231, src/scss/_components/common/_login.scss */
 .is_mobile {
   display: none;
 }
 
 @media screen and (max-width: 1023px) {
-  /* line 196, src/scss/_components/common/_login.scss */
+  /* line 231, src/scss/_components/common/_login.scss */
   .is_mobile {
     display: block;
   }
 }
 
 @media screen and (max-width: 1023px) {
-  /* line 203, src/scss/_components/common/_login.scss */
+  /* line 238, src/scss/_components/common/_login.scss */
   .login_bottom {
     background: #000;
   }
 }
 
-/* line 209, src/scss/_components/common/_login.scss */
+/* line 244, src/scss/_components/common/_login.scss */
 .login_panel {
   background: #fff;
   margin-left: auto;
@@ -5712,7 +5765,7 @@ body.chatbot_active .go-top {
   margin-bottom: 15px;
 }
 
-/* line 214, src/scss/_components/common/_login.scss */
+/* line 249, src/scss/_components/common/_login.scss */
 .login_panel ul {
   font-family: gloria hallelujah,cursive;
   color: #d6ff23;
@@ -5732,13 +5785,13 @@ body.chatbot_active .go-top {
 }
 
 @media screen and (max-width: 1023px) {
-  /* line 214, src/scss/_components/common/_login.scss */
+  /* line 249, src/scss/_components/common/_login.scss */
   .login_panel ul {
     font-size: 16px;
   }
 }
 
-/* line 237, src/scss/_components/common/_login.scss */
+/* line 272, src/scss/_components/common/_login.scss */
 .login_panel ul li {
   width: 50%;
   text-align: center;
@@ -5746,23 +5799,23 @@ body.chatbot_active .go-top {
   padding: 10px 15px;
 }
 
-/* line 243, src/scss/_components/common/_login.scss */
+/* line 278, src/scss/_components/common/_login.scss */
 .login_panel ul li.active {
   background: #90b0ca;
 }
 
-/* line 248, src/scss/_components/common/_login.scss */
+/* line 283, src/scss/_components/common/_login.scss */
 .login_panel ul a {
   color: #fff !important;
   text-transform: uppercase;
 }
 
-/* line 254, src/scss/_components/common/_login.scss */
+/* line 289, src/scss/_components/common/_login.scss */
 .login_panel .tab-content {
   background: #fff;
 }
 
-/* line 258, src/scss/_components/common/_login.scss */
+/* line 293, src/scss/_components/common/_login.scss */
 .signup_tip_conainer {
   padding-bottom: 10px;
   display: -webkit-box;
@@ -5774,7 +5827,7 @@ body.chatbot_active .go-top {
           flex-wrap: wrap;
 }
 
-/* line 263, src/scss/_components/common/_login.scss */
+/* line 298, src/scss/_components/common/_login.scss */
 .signup_tip_conainer .signup_tip {
   width: 33.3333334%;
   color: #0a3862;
@@ -5790,7 +5843,7 @@ body.chatbot_active .go-top {
   border-right: 2px solid #eaeaea;
 }
 
-/* line 277, src/scss/_components/common/_login.scss */
+/* line 312, src/scss/_components/common/_login.scss */
 .signup_tip_conainer .signup_tip i {
   background: url(../images/green_tick.png);
   width: 50px;
@@ -5801,19 +5854,19 @@ body.chatbot_active .go-top {
   top: 0;
 }
 
-/* line 288, src/scss/_components/common/_login.scss */
+/* line 323, src/scss/_components/common/_login.scss */
 .cleanlogin-container {
   padding: 15px;
 }
 
 @media screen and (max-width: 1023px) {
-  /* line 288, src/scss/_components/common/_login.scss */
+  /* line 323, src/scss/_components/common/_login.scss */
   .cleanlogin-container {
     padding: 35px 30px 15px;
   }
 }
 
-/* line 295, src/scss/_components/common/_login.scss */
+/* line 330, src/scss/_components/common/_login.scss */
 .cleanlogin-container .join_button, .cleanlogin-container input[type=submit], .cleanlogin-container .submit {
   width: 100% !important;
   border: none;
@@ -5829,7 +5882,7 @@ body.chatbot_active .go-top {
 }
 
 @media screen and (max-width: 1023px) {
-  /* line 295, src/scss/_components/common/_login.scss */
+  /* line 330, src/scss/_components/common/_login.scss */
   .cleanlogin-container .join_button, .cleanlogin-container input[type=submit], .cleanlogin-container .submit {
     font-size: 18px;
     background: #003b85;
@@ -5837,31 +5890,31 @@ body.chatbot_active .go-top {
   }
 }
 
-/* line 315, src/scss/_components/common/_login.scss */
+/* line 350, src/scss/_components/common/_login.scss */
 .cleanlogin-container form label {
   font-weight: 700;
 }
 
 @media screen and (max-width: 1023px) {
-  /* line 315, src/scss/_components/common/_login.scss */
+  /* line 350, src/scss/_components/common/_login.scss */
   .cleanlogin-container form label {
     color: #fff;
   }
 }
 
-/* line 323, src/scss/_components/common/_login.scss */
+/* line 358, src/scss/_components/common/_login.scss */
 .cleanlogin-container .forgot {
   float: right;
 }
 
-/* line 327, src/scss/_components/common/_login.scss */
+/* line 362, src/scss/_components/common/_login.scss */
 .cleanlogin-field {
   margin-bottom: 25px;
   -webkit-border-radius: 8px;
           border-radius: 8px;
 }
 
-/* line 331, src/scss/_components/common/_login.scss */
+/* line 366, src/scss/_components/common/_login.scss */
 .cleanlogin-field input {
   padding: 15px 25px;
   border-color: #333;
@@ -5870,7 +5923,7 @@ body.chatbot_active .go-top {
   width: 100%;
 }
 
-/* line 337, src/scss/_components/common/_login.scss */
+/* line 372, src/scss/_components/common/_login.scss */
 .cleanlogin-field input.error {
   border-color: red;
 }
@@ -5924,8 +5977,23 @@ body.chatbot_active .go-top {
 #login_popup .login_container {
   background-color: #0e123c;
   padding: 15px;
-  max-width: 1000px;
   margin-bottom: 0;
+}
+
+/* line 277, src/scss/_components/common/_footer.scss */
+#login_popup .login_popup_close {
+  position: absolute;
+  right: 15px;
+  top: 15px;
+  cursor: pointer;
+}
+
+@media screen and (max-width: 767px) {
+  /* line 284, src/scss/_components/common/_footer.scss */
+  #login_popup .login_popup_close img {
+    width: 25px;
+    height: 25px;
+  }
 }
 
 @media screen and (max-width: 1023px) {
@@ -6020,7 +6088,14 @@ body.chatbot_active .go-top {
 				}*/
 }
 
-/* line 74, src/scss/_components/homepage/_list.scss */
+/* line 62, src/scss/_components/homepage/_list.scss */
+.list .swiper-slide.is-hover.last-box .list__box {
+  -webkit-transform: translate(-webkit-calc(-50% - 55px), -50%);
+      -ms-transform: translate(calc(-50% - 55px), -50%);
+          transform: translate(calc(-50% - 55px), -50%);
+}
+
+/* line 80, src/scss/_components/homepage/_list.scss */
 .list .swiper-wrapper:not(.short_list) .swiper-slide.is-hover:last-of-type .list__box {
   -webkit-transform: translate(-webkit-calc(-50% - 120px), -50%);
       -ms-transform: translate(calc(-50% - 120px), -50%);
@@ -6291,8 +6366,8 @@ body.chatbot_active .go-top {
   position: absolute;
   top: 0;
   width: 75px;
-  height: -webkit-calc(100% - 30px);
-  height: calc(100% - 30px);
+  /*height: calc(100% - 30px);*/
+  height: 100%;
   -webkit-transition: opacity 0.35s ease-in-out, visibility 0.35s ease-in-out, height 0.35s ease-in-out;
   -o-transition: opacity 0.35s ease-in-out, visibility 0.35s ease-in-out, height 0.35s ease-in-out;
   transition: opacity 0.35s ease-in-out, visibility 0.35s ease-in-out, height 0.35s ease-in-out;
@@ -6306,12 +6381,12 @@ body.chatbot_active .go-top {
   }
 }
 
-/* line 14, src/scss/_components/homepage/_list--arrow.scss */
+/* line 15, src/scss/_components/homepage/_list--arrow.scss */
 .is-visible .list__arrow {
   opacity: 1;
 }
 
-/* line 18, src/scss/_components/homepage/_list--arrow.scss */
+/* line 19, src/scss/_components/homepage/_list--arrow.scss */
 .is-open .list__arrow {
   height: 100%;
   -webkit-transition: height 0.35s ease-in-out;
@@ -6319,7 +6394,7 @@ body.chatbot_active .go-top {
   transition: height 0.35s ease-in-out;
 }
 
-/* line 23, src/scss/_components/homepage/_list--arrow.scss */
+/* line 24, src/scss/_components/homepage/_list--arrow.scss */
 .list__arrow.swiper-button-disabled {
   opacity: 0;
   visibility: hidden;
@@ -6328,7 +6403,7 @@ body.chatbot_active .go-top {
   transition: opacity 0.35s ease-in-out, visibility 0.35s ease-in-out;
 }
 
-/* line 29, src/scss/_components/homepage/_list--arrow.scss */
+/* line 30, src/scss/_components/homepage/_list--arrow.scss */
 .list__arrow--prev {
   left: 0;
   background: -webkit-gradient(linear, right top, left top, from(rgba(8, 9, 21, 0)), to(#080915));
@@ -6338,39 +6413,47 @@ body.chatbot_active .go-top {
 }
 
 @media screen and (max-width: 767px) {
-  /* line 29, src/scss/_components/homepage/_list--arrow.scss */
+  /* line 30, src/scss/_components/homepage/_list--arrow.scss */
   .list__arrow--prev {
     left: -10px;
   }
 }
 
-/* line 36, src/scss/_components/homepage/_list--arrow.scss */
+/* line 37, src/scss/_components/homepage/_list--arrow.scss */
 .list__arrow--prev .list__arrow-box {
   left: 0;
 }
 
-/* line 41, src/scss/_components/homepage/_list--arrow.scss */
+/* line 42, src/scss/_components/homepage/_list--arrow.scss */
 .list__arrow--next {
   right: 0;
   background: -webkit-gradient(linear, left top, right top, from(rgba(8, 9, 21, 0)), to(#080915));
   background: -webkit-linear-gradient(left, rgba(8, 9, 21, 0) 0%, #080915 100%);
   background: -o-linear-gradient(left, rgba(8, 9, 21, 0) 0%, #080915 100%);
   background: linear-gradient(to right, rgba(8, 9, 21, 0) 0%, #080915 100%);
+  width: 200px;
 }
 
-/* line 45, src/scss/_components/homepage/_list--arrow.scss */
+@media screen and (max-width: 1449.98px) {
+  /* line 42, src/scss/_components/homepage/_list--arrow.scss */
+  .list__arrow--next {
+    width: 115px;
+  }
+}
+
+/* line 52, src/scss/_components/homepage/_list--arrow.scss */
 .list__arrow--next .list__arrow-box {
   right: 0;
 }
 
-/* line 48, src/scss/_components/homepage/_list--arrow.scss */
+/* line 55, src/scss/_components/homepage/_list--arrow.scss */
 .list__arrow--next .list__arrow-box .icon-font {
   -webkit-transform: scaleX(-1);
       -ms-transform: scaleX(-1);
           transform: scaleX(-1);
 }
 
-/* line 54, src/scss/_components/homepage/_list--arrow.scss */
+/* line 61, src/scss/_components/homepage/_list--arrow.scss */
 .list__arrow-box {
   z-index: 11;
   position: absolute;
@@ -6396,21 +6479,21 @@ body.chatbot_active .go-top {
 }
 
 @media screen and (max-width: 767px) {
-  /* line 54, src/scss/_components/homepage/_list--arrow.scss */
+  /* line 61, src/scss/_components/homepage/_list--arrow.scss */
   .list__arrow-box {
     width: 100%;
     background-color: transparent;
   }
 }
 
-/* line 70, src/scss/_components/homepage/_list--arrow.scss */
+/* line 77, src/scss/_components/homepage/_list--arrow.scss */
 .list__arrow-box .icon-font {
   color: #7b7b79;
   font-size: 24px;
 }
 
 @media screen and (max-width: 767px) {
-  /* line 70, src/scss/_components/homepage/_list--arrow.scss */
+  /* line 77, src/scss/_components/homepage/_list--arrow.scss */
   .list__arrow-box .icon-font {
     display: none;
   }
@@ -6518,8 +6601,8 @@ body.chatbot_active .go-top {
 @media screen and (max-width: 767px) {
   /* line 1, src/scss/_components/homepage/_list--box.scss */
   .list__box {
-    width: 75px;
-    height: 75px;
+    width: 100px;
+    height: 100px;
     padding: 10px 8px;
   }
 }
@@ -8615,7 +8698,7 @@ body.chatbot_active .go-top {
   z-index: auto;
 }
 
-/* line 90, src/scss/_components/homepage/_list.scss */
+/* line 96, src/scss/_components/homepage/_list.scss */
 .list_green_line {
   -webkit-transition: -webkit-transform 1s;
   transition: -webkit-transform 1s;
@@ -8627,7 +8710,7 @@ body.chatbot_active .go-top {
           transform: translateX(-50%);
 }
 
-/* line 96, src/scss/_components/homepage/_list.scss */
+/* line 102, src/scss/_components/homepage/_list.scss */
 .light .list__info p {
   color: #0b0d28;
 }
@@ -8704,21 +8787,42 @@ body.chatbot_active .go-top {
   }
 }
 
-/* line 135, src/scss/_components/homepage/_list.scss */
+/* line 139, src/scss/_components/homepage/_list.scss */
+.list__box-wrapper.last-box-selected .list__arrow--next {
+  width: 75px;
+}
+
+/* line 147, src/scss/_components/homepage/_list.scss */
 .light .list__info .category_title a {
   color: #000;
 }
 
-/* line 139, src/scss/_components/homepage/_list.scss */
+/* line 151, src/scss/_components/homepage/_list.scss */
 .light .list__info span {
   color: #636471;
 }
 
 @media screen and (max-width: 767px) {
-  /* line 143, src/scss/_components/homepage/_list.scss */
+  /* line 155, src/scss/_components/homepage/_list.scss */
   .light .list__info span:after {
     display: none;
   }
+}
+
+/* line 162, src/scss/_components/homepage/_list.scss */
+.light .list__btn {
+  background: #004cb0;
+  color: #fff;
+}
+
+/* line 166, src/scss/_components/homepage/_list.scss */
+.light .list__btn:hover, .light .list__btn:active, .light .list__btn:focus {
+  color: #fff;
+}
+
+/* line 170, src/scss/_components/homepage/_list.scss */
+.light .list__btn span {
+  color: #c3f228;
 }
 
 /*# sourceMappingURL=maps/app.css.map */

@@ -4,7 +4,8 @@
 	position: absolute;
 	top: 0;
 	width: 75px;
-	height: calc(100% - 30px);
+	/*height: calc(100% - 30px);*/
+	height: 100%;
 	@include transition(opacity, visibility, height);
 	@include adaptive(767) {
 		width: 40px;
@@ -41,6 +42,12 @@
 	&--next {
 		right: 0;
 		background: linear-gradient(to right, rgba(8,9,21,0) 0%,rgba(8,9,21,1) 100%);
+		width: 200px;
+
+		@include adaptive(1449.98) {
+			width: 115px;
+		}
+
 
 		.list__arrow-box {
 			right: 0;

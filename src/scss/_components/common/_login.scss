@@ -184,6 +184,41 @@
 	.signup{
 		margin: 0;
 	}
+
+	.top_forgot_text{
+		color: #d2d2d2;
+	}
+}
+
+.user_container_popup{
+	.user_tab_login, .user_tab_join, .user_tab_forgot{
+		display: none;
+		align-items: center;
+	}
+	&.login{
+		.user_tab_join, .user_tab_forgot{
+			display: none;
+		}
+		.user_tab_login{
+			display: flex;
+		}
+	}
+	&.join{
+		.user_tab_login, .user_tab_forgot{
+			display: none;
+		}
+		.user_tab_join{
+			display: flex;
+		}
+	}
+	&.forgot{
+		.user_tab_join, .user_tab_login{
+			display: none;
+		}
+		.user_tab_forgot{
+			display: flex;
+		}
+	}
 }
 
 .is_desktop{

@@ -160,6 +160,15 @@ const ajaxAdminEndpoint = '/wp-admin/admin-ajax.php';
 				onSiteBoxHoverClick(_ev);
 			}else if(_ev.closest('.login_popup_close')){
 				closeLoginPopups();
+			}else if(_ev.classList.contains('popup_link_signup')){
+				ev.preventDefault();
+				toggleLoginPopups('join');
+			}else if(_ev.classList.contains('popup_link_login')){
+				ev.preventDefault();
+				toggleLoginPopups('login');
+			}else if(_ev.classList.contains('popup_link_forgot')){
+				ev.preventDefault();
+				toggleLoginPopups('forgot');
 			}
 
 
@@ -556,6 +565,8 @@ const ajaxAdminEndpoint = '/wp-admin/admin-ajax.php';
 		//const listBlock = elParent.querySelector('.list__box[data-id="' + elID + '"]'),
 			const listFavoritesBtn = elParent.querySelector('.list__box-favorites[data-id="' + elID + '"]');
 
+			console.log('Clicking favourite button');
+
 		el.classList.toggle('is-active');
 		if(listFavoritesBtn){
 			listFavoritesBtn.classList.toggle('is-active');
@@ -563,10 +574,6 @@ const ajaxAdminEndpoint = '/wp-admin/admin-ajax.php';
 	}
 
 	function onSiteBoxLikeClick(el){
-		if(!isLoggedUser){
-			renderLoginForm();
-			return ;
-		}
 
 		var elID = el.getAttribute('data-id'),
 			elParent = el.closest('.list__box-wrapper');
