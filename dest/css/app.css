@@ -5727,37 +5727,51 @@ body.chatbot_active .go-top {
 }
 
 /* line 224, src/scss/_components/common/_login.scss */
+.result-message, .forgot_success {
+  display: block;
+  padding: 6px 0;
+  font-weight: 600;
+  text-align: center;
+  color: #fff;
+}
+
+/* line 231, src/scss/_components/common/_login.scss */
+.result-message.alert-danger, .forgot_success.alert-danger {
+  color: #ff6d6d;
+}
+
+/* line 236, src/scss/_components/common/_login.scss */
 .is_desktop {
   display: block;
 }
 
 @media screen and (max-width: 1023px) {
-  /* line 224, src/scss/_components/common/_login.scss */
+  /* line 236, src/scss/_components/common/_login.scss */
   .is_desktop {
     display: none;
   }
 }
 
-/* line 231, src/scss/_components/common/_login.scss */
+/* line 243, src/scss/_components/common/_login.scss */
 .is_mobile {
   display: none;
 }
 
 @media screen and (max-width: 1023px) {
-  /* line 231, src/scss/_components/common/_login.scss */
+  /* line 243, src/scss/_components/common/_login.scss */
   .is_mobile {
     display: block;
   }
 }
 
 @media screen and (max-width: 1023px) {
-  /* line 238, src/scss/_components/common/_login.scss */
+  /* line 250, src/scss/_components/common/_login.scss */
   .login_bottom {
     background: #000;
   }
 }
 
-/* line 244, src/scss/_components/common/_login.scss */
+/* line 256, src/scss/_components/common/_login.scss */
 .login_panel {
   background: #fff;
   margin-left: auto;
@@ -5765,7 +5779,7 @@ body.chatbot_active .go-top {
   margin-bottom: 15px;
 }
 
-/* line 249, src/scss/_components/common/_login.scss */
+/* line 261, src/scss/_components/common/_login.scss */
 .login_panel ul {
   font-family: gloria hallelujah,cursive;
   color: #d6ff23;
@@ -5785,13 +5799,13 @@ body.chatbot_active .go-top {
 }
 
 @media screen and (max-width: 1023px) {
-  /* line 249, src/scss/_components/common/_login.scss */
+  /* line 261, src/scss/_components/common/_login.scss */
   .login_panel ul {
     font-size: 16px;
   }
 }
 
-/* line 272, src/scss/_components/common/_login.scss */
+/* line 284, src/scss/_components/common/_login.scss */
 .login_panel ul li {
   width: 50%;
   text-align: center;
@@ -5799,23 +5813,23 @@ body.chatbot_active .go-top {
   padding: 10px 15px;
 }
 
-/* line 278, src/scss/_components/common/_login.scss */
+/* line 290, src/scss/_components/common/_login.scss */
 .login_panel ul li.active {
   background: #90b0ca;
 }
 
-/* line 283, src/scss/_components/common/_login.scss */
+/* line 295, src/scss/_components/common/_login.scss */
 .login_panel ul a {
   color: #fff !important;
   text-transform: uppercase;
 }
 
-/* line 289, src/scss/_components/common/_login.scss */
+/* line 301, src/scss/_components/common/_login.scss */
 .login_panel .tab-content {
   background: #fff;
 }
 
-/* line 293, src/scss/_components/common/_login.scss */
+/* line 305, src/scss/_components/common/_login.scss */
 .signup_tip_conainer {
   padding-bottom: 10px;
   display: -webkit-box;
@@ -5827,7 +5841,7 @@ body.chatbot_active .go-top {
           flex-wrap: wrap;
 }
 
-/* line 298, src/scss/_components/common/_login.scss */
+/* line 310, src/scss/_components/common/_login.scss */
 .signup_tip_conainer .signup_tip {
   width: 33.3333334%;
   color: #0a3862;
@@ -5843,7 +5857,7 @@ body.chatbot_active .go-top {
   border-right: 2px solid #eaeaea;
 }
 
-/* line 312, src/scss/_components/common/_login.scss */
+/* line 324, src/scss/_components/common/_login.scss */
 .signup_tip_conainer .signup_tip i {
   background: url(../images/green_tick.png);
   width: 50px;
@@ -5854,19 +5868,19 @@ body.chatbot_active .go-top {
   top: 0;
 }
 
-/* line 323, src/scss/_components/common/_login.scss */
+/* line 335, src/scss/_components/common/_login.scss */
 .cleanlogin-container {
   padding: 15px;
 }
 
 @media screen and (max-width: 1023px) {
-  /* line 323, src/scss/_components/common/_login.scss */
+  /* line 335, src/scss/_components/common/_login.scss */
   .cleanlogin-container {
     padding: 35px 30px 15px;
   }
 }
 
-/* line 330, src/scss/_components/common/_login.scss */
+/* line 342, src/scss/_components/common/_login.scss */
 .cleanlogin-container .join_button, .cleanlogin-container input[type=submit], .cleanlogin-container .submit {
   width: 100% !important;
   border: none;
@@ -5882,7 +5896,7 @@ body.chatbot_active .go-top {
 }
 
 @media screen and (max-width: 1023px) {
-  /* line 330, src/scss/_components/common/_login.scss */
+  /* line 342, src/scss/_components/common/_login.scss */
   .cleanlogin-container .join_button, .cleanlogin-container input[type=submit], .cleanlogin-container .submit {
     font-size: 18px;
     background: #003b85;
@@ -5890,31 +5904,31 @@ body.chatbot_active .go-top {
   }
 }
 
-/* line 350, src/scss/_components/common/_login.scss */
+/* line 362, src/scss/_components/common/_login.scss */
 .cleanlogin-container form label {
   font-weight: 700;
 }
 
 @media screen and (max-width: 1023px) {
-  /* line 350, src/scss/_components/common/_login.scss */
+  /* line 362, src/scss/_components/common/_login.scss */
   .cleanlogin-container form label {
     color: #fff;
   }
 }
 
-/* line 358, src/scss/_components/common/_login.scss */
+/* line 370, src/scss/_components/common/_login.scss */
 .cleanlogin-container .forgot {
   float: right;
 }
 
-/* line 362, src/scss/_components/common/_login.scss */
+/* line 374, src/scss/_components/common/_login.scss */
 .cleanlogin-field {
   margin-bottom: 25px;
   -webkit-border-radius: 8px;
           border-radius: 8px;
 }
 
-/* line 366, src/scss/_components/common/_login.scss */
+/* line 378, src/scss/_components/common/_login.scss */
 .cleanlogin-field input {
   padding: 15px 25px;
   border-color: #333;
@@ -5923,7 +5937,7 @@ body.chatbot_active .go-top {
   width: 100%;
 }
 
-/* line 372, src/scss/_components/common/_login.scss */
+/* line 384, src/scss/_components/common/_login.scss */
 .cleanlogin-field input.error {
   border-color: red;
 }

@@ -313,14 +313,20 @@ function toggleLoginPopups(type){
 			userPopup.classList.remove('join');
 			userPopup.classList.remove('forgot');
 			userPopup.classList.add('login');
+
+			initLoginScripts();
 		}else if(type=='join'){
 			userPopup.classList.remove('login');
 			userPopup.classList.remove('forgot');
 			userPopup.classList.add('join');
+
+			initRegistration();
 		}else if(type=='forgot'){
 			userPopup.classList.remove('login');
 			userPopup.classList.remove('join');
 			userPopup.classList.add('forgot');
+
+			initForgot();
 		}
 	}
 }
