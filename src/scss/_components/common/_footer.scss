@@ -272,6 +272,14 @@ body.chatbot_active{
 		background-color: #0e123c;
 		padding: 15px;
 		margin-bottom: 0;
+
+		@include adaptive(767) {
+			width: 90%;
+
+			.user_tab_login{
+				width: 100%;
+			}
+		}
 	}
 
 	.login_popup_close{

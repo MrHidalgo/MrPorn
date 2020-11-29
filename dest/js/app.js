@@ -385,9 +385,7 @@ function renderSiteBottomBanner(category, index) {
     homeData.categories[category].sites.map(function (moreSite, index) {
       if (moreSiteCount < 6 && moreSite.id != siteId) {
         var moreSiteLogo = moreSite.logo ? moreSite.logo.src : '';
-        moreSites += '<a class="list__box" list-box-more-js href="' + moreSite.link + '" data-id="' + moreSite.id + '" data-count="1" style="background-image: url(' + moreSite.banner_image + ')">' +
-        /*'<div class="list__box-overlay"></div>'+*/
-        '<div class="list__box-border"></div><img class="list__box-logo" src="' + moreSiteLogo + '" alt=""/>' + '</a>';
+        moreSites += '<a class="list__box" list-box-more-js href="' + moreSite.link + '" data-id="' + moreSite.id + '" data-count="1" style="background-image: url(' + moreSite.banner_image + ')">' + '<div class="list__box-border"></div>' + '</a>';
         moreSiteCount++;
       }
     });
@@ -438,7 +436,7 @@ function renderSkipSiteBottomBanner(category, index) {
     homeData.categories[category].sites.map(function (moreSite, index) {
       if (moreSiteCount < 6 && moreSite.id != siteId) {
         var moreSiteLogo = moreSite.logo ? moreSite.logo.src : '';
-        moreSites += '<a class="list__box" list-box-more-js href="' + moreSite.link + '" data-id="' + moreSite.id + '" data-count="1" style="background-image: url(' + moreSite.banner_image + ')">' + '<div class="list__box-border"></div><img class="list__box-logo" src="' + moreSiteLogo + '" alt=""/>' + '</a>';
+        moreSites += '<a class="list__box" list-box-more-js href="' + moreSite.link + '" data-id="' + moreSite.id + '" data-count="1" style="background-image: url(' + moreSite.banner_image + ')">' + '<div class="list__box-border"></div>' + '</a>';
         moreSiteCount++;
       }
     });

@@ -4155,6 +4155,77 @@ strong {
   }
 }
 
+/* line 1, src/scss/_components/common/_header--awe.scss */
+.header .awe_search {
+  padding: 15px 0 24px;
+}
+
+/* line 4, src/scss/_components/common/_header--awe.scss */
+.header .awe_search .search-text {
+  font-size: 22px;
+  color: #6af;
+  text-transform: uppercase;
+  font-weight: 700;
+  padding: 8px 50px 8px 14px;
+  background-color: #000;
+  display: inline-block;
+  position: relative;
+  margin: 0;
+  font: 400 22px/1.2 "Arial Black",sans-serif;
+}
+
+/* line 16, src/scss/_components/common/_header--awe.scss */
+.header .awe_search .search-text .name {
+  position: relative;
+  z-index: 1;
+}
+
+/* line 21, src/scss/_components/common/_header--awe.scss */
+.header .awe_search .search-text .search-text-icon {
+  position: absolute;
+  top: -12px;
+  right: 10px;
+  width: 74px;
+  height: 46px;
+  content: ' ';
+  display: block;
+  background: url(../images/arrow-form.png);
+  -webkit-background-size: contain;
+          background-size: contain;
+}
+
+/* line 34, src/scss/_components/common/_header--awe.scss */
+.header .awe_search .holder-wrap {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  width: 100%;
+  position: relative;
+}
+
+/* line 41, src/scss/_components/common/_header--awe.scss */
+.header .awe_search .awe_search_wrapper:before {
+  position: absolute;
+  background: url(../images/search.png);
+  width: 23px;
+  height: 23px;
+  content: ' ';
+  display: block;
+  right: 13px;
+  top: 50%;
+  margin-top: -10px;
+}
+
+/* line 54, src/scss/_components/common/_header--awe.scss */
+.header .awe_search .search-primary {
+  height: 49px;
+  border: 1px solid #fff;
+  padding: 0 70px 0 16px;
+  width: 100%;
+  color: #777;
+}
+
 @media screen and (max-width: 1023.98px) {
   /* line 3, src/scss/_components/common/_header.scss */
   .header {
@@ -4182,31 +4253,31 @@ strong {
   }
 }
 
-/* line 38, src/scss/_components/common/_header.scss */
+/* line 39, src/scss/_components/common/_header.scss */
 .is_logged .header__view-wrapper {
   display: block;
 }
 
 @media screen and (max-width: 1023px) {
-  /* line 38, src/scss/_components/common/_header.scss */
+  /* line 39, src/scss/_components/common/_header.scss */
   .is_logged .header__view-wrapper {
     display: none;
   }
 }
 
-/* line 45, src/scss/_components/common/_header.scss */
+/* line 46, src/scss/_components/common/_header.scss */
 .is_logged .header__view-text {
   display: none;
 }
 
-/* line 50, src/scss/_components/common/_header.scss */
+/* line 51, src/scss/_components/common/_header.scss */
 [data-label-lg]::after {
   content: attr(data-label-lg);
 }
 
 @media screen and (max-width: 767px) {
   /* line 189, src/scss/_shared/_main-setting-reset.scss */
-  /* line 56, src/scss/_components/common/_header.scss */
+  /* line 57, src/scss/_components/common/_header.scss */
   [data-label-xs]::after {
     content: attr(data-label-xs);
   }
@@ -5678,7 +5749,15 @@ body.chatbot_active .go-top {
   color: #d2d2d2;
 }
 
-/* line 194, src/scss/_components/common/_login.scss */
+@media screen and (max-width: 767px) {
+  /* line 188, src/scss/_components/common/_login.scss */
+  .login_container .top_forgot_text {
+    text-align: center;
+    padding-top: 10px;
+  }
+}
+
+/* line 199, src/scss/_components/common/_login.scss */
 .user_container_popup .user_tab_login, .user_container_popup .user_tab_join, .user_container_popup .user_tab_forgot {
   display: none;
   -webkit-box-align: center;
@@ -5687,12 +5766,12 @@ body.chatbot_active .go-top {
           align-items: center;
 }
 
-/* line 199, src/scss/_components/common/_login.scss */
+/* line 204, src/scss/_components/common/_login.scss */
 .user_container_popup.login .user_tab_join, .user_container_popup.login .user_tab_forgot {
   display: none;
 }
 
-/* line 202, src/scss/_components/common/_login.scss */
+/* line 207, src/scss/_components/common/_login.scss */
 .user_container_popup.login .user_tab_login {
   display: -webkit-box;
   display: -webkit-flex;
@@ -5700,12 +5779,12 @@ body.chatbot_active .go-top {
   display: flex;
 }
 
-/* line 207, src/scss/_components/common/_login.scss */
+/* line 212, src/scss/_components/common/_login.scss */
 .user_container_popup.join .user_tab_login, .user_container_popup.join .user_tab_forgot {
   display: none;
 }
 
-/* line 210, src/scss/_components/common/_login.scss */
+/* line 215, src/scss/_components/common/_login.scss */
 .user_container_popup.join .user_tab_join {
   display: -webkit-box;
   display: -webkit-flex;
@@ -5713,12 +5792,12 @@ body.chatbot_active .go-top {
   display: flex;
 }
 
-/* line 215, src/scss/_components/common/_login.scss */
+/* line 220, src/scss/_components/common/_login.scss */
 .user_container_popup.forgot .user_tab_join, .user_container_popup.forgot .user_tab_login {
   display: none;
 }
 
-/* line 218, src/scss/_components/common/_login.scss */
+/* line 223, src/scss/_components/common/_login.scss */
 .user_container_popup.forgot .user_tab_forgot {
   display: -webkit-box;
   display: -webkit-flex;
@@ -5726,7 +5805,7 @@ body.chatbot_active .go-top {
   display: flex;
 }
 
-/* line 224, src/scss/_components/common/_login.scss */
+/* line 229, src/scss/_components/common/_login.scss */
 .result-message, .forgot_success {
   display: block;
   padding: 6px 0;
@@ -5735,43 +5814,43 @@ body.chatbot_active .go-top {
   color: #fff;
 }
 
-/* line 231, src/scss/_components/common/_login.scss */
+/* line 236, src/scss/_components/common/_login.scss */
 .result-message.alert-danger, .forgot_success.alert-danger {
   color: #ff6d6d;
 }
 
-/* line 236, src/scss/_components/common/_login.scss */
+/* line 241, src/scss/_components/common/_login.scss */
 .is_desktop {
   display: block;
 }
 
 @media screen and (max-width: 1023px) {
-  /* line 236, src/scss/_components/common/_login.scss */
+  /* line 241, src/scss/_components/common/_login.scss */
   .is_desktop {
     display: none;
   }
 }
 
-/* line 243, src/scss/_components/common/_login.scss */
+/* line 248, src/scss/_components/common/_login.scss */
 .is_mobile {
   display: none;
 }
 
 @media screen and (max-width: 1023px) {
-  /* line 243, src/scss/_components/common/_login.scss */
+  /* line 248, src/scss/_components/common/_login.scss */
   .is_mobile {
     display: block;
   }
 }
 
 @media screen and (max-width: 1023px) {
-  /* line 250, src/scss/_components/common/_login.scss */
+  /* line 255, src/scss/_components/common/_login.scss */
   .login_bottom {
     background: #000;
   }
 }
 
-/* line 256, src/scss/_components/common/_login.scss */
+/* line 261, src/scss/_components/common/_login.scss */
 .login_panel {
   background: #fff;
   margin-left: auto;
@@ -5779,7 +5858,7 @@ body.chatbot_active .go-top {
   margin-bottom: 15px;
 }
 
-/* line 261, src/scss/_components/common/_login.scss */
+/* line 266, src/scss/_components/common/_login.scss */
 .login_panel ul {
   font-family: gloria hallelujah,cursive;
   color: #d6ff23;
@@ -5799,13 +5878,13 @@ body.chatbot_active .go-top {
 }
 
 @media screen and (max-width: 1023px) {
-  /* line 261, src/scss/_components/common/_login.scss */
+  /* line 266, src/scss/_components/common/_login.scss */
   .login_panel ul {
     font-size: 16px;
   }
 }
 
-/* line 284, src/scss/_components/common/_login.scss */
+/* line 289, src/scss/_components/common/_login.scss */
 .login_panel ul li {
   width: 50%;
   text-align: center;
@@ -5813,23 +5892,23 @@ body.chatbot_active .go-top {
   padding: 10px 15px;
 }
 
-/* line 290, src/scss/_components/common/_login.scss */
+/* line 295, src/scss/_components/common/_login.scss */
 .login_panel ul li.active {
   background: #90b0ca;
 }
 
-/* line 295, src/scss/_components/common/_login.scss */
+/* line 300, src/scss/_components/common/_login.scss */
 .login_panel ul a {
   color: #fff !important;
   text-transform: uppercase;
 }
 
-/* line 301, src/scss/_components/common/_login.scss */
+/* line 306, src/scss/_components/common/_login.scss */
 .login_panel .tab-content {
   background: #fff;
 }
 
-/* line 305, src/scss/_components/common/_login.scss */
+/* line 310, src/scss/_components/common/_login.scss */
 .signup_tip_conainer {
   padding-bottom: 10px;
   display: -webkit-box;
@@ -5841,7 +5920,7 @@ body.chatbot_active .go-top {
           flex-wrap: wrap;
 }
 
-/* line 310, src/scss/_components/common/_login.scss */
+/* line 315, src/scss/_components/common/_login.scss */
 .signup_tip_conainer .signup_tip {
   width: 33.3333334%;
   color: #0a3862;
@@ -5857,7 +5936,7 @@ body.chatbot_active .go-top {
   border-right: 2px solid #eaeaea;
 }
 
-/* line 324, src/scss/_components/common/_login.scss */
+/* line 329, src/scss/_components/common/_login.scss */
 .signup_tip_conainer .signup_tip i {
   background: url(../images/green_tick.png);
   width: 50px;
@@ -5868,19 +5947,19 @@ body.chatbot_active .go-top {
   top: 0;
 }
 
-/* line 335, src/scss/_components/common/_login.scss */
+/* line 340, src/scss/_components/common/_login.scss */
 .cleanlogin-container {
   padding: 15px;
 }
 
 @media screen and (max-width: 1023px) {
-  /* line 335, src/scss/_components/common/_login.scss */
+  /* line 340, src/scss/_components/common/_login.scss */
   .cleanlogin-container {
     padding: 35px 30px 15px;
   }
 }
 
-/* line 342, src/scss/_components/common/_login.scss */
+/* line 347, src/scss/_components/common/_login.scss */
 .cleanlogin-container .join_button, .cleanlogin-container input[type=submit], .cleanlogin-container .submit {
   width: 100% !important;
   border: none;
@@ -5896,7 +5975,7 @@ body.chatbot_active .go-top {
 }
 
 @media screen and (max-width: 1023px) {
-  /* line 342, src/scss/_components/common/_login.scss */
+  /* line 347, src/scss/_components/common/_login.scss */
   .cleanlogin-container .join_button, .cleanlogin-container input[type=submit], .cleanlogin-container .submit {
     font-size: 18px;
     background: #003b85;
@@ -5904,31 +5983,31 @@ body.chatbot_active .go-top {
   }
 }
 
-/* line 362, src/scss/_components/common/_login.scss */
+/* line 367, src/scss/_components/common/_login.scss */
 .cleanlogin-container form label {
   font-weight: 700;
 }
 
 @media screen and (max-width: 1023px) {
-  /* line 362, src/scss/_components/common/_login.scss */
+  /* line 367, src/scss/_components/common/_login.scss */
   .cleanlogin-container form label {
     color: #fff;
   }
 }
 
-/* line 370, src/scss/_components/common/_login.scss */
+/* line 375, src/scss/_components/common/_login.scss */
 .cleanlogin-container .forgot {
   float: right;
 }
 
-/* line 374, src/scss/_components/common/_login.scss */
+/* line 379, src/scss/_components/common/_login.scss */
 .cleanlogin-field {
   margin-bottom: 25px;
   -webkit-border-radius: 8px;
           border-radius: 8px;
 }
 
-/* line 378, src/scss/_components/common/_login.scss */
+/* line 383, src/scss/_components/common/_login.scss */
 .cleanlogin-field input {
   padding: 15px 25px;
   border-color: #333;
@@ -5937,7 +6016,7 @@ body.chatbot_active .go-top {
   width: 100%;
 }
 
-/* line 384, src/scss/_components/common/_login.scss */
+/* line 389, src/scss/_components/common/_login.scss */
 .cleanlogin-field input.error {
   border-color: red;
 }
@@ -5994,7 +6073,18 @@ body.chatbot_active .go-top {
   margin-bottom: 0;
 }
 
-/* line 277, src/scss/_components/common/_footer.scss */
+@media screen and (max-width: 767px) {
+  /* line 271, src/scss/_components/common/_footer.scss */
+  #login_popup .login_container {
+    width: 90%;
+  }
+  /* line 279, src/scss/_components/common/_footer.scss */
+  #login_popup .login_container .user_tab_login {
+    width: 100%;
+  }
+}
+
+/* line 285, src/scss/_components/common/_footer.scss */
 #login_popup .login_popup_close {
   position: absolute;
   right: 15px;
@@ -6003,7 +6093,7 @@ body.chatbot_active .go-top {
 }
 
 @media screen and (max-width: 767px) {
-  /* line 284, src/scss/_components/common/_footer.scss */
+  /* line 292, src/scss/_components/common/_footer.scss */
   #login_popup .login_popup_close img {
     width: 25px;
     height: 25px;

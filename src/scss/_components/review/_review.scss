@@ -103,6 +103,12 @@
 				color: #fff;
 				padding: 5px 15px;
 			}
+			@include respond('iphone_x_landscape'){
+				display: none;
+			}
+			@include respond('iphone_8_landscape'){
+				display: none;
+			}
 		}
 
 		.left_content {
@@ -221,6 +227,8 @@
 		font-size: 16px;
 		font-weight: 600;
 		text-decoration: underline;
+
+		margin-bottom: 10px;
 	}
 }
 
@@ -434,6 +442,10 @@
 			margin-left: auto;
 			margin-right: auto;
 			max-width: 200px;
+
+			&.games{
+				max-width: 300px;
+			}
 		}
 
 		p{
@@ -1066,6 +1078,13 @@
 		display: block;
 	}
 
+	@include respond('iphone_x_landscape'){
+		line-height: 45px;
+	}
+	@include respond('iphone_8_landscape'){
+		line-height: 45px;
+	}
+
 	a{
 		color: #fff;
 		font-size: 20px;
@@ -1080,6 +1099,13 @@
 
 		@include adaptive(767) {
 
+		}
+
+		@include respond('iphone_x_landscape'){
+			line-height: 45px;
+		}
+		@include respond('iphone_8_landscape'){
+			line-height: 45px;
 		}
 
 		span{
@@ -1098,6 +1124,13 @@
 			background: linear-gradient(to bottom,#3a8300 0%,#327200 60%,#245100 100%);
 			filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#3a8300',endColorstr='#245100',GradientType=0 );
 
+			@include respond('iphone_x_landscape'){
+				height: 45px;
+			}
+			@include respond('iphone_8_landscape'){
+				height: 45px;
+			}
+
 			b{
 				width: 100%;
 				height: 100%;
@@ -1105,6 +1138,13 @@
 				display: block;
 				background: url(../images/icon_review_floating.png)no-repeat;
 				background-position: center;
+
+				@include respond('iphone_x_landscape'){
+					background-size: auto 35px;
+				}
+				@include respond('iphone_8_landscape'){
+					background-size: auto 35px;
+				}
 			}
 
 			@include adaptive(767) {
@@ -1355,6 +1395,7 @@
 
 				&::before{
 					position: relative;
+					margin: 0;
 				}
 			}
 
