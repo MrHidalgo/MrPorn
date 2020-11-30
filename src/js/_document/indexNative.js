@@ -10,6 +10,8 @@ let clonedPopupBanner;
 let clonedPopupTimeout;
 let isLoggedUser = false;
 
+let currentLang = 'en';
+
 
 if (!Element.prototype.matches) {
 	Element.prototype.matches = Element.prototype.msMatchesSelector ||
@@ -859,7 +861,7 @@ const ajaxAdminEndpoint = '/wp-admin/admin-ajax.php';
 		initPreventBehavior();
 		// ==========================================
 
-
+		currentLang = document.documentElement.getAttribute('lang');
 
 		// lib
 		initSwiper();

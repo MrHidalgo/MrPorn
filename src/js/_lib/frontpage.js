@@ -69,11 +69,11 @@ function renderHompageSiteSlide(category, index){
 		let slideHtml = '<div class="list__box nolazy" list-box-js data-id="'+siteId+'" style="background-image: url('+siteThumb+')">'+
 			/*'<div class="list__box-overlay"></div>'+*/
 			'<div class="list__box-border"></div>' +
-			'<a href="'+siteLink+'" target="_blank"></a>'+
+			'<a href="'+siteLink+'" hreflang="'+currentLang+'" target="_blank"></a>'+
 			//'<img class="list__box-logo nolazy" src="'+siteLogo+'" alt=""/>'+
 			'<div class="list__box-details">'+
 			'<div class="list__box-details-left">'+
-			'<a class="site_link" href="'+siteLink+'" target="_blank">' +
+			'<a class="site_link" href="'+siteLink+'" hreflang="'+currentLang+'" target="_blank">' +
 			'<i class="icon-font icon-out"></i>'+
 			'<p class="list__box-details-title">'+siteName+'</p>'+
 			'</a>'+
@@ -218,7 +218,7 @@ function renderSiteBottomBanner(category, index){
 			'<img class="list__specification-logo" src="'+siteLogo+'"/>'+
 			'<div class="list__specification-action" spec-actionNode-js>'+
 			'<div><a class="list__specification-visit nav_link" href="'+siteUrl+'" target="_blank">VISIT WEBSITE</a></div>'+
-			'<div><a class="list__specification-read nav_link" href="'+siteItem.link+'">READ REVIEW</a></div>'+
+			'<div><a class="list__specification-read nav_link" href="'+siteItem.link+'" hreflang="'+currentLang+'">READ REVIEW</a></div>'+
 			'<div class="list__specification-action-desc">'+
 			'<p>'+tagLIne+'</p>'+
 			'</div>'+
@@ -393,7 +393,7 @@ function renderSiteCategory(categoryIndex){
 			'<div class="list__box" list-box-js  data-id="'+site.id+'" style="background-image: url('+site.banner_image+')">'+
 			/*'<div class="list__box-overlay"></div>'+*/
 			'<div class="list__box-border"></div>'+
-			'<a class="nav_link" href="'+site.link+'">' +
+			'<a class="nav_link" href="'+site.link+'" hreflang="'+currentLang+'">' +
 			//siteLogo+
 			'</a>'+
 			'<div class="list__box-details">'+
@@ -412,10 +412,10 @@ function renderSiteCategory(categoryIndex){
 										'<div class="list__info">'+
 											'<div class="list__info-circle"><img src="'+categoryLogo+'" alt=""/></div>'+
 											'<div class="category_title">'+
-												'<a href="'+categoryData.link+'">'+categoryData.title+'</a><span>'+categoryData.tagline+'</span>'+
+												'<a href="'+categoryData.link+'" hreflang="'+currentLang+'">'+categoryData.title+'</a><span>'+categoryData.tagline+'</span>'+
 											'</div>'+
 										'</div>'+
-                    '<a class="list__btn nav_link" href="'+categoryData.link+'">SEE&nbsp;<span>'+categoryData.count+' MORE</span><i class="icon-font icon-arrow-angle"></i></a>'+
+                    '<a class="list__btn nav_link" href="'+categoryData.link+'" hreflang="'+currentLang+'">SEE&nbsp;<span>'+categoryData.count+' MORE</span><i class="icon-font icon-arrow-angle"></i></a>'+
                   '</div>'+
                   '<div class="list__box-line">'+
                     '<u list-line-ind-js></u><span class="list_green_line" list-line-js></span>'+
