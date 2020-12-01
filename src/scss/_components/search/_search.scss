@@ -143,9 +143,9 @@
 		flex: 33.333334% 1;
 	}
 	@include adaptive(767) {
-		width: 33.333334%;
-		max-width: 33.333334%;
-		flex: 33.333334% 1;
+		width: 50%;
+		max-width: 50%;
+		flex: 50% 1;
 	}
 
 	.title{
@@ -179,6 +179,9 @@
 		}
 		span{
 			max-width: 100%;
+			white-space: nowrap;
+			text-overflow: ellipsis;
+			overflow: hidden;
 		}
 		img{
 			max-width: 100%;

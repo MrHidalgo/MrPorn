@@ -539,6 +539,7 @@ var previousHoverBox = null;
 var boxHover = function boxHover() {
   //const swiperSlides = document.querySelectorAll('.swiper-slide[data-init="0"]'),
   var swiperSlides = document.querySelectorAll('.swiper-slide'),
+      parentSlides = document.querySelectorAll('[list-parent-js]'),
       listBoxBody = document.querySelectorAll('.list__box-body');
 
   for (var i = 0, len = swiperSlides.length; i < len; i++) {
@@ -567,6 +568,12 @@ var boxHover = function boxHover() {
         }
       }
     }, false);
+  }
+
+  for (var _i2 = 0, _len2 = parentSlides.length; _i2 < _len2; _i2++) {
+    parentSlides[_i2].removeEventListener('mouseleave', onParentSideLeave);
+
+    parentSlides[_i2].addEventListener('mouseleave', onParentSideLeave, false);
   }
 };
 
@@ -683,6 +690,22 @@ function onSlideEnter(ev) {
   }
 
   markFavourites();
+}
+
+function onParentSideLeave(ev) {
+  var parentSlideBox = ev.target;
+
+  if (parentSlideBox) {
+    var openBanner = parentSlideBox.querySelector('.list__specification.is-open');
+
+    if (openBanner) {
+      var btCloseBanner = openBanner.querySelector('.list__specification-close');
+
+      if (btCloseBanner) {
+        btCloseBanner.click();
+      }
+    }
+  }
 }
 
 function onShowBannerEnter(__ev) {
@@ -2032,8 +2055,8 @@ var ajaxAdminEndpoint = '/wp-admin/admin-ajax.php';
       }, false);
     }
 
-    for (var _i2 = 0, _len2 = videoPauseBtns.length; _i2 < _len2; _i2++) {
-      videoPauseBtns[_i2].addEventListener('click', function (ev) {
+    for (var _i3 = 0, _len3 = videoPauseBtns.length; _i3 < _len3; _i3++) {
+      videoPauseBtns[_i3].addEventListener('click', function (ev) {
         var el = ev.currentTarget;
         onPauseClick(el);
       }, false);
@@ -2056,42 +2079,42 @@ var ajaxAdminEndpoint = '/wp-admin/admin-ajax.php';
       }, false);
     }
 
-    for (var _i3 = 0, _len3 = skipBtns.length; _i3 < _len3; _i3++) {
-      skipBtns[_i3].addEventListener('click', function (ev) {
+    for (var _i4 = 0, _len4 = skipBtns.length; _i4 < _len4; _i4++) {
+      skipBtns[_i4].addEventListener('click', function (ev) {
         ev.currentTarget.classList.toggle('is-active');
       }, false);
     }
 
-    for (var _i4 = 0, _len4 = specFavoritesBtns.length; _i4 < _len4; _i4++) {
-      specFavoritesBtns[_i4].addEventListener('click', function (ev) {
+    for (var _i5 = 0, _len5 = specFavoritesBtns.length; _i5 < _len5; _i5++) {
+      specFavoritesBtns[_i5].addEventListener('click', function (ev) {
         var el = ev.currentTarget;
         onBannerFavourite(el);
       }, false);
     }
 
-    for (var _i5 = 0, _len5 = likeBtns.length; _i5 < _len5; _i5++) {
-      likeBtns[_i5].addEventListener('click', function (ev) {
+    for (var _i6 = 0, _len6 = likeBtns.length; _i6 < _len6; _i6++) {
+      likeBtns[_i6].addEventListener('click', function (ev) {
         var el = ev.currentTarget;
         onSiteBoxLikeClick(el);
       }, false);
     }
 
-    for (var _i6 = 0, _len6 = specLikeBtns.length; _i6 < _len6; _i6++) {
-      specLikeBtns[_i6].addEventListener('click', function (ev) {
+    for (var _i7 = 0, _len7 = specLikeBtns.length; _i7 < _len7; _i7++) {
+      specLikeBtns[_i7].addEventListener('click', function (ev) {
         var el = ev.currentTarget;
         onBannerLikeClick(el);
       }, false);
     }
 
-    for (var _i7 = 0, _len7 = dislikeBtns.length; _i7 < _len7; _i7++) {
-      dislikeBtns[_i7].addEventListener('click', function (ev) {
+    for (var _i8 = 0, _len8 = dislikeBtns.length; _i8 < _len8; _i8++) {
+      dislikeBtns[_i8].addEventListener('click', function (ev) {
         var el = ev.currentTarget;
         onSiteBoxDislikeClick(el);
       }, false);
     }
 
-    for (var _i8 = 0, _len8 = specDislikeBtns.length; _i8 < _len8; _i8++) {
-      specDislikeBtns[_i8].addEventListener('click', function (ev) {
+    for (var _i9 = 0, _len9 = specDislikeBtns.length; _i9 < _len9; _i9++) {
+      specDislikeBtns[_i9].addEventListener('click', function (ev) {
         var el = ev.currentTarget;
         onBannerDislikeClick(el);
       }, false);

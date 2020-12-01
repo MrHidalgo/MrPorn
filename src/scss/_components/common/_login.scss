@@ -161,6 +161,7 @@
 
 	.login_banner{
 		width: 50%;
+		max-width: 580px;
 
 		@include adaptive(1023) {
 			display: none;
@@ -379,6 +380,7 @@
 .cleanlogin-field{
 	margin-bottom: 25px;
 	border-radius: 8px;
+	max-width: 420px;
 
 	input{
 		padding: 15px 25px;

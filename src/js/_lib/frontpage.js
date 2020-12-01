@@ -470,6 +470,7 @@ let previousHoverBox = null;
 const boxHover = () => {
 	//const swiperSlides = document.querySelectorAll('.swiper-slide[data-init="0"]'),
 	const swiperSlides = document.querySelectorAll('.swiper-slide'),
+		parentSlides = document.querySelectorAll('[list-parent-js]'),
 		listBoxBody = document.querySelectorAll('.list__box-body');
 
 
@@ -510,6 +511,12 @@ const boxHover = () => {
 				}
 			}
 		}, false);
+	}
+
+
+	for(let i = 0, len = parentSlides.length; i < len; i++) {
+		parentSlides[i].removeEventListener('mouseleave', onParentSideLeave);
+		parentSlides[i].addEventListener('mouseleave', onParentSideLeave, false);
 	}
 };
 
@@ -650,6 +657,19 @@ function onSlideEnter(ev){
 	}
 
 	markFavourites();
+}
+
+function onParentSideLeave(ev){
+	let parentSlideBox = ev.target;
+	if(parentSlideBox){
+		let openBanner = parentSlideBox.querySelector('.list__specification.is-open');
+		if(openBanner){
+			let btCloseBanner = openBanner.querySelector('.list__specification-close');
+			if(btCloseBanner){
+				btCloseBanner.click();
+			}
+		}
+	}
 }
 
 function onShowBannerEnter(__ev){
