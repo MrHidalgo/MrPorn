@@ -20,6 +20,33 @@
 	width: 100%;
 	font-size: 14px;
 	color: #333;
+
+	&.is-open{
+		display: flex;
+	}
+
+	#comment_area_div{
+		display: flex;
+		flex-direction: column;
+	}
+
+	.comments_bottom_full_h{
+		flex: 1;
+		display: flex;
+
+		.comments_section{
+			display: flex;
+
+			.comments-list{
+				display: flex;
+			}
+
+			.no_comments{
+				display: flex;
+				flex-direction: column;
+			}
+		}
+	}
 }
 
 #got_something {
@@ -285,7 +312,6 @@ hr {
 }
 
 .comments_section {
-	height: 260px;
 	overflow-y: scroll;
 	overflow-x: hidden;
 }
@@ -404,9 +430,10 @@ hr {
 
 .no_comments_text {
 	width: 100%;
-	height: 180px;
+	height: 100%;
 	background: #fff;
 	display: flex;
+	flex: 1;
 	align-items: center;
 	justify-content: center;
 	flex-direction: column;

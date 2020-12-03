@@ -4804,12 +4804,21 @@ strong {
   -webkit-flex: 1;
       -ms-flex: 1;
           flex: 1;
-  overflow: hidden;
+  overflow: auto;
   white-space: nowrap;
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
+  -ms-overflow-style: none;
+  /* IE and Edge */
+  scrollbar-width: none;
+  /* Firefox */
+}
+
+/* line 100, src/scss/_components/search/_search.scss */
+.search_results_tags::-webkit-scrollbar {
+  display: none;
 }
 
 @media screen and (max-width: 767px) {
@@ -4819,7 +4828,7 @@ strong {
   }
 }
 
-/* line 102, src/scss/_components/search/_search.scss */
+/* line 108, src/scss/_components/search/_search.scss */
 .search_results_tags .search_category_item {
   text-decoration: none;
   background: #090b27;
@@ -4840,33 +4849,33 @@ strong {
           align-items: center;
 }
 
-/* line 114, src/scss/_components/search/_search.scss */
+/* line 120, src/scss/_components/search/_search.scss */
 .search_results_tags .search_category_item:before {
   margin-left: 0;
   zoom: 0.8;
 }
 
-/* line 116, src/scss/_components/search/_search.scss */
+/* line 122, src/scss/_components/search/_search.scss */
 .search_results_tags .search_category_item:nth-child(5n+1) {
   background: #0677ce;
 }
 
-/* line 119, src/scss/_components/search/_search.scss */
+/* line 125, src/scss/_components/search/_search.scss */
 .search_results_tags .search_category_item:nth-child(5n+2) {
   background: #767676;
 }
 
-/* line 122, src/scss/_components/search/_search.scss */
+/* line 128, src/scss/_components/search/_search.scss */
 .search_results_tags .search_category_item:nth-child(5n+3) {
   background: #625e73;
 }
 
-/* line 125, src/scss/_components/search/_search.scss */
+/* line 131, src/scss/_components/search/_search.scss */
 .search_results_tags .search_category_item:nth-child(5n+4) {
   background: #65a6bb;
 }
 
-/* line 131, src/scss/_components/search/_search.scss */
+/* line 137, src/scss/_components/search/_search.scss */
 .search_site_item {
   padding: 5px;
   text-align: center;
@@ -4888,7 +4897,7 @@ strong {
 }
 
 @media screen and (min-device-width: 768px) and (max-device-width: 1024px) and (orientation: portrait) and (-webkit-min-device-pixel-ratio: 2) {
-  /* line 131, src/scss/_components/search/_search.scss */
+  /* line 137, src/scss/_components/search/_search.scss */
   .search_site_item {
     width: 33.333334%;
     max-width: 33.333334%;
@@ -4900,7 +4909,7 @@ strong {
 }
 
 @media screen and (max-width: 767px) {
-  /* line 131, src/scss/_components/search/_search.scss */
+  /* line 137, src/scss/_components/search/_search.scss */
   .search_site_item {
     width: 50%;
     max-width: 50%;
@@ -4911,7 +4920,7 @@ strong {
   }
 }
 
-/* line 151, src/scss/_components/search/_search.scss */
+/* line 157, src/scss/_components/search/_search.scss */
 .search_site_item .title {
   position: relative;
   white-space: nowrap;
@@ -4933,20 +4942,20 @@ strong {
 }
 
 @media screen and (min-device-width: 768px) and (max-device-width: 1024px) and (orientation: portrait) and (-webkit-min-device-pixel-ratio: 2) {
-  /* line 151, src/scss/_components/search/_search.scss */
+  /* line 157, src/scss/_components/search/_search.scss */
   .search_site_item .title {
     color: #fff;
   }
 }
 
 @media screen and (max-width: 767px) {
-  /* line 151, src/scss/_components/search/_search.scss */
+  /* line 157, src/scss/_components/search/_search.scss */
   .search_site_item .title {
     color: #fff;
   }
 }
 
-/* line 170, src/scss/_components/search/_search.scss */
+/* line 176, src/scss/_components/search/_search.scss */
 .search_site_item .title:before {
   position: relative;
   top: 0;
@@ -4956,12 +4965,12 @@ strong {
   margin-right: 5px;
 }
 
-/* line 177, src/scss/_components/search/_search.scss */
+/* line 183, src/scss/_components/search/_search.scss */
 .search_site_item .title:after {
   display: none;
 }
 
-/* line 180, src/scss/_components/search/_search.scss */
+/* line 186, src/scss/_components/search/_search.scss */
 .search_site_item .title span {
   max-width: 100%;
   white-space: nowrap;
@@ -4970,12 +4979,12 @@ strong {
   overflow: hidden;
 }
 
-/* line 186, src/scss/_components/search/_search.scss */
+/* line 192, src/scss/_components/search/_search.scss */
 .search_site_item .title img {
   max-width: 100%;
 }
 
-/* line 191, src/scss/_components/search/_search.scss */
+/* line 197, src/scss/_components/search/_search.scss */
 .search_site_item .thumb {
   line-height: 0;
   border-top: 1px solid #9ca4ad;
@@ -4993,7 +5002,7 @@ strong {
   position: relative;
 }
 
-/* line 201, src/scss/_components/search/_search.scss */
+/* line 207, src/scss/_components/search/_search.scss */
 .search_site_item .thumb img {
   max-width: 100%;
   -o-object-fit: cover;
@@ -5003,7 +5012,7 @@ strong {
   height: 100%;
 }
 
-/* line 210, src/scss/_components/search/_search.scss */
+/* line 216, src/scss/_components/search/_search.scss */
 .search_site_item .site_category {
   background: #0a3e83;
   color: #fff;
@@ -5012,7 +5021,7 @@ strong {
 }
 
 @media screen and (min-device-width: 768px) and (max-device-width: 1024px) and (orientation: portrait) and (-webkit-min-device-pixel-ratio: 2) {
-  /* line 210, src/scss/_components/search/_search.scss */
+  /* line 216, src/scss/_components/search/_search.scss */
   .search_site_item .site_category {
     border-left: 1px solid #9ca4ad;
     border-right: 1px solid #9ca4ad;
@@ -5021,7 +5030,7 @@ strong {
 }
 
 @media screen and (max-width: 767px) {
-  /* line 210, src/scss/_components/search/_search.scss */
+  /* line 216, src/scss/_components/search/_search.scss */
   .search_site_item .site_category {
     border-left: 1px solid #9ca4ad;
     border-right: 1px solid #9ca4ad;
@@ -5029,20 +5038,20 @@ strong {
   }
 }
 
-/* line 231, src/scss/_components/search/_search.scss */
+/* line 237, src/scss/_components/search/_search.scss */
 .search_pagination {
   text-align: center;
   padding: 10px 0;
 }
 
 @media screen and (max-width: 1023px) {
-  /* line 231, src/scss/_components/search/_search.scss */
+  /* line 237, src/scss/_components/search/_search.scss */
   .search_pagination {
     padding: 0;
   }
 }
 
-/* line 239, src/scss/_components/search/_search.scss */
+/* line 245, src/scss/_components/search/_search.scss */
 .search_pagination .item {
   background: #e4e4e4;
   color: #8a8a8a;
@@ -5052,13 +5061,13 @@ strong {
   cursor: pointer;
 }
 
-/* line 247, src/scss/_components/search/_search.scss */
+/* line 253, src/scss/_components/search/_search.scss */
 .search_pagination .item.active {
   background: #07113b;
   color: #d5f34a;
 }
 
-/* line 252, src/scss/_components/search/_search.scss */
+/* line 258, src/scss/_components/search/_search.scss */
 .search_pagination .item.prev:after, .search_pagination .item.next:after {
   content: "";
   display: inline-block;
@@ -5068,7 +5077,7 @@ strong {
   border-width: 0 2px 2px 0;
 }
 
-/* line 260, src/scss/_components/search/_search.scss */
+/* line 266, src/scss/_components/search/_search.scss */
 .search_pagination .item.prev:after {
   -ms-transform: rotate(135deg);
       transform: rotate(135deg);
@@ -5076,7 +5085,7 @@ strong {
   margin: 0 -4px 0 0;
 }
 
-/* line 265, src/scss/_components/search/_search.scss */
+/* line 271, src/scss/_components/search/_search.scss */
 .search_pagination .item.next:after {
   -ms-transform: rotate(-45deg);
       transform: rotate(-45deg);
@@ -5084,7 +5093,7 @@ strong {
   margin: 0 0 0 -4px;
 }
 
-/* line 271, src/scss/_components/search/_search.scss */
+/* line 277, src/scss/_components/search/_search.scss */
 .search_pagination .item.prev:hover:after, .search_pagination .item.next:hover:after {
   border-color: #fff;
 }
@@ -5653,21 +5662,22 @@ body.chatbot_active .go-top {
 .login_container .login_form input {
   -webkit-border-radius: 5px;
           border-radius: 5px;
+  width: 410px;
 }
 
-/* line 118, src/scss/_components/common/_login.scss */
+/* line 119, src/scss/_components/common/_login.scss */
 .login_container .login_form .signup {
   color: #c7f928;
   float: left;
 }
 
-/* line 122, src/scss/_components/common/_login.scss */
+/* line 123, src/scss/_components/common/_login.scss */
 .login_container .login_form .forgot {
   color: #999999;
 }
 
 @media screen and (max-width: 1023px) {
-  /* line 122, src/scss/_components/common/_login.scss */
+  /* line 123, src/scss/_components/common/_login.scss */
   .login_container .login_form .forgot {
     text-align: center;
     display: block;
@@ -5677,7 +5687,7 @@ body.chatbot_active .go-top {
   }
 }
 
-/* line 135, src/scss/_components/common/_login.scss */
+/* line 136, src/scss/_components/common/_login.scss */
 .login_container .login_form .already_have {
   color: #999;
   text-align: center;
@@ -5685,47 +5695,47 @@ body.chatbot_active .go-top {
 }
 
 @media screen and (max-width: 1023px) {
-  /* line 135, src/scss/_components/common/_login.scss */
+  /* line 136, src/scss/_components/common/_login.scss */
   .login_container .login_form .already_have {
     color: #d2d2d2;
     line-height: 23px;
   }
 }
 
-/* line 145, src/scss/_components/common/_login.scss */
+/* line 146, src/scss/_components/common/_login.scss */
 .login_container .login_form .already_have a {
   color: #c7f928;
 }
 
 @media screen and (max-width: 1023px) {
-  /* line 145, src/scss/_components/common/_login.scss */
+  /* line 146, src/scss/_components/common/_login.scss */
   .login_container .login_form .already_have a {
     color: #157dff;
   }
 }
 
 @media screen and (max-width: 1023px) {
-  /* line 155, src/scss/_components/common/_login.scss */
+  /* line 156, src/scss/_components/common/_login.scss */
   .login_container .remeber_me {
     text-align: center;
     color: #fff;
   }
 }
 
-/* line 162, src/scss/_components/common/_login.scss */
+/* line 163, src/scss/_components/common/_login.scss */
 .login_container .login_banner {
   width: 50%;
   max-width: 580px;
 }
 
 @media screen and (max-width: 1023px) {
-  /* line 162, src/scss/_components/common/_login.scss */
+  /* line 163, src/scss/_components/common/_login.scss */
   .login_container .login_banner {
     display: none;
   }
 }
 
-/* line 171, src/scss/_components/common/_login.scss */
+/* line 172, src/scss/_components/common/_login.scss */
 .login_container .title {
   text-align: center;
   color: #fff;
@@ -5735,7 +5745,7 @@ body.chatbot_active .go-top {
 }
 
 @media screen and (max-width: 1023px) {
-  /* line 171, src/scss/_components/common/_login.scss */
+  /* line 172, src/scss/_components/common/_login.scss */
   .login_container .title {
     font-size: 22px;
     color: #4296ff;
@@ -5744,25 +5754,25 @@ body.chatbot_active .go-top {
   }
 }
 
-/* line 185, src/scss/_components/common/_login.scss */
+/* line 186, src/scss/_components/common/_login.scss */
 .login_container .signup {
   margin: 0;
 }
 
-/* line 189, src/scss/_components/common/_login.scss */
+/* line 190, src/scss/_components/common/_login.scss */
 .login_container .top_forgot_text {
   color: #d2d2d2;
 }
 
 @media screen and (max-width: 767px) {
-  /* line 189, src/scss/_components/common/_login.scss */
+  /* line 190, src/scss/_components/common/_login.scss */
   .login_container .top_forgot_text {
     text-align: center;
     padding-top: 10px;
   }
 }
 
-/* line 200, src/scss/_components/common/_login.scss */
+/* line 201, src/scss/_components/common/_login.scss */
 .user_container_popup .user_tab_login, .user_container_popup .user_tab_join, .user_container_popup .user_tab_forgot {
   display: none;
   -webkit-box-align: center;
@@ -5771,12 +5781,12 @@ body.chatbot_active .go-top {
           align-items: center;
 }
 
-/* line 205, src/scss/_components/common/_login.scss */
+/* line 206, src/scss/_components/common/_login.scss */
 .user_container_popup.login .user_tab_join, .user_container_popup.login .user_tab_forgot {
   display: none;
 }
 
-/* line 208, src/scss/_components/common/_login.scss */
+/* line 209, src/scss/_components/common/_login.scss */
 .user_container_popup.login .user_tab_login {
   display: -webkit-box;
   display: -webkit-flex;
@@ -5784,12 +5794,12 @@ body.chatbot_active .go-top {
   display: flex;
 }
 
-/* line 213, src/scss/_components/common/_login.scss */
+/* line 214, src/scss/_components/common/_login.scss */
 .user_container_popup.join .user_tab_login, .user_container_popup.join .user_tab_forgot {
   display: none;
 }
 
-/* line 216, src/scss/_components/common/_login.scss */
+/* line 217, src/scss/_components/common/_login.scss */
 .user_container_popup.join .user_tab_join {
   display: -webkit-box;
   display: -webkit-flex;
@@ -5797,12 +5807,12 @@ body.chatbot_active .go-top {
   display: flex;
 }
 
-/* line 221, src/scss/_components/common/_login.scss */
+/* line 222, src/scss/_components/common/_login.scss */
 .user_container_popup.forgot .user_tab_join, .user_container_popup.forgot .user_tab_login {
   display: none;
 }
 
-/* line 224, src/scss/_components/common/_login.scss */
+/* line 225, src/scss/_components/common/_login.scss */
 .user_container_popup.forgot .user_tab_forgot {
   display: -webkit-box;
   display: -webkit-flex;
@@ -5810,7 +5820,7 @@ body.chatbot_active .go-top {
   display: flex;
 }
 
-/* line 230, src/scss/_components/common/_login.scss */
+/* line 231, src/scss/_components/common/_login.scss */
 .result-message, .forgot_success {
   display: block;
   padding: 6px 0;
@@ -5819,43 +5829,43 @@ body.chatbot_active .go-top {
   color: #fff;
 }
 
-/* line 237, src/scss/_components/common/_login.scss */
+/* line 238, src/scss/_components/common/_login.scss */
 .result-message.alert-danger, .forgot_success.alert-danger {
   color: #ff6d6d;
 }
 
-/* line 242, src/scss/_components/common/_login.scss */
+/* line 243, src/scss/_components/common/_login.scss */
 .is_desktop {
   display: block;
 }
 
 @media screen and (max-width: 1023px) {
-  /* line 242, src/scss/_components/common/_login.scss */
+  /* line 243, src/scss/_components/common/_login.scss */
   .is_desktop {
     display: none;
   }
 }
 
-/* line 249, src/scss/_components/common/_login.scss */
+/* line 250, src/scss/_components/common/_login.scss */
 .is_mobile {
   display: none;
 }
 
 @media screen and (max-width: 1023px) {
-  /* line 249, src/scss/_components/common/_login.scss */
+  /* line 250, src/scss/_components/common/_login.scss */
   .is_mobile {
     display: block;
   }
 }
 
 @media screen and (max-width: 1023px) {
-  /* line 256, src/scss/_components/common/_login.scss */
+  /* line 257, src/scss/_components/common/_login.scss */
   .login_bottom {
     background: #000;
   }
 }
 
-/* line 262, src/scss/_components/common/_login.scss */
+/* line 263, src/scss/_components/common/_login.scss */
 .login_panel {
   background: #fff;
   margin-left: auto;
@@ -5863,7 +5873,7 @@ body.chatbot_active .go-top {
   margin-bottom: 15px;
 }
 
-/* line 267, src/scss/_components/common/_login.scss */
+/* line 268, src/scss/_components/common/_login.scss */
 .login_panel ul {
   font-family: gloria hallelujah,cursive;
   color: #d6ff23;
@@ -5883,13 +5893,13 @@ body.chatbot_active .go-top {
 }
 
 @media screen and (max-width: 1023px) {
-  /* line 267, src/scss/_components/common/_login.scss */
+  /* line 268, src/scss/_components/common/_login.scss */
   .login_panel ul {
     font-size: 16px;
   }
 }
 
-/* line 290, src/scss/_components/common/_login.scss */
+/* line 291, src/scss/_components/common/_login.scss */
 .login_panel ul li {
   width: 50%;
   text-align: center;
@@ -5897,23 +5907,23 @@ body.chatbot_active .go-top {
   padding: 10px 15px;
 }
 
-/* line 296, src/scss/_components/common/_login.scss */
+/* line 297, src/scss/_components/common/_login.scss */
 .login_panel ul li.active {
   background: #90b0ca;
 }
 
-/* line 301, src/scss/_components/common/_login.scss */
+/* line 302, src/scss/_components/common/_login.scss */
 .login_panel ul a {
   color: #fff !important;
   text-transform: uppercase;
 }
 
-/* line 307, src/scss/_components/common/_login.scss */
+/* line 308, src/scss/_components/common/_login.scss */
 .login_panel .tab-content {
   background: #fff;
 }
 
-/* line 311, src/scss/_components/common/_login.scss */
+/* line 312, src/scss/_components/common/_login.scss */
 .signup_tip_conainer {
   padding-bottom: 10px;
   display: -webkit-box;
@@ -5925,7 +5935,7 @@ body.chatbot_active .go-top {
           flex-wrap: wrap;
 }
 
-/* line 316, src/scss/_components/common/_login.scss */
+/* line 317, src/scss/_components/common/_login.scss */
 .signup_tip_conainer .signup_tip {
   width: 33.3333334%;
   color: #0a3862;
@@ -5941,7 +5951,7 @@ body.chatbot_active .go-top {
   border-right: 2px solid #eaeaea;
 }
 
-/* line 330, src/scss/_components/common/_login.scss */
+/* line 331, src/scss/_components/common/_login.scss */
 .signup_tip_conainer .signup_tip i {
   background: url(../images/green_tick.png);
   width: 50px;
@@ -5952,19 +5962,19 @@ body.chatbot_active .go-top {
   top: 0;
 }
 
-/* line 341, src/scss/_components/common/_login.scss */
+/* line 342, src/scss/_components/common/_login.scss */
 .cleanlogin-container {
   padding: 15px;
 }
 
 @media screen and (max-width: 1023px) {
-  /* line 341, src/scss/_components/common/_login.scss */
+  /* line 342, src/scss/_components/common/_login.scss */
   .cleanlogin-container {
     padding: 35px 30px 15px;
   }
 }
 
-/* line 348, src/scss/_components/common/_login.scss */
+/* line 349, src/scss/_components/common/_login.scss */
 .cleanlogin-container .join_button, .cleanlogin-container input[type=submit], .cleanlogin-container .submit {
   width: 100% !important;
   border: none;
@@ -5980,7 +5990,7 @@ body.chatbot_active .go-top {
 }
 
 @media screen and (max-width: 1023px) {
-  /* line 348, src/scss/_components/common/_login.scss */
+  /* line 349, src/scss/_components/common/_login.scss */
   .cleanlogin-container .join_button, .cleanlogin-container input[type=submit], .cleanlogin-container .submit {
     font-size: 18px;
     background: #003b85;
@@ -5988,24 +5998,24 @@ body.chatbot_active .go-top {
   }
 }
 
-/* line 368, src/scss/_components/common/_login.scss */
+/* line 369, src/scss/_components/common/_login.scss */
 .cleanlogin-container form label {
   font-weight: 700;
 }
 
 @media screen and (max-width: 1023px) {
-  /* line 368, src/scss/_components/common/_login.scss */
+  /* line 369, src/scss/_components/common/_login.scss */
   .cleanlogin-container form label {
     color: #fff;
   }
 }
 
-/* line 376, src/scss/_components/common/_login.scss */
+/* line 377, src/scss/_components/common/_login.scss */
 .cleanlogin-container .forgot {
   float: right;
 }
 
-/* line 380, src/scss/_components/common/_login.scss */
+/* line 381, src/scss/_components/common/_login.scss */
 .cleanlogin-field {
   margin-bottom: 25px;
   -webkit-border-radius: 8px;
@@ -6013,7 +6023,7 @@ body.chatbot_active .go-top {
   max-width: 420px;
 }
 
-/* line 385, src/scss/_components/common/_login.scss */
+/* line 386, src/scss/_components/common/_login.scss */
 .cleanlogin-field input {
   padding: 15px 25px;
   border-color: #333;
@@ -6022,7 +6032,7 @@ body.chatbot_active .go-top {
   width: 100%;
 }
 
-/* line 391, src/scss/_components/common/_login.scss */
+/* line 392, src/scss/_components/common/_login.scss */
 .cleanlogin-field input.error {
   border-color: red;
 }
@@ -7477,9 +7487,11 @@ body.chatbot_active .go-top {
 
 /* line 1, src/scss/_components/homepage/_list--specification.scss */
 .list__specification, .list__snapshot {
-  display: none;
+  /*display: none;*/
   position: relative;
-  height: 322px;
+  visibility: hidden;
+  overflow: hidden;
+  opacity: 1;
   border-width: 2px;
   border-color: #7d848e;
   border-style: solid;
@@ -7488,11 +7500,29 @@ body.chatbot_active .go-top {
   background-color: #004aac;
   -webkit-box-shadow: 1.047px 19.973px 43px 0px rgba(8, 9, 21, 0.3);
           box-shadow: 1.047px 19.973px 43px 0px rgba(8, 9, 21, 0.3);
+  height: 0;
+  -webkit-transition: all 0.6s ease-in;
+  -o-transition: all 0.6s ease-in;
+  transition: all 0.6s ease-in;
+  -ms-overflow-style: none;
+  /* IE and Edge */
+  scrollbar-width: none;
+  /* Firefox */
+}
+
+/* line 22, src/scss/_components/homepage/_list--specification.scss */
+.list__specification::-webkit-scrollbar, .list__snapshot::-webkit-scrollbar {
+  display: none;
+}
+
+/* line 26, src/scss/_components/homepage/_list--specification.scss */
+.list__specification.is-open, .list__snapshot.is-open {
+  height: 322px;
 }
 
 @media screen and (min-width: 1450px) {
-  /* line 1, src/scss/_components/homepage/_list--specification.scss */
-  .list__specification, .list__snapshot {
+  /* line 31, src/scss/_components/homepage/_list--specification.scss */
+  .list__specification.is-open, .list__snapshot.is-open {
     height: 360px;
   }
 }
@@ -7532,7 +7562,7 @@ body.chatbot_active .go-top {
     transition: opacity 0.35s ease-in-out, visibility 0.35s ease-in-out, transform 0.35s ease-in-out;
     transition: opacity 0.35s ease-in-out, visibility 0.35s ease-in-out, transform 0.35s ease-in-out, -webkit-transform 0.35s ease-in-out;
   }
-  /* line 39, src/scss/_components/homepage/_list--specification.scss */
+  /* line 58, src/scss/_components/homepage/_list--specification.scss */
   .list__specification.is-open, .list__snapshot.is-open {
     opacity: 1;
     visibility: visible;
@@ -7545,7 +7575,7 @@ body.chatbot_active .go-top {
     transition: opacity 0.35s ease-in-out, visibility 0.35s ease-in-out, transform 0.35s ease-in-out;
     transition: opacity 0.35s ease-in-out, visibility 0.35s ease-in-out, transform 0.35s ease-in-out, -webkit-transform 0.35s ease-in-out;
   }
-  /* line 46, src/scss/_components/homepage/_list--specification.scss */
+  /* line 65, src/scss/_components/homepage/_list--specification.scss */
   .list__specification.is-snapshot, .list__snapshot.is-snapshot {
     opacity: 1;
     visibility: visible;
@@ -7557,7 +7587,7 @@ body.chatbot_active .go-top {
 }
 
 @media screen and (max-width: 1023px) and (orientation: landscape) {
-  /* line 55, src/scss/_components/homepage/_list--specification.scss */
+  /* line 74, src/scss/_components/homepage/_list--specification.scss */
   .is-mobile .list__specification > div, .is-mobile .list__snapshot > div {
     overflow-y: auto;
     -webkit-box-orient: vertical;
@@ -7566,15 +7596,15 @@ body.chatbot_active .go-top {
         -ms-flex-direction: column;
             flex-direction: column;
   }
-  /* line 60, src/scss/_components/homepage/_list--specification.scss */
+  /* line 79, src/scss/_components/homepage/_list--specification.scss */
   .is-mobile .list__specification .list__specification-header, .is-mobile .list__snapshot .list__specification-header {
     min-height: 70px;
   }
-  /* line 64, src/scss/_components/homepage/_list--specification.scss */
+  /* line 83, src/scss/_components/homepage/_list--specification.scss */
   .is-mobile .list__specification .list__specification-right, .is-mobile .list__snapshot .list__specification-right {
     min-height: 200px !important;
   }
-  /* line 68, src/scss/_components/homepage/_list--specification.scss */
+  /* line 87, src/scss/_components/homepage/_list--specification.scss */
   .is-mobile .list__specification .list__specification-more, .is-mobile .list__snapshot .list__specification-more {
     min-height: 350px;
   }
@@ -7592,7 +7622,7 @@ body.chatbot_active .go-top {
   }
 }
 
-/* line 82, src/scss/_components/homepage/_list--specification.scss */
+/* line 101, src/scss/_components/homepage/_list--specification.scss */
 .list__specification > div, .list__snapshot > div {
   overflow-y: auto;
   display: -webkit-box;
@@ -7604,7 +7634,7 @@ body.chatbot_active .go-top {
 }
 
 @media screen and (max-width: 1023px) {
-  /* line 82, src/scss/_components/homepage/_list--specification.scss */
+  /* line 101, src/scss/_components/homepage/_list--specification.scss */
   .list__specification > div, .list__snapshot > div {
     -webkit-box-orient: vertical;
     -webkit-box-direction: normal;
@@ -7616,15 +7646,14 @@ body.chatbot_active .go-top {
   }
 }
 
-/* line 95, src/scss/_components/homepage/_list--specification.scss */
+/* line 114, src/scss/_components/homepage/_list--specification.scss */
 .list__specification.is-open, .list__snapshot.is-open {
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
+  /*display: flex;*/
+  visibility: visible;
+  opacity: 1;
 }
 
-/* line 102, src/scss/_components/homepage/_list--specification.scss */
+/* line 124, src/scss/_components/homepage/_list--specification.scss */
 .list__specification.list__specification--video .list__specification-right > div:before, .list__snapshot.list__specification--video .list__specification-right > div:before {
   content: '';
   z-index: 2;
@@ -7640,7 +7669,7 @@ body.chatbot_active .go-top {
 }
 
 @media screen and (max-width: 1023px) {
-  /* line 102, src/scss/_components/homepage/_list--specification.scss */
+  /* line 124, src/scss/_components/homepage/_list--specification.scss */
   .list__specification.list__specification--video .list__specification-right > div:before, .list__snapshot.list__specification--video .list__specification-right > div:before {
     background: -webkit-gradient(linear, right top, left top, from(rgba(0, 0, 0, 0)), to(rgba(0, 0, 0, 0.8)));
     background: -webkit-linear-gradient(right, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0.8) 100%);
@@ -7649,7 +7678,7 @@ body.chatbot_active .go-top {
   }
 }
 
-/* line 116, src/scss/_components/homepage/_list--specification.scss */
+/* line 138, src/scss/_components/homepage/_list--specification.scss */
 .list__specification.list__specification--video .list__specification-right > div:after, .list__snapshot.list__specification--video .list__specification-right > div:after {
   content: '';
   z-index: 2;
@@ -7665,7 +7694,7 @@ body.chatbot_active .go-top {
 }
 
 @media screen and (max-width: 1023px) {
-  /* line 116, src/scss/_components/homepage/_list--specification.scss */
+  /* line 138, src/scss/_components/homepage/_list--specification.scss */
   .list__specification.list__specification--video .list__specification-right > div:after, .list__snapshot.list__specification--video .list__specification-right > div:after {
     left: auto;
     right: 0;
@@ -7677,7 +7706,7 @@ body.chatbot_active .go-top {
   }
 }
 
-/* line 138, src/scss/_components/homepage/_list--specification.scss */
+/* line 160, src/scss/_components/homepage/_list--specification.scss */
 .list__specification.list__specification--banner .list__specification-right > div, .list__snapshot.list__specification--banner .list__specification-right > div {
   display: -webkit-box;
   display: -webkit-flex;
@@ -7703,20 +7732,20 @@ body.chatbot_active .go-top {
 }
 
 @media screen and (max-width: 1279px) {
-  /* line 138, src/scss/_components/homepage/_list--specification.scss */
+  /* line 160, src/scss/_components/homepage/_list--specification.scss */
   .list__specification.list__specification--banner .list__specification-right > div, .list__snapshot.list__specification--banner .list__specification-right > div {
     padding: 40px;
   }
 }
 
 @media screen and (max-width: 1023px) {
-  /* line 138, src/scss/_components/homepage/_list--specification.scss */
+  /* line 160, src/scss/_components/homepage/_list--specification.scss */
   .list__specification.list__specification--banner .list__specification-right > div, .list__snapshot.list__specification--banner .list__specification-right > div {
     padding: 15px 20px;
   }
 }
 
-/* line 150, src/scss/_components/homepage/_list--specification.scss */
+/* line 172, src/scss/_components/homepage/_list--specification.scss */
 .list__specification.list__specification--banner .list__specification-right > div:before, .list__snapshot.list__specification--banner .list__specification-right > div:before {
   content: '';
   z-index: 2;
@@ -7731,7 +7760,7 @@ body.chatbot_active .go-top {
   background: linear-gradient(to bottom, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0.25) 100%);
 }
 
-/* line 161, src/scss/_components/homepage/_list--specification.scss */
+/* line 183, src/scss/_components/homepage/_list--specification.scss */
 .list__specification.list__specification--banner .list__specification-right > div:after, .list__snapshot.list__specification--banner .list__specification-right > div:after {
   content: '';
   z-index: 1;
@@ -7748,7 +7777,7 @@ body.chatbot_active .go-top {
           background-size: 175%;
 }
 
-/* line 175, src/scss/_components/homepage/_list--specification.scss */
+/* line 197, src/scss/_components/homepage/_list--specification.scss */
 .list__specification.list__specification--banner .list__specification-right > div img, .list__snapshot.list__specification--banner .list__specification-right > div img {
   max-height: 95%;
   max-width: 95%;
@@ -7756,7 +7785,7 @@ body.chatbot_active .go-top {
 }
 
 @media screen and (max-width: 1449.98px) {
-  /* line 175, src/scss/_components/homepage/_list--specification.scss */
+  /* line 197, src/scss/_components/homepage/_list--specification.scss */
   .list__specification.list__specification--banner .list__specification-right > div img, .list__snapshot.list__specification--banner .list__specification-right > div img {
     max-width: 80%;
     max-height: 78%;
@@ -7764,20 +7793,20 @@ body.chatbot_active .go-top {
 }
 
 @media screen and (min-device-width: 768px) and (max-device-width: 1024px) and (orientation: portrait) and (-webkit-min-device-pixel-ratio: 2) {
-  /* line 175, src/scss/_components/homepage/_list--specification.scss */
+  /* line 197, src/scss/_components/homepage/_list--specification.scss */
   .list__specification.list__specification--banner .list__specification-right > div img, .list__snapshot.list__specification--banner .list__specification-right > div img {
     margin-left: 0;
   }
 }
 
 @media screen and (max-width: 767px) {
-  /* line 175, src/scss/_components/homepage/_list--specification.scss */
+  /* line 197, src/scss/_components/homepage/_list--specification.scss */
   .list__specification.list__specification--banner .list__specification-right > div img, .list__snapshot.list__specification--banner .list__specification-right > div img {
     margin-left: 0;
   }
 }
 
-/* line 206, src/scss/_components/homepage/_list--specification.scss */
+/* line 228, src/scss/_components/homepage/_list--specification.scss */
 .list__specification-wrapper, .list__snapshot-wrapper {
   z-index: 90;
   display: -webkit-box;
@@ -7793,25 +7822,34 @@ body.chatbot_active .go-top {
 }
 
 @media screen and (max-width: 1023px) {
-  /* line 206, src/scss/_components/homepage/_list--specification.scss */
+  /* line 228, src/scss/_components/homepage/_list--specification.scss */
   .list__specification-wrapper, .list__snapshot-wrapper {
     z-index: 1550;
   }
 }
 
-/* line 216, src/scss/_components/homepage/_list--specification.scss */
+/* line 238, src/scss/_components/homepage/_list--specification.scss */
 .list__specification-left, .list__specification-right, .list__snapshot-left, .list__snapshot-right {
   height: 100%;
+  -ms-overflow-style: none;
+  /* IE and Edge */
+  scrollbar-width: none;
+  /* Firefox */
+}
+
+/* line 244, src/scss/_components/homepage/_list--specification.scss */
+.list__specification-left::-webkit-scrollbar, .list__specification-right::-webkit-scrollbar, .list__snapshot-left::-webkit-scrollbar, .list__snapshot-right::-webkit-scrollbar {
+  display: none;
 }
 
 @media screen and (max-width: 1023px) {
-  /* line 216, src/scss/_components/homepage/_list--specification.scss */
+  /* line 238, src/scss/_components/homepage/_list--specification.scss */
   .list__specification-left, .list__specification-right, .list__snapshot-left, .list__snapshot-right {
     height: auto;
   }
 }
 
-/* line 224, src/scss/_components/homepage/_list--specification.scss */
+/* line 252, src/scss/_components/homepage/_list--specification.scss */
 .list__specification-left, .list__snapshot-left {
   z-index: 2;
   position: relative;
@@ -7821,7 +7859,7 @@ body.chatbot_active .go-top {
 }
 
 @media screen and (min-width: 1023px) {
-  /* line 224, src/scss/_components/homepage/_list--specification.scss */
+  /* line 252, src/scss/_components/homepage/_list--specification.scss */
   .list__specification-left, .list__snapshot-left {
     display: -webkit-box;
     display: -webkit-flex;
@@ -7846,7 +7884,7 @@ body.chatbot_active .go-top {
 }
 
 @media screen and (max-width: 1279px) {
-  /* line 224, src/scss/_components/homepage/_list--specification.scss */
+  /* line 252, src/scss/_components/homepage/_list--specification.scss */
   .list__specification-left, .list__snapshot-left {
     width: 50%;
     padding: 20px 40px 20px 20px;
@@ -7854,7 +7892,7 @@ body.chatbot_active .go-top {
 }
 
 @media screen and (max-width: 1023px) {
-  /* line 224, src/scss/_components/homepage/_list--specification.scss */
+  /* line 252, src/scss/_components/homepage/_list--specification.scss */
   .list__specification-left, .list__snapshot-left {
     -webkit-box-ordinal-group: 4;
     -webkit-order: 3;
@@ -7866,7 +7904,7 @@ body.chatbot_active .go-top {
 			min-height: 200px;
 			justify-content: flex-start;*/
   }
-  /* line 253, src/scss/_components/homepage/_list--specification.scss */
+  /* line 281, src/scss/_components/homepage/_list--specification.scss */
   .list__specification-left > div, .list__snapshot-left > div {
     width: 100%;
     height: auto;
@@ -7875,14 +7913,14 @@ body.chatbot_active .go-top {
     display: -ms-flexbox;
     display: flex;
   }
-  /* line 259, src/scss/_components/homepage/_list--specification.scss */
+  /* line 287, src/scss/_components/homepage/_list--specification.scss */
   .list__specification-left .list__specification-logo, .list__snapshot-left .list__specification-logo {
     display: none;
   }
 }
 
 @media screen and (max-width: 767px) {
-  /* line 224, src/scss/_components/homepage/_list--specification.scss */
+  /* line 252, src/scss/_components/homepage/_list--specification.scss */
   .list__specification-left, .list__snapshot-left {
     padding: 10px;
     /*min-height: auto;*/
@@ -7890,7 +7928,7 @@ body.chatbot_active .go-top {
   }
 }
 
-/* line 270, src/scss/_components/homepage/_list--specification.scss */
+/* line 298, src/scss/_components/homepage/_list--specification.scss */
 .list__specification-right, .list__snapshot-right {
   z-index: 1;
   position: relative;
@@ -7900,14 +7938,14 @@ body.chatbot_active .go-top {
 }
 
 @media screen and (max-width: 1279px) {
-  /* line 270, src/scss/_components/homepage/_list--specification.scss */
+  /* line 298, src/scss/_components/homepage/_list--specification.scss */
   .list__specification-right, .list__snapshot-right {
     max-width: 50%;
   }
 }
 
 @media screen and (max-width: 1023px) {
-  /* line 270, src/scss/_components/homepage/_list--specification.scss */
+  /* line 298, src/scss/_components/homepage/_list--specification.scss */
   .list__specification-right, .list__snapshot-right {
     -webkit-box-ordinal-group: 3;
     -webkit-order: 2;
@@ -7921,14 +7959,14 @@ body.chatbot_active .go-top {
 }
 
 @media screen and (max-width: 767px) {
-  /* line 270, src/scss/_components/homepage/_list--specification.scss */
+  /* line 298, src/scss/_components/homepage/_list--specification.scss */
   .list__specification-right, .list__snapshot-right {
     height: 200px !important;
     min-height: 200px !important;
   }
 }
 
-/* line 290, src/scss/_components/homepage/_list--specification.scss */
+/* line 318, src/scss/_components/homepage/_list--specification.scss */
 .list__specification-right > div, .list__snapshot-right > div {
   overflow: hidden;
   position: absolute;
@@ -7941,7 +7979,7 @@ body.chatbot_active .go-top {
 }
 
 @media screen and (max-width: 1023px) {
-  /* line 290, src/scss/_components/homepage/_list--specification.scss */
+  /* line 318, src/scss/_components/homepage/_list--specification.scss */
   .list__specification-right > div, .list__snapshot-right > div {
     left: 0;
     width: 100%;
@@ -7949,28 +7987,28 @@ body.chatbot_active .go-top {
 }
 
 @media screen and (max-width: 767px) {
-  /* line 306, src/scss/_components/homepage/_list--specification.scss */
+  /* line 334, src/scss/_components/homepage/_list--specification.scss */
   .list__specification-right img, .list__snapshot-right img {
     max-width: 100%;
     max-height: 100%;
   }
 }
 
-/* line 316, src/scss/_components/homepage/_list--specification.scss */
+/* line 344, src/scss/_components/homepage/_list--specification.scss */
 .list__specification-right .screenshot_box, .list__snapshot-right .screenshot_box {
   position: absolute;
   top: 15px;
   bottom: 15px;
 }
 
-/* line 321, src/scss/_components/homepage/_list--specification.scss */
+/* line 349, src/scss/_components/homepage/_list--specification.scss */
 .list__specification-right .screenshot_box:after, .list__snapshot-right .screenshot_box:after {
   padding-top: 56.19223659889094%;
   display: block;
   content: ' ';
 }
 
-/* line 327, src/scss/_components/homepage/_list--specification.scss */
+/* line 355, src/scss/_components/homepage/_list--specification.scss */
 .list__specification-right .screenshot_desktop, .list__snapshot-right .screenshot_desktop {
   position: absolute;
   left: 10.16635859519409%;
@@ -7981,7 +8019,7 @@ body.chatbot_active .go-top {
      object-fit: cover;
 }
 
-/* line 335, src/scss/_components/homepage/_list--specification.scss */
+/* line 363, src/scss/_components/homepage/_list--specification.scss */
 .list__specification-right .screenshot_mobile, .list__snapshot-right .screenshot_mobile {
   position: absolute;
   right: 1.66358595194085%;
@@ -7992,7 +8030,7 @@ body.chatbot_active .go-top {
      object-fit: cover;
 }
 
-/* line 343, src/scss/_components/homepage/_list--specification.scss */
+/* line 371, src/scss/_components/homepage/_list--specification.scss */
 .list__specification-right .screenshot_frame, .list__snapshot-right .screenshot_frame {
   z-index: 100;
   width: 100%;
@@ -8000,7 +8038,7 @@ body.chatbot_active .go-top {
   top: 0;
 }
 
-/* line 351, src/scss/_components/homepage/_list--specification.scss */
+/* line 379, src/scss/_components/homepage/_list--specification.scss */
 .list__specification-close, .list__snapshot-close {
   z-index: 100;
   position: absolute;
@@ -8014,14 +8052,14 @@ body.chatbot_active .go-top {
 }
 
 @media screen and (max-width: 1023px) {
-  /* line 351, src/scss/_components/homepage/_list--specification.scss */
+  /* line 379, src/scss/_components/homepage/_list--specification.scss */
   .list__specification-close, .list__snapshot-close {
     display: none;
   }
 }
 
 @media screen and (max-width: 767px) {
-  /* line 351, src/scss/_components/homepage/_list--specification.scss */
+  /* line 379, src/scss/_components/homepage/_list--specification.scss */
   .list__specification-close, .list__snapshot-close {
     z-index: 1600;
     top: 50%;
@@ -8031,13 +8069,13 @@ body.chatbot_active .go-top {
   }
 }
 
-/* line 368, src/scss/_components/homepage/_list--specification.scss */
+/* line 396, src/scss/_components/homepage/_list--specification.scss */
 .list__specification-close .icon-font, .list__snapshot-close .icon-font {
   color: #ffffff;
   font-size: 18px;
 }
 
-/* line 374, src/scss/_components/homepage/_list--specification.scss */
+/* line 402, src/scss/_components/homepage/_list--specification.scss */
 .list__specification-header, .list__snapshot-header {
   -webkit-box-ordinal-group: 2;
   -webkit-order: 1;
@@ -8058,7 +8096,7 @@ body.chatbot_active .go-top {
 }
 
 @media screen and (max-width: 1023px) {
-  /* line 374, src/scss/_components/homepage/_list--specification.scss */
+  /* line 402, src/scss/_components/homepage/_list--specification.scss */
   .list__specification-header, .list__snapshot-header {
     display: -webkit-box;
     display: -webkit-flex;
@@ -8068,20 +8106,20 @@ body.chatbot_active .go-top {
   }
 }
 
-/* line 387, src/scss/_components/homepage/_list--specification.scss */
+/* line 415, src/scss/_components/homepage/_list--specification.scss */
 .list__specification-header .list__specification-logo, .list__snapshot-header .list__specification-logo {
   max-width: 100%;
   max-height: 100%;
   margin-bottom: 0;
 }
 
-/* line 393, src/scss/_components/homepage/_list--specification.scss */
+/* line 421, src/scss/_components/homepage/_list--specification.scss */
 .list__specification-header .list__specification-close, .list__snapshot-header .list__specification-close {
   display: none;
 }
 
 @media screen and (max-width: 1023px) {
-  /* line 393, src/scss/_components/homepage/_list--specification.scss */
+  /* line 421, src/scss/_components/homepage/_list--specification.scss */
   .list__specification-header .list__specification-close, .list__snapshot-header .list__specification-close {
     display: -webkit-box;
     display: -webkit-flex;
@@ -8094,7 +8132,7 @@ body.chatbot_active .go-top {
   }
 }
 
-/* line 403, src/scss/_components/homepage/_list--specification.scss */
+/* line 431, src/scss/_components/homepage/_list--specification.scss */
 .list__specification-logo, .list__snapshot-logo {
   display: block;
   max-width: 350px;
@@ -8103,7 +8141,7 @@ body.chatbot_active .go-top {
   margin-bottom: 10px;
 }
 
-/* line 411, src/scss/_components/homepage/_list--specification.scss */
+/* line 439, src/scss/_components/homepage/_list--specification.scss */
 .list__specification-action, .list__snapshot-action {
   display: -webkit-box;
   display: -webkit-flex;
@@ -8120,7 +8158,7 @@ body.chatbot_active .go-top {
   -webkit-flex: 1 1 auto;
 }
 
-/* line 419, src/scss/_components/homepage/_list--specification.scss */
+/* line 447, src/scss/_components/homepage/_list--specification.scss */
 .list__specification-action > div, .list__snapshot-action > div {
   -webkit-transition: opacity 0.35s ease-in-out, width 0.35s ease-in-out, visibility 0.35s ease-in-out, margin 0.35s ease-in-out;
   -o-transition: opacity 0.35s ease-in-out, width 0.35s ease-in-out, visibility 0.35s ease-in-out, margin 0.35s ease-in-out;
@@ -8128,55 +8166,55 @@ body.chatbot_active .go-top {
 }
 
 @media screen and (max-width: 1023px) {
-  /* line 422, src/scss/_components/homepage/_list--specification.scss */
+  /* line 450, src/scss/_components/homepage/_list--specification.scss */
   .list__specification-action > div:nth-of-type(1), .list__specification-action > div:nth-of-type(2), .list__snapshot-action > div:nth-of-type(1), .list__snapshot-action > div:nth-of-type(2) {
     width: 50%;
     padding-bottom: 10px;
   }
-  /* line 428, src/scss/_components/homepage/_list--specification.scss */
+  /* line 456, src/scss/_components/homepage/_list--specification.scss */
   .list__specification-action > div:nth-of-type(1), .list__snapshot-action > div:nth-of-type(1) {
     padding-right: 5px;
   }
-  /* line 432, src/scss/_components/homepage/_list--specification.scss */
+  /* line 460, src/scss/_components/homepage/_list--specification.scss */
   .list__specification-action > div:nth-of-type(2), .list__snapshot-action > div:nth-of-type(2) {
     padding-left: 5px;
   }
-  /* line 436, src/scss/_components/homepage/_list--specification.scss */
+  /* line 464, src/scss/_components/homepage/_list--specification.scss */
   .list__specification-action > div:nth-of-type(4), .list__specification-action > div:nth-of-type(5), .list__specification-action > div:nth-of-type(6), .list__specification-action > div:nth-of-type(7), .list__snapshot-action > div:nth-of-type(4), .list__snapshot-action > div:nth-of-type(5), .list__snapshot-action > div:nth-of-type(6), .list__snapshot-action > div:nth-of-type(7) {
     width: 25% !important;
   }
 }
 
-/* line 444, src/scss/_components/homepage/_list--specification.scss */
+/* line 472, src/scss/_components/homepage/_list--specification.scss */
 .list__specification-action > div.list__specification-action-circle, .list__snapshot-action > div.list__specification-action-circle {
   width: 46px;
 }
 
 @media screen and (max-width: 1279px) {
-  /* line 444, src/scss/_components/homepage/_list--specification.scss */
+  /* line 472, src/scss/_components/homepage/_list--specification.scss */
   .list__specification-action > div.list__specification-action-circle, .list__snapshot-action > div.list__specification-action-circle {
     width: 40px;
   }
-  /* line 449, src/scss/_components/homepage/_list--specification.scss */
+  /* line 477, src/scss/_components/homepage/_list--specification.scss */
   .list__specification-action > div.list__specification-action-circle .c-poppertext, .list__snapshot-action > div.list__specification-action-circle .c-poppertext {
     display: none;
   }
 }
 
 @media screen and (max-width: 1023px) {
-  /* line 444, src/scss/_components/homepage/_list--specification.scss */
+  /* line 472, src/scss/_components/homepage/_list--specification.scss */
   .list__specification-action > div.list__specification-action-circle, .list__snapshot-action > div.list__specification-action-circle {
     width: 30px;
   }
 }
 
-/* line 458, src/scss/_components/homepage/_list--specification.scss */
+/* line 486, src/scss/_components/homepage/_list--specification.scss */
 .list__specification-action > div.list__specification-action-desc, .list__snapshot-action > div.list__specification-action-desc {
   display: none;
 }
 
 @media screen and (max-width: 1023px) {
-  /* line 458, src/scss/_components/homepage/_list--specification.scss */
+  /* line 486, src/scss/_components/homepage/_list--specification.scss */
   .list__specification-action > div.list__specification-action-desc, .list__snapshot-action > div.list__specification-action-desc {
     display: -webkit-box;
     display: -webkit-flex;
@@ -8184,11 +8222,11 @@ body.chatbot_active .go-top {
     display: flex;
     padding-bottom: 10px;
   }
-  /* line 464, src/scss/_components/homepage/_list--specification.scss */
+  /* line 492, src/scss/_components/homepage/_list--specification.scss */
   .list__specification-action > div.list__specification-action-desc p, .list__snapshot-action > div.list__specification-action-desc p {
     color: #6d6d78;
   }
-  /* line 467, src/scss/_components/homepage/_list--specification.scss */
+  /* line 495, src/scss/_components/homepage/_list--specification.scss */
   .list__specification-action > div.list__specification-action-desc p a, .list__snapshot-action > div.list__specification-action-desc p a {
     font-size: 10px;
     text-transform: uppercase;
@@ -8196,13 +8234,13 @@ body.chatbot_active .go-top {
   }
 }
 
-/* line 476, src/scss/_components/homepage/_list--specification.scss */
+/* line 504, src/scss/_components/homepage/_list--specification.scss */
 .list__specification-action > div.list__specification-action-skip, .list__snapshot-action > div.list__specification-action-skip {
   display: none;
 }
 
 @media screen and (max-width: 1023px) {
-  /* line 476, src/scss/_components/homepage/_list--specification.scss */
+  /* line 504, src/scss/_components/homepage/_list--specification.scss */
   .list__specification-action > div.list__specification-action-skip, .list__snapshot-action > div.list__specification-action-skip {
     display: -webkit-box;
     display: -webkit-flex;
@@ -8211,7 +8249,7 @@ body.chatbot_active .go-top {
   }
 }
 
-/* line 483, src/scss/_components/homepage/_list--specification.scss */
+/* line 511, src/scss/_components/homepage/_list--specification.scss */
 .list__specification-action > div.is-hide, .list__snapshot-action > div.is-hide {
   opacity: 0;
   visibility: hidden;
@@ -8223,32 +8261,32 @@ body.chatbot_active .go-top {
 }
 
 @media screen and (max-width: 1023px) {
-  /* line 483, src/scss/_components/homepage/_list--specification.scss */
+  /* line 511, src/scss/_components/homepage/_list--specification.scss */
   .list__specification-action > div.is-hide, .list__snapshot-action > div.is-hide {
     width: 0 !important;
   }
 }
 
-/* line 494, src/scss/_components/homepage/_list--specification.scss */
+/* line 522, src/scss/_components/homepage/_list--specification.scss */
 .list__specification-action > div:not(:last-of-type), .list__snapshot-action > div:not(:last-of-type) {
   margin-right: 10px;
 }
 
 @media screen and (max-width: 1279px) {
-  /* line 494, src/scss/_components/homepage/_list--specification.scss */
+  /* line 522, src/scss/_components/homepage/_list--specification.scss */
   .list__specification-action > div:not(:last-of-type), .list__snapshot-action > div:not(:last-of-type) {
     margin-right: 5px;
   }
 }
 
 @media screen and (max-width: 1023px) {
-  /* line 494, src/scss/_components/homepage/_list--specification.scss */
+  /* line 522, src/scss/_components/homepage/_list--specification.scss */
   .list__specification-action > div:not(:last-of-type), .list__snapshot-action > div:not(:last-of-type) {
     margin-right: 0;
   }
 }
 
-/* line 506, src/scss/_components/homepage/_list--specification.scss */
+/* line 534, src/scss/_components/homepage/_list--specification.scss */
 .list__specification-visit, .list__specification-read, .list__snapshot-visit, .list__snapshot-read {
   position: relative;
   display: -webkit-box;
@@ -8270,18 +8308,18 @@ body.chatbot_active .go-top {
   font-weight: 700;
 }
 
-/* line 518, src/scss/_components/homepage/_list--specification.scss */
+/* line 546, src/scss/_components/homepage/_list--specification.scss */
 .list__specification-visit:hover, .list__specification-read:hover, .list__snapshot-visit:hover, .list__snapshot-read:hover {
   color: #fff;
 }
 
-/* line 521, src/scss/_components/homepage/_list--specification.scss */
+/* line 549, src/scss/_components/homepage/_list--specification.scss */
 .list__specification-visit:focus, .list__specification-read:focus, .list__snapshot-visit:focus, .list__snapshot-read:focus {
   color: #fff;
 }
 
 @media screen and (max-width: 1279px) {
-  /* line 506, src/scss/_components/homepage/_list--specification.scss */
+  /* line 534, src/scss/_components/homepage/_list--specification.scss */
   .list__specification-visit, .list__specification-read, .list__snapshot-visit, .list__snapshot-read {
     min-width: 100px;
     height: 40px;
@@ -8290,7 +8328,7 @@ body.chatbot_active .go-top {
 }
 
 @media screen and (max-width: 1023px) {
-  /* line 506, src/scss/_components/homepage/_list--specification.scss */
+  /* line 534, src/scss/_components/homepage/_list--specification.scss */
   .list__specification-visit, .list__specification-read, .list__snapshot-visit, .list__snapshot-read {
     min-width: 150px;
     height: 48px;
@@ -8298,7 +8336,7 @@ body.chatbot_active .go-top {
   }
 }
 
-/* line 537, src/scss/_components/homepage/_list--specification.scss */
+/* line 565, src/scss/_components/homepage/_list--specification.scss */
 .list__specification-visit, .list__snapshot-visit {
   -webkit-border-radius: 5px;
           border-radius: 5px;
@@ -8309,7 +8347,7 @@ body.chatbot_active .go-top {
   transition: background-color 0.35s ease-in-out;
 }
 
-/* line 543, src/scss/_components/homepage/_list--specification.scss */
+/* line 571, src/scss/_components/homepage/_list--specification.scss */
 .list__specification-visit:hover, .list__specification-visit:active, .list__specification-visit:focus, .list__snapshot-visit:hover, .list__snapshot-visit:active, .list__snapshot-visit:focus {
   background-color: transparent;
   -webkit-transition: background-color 0.35s ease-in-out;
@@ -8317,7 +8355,7 @@ body.chatbot_active .go-top {
   transition: background-color 0.35s ease-in-out;
 }
 
-/* line 549, src/scss/_components/homepage/_list--specification.scss */
+/* line 577, src/scss/_components/homepage/_list--specification.scss */
 .list__specification-read, .list__snapshot-read {
   border-width: 2px;
   border-color: #c5f015;
@@ -8329,7 +8367,7 @@ body.chatbot_active .go-top {
   transition: color 0.35s ease-in-out, background-color 0.35s ease-in-out;
 }
 
-/* line 556, src/scss/_components/homepage/_list--specification.scss */
+/* line 584, src/scss/_components/homepage/_list--specification.scss */
 .list__specification-read:hover, .list__snapshot-read:hover {
   background-color: #c5f015;
   color: #222222;
@@ -8338,7 +8376,7 @@ body.chatbot_active .go-top {
   transition: color 0.35s ease-in-out, background-color 0.35s ease-in-out;
 }
 
-/* line 563, src/scss/_components/homepage/_list--specification.scss */
+/* line 591, src/scss/_components/homepage/_list--specification.scss */
 .list__specification-circle, .list__snapshot-circle {
   overflow: hidden;
   position: relative;
@@ -8370,7 +8408,7 @@ body.chatbot_active .go-top {
 }
 
 @media screen and (max-width: 1279px) {
-  /* line 563, src/scss/_components/homepage/_list--specification.scss */
+  /* line 591, src/scss/_components/homepage/_list--specification.scss */
   .list__specification-circle, .list__snapshot-circle {
     width: 40px;
     height: 40px;
@@ -8378,7 +8416,7 @@ body.chatbot_active .go-top {
 }
 
 @media screen and (max-width: 1023px) {
-  /* line 563, src/scss/_components/homepage/_list--specification.scss */
+  /* line 591, src/scss/_components/homepage/_list--specification.scss */
   .list__specification-circle, .list__snapshot-circle {
     -webkit-box-orient: vertical;
     -webkit-box-direction: normal;
@@ -8393,7 +8431,7 @@ body.chatbot_active .go-top {
   }
 }
 
-/* line 591, src/scss/_components/homepage/_list--specification.scss */
+/* line 619, src/scss/_components/homepage/_list--specification.scss */
 .list__specification-circle:after, .list__snapshot-circle:after {
   content: '';
   z-index: 0;
@@ -8422,7 +8460,7 @@ body.chatbot_active .go-top {
           animation-timing-function: ease-in-out;
 }
 
-/* line 609, src/scss/_components/homepage/_list--specification.scss */
+/* line 637, src/scss/_components/homepage/_list--specification.scss */
 .list__specification-circle:hover, .list__snapshot-circle:hover {
   background-color: rgba(0, 0, 0, 0.85);
   -webkit-transform: scale(1.05);
@@ -8434,7 +8472,7 @@ body.chatbot_active .go-top {
 }
 
 @media screen and (max-width: 1023px) {
-  /* line 609, src/scss/_components/homepage/_list--specification.scss */
+  /* line 637, src/scss/_components/homepage/_list--specification.scss */
   .list__specification-circle:hover, .list__snapshot-circle:hover {
     background-color: transparent;
     -webkit-transform: scale(1);
@@ -8443,7 +8481,7 @@ body.chatbot_active .go-top {
   }
 }
 
-/* line 619, src/scss/_components/homepage/_list--specification.scss */
+/* line 647, src/scss/_components/homepage/_list--specification.scss */
 .list__specification-circle.is-active, .list__snapshot-circle.is-active {
   border-color: #c5f015;
   -webkit-transition: all 0.4s ease-in-out;
@@ -8452,37 +8490,37 @@ body.chatbot_active .go-top {
 }
 
 @media screen and (max-width: 1023px) {
-  /* line 619, src/scss/_components/homepage/_list--specification.scss */
+  /* line 647, src/scss/_components/homepage/_list--specification.scss */
   .list__specification-circle.is-active, .list__snapshot-circle.is-active {
     border-color: transparent;
   }
 }
 
-/* line 626, src/scss/_components/homepage/_list--specification.scss */
+/* line 654, src/scss/_components/homepage/_list--specification.scss */
 .list__specification-circle.is-active:after, .list__snapshot-circle.is-active:after {
   -webkit-animation-name: flashBlinking;
           animation-name: flashBlinking;
 }
 
 @media screen and (max-width: 1023px) {
-  /* line 626, src/scss/_components/homepage/_list--specification.scss */
+  /* line 654, src/scss/_components/homepage/_list--specification.scss */
   .list__specification-circle.is-active:after, .list__snapshot-circle.is-active:after {
     -webkit-animation: unset;
             animation: unset;
   }
 }
 
-/* line 635, src/scss/_components/homepage/_list--specification.scss */
+/* line 663, src/scss/_components/homepage/_list--specification.scss */
 .list__specification-circle.is-active + .c-poppertext > u:nth-of-type(1), .list__snapshot-circle.is-active + .c-poppertext > u:nth-of-type(1) {
   display: none;
 }
 
-/* line 638, src/scss/_components/homepage/_list--specification.scss */
+/* line 666, src/scss/_components/homepage/_list--specification.scss */
 .list__specification-circle.is-active + .c-poppertext > u:nth-of-type(2), .list__snapshot-circle.is-active + .c-poppertext > u:nth-of-type(2) {
   display: block;
 }
 
-/* line 644, src/scss/_components/homepage/_list--specification.scss */
+/* line 672, src/scss/_components/homepage/_list--specification.scss */
 .list__specification-circle.is-active .icon-font, .list__snapshot-circle.is-active .icon-font {
   color: #c5f015;
   -webkit-transition: all 0.4s ease-in-out;
@@ -8490,7 +8528,7 @@ body.chatbot_active .go-top {
   transition: all 0.4s ease-in-out;
 }
 
-/* line 650, src/scss/_components/homepage/_list--specification.scss */
+/* line 678, src/scss/_components/homepage/_list--specification.scss */
 .list__specification-circle .icon-font, .list__snapshot-circle .icon-font {
   color: #ffffff;
   font-size: 24px;
@@ -8500,20 +8538,20 @@ body.chatbot_active .go-top {
 }
 
 @media screen and (max-width: 1279px) {
-  /* line 650, src/scss/_components/homepage/_list--specification.scss */
+  /* line 678, src/scss/_components/homepage/_list--specification.scss */
   .list__specification-circle .icon-font, .list__snapshot-circle .icon-font {
     font-size: 20px;
   }
 }
 
 @media screen and (max-width: 1023px) {
-  /* line 650, src/scss/_components/homepage/_list--specification.scss */
+  /* line 678, src/scss/_components/homepage/_list--specification.scss */
   .list__specification-circle .icon-font, .list__snapshot-circle .icon-font {
     font-size: 26px;
   }
 }
 
-/* line 662, src/scss/_components/homepage/_list--specification.scss */
+/* line 690, src/scss/_components/homepage/_list--specification.scss */
 .list__specification-circle span, .list__snapshot-circle span {
   display: none;
   padding-top: 3px;
@@ -8523,7 +8561,7 @@ body.chatbot_active .go-top {
 }
 
 @media screen and (max-width: 1023px) {
-  /* line 662, src/scss/_components/homepage/_list--specification.scss */
+  /* line 690, src/scss/_components/homepage/_list--specification.scss */
   .list__specification-circle span, .list__snapshot-circle span {
     display: -webkit-box;
     display: -webkit-flex;
@@ -8532,47 +8570,47 @@ body.chatbot_active .go-top {
   }
 }
 
-/* line 675, src/scss/_components/homepage/_list--specification.scss */
+/* line 703, src/scss/_components/homepage/_list--specification.scss */
 .list__specification-like .icon-font, .list__snapshot-like .icon-font {
   -webkit-transform: scaleX(-1);
       -ms-transform: scaleX(-1);
           transform: scaleX(-1);
 }
 
-/* line 681, src/scss/_components/homepage/_list--specification.scss */
+/* line 709, src/scss/_components/homepage/_list--specification.scss */
 .list__specification-dislike .icon-font, .list__snapshot-dislike .icon-font {
   -webkit-transform: scale(-1);
       -ms-transform: scale(-1);
           transform: scale(-1);
 }
 
-/* line 688, src/scss/_components/homepage/_list--specification.scss */
+/* line 716, src/scss/_components/homepage/_list--specification.scss */
 .list__specification-favorites.is-active .icon-font, .list__snapshot-favorites.is-active .icon-font {
   -webkit-transition: all 0.4s ease-in-out;
   -o-transition: all 0.4s ease-in-out;
   transition: all 0.4s ease-in-out;
 }
 
-/* line 691, src/scss/_components/homepage/_list--specification.scss */
+/* line 719, src/scss/_components/homepage/_list--specification.scss */
 .list__specification-favorites.is-active .icon-font.icon-star-fill, .list__snapshot-favorites.is-active .icon-font.icon-star-fill {
   opacity: 0;
   visibility: hidden;
 }
 
-/* line 695, src/scss/_components/homepage/_list--specification.scss */
+/* line 723, src/scss/_components/homepage/_list--specification.scss */
 .list__specification-favorites.is-active .icon-font.icon-star, .list__snapshot-favorites.is-active .icon-font.icon-star {
   opacity: 1;
   visibility: visible;
 }
 
-/* line 702, src/scss/_components/homepage/_list--specification.scss */
+/* line 730, src/scss/_components/homepage/_list--specification.scss */
 .list__specification-favorites .icon-font, .list__snapshot-favorites .icon-font {
   -webkit-transition: all 0.4s ease-in-out;
   -o-transition: all 0.4s ease-in-out;
   transition: all 0.4s ease-in-out;
 }
 
-/* line 705, src/scss/_components/homepage/_list--specification.scss */
+/* line 733, src/scss/_components/homepage/_list--specification.scss */
 .list__specification-favorites .icon-font.icon-star, .list__snapshot-favorites .icon-font.icon-star {
   opacity: 0;
   visibility: hidden;
@@ -8580,13 +8618,13 @@ body.chatbot_active .go-top {
 }
 
 @media screen and (max-width: 1023px) {
-  /* line 705, src/scss/_components/homepage/_list--specification.scss */
+  /* line 733, src/scss/_components/homepage/_list--specification.scss */
   .list__specification-favorites .icon-font.icon-star, .list__snapshot-favorites .icon-font.icon-star {
     top: 3px;
   }
 }
 
-/* line 716, src/scss/_components/homepage/_list--specification.scss */
+/* line 744, src/scss/_components/homepage/_list--specification.scss */
 .list__specification-desc, .list__snapshot-desc {
   width: 100%;
   max-width: 460px;
@@ -8595,13 +8633,13 @@ body.chatbot_active .go-top {
 }
 
 @media screen and (max-width: 1023px) {
-  /* line 716, src/scss/_components/homepage/_list--specification.scss */
+  /* line 744, src/scss/_components/homepage/_list--specification.scss */
   .list__specification-desc, .list__snapshot-desc {
     display: none;
   }
 }
 
-/* line 726, src/scss/_components/homepage/_list--specification.scss */
+/* line 754, src/scss/_components/homepage/_list--specification.scss */
 .list__specification-play, .list__snapshot-play {
   z-index: 20;
   position: absolute;
@@ -8635,14 +8673,14 @@ body.chatbot_active .go-top {
 }
 
 @media screen and (max-width: 1023px) {
-  /* line 726, src/scss/_components/homepage/_list--specification.scss */
+  /* line 754, src/scss/_components/homepage/_list--specification.scss */
   .list__specification-play, .list__snapshot-play {
     width: 115px;
     height: 115px;
   }
 }
 
-/* line 745, src/scss/_components/homepage/_list--specification.scss */
+/* line 773, src/scss/_components/homepage/_list--specification.scss */
 .list__specification-play:hover, .list__snapshot-play:hover {
   -webkit-transform: translate(-50%, -50%) scale(0.8);
       -ms-transform: translate(-50%, -50%) scale(0.8);
@@ -8654,7 +8692,7 @@ body.chatbot_active .go-top {
   transition: transform 0.55s ease-in-out, -webkit-transform 0.55s ease-in-out;
 }
 
-/* line 750, src/scss/_components/homepage/_list--specification.scss */
+/* line 778, src/scss/_components/homepage/_list--specification.scss */
 .list__specification-play.is-active, .list__snapshot-play.is-active {
   opacity: 0;
   visibility: hidden;
@@ -8663,7 +8701,7 @@ body.chatbot_active .go-top {
   transition: opacity 0.35s ease-in-out, visibility 0.35s ease-in-out;
 }
 
-/* line 756, src/scss/_components/homepage/_list--specification.scss */
+/* line 784, src/scss/_components/homepage/_list--specification.scss */
 .list__specification-play .icon-font, .list__snapshot-play .icon-font {
   position: relative;
   left: 5px;
@@ -8672,13 +8710,13 @@ body.chatbot_active .go-top {
 }
 
 @media screen and (max-width: 1023px) {
-  /* line 756, src/scss/_components/homepage/_list--specification.scss */
+  /* line 784, src/scss/_components/homepage/_list--specification.scss */
   .list__specification-play .icon-font, .list__snapshot-play .icon-font {
     font-size: 45px;
   }
 }
 
-/* line 767, src/scss/_components/homepage/_list--specification.scss */
+/* line 795, src/scss/_components/homepage/_list--specification.scss */
 .list__specification-pause, .list__snapshot-pause {
   z-index: 20;
   opacity: 0;
@@ -8695,7 +8733,7 @@ body.chatbot_active .go-top {
   transition: opacity 0.35s ease-in-out, visibility 0.35s ease-in-out;
 }
 
-/* line 777, src/scss/_components/homepage/_list--specification.scss */
+/* line 805, src/scss/_components/homepage/_list--specification.scss */
 .list__specification-pause.is-active, .list__snapshot-pause.is-active {
   opacity: 1;
   visibility: visible;
@@ -8704,13 +8742,13 @@ body.chatbot_active .go-top {
   transition: opacity 0.35s ease-in-out, visibility 0.35s ease-in-out;
 }
 
-/* line 783, src/scss/_components/homepage/_list--specification.scss */
+/* line 811, src/scss/_components/homepage/_list--specification.scss */
 .list__specification-pause .icon-font, .list__snapshot-pause .icon-font {
   color: #ffffff;
   font-size: 18px;
 }
 
-/* line 789, src/scss/_components/homepage/_list--specification.scss */
+/* line 817, src/scss/_components/homepage/_list--specification.scss */
 .list__specification-more, .list__snapshot-more {
   display: none;
   -webkit-box-ordinal-group: 5;
@@ -8732,7 +8770,7 @@ body.chatbot_active .go-top {
 }
 
 @media screen and (max-width: 1023px) {
-  /* line 789, src/scss/_components/homepage/_list--specification.scss */
+  /* line 817, src/scss/_components/homepage/_list--specification.scss */
   .list__specification-more, .list__snapshot-more {
     display: -webkit-box;
     display: -webkit-flex;
@@ -8742,14 +8780,14 @@ body.chatbot_active .go-top {
 }
 
 @media screen and (max-width: 767px) {
-  /* line 789, src/scss/_components/homepage/_list--specification.scss */
+  /* line 817, src/scss/_components/homepage/_list--specification.scss */
   .list__specification-more, .list__snapshot-more {
     min-height: 320px;
     padding: 10px;
   }
 }
 
-/* line 806, src/scss/_components/homepage/_list--specification.scss */
+/* line 834, src/scss/_components/homepage/_list--specification.scss */
 .list__specification-more > div:nth-of-type(1), .list__snapshot-more > div:nth-of-type(1) {
   display: -webkit-box;
   display: -webkit-flex;
@@ -8759,7 +8797,7 @@ body.chatbot_active .go-top {
   padding-bottom: 20px;
 }
 
-/* line 811, src/scss/_components/homepage/_list--specification.scss */
+/* line 839, src/scss/_components/homepage/_list--specification.scss */
 .list__specification-more > div:nth-of-type(1) p, .list__snapshot-more > div:nth-of-type(1) p {
   color: #ffffff;
   font-size: 18px;
@@ -8767,7 +8805,7 @@ body.chatbot_active .go-top {
   border-bottom: 2px solid #c5f015;
 }
 
-/* line 818, src/scss/_components/homepage/_list--specification.scss */
+/* line 846, src/scss/_components/homepage/_list--specification.scss */
 .list__specification-more > div:nth-of-type(2), .list__snapshot-more > div:nth-of-type(2) {
   display: -webkit-box;
   display: -webkit-flex;
@@ -8779,7 +8817,7 @@ body.chatbot_active .go-top {
   height: 100%;
 }
 
-/* line 825, src/scss/_components/homepage/_list--specification.scss */
+/* line 853, src/scss/_components/homepage/_list--specification.scss */
 .list__specification-more .list__box, .list__snapshot-more .list__box {
   z-index: -1;
   position: relative;
@@ -8797,13 +8835,13 @@ body.chatbot_active .go-top {
 }
 
 @media screen and (max-width: 767px) {
-  /* line 825, src/scss/_components/homepage/_list--specification.scss */
+  /* line 853, src/scss/_components/homepage/_list--specification.scss */
   .list__specification-more .list__box, .list__snapshot-more .list__box {
     padding: 15px;
   }
 }
 
-/* line 839, src/scss/_components/homepage/_list--specification.scss */
+/* line 867, src/scss/_components/homepage/_list--specification.scss */
 .is-open .list__specification-more .list__box, .is-open .list__snapshot-more .list__box {
   z-index: auto;
 }

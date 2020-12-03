@@ -1,8 +1,10 @@
 &__specification, &__snapshot {
-	display: none;
+	/*display: none;*/
 	//display: flex;
 	position: relative;
-	height: 322px;
+	visibility: hidden;
+	overflow: hidden;
+	opacity: 1;
 	border-width: 2px;
 	border-color: rgb(125, 132, 142);
 	border-style: solid;
@@ -10,8 +12,25 @@
 	background-color: rgb(0, 74, 172);
 	box-shadow: 1.047px 19.973px 43px 0px rgba(8, 9, 21, 0.3);
 
+	height: 0;
+
+	transition: all 0.6s ease-in;
+
+	-ms-overflow-style: none;  /* IE and Edge */
+	scrollbar-width: none;  /* Firefox */
+
+	&::-webkit-scrollbar {
+		display: none;
+	}
+
+	&.is-open {
+		height: 322px;
+	}
+
 	@media screen and (min-width: 1450px) {
-		height: 360px;
+		&.is-open {
+			height: 360px;
+		}
 	}
 	@include adaptive(1023) {
 		opacity: 0;
@@ -93,7 +112,10 @@
 	}
 
 	&.is-open {
-		display: flex;
+		/*display: flex;*/
+
+		visibility: visible;
+		opacity: 1;
 	}
 
 	&.list__specification--video {
@@ -216,6 +238,12 @@
 	&-left,
 	&-right {
 		height: 100%;
+		-ms-overflow-style: none;  /* IE and Edge */
+		scrollbar-width: none;  /* Firefox */
+
+		&::-webkit-scrollbar {
+			display: none;
+		}
 		@include adaptive(1023) {
 			height: auto;
 		}

@@ -91,9 +91,15 @@
 }
 .search_results_tags{
 	flex: 1;
-	overflow: hidden;
+	overflow: auto;
 	white-space: nowrap;
 	display: flex;
+	-ms-overflow-style: none;  /* IE and Edge */
+	scrollbar-width: none;  /* Firefox */
+
+	&::-webkit-scrollbar {
+		display: none;
+	}
 
 	@include adaptive(767) {
 		overflow: auto;
