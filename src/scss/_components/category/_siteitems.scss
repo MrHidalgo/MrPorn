@@ -149,6 +149,14 @@
 					}
 				}
 			}
+
+			&.has_video{
+				&:hover{
+					.category_sites_item_overlay{
+						display: none;
+					}
+				}
+			}
 		}
 
 		&_thumb{
@@ -168,6 +176,14 @@
 				transform: scale(1);
 				transition: opacity 250ms,transform .3s;
 				transform-origin: top left;
+			}
+
+			video{
+				position: absolute;
+				top: 0;
+				left: 50%;
+				height: 100%;
+				transform: translateX(-50%);
 			}
 
 			&:after{
