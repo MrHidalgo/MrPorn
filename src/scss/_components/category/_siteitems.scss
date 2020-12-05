@@ -225,6 +225,13 @@
 			justify-content: center;
 			color: #fff;
 
+			@include adaptive(767) {
+				font-size: 13px;
+				white-space: nowrap;
+				overflow: hidden;
+				text-overflow: ellipsis;
+			}
+
 			&:hover, &:focus{
 				color: #fff;
 			}
@@ -430,6 +437,14 @@
 					margin: 0 0 5px;
 				}
 			}
+
+			a{
+				color: #2eaf61;
+				&:hover, &:focus{
+					color: #2eaf61;
+				}
+			}
+
 			p{
 				padding: 0;
 				font-size: 16px;
@@ -454,6 +469,17 @@
 	.category_sites_description .category_description h3{
 		color: #698ab3;
 	}
+
+	.category_sites_description .category_description a{
+		color: #4099f9;
+
+		&:hover, &:focus{
+			color: #337ab7;
+		}
+	}
+
+
+
 	.category_sites_item_title h2{
 	}
 }

@@ -104,6 +104,11 @@
 			background-color: transparent;
 			font-size: 14px;
 			font-weight: 700;
+
+			&.searchinput{
+				padding: 0 0 0 5px;
+			}
+
 			@include inputPlaceholder {
 				color: #9294ad;
 				font-size: 14px;
@@ -125,6 +130,11 @@
 			border-radius: 0;
 			box-shadow: none;
 			background-color: transparent;
+
+
+			&.search_icon{
+				width: 25px;
+			}
 
 			.icon-font {
 				color: #9294ad;

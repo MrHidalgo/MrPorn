@@ -28,6 +28,13 @@ const initHamburger = () => {
 				val.classList.toggle("is-hideScroll");
 			});
 
+
+			if(document.body.classList.contains('is-hideScroll')){
+				setTimeout(function (){
+					document.querySelector('.searchinput').focus();
+				}, 500);
+			}
+
 		});
 	}
 
@@ -80,7 +87,7 @@ const renderMobileMenu = () => {
 
 	const mobileNavHtml = '<div>' +
 		'            <div class="pre-header__mobile-top">' +
-		'              <div><a class="pre-header__signin mobile_login_link" href="/login/"><i class="icon-font icon-enter"></i><span>Sign In</span></a></div>' +
+		'              <div><a class="pre-header__signin mobile_login_link" href="/login/"><i class="icon-font icon-enter"></i><span>Login</span></a></div>' +
 		'              <div><a class="pre-header__signup mobile_signup_link" href="/sign-up/"><i class="icon-font icon-key"></i><span>Sign Up</span></a></div>' +
 		'            </div>' +
 		'            <div class="pre-header__mobile-middle">' +

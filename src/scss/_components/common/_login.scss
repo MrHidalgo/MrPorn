@@ -43,7 +43,7 @@
 		&.forgot{
 			.info{
 				color: #9294ad;
-				font-size: 11px;
+				font-size: 14px;
 				text-align: center;
 				margin-bottom: 20px;
 
@@ -114,6 +114,10 @@
 		input{
 			border-radius: 5px;
 			width: 410px;
+
+			@include adaptive(767) {
+				width: 100%;
+			}
 		}
 
 		.signup{
@@ -143,6 +147,10 @@
 				line-height: 23px;
 			}
 
+			@include adaptive(767) {
+				font-size: 12px;
+			}
+
 			a{
 				color: #c7f928;
 
@@ -157,6 +165,17 @@
 		@include adaptive(1023) {
 			text-align: center;
 			color: #fff;
+			display: flex;
+			justify-content: center;
+			align-items: center;
+
+			input[type=checkbox]{
+				width: auto;
+				margin-right: 10px;
+			}
+			label{
+				white-space: nowrap;
+			}
 		}
 	}
 
@@ -341,6 +360,7 @@
 }
 .cleanlogin-container{
 	padding: 15px;
+	max-width: 430px;
 
 	@include adaptive(1023){
 		padding: 35px 30px 15px;
@@ -363,6 +383,10 @@
 			font-size: 18px;
 			background: #003b85;
 			color: #fff;
+		}
+
+		@include adaptive(767){
+			font-size: 15px;
 		}
 	}
 	form{
