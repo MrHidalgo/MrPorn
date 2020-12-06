@@ -102,19 +102,19 @@ const renderMobileMenu = () => {
 		'                    <div><i class="icon-png header-nav-folder"></i></div>' +
 		'                    <div><span>View All Categories</span></div></a></li>' +
 		'                <li class="header__nav-item header__nav-item--saparator"><span class="header__nav-separator"></span></li>' +
-		'                <li class="header__nav-item"><a class="header__nav-link" href="/blog/" hreflang="'+currentLang+'">' +
+		'                <li class="header__nav-item"><a class="header__nav-link" href="/blog/" hreflang="en">' +
 		'                    <div><i class="icon-png header-nav-blog"></i></div>' +
 		'                    <div><span>Blog</span></div></a></li>' +
 		'                <li class="header__nav-item header__nav-item--saparator"><span class="header__nav-separator"></span></li>' +
-		'                <li class="header__nav-item"><a class="header__nav-link" href="/webcam-videos/" hreflang="'+currentLang+'">' +
+		'                <li class="header__nav-item"><a class="header__nav-link" href="/webcam-videos/" hreflang="en">' +
 		'                    <div><i class="icon-png header-nav-videos"></i></div>' +
 		'                    <div><span>Videos</span></div></a></li>' +
 		'                <li class="header__nav-item header__nav-item--saparator"><span class="header__nav-separator"></span></li>' +
-		'                <li class="header__nav-item"><a class="header__nav-link" href="/pornstars/" hreflang="'+currentLang+'">' +
+		'                <li class="header__nav-item"><a class="header__nav-link" href="/pornstars/" hreflang="en">' +
 		'                    <div><i class="icon-png header-nav-pornstars"></i></div>' +
 		'                    <div><span>Pornstars</span></div></a></li>' +
 		'                <li class="header__nav-item header__nav-item--saparator"><span class="header__nav-separator"></span></li>' +
-		'                <li class="header__nav-item"><a class="header__nav-link" href="/coupons/" hreflang="'+currentLang+'">' +
+		'                <li class="header__nav-item"><a class="header__nav-link" href="/coupons/" hreflang="en">' +
 		'                    <div><i class="icon-png header-nav-porncoupons"></i></div>' +
 		'                    <div><span>Porn Coupons</span></div></a></li>' +
 		'                <li class="header__nav-item header__nav-item--saparator"><span class="header__nav-separator"></span></li>' +
