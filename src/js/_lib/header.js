@@ -76,7 +76,7 @@ const renderFavourites = () => {
 					favouritesHtml += '<div class="header__view-link" >' +
 						'<div><span>'+(index+1)+'.</span></div>' +
 						'<div><img src="'+fav.favicon+'"/><p><a href="'+fav.permalink+'">'+fav.title+'</a></p></div>' +
-						'<div><button type="button" data-id="'+fav.id+'" un-favorites-js><i class="icon-font icon-delete"></i></button><button type="button"><i class="icon-font icon-search"></i></button></div>' +
+						'<div><button type="button" data-id="'+fav.id+'" un-favorites-js><i class="icon-font icon-delete"></i></button><a href="'+fav.permalink+'"><i class="icon-font icon-search"></i></a></div>' +
 						'</div>';
 
 					let favLink = document.querySelector('[data-id="'+fav.id+'"] [favorites-toggle-js]');
