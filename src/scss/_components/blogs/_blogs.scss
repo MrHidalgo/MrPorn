@@ -187,7 +187,11 @@
 		color: #bbb;
 
 		a{
-			color: #337ab7;
+			color: #2eaf61;
+
+			&:hover, &:focus{
+				color: #2eaf61;
+			}
 		}
 
 		@include respond('ipad_portrait'){
@@ -284,7 +288,11 @@
 			color: #333;
 
 			a{
-				color: #fff;
+				color: #337ab7;
+
+				&:hover, &:focus{
+					color: #337ab7;
+				}
 			}
 		}
 	}
