@@ -180,6 +180,23 @@ const onSortLetterClick = (letterItem) => {
 	let suggessionIndex = 1;
 	let letterSuggessions = '';
 
+	let suggessionsTop = 10;
+	if(!isMobileDevice){
+		if(letter=='e' | letter=='f' | letter=='g' | letter=='h' ){
+			suggessionsTop = 44;
+		}else if(letter=='i' | letter=='j' | letter=='k' | letter=='l' ){
+			suggessionsTop = 78;
+		}else if(letter=='m' | letter=='n' | letter=='o' | letter=='p' ){
+			suggessionsTop = 112;
+		}else if(letter=='q' | letter=='r' | letter=='s' | letter=='t' ){
+			suggessionsTop = 146;
+		}else if(letter=='u' | letter=='v' | letter=='w' | letter=='x' ){
+			suggessionsTop = 180;
+		}else if(letter=='y'){
+			suggessionsTop = 214;
+		}
+	}
+
 	letterData[letter].forEach(function (suggession){
 		let suggessionName = suggession.name;
 		let uL = letter.toUpperCase();
@@ -246,6 +263,11 @@ const onSortLetterClick = (letterItem) => {
 	const sortSuggesionContainer = document.querySelector('.sort__drop-inner');
 	sortSuggesionContainer.classList.add('is-open');
 	letterItem.classList.add('is-active');
+
+	if(!isMobileDevice){
+		sortSuggesionContainer.style.top=suggessionsTop+'px';
+	}
+
 	sortSuggesionContainer.innerHTML = letterSuggessions;
 
 }

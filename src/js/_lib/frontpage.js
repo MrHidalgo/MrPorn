@@ -29,12 +29,12 @@ const loadHomeData = () => {
 
 	console.log('Loading home data');
 
-	let url = 'http://mpg.c2136.cloudnet.cloud/wp-json/mpg/home/';
+	let url = '/wp-json/mpg/home/';
 	if(currentLang!='en'){
-		url = 'http://mpg.c2136.cloudnet.cloud/wp-json/mpg/home/?lang='+currentLang;
+		url = '/wp-json/mpg/home/?lang='+currentLang;
 	}
 
-	homeData = getWithExpiry("home_data_"+currentLang);
+	homeData = getWithExpiry("homepage_data_"+currentLang);
 
 	if(homeData){
 		renderAllOtherCategories();
@@ -44,7 +44,11 @@ const loadHomeData = () => {
 			.then((out) => {
 				homeData = out;
 
-				setWithExpiry("home_data_"+currentLang, homeData, 30*60*1000);
+				if(homeData.code=='rest_login_required'){
+
+				}else{
+					setWithExpiry("homepage_data_"+currentLang, homeData, 30*60*1000);
+				}
 
 				//renderAllOtherCategories();
 
@@ -218,7 +222,7 @@ function renderSiteBottomBanner(category, index){
 			'<img class="list__specification-logo" src="'+siteLogo+'"/>'+
 			'<div class="list__specification-action" spec-actionNode-js>'+
 			'<div><a class="list__specification-visit nav_link" href="'+siteUrl+'" target="_blank">VISIT WEBSITE</a></div>'+
-			'<div><a class="list__specification-read nav_link" href="'+siteItem.link+'" hreflang="'+currentLang+'">READ REVIEW</a></div>'+
+			'<div><a class="list__specification-read nav_link" href="'+siteItem.link+'" hreflang="'+currentLang+'" target="_blank">READ REVIEW</a></div>'+
 			'<div class="list__specification-action-desc">'+
 			'<p>'+tagLIne+'</p>'+
 			'</div>'+
@@ -823,7 +827,7 @@ function initWebWorker(){
 
 	let currentLang = document.documentElement.getAttribute('lang');
 
-	homeData = getWithExpiry("home_data_"+currentLang);
+	homeData = getWithExpiry("homepage_data_"+currentLang);
 	if(homeData){
 		if(document.body.classList.contains('home')) {
 			renderAllOtherCategories();

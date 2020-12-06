@@ -394,7 +394,9 @@ const ajaxAdminEndpoint = '/wp-admin/admin-ajax.php';
 		}
 
 		if(document.querySelector('[video-js]')){
-			playPause(document.querySelector('[video-js]'));
+			document.querySelector('[video-js]').pause();
+
+			//playPause(document.querySelector('[video-js]'));
 		}
 
 		if(parent.querySelector('[video-toggle-js]')) {
@@ -902,15 +904,23 @@ const ajaxAdminEndpoint = '/wp-admin/admin-ajax.php';
 		//loadHomeData();
 		initWebWorker();
 
-
-
 	};
+
+	const onWindowBlur = () => {
+		if(document.querySelector('[video-js]')){
+			document.querySelector('[video-js]').pause();
+		}
+	}
 
 	/**
 	 * @description Init all CB after page load
 	 */
 	window.addEventListener('load', (ev) => {
 		initNative();
+	});
+
+	window.addEventListener('blur', (ev) => {
+		onWindowBlur();
 	});
 
 	window.addEventListener('resize', () => {

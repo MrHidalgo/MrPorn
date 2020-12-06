@@ -8,7 +8,7 @@
 	font:400 14px/1.2 Roboto,sans-serif,sans-serif;
 
 	@include adaptive(767) {
-		padding: 0 8px;
+		padding: 0 1px;
 	}
 
 	&_item{
@@ -30,7 +30,7 @@
 		@include adaptive(767) {
 			width: 50%;
 			max-width: 50%;
-			padding: 10px 5px 0;
+			padding: 10px 3px 0;
 		}
 
 
@@ -284,6 +284,7 @@
 
 				@include adaptive(767) {
 					font-size: 13px;
+					font-weight: 500;
 					white-space: nowrap;
 					overflow: hidden;
 					max-width: 62%;
@@ -450,13 +451,15 @@
 				font-size: 16px;
 				margin: 0 0 10px;
 			}
+		}
 
-			&.show_all{
+		&.show_all{
+			.category_description{
 				max-height: inherit;
+			}
 
-				.readmore{
-					display: none;
-				}
+			.readmore{
+				display: none;
 			}
 		}
 	}

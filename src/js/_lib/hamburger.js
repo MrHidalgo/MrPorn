@@ -84,6 +84,8 @@ const renderMobileMenu = () => {
 	const navLinkMeet = document.querySelector('.header_nav_meet').getAttribute('href');
 	const navLinkLiveSex = document.querySelector('.header_nav_dating').getAttribute('href');
 
+	let currentLang = document.documentElement.getAttribute('lang');
+
 
 	const mobileNavHtml = '<div>' +
 		'            <div class="pre-header__mobile-top">' +
@@ -96,26 +98,23 @@ const renderMobileMenu = () => {
 		'            </div>' +
 		'            <div class="pre-header__mobile-bottom">' +
 		'              <ul class="header__nav">' +
-		'                <li class="header__nav-item"><a class="header__nav-link" href="/categories/">' +
+		'                <li class="header__nav-item"><a class="header__nav-link" href="/categories/" hreflang="'+currentLang+'">' +
 		'                    <div><i class="icon-png header-nav-folder"></i></div>' +
 		'                    <div><span>View All Categories</span></div></a></li>' +
-		'                <li class="header__nav-item"><a class="header__nav-link" href="/">' +
-		'                    <div><i class="icon-png header-nav-home"></i></div>' +
-		'                    <div><span>Home</span></div></a></li>' +
 		'                <li class="header__nav-item header__nav-item--saparator"><span class="header__nav-separator"></span></li>' +
-		'                <li class="header__nav-item"><a class="header__nav-link" href="/blog/">' +
+		'                <li class="header__nav-item"><a class="header__nav-link" href="/blog/" hreflang="'+currentLang+'">' +
 		'                    <div><i class="icon-png header-nav-blog"></i></div>' +
 		'                    <div><span>Blog</span></div></a></li>' +
 		'                <li class="header__nav-item header__nav-item--saparator"><span class="header__nav-separator"></span></li>' +
-		'                <li class="header__nav-item"><a class="header__nav-link" href="/webcam-videos/">' +
+		'                <li class="header__nav-item"><a class="header__nav-link" href="/webcam-videos/" hreflang="'+currentLang+'">' +
 		'                    <div><i class="icon-png header-nav-videos"></i></div>' +
 		'                    <div><span>Videos</span></div></a></li>' +
 		'                <li class="header__nav-item header__nav-item--saparator"><span class="header__nav-separator"></span></li>' +
-		'                <li class="header__nav-item"><a class="header__nav-link" href="/pornstars/">' +
+		'                <li class="header__nav-item"><a class="header__nav-link" href="/pornstars/" hreflang="'+currentLang+'">' +
 		'                    <div><i class="icon-png header-nav-pornstars"></i></div>' +
 		'                    <div><span>Pornstars</span></div></a></li>' +
 		'                <li class="header__nav-item header__nav-item--saparator"><span class="header__nav-separator"></span></li>' +
-		'                <li class="header__nav-item"><a class="header__nav-link" href="/coupons/">' +
+		'                <li class="header__nav-item"><a class="header__nav-link" href="/coupons/" hreflang="'+currentLang+'">' +
 		'                    <div><i class="icon-png header-nav-porncoupons"></i></div>' +
 		'                    <div><span>Porn Coupons</span></div></a></li>' +
 		'                <li class="header__nav-item header__nav-item--saparator"><span class="header__nav-separator"></span></li>' +

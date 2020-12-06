@@ -281,13 +281,13 @@ var initHomeLazyLoad = function initHomeLazyLoad() {
 var loadHomeData = function loadHomeData() {
   var currentLang = document.documentElement.getAttribute('lang');
   console.log('Loading home data');
-  var url = 'http://mpg.c2136.cloudnet.cloud/wp-json/mpg/home/';
+  var url = '/wp-json/mpg/home/';
 
   if (currentLang != 'en') {
-    url = 'http://mpg.c2136.cloudnet.cloud/wp-json/mpg/home/?lang=' + currentLang;
+    url = '/wp-json/mpg/home/?lang=' + currentLang;
   }
 
-  homeData = getWithExpiry("home_data_" + currentLang);
+  homeData = getWithExpiry("homepage_data_" + currentLang);
 
   if (homeData) {
     renderAllOtherCategories();
@@ -296,7 +296,11 @@ var loadHomeData = function loadHomeData() {
       return res.json();
     }).then(function (out) {
       homeData = out;
-      setWithExpiry("home_data_" + currentLang, homeData, 30 * 60 * 1000); //renderAllOtherCategories();
+
+      if (homeData.code == 'rest_login_required') {} else {
+        setWithExpiry("homepage_data_" + currentLang, homeData, 30 * 60 * 1000);
+      } //renderAllOtherCategories();
+
 
       setTimeout(renderAllOtherCategories, 100);
     })["catch"](function (err) {
@@ -389,7 +393,7 @@ function renderSiteBottomBanner(category, index) {
         moreSiteCount++;
       }
     });
-    var bannerHtml = '<div class="list__specification ' + bannerClass + '" data-id="' + siteId + '">' + '<a class="list__specification-close" ><i class="icon-font icon-close"></i></a>' + '<div>' + '<div class="list__specification-header">' + '<img class="list__specification-logo" src="' + siteLogo + '"/>' + '<a class="list__specification-close" >' + '<i class="icon-font icon-close"></i>' + '</a>' + '</div>' + '<div class="list__specification-left">' + '<div>' + '<img class="list__specification-logo" src="' + siteLogo + '"/>' + '<div class="list__specification-action" spec-actionNode-js>' + '<div><a class="list__specification-visit nav_link" href="' + siteUrl + '" target="_blank">VISIT WEBSITE</a></div>' + '<div><a class="list__specification-read nav_link" href="' + siteItem.link + '" hreflang="' + currentLang + '">READ REVIEW</a></div>' + '<div class="list__specification-action-desc">' + '<p>' + tagLIne + '</p>' + '</div>' + '<div class="list__specification-action-skip"><a class="list__specification-circle list__specification-skip" data-id="' + siteId + '" data-category="' + category + '" data-index="' + index + '" spec-skip-js><i class="icon-font icon-point"></i><span>Skip</span></a></div>' + '<div class="list__specification-action-circle">' + '<button class="list__specification-circle list__specification-like" data-like="' + siteId + '" spec-like-js><i class="icon-font icon-like"></i><span>Like</span></button>' + '</div>' + '<div class="list__specification-action-circle">' + '<button class="list__specification-circle list__specification-dislike" data-dislike="' + siteId + '" spec-dislike-js><i class="icon-font icon-like"></i><span>Dislike</span></button>' + '</div>' + '<div class="list__specification-action-circle">' + '<div class="c-popper">' + '<button class="list__specification-circle list__specification-favorites" data-id="' + siteId + '" data-favorites="' + siteId + '" spec-favorites-js><i class="icon-font icon-star-fill"></i><i class="icon-font icon-star"></i><span>Favorites</span></button>' + '<div class="c-poppertext">' + '<u>Add To Favourites</u>' + '<u>Remove From Favourites</u>' + '</div>' + '</div>' + '</div>' + '</div>' + '<p class="list__specification-desc">' + tagLIne + '</p>' + '</div>' + '</div>' + bannerRight + '<div class="list__specification-more">' + '<div>' + '<p>More Like This</p>' + '</div>' + '<div class="site_banner_more_sites">' + moreSites + '</div>' + '</div>' + '</div>' + '</div>';
+    var bannerHtml = '<div class="list__specification ' + bannerClass + '" data-id="' + siteId + '">' + '<a class="list__specification-close" ><i class="icon-font icon-close"></i></a>' + '<div>' + '<div class="list__specification-header">' + '<img class="list__specification-logo" src="' + siteLogo + '"/>' + '<a class="list__specification-close" >' + '<i class="icon-font icon-close"></i>' + '</a>' + '</div>' + '<div class="list__specification-left">' + '<div>' + '<img class="list__specification-logo" src="' + siteLogo + '"/>' + '<div class="list__specification-action" spec-actionNode-js>' + '<div><a class="list__specification-visit nav_link" href="' + siteUrl + '" target="_blank">VISIT WEBSITE</a></div>' + '<div><a class="list__specification-read nav_link" href="' + siteItem.link + '" hreflang="' + currentLang + '" target="_blank">READ REVIEW</a></div>' + '<div class="list__specification-action-desc">' + '<p>' + tagLIne + '</p>' + '</div>' + '<div class="list__specification-action-skip"><a class="list__specification-circle list__specification-skip" data-id="' + siteId + '" data-category="' + category + '" data-index="' + index + '" spec-skip-js><i class="icon-font icon-point"></i><span>Skip</span></a></div>' + '<div class="list__specification-action-circle">' + '<button class="list__specification-circle list__specification-like" data-like="' + siteId + '" spec-like-js><i class="icon-font icon-like"></i><span>Like</span></button>' + '</div>' + '<div class="list__specification-action-circle">' + '<button class="list__specification-circle list__specification-dislike" data-dislike="' + siteId + '" spec-dislike-js><i class="icon-font icon-like"></i><span>Dislike</span></button>' + '</div>' + '<div class="list__specification-action-circle">' + '<div class="c-popper">' + '<button class="list__specification-circle list__specification-favorites" data-id="' + siteId + '" data-favorites="' + siteId + '" spec-favorites-js><i class="icon-font icon-star-fill"></i><i class="icon-font icon-star"></i><span>Favorites</span></button>' + '<div class="c-poppertext">' + '<u>Add To Favourites</u>' + '<u>Remove From Favourites</u>' + '</div>' + '</div>' + '</div>' + '</div>' + '<p class="list__specification-desc">' + tagLIne + '</p>' + '</div>' + '</div>' + bannerRight + '<div class="list__specification-more">' + '<div>' + '<p>More Like This</p>' + '</div>' + '<div class="site_banner_more_sites">' + moreSites + '</div>' + '</div>' + '</div>' + '</div>';
     return bannerHtml;
   }
 
@@ -851,7 +855,7 @@ function removeFavourite(favItem) {
 
 function initWebWorker() {
   var currentLang = document.documentElement.getAttribute('lang');
-  homeData = getWithExpiry("home_data_" + currentLang);
+  homeData = getWithExpiry("homepage_data_" + currentLang);
 
   if (homeData) {
     if (document.body.classList.contains('home')) {
@@ -1022,7 +1026,8 @@ var renderMobileMenu = function renderMobileMenu() {
   var navLinkGames = document.querySelector('.header_nav_games').getAttribute('href');
   var navLinkMeet = document.querySelector('.header_nav_meet').getAttribute('href');
   var navLinkLiveSex = document.querySelector('.header_nav_dating').getAttribute('href');
-  var mobileNavHtml = '<div>' + '            <div class="pre-header__mobile-top">' + '              <div><a class="pre-header__signin mobile_login_link" href="/login/"><i class="icon-font icon-enter"></i><span>Login</span></a></div>' + '              <div><a class="pre-header__signup mobile_signup_link" href="/sign-up/"><i class="icon-font icon-key"></i><span>Sign Up</span></a></div>' + '            </div>' + '            <div class="pre-header__mobile-middle">' + '<p class="pre-header__heading"><i></i><span>Main</span></p>' + '              <div>' + langHtml + '</div>' + '            </div>' + '            <div class="pre-header__mobile-bottom">' + '              <ul class="header__nav">' + '                <li class="header__nav-item"><a class="header__nav-link" href="/categories/">' + '                    <div><i class="icon-png header-nav-folder"></i></div>' + '                    <div><span>View All Categories</span></div></a></li>' + '                <li class="header__nav-item"><a class="header__nav-link" href="/">' + '                    <div><i class="icon-png header-nav-home"></i></div>' + '                    <div><span>Home</span></div></a></li>' + '                <li class="header__nav-item header__nav-item--saparator"><span class="header__nav-separator"></span></li>' + '                <li class="header__nav-item"><a class="header__nav-link" href="/blog/">' + '                    <div><i class="icon-png header-nav-blog"></i></div>' + '                    <div><span>Blog</span></div></a></li>' + '                <li class="header__nav-item header__nav-item--saparator"><span class="header__nav-separator"></span></li>' + '                <li class="header__nav-item"><a class="header__nav-link" href="/webcam-videos/">' + '                    <div><i class="icon-png header-nav-videos"></i></div>' + '                    <div><span>Videos</span></div></a></li>' + '                <li class="header__nav-item header__nav-item--saparator"><span class="header__nav-separator"></span></li>' + '                <li class="header__nav-item"><a class="header__nav-link" href="/pornstars/">' + '                    <div><i class="icon-png header-nav-pornstars"></i></div>' + '                    <div><span>Pornstars</span></div></a></li>' + '                <li class="header__nav-item header__nav-item--saparator"><span class="header__nav-separator"></span></li>' + '                <li class="header__nav-item"><a class="header__nav-link" href="/coupons/">' + '                    <div><i class="icon-png header-nav-porncoupons"></i></div>' + '                    <div><span>Porn Coupons</span></div></a></li>' + '                <li class="header__nav-item header__nav-item--saparator"><span class="header__nav-separator"></span></li>' + '                <li class="header__nav-item"><a class="header__nav-link" href="' + navLinkGames + '" target="_blank">' + '                    <div><i class="icon-png header-nav-porngames"></i></div>' + '                    <div><span>Porn Games</span></div></a></li>' + '                <li class="header__nav-item header__nav-item--saparator"><span class="header__nav-separator"></span></li>' + '                <li class="header__nav-item"><a class="header__nav-link" href="' + navLinkMeet + '" target="_blank">' + '                    <div><i class="icon-png header-nav-meetfuck"></i></div>' + '                    <div><span>Meet & Fuck</span></div></a></li>' + '                <li class="header__nav-item header__nav-item--saparator"><span class="header__nav-separator"></span></li>' + '                <li class="header__nav-item"><a class="header__nav-link" href="' + navLinkLiveSex + '" target="_blank">' + '                    <div><i class="icon-png header-nav-livesex"></i></div>' + '                    <div><span>Live sex</span></div></a></li>' + '              </ul>' + '            </div>' + '            <div class="pre-header__mobile-middle">' + '              <div>' + '                <p class="pre-header__heading"><i></i><span>Connect With Us</span></p>' + '              </div>' + '              <div></div>' + '            </div>' + '            <div class="pre-header__mobile-bottom">' + '              <ul class="header__nav">' + '                <li class="header__nav-item"><a class="header__nav-link" href="/about-us/">' + '                    <div><i class="icon-png header-nav-info"></i></div>' + '                    <div><span>About Us</span></div></a></li>' + '                <li class="header__nav-item"><a class="header__nav-link" href="/contact/">' + '                    <div><i class="icon-png header-nav-email"></i></div>' + '                    <div><span>Contact Us</span></div></a></li>' + '                <li class="header__nav-item"><a class="header__nav-link" href="/advertising/">' + '                    <div><i class="icon-png header-nav-megaphone"></i></div>' + '                    <div><span>Advertising</span></div></a></li>' + '              </ul>' + '            </div>' + '          </div>';
+  var currentLang = document.documentElement.getAttribute('lang');
+  var mobileNavHtml = '<div>' + '            <div class="pre-header__mobile-top">' + '              <div><a class="pre-header__signin mobile_login_link" href="/login/"><i class="icon-font icon-enter"></i><span>Login</span></a></div>' + '              <div><a class="pre-header__signup mobile_signup_link" href="/sign-up/"><i class="icon-font icon-key"></i><span>Sign Up</span></a></div>' + '            </div>' + '            <div class="pre-header__mobile-middle">' + '<p class="pre-header__heading"><i></i><span>Main</span></p>' + '              <div>' + langHtml + '</div>' + '            </div>' + '            <div class="pre-header__mobile-bottom">' + '              <ul class="header__nav">' + '                <li class="header__nav-item"><a class="header__nav-link" href="/categories/" hreflang="' + currentLang + '">' + '                    <div><i class="icon-png header-nav-folder"></i></div>' + '                    <div><span>View All Categories</span></div></a></li>' + '                <li class="header__nav-item header__nav-item--saparator"><span class="header__nav-separator"></span></li>' + '                <li class="header__nav-item"><a class="header__nav-link" href="/blog/" hreflang="' + currentLang + '">' + '                    <div><i class="icon-png header-nav-blog"></i></div>' + '                    <div><span>Blog</span></div></a></li>' + '                <li class="header__nav-item header__nav-item--saparator"><span class="header__nav-separator"></span></li>' + '                <li class="header__nav-item"><a class="header__nav-link" href="/webcam-videos/" hreflang="' + currentLang + '">' + '                    <div><i class="icon-png header-nav-videos"></i></div>' + '                    <div><span>Videos</span></div></a></li>' + '                <li class="header__nav-item header__nav-item--saparator"><span class="header__nav-separator"></span></li>' + '                <li class="header__nav-item"><a class="header__nav-link" href="/pornstars/" hreflang="' + currentLang + '">' + '                    <div><i class="icon-png header-nav-pornstars"></i></div>' + '                    <div><span>Pornstars</span></div></a></li>' + '                <li class="header__nav-item header__nav-item--saparator"><span class="header__nav-separator"></span></li>' + '                <li class="header__nav-item"><a class="header__nav-link" href="/coupons/" hreflang="' + currentLang + '">' + '                    <div><i class="icon-png header-nav-porncoupons"></i></div>' + '                    <div><span>Porn Coupons</span></div></a></li>' + '                <li class="header__nav-item header__nav-item--saparator"><span class="header__nav-separator"></span></li>' + '                <li class="header__nav-item"><a class="header__nav-link" href="' + navLinkGames + '" target="_blank">' + '                    <div><i class="icon-png header-nav-porngames"></i></div>' + '                    <div><span>Porn Games</span></div></a></li>' + '                <li class="header__nav-item header__nav-item--saparator"><span class="header__nav-separator"></span></li>' + '                <li class="header__nav-item"><a class="header__nav-link" href="' + navLinkMeet + '" target="_blank">' + '                    <div><i class="icon-png header-nav-meetfuck"></i></div>' + '                    <div><span>Meet & Fuck</span></div></a></li>' + '                <li class="header__nav-item header__nav-item--saparator"><span class="header__nav-separator"></span></li>' + '                <li class="header__nav-item"><a class="header__nav-link" href="' + navLinkLiveSex + '" target="_blank">' + '                    <div><i class="icon-png header-nav-livesex"></i></div>' + '                    <div><span>Live sex</span></div></a></li>' + '              </ul>' + '            </div>' + '            <div class="pre-header__mobile-middle">' + '              <div>' + '                <p class="pre-header__heading"><i></i><span>Connect With Us</span></p>' + '              </div>' + '              <div></div>' + '            </div>' + '            <div class="pre-header__mobile-bottom">' + '              <ul class="header__nav">' + '                <li class="header__nav-item"><a class="header__nav-link" href="/about-us/">' + '                    <div><i class="icon-png header-nav-info"></i></div>' + '                    <div><span>About Us</span></div></a></li>' + '                <li class="header__nav-item"><a class="header__nav-link" href="/contact/">' + '                    <div><i class="icon-png header-nav-email"></i></div>' + '                    <div><span>Contact Us</span></div></a></li>' + '                <li class="header__nav-item"><a class="header__nav-link" href="/advertising/">' + '                    <div><i class="icon-png header-nav-megaphone"></i></div>' + '                    <div><span>Advertising</span></div></a></li>' + '              </ul>' + '            </div>' + '          </div>';
   mobileContainer.innerHTML = mobileNavHtml;
 
   if (typeof initLoggedUser === "function") {
@@ -1191,6 +1196,24 @@ var onSortLetterClick = function onSortLetterClick(letterItem) {
   var letter = letterItem.dataset.letter;
   var suggessionIndex = 1;
   var letterSuggessions = '';
+  var suggessionsTop = 10;
+
+  if (!isMobileDevice) {
+    if (letter == 'e' | letter == 'f' | letter == 'g' | letter == 'h') {
+      suggessionsTop = 44;
+    } else if (letter == 'i' | letter == 'j' | letter == 'k' | letter == 'l') {
+      suggessionsTop = 78;
+    } else if (letter == 'm' | letter == 'n' | letter == 'o' | letter == 'p') {
+      suggessionsTop = 112;
+    } else if (letter == 'q' | letter == 'r' | letter == 's' | letter == 't') {
+      suggessionsTop = 146;
+    } else if (letter == 'u' | letter == 'v' | letter == 'w' | letter == 'x') {
+      suggessionsTop = 180;
+    } else if (letter == 'y') {
+      suggessionsTop = 214;
+    }
+  }
+
   letterData[letter].forEach(function (suggession) {
     var suggessionName = suggession.name;
     var uL = letter.toUpperCase(); //suggessionName = suggessionName.replace(letter, '<span>'+letter+'</span>');
@@ -1234,6 +1257,11 @@ var onSortLetterClick = function onSortLetterClick(letterItem) {
   var sortSuggesionContainer = document.querySelector('.sort__drop-inner');
   sortSuggesionContainer.classList.add('is-open');
   letterItem.classList.add('is-active');
+
+  if (!isMobileDevice) {
+    sortSuggesionContainer.style.top = suggessionsTop + 'px';
+  }
+
   sortSuggesionContainer.innerHTML = letterSuggessions;
 };
 
@@ -2032,7 +2060,7 @@ var ajaxAdminEndpoint = '/wp-admin/admin-ajax.php';
     }
 
     if (document.querySelector('[video-js]')) {
-      playPause(document.querySelector('[video-js]'));
+      document.querySelector('[video-js]').pause(); //playPause(document.querySelector('[video-js]'));
     }
 
     if (parent.querySelector('[video-toggle-js]')) {
@@ -2478,6 +2506,12 @@ var ajaxAdminEndpoint = '/wp-admin/admin-ajax.php';
 
     initWebWorker();
   };
+
+  var onWindowBlur = function onWindowBlur() {
+    if (document.querySelector('[video-js]')) {
+      document.querySelector('[video-js]').pause();
+    }
+  };
   /**
    * @description Init all CB after page load
    */
@@ -2485,6 +2519,9 @@ var ajaxAdminEndpoint = '/wp-admin/admin-ajax.php';
 
   window.addEventListener('load', function (ev) {
     initNative();
+  });
+  window.addEventListener('blur', function (ev) {
+    onWindowBlur();
   });
   window.addEventListener('resize', function () {
     if (window.innerWidth > 1023) {
