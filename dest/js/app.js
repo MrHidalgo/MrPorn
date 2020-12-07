@@ -318,7 +318,7 @@ function renderHompageSiteSlide(category, index) {
     var siteName = siteItem.name;
     var siteThumb = siteItem.banner_image ? siteItem.banner_image : siteItem.thumb;
     var siteLogo = siteItem.logo ? siteItem.logo.src : '';
-    var slideHtml = '<div class="list__box nolazy" list-box-js data-id="' + siteId + '" style="background-image: url(' + siteThumb + ')">' +
+    var slideHtml = '<div class="list__box nolazy" list-box-js data-id="' + siteId + '" style="background-image: url(https://mpg-images.b-cdn.net' + siteThumb + ')">' +
     /*'<div class="list__box-overlay"></div>'+*/
     '<div class="list__box-border"></div>' + '<a href="' + siteLink + '" hreflang="' + currentLang + '" target="_blank"></a>' + //'<img class="list__box-logo nolazy" src="'+siteLogo+'" alt=""/>'+
     '<div class="list__box-details">' + '<div class="list__box-details-left">' + '<a class="site_link" href="' + siteLink + '" hreflang="' + currentLang + '" target="_blank">' + '<i class="icon-font icon-out"></i>' + '<p class="list__box-details-title">' + siteName + '</p>' + '</a>' + '<div class="list__rating"><span>User Rating:</span>' + '<div><i class="icon-font icon-star"></i><i class="icon-font icon-star"></i><i class="icon-font icon-star"></i><i class="icon-font icon-star"></i><i class="icon-font icon-star-fill"></i></div>' + '</div>' + '</div>' + '<div class="list__box-details-right">' + '<button class="list__box-like" type="button" data-id="1" like-toggle-js><i class="icon-font icon-like"></i></button>' + '<button class="list__box-dislike" type="button" data-id="1" dislike-toggle-js><i class="icon-font icon-like"></i></button>' + '<div class="c-popper">' + '<button class="list__box-favorites" type="button" data-id="1" favorites-toggle-js><i class="icon-font icon-star-fill"></i><i class="icon-font icon-star"></i></button>' + '<div class="c-poppertext">' + '<u>Add To Favourites</u>' + '<u>Remove From Favourites</u>' + '</div>' + '</div>' + '</div>' + '</div>' + '<button class="list__box-more" type="button"><i class="icon-font icon-arrow-angle"></i></button>' + '</div>';
@@ -389,7 +389,7 @@ function renderSiteBottomBanner(category, index) {
     homeData.categories[category].sites.map(function (moreSite, index) {
       if (moreSiteCount < 6 && moreSite.id != siteId) {
         var moreSiteLogo = moreSite.logo ? moreSite.logo.src : '';
-        moreSites += '<a class="list__box" list-box-more-js href="' + moreSite.link + '" data-id="' + moreSite.id + '" data-count="1" style="background-image: url(' + moreSite.banner_image + ')">' + '<div class="list__box-border"></div>' + '</a>';
+        moreSites += '<a class="list__box" list-box-more-js href="' + moreSite.link + '" data-id="' + moreSite.id + '" data-count="1" style="background-image: url(https://mpg-images.b-cdn.net' + moreSite.banner_image + ')">' + '<div class="list__box-border"></div>' + '</a>';
         moreSiteCount++;
       }
     });
@@ -440,7 +440,7 @@ function renderSkipSiteBottomBanner(category, index) {
     homeData.categories[category].sites.map(function (moreSite, index) {
       if (moreSiteCount < 6 && moreSite.id != siteId) {
         var moreSiteLogo = moreSite.logo ? moreSite.logo.src : '';
-        moreSites += '<a class="list__box" list-box-more-js href="' + moreSite.link + '" data-id="' + moreSite.id + '" data-count="1" style="background-image: url(' + moreSite.banner_image + ')">' + '<div class="list__box-border"></div>' + '</a>';
+        moreSites += '<a class="list__box" list-box-more-js href="' + moreSite.link + '" data-id="' + moreSite.id + '" data-count="1" style="background-image: url(https://mpg-images.b-cdn.net' + moreSite.banner_image + ')">' + '<div class="list__box-border"></div>' + '</a>';
         moreSiteCount++;
       }
     });
@@ -509,7 +509,7 @@ function renderSiteCategory(categoryIndex) {
       siteLogo = '<img class="list__box-logo nolazy" src="' + siteLogo + '" alt=""/>';
     }
 
-    categorySites += '<div class="swiper-slide" data-index="' + index + '" data-siteid="' + site.id + '" data-init="0">' + '<div class="list__box" list-box-js  data-id="' + site.id + '" style="background-image: url(' + site.banner_image + ')">' +
+    categorySites += '<div class="swiper-slide" data-index="' + index + '" data-siteid="' + site.id + '" data-init="0">' + '<div class="list__box" list-box-js  data-id="' + site.id + '" style="background-image: url(https://mpg-images.b-cdn.net' + site.banner_image + ')">' +
     /*'<div class="list__box-overlay"></div>'+*/
     '<div class="list__box-border"></div>' + '<a class="nav_link" href="' + site.link + '" hreflang="' + currentLang + '">' + //siteLogo+
     '</a>' + '<div class="list__box-details">' + '</div>' + '<button class="list__box-more" type="button"><i class="icon-font icon-arrow-angle"></i></button>' + '</div>' + '</div>';
@@ -546,19 +546,21 @@ var boxHover = function boxHover() {
       parentSlides = document.querySelectorAll('[list-parent-js]'),
       listBoxBody = document.querySelectorAll('.list__box-body');
 
-  for (var i = 0, len = swiperSlides.length; i < len; i++) {
-    swiperSlides[i].removeEventListener('mouseleave', onSlideLeave);
-    swiperSlides[i].addEventListener('mouseleave', onSlideLeave, false);
-    swiperSlides[i].removeEventListener('mouseenter', onSlideEnter);
-    swiperSlides[i].addEventListener('mouseenter', onSlideEnter, false);
+  if (document.body.classList.contains('home')) {
+    for (var i = 0, len = swiperSlides.length; i < len; i++) {
+      swiperSlides[i].removeEventListener('mouseleave', onSlideLeave);
+      swiperSlides[i].addEventListener('mouseleave', onSlideLeave, false);
+      swiperSlides[i].removeEventListener('mouseenter', onSlideEnter);
+      swiperSlides[i].addEventListener('mouseenter', onSlideEnter, false);
 
-    if (swiperSlides[i].querySelector('.list__box-more')) {
-      swiperSlides[i].querySelector('.list__box-more').removeEventListener('mouseover', onShowBannerEnter);
-      swiperSlides[i].querySelector('.list__box-more').addEventListener('mouseover', onShowBannerEnter, false);
-      swiperSlides[i].querySelector('.list__box-more').addEventListener('mouseout', onShowBannerLeave, false);
+      if (swiperSlides[i].querySelector('.list__box-more')) {
+        swiperSlides[i].querySelector('.list__box-more').removeEventListener('mouseover', onShowBannerEnter);
+        swiperSlides[i].querySelector('.list__box-more').addEventListener('mouseover', onShowBannerEnter, false);
+        swiperSlides[i].querySelector('.list__box-more').addEventListener('mouseout', onShowBannerLeave, false);
+      }
+
+      swiperSlides[i].setAttribute('data-init', '1');
     }
-
-    swiperSlides[i].setAttribute('data-init', '1');
   }
 
   for (var _i = 0, _len = listBoxBody.length; _i < _len; _i++) {
@@ -1108,7 +1110,7 @@ var renderFavourites = function renderFavourites() {
             favouriteList.push(fav.id);
           }
 
-          favouritesHtml += '<div class="header__view-link" >' + '<div><span>' + (index + 1) + '.</span></div>' + '<div><img src="' + fav.favicon + '"/><p><a href="' + fav.permalink + '">' + fav.title + '</a></p></div>' + '<div><button type="button" data-id="' + fav.id + '" un-favorites-js><i class="icon-font icon-delete"></i></button><button type="button"><i class="icon-font icon-search"></i></button></div>' + '</div>';
+          favouritesHtml += '<div class="header__view-link" >' + '<div><span>' + (index + 1) + '.</span></div>' + '<div><img src="' + fav.favicon + '"/><p><a href="' + fav.permalink + '">' + fav.title + '</a></p></div>' + '<div><button type="button" data-id="' + fav.id + '" un-favorites-js><i class="icon-font icon-delete"></i></button><a href="' + fav.permalink + '" class="glass"><i class="icon-font icon-search"></i></a></div>' + '</div>';
           var favLink = document.querySelector('[data-id="' + fav.id + '"] [favorites-toggle-js]');
 
           if (favLink) {

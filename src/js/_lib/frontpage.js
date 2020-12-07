@@ -70,7 +70,7 @@ function renderHompageSiteSlide(category, index){
 		let siteThumb = (siteItem.banner_image)?siteItem.banner_image:siteItem.thumb;
 		let siteLogo = (siteItem.logo)?siteItem.logo.src:'';
 
-		let slideHtml = '<div class="list__box nolazy" list-box-js data-id="'+siteId+'" style="background-image: url('+siteThumb+')">'+
+		let slideHtml = '<div class="list__box nolazy" list-box-js data-id="'+siteId+'" style="background-image: url(https://mpg-images.b-cdn.net'+siteThumb+')">'+
 			/*'<div class="list__box-overlay"></div>'+*/
 			'<div class="list__box-border"></div>' +
 			'<a href="'+siteLink+'" hreflang="'+currentLang+'" target="_blank"></a>'+
@@ -200,7 +200,7 @@ function renderSiteBottomBanner(category, index){
 			if(moreSiteCount<6 && moreSite.id!=siteId){
 				let moreSiteLogo = moreSite.logo ? moreSite.logo.src: '';
 
-				moreSites +='<a class="list__box" list-box-more-js href="'+moreSite.link+'" data-id="'+moreSite.id+'" data-count="1" style="background-image: url('+moreSite.banner_image+')">'+
+				moreSites +='<a class="list__box" list-box-more-js href="'+moreSite.link+'" data-id="'+moreSite.id+'" data-count="1" style="background-image: url(https://mpg-images.b-cdn.net'+moreSite.banner_image+')">'+
 					'<div class="list__box-border"></div>' +
 					'</a>';
 
@@ -318,7 +318,7 @@ function renderSkipSiteBottomBanner(category, index){
 			if(moreSiteCount<6 && moreSite.id!=siteId){
 				let moreSiteLogo = moreSite.logo ? moreSite.logo.src: '';
 
-				moreSites +='<a class="list__box" list-box-more-js href="'+moreSite.link+'" data-id="'+moreSite.id+'" data-count="1" style="background-image: url('+moreSite.banner_image+')">'+
+				moreSites +='<a class="list__box" list-box-more-js href="'+moreSite.link+'" data-id="'+moreSite.id+'" data-count="1" style="background-image: url(https://mpg-images.b-cdn.net'+moreSite.banner_image+')">'+
 					'<div class="list__box-border"></div>' +
 					'</a>';
 
@@ -394,7 +394,7 @@ function renderSiteCategory(categoryIndex){
 		}
 
 		categorySites += '<div class="swiper-slide" data-index="'+index+'" data-siteid="'+site.id+'" data-init="0">' +
-			'<div class="list__box" list-box-js  data-id="'+site.id+'" style="background-image: url('+site.banner_image+')">'+
+			'<div class="list__box" list-box-js  data-id="'+site.id+'" style="background-image: url(https://mpg-images.b-cdn.net'+site.banner_image+')">'+
 			/*'<div class="list__box-overlay"></div>'+*/
 			'<div class="list__box-border"></div>'+
 			'<a class="nav_link" href="'+site.link+'" hreflang="'+currentLang+'">' +
@@ -479,29 +479,31 @@ const boxHover = () => {
 
 
 
+	if(document.body.classList.contains('home')){
+		for(let i = 0, len = swiperSlides.length; i < len; i++) {
+
+			swiperSlides[i].removeEventListener('mouseleave', onSlideLeave);
+			swiperSlides[i].addEventListener('mouseleave', onSlideLeave, false);
 
 
-	for(let i = 0, len = swiperSlides.length; i < len; i++) {
-
-		swiperSlides[i].removeEventListener('mouseleave', onSlideLeave);
-		swiperSlides[i].addEventListener('mouseleave', onSlideLeave, false);
+			swiperSlides[i].removeEventListener('mouseenter', onSlideEnter);
+			swiperSlides[i].addEventListener('mouseenter', onSlideEnter, false);
 
 
-		swiperSlides[i].removeEventListener('mouseenter', onSlideEnter);
-		swiperSlides[i].addEventListener('mouseenter', onSlideEnter, false);
+			if(swiperSlides[i].querySelector('.list__box-more')){
+				swiperSlides[i].querySelector('.list__box-more').removeEventListener('mouseover', onShowBannerEnter);
+				swiperSlides[i].querySelector('.list__box-more').addEventListener('mouseover', onShowBannerEnter, false);
+
+				swiperSlides[i].querySelector('.list__box-more').addEventListener('mouseout', onShowBannerLeave, false);
+			}
+
+			swiperSlides[i].setAttribute('data-init', '1');
 
 
-		if(swiperSlides[i].querySelector('.list__box-more')){
-			swiperSlides[i].querySelector('.list__box-more').removeEventListener('mouseover', onShowBannerEnter);
-			swiperSlides[i].querySelector('.list__box-more').addEventListener('mouseover', onShowBannerEnter, false);
-
-			swiperSlides[i].querySelector('.list__box-more').addEventListener('mouseout', onShowBannerLeave, false);
 		}
-
-		swiperSlides[i].setAttribute('data-init', '1');
-
-
 	}
+
+
 
 	for(let i = 0, len = listBoxBody.length; i < len; i++) {
 		listBoxBody[i].addEventListener('mouseleave', function(ev) {
