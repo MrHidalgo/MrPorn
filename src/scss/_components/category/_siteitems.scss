@@ -167,6 +167,7 @@
 
 			@include adaptive(767) {
 				line-height: inherit;
+				padding-bottom: 84%;
 			}
 			img{
 				position: absolute;
@@ -191,8 +192,8 @@
 				position: absolute;
 				display: block;
 				top: 0;
-				left: 0;
-				bottom: 0;
+				left: -1px;
+				bottom: -1px;
 				right: 0;
 				z-index: 1;
 				background: #000;
