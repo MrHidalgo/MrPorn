@@ -912,6 +912,11 @@ const ajaxAdminEndpoint = '/wp-admin/admin-ajax.php';
 		}
 	}
 
+	const onWindowChange = () =>{
+		let __vh = window.innerHeight * 0.01;
+		document.documentElement.style.setProperty('--vh', `${__vh}px`);
+	}
+
 	/**
 	 * @description Init all CB after page load
 	 */
@@ -923,6 +928,13 @@ const ajaxAdminEndpoint = '/wp-admin/admin-ajax.php';
 		onWindowBlur();
 	});
 
+	window.addEventListener("orientationchange", function(event) {
+		onWindowChange();
+		setTimeout(() => {
+			onWindowChange();
+		}, 500);
+	});
+
 	window.addEventListener('resize', () => {
 		if(window.innerWidth > 1023) {
 			if(document.querySelector('.list__specification.is-open')) {
@@ -930,6 +942,11 @@ const ajaxAdminEndpoint = '/wp-admin/admin-ajax.php';
 				document.getElementsByTagName('body')[0].classList.remove('is-hideScroll');
 			}
 		} else {
+			onWindowChange();
+			setTimeout(() => {
+				onWindowChange();
+			}, 500);
+
 			if(document.querySelector('.list__specification.is-open')) {
 				document.getElementsByTagName('html')[0].classList.add('is-hideScroll');
 				document.getElementsByTagName('body')[0].classList.add('is-hideScroll');

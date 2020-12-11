@@ -237,6 +237,21 @@
 		@include transition(background-color);
 	}
 
+	&_more_item{
+		width: calc(100%/3)!important;
+		max-width: calc(100%/3)!important;
+		padding: 4px;
+
+		a{
+			padding-top: 100%;
+			display: block;
+			content: ' ';
+			background-size: auto 100%;
+			background-position: center;
+			border: 1px dashed #fff;
+		}
+	}
+
 	&-border {
 		z-index: 0;
 		position: absolute;

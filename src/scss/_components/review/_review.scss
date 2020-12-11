@@ -441,11 +441,20 @@
 		text-align: center;
 		display: none;
 
+		@include adaptive(767) {
+			display: block;
+			background: transparent;
+		}
+
 		img{
 			width: auto;
 			margin-left: auto;
 			margin-right: auto;
 			max-width: 200px;
+
+			@include adaptive(767) {
+				visibility: hidden;
+			}
 
 			&.games{
 				max-width: 300px;
@@ -457,6 +466,10 @@
 			font-size: 24px;
 			margin-top: 20px;
 			white-space: nowrap;
+
+			@include adaptive(767) {
+				display: none;
+			}
 
 			span{
 				color: #0596f8;
@@ -470,6 +483,11 @@
 
 			@include adaptive(991.98) {
 				display: none;
+			}
+
+			@include adaptive(767) {
+				display: block;
+				background: transparent;
 			}
 		}
 	}

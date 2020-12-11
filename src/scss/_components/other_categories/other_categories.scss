@@ -29,6 +29,10 @@
 
 		&.review_site{
 			padding: 15px 10px 15px;
+
+			@include adaptive(767) {
+				padding: 5px 0;
+			}
 		}
 	}
 

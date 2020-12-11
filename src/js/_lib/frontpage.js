@@ -70,7 +70,7 @@ function renderHompageSiteSlide(category, index){
 		let siteThumb = (siteItem.banner_image)?siteItem.banner_image:siteItem.thumb;
 		let siteLogo = (siteItem.logo)?siteItem.logo.src:'';
 
-		let slideHtml = '<div class="list__box nolazy" list-box-js data-id="'+siteId+'" style="background-image: url(https://mpg-images.b-cdn.net'+siteThumb+')">'+
+		let slideHtml = '<div class="list__box nolazy" list-box-js data-id="'+siteId+'" style="background-image: url('+siteThumb+')">'+
 			/*'<div class="list__box-overlay"></div>'+*/
 			'<div class="list__box-border"></div>' +
 			'<a href="'+siteLink+'" hreflang="'+currentLang+'" target="_blank"></a>'+
@@ -200,9 +200,14 @@ function renderSiteBottomBanner(category, index){
 			if(moreSiteCount<6 && moreSite.id!=siteId){
 				let moreSiteLogo = moreSite.logo ? moreSite.logo.src: '';
 
-				moreSites +='<a class="list__box" list-box-more-js href="'+moreSite.link+'" data-id="'+moreSite.id+'" data-count="1" style="background-image: url(https://mpg-images.b-cdn.net'+moreSite.banner_image+')">'+
+				/*moreSites +='<a class="list__box" list-box-more-js href="'+moreSite.link+'" data-id="'+moreSite.id+'" data-count="1" style="background-image: url(https://mpg-images.b-cdn.net'+moreSite.banner_image+')">'+
 					'<div class="list__box-border"></div>' +
-					'</a>';
+					'</a>';*/
+
+				moreSites +='<div class="list__box_more_item" list-box-more-js  data-id="'+moreSite.id+'" data-count="1" >'+
+					//'<a class="list__box_more_thumb" href="'+moreSite.link+'" style="background-image: url(https://mpg-images.b-cdn.net'+moreSite.banner_image+')"></a>' +
+					'<a class="list__box_more_thumb" href="'+moreSite.link+'" style="background-image: url('+moreSite.banner_image+')"></a>' +
+					'</div>';
 
 				moreSiteCount++;
 			}
@@ -318,7 +323,7 @@ function renderSkipSiteBottomBanner(category, index){
 			if(moreSiteCount<6 && moreSite.id!=siteId){
 				let moreSiteLogo = moreSite.logo ? moreSite.logo.src: '';
 
-				moreSites +='<a class="list__box" list-box-more-js href="'+moreSite.link+'" data-id="'+moreSite.id+'" data-count="1" style="background-image: url(https://mpg-images.b-cdn.net'+moreSite.banner_image+')">'+
+				moreSites +='<a class="list__box" list-box-more-js href="'+moreSite.link+'" data-id="'+moreSite.id+'" data-count="1" style="background-image: url('+moreSite.banner_image+')">'+
 					'<div class="list__box-border"></div>' +
 					'</a>';
 
@@ -394,7 +399,7 @@ function renderSiteCategory(categoryIndex){
 		}
 
 		categorySites += '<div class="swiper-slide" data-index="'+index+'" data-siteid="'+site.id+'" data-init="0">' +
-			'<div class="list__box" list-box-js  data-id="'+site.id+'" style="background-image: url(https://mpg-images.b-cdn.net'+site.banner_image+')">'+
+			'<div class="list__box" list-box-js  data-id="'+site.id+'" style="background-image: url('+site.banner_image+')">'+
 			/*'<div class="list__box-overlay"></div>'+*/
 			'<div class="list__box-border"></div>'+
 			'<a class="nav_link" href="'+site.link+'" hreflang="'+currentLang+'">' +
@@ -762,6 +767,9 @@ function showBanner(_el, isSkip = false){
 		setTimeout(() => {
 			_parentNode.classList.add('is-open');
 			_boxParent.classList.add('is-active');
+
+			let __vh = window.innerHeight * 0.01;
+			document.documentElement.style.setProperty('--vh', `${__vh}px`);
 
 			if(_specificationBox){
 				_specificationBox.classList.add('is-open');
