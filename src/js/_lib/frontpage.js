@@ -323,15 +323,18 @@ function renderSkipSiteBottomBanner(category, index){
 			if(moreSiteCount<6 && moreSite.id!=siteId){
 				let moreSiteLogo = moreSite.logo ? moreSite.logo.src: '';
 
-				moreSites +='<a class="list__box" list-box-more-js href="'+moreSite.link+'" data-id="'+moreSite.id+'" data-count="1" style="background-image: url('+moreSite.banner_image+')">'+
-					'<div class="list__box-border"></div>' +
-					'</a>';
+				moreSites +='<div class="list__box_more_item" list-box-more-js  data-id="'+moreSite.id+'" data-count="1" >'+
+					'<a class="list__box_more_thumb" href="'+moreSite.link+'" style="background-image: url('+moreSite.banner_image+')"></a>' +
+					'</div>';
 
 				moreSiteCount++;
 			}
 		});
 
 		document.querySelector('.list__specification .list__specification-right').innerHTML = bannerRight;
+		document.querySelector('.list__specification .list__specification-action-desc p').innerHTML = tagLIne;
+
+
 		document.querySelector('.list__specification .list__specification-logo').setAttribute('src', '');
 		document.querySelector('.list__specification .list__specification-logo').setAttribute('src', siteLogo);
 		//document.querySelector('.list__specification .list__specification-action-desc').innerHTML ='<p>'+tagLIne+' <a href="'+siteLink+'">READ MORE</a></p>';
@@ -353,10 +356,18 @@ function renderSkipSiteBottomBanner(category, index){
 			}
 
 			clonedPopupTimeout = setTimeout(function (){
-				clonedPopupBanner.remove();
+				//clonedPopupBanner.remove();
+				closeAllSnapshots();
 			}, 1000);
 		}
 	}
+}
+
+function closeAllSnapshots(){
+	let snapshots = document.querySelectorAll('.list__snapshot');
+	snapshots.forEach(function (snapshot){
+		snapshot.remove();
+	});
 }
 
 function shuffleArray(arra1){
@@ -817,9 +828,12 @@ function addToFavourites(siteId){
 	}, function (res) {
 		console.log('Favouroites');
 		console.log(res);
-
 		renderFavourites();
 	});
+}
+
+function isLoggedIn(){
+
 }
 
 function removeFavourite(favItem){

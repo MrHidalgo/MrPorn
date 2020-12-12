@@ -382,6 +382,8 @@ const ajaxAdminEndpoint = '/wp-admin/admin-ajax.php';
 	}
 
 	function closeBanner(_el){
+		//closeAllSnapshots();
+
 		parent = _el.closest('.list__specification');
 
 		_el.closest('.list__box-wrapper').classList.remove('is-open');
@@ -549,7 +551,7 @@ const ajaxAdminEndpoint = '/wp-admin/admin-ajax.php';
 		el.classList.toggle('is-active');
 
 		if(specificationFavoritesBtn){
-			specificationFavoritesBtn.classList.toggle('is-active');
+			//specificationFavoritesBtn.classList.toggle('is-active');
 		}
 
 		addToFavourites(elID);

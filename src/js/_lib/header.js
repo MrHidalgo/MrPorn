@@ -67,6 +67,7 @@ const renderFavourites = () => {
 			})
 
 			if(res.fav_list){
+				favouriteList = [];
 				res.fav_list.map(function (fav, index) {
 					if(!favouriteList.includes(fav.id)){
 						favouriteList.push(fav.id);
@@ -79,7 +80,7 @@ const renderFavourites = () => {
 						'<div><button type="button" data-id="'+fav.id+'" un-favorites-js><i class="icon-font icon-delete"></i></button><a href="'+fav.permalink+'" class="glass"><i class="icon-font icon-search"></i></a></div>' +
 						'</div>';
 
-					let favLink = document.querySelector('[data-id="'+fav.id+'"] [favorites-toggle-js]');
+					/*let favLink = document.querySelector('[data-id="'+fav.id+'"] [favorites-toggle-js]');
 					if(favLink){
 						favLink.classList.add('is-active');
 					}
@@ -89,7 +90,7 @@ const renderFavourites = () => {
 					}
 					if(document.querySelector('.list__specification-circle[data-id="'+fav.id+'"]')){
 						document.querySelector('.list__specification-circle[data-id="'+fav.id+'"]').classList.add('is-active');
-					}
+					}*/
 
 				})
 
@@ -103,6 +104,12 @@ const renderFavourites = () => {
 }
 
 const markFavourites = () =>{
+	let currentFavourites = document.querySelectorAll('.list__box-favorites.is-active');
+	for(let i = 0; i< currentFavourites.length; i++) {
+		currentFavourites[i].classList.remove('is-active');
+	}
+
+
 	favouriteList.map(fav=>{
 		let favLink = document.querySelector('[data-id="'+fav+'"] [favorites-toggle-js]');
 		if(favLink){
