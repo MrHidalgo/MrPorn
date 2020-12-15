@@ -579,21 +579,9 @@ function onSlideEnter(ev){
 			lineInd = elParent.querySelector('[list-line-js]'),
 			slideSwiper = elParent.querySelector('.swiper-container');
 
-
-
-
-		//.activeIndex;
-
 		const swiperParent  = el.parentNode;
 		var slideIndex = el.dataset.index;
 		var slideCategory = swiperParent.dataset.category;
-
-
-
-
-
-
-
 
 		var slideHoverContainer = el.querySelector('.list__box-details');
 		if(slideHoverContainer && slideHoverContainer.innerHTML.trim()==''){

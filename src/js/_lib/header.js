@@ -126,8 +126,34 @@ const markFavourites = () =>{
 }
 
 const letterSearch = () => {
-	postRequest(ajaxEndpoint, {
-		action:'letter_search'
+	fetch('/wp-json/mpg/letter_matrix/')
+		.then(res => res.json())
+		.then((result) => {
+			Object.keys(result).forEach(function (key) {
+				var letter = key;
+				var suggestions = result[key];
+
+				var letterSuggestions = [];
+
+				suggestions.map(function (suggestion) {
+					let sName = suggestion.name;
+					let sIcon = suggestion.icon;
+					let sHd = suggestion.hd;
+					let sFree = suggestion.free;
+
+					letterSuggestions.push(suggestion);
+				});
+
+				letterData[letter] = letterSuggestions;
+			});
+			renderSorting();
+		})
+		.catch(err => { throw err });
+
+
+
+	/*getRequest('/wp-json/mpg/letter_matrix/', {
+
 	}, function (result) {
 		Object.keys(result).forEach(function (key) {
 			var letter = key;
@@ -148,7 +174,7 @@ const letterSearch = () => {
 		});
 		renderSorting();
 		//initLetterHover();
-	});
+	});*/
 }
 
 const renderSorting = () => {

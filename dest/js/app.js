@@ -628,8 +628,7 @@ function onSlideEnter(ev) {
         elParent = el.closest('[list-parent-js]'),
         elBox = el.querySelector('.list__box'),
         lineInd = elParent.querySelector('[list-line-js]'),
-        slideSwiper = elParent.querySelector('.swiper-container'); //.activeIndex;
-
+        slideSwiper = elParent.querySelector('.swiper-container');
     var swiperParent = el.parentNode;
     var slideIndex = el.dataset.index;
     var slideCategory = swiperParent.dataset.category;
@@ -1176,9 +1175,9 @@ var markFavourites = function markFavourites() {
 };
 
 var letterSearch = function letterSearch() {
-  postRequest(ajaxEndpoint, {
-    action: 'letter_search'
-  }, function (result) {
+  fetch('/wp-json/mpg/letter_matrix/').then(function (res) {
+    return res.json();
+  }).then(function (result) {
     Object.keys(result).forEach(function (key) {
       var letter = key;
       var suggestions = result[key];
@@ -1192,8 +1191,28 @@ var letterSearch = function letterSearch() {
       });
       letterData[letter] = letterSuggestions;
     });
-    renderSorting(); //initLetterHover();
+    renderSorting();
+  })["catch"](function (err) {
+    throw err;
   });
+  /*getRequest('/wp-json/mpg/letter_matrix/', {
+  	}, function (result) {
+  	Object.keys(result).forEach(function (key) {
+  		var letter = key;
+  		var suggestions = result[key];
+  			var letterSuggestions = [];
+  			suggestions.map(function (suggestion) {
+  			let sName = suggestion.name;
+  			let sIcon = suggestion.icon;
+  			let sHd = suggestion.hd;
+  			let sFree = suggestion.free;
+  				letterSuggestions.push(suggestion);
+  		});
+  			letterData[letter] = letterSuggestions;
+  	});
+  	renderSorting();
+  	//initLetterHover();
+  });*/
 };
 
 var renderSorting = function renderSorting() {
@@ -1889,8 +1908,6 @@ var ajaxAdminEndpoint = '/wp-admin/admin-ajax.php';
             hide(document.querySelector('[search-drop-js]'));
           }
         }
-      } else {
-        console.log(ev, _ev.closest('[search-parent-js]'));
       }
 
       if (!_ev.closest(className)) {

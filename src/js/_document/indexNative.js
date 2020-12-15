@@ -186,8 +186,6 @@ const ajaxAdminEndpoint = '/wp-admin/admin-ajax.php';
 				}
 
 
-			}else{
-				console.log(ev, _ev.closest('[search-parent-js]'));
 			}
 
 			if (!_ev.closest(className)) {
