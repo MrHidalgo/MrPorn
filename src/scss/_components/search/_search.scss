@@ -97,6 +97,11 @@
 		padding: 0 25px 0 10px;
 		font-size: 18px;
 		font-weight: 700;
+
+		@include adaptive(767) {
+			font-size: 14px;
+			padding-right: 5px;
+		}
 	}
 }
 .search_results_tags{

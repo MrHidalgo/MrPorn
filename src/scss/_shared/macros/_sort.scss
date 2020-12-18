@@ -1,8 +1,16 @@
-@include adaptive(767) {
-	.category.search_form{
+.category.search_form{
+	@include adaptive(767) {
+		height: 54px;
+	}
+	@include respond('iphone_x_landscape'){
+		height: 54px;
+	}
+	@include respond('iphone_8_landscape'){
 		height: 54px;
 	}
 }
+
+
 
 .sort {
 	position: relative;
@@ -67,6 +75,15 @@
 			transform: unset;
 			padding: 10px 0 10px;
 			border-radius: 0;
+		}
+
+		@include respond('iphone_x_landscape'){
+			max-height: calc((var(--vh, 1vh) * 100) - 70px);
+			overflow: auto;
+		}
+		@include respond('iphone_8_landscape'){
+			max-height: calc((var(--vh, 1vh) * 100) - 70px);
+			overflow: auto;
 		}
 
 		&.is-open {
