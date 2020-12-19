@@ -77,6 +77,7 @@
 
 	@include respond('ipad_portrait'){
 		background: #000;
+		max-height: calc((var(--vh, 1vh) * 100) - 110px);
 	}
 	@include adaptive(767) {
 		position: absolute;
@@ -162,6 +163,7 @@
 	flex: 25% 1;
 	display: flex;
 	flex-direction: column;
+	position: relative;
 
 	@include respond('ipad_portrait'){
 		width: 33.333334%;
@@ -249,6 +251,85 @@
 			border-left:1px solid #9ca4ad;
 			border-right:1px solid #9ca4ad;
 			border-bottom:1px solid #9ca4ad;
+		}
+	}
+
+
+
+	.search_item_overlay{
+		position: absolute;
+		justify-content: center;
+		align-items: center;
+		background: rgba(0,0,0,.6);
+		display: none;
+		top: 32px;
+		bottom: 5px;
+		left: 5px;
+		right: 5px;
+		flex-direction: column;
+		z-index: 2;
+
+		a{
+			padding: 10px 0;
+			justify-content: center;
+			color: #fff;
+			background: #004aad;
+			text-decoration: none;
+			border-radius: 5px;
+			width: 80%;
+			position: relative;
+			text-transform: uppercase;
+			font-size: 13px;
+			font-weight: 600;
+			display: flex;
+			align-items: center;
+
+			transition: all 0.2s linear 0s;
+
+			@include adaptive(1024) {
+				padding: 10px 0;
+				font-size: 14px;
+			}
+
+			i{
+				transition: all 0.2s linear 0s;
+				opacity: 0;
+				width: 0;
+
+
+				&.right_angle{
+					color: #c4f015;
+
+					&:before{
+						transform: rotateZ(180deg);
+					}
+				}
+			}
+
+			&:hover{
+
+				i{
+					opacity: 1;
+					width: 18px;
+					padding-left: 10px;
+				}
+			}
+		}
+
+		.link_site{
+			background: #c4f015;
+			color: #000;
+			margin-top: 15px;
+		}
+	}
+
+	&:hover{
+		.search_item_overlay{
+			display: flex;
+
+			@include adaptive(767) {
+				display: none;
+			}
 		}
 	}
 }
