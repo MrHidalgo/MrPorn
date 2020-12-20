@@ -79,12 +79,20 @@
 		background: #000;
 		max-height: calc((var(--vh, 1vh) * 100) - 110px);
 	}
+
 	@include adaptive(767) {
 		position: absolute;
 		top: 36px;
 		width: 100%;
 		bottom: 0;
 		background: #000;
+	}
+}
+.search_results_box{
+	@include respond('iphone_x_landscape'){
+		max-height: calc((var(--vh, 1vh) * 100) - 74px);
+		min-height: auto;
+		overflow: auto;
 	}
 }
 .search_results_top{
@@ -165,6 +173,12 @@
 	flex-direction: column;
 	position: relative;
 
+	@include respond('ipad_landscape'){
+		width: 33.333334%;
+		max-width: 33.333334%;
+		flex: 33.333334% 1;
+	}
+
 	@include respond('ipad_portrait'){
 		width: 33.333334%;
 		max-width: 33.333334%;
@@ -174,6 +188,10 @@
 		width: 50%;
 		max-width: 50%;
 		flex: 50% 1;
+	}
+
+	&_inner{
+		cursor: pointer;
 	}
 
 	.title{
@@ -329,6 +347,16 @@
 
 			@include adaptive(767) {
 				display: none;
+			}
+		}
+	}
+
+	&.touched{
+		.search_item_overlay{
+			display: flex;
+
+			@include adaptive(767) {
+				display: flex;
 			}
 		}
 	}

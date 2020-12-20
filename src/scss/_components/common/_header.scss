@@ -27,6 +27,18 @@
 		width: 100%;
 		z-index: 105;
 	}
+	@include respond('ipad_pro_landscape'){
+		position: relative;
+		width: 100%;
+		z-index: 105;
+	}
+	@include respond('ipad_pro_portrait'){
+		position: relative;
+		width: 100%;
+		z-index: 105;
+	}
+
+
 
 	@include adaptive(767) {
 		position: fixed;
