@@ -62,18 +62,19 @@ const initHamburger = () => {
 	}
 
 	const searchClose = document.querySelector('.category__close');
+	if(searchClose){
+		searchClose.addEventListener("click", (ev) => {
+			searchContainer.classList.toggle("is-open");
 
-	searchClose.addEventListener("click", (ev) => {
-		searchContainer.classList.toggle("is-open");
+			hideScrollContainer.forEach((val, idx) => {
+				val.classList.toggle("is-hideScroll");
+			});
 
-		hideScrollContainer.forEach((val, idx) => {
-			val.classList.toggle("is-hideScroll");
+			document.querySelector('[search-js]').value = '';
+			hide(document.querySelector('[search-drop-mobile-js]'));
+			document.querySelector('.category__drop').classList.remove('is-open');
 		});
-
-		document.querySelector('[search-js]').value = '';
-		hide(document.querySelector('[search-drop-mobile-js]'));
-		document.querySelector('.category__drop').classList.remove('is-open');
-	});
+	}
 };
 
 const renderMobileMenu = () => {

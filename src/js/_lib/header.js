@@ -186,7 +186,9 @@ const renderSorting = () => {
 	letterHtml += '<div class="sort__drop-inner"></div>';
 
 	const sortcontainer = document.querySelector('[sort-node-js]');
-	sortcontainer.innerHTML = letterHtml;
+	if(sortcontainer){
+		sortcontainer.innerHTML = letterHtml;
+	}
 
 	//onSortLetterClick(_ev.closest('[sort-letter-collapse-js]'));
 
