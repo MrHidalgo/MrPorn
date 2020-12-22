@@ -39,6 +39,12 @@ const renderFavourites = () => {
 		return;
 	}*/
 
+	isLoggedUser = getCookieMpgCookie('logged_username');
+
+	if(isLoggedUser==''){
+		return;
+	}
+
 	const favouritesDropDown = document.querySelector('[view-favorites-drop-js]');
 
 
