@@ -639,6 +639,11 @@ function onSlideEnter(ev){
 					_lineLeft = hoverBounds.left - elParent.getBoundingClientRect().left-120;
 					transformVal = 'left: '+_lineLeft+'px';
 					lineInd.setAttribute('style', transformVal + ';width: 189px');
+
+					setTimeout(function (){
+						repositionGreenBar(elParent);
+					}, 400)
+
 				}
 			}else{
 				if(elBox){
@@ -647,8 +652,11 @@ function onSlideEnter(ev){
 					transformVal = 'left: '+_lineLeft+'px';
 
 					lineInd.setAttribute('style', transformVal + ';width: 189px');
-				}
 
+					setTimeout(function (){
+						repositionGreenBar(elParent);
+					}, 400)
+				}
 			}
 
 
@@ -667,6 +675,20 @@ function onSlideEnter(ev){
 	}
 
 	markFavourites();
+}
+
+function repositionGreenBar(elParent){
+	let greenBar = elParent.querySelector('[list-line-js]');
+	let activeBox = elParent.querySelector('.swiper-slide.is-hover');
+	if(activeBox){
+		let hoverBoxLeft = activeBox.left + ((activeBox.width-190)/2);
+		console.log(hoverBoxLeft);
+		let transformVal = 'left: '+hoverBoxLeft+'px';
+
+		if(greenBar){
+			greenBar.setAttribute('style', transformVal + ';width: 190px');
+		}
+	}
 }
 
 function onParentSideLeave(ev){

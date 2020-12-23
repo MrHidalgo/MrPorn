@@ -685,6 +685,9 @@ function onSlideEnter(ev) {
           _lineLeft = hoverBounds.left - elParent.getBoundingClientRect().left - 120;
           transformVal = 'left: ' + _lineLeft + 'px';
           lineInd.setAttribute('style', transformVal + ';width: 189px');
+          setTimeout(function () {
+            repositionGreenBar(elParent);
+          }, 400);
         }
       } else {
         if (elBox) {
@@ -692,6 +695,9 @@ function onSlideEnter(ev) {
           _lineLeft = hoverBounds.left - elParent.getBoundingClientRect().left;
           transformVal = 'left: ' + _lineLeft + 'px';
           lineInd.setAttribute('style', transformVal + ';width: 189px');
+          setTimeout(function () {
+            repositionGreenBar(elParent);
+          }, 400);
         }
       }
     } else {
@@ -709,6 +715,21 @@ function onSlideEnter(ev) {
   }
 
   markFavourites();
+}
+
+function repositionGreenBar(elParent) {
+  var greenBar = elParent.querySelector('[list-line-js]');
+  var activeBox = elParent.querySelector('.swiper-slide.is-hover');
+
+  if (activeBox) {
+    var hoverBoxLeft = activeBox.left + (activeBox.width - 190) / 2;
+    console.log(hoverBoxLeft);
+    var transformVal = 'left: ' + hoverBoxLeft + 'px';
+
+    if (greenBar) {
+      greenBar.setAttribute('style', transformVal + ';width: 190px');
+    }
+  }
 }
 
 function onParentSideLeave(ev) {
