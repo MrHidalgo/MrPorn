@@ -135,6 +135,7 @@
 
 		&_content{
 			position: relative;
+			overflow: hidden;
 
 			.site_thumb{
 				display: block;
@@ -162,18 +163,19 @@
 		&_thumb{
 			line-height: 0;
 			padding-bottom: 84.666667%;
+			padding-bottom: 84.8%;
 			overflow: hidden;
 			position: relative;
 
 			@include adaptive(767) {
 				line-height: inherit;
-				padding-bottom: 84%;
+				padding-bottom: 84.8%;
 			}
 			img{
 				position: absolute;
 				top: 0;
 				left: 0;
-				width: 105%;
+				width: 100%;
 				transform: scale(1);
 				transition: opacity 250ms,transform .3s;
 				transform-origin: top left;
@@ -193,7 +195,7 @@
 				display: block;
 				top: 0;
 				left: -1px;
-				bottom: -10px;
+				bottom: 0;
 				right: 0;
 				z-index: 1;
 				background: #000;
