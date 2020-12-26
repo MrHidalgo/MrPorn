@@ -255,6 +255,7 @@ function postTextRequest() {
 
 var webworkerFrontpage;
 var currentBannerTimeout;
+var lastActiveHoverBox;
 
 var initHomeLazyLoad = function initHomeLazyLoad() {
   var listElm = document.querySelector('#infinite-list');
@@ -601,24 +602,29 @@ function onSlideLeave(ev) {
   if (window.innerWidth >= 1280) {
     var el = ev.currentTarget,
         elParent = el.closest('[list-parent-js]'),
-        lineInd = elParent.querySelector('[list-line-js]');
-    var transformVal = '';
-
-    if (lineInd.getAttribute("style")) {
-      var val = lineInd.getAttribute("style");
-
-      if (val.indexOf(';') === -1) {
-        transformVal = val;
-      } else {
-        transformVal = val.substring(0, val.indexOf(';'));
-      }
-    } //clearTimeout(tOut);
-
+        slideSwiper = elParent.querySelector('.swiper-container'),
+        slideIndex = el.dataset.index;
+    var greenBar = elParent.querySelector('[list-line-js]'); //clearTimeout(tOut);
 
     el.classList.remove('is-hover');
     el.classList.remove('last-box');
     elParent.classList.remove('last-box-selected');
-    lineInd.setAttribute('style', transformVal + ';width: 64px');
+
+    if (lastActiveHoverBox) {
+      var activeSlide = 0;
+
+      if (slideSwiper) {
+        activeSlide = slideSwiper.swiper.activeIndex;
+      }
+
+      var hoverBoxPosition = slideIndex - activeSlide;
+      var hoverBoxLeft = 236 * hoverBoxPosition + 125;
+      var transformVal = 'left: ' + hoverBoxLeft + 'px';
+
+      if (greenBar) {
+        greenBar.setAttribute('style', transformVal + ';width: 64px');
+      }
+    }
   }
 }
 
@@ -660,6 +666,8 @@ function onSlideEnter(ev) {
       activeSlide = slideSwiper.swiper.activeIndex;
     }
 
+    var hoverBoxPosition = slideIndex - activeSlide;
+
     if (slideIndex - activeSlide == 4) {
       elParent.classList.add('last-box-selected');
     } else {
@@ -676,39 +684,20 @@ function onSlideEnter(ev) {
     if (hoverBool) {
       el.classList.add('is-hover');
       slideIndex = el.dataset.index;
-      var hoverBounds = 0;
-      var _lineLeft = 0;
 
       if (previousHoverBox == el.previousSibling) {
         if (elBox) {
-          hoverBounds = elBox.getBoundingClientRect();
-          _lineLeft = hoverBounds.left - elParent.getBoundingClientRect().left - 120;
-          transformVal = 'left: ' + _lineLeft + 'px';
-          lineInd.setAttribute('style', transformVal + ';width: 189px');
-          setTimeout(function () {
-            repositionGreenBar(elParent);
-          }, 400);
+          tempRepositionGreenBar(elParent, hoverBoxPosition);
         }
       } else {
         if (elBox) {
-          hoverBounds = elBox.getBoundingClientRect();
-          _lineLeft = hoverBounds.left - elParent.getBoundingClientRect().left;
-          transformVal = 'left: ' + _lineLeft + 'px';
-          lineInd.setAttribute('style', transformVal + ';width: 189px');
-          setTimeout(function () {
-            repositionGreenBar(elParent);
-          }, 400);
+          tempRepositionGreenBar(elParent, hoverBoxPosition);
         }
       }
     } else {
       hoverBool = true;
       el.classList.add('is-hover');
-      var hoverBounds = elBox.getBoundingClientRect();
-
-      var _lineLeft = hoverBounds.left - elParent.getBoundingClientRect().left;
-
-      transformVal = 'left: ' + _lineLeft + 'px';
-      lineInd.setAttribute('style', transformVal + ';width: 189px');
+      tempRepositionGreenBar(elParent, hoverBoxPosition);
     }
 
     previousHoverBox = el;
@@ -717,16 +706,22 @@ function onSlideEnter(ev) {
   markFavourites();
 }
 
-function repositionGreenBar(elParent) {
+function tempRepositionGreenBar(elParent, hoverBoxPosition) {
   var greenBar = elParent.querySelector('[list-line-js]');
   var activeBox = elParent.querySelector('.swiper-slide.is-hover');
 
   if (activeBox) {
-    var hoverBoxLeft = activeBox.left + (activeBox.width - 190) / 2;
-    console.log(hoverBoxLeft);
-    var transformVal = 'left: ' + hoverBoxLeft + 'px';
+    lastActiveHoverBox = activeBox;
+    var hoverBoxLeft = 0;
 
     if (greenBar) {
+      hoverBoxLeft = 236 * hoverBoxPosition + 178;
+
+      if (window.innerWidth < 1449 && hoverBoxPosition == 4) {
+        hoverBoxLeft -= 55;
+      }
+
+      var transformVal = 'left: ' + hoverBoxLeft + 'px';
       greenBar.setAttribute('style', transformVal + ';width: 190px');
     }
   }

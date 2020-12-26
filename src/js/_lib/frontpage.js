@@ -1,5 +1,6 @@
 var webworkerFrontpage;
 let currentBannerTimeout;
+let lastActiveHoverBox;
 
 const initHomeLazyLoad = () =>{
 	let listElm = document.querySelector('#infinite-list');
@@ -546,20 +547,10 @@ function onSlideLeave(ev){
 	if(window.innerWidth >= 1280) {
 		const el = ev.currentTarget,
 			elParent = el.closest('[list-parent-js]'),
-			lineInd = elParent.querySelector('[list-line-js]');
+			slideSwiper = elParent.querySelector('.swiper-container'),
+			slideIndex = el.dataset.index;
 
-		let transformVal = '';
-
-		if(lineInd.getAttribute("style")) {
-			let val = lineInd.getAttribute("style");
-
-
-			if(val.indexOf(';') === -1) {
-				transformVal = val;
-			} else {
-				transformVal = val.substring(0, val.indexOf(';'));
-			}
-		}
+		let greenBar = elParent.querySelector('[list-line-js]');
 
 		//clearTimeout(tOut);
 		el.classList.remove('is-hover');
@@ -567,7 +558,23 @@ function onSlideLeave(ev){
 
 		elParent.classList.remove('last-box-selected');
 
-		lineInd.setAttribute('style', transformVal + ';width: 64px');
+
+		if(lastActiveHoverBox){
+			let activeSlide = 0;
+			if(slideSwiper){
+				activeSlide = slideSwiper.swiper.activeIndex;
+			}
+
+			let hoverBoxPosition = (slideIndex - activeSlide);
+
+			let hoverBoxLeft = (236*hoverBoxPosition) + 125;
+
+			let transformVal = 'left: '+hoverBoxLeft+'px';
+
+			if(greenBar){
+				greenBar.setAttribute('style', transformVal + ';width: 64px');
+			}
+		}
 	}
 }
 
@@ -609,6 +616,8 @@ function onSlideEnter(ev){
 			activeSlide = slideSwiper.swiper.activeIndex;
 		}
 
+		let hoverBoxPosition = (slideIndex - activeSlide);
+
 		if((slideIndex - activeSlide)==4){
 			elParent.classList.add('last-box-selected');
 		}else{
@@ -627,35 +636,13 @@ function onSlideEnter(ev){
 			slideIndex = el.dataset.index;
 
 
-
-			var hoverBounds = 0;
-			var _lineLeft = 0;
-
-
-
 			if(previousHoverBox == el.previousSibling){
 				if(elBox){
-					hoverBounds = elBox.getBoundingClientRect();
-					_lineLeft = hoverBounds.left - elParent.getBoundingClientRect().left-120;
-					transformVal = 'left: '+_lineLeft+'px';
-					lineInd.setAttribute('style', transformVal + ';width: 189px');
-
-					setTimeout(function (){
-						repositionGreenBar(elParent);
-					}, 400)
-
+					tempRepositionGreenBar(elParent, hoverBoxPosition);
 				}
 			}else{
 				if(elBox){
-					hoverBounds = elBox.getBoundingClientRect();
-					_lineLeft = hoverBounds.left - elParent.getBoundingClientRect().left;
-					transformVal = 'left: '+_lineLeft+'px';
-
-					lineInd.setAttribute('style', transformVal + ';width: 189px');
-
-					setTimeout(function (){
-						repositionGreenBar(elParent);
-					}, 400)
+					tempRepositionGreenBar(elParent, hoverBoxPosition);
 				}
 			}
 
@@ -664,11 +651,7 @@ function onSlideEnter(ev){
 			hoverBool = true;
 			el.classList.add('is-hover');
 
-			var hoverBounds = elBox.getBoundingClientRect();
-			var _lineLeft = hoverBounds.left - elParent.getBoundingClientRect().left;
-			transformVal = 'left: '+_lineLeft+'px';
-
-			lineInd.setAttribute('style', transformVal + ';width: 189px');
+			tempRepositionGreenBar(elParent, hoverBoxPosition);
 		}
 
 		previousHoverBox = el;
@@ -677,15 +660,22 @@ function onSlideEnter(ev){
 	markFavourites();
 }
 
-function repositionGreenBar(elParent){
+function tempRepositionGreenBar(elParent, hoverBoxPosition){
 	let greenBar = elParent.querySelector('[list-line-js]');
 	let activeBox = elParent.querySelector('.swiper-slide.is-hover');
-	if(activeBox){
-		let hoverBoxLeft = activeBox.left + ((activeBox.width-190)/2);
-		console.log(hoverBoxLeft);
-		let transformVal = 'left: '+hoverBoxLeft+'px';
 
+	if(activeBox){
+		lastActiveHoverBox = activeBox;
+		let hoverBoxLeft = 0;
 		if(greenBar){
+
+			hoverBoxLeft = (236*hoverBoxPosition) + 178;
+			if(window.innerWidth<1449 && hoverBoxPosition == 4){
+				hoverBoxLeft -= 55;
+			}
+
+			let transformVal = 'left: '+hoverBoxLeft+'px';
+
 			greenBar.setAttribute('style', transformVal + ';width: 190px');
 		}
 	}
