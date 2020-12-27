@@ -563,10 +563,17 @@ var boxHover = function boxHover() {
 
   if (document.body.classList.contains('home')) {
     for (var i = 0, len = swiperSlides.length; i < len; i++) {
-      swiperSlides[i].removeEventListener('mouseleave', onSlideLeave);
-      swiperSlides[i].addEventListener('mouseleave', onSlideLeave, false);
-      swiperSlides[i].removeEventListener('mouseenter', onSlideEnter);
-      swiperSlides[i].addEventListener('mouseenter', onSlideEnter, false);
+      if (isMobileOrTablet) {
+        swiperSlides[i].removeEventListener('touchend', onSlideTouchEnd);
+        swiperSlides[i].addEventListener('touchend', onSlideTouchEnd, false);
+        swiperSlides[i].removeEventListener('touchstart', onSlideTouchStart);
+        swiperSlides[i].addEventListener('touchstart', onSlideTouchStart, false);
+      } else {
+        swiperSlides[i].removeEventListener('mouseleave', onSlideLeave);
+        swiperSlides[i].addEventListener('mouseleave', onSlideLeave, false);
+        swiperSlides[i].removeEventListener('mouseenter', onSlideEnter);
+        swiperSlides[i].addEventListener('mouseenter', onSlideEnter, false);
+      }
 
       if (swiperSlides[i].querySelector('.list__box-more')) {
         swiperSlides[i].querySelector('.list__box-more').removeEventListener('mouseover', onShowBannerEnter);
@@ -648,18 +655,6 @@ function onSlideEnter(ev) {
       }
     }
 
-    var transformVal = '';
-
-    if (lineInd.getAttribute("style")) {
-      var val = lineInd.getAttribute("style");
-
-      if (val.indexOf(';') === -1) {
-        transformVal = val;
-      } else {
-        transformVal = val.substring(0, val.indexOf(';'));
-      }
-    }
-
     var activeSlide = 0;
 
     if (slideSwiper) {
@@ -676,23 +671,15 @@ function onSlideEnter(ev) {
 
     if (window.innerWidth < 1449) {
       if (slideIndex - activeSlide == 4) {
-        console.log('Active swiper ' + slideIndex + " - " + activeSlide);
         el.classList.add('last-box');
       }
     }
 
     if (hoverBool) {
       el.classList.add('is-hover');
-      slideIndex = el.dataset.index;
 
-      if (previousHoverBox == el.previousSibling) {
-        if (elBox) {
-          tempRepositionGreenBar(elParent, hoverBoxPosition);
-        }
-      } else {
-        if (elBox) {
-          tempRepositionGreenBar(elParent, hoverBoxPosition);
-        }
+      if (elBox) {
+        tempRepositionGreenBar(elParent, hoverBoxPosition);
       }
     } else {
       hoverBool = true;
@@ -704,6 +691,87 @@ function onSlideEnter(ev) {
   }
 
   markFavourites();
+}
+
+function onSlideTouchStart(ev) {
+  var el = ev.currentTarget,
+      elParent = el.closest('[list-parent-js]'),
+      slideIndex = el.dataset.index,
+      slideSwiper = elParent.querySelector('.swiper-container'),
+      greenBar = elParent.querySelector('[list-line-js]');
+  ;
+  var activeSlide = 0;
+
+  if (slideSwiper) {
+    activeSlide = slideSwiper.swiper.activeIndex;
+  }
+
+  var hoverBoxPosition = slideIndex - activeSlide;
+  var slideWidth = 236,
+      slideOffset = 178,
+      greenBarWidth = 74;
+  var sliderBox = document.querySelector('.swiper-slide:not(.is-hover)');
+
+  if (sliderBox) {
+    slideWidth = sliderBox.offsetWidth + 6;
+    slideOffset = slideWidth / 2;
+  }
+
+  if (window.innerWidth < 768) {
+    // slideWidth = 106;
+    // slideOffset = 53;
+    greenBarWidth = 48;
+  } else if (window.innerWidth <= 1024) {
+    // slideWidth = 156;
+    // slideOffset = 78;
+    greenBarWidth = 74;
+  } else if (window.innerWidth <= 1279) {// slideWidth = 201;
+    // slideOffset = 100.5;
+  }
+
+  var hoverBoxLeft = slideWidth * hoverBoxPosition + slideOffset;
+  var transformVal = 'left: ' + hoverBoxLeft + 'px';
+  greenBar.setAttribute('style', transformVal + ';width: ' + greenBarWidth + 'px');
+}
+
+function onSlideTouchEnd(ev) {
+  var el = ev.currentTarget,
+      elParent = el.closest('[list-parent-js]'),
+      slideIndex = el.dataset.index,
+      slideSwiper = elParent.querySelector('.swiper-container'),
+      greenBar = elParent.querySelector('[list-line-js]');
+  var slideWidth = 236,
+      slideOffset = 178,
+      greenBarWidth = 34;
+  var sliderBox = document.querySelector('.swiper-slide:not(.is-hover)');
+
+  if (sliderBox) {
+    slideWidth = sliderBox.offsetWidth + 6;
+    slideOffset = slideWidth / 2;
+  }
+
+  if (window.innerWidth < 768) {
+    // slideWidth = 106;
+    // slideOffset = 53;
+    greenBarWidth = 19;
+  } else if (window.innerWidth < 1024) {
+    // slideWidth = 156;
+    // slideOffset = 78;
+    greenBarWidth = 34;
+  } else if (window.innerWidth < 1279) {// slideWidth = 201;
+    // slideOffset = 100.5;
+  }
+
+  var activeSlide = 0;
+
+  if (slideSwiper) {
+    activeSlide = slideSwiper.swiper.activeIndex;
+  }
+
+  var hoverBoxPosition = slideIndex - activeSlide;
+  var hoverBoxLeft = slideWidth * hoverBoxPosition + slideOffset;
+  var transformVal = 'left: ' + hoverBoxLeft + 'px';
+  greenBar.setAttribute('style', transformVal + ';width: ' + greenBarWidth + 'px');
 }
 
 function tempRepositionGreenBar(elParent, hoverBoxPosition) {

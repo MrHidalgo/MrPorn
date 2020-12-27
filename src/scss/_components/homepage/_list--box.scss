@@ -186,9 +186,27 @@
 			//@include transition(width, transform);
 			//@include transition(width, transform, left);
 
+
+
+			@include respond('ipad_pro_landscape'){
+				width: 34px;
+				left: 75px;
+			}
+
+			@include respond('ipad_pro_portrait'){
+				width: 34px;
+				left: 97.5px;
+			}
+
+
+			@include respond('ipad_landscape'){
+				width: 34px;
+				left: 75px;
+			}
+
 			@include adaptive(1279) {
 				//transform: translateX(65.5px);
-				left: 97.5px;
+				//left: 97.5px;
 			}
 			@include adaptive(1023) {
 				width: 34px;
