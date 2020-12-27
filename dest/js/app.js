@@ -893,18 +893,6 @@ function showBanner(_el) {
 
       if (_specificationBox) {
         _specificationBox.classList.add('is-open');
-
-        var lineInd = listBoxWrapper.querySelector('[list-line-js]');
-
-        var hoverBounds = _boxParent.getBoundingClientRect();
-
-        var lineWidth = window.innerWidth < 767 ? 34 : 19; //var _lineLeft = hoverBounds.left - listBoxWrapper.getBoundingClientRect().left -(hoverBounds.width/2);
-
-        var _lineLeft = hoverBounds.left + hoverBounds.width / 2 - lineWidth / 2;
-
-        _lineLeft = hoverBounds.left - 18;
-        var transformVal = 'left: ' + _lineLeft + 'px';
-        lineInd.setAttribute('style', transformVal + ';width: ' + lineWidth + 'px;'); //console.log('Opening banner in mobile');
       }
     }, 100);
   } else {
