@@ -598,10 +598,12 @@ var boxHover = function boxHover() {
     }, false);
   }
 
-  for (var _i2 = 0, _len2 = parentSlides.length; _i2 < _len2; _i2++) {
-    parentSlides[_i2].removeEventListener('mouseleave', onParentSideLeave);
+  if (!isMobileOrTablet) {
+    for (var _i2 = 0, _len2 = parentSlides.length; _i2 < _len2; _i2++) {
+      parentSlides[_i2].removeEventListener('mouseleave', onParentSideLeave);
 
-    parentSlides[_i2].addEventListener('mouseleave', onParentSideLeave, false);
+      parentSlides[_i2].addEventListener('mouseleave', onParentSideLeave, false);
+    }
   }
 };
 
@@ -718,17 +720,12 @@ function onSlideTouchStart(ev) {
   }
 
   if (window.innerWidth < 768) {
-    // slideWidth = 106;
-    // slideOffset = 53;
     greenBarWidth = 48;
   } else if (window.innerWidth <= 1024) {
-    // slideWidth = 156;
-    // slideOffset = 78;
     greenBarWidth = 74;
-  } else if (window.innerWidth <= 1279) {// slideWidth = 201;
-    // slideOffset = 100.5;
   }
 
+  console.log('touch started ' + slideWidth + ' - ' + hoverBoxPosition + ' - ' + greenBarWidth);
   var hoverBoxLeft = slideWidth * hoverBoxPosition + slideOffset;
   var transformVal = 'left: ' + hoverBoxLeft + 'px';
   greenBar.setAttribute('style', transformVal + ';width: ' + greenBarWidth + 'px');
@@ -751,15 +748,9 @@ function onSlideTouchEnd(ev) {
   }
 
   if (window.innerWidth < 768) {
-    // slideWidth = 106;
-    // slideOffset = 53;
     greenBarWidth = 19;
   } else if (window.innerWidth < 1024) {
-    // slideWidth = 156;
-    // slideOffset = 78;
     greenBarWidth = 34;
-  } else if (window.innerWidth < 1279) {// slideWidth = 201;
-    // slideOffset = 100.5;
   }
 
   var activeSlide = 0;
@@ -770,6 +761,7 @@ function onSlideTouchEnd(ev) {
 
   var hoverBoxPosition = slideIndex - activeSlide;
   var hoverBoxLeft = slideWidth * hoverBoxPosition + slideOffset;
+  console.log('touch ended ' + slideWidth + ' - ' + hoverBoxPosition + ' - ' + greenBarWidth);
   var transformVal = 'left: ' + hoverBoxLeft + 'px';
   greenBar.setAttribute('style', transformVal + ';width: ' + greenBarWidth + 'px');
 }
