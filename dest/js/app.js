@@ -143,6 +143,14 @@ var createCookie = function createCookie(name, value, days) {
 
 var isMobileOrTablet = window.mobileAndTabletcheck();
 
+function findAncestor(el, sel) {
+  while ((el = el.parentElement) && !(el.matches || el.matchesSelector).call(el, sel)) {
+    ;
+  }
+
+  return el;
+}
+
 function getRequest() {
   var url = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : '';
   var data = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : {};

@@ -206,10 +206,12 @@
 
 					@include respond('ipad_portrait'){
 						margin-left: 0;
+						max-height: 100%;
 					}
 
 					@include adaptive(767) {
 						margin-left: 0;
+						max-height: 100%;
 					}
 				}
 
