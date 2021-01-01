@@ -576,6 +576,8 @@ var boxHover = function boxHover() {
         swiperSlides[i].addEventListener('touchend', onSlideTouchEnd, false);
         swiperSlides[i].removeEventListener('touchstart', onSlideTouchStart);
         swiperSlides[i].addEventListener('touchstart', onSlideTouchStart, false);
+        swiperSlides[i].removeEventListener('touchmove', onSlideTouchMove);
+        swiperSlides[i].addEventListener('touchmove', onSlideTouchMove, false);
       } else {
         swiperSlides[i].removeEventListener('mouseleave', onSlideLeave);
         swiperSlides[i].addEventListener('mouseleave', onSlideLeave, false);
@@ -709,14 +711,26 @@ function onSlideTouchStart(ev) {
       slideIndex = el.dataset.index,
       slideSwiper = elParent.querySelector('.swiper-container'),
       greenBar = elParent.querySelector('[list-line-js]');
-  ;
+  var isLastBox = false;
+
+  if (typeof el.nextSibling === "undefined" | el.nextSibling == null) {
+    isLastBox = true;
+  }
+
   var activeSlide = 0;
 
   if (slideSwiper) {
     activeSlide = slideSwiper.swiper.activeIndex;
   }
 
+  console.log('Active slides', slideSwiper.swiper.slidesPerView);
   var hoverBoxPosition = slideIndex - activeSlide;
+  /*if(window.innerWidth<768){
+  	if((slideIndex - activeSlide)==3){
+  		return;
+  	}
+  }*/
+
   var slideWidth = 236,
       slideOffset = 178,
       greenBarWidth = 74;
@@ -733,8 +747,51 @@ function onSlideTouchStart(ev) {
     greenBarWidth = 74;
   }
 
-  console.log('touch started ' + slideWidth + ' - ' + hoverBoxPosition + ' - ' + greenBarWidth);
+  console.log('touch started ' + slideWidth + ' - ' + hoverBoxPosition + ' - ' + greenBarWidth + ' - ' + isLastBox);
   var hoverBoxLeft = slideWidth * hoverBoxPosition + slideOffset;
+
+  if (isLastBox) {
+    hoverBoxLeft = el.getBoundingClientRect().left + slideOffset - 10;
+  }
+
+  var transformVal = 'left: ' + hoverBoxLeft + 'px';
+  greenBar.setAttribute('style', transformVal + ';width: ' + greenBarWidth + 'px');
+}
+
+function onSlideTouchMove(ev) {
+  var el = ev.currentTarget,
+      elParent = el.closest('[list-parent-js]'),
+      slideIndex = el.dataset.index,
+      slideSwiper = elParent.querySelector('.swiper-container'),
+      greenBar = elParent.querySelector('[list-line-js]');
+  var isLastBox = false;
+
+  if (typeof el.nextSibling === "undefined" | el.nextSibling == null) {
+    isLastBox = true;
+  }
+
+  var slideWidth = 236,
+      slideOffset = 178,
+      greenBarWidth = 74;
+  var sliderBox = document.querySelector('.swiper-slide:not(.is-hover)');
+
+  if (sliderBox) {
+    slideWidth = sliderBox.offsetWidth + 6;
+    slideOffset = slideWidth / 2;
+  }
+
+  if (window.innerWidth < 768) {
+    greenBarWidth = 48;
+  } else if (window.innerWidth <= 1024) {
+    greenBarWidth = 74;
+  }
+
+  var hoverBoxLeft = 0;
+
+  if (isLastBox) {
+    hoverBoxLeft = el.getBoundingClientRect().left + slideOffset - 10;
+  }
+
   var transformVal = 'left: ' + hoverBoxLeft + 'px';
   greenBar.setAttribute('style', transformVal + ';width: ' + greenBarWidth + 'px');
 }
@@ -749,6 +806,11 @@ function onSlideTouchEnd(ev) {
       slideOffset = 178,
       greenBarWidth = 34;
   var sliderBox = document.querySelector('.swiper-slide:not(.is-hover)');
+  var isLastBox = false;
+
+  if (typeof el.nextSibling === "undefined" | el.nextSibling == null) {
+    isLastBox = true;
+  }
 
   if (sliderBox) {
     slideWidth = sliderBox.offsetWidth + 6;
@@ -769,6 +831,11 @@ function onSlideTouchEnd(ev) {
 
   var hoverBoxPosition = slideIndex - activeSlide;
   var hoverBoxLeft = slideWidth * hoverBoxPosition + slideOffset;
+
+  if (isLastBox) {
+    hoverBoxLeft = el.getBoundingClientRect().left + slideOffset - 10;
+  }
+
   console.log('touch ended ' + slideWidth + ' - ' + hoverBoxPosition + ' - ' + greenBarWidth);
   var transformVal = 'left: ' + hoverBoxLeft + 'px';
   greenBar.setAttribute('style', transformVal + ';width: ' + greenBarWidth + 'px');
