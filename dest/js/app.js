@@ -711,6 +711,12 @@ function onSlideTouchStart(ev) {
       slideIndex = el.dataset.index,
       slideSwiper = elParent.querySelector('.swiper-container'),
       greenBar = elParent.querySelector('[list-line-js]');
+
+  if (greenBar) {
+    greenBar.classList.add('no_anim');
+  }
+
+  lastActiveHoverBox = el;
   var isLastBox = false;
 
   if (typeof el.nextSibling === "undefined" | el.nextSibling == null) {
@@ -723,14 +729,7 @@ function onSlideTouchStart(ev) {
     activeSlide = slideSwiper.swiper.activeIndex;
   }
 
-  console.log('Active slides', slideSwiper.swiper.slidesPerView);
   var hoverBoxPosition = slideIndex - activeSlide;
-  /*if(window.innerWidth<768){
-  	if((slideIndex - activeSlide)==3){
-  		return;
-  	}
-  }*/
-
   var slideWidth = 236,
       slideOffset = 178,
       greenBarWidth = 74;
@@ -747,13 +746,13 @@ function onSlideTouchStart(ev) {
     greenBarWidth = 74;
   }
 
-  console.log('touch started ' + slideWidth + ' - ' + hoverBoxPosition + ' - ' + greenBarWidth + ' - ' + isLastBox);
   var hoverBoxLeft = slideWidth * hoverBoxPosition + slideOffset;
 
   if (isLastBox) {
     hoverBoxLeft = el.getBoundingClientRect().left + slideOffset - 10;
   }
 
+  hoverBoxLeft = el.getBoundingClientRect().left + slideOffset - 10;
   var transformVal = 'left: ' + hoverBoxLeft + 'px';
   greenBar.setAttribute('style', transformVal + ';width: ' + greenBarWidth + 'px');
 }
@@ -764,12 +763,20 @@ function onSlideTouchMove(ev) {
       slideIndex = el.dataset.index,
       slideSwiper = elParent.querySelector('.swiper-container'),
       greenBar = elParent.querySelector('[list-line-js]');
+  lastActiveHoverBox = el;
   var isLastBox = false;
 
   if (typeof el.nextSibling === "undefined" | el.nextSibling == null) {
     isLastBox = true;
   }
 
+  var activeSlide = 0;
+
+  if (slideSwiper) {
+    activeSlide = slideSwiper.swiper.activeIndex;
+  }
+
+  var hoverBoxPosition = slideIndex - activeSlide;
   var slideWidth = 236,
       slideOffset = 178,
       greenBarWidth = 74;
@@ -786,12 +793,13 @@ function onSlideTouchMove(ev) {
     greenBarWidth = 74;
   }
 
-  var hoverBoxLeft = 0;
+  var hoverBoxLeft = slideWidth * hoverBoxPosition + slideOffset;
 
   if (isLastBox) {
     hoverBoxLeft = el.getBoundingClientRect().left + slideOffset - 10;
   }
 
+  hoverBoxLeft = el.getBoundingClientRect().left + slideOffset - 10;
   var transformVal = 'left: ' + hoverBoxLeft + 'px';
   greenBar.setAttribute('style', transformVal + ';width: ' + greenBarWidth + 'px');
 }
@@ -802,6 +810,10 @@ function onSlideTouchEnd(ev) {
       slideIndex = el.dataset.index,
       slideSwiper = elParent.querySelector('.swiper-container'),
       greenBar = elParent.querySelector('[list-line-js]');
+  /*if(greenBar){
+  	greenBar.classList.remove('no_anim');
+  }*/
+
   var slideWidth = 236,
       slideOffset = 178,
       greenBarWidth = 34;
@@ -836,7 +848,61 @@ function onSlideTouchEnd(ev) {
     hoverBoxLeft = el.getBoundingClientRect().left + slideOffset - 10;
   }
 
-  console.log('touch ended ' + slideWidth + ' - ' + hoverBoxPosition + ' - ' + greenBarWidth);
+  hoverBoxLeft = el.getBoundingClientRect().left + slideOffset - 10;
+  var transformVal = 'left: ' + hoverBoxLeft + 'px';
+  greenBar.setAttribute('style', transformVal + ';width: ' + greenBarWidth + 'px');
+}
+
+function onSwiperTransitionEnd() {
+  if (typeof lastActiveHoverBox === "undefined") {
+    return;
+  }
+
+  var el = lastActiveHoverBox,
+      elParent = el.closest('[list-parent-js]'),
+      slideIndex = el.dataset.index,
+      slideSwiper = elParent.querySelector('.swiper-container'),
+      greenBar = elParent.querySelector('[list-line-js]');
+
+  if (greenBar) {
+    greenBar.classList.remove('no_anim');
+  }
+
+  var slideWidth = 236,
+      slideOffset = 178,
+      greenBarWidth = 34;
+  var sliderBox = document.querySelector('.swiper-slide:not(.is-hover)');
+  var isLastBox = false;
+
+  if (typeof el.nextSibling === "undefined" | el.nextSibling == null) {
+    isLastBox = true;
+  }
+
+  if (sliderBox) {
+    slideWidth = sliderBox.offsetWidth + 6;
+    slideOffset = slideWidth / 2;
+  }
+
+  if (window.innerWidth < 768) {
+    greenBarWidth = 19;
+  } else if (window.innerWidth < 1024) {
+    greenBarWidth = 34;
+  }
+
+  var activeSlide = 0;
+
+  if (slideSwiper) {
+    activeSlide = slideSwiper.swiper.activeIndex;
+  }
+
+  var hoverBoxPosition = slideIndex - activeSlide;
+  var hoverBoxLeft = slideWidth * hoverBoxPosition + slideOffset;
+
+  if (isLastBox) {
+    hoverBoxLeft = el.getBoundingClientRect().left + slideOffset - 10;
+  }
+
+  hoverBoxLeft = el.getBoundingClientRect().left + slideOffset - 10;
   var transformVal = 'left: ' + hoverBoxLeft + 'px';
   greenBar.setAttribute('style', transformVal + ';width: ' + greenBarWidth + 'px');
 }
@@ -1744,6 +1810,9 @@ function swiperCB(swiperName, sliderArrow) {
       slideNextTransitionEnd: function slideNextTransitionEnd(e) {
         var swipeWrapper = categorySwiper.$wrapperEl[0];
         renderLeftAndRight(swipeWrapper.dataset.category, categorySwiper);
+      },
+      transitionEnd: function transitionEnd(e) {
+        onSwiperTransitionEnd();
       }
     }
   });

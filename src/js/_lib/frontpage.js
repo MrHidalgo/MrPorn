@@ -509,7 +509,6 @@ const boxHover = () => {
 
 				swiperSlides[i].removeEventListener('touchmove', onSlideTouchMove);
 				swiperSlides[i].addEventListener('touchmove', onSlideTouchMove, false);
-
 			}else{
 				swiperSlides[i].removeEventListener('mouseleave', onSlideLeave);
 				swiperSlides[i].addEventListener('mouseleave', onSlideLeave, false);
@@ -656,6 +655,12 @@ function onSlideTouchStart(ev){
 		slideSwiper = elParent.querySelector('.swiper-container'),
 		greenBar = elParent.querySelector('[list-line-js]');
 
+	if(greenBar){
+		greenBar.classList.add('no_anim');
+	}
+
+	lastActiveHoverBox = el;
+
 	let isLastBox = false;
 
 	if (typeof el.nextSibling === "undefined" | el.nextSibling==null){
@@ -668,16 +673,7 @@ function onSlideTouchStart(ev){
 		activeSlide = slideSwiper.swiper.activeIndex;
 	}
 
-	console.log('Active slides', slideSwiper.swiper.slidesPerView);
-
 	let hoverBoxPosition = (slideIndex - activeSlide);
-
-
-	/*if(window.innerWidth<768){
-		if((slideIndex - activeSlide)==3){
-			return;
-		}
-	}*/
 
 	let slideWidth = 236,
 	slideOffset = 178,
@@ -696,18 +692,19 @@ function onSlideTouchStart(ev){
 		greenBarWidth = 74;
 	}
 
-	console.log('touch started '+slideWidth+' - '+hoverBoxPosition+' - '+greenBarWidth+' - '+isLastBox);
-
 	let hoverBoxLeft = (slideWidth*hoverBoxPosition) + slideOffset;
 
 	if(isLastBox){
 		hoverBoxLeft = el.getBoundingClientRect().left + slideOffset - 10;
 	}
 
+	hoverBoxLeft = el.getBoundingClientRect().left + slideOffset - 10;
+
 	let transformVal = 'left: '+hoverBoxLeft+'px';
 
 	greenBar.setAttribute('style', transformVal + ';width: '+greenBarWidth+'px');
 }
+
 
 function onSlideTouchMove(ev){
 	const el = ev.currentTarget,
@@ -716,11 +713,22 @@ function onSlideTouchMove(ev){
 		slideSwiper = elParent.querySelector('.swiper-container'),
 		greenBar = elParent.querySelector('[list-line-js]');
 
+	lastActiveHoverBox = el;
+
 	let isLastBox = false;
 
 	if (typeof el.nextSibling === "undefined" | el.nextSibling==null){
 		isLastBox = true;
 	}
+
+
+	let activeSlide = 0;
+	if(slideSwiper){
+		activeSlide = slideSwiper.swiper.activeIndex;
+	}
+
+	let hoverBoxPosition = (slideIndex - activeSlide);
+
 
 	let slideWidth = 236,
 		slideOffset = 178,
@@ -739,11 +747,16 @@ function onSlideTouchMove(ev){
 		greenBarWidth = 74;
 	}
 
-	let hoverBoxLeft = 0;
+
+
+	let hoverBoxLeft = (slideWidth*hoverBoxPosition) + slideOffset;
 
 	if(isLastBox){
 		hoverBoxLeft = el.getBoundingClientRect().left + slideOffset - 10;
 	}
+
+	hoverBoxLeft = el.getBoundingClientRect().left + slideOffset - 10;
+
 
 	let transformVal = 'left: '+hoverBoxLeft+'px';
 
@@ -756,6 +769,10 @@ function onSlideTouchEnd(ev){
 		slideIndex = el.dataset.index,
 		slideSwiper = elParent.querySelector('.swiper-container'),
 		greenBar = elParent.querySelector('[list-line-js]');
+
+	/*if(greenBar){
+		greenBar.classList.remove('no_anim');
+	}*/
 
 	let slideWidth = 236,
 		slideOffset = 178,
@@ -792,9 +809,64 @@ function onSlideTouchEnd(ev){
 	if(isLastBox){
 		hoverBoxLeft = el.getBoundingClientRect().left + slideOffset - 10;
 	}
+	hoverBoxLeft = el.getBoundingClientRect().left + slideOffset - 10;
+
+	let transformVal = 'left: '+hoverBoxLeft+'px';
+	greenBar.setAttribute('style', transformVal + ';width: '+greenBarWidth+'px');
+}
+
+function onSwiperTransitionEnd(){
+
+	if(typeof lastActiveHoverBox === "undefined" ){
+		return;
+	}
+
+	const el = lastActiveHoverBox,
+		elParent = el.closest('[list-parent-js]'),
+		slideIndex = el.dataset.index,
+		slideSwiper = elParent.querySelector('.swiper-container'),
+		greenBar = elParent.querySelector('[list-line-js]');
+
+	if(greenBar){
+		greenBar.classList.remove('no_anim');
+	}
+
+	let slideWidth = 236,
+		slideOffset = 178,
+		greenBarWidth = 34;
+
+	let sliderBox = document.querySelector('.swiper-slide:not(.is-hover)');
+
+	let isLastBox = false;
+
+	if (typeof el.nextSibling === "undefined" | el.nextSibling==null){
+		isLastBox = true;
+	}
+
+	if(sliderBox){
+		slideWidth = 	sliderBox.offsetWidth + 6;
+		slideOffset = slideWidth/2;
+	}
+
+	if(window.innerWidth<768){
+		greenBarWidth = 19;
+	}else if(window.innerWidth<1024){
+		greenBarWidth = 34;
+	}
+
+	let activeSlide = 0;
+	if(slideSwiper){
+		activeSlide = slideSwiper.swiper.activeIndex;
+	}
+
+	let hoverBoxPosition = (slideIndex - activeSlide);
+	let hoverBoxLeft = (slideWidth*hoverBoxPosition) + slideOffset;
 
 
-	console.log('touch ended '+slideWidth+' - '+hoverBoxPosition+' - '+greenBarWidth);
+	if(isLastBox){
+		hoverBoxLeft = el.getBoundingClientRect().left + slideOffset - 10;
+	}
+	hoverBoxLeft = el.getBoundingClientRect().left + slideOffset - 10;
 
 	let transformVal = 'left: '+hoverBoxLeft+'px';
 	greenBar.setAttribute('style', transformVal + ';width: '+greenBarWidth+'px');

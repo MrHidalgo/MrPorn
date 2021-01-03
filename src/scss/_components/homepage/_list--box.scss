@@ -186,7 +186,9 @@
 			//@include transition(width, transform);
 			//@include transition(width, transform, left);
 
-
+			&.no_anim{
+				transition:none;
+			}
 
 			@include respond('ipad_pro_landscape'){
 				width: 34px;

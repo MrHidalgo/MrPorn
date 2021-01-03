@@ -53,6 +53,9 @@ function swiperCB(swiperName, sliderArrow) {
 				let swipeWrapper = categorySwiper.$wrapperEl[0];
 
 				renderLeftAndRight(swipeWrapper.dataset.category, categorySwiper);
+			},
+			transitionEnd: function (e){
+				onSwiperTransitionEnd();
 			}
 		},
 	});
