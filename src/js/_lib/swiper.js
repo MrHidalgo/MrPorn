@@ -5,7 +5,7 @@
  *
  * @description initialize Swiper
  */
-function swiperCB(swiperName, sliderArrow) {
+function swiperCB(swiperName, sliderArrow, scrollBar) {
 	let categorySwiper = new Swiper(swiperName, {
 		loop: false,
 		grabCursor: false,
@@ -22,6 +22,15 @@ function swiperCB(swiperName, sliderArrow) {
 		navigation: {
 			nextEl: sliderArrow + ' .list__arrow--next',
 			prevEl: sliderArrow + ' .list__arrow--prev',
+		},
+		scrollbar: {
+			el: scrollBar,
+			hide: true,
+			on:{
+				scrollbarDragMove:function (e){
+					console.log('Scrollbar drag', e);
+				}
+			}
 		},
 		on: {
 			init: function () {
@@ -56,6 +65,9 @@ function swiperCB(swiperName, sliderArrow) {
 			},
 			transitionEnd: function (e){
 				onSwiperTransitionEnd();
+			},
+			setTranslate: function (e, translate){
+				onSwiperTranslate(e, translate);
 			}
 		},
 	});
@@ -76,7 +88,8 @@ const initSwiper = () => {
 
 		swiperCB(
 			`.swiper-container[data-id="${sliderName}"]`,
-			`.list__box-wrapper[data-name='${sliderWrapper}']`
+			`.list__box-wrapper[data-name='${sliderWrapper}']`,
+			`.swiper-scrollbar[data-id="${sliderName}"]`,
 		);
 	}
 };

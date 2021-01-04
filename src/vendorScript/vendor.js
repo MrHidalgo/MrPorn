@@ -2,7 +2,7 @@
 *
 * Include :
 *
-* - swiper.min.js;
-* - swiper.min.js.map;
+* - swiper-bundle.js;
+* - swiper-bundle.js.map;
 *
 * */

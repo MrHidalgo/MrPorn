@@ -1,12 +1,3 @@
-/*
-*
-* Include :
-*
-* - swiper-bundle.js;
-* - swiper-bundle.js.map;
-*
-* */
-
 /**
  * Swiper 6.4.5
  * Most modern mobile touch slider and framework with hardware accelerated transitions

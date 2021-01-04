@@ -264,6 +264,7 @@ function postTextRequest() {
 var webworkerFrontpage;
 var currentBannerTimeout;
 var lastActiveHoverBox;
+var lastTranslate = 0;
 
 var initHomeLazyLoad = function initHomeLazyLoad() {
   var listElm = document.querySelector('#infinite-list');
@@ -637,8 +638,9 @@ function onSlideLeave(ev) {
       }
 
       var hoverBoxPosition = slideIndex - activeSlide;
-      var hoverBoxLeft = 236 * hoverBoxPosition + 125;
-      var transformVal = 'left: ' + hoverBoxLeft + 'px';
+      var hoverBoxLeft = 236 * hoverBoxPosition + 125; //let transformVal = 'left: '+hoverBoxLeft+'px';
+
+      var transformVal = 'transform: translateX(' + hoverBoxLeft + 'px)';
 
       if (greenBar) {
         greenBar.setAttribute('style', transformVal + ';width: 64px');
@@ -713,7 +715,9 @@ function onSlideTouchStart(ev) {
       greenBar = elParent.querySelector('[list-line-js]');
 
   if (greenBar) {
-    greenBar.classList.add('no_anim');
+    setTimeout(function () {
+      greenBar.classList.add('no_anim');
+    }, 400);
   }
 
   lastActiveHoverBox = el;
@@ -746,6 +750,7 @@ function onSlideTouchStart(ev) {
     greenBarWidth = 74;
   }
 
+  slideOffset = (slideWidth - greenBarWidth) / 2;
   var hoverBoxLeft = slideWidth * hoverBoxPosition + slideOffset;
 
   if (isLastBox) {
@@ -753,7 +758,9 @@ function onSlideTouchStart(ev) {
   }
 
   hoverBoxLeft = el.getBoundingClientRect().left + slideOffset - 10;
-  var transformVal = 'left: ' + hoverBoxLeft + 'px';
+  console.log('Touch start ' + el.getBoundingClientRect().left + ' - ' + slideOffset); //let transformVal = 'left: '+hoverBoxLeft+'px';
+
+  var transformVal = 'transform: translateX(' + hoverBoxLeft + 'px)';
   greenBar.setAttribute('style', transformVal + ';width: ' + greenBarWidth + 'px');
 }
 
@@ -793,72 +800,27 @@ function onSlideTouchMove(ev) {
     greenBarWidth = 74;
   }
 
+  var minLeft = slideOffset + 10;
+  slideOffset = (slideWidth - greenBarWidth) / 2;
   var hoverBoxLeft = slideWidth * hoverBoxPosition + slideOffset;
+
+  if (hoverBoxLeft < minLeft) {
+    hoverBoxLeft = minLeft;
+  }
 
   if (isLastBox) {
     hoverBoxLeft = el.getBoundingClientRect().left + slideOffset - 10;
   }
 
   hoverBoxLeft = el.getBoundingClientRect().left + slideOffset - 10;
-  var transformVal = 'left: ' + hoverBoxLeft + 'px';
+  console.log('Hover box left ' + hoverBoxLeft + ' - ' + slideOffset); //let transformVal = 'left: '+hoverBoxLeft+'px';
+
+  var transformVal = 'transform: translateX(' + hoverBoxLeft + 'px)';
   greenBar.setAttribute('style', transformVal + ';width: ' + greenBarWidth + 'px');
 }
 
 function onSlideTouchEnd(ev) {
   var el = ev.currentTarget,
-      elParent = el.closest('[list-parent-js]'),
-      slideIndex = el.dataset.index,
-      slideSwiper = elParent.querySelector('.swiper-container'),
-      greenBar = elParent.querySelector('[list-line-js]');
-  /*if(greenBar){
-  	greenBar.classList.remove('no_anim');
-  }*/
-
-  var slideWidth = 236,
-      slideOffset = 178,
-      greenBarWidth = 34;
-  var sliderBox = document.querySelector('.swiper-slide:not(.is-hover)');
-  var isLastBox = false;
-
-  if (typeof el.nextSibling === "undefined" | el.nextSibling == null) {
-    isLastBox = true;
-  }
-
-  if (sliderBox) {
-    slideWidth = sliderBox.offsetWidth + 6;
-    slideOffset = slideWidth / 2;
-  }
-
-  if (window.innerWidth < 768) {
-    greenBarWidth = 19;
-  } else if (window.innerWidth < 1024) {
-    greenBarWidth = 34;
-  }
-
-  var activeSlide = 0;
-
-  if (slideSwiper) {
-    activeSlide = slideSwiper.swiper.activeIndex;
-  }
-
-  var hoverBoxPosition = slideIndex - activeSlide;
-  var hoverBoxLeft = slideWidth * hoverBoxPosition + slideOffset;
-
-  if (isLastBox) {
-    hoverBoxLeft = el.getBoundingClientRect().left + slideOffset - 10;
-  }
-
-  hoverBoxLeft = el.getBoundingClientRect().left + slideOffset - 10;
-  var transformVal = 'left: ' + hoverBoxLeft + 'px';
-  greenBar.setAttribute('style', transformVal + ';width: ' + greenBarWidth + 'px');
-}
-
-function onSwiperTransitionEnd() {
-  if (typeof lastActiveHoverBox === "undefined") {
-    return;
-  }
-
-  var el = lastActiveHoverBox,
       elParent = el.closest('[list-parent-js]'),
       slideIndex = el.dataset.index,
       slideSwiper = elParent.querySelector('.swiper-container'),
@@ -897,14 +859,81 @@ function onSwiperTransitionEnd() {
 
   var hoverBoxPosition = slideIndex - activeSlide;
   var hoverBoxLeft = slideWidth * hoverBoxPosition + slideOffset;
+  slideOffset = (slideWidth - greenBarWidth) / 2;
 
   if (isLastBox) {
     hoverBoxLeft = el.getBoundingClientRect().left + slideOffset - 10;
   }
 
-  hoverBoxLeft = el.getBoundingClientRect().left + slideOffset - 10;
-  var transformVal = 'left: ' + hoverBoxLeft + 'px';
-  greenBar.setAttribute('style', transformVal + ';width: ' + greenBarWidth + 'px');
+  hoverBoxLeft = el.getBoundingClientRect().left - slideOffset;
+  var transformVal = 'left: ' + hoverBoxLeft + 'px'; //greenBar.setAttribute('style', transformVal + ';width: '+greenBarWidth+'px');
+}
+
+function onSwiperTransitionEnd() {}
+
+function onSwiperTranslate(e, translate) {
+  if (!isMobileOrTablet) {
+    return;
+  }
+
+  if (typeof lastActiveHoverBox === "undefined") {
+    return;
+  }
+
+  var el = lastActiveHoverBox,
+      elParent = el.closest('[list-parent-js]'),
+      slideIndex = el.dataset.index,
+      slideSwiper = elParent.querySelector('.swiper-container'),
+      greenBar = elParent.querySelector('[list-line-js]');
+  var translateDiff = lastTranslate - translate;
+  translateDiff = +translateDiff;
+  var deltaTranslate = translateDiff;
+
+  if (translateDiff < 0) {
+    translateDiff = -translateDiff;
+  }
+
+  var isLargeJump = false;
+
+  if (translateDiff > 5) {
+    isLargeJump = true;
+  }
+
+  lastTranslate = translate;
+  var slideWidth = 236,
+      slideOffset = 178,
+      greenBarWidth = 34,
+      hoverBoxLeft = parseInt(greenBar.style.transform.replace("translateX(", ""));
+  var sliderBox = document.querySelector('.swiper-slide:not(.is-hover)');
+
+  if (sliderBox) {
+    slideWidth = sliderBox.offsetWidth + 6;
+  }
+
+  if (window.innerWidth < 768) {
+    greenBarWidth = 19;
+  } else if (window.innerWidth < 1024) {
+    greenBarWidth = 34;
+  }
+
+  if (greenBar) {
+    var barLeft = parseInt(greenBar.style.transform.replace("translateX(", ""));
+    slideOffset = (slideWidth - greenBarWidth) / 2;
+    hoverBoxLeft = barLeft - deltaTranslate;
+    var minLeft = slideOffset;
+
+    if (hoverBoxLeft < minLeft) {
+      hoverBoxLeft = minLeft;
+    } //let transformVal = 'left: '+hoverBoxLeft+'px';
+
+
+    var transformVal = 'transform: translateX(' + hoverBoxLeft + 'px)';
+
+    if (isLargeJump) {
+      console.log('Translate ' + translate + ' - - ' + barLeft + ' == ' + deltaTranslate + ' - ' + isLargeJump + ' - ' + slideOffset);
+      greenBar.setAttribute('style', transformVal + '; transition-duration:900ms; width: ' + greenBarWidth + 'px');
+    }
+  }
 }
 
 function tempRepositionGreenBar(elParent, hoverBoxPosition) {
@@ -954,6 +983,14 @@ function onShowBannerEnter(__ev) {
   /*if(!currentBannerTimeout){
   	clearTimeout(currentBannerTimeout);
   }*/
+  var el = lastActiveHoverBox,
+      elParent = el.closest('[list-parent-js]'),
+      greenBar = elParent.querySelector('[list-line-js]');
+
+  if (greenBar) {
+    greenBar.classList.remove('no_anim');
+  }
+
   currentBannerTimeout = window.setTimeout(function () {
     showBanner(__ev.target);
   }, 1000);
@@ -1767,7 +1804,7 @@ var renderSearch = function renderSearch() {
  */
 
 
-function swiperCB(swiperName, sliderArrow) {
+function swiperCB(swiperName, sliderArrow, scrollBar) {
   var categorySwiper = new Swiper(swiperName, {
     loop: false,
     grabCursor: false,
@@ -1784,6 +1821,15 @@ function swiperCB(swiperName, sliderArrow) {
     navigation: {
       nextEl: sliderArrow + ' .list__arrow--next',
       prevEl: sliderArrow + ' .list__arrow--prev'
+    },
+    scrollbar: {
+      el: scrollBar,
+      hide: true,
+      on: {
+        scrollbarDragMove: function scrollbarDragMove(e) {
+          console.log('Scrollbar drag', e);
+        }
+      }
     },
     on: {
       init: function init() {
@@ -1813,6 +1859,9 @@ function swiperCB(swiperName, sliderArrow) {
       },
       transitionEnd: function transitionEnd(e) {
         onSwiperTransitionEnd();
+      },
+      setTranslate: function setTranslate(e, translate) {
+        onSwiperTranslate(e, translate);
       }
     }
   });
@@ -1827,7 +1876,7 @@ var initSwiper = function initSwiper() {
   for (idx = 0; idx < len; idx++) {
     var sliderName = sliders[idx].getAttribute('data-id'),
         sliderWrapper = slidersNode[idx].getAttribute('data-name');
-    swiperCB(".swiper-container[data-id=\"".concat(sliderName, "\"]"), ".list__box-wrapper[data-name='".concat(sliderWrapper, "']"));
+    swiperCB(".swiper-container[data-id=\"".concat(sliderName, "\"]"), ".list__box-wrapper[data-name='".concat(sliderWrapper, "']"), ".swiper-scrollbar[data-id=\"".concat(sliderName, "\"]"));
   }
 };
 

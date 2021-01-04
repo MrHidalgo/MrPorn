@@ -93,6 +93,25 @@
 	@import "list--specification";
 }
 
+.swiper-scrollbar {
+	left: 1%;
+	bottom: 3px;
+	z-index: 50;
+	height: 5px;
+	width: 98%;
+	background: #f00;
+
+	.swiper-scrollbar-drag {
+		height: 100%;
+		width: 100%;
+		position: relative;
+		background: rgba(0,0,0, 1);
+		border-radius: 10px;
+		left: 0;
+		top: 0;
+	}
+}
+
 .list_green_line{
 	transition: transform 1s;
 	transform: translateX(-50%);
