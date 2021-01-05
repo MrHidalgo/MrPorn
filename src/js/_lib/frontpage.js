@@ -658,9 +658,9 @@ function onSlideTouchStart(ev){
 		greenBar = elParent.querySelector('[list-line-js]');
 
 	if(greenBar){
-		setTimeout(function (){
-			greenBar.classList.add('no_anim');
-		}, 400)
+		// setTimeout(function (){
+		// 	greenBar.classList.add('no_anim');
+		// }, 400)
 	}
 
 	lastActiveHoverBox = el;
@@ -710,7 +710,7 @@ function onSlideTouchStart(ev){
 	//let transformVal = 'left: '+hoverBoxLeft+'px';
 	let transformVal = 'transform: translateX('+hoverBoxLeft+'px)';
 
-	greenBar.setAttribute('style', transformVal + ';width: '+greenBarWidth+'px');
+	greenBar.setAttribute('style', transformVal + '; transition-duration:350ms; width: '+greenBarWidth+'px');
 }
 
 
@@ -727,6 +727,10 @@ function onSlideTouchMove(ev){
 
 	if (typeof el.nextSibling === "undefined" | el.nextSibling==null){
 		isLastBox = true;
+	}
+
+	if(greenBar){
+		//greenBar.classList.add('no_anim');
 	}
 
 
@@ -759,11 +763,11 @@ function onSlideTouchMove(ev){
 
 	slideOffset = (slideWidth - greenBarWidth)/2;
 
+	let maxLeft = getSwiperMaxLeft(elParent, slideWidth, slideOffset);
+
 
 	let hoverBoxLeft = (slideWidth*hoverBoxPosition) + slideOffset;
-	if(hoverBoxLeft<minLeft){
-			hoverBoxLeft = minLeft;
-	}
+
 
 	if(isLastBox){
 		hoverBoxLeft = el.getBoundingClientRect().left + slideOffset - 10;
@@ -771,13 +775,18 @@ function onSlideTouchMove(ev){
 
 	hoverBoxLeft = el.getBoundingClientRect().left + slideOffset - 10;
 
-	console.log('Hover box left '+hoverBoxLeft+' - '+slideOffset);
+	if(hoverBoxLeft<minLeft){
+		hoverBoxLeft = minLeft;
+	}
 
+	if(hoverBoxLeft > maxLeft){
+		hoverBoxLeft = maxLeft;
+	}
 
 	//let transformVal = 'left: '+hoverBoxLeft+'px';
 	let transformVal = 'transform: translateX('+hoverBoxLeft+'px)';
 
-	greenBar.setAttribute('style', transformVal + ';width: '+greenBarWidth+'px');
+	greenBar.setAttribute('style', transformVal + '; transition-duration:0ms; width: '+greenBarWidth+'px');
 }
 
 function onSlideTouchEnd(ev){
@@ -788,7 +797,7 @@ function onSlideTouchEnd(ev){
 		greenBar = elParent.querySelector('[list-line-js]');
 
 	if(greenBar){
-		greenBar.classList.remove('no_anim');
+		//greenBar.classList.remove('no_anim');
 	}
 
 	let slideWidth = 236,
@@ -809,7 +818,7 @@ function onSlideTouchEnd(ev){
 	}
 
 	if(window.innerWidth<768){
-		greenBarWidth = 19;
+		greenBarWidth = 20;
 	}else if(window.innerWidth<1024){
 		greenBarWidth = 34;
 	}
@@ -830,12 +839,11 @@ function onSlideTouchEnd(ev){
 	}
 	hoverBoxLeft = el.getBoundingClientRect().left - slideOffset;
 
-	let transformVal = 'left: '+hoverBoxLeft+'px';
-	//greenBar.setAttribute('style', transformVal + ';width: '+greenBarWidth+'px');
-}
 
-function onSwiperTransitionEnd(){
+	let barLeft = parseInt(greenBar.style.transform.replace("translateX(", ""))+14;
 
+	let transformVal = 'transform: translateX('+barLeft+'px)';
+	greenBar.setAttribute('style', transformVal + '; transition-duration:350ms; width: '+greenBarWidth+'px');
 }
 
 function onSwiperTranslate(e, translate){
@@ -881,22 +889,32 @@ function onSwiperTranslate(e, translate){
 	}
 
 	if(window.innerWidth<768){
-		greenBarWidth = 19;
+		greenBarWidth = 20;
 	}else if(window.innerWidth<1024){
 		greenBarWidth = 34;
 	}
 
 	if(greenBar){
-		let barLeft = parseInt(greenBar.style.transform.replace("translateX(", ""));
 
 		slideOffset = (slideWidth - greenBarWidth)/2;
+
+		let maxLeft = getSwiperMaxLeft(elParent, slideWidth, slideOffset);
+
+		let barLeft = parseInt(greenBar.style.transform.replace("translateX(", ""));
+
+
 
 		hoverBoxLeft = barLeft-deltaTranslate;
 
 		let minLeft = slideOffset;
 
+
 		if(hoverBoxLeft < minLeft){
 			hoverBoxLeft = minLeft;
+		}
+
+		if(hoverBoxLeft > maxLeft){
+			hoverBoxLeft = maxLeft;
 		}
 
 
@@ -905,12 +923,27 @@ function onSwiperTranslate(e, translate){
 		let transformVal = 'transform: translateX('+hoverBoxLeft+'px)';
 
 		if(isLargeJump){
-			console.log('Translate '+ translate+' - - '+barLeft+' == '+deltaTranslate+' - '+isLargeJump+ ' - '+slideOffset);
+			//console.log('Translate - '+slideWidth+' - '+maxLeft);
 
-			greenBar.setAttribute('style', transformVal + '; transition-duration:900ms; width: '+greenBarWidth+'px');
+			greenBar.setAttribute('style', transformVal + '; transition-duration:350ms; width: '+greenBarWidth+'px');
 
 		}
 	}
+}
+
+function getSwiperMaxLeft(elParent, slideWidth, slideOffset){
+	let swiperWidth = elParent.getBoundingClientRect().width;
+	let halfSlideWidth = swiperWidth%slideWidth;
+	let numberOfSlides = parseInt(swiperWidth / slideWidth);
+
+	let maxLeft = 0;
+
+	if(halfSlideWidth> (slideWidth*0.6)){
+		maxLeft = (slideWidth * (numberOfSlides+1))-slideOffset-10-7.5;
+	}else{
+		maxLeft = (slideWidth * numberOfSlides)-slideOffset-10-7.5;
+	}
+	return maxLeft;
 }
 
 function tempRepositionGreenBar(elParent, hoverBoxPosition){
@@ -963,7 +996,7 @@ function onShowBannerEnter(__ev){
 		greenBar = elParent.querySelector('[list-line-js]');
 
 	if(greenBar){
-		greenBar.classList.remove('no_anim');
+		//greenBar.classList.remove('no_anim');
 	}
 
 

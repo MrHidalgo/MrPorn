@@ -23,15 +23,6 @@ function swiperCB(swiperName, sliderArrow, scrollBar) {
 			nextEl: sliderArrow + ' .list__arrow--next',
 			prevEl: sliderArrow + ' .list__arrow--prev',
 		},
-		scrollbar: {
-			el: scrollBar,
-			hide: true,
-			on:{
-				scrollbarDragMove:function (e){
-					console.log('Scrollbar drag', e);
-				}
-			}
-		},
 		on: {
 			init: function () {
 				const swiperSlide = document.querySelectorAll('.swiper-slide');
@@ -62,9 +53,6 @@ function swiperCB(swiperName, sliderArrow, scrollBar) {
 				let swipeWrapper = categorySwiper.$wrapperEl[0];
 
 				renderLeftAndRight(swipeWrapper.dataset.category, categorySwiper);
-			},
-			transitionEnd: function (e){
-				onSwiperTransitionEnd();
 			},
 			setTranslate: function (e, translate){
 				onSwiperTranslate(e, translate);

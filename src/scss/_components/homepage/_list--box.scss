@@ -192,17 +192,20 @@
 
 			@include respond('ipad_pro_landscape'){
 				width: 34px;
+				left: 0;
 				transform: translateX(75px);
 			}
 
 			@include respond('ipad_pro_portrait'){
 				width: 34px;
+				left: 0;
 				transform: translateX(97.5px);
 			}
 
 
 			@include respond('ipad_landscape'){
 				width: 34px;
+				left: 0;
 				transform: translateX(75px);
 			}
 
@@ -212,15 +215,16 @@
 			}
 			@include adaptive(1023) {
 				width: 34px;
-				left: 75px;
+				left: 0;
 				transform: translateX(75px);
 			}
 			@include adaptive(767) {
 				width: 19px;
+				left: 0;
 				transform: translateX(50px);
 
 				transition: width 0.35s ease-in-out, transform 0.35s ease-in-out;
-				transition-duration: 900ms;
+				transition-duration: 350ms;
 			}
 		}
 
