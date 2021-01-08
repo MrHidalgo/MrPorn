@@ -265,6 +265,15 @@ var webworkerFrontpage;
 var currentBannerTimeout;
 var lastActiveHoverBox;
 var lastTranslate = 0;
+var isMouseDown = false;
+var _greenBarLeft = 0;
+var _greenBarWidth = 20;
+var _greenBarCurrent = 0;
+var _greenBarAnimSpeed = 0;
+
+var _lastGreenBar;
+
+var _touchStartPosition = 0;
 
 var initHomeLazyLoad = function initHomeLazyLoad() {
   var listElm = document.querySelector('#infinite-list');
@@ -638,7 +647,12 @@ function onSlideLeave(ev) {
       }
 
       var hoverBoxPosition = slideIndex - activeSlide;
-      var hoverBoxLeft = 236 * hoverBoxPosition + 125; //let transformVal = 'left: '+hoverBoxLeft+'px';
+      var hoverBoxLeft = 236 * hoverBoxPosition + 93;
+
+      if (hoverBoxPosition > 0) {
+        hoverBoxLeft -= 10;
+      } //let transformVal = 'left: '+hoverBoxLeft+'px';
+
 
       var transformVal = 'transform: translateX(' + hoverBoxLeft + 'px)';
 
@@ -713,10 +727,12 @@ function onSlideTouchStart(ev) {
       slideIndex = el.dataset.index,
       slideSwiper = elParent.querySelector('.swiper-container'),
       greenBar = elParent.querySelector('[list-line-js]');
+  isMouseDown = true;
+  _touchStartPosition = ev.touches[0].pageX;
 
-  if (greenBar) {// setTimeout(function (){
-    // 	greenBar.classList.add('no_anim');
-    // }, 400)
+  if (greenBar) {
+    greenBar.classList.add('no_anim');
+    _lastGreenBar = greenBar;
   }
 
   lastActiveHoverBox = el;
@@ -725,6 +741,12 @@ function onSlideTouchStart(ev) {
   if (typeof el.nextSibling === "undefined" | el.nextSibling == null) {
     isLastBox = true;
   }
+  /*let currentSwiperSlide = elParent.querySelector('.swiper-slide-current');
+  if(currentSwiperSlide){
+  	currentSwiperSlide.classList.remove('swiper-slide-current');
+  }
+  el.classList.add('swiper-slide-current');*/
+
 
   var activeSlide = 0;
 
@@ -752,15 +774,18 @@ function onSlideTouchStart(ev) {
   slideOffset = (slideWidth - greenBarWidth) / 2;
   var hoverBoxLeft = slideWidth * hoverBoxPosition + slideOffset;
 
-  if (isLastBox) {
-    hoverBoxLeft = el.getBoundingClientRect().left + slideOffset - 10;
-  }
+  if (isLastBox) {//hoverBoxLeft = el.getBoundingClientRect().left + slideOffset - 10;
+  } //hoverBoxLeft = el.getBoundingClientRect().left + slideOffset - 10;
+  //let transformVal = 'left: '+hoverBoxLeft+'px';
 
-  hoverBoxLeft = el.getBoundingClientRect().left + slideOffset - 10;
-  console.log('Touch start ' + el.getBoundingClientRect().left + ' - ' + slideOffset); //let transformVal = 'left: '+hoverBoxLeft+'px';
 
   var transformVal = 'transform: translateX(' + hoverBoxLeft + 'px)';
-  greenBar.setAttribute('style', transformVal + '; transition-duration:350ms; width: ' + greenBarWidth + 'px');
+  _greenBarAnimSpeed = 0;
+  _greenBarLeft = hoverBoxLeft;
+  _greenBarWidth = greenBarWidth;
+  _greenBarCurrent = el.getBoundingClientRect.left;
+  greenBar.style['transition-duration'] = _greenBarAnimSpeed;
+  requestAnimationFrame(animateGreenBar); //greenBar.setAttribute('style', transformVal + '; transition-duration:350ms; width: '+greenBarWidth+'px');
 }
 
 function onSlideTouchMove(ev) {
@@ -768,8 +793,8 @@ function onSlideTouchMove(ev) {
       elParent = el.closest('[list-parent-js]'),
       slideIndex = el.dataset.index,
       slideSwiper = elParent.querySelector('.swiper-container'),
-      greenBar = elParent.querySelector('[list-line-js]');
-  lastActiveHoverBox = el;
+      greenBar = elParent.querySelector('[list-line-js]'); //lastActiveHoverBox = el;
+
   var isLastBox = false;
 
   if (typeof el.nextSibling === "undefined" | el.nextSibling == null) {
@@ -798,32 +823,78 @@ function onSlideTouchMove(ev) {
 
   if (window.innerWidth < 768) {
     greenBarWidth = 48;
+    slideWidth = 100;
   } else if (window.innerWidth <= 1024) {
     greenBarWidth = 74;
   }
 
+  var hoverBoxLeft = 0;
   var minLeft = slideOffset + 10;
-  slideOffset = (slideWidth - greenBarWidth) / 2;
-  var maxLeft = getSwiperMaxLeft(elParent, slideWidth, slideOffset);
-  var hoverBoxLeft = slideWidth * hoverBoxPosition + slideOffset;
+  slideOffset = (slideWidth - greenBarWidth) / 2; //let maxLeft = getSwiperMaxLeft(elParent, slideWidth, slideOffset);
 
-  if (isLastBox) {
-    hoverBoxLeft = el.getBoundingClientRect().left + slideOffset - 10;
+  /*hoverBoxLeft = (slideWidth*hoverBoxPosition) + slideOffset;
+  
+  if(isLastBox){
+  	hoverBoxLeft = el.getBoundingClientRect().left + slideOffset - 10;
+  }
+  	hoverBoxLeft = el.getBoundingClientRect().left + slideOffset - 10;
+  	let currentSwiperSlide = elParent.querySelector('.swiper-slide-current');*/
+
+  if (lastActiveHoverBox) {
+    hoverBoxLeft = lastActiveHoverBox.getBoundingClientRect().left + slideOffset - 6;
+  }
+  /*if(hoverBoxLeft<minLeft){
+  	//hoverBoxLeft = minLeft;
+  }
+  	if(hoverBoxLeft > maxLeft){
+  	//hoverBoxLeft = maxLeft;
+  }
+  */
+  //let transformVal = 'transform: translateX('+hoverBoxLeft+'px)';
+
+
+  _greenBarLeft = hoverBoxLeft;
+  _greenBarWidth = greenBarWidth; //console.log(ev.touches[0].pageX+' - '+_touchStartPosition+' - '+_greenBarCurrent);
+  //greenBar.setAttribute('style', transformVal + '; transition-duration:10ms; width: '+greenBarWidth+'px');
+}
+
+function animateGreenBar() {
+  if (isMouseDown) {
+    // check if mouse is down
+    requestAnimationFrame(animateGreenBar); // request 60 fps animation
+  } else {
+    console.log('Missing animation frame');
   }
 
-  hoverBoxLeft = el.getBoundingClientRect().left + slideOffset - 10;
+  _lastGreenBar.style.width = _greenBarWidth + 'px';
+  _lastGreenBar.style.transform = "translate3d(" + _greenBarLeft + "px, 0, 0)";
+}
 
-  if (hoverBoxLeft < minLeft) {
-    hoverBoxLeft = minLeft;
+function getGreenBarTranslateX(greenBar) {
+  var translateX = parseInt(getComputedStyle(greenBar, null).getPropertyValue("transform").split(",")[4]);
+  return translateX; // get translateX value
+}
+
+function easeInOutQuad(x, t, b, c, d) {
+  if ((t /= d / 2) < 1) {
+    return c / 2 * t * t + b;
+  } else {
+    return -c / 2 * (--t * (t - 2) - 1) + b;
+  }
+}
+
+function moveGreenBar(fps, duration, start, finish, handler) {
+  //position += increment;
+  time += 1 / fps;
+  position = easeInOutQuad(time * 100 / duration, time, start, finish, duration);
+
+  if (position >= finish) {
+    clearInterval(handler);
+    box.style.left = finish + "px";
+    return;
   }
 
-  if (hoverBoxLeft > maxLeft) {
-    hoverBoxLeft = maxLeft;
-  } //let transformVal = 'left: '+hoverBoxLeft+'px';
-
-
-  var transformVal = 'transform: translateX(' + hoverBoxLeft + 'px)';
-  greenBar.setAttribute('style', transformVal + '; transition-duration:0ms; width: ' + greenBarWidth + 'px');
+  box.style.left = position + "px";
 }
 
 function onSlideTouchEnd(ev) {
@@ -831,7 +902,7 @@ function onSlideTouchEnd(ev) {
       elParent = el.closest('[list-parent-js]'),
       slideIndex = el.dataset.index,
       slideSwiper = elParent.querySelector('.swiper-container'),
-      greenBar = elParent.querySelector('[list-line-js]');
+      greenBar = elParent.querySelector('[list-line-js]'); // isMouseDown = false;
 
   if (greenBar) {//greenBar.classList.remove('no_anim');
   }
@@ -873,8 +944,7 @@ function onSlideTouchEnd(ev) {
 
   hoverBoxLeft = el.getBoundingClientRect().left - slideOffset;
   var barLeft = parseInt(greenBar.style.transform.replace("translateX(", "")) + 14;
-  var transformVal = 'transform: translateX(' + barLeft + 'px)';
-  greenBar.setAttribute('style', transformVal + '; transition-duration:350ms; width: ' + greenBarWidth + 'px');
+  var transformVal = 'transform: translateX(' + barLeft + 'px)'; //greenBar.setAttribute('style', transformVal + '; transition-duration:350ms; width: '+greenBarWidth+'px');
 }
 
 function onSwiperTranslate(e, translate) {
@@ -925,24 +995,25 @@ function onSwiperTranslate(e, translate) {
   if (greenBar) {
     slideOffset = (slideWidth - greenBarWidth) / 2;
     var maxLeft = getSwiperMaxLeft(elParent, slideWidth, slideOffset);
-    var barLeft = parseInt(greenBar.style.transform.replace("translateX(", ""));
+    var barLeft = getGreenBarTranslateX(greenBar);
     hoverBoxLeft = barLeft - deltaTranslate;
     var minLeft = slideOffset;
 
     if (hoverBoxLeft < minLeft) {
       hoverBoxLeft = minLeft;
+      console.log('Set min');
     }
 
     if (hoverBoxLeft > maxLeft) {
       hoverBoxLeft = maxLeft;
-    } //let transformVal = 'left: '+hoverBoxLeft+'px';
-
-
-    var transformVal = 'transform: translateX(' + hoverBoxLeft + 'px)';
+      console.log('Set max');
+    }
 
     if (isLargeJump) {
-      console.log('Translate - ' + slideWidth + ' - ' + maxLeft);
-      greenBar.setAttribute('style', transformVal + '; transition-duration:350ms; width: ' + greenBarWidth + 'px');
+      //greenBar.classList.remove('no_anim');
+      _greenBarLeft = hoverBoxLeft;
+    } else {//greenBar.setAttribute('style', transformVal + '; transition-duration:25ms; width: '+greenBarWidth+'px');
+      //greenBar.classList.add('no_anim');
     }
   }
 }
@@ -965,19 +1036,26 @@ function getSwiperMaxLeft(elParent, slideWidth, slideOffset) {
 function tempRepositionGreenBar(elParent, hoverBoxPosition) {
   var greenBar = elParent.querySelector('[list-line-js]');
   var activeBox = elParent.querySelector('.swiper-slide.is-hover');
+  var slideWidth = 0;
+  var sliderBox = document.querySelector('.swiper-slide:not(.is-hover)');
+
+  if (sliderBox) {
+    slideWidth = sliderBox.offsetWidth + 6;
+  }
 
   if (activeBox) {
     lastActiveHoverBox = activeBox;
     var hoverBoxLeft = 0;
 
     if (greenBar) {
-      hoverBoxLeft = 236 * hoverBoxPosition + 178;
+      hoverBoxLeft = 236 * hoverBoxPosition + 83;
+      console.log('Hover position ' + hoverBoxPosition + ' - ' + slideWidth + ' - ' + greenBar.offsetWidth + ' - ' + hoverBoxLeft);
 
       if (window.innerWidth < 1449 && hoverBoxPosition == 4) {
         hoverBoxLeft -= 55;
       }
 
-      var transformVal = 'left: ' + hoverBoxLeft + 'px';
+      var transformVal = 'transform: translateX(' + hoverBoxLeft + 'px);';
       greenBar.setAttribute('style', transformVal + ';width: 190px');
     }
   }
@@ -1841,6 +1919,7 @@ function swiperCB(swiperName, sliderArrow, scrollBar) {
     allowSwipeToPrev: true,
     allowPageScroll: "auto",
     slidesPerView: 'auto',
+    watchSlidesVisibility: true,
     spaceBetween: 0,
     slidesPerGroup: 3,
     navigation: {
@@ -1854,17 +1933,6 @@ function swiperCB(swiperName, sliderArrow, scrollBar) {
         document.querySelector(swiperName).closest('.list__box-wrapper').classList.add('is-visible');
         swiperSlide[swiperSlide.length - 1].classList.add('is-last');
       },
-
-      /*slideChange: function (e, t) {
-      	let swipeWrapper = categorySwiper.$wrapperEl[0];
-      	let currentSlideIndex = categorySwiper.activeIndex;
-      		console.log('transisioning');
-      	console.log(e);
-      	console.log(t);
-      	fixPrevSlides(swipeWrapper.dataset.category, categorySwiper);
-      	fixNextSlides(swipeWrapper.dataset.category, categorySwiper);
-      		//console.log('changing slide -'+swipeWrapper.dataset.category+' - '+categorySwiper.slides.length+' - '+currentSlideIndex);
-      },*/
       slidePrevTransitionEnd: function slidePrevTransitionEnd(e) {
         var swipeWrapper = categorySwiper.$wrapperEl[0];
         renderLeftAndRight(swipeWrapper.dataset.category, categorySwiper);
@@ -1875,6 +1943,8 @@ function swiperCB(swiperName, sliderArrow, scrollBar) {
       },
       setTranslate: function setTranslate(e, translate) {
         onSwiperTranslate(e, translate);
+      },
+      setTransition: function setTransition(e, transition) {//onSwiperTranslate(e, transition);
       }
     }
   });

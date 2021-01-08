@@ -17,6 +17,7 @@ function swiperCB(swiperName, sliderArrow, scrollBar) {
 		allowSwipeToPrev: true,
 		allowPageScroll: "auto",
 		slidesPerView: 'auto',
+		watchSlidesVisibility:true,
 		spaceBetween: 0,
 		slidesPerGroup: 3,
 		navigation: {
@@ -32,18 +33,6 @@ function swiperCB(swiperName, sliderArrow, scrollBar) {
 
 				swiperSlide[swiperSlide.length - 1].classList.add('is-last');
 			},
-			/*slideChange: function (e, t) {
-				let swipeWrapper = categorySwiper.$wrapperEl[0];
-				let currentSlideIndex = categorySwiper.activeIndex;
-
-				console.log('transisioning');
-				console.log(e);
-				console.log(t);
-				fixPrevSlides(swipeWrapper.dataset.category, categorySwiper);
-				fixNextSlides(swipeWrapper.dataset.category, categorySwiper);
-
-				//console.log('changing slide -'+swipeWrapper.dataset.category+' - '+categorySwiper.slides.length+' - '+currentSlideIndex);
-			},*/
 			slidePrevTransitionEnd: function (e) {
 				let swipeWrapper = categorySwiper.$wrapperEl[0];
 
@@ -56,6 +45,9 @@ function swiperCB(swiperName, sliderArrow, scrollBar) {
 			},
 			setTranslate: function (e, translate){
 				onSwiperTranslate(e, translate);
+			},
+			setTransition:function (e, transition){
+				//onSwiperTranslate(e, transition);
 			}
 		},
 	});
