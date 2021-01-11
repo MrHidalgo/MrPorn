@@ -7,8 +7,16 @@ let _greenBarLeft = 0;
 let _greenBarWidth = 20;
 let _greenBarCurrent = 0;
 let _greenBarAnimSpeed = 0;
+let _greenBarDuration = 500;
+let _greenBarFrom = 0;
 let _lastGreenBar;
 let _touchStartPosition = 0;
+let _greenBarTimer;
+let _isGreenBarMoving = false;
+let isAnimationStarted = false;
+let maxLeft;
+let minLeft;
+let swiperSlideWidth = 230;
 
 const initHomeLazyLoad = () =>{
 	let listElm = document.querySelector('#infinite-list');
@@ -515,8 +523,8 @@ const boxHover = () => {
 				swiperSlides[i].removeEventListener('touchstart', onSlideTouchStart);
 				swiperSlides[i].addEventListener('touchstart', onSlideTouchStart, false);
 
-				swiperSlides[i].removeEventListener('touchmove', onSlideTouchMove);
-				swiperSlides[i].addEventListener('touchmove', onSlideTouchMove, false);
+				//swiperSlides[i].removeEventListener('touchmove', onSlideTouchMove);
+				//swiperSlides[i].addEventListener('touchmove', onSlideTouchMove, false);
 			}else{
 				swiperSlides[i].removeEventListener('mouseleave', onSlideLeave);
 				swiperSlides[i].addEventListener('mouseleave', onSlideLeave, false);
@@ -684,13 +692,6 @@ function onSlideTouchStart(ev){
 		isLastBox = true;
 	}
 
-	/*let currentSwiperSlide = elParent.querySelector('.swiper-slide-current');
-	if(currentSwiperSlide){
-		currentSwiperSlide.classList.remove('swiper-slide-current');
-	}
-	el.classList.add('swiper-slide-current');*/
-
-
 	let activeSlide = 0;
 	if(slideSwiper){
 		activeSlide = slideSwiper.swiper.activeIndex;
@@ -719,26 +720,34 @@ function onSlideTouchStart(ev){
 
 	let hoverBoxLeft = (slideWidth*hoverBoxPosition) + slideOffset;
 
-	if(isLastBox){
-		//hoverBoxLeft = el.getBoundingClientRect().left + slideOffset - 10;
-	}
 
-	//hoverBoxLeft = el.getBoundingClientRect().left + slideOffset - 10;
-
-
-	//let transformVal = 'left: '+hoverBoxLeft+'px';
-	let transformVal = 'transform: translateX('+hoverBoxLeft+'px)';
+	let barLeft = getGreenBarTranslateX(greenBar);
 
 	_greenBarAnimSpeed = 0;
 
 	_greenBarLeft = hoverBoxLeft;
+	if(_greenBarLeft<0){
+		_greenBarLeft = 0;
+	}else if(_greenBarLeft>maxLeft){
+		_greenBarLeft = maxLeft;
+	}
+
+
 	_greenBarWidth = greenBarWidth;
-	_greenBarCurrent = el.getBoundingClientRect.left;
 
-	greenBar.style['transition-duration'] = _greenBarAnimSpeed;
+	//greenBar.style['transition-duration'] = _greenBarAnimSpeed;
 
+	greenBar.style.width = greenBarWidth+'px';
+	if(!isAnimationStarted){
+		isAnimationStarted = true;
+		requestAnimationFrame(animateGreenBar);
+	}
 
-	requestAnimationFrame(animateGreenBar);
+	if(_greenBarTimer){
+		clearInterval(_greenBarTimer);
+	}
+
+	moveGreenBar(barLeft, hoverBoxLeft);
 
 	//greenBar.setAttribute('style', transformVal + '; transition-duration:350ms; width: '+greenBarWidth+'px');
 }
@@ -751,18 +760,10 @@ function onSlideTouchMove(ev){
 		slideSwiper = elParent.querySelector('.swiper-container'),
 		greenBar = elParent.querySelector('[list-line-js]');
 
-
-
-	//lastActiveHoverBox = el;
-
 	let isLastBox = false;
 
 	if (typeof el.nextSibling === "undefined" | el.nextSibling==null){
 		isLastBox = true;
-	}
-
-	if(greenBar){
-		//greenBar.classList.add('no_anim');
 	}
 
 
@@ -793,39 +794,14 @@ function onSlideTouchMove(ev){
 	}
 	let hoverBoxLeft = 0;
 
-	let minLeft = slideOffset+10;
-
 	slideOffset = (slideWidth - greenBarWidth)/2;
 
-	//let maxLeft = getSwiperMaxLeft(elParent, slideWidth, slideOffset);
-
-
-	/*hoverBoxLeft = (slideWidth*hoverBoxPosition) + slideOffset;
-
-
-	if(isLastBox){
-		hoverBoxLeft = el.getBoundingClientRect().left + slideOffset - 10;
-	}
-
-	hoverBoxLeft = el.getBoundingClientRect().left + slideOffset - 10;
-
-	let currentSwiperSlide = elParent.querySelector('.swiper-slide-current');*/
 	if(lastActiveHoverBox){
 		hoverBoxLeft = lastActiveHoverBox.getBoundingClientRect().left + slideOffset-6;
 	}
 
 
-
-	/*if(hoverBoxLeft<minLeft){
-		//hoverBoxLeft = minLeft;
-	}
-
-	if(hoverBoxLeft > maxLeft){
-		//hoverBoxLeft = maxLeft;
-	}
-*/
-	//let transformVal = 'transform: translateX('+hoverBoxLeft+'px)';
-	_greenBarLeft = hoverBoxLeft;
+	//_greenBarLeft = hoverBoxLeft;
 	_greenBarWidth = greenBarWidth;
 
 
@@ -841,8 +817,10 @@ function animateGreenBar(){
 	}else{
 		console.log('Missing animation frame');
 	}
+	if(_greenBarLeft<0){
+		_greenBarLeft = minLeft;
+	}
 
-	_lastGreenBar.style.width = _greenBarWidth+'px';
 	_lastGreenBar.style.transform = "translate3d(" + _greenBarLeft + "px, 0, 0)";
 }
 function getGreenBarTranslateX(greenBar) {
@@ -860,17 +838,46 @@ function easeInOutQuad(x, t, b, c, d) {
 	}
 }
 
-function moveGreenBar(fps, duration, start, finish, handler) {
-	//position += increment;
-	time += 1 / fps;
-	position = easeInOutQuad(time * 100 / duration, time, start, finish, duration);
+function easeInOutQuart(t, b, c, d) {
+	if ((t /= d / 2) < 1) return c / 2 * t * t * t * t + b;
+	return -c / 2 * ((t -= 2) * t * t * t - 2) + b;
+}
 
-	if (position >= finish) {
-		clearInterval(handler);
-		box.style.left = finish + "px";
+function moveGreenBar(from, to) {
+	_greenBarFrom = from;
+	let start = new Date().getTime();
+
+
+	if(to<0){
+		clearInterval(_greenBarTimer);
 		return;
 	}
-	box.style.left = position + "px";
+
+	_greenBarTimer = setInterval(function() {
+		var time = new Date().getTime() - start;
+		var x = easeInOutQuart(time, _greenBarFrom, to - _greenBarFrom, _greenBarDuration);
+
+		if(x<0){
+			clearInterval(_greenBarTimer);
+		}else if(x>maxLeft){
+			clearInterval(_greenBarTimer);
+		}
+		_greenBarLeft = x;
+		if (time >= _greenBarDuration) clearInterval(_greenBarTimer);
+	}, 1000 / 60);
+	//rect.setAttribute('x', from);
+
+	if(_greenBarLeft>maxLeft){
+		_greenBarLeft = maxLeft;
+	}
+
+	if(_greenBarLeft<0){
+		_greenBarLeft = minLeft;
+	}
+
+	if(_greenBarFrom>0){
+		_greenBarLeft = _greenBarFrom;
+	}
 }
 
 function onSlideTouchEnd(ev){
@@ -909,27 +916,27 @@ function onSlideTouchEnd(ev){
 		greenBarWidth = 34;
 	}
 
-	let activeSlide = 0;
-	if(slideSwiper){
-		activeSlide = slideSwiper.swiper.activeIndex;
+	console.log('Bar width '+greenBarWidth+' - '+slideSwiper.swiper.translate);
+
+	//hoverBoxLeft = ((slideIndex*slideWidth) + translate)+slideOffset-12;
+
+	if(!_isGreenBarMoving){
+		let barLeft = getGreenBarTranslateX(greenBar);
+		let hoverBoxLeft = ((slideIndex*slideWidth) + slideSwiper.swiper.translate)+slideOffset-12;
+
+		if(hoverBoxLeft<0){
+			hoverBoxLeft = minLeft;
+		}
+		if(hoverBoxLeft>0){
+			if(_greenBarTimer){
+				clearInterval(_greenBarTimer);
+			}
+
+			moveGreenBar(barLeft, hoverBoxLeft);
+		}
 	}
+	greenBar.style.width = greenBarWidth+'px';
 
-	let hoverBoxPosition = (slideIndex - activeSlide);
-	let hoverBoxLeft = (slideWidth*hoverBoxPosition) + slideOffset;
-
-	slideOffset = (slideWidth - greenBarWidth)/2;
-
-
-	if(isLastBox){
-		hoverBoxLeft = el.getBoundingClientRect().left + slideOffset - 10;
-	}
-	hoverBoxLeft = el.getBoundingClientRect().left - slideOffset;
-
-
-	let barLeft = parseInt(greenBar.style.transform.replace("translateX(", ""))+14;
-
-	let transformVal = 'transform: translateX('+barLeft+'px)';
-	//greenBar.setAttribute('style', transformVal + '; transition-duration:350ms; width: '+greenBarWidth+'px');
 }
 
 function onSwiperTranslate(e, translate){
@@ -948,6 +955,10 @@ function onSwiperTranslate(e, translate){
 		slideSwiper = elParent.querySelector('.swiper-container'),
 		greenBar = elParent.querySelector('[list-line-js]');
 
+	if(!_isGreenBarMoving){
+		_isGreenBarMoving = true;
+	}
+
 
 	let translateDiff = lastTranslate - translate;
 	translateDiff = +translateDiff;
@@ -958,7 +969,7 @@ function onSwiperTranslate(e, translate){
 		translateDiff = -translateDiff;
 	}
 	let isLargeJump = false;
-	if(translateDiff>5){
+	if(translateDiff>15){
 		isLargeJump = true;
 	}
 	lastTranslate = translate;
@@ -984,51 +995,55 @@ function onSwiperTranslate(e, translate){
 
 		slideOffset = (slideWidth - greenBarWidth)/2;
 
-		let maxLeft = getSwiperMaxLeft(elParent, slideWidth, slideOffset);
 
 		let barLeft = getGreenBarTranslateX(greenBar);
 
 
 
-		hoverBoxLeft = barLeft-deltaTranslate;
+		//hoverBoxLeft = barLeft-deltaTranslate;
 
-		let minLeft = slideOffset;
-
+		hoverBoxLeft = ((slideIndex*slideWidth) + translate)+slideOffset-12;
 
 		if(hoverBoxLeft < minLeft){
 			hoverBoxLeft = minLeft;
-			console.log('Set min');
 		}
 
 		if(hoverBoxLeft > maxLeft){
 			hoverBoxLeft = maxLeft;
-			console.log('Set max');
 		}
 
 		if(isLargeJump){
-			//greenBar.classList.remove('no_anim');
-			_greenBarLeft = hoverBoxLeft;
+			console.log('large jump '+translate);
+			_greenBarDuration = 500;
+			_isGreenBarMoving = false;
+
+			if(barLeft<0){
+				barLeft = 0;
+			}
+			if(hoverBoxLeft<0){
+				hoverBoxLeft = minLeft;
+			}
+
+			if(_greenBarTimer){
+				clearInterval(_greenBarTimer);
+			}
+
+			moveGreenBar(barLeft, hoverBoxLeft+12);
+
+			//_greenBarLeft = hoverBoxLeft;
 		}else{
-			//greenBar.setAttribute('style', transformVal + '; transition-duration:25ms; width: '+greenBarWidth+'px');
-			//greenBar.classList.add('no_anim');
+			if(_greenBarTimer){
+				clearInterval(_greenBarTimer);
+			}
+			_greenBarLeft = hoverBoxLeft;
+			if(_greenBarLeft<0){
+				_greenBarLeft = minLeft;
+			}else if(_greenBarLeft>maxLeft){
+				_greenBarLeft = maxLeft;
+			}
 		}
 
 	}
-}
-
-function getSwiperMaxLeft(elParent, slideWidth, slideOffset){
-	let swiperWidth = elParent.getBoundingClientRect().width;
-	let halfSlideWidth = swiperWidth%slideWidth;
-	let numberOfSlides = parseInt(swiperWidth / slideWidth);
-
-	let maxLeft = 0;
-
-	if(halfSlideWidth> (slideWidth*0.6)){
-		maxLeft = (slideWidth * (numberOfSlides+1))-slideOffset-10-7.5;
-	}else{
-		maxLeft = (slideWidth * numberOfSlides)-slideOffset-10-7.5;
-	}
-	return maxLeft;
 }
 
 function tempRepositionGreenBar(elParent, hoverBoxPosition){
@@ -1074,32 +1089,18 @@ function onParentSideLeave(ev){
 }
 
 function onShowBannerEnter(__ev){
-	/*let moreBox = __ev.target;
-	let siteList = moreBox.closest('.list__box-wrapper');
-	if(siteList.classList.contains('is-open')){
-		showBanner(__ev.target);
-	}*/
-
-	/*if(!currentBannerTimeout){
-		clearTimeout(currentBannerTimeout);
-	}*/
-
 	const el = lastActiveHoverBox,
 		elParent = el.closest('[list-parent-js]'),
 		greenBar = elParent.querySelector('[list-line-js]');
 
-	if(greenBar){
-		//greenBar.classList.remove('no_anim');
+	if(currentBannerTimeout){
+		clearTimeout(currentBannerTimeout);
 	}
-
 
 	currentBannerTimeout = window.setTimeout(function(){
 		showBanner(__ev.target);
 	}, 1000);
 
-	/*currentBannerTimeout= setTimeout(function (){
-		showBanner(__ev.target);
-	}, 1000);*/
 }
 
 function onShowBannerLeave(__ev){

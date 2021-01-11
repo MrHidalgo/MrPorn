@@ -188,7 +188,7 @@
 			//@include transition(width, transform, left);
 
 			&.no_anim{
-				transition:none;
+				transition:width 0.35s ease-in-out;
 			}
 
 			@include respond('ipad_pro_landscape'){
@@ -222,7 +222,8 @@
 			@include adaptive(767) {
 				width: 19px;
 				left: 0;
-				transform: translateX(50px);
+				transform: translateX(45px);
+				transition: width 0.35s ease-in-out;
 
 				/*transition: width 0.35s ease-in-out, transform 0.35s ease-in-out;
 				transition-duration: 350ms;*/

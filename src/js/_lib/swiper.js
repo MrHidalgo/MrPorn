@@ -32,6 +32,30 @@ function swiperCB(swiperName, sliderArrow, scrollBar) {
 				document.querySelector(swiperName).closest('.list__box-wrapper').classList.add('is-visible');
 
 				swiperSlide[swiperSlide.length - 1].classList.add('is-last');
+
+
+
+				let visibleSlides = document.querySelectorAll('[list-parent-js]')[0].querySelectorAll('.swiper-slide-visible').length;
+				let greenBarWidth = 74;
+				if(window.innerWidth<1279){
+					swiperSlideWidth = 100;
+				}else if(window.innerWidth<=1024){
+					swiperSlideWidth = 150;
+				}else if(window.innerWidth<768){
+					swiperSlideWidth = 195;
+				}
+
+				if(window.innerWidth<768){
+					greenBarWidth = 48;
+
+				}else if(window.innerWidth<=1024){
+					greenBarWidth = 74;
+				}
+
+
+				maxLeft = (visibleSlides-1)*(swiperSlideWidth+6) + ((swiperSlideWidth-greenBarWidth)/2)+12;
+				minLeft = (swiperSlideWidth/2) - ((swiperSlideWidth-greenBarWidth)/2);
+
 			},
 			slidePrevTransitionEnd: function (e) {
 				let swipeWrapper = categorySwiper.$wrapperEl[0];
@@ -45,9 +69,6 @@ function swiperCB(swiperName, sliderArrow, scrollBar) {
 			},
 			setTranslate: function (e, translate){
 				onSwiperTranslate(e, translate);
-			},
-			setTransition:function (e, transition){
-				//onSwiperTranslate(e, transition);
 			}
 		},
 	});

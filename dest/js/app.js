@@ -270,10 +270,20 @@ var _greenBarLeft = 0;
 var _greenBarWidth = 20;
 var _greenBarCurrent = 0;
 var _greenBarAnimSpeed = 0;
+var _greenBarDuration = 500;
+var _greenBarFrom = 0;
 
 var _lastGreenBar;
 
 var _touchStartPosition = 0;
+
+var _greenBarTimer;
+
+var _isGreenBarMoving = false;
+var isAnimationStarted = false;
+var maxLeft;
+var minLeft;
+var swiperSlideWidth = 230;
 
 var initHomeLazyLoad = function initHomeLazyLoad() {
   var listElm = document.querySelector('#infinite-list');
@@ -585,9 +595,8 @@ var boxHover = function boxHover() {
         swiperSlides[i].removeEventListener('touchend', onSlideTouchEnd);
         swiperSlides[i].addEventListener('touchend', onSlideTouchEnd, false);
         swiperSlides[i].removeEventListener('touchstart', onSlideTouchStart);
-        swiperSlides[i].addEventListener('touchstart', onSlideTouchStart, false);
-        swiperSlides[i].removeEventListener('touchmove', onSlideTouchMove);
-        swiperSlides[i].addEventListener('touchmove', onSlideTouchMove, false);
+        swiperSlides[i].addEventListener('touchstart', onSlideTouchStart, false); //swiperSlides[i].removeEventListener('touchmove', onSlideTouchMove);
+        //swiperSlides[i].addEventListener('touchmove', onSlideTouchMove, false);
       } else {
         swiperSlides[i].removeEventListener('mouseleave', onSlideLeave);
         swiperSlides[i].addEventListener('mouseleave', onSlideLeave, false);
@@ -741,12 +750,6 @@ function onSlideTouchStart(ev) {
   if (typeof el.nextSibling === "undefined" | el.nextSibling == null) {
     isLastBox = true;
   }
-  /*let currentSwiperSlide = elParent.querySelector('.swiper-slide-current');
-  if(currentSwiperSlide){
-  	currentSwiperSlide.classList.remove('swiper-slide-current');
-  }
-  el.classList.add('swiper-slide-current');*/
-
 
   var activeSlide = 0;
 
@@ -773,19 +776,30 @@ function onSlideTouchStart(ev) {
 
   slideOffset = (slideWidth - greenBarWidth) / 2;
   var hoverBoxLeft = slideWidth * hoverBoxPosition + slideOffset;
-
-  if (isLastBox) {//hoverBoxLeft = el.getBoundingClientRect().left + slideOffset - 10;
-  } //hoverBoxLeft = el.getBoundingClientRect().left + slideOffset - 10;
-  //let transformVal = 'left: '+hoverBoxLeft+'px';
-
-
-  var transformVal = 'transform: translateX(' + hoverBoxLeft + 'px)';
+  var barLeft = getGreenBarTranslateX(greenBar);
   _greenBarAnimSpeed = 0;
   _greenBarLeft = hoverBoxLeft;
-  _greenBarWidth = greenBarWidth;
-  _greenBarCurrent = el.getBoundingClientRect.left;
-  greenBar.style['transition-duration'] = _greenBarAnimSpeed;
-  requestAnimationFrame(animateGreenBar); //greenBar.setAttribute('style', transformVal + '; transition-duration:350ms; width: '+greenBarWidth+'px');
+
+  if (_greenBarLeft < 0) {
+    _greenBarLeft = 0;
+  } else if (_greenBarLeft > maxLeft) {
+    _greenBarLeft = maxLeft;
+  }
+
+  _greenBarWidth = greenBarWidth; //greenBar.style['transition-duration'] = _greenBarAnimSpeed;
+
+  greenBar.style.width = greenBarWidth + 'px';
+
+  if (!isAnimationStarted) {
+    isAnimationStarted = true;
+    requestAnimationFrame(animateGreenBar);
+  }
+
+  if (_greenBarTimer) {
+    clearInterval(_greenBarTimer);
+  }
+
+  moveGreenBar(barLeft, hoverBoxLeft); //greenBar.setAttribute('style', transformVal + '; transition-duration:350ms; width: '+greenBarWidth+'px');
 }
 
 function onSlideTouchMove(ev) {
@@ -793,15 +807,11 @@ function onSlideTouchMove(ev) {
       elParent = el.closest('[list-parent-js]'),
       slideIndex = el.dataset.index,
       slideSwiper = elParent.querySelector('.swiper-container'),
-      greenBar = elParent.querySelector('[list-line-js]'); //lastActiveHoverBox = el;
-
+      greenBar = elParent.querySelector('[list-line-js]');
   var isLastBox = false;
 
   if (typeof el.nextSibling === "undefined" | el.nextSibling == null) {
     isLastBox = true;
-  }
-
-  if (greenBar) {//greenBar.classList.add('no_anim');
   }
 
   var activeSlide = 0;
@@ -829,31 +839,13 @@ function onSlideTouchMove(ev) {
   }
 
   var hoverBoxLeft = 0;
-  var minLeft = slideOffset + 10;
-  slideOffset = (slideWidth - greenBarWidth) / 2; //let maxLeft = getSwiperMaxLeft(elParent, slideWidth, slideOffset);
-
-  /*hoverBoxLeft = (slideWidth*hoverBoxPosition) + slideOffset;
-  
-  if(isLastBox){
-  	hoverBoxLeft = el.getBoundingClientRect().left + slideOffset - 10;
-  }
-  	hoverBoxLeft = el.getBoundingClientRect().left + slideOffset - 10;
-  	let currentSwiperSlide = elParent.querySelector('.swiper-slide-current');*/
+  slideOffset = (slideWidth - greenBarWidth) / 2;
 
   if (lastActiveHoverBox) {
     hoverBoxLeft = lastActiveHoverBox.getBoundingClientRect().left + slideOffset - 6;
-  }
-  /*if(hoverBoxLeft<minLeft){
-  	//hoverBoxLeft = minLeft;
-  }
-  	if(hoverBoxLeft > maxLeft){
-  	//hoverBoxLeft = maxLeft;
-  }
-  */
-  //let transformVal = 'transform: translateX('+hoverBoxLeft+'px)';
+  } //_greenBarLeft = hoverBoxLeft;
 
 
-  _greenBarLeft = hoverBoxLeft;
   _greenBarWidth = greenBarWidth; //console.log(ev.touches[0].pageX+' - '+_touchStartPosition+' - '+_greenBarCurrent);
   //greenBar.setAttribute('style', transformVal + '; transition-duration:10ms; width: '+greenBarWidth+'px');
 }
@@ -866,7 +858,10 @@ function animateGreenBar() {
     console.log('Missing animation frame');
   }
 
-  _lastGreenBar.style.width = _greenBarWidth + 'px';
+  if (_greenBarLeft < 0) {
+    _greenBarLeft = minLeft;
+  }
+
   _lastGreenBar.style.transform = "translate3d(" + _greenBarLeft + "px, 0, 0)";
 }
 
@@ -883,18 +878,45 @@ function easeInOutQuad(x, t, b, c, d) {
   }
 }
 
-function moveGreenBar(fps, duration, start, finish, handler) {
-  //position += increment;
-  time += 1 / fps;
-  position = easeInOutQuad(time * 100 / duration, time, start, finish, duration);
+function easeInOutQuart(t, b, c, d) {
+  if ((t /= d / 2) < 1) return c / 2 * t * t * t * t + b;
+  return -c / 2 * ((t -= 2) * t * t * t - 2) + b;
+}
 
-  if (position >= finish) {
-    clearInterval(handler);
-    box.style.left = finish + "px";
+function moveGreenBar(from, to) {
+  _greenBarFrom = from;
+  var start = new Date().getTime();
+
+  if (to < 0) {
+    clearInterval(_greenBarTimer);
     return;
   }
 
-  box.style.left = position + "px";
+  _greenBarTimer = setInterval(function () {
+    var time = new Date().getTime() - start;
+    var x = easeInOutQuart(time, _greenBarFrom, to - _greenBarFrom, _greenBarDuration);
+
+    if (x < 0) {
+      clearInterval(_greenBarTimer);
+    } else if (x > maxLeft) {
+      clearInterval(_greenBarTimer);
+    }
+
+    _greenBarLeft = x;
+    if (time >= _greenBarDuration) clearInterval(_greenBarTimer);
+  }, 1000 / 60); //rect.setAttribute('x', from);
+
+  if (_greenBarLeft > maxLeft) {
+    _greenBarLeft = maxLeft;
+  }
+
+  if (_greenBarLeft < 0) {
+    _greenBarLeft = minLeft;
+  }
+
+  if (_greenBarFrom > 0) {
+    _greenBarLeft = _greenBarFrom;
+  }
 }
 
 function onSlideTouchEnd(ev) {
@@ -928,23 +950,26 @@ function onSlideTouchEnd(ev) {
     greenBarWidth = 34;
   }
 
-  var activeSlide = 0;
+  console.log('Bar width ' + greenBarWidth + ' - ' + slideSwiper.swiper.translate); //hoverBoxLeft = ((slideIndex*slideWidth) + translate)+slideOffset-12;
 
-  if (slideSwiper) {
-    activeSlide = slideSwiper.swiper.activeIndex;
+  if (!_isGreenBarMoving) {
+    var barLeft = getGreenBarTranslateX(greenBar);
+    var hoverBoxLeft = slideIndex * slideWidth + slideSwiper.swiper.translate + slideOffset - 12;
+
+    if (hoverBoxLeft < 0) {
+      hoverBoxLeft = minLeft;
+    }
+
+    if (hoverBoxLeft > 0) {
+      if (_greenBarTimer) {
+        clearInterval(_greenBarTimer);
+      }
+
+      moveGreenBar(barLeft, hoverBoxLeft);
+    }
   }
 
-  var hoverBoxPosition = slideIndex - activeSlide;
-  var hoverBoxLeft = slideWidth * hoverBoxPosition + slideOffset;
-  slideOffset = (slideWidth - greenBarWidth) / 2;
-
-  if (isLastBox) {
-    hoverBoxLeft = el.getBoundingClientRect().left + slideOffset - 10;
-  }
-
-  hoverBoxLeft = el.getBoundingClientRect().left - slideOffset;
-  var barLeft = parseInt(greenBar.style.transform.replace("translateX(", "")) + 14;
-  var transformVal = 'transform: translateX(' + barLeft + 'px)'; //greenBar.setAttribute('style', transformVal + '; transition-duration:350ms; width: '+greenBarWidth+'px');
+  greenBar.style.width = greenBarWidth + 'px';
 }
 
 function onSwiperTranslate(e, translate) {
@@ -961,6 +986,11 @@ function onSwiperTranslate(e, translate) {
       slideIndex = el.dataset.index,
       slideSwiper = elParent.querySelector('.swiper-container'),
       greenBar = elParent.querySelector('[list-line-js]');
+
+  if (!_isGreenBarMoving) {
+    _isGreenBarMoving = true;
+  }
+
   var translateDiff = lastTranslate - translate;
   translateDiff = +translateDiff;
   var deltaTranslate = translateDiff;
@@ -971,7 +1001,7 @@ function onSwiperTranslate(e, translate) {
 
   var isLargeJump = false;
 
-  if (translateDiff > 5) {
+  if (translateDiff > 15) {
     isLargeJump = true;
   }
 
@@ -994,43 +1024,50 @@ function onSwiperTranslate(e, translate) {
 
   if (greenBar) {
     slideOffset = (slideWidth - greenBarWidth) / 2;
-    var maxLeft = getSwiperMaxLeft(elParent, slideWidth, slideOffset);
-    var barLeft = getGreenBarTranslateX(greenBar);
-    hoverBoxLeft = barLeft - deltaTranslate;
-    var minLeft = slideOffset;
+    var barLeft = getGreenBarTranslateX(greenBar); //hoverBoxLeft = barLeft-deltaTranslate;
+
+    hoverBoxLeft = slideIndex * slideWidth + translate + slideOffset - 12;
 
     if (hoverBoxLeft < minLeft) {
       hoverBoxLeft = minLeft;
-      console.log('Set min');
     }
 
     if (hoverBoxLeft > maxLeft) {
       hoverBoxLeft = maxLeft;
-      console.log('Set max');
     }
 
     if (isLargeJump) {
-      //greenBar.classList.remove('no_anim');
+      console.log('large jump ' + translate);
+      _greenBarDuration = 500;
+      _isGreenBarMoving = false;
+
+      if (barLeft < 0) {
+        barLeft = 0;
+      }
+
+      if (hoverBoxLeft < 0) {
+        hoverBoxLeft = minLeft;
+      }
+
+      if (_greenBarTimer) {
+        clearInterval(_greenBarTimer);
+      }
+
+      moveGreenBar(barLeft, hoverBoxLeft + 12); //_greenBarLeft = hoverBoxLeft;
+    } else {
+      if (_greenBarTimer) {
+        clearInterval(_greenBarTimer);
+      }
+
       _greenBarLeft = hoverBoxLeft;
-    } else {//greenBar.setAttribute('style', transformVal + '; transition-duration:25ms; width: '+greenBarWidth+'px');
-      //greenBar.classList.add('no_anim');
+
+      if (_greenBarLeft < 0) {
+        _greenBarLeft = minLeft;
+      } else if (_greenBarLeft > maxLeft) {
+        _greenBarLeft = maxLeft;
+      }
     }
   }
-}
-
-function getSwiperMaxLeft(elParent, slideWidth, slideOffset) {
-  var swiperWidth = elParent.getBoundingClientRect().width;
-  var halfSlideWidth = swiperWidth % slideWidth;
-  var numberOfSlides = parseInt(swiperWidth / slideWidth);
-  var maxLeft = 0;
-
-  if (halfSlideWidth > slideWidth * 0.6) {
-    maxLeft = slideWidth * (numberOfSlides + 1) - slideOffset - 10 - 7.5;
-  } else {
-    maxLeft = slideWidth * numberOfSlides - slideOffset - 10 - 7.5;
-  }
-
-  return maxLeft;
 }
 
 function tempRepositionGreenBar(elParent, hoverBoxPosition) {
@@ -1078,28 +1115,17 @@ function onParentSideLeave(ev) {
 }
 
 function onShowBannerEnter(__ev) {
-  /*let moreBox = __ev.target;
-  let siteList = moreBox.closest('.list__box-wrapper');
-  if(siteList.classList.contains('is-open')){
-  	showBanner(__ev.target);
-  }*/
-
-  /*if(!currentBannerTimeout){
-  	clearTimeout(currentBannerTimeout);
-  }*/
   var el = lastActiveHoverBox,
       elParent = el.closest('[list-parent-js]'),
       greenBar = elParent.querySelector('[list-line-js]');
 
-  if (greenBar) {//greenBar.classList.remove('no_anim');
+  if (currentBannerTimeout) {
+    clearTimeout(currentBannerTimeout);
   }
 
   currentBannerTimeout = window.setTimeout(function () {
     showBanner(__ev.target);
   }, 1000);
-  /*currentBannerTimeout= setTimeout(function (){
-  	showBanner(__ev.target);
-  }, 1000);*/
 }
 
 function onShowBannerLeave(__ev) {
@@ -1932,6 +1958,25 @@ function swiperCB(swiperName, sliderArrow, scrollBar) {
         document.querySelector(swiperName).closest('.list__box-wrapper').style.opacity = '1';
         document.querySelector(swiperName).closest('.list__box-wrapper').classList.add('is-visible');
         swiperSlide[swiperSlide.length - 1].classList.add('is-last');
+        var visibleSlides = document.querySelectorAll('[list-parent-js]')[0].querySelectorAll('.swiper-slide-visible').length;
+        var greenBarWidth = 74;
+
+        if (window.innerWidth < 1279) {
+          swiperSlideWidth = 100;
+        } else if (window.innerWidth <= 1024) {
+          swiperSlideWidth = 150;
+        } else if (window.innerWidth < 768) {
+          swiperSlideWidth = 195;
+        }
+
+        if (window.innerWidth < 768) {
+          greenBarWidth = 48;
+        } else if (window.innerWidth <= 1024) {
+          greenBarWidth = 74;
+        }
+
+        maxLeft = (visibleSlides - 1) * (swiperSlideWidth + 6) + (swiperSlideWidth - greenBarWidth) / 2 + 12;
+        minLeft = swiperSlideWidth / 2 - (swiperSlideWidth - greenBarWidth) / 2;
       },
       slidePrevTransitionEnd: function slidePrevTransitionEnd(e) {
         var swipeWrapper = categorySwiper.$wrapperEl[0];
@@ -1943,8 +1988,6 @@ function swiperCB(swiperName, sliderArrow, scrollBar) {
       },
       setTranslate: function setTranslate(e, translate) {
         onSwiperTranslate(e, translate);
-      },
-      setTransition: function setTransition(e, transition) {//onSwiperTranslate(e, transition);
       }
     }
   });
@@ -2797,19 +2840,6 @@ var ajaxAdminEndpoint = '/wp-admin/admin-ajax.php';
 
   var skipModal = function skipModal() {
     var skipBtns = document.querySelectorAll('[spec-skip-js]');
-    /*for(let i = 0, len = skipBtns.length; i < len; i++) {
-    	skipBtns[i].addEventListener('click', (ev) => {
-    		const el = ev.currentTarget,
-    			elID = el.getAttribute('data-id'),
-    			elParent = el.closest('.list__box-wrapper');
-    			setTimeout(() => {
-    			el.closest('.list__specification').querySelector('.list__specification-close').click();
-    		}, 0);
-    			if(elParent.querySelector('.list__specification[data-id="' + (Number(elID) + 1) + '"]')) {
-    			elParent.querySelector('.list__specification[data-id="' + (Number(elID) + 1) + '"]').classList.add('is-open');
-    		}
-    		}, false);
-    }*/
   };
 
   function onSkip(el) {

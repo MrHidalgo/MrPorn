@@ -767,23 +767,6 @@ const ajaxAdminEndpoint = '/wp-admin/admin-ajax.php';
 
 	const skipModal = () => {
 		const skipBtns = document.querySelectorAll('[spec-skip-js]');
-
-		/*for(let i = 0, len = skipBtns.length; i < len; i++) {
-			skipBtns[i].addEventListener('click', (ev) => {
-				const el = ev.currentTarget,
-					elID = el.getAttribute('data-id'),
-					elParent = el.closest('.list__box-wrapper');
-
-				setTimeout(() => {
-					el.closest('.list__specification').querySelector('.list__specification-close').click();
-				}, 0);
-
-				if(elParent.querySelector('.list__specification[data-id="' + (Number(elID) + 1) + '"]')) {
-					elParent.querySelector('.list__specification[data-id="' + (Number(elID) + 1) + '"]').classList.add('is-open');
-				}
-
-			}, false);
-		}*/
 	};
 
 	function onSkip(el){
