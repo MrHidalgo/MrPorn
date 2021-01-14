@@ -1730,6 +1730,7 @@ var loadLoginForm = function loadLoginForm() {
         e.setAttribute('id', 'login_popup');
         e.innerHTML = loginHtml;
         document.body.appendChild(e);
+        renderLoginForm();
       });
     }
   }
@@ -1740,6 +1741,8 @@ var renderLoginForm = function renderLoginForm() {
     if (document.querySelector('#login_popup')) {
       document.querySelector('#login_popup').classList.toggle('is-open');
       initLoginScripts();
+    } else {
+      loadLoginForm();
     }
   }
 };
