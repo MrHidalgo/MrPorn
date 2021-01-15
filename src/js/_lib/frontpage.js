@@ -51,7 +51,7 @@ const loadHomeData = () => {
 		url = '/wp-json/mpg/home/?lang='+currentLang;
 	}
 
-	homeData = getWithExpiry("homepage_data_"+currentLang);
+	homeData = getWithExpiry("homepage_data_"+dataTime+'_'+currentLang);
 
 	if(homeData){
 		renderAllOtherCategories();
@@ -64,7 +64,7 @@ const loadHomeData = () => {
 				if(homeData.code=='rest_login_required'){
 
 				}else{
-					setWithExpiry("homepage_data_"+currentLang, homeData, 30*60*1000);
+					setWithExpiry("homepage_data_"+dataTime+'_'+currentLang, homeData, 30*60*1000);
 				}
 
 				//renderAllOtherCategories();
@@ -180,6 +180,11 @@ function renderSiteBottomBanner(category, index){
 		let siteLogo = siteItem.logo;
 
 		let tagLIne = siteItem.tagline;
+		if(tagLIne!=''){
+			tagLIne = tagLIne.replaceAll("\'", "'");
+			tagLIne = tagLIne.replaceAll("\\'", "'");
+		}
+
 		let siteUrl = siteItem.url;
 
 		var bannerRight = '';
@@ -299,6 +304,10 @@ function renderSkipSiteBottomBanner(category, index){
 		let siteLogo = siteItem.logo;
 
 			let tagLIne = siteItem.tagline;
+		if(tagLIne!=''){
+			tagLIne = tagLIne.replaceAll("\'", "'");
+			tagLIne = tagLIne.replaceAll("\\'", "'");
+		}
 		let siteExternalUrl = siteItem.url;
 		let siteLink = siteItem.link;
 
@@ -441,6 +450,11 @@ function renderSiteCategory(categoryIndex){
 			'</div>';
 	});
 
+	let categoryTagLine = categoryData.tagline;
+	if(categoryTagLine!=''){
+		categoryTagLine = categoryTagLine.replaceAll("\'", "'");
+		categoryTagLine = categoryTagLine.replaceAll("\\'", "'");
+	}
 
 
 
@@ -449,7 +463,7 @@ function renderSiteCategory(categoryIndex){
 										'<div class="list__info">'+
 											'<div class="list__info-circle"><img src="'+categoryLogo+'" alt=""/></div>'+
 											'<div class="category_title">'+
-												'<a href="'+categoryData.link+'" hreflang="'+currentLang+'">'+categoryData.title+'</a><span>'+categoryData.tagline+'</span>'+
+												'<a href="'+categoryData.link+'" hreflang="'+currentLang+'">'+categoryData.title+'</a><span>'+categoryTagLine+'</span>'+
 											'</div>'+
 										'</div>'+
                     '<a class="list__btn nav_link" href="'+categoryData.link+'" hreflang="'+currentLang+'">SEE&nbsp;<span>'+categoryData.count+' MORE</span><i class="icon-font icon-arrow-angle"></i></a>'+
@@ -1062,7 +1076,6 @@ function tempRepositionGreenBar(elParent, hoverBoxPosition){
 		if(greenBar){
 
 			hoverBoxLeft = (236*hoverBoxPosition) + 83;
-			console.log('Hover position '+hoverBoxPosition+ ' - '+slideWidth+' - ' +greenBar.offsetWidth+' - '+hoverBoxLeft);
 
 			if(window.innerWidth<1449 && hoverBoxPosition == 4){
 				hoverBoxLeft -= 55;
@@ -1224,7 +1237,7 @@ function initWebWorker(){
 
 	let currentLang = document.documentElement.getAttribute('lang');
 
-	homeData = getWithExpiry("homepage_data_"+currentLang);
+	homeData = getWithExpiry("homepage_data_"+dataTime+'_'+currentLang);
 	if(homeData){
 		if(document.body.classList.contains('home')) {
 			renderAllOtherCategories();

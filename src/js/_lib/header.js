@@ -42,6 +42,7 @@ const renderFavourites = () => {
 	isLoggedUser = getCookieMpgCookie('logged_username');
 
 	if(isLoggedUser==''){
+		loadLoginForm();
 		return;
 	}
 
@@ -339,7 +340,7 @@ const onSortToggle = (sortToggle) => {
 const loadLoginForm = () => {
 	if(!isLoggedUser){
 		if(!document.querySelector('#login_popup')){
-			let loginHtml = '<div class="login_container">'+
+			let htmlLogin = '<div class="login_container">'+
         '<div class="login_container_inner user_container_popup login">'+
             '<div class="user_tab_login">'+
                 '<div class="login_form">'+
@@ -377,7 +378,7 @@ const loadLoginForm = () => {
                     '</div>'+
                 '</div>'+
 
-                '<img class="login_banner" src="<?= get_template_directory_uri() ?>/images/bg_login.png"/>'+
+                '<img class="login_banner" src="/wp-content/themes/mpg/images/bg_login.png"/>'+
             '</div>'+
             '<div class="user_tab_forgot">'+
                 '<div class="login_form">'+
@@ -415,7 +416,7 @@ const loadLoginForm = () => {
                     '</div>'+
                 '</div>'+
 
-                '<img class="login_banner" src="<?= get_template_directory_uri() ?>/images/bg_forgot.png"/>'+
+                '<img class="login_banner" src="/wp-content/themes/mpg/images/bg_forgot.png"/>'+
             '</div>'+
             '<div class="user_tab_join">'+
                 '<div class="login_form">'+
@@ -454,7 +455,7 @@ const loadLoginForm = () => {
                     '</div>'+
                 '</div>'+
 
-                '<img class="login_banner" src="<?= get_template_directory_uri() ?>/images/bg_signup.png"/>'+
+                '<img class="login_banner" src="/wp-content/themes/mpg/images/bg_signup.png"/>'+
             '</div>'+
         '</div>'+
     '</div>';
@@ -476,13 +477,15 @@ const loadLoginForm = () => {
 				renderLoginForm();
 			});*/
 
+			let loginHtml = '<a class="login_popup_close"><img src="'+themeBase+'images/btn_close.png"/></a>'+htmlLogin;
+
 			var e = document.createElement('div');
 			e.setAttribute('id', 'login_popup');
 			e.innerHTML = loginHtml;
 
 			document.body.appendChild(e);
 
-			renderLoginForm();
+			//afrenderLoginForm();
 		}
 	}
 }
@@ -492,8 +495,6 @@ const renderLoginForm = () => {
 			document.querySelector('#login_popup').classList.toggle('is-open');
 
 			initLoginScripts();
-		}else{
-			loadLoginForm();
 		}
 	}
 

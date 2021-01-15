@@ -316,7 +316,7 @@ var loadHomeData = function loadHomeData() {
     url = '/wp-json/mpg/home/?lang=' + currentLang;
   }
 
-  homeData = getWithExpiry("homepage_data_" + currentLang);
+  homeData = getWithExpiry("homepage_data_" + dataTime + '_' + currentLang);
 
   if (homeData) {
     renderAllOtherCategories();
@@ -327,7 +327,7 @@ var loadHomeData = function loadHomeData() {
       homeData = out;
 
       if (homeData.code == 'rest_login_required') {} else {
-        setWithExpiry("homepage_data_" + currentLang, homeData, 30 * 60 * 1000);
+        setWithExpiry("homepage_data_" + dataTime + '_' + currentLang, homeData, 30 * 60 * 1000);
       } //renderAllOtherCategories();
 
 
@@ -395,6 +395,12 @@ function renderSiteBottomBanner(category, index) {
     var bannerVideoPoster = siteItem.banner_video_poster;
     var siteLogo = siteItem.logo;
     var tagLIne = siteItem.tagline;
+
+    if (tagLIne != '') {
+      tagLIne = tagLIne.replaceAll("\'", "'");
+      tagLIne = tagLIne.replaceAll("\\'", "'");
+    }
+
     var siteUrl = siteItem.url;
     var bannerRight = '';
     var bannerClass = '';
@@ -445,6 +451,12 @@ function renderSkipSiteBottomBanner(category, index) {
     var bannerVideoPoster = siteItem.banner_video_poster;
     var siteLogo = siteItem.logo;
     var tagLIne = siteItem.tagline;
+
+    if (tagLIne != '') {
+      tagLIne = tagLIne.replaceAll("\'", "'");
+      tagLIne = tagLIne.replaceAll("\\'", "'");
+    }
+
     var siteExternalUrl = siteItem.url;
     var siteLink = siteItem.link;
     var popupBanner = document.querySelector('.list__specification');
@@ -557,7 +569,14 @@ function renderSiteCategory(categoryIndex) {
     '<div class="list__box-border"></div>' + '<a class="nav_link" href="' + site.link + '" hreflang="' + currentLang + '">' + //siteLogo+
     '</a>' + '<div class="list__box-details">' + '</div>' + '<button class="list__box-more" type="button"><i class="icon-font icon-arrow-angle"></i></button>' + '</div>' + '</div>';
   });
-  var categoryBoxHtml = '<div class="list__box-wrapper" list-parent-js data-name="category_' + categoryId + '" data-index="' + categoryIndex + '">' + '<div class="list__box-head">' + '<div class="list__info">' + '<div class="list__info-circle"><img src="' + categoryLogo + '" alt=""/></div>' + '<div class="category_title">' + '<a href="' + categoryData.link + '" hreflang="' + currentLang + '">' + categoryData.title + '</a><span>' + categoryData.tagline + '</span>' + '</div>' + '</div>' + '<a class="list__btn nav_link" href="' + categoryData.link + '" hreflang="' + currentLang + '">SEE&nbsp;<span>' + categoryData.count + ' MORE</span><i class="icon-font icon-arrow-angle"></i></a>' + '</div>' + '<div class="list__box-line">' + '<u list-line-ind-js></u><span class="list_green_line" list-line-js></span>' + '</div>' + '<div class="list__box-body">' + '<div class="list__arrow-wrapper">' + '<a class="list__arrow list__arrow--prev" href="#">' + '<div class="list__arrow-box"><i class="icon-font icon-arrow-angle"></i></div>' + '</a>' + '<a class="list__arrow list__arrow--next" href="#">' + '<div class="list__arrow-box"><i class="icon-font icon-arrow-angle"></i></div>' + '</a>' + '</div>' + '<div class="swiper-container listSwiper" data-id="listSlider_' + categoryData.id + '" data-category="18">' + '<div class="swiper-wrapper' + (parseInt(categoryData.count) < 6 ? ' short_list' : '') + '" data-category="' + categoryData.id + '" data-count="' + categoryData.count + '" data-slidecount="' + categoryData.site_limit + '">' + categorySites + '</div>' + '</div>' + '</div>' + '<div class="list__specification-wrapper"></div>' + '</div>';
+  var categoryTagLine = categoryData.tagline;
+
+  if (categoryTagLine != '') {
+    categoryTagLine = categoryTagLine.replaceAll("\'", "'");
+    categoryTagLine = categoryTagLine.replaceAll("\\'", "'");
+  }
+
+  var categoryBoxHtml = '<div class="list__box-wrapper" list-parent-js data-name="category_' + categoryId + '" data-index="' + categoryIndex + '">' + '<div class="list__box-head">' + '<div class="list__info">' + '<div class="list__info-circle"><img src="' + categoryLogo + '" alt=""/></div>' + '<div class="category_title">' + '<a href="' + categoryData.link + '" hreflang="' + currentLang + '">' + categoryData.title + '</a><span>' + categoryTagLine + '</span>' + '</div>' + '</div>' + '<a class="list__btn nav_link" href="' + categoryData.link + '" hreflang="' + currentLang + '">SEE&nbsp;<span>' + categoryData.count + ' MORE</span><i class="icon-font icon-arrow-angle"></i></a>' + '</div>' + '<div class="list__box-line">' + '<u list-line-ind-js></u><span class="list_green_line" list-line-js></span>' + '</div>' + '<div class="list__box-body">' + '<div class="list__arrow-wrapper">' + '<a class="list__arrow list__arrow--prev" href="#">' + '<div class="list__arrow-box"><i class="icon-font icon-arrow-angle"></i></div>' + '</a>' + '<a class="list__arrow list__arrow--next" href="#">' + '<div class="list__arrow-box"><i class="icon-font icon-arrow-angle"></i></div>' + '</a>' + '</div>' + '<div class="swiper-container listSwiper" data-id="listSlider_' + categoryData.id + '" data-category="18">' + '<div class="swiper-wrapper' + (parseInt(categoryData.count) < 6 ? ' short_list' : '') + '" data-category="' + categoryData.id + '" data-count="' + categoryData.count + '" data-slidecount="' + categoryData.site_limit + '">' + categorySites + '</div>' + '</div>' + '</div>' + '<div class="list__specification-wrapper"></div>' + '</div>';
   return categoryBoxHtml;
 }
 
@@ -1086,7 +1105,6 @@ function tempRepositionGreenBar(elParent, hoverBoxPosition) {
 
     if (greenBar) {
       hoverBoxLeft = 236 * hoverBoxPosition + 83;
-      console.log('Hover position ' + hoverBoxPosition + ' - ' + slideWidth + ' - ' + greenBar.offsetWidth + ' - ' + hoverBoxLeft);
 
       if (window.innerWidth < 1449 && hoverBoxPosition == 4) {
         hoverBoxLeft -= 55;
@@ -1247,7 +1265,7 @@ function removeFavourite(favItem) {
 
 function initWebWorker() {
   var currentLang = document.documentElement.getAttribute('lang');
-  homeData = getWithExpiry("homepage_data_" + currentLang);
+  homeData = getWithExpiry("homepage_data_" + dataTime + '_' + currentLang);
 
   if (homeData) {
     if (document.body.classList.contains('home')) {
@@ -1475,6 +1493,7 @@ var renderFavourites = function renderFavourites() {
   isLoggedUser = getCookieMpgCookie('logged_username');
 
   if (isLoggedUser == '') {
+    loadLoginForm();
     return;
   }
 
@@ -1722,16 +1741,23 @@ var onSortToggle = function onSortToggle(sortToggle) {
 var loadLoginForm = function loadLoginForm() {
   if (!isLoggedUser) {
     if (!document.querySelector('#login_popup')) {
-      postTextRequest(ajaxAdminEndpoint, {
-        action: 'get_login_form'
+      var htmlLogin = '<div class="login_container">' + '<div class="login_container_inner user_container_popup login">' + '<div class="user_tab_login">' + '<div class="login_form">' + '<div class="login_top">' + '<div class="title">Log in</div>' + '</div>' + '<form class="cleanlogin-form ajax-login-form cleanlogin-container login_bottom" action="login" method="post">' + '<p class="status result-message"></p>' + '<fieldset>' + '<div class="cleanlogin-field">' + '<input class="cleanlogin-field-username log_username" type="text" name="username" placeholder="Username">' + '</div>' + '<div class="cleanlogin-field">' + '<input class="cleanlogin-field-password log_password" type="password" name="password" placeholder="Password">' + '</div>' + '</fieldset>' + '<fieldset>' + '<div>' + '<input class="submit cleanlogin-field" type="submit" value="Login" name="submit">' + '<div class="remeber_me is_mobile">' + '<input type="checkbox" name="rememberme" value="forever">' + '<label>Keep me logged in?</label>' + '</div>' + '<a class="signup is_desktop popup_link_signup" href="/sign-up/">Sign up now</a>' + '<a class="forgot popup_link_forgot" href="/forgot/">Forgot password?</a>' + '</div>' + '</fieldset>' + '</form>' + '<div class="info_create_mobile is_mobile">' + '<a class="popup_link_signup" href="/sign-up/">Create New Account</a>' + '</div>' + '</div>' + '<img class="login_banner" src="/wp-content/themes/mpg/images/bg_login.png"/>' + '</div>' + '<div class="user_tab_forgot">' + '<div class="login_form">' + '<div class="login_top">' + '<div class="title">Forgot Password</div>' + '<p class="is_mobile top_forgot_text">Enter the email address associated with your account. An email will then be sent with a link to set up a new password.</p>' + '</div>' + '<div class="forgot_page">' + '<form class="cleanlogin-form cleanlogin-container login_bottom" method="post" action="#">' + '<div class="info is_desktop">' + 'Enter your email address and we\'ll email you a link to reset your password or <a href="/sign-up/" class="popup_link_signup">Sign Up</a>' + '<p class="status result-message"></p>' + '</div>' + '<input type="hidden" name="website""value=".">' + '<fieldset>' + '<div class="cleanlogin-field">' + '<input class="cleanlogin-field-username" type="text" name="username" value="" placeholder="Username (or E-mail)">' + '</div>' + '</fieldset>' + '<div>' + '<input type="submit" value="Restore password" name="submit">' + '<input type="hidden" name="action" value="restore">' + '</div>' + '</form>' + '<div class="info_create_mobile is_mobile">' + 'If you have not registered join now for free! <a class="popup_link_signup" href="/sign-up/">Create New Account</a>' + '</div>' + '</div>' + '</div>' + '<img class="login_banner" src="/wp-content/themes/mpg/images/bg_forgot.png"/>' + '</div>' + '<div class="user_tab_join">' + '<div class="login_form">' + '<div class="login_top">' + '<div class="title">Sign up</div>' + '</div>' + '<div class="cleanlogin-container login_bottom">' + '<form class="cleanlogin-form fv-form fv-form-bootstrap registraion-form" method="post" action="#" novalidate="novalidate">' + '<div class="join_results">' + '<div class="indicator"></div>' + '<div class="alert result-message"></div>' + '</div>' + '<fieldset>' + '<div class="cleanlogin-field form-group">' + '<input class="cleanlogin-field-username" type="text" name="user_login" value="" placeholder="Username" data-fv-notempty="true" data-fv-notempty-message="Username is required" data-fv-stringlength="true" data-fv-stringlength-min="4" data-fv-stringlength-max="12" data-fv-stringlength-message="The username must be greater than 4 and less than 12 characters" data-fv-field="user_login">' + '</div>' + '<div class="cleanlogin-field form-group">' + '<input class="cleanlogin-field-password" type="password" name="user_pass" value="" autocomplete="off" placeholder="Password" data-fv-notempty="true" data-fv-notempty-message="The password is required" data-fv-stringlength="true" data-fv-stringlength-min="4" data-fv-stringlength-max="12" data-fv-stringlength-message="The password must be greater than 4 and less than 12 characters" data-fv-field="pass1">' + '</div>' + '<div class="cleanlogin-field form-group">' + '<input class="cleanlogin-field-email" type="email" name="user_email" value="" placeholder="E-mail" data-fv-notempty="true" data-fv-notempty-message="Email is required" data-fv-emailaddress="true" data-fv-emailaddress-message="Enter a valid email address" data-fv-field="user_email">' + '</div>' + '</fieldset>' + '<div>' + '<input type="submit" class="join_button" value="JOIN MR PORN GEEK NOW!" name="submit" onclick1="this.form.submit(); this.disabled = true;">' + '<input type="hidden" name="action" value="register">' + '</div>' + '<div class="already_have is_desktop">' + 'Already Have an Account? <a class="popup_link_login" href="/login/">Log in now</a>' + '</div>' + '<div class="already_have is_mobile">' + 'By registering on Mr Porn Geek. I certify I am at least 18 years old and have read and agree to its <a href="/terms/">Terms of Use</a> and <a href="/privacy-policy/">Privacy Policy</a>.' + '</div>' + '</form>' + '</div>' + '</div>' + '<img class="login_banner" src="/wp-content/themes/mpg/images/bg_signup.png"/>' + '</div>' + '</div>' + '</div>';
+      /*postTextRequest(ajaxAdminEndpoint, {
+      	action:'get_login_form'
       }, function (result) {
-        var loginHtml = '<a class="login_popup_close"><img src="' + themeBase + 'images/btn_close.png"/></a>' + result;
-        var e = document.createElement('div');
-        e.setAttribute('id', 'login_popup');
-        e.innerHTML = loginHtml;
-        document.body.appendChild(e);
-        renderLoginForm();
-      });
+      		let loginHtml = '<a class="login_popup_close"><img src="'+themeBase+'images/btn_close.png"/></a>'+result;
+      		var e = document.createElement('div');
+      	e.setAttribute('id', 'login_popup');
+      	e.innerHTML = loginHtml;
+      		document.body.appendChild(e);
+      		renderLoginForm();
+      });*/
+
+      var loginHtml = '<a class="login_popup_close"><img src="' + themeBase + 'images/btn_close.png"/></a>' + htmlLogin;
+      var e = document.createElement('div');
+      e.setAttribute('id', 'login_popup');
+      e.innerHTML = loginHtml;
+      document.body.appendChild(e); //afrenderLoginForm();
     }
   }
 };
@@ -1741,8 +1767,6 @@ var renderLoginForm = function renderLoginForm() {
     if (document.querySelector('#login_popup')) {
       document.querySelector('#login_popup').classList.toggle('is-open');
       initLoginScripts();
-    } else {
-      loadLoginForm();
     }
   }
 };
@@ -2160,6 +2184,7 @@ var currentPopupBanner;
 var clonedPopupBanner;
 var clonedPopupTimeout;
 var isLoggedUser = false;
+var dataTime;
 var currentLang = 'en';
 
 if (!Element.prototype.matches) {
@@ -2956,6 +2981,7 @@ var ajaxAdminEndpoint = '/wp-admin/admin-ajax.php';
     toggleMoreBox(); // ==========================================
     //loadHomeData();
 
+    dataTime = document.querySelector('meta[name="data_time"]').content;
     initWebWorker();
   };
 

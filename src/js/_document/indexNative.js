@@ -9,6 +9,7 @@ let currentPopupBanner;
 let clonedPopupBanner;
 let clonedPopupTimeout;
 let isLoggedUser = false;
+let dataTime;
 
 let currentLang = 'en';
 
@@ -904,6 +905,8 @@ const ajaxAdminEndpoint = '/wp-admin/admin-ajax.php';
 		// ==========================================
 
 		//loadHomeData();
+		dataTime = document.querySelector('meta[name="data_time"]').content;
+
 		initWebWorker();
 
 	};
