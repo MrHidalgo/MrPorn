@@ -138,6 +138,8 @@ const ajaxAdminEndpoint = '/wp-admin/admin-ajax.php';
 				closeBanner(_ev);
 			}else if(_ev.closest('.list__box-more')){
 				showBanner(_ev);
+			}else if(_ev.closest('[more-toggle-js]')){
+				showBanner(_ev);
 			}else if(_ev.closest('[spec-like-js]')){
 				onBannerLikeClick(_ev.closest('[spec-like-js]'));
 			}else if(_ev.closest('[spec-dislike-js]')){

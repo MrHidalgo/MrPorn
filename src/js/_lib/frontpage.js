@@ -87,6 +87,9 @@ function renderHompageSiteSlide(category, index){
 		let siteThumb = (siteItem.banner_image)?siteItem.banner_image:siteItem.thumb;
 		let siteLogo = (siteItem.logo)?siteItem.logo.src:'';
 
+		let btnFav = (isLoggedUser!="")?'<button class="list__box-favorites" type="button" data-id="'+siteId+'" favorites-toggle-js><i class="icon-font icon-star-fill"></i><i class="icon-font icon-star"></i></button>':
+			'<button class="list__box-favorites" type="button" data-id="'+siteId+'" more-toggle-js><i class="icon-font icon-arrow-angle icon-more-arrow"></i></button>';
+
 		let slideHtml = '<div class="list__box nolazy" list-box-js data-id="'+siteId+'" style="background-image: url('+siteThumb+')">'+
 			/*'<div class="list__box-overlay"></div>'+*/
 			'<div class="list__box-border"></div>' +
@@ -103,10 +106,10 @@ function renderHompageSiteSlide(category, index){
 			'</div>'+
 			'</div>'+
 			'<div class="list__box-details-right">'+
-			'<button class="list__box-like" type="button" data-id="1" like-toggle-js><i class="icon-font icon-like"></i></button>'+
-			'<button class="list__box-dislike" type="button" data-id="1" dislike-toggle-js><i class="icon-font icon-like"></i></button>'+
+			'<button class="list__box-like" type="button" data-id="'+siteId+'" like-toggle-js><i class="icon-font icon-like"></i></button>'+
+			'<button class="list__box-dislike" type="button" data-id="'+siteId+'" dislike-toggle-js><i class="icon-font icon-like"></i></button>'+
 			'<div class="c-popper">'+
-			'<button class="list__box-favorites" type="button" data-id="1" favorites-toggle-js><i class="icon-font icon-star-fill"></i><i class="icon-font icon-star"></i></button>'+
+			btnFav+
 			'<div class="c-poppertext">'+
 			'<u>Add To Favourites</u>'+
 			'<u>Remove From Favourites</u>'+
@@ -142,6 +145,9 @@ function renderSiteHoverContent(category, index){
 		let siteName = siteItem.name;
 		let siteThumb = siteItem.thumb;
 
+		let btnFav = (isLoggedUser!="")?'<button class="list__box-favorites" type="button" data-id="'+siteId+'" favorites-toggle-js><i class="icon-font icon-star-fill"></i><i class="icon-font icon-star"></i></button>':
+			'<button class="list__box-favorites" type="button" data-id="'+siteId+'" more-toggle-js><i class="icon-font icon-arrow-angle icon-more-arrow"></i></button>';
+
 		var hoverContent = '<div class="list__box-details-left">'+
 			'<a class="site_link" href="'+siteLink+'" target="_blank">' +
 			'<i class="icon-font icon-out"></i>'+
@@ -155,7 +161,7 @@ function renderSiteHoverContent(category, index){
 		'<button class="list__box-like" type="button" data-id="'+siteId+'" like-toggle-js><i class="icon-font icon-like"></i></button>'+
 		'<button class="list__box-dislike" type="button" data-id="'+siteId+'" dislike-toggle-js><i class="icon-font icon-like"></i></button>'+
 		'<div class="c-popper">'+
-		'<button class="list__box-favorites" type="button" data-id="'+siteId+'" favorites-toggle-js><i class="icon-font icon-star-fill"></i><i class="icon-font icon-star"></i></button>'+
+			btnFav+
 		'<div class="c-poppertext">'+
 		'<u>Add To Favourites</u>'+
 		'<u>Remove From Favourites</u>'+
