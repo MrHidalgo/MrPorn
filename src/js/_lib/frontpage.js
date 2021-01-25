@@ -89,6 +89,7 @@ function renderHompageSiteSlide(category, index){
 
 		let btnFav = (isLoggedUser!="")?'<button class="list__box-favorites" type="button" data-id="'+siteId+'" favorites-toggle-js><i class="icon-font icon-star-fill"></i><i class="icon-font icon-star"></i></button>':
 			'<button class="list__box-favorites" type="button" data-id="'+siteId+'" more-toggle-js><i class="icon-font icon-arrow-angle icon-more-arrow"></i></button>';
+		let btnFavToolTip = (isLoggedUser!="")?'Add To Favourites':'More Info';
 
 		let slideHtml = '<div class="list__box nolazy" list-box-js data-id="'+siteId+'" style="background-image: url('+siteThumb+')">'+
 			/*'<div class="list__box-overlay"></div>'+*/
@@ -111,7 +112,7 @@ function renderHompageSiteSlide(category, index){
 			'<div class="c-popper">'+
 			btnFav+
 			'<div class="c-poppertext">'+
-			'<u>Add To Favourites</u>'+
+			'<u>'+btnFavToolTip+'</u>'+
 			'<u>Remove From Favourites</u>'+
 			'</div>'+
 			'</div>'+
@@ -148,6 +149,8 @@ function renderSiteHoverContent(category, index){
 		let btnFav = (isLoggedUser!="")?'<button class="list__box-favorites" type="button" data-id="'+siteId+'" favorites-toggle-js><i class="icon-font icon-star-fill"></i><i class="icon-font icon-star"></i></button>':
 			'<button class="list__box-favorites" type="button" data-id="'+siteId+'" more-toggle-js><i class="icon-font icon-arrow-angle icon-more-arrow"></i></button>';
 
+		let btnFavToolTip = (isLoggedUser!="")?'Add To Favourites':'More Info';
+
 		var hoverContent = '<div class="list__box-details-left">'+
 			'<a class="site_link" href="'+siteLink+'" target="_blank">' +
 			'<i class="icon-font icon-out"></i>'+
@@ -163,7 +166,7 @@ function renderSiteHoverContent(category, index){
 		'<div class="c-popper">'+
 			btnFav+
 		'<div class="c-poppertext">'+
-		'<u>Add To Favourites</u>'+
+		'<u>'+btnFavToolTip+'</u>'+
 		'<u>Remove From Favourites</u>'+
 		'</div>'+
 		'</div>'+
