@@ -71,5 +71,127 @@
 	}
 }
 
+.hdrfav{
+	.hdrfavttl{
+		background-color: #fc4b15;
+		color: #fff;
+		text-align: center;
+		padding: 3px 15px;
+		position: relative;
+
+		&:after {
+			position: absolute;
+			right: 4px;
+			top: 5px;
+			content: ' ';
+			display: inline-block;
+			background-image: url(../images/arrow-fav.png);
+			background-size: contain;
+			background-repeat: no-repeat;
+			width: 16px;
+			height: 16px;
+		}
+	}
+
+
+
+	.favourite_list {
+		list-style-type: none;
+		padding: 0;
+		font-weight: 500;
+		margin: 0;
+		background: #fff;
+		overflow: auto;
+		-webkit-overflow-scrolling: touch;
+
+		@include adaptive(992) {
+			display: none;
+			max-height: 152px;
+		}
+
+		li{
+			position: relative;
+			flex-grow: 1;
+			vertical-align: middle;
+			border-bottom: 1px solid #070707;
+			display: flex;
+			align-items: center;
+			text-align: left;
+			background: #fff;
+			padding: 0 10px 0 0;
+			margin: 0;
+			height: 38px;
+
+			&:before{
+				order: 1;
+			}
+
+			.id_number {
+				margin: 0 5px 0 10px;
+				width: 30px;
+				text-align: center;
+				border: 0;
+				font-weight: 400;
+				color: #adadad;
+				font-size: 14px;
+				order: 0;
+			}
+
+			a, span {
+				color: #113d74;
+				display: inline;
+				padding: 0;
+				font-size: 15px;
+				font-family: inherit;
+				text-transform: none;
+				white-space: nowrap;
+			}
+
+			.link {
+				color: #113d74;
+				text-decoration: none;
+				font-weight: 600;
+				font-size: 14px;
+				margin: 0 0 0 8px;
+				overflow: hidden;
+				white-space: nowrap;
+				text-overflow: ellipsis;
+				text-transform: capitalize;
+				order: 3;
+				flex: 1;
+			}
+
+			.fav_delete {
+				cursor: pointer;
+				font-size: 18px;
+				background: url(../images/icon_delete.png);
+				width: 14px;
+				height: 16px;
+				display: block;
+				order: 4;
+				margin-right: 15px;
+			}
+			.preview_link {
+				height: 16px;
+				width: 16px;
+				background: url(../images/catIcons2.png);
+				background-position: -85px -189px;
+				margin-top: 3px;
+				order: 5;
+			}
+
+		}
+	}
+
+	&.open{
+		.favourite_list{
+			display: block;
+		}
+	}
+}
+
+
+
+
 
 // HEADER :: END

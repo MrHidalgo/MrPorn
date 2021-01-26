@@ -1261,3 +1261,16 @@ function initWebWorker(){
 
 
 }
+
+function getLikesAndDislikes(){
+	window.dislikes = [];
+
+	window.likes = getWithExpiry("homepage_likes");
+	window.dislikes = getWithExpiry("homepage_dislikes");
+	if(!window.likes){
+		window.likes = [];
+	}
+	if(!window.dislikes){
+		window.dislikes = [];
+	}
+}

@@ -68,6 +68,23 @@ Function.prototype.extend = function () {
   };
 };
 
+Array.prototype.remove = function () {
+  var what,
+      a = arguments,
+      L = a.length,
+      ax;
+
+  while (L && this.length) {
+    what = a[--L];
+
+    while ((ax = this.indexOf(what)) !== -1) {
+      this.splice(ax, 1);
+    }
+  }
+
+  return this;
+};
+
 window.mobileAndTabletcheck = function () {
   var check = false;
 
@@ -1284,6 +1301,20 @@ function initWebWorker() {
   }
 }
 
+function getLikesAndDislikes() {
+  window.dislikes = [];
+  window.likes = getWithExpiry("homepage_likes");
+  window.dislikes = getWithExpiry("homepage_dislikes");
+
+  if (!window.likes) {
+    window.likes = [];
+  }
+
+  if (!window.dislikes) {
+    window.dislikes = [];
+  }
+}
+
 (function () {
   var FX = {
     easing: {
@@ -1444,13 +1475,49 @@ var renderMobileMenu = function renderMobileMenu() {
   var navLinkMeet = document.querySelector('.header_nav_meet').getAttribute('href');
   var navLinkLiveSex = document.querySelector('.header_nav_dating').getAttribute('href');
   var currentLang = document.documentElement.getAttribute('lang');
-  var mobileNavHtml = '<div>' + '            <div class="pre-header__mobile-top">' + '              <div><a class="pre-header__signin mobile_login_link" href="/login/"><i class="icon-font icon-enter"></i><span>Login</span></a></div>' + '              <div><a class="pre-header__signup mobile_signup_link" href="/sign-up/"><i class="icon-font icon-key"></i><span>Sign Up</span></a></div>' + '            </div>' + '            <div class="pre-header__mobile-middle">' + '<p class="pre-header__heading"><i></i><span>Main</span></p>' + '              <div>' + langHtml + '</div>' + '            </div>' + '            <div class="pre-header__mobile-bottom">' + '              <ul class="header__nav">' + '                <li class="header__nav-item"><a class="header__nav-link" href="/categories/" hreflang="' + currentLang + '">' + '                    <div><i class="icon-png header-nav-folder"></i></div>' + '                    <div><span>View All Categories</span></div></a></li>' + '                <li class="header__nav-item header__nav-item--saparator"><span class="header__nav-separator"></span></li>' + '                <li class="header__nav-item"><a class="header__nav-link" href="/blog/" hreflang="en">' + '                    <div><i class="icon-png header-nav-blog"></i></div>' + '                    <div><span>Blog</span></div></a></li>' + '                <li class="header__nav-item header__nav-item--saparator"><span class="header__nav-separator"></span></li>' + '                <li class="header__nav-item"><a class="header__nav-link" href="/webcam-videos/" hreflang="en">' + '                    <div><i class="icon-png header-nav-videos"></i></div>' + '                    <div><span>Videos</span></div></a></li>' + '                <li class="header__nav-item header__nav-item--saparator"><span class="header__nav-separator"></span></li>' + '                <li class="header__nav-item"><a class="header__nav-link" href="/pornstars/" hreflang="en">' + '                    <div><i class="icon-png header-nav-pornstars"></i></div>' + '                    <div><span>Pornstars</span></div></a></li>' + '                <li class="header__nav-item header__nav-item--saparator"><span class="header__nav-separator"></span></li>' + '                <li class="header__nav-item"><a class="header__nav-link" href="/coupons/" hreflang="en">' + '                    <div><i class="icon-png header-nav-porncoupons"></i></div>' + '                    <div><span>Porn Coupons</span></div></a></li>' + '                <li class="header__nav-item header__nav-item--saparator"><span class="header__nav-separator"></span></li>' + '                <li class="header__nav-item"><a class="header__nav-link" href="' + navLinkGames + '" target="_blank">' + '                    <div><i class="icon-png header-nav-porngames"></i></div>' + '                    <div><span>Porn Games</span></div></a></li>' + '                <li class="header__nav-item header__nav-item--saparator"><span class="header__nav-separator"></span></li>' + '                <li class="header__nav-item"><a class="header__nav-link" href="' + navLinkMeet + '" target="_blank">' + '                    <div><i class="icon-png header-nav-meetfuck"></i></div>' + '                    <div><span>Meet & Fuck</span></div></a></li>' + '                <li class="header__nav-item header__nav-item--saparator"><span class="header__nav-separator"></span></li>' + '                <li class="header__nav-item"><a class="header__nav-link" href="' + navLinkLiveSex + '" target="_blank">' + '                    <div><i class="icon-png header-nav-livesex"></i></div>' + '                    <div><span>Live sex</span></div></a></li>' + '              </ul>' + '            </div>' + '            <div class="pre-header__mobile-middle">' + '              <div>' + '                <p class="pre-header__heading"><i></i><span>Connect With Us</span></p>' + '              </div>' + '              <div></div>' + '            </div>' + '            <div class="pre-header__mobile-bottom">' + '              <ul class="header__nav">' + '                <li class="header__nav-item"><a class="header__nav-link" href="/about-us/">' + '                    <div><i class="icon-png header-nav-info"></i></div>' + '                    <div><span>About Us</span></div></a></li>' + '                <li class="header__nav-item"><a class="header__nav-link" href="/contact/">' + '                    <div><i class="icon-png header-nav-email"></i></div>' + '                    <div><span>Contact Us</span></div></a></li>' + '                <li class="header__nav-item"><a class="header__nav-link" href="/advertising/">' + '                    <div><i class="icon-png header-nav-megaphone"></i></div>' + '                    <div><span>Advertising</span></div></a></li>' + '              </ul>' + '            </div>' + '          </div>';
+  var linkSignup = '<div><a class="pre-header__signup mobile_signup_link" href="/sign-up/"><i class="icon-font icon-key"></i><span>Sign Up</span></a></div>';
+
+  if (window.logoutUrl) {
+    linkSignup = '<div><a class="pre-header__signup mobile_signup_link" href="' + window.logoutUrl + '"><i class="icon-font icon-key"></i><span>LOGOUT</span></a></div>';
+  }
+
+  if (!window.favHtmlMobile) {
+    window.favHtmlMobile = '';
+  }
+
+  var mobileNavHtml = '<div>' + '            <div class="pre-header__mobile-top">' + '              <div><a class="pre-header__signin mobile_login_link" href="/login/"><i class="icon-font icon-enter"></i><span>Login</span></a></div>' + linkSignup + '            </div>' + '            <div class="pre-header__mobile-middle">' + '<p class="pre-header__heading"><i></i><span>Main</span></p>' + '              <div>' + langHtml + '</div>' + '            </div>' + '            <div class="pre-header__mobile-bottom main_mobile_menu">' + window.favHtmlMobile + '              <ul class="header__nav">' + '                <li class="header__nav-item"><a class="header__nav-link" href="/categories/" hreflang="' + currentLang + '">' + '                    <div><i class="icon-png header-nav-folder"></i></div>' + '                    <div><span>View All Categories</span></div></a></li>' + '                <li class="header__nav-item header__nav-item--saparator"><span class="header__nav-separator"></span></li>' + '                <li class="header__nav-item"><a class="header__nav-link" href="/blog/" hreflang="en">' + '                    <div><i class="icon-png header-nav-blog"></i></div>' + '                    <div><span>Blog</span></div></a></li>' + '                <li class="header__nav-item header__nav-item--saparator"><span class="header__nav-separator"></span></li>' + '                <li class="header__nav-item"><a class="header__nav-link" href="/webcam-videos/" hreflang="en">' + '                    <div><i class="icon-png header-nav-videos"></i></div>' + '                    <div><span>Videos</span></div></a></li>' + '                <li class="header__nav-item header__nav-item--saparator"><span class="header__nav-separator"></span></li>' + '                <li class="header__nav-item"><a class="header__nav-link" href="/pornstars/" hreflang="en">' + '                    <div><i class="icon-png header-nav-pornstars"></i></div>' + '                    <div><span>Pornstars</span></div></a></li>' + '                <li class="header__nav-item header__nav-item--saparator"><span class="header__nav-separator"></span></li>' + '                <li class="header__nav-item"><a class="header__nav-link" href="/coupons/" hreflang="en">' + '                    <div><i class="icon-png header-nav-porncoupons"></i></div>' + '                    <div><span>Porn Coupons</span></div></a></li>' + '                <li class="header__nav-item header__nav-item--saparator"><span class="header__nav-separator"></span></li>' + '                <li class="header__nav-item"><a class="header__nav-link" href="' + navLinkGames + '" target="_blank">' + '                    <div><i class="icon-png header-nav-porngames"></i></div>' + '                    <div><span>Porn Games</span></div></a></li>' + '                <li class="header__nav-item header__nav-item--saparator"><span class="header__nav-separator"></span></li>' + '                <li class="header__nav-item"><a class="header__nav-link" href="' + navLinkMeet + '" target="_blank">' + '                    <div><i class="icon-png header-nav-meetfuck"></i></div>' + '                    <div><span>Meet & Fuck</span></div></a></li>' + '                <li class="header__nav-item header__nav-item--saparator"><span class="header__nav-separator"></span></li>' + '                <li class="header__nav-item"><a class="header__nav-link" href="' + navLinkLiveSex + '" target="_blank">' + '                    <div><i class="icon-png header-nav-livesex"></i></div>' + '                    <div><span>Live sex</span></div></a></li>' + '              </ul>' + '            </div>' + '            <div class="pre-header__mobile-middle">' + '              <div>' + '                <p class="pre-header__heading"><i></i><span>Connect With Us</span></p>' + '              </div>' + '              <div></div>' + '            </div>' + '            <div class="pre-header__mobile-bottom">' + '              <ul class="header__nav">' + '                <li class="header__nav-item"><a class="header__nav-link" href="/about-us/">' + '                    <div><i class="icon-png header-nav-info"></i></div>' + '                    <div><span>About Us</span></div></a></li>' + '                <li class="header__nav-item"><a class="header__nav-link" href="/contact/">' + '                    <div><i class="icon-png header-nav-email"></i></div>' + '                    <div><span>Contact Us</span></div></a></li>' + '                <li class="header__nav-item"><a class="header__nav-link" href="/advertising/">' + '                    <div><i class="icon-png header-nav-megaphone"></i></div>' + '                    <div><span>Advertising</span></div></a></li>' + '              </ul>' + '            </div>' + '          </div>';
   mobileContainer.innerHTML = mobileNavHtml;
+  initFavDelete();
 
   if (typeof initLoggedUser === "function") {
     initLoggedUser();
   }
 };
+
+function initFavDelete() {
+  document.querySelectorAll(".fav_delete").forEach(function (target) {
+    target.onclick = function (event) {
+      var siteId = 0;
+
+      if (event.target.classList.contains('fav_delete')) {
+        siteId = event.target.dataset.id;
+      } else if (event.target.parents('.fav_delete')) {
+        siteId = event.target.parents('.fav_delete')[0].dataset.id;
+      }
+
+      if (siteId) {
+        var deleteLink = event.target;
+        var data = {
+          action: 'remove_fav',
+          site: siteId
+        };
+        postRequest(ajaxEndpoint, data, function (res) {
+          event.target.closest('.site_listitem').remove();
+        });
+      }
+    };
+  });
+}
 
 var letterData = [];
 var loggedUsername = '';
@@ -1497,7 +1564,7 @@ var renderFavourites = function renderFavourites() {
   isLoggedUser = getCookieMpgCookie('logged_username');
 
   if (isLoggedUser == '') {
-    loadLoginForm();
+    //loadLoginForm();
     return;
   }
 
@@ -1514,12 +1581,16 @@ var renderFavourites = function renderFavourites() {
     if (res.status) {
       if (res.status == 'true') {
         isLoggedUser = true;
+        window.logoutUrl = res.logout;
 
         if (document.querySelector('.header__action-link--logout')) {
           document.querySelector('.header__action-link--logout').setAttribute('href', res.logout);
         }
-      } else {
-        loadLoginForm();
+
+        if (document.querySelector('.mobile_signup_link')) {
+          document.querySelector('.mobile_signup_link').setAttribute('href', res.logout);
+        }
+      } else {//loadLoginForm();
       }
 
       document.querySelectorAll('.is-active[favorites-toggle-js]').forEach(function (fav) {
@@ -1546,12 +1617,33 @@ var renderFavourites = function renderFavourites() {
           }*/
         });
         favouritesDropDown.innerHTML = favouritesHtml;
+        renderMobileFavourites(res);
       }
     }
 
     markFavourites();
   });
 };
+
+function renderMobileFavourites(response) {
+  window.fav_list = [];
+  var favHtml = '';
+  var favIndex = 1;
+  response.fav_list.forEach(function (fav) {
+    favHtml += '<li class="site_listitem fav_link fv_' + fav.id + ' deIcon fi' + fav.id + ' fx_' + fav.fx + ' fy_' + fav.fy + '"><div class="id_number">' + favIndex + '.</div><a class="link" target="_blank" href="' + fav.permalink + '">' + fav.title + '</a><a class="fav_delete" data-id="' + fav.id + '"><i></i></a><a href="' + fav.permalink + '" title="' + fav.title + '" class="preview_link"></a></li>';
+    window.fav_list.push(fav.id);
+    favIndex++;
+  });
+  window.favHtmlMobile = '<div class="hdrfav mobile_fav_link"><div class="hdrfavttl">Your Favourite Sites</div><div class="site_list favourite_list">' + favHtml + '</div></div>';
+
+  if (document.querySelector(".main_mobile_menu")) {
+    document.querySelector(".main_mobile_menu").insertAdjacentHTML("afterbegin", window.favHtmlMobile);
+
+    document.querySelector('.mobile_fav_link .hdrfavttl').onclick = function (event) {
+      document.querySelector('.mobile_fav_link').classList.toggle('open');
+    };
+  }
+}
 
 var markFavourites = function markFavourites() {
   var currentFavourites = document.querySelectorAll('.list__box-favorites.is-active');
@@ -1768,9 +1860,19 @@ var loadLoginForm = function loadLoginForm() {
 
 var renderLoginForm = function renderLoginForm() {
   if (!isLoggedUser) {
-    if (document.querySelector('#login_popup')) {
-      document.querySelector('#login_popup').classList.toggle('is-open');
-      initLoginScripts();
+    if (!document.querySelector('#login_popup')) {
+      loadLoginForm();
+      setTimeout(function () {
+        if (document.querySelector('#login_popup')) {
+          document.querySelector('#login_popup').classList.toggle('is-open');
+          initLoginScripts();
+        }
+      }, 300);
+    } else {
+      if (document.querySelector('#login_popup')) {
+        document.querySelector('#login_popup').classList.toggle('is-open');
+        initLoginScripts();
+      }
     }
   }
 };
@@ -2338,6 +2440,9 @@ var ajaxAdminEndpoint = '/wp-admin/admin-ajax.php';
       } else if (_ev.classList.contains('popup_link_forgot')) {
         ev.preventDefault();
         toggleLoginPopups('forgot');
+      } else if (_ev.classList.contains('hdrfavttl')) {
+        ev.preventDefault();
+        document.querySelector('.mobile_fav_link').classList.toggle('open');
       } else if (_ev.parentNode && !_ev.closest('[search-parent-js]')) {
         if (!isMobileOrTablet) {
           if (document.querySelector('[search-js]')) {
@@ -2724,6 +2829,13 @@ var ajaxAdminEndpoint = '/wp-admin/admin-ajax.php';
     var elID = el.getAttribute('data-id'),
         elParent = el.closest('.list__box-wrapper');
     el.classList.toggle('is-active');
+
+    if (el.classList.contains('is-active')) {
+      window.likes.push(elID);
+    } else {
+      window.likes.remove(elID);
+    }
+
     elParent.querySelector('[dislike-toggle-js][data-id="' + elID + '"]').classList.toggle('is-hide');
     var specificationBlock = elParent.querySelector('.list__specification[data-id="' + elID + '"]');
 
@@ -2746,6 +2858,13 @@ var ajaxAdminEndpoint = '/wp-admin/admin-ajax.php';
         listLikeBtn = listBlock.querySelector('.list__box-like'),
         listDislikeBtn = listBlock.querySelector('.list__box-dislike');
     el.classList.toggle('is-active');
+
+    if (el.classList.contains('is-active')) {
+      window.likes.push(elID);
+    } else {
+      window.likes.remove(elID);
+    }
+
     listLikeBtn.classList.toggle('is-active');
     listDislikeBtn.classList.toggle('is-hide');
   }
@@ -2755,6 +2874,13 @@ var ajaxAdminEndpoint = '/wp-admin/admin-ajax.php';
         elParent = el.closest('.list__box-wrapper');
     console.log('Disliking ' + elID);
     el.classList.toggle('is-active');
+
+    if (el.classList.contains('is-active')) {
+      window.likes.push(elID);
+    } else {
+      window.likes.remove(elID);
+    }
+
     elParent.querySelector('[like-toggle-js][data-id="' + elID + '"]').classList.toggle('is-hide');
     var specificationBlock = elParent.querySelector('.list__specification[data-id="' + elID + '"]');
 
@@ -2776,6 +2902,13 @@ var ajaxAdminEndpoint = '/wp-admin/admin-ajax.php';
         listDislikeBtn = listBlock.querySelector('.list__box-dislike'),
         listLikeBtn = listBlock.querySelector('.list__box-like');
     el.classList.toggle('is-active');
+
+    if (el.classList.contains('is-active')) {
+      window.likes.push(elID);
+    } else {
+      window.likes.remove(elID);
+    }
+
     listDislikeBtn.classList.toggle('is-active');
     listLikeBtn.classList.toggle('is-hide');
   }
@@ -2989,6 +3122,7 @@ var ajaxAdminEndpoint = '/wp-admin/admin-ajax.php';
 
     dataTime = document.querySelector('meta[name="data_time"]').content;
     initWebWorker();
+    getLikesAndDislikes();
   };
 
   var onWindowBlur = function onWindowBlur() {

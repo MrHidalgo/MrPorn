@@ -181,6 +181,9 @@ const ajaxAdminEndpoint = '/wp-admin/admin-ajax.php';
 			}else if(_ev.classList.contains('popup_link_forgot')){
 				ev.preventDefault();
 				toggleLoginPopups('forgot');
+			}else if(_ev.classList.contains('hdrfavttl')){
+				ev.preventDefault();
+				document.querySelector('.mobile_fav_link').classList.toggle('open');
 			}
 
 
@@ -605,6 +608,13 @@ const ajaxAdminEndpoint = '/wp-admin/admin-ajax.php';
 			elParent = el.closest('.list__box-wrapper');
 
 		el.classList.toggle('is-active');
+
+		if(el.classList.contains('is-active')){
+			window.likes.push(elID);
+		}else{
+			window.likes.remove(elID);
+		}
+
 		elParent.querySelector('[dislike-toggle-js][data-id="' + elID + '"]').classList.toggle('is-hide');
 
 		const specificationBlock = elParent.querySelector('.list__specification[data-id="' + elID + '"]');
@@ -634,6 +644,12 @@ const ajaxAdminEndpoint = '/wp-admin/admin-ajax.php';
 
 		el.classList.toggle('is-active');
 
+		if(el.classList.contains('is-active')){
+			window.likes.push(elID);
+		}else{
+			window.likes.remove(elID);
+		}
+
 		listLikeBtn.classList.toggle('is-active');
 		listDislikeBtn.classList.toggle('is-hide');
 	}
@@ -645,6 +661,12 @@ const ajaxAdminEndpoint = '/wp-admin/admin-ajax.php';
 		console.log('Disliking '+elID);
 
 		el.classList.toggle('is-active');
+		if(el.classList.contains('is-active')){
+			window.likes.push(elID);
+		}else{
+			window.likes.remove(elID);
+		}
+
 		elParent.querySelector('[like-toggle-js][data-id="' + elID + '"]').classList.toggle('is-hide');
 
 		const specificationBlock = elParent.querySelector('.list__specification[data-id="' + elID + '"]');
@@ -654,6 +676,7 @@ const ajaxAdminEndpoint = '/wp-admin/admin-ajax.php';
 
 			specificationDislikeBtn.classList.toggle('is-active');
 			specificationLikeBtn.parentElement.classList.toggle('is-hide');
+
 		}
 
 	}
@@ -671,6 +694,11 @@ const ajaxAdminEndpoint = '/wp-admin/admin-ajax.php';
 			listLikeBtn = listBlock.querySelector('.list__box-like');
 
 		el.classList.toggle('is-active');
+		if(el.classList.contains('is-active')){
+			window.likes.push(elID);
+		}else{
+			window.likes.remove(elID);
+		}
 
 		listDislikeBtn.classList.toggle('is-active');
 		listLikeBtn.classList.toggle('is-hide');
@@ -910,6 +938,8 @@ const ajaxAdminEndpoint = '/wp-admin/admin-ajax.php';
 		dataTime = document.querySelector('meta[name="data_time"]').content;
 
 		initWebWorker();
+
+		getLikesAndDislikes();
 
 	};
 

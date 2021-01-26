@@ -87,17 +87,26 @@ const renderMobileMenu = () => {
 
 	let currentLang = document.documentElement.getAttribute('lang');
 
+	let linkSignup = '<div><a class="pre-header__signup mobile_signup_link" href="/sign-up/"><i class="icon-font icon-key"></i><span>Sign Up</span></a></div>';
+	if(window.logoutUrl){
+		linkSignup = '<div><a class="pre-header__signup mobile_signup_link" href="'+window.logoutUrl+'"><i class="icon-font icon-key"></i><span>LOGOUT</span></a></div>';
+	}
+
+	if(!window.favHtmlMobile){
+		window.favHtmlMobile = '';
+	}
 
 	const mobileNavHtml = '<div>' +
 		'            <div class="pre-header__mobile-top">' +
 		'              <div><a class="pre-header__signin mobile_login_link" href="/login/"><i class="icon-font icon-enter"></i><span>Login</span></a></div>' +
-		'              <div><a class="pre-header__signup mobile_signup_link" href="/sign-up/"><i class="icon-font icon-key"></i><span>Sign Up</span></a></div>' +
+		linkSignup+
 		'            </div>' +
 		'            <div class="pre-header__mobile-middle">' +
 									'<p class="pre-header__heading"><i></i><span>Main</span></p>'+
 		'              <div>'+langHtml+'</div>' +
 		'            </div>' +
-		'            <div class="pre-header__mobile-bottom">' +
+		'            <div class="pre-header__mobile-bottom main_mobile_menu">' +
+		window.favHtmlMobile+
 		'              <ul class="header__nav">' +
 		'                <li class="header__nav-item"><a class="header__nav-link" href="/categories/" hreflang="'+currentLang+'">' +
 		'                    <div><i class="icon-png header-nav-folder"></i></div>' +
@@ -155,8 +164,36 @@ const renderMobileMenu = () => {
 
 	mobileContainer.innerHTML = mobileNavHtml;
 
+	initFavDelete();
+
 	if(typeof initLoggedUser === "function"){
 		initLoggedUser();
 	}
 }
 
+
+
+function initFavDelete(){
+	document.querySelectorAll(".fav_delete").forEach(function(target){
+		target.onclick = function(event){
+			var siteId = 0;
+
+			if(event.target.classList.contains('fav_delete')){
+				siteId = event.target.dataset.id;
+			}else if(event.target.parents('.fav_delete')){
+				siteId = event.target.parents('.fav_delete')[0].dataset.id;
+			}
+			if(siteId){
+				var deleteLink = event.target;
+				var data={
+					action:'remove_fav',
+					site:siteId
+				};
+
+				postRequest(ajaxEndpoint, data, function (res) {
+					event.target.closest('.site_listitem').remove();
+				});
+			}
+		};
+	});
+}

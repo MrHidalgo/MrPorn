@@ -42,7 +42,7 @@ const renderFavourites = () => {
 	isLoggedUser = getCookieMpgCookie('logged_username');
 
 	if(isLoggedUser==''){
-		loadLoginForm();
+		//loadLoginForm();
 		return;
 	}
 
@@ -62,11 +62,19 @@ const renderFavourites = () => {
 			if(res.status=='true'){
 				isLoggedUser = true;
 
+				window.logoutUrl = res.logout;
+
 				if(document.querySelector('.header__action-link--logout')){
 					document.querySelector('.header__action-link--logout').setAttribute('href', res.logout);
 				}
+				if(document.querySelector('.mobile_signup_link')){
+					document.querySelector('.mobile_signup_link').setAttribute('href', res.logout);
+				}
+
+
+
 			}else{
-				loadLoginForm();
+				//loadLoginForm();
 			}
 
 			document.querySelectorAll('.is-active[favorites-toggle-js]').forEach(function (fav) {
@@ -102,12 +110,34 @@ const renderFavourites = () => {
 				})
 
 				favouritesDropDown.innerHTML = favouritesHtml;
+
+				renderMobileFavourites(res);
 			}
 		}
 
 		markFavourites();
 	});
 
+}
+
+function renderMobileFavourites(response){
+	window.fav_list = [];
+	var favHtml = '';
+	var favIndex = 1;
+	response.fav_list.forEach(function(fav){
+		favHtml += '<li class="site_listitem fav_link fv_'+fav.id+' deIcon fi'+fav.id+' fx_'+fav.fx+' fy_'+fav.fy+'"><div class="id_number">'+favIndex+'.</div><a class="link" target="_blank" href="'+fav.permalink+'">'+fav.title+'</a><a class="fav_delete" data-id="'+fav.id+'"><i></i></a><a href="'+fav.permalink+'" title="'+fav.title+'" class="preview_link"></a></li>';
+		window.fav_list.push(fav.id);
+		favIndex++;
+	});
+
+	window.favHtmlMobile = '<div class="hdrfav mobile_fav_link"><div class="hdrfavttl">Your Favourite Sites</div><div class="site_list favourite_list">'+favHtml+'</div></div>'
+
+	if(document.querySelector(".main_mobile_menu")){
+		document.querySelector(".main_mobile_menu").insertAdjacentHTML("afterbegin", window.favHtmlMobile);
+		document.querySelector('.mobile_fav_link .hdrfavttl').onclick = function(event){
+			document.querySelector('.mobile_fav_link').classList.toggle('open');
+		}
+	}
 }
 
 const markFavourites = () =>{
@@ -491,11 +521,24 @@ const loadLoginForm = () => {
 }
 const renderLoginForm = () => {
 	if(!isLoggedUser){
-		if(document.querySelector('#login_popup')){
-			document.querySelector('#login_popup').classList.toggle('is-open');
+		if(!document.querySelector('#login_popup')){
+			loadLoginForm();
 
-			initLoginScripts();
+			setTimeout(function (){
+				if(document.querySelector('#login_popup')){
+					document.querySelector('#login_popup').classList.toggle('is-open');
+
+					initLoginScripts();
+				}
+			}, 300)
+		}else{
+			if(document.querySelector('#login_popup')){
+				document.querySelector('#login_popup').classList.toggle('is-open');
+
+				initLoginScripts();
+			}
 		}
+
 	}
 
 }
