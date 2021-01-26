@@ -609,11 +609,7 @@ const ajaxAdminEndpoint = '/wp-admin/admin-ajax.php';
 
 		el.classList.toggle('is-active');
 
-		if(el.classList.contains('is-active')){
-			window.likes.push(elID);
-		}else{
-			window.likes.remove(elID);
-		}
+		onLike(el, elID);
 
 		elParent.querySelector('[dislike-toggle-js][data-id="' + elID + '"]').classList.toggle('is-hide');
 
@@ -644,11 +640,7 @@ const ajaxAdminEndpoint = '/wp-admin/admin-ajax.php';
 
 		el.classList.toggle('is-active');
 
-		if(el.classList.contains('is-active')){
-			window.likes.push(elID);
-		}else{
-			window.likes.remove(elID);
-		}
+		onLike(el, elID);
 
 		listLikeBtn.classList.toggle('is-active');
 		listDislikeBtn.classList.toggle('is-hide');
@@ -660,12 +652,7 @@ const ajaxAdminEndpoint = '/wp-admin/admin-ajax.php';
 
 		console.log('Disliking '+elID);
 
-		el.classList.toggle('is-active');
-		if(el.classList.contains('is-active')){
-			window.likes.push(elID);
-		}else{
-			window.likes.remove(elID);
-		}
+		onDisLike(el, elID);
 
 		elParent.querySelector('[like-toggle-js][data-id="' + elID + '"]').classList.toggle('is-hide');
 
@@ -693,12 +680,7 @@ const ajaxAdminEndpoint = '/wp-admin/admin-ajax.php';
 			listDislikeBtn = listBlock.querySelector('.list__box-dislike'),
 			listLikeBtn = listBlock.querySelector('.list__box-like');
 
-		el.classList.toggle('is-active');
-		if(el.classList.contains('is-active')){
-			window.likes.push(elID);
-		}else{
-			window.likes.remove(elID);
-		}
+		onDisLike(el, elID);
 
 		listDislikeBtn.classList.toggle('is-active');
 		listLikeBtn.classList.toggle('is-hide');
