@@ -67,6 +67,9 @@ const renderFavourites = () => {
 				if(document.querySelector('.header__action-link--logout')){
 					document.querySelector('.header__action-link--logout').setAttribute('href', res.logout);
 				}
+
+
+
 				if(document.querySelector('.mobile_signup_link')){
 					document.querySelector('.mobile_signup_link').setAttribute('href', res.logout);
 				}
