@@ -292,7 +292,7 @@ function renderSiteBottomBanner(category, index){
 			'</div>'+
 			'</div>'+
 			'</div>'+
-			getPopupSimilarSites(category, siteId)+
+			//getPopupSimilarSites(category, siteId)+
 			'</div>';
 
 		//Loading bottom part in the drop down

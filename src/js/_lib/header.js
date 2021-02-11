@@ -112,7 +112,9 @@ const renderFavourites = () => {
 
 				})
 
-				favouritesDropDown.innerHTML = favouritesHtml;
+				if(favouritesDropDown){
+					favouritesDropDown.innerHTML = favouritesHtml;
+				}
 
 				renderMobileFavourites(res);
 			}
