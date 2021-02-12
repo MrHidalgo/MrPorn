@@ -292,7 +292,7 @@ function renderSiteBottomBanner(category, index){
 			'</div>'+
 			'</div>'+
 			'</div>'+
-			//getPopupSimilarSites(category, siteId)+
+			getPopupSimilarSites(category, siteId)+
 			'</div>';
 
 		//Loading bottom part in the drop down
@@ -328,7 +328,7 @@ function getPopupSimilarSites(category, currentSiteId){
 				'<p>'+moreSite.tagline+' <a class="readmore" href="'+moreSite.link+'">READ MORE</a></p>'+
 				'</div>'+
 				'<div class="similar_site_item_buttons">' +
-				'<a class="visit_site list__specification-visit nav_link" href="'+moreSite.url+'" target="_blank">VISIT WEBSITE</a>'+
+				'<a class="visit_site list__specification-read nav_link" href="'+moreSite.url+'" target="_blank">VISIT WEBSITE</a>'+
 				'<a class="read_review list__specification-visit nav_link" href="'+moreSite.link+'">READ REVIEW</a>'+
 				'</div>'+
 				'</div>'+
@@ -339,6 +339,42 @@ function getPopupSimilarSites(category, currentSiteId){
 	});
 
 	similarHtml += '</div>';
+
+	similarHtml += '<div id="other_categories" class="more_terms">';
+	similarHtml += '<div class="similar_site_title">MORE CATEGORIES</div>';
+	similarHtml += '<div class="more_categories_list category_box">';
+
+	homeData['more_terms'].map(function (term, index) {
+		let moreTermCat = homeData.categories[term];
+
+
+		let moreTermHtml = '<div class="category_item">';
+		moreTermHtml += '<a class="category_item_inner" hreflang="en" href="'+moreTermCat.link+'">';
+
+		if(moreTermCat['youtube_hd_opt']){
+			moreTermHtml += '<i className="'+moreTermCat['youtube_hd_opt']+'"></i>';
+		}
+		let videoThumb = moreTermCat['video_thumb'];
+
+		if(videoThumb!=''){
+			moreTermHtml += '<video autoplay loop muted playsinline><source src="'+videoThumb+'" type="video/mp4">Your browser does not support the video tag.</video>';
+		}else{
+			moreTermHtml += '<img src="'+moreTermCat['thumbnail']+'" alt="'+moreTermCat['title']+'"/>';
+		}
+
+		moreTermHtml += '<div class="catD">'+moreTermCat['title']+'<small>Click Here to See ('+moreTermCat['count']+') Sites</small></div>';
+
+		moreTermHtml += '</a>';
+
+		moreTermHtml += '</div>';
+
+
+		similarHtml += moreTermHtml;
+	});
+
+	similarHtml += '</div>';
+	similarHtml += '</div>';
+
 	similarHtml += '</div>';
 
 	return similarHtml;
