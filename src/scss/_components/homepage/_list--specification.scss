@@ -244,6 +244,15 @@
 		display: flex;
 		flex-direction: column;
 		position: relative;
+		position: absolute;
+		top:100%;
+		z-index: 101;
+		left: 50%;
+		width: 90%;
+		transform: translateX(-50%);
+
+		@include transition(width);
+
 		@include adaptive(1023) {
 			z-index: 1550;
 		}

@@ -306,7 +306,7 @@ function renderSiteBottomBanner(category, index){
 function getPopupSimilarSites(category, currentSiteId){
 	let similarHtml = '<div class="list__specification-bottom">';
 
-	similarHtml += '<div class="similar_site_title">SITES</div>';
+	similarHtml += '<div class="similar_site_title">MORE SIMILAR SITES</div>';
 
 	similarHtml += '<div class="similar_site_list">';
 
