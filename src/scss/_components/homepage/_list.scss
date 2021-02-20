@@ -200,3 +200,12 @@
 		background-color: #005FDB;
 	}
 }
+
+
+@keyframes zoomBannerBox {
+	0%   {opacity: 0;}
+	25%  {opacity:0.1; width: 100px; height: 100px;}
+	/*50%  {}
+	75%  {}*/
+	100% {width: 90%; height: auto;}
+}
