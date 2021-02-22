@@ -4,7 +4,7 @@
 	position: relative;
 	visibility: hidden;
 	overflow: hidden;
-	opacity: 0;
+	opacity: 1;
 	border-width: 2px;
 	border-color: rgb(125, 132, 142);
 	border-style: solid;
@@ -12,8 +12,7 @@
 	background-color: rgb(0, 74, 172);
 	box-shadow: 1.047px 19.973px 43px 0px rgba(8, 9, 21, 0.3);
 
-	width: 100px;
-	margin: 0 auto;
+
 
 	transition: all 0.6s ease-in;
 
@@ -22,6 +21,18 @@
 
 	&::-webkit-scrollbar {
 		display: none;
+	}
+
+	@include respond('desktop'){
+		position: absolute;
+		/*width: 90%;*/
+		width: 400px;
+		height: 100px;
+		left: 50%;
+		transform: translateX(-50%);
+
+		animation-name: zoomBannerBox;
+		animation-duration: 0.8s;
 	}
 
 	.list__specification__inner{
@@ -130,9 +141,10 @@
 		visibility: visible;
 		opacity: 1;
 
-		width: 90%;
-
-		animation: zoomBannerBox 0.5s;
+		@include respond('desktop'){
+			width: 90%;
+			height: auto;
+		}
 	}
 
 	&.list__specification--video {
@@ -252,12 +264,10 @@
 		position: absolute;
 		top:100%;
 		z-index: 101;
-		left: 50%;
-		width: 100%;
 
-		transform: translateX(-50%);
-
-		@include transition(width);
+		@include respond('desktop'){
+			width: 100%;
+		}
 
 		@include adaptive(1023) {
 			z-index: 1550;
