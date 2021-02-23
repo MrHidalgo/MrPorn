@@ -348,6 +348,7 @@ function generateModalTweener(sourceBBox, destinationBBox) {
   var toY = interpolate(vRange, [sourceCenter.y - destinationCenter.y, 0]);
   var toScaleX = interpolate(vRange, [sourceBBox.width / destinationBBox.width, 1]);
   var toScaleY = interpolate(vRange, [sourceBBox.height / destinationBBox.height, 1]);
+  console.log(toX + ' - ' + toY);
   return function (v) {
     return modalRenderer.set({
       opacity: v,
@@ -362,7 +363,12 @@ function generateModalTweener(sourceBBox, destinationBBox) {
 function openSlideModal(e) {
   if (e.target && e.target.classList.contains('modal-trigger')) {}
 
-  trigger = e.target.closest('.swiper-slide'); // Get bounding box of triggering element
+  trigger = e.target.parents('.swiper-slide');
+
+  if (Array.isArray(trigger)) {
+    trigger = trigger[0];
+  } // Get bounding box of triggering element
+
 
   var triggerBBox = trigger.getBoundingClientRect(); // Temporarily show modal container to measure modal
 

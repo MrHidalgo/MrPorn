@@ -58,6 +58,8 @@ function generateModalTweener(sourceBBox, destinationBBox) {
 	const toScaleX = interpolate(vRange, [sourceBBox.width / destinationBBox.width, 1]);
 	const toScaleY = interpolate(vRange, [sourceBBox.height / destinationBBox.height, 1]);
 
+	console.log(toX+' - '+toY);
+
 	return (v) => modalRenderer.set({
 		opacity: v,
 		x: toX(v),
@@ -73,9 +75,14 @@ function openSlideModal(e) {
 	}
 
 	trigger = e.target.parents('.swiper-slide');
+	if(Array.isArray(trigger)){
+		trigger = trigger[0];
+	}
 
 	// Get bounding box of triggering element
 	const triggerBBox = trigger.getBoundingClientRect();
+
+
 
 	// Temporarily show modal container to measure modal
 	dimmerRenderer.set('display', 'block').render();
