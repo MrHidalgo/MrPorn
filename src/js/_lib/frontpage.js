@@ -72,7 +72,7 @@ function openSlideModal(e) {
 
 	}
 
-	trigger = e.target.closest('.swiper-slide');
+	trigger = e.target.parents('.swiper-slide');
 
 	// Get bounding box of triggering element
 	const triggerBBox = trigger.getBoundingClientRect();
