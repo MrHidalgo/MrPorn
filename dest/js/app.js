@@ -301,6 +301,127 @@ var isAnimationStarted = false;
 var maxLeft;
 var minLeft;
 var swiperSlideWidth = 230;
+var _window$popmotion = window.popmotion,
+    css = _window$popmotion.css,
+    transform = _window$popmotion.transform,
+    chain = _window$popmotion.chain,
+    delay = _window$popmotion.delay,
+    tween = _window$popmotion.tween,
+    easing = _window$popmotion.easing,
+    parallel = _window$popmotion.parallel;
+var interpolate = transform.interpolate;
+var trigger;
+var isClosing = false; // Select DOM
+
+var modalTriggersDom = document.querySelectorAll('.modal-trigger');
+var dimmer = document.querySelector('.overlay');
+var modalContainer = document.querySelector('.modal-container');
+var modal = document.querySelector('.modal'); // Create CSS renderers
+
+var dimmerRenderer = css(dimmer);
+var modalContainerRenderer = css(modalContainer);
+var modalRenderer = css(modal); // Return the center x, y of a bounding box
+
+function findCenter(_ref) {
+  var top = _ref.top,
+      left = _ref.left,
+      height = _ref.height,
+      width = _ref.width;
+  return {
+    x: left + width / 2,
+    y: top + height / 2
+  };
+}
+/*
+  Generate a function that will take a progress value (0 - 1)
+  and use that to tween the modal from the source to the destination
+  bounding boxes
+*/
+
+
+var vRange = [0, 1];
+
+function generateModalTweener(sourceBBox, destinationBBox) {
+  var sourceCenter = findCenter(sourceBBox);
+  var destinationCenter = findCenter(destinationBBox);
+  var toX = interpolate(vRange, [sourceCenter.x - destinationCenter.x, 0]);
+  var toY = interpolate(vRange, [sourceCenter.y - destinationCenter.y, 0]);
+  var toScaleX = interpolate(vRange, [sourceBBox.width / destinationBBox.width, 1]);
+  var toScaleY = interpolate(vRange, [sourceBBox.height / destinationBBox.height, 1]);
+  return function (v) {
+    return modalRenderer.set({
+      opacity: v,
+      x: toX(v),
+      y: toY(v),
+      scaleX: toScaleX(v),
+      scaleY: toScaleY(v)
+    });
+  };
+}
+
+function openSlideModal(e) {
+  if (e.target && e.target.classList.contains('modal-trigger')) {}
+
+  trigger = e.target.closest('.swiper-slide'); // Get bounding box of triggering element
+
+  var triggerBBox = trigger.getBoundingClientRect(); // Temporarily show modal container to measure modal
+
+  dimmerRenderer.set('display', 'block').render();
+  modalContainerRenderer.set('display', 'flex').render();
+  modalRenderer.set('opacity', 0).render(); // Get bounding box of final modal position
+
+  var modalBBox = modal.getBoundingClientRect(); // Get a function to tween the modal from the trigger
+
+  var modalTweener = generateModalTweener(triggerBBox, modalBBox); // Fade in overlay
+
+  tween({
+    duration: 200,
+    onUpdate: function onUpdate(v) {
+      return dimmerRenderer.set('opacity', v);
+    }
+  }).start();
+  chain([delay(75), tween({
+    duration: 600,
+    ease: easing.easeOut,
+    onUpdate: modalTweener
+  })]).start();
+}
+
+function closeComplete() {
+  isClosing = false;
+  dimmerRenderer.set('display', 'none').render();
+  modalContainerRenderer.set('display', 'none').render();
+  modalRenderer.set({
+    y: 0,
+    scaleX: 1,
+    scaleY: 1,
+    transformOrigin: '50% 50%'
+  });
+}
+
+function cancelModal(e) {
+  if (e.target && e.target.classList.contains('cancel-modal') && !isClosing) {
+    e.stopPropagation();
+  }
+
+  isClosing = true;
+  var triggerBBox = trigger.getBoundingClientRect();
+  var modalBBox = modal.getBoundingClientRect();
+  var modalTweener = generateModalTweener(triggerBBox, modalBBox);
+  parallel([tween({
+    from: dimmerRenderer.get('opacity'),
+    to: 0,
+    onUpdate: function onUpdate(v) {
+      return dimmerRenderer.set('opacity', v);
+    }
+  }), tween({
+    from: modalRenderer.get('opacity'),
+    to: 0,
+    duration: 250,
+    onUpdate: modalTweener,
+    onComplete: closeComplete
+  })]).start();
+}
 
 var initHomeLazyLoad = function initHomeLazyLoad() {
   var listElm = document.querySelector('#infinite-list');
@@ -473,7 +594,7 @@ function getPopupSimilarSites(category, currentSiteId) {
   }
 
   homeData.categories[category].sites.map(function (moreSite, index) {
-    if (currentSiteId != moreSite.id && similarSiteCount < 6) {
+    if (currentSiteId != moreSite.id && similarSiteCount < 5) {
       var moreSiteLogo = moreSite.logo ? moreSite.logo.src : '';
       similarHtml += '<div class="similar_site_item">' + '<div class="similar_site_item_inner">' + '<a class="similar_site_item_thumb" href="' + moreSite.link + '" style="background-image: url(' + moreSite.banner_image + ')"></a>' + '<div class="similar_site_item_content">' + '<div class="title">' + moreSite.name + '</div>' + '<p>' + moreSite.tagline + ' <a class="readmore" href="' + moreSite.link + '">READ MORE</a></p>' + '</div>' + '<div class="similar_site_item_buttons">' + '<a class="visit_site list__specification-read nav_link" href="' + moreSite.url + '" target="_blank">VISIT WEBSITE</a>' + '<a class="read_review list__specification-visit nav_link" href="' + moreSite.link + '">READ REVIEW</a>' + '</div>' + '</div>' + '</div>';
       similarSiteCount++;
@@ -703,25 +824,24 @@ var boxHover = function boxHover() {
       swiperSlides[i].setAttribute('data-init', '1');
     }
   }
+  /*for(let i = 0, len = listBoxBody.length; i < len; i++) {
+  	listBoxBody[i].addEventListener('mouseleave', function(ev) {
+  		if(window.innerWidth >= 1280) {
+  			hoverBool = false;
+  				clearTimeout(tOut);
+  				for(let j = 0, l = swiperSlides.length; j < l; j++) {
+  				swiperSlides[j].classList.remove('is-hover');
+  			}
+  		}
+  	}, false);
+  }*/
 
-  for (var _i = 0, _len = listBoxBody.length; _i < _len; _i++) {
-    listBoxBody[_i].addEventListener('mouseleave', function (ev) {
-      if (window.innerWidth >= 1280) {
-        hoverBool = false;
-        clearTimeout(tOut);
-
-        for (var j = 0, l = swiperSlides.length; j < l; j++) {
-          swiperSlides[j].classList.remove('is-hover');
-        }
-      }
-    }, false);
-  }
 
   if (!isMobileOrTablet) {
-    for (var _i2 = 0, _len2 = parentSlides.length; _i2 < _len2; _i2++) {
-      parentSlides[_i2].removeEventListener('mouseleave', onParentSideLeave);
+    for (var _i = 0, _len = parentSlides.length; _i < _len; _i++) {
+      parentSlides[_i].removeEventListener('mouseleave', onParentSideLeave);
 
-      parentSlides[_i2].addEventListener('mouseleave', onParentSideLeave, false);
+      parentSlides[_i].addEventListener('mouseleave', onParentSideLeave, false);
     }
   }
 };
@@ -1225,6 +1345,10 @@ function onShowBannerLeave(__ev) {
 function showBanner(_el) {
   var isSkip = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : false;
 
+  if (true) {
+    return;
+  }
+
   var _boxParent = _el.closest('.list__box'),
       _boxID = _boxParent.getAttribute('data-id'),
       _parentNode = _el.closest('.list__box-wrapper');
@@ -1276,6 +1400,8 @@ function showBanner(_el) {
 
   if (_isOpen && !isSkip) {
     _isOpen.classList.remove('is-open');
+
+    document.body.classList.remove('is_open');
   }
 
   if (window.innerWidth < 1024) {
@@ -1299,6 +1425,8 @@ function showBanner(_el) {
 
     if (_specificationBox) {
       _specificationBox.classList.add('is-open');
+
+      document.body.classList.add('is_open');
     }
   }
 
@@ -2536,7 +2664,10 @@ var ajaxAdminEndpoint = '/wp-admin/admin-ajax.php';
       if (_ev.closest('.list__specification-close')) {
         closeBanner(_ev);
       } else if (_ev.closest('.list__box-more')) {
-        showBanner(_ev);
+        //showBanner(_ev);
+        openSlideModal(ev);
+      } else if (_ev.closest('.cancel-modal')) {
+        cancelModal(ev);
       } else if (_ev.closest('[more-toggle-js]')) {
         showBanner(_ev);
       } else if (_ev.closest('[spec-like-js]')) {
@@ -2794,6 +2925,8 @@ var ajaxAdminEndpoint = '/wp-admin/admin-ajax.php';
 
     _el.closest('.list__specification').classList.remove('is-open');
 
+    document.body.classList.remove('is_open');
+
     if (window.innerWidth <= 1024) {
       document.querySelectorAll("html, body").forEach(function (val, idx) {
         val.classList.remove("is-hideScroll");
@@ -2830,8 +2963,8 @@ var ajaxAdminEndpoint = '/wp-admin/admin-ajax.php';
       }, false);
     }
 
-    for (var _i3 = 0, _len3 = videoPauseBtns.length; _i3 < _len3; _i3++) {
-      videoPauseBtns[_i3].addEventListener('click', function (ev) {
+    for (var _i2 = 0, _len2 = videoPauseBtns.length; _i2 < _len2; _i2++) {
+      videoPauseBtns[_i2].addEventListener('click', function (ev) {
         var el = ev.currentTarget;
         onPauseClick(el);
       }, false);
@@ -2854,42 +2987,42 @@ var ajaxAdminEndpoint = '/wp-admin/admin-ajax.php';
       }, false);
     }
 
-    for (var _i4 = 0, _len4 = skipBtns.length; _i4 < _len4; _i4++) {
-      skipBtns[_i4].addEventListener('click', function (ev) {
+    for (var _i3 = 0, _len3 = skipBtns.length; _i3 < _len3; _i3++) {
+      skipBtns[_i3].addEventListener('click', function (ev) {
         ev.currentTarget.classList.toggle('is-active');
       }, false);
     }
 
-    for (var _i5 = 0, _len5 = specFavoritesBtns.length; _i5 < _len5; _i5++) {
-      specFavoritesBtns[_i5].addEventListener('click', function (ev) {
+    for (var _i4 = 0, _len4 = specFavoritesBtns.length; _i4 < _len4; _i4++) {
+      specFavoritesBtns[_i4].addEventListener('click', function (ev) {
         var el = ev.currentTarget;
         onBannerFavourite(el);
       }, false);
     }
 
-    for (var _i6 = 0, _len6 = likeBtns.length; _i6 < _len6; _i6++) {
-      likeBtns[_i6].addEventListener('click', function (ev) {
+    for (var _i5 = 0, _len5 = likeBtns.length; _i5 < _len5; _i5++) {
+      likeBtns[_i5].addEventListener('click', function (ev) {
         var el = ev.currentTarget;
         onSiteBoxLikeClick(el);
       }, false);
     }
 
-    for (var _i7 = 0, _len7 = specLikeBtns.length; _i7 < _len7; _i7++) {
-      specLikeBtns[_i7].addEventListener('click', function (ev) {
+    for (var _i6 = 0, _len6 = specLikeBtns.length; _i6 < _len6; _i6++) {
+      specLikeBtns[_i6].addEventListener('click', function (ev) {
         var el = ev.currentTarget;
         onBannerLikeClick(el);
       }, false);
     }
 
-    for (var _i8 = 0, _len8 = dislikeBtns.length; _i8 < _len8; _i8++) {
-      dislikeBtns[_i8].addEventListener('click', function (ev) {
+    for (var _i7 = 0, _len7 = dislikeBtns.length; _i7 < _len7; _i7++) {
+      dislikeBtns[_i7].addEventListener('click', function (ev) {
         var el = ev.currentTarget;
         onSiteBoxDislikeClick(el);
       }, false);
     }
 
-    for (var _i9 = 0, _len9 = specDislikeBtns.length; _i9 < _len9; _i9++) {
-      specDislikeBtns[_i9].addEventListener('click', function (ev) {
+    for (var _i8 = 0, _len8 = specDislikeBtns.length; _i8 < _len8; _i8++) {
+      specDislikeBtns[_i8].addEventListener('click', function (ev) {
         var el = ev.currentTarget;
         onBannerDislikeClick(el);
       }, false);

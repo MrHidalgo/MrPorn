@@ -137,7 +137,11 @@ const ajaxAdminEndpoint = '/wp-admin/admin-ajax.php';
 			if(_ev.closest('.list__specification-close')){
 				closeBanner(_ev);
 			}else if(_ev.closest('.list__box-more')){
-				showBanner(_ev);
+				//showBanner(_ev);
+
+				openSlideModal(ev);
+			}else if(_ev.closest('.cancel-modal')){
+				cancelModal(ev);
 			}else if(_ev.closest('[more-toggle-js]')){
 				showBanner(_ev);
 			}else if(_ev.closest('[spec-like-js]')){
@@ -411,6 +415,8 @@ const ajaxAdminEndpoint = '/wp-admin/admin-ajax.php';
 
 		_el.closest('.list__box-wrapper').classList.remove('is-open');
 		_el.closest('.list__specification').classList.remove('is-open');
+
+		document.body.classList.remove('is_open');
 
 		if(window.innerWidth <= 1024) {
 			document.querySelectorAll("html, body").forEach((val, idx) => {
