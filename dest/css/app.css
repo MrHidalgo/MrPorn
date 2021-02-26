@@ -8140,10 +8140,9 @@ body.chatbot_active .go-top {
 
 /* line 1, src/scss/_components/homepage/_list--specification.scss */
 .list__specification, .list__snapshot {
-  display: none;
   position: relative;
-  visibility: hidden;
-  overflow: hidden;
+  /*visibility: hidden;
+	overflow: hidden;*/
   opacity: 1;
   border-width: 2px;
   border-color: #7d848e;
@@ -8167,27 +8166,9 @@ body.chatbot_active .go-top {
   display: none;
 }
 
-@media screen and (min-width: 1024px) {
-  /* line 1, src/scss/_components/homepage/_list--specification.scss */
-  .list__specification, .list__snapshot {
-    position: absolute;
-    /*width: 90%;*/
-    width: 400px;
-    height: 100px;
-    left: 50%;
-    -webkit-transform: translateX(-50%);
-        -ms-transform: translateX(-50%);
-            transform: translateX(-50%);
-    -webkit-animation-name: zoomBannerBox;
-            animation-name: zoomBannerBox;
-    -webkit-animation-duration: 0.8s;
-            animation-duration: 0.8s;
-  }
-}
-
 /* line 38, src/scss/_components/homepage/_list--specification.scss */
 .list__specification .list__specification__inner, .list__snapshot .list__specification__inner {
-  height: 0;
+  /*height: 0;*/
   -webkit-transition: all 0.6s ease-in;
   -o-transition: all 0.6s ease-in;
   transition: all 0.6s ease-in;
@@ -8339,8 +8320,8 @@ body.chatbot_active .go-top {
 @media screen and (min-width: 1024px) {
   /* line 139, src/scss/_components/homepage/_list--specification.scss */
   .list__specification.is-open, .list__snapshot.is-open {
-    width: 90%;
-    height: auto;
+    width: 100%;
+    height: 100%;
   }
 }
 
@@ -9921,7 +9902,7 @@ body.is_open .swiper-slide:not(.is-hover):after {
 
 /* line 242, src/scss/_components/homepage/_list.scss */
 .modal-container {
-  position: fixed;
+  position: absolute;
   top: 0;
   right: 0;
   left: 0;
@@ -9935,7 +9916,7 @@ body.is_open .swiper-slide:not(.is-hover):after {
   -webkit-align-items: center;
       -ms-flex-align: center;
           align-items: center;
-  z-index: 20;
+  z-index: 22;
 }
 
 /* line 254, src/scss/_components/homepage/_list.scss */
@@ -9950,27 +9931,26 @@ body.is_open .swiper-slide:not(.is-hover):after {
   opacity: 0;
   -webkit-transform: translateZ(0);
           transform: translateZ(0);
+  z-index: 21;
 }
 
-/* line 266, src/scss/_components/homepage/_list.scss */
-.modal {
+/* line 267, src/scss/_components/homepage/_list.scss */
+#site_modal.modal {
   background: #fff;
   -webkit-border-radius: 10px;
           border-radius: 10px;
-  width: 300px;
-  height: 250px;
+  width: 60%;
+  height: 80vh;
+  max-width: 1000px;
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
-  -webkit-box-align: end;
-  -webkit-align-items: flex-end;
-      -ms-flex-align: end;
-          align-items: flex-end;
+  /*align-items: flex-end;*/
 }
 
-/* line 274, src/scss/_components/homepage/_list.scss */
-.modal footer {
+/* line 276, src/scss/_components/homepage/_list.scss */
+#site_modal.modal footer {
   width: 100%;
   display: -webkit-box;
   display: -webkit-flex;
@@ -9982,8 +9962,8 @@ body.is_open .swiper-slide:not(.is-hover):after {
           justify-content: flex-end;
 }
 
-/* line 280, src/scss/_components/homepage/_list.scss */
-.modal button {
+/* line 282, src/scss/_components/homepage/_list.scss */
+#site_modal.modal button {
   border: none;
   -webkit-border-radius: 5px;
           border-radius: 5px;
@@ -9991,12 +9971,12 @@ body.is_open .swiper-slide:not(.is-hover):after {
   margin: 0 10px 10px 0;
 }
 
-/* line 288, src/scss/_components/homepage/_list.scss */
+/* line 290, src/scss/_components/homepage/_list.scss */
 .submit {
   background: #8CDA26;
 }
 
-/* line 292, src/scss/_components/homepage/_list.scss */
+/* line 294, src/scss/_components/homepage/_list.scss */
 .cancel {
   background: #DA2632;
 }

@@ -240,7 +240,7 @@ body.is_open{
 
 
 .modal-container {
-	position: fixed;
+	position: absolute;
 	top: 0;
 	right: 0;
 	left: 0;
@@ -248,7 +248,7 @@ body.is_open{
 	display: none;
 	justify-content: center;
 	align-items: center;
-	z-index: 20;
+	z-index: 22;
 }
 
 .overlay {
@@ -261,15 +261,17 @@ body.is_open{
 	background: rgba(0,0,0,0.6);
 	opacity: 0;
 	transform: translateZ(0);
+	z-index: 21;
 }
 
-.modal {
+#site_modal.modal {
 	background: #fff;
 	border-radius: 10px;
-	width: 300px;
-	height: 250px;
+	width: 60%;
+	height: 80vh;
+	max-width: 1000px;
 	display: flex;
-	align-items: flex-end;
+	/*align-items: flex-end;*/
 
 	footer {
 		width: 100%;

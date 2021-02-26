@@ -344,11 +344,13 @@ var vRange = [0, 1];
 function generateModalTweener(sourceBBox, destinationBBox) {
   var sourceCenter = findCenter(sourceBBox);
   var destinationCenter = findCenter(destinationBBox);
+  console.log(sourceCenter);
+  console.log(destinationCenter);
   var toX = interpolate(vRange, [sourceCenter.x - destinationCenter.x, 0]);
   var toY = interpolate(vRange, [sourceCenter.y - destinationCenter.y, 0]);
   var toScaleX = interpolate(vRange, [sourceBBox.width / destinationBBox.width, 1]);
-  var toScaleY = interpolate(vRange, [sourceBBox.height / destinationBBox.height, 1]);
-  console.log(toX + ' - ' + toY);
+  var toScaleY = interpolate(vRange, [sourceBBox.height / destinationBBox.height, 1]); // console.log(sourceCenter.x+' - '+destinationCenter.x);
+
   return function (v) {
     return modalRenderer.set({
       opacity: v,
@@ -398,6 +400,7 @@ function closeComplete() {
   dimmerRenderer.set('display', 'none').render();
   modalContainerRenderer.set('display', 'none').render();
   modalRenderer.set({
+    x: 0,
     y: 0,
     scaleX: 1,
     scaleY: 1,
@@ -414,6 +417,11 @@ function cancelModal(e) {
   var triggerBBox = trigger.getBoundingClientRect();
   var modalBBox = modal.getBoundingClientRect();
   var modalTweener = generateModalTweener(triggerBBox, modalBBox);
+
+  if (document.querySelector('[video-js]')) {
+    document.querySelector('[video-js]').pause();
+  }
+
   parallel([tween({
     from: dimmerRenderer.get('opacity'),
     to: 0,
@@ -1350,11 +1358,11 @@ function onShowBannerLeave(__ev) {
 
 function showBanner(_el) {
   var isSkip = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : false;
+  var target = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : false;
 
-  if (true) {
-    return;
-  }
-
+  /*	if(true){
+  		return;
+  	}*/
   var _boxParent = _el.closest('.list__box'),
       _boxID = _boxParent.getAttribute('data-id'),
       _parentNode = _el.closest('.list__box-wrapper');
@@ -1385,7 +1393,9 @@ function showBanner(_el) {
     var bottomBanner = renderSiteBottomBanner(swiperWrapper.dataset.category, swiperSlide.dataset.index);
 
     if (bottomBanner) {
-      bannerWrapper.innerHTML = bottomBanner;
+      //bannerWrapper.innerHTML = bottomBanner;
+      document.querySelector('#site_modal').innerHTML = bottomBanner;
+      openSlideModal(target);
     }
   }
 
@@ -2670,8 +2680,7 @@ var ajaxAdminEndpoint = '/wp-admin/admin-ajax.php';
       if (_ev.closest('.list__specification-close')) {
         closeBanner(_ev);
       } else if (_ev.closest('.list__box-more')) {
-        //showBanner(_ev);
-        openSlideModal(ev);
+        showBanner(_ev, false, ev); //openSlideModal(ev);
       } else if (_ev.closest('.cancel-modal')) {
         cancelModal(ev);
       } else if (_ev.closest('[more-toggle-js]')) {

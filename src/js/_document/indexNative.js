@@ -137,9 +137,9 @@ const ajaxAdminEndpoint = '/wp-admin/admin-ajax.php';
 			if(_ev.closest('.list__specification-close')){
 				closeBanner(_ev);
 			}else if(_ev.closest('.list__box-more')){
-				//showBanner(_ev);
+				showBanner(_ev, false, ev);
 
-				openSlideModal(ev);
+				//openSlideModal(ev);
 			}else if(_ev.closest('.cancel-modal')){
 				cancelModal(ev);
 			}else if(_ev.closest('[more-toggle-js]')){

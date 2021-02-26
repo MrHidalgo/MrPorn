@@ -53,12 +53,15 @@ function generateModalTweener(sourceBBox, destinationBBox) {
 	const sourceCenter = findCenter(sourceBBox);
 	const destinationCenter = findCenter(destinationBBox);
 
+	console.log(sourceCenter);
+	console.log(destinationCenter);
+
 	const toX = interpolate(vRange, [sourceCenter.x - destinationCenter.x, 0]);
 	const toY = interpolate(vRange, [sourceCenter.y - destinationCenter.y, 0]);
 	const toScaleX = interpolate(vRange, [sourceBBox.width / destinationBBox.width, 1]);
 	const toScaleY = interpolate(vRange, [sourceBBox.height / destinationBBox.height, 1]);
 
-	console.log(toX+' - '+toY);
+	// console.log(sourceCenter.x+' - '+destinationCenter.x);
 
 	return (v) => modalRenderer.set({
 		opacity: v,
@@ -115,7 +118,9 @@ function closeComplete() {
 	isClosing = false;
 	dimmerRenderer.set('display', 'none').render();
 	modalContainerRenderer.set('display', 'none').render();
+
 	modalRenderer.set({
+		x:0,
 		y: 0,
 		scaleX: 1,
 		scaleY: 1,
@@ -134,6 +139,10 @@ function cancelModal(e) {
 	const modalBBox = modal.getBoundingClientRect();
 
 	const modalTweener = generateModalTweener(triggerBBox, modalBBox);
+
+	if(document.querySelector('[video-js]')){
+		document.querySelector('[video-js]').pause();
+	}
 
 	parallel([
 		tween({
@@ -1343,11 +1352,11 @@ function onShowBannerLeave(__ev){
 	window.clearTimeout(currentBannerTimeout)
 }
 
-function showBanner(_el, isSkip = false){
+function showBanner(_el, isSkip = false, target = false){
 
-	if(true){
+/*	if(true){
 		return;
-	}
+	}*/
 
 	var _boxParent = _el.closest('.list__box'),
 		_boxID = _boxParent.getAttribute('data-id'),
@@ -1377,7 +1386,10 @@ function showBanner(_el, isSkip = false){
 	}else{
 		var bottomBanner = renderSiteBottomBanner(swiperWrapper.dataset.category, swiperSlide.dataset.index);
 		if(bottomBanner){
-			bannerWrapper.innerHTML = bottomBanner;
+			//bannerWrapper.innerHTML = bottomBanner;
+
+			document.querySelector('#site_modal').innerHTML = bottomBanner;
+			openSlideModal(target);
 		}
 	}
 
