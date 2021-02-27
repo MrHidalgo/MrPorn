@@ -49,12 +49,9 @@ function findCenter({ top, left, height, width }) {
   bounding boxes
 */
 const vRange = [0, 1];
-function generateModalTweener(sourceBBox, destinationBBox) {
+function generateModalTweener(sourceBBox, destinationBBox, isOpen = true) {
 	const sourceCenter = findCenter(sourceBBox);
 	const destinationCenter = findCenter(destinationBBox);
-
-	console.log(sourceCenter);
-	console.log(destinationCenter);
 
 	const toX = interpolate(vRange, [sourceCenter.x - destinationCenter.x, 0]);
 	const toY = interpolate(vRange, [sourceCenter.y - destinationCenter.y, 0]);
@@ -62,6 +59,8 @@ function generateModalTweener(sourceBBox, destinationBBox) {
 	const toScaleY = interpolate(vRange, [sourceBBox.height / destinationBBox.height, 1]);
 
 	// console.log(sourceCenter.x+' - '+destinationCenter.x);
+
+	console.log(destinationCenter.y);
 
 	return (v) => modalRenderer.set({
 		opacity: v,
@@ -138,7 +137,7 @@ function cancelModal(e) {
 	const triggerBBox = trigger.getBoundingClientRect();
 	const modalBBox = modal.getBoundingClientRect();
 
-	const modalTweener = generateModalTweener(triggerBBox, modalBBox);
+	const modalTweener = generateModalTweener(triggerBBox, modalBBox, false);
 
 	if(document.querySelector('[video-js]')){
 		document.querySelector('[video-js]').pause();
