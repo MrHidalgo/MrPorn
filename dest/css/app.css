@@ -7414,8 +7414,8 @@ body.chatbot_active .go-top {
 
 /* line 102, src/scss/_components/homepage/_list--box.scss */
 .list__box.is-active .list__box-details {
-  opacity: 0;
-  visibility: hidden;
+  /*opacity: 0;
+			visibility: hidden;*/
   -webkit-transform: translateY(0);
       -ms-transform: translateY(0);
           transform: translateY(0);
@@ -8144,9 +8144,9 @@ body.chatbot_active .go-top {
   /*visibility: hidden;
 	overflow: hidden;*/
   opacity: 1;
-  border-width: 2px;
-  border-color: #7d848e;
-  border-style: solid;
+  /*border-width: 2px;
+	border-color: rgb(125, 132, 142);
+	border-style: solid;*/
   -webkit-border-radius: 5px;
           border-radius: 5px;
   background-color: #004aac;
@@ -8194,11 +8194,9 @@ body.chatbot_active .go-top {
 @media screen and (max-width: 1023px) {
   /* line 1, src/scss/_components/homepage/_list--specification.scss */
   .list__specification, .list__snapshot {
-    opacity: 0;
-    visibility: hidden;
-    -webkit-transform: scale(0.5);
-        -ms-transform: scale(0.5);
-            transform: scale(0.5);
+    /*opacity: 0;
+		visibility: hidden;
+		transform: scale(0.5);*/
     overflow: hidden;
     z-index: 1555;
     position: fixed;
@@ -8305,7 +8303,7 @@ body.chatbot_active .go-top {
     -webkit-flex-direction: column;
         -ms-flex-direction: column;
             flex-direction: column;
-    min-height: 100%;
+    /*min-height: 100%;*/
     height: auto;
   }
 }
@@ -9900,26 +9898,36 @@ body.is_open .swiper-slide:not(.is-hover):after {
   bottom: -5px;
 }
 
-/* line 242, src/scss/_components/homepage/_list.scss */
+/* line 240, src/scss/_components/homepage/_list.scss */
+body.opened {
+  overflow: hidden;
+}
+
+/* line 244, src/scss/_components/homepage/_list.scss */
 .modal-container {
-  position: absolute;
+  position: fixed;
   top: 0;
   right: 0;
   left: 0;
-  /*height: 100vh;*/
+  height: 100vh;
   display: none;
   -webkit-box-pack: center;
   -webkit-justify-content: center;
       -ms-flex-pack: center;
           justify-content: center;
-  -webkit-box-align: center;
-  -webkit-align-items: center;
-      -ms-flex-align: center;
-          align-items: center;
+  /*align-items: center;*/
   z-index: 22;
+  overflow: auto;
 }
 
-/* line 254, src/scss/_components/homepage/_list.scss */
+@media screen and (max-width: 1023px) {
+  /* line 244, src/scss/_components/homepage/_list.scss */
+  .modal-container {
+    z-index: 110;
+  }
+}
+
+/* line 261, src/scss/_components/homepage/_list.scss */
 .overlay {
   display: none;
   position: absolute;
@@ -9934,23 +9942,32 @@ body.is_open .swiper-slide:not(.is-hover):after {
   z-index: 21;
 }
 
-/* line 267, src/scss/_components/homepage/_list.scss */
+/* line 274, src/scss/_components/homepage/_list.scss */
 #site_modal.modal {
   background: #fff;
   -webkit-border-radius: 10px;
           border-radius: 10px;
-  width: 60%;
+  max-width: 90%;
   /*height: 80vh;*/
-  max-width: 1000px;
+  width: 1300px;
+  margin-top: 100px;
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
-  margin-top: 100px;
   /*align-items: flex-end;*/
 }
 
-/* line 277, src/scss/_components/homepage/_list.scss */
+@media screen and (max-width: 1023px) {
+  /* line 274, src/scss/_components/homepage/_list.scss */
+  #site_modal.modal {
+    margin: 0;
+    width: 100%;
+    max-width: 100%;
+  }
+}
+
+/* line 290, src/scss/_components/homepage/_list.scss */
 #site_modal.modal footer {
   width: 100%;
   display: -webkit-box;
@@ -9963,21 +9980,12 @@ body.is_open .swiper-slide:not(.is-hover):after {
           justify-content: flex-end;
 }
 
-/* line 283, src/scss/_components/homepage/_list.scss */
-#site_modal.modal button {
-  border: none;
-  -webkit-border-radius: 5px;
-          border-radius: 5px;
-  padding: 25px 50px;
-  margin: 0 10px 10px 0;
-}
-
-/* line 291, src/scss/_components/homepage/_list.scss */
+/* line 297, src/scss/_components/homepage/_list.scss */
 .submit {
   background: #8CDA26;
 }
 
-/* line 295, src/scss/_components/homepage/_list.scss */
+/* line 301, src/scss/_components/homepage/_list.scss */
 .cancel {
   background: #DA2632;
 }

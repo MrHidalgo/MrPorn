@@ -327,9 +327,22 @@ function findCenter(_ref) {
       left = _ref.left,
       height = _ref.height,
       width = _ref.width;
+  var isOpen = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : true;
   return {
     x: left + width / 2,
     y: top + height / 2
+  };
+}
+
+function findHCenter(_ref2) {
+  var top = _ref2.top,
+      left = _ref2.left,
+      height = _ref2.height,
+      width = _ref2.width;
+  var isOpen = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : true;
+  return {
+    x: left + width / 2,
+    y: top + window.scrollY
   };
 }
 /*
@@ -343,9 +356,20 @@ var vRange = [0, 1];
 
 function generateModalTweener(sourceBBox, destinationBBox) {
   var isOpen = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : true;
-  var sourceCenter = findCenter(sourceBBox);
-  var destinationCenter = findCenter(destinationBBox);
+  var sourceCenter = findCenter(sourceBBox); //const destinationCenter = findHCenter(destinationBBox, isOpen);
+
+  var destinationCenter = findCenter(destinationBBox, isOpen);
   var toX = interpolate(vRange, [sourceCenter.x - destinationCenter.x, 0]);
+  /*let toY = 0;
+  	if(isOpen){
+  	//toY = interpolate(vRange, [sourceCenter.y - destinationCenter.y + window.scrollY, 0]);
+  	toY = interpolate(vRange, [200 + window.scrollY, 0]);
+  		console.log('Opening '+(200 + window.scrollY));
+  	}else{
+  	toY = interpolate(vRange, [sourceCenter.y - destinationCenter.y, 0]);
+  	console.log('Closing '+(sourceCenter.y - destinationCenter.y));
+  }*/
+
   var toY = interpolate(vRange, [sourceCenter.y - destinationCenter.y, 0]);
   var toScaleX = interpolate(vRange, [sourceBBox.width / destinationBBox.width, 1]);
   var toScaleY = interpolate(vRange, [sourceBBox.height / destinationBBox.height, 1]); // console.log(sourceCenter.x+' - '+destinationCenter.x);
@@ -376,7 +400,8 @@ function openSlideModal(e) {
 
   dimmerRenderer.set('display', 'block').render();
   modalContainerRenderer.set('display', 'flex').render();
-  modalRenderer.set('opacity', 0).render(); // Get bounding box of final modal position
+  modalRenderer.set('opacity', 0).render();
+  document.body.classList.add('opened'); // Get bounding box of final modal position
 
   var modalBBox = modal.getBoundingClientRect(); // Get a function to tween the modal from the trigger
 
@@ -404,7 +429,8 @@ function closeComplete() {
     y: 0,
     scaleX: 1,
     scaleY: 1,
-    transformOrigin: '50% 50%'
+    transformOrigin: '50% 50%' //transformOrigin: '50% 0'
+
   });
 }
 
@@ -422,6 +448,7 @@ function cancelModal(e) {
     document.querySelector('[video-js]').pause();
   }
 
+  document.body.classList.remove('opened');
   parallel([tween({
     from: dimmerRenderer.get('opacity'),
     to: 0,
@@ -2661,6 +2688,8 @@ var ajaxAdminEndpoint = '/wp-admin/admin-ajax.php';
       if (!_ev.closest('.nav_link')) {//ev.preventDefault();
       }
 
+      console.log(_ev);
+
       if (!_ev.closest('[sort-node-js]')) {
         var openSort = document.querySelector('.sort__drop.is-open');
 
@@ -2681,8 +2710,6 @@ var ajaxAdminEndpoint = '/wp-admin/admin-ajax.php';
         closeBanner(_ev);
       } else if (_ev.closest('.list__box-more')) {
         showBanner(_ev, false, ev); //openSlideModal(ev);
-      } else if (_ev.closest('.cancel-modal')) {
-        cancelModal(ev);
       } else if (_ev.closest('[more-toggle-js]')) {
         showBanner(_ev);
       } else if (_ev.closest('[spec-like-js]')) {
@@ -2728,6 +2755,8 @@ var ajaxAdminEndpoint = '/wp-admin/admin-ajax.php';
       } else if (_ev.classList.contains('hdrfavttl')) {
         ev.preventDefault();
         document.querySelector('.mobile_fav_link').classList.toggle('open');
+      } else if (_ev.closest('.close-modal')) {
+        cancelModal(ev);
       } else if (_ev.parentNode && !_ev.closest('[search-parent-js]')) {
         if (!isMobileOrTablet) {
           if (document.querySelector('[search-js]')) {
@@ -2934,6 +2963,11 @@ var ajaxAdminEndpoint = '/wp-admin/admin-ajax.php';
 
   function closeBanner(_el) {
     //closeAllSnapshots();
+    if (true) {
+      cancelModal(_el);
+      return;
+    }
+
     parent = _el.closest('.list__specification');
 
     _el.closest('.list__box-wrapper').classList.remove('is-open');
@@ -3134,10 +3168,10 @@ var ajaxAdminEndpoint = '/wp-admin/admin-ajax.php';
         elActionNode = el.closest('[spec-actionNode-js]'),
         dislikeBtn = elActionNode.querySelector('[spec-dislike-js]');
     console.log('Trying to like ' + elID);
-    dislikeBtn.parentElement.classList.toggle('is-hide');
-    var listBlock = elParent.querySelector('.list__box[data-id="' + elID + '"]'),
-        listLikeBtn = listBlock.querySelector('.list__box-like'),
-        listDislikeBtn = listBlock.querySelector('.list__box-dislike');
+    dislikeBtn.parentElement.classList.toggle('is-hide'); //const listBlock = elParent.querySelector('.list__box[data-id="' + elID + '"]'),
+
+    var listLikeBtn = document.querySelector('.list__specification-like.list__box-like[data-id="' + elID + '"]'),
+        listDislikeBtn = document.querySelector('.list__box-dislike.list__specification-dislike[data-id="' + elID + '"]');
     el.classList.toggle('is-active');
     onLike(el, elID);
     listLikeBtn.classList.toggle('is-active');
@@ -3165,10 +3199,10 @@ var ajaxAdminEndpoint = '/wp-admin/admin-ajax.php';
         elParent = el.closest('.list__box-wrapper'),
         elActionNode = el.closest('[spec-actionNode-js]'),
         likeBtn = elActionNode.querySelector('[spec-like-js]');
-    likeBtn.parentElement.classList.toggle('is-hide');
-    var listBlock = elParent.querySelector('.list__box[data-id="' + elID + '"]'),
-        listDislikeBtn = listBlock.querySelector('.list__box-dislike'),
-        listLikeBtn = listBlock.querySelector('.list__box-like');
+    likeBtn.parentElement.classList.toggle('is-hide'); //const listBlock = elParent.querySelector('.list__box[data-id="' + elID + '"]'),
+
+    var listLikeBtn = document.querySelector('.list__specification-like.list__box-like[data-id="' + elID + '"]'),
+        listDislikeBtn = document.querySelector('.list__box-dislike.list__specification-dislike[data-id="' + elID + '"]');
     onDisLike(el, elID);
     listDislikeBtn.classList.toggle('is-active');
     listLikeBtn.classList.toggle('is-hide');

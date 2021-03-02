@@ -37,10 +37,16 @@ const modalContainerRenderer = css(modalContainer);
 const modalRenderer = css(modal);
 
 // Return the center x, y of a bounding box
-function findCenter({ top, left, height, width }) {
+function findCenter({ top, left, height, width }, isOpen = true) {
 	return {
 		x: left + (width / 2),
 		y: top + (height / 2)
+	};
+}
+function findHCenter({ top, left, height, width }, isOpen = true) {
+	return {
+		x: left + (width / 2),
+		y: top + window.scrollY
 	};
 }
 /*
@@ -51,9 +57,26 @@ function findCenter({ top, left, height, width }) {
 const vRange = [0, 1];
 function generateModalTweener(sourceBBox, destinationBBox, isOpen = true) {
 	const sourceCenter = findCenter(sourceBBox);
-	const destinationCenter = findCenter(destinationBBox);
+	//const destinationCenter = findHCenter(destinationBBox, isOpen);
+	const destinationCenter = findCenter(destinationBBox, isOpen);
+
+
 
 	const toX = interpolate(vRange, [sourceCenter.x - destinationCenter.x, 0]);
+
+	/*let toY = 0;
+
+	if(isOpen){
+		//toY = interpolate(vRange, [sourceCenter.y - destinationCenter.y + window.scrollY, 0]);
+		toY = interpolate(vRange, [200 + window.scrollY, 0]);
+
+		console.log('Opening '+(200 + window.scrollY));
+
+	}else{
+		toY = interpolate(vRange, [sourceCenter.y - destinationCenter.y, 0]);
+		console.log('Closing '+(sourceCenter.y - destinationCenter.y));
+	}*/
+
 	const toY = interpolate(vRange, [sourceCenter.y - destinationCenter.y, 0]);
 	const toScaleX = interpolate(vRange, [sourceBBox.width / destinationBBox.width, 1]);
 	const toScaleY = interpolate(vRange, [sourceBBox.height / destinationBBox.height, 1]);
@@ -91,6 +114,8 @@ function openSlideModal(e) {
 	modalContainerRenderer.set('display', 'flex').render();
 	modalRenderer.set('opacity', 0).render();
 
+	document.body.classList.add('opened');
+
 	// Get bounding box of final modal position
 	const modalBBox = modal.getBoundingClientRect();
 
@@ -124,6 +149,7 @@ function closeComplete() {
 		scaleX: 1,
 		scaleY: 1,
 		transformOrigin: '50% 50%'
+		//transformOrigin: '50% 0'
 	});
 }
 
@@ -142,6 +168,8 @@ function cancelModal(e) {
 	if(document.querySelector('[video-js]')){
 		document.querySelector('[video-js]').pause();
 	}
+
+	document.body.classList.remove('opened');
 
 	parallel([
 		tween({

@@ -119,6 +119,8 @@ const ajaxAdminEndpoint = '/wp-admin/admin-ajax.php';
 				//ev.preventDefault();
 			}
 
+			console.log(_ev);
+
 
 			if(!_ev.closest('[sort-node-js]')){
 				let openSort = document.querySelector('.sort__drop.is-open');
@@ -140,8 +142,6 @@ const ajaxAdminEndpoint = '/wp-admin/admin-ajax.php';
 				showBanner(_ev, false, ev);
 
 				//openSlideModal(ev);
-			}else if(_ev.closest('.cancel-modal')){
-				cancelModal(ev);
 			}else if(_ev.closest('[more-toggle-js]')){
 				showBanner(_ev);
 			}else if(_ev.closest('[spec-like-js]')){
@@ -188,6 +188,8 @@ const ajaxAdminEndpoint = '/wp-admin/admin-ajax.php';
 			}else if(_ev.classList.contains('hdrfavttl')){
 				ev.preventDefault();
 				document.querySelector('.mobile_fav_link').classList.toggle('open');
+			}else if(_ev.closest('.close-modal')){
+				cancelModal(ev);
 			}
 
 
@@ -410,6 +412,11 @@ const ajaxAdminEndpoint = '/wp-admin/admin-ajax.php';
 
 	function closeBanner(_el){
 		//closeAllSnapshots();
+
+		if(true){
+			cancelModal(_el);
+			return;
+		}
 
 		parent = _el.closest('.list__specification');
 
@@ -640,9 +647,9 @@ const ajaxAdminEndpoint = '/wp-admin/admin-ajax.php';
 
 		dislikeBtn.parentElement.classList.toggle('is-hide');
 
-		const listBlock = elParent.querySelector('.list__box[data-id="' + elID + '"]'),
-			listLikeBtn = listBlock.querySelector('.list__box-like'),
-			listDislikeBtn = listBlock.querySelector('.list__box-dislike');
+		//const listBlock = elParent.querySelector('.list__box[data-id="' + elID + '"]'),
+			const listLikeBtn = document.querySelector('.list__specification-like.list__box-like[data-id="' + elID + '"]'),
+			listDislikeBtn = document.querySelector('.list__box-dislike.list__specification-dislike[data-id="' + elID + '"]');
 
 		el.classList.toggle('is-active');
 
@@ -682,9 +689,9 @@ const ajaxAdminEndpoint = '/wp-admin/admin-ajax.php';
 
 		likeBtn.parentElement.classList.toggle('is-hide');
 
-		const listBlock = elParent.querySelector('.list__box[data-id="' + elID + '"]'),
-			listDislikeBtn = listBlock.querySelector('.list__box-dislike'),
-			listLikeBtn = listBlock.querySelector('.list__box-like');
+		//const listBlock = elParent.querySelector('.list__box[data-id="' + elID + '"]'),
+		const listLikeBtn = document.querySelector('.list__specification-like.list__box-like[data-id="' + elID + '"]'),
+			listDislikeBtn = document.querySelector('.list__box-dislike.list__specification-dislike[data-id="' + elID + '"]');
 
 		onDisLike(el, elID);
 

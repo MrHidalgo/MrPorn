@@ -5,9 +5,9 @@
 	/*visibility: hidden;
 	overflow: hidden;*/
 	opacity: 1;
-	border-width: 2px;
+	/*border-width: 2px;
 	border-color: rgb(125, 132, 142);
-	border-style: solid;
+	border-style: solid;*/
 	border-radius: 5px;
 	background-color: rgb(0, 74, 172);
 	box-shadow: 1.047px 19.973px 43px 0px rgba(8, 9, 21, 0.3);
@@ -58,9 +58,9 @@
 		}
 	}
 	@include adaptive(1023) {
-		opacity: 0;
+		/*opacity: 0;
 		visibility: hidden;
-		transform: scale(0.5);
+		transform: scale(0.5);*/
 		overflow: hidden;
 		z-index: 1555;
 		position: fixed;
@@ -131,7 +131,7 @@
 		@include adaptive(1023) {
 			flex-direction: column;
 
-			min-height: 100%;
+			/*min-height: 100%;*/
 			height: auto;
 		}
 	}
