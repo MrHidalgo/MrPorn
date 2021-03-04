@@ -488,13 +488,17 @@ function getPopupSimilarSites(category, currentSiteId){
 	homeData.categories[category].sites.map(function (moreSite, index) {
 		if(currentSiteId!=moreSite.id && similarSiteCount < 5){
 			let moreSiteLogo = moreSite.logo ? moreSite.logo.src: '';
+			let similarSiteItemClass = 'similar_site_item';
+			if(similarSiteCount==0){
+				similarSiteItemClass += ' hover';
+			}
 
-			similarHtml += '<div class="similar_site_item">' +
+			similarHtml += '<div class="'+similarSiteItemClass+'">' +
 				'<div class="similar_site_item_inner">' +
 				'<a class="similar_site_item_thumb" href="'+moreSite.link+'" style="background-image: url('+moreSite.banner_image+')"></a>' +
 				'<div class="similar_site_item_content">' +
 				'<div class="title">'+moreSite.name+'</div>'+
-				'<p>'+moreSite.tagline+' <a class="readmore" href="'+moreSite.link+'">READ MORE</a></p>'+
+				'<p>'+moreSite.tagline+' <a class="readmore" href="'+moreSite.link+'">Read More</a></p>'+
 				'</div>'+
 				'<div class="similar_site_item_buttons">' +
 				'<a class="visit_site list__specification-read nav_link" href="'+moreSite.url+'" target="_blank">VISIT WEBSITE</a>'+
@@ -1417,6 +1421,7 @@ function showBanner(_el, isSkip = false, target = false){
 
 			document.querySelector('#site_modal').innerHTML = bottomBanner;
 			openSlideModal(target);
+			initSimilarSiteEvents();
 		}
 	}
 
@@ -1475,6 +1480,20 @@ function showBanner(_el, isSkip = false, target = false){
 
 	markFavourites();
 	markLikesDislikes();
+}
+
+function initSimilarSiteEvents(){
+	document.querySelectorAll(".similar_site_item").forEach(function(linkTo){
+		linkTo.addEventListener('mouseenter', function (ev){
+			const el = ev.currentTarget;
+
+			let oldSSIH = document.querySelector('.similar_site_item.hover');
+			if(oldSSIH){
+				oldSSIH.classList.remove('hover');
+			}
+			el.classList.add('hover');
+		}, false);
+	})
 }
 
 function addToFavourites(siteId){

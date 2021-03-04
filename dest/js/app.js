@@ -637,7 +637,13 @@ function getPopupSimilarSites(category, currentSiteId) {
   homeData.categories[category].sites.map(function (moreSite, index) {
     if (currentSiteId != moreSite.id && similarSiteCount < 5) {
       var moreSiteLogo = moreSite.logo ? moreSite.logo.src : '';
-      similarHtml += '<div class="similar_site_item">' + '<div class="similar_site_item_inner">' + '<a class="similar_site_item_thumb" href="' + moreSite.link + '" style="background-image: url(' + moreSite.banner_image + ')"></a>' + '<div class="similar_site_item_content">' + '<div class="title">' + moreSite.name + '</div>' + '<p>' + moreSite.tagline + ' <a class="readmore" href="' + moreSite.link + '">READ MORE</a></p>' + '</div>' + '<div class="similar_site_item_buttons">' + '<a class="visit_site list__specification-read nav_link" href="' + moreSite.url + '" target="_blank">VISIT WEBSITE</a>' + '<a class="read_review list__specification-visit nav_link" href="' + moreSite.link + '">READ REVIEW</a>' + '</div>' + '</div>' + '</div>';
+      var similarSiteItemClass = 'similar_site_item';
+
+      if (similarSiteCount == 0) {
+        similarSiteItemClass += ' hover';
+      }
+
+      similarHtml += '<div class="' + similarSiteItemClass + '">' + '<div class="similar_site_item_inner">' + '<a class="similar_site_item_thumb" href="' + moreSite.link + '" style="background-image: url(' + moreSite.banner_image + ')"></a>' + '<div class="similar_site_item_content">' + '<div class="title">' + moreSite.name + '</div>' + '<p>' + moreSite.tagline + ' <a class="readmore" href="' + moreSite.link + '">Read More</a></p>' + '</div>' + '<div class="similar_site_item_buttons">' + '<a class="visit_site list__specification-read nav_link" href="' + moreSite.url + '" target="_blank">VISIT WEBSITE</a>' + '<a class="read_review list__specification-visit nav_link" href="' + moreSite.link + '">READ REVIEW</a>' + '</div>' + '</div>' + '</div>';
       similarSiteCount++;
     }
   });
@@ -1423,6 +1429,7 @@ function showBanner(_el) {
       //bannerWrapper.innerHTML = bottomBanner;
       document.querySelector('#site_modal').innerHTML = bottomBanner;
       openSlideModal(target);
+      initSimilarSiteEvents();
     }
   }
 
@@ -1481,6 +1488,21 @@ function showBanner(_el) {
 
   markFavourites();
   markLikesDislikes();
+}
+
+function initSimilarSiteEvents() {
+  document.querySelectorAll(".similar_site_item").forEach(function (linkTo) {
+    linkTo.addEventListener('mouseenter', function (ev) {
+      var el = ev.currentTarget;
+      var oldSSIH = document.querySelector('.similar_site_item.hover');
+
+      if (oldSSIH) {
+        oldSSIH.classList.remove('hover');
+      }
+
+      el.classList.add('hover');
+    }, false);
+  });
 }
 
 function addToFavourites(siteId) {
@@ -2711,7 +2733,8 @@ var ajaxAdminEndpoint = '/wp-admin/admin-ajax.php';
       } else if (_ev.closest('.list__box-more')) {
         showBanner(_ev, false, ev); //openSlideModal(ev);
       } else if (_ev.closest('[more-toggle-js]')) {
-        showBanner(_ev);
+        //showBanner(_ev);
+        showBanner(_ev, false, ev);
       } else if (_ev.closest('[spec-like-js]')) {
         onBannerLikeClick(_ev.closest('[spec-like-js]'));
       } else if (_ev.closest('[spec-dislike-js]')) {
@@ -3174,7 +3197,11 @@ var ajaxAdminEndpoint = '/wp-admin/admin-ajax.php';
         listDislikeBtn = document.querySelector('.list__box-dislike.list__specification-dislike[data-id="' + elID + '"]');
     el.classList.toggle('is-active');
     onLike(el, elID);
-    listLikeBtn.classList.toggle('is-active');
+
+    if (listLikeBtn) {
+      listLikeBtn.classList.toggle('is-active');
+    }
+
     listDislikeBtn.classList.toggle('is-hide');
   }
 

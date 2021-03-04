@@ -143,7 +143,8 @@ const ajaxAdminEndpoint = '/wp-admin/admin-ajax.php';
 
 				//openSlideModal(ev);
 			}else if(_ev.closest('[more-toggle-js]')){
-				showBanner(_ev);
+				//showBanner(_ev);
+				showBanner(_ev, false, ev);
 			}else if(_ev.closest('[spec-like-js]')){
 				onBannerLikeClick(_ev.closest('[spec-like-js]'));
 			}else if(_ev.closest('[spec-dislike-js]')){
@@ -655,7 +656,10 @@ const ajaxAdminEndpoint = '/wp-admin/admin-ajax.php';
 
 		onLike(el, elID);
 
-		listLikeBtn.classList.toggle('is-active');
+		if(listLikeBtn){
+			listLikeBtn.classList.toggle('is-active');
+		}
+
 		listDislikeBtn.classList.toggle('is-hide');
 	}
 

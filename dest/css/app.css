@@ -6723,7 +6723,7 @@ body.chatbot_active .go-top {
 .list .swiper-slide {
   position: relative;
   width: 230px !important;
-  height: 230px;
+  height: 260px;
   margin-left: 3px;
   margin-right: 3px;
   -webkit-transition: width 0.35s ease-in-out;
@@ -9587,11 +9587,16 @@ body.chatbot_active .go-top {
 }
 
 /* line 951, src/scss/_components/homepage/_list--specification.scss */
-.list .list__specification-bottom .similar_site_item:hover {
+.list .list__specification-bottom .similar_site_item.hover {
   background: #272628;
 }
 
 /* line 955, src/scss/_components/homepage/_list--specification.scss */
+.list .list__specification-bottom .similar_site_item:hover {
+  background: #272628;
+}
+
+/* line 959, src/scss/_components/homepage/_list--specification.scss */
 .list .list__specification-bottom .similar_site_item:before {
   content: counter(number);
   color: #6d6d78;
@@ -9601,7 +9606,7 @@ body.chatbot_active .go-top {
   counter-increment: number;
 }
 
-/* line 964, src/scss/_components/homepage/_list--specification.scss */
+/* line 968, src/scss/_components/homepage/_list--specification.scss */
 .list .list__specification-bottom .similar_site_item .similar_site_item_inner {
   display: -webkit-box;
   display: -webkit-flex;
@@ -9613,7 +9618,7 @@ body.chatbot_active .go-top {
           align-items: center;
 }
 
-/* line 968, src/scss/_components/homepage/_list--specification.scss */
+/* line 972, src/scss/_components/homepage/_list--specification.scss */
 .list .list__specification-bottom .similar_site_item .similar_site_item_inner .similar_site_item_thumb {
   display: block;
   content: ' ';
@@ -9630,7 +9635,7 @@ body.chatbot_active .go-top {
           border-radius: 5px;
 }
 
-/* line 979, src/scss/_components/homepage/_list--specification.scss */
+/* line 983, src/scss/_components/homepage/_list--specification.scss */
 .list .list__specification-bottom .similar_site_item .similar_site_item_inner .similar_site_item_content {
   padding: 15px;
   -webkit-box-flex: 1;
@@ -9639,20 +9644,20 @@ body.chatbot_active .go-top {
           flex: 1;
 }
 
-/* line 983, src/scss/_components/homepage/_list--specification.scss */
+/* line 987, src/scss/_components/homepage/_list--specification.scss */
 .list .list__specification-bottom .similar_site_item .similar_site_item_inner .similar_site_item_content .title {
   color: #fff;
   font-weight: 600;
   font-size: 24px;
 }
 
-/* line 988, src/scss/_components/homepage/_list--specification.scss */
+/* line 992, src/scss/_components/homepage/_list--specification.scss */
 .list .list__specification-bottom .similar_site_item .similar_site_item_inner .similar_site_item_content p {
   color: #6d6d78;
   font-size: 14px;
 }
 
-/* line 993, src/scss/_components/homepage/_list--specification.scss */
+/* line 997, src/scss/_components/homepage/_list--specification.scss */
 .list .list__specification-bottom .similar_site_item .similar_site_item_inner .similar_site_item_buttons {
   display: -webkit-box;
   display: -webkit-flex;
@@ -9660,12 +9665,12 @@ body.chatbot_active .go-top {
   display: flex;
 }
 
-/* line 996, src/scss/_components/homepage/_list--specification.scss */
+/* line 1000, src/scss/_components/homepage/_list--specification.scss */
 .list .list__specification-bottom .similar_site_item .similar_site_item_inner .similar_site_item_buttons a {
   margin: 0 5px;
 }
 
-/* line 1004, src/scss/_components/homepage/_list--specification.scss */
+/* line 1008, src/scss/_components/homepage/_list--specification.scss */
 .list .list__specification-bottom #other_categories.more_terms {
   background: transparent;
   padding: 15px 0;
@@ -9958,6 +9963,14 @@ body.opened {
   /*align-items: flex-end;*/
 }
 
+@media screen and (min-width: 1450px) {
+  /* line 274, src/scss/_components/homepage/_list.scss */
+  #site_modal.modal {
+    max-width: 75%;
+    width: 100%;
+  }
+}
+
 @media screen and (max-width: 1023px) {
   /* line 274, src/scss/_components/homepage/_list.scss */
   #site_modal.modal {
@@ -9967,7 +9980,7 @@ body.opened {
   }
 }
 
-/* line 290, src/scss/_components/homepage/_list.scss */
+/* line 295, src/scss/_components/homepage/_list.scss */
 #site_modal.modal footer {
   width: 100%;
   display: -webkit-box;
@@ -9980,12 +9993,12 @@ body.opened {
           justify-content: flex-end;
 }
 
-/* line 297, src/scss/_components/homepage/_list.scss */
+/* line 302, src/scss/_components/homepage/_list.scss */
 .submit {
   background: #8CDA26;
 }
 
-/* line 301, src/scss/_components/homepage/_list.scss */
+/* line 306, src/scss/_components/homepage/_list.scss */
 .cancel {
   background: #DA2632;
 }
