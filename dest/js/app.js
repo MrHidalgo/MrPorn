@@ -1126,7 +1126,7 @@ var renderSorting = function renderSorting() {
       /*if(sortTimout){
       	clearTimeout(sortTimout);
       }
-      	sortTimout = setTimeout(function (){
+      		sortTimout = setTimeout(function (){
       	onSortLetterClick(_ev.target);
       }, 1000);*/
     });
@@ -1428,12 +1428,12 @@ function swiperCB(swiperName, sliderArrow) {
       /*slideChange: function (e, t) {
       	let swipeWrapper = categorySwiper.$wrapperEl[0];
       	let currentSlideIndex = categorySwiper.activeIndex;
-      		console.log('transisioning');
+      			console.log('transisioning');
       	console.log(e);
       	console.log(t);
       	fixPrevSlides(swipeWrapper.dataset.category, categorySwiper);
       	fixNextSlides(swipeWrapper.dataset.category, categorySwiper);
-      		//console.log('changing slide -'+swipeWrapper.dataset.category+' - '+categorySwiper.slides.length+' - '+currentSlideIndex);
+      			//console.log('changing slide -'+swipeWrapper.dataset.category+' - '+categorySwiper.slides.length+' - '+currentSlideIndex);
       },*/
       slidePrevTransitionEnd: function slidePrevTransitionEnd(e) {
         var swipeWrapper = categorySwiper.$wrapperEl[0];
@@ -1783,7 +1783,7 @@ var ajaxAdminEndpoint = '/wp-admin/admin-ajax.php';
     			}
     		}
     	}, false);
-    		cGrid.addEventListener('mouseout', function(ev) {
+    			cGrid.addEventListener('mouseout', function(ev) {
     		const _ev = ev.target;
     		if(_ev){
     			console.log(_ev.classList);
@@ -2272,13 +2272,13 @@ var ajaxAdminEndpoint = '/wp-admin/admin-ajax.php';
     		const el = ev.currentTarget,
     			elID = el.getAttribute('data-id'),
     			elParent = el.closest('.list__box-wrapper');
-    			setTimeout(() => {
+    				setTimeout(() => {
     			el.closest('.list__specification').querySelector('.list__specification-close').click();
     		}, 0);
-    			if(elParent.querySelector('.list__specification[data-id="' + (Number(elID) + 1) + '"]')) {
+    				if(elParent.querySelector('.list__specification[data-id="' + (Number(elID) + 1) + '"]')) {
     			elParent.querySelector('.list__specification[data-id="' + (Number(elID) + 1) + '"]').classList.add('is-open');
     		}
-    		}, false);
+    			}, false);
     }*/
   };
 
