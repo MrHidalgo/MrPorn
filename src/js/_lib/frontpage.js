@@ -29,9 +29,11 @@ const loadHomeData = () => {
 
 	console.log('Loading home data');
 
-	let url = 'http://mpg.c2136.cloudnet.cloud/wp-json/mpg/home/';
+	//let url = 'http://mpg.c2136.cloudnet.cloud/wp-json/mpg/home/';
+	let url = 'https://www.mrporngeek.com/wp-json/mpg/home/';
 	if(currentLang!='en'){
-		url = 'http://mpg.c2136.cloudnet.cloud/wp-json/mpg/home/?lang='+currentLang;
+		//url = 'http://mpg.c2136.cloudnet.cloud/wp-json/mpg/home/?lang='+currentLang;
+		url = 'https://www.mrporngeek.com/wp-json/mpg/home/?lang='+currentLang;
 	}
 
 	homeData = getWithExpiry("home_data_"+currentLang);
