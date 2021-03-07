@@ -513,7 +513,7 @@ function renderSiteCategory(categoryIndex) {
     '<div class="list__box-border"></div>' + '<a class="nav_link" href="' + site.link + '">' + //siteLogo+
     '</a>' + '<div class="list__box-details">' + '</div>' + '<button class="list__box-more" type="button"><i class="icon-font icon-arrow-angle"></i></button>' + '</div>' + '</div>';
   });
-  var categoryBoxHtml = '<div class="list__box-wrapper" list-parent-js data-name="category_' + categoryId + '" data-index="' + categoryIndex + '">' + '<div class="list__box-head">' + '<div class="list__info">' + '<div class="list__info-circle"><img src="' + categoryLogo + '" alt=""/></div>' + '<div class="category_title">' + '<a href="' + categoryData.link + '">' + categoryData.title + '</a><span>' + categoryData.tagline + '</span>' + '</div>' + '</div>' + '<a class="list__btn nav_link" href="' + categoryData.link + '">SEE&nbsp;<span>' + categoryData.count + ' MORE</span><i class="icon-font icon-arrow-angle"></i></a>' + '</div>' + '<div class="list__box-line">' + '<u list-line-ind-js></u><span class="list_green_line" list-line-js></span>' + '</div>' + '<div class="list__box-body">' + '<div class="list__arrow-wrapper">' + '<a class="list__arrow list__arrow--prev" href="#">' + '<div class="list__arrow-box"><i class="icon-font icon-arrow-angle"></i></div>' + '</a>' + '<a class="list__arrow list__arrow--next" href="#">' + '<div class="list__arrow-box"><i class="icon-font icon-arrow-angle"></i></div>' + '</a>' + '</div>' + '<div class="swiper-container listSwiper" data-id="listSlider_' + categoryData.id + '" data-category="18">' + '<div class="swiper-wrapper' + (parseInt(categoryData.count) < 6 ? ' short_list' : '') + '" data-category="' + categoryData.id + '" data-count="' + categoryData.count + '" data-slidecount="' + categoryData.site_limit + '">' + categorySites + '</div>' + '</div>' + '</div>' + '<div class="list__specification-wrapper"></div>' + '</div>';
+  var categoryBoxHtml = '<div class="list__box-wrapper" list-parent-js data-name="category_' + categoryId + '" data-index="' + categoryIndex + '">' + '<div id="category_wrapper_' + categoryId + '" class="list__box-wrapper-handle"></div>' + '<div class="list__box-head">' + '<div class="list__info">' + '<div class="list__info-circle"><img src="' + categoryLogo + '" alt=""/></div>' + '<div class="category_title">' + '<a href="' + categoryData.link + '">' + categoryData.title + '</a><span>' + categoryData.tagline + '</span>' + '</div>' + '</div>' + '<a class="list__btn nav_link" href="' + categoryData.link + '">SEE&nbsp;<span>' + categoryData.count + ' MORE</span><i class="icon-font icon-arrow-angle"></i></a>' + '</div>' + '<div class="list__box-line">' + '<u list-line-ind-js></u><span class="list_green_line" list-line-js></span>' + '</div>' + '<div class="list__box-body">' + '<div class="list__arrow-wrapper">' + '<a class="list__arrow list__arrow--prev" href="#">' + '<div class="list__arrow-box"><i class="icon-font icon-arrow-angle"></i></div>' + '</a>' + '<a class="list__arrow list__arrow--next" href="#">' + '<div class="list__arrow-box"><i class="icon-font icon-arrow-angle"></i></div>' + '</a>' + '</div>' + '<div class="swiper-container listSwiper" data-id="listSlider_' + categoryData.id + '" data-category="18">' + '<div class="swiper-wrapper' + (parseInt(categoryData.count) < 6 ? ' short_list' : '') + '" data-category="' + categoryData.id + '" data-count="' + categoryData.count + '" data-slidecount="' + categoryData.site_limit + '">' + categorySites + '</div>' + '</div>' + '</div>' + '<div class="list__specification-wrapper"></div>' + '</div>';
   return categoryBoxHtml;
 }
 
@@ -818,6 +818,18 @@ function initWebWorker() {
       if (document.body.classList.contains('home')) {
         loadHomeData();
       }
+    }
+  }
+}
+
+function scrollToCategoryOnHome(_ev) {
+  if (_ev) {
+    var catId = _ev.dataset.objectId;
+
+    if (catId) {
+      document.querySelector('#category_wrapper_' + catId).scrollIntoView({
+        behavior: 'smooth'
+      });
     }
   }
 }
@@ -1698,6 +1710,8 @@ var ajaxAdminEndpoint = '/wp-admin/admin-ajax.php';
       if (!_ev.closest('.nav_link')) {//ev.preventDefault();
       }
 
+      console.log(_ev);
+
       if (!_ev.closest('[sort-node-js]')) {
         var openSort = document.querySelector('.sort__drop.is-open');
 
@@ -1706,7 +1720,12 @@ var ajaxAdminEndpoint = '/wp-admin/admin-ajax.php';
         }
       }
 
-      if (_ev.closest('.list__specification-close')) {
+      if (_ev.classList.contains('search_category_item')) {
+        if (document.body.classList.contains('home')) {
+          ev.preventDefault();
+          scrollToCategoryOnHome(_ev);
+        }
+      } else if (_ev.closest('.list__specification-close')) {
         closeBanner(_ev);
       } else if (_ev.closest('.list__box-more')) {
         showBanner(_ev);
@@ -1784,7 +1803,7 @@ var ajaxAdminEndpoint = '/wp-admin/admin-ajax.php';
     			}
     		}
     	}, false);
-    			cGrid.addEventListener('mouseout', function(ev) {
+    		cGrid.addEventListener('mouseout', function(ev) {
     		const _ev = ev.target;
     		if(_ev){
     			console.log(_ev.classList);
@@ -2273,13 +2292,13 @@ var ajaxAdminEndpoint = '/wp-admin/admin-ajax.php';
     		const el = ev.currentTarget,
     			elID = el.getAttribute('data-id'),
     			elParent = el.closest('.list__box-wrapper');
-    				setTimeout(() => {
+    			setTimeout(() => {
     			el.closest('.list__specification').querySelector('.list__specification-close').click();
     		}, 0);
-    				if(elParent.querySelector('.list__specification[data-id="' + (Number(elID) + 1) + '"]')) {
+    			if(elParent.querySelector('.list__specification[data-id="' + (Number(elID) + 1) + '"]')) {
     			elParent.querySelector('.list__specification[data-id="' + (Number(elID) + 1) + '"]').classList.add('is-open');
     		}
-    			}, false);
+    		}, false);
     }*/
   };
 

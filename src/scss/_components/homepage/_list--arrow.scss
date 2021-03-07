@@ -4,7 +4,7 @@
 	position: absolute;
 	top: 0;
 	width: 75px;
-	height: calc(100% - 30px);
+	height: 100%;
 	@include transition(opacity, visibility, height);
 	@include adaptive(767) {
 		width: 40px;

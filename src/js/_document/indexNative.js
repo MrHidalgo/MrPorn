@@ -116,6 +116,8 @@ const ajaxAdminEndpoint = '/wp-admin/admin-ajax.php';
 				//ev.preventDefault();
 			}
 
+			console.log(_ev);
+
 
 			if(!_ev.closest('[sort-node-js]')){
 				let openSort = document.querySelector('.sort__drop.is-open');
@@ -123,8 +125,12 @@ const ajaxAdminEndpoint = '/wp-admin/admin-ajax.php';
 					openSort.classList.remove('is-open');
 				}
 			}
-
-			if(_ev.closest('.list__specification-close')){
+			if(_ev.classList.contains('search_category_item')){
+				if(document.body.classList.contains('home')){
+					ev.preventDefault();
+					scrollToCategoryOnHome(_ev);
+				}
+			}else if(_ev.closest('.list__specification-close')){
 				closeBanner(_ev);
 			}else if(_ev.closest('.list__box-more')){
 				showBanner(_ev);

@@ -411,6 +411,7 @@ function renderSiteCategory(categoryIndex){
 
 
 	let categoryBoxHtml = '<div class="list__box-wrapper" list-parent-js data-name="category_'+categoryId+'" data-index="'+categoryIndex+'">'+
+									'<div id="category_wrapper_'+categoryId+'" class="list__box-wrapper-handle"></div>'+
                   '<div class="list__box-head">'+
 										'<div class="list__info">'+
 											'<div class="list__info-circle"><img src="'+categoryLogo+'" alt=""/></div>'+
@@ -787,5 +788,18 @@ function initWebWorker(){
 		}
 	}
 
+
+}
+
+
+function scrollToCategoryOnHome(_ev){
+	if(_ev){
+		let catId = _ev.dataset.objectId;
+		if(catId){
+			document.querySelector('#category_wrapper_'+catId).scrollIntoView({
+				behavior: 'smooth'
+			});
+		}
+	}
 
 }

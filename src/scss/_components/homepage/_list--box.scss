@@ -127,11 +127,26 @@
 		flex-direction: column;
 		padding-bottom: 30px;
 		margin-bottom: 0;
+		position: relative;
+
 		@include transition(opacity);
 		@include transition(padding-bottom);
 		@include adaptive(767) {
 			overflow: unset;
 			padding-bottom: 10px;
+		}
+
+
+		&-handle{
+			position: absolute;
+			visibility: hidden;
+			height: 0;
+			width: 0;
+			top: 0;
+
+			@include adaptive(767) {
+				top: -120px;
+			}
 		}
 
 		&.is-open {
