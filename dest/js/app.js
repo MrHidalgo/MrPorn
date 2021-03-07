@@ -815,7 +815,7 @@ function renderSiteCategory(categoryIndex) {
     categoryTagLine = categoryTagLine.replaceAll("\\'", "'");
   }
 
-  var categoryBoxHtml = '<div class="list__box-wrapper" list-parent-js data-name="category_' + categoryId + '" data-index="' + categoryIndex + '">' + '<div class="list__box-head">' + '<div class="list__info">' + '<div class="list__info-circle"><img src="' + categoryLogo + '" alt=""/></div>' + '<div class="category_title">' + '<a href="' + categoryData.link + '" hreflang="' + currentLang + '">' + categoryData.title + '</a><span>' + categoryTagLine + '</span>' + '</div>' + '</div>' + '<a class="list__btn nav_link" href="' + categoryData.link + '" hreflang="' + currentLang + '">SEE&nbsp;<span>' + categoryData.count + ' MORE</span><i class="icon-font icon-arrow-angle"></i></a>' + '</div>' + '<div class="list__box-line">' + '<u list-line-ind-js></u><span class="list_green_line" list-line-js></span>' + '</div>' + '<div class="list__box-body">' + '<div class="list__arrow-wrapper">' + '<a class="list__arrow list__arrow--prev" href="#">' + '<div class="list__arrow-box"><i class="icon-font icon-arrow-angle"></i></div>' + '</a>' + '<a class="list__arrow list__arrow--next" href="#">' + '<div class="list__arrow-box"><i class="icon-font icon-arrow-angle"></i></div>' + '</a>' + '</div>' + '<div class="swiper-container listSwiper" data-id="listSlider_' + categoryData.id + '" data-category="18">' + '<div class="swiper-wrapper' + (parseInt(categoryData.count) < 6 ? ' short_list' : '') + '" data-category="' + categoryData.id + '" data-count="' + categoryData.count + '" data-slidecount="' + categoryData.site_limit + '">' + categorySites + '</div>' + '</div>' + '</div>' + '<div class="list__specification-wrapper"></div>' + '</div>';
+  var categoryBoxHtml = '<div class="list__box-wrapper" list-parent-js data-name="category_' + categoryId + '" data-index="' + categoryIndex + '">' + '<div class="list__box-head">' + '<div class="list__info">' + '<div class="list__info-circle"><img src="' + categoryLogo + '" alt=""/></div>' + '<div class="category_title">' + '<a href="' + categoryData.link + '" hreflang="' + currentLang + '">' + categoryData.title + '</a><span>' + categoryTagLine + '</span>' + '</div>' + '</div>' + '<a class="list__btn nav_link" href="' + categoryData.link + '" hreflang="' + currentLang + '">SEE&nbsp;<span>' + categoryData.count + ' MORE</span><i class="icon-font icon-arrow-angle"></i></a>' + '</div>' + '<div class="list__box-line">' + '<u list-line-ind-js></u><span class="list_green_line" list-line-js></span>' + '</div>' + '<div class="list__box-body">' + '<div class="list__arrow-wrapper">' + '<a class="list__arrow list__arrow--prev" >' + '<div class="list__arrow-box"><i class="icon-font icon-arrow-angle"></i></div>' + '</a>' + '<a class="list__arrow list__arrow--next" >' + '<div class="list__arrow-box"><i class="icon-font icon-arrow-angle"></i></div>' + '</a>' + '</div>' + '<div class="swiper-container listSwiper" data-id="listSlider_' + categoryData.id + '" data-category="18">' + '<div class="swiper-wrapper' + (parseInt(categoryData.count) < 6 ? ' short_list' : '') + '" data-category="' + categoryData.id + '" data-count="' + categoryData.count + '" data-slidecount="' + categoryData.site_limit + '">' + categorySites + '</div>' + '</div>' + '</div>' + '<div class="list__specification-wrapper"></div>' + '</div>';
   return categoryBoxHtml;
 }
 
@@ -1937,7 +1937,7 @@ var renderFavourites = function renderFavourites() {
           if(favLink){
           	favLink.classList.add('is-active');
           }
-          	if(document.querySelector('.list__box-favorites[data-id="'+fav.id+'"]')){
+          		if(document.querySelector('.list__box-favorites[data-id="'+fav.id+'"]')){
           	document.querySelector('.list__box-favorites[data-id="'+fav.id+'"]').classList.add('is-active');
           }
           if(document.querySelector('.list__specification-circle[data-id="'+fav.id+'"]')){
@@ -2023,19 +2023,24 @@ var letterSearch = function letterSearch() {
     throw err;
   });
   /*getRequest('/wp-json/mpg/letter_matrix/', {
-  	}, function (result) {
+  
+  }, function (result) {
   	Object.keys(result).forEach(function (key) {
   		var letter = key;
   		var suggestions = result[key];
-  			var letterSuggestions = [];
-  			suggestions.map(function (suggestion) {
+  
+  		var letterSuggestions = [];
+  
+  		suggestions.map(function (suggestion) {
   			let sName = suggestion.name;
   			let sIcon = suggestion.icon;
   			let sHd = suggestion.hd;
   			let sFree = suggestion.free;
-  				letterSuggestions.push(suggestion);
+  
+  			letterSuggestions.push(suggestion);
   		});
-  			letterData[letter] = letterSuggestions;
+  
+  		letterData[letter] = letterSuggestions;
   	});
   	renderSorting();
   	//initLetterHover();
@@ -2061,7 +2066,7 @@ var renderSorting = function renderSorting() {
       /*if(sortTimout){
       	clearTimeout(sortTimout);
       }
-      	sortTimout = setTimeout(function (){
+      		sortTimout = setTimeout(function (){
       	onSortLetterClick(_ev.target);
       }, 1000);*/
     });
@@ -2173,12 +2178,12 @@ var loadLoginForm = function loadLoginForm() {
       /*postTextRequest(ajaxAdminEndpoint, {
       	action:'get_login_form'
       }, function (result) {
-      		let loginHtml = '<a class="login_popup_close"><img src="'+themeBase+'images/btn_close.png"/></a>'+result;
-      		var e = document.createElement('div');
+      			let loginHtml = '<a class="login_popup_close"><img src="'+themeBase+'images/btn_close.png"/></a>'+result;
+      			var e = document.createElement('div');
       	e.setAttribute('id', 'login_popup');
       	e.innerHTML = loginHtml;
-      		document.body.appendChild(e);
-      		renderLoginForm();
+      			document.body.appendChild(e);
+      			renderLoginForm();
       });*/
 
       var loginHtml = '<a class="login_popup_close"><img src="' + themeBase + 'images/btn_close.png"/></a>' + htmlLogin;
@@ -2831,7 +2836,7 @@ var ajaxAdminEndpoint = '/wp-admin/admin-ajax.php';
     			}
     		}
     	}, false);
-    		cGrid.addEventListener('mouseout', function(ev) {
+    			cGrid.addEventListener('mouseout', function(ev) {
     		const _ev = ev.target;
     		if(_ev){
     			console.log(_ev.classList);

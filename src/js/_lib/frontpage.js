@@ -735,10 +735,10 @@ function renderSiteCategory(categoryIndex){
                   '</div>'+
 									'<div class="list__box-body">'+
 										'<div class="list__arrow-wrapper">'+
-											'<a class="list__arrow list__arrow--prev" href="#">'+
+											'<a class="list__arrow list__arrow--prev" >'+
                         '<div class="list__arrow-box"><i class="icon-font icon-arrow-angle"></i></div>'+
 											'</a>'+
-											'<a class="list__arrow list__arrow--next" href="#">'+
+											'<a class="list__arrow list__arrow--next" >'+
                         '<div class="list__arrow-box"><i class="icon-font icon-arrow-angle"></i></div>'+
 											'</a>'+
 										'</div>'+
