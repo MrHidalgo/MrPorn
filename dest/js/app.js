@@ -281,11 +281,11 @@ var initHomeLazyLoad = function initHomeLazyLoad() {
 var loadHomeData = function loadHomeData() {
   var currentLang = document.documentElement.getAttribute('lang');
   console.log('Loading home data');
-  var url = 'http://mpg.c2136.cloudnet.cloud/wp-json/mpg/home/'; // let url = 'https://www.mrporngeek.com/wp-json/mpg/home/';
+  var url = '/wp-json/mpg/home/'; // let url = 'https://www.mrporngeek.com/wp-json/mpg/home/';
 
   if (currentLang != 'en') {
     //url = 'http://mpg.c2136.cloudnet.cloud/wp-json/mpg/home/?lang='+currentLang;
-    url = 'https://www.mrporngeek.com/wp-json/mpg/home/?lang=' + currentLang;
+    url = '/wp-json/mpg/home/?lang=' + currentLang;
   }
 
   homeData = getWithExpiry("home_data_" + currentLang);
@@ -822,14 +822,17 @@ function initWebWorker() {
   }
 }
 
-function scrollToCategoryOnHome(_ev) {
+function scrollToCategoryOnHome(ev, _ev) {
   if (_ev) {
     var catId = _ev.dataset.objectId;
 
     if (catId) {
-      document.querySelector('#category_wrapper_' + catId).scrollIntoView({
-        behavior: 'smooth'
-      });
+      if (document.querySelector('#category_wrapper_' + catId)) {
+        ev.preventDefault();
+        document.querySelector('#category_wrapper_' + catId).scrollIntoView({
+          behavior: 'smooth'
+        });
+      }
     }
   }
 }
@@ -1722,8 +1725,12 @@ var ajaxAdminEndpoint = '/wp-admin/admin-ajax.php';
 
       if (_ev.classList.contains('search_category_item')) {
         if (document.body.classList.contains('home')) {
-          ev.preventDefault();
-          scrollToCategoryOnHome(_ev);
+          scrollToCategoryOnHome(ev, _ev);
+          hide(document.querySelector('[search-drop-js]'));
+        }
+      } else if (_ev.classList.contains('list__specification-visit')) {
+        if (document.querySelector('[video-js]')) {
+          playPause(document.querySelector('[video-js]'));
         }
       } else if (_ev.closest('.list__specification-close')) {
         closeBanner(_ev);

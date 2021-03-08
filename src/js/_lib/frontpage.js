@@ -29,11 +29,11 @@ const loadHomeData = () => {
 
 	console.log('Loading home data');
 
-	let url = 'http://mpg.c2136.cloudnet.cloud/wp-json/mpg/home/';
+	let url = '/wp-json/mpg/home/';
 	// let url = 'https://www.mrporngeek.com/wp-json/mpg/home/';
 	if(currentLang!='en'){
 		//url = 'http://mpg.c2136.cloudnet.cloud/wp-json/mpg/home/?lang='+currentLang;
-		url = 'https://www.mrporngeek.com/wp-json/mpg/home/?lang='+currentLang;
+		url = '/wp-json/mpg/home/?lang='+currentLang;
 	}
 
 	homeData = getWithExpiry("home_data_"+currentLang);
@@ -792,13 +792,16 @@ function initWebWorker(){
 }
 
 
-function scrollToCategoryOnHome(_ev){
+function scrollToCategoryOnHome(ev, _ev){
 	if(_ev){
 		let catId = _ev.dataset.objectId;
 		if(catId){
-			document.querySelector('#category_wrapper_'+catId).scrollIntoView({
-				behavior: 'smooth'
-			});
+			if(document.querySelector('#category_wrapper_'+catId)){
+				ev.preventDefault();
+				document.querySelector('#category_wrapper_'+catId).scrollIntoView({
+					behavior: 'smooth'
+				});
+			}
 		}
 	}
 

@@ -127,8 +127,13 @@ const ajaxAdminEndpoint = '/wp-admin/admin-ajax.php';
 			}
 			if(_ev.classList.contains('search_category_item')){
 				if(document.body.classList.contains('home')){
-					ev.preventDefault();
-					scrollToCategoryOnHome(_ev);
+
+					scrollToCategoryOnHome(ev, _ev);
+					hide(document.querySelector('[search-drop-js]'));
+				}
+			}else if(_ev.classList.contains('list__specification-visit')){
+				if(document.querySelector('[video-js]')){
+					playPause(document.querySelector('[video-js]'));
 				}
 			}else if(_ev.closest('.list__specification-close')){
 				closeBanner(_ev);
