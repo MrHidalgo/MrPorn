@@ -336,14 +336,11 @@ function generateModalTweener(sourceBBox, destinationBBox) {
   var destinationCenter = findCenter(destinationBBox, isOpen);
   var toX = interpolate(vRange, [sourceCenter.x - destinationCenter.x, 0]);
   /*let toY = 0;
-  
-  if(isOpen){
+  	if(isOpen){
   	//toY = interpolate(vRange, [sourceCenter.y - destinationCenter.y + window.scrollY, 0]);
   	toY = interpolate(vRange, [200 + window.scrollY, 0]);
-  
-  	console.log('Opening '+(200 + window.scrollY));
-  
-  }else{
+  		console.log('Opening '+(200 + window.scrollY));
+  	}else{
   	toY = interpolate(vRange, [sourceCenter.y - destinationCenter.y, 0]);
   	console.log('Closing '+(sourceCenter.y - destinationCenter.y));
   }*/
@@ -854,10 +851,8 @@ var boxHover = function boxHover() {
   	listBoxBody[i].addEventListener('mouseleave', function(ev) {
   		if(window.innerWidth >= 1280) {
   			hoverBool = false;
-  
-  			clearTimeout(tOut);
-  
-  			for(let j = 0, l = swiperSlides.length; j < l; j++) {
+  				clearTimeout(tOut);
+  				for(let j = 0, l = swiperSlides.length; j < l; j++) {
   				swiperSlides[j].classList.remove('is-hover');
   			}
   		}
@@ -1446,9 +1441,8 @@ function showBanner(_el) {
     _boxParent.classList.add('is-active');
 
     if (_specificationBox) {
-      _specificationBox.classList.add('is-open');
+      _specificationBox.classList.add('is-open'); // document.body.classList.add('is_open');
 
-      document.body.classList.add('is_open');
     }
   }
 
@@ -2745,7 +2739,7 @@ var ajaxAdminEndpoint = '/wp-admin/admin-ajax.php';
     			}
     		}
     	}, false);
-    		cGrid.addEventListener('mouseout', function(ev) {
+    			cGrid.addEventListener('mouseout', function(ev) {
     		const _ev = ev.target;
     		if(_ev){
     			console.log(_ev.classList);

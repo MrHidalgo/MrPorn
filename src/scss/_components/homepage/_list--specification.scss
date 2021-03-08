@@ -10,50 +10,8 @@
 	background-color: rgb(0, 74, 172);
 	box-shadow: 1.047px 19.973px 43px 0px rgba(8, 9, 21, 0.3);
 
-
-
-	transition: all 0.6s ease-in;
-
-	-ms-overflow-style: none;  /* IE and Edge */
-	scrollbar-width: none;  /* Firefox */
-
-	&::-webkit-scrollbar {
-		display: none;
-	}
-
-	@include respond('desktop'){
-		//position: absolute;
-		//width: 90%;
-		//width: 400px;
-		//height: 100px;
-		//left: 50%;
-		//transform: translateX(-50%);
-
-		//animation-name: zoomBannerBox;
-		//animation-duration: 0.8s;
-	}
-
-	.list__specification__inner{
-		height: 360px;
-		transition: all 0.6s ease-in;
-		-ms-overflow-style: none;  /* IE and Edge */
-		scrollbar-width: none;  /* Firefox */
-
-		border: 3px solid #7d848e;
-	}
-
-	&.is-open {
-		.list__specification__inner{
-			height: 322px;
-		}
-	}
-
 	@media screen and (min-width: 1450px) {
-		&.is-open {
-			.list__specification__inner {
-				height: 360px;
-			}
-		}
+		height: 360px;
 	}
 	@include adaptive(1023) {
 		opacity: 0;
@@ -122,27 +80,20 @@
 	}
 
 	> div {
-		/*overflow-y: auto;*/
+		overflow-y: auto;
 		display: flex;
 		width: 100%;
-		/*height: 100%;*/
+		height: 100%;
 		@include adaptive(1023) {
 			flex-direction: column;
 
-			/*min-height: 100%;*/
+			min-height: 100%;
 			height: auto;
 		}
 	}
 
 	&.is-open {
-		display: block;
-		visibility: visible;
-		opacity: 1;
-
-		@include respond('desktop'){
-			width: 100%;
-			height: 100%;
-		}
+		display: flex;
 	}
 
 	&.list__specification--video {
@@ -233,12 +184,10 @@
 
 					@include respond('ipad_portrait'){
 						margin-left: 0;
-						max-height: 100%;
 					}
 
 					@include adaptive(767) {
 						margin-left: 0;
-						max-height: 100%;
 					}
 				}
 

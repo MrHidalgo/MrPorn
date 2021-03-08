@@ -1458,7 +1458,7 @@ function showBanner(_el, isSkip = false){
 		if(_specificationBox){
 			_specificationBox.classList.add('is-open');
 
-			document.body.classList.add('is_open');
+			// document.body.classList.add('is_open');
 		}
 	}
 
