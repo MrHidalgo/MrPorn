@@ -9,6 +9,9 @@ let currentPopupBanner;
 let clonedPopupBanner;
 let clonedPopupTimeout;
 let isLoggedUser = false;
+let dataTime;
+
+let currentLang = 'en';
 
 
 if (!Element.prototype.matches) {
@@ -125,20 +128,23 @@ const ajaxAdminEndpoint = '/wp-admin/admin-ajax.php';
 					openSort.classList.remove('is-open');
 				}
 			}
-			if(_ev.classList.contains('search_category_item')){
-				if(document.body.classList.contains('home')){
 
-					scrollToCategoryOnHome(ev, _ev);
-					hide(document.querySelector('[search-drop-js]'));
+			if(!_ev.closest('.awe_search_result')){
+				if(document.querySelector('#awe_search_term')){
+					document.querySelector('#awe_search_term').value='';
 				}
-			}else if(_ev.classList.contains('list__specification-visit')){
-				if(document.querySelector('[video-js]')){
-					playPause(document.querySelector('[video-js]'));
-				}
-			}else if(_ev.closest('.list__specification-close')){
+				hide(document.querySelector('.awe_search_result'))
+			}
+
+			if(_ev.closest('.list__specification-close')){
 				closeBanner(_ev);
 			}else if(_ev.closest('.list__box-more')){
-				showBanner(_ev);
+				showBanner(_ev, false, ev);
+
+				//openSlideModal(ev);
+			}else if(_ev.closest('[more-toggle-js]')){
+				//showBanner(_ev);
+				showBanner(_ev, false, ev);
 			}else if(_ev.closest('[spec-like-js]')){
 				onBannerLikeClick(_ev.closest('[spec-like-js]'));
 			}else if(_ev.closest('[spec-dislike-js]')){
@@ -171,6 +177,20 @@ const ajaxAdminEndpoint = '/wp-admin/admin-ajax.php';
 				onSiteBoxHoverClick(_ev);
 			}else if(_ev.closest('.login_popup_close')){
 				closeLoginPopups();
+			}else if(_ev.classList.contains('popup_link_signup')){
+				ev.preventDefault();
+				toggleLoginPopups('join');
+			}else if(_ev.classList.contains('popup_link_login')){
+				ev.preventDefault();
+				toggleLoginPopups('login');
+			}else if(_ev.classList.contains('popup_link_forgot')){
+				ev.preventDefault();
+				toggleLoginPopups('forgot');
+			}else if(_ev.classList.contains('hdrfavttl')){
+				ev.preventDefault();
+				document.querySelector('.mobile_fav_link').classList.toggle('open');
+			}else if(_ev.closest('.close-modal')){
+				cancelModal(ev);
 			}
 
 
@@ -178,7 +198,9 @@ const ajaxAdminEndpoint = '/wp-admin/admin-ajax.php';
 			else if(_ev.parentNode && !_ev.closest('[search-parent-js]')){
 
 				if(!isMobileOrTablet){
-					document.querySelector('[search-js]').value='';
+					if(document.querySelector('[search-js]')){
+						document.querySelector('[search-js]').value='';
+					}
 
 					if(!_ev.closest('[search-parent-js]')){
 						hide(document.querySelector('[search-drop-js]'));
@@ -186,19 +208,23 @@ const ajaxAdminEndpoint = '/wp-admin/admin-ajax.php';
 				}
 
 
-			}else{
-				console.log(ev, _ev.closest('[search-parent-js]'));
 			}
 
 			if (!_ev.closest(className)) {
 				// VIEW FAVORITES
 
-				document.querySelector('[view-favorites-toggle-js]').classList.remove('is-active');
-				document.querySelector('[view-favorites-drop-js]').classList.remove('is-open');
+				if(document.querySelector('[view-favorites-toggle-js]')){
+					document.querySelector('[view-favorites-toggle-js]').classList.remove('is-active');
+				}
+				if(document.querySelector('[view-favorites-drop-js]')){
+					document.querySelector('[view-favorites-drop-js]').classList.remove('is-open');
+				}
 
 				// SORT
 				if(!isMobileOrTablet){
-					document.querySelector('[sort-node-js]').classList.remove('is-open');
+					if(document.querySelector('[sort-node-js]')){
+						document.querySelector('[sort-node-js]').classList.remove('is-open');
+					}
 				}
 				if(document.querySelector('.sort__drop-inner')){
 					document.querySelector('.sort__drop-inner').classList.remove('is-open');
@@ -251,20 +277,22 @@ const ajaxAdminEndpoint = '/wp-admin/admin-ajax.php';
 		const _btn = document.querySelector('[view-favorites-toggle-js]'),
 			_node = document.querySelector('[view-favorites-drop-js]');
 
-		_btn.addEventListener('click', (ev) => {
-			_btn.classList.toggle('is-active');
-			_node.classList.toggle('is-open');
+		if(_btn){
+			_btn.addEventListener('click', (ev) => {
+				_btn.classList.toggle('is-active');
+				_node.classList.toggle('is-open');
 
-			document.querySelector('[sort-node-js]').classList.remove('is-open');
-			document.querySelector('.sort__drop-inner').classList.remove('is-open');
+				document.querySelector('[sort-node-js]').classList.remove('is-open');
+				document.querySelector('.sort__drop-inner').classList.remove('is-open');
 
-			let i = null,
-				len = document.querySelectorAll('.sort__drop-link').length;
+				let i = null,
+					len = document.querySelectorAll('.sort__drop-link').length;
 
-			for(i = 0; i < len; i++) {
-				document.querySelectorAll('.sort__drop-link')[i].classList.remove('is-active');
-			}
-		}, false);
+				for(i = 0; i < len; i++) {
+					document.querySelectorAll('.sort__drop-link')[i].classList.remove('is-active');
+				}
+			}, false);
+		}
 	};
 
 
@@ -338,19 +366,21 @@ const ajaxAdminEndpoint = '/wp-admin/admin-ajax.php';
 
 	const search = () => {
 		const searchInput = document.querySelector('[search-js]');
+		if(searchInput){
+			searchInput.addEventListener('keyup', (ev) => {
+				const self = ev.currentTarget,
+					selfVal = self.value,
+					parentNode = self.closest('[search-parent-js]'),
+					dropNode = parentNode.querySelector('[search-drop-js]');
 
-		searchInput.addEventListener('keyup', (ev) => {
-			const self = ev.currentTarget,
-				selfVal = self.value,
-				parentNode = self.closest('[search-parent-js]'),
-				dropNode = parentNode.querySelector('[search-drop-js]');
+				if(selfVal.length > 0) {
+					dropNode.classList.add('is-open');
+				} else {
+					dropNode.classList.remove('is-open');
+				}
+			}, false);
+		}
 
-			if(selfVal.length > 0) {
-				dropNode.classList.add('is-open');
-			} else {
-				dropNode.classList.remove('is-open');
-			}
-		}, false);
 	};
 
 	function playPause11(vid) {
@@ -394,7 +424,9 @@ const ajaxAdminEndpoint = '/wp-admin/admin-ajax.php';
 		}
 
 		if(document.querySelector('[video-js]')){
-			playPause(document.querySelector('[video-js]'));
+			document.querySelector('[video-js]').pause();
+
+			//playPause(document.querySelector('[video-js]'));
 		}
 
 		if(parent.querySelector('[video-toggle-js]')) {
@@ -574,15 +606,14 @@ const ajaxAdminEndpoint = '/wp-admin/admin-ajax.php';
 	}
 
 	function onSiteBoxLikeClick(el){
-		if(!isLoggedUser){
-			renderLoginForm();
-			return ;
-		}
 
 		var elID = el.getAttribute('data-id'),
 			elParent = el.closest('.list__box-wrapper');
 
 		el.classList.toggle('is-active');
+
+		onLike(el, elID);
+
 		elParent.querySelector('[dislike-toggle-js][data-id="' + elID + '"]').classList.toggle('is-hide');
 
 		const specificationBlock = elParent.querySelector('.list__specification[data-id="' + elID + '"]');
@@ -606,13 +637,18 @@ const ajaxAdminEndpoint = '/wp-admin/admin-ajax.php';
 
 		dislikeBtn.parentElement.classList.toggle('is-hide');
 
-		const listBlock = elParent.querySelector('.list__box[data-id="' + elID + '"]'),
-			listLikeBtn = listBlock.querySelector('.list__box-like'),
-			listDislikeBtn = listBlock.querySelector('.list__box-dislike');
+		//const listBlock = elParent.querySelector('.list__box[data-id="' + elID + '"]'),
+			const listLikeBtn = document.querySelector('.list__specification-like.list__box-like[data-id="' + elID + '"]'),
+			listDislikeBtn = document.querySelector('.list__box-dislike.list__specification-dislike[data-id="' + elID + '"]');
 
 		el.classList.toggle('is-active');
 
-		listLikeBtn.classList.toggle('is-active');
+		onLike(el, elID);
+
+		if(listLikeBtn){
+			listLikeBtn.classList.toggle('is-active');
+		}
+
 		listDislikeBtn.classList.toggle('is-hide');
 	}
 
@@ -622,7 +658,8 @@ const ajaxAdminEndpoint = '/wp-admin/admin-ajax.php';
 
 		console.log('Disliking '+elID);
 
-		el.classList.toggle('is-active');
+		onDisLike(el, elID);
+
 		elParent.querySelector('[like-toggle-js][data-id="' + elID + '"]').classList.toggle('is-hide');
 
 		const specificationBlock = elParent.querySelector('.list__specification[data-id="' + elID + '"]');
@@ -632,6 +669,7 @@ const ajaxAdminEndpoint = '/wp-admin/admin-ajax.php';
 
 			specificationDislikeBtn.classList.toggle('is-active');
 			specificationLikeBtn.parentElement.classList.toggle('is-hide');
+
 		}
 
 	}
@@ -644,11 +682,11 @@ const ajaxAdminEndpoint = '/wp-admin/admin-ajax.php';
 
 		likeBtn.parentElement.classList.toggle('is-hide');
 
-		const listBlock = elParent.querySelector('.list__box[data-id="' + elID + '"]'),
-			listDislikeBtn = listBlock.querySelector('.list__box-dislike'),
-			listLikeBtn = listBlock.querySelector('.list__box-like');
+		//const listBlock = elParent.querySelector('.list__box[data-id="' + elID + '"]'),
+		const listLikeBtn = document.querySelector('.list__specification-like.list__box-like[data-id="' + elID + '"]'),
+			listDislikeBtn = document.querySelector('.list__box-dislike.list__specification-dislike[data-id="' + elID + '"]');
 
-		el.classList.toggle('is-active');
+		onDisLike(el, elID);
 
 		listDislikeBtn.classList.toggle('is-active');
 		listLikeBtn.classList.toggle('is-hide');
@@ -748,23 +786,6 @@ const ajaxAdminEndpoint = '/wp-admin/admin-ajax.php';
 
 	const skipModal = () => {
 		const skipBtns = document.querySelectorAll('[spec-skip-js]');
-
-		/*for(let i = 0, len = skipBtns.length; i < len; i++) {
-			skipBtns[i].addEventListener('click', (ev) => {
-				const el = ev.currentTarget,
-					elID = el.getAttribute('data-id'),
-					elParent = el.closest('.list__box-wrapper');
-
-				setTimeout(() => {
-					el.closest('.list__specification').querySelector('.list__specification-close').click();
-				}, 0);
-
-				if(elParent.querySelector('.list__specification[data-id="' + (Number(elID) + 1) + '"]')) {
-					elParent.querySelector('.list__specification[data-id="' + (Number(elID) + 1) + '"]').classList.add('is-open');
-				}
-
-			}, false);
-		}*/
 	};
 
 	function onSkip(el){
@@ -863,7 +884,7 @@ const ajaxAdminEndpoint = '/wp-admin/admin-ajax.php';
 		initPreventBehavior();
 		// ==========================================
 
-
+		currentLang = document.documentElement.getAttribute('lang');
 
 		// lib
 		initSwiper();
@@ -902,17 +923,41 @@ const ajaxAdminEndpoint = '/wp-admin/admin-ajax.php';
 		// ==========================================
 
 		//loadHomeData();
+		dataTime = document.querySelector('meta[name="data_time"]').content;
+
 		initWebWorker();
 
-
+		getLikesAndDislikes();
 
 	};
+
+	const onWindowBlur = () => {
+		if(document.querySelector('[video-js]')){
+			document.querySelector('[video-js]').pause();
+		}
+	}
+
+	const onWindowChange = () =>{
+		let __vh = window.innerHeight * 0.01;
+		document.documentElement.style.setProperty('--vh', `${__vh}px`);
+	}
 
 	/**
 	 * @description Init all CB after page load
 	 */
 	window.addEventListener('load', (ev) => {
 		initNative();
+	});
+
+	window.addEventListener('blur', (ev) => {
+		onWindowBlur();
+	});
+
+	window.addEventListener("orientationchange", function(event) {
+		onWindowChange();
+		setTimeout(() => {
+			onWindowChange();
+		}, 500);
 	});
 
 	window.addEventListener('resize', () => {
@@ -922,6 +967,11 @@ const ajaxAdminEndpoint = '/wp-admin/admin-ajax.php';
 				document.getElementsByTagName('body')[0].classList.remove('is-hideScroll');
 			}
 		} else {
+			onWindowChange();
+			setTimeout(() => {
+				onWindowChange();
+			}, 500);
+
 			if(document.querySelector('.list__specification.is-open')) {
 				document.getElementsByTagName('html')[0].classList.add('is-hideScroll');
 				document.getElementsByTagName('body')[0].classList.add('is-hideScroll');

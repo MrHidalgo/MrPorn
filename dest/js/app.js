@@ -336,11 +336,14 @@ function generateModalTweener(sourceBBox, destinationBBox) {
   var destinationCenter = findCenter(destinationBBox, isOpen);
   var toX = interpolate(vRange, [sourceCenter.x - destinationCenter.x, 0]);
   /*let toY = 0;
-  	if(isOpen){
+  
+  if(isOpen){
   	//toY = interpolate(vRange, [sourceCenter.y - destinationCenter.y + window.scrollY, 0]);
   	toY = interpolate(vRange, [200 + window.scrollY, 0]);
-  		console.log('Opening '+(200 + window.scrollY));
-  	}else{
+  
+  	console.log('Opening '+(200 + window.scrollY));
+  
+  }else{
   	toY = interpolate(vRange, [sourceCenter.y - destinationCenter.y, 0]);
   	console.log('Closing '+(sourceCenter.y - destinationCenter.y));
   }*/
@@ -851,8 +854,10 @@ var boxHover = function boxHover() {
   	listBoxBody[i].addEventListener('mouseleave', function(ev) {
   		if(window.innerWidth >= 1280) {
   			hoverBool = false;
-  				clearTimeout(tOut);
-  				for(let j = 0, l = swiperSlides.length; j < l; j++) {
+  
+  			clearTimeout(tOut);
+  
+  			for(let j = 0, l = swiperSlides.length; j < l; j++) {
   				swiperSlides[j].classList.remove('is-hover');
   			}
   		}
@@ -2531,6 +2536,8 @@ var currentPopupBanner;
 var clonedPopupBanner;
 var clonedPopupTimeout;
 var isLoggedUser = false;
+var dataTime;
+var currentLang = 'en';
 
 if (!Element.prototype.matches) {
   Element.prototype.matches = Element.prototype.msMatchesSelector || Element.prototype.webkitMatchesSelector;
@@ -2627,19 +2634,21 @@ var ajaxAdminEndpoint = '/wp-admin/admin-ajax.php';
         }
       }
 
-      if (_ev.classList.contains('search_category_item')) {
-        if (document.body.classList.contains('home')) {
-          scrollToCategoryOnHome(ev, _ev);
-          hide(document.querySelector('[search-drop-js]'));
+      if (!_ev.closest('.awe_search_result')) {
+        if (document.querySelector('#awe_search_term')) {
+          document.querySelector('#awe_search_term').value = '';
         }
-      } else if (_ev.classList.contains('list__specification-visit')) {
-        if (document.querySelector('[video-js]')) {
-          playPause(document.querySelector('[video-js]'));
-        }
-      } else if (_ev.closest('.list__specification-close')) {
+
+        hide(document.querySelector('.awe_search_result'));
+      }
+
+      if (_ev.closest('.list__specification-close')) {
         closeBanner(_ev);
       } else if (_ev.closest('.list__box-more')) {
-        showBanner(_ev);
+        showBanner(_ev, false, ev); //openSlideModal(ev);
+      } else if (_ev.closest('[more-toggle-js]')) {
+        //showBanner(_ev);
+        showBanner(_ev, false, ev);
       } else if (_ev.closest('[spec-like-js]')) {
         onBannerLikeClick(_ev.closest('[spec-like-js]'));
       } else if (_ev.closest('[spec-dislike-js]')) {
@@ -2671,25 +2680,47 @@ var ajaxAdminEndpoint = '/wp-admin/admin-ajax.php';
         onSiteBoxHoverClick(_ev);
       } else if (_ev.closest('.login_popup_close')) {
         closeLoginPopups();
+      } else if (_ev.classList.contains('popup_link_signup')) {
+        ev.preventDefault();
+        toggleLoginPopups('join');
+      } else if (_ev.classList.contains('popup_link_login')) {
+        ev.preventDefault();
+        toggleLoginPopups('login');
+      } else if (_ev.classList.contains('popup_link_forgot')) {
+        ev.preventDefault();
+        toggleLoginPopups('forgot');
+      } else if (_ev.classList.contains('hdrfavttl')) {
+        ev.preventDefault();
+        document.querySelector('.mobile_fav_link').classList.toggle('open');
+      } else if (_ev.closest('.close-modal')) {
+        cancelModal(ev);
       } else if (_ev.parentNode && !_ev.closest('[search-parent-js]')) {
         if (!isMobileOrTablet) {
-          document.querySelector('[search-js]').value = '';
+          if (document.querySelector('[search-js]')) {
+            document.querySelector('[search-js]').value = '';
+          }
 
           if (!_ev.closest('[search-parent-js]')) {
             hide(document.querySelector('[search-drop-js]'));
           }
         }
-      } else {
-        console.log(ev, _ev.closest('[search-parent-js]'));
       }
 
       if (!_ev.closest(className)) {
         // VIEW FAVORITES
-        document.querySelector('[view-favorites-toggle-js]').classList.remove('is-active');
-        document.querySelector('[view-favorites-drop-js]').classList.remove('is-open'); // SORT
+        if (document.querySelector('[view-favorites-toggle-js]')) {
+          document.querySelector('[view-favorites-toggle-js]').classList.remove('is-active');
+        }
+
+        if (document.querySelector('[view-favorites-drop-js]')) {
+          document.querySelector('[view-favorites-drop-js]').classList.remove('is-open');
+        } // SORT
+
 
         if (!isMobileOrTablet) {
-          document.querySelector('[sort-node-js]').classList.remove('is-open');
+          if (document.querySelector('[sort-node-js]')) {
+            document.querySelector('[sort-node-js]').classList.remove('is-open');
+          }
         }
 
         if (document.querySelector('.sort__drop-inner')) {
@@ -2714,7 +2745,7 @@ var ajaxAdminEndpoint = '/wp-admin/admin-ajax.php';
     			}
     		}
     	}, false);
-    			cGrid.addEventListener('mouseout', function(ev) {
+    		cGrid.addEventListener('mouseout', function(ev) {
     		const _ev = ev.target;
     		if(_ev){
     			console.log(_ev.classList);
@@ -2738,20 +2769,22 @@ var ajaxAdminEndpoint = '/wp-admin/admin-ajax.php';
     var _btn = document.querySelector('[view-favorites-toggle-js]'),
         _node = document.querySelector('[view-favorites-drop-js]');
 
-    _btn.addEventListener('click', function (ev) {
-      _btn.classList.toggle('is-active');
+    if (_btn) {
+      _btn.addEventListener('click', function (ev) {
+        _btn.classList.toggle('is-active');
 
-      _node.classList.toggle('is-open');
+        _node.classList.toggle('is-open');
 
-      document.querySelector('[sort-node-js]').classList.remove('is-open');
-      document.querySelector('.sort__drop-inner').classList.remove('is-open');
-      var i = null,
-          len = document.querySelectorAll('.sort__drop-link').length;
+        document.querySelector('[sort-node-js]').classList.remove('is-open');
+        document.querySelector('.sort__drop-inner').classList.remove('is-open');
+        var i = null,
+            len = document.querySelectorAll('.sort__drop-link').length;
 
-      for (i = 0; i < len; i++) {
-        document.querySelectorAll('.sort__drop-link')[i].classList.remove('is-active');
-      }
-    }, false);
+        for (i = 0; i < len; i++) {
+          document.querySelectorAll('.sort__drop-link')[i].classList.remove('is-active');
+        }
+      }, false);
+    }
   };
 
   var sortCB = function sortCB() {
@@ -2820,18 +2853,21 @@ var ajaxAdminEndpoint = '/wp-admin/admin-ajax.php';
 
   var search = function search() {
     var searchInput = document.querySelector('[search-js]');
-    searchInput.addEventListener('keyup', function (ev) {
-      var self = ev.currentTarget,
-          selfVal = self.value,
-          parentNode = self.closest('[search-parent-js]'),
-          dropNode = parentNode.querySelector('[search-drop-js]');
 
-      if (selfVal.length > 0) {
-        dropNode.classList.add('is-open');
-      } else {
-        dropNode.classList.remove('is-open');
-      }
-    }, false);
+    if (searchInput) {
+      searchInput.addEventListener('keyup', function (ev) {
+        var self = ev.currentTarget,
+            selfVal = self.value,
+            parentNode = self.closest('[search-parent-js]'),
+            dropNode = parentNode.querySelector('[search-drop-js]');
+
+        if (selfVal.length > 0) {
+          dropNode.classList.add('is-open');
+        } else {
+          dropNode.classList.remove('is-open');
+        }
+      }, false);
+    }
   };
 
   function playPause11(vid) {
@@ -2876,7 +2912,7 @@ var ajaxAdminEndpoint = '/wp-admin/admin-ajax.php';
     }
 
     if (document.querySelector('[video-js]')) {
-      playPause(document.querySelector('[video-js]'));
+      document.querySelector('[video-js]').pause(); //playPause(document.querySelector('[video-js]'));
     }
 
     if (parent.querySelector('[video-toggle-js]')) {
@@ -3040,14 +3076,10 @@ var ajaxAdminEndpoint = '/wp-admin/admin-ajax.php';
   }
 
   function onSiteBoxLikeClick(el) {
-    if (!isLoggedUser) {
-      renderLoginForm();
-      return;
-    }
-
     var elID = el.getAttribute('data-id'),
         elParent = el.closest('.list__box-wrapper');
     el.classList.toggle('is-active');
+    onLike(el, elID);
     elParent.querySelector('[dislike-toggle-js][data-id="' + elID + '"]').classList.toggle('is-hide');
     var specificationBlock = elParent.querySelector('.list__specification[data-id="' + elID + '"]');
 
@@ -3065,12 +3097,17 @@ var ajaxAdminEndpoint = '/wp-admin/admin-ajax.php';
         elActionNode = el.closest('[spec-actionNode-js]'),
         dislikeBtn = elActionNode.querySelector('[spec-dislike-js]');
     console.log('Trying to like ' + elID);
-    dislikeBtn.parentElement.classList.toggle('is-hide');
-    var listBlock = elParent.querySelector('.list__box[data-id="' + elID + '"]'),
-        listLikeBtn = listBlock.querySelector('.list__box-like'),
-        listDislikeBtn = listBlock.querySelector('.list__box-dislike');
+    dislikeBtn.parentElement.classList.toggle('is-hide'); //const listBlock = elParent.querySelector('.list__box[data-id="' + elID + '"]'),
+
+    var listLikeBtn = document.querySelector('.list__specification-like.list__box-like[data-id="' + elID + '"]'),
+        listDislikeBtn = document.querySelector('.list__box-dislike.list__specification-dislike[data-id="' + elID + '"]');
     el.classList.toggle('is-active');
-    listLikeBtn.classList.toggle('is-active');
+    onLike(el, elID);
+
+    if (listLikeBtn) {
+      listLikeBtn.classList.toggle('is-active');
+    }
+
     listDislikeBtn.classList.toggle('is-hide');
   }
 
@@ -3078,7 +3115,7 @@ var ajaxAdminEndpoint = '/wp-admin/admin-ajax.php';
     var elID = el.getAttribute('data-id'),
         elParent = el.closest('.list__box-wrapper');
     console.log('Disliking ' + elID);
-    el.classList.toggle('is-active');
+    onDisLike(el, elID);
     elParent.querySelector('[like-toggle-js][data-id="' + elID + '"]').classList.toggle('is-hide');
     var specificationBlock = elParent.querySelector('.list__specification[data-id="' + elID + '"]');
 
@@ -3095,11 +3132,11 @@ var ajaxAdminEndpoint = '/wp-admin/admin-ajax.php';
         elParent = el.closest('.list__box-wrapper'),
         elActionNode = el.closest('[spec-actionNode-js]'),
         likeBtn = elActionNode.querySelector('[spec-like-js]');
-    likeBtn.parentElement.classList.toggle('is-hide');
-    var listBlock = elParent.querySelector('.list__box[data-id="' + elID + '"]'),
-        listDislikeBtn = listBlock.querySelector('.list__box-dislike'),
-        listLikeBtn = listBlock.querySelector('.list__box-like');
-    el.classList.toggle('is-active');
+    likeBtn.parentElement.classList.toggle('is-hide'); //const listBlock = elParent.querySelector('.list__box[data-id="' + elID + '"]'),
+
+    var listLikeBtn = document.querySelector('.list__specification-like.list__box-like[data-id="' + elID + '"]'),
+        listDislikeBtn = document.querySelector('.list__box-dislike.list__specification-dislike[data-id="' + elID + '"]');
+    onDisLike(el, elID);
     listDislikeBtn.classList.toggle('is-active');
     listLikeBtn.classList.toggle('is-hide');
   }
@@ -3198,19 +3235,6 @@ var ajaxAdminEndpoint = '/wp-admin/admin-ajax.php';
 
   var skipModal = function skipModal() {
     var skipBtns = document.querySelectorAll('[spec-skip-js]');
-    /*for(let i = 0, len = skipBtns.length; i < len; i++) {
-    	skipBtns[i].addEventListener('click', (ev) => {
-    		const el = ev.currentTarget,
-    			elID = el.getAttribute('data-id'),
-    			elParent = el.closest('.list__box-wrapper');
-    				setTimeout(() => {
-    			el.closest('.list__specification').querySelector('.list__specification-close').click();
-    		}, 0);
-    				if(elParent.querySelector('.list__specification[data-id="' + (Number(elID) + 1) + '"]')) {
-    			elParent.querySelector('.list__specification[data-id="' + (Number(elID) + 1) + '"]').classList.add('is-open');
-    		}
-    			}, false);
-    }*/
   };
 
   function onSkip(el) {
@@ -3296,7 +3320,8 @@ var ajaxAdminEndpoint = '/wp-admin/admin-ajax.php';
     console.log('initNative'); // default
 
     initPreventBehavior(); // ==========================================
-    // lib
+
+    currentLang = document.documentElement.getAttribute('lang'); // lib
 
     initSwiper();
     initHamburger(); // ==========================================
@@ -3323,7 +3348,21 @@ var ajaxAdminEndpoint = '/wp-admin/admin-ajax.php';
     toggleMoreBox(); // ==========================================
     //loadHomeData();
 
+    dataTime = document.querySelector('meta[name="data_time"]').content;
     initWebWorker();
+    getLikesAndDislikes();
+  };
+
+  var onWindowBlur = function onWindowBlur() {
+    if (document.querySelector('[video-js]')) {
+      document.querySelector('[video-js]').pause();
+    }
+  };
+
+  var onWindowChange = function onWindowChange() {
+    var __vh = window.innerHeight * 0.01;
+
+    document.documentElement.style.setProperty('--vh', "".concat(__vh, "px"));
   };
   /**
    * @description Init all CB after page load
@@ -3333,6 +3372,15 @@ var ajaxAdminEndpoint = '/wp-admin/admin-ajax.php';
   window.addEventListener('load', function (ev) {
     initNative();
   });
+  window.addEventListener('blur', function (ev) {
+    onWindowBlur();
+  });
+  window.addEventListener("orientationchange", function (event) {
+    onWindowChange();
+    setTimeout(function () {
+      onWindowChange();
+    }, 500);
+  });
   window.addEventListener('resize', function () {
     if (window.innerWidth > 1023) {
       if (document.querySelector('.list__specification.is-open')) {
@@ -3340,6 +3388,11 @@ var ajaxAdminEndpoint = '/wp-admin/admin-ajax.php';
         document.getElementsByTagName('body')[0].classList.remove('is-hideScroll');
       }
     } else {
+      onWindowChange();
+      setTimeout(function () {
+        onWindowChange();
+      }, 500);
+
       if (document.querySelector('.list__specification.is-open')) {
         document.getElementsByTagName('html')[0].classList.add('is-hideScroll');
         document.getElementsByTagName('body')[0].classList.add('is-hideScroll');
