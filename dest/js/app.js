@@ -1942,7 +1942,7 @@ var renderFavourites = function renderFavourites() {
           if(favLink){
           	favLink.classList.add('is-active');
           }
-          		if(document.querySelector('.list__box-favorites[data-id="'+fav.id+'"]')){
+          	if(document.querySelector('.list__box-favorites[data-id="'+fav.id+'"]')){
           	document.querySelector('.list__box-favorites[data-id="'+fav.id+'"]').classList.add('is-active');
           }
           if(document.querySelector('.list__specification-circle[data-id="'+fav.id+'"]')){
@@ -2028,24 +2028,19 @@ var letterSearch = function letterSearch() {
     throw err;
   });
   /*getRequest('/wp-json/mpg/letter_matrix/', {
-  
-  }, function (result) {
+  	}, function (result) {
   	Object.keys(result).forEach(function (key) {
   		var letter = key;
   		var suggestions = result[key];
-  
-  		var letterSuggestions = [];
-  
-  		suggestions.map(function (suggestion) {
+  			var letterSuggestions = [];
+  			suggestions.map(function (suggestion) {
   			let sName = suggestion.name;
   			let sIcon = suggestion.icon;
   			let sHd = suggestion.hd;
   			let sFree = suggestion.free;
-  
-  			letterSuggestions.push(suggestion);
+  				letterSuggestions.push(suggestion);
   		});
-  
-  		letterData[letter] = letterSuggestions;
+  			letterData[letter] = letterSuggestions;
   	});
   	renderSorting();
   	//initLetterHover();
@@ -2071,7 +2066,7 @@ var renderSorting = function renderSorting() {
       /*if(sortTimout){
       	clearTimeout(sortTimout);
       }
-      		sortTimout = setTimeout(function (){
+      	sortTimout = setTimeout(function (){
       	onSortLetterClick(_ev.target);
       }, 1000);*/
     });
@@ -2183,12 +2178,12 @@ var loadLoginForm = function loadLoginForm() {
       /*postTextRequest(ajaxAdminEndpoint, {
       	action:'get_login_form'
       }, function (result) {
-      			let loginHtml = '<a class="login_popup_close"><img src="'+themeBase+'images/btn_close.png"/></a>'+result;
-      			var e = document.createElement('div');
+      		let loginHtml = '<a class="login_popup_close"><img src="'+themeBase+'images/btn_close.png"/></a>'+result;
+      		var e = document.createElement('div');
       	e.setAttribute('id', 'login_popup');
       	e.innerHTML = loginHtml;
-      			document.body.appendChild(e);
-      			renderLoginForm();
+      		document.body.appendChild(e);
+      		renderLoginForm();
       });*/
 
       var loginHtml = '<a class="login_popup_close"><img src="' + themeBase + 'images/btn_close.png"/></a>' + htmlLogin;
