@@ -43,7 +43,7 @@
 		&.forgot{
 			.info{
 				color: #9294ad;
-				font-size: 11px;
+				font-size: 14px;
 				text-align: center;
 				margin-bottom: 20px;
 
@@ -113,6 +113,11 @@
 
 		input{
 			border-radius: 5px;
+			width: 410px;
+
+			@include adaptive(767) {
+				width: 100%;
+			}
 		}
 
 		.signup{
@@ -142,6 +147,10 @@
 				line-height: 23px;
 			}
 
+			@include adaptive(767) {
+				font-size: 12px;
+			}
+
 			a{
 				color: #c7f928;
 
@@ -156,11 +165,23 @@
 		@include adaptive(1023) {
 			text-align: center;
 			color: #fff;
+			display: flex;
+			justify-content: center;
+			align-items: center;
+
+			input[type=checkbox]{
+				width: auto;
+				margin-right: 10px;
+			}
+			label{
+				white-space: nowrap;
+			}
 		}
 	}
 
 	.login_banner{
 		width: 50%;
+		max-width: 580px;
 
 		@include adaptive(1023) {
 			display: none;
@@ -183,6 +204,58 @@
 	}
 	.signup{
 		margin: 0;
+	}
+
+	.top_forgot_text{
+		color: #d2d2d2;
+
+		@include adaptive(767) {
+			text-align: center;
+			padding-top: 10px;
+		}
+	}
+}
+
+.user_container_popup{
+	.user_tab_login, .user_tab_join, .user_tab_forgot{
+		display: none;
+		align-items: center;
+	}
+	&.login{
+		.user_tab_join, .user_tab_forgot{
+			display: none;
+		}
+		.user_tab_login{
+			display: flex;
+		}
+	}
+	&.join{
+		.user_tab_login, .user_tab_forgot{
+			display: none;
+		}
+		.user_tab_join{
+			display: flex;
+		}
+	}
+	&.forgot{
+		.user_tab_join, .user_tab_login{
+			display: none;
+		}
+		.user_tab_forgot{
+			display: flex;
+		}
+	}
+}
+
+.result-message, .forgot_success{
+	display: block;
+	padding: 6px 0;
+	font-weight: 600;
+	text-align: center;
+	color: #fff;
+
+	&.alert-danger{
+		color: #ff6d6d;
 	}
 }
 
@@ -287,6 +360,7 @@
 }
 .cleanlogin-container{
 	padding: 15px;
+	max-width: 430px;
 
 	@include adaptive(1023){
 		padding: 35px 30px 15px;
@@ -310,6 +384,10 @@
 			background: #003b85;
 			color: #fff;
 		}
+
+		@include adaptive(767){
+			font-size: 15px;
+		}
 	}
 	form{
 		label{
@@ -327,6 +405,7 @@
 .cleanlogin-field{
 	margin-bottom: 25px;
 	border-radius: 8px;
+	max-width: 420px;
 
 	input{
 		padding: 15px 25px;

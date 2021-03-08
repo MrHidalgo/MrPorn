@@ -103,6 +103,12 @@
 				color: #fff;
 				padding: 5px 15px;
 			}
+			@include respond('iphone_x_landscape'){
+				display: none;
+			}
+			@include respond('iphone_8_landscape'){
+				display: none;
+			}
 		}
 
 		.left_content {
@@ -160,7 +166,7 @@
 				}
 			}
 			.site_count {
-				color: #568e00;
+				color: #d1f34b;
 
 				@include respond('ipad_portrait'){
 					color: #fff;
@@ -199,15 +205,12 @@
 				margin: 0 2px;
 
 				&::before {
-					margin: 0 0 0;
+					margin: 1px 0 0;
+					left: 2px;
 					content: ' ';
 					display: block;
 					width: 16px;
 					height: 16px;
-					position: absolute;
-					top: 50%;
-					left: 50%;
-					transform: translateX(-50%) translateY(-50%);
 				}
 			}
 		}
@@ -224,6 +227,8 @@
 		font-size: 16px;
 		font-weight: 600;
 		text-decoration: underline;
+
+		margin-bottom: 10px;
 	}
 }
 
@@ -379,7 +384,7 @@
 	margin-top: 10px;
 
 	.swiper-slide{
-		max-width: 140px;
+		max-width: 25%;
 		opacity: 0.4;
 	}
 	.swiper-slide-thumb-active{
@@ -432,11 +437,24 @@
 		text-align: center;
 		display: none;
 
+		@include adaptive(767) {
+			display: block;
+			background: transparent;
+		}
+
 		img{
 			width: auto;
 			margin-left: auto;
 			margin-right: auto;
 			max-width: 200px;
+
+			@include adaptive(767) {
+				visibility: hidden;
+			}
+
+			&.games{
+				max-width: 300px;
+			}
 		}
 
 		p{
@@ -445,22 +463,64 @@
 			margin-top: 20px;
 			white-space: nowrap;
 
+			@include adaptive(767) {
+				display: none;
+			}
+
 			span{
 				color: #0596f8;
 			}
 		}
 	}
 
-	&:hover {
+	&:not(.is_dead):hover {
 		.review_screenshot_hover{
 			display: block;
 
 			@include adaptive(991.98) {
 				display: none;
 			}
+
+			@include adaptive(767) {
+				display: block;
+				background: transparent;
+			}
 		}
 	}
 
+
+
+
+
+
+	.site_dead{
+		position: absolute;
+		top: 0;
+		left: 0;
+		right: 0;
+		height: 100%;
+		background-color:rgba(216,10,18,.8);
+		text-align:center;
+		padding: 25px 0;
+		display: flex;
+		justify-content: center;
+		flex-direction: column;
+		align-items: center;
+		display: none;
+
+		a:hover{text-decoration: none;}
+		.alternative_title{color: #fff; font-size: 40px;}
+		img{width: auto; max-width: 75%;}
+		.dead_site_hand{height: 120px;}
+		.mpg_head{height: 150px;}
+		.site_dead_bottom{display: flex; align-items: center; justify-content: center; margin-top: 50px;}
+		.site_dead_red{color: #e00911; font-size: 26px; }
+	}
+
+}
+
+.swiper-container[data-slide="0"] .site_dead{
+	display: block;
 }
 
 .review_row{
@@ -641,6 +701,13 @@
 				display: none;
 			}
 
+			a{
+				color: #2eaf61;
+				&:hover, &:focus{
+					color: #2eaf61;
+				}
+			}
+
 			p {
 				font-size: 18px;
 				margin: 0 0 10px;
@@ -721,6 +788,7 @@
 		font-weight: 900;
 		color: #fff;
 		margin-right: 10px;
+		margin-bottom: 6px;
 
 		@include adaptive(767) {
 			margin-bottom: 10px;
@@ -782,9 +850,31 @@
 		background-size: auto 500%;
 	}
 }
-.new-ratingt[data-percent="2"]:BEFORE {background-position: 0 -108px;}
-.new-ratingt[data-percent="3"]:BEFORE {background-position: 0 -72px;}
-.new-ratingt[data-percent="4"]:BEFORE {background-position: 0 -36px;}
+
+.new-ratingt[data-percent="1"]:BEFORE {
+	@include adaptive(767) {
+		background-position: 0 -120px;
+	}
+}
+.new-ratingt[data-percent="2"]:BEFORE {
+	background-position: 0 -108px;
+	@include adaptive(767) {
+		background-position: 0 -90px;
+	}
+}
+.new-ratingt[data-percent="3"]:BEFORE {
+	background-position: 0 -72px;
+
+	@include adaptive(767) {
+		background-position: 0 -60px;
+	}
+}
+.new-ratingt[data-percent="4"]:BEFORE {
+	background-position: 0 -36px;
+	@include adaptive(767) {
+		background-position: 0 -30px;
+	}
+}
 .new-ratingt[data-percent="5"]:BEFORE {background-position: 0 0}
 .new-ratingt:hover[data-percent="1"]:BEFORE, .new-ratingt:hover[data-percent="2"]:BEFORE, .new-ratingt:hover[data-percent="3"]:BEFORE, .new-ratingt:hover[data-percent="4"]:BEFORE, .new-ratingt:hover[data-percent="5"]:BEFORE {background: none}
 
@@ -1068,6 +1158,13 @@
 		display: block;
 	}
 
+	@include respond('iphone_x_landscape'){
+		line-height: 45px;
+	}
+	@include respond('iphone_8_landscape'){
+		line-height: 45px;
+	}
+
 	a{
 		color: #fff;
 		font-size: 20px;
@@ -1082,6 +1179,13 @@
 
 		@include adaptive(767) {
 
+		}
+
+		@include respond('iphone_x_landscape'){
+			line-height: 45px;
+		}
+		@include respond('iphone_8_landscape'){
+			line-height: 45px;
 		}
 
 		span{
@@ -1100,6 +1204,13 @@
 			background: linear-gradient(to bottom,#3a8300 0%,#327200 60%,#245100 100%);
 			filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#3a8300',endColorstr='#245100',GradientType=0 );
 
+			@include respond('iphone_x_landscape'){
+				height: 45px;
+			}
+			@include respond('iphone_8_landscape'){
+				height: 45px;
+			}
+
 			b{
 				width: 100%;
 				height: 100%;
@@ -1107,6 +1218,13 @@
 				display: block;
 				background: url(../images/icon_review_floating.png)no-repeat;
 				background-position: center;
+
+				@include respond('iphone_x_landscape'){
+					background-size: auto 35px;
+				}
+				@include respond('iphone_8_landscape'){
+					background-size: auto 35px;
+				}
 			}
 
 			@include adaptive(767) {
@@ -1146,6 +1264,12 @@
 }
 .short_nav .swiper_short_next, .short_nav .swiper_short_prev{
 	display: inline-block;
+	outline: none;
+
+	&:hover,
+	&:focus{
+		outline: none;
+	}
 }
 .swiper_short_prev::after {
 	display: block;
@@ -1247,7 +1371,7 @@
 		color: #fff;
 
 		@include adaptive(1449.98){
-			max-width: 1149px;
+			max-width: 1300px;
 		}
 	}
 
@@ -1357,6 +1481,7 @@
 
 				&::before{
 					position: relative;
+					margin: 0;
 				}
 			}
 
@@ -1364,6 +1489,11 @@
 				&:before{
 					margin-left: 0;
 					margin-right: 0;
+				}
+
+				&.icPost1:before {
+					background: url(../images/review/archived.png);
+					background-size: 33.5px;
 				}
 			}
 		}
@@ -1419,6 +1549,7 @@
 
 		@include adaptive(1449.98){
 			top: 36px;
+			text-align: center;
 		}
 
 		img{
@@ -1520,6 +1651,10 @@
 	display: block;
 }
 
+.grecaptcha-badge{
+	visibility: hidden !important;
+}
+
 .light{
 	.ratingtu{
 		margin: 5px 0 0;
@@ -1578,7 +1713,9 @@
 	.bread-crumb .show_similar_sites .left_content{
 		color: #828282;
 
-
+		.site_count{
+			color: #568e00;
+		}
 
 		.arrow_down{
 			border: 1px solid #828282;
@@ -1590,6 +1727,14 @@
 
 		.site_name{
 			color: #656363;
+		}
+	}
+
+	.review_con .review_scroll_container #cs_com a{
+		color: #4099f9;
+
+		&:hover, &:focus{
+			color: #337ab7;
 		}
 	}
 }

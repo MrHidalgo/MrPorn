@@ -29,6 +29,10 @@
 
 		&.review_site{
 			padding: 15px 10px 15px;
+
+			@include adaptive(767) {
+				padding: 5px 0;
+			}
 		}
 	}
 
@@ -74,11 +78,12 @@
 		}
 
 		&_inner{
-			display: inline-flex;
+			display: block;
 			width: 100%;
 			position: relative;
 			overflow: hidden;
 			outline: 1px solid #989898;
+			line-height: 0;
 
 			.hdbadge {
 				position: absolute;
@@ -101,6 +106,7 @@
 				background: rgba(0,0,0,.8);
 				text-align: center;
 				z-index: 5;
+				line-height: 17px;
 
 				@include respond('ipad'){
 					font-size: 12.5px;

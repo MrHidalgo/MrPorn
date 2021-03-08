@@ -479,7 +479,7 @@ ul{
 			color: #474841;
 
 			@include adaptive(767) {
-				
+
 			}
 		}
 		.msg{
@@ -500,6 +500,183 @@ ul{
 		ul{
 			li{
 				color: #333;
+			}
+		}
+	}
+}
+
+//Jobs
+.jobs_header{
+	display: flex;
+	align-items: center;
+	background: url("../images/job_banner.jpg");
+	flex-direction: column;
+	justify-content: center;
+	text-align: center;
+	padding: 80px 100px;
+
+	@include adaptive(767) {
+		padding: 25px;
+	}
+
+	.title{
+		color: #c7f928;
+		font-size: 42px;
+		font-weight: 600;
+		margin-bottom: 25px;
+
+		@include adaptive(767) {
+			font-size: 28px;
+		}
+	}
+	p{
+		color: #fff;
+		max-width: 75%;
+		line-height: 24px;
+
+
+		@include respond('ipad_portrait'){
+			max-width: 100%;
+		}
+
+		@include adaptive(767) {
+			max-width: 100%;
+		}
+	}
+}
+.job_listing{
+	background: rgb(12,15,45);
+	background: linear-gradient(90deg, rgba(12,15,45,1) 0%, rgba(11,13,40,1) 100%, rgba(0,212,255,1) 100%);
+	display: flex;
+	flex-wrap: wrap;
+	padding: 30px;
+
+	@include respond('ipad_portrait'){
+		padding: 15px;
+	}
+
+	@include adaptive(767) {
+		padding: 15px;
+	}
+
+	.job_item{
+		width: 50%;
+		max-width: 50%;
+		padding: 25px;
+
+		@include respond('ipad_portrait'){
+			max-width: 100%;
+			width: 100%;
+		}
+
+		@include adaptive(767) {
+			width: 100%;
+			max-width: 100%;
+			padding: 10px;
+		}
+
+		.job_item_inner{
+			position: relative;
+			border: 2px solid #fff;
+			border-radius: 10px;
+			padding: 25px 25px 85px;
+			height: 100%;
+
+			@include respond('ipad_portrait'){
+				padding: 15px;
+				text-align: center;
+			}
+
+			@include adaptive(767) {
+				padding: 15px;
+				text-align: center;
+			}
+
+			.title{
+				color: #c7f928;
+				display: flex;
+				align-items: center;
+				font-weight: 600;
+				font-size: 24px;
+
+				@include adaptive(767) {
+					font-size: 18px;
+				}
+
+				&:before{
+					content: ' ';
+					display: block;
+					width: 60px;
+					height: 60px;
+					background-size: contain !important;
+					margin-right: 25px;
+
+					@include respond('ipad_portrait'){
+						width: 48px;
+						height: 48px;
+					}
+
+					@include adaptive(767) {
+						width: 48px;
+						height: 48px;
+					}
+				}
+
+				&.icon_gd:before{
+					background: url(../images/jobs/icon_gd.png);
+				}
+				&.icon_fd:before{
+					background: url(../images/jobs/icon_fd.png);
+				}
+				&.icon_translator:before{
+					background: url(../images/jobs/icon_translator.png);
+				}
+				&.icon_qa:before{
+					background: url(../images/jobs/icon_qa.png);
+				}
+				&.icon_pm:before{
+					background: url(../images/jobs/icon_pm.png);
+				}
+				&.icon_mb:before{
+					background: url(../images/jobs/icon_mb.png);
+				}
+				&.icon_seo:before{
+					background: url(../images/jobs/icon_seo.png);
+				}
+				&.icon_bd:before{
+					background: url(../images/jobs/icon_bd.png);
+				}
+			}
+			p{
+				color: #fff;
+				line-height: 24px;
+				margin-top: 15px;
+			}
+			.apply{
+				position: absolute;
+				left: 25px;
+				bottom: 25px;
+				color: #0b0d28;
+				background: #c7f928;
+				text-transform: uppercase;
+				padding: 10px 25px;
+				display: inline-block;
+				border-radius: 5px;
+				font-weight: 600;
+
+				@include respond('ipad_portrait'){
+					position: relative;
+					left: 0;
+					bottom: 0;
+					margin-top: 15px;
+				}
+
+				@include adaptive(767) {
+					position: relative;
+					left: 0;
+					bottom: 0;
+					margin-top: 15px;
+				}
 			}
 		}
 	}
