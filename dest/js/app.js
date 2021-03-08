@@ -1810,7 +1810,7 @@ var ajaxAdminEndpoint = '/wp-admin/admin-ajax.php';
     			}
     		}
     	}, false);
-    		cGrid.addEventListener('mouseout', function(ev) {
+    			cGrid.addEventListener('mouseout', function(ev) {
     		const _ev = ev.target;
     		if(_ev){
     			console.log(_ev.classList);
@@ -2299,13 +2299,13 @@ var ajaxAdminEndpoint = '/wp-admin/admin-ajax.php';
     		const el = ev.currentTarget,
     			elID = el.getAttribute('data-id'),
     			elParent = el.closest('.list__box-wrapper');
-    			setTimeout(() => {
+    				setTimeout(() => {
     			el.closest('.list__specification').querySelector('.list__specification-close').click();
     		}, 0);
-    			if(elParent.querySelector('.list__specification[data-id="' + (Number(elID) + 1) + '"]')) {
+    				if(elParent.querySelector('.list__specification[data-id="' + (Number(elID) + 1) + '"]')) {
     			elParent.querySelector('.list__specification[data-id="' + (Number(elID) + 1) + '"]').classList.add('is-open');
     		}
-    		}, false);
+    			}, false);
     }*/
   };
 
