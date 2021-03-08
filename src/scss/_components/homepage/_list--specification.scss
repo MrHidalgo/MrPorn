@@ -216,6 +216,12 @@
 	&-left,
 	&-right {
 		height: 100%;
+		-ms-overflow-style: none;  /* IE and Edge */
+		scrollbar-width: none;  /* Firefox */
+
+		&::-webkit-scrollbar {
+			display: none;
+		}
 		@include adaptive(1023) {
 			height: auto;
 		}
@@ -388,6 +394,10 @@
 			max-width: 100%;
 			max-height: 100%;
 			margin-bottom: 0;
+
+			@include adaptive(1023) {
+				max-width: 90%;
+			}
 		}
 
 		.list__specification-close {
@@ -396,6 +406,7 @@
 				display: flex;
 				top: 50%;
 				transform: translateY(-50%);
+				right: 20px;
 			}
 		}
 	}
@@ -819,6 +830,10 @@
 				display: flex;
 				flex-wrap: wrap;
 				height: 100%;
+
+				@include adaptive(767) {
+					height: auto;
+				}
 			}
 		}
 
