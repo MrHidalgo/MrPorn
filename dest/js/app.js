@@ -336,14 +336,11 @@ function generateModalTweener(sourceBBox, destinationBBox) {
   var destinationCenter = findCenter(destinationBBox, isOpen);
   var toX = interpolate(vRange, [sourceCenter.x - destinationCenter.x, 0]);
   /*let toY = 0;
-  
-  if(isOpen){
+  	if(isOpen){
   	//toY = interpolate(vRange, [sourceCenter.y - destinationCenter.y + window.scrollY, 0]);
   	toY = interpolate(vRange, [200 + window.scrollY, 0]);
-  
-  	console.log('Opening '+(200 + window.scrollY));
-  
-  }else{
+  		console.log('Opening '+(200 + window.scrollY));
+  	}else{
   	toY = interpolate(vRange, [sourceCenter.y - destinationCenter.y, 0]);
   	console.log('Closing '+(sourceCenter.y - destinationCenter.y));
   }*/
@@ -474,6 +471,12 @@ function scrollToCategoryOnHome(ev, _ev) {
         document.querySelector('#category_wrapper_' + catId).scrollIntoView({
           behavior: 'smooth'
         });
+        setTimeout(function () {
+          document.querySelector('.list__box-wrapper[data-name="category_' + catId + '"] .category_title_inner').classList.add('animate__animated', 'animate__pulse', 'animate__repeat-2');
+          setTimeout(function () {
+            document.querySelector('.list__box-wrapper[data-name="category_' + catId + '"] .category_title_inner').classList.remove('animate__animated', 'animate__pulse', 'animate__repeat-2');
+          }, 3000);
+        }, 1000); //animate__animated', 'animate__pulse', 'animate__repeat-2
       }
     }
   }
@@ -809,7 +812,7 @@ function renderSiteCategory(categoryIndex) {
     categoryTagLine = categoryTagLine.replaceAll("\\'", "'");
   }
 
-  var categoryBoxHtml = '<div class="list__box-wrapper" list-parent-js data-name="category_' + categoryId + '" data-index="' + categoryIndex + '">' + '<div id="category_wrapper_' + categoryId + '" class="list__box-wrapper-handle"></div>' + '<div class="list__box-head">' + '<div class="list__info">' + '<div class="list__info-circle"><img src="' + categoryLogo + '" alt=""/></div>' + '<div class="category_title">' + '<a href="' + categoryData.link + '" hreflang="' + currentLang + '">' + categoryData.title + '</a><span>' + categoryTagLine + '</span>' + '</div>' + '</div>' + '<a class="list__btn nav_link" href="' + categoryData.link + '" hreflang="' + currentLang + '">SEE&nbsp;<span>' + categoryData.count + ' MORE</span><i class="icon-font icon-arrow-angle"></i></a>' + '</div>' + '<div class="list__box-line">' + '<u list-line-ind-js></u><span class="list_green_line" list-line-js></span>' + '</div>' + '<div class="list__box-body">' + '<div class="list__arrow-wrapper">' + '<a class="list__arrow list__arrow--prev" >' + '<div class="list__arrow-box"><i class="icon-font icon-arrow-angle"></i></div>' + '</a>' + '<a class="list__arrow list__arrow--next" >' + '<div class="list__arrow-box"><i class="icon-font icon-arrow-angle"></i></div>' + '</a>' + '</div>' + '<div class="swiper-container listSwiper" data-id="listSlider_' + categoryData.id + '" data-category="18">' + '<div class="swiper-wrapper' + (parseInt(categoryData.count) < 6 ? ' short_list' : '') + '" data-category="' + categoryData.id + '" data-count="' + categoryData.count + '" data-slidecount="' + categoryData.site_limit + '">' + categorySites + '</div>' + '</div>' + '</div>' + '<div class="list__specification-wrapper"></div>' + '</div>';
+  var categoryBoxHtml = '<div class="list__box-wrapper" list-parent-js data-name="category_' + categoryId + '" data-index="' + categoryIndex + '">' + '<div id="category_wrapper_' + categoryId + '" class="list__box-wrapper-handle"></div>' + '<div class="list__box-head">' + '<div class="list__info">' + '<div class="list__info-circle"><img src="' + categoryLogo + '" alt=""/></div>' + '<div class="category_title">' + '<div class="category_title_inner">' + '<a href="' + categoryData.link + '" hreflang="' + currentLang + '">' + categoryData.title + '</a>' + '</div>' + '<span>' + categoryTagLine + '</span>' + '</div>' + '</div>' + '<a class="list__btn nav_link" href="' + categoryData.link + '" hreflang="' + currentLang + '">SEE&nbsp;<span>' + categoryData.count + ' MORE</span><i class="icon-font icon-arrow-angle"></i></a>' + '</div>' + '<div class="list__box-line">' + '<u list-line-ind-js></u><span class="list_green_line" list-line-js></span>' + '</div>' + '<div class="list__box-body">' + '<div class="list__arrow-wrapper">' + '<a class="list__arrow list__arrow--prev" >' + '<div class="list__arrow-box"><i class="icon-font icon-arrow-angle"></i></div>' + '</a>' + '<a class="list__arrow list__arrow--next" >' + '<div class="list__arrow-box"><i class="icon-font icon-arrow-angle"></i></div>' + '</a>' + '</div>' + '<div class="swiper-container listSwiper" data-id="listSlider_' + categoryData.id + '" data-category="18">' + '<div class="swiper-wrapper' + (parseInt(categoryData.count) < 6 ? ' short_list' : '') + '" data-category="' + categoryData.id + '" data-count="' + categoryData.count + '" data-slidecount="' + categoryData.site_limit + '">' + categorySites + '</div>' + '</div>' + '</div>' + '<div class="list__specification-wrapper"></div>' + '</div>';
   return categoryBoxHtml;
 }
 
@@ -869,10 +872,8 @@ var boxHover = function boxHover() {
   	listBoxBody[i].addEventListener('mouseleave', function(ev) {
   		if(window.innerWidth >= 1280) {
   			hoverBool = false;
-  
-  			clearTimeout(tOut);
-  
-  			for(let j = 0, l = swiperSlides.length; j < l; j++) {
+  				clearTimeout(tOut);
+  				for(let j = 0, l = swiperSlides.length; j < l; j++) {
   				swiperSlides[j].classList.remove('is-hover');
   			}
   		}

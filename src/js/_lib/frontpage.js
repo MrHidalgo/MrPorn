@@ -219,6 +219,16 @@ function scrollToCategoryOnHome(ev, _ev){
 				document.querySelector('#category_wrapper_'+catId).scrollIntoView({
 					behavior: 'smooth'
 				});
+
+				setTimeout(function (){
+					document.querySelector('.list__box-wrapper[data-name="category_'+catId+'"] .category_title_inner').classList.add('animate__animated', 'animate__pulse', 'animate__repeat-2');
+
+					setTimeout(function (){
+						document.querySelector('.list__box-wrapper[data-name="category_'+catId+'"] .category_title_inner').classList.remove('animate__animated', 'animate__pulse', 'animate__repeat-2');
+					}, 3000);
+				}, 1000);
+
+				//animate__animated', 'animate__pulse', 'animate__repeat-2
 			}
 		}
 	}
@@ -741,7 +751,10 @@ function renderSiteCategory(categoryIndex){
 										'<div class="list__info">'+
 											'<div class="list__info-circle"><img src="'+categoryLogo+'" alt=""/></div>'+
 											'<div class="category_title">'+
-												'<a href="'+categoryData.link+'" hreflang="'+currentLang+'">'+categoryData.title+'</a><span>'+categoryTagLine+'</span>'+
+												'<div class="category_title_inner">'+
+													'<a href="'+categoryData.link+'" hreflang="'+currentLang+'">'+categoryData.title+'</a>' +
+												'</div>'+
+												'<span>'+categoryTagLine+'</span>'+
 											'</div>'+
 										'</div>'+
                     '<a class="list__btn nav_link" href="'+categoryData.link+'" hreflang="'+currentLang+'">SEE&nbsp;<span>'+categoryData.count+' MORE</span><i class="icon-font icon-arrow-angle"></i></a>'+
