@@ -361,14 +361,11 @@ function generateModalTweener(sourceBBox, destinationBBox) {
   var destinationCenter = findCenter(destinationBBox, isOpen);
   var toX = interpolate(vRange, [sourceCenter.x - destinationCenter.x, 0]);
   /*let toY = 0;
-  
-  if(isOpen){
+  	if(isOpen){
   	//toY = interpolate(vRange, [sourceCenter.y - destinationCenter.y + window.scrollY, 0]);
   	toY = interpolate(vRange, [200 + window.scrollY, 0]);
-  
-  	console.log('Opening '+(200 + window.scrollY));
-  
-  }else{
+  		console.log('Opening '+(200 + window.scrollY));
+  	}else{
   	toY = interpolate(vRange, [sourceCenter.y - destinationCenter.y, 0]);
   	console.log('Closing '+(sourceCenter.y - destinationCenter.y));
   }*/
@@ -488,6 +485,21 @@ var initHomeLazyLoad = function initHomeLazyLoad() {
 
   loadMore();
 };
+
+function scrollToCategoryOnHome(ev, _ev) {
+  if (_ev) {
+    var catId = _ev.dataset.objectId;
+
+    if (catId) {
+      if (document.querySelector('#category_wrapper_' + catId)) {
+        ev.preventDefault();
+        document.querySelector('#category_wrapper_' + catId).scrollIntoView({
+          behavior: 'smooth'
+        });
+      }
+    }
+  }
+}
 
 var loadHomeData = function loadHomeData() {
   var currentLang = document.documentElement.getAttribute('lang');
@@ -878,10 +890,8 @@ var boxHover = function boxHover() {
   	listBoxBody[i].addEventListener('mouseleave', function(ev) {
   		if(window.innerWidth >= 1280) {
   			hoverBool = false;
-  
-  			clearTimeout(tOut);
-  
-  			for(let j = 0, l = swiperSlides.length; j < l; j++) {
+  				clearTimeout(tOut);
+  				for(let j = 0, l = swiperSlides.length; j < l; j++) {
   				swiperSlides[j].classList.remove('is-hover');
   			}
   		}
@@ -2733,7 +2743,16 @@ var ajaxAdminEndpoint = '/wp-admin/admin-ajax.php';
         hide(document.querySelector('.awe_search_result'));
       }
 
-      if (_ev.closest('.list__specification-close')) {
+      if (_ev.classList.contains('search_category_item')) {
+        if (document.body.classList.contains('home')) {
+          scrollToCategoryOnHome(ev, _ev);
+          hide(document.querySelector('[search-drop-js]'));
+        }
+      } else if (_ev.classList.contains('list__specification-visit')) {
+        if (document.querySelector('[video-js]')) {
+          playPause(document.querySelector('[video-js]'));
+        }
+      } else if (_ev.closest('.list__specification-close')) {
         closeBanner(_ev);
       } else if (_ev.closest('.list__box-more')) {
         showBanner(_ev, false, ev); //openSlideModal(ev);
@@ -2836,7 +2855,7 @@ var ajaxAdminEndpoint = '/wp-admin/admin-ajax.php';
     			}
     		}
     	}, false);
-    			cGrid.addEventListener('mouseout', function(ev) {
+    		cGrid.addEventListener('mouseout', function(ev) {
     		const _ev = ev.target;
     		if(_ev){
     			console.log(_ev.classList);
