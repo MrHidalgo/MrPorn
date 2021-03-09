@@ -210,6 +210,21 @@ const initHomeLazyLoad = () =>{
 		loadMore();
 }
 
+function scrollToCategoryOnHome(ev, _ev){
+	if(_ev){
+		let catId = _ev.dataset.objectId;
+		if(catId){
+			if(document.querySelector('#category_wrapper_'+catId)){
+				ev.preventDefault();
+				document.querySelector('#category_wrapper_'+catId).scrollIntoView({
+					behavior: 'smooth'
+				});
+			}
+		}
+	}
+
+}
+
 const loadHomeData = () => {
 	let currentLang = document.documentElement.getAttribute('lang');
 
