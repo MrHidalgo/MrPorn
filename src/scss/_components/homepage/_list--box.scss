@@ -136,19 +136,6 @@
 			padding-bottom: 10px;
 		}
 
-
-		&-handle{
-			position: absolute;
-			visibility: hidden;
-			height: 0;
-			width: 0;
-			top: 0;
-
-			@include adaptive(767) {
-				top: -120px;
-			}
-		}
-
 		&.is-open {
 			padding-bottom: 0;
 			margin-bottom: 30px;
@@ -196,18 +183,52 @@
 			background-color: #d5f34a;
 			transform: translateX(83px);
 			transform-origin: center;
+			//transition: width 0.35s ease-in-out, transform 0.35s ease-in-out, left 0.6s ease-in-out;
+			transition: width 0.35s ease-in-out, transform 0.35s ease-in-out;
+
 			//@include transition(width, transform);
-			@include transition(width, transform, left);
+			//@include transition(width, transform, left);
+
+			&.no_anim{
+				transition:width 0.35s ease-in-out;
+			}
+
+			@include respond('ipad_pro_landscape'){
+				width: 34px;
+				left: 0;
+				transform: translateX(75px);
+			}
+
+			@include respond('ipad_pro_portrait'){
+				width: 34px;
+				left: 0;
+				transform: translateX(97.5px);
+			}
+
+
+			@include respond('ipad_landscape'){
+				width: 34px;
+				left: 0;
+				transform: translateX(75px);
+			}
+
 			@include adaptive(1279) {
-				transform: translateX(65.5px);
+				//transform: translateX(65.5px);
+				//left: 97.5px;
 			}
 			@include adaptive(1023) {
 				width: 34px;
-				transform: translateX(58px);
+				left: 0;
+				transform: translateX(75px);
 			}
 			@include adaptive(767) {
 				width: 19px;
-				transform: translateX(28px);
+				left: 0;
+				transform: translateX(45px);
+				transition: width 0.35s ease-in-out;
+
+				/*transition: width 0.35s ease-in-out, transform 0.35s ease-in-out;
+				transition-duration: 350ms;*/
 			}
 		}
 
@@ -226,9 +247,11 @@
 	}
 
 	&-body {
-		z-index: 100;
+		z-index: 20;
 		position: relative;
-		/*padding-bottom: 30px;*/
+		overflow: hidden;
+		padding: 15px 0;
+
 		@include transition(transform, padding-bottom);
 		@include adaptive(767) {
 			overflow: hidden;
@@ -250,6 +273,21 @@
 		height: 100%;
 		background-color: rgba(#000, 0.85);
 		@include transition(background-color);
+	}
+
+	&_more_item{
+		width: calc(100%/3)!important;
+		max-width: calc(100%/3)!important;
+		padding: 4px;
+
+		a{
+			padding-top: 100%;
+			display: block;
+			content: ' ';
+			background-size: auto 100%;
+			background-position: center;
+			border: 1px dashed #fff;
+		}
 	}
 
 	&-border {
@@ -466,6 +504,11 @@
 							opacity: 0;
 							visibility: hidden;
 							position: absolute;
+						}
+
+						&.icon-more-arrow{
+							transform: rotateZ(-90deg);
+							font-size: 11px;
 						}
 					}
 				}
