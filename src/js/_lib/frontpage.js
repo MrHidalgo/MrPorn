@@ -227,7 +227,7 @@ function scrollToCategoryOnHome(ev, _ev){
 				let scrollGreenBar = document.querySelector('.list__box-wrapper[data-name="category_'+catId+'"] .list__box-line');
 				scrollGreenBar.setAttribute('style', 'background-color: #d5f34a;');
 
-				elParent.querySelectorAll('.swiper-slide')[0].classList.add('is-hover');
+				//elParent.querySelectorAll('.swiper-slide')[0].classList.add('is-hover');
 
 				tempRepositionGreenBar(elParent, 0, true);
 
@@ -1377,6 +1377,7 @@ function onSwiperTranslate(e, translate){
 function tempRepositionGreenBar(elParent, hoverBoxPosition, isSmall){
 	let greenBar = elParent.querySelector('[list-line-js]');
 	let activeBox = elParent.querySelector('.swiper-slide.is-hover');
+	let slideSwiper = elParent.querySelector('.swiper-container');
 	let slideWidth = 0;
 
 	let sliderBox = document.querySelector('.swiper-slide:not(.is-hover)');
@@ -1384,8 +1385,10 @@ function tempRepositionGreenBar(elParent, hoverBoxPosition, isSmall){
 		slideWidth = 	sliderBox.offsetWidth + 6;
 	}
 
-	if(activeBox){
-		lastActiveHoverBox = activeBox;
+	if(activeBox | isSmall){
+		if(activeBox){
+			lastActiveHoverBox = activeBox;
+		}
 		let hoverBoxLeft = 0;
 		if(greenBar){
 
@@ -1398,6 +1401,12 @@ function tempRepositionGreenBar(elParent, hoverBoxPosition, isSmall){
 			let transformVal = 'transform: translateX('+hoverBoxLeft+'px);';
 
 			if(isSmall){
+				let activeSlide = 0;
+				if(slideSwiper){
+					activeSlide = slideSwiper.swiper.activeIndex;
+				}
+
+				console.log('active index '+activeSlide);
 				greenBar.setAttribute('style', transformVal + ';width: 64px');
 			}else{
 				greenBar.setAttribute('style', transformVal + ';width: 190px');

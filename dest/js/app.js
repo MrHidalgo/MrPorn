@@ -475,8 +475,8 @@ function scrollToCategoryOnHome(ev, _ev) {
         });
         var elParent = document.querySelector('.list__box-wrapper[data-name="category_' + catId + '"]');
         var scrollGreenBar = document.querySelector('.list__box-wrapper[data-name="category_' + catId + '"] .list__box-line');
-        scrollGreenBar.setAttribute('style', 'background-color: #d5f34a;');
-        elParent.querySelectorAll('.swiper-slide')[0].classList.add('is-hover');
+        scrollGreenBar.setAttribute('style', 'background-color: #d5f34a;'); //elParent.querySelectorAll('.swiper-slide')[0].classList.add('is-hover');
+
         tempRepositionGreenBar(elParent, 0, true);
         setTimeout(function () {
           //document.querySelector('.list__box-wrapper[data-name="category_'+catId+'"] .category_title_inner').classList.add('animate__animated', 'animate__pulse', 'animate__repeat-2');
@@ -1343,6 +1343,7 @@ function onSwiperTranslate(e, translate) {
 function tempRepositionGreenBar(elParent, hoverBoxPosition, isSmall) {
   var greenBar = elParent.querySelector('[list-line-js]');
   var activeBox = elParent.querySelector('.swiper-slide.is-hover');
+  var slideSwiper = elParent.querySelector('.swiper-container');
   var slideWidth = 0;
   var sliderBox = document.querySelector('.swiper-slide:not(.is-hover)');
 
@@ -1350,8 +1351,11 @@ function tempRepositionGreenBar(elParent, hoverBoxPosition, isSmall) {
     slideWidth = sliderBox.offsetWidth + 6;
   }
 
-  if (activeBox) {
-    lastActiveHoverBox = activeBox;
+  if (activeBox | isSmall) {
+    if (activeBox) {
+      lastActiveHoverBox = activeBox;
+    }
+
     var hoverBoxLeft = 0;
 
     if (greenBar) {
@@ -1364,6 +1368,13 @@ function tempRepositionGreenBar(elParent, hoverBoxPosition, isSmall) {
       var transformVal = 'transform: translateX(' + hoverBoxLeft + 'px);';
 
       if (isSmall) {
+        var activeSlide = 0;
+
+        if (slideSwiper) {
+          activeSlide = slideSwiper.swiper.activeIndex;
+        }
+
+        console.log('active index ' + activeSlide);
         greenBar.setAttribute('style', transformVal + ';width: 64px');
       } else {
         greenBar.setAttribute('style', transformVal + ';width: 190px');
