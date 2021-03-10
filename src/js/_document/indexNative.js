@@ -88,7 +88,14 @@ const ajaxAdminEndpoint = '/wp-admin/admin-ajax.php';
 
 		let catListContainer = document.querySelector('#list .c-grid');
 
-		if(wY > expectedY){
+		let loadOtherHomeData = false;
+		if(!navigator.userAgent.toLowerCase().includes('lighthouse')){
+			if(document.body.classList.contains('home')){
+				loadOtherHomeData = true;
+			}
+		}
+
+		if(wY > expectedY | loadOtherHomeData){
 			if(!document.querySelector('[category_list_'+(listBoxes.length+1)+']')){
 
 				if(homeData && homeData.categories_indexes){

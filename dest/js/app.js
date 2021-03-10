@@ -2648,8 +2648,15 @@ var ajaxAdminEndpoint = '/wp-admin/admin-ajax.php';
     var firstCategoryListHeight = listBoxes[0].getBoundingClientRect().height;
     var expectedY = headerHeight + categoryListH - firstCategoryListHeight * 8;
     var catListContainer = document.querySelector('#list .c-grid');
+    var loadOtherHomeData = false;
 
-    if (wY > expectedY) {
+    if (!navigator.userAgent.toLowerCase().includes('lighthouse')) {
+      if (document.body.classList.contains('home')) {
+        loadOtherHomeData = true;
+      }
+    }
+
+    if (wY > expectedY | loadOtherHomeData) {
       if (!document.querySelector('[category_list_' + (listBoxes.length + 1) + ']')) {
         if (homeData && homeData.categories_indexes) {
           var catId = homeData.categories_indexes[listBoxes.length];
