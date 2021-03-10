@@ -136,7 +136,7 @@ const ajaxAdminEndpoint = '/wp-admin/admin-ajax.php';
 				hide(document.querySelector('.awe_search_result'))
 			}
 
-			if(_ev.classList.contains('search_category_item')){
+			if(_ev.classList.contains('search_category_item') | _ev.classList.contains('search_category_link')){
 				if(document.body.classList.contains('home') && !isMobileOrTablet){
 					scrollToCategoryOnHome(ev, _ev);
 					hide(document.querySelector('[search-drop-js]'));
