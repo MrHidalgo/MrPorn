@@ -1385,7 +1385,11 @@ function tempRepositionGreenBar(elParent, hoverBoxPosition, isSmall){
 		slideWidth = 	sliderBox.offsetWidth + 6;
 	}
 
-	if(activeBox | isSmall){
+	if(isSmall){
+		return;
+	}
+
+	if(activeBox){
 		if(activeBox){
 			lastActiveHoverBox = activeBox;
 		}
@@ -1430,8 +1434,9 @@ function onParentSideLeave(ev){
 }
 
 function onShowBannerEnter(__ev){
+
 	const el = lastActiveHoverBox,
-		elParent = el.closest('[list-parent-js]'),
+		elParent = __ev.currentTarget.closest('[list-parent-js]'),
 		greenBar = elParent.querySelector('[list-line-js]');
 
 	if(currentBannerTimeout){
@@ -1581,6 +1586,9 @@ function removeFavourite(favItem){
 function initWebWorker(){
 
 	let currentLang = document.documentElement.getAttribute('lang');
+	let dataTag = "homepage_data_"+dataTime+'_'+currentLang;
+
+	removeOtherStorageKeys(dataTag, currentLang);
 
 	homeData = getWithExpiry("homepage_data_"+dataTime+'_'+currentLang);
 	if(homeData){
@@ -1594,8 +1602,17 @@ function initWebWorker(){
 			}
 		}
 	}
+}
 
-
+function removeOtherStorageKeys(dataTime, currentLang){
+	let homeDataKey = "homepage_data_"+dataTime+'_'+currentLang;
+	for (var key in localStorage){
+		if(key.includes('homepage_data_')){
+			if(homeDataKey!=key){
+				localStorage.removeItem(key);
+			}
+		}
+	}
 }
 
 function getLikesAndDislikes(){
