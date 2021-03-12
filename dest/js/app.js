@@ -301,6 +301,7 @@ var isAnimationStarted = false;
 var maxLeft;
 var minLeft;
 var swiperSlideWidth = 230;
+var pauseHoverAnimation = false;
 var _window$popmotion = window.popmotion,
     css = _window$popmotion.css,
     transform = _window$popmotion.transform,
@@ -493,9 +494,25 @@ function scrollToCategoryOnHome(ev, _ev) {
     if (catId) {
       if (document.querySelector('#category_wrapper_' + catId)) {
         ev.preventDefault();
+        pauseHoverAnimation = true;
         document.querySelector('#category_wrapper_' + catId).scrollIntoView({
           behavior: 'smooth'
         });
+        var elParent = document.querySelector('.list__box-wrapper[data-name="category_' + catId + '"]');
+        var scrollGreenBar = document.querySelector('.list__box-wrapper[data-name="category_' + catId + '"] .list__box-line');
+        scrollGreenBar.setAttribute('style', 'background-color: #d5f34a;'); //elParent.querySelectorAll('.swiper-slide')[0].classList.add('is-hover');
+
+        tempRepositionGreenBar(elParent, 0, true);
+        setTimeout(function () {
+          //document.querySelector('.list__box-wrapper[data-name="category_'+catId+'"] .category_title_inner').classList.add('animate__animated', 'animate__pulse', 'animate__repeat-2');
+          //scrollGreenBar.classList.add('animate__animated', 'animate__fadeOut');
+          setTimeout(function () {
+            scrollGreenBar.setAttribute('style', 'background-color: rgb(25, 26, 40);');
+            setTimeout(function () {
+              pauseHoverAnimation = false;
+            }, 1000);
+          }, 1000);
+        }, 1300); //animate__animated', 'animate__pulse', 'animate__repeat-2
       }
     }
   }
@@ -678,9 +695,9 @@ function getPopupSimilarSites(category, currentSiteId) {
     var videoThumb = moreTermCat['video_thumb'];
 
     if (videoThumb != '') {
-      moreTermHtml += '<video autoplay loop muted playsinline><source src="' + videoThumb + '" type="video/mp4">Your browser does not support the video tag.</video>';
+      moreTermHtml += '<video class="nolazy" autoplay loop muted playsinline><source src="' + videoThumb + '" type="video/mp4">Your browser does not support the video tag.</video>';
     } else {
-      moreTermHtml += '<img src="' + moreTermCat['thumbnail'] + '" alt="' + moreTermCat['title'] + '"/>';
+      moreTermHtml += '<img class="nolazy" src="' + moreTermCat['thumbnail'] + '" alt="' + moreTermCat['title'] + '"/>';
     }
 
     moreTermHtml += '<div class="catD">' + moreTermCat['title'] + '<small>Click Here to See (' + moreTermCat['count'] + ') Sites</small></div>';
@@ -830,7 +847,7 @@ function renderSiteCategory(categoryIndex) {
     categoryTagLine = categoryTagLine.replaceAll("\\'", "'");
   }
 
-  var categoryBoxHtml = '<div class="list__box-wrapper" list-parent-js data-name="category_' + categoryId + '" data-index="' + categoryIndex + '">' + '<div class="list__box-head">' + '<div class="list__info">' + '<div class="list__info-circle"><img src="' + categoryLogo + '" alt=""/></div>' + '<div class="category_title">' + '<a href="' + categoryData.link + '" hreflang="' + currentLang + '">' + categoryData.title + '</a><span>' + categoryTagLine + '</span>' + '</div>' + '</div>' + '<a class="list__btn nav_link" href="' + categoryData.link + '" hreflang="' + currentLang + '">SEE&nbsp;<span>' + categoryData.count + ' MORE</span><i class="icon-font icon-arrow-angle"></i></a>' + '</div>' + '<div class="list__box-line">' + '<u list-line-ind-js></u><span class="list_green_line" list-line-js></span>' + '</div>' + '<div class="list__box-body">' + '<div class="list__arrow-wrapper">' + '<a class="list__arrow list__arrow--prev" >' + '<div class="list__arrow-box"><i class="icon-font icon-arrow-angle"></i></div>' + '</a>' + '<a class="list__arrow list__arrow--next" >' + '<div class="list__arrow-box"><i class="icon-font icon-arrow-angle"></i></div>' + '</a>' + '</div>' + '<div class="swiper-container listSwiper" data-id="listSlider_' + categoryData.id + '" data-category="18">' + '<div class="swiper-wrapper' + (parseInt(categoryData.count) < 6 ? ' short_list' : '') + '" data-category="' + categoryData.id + '" data-count="' + categoryData.count + '" data-slidecount="' + categoryData.site_limit + '">' + categorySites + '</div>' + '</div>' + '</div>' + '<div class="list__specification-wrapper"></div>' + '</div>';
+  var categoryBoxHtml = '<div class="list__box-wrapper" list-parent-js data-name="category_' + categoryId + '" data-index="' + categoryIndex + '">' + '<div id="category_wrapper_' + categoryId + '" class="list__box-wrapper-handle"></div>' + '<div class="list__box-head">' + '<div class="list__info">' + '<div class="list__info-circle"><img src="' + categoryLogo + '" alt=""/></div>' + '<div class="category_title">' + '<div class="category_title_inner">' + '<a href="' + categoryData.link + '" hreflang="' + currentLang + '">' + categoryData.title + '</a>' + '</div>' + '<span>' + categoryTagLine + '</span>' + '</div>' + '</div>' + '<a class="list__btn nav_link" href="' + categoryData.link + '" hreflang="' + currentLang + '">SEE&nbsp;<span>' + categoryData.count + ' MORE</span><i class="icon-font icon-arrow-angle"></i></a>' + '</div>' + '<div class="list__box-line">' + '<u list-line-ind-js></u><span class="list_green_line" list-line-js></span>' + '</div>' + '<div class="list__box-body">' + '<div class="list__arrow-wrapper">' + '<a class="list__arrow list__arrow--prev" >' + '<div class="list__arrow-box"><i class="icon-font icon-arrow-angle"></i></div>' + '</a>' + '<a class="list__arrow list__arrow--next" >' + '<div class="list__arrow-box"><i class="icon-font icon-arrow-angle"></i></div>' + '</a>' + '</div>' + '<div class="swiper-container listSwiper" data-id="listSlider_' + categoryData.id + '" data-category="18">' + '<div class="swiper-wrapper' + (parseInt(categoryData.count) < 6 ? ' short_list' : '') + '" data-category="' + categoryData.id + '" data-count="' + categoryData.count + '" data-slidecount="' + categoryData.site_limit + '">' + categorySites + '</div>' + '</div>' + '</div>' + '<div class="list__specification-wrapper"></div>' + '</div>';
   return categoryBoxHtml;
 }
 
@@ -945,6 +962,10 @@ function onSlideLeave(ev) {
 }
 
 function onSlideEnter(ev) {
+  if (pauseHoverAnimation) {
+    return;
+  }
+
   if (window.innerWidth >= 1280) {
     var el = ev.currentTarget,
         elParent = el.closest('[list-parent-js]'),
@@ -1343,9 +1364,10 @@ function onSwiperTranslate(e, translate) {
   }
 }
 
-function tempRepositionGreenBar(elParent, hoverBoxPosition) {
+function tempRepositionGreenBar(elParent, hoverBoxPosition, isSmall) {
   var greenBar = elParent.querySelector('[list-line-js]');
   var activeBox = elParent.querySelector('.swiper-slide.is-hover');
+  var slideSwiper = elParent.querySelector('.swiper-container');
   var slideWidth = 0;
   var sliderBox = document.querySelector('.swiper-slide:not(.is-hover)');
 
@@ -1353,8 +1375,15 @@ function tempRepositionGreenBar(elParent, hoverBoxPosition) {
     slideWidth = sliderBox.offsetWidth + 6;
   }
 
+  if (isSmall) {
+    return;
+  }
+
   if (activeBox) {
-    lastActiveHoverBox = activeBox;
+    if (activeBox) {
+      lastActiveHoverBox = activeBox;
+    }
+
     var hoverBoxLeft = 0;
 
     if (greenBar) {
@@ -1365,7 +1394,19 @@ function tempRepositionGreenBar(elParent, hoverBoxPosition) {
       }
 
       var transformVal = 'transform: translateX(' + hoverBoxLeft + 'px);';
-      greenBar.setAttribute('style', transformVal + ';width: 190px');
+
+      if (isSmall) {
+        var activeSlide = 0;
+
+        if (slideSwiper) {
+          activeSlide = slideSwiper.swiper.activeIndex;
+        }
+
+        console.log('active index ' + activeSlide);
+        greenBar.setAttribute('style', transformVal + ';width: 64px');
+      } else {
+        greenBar.setAttribute('style', transformVal + ';width: 190px');
+      }
     }
   }
 }
@@ -1388,7 +1429,7 @@ function onParentSideLeave(ev) {
 
 function onShowBannerEnter(__ev) {
   var el = lastActiveHoverBox,
-      elParent = el.closest('[list-parent-js]'),
+      elParent = __ev.currentTarget.closest('[list-parent-js]'),
       greenBar = elParent.querySelector('[list-line-js]');
 
   if (currentBannerTimeout) {
@@ -1545,6 +1586,8 @@ function removeFavourite(favItem) {
 
 function initWebWorker() {
   var currentLang = document.documentElement.getAttribute('lang');
+  var dataTag = "homepage_data_" + dataTime + '_' + currentLang;
+  removeOtherStorageKeys(dataTag, currentLang);
   homeData = getWithExpiry("homepage_data_" + dataTime + '_' + currentLang);
 
   if (homeData) {
@@ -1555,6 +1598,18 @@ function initWebWorker() {
     if (!navigator.userAgent.toLowerCase().includes('lighthouse')) {
       if (document.body.classList.contains('home')) {
         loadHomeData();
+      }
+    }
+  }
+}
+
+function removeOtherStorageKeys(dataTime, currentLang) {
+  var homeDataKey = "homepage_data_" + dataTime + '_' + currentLang;
+
+  for (var key in localStorage) {
+    if (key.includes('homepage_data_')) {
+      if (homeDataKey != key) {
+        localStorage.removeItem(key);
       }
     }
   }
