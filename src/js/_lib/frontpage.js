@@ -1477,7 +1477,7 @@ function showBanner(_el, isSkip = false, target = false){
 		}, 100);
 	} else {
 		_parentNode.classList.add('is-open');
-		_boxParent.classList.add('is-active');
+		//_boxParent.classList.add('is-active');
 
 		if(_specificationBox){
 			_specificationBox.classList.add('is-open');
