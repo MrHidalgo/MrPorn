@@ -811,7 +811,8 @@ const ajaxAdminEndpoint = '/wp-admin/admin-ajax.php';
 
 	function onSkip(el){
 			var elID = el.getAttribute('data-id'),
-			elParent = el.closest('.list__box-wrapper');
+				elCategory = el.getAttribute('data-category'),
+			elParent = document.querySelector('.list__box-wrapper[data-name="category_'+elCategory+'"]');
 
 			var currentCategory = el.dataset.category;
 

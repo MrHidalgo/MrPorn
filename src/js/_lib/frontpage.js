@@ -100,9 +100,19 @@ function openSlideModal(e) {
 
 	}
 
+	if(!e.target){
+		return;
+	}
+
+	console.log('open slide modal');
+	console.log(e.target);
+
 	trigger = e.target.parents('.swiper-slide');
 	if(Array.isArray(trigger)){
 		trigger = trigger[0];
+	}
+	if(!trigger){
+		return true;
 	}
 
 	// Get bounding box of triggering element
@@ -1463,11 +1473,11 @@ function showBanner(_el, isSkip = false, target = false){
 		_boxID = _boxParent.getAttribute('data-id'),
 		_parentNode = _el.closest('.list__box-wrapper');
 
-	let currentBannerBox = document.querySelector('.list__specification[data-id="'+_boxID+'"]')
+	/*let currentBannerBox = document.querySelector('.list__specification[data-id="'+_boxID+'"]')
 
 	if(currentBannerBox && currentBannerBox.classList.contains('is-open')){
 		return;
-	}
+	}*/
 
 	var swiperSlide = _el.closest('.swiper-slide');
 	var swiperWrapper = _el.closest('.swiper-wrapper');
@@ -1520,7 +1530,7 @@ function showBanner(_el, isSkip = false, target = false){
 
 		setTimeout(() => {
 			_parentNode.classList.add('is-open');
-			_boxParent.classList.add('is-active');
+			//_boxParent.classList.add('is-active');
 
 			let __vh = window.innerHeight * 0.01;
 			document.documentElement.style.setProperty('--vh', `${__vh}px`);

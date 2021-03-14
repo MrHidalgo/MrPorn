@@ -390,10 +390,20 @@ function generateModalTweener(sourceBBox, destinationBBox) {
 function openSlideModal(e) {
   if (e.target && e.target.classList.contains('modal-trigger')) {}
 
+  if (!e.target) {
+    return;
+  }
+
+  console.log('open slide modal');
+  console.log(e.target);
   trigger = e.target.parents('.swiper-slide');
 
   if (Array.isArray(trigger)) {
     trigger = trigger[0];
+  }
+
+  if (!trigger) {
+    return true;
   } // Get bounding box of triggering element
 
 
@@ -1455,12 +1465,11 @@ function showBanner(_el) {
   var _boxParent = _el.closest('.list__box'),
       _boxID = _boxParent.getAttribute('data-id'),
       _parentNode = _el.closest('.list__box-wrapper');
+  /*let currentBannerBox = document.querySelector('.list__specification[data-id="'+_boxID+'"]')
+  	if(currentBannerBox && currentBannerBox.classList.contains('is-open')){
+  	return;
+  }*/
 
-  var currentBannerBox = document.querySelector('.list__specification[data-id="' + _boxID + '"]');
-
-  if (currentBannerBox && currentBannerBox.classList.contains('is-open')) {
-    return;
-  }
 
   var swiperSlide = _el.closest('.swiper-slide');
 
@@ -1512,9 +1521,8 @@ function showBanner(_el) {
 
   if (window.innerWidth < 1024) {
     setTimeout(function () {
-      _parentNode.classList.add('is-open');
+      _parentNode.classList.add('is-open'); //_boxParent.classList.add('is-active');
 
-      _boxParent.classList.add('is-active');
 
       var __vh = window.innerHeight * 0.01;
 
@@ -2909,7 +2917,7 @@ var ajaxAdminEndpoint = '/wp-admin/admin-ajax.php';
     			}
     		}
     	}, false);
-    			cGrid.addEventListener('mouseout', function(ev) {
+    		cGrid.addEventListener('mouseout', function(ev) {
     		const _ev = ev.target;
     		if(_ev){
     			console.log(_ev.classList);
@@ -3411,7 +3419,8 @@ var ajaxAdminEndpoint = '/wp-admin/admin-ajax.php';
 
   function onSkip(el) {
     var elID = el.getAttribute('data-id'),
-        elParent = el.closest('.list__box-wrapper');
+        elCategory = el.getAttribute('data-category'),
+        elParent = document.querySelector('.list__box-wrapper[data-name="category_' + elCategory + '"]');
     var currentCategory = el.dataset.category;
 
     if (window.innerWidth < 1024) {
