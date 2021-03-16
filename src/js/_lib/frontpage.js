@@ -139,10 +139,15 @@ function openSlideModal(e) {
 		onUpdate: (v) => dimmerRenderer.set('opacity', v)
 	}).start();
 
+	let modalDuration = 600;
+	if(isMobileOrTablet){
+		modalDuration = 200;
+	}
+
 	chain([
 		delay(75),
 		tween({
-			duration: 600,
+			duration: modalDuration,
 			ease: easing.easeOut,
 			onUpdate: modalTweener
 		})
@@ -1493,12 +1498,18 @@ function showBanner(_el, isSkip = false, target = false){
 	//homeData.categories[category].sites[index];
 
 	if(isSkip){
+		currentBannerSection.classList.add('zoom_box');
 		renderSkipSiteBottomBanner(swiperWrapper.dataset.category, swiperSlide.dataset.index);
 	}else{
 		var bottomBanner = renderSiteBottomBanner(swiperWrapper.dataset.category, swiperSlide.dataset.index);
 		if(bottomBanner){
-			//bannerWrapper.innerHTML = bottomBanner;
-
+			/*if(isMobileOrTablet){
+				bannerWrapper.innerHTML = bottomBanner;
+			}else{
+				document.querySelector('#site_modal').innerHTML = bottomBanner;
+				openSlideModal(target);
+				initSimilarSiteEvents();
+			}*/
 			document.querySelector('#site_modal').innerHTML = bottomBanner;
 			openSlideModal(target);
 			initSimilarSiteEvents();
@@ -1508,7 +1519,9 @@ function showBanner(_el, isSkip = false, target = false){
 
 	const hideScrollContainer = document.querySelectorAll("html, body"),
 		//_specificationBox = _parentNode.querySelector('.list__specification[data-id="' + _boxID + '"]');
-		_specificationBox = _parentNode.querySelector('.list__specification');
+		//_specificationBox = _parentNode.querySelector('.list__specification');
+		_specificationBox = document.querySelector('.list__specification');
+
 
 	let jInner = null,
 		lInner = document.querySelectorAll('[video-toggle-js]').length;
@@ -1540,6 +1553,10 @@ function showBanner(_el, isSkip = false, target = false){
 			}
 
 		}, 100);
+
+		setTimeout(() => {
+			currentBannerSection.classList.remove('zoom_box');
+		},400);
 	} else {
 		_parentNode.classList.add('is-open');
 		//_boxParent.classList.add('is-active');
@@ -1547,15 +1564,15 @@ function showBanner(_el, isSkip = false, target = false){
 		if(_specificationBox){
 			_specificationBox.classList.add('is-open');
 
-			document.body.classList.add('is_open');
+			//document.body.classList.add('is_open');
 		}
 	}
 
 
 	if(window.innerWidth <= 1023) {
-		hideScrollContainer.forEach((val, idx) => {
+		/*hideScrollContainer.forEach((val, idx) => {
 			val.classList.add("is-hideScroll");
-		});
+		});*/
 	}
 
 	markFavourites();

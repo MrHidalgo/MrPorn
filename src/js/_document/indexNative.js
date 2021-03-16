@@ -818,11 +818,11 @@ const ajaxAdminEndpoint = '/wp-admin/admin-ajax.php';
 
 
 		if(window.innerWidth < 1024) {
-			cloneCurrentPopupBanner();
+			//cloneCurrentPopupBanner();
 		}
 
 
-		el.closest('.list__specification').querySelector('.list__specification-close').click();
+		//el.closest('.list__specification').querySelector('.list__specification-close').click();
 
 		setTimeout(() => {
 			var nextSite = elParent.querySelector('.swiper-slide[data-siteid="'+elID+'"]').nextSibling;

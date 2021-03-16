@@ -59,8 +59,9 @@
 	}
 	@include adaptive(1023) {
 		/*opacity: 0;
-		visibility: hidden;
-		transform: scale(0.5);*/
+		visibility: hidden;*/
+		opacity: 1;
+		transform: scale(1);
 		overflow: hidden;
 		z-index: 1555;
 		position: fixed;
@@ -68,7 +69,7 @@
 		left: 0;
 		display: flex !important;
 		width: 100vw;
-		height: auto;
+		//height: auto;
 		min-height: 100%;
 		border: none;
 		border-radius: 0;
@@ -80,12 +81,18 @@
 
 		@include transition(opacity, visibility, transform);
 
+
 		&.is-open {
 			opacity: 1;
 			visibility: visible;
 			transform: scale(1);
 			@include transition(opacity, visibility, transform);
 		}
+		&.zoom_box.is-open{
+			opacity: 0.5;
+			transform: scale(0.5);
+		}
+
 
 		&.is-snapshot {
 			opacity: 1;
