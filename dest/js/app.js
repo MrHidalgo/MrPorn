@@ -362,11 +362,14 @@ function generateModalTweener(sourceBBox, destinationBBox) {
   var destinationCenter = findCenter(destinationBBox, isOpen);
   var toX = interpolate(vRange, [sourceCenter.x - destinationCenter.x, 0]);
   /*let toY = 0;
-  	if(isOpen){
+  
+  if(isOpen){
   	//toY = interpolate(vRange, [sourceCenter.y - destinationCenter.y + window.scrollY, 0]);
   	toY = interpolate(vRange, [200 + window.scrollY, 0]);
-  		console.log('Opening '+(200 + window.scrollY));
-  	}else{
+  
+  	console.log('Opening '+(200 + window.scrollY));
+  
+  }else{
   	toY = interpolate(vRange, [sourceCenter.y - destinationCenter.y, 0]);
   	console.log('Closing '+(sourceCenter.y - destinationCenter.y));
   }*/
@@ -923,8 +926,10 @@ var boxHover = function boxHover() {
   	listBoxBody[i].addEventListener('mouseleave', function(ev) {
   		if(window.innerWidth >= 1280) {
   			hoverBool = false;
-  				clearTimeout(tOut);
-  				for(let j = 0, l = swiperSlides.length; j < l; j++) {
+  
+  			clearTimeout(tOut);
+  
+  			for(let j = 0, l = swiperSlides.length; j < l; j++) {
   				swiperSlides[j].classList.remove('is-hover');
   			}
   		}
@@ -1472,7 +1477,8 @@ function showBanner(_el) {
       _boxID = _boxParent.getAttribute('data-id'),
       _parentNode = _el.closest('.list__box-wrapper');
   /*let currentBannerBox = document.querySelector('.list__specification[data-id="'+_boxID+'"]')
-  	if(currentBannerBox && currentBannerBox.classList.contains('is-open')){
+  
+  if(currentBannerBox && currentBannerBox.classList.contains('is-open')){
   	return;
   }*/
 
@@ -3076,7 +3082,8 @@ var ajaxAdminEndpoint = '/wp-admin/admin-ajax.php';
     currentPopupBanner = document.querySelector('.list__specification.is-open');
 
     if (currentPopupBanner) {
-      var popupBannerWrapper = currentPopupBanner.closest('.list__specification-wrapper');
+      //let popupBannerWrapper = currentPopupBanner.closest('.list__specification-wrapper');
+      var popupBannerWrapper = document.querySelector('#site_modal');
 
       if (popupBannerWrapper) {
         clonedPopupBanner = currentPopupBanner.cloneNode(true);
@@ -3439,7 +3446,12 @@ var ajaxAdminEndpoint = '/wp-admin/admin-ajax.php';
         elParent = document.querySelector('.list__box-wrapper[data-name="category_' + elCategory + '"]');
     var currentCategory = el.dataset.category;
 
-    if (window.innerWidth < 1024) {//cloneCurrentPopupBanner();
+    if (window.innerWidth < 1024) {
+      if (document.querySelector('[video-js]')) {
+        document.querySelector('[video-js]').pause();
+      }
+
+      cloneCurrentPopupBanner();
     } //el.closest('.list__specification').querySelector('.list__specification-close').click();
 
 

@@ -412,7 +412,8 @@ const ajaxAdminEndpoint = '/wp-admin/admin-ajax.php';
 	function cloneCurrentPopupBanner(){
 		currentPopupBanner = document.querySelector('.list__specification.is-open');
 		if(currentPopupBanner){
-			let popupBannerWrapper = currentPopupBanner.closest('.list__specification-wrapper');
+			//let popupBannerWrapper = currentPopupBanner.closest('.list__specification-wrapper');
+			let popupBannerWrapper = document.querySelector('#site_modal');
 			if(popupBannerWrapper){
 				clonedPopupBanner = currentPopupBanner.cloneNode(true);
 				clonedPopupBanner.setAttribute('class', 'list__snapshot is-snapshot');
@@ -818,7 +819,10 @@ const ajaxAdminEndpoint = '/wp-admin/admin-ajax.php';
 
 
 		if(window.innerWidth < 1024) {
-			//cloneCurrentPopupBanner();
+			if(document.querySelector('[video-js]')){
+				document.querySelector('[video-js]').pause();
+			}
+			cloneCurrentPopupBanner();
 		}
 
 
