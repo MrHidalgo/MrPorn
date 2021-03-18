@@ -18,6 +18,7 @@ let maxLeft;
 let minLeft;
 let swiperSlideWidth = 230;
 let pauseHoverAnimation = false;
+let siteModal;
 
 
 const { css, transform, chain, delay, tween, easing, parallel } = window.popmotion;
@@ -86,13 +87,85 @@ function generateModalTweener(sourceBBox, destinationBBox, isOpen = true) {
 
 	console.log(destinationCenter.y);
 
+	if(isMobileOrTablet){
+		return (v) => modalRenderer.set({
+			opacity: v,
+			x: toX(v),
+			y: toY(v),
+			scaleX: toScaleX(v),
+			scaleY: toScaleY(v)
+		});
+	}
+
 	return (v) => modalRenderer.set({
-		opacity: v,
+		// opacity: v,
 		x: toX(v),
 		y: toY(v),
 		scaleX: toScaleX(v),
 		scaleY: toScaleY(v)
 	});
+}
+
+function getModalStartPoint(sourceBBox, destinationBBox, isOpen=true){
+	const sourceCenter = findCenter(sourceBBox);
+	const destinationCenter = findCenter(destinationBBox, isOpen);
+	const toX = sourceCenter.x - destinationCenter.x;
+	const toY = sourceCenter.y - destinationCenter.y;
+
+	modalRenderer.set({
+		x: toX,
+		y: toY,
+		scaleX: 1,
+		scaleY: 1,
+		transformOrigin: '50% 50%'
+	});
+
+	let fullWidth = window.innerWidth;
+	if(fullWidth>1450){
+		fullWidth = fullWidth * 0.75;
+	}
+	const modalBBox = modal.getBoundingClientRect();
+	let fullHeight = document.querySelector('#site_modal .list__specification__inner').clientHeight + document.querySelector('#site_modal .list__specification-bottom').clientHeight;
+	console.log('Full Height '+fullHeight+ ' - '+modalBBox.width);
+
+	const toScaleX = 350 / fullWidth;
+	const toScaleY = 260 / fullHeight;
+
+	console.log(sourceBBox.height+' - '+destinationBBox.height+' - '+destinationBBox.width+' - '+fullWidth);
+
+	modalRenderer.set({
+		x: toX,
+		y: toY,
+		scaleX: toScaleX,
+		scaleY: toScaleY,
+		transformOrigin: '50% 50%'
+		//transformOrigin: '50% 0'
+	});
+}
+function openSlideModal2(e) {
+	if(!e.target){
+		return;
+	}
+
+	trigger = e.target.parents('.swiper-slide');
+	if(Array.isArray(trigger)){
+		trigger = trigger[0];
+	}
+	if(!trigger){
+		return true;
+	}
+
+	if(!siteModal){
+		siteModal = document.querySelector('#site_modal');
+	}
+
+	// Get bounding box of triggering element
+	const triggerBBox = trigger.getBoundingClientRect();
+	console.log(triggerBBox);
+	siteModal.style.width = triggerBBox.width+'px';
+	siteModal.style.height = triggerBBox.height+'px';
+	siteModal.style.left = triggerBBox.left+'px';
+	siteModal.style.right = triggerBBox.right+'px';
 }
 
 function openSlideModal(e) {
@@ -103,9 +176,6 @@ function openSlideModal(e) {
 	if(!e.target){
 		return;
 	}
-
-	console.log('open slide modal');
-	console.log(e.target);
 
 	trigger = e.target.parents('.swiper-slide');
 	if(Array.isArray(trigger)){
@@ -125,19 +195,27 @@ function openSlideModal(e) {
 	modalContainerRenderer.set('display', 'flex').render();
 	modalRenderer.set('opacity', 0).render();
 
+
+
 	document.body.classList.add('opened');
 
 	// Get bounding box of final modal position
 	const modalBBox = modal.getBoundingClientRect();
+
+	if(!isMobileOrTablet){
+		getModalStartPoint(triggerBBox, modalBBox);
+		modalRenderer.set('opacity', 1).render();
+	}
 
 	// Get a function to tween the modal from the trigger
 	const modalTweener = generateModalTweener(triggerBBox, modalBBox);
 
 	// Fade in overlay
 	tween({
-		duration: 200,
+		duration: 20,
 		onUpdate: (v) => dimmerRenderer.set('opacity', v)
 	}).start();
+
 
 	let modalDuration = 600;
 	if(isMobileOrTablet){
@@ -196,7 +274,7 @@ function cancelModal(e) {
 		tween({
 			from: modalRenderer.get('opacity'),
 			to: 0,
-			duration: 250,
+			duration: 600,
 			onUpdate: modalTweener,
 			onComplete: closeComplete
 		})

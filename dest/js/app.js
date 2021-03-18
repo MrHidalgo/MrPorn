@@ -302,6 +302,7 @@ var maxLeft;
 var minLeft;
 var swiperSlideWidth = 230;
 var pauseHoverAnimation = false;
+var siteModal;
 var _window$popmotion = window.popmotion,
     css = _window$popmotion.css,
     transform = _window$popmotion.transform,
@@ -362,14 +363,11 @@ function generateModalTweener(sourceBBox, destinationBBox) {
   var destinationCenter = findCenter(destinationBBox, isOpen);
   var toX = interpolate(vRange, [sourceCenter.x - destinationCenter.x, 0]);
   /*let toY = 0;
-  
-  if(isOpen){
+  	if(isOpen){
   	//toY = interpolate(vRange, [sourceCenter.y - destinationCenter.y + window.scrollY, 0]);
   	toY = interpolate(vRange, [200 + window.scrollY, 0]);
-  
-  	console.log('Opening '+(200 + window.scrollY));
-  
-  }else{
+  		console.log('Opening '+(200 + window.scrollY));
+  	}else{
   	toY = interpolate(vRange, [sourceCenter.y - destinationCenter.y, 0]);
   	console.log('Closing '+(sourceCenter.y - destinationCenter.y));
   }*/
@@ -379,15 +377,91 @@ function generateModalTweener(sourceBBox, destinationBBox) {
   var toScaleY = interpolate(vRange, [sourceBBox.height / destinationBBox.height, 1]); // console.log(sourceCenter.x+' - '+destinationCenter.x);
 
   console.log(destinationCenter.y);
+
+  if (isMobileOrTablet) {
+    return function (v) {
+      return modalRenderer.set({
+        opacity: v,
+        x: toX(v),
+        y: toY(v),
+        scaleX: toScaleX(v),
+        scaleY: toScaleY(v)
+      });
+    };
+  }
+
   return function (v) {
     return modalRenderer.set({
-      opacity: v,
+      // opacity: v,
       x: toX(v),
       y: toY(v),
       scaleX: toScaleX(v),
       scaleY: toScaleY(v)
     });
   };
+}
+
+function getModalStartPoint(sourceBBox, destinationBBox) {
+  var isOpen = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : true;
+  var sourceCenter = findCenter(sourceBBox);
+  var destinationCenter = findCenter(destinationBBox, isOpen);
+  var toX = sourceCenter.x - destinationCenter.x;
+  var toY = sourceCenter.y - destinationCenter.y;
+  modalRenderer.set({
+    x: toX,
+    y: toY,
+    scaleX: 1,
+    scaleY: 1,
+    transformOrigin: '50% 50%'
+  });
+  var fullWidth = window.innerWidth;
+
+  if (fullWidth > 1450) {
+    fullWidth = fullWidth * 0.75;
+  }
+
+  var modalBBox = modal.getBoundingClientRect();
+  var fullHeight = document.querySelector('#site_modal .list__specification__inner').clientHeight + document.querySelector('#site_modal .list__specification-bottom').clientHeight;
+  console.log('Full Height ' + fullHeight + ' - ' + modalBBox.width);
+  var toScaleX = 350 / fullWidth;
+  var toScaleY = 260 / fullHeight;
+  console.log(sourceBBox.height + ' - ' + destinationBBox.height + ' - ' + destinationBBox.width + ' - ' + fullWidth);
+  modalRenderer.set({
+    x: toX,
+    y: toY,
+    scaleX: toScaleX,
+    scaleY: toScaleY,
+    transformOrigin: '50% 50%' //transformOrigin: '50% 0'
+
+  });
+}
+
+function openSlideModal2(e) {
+  if (!e.target) {
+    return;
+  }
+
+  trigger = e.target.parents('.swiper-slide');
+
+  if (Array.isArray(trigger)) {
+    trigger = trigger[0];
+  }
+
+  if (!trigger) {
+    return true;
+  }
+
+  if (!siteModal) {
+    siteModal = document.querySelector('#site_modal');
+  } // Get bounding box of triggering element
+
+
+  var triggerBBox = trigger.getBoundingClientRect();
+  console.log(triggerBBox);
+  siteModal.style.width = triggerBBox.width + 'px';
+  siteModal.style.height = triggerBBox.height + 'px';
+  siteModal.style.left = triggerBBox.left + 'px';
+  siteModal.style.right = triggerBBox.right + 'px';
 }
 
 function openSlideModal(e) {
@@ -397,8 +471,6 @@ function openSlideModal(e) {
     return;
   }
 
-  console.log('open slide modal');
-  console.log(e.target);
   trigger = e.target.parents('.swiper-slide');
 
   if (Array.isArray(trigger)) {
@@ -417,12 +489,18 @@ function openSlideModal(e) {
   modalRenderer.set('opacity', 0).render();
   document.body.classList.add('opened'); // Get bounding box of final modal position
 
-  var modalBBox = modal.getBoundingClientRect(); // Get a function to tween the modal from the trigger
+  var modalBBox = modal.getBoundingClientRect();
+
+  if (!isMobileOrTablet) {
+    getModalStartPoint(triggerBBox, modalBBox);
+    modalRenderer.set('opacity', 1).render();
+  } // Get a function to tween the modal from the trigger
+
 
   var modalTweener = generateModalTweener(triggerBBox, modalBBox); // Fade in overlay
 
   tween({
-    duration: 200,
+    duration: 20,
     onUpdate: function onUpdate(v) {
       return dimmerRenderer.set('opacity', v);
     }
@@ -478,7 +556,7 @@ function cancelModal(e) {
   }), tween({
     from: modalRenderer.get('opacity'),
     to: 0,
-    duration: 250,
+    duration: 600,
     onUpdate: modalTweener,
     onComplete: closeComplete
   })]).start();
@@ -926,10 +1004,8 @@ var boxHover = function boxHover() {
   	listBoxBody[i].addEventListener('mouseleave', function(ev) {
   		if(window.innerWidth >= 1280) {
   			hoverBool = false;
-  
-  			clearTimeout(tOut);
-  
-  			for(let j = 0, l = swiperSlides.length; j < l; j++) {
+  				clearTimeout(tOut);
+  				for(let j = 0, l = swiperSlides.length; j < l; j++) {
   				swiperSlides[j].classList.remove('is-hover');
   			}
   		}
@@ -1477,8 +1553,7 @@ function showBanner(_el) {
       _boxID = _boxParent.getAttribute('data-id'),
       _parentNode = _el.closest('.list__box-wrapper');
   /*let currentBannerBox = document.querySelector('.list__specification[data-id="'+_boxID+'"]')
-  
-  if(currentBannerBox && currentBannerBox.classList.contains('is-open')){
+  	if(currentBannerBox && currentBannerBox.classList.contains('is-open')){
   	return;
   }*/
 

@@ -9927,7 +9927,7 @@ body.opened {
   top: 0;
   right: 0;
   left: 0;
-  height: 100vh;
+  min-height: 100vh;
   display: none;
   -webkit-box-pack: center;
   -webkit-justify-content: center;
@@ -9973,6 +9973,7 @@ body.opened {
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
+  position: absolute;
   /*align-items: flex-end;*/
 }
 
@@ -9994,7 +9995,7 @@ body.opened {
   }
 }
 
-/* line 296, src/scss/_components/homepage/_list.scss */
+/* line 297, src/scss/_components/homepage/_list.scss */
 #site_modal.modal footer {
   width: 100%;
   display: -webkit-box;
@@ -10007,12 +10008,12 @@ body.opened {
           justify-content: flex-end;
 }
 
-/* line 303, src/scss/_components/homepage/_list.scss */
+/* line 304, src/scss/_components/homepage/_list.scss */
 .submit {
   background: #8CDA26;
 }
 
-/* line 307, src/scss/_components/homepage/_list.scss */
+/* line 308, src/scss/_components/homepage/_list.scss */
 .cancel {
   background: #DA2632;
 }
