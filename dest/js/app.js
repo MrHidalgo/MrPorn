@@ -772,7 +772,17 @@ function getPopupSimilarSites(category, currentSiteId) {
         similarSiteItemClass += ' hover';
       }
 
-      similarHtml += '<div class="' + similarSiteItemClass + '">' + '<div class="similar_site_item_inner">' + '<a class="similar_site_item_thumb" href="' + moreSite.link + '" style="background-image: url(' + moreSite.banner_image + ')"></a>' + '<div class="similar_site_item_content">' + '<div class="title">' + moreSite.name + '</div>' + '<p>' + moreSite.tagline + ' <a class="readmore" href="' + moreSite.link + '">Read More</a></p>' + '</div>' + '<div class="similar_site_item_buttons">' + '<a class="visit_site list__specification-read nav_link" href="' + moreSite.url + '" target="_blank">VISIT WEBSITE</a>' + '<a class="read_review list__specification-visit nav_link" href="' + moreSite.link + '">READ REVIEW</a>' + '</div>' + '</div>' + '</div>';
+      var bannerVideoPoster = moreSite.banner_video_poster;
+      var bannerVideo = moreSite.banner_video;
+      var similarSiteVideo = '';
+      var siteHasVideo = '';
+
+      if (bannerVideo) {
+        similarSiteVideo = 'data-video="' + bannerVideo + '" data-poster="' + bannerVideoPoster + '"';
+        siteHasVideo = ' has_video';
+      }
+
+      similarHtml += '<div class="' + similarSiteItemClass + ' ' + siteHasVideo + '" ' + similarSiteVideo + '>' + '<div class="similar_site_item_inner">' + '<a class="similar_site_item_thumb" href="' + moreSite.link + '" style="background-image: url(' + moreSite.banner_image + ')"></a>' + '<div class="similar_site_item_content">' + '<div class="title">' + moreSite.name + '</div>' + '<p>' + moreSite.tagline + ' <a class="readmore" href="' + moreSite.link + '">Read More</a></p>' + '</div>' + '<div class="similar_site_item_buttons">' + '<a class="visit_site list__specification-read nav_link" href="' + moreSite.url + '" target="_blank">VISIT WEBSITE</a>' + '<a class="read_review list__specification-visit nav_link" href="' + moreSite.link + '">READ REVIEW</a>' + '</div>' + '</div>' + '</div>';
       similarSiteCount++;
     }
   });
@@ -1661,6 +1671,32 @@ function initSimilarSiteEvents() {
       }
 
       el.classList.add('hover');
+    }, false);
+  });
+  document.querySelectorAll(".similar_site_item.has_video").forEach(function (linkTo) {
+    linkTo.addEventListener('mouseenter', function (ev) {
+      var oldSimilarSiteVideo = document.querySelector('.similar_site_video_item');
+
+      if (oldSimilarSiteVideo) {
+        oldSimilarSiteVideo.remove();
+      }
+
+      var el = ev.currentTarget;
+      var siteVideoUrl = el.dataset.video;
+      var siteVideoPoster = el.dataset.poster;
+      var siteVideoContainer = el.querySelector('.similar_site_item_thumb');
+
+      if (siteVideoContainer) {
+        var similarSiteVideo = '<video class="similar_site_video_item" preload="none" autoplay loop playsinline muted poster="' + siteVideoPoster + '" video-js>' + '<source src="' + siteVideoUrl + '" type="video/mp4">' + '</video>';
+        siteVideoContainer.insertAdjacentHTML('beforeend', similarSiteVideo);
+      }
+    }, false);
+    linkTo.addEventListener('mouseleave', function (ev) {
+      var oldSimilarSiteVideo = document.querySelector('.similar_site_video_item');
+
+      if (oldSimilarSiteVideo) {
+        oldSimilarSiteVideo.remove();
+      }
     }, false);
   });
 }

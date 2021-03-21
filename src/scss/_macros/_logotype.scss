@@ -38,6 +38,13 @@
 		display: block;
 		max-width: 100%;
 		height: auto;
+
+		&.logo_footer{
+			aspect-ratio: attr(width) / attr(height);
+		}
+		&.logo_mobile{
+			aspect-ratio: attr(width) / attr(height);
+		}
 	}
 }
 
