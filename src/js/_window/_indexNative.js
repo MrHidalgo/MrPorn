@@ -15,5 +15,5 @@ window.addEventListener('resize', (ev) => {});
 /**
  * @description Window on scroll.
  */
-window.addEventListener('scroll', (ev) => {});
+window.addEventListener('scroll', (ev) => {}, {passive: true});
 

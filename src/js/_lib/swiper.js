@@ -5,7 +5,7 @@
  *
  * @description initialize Swiper
  */
-function swiperCB(swiperName, sliderArrow) {
+function swiperCB(swiperName, sliderArrow, scrollBar) {
 	let categorySwiper = new Swiper(swiperName, {
 		loop: false,
 		grabCursor: false,
@@ -17,6 +17,7 @@ function swiperCB(swiperName, sliderArrow) {
 		allowSwipeToPrev: true,
 		allowPageScroll: "auto",
 		slidesPerView: 'auto',
+		watchSlidesVisibility:true,
 		spaceBetween: 0,
 		slidesPerGroup: 3,
 		navigation: {
@@ -31,19 +32,31 @@ function swiperCB(swiperName, sliderArrow) {
 				document.querySelector(swiperName).closest('.list__box-wrapper').classList.add('is-visible');
 
 				swiperSlide[swiperSlide.length - 1].classList.add('is-last');
+
+
+
+				let visibleSlides = document.querySelectorAll('[list-parent-js]')[0].querySelectorAll('.swiper-slide-visible').length;
+				let greenBarWidth = 74;
+				if(window.innerWidth<1279){
+					swiperSlideWidth = 100;
+				}else if(window.innerWidth<=1024){
+					swiperSlideWidth = 150;
+				}else if(window.innerWidth<768){
+					swiperSlideWidth = 195;
+				}
+
+				if(window.innerWidth<768){
+					greenBarWidth = 48;
+
+				}else if(window.innerWidth<=1024){
+					greenBarWidth = 74;
+				}
+
+
+				maxLeft = (visibleSlides-1)*(swiperSlideWidth+6) + ((swiperSlideWidth-greenBarWidth)/2)+12;
+				minLeft = (swiperSlideWidth/2) - ((swiperSlideWidth-greenBarWidth)/2);
+
 			},
-			/*slideChange: function (e, t) {
-				let swipeWrapper = categorySwiper.$wrapperEl[0];
-				let currentSlideIndex = categorySwiper.activeIndex;
-
-				console.log('transisioning');
-				console.log(e);
-				console.log(t);
-				fixPrevSlides(swipeWrapper.dataset.category, categorySwiper);
-				fixNextSlides(swipeWrapper.dataset.category, categorySwiper);
-
-				//console.log('changing slide -'+swipeWrapper.dataset.category+' - '+categorySwiper.slides.length+' - '+currentSlideIndex);
-			},*/
 			slidePrevTransitionEnd: function (e) {
 				let swipeWrapper = categorySwiper.$wrapperEl[0];
 
@@ -53,6 +66,9 @@ function swiperCB(swiperName, sliderArrow) {
 				let swipeWrapper = categorySwiper.$wrapperEl[0];
 
 				renderLeftAndRight(swipeWrapper.dataset.category, categorySwiper);
+			},
+			setTranslate: function (e, translate){
+				onSwiperTranslate(e, translate);
 			}
 		},
 	});
@@ -73,7 +89,8 @@ const initSwiper = () => {
 
 		swiperCB(
 			`.swiper-container[data-id="${sliderName}"]`,
-			`.list__box-wrapper[data-name='${sliderWrapper}']`
+			`.list__box-wrapper[data-name='${sliderWrapper}']`,
+			`.swiper-scrollbar[data-id="${sliderName}"]`,
 		);
 	}
 };

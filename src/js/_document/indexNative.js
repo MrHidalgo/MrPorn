@@ -72,7 +72,7 @@ const ajaxAdminEndpoint = '/wp-admin/admin-ajax.php';
 		if(document.body.classList.contains('home')){
 			window.addEventListener('scroll', function(e) {
 				onHomeScroll(e);
-			});
+			}, {passive: true});
 		}
 	}
 

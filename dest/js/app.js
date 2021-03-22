@@ -68,6 +68,23 @@ Function.prototype.extend = function () {
   };
 };
 
+Array.prototype.remove = function () {
+  var what,
+      a = arguments,
+      L = a.length,
+      ax;
+
+  while (L && this.length) {
+    what = a[--L];
+
+    while ((ax = this.indexOf(what)) !== -1) {
+      this.splice(ax, 1);
+    }
+  }
+
+  return this;
+};
+
 window.mobileAndTabletcheck = function () {
   var check = false;
 
@@ -142,6 +159,14 @@ var createCookie = function createCookie(name, value, days) {
 };
 
 var isMobileOrTablet = window.mobileAndTabletcheck();
+
+function findAncestor(el, sel) {
+  while ((el = el.parentElement) && !(el.matches || el.matchesSelector).call(el, sel)) {
+    ;
+  }
+
+  return el;
+}
 
 function getRequest() {
   var url = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : '';
@@ -337,14 +362,11 @@ function generateModalTweener(sourceBBox, destinationBBox) {
   var destinationCenter = findCenter(destinationBBox, isOpen);
   var toX = interpolate(vRange, [sourceCenter.x - destinationCenter.x, 0]);
   /*let toY = 0;
-  
-  if(isOpen){
+  	if(isOpen){
   	//toY = interpolate(vRange, [sourceCenter.y - destinationCenter.y + window.scrollY, 0]);
   	toY = interpolate(vRange, [200 + window.scrollY, 0]);
-  
-  	console.log('Opening '+(200 + window.scrollY));
-  
-  }else{
+  		console.log('Opening '+(200 + window.scrollY));
+  	}else{
   	toY = interpolate(vRange, [sourceCenter.y - destinationCenter.y, 0]);
   	console.log('Closing '+(sourceCenter.y - destinationCenter.y));
   }*/
@@ -460,6 +482,8 @@ var initHomeLazyLoad = function initHomeLazyLoad() {
     if (listElm.scrollTop + listElm.clientHeight >= listElm.scrollHeight) {
       loadMore();
     }
+  }, {
+    passive: true
   }); // Initially load some items.
 
   loadMore();
@@ -541,7 +565,7 @@ function renderHompageSiteSlide(category, index) {
     var slideHtml = '<div class="list__box nolazy" list-box-js data-id="' + siteId + '" style="background-image: url(' + siteThumb + ')">' +
     /*'<div class="list__box-overlay"></div>'+*/
     '<div class="list__box-border"></div>' + '<a href="' + siteLink + '" hreflang="' + currentLang + '" target="_blank"></a>' + //'<img class="list__box-logo nolazy" src="'+siteLogo+'" alt=""/>'+
-    '<div class="list__box-details">' + '<div class="list__box-details-left">' + '<a class="site_link" href="' + siteLink + '" hreflang="' + currentLang + '" target="_blank">' + '<i class="icon-font icon-out"></i>' + '<p class="list__box-details-title">' + siteName + '</p>' + '</a>' + '<div class="list__rating"><span>User Rating:</span>' + '<div><i class="icon-font icon-star"></i><i class="icon-font icon-star"></i><i class="icon-font icon-star"></i><i class="icon-font icon-star"></i><i class="icon-font icon-star-fill"></i></div>' + '</div>' + '</div>' + '<div class="list__box-details-right">' + '<button class="list__box-like" type="button" data-id="' + siteId + '" like-toggle-js><i class="icon-font icon-like"></i></button>' + '<button class="list__box-dislike" type="button" data-id="' + siteId + '" dislike-toggle-js><i class="icon-font icon-like"></i></button>' + '<div class="c-popper">' + btnFav + '<div class="c-poppertext">' + '<u>' + btnFavToolTip + '</u>' + '<u>Remove From Favourites</u>' + '</div>' + '</div>' + '</div>' + '</div>' + '<button class="list__box-more" type="button"><i class="icon-font icon-arrow-angle"></i></button>' + '</div>';
+    '<div class="list__box-details">' + '<div class="list__box-details-left">' + '<a class="site_link" href="' + siteLink + '" hreflang="' + currentLang + '" target="_blank">' + '<i class="icon-font icon-out"></i>' + '<p class="list__box-details-title">' + siteName + '</p>' + '</a>' + '<div class="list__rating"><span>User Rating:</span>' + '<div><i class="icon-font icon-star"></i><i class="icon-font icon-star"></i><i class="icon-font icon-star"></i><i class="icon-font icon-star"></i><i class="icon-font icon-star-fill"></i></div>' + '</div>' + '</div>' + '<div class="list__box-details-right">' + '<button class="list__box-like" type="button" data-id="' + siteId + '" like-toggle-js><i class="icon-font icon-like"></i></button>' + '<button class="list__box-dislike" type="button" data-id="' + siteId + '" dislike-toggle-js><i class="icon-font icon-like"></i></button>' + '<div class="c-popper">' + btnFav + '<div class="c-poppertext">' + '<u>' + btnFavToolTip + '</u>' + '<u>Remove From Favourites</u>' + '</div>' + '</div>' + '</div>' + '</div>' + '<button class="list__box-more" type="button" aria-label="Read more"><i class="icon-font icon-arrow-angle"></i></button>' + '</div>';
     return slideHtml;
   }
 
@@ -817,7 +841,7 @@ function renderSiteCategory(categoryIndex) {
     categorySites += '<div class="swiper-slide" data-index="' + index + '" data-siteid="' + site.id + '" data-init="0">' + '<div class="list__box" list-box-js  data-id="' + site.id + '" style="background-image: url(' + site.banner_image + ')">' +
     /*'<div class="list__box-overlay"></div>'+*/
     '<div class="list__box-border"></div>' + '<a class="nav_link" href="' + site.link + '" hreflang="' + currentLang + '">' + //siteLogo+
-    '</a>' + '<div class="list__box-details">' + '</div>' + '<button class="list__box-more" type="button"><i class="icon-font icon-arrow-angle"></i></button>' + '</div>' + '</div>';
+    '</a>' + '<div class="list__box-details">' + '</div>' + '<button class="list__box-more" type="button" aria-label="Read more"><i class="icon-font icon-arrow-angle"></i></button>' + '</div>' + '</div>';
   });
   var categoryTagLine = categoryData.tagline;
 
@@ -864,7 +888,9 @@ var boxHover = function boxHover() {
         swiperSlides[i].removeEventListener('touchend', onSlideTouchEnd);
         swiperSlides[i].addEventListener('touchend', onSlideTouchEnd, false);
         swiperSlides[i].removeEventListener('touchstart', onSlideTouchStart);
-        swiperSlides[i].addEventListener('touchstart', onSlideTouchStart, false); //swiperSlides[i].removeEventListener('touchmove', onSlideTouchMove);
+        swiperSlides[i].addEventListener('touchstart', onSlideTouchStart, {
+          passive: true
+        }); //swiperSlides[i].removeEventListener('touchmove', onSlideTouchMove);
         //swiperSlides[i].addEventListener('touchmove', onSlideTouchMove, false);
       } else {
         swiperSlides[i].removeEventListener('mouseleave', onSlideLeave);
@@ -886,10 +912,8 @@ var boxHover = function boxHover() {
   	listBoxBody[i].addEventListener('mouseleave', function(ev) {
   		if(window.innerWidth >= 1280) {
   			hoverBool = false;
-  
-  			clearTimeout(tOut);
-  
-  			for(let j = 0, l = swiperSlides.length; j < l; j++) {
+  				clearTimeout(tOut);
+  				for(let j = 0, l = swiperSlides.length; j < l; j++) {
   				swiperSlides[j].classList.remove('is-hover');
   			}
   		}
@@ -1530,6 +1554,32 @@ function initSimilarSiteEvents() {
       el.classList.add('hover');
     }, false);
   });
+  document.querySelectorAll(".similar_site_item.has_video").forEach(function (linkTo) {
+    linkTo.addEventListener('mouseenter', function (ev) {
+      var oldSimilarSiteVideo = document.querySelector('.similar_site_video_item');
+
+      if (oldSimilarSiteVideo) {
+        oldSimilarSiteVideo.remove();
+      }
+
+      var el = ev.currentTarget;
+      var siteVideoUrl = el.dataset.video;
+      var siteVideoPoster = el.dataset.poster;
+      var siteVideoContainer = el.querySelector('.similar_site_item_thumb');
+
+      if (siteVideoContainer) {
+        var similarSiteVideo = '<video class="similar_site_video_item" preload="none" autoplay loop playsinline muted poster="' + siteVideoPoster + '" video-js>' + '<source src="' + siteVideoUrl + '" type="video/mp4">' + '</video>';
+        siteVideoContainer.insertAdjacentHTML('beforeend', similarSiteVideo);
+      }
+    }, false);
+    linkTo.addEventListener('mouseleave', function (ev) {
+      var oldSimilarSiteVideo = document.querySelector('.similar_site_video_item');
+
+      if (oldSimilarSiteVideo) {
+        oldSimilarSiteVideo.remove();
+      }
+    }, false);
+  });
 }
 
 function addToFavourites(siteId) {
@@ -1793,6 +1843,12 @@ var initHamburger = function initHamburger() {
       hideScrollContainer.forEach(function (val, idx) {
         val.classList.toggle("is-hideScroll");
       });
+
+      if (document.body.classList.contains('is-hideScroll')) {
+        setTimeout(function () {
+          document.querySelector('.searchinput').focus();
+        }, 500);
+      }
     });
   }
 
@@ -1817,15 +1873,18 @@ var initHamburger = function initHamburger() {
   }
 
   var searchClose = document.querySelector('.category__close');
-  searchClose.addEventListener("click", function (ev) {
-    searchContainer.classList.toggle("is-open");
-    hideScrollContainer.forEach(function (val, idx) {
-      val.classList.toggle("is-hideScroll");
+
+  if (searchClose) {
+    searchClose.addEventListener("click", function (ev) {
+      searchContainer.classList.toggle("is-open");
+      hideScrollContainer.forEach(function (val, idx) {
+        val.classList.toggle("is-hideScroll");
+      });
+      document.querySelector('[search-js]').value = '';
+      hide(document.querySelector('[search-drop-mobile-js]'));
+      document.querySelector('.category__drop').classList.remove('is-open');
     });
-    document.querySelector('[search-js]').value = '';
-    hide(document.querySelector('[search-drop-mobile-js]'));
-    document.querySelector('.category__drop').classList.remove('is-open');
-  });
+  }
 };
 
 var renderMobileMenu = function renderMobileMenu() {
@@ -1834,13 +1893,50 @@ var renderMobileMenu = function renderMobileMenu() {
   var navLinkGames = document.querySelector('.header_nav_games').getAttribute('href');
   var navLinkMeet = document.querySelector('.header_nav_meet').getAttribute('href');
   var navLinkLiveSex = document.querySelector('.header_nav_dating').getAttribute('href');
-  var mobileNavHtml = '<div>' + '            <div class="pre-header__mobile-top">' + '              <div><a class="pre-header__signin mobile_login_link" href="/login/"><i class="icon-font icon-enter"></i><span>Sign In</span></a></div>' + '              <div><a class="pre-header__signup mobile_signup_link" href="/sign-up/"><i class="icon-font icon-key"></i><span>Sign Up</span></a></div>' + '            </div>' + '            <div class="pre-header__mobile-middle">' + '<p class="pre-header__heading"><i></i><span>Main</span></p>' + '              <div>' + langHtml + '</div>' + '            </div>' + '            <div class="pre-header__mobile-bottom">' + '              <ul class="header__nav">' + '                <li class="header__nav-item"><a class="header__nav-link" href="/categories/">' + '                    <div><i class="icon-png header-nav-folder"></i></div>' + '                    <div><span>View All Categories</span></div></a></li>' + '                <li class="header__nav-item"><a class="header__nav-link" href="/">' + '                    <div><i class="icon-png header-nav-home"></i></div>' + '                    <div><span>Home</span></div></a></li>' + '                <li class="header__nav-item header__nav-item--saparator"><span class="header__nav-separator"></span></li>' + '                <li class="header__nav-item"><a class="header__nav-link" href="/blog/">' + '                    <div><i class="icon-png header-nav-blog"></i></div>' + '                    <div><span>Blog</span></div></a></li>' + '                <li class="header__nav-item header__nav-item--saparator"><span class="header__nav-separator"></span></li>' + '                <li class="header__nav-item"><a class="header__nav-link" href="/webcam-videos/">' + '                    <div><i class="icon-png header-nav-videos"></i></div>' + '                    <div><span>Videos</span></div></a></li>' + '                <li class="header__nav-item header__nav-item--saparator"><span class="header__nav-separator"></span></li>' + '                <li class="header__nav-item"><a class="header__nav-link" href="/pornstars/">' + '                    <div><i class="icon-png header-nav-pornstars"></i></div>' + '                    <div><span>Pornstars</span></div></a></li>' + '                <li class="header__nav-item header__nav-item--saparator"><span class="header__nav-separator"></span></li>' + '                <li class="header__nav-item"><a class="header__nav-link" href="/coupons/">' + '                    <div><i class="icon-png header-nav-porncoupons"></i></div>' + '                    <div><span>Porn Coupons</span></div></a></li>' + '                <li class="header__nav-item header__nav-item--saparator"><span class="header__nav-separator"></span></li>' + '                <li class="header__nav-item"><a class="header__nav-link" href="' + navLinkGames + '" target="_blank">' + '                    <div><i class="icon-png header-nav-porngames"></i></div>' + '                    <div><span>Porn Games</span></div></a></li>' + '                <li class="header__nav-item header__nav-item--saparator"><span class="header__nav-separator"></span></li>' + '                <li class="header__nav-item"><a class="header__nav-link" href="' + navLinkMeet + '" target="_blank">' + '                    <div><i class="icon-png header-nav-meetfuck"></i></div>' + '                    <div><span>Meet & Fuck</span></div></a></li>' + '                <li class="header__nav-item header__nav-item--saparator"><span class="header__nav-separator"></span></li>' + '                <li class="header__nav-item"><a class="header__nav-link" href="' + navLinkLiveSex + '" target="_blank">' + '                    <div><i class="icon-png header-nav-livesex"></i></div>' + '                    <div><span>Live sex</span></div></a></li>' + '              </ul>' + '            </div>' + '            <div class="pre-header__mobile-middle">' + '              <div>' + '                <p class="pre-header__heading"><i></i><span>Connect With Us</span></p>' + '              </div>' + '              <div></div>' + '            </div>' + '            <div class="pre-header__mobile-bottom">' + '              <ul class="header__nav">' + '                <li class="header__nav-item"><a class="header__nav-link" href="/about-us/">' + '                    <div><i class="icon-png header-nav-info"></i></div>' + '                    <div><span>About Us</span></div></a></li>' + '                <li class="header__nav-item"><a class="header__nav-link" href="/contact/">' + '                    <div><i class="icon-png header-nav-email"></i></div>' + '                    <div><span>Contact Us</span></div></a></li>' + '                <li class="header__nav-item"><a class="header__nav-link" href="/advertising/">' + '                    <div><i class="icon-png header-nav-megaphone"></i></div>' + '                    <div><span>Advertising</span></div></a></li>' + '              </ul>' + '            </div>' + '          </div>';
+  var currentLang = document.documentElement.getAttribute('lang');
+  var linkSignup = '<div><a class="pre-header__signup mobile_signup_link" href="/sign-up/"><i class="icon-font icon-key"></i><span>Sign Up</span></a></div>';
+
+  if (window.logoutUrl) {
+    linkSignup = '<div><a class="pre-header__signup mobile_signup_link" href="' + window.logoutUrl + '"><i class="icon-font icon-key"></i><span>LOGOUT</span></a></div>';
+  }
+
+  if (!window.favHtmlMobile) {
+    window.favHtmlMobile = '';
+  }
+
+  var mobileNavHtml = '<div>' + '            <div class="pre-header__mobile-top">' + '              <div><a class="pre-header__signin mobile_login_link" href="/login/"><i class="icon-font icon-enter"></i><span>Login</span></a></div>' + linkSignup + '            </div>' + '            <div class="pre-header__mobile-middle">' + '<p class="pre-header__heading"><i></i><span>Main</span></p>' + '              <div>' + langHtml + '</div>' + '            </div>' + '            <div class="pre-header__mobile-bottom main_mobile_menu">' + window.favHtmlMobile + '              <ul class="header__nav">' + '                <li class="header__nav-item"><a class="header__nav-link" href="/categories/" hreflang="' + currentLang + '">' + '                    <div><i class="icon-png header-nav-folder"></i></div>' + '                    <div><span>View All Categories</span></div></a></li>' + '                <li class="header__nav-item header__nav-item--saparator"><span class="header__nav-separator"></span></li>' + '                <li class="header__nav-item"><a class="header__nav-link" href="/blog/" hreflang="en">' + '                    <div><i class="icon-png header-nav-blog"></i></div>' + '                    <div><span>Blog</span></div></a></li>' + '                <li class="header__nav-item header__nav-item--saparator"><span class="header__nav-separator"></span></li>' + '                <li class="header__nav-item"><a class="header__nav-link" href="/webcam-videos/" hreflang="en">' + '                    <div><i class="icon-png header-nav-videos"></i></div>' + '                    <div><span>Videos</span></div></a></li>' + '                <li class="header__nav-item header__nav-item--saparator"><span class="header__nav-separator"></span></li>' + '                <li class="header__nav-item"><a class="header__nav-link" href="/pornstars/" hreflang="en">' + '                    <div><i class="icon-png header-nav-pornstars"></i></div>' + '                    <div><span>Pornstars</span></div></a></li>' + '                <li class="header__nav-item header__nav-item--saparator"><span class="header__nav-separator"></span></li>' + '                <li class="header__nav-item"><a class="header__nav-link" href="/coupons/" hreflang="en">' + '                    <div><i class="icon-png header-nav-porncoupons"></i></div>' + '                    <div><span>Porn Coupons</span></div></a></li>' + '                <li class="header__nav-item header__nav-item--saparator"><span class="header__nav-separator"></span></li>' + '                <li class="header__nav-item"><a class="header__nav-link" href="' + navLinkGames + '" target="_blank">' + '                    <div><i class="icon-png header-nav-porngames"></i></div>' + '                    <div><span>Porn Games</span></div></a></li>' + '                <li class="header__nav-item header__nav-item--saparator"><span class="header__nav-separator"></span></li>' + '                <li class="header__nav-item"><a class="header__nav-link" href="' + navLinkMeet + '" target="_blank">' + '                    <div><i class="icon-png header-nav-meetfuck"></i></div>' + '                    <div><span>Meet & Fuck</span></div></a></li>' + '                <li class="header__nav-item header__nav-item--saparator"><span class="header__nav-separator"></span></li>' + '                <li class="header__nav-item"><a class="header__nav-link" href="' + navLinkLiveSex + '" target="_blank">' + '                    <div><i class="icon-png header-nav-livesex"></i></div>' + '                    <div><span>Live sex</span></div></a></li>' + '              </ul>' + '            </div>' + '            <div class="pre-header__mobile-middle">' + '              <div>' + '                <p class="pre-header__heading"><i></i><span>Connect With Us</span></p>' + '              </div>' + '              <div></div>' + '            </div>' + '            <div class="pre-header__mobile-bottom">' + '              <ul class="header__nav">' + '                <li class="header__nav-item"><a class="header__nav-link" href="/about-us/">' + '                    <div><i class="icon-png header-nav-info"></i></div>' + '                    <div><span>About Us</span></div></a></li>' + '                <li class="header__nav-item"><a class="header__nav-link" href="/contact/">' + '                    <div><i class="icon-png header-nav-email"></i></div>' + '                    <div><span>Contact Us</span></div></a></li>' + '                <li class="header__nav-item"><a class="header__nav-link" href="/advertising/">' + '                    <div><i class="icon-png header-nav-megaphone"></i></div>' + '                    <div><span>Advertising</span></div></a></li>' + '              </ul>' + '            </div>' + '          </div>';
   mobileContainer.innerHTML = mobileNavHtml;
+  initFavDelete();
 
   if (typeof initLoggedUser === "function") {
     initLoggedUser();
   }
 };
+
+function initFavDelete() {
+  document.querySelectorAll(".fav_delete").forEach(function (target) {
+    target.onclick = function (event) {
+      var siteId = 0;
+
+      if (event.target.classList.contains('fav_delete')) {
+        siteId = event.target.dataset.id;
+      } else if (event.target.parents('.fav_delete')) {
+        siteId = event.target.parents('.fav_delete')[0].dataset.id;
+      }
+
+      if (siteId) {
+        var deleteLink = event.target;
+        var data = {
+          action: 'remove_fav',
+          site: siteId
+        };
+        postRequest(ajaxEndpoint, data, function (res) {
+          event.target.closest('.site_listitem').remove();
+        });
+      }
+    };
+  });
+}
 
 var letterData = [];
 var loggedUsername = '';
@@ -2393,7 +2489,7 @@ var renderSearch = function renderSearch() {
  */
 
 
-function swiperCB(swiperName, sliderArrow) {
+function swiperCB(swiperName, sliderArrow, scrollBar) {
   var categorySwiper = new Swiper(swiperName, {
     loop: false,
     grabCursor: false,
@@ -2405,6 +2501,7 @@ function swiperCB(swiperName, sliderArrow) {
     allowSwipeToPrev: true,
     allowPageScroll: "auto",
     slidesPerView: 'auto',
+    watchSlidesVisibility: true,
     spaceBetween: 0,
     slidesPerGroup: 3,
     navigation: {
@@ -2417,18 +2514,26 @@ function swiperCB(swiperName, sliderArrow) {
         document.querySelector(swiperName).closest('.list__box-wrapper').style.opacity = '1';
         document.querySelector(swiperName).closest('.list__box-wrapper').classList.add('is-visible');
         swiperSlide[swiperSlide.length - 1].classList.add('is-last');
-      },
+        var visibleSlides = document.querySelectorAll('[list-parent-js]')[0].querySelectorAll('.swiper-slide-visible').length;
+        var greenBarWidth = 74;
 
-      /*slideChange: function (e, t) {
-      	let swipeWrapper = categorySwiper.$wrapperEl[0];
-      	let currentSlideIndex = categorySwiper.activeIndex;
-      			console.log('transisioning');
-      	console.log(e);
-      	console.log(t);
-      	fixPrevSlides(swipeWrapper.dataset.category, categorySwiper);
-      	fixNextSlides(swipeWrapper.dataset.category, categorySwiper);
-      			//console.log('changing slide -'+swipeWrapper.dataset.category+' - '+categorySwiper.slides.length+' - '+currentSlideIndex);
-      },*/
+        if (window.innerWidth < 1279) {
+          swiperSlideWidth = 100;
+        } else if (window.innerWidth <= 1024) {
+          swiperSlideWidth = 150;
+        } else if (window.innerWidth < 768) {
+          swiperSlideWidth = 195;
+        }
+
+        if (window.innerWidth < 768) {
+          greenBarWidth = 48;
+        } else if (window.innerWidth <= 1024) {
+          greenBarWidth = 74;
+        }
+
+        maxLeft = (visibleSlides - 1) * (swiperSlideWidth + 6) + (swiperSlideWidth - greenBarWidth) / 2 + 12;
+        minLeft = swiperSlideWidth / 2 - (swiperSlideWidth - greenBarWidth) / 2;
+      },
       slidePrevTransitionEnd: function slidePrevTransitionEnd(e) {
         var swipeWrapper = categorySwiper.$wrapperEl[0];
         renderLeftAndRight(swipeWrapper.dataset.category, categorySwiper);
@@ -2436,6 +2541,9 @@ function swiperCB(swiperName, sliderArrow) {
       slideNextTransitionEnd: function slideNextTransitionEnd(e) {
         var swipeWrapper = categorySwiper.$wrapperEl[0];
         renderLeftAndRight(swipeWrapper.dataset.category, categorySwiper);
+      },
+      setTranslate: function setTranslate(e, translate) {
+        onSwiperTranslate(e, translate);
       }
     }
   });
@@ -2450,7 +2558,7 @@ var initSwiper = function initSwiper() {
   for (idx = 0; idx < len; idx++) {
     var sliderName = sliders[idx].getAttribute('data-id'),
         sliderWrapper = slidersNode[idx].getAttribute('data-name');
-    swiperCB(".swiper-container[data-id=\"".concat(sliderName, "\"]"), ".list__box-wrapper[data-name='".concat(sliderWrapper, "']"));
+    swiperCB(".swiper-container[data-id=\"".concat(sliderName, "\"]"), ".list__box-wrapper[data-name='".concat(sliderWrapper, "']"), ".swiper-scrollbar[data-id=\"".concat(sliderName, "\"]"));
   }
 };
 
@@ -2659,6 +2767,8 @@ var ajaxAdminEndpoint = '/wp-admin/admin-ajax.php';
     if (document.body.classList.contains('home')) {
       window.addEventListener('scroll', function (e) {
         onHomeScroll(e);
+      }, {
+        passive: true
       });
     }
   };
@@ -2830,7 +2940,7 @@ var ajaxAdminEndpoint = '/wp-admin/admin-ajax.php';
     			}
     		}
     	}, false);
-    			cGrid.addEventListener('mouseout', function(ev) {
+    		cGrid.addEventListener('mouseout', function(ev) {
     		const _ev = ev.target;
     		if(_ev){
     			console.log(_ev.classList);

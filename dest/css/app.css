@@ -2799,6 +2799,7 @@ strong {
   display: block;
   max-width: 100%;
   height: auto;
+  aspect-ratio: attr(width)/attr(height);
 }
 
 /* line 1, src/scss/_macros/_popper.scss */
@@ -4532,6 +4533,11 @@ strong {
   .pre-header__title {
     font-size: 10px;
   }
+  /* line 16, src/scss/_components/common/_pre-header.scss */
+  .pre-header__title:before {
+    display: block;
+    content: 'The Best Porn Sites & Reviews Sorted By Quality!';
+  }
 }
 
 @media screen and (device-aspect-ratio: 40 / 71) {
@@ -4541,7 +4547,7 @@ strong {
   }
 }
 
-/* line 22, src/scss/_components/common/_pre-header.scss */
+/* line 27, src/scss/_components/common/_pre-header.scss */
 .pre-header__hamburger {
   display: -webkit-box;
   display: -webkit-flex;
@@ -4551,7 +4557,7 @@ strong {
   padding-bottom: 15px;
 }
 
-/* line 27, src/scss/_components/common/_pre-header.scss */
+/* line 32, src/scss/_components/common/_pre-header.scss */
 .pre-header__hamburger-inner {
   display: -webkit-box;
   display: -webkit-flex;
@@ -4569,13 +4575,13 @@ strong {
   height: 19px;
 }
 
-/* line 35, src/scss/_components/common/_pre-header.scss */
+/* line 40, src/scss/_components/common/_pre-header.scss */
 .pre-header__hamburger .icon-font {
   color: #ffffff;
   font-size: 20px;
 }
 
-/* line 41, src/scss/_components/common/_pre-header.scss */
+/* line 46, src/scss/_components/common/_pre-header.scss */
 .pre-header__link {
   display: -webkit-box;
   display: -webkit-flex;
@@ -4597,7 +4603,7 @@ strong {
 }
 
 @media screen and (max-width: 767px) {
-  /* line 41, src/scss/_components/common/_pre-header.scss */
+  /* line 46, src/scss/_components/common/_pre-header.scss */
   .pre-header__link {
     font-size: 14px;
   }

@@ -205,7 +205,7 @@ const initHomeLazyLoad = () =>{
 			if (listElm.scrollTop + listElm.clientHeight >= listElm.scrollHeight) {
 				loadMore();
 			}
-		});
+		}, {passive: true});
 
 	// Initially load some items.
 		loadMore();
@@ -330,7 +330,7 @@ function renderHompageSiteSlide(category, index){
 			'</div>'+
 			'</div>'+
 			'</div>'+
-			'<button class="list__box-more" type="button"><i class="icon-font icon-arrow-angle"></i></button>'+
+			'<button class="list__box-more" type="button" aria-label="Read more"><i class="icon-font icon-arrow-angle"></i></button>'+
 			'</div>';
 		return slideHtml;
 	}
@@ -750,7 +750,7 @@ function renderSiteCategory(categoryIndex){
 			'<div class="list__box-details">'+
 
 			'</div>'+
-			'<button class="list__box-more" type="button"><i class="icon-font icon-arrow-angle"></i></button>' +
+			'<button class="list__box-more" type="button" aria-label="Read more"><i class="icon-font icon-arrow-angle"></i></button>' +
 			'</div>'+
 			'</div>';
 	});
@@ -844,7 +844,7 @@ const boxHover = () => {
 				swiperSlides[i].addEventListener('touchend', onSlideTouchEnd, false);
 
 				swiperSlides[i].removeEventListener('touchstart', onSlideTouchStart);
-				swiperSlides[i].addEventListener('touchstart', onSlideTouchStart, false);
+				swiperSlides[i].addEventListener('touchstart', onSlideTouchStart, {passive: true});
 
 				//swiperSlides[i].removeEventListener('touchmove', onSlideTouchMove);
 				//swiperSlides[i].addEventListener('touchmove', onSlideTouchMove, false);
@@ -1553,6 +1553,35 @@ function initSimilarSiteEvents(){
 				oldSSIH.classList.remove('hover');
 			}
 			el.classList.add('hover');
+		}, false);
+	})
+
+	document.querySelectorAll(".similar_site_item.has_video").forEach(function(linkTo){
+		linkTo.addEventListener('mouseenter', function (ev){
+			let oldSimilarSiteVideo = document.querySelector('.similar_site_video_item');
+			if(oldSimilarSiteVideo){
+				oldSimilarSiteVideo.remove();
+			}
+
+			const el = ev.currentTarget;
+			let siteVideoUrl = el.dataset.video;
+			let siteVideoPoster = el.dataset.poster;
+			let siteVideoContainer = el.querySelector('.similar_site_item_thumb');
+
+			if(siteVideoContainer){
+				let similarSiteVideo = '<video class="similar_site_video_item" preload="none" autoplay loop playsinline muted poster="'+siteVideoPoster+'" video-js>'+
+					'<source src="'+siteVideoUrl+'" type="video/mp4">'+
+					'</video>';
+
+				siteVideoContainer.insertAdjacentHTML( 'beforeend', similarSiteVideo );
+			}
+		}, false);
+
+		linkTo.addEventListener('mouseleave', function (ev){
+			let oldSimilarSiteVideo = document.querySelector('.similar_site_video_item');
+			if(oldSimilarSiteVideo){
+				oldSimilarSiteVideo.remove();
+			}
 		}, false);
 	})
 }
