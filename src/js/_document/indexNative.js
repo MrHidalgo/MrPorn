@@ -812,6 +812,9 @@ const ajaxAdminEndpoint = '/wp-admin/admin-ajax.php';
 
 
 		if(window.innerWidth < 1024) {
+			if(document.querySelector('[video-js]')){
+				document.querySelector('[video-js]').pause();
+			}
 			cloneCurrentPopupBanner();
 		}
 

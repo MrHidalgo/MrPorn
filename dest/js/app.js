@@ -3438,6 +3438,10 @@ var ajaxAdminEndpoint = '/wp-admin/admin-ajax.php';
     var currentCategory = el.dataset.category;
 
     if (window.innerWidth < 1024) {
+      if (document.querySelector('[video-js]')) {
+        document.querySelector('[video-js]').pause();
+      }
+
       cloneCurrentPopupBanner();
     }
 

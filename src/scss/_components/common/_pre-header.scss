@@ -13,15 +13,21 @@
 		@include adaptive(767) {
 			font-size: 10px;
 
-			&:before{
+			/*&:before{
 				display: block;
 				content: 'The Best Porn Sites & Reviews Sorted By Quality!';
-			}
+			}*/
+
+
 		}
 
 		@media screen and (device-aspect-ratio: 40/71) {
 			display: none;
 		}
+	}
+
+	.mobile_slogan{
+		max-height: 11px;
 	}
 
 	&__hamburger {
