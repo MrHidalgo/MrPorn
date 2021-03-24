@@ -38,7 +38,11 @@
 		display: block;
 		max-width: 100%;
 		height: auto;
-		aspect-ratio: attr(width) / attr(height);
+
+
+		&.logo_mobile{
+			aspect-ratio: 235 / 38;
+		}
 	}
 }
 

@@ -28,7 +28,7 @@ task('vendorScript', function() {
   return src(files)
 		.pipe(plumber(configOption.pipeBreaking.err))
 		.pipe(order([
-			//'jquery.js',
+			'jquery.js',
 			'popper.js',
 			'*'
 		]))
