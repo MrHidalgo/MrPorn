@@ -386,6 +386,8 @@
 	.swiper-slide{
 		max-width: 25%;
 		opacity: 0.4;
+		aspect-ratio: 140 / 119;
+		margin-right: 10px;
 
 		@include adaptive(767) {
 			aspect-ratio:1.179245283018868;
@@ -454,6 +456,7 @@
 
 			@include adaptive(767) {
 				visibility: hidden;
+				display: none;
 			}
 
 			&.games{
