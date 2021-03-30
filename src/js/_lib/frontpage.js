@@ -622,7 +622,7 @@ function getPopupSimilarSites(category, currentSiteId){
 	}
 
 	homeData.categories[category].sites.map(function (moreSite, index) {
-		if(currentSiteId!=moreSite.id && similarSiteCount < 5){
+		if(currentSiteId!=moreSite.id && similarSiteCount < 10){
 			let moreSiteLogo = moreSite.logo ? moreSite.logo.src: '';
 			let similarSiteItemClass = 'similar_site_item';
 			if(similarSiteCount==0){
@@ -641,14 +641,18 @@ function getPopupSimilarSites(category, currentSiteId){
 
 			similarHtml += '<div class="'+similarSiteItemClass+' '+siteHasVideo+'" '+similarSiteVideo+'>' +
 				'<div class="similar_site_item_inner">' +
-				'<a class="similar_site_item_thumb" href="'+moreSite.link+'" style="background-image: url('+moreSite.banner_image+')"></a>' +
+				'<a class="similar_site_item_link" href="'+moreSite.link+'" hreflang="'+currentLang+'">' +
+				'<div class="similar_site_item_thumb" style="background-image: url('+moreSite.banner_image+')"></div>'+
 				'<div class="similar_site_item_content">' +
-				'<div class="title">'+moreSite.name+'</div>'+
-				'<p>'+moreSite.tagline+' <a class="readmore" href="'+moreSite.link+'">Read More</a></p>'+
+				'<h3 class="title">'+moreSite.name+'</h3>'+
+				//'<p>'+moreSite.tagline+' <a class="readmore" href="'+moreSite.link+'">Read More</a></p>'+
+				'<p>'+moreSite.tagline+' <span>Read More</span></p>'+
 				'</div>'+
+				'</a>' +
+
 				'<div class="similar_site_item_buttons">' +
 				'<a class="visit_site list__specification-read nav_link" href="'+moreSite.url+'" target="_blank">VISIT WEBSITE</a>'+
-				'<a class="read_review list__specification-visit nav_link" href="'+moreSite.link+'">READ REVIEW</a>'+
+				'<a class="read_review list__specification-visit nav_link" href="'+moreSite.link+'"  hreflang="'+currentLang+'">READ REVIEW</a>'+
 				'</div>'+
 				'</div>'+
 				'</div>';

@@ -764,7 +764,7 @@ function getPopupSimilarSites(category, currentSiteId) {
   }
 
   homeData.categories[category].sites.map(function (moreSite, index) {
-    if (currentSiteId != moreSite.id && similarSiteCount < 5) {
+    if (currentSiteId != moreSite.id && similarSiteCount < 10) {
       var moreSiteLogo = moreSite.logo ? moreSite.logo.src : '';
       var similarSiteItemClass = 'similar_site_item';
 
@@ -782,7 +782,8 @@ function getPopupSimilarSites(category, currentSiteId) {
         siteHasVideo = ' has_video';
       }
 
-      similarHtml += '<div class="' + similarSiteItemClass + ' ' + siteHasVideo + '" ' + similarSiteVideo + '>' + '<div class="similar_site_item_inner">' + '<a class="similar_site_item_thumb" href="' + moreSite.link + '" style="background-image: url(' + moreSite.banner_image + ')"></a>' + '<div class="similar_site_item_content">' + '<div class="title">' + moreSite.name + '</div>' + '<p>' + moreSite.tagline + ' <a class="readmore" href="' + moreSite.link + '">Read More</a></p>' + '</div>' + '<div class="similar_site_item_buttons">' + '<a class="visit_site list__specification-read nav_link" href="' + moreSite.url + '" target="_blank">VISIT WEBSITE</a>' + '<a class="read_review list__specification-visit nav_link" href="' + moreSite.link + '">READ REVIEW</a>' + '</div>' + '</div>' + '</div>';
+      similarHtml += '<div class="' + similarSiteItemClass + ' ' + siteHasVideo + '" ' + similarSiteVideo + '>' + '<div class="similar_site_item_inner">' + '<a class="similar_site_item_link" href="' + moreSite.link + '" hreflang="' + currentLang + '">' + '<div class="similar_site_item_thumb" style="background-image: url(' + moreSite.banner_image + ')"></div>' + '<div class="similar_site_item_content">' + '<h3 class="title">' + moreSite.name + '</h3>' + //'<p>'+moreSite.tagline+' <a class="readmore" href="'+moreSite.link+'">Read More</a></p>'+
+      '<p>' + moreSite.tagline + ' <span>Read More</span></p>' + '</div>' + '</a>' + '<div class="similar_site_item_buttons">' + '<a class="visit_site list__specification-read nav_link" href="' + moreSite.url + '" target="_blank">VISIT WEBSITE</a>' + '<a class="read_review list__specification-visit nav_link" href="' + moreSite.link + '"  hreflang="' + currentLang + '">READ REVIEW</a>' + '</div>' + '</div>' + '</div>';
       similarSiteCount++;
     }
   });
@@ -3050,7 +3051,7 @@ var ajaxAdminEndpoint = '/wp-admin/admin-ajax.php';
     			}
     		}
     	}, false);
-    		cGrid.addEventListener('mouseout', function(ev) {
+    			cGrid.addEventListener('mouseout', function(ev) {
     		const _ev = ev.target;
     		if(_ev){
     			console.log(_ev.classList);
