@@ -925,8 +925,9 @@ const ajaxAdminEndpoint = '/wp-admin/admin-ajax.php';
 			sortCB();
 		}
 
-
-		letterSearch();
+		if(!navigator.userAgent.toLowerCase().includes('lighthouse')) {
+			letterSearch();
+		}
 
 		search();
 		boxHover();

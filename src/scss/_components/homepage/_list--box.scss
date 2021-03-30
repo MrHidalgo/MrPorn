@@ -16,6 +16,8 @@
 	background-size: cover;
 	backface-visibility: hidden;
 	transform-origin: center;
+	overflow: hidden;
+
 	@include transition(width, height);
 	@include adaptive(1279) {
 		width: 195px;
@@ -49,10 +51,21 @@
 		}
 	}
 
+	&__img{
+		position: absolute;
+		width: 100%;
+		min-height: 100%;
+		object-fit: cover;
+	}
+
 	.is-hover & {
 		z-index: 100;
 		width: 350px;
 		height: 260px;
+
+		.list__box__img{
+		}
+
 		@include transition(width, height);
 		transition-delay: 0.001s;
 

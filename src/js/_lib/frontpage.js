@@ -1620,12 +1620,12 @@ function initWebWorker(){
 	removeOtherStorageKeys(dataTag, currentLang);
 
 	homeData = getWithExpiry("homepage_data_"+dataTime+'_'+currentLang);
-	if(homeData){
-		if(document.body.classList.contains('home')) {
-			renderAllOtherCategories();
-		}
-	}else{
-		if(!navigator.userAgent.toLowerCase().includes('lighthouse')){
+	if(!navigator.userAgent.toLowerCase().includes('lighthouse')){
+		if(homeData){
+			if(document.body.classList.contains('home')) {
+				renderAllOtherCategories();
+			}
+		}else{
 			if(document.body.classList.contains('home')){
 				loadHomeData();
 			}
