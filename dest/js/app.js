@@ -993,9 +993,7 @@ var boxHover = function boxHover() {
         swiperSlides[i].removeEventListener('touchend', onSlideTouchEnd);
         swiperSlides[i].addEventListener('touchend', onSlideTouchEnd, false);
         swiperSlides[i].removeEventListener('touchstart', onSlideTouchStart);
-        swiperSlides[i].addEventListener('touchstart', onSlideTouchStart, {
-          passive: true
-        }); //swiperSlides[i].removeEventListener('touchmove', onSlideTouchMove);
+        swiperSlides[i].addEventListener('touchstart', onSlideTouchStart, false); //swiperSlides[i].removeEventListener('touchmove', onSlideTouchMove);
         //swiperSlides[i].addEventListener('touchmove', onSlideTouchMove, false);
       } else {
         swiperSlides[i].removeEventListener('mouseleave', onSlideLeave);
@@ -1855,6 +1853,90 @@ var markLikesDislikes = function markLikesDislikes() {
     }
   });
 };
+
+(function () {
+  var FX = {
+    easing: {
+      linear: function linear(progress) {
+        return progress;
+      },
+      quadratic: function quadratic(progress) {
+        return Math.pow(progress, 2);
+      },
+      swing: function swing(progress) {
+        return 0.5 - Math.cos(progress * Math.PI) / 2;
+      },
+      circ: function circ(progress) {
+        return 1 - Math.sin(Math.acos(progress));
+      },
+      back: function back(progress, x) {
+        return Math.pow(progress, 2) * ((x + 1) * progress - x);
+      },
+      bounce: function bounce(progress) {
+        for (var a = 0, b = 1, result; 1; a += b, b /= 2) {
+          if (progress >= (7 - 4 * a) / 11) {
+            return -Math.pow((11 - 6 * a - 11 * progress) / 4, 2) + Math.pow(b, 2);
+          }
+        }
+      },
+      elastic: function elastic(progress, x) {
+        return Math.pow(2, 10 * (progress - 1)) * Math.cos(20 * Math.PI * x / 3 * progress);
+      }
+    },
+    animate: function animate(options) {
+      var start = new Date();
+      var id = setInterval(function () {
+        var timePassed = new Date() - start;
+        var progress = timePassed / options.duration;
+
+        if (progress > 1) {
+          progress = 1;
+        }
+
+        options.progress = progress;
+        var delta = options.delta(progress);
+        options.step(delta);
+
+        if (progress == 1) {
+          clearInterval(id);
+
+          if (options.complete) {
+            options.complete();
+          }
+        }
+      }, options.delay || 10);
+    },
+    fadeOut: function fadeOut(element, options) {
+      var to = 1;
+      this.animate({
+        duration: options.duration,
+        delta: function delta(progress) {
+          progress = this.progress;
+          return FX.easing.swing(progress);
+        },
+        complete: options.complete,
+        step: function step(delta) {
+          element.style.opacity = to - delta;
+        }
+      });
+    },
+    fadeIn: function fadeIn(element, options) {
+      var to = 0;
+      this.animate({
+        duration: options.duration,
+        delta: function delta(progress) {
+          progress = this.progress;
+          return FX.easing.swing(progress);
+        },
+        complete: options.complete,
+        step: function step(delta) {
+          element.style.opacity = to + delta;
+        }
+      });
+    }
+  };
+  window.FX = FX;
+})();
 /**
  * @name initHamburger
  *
@@ -2969,7 +3051,7 @@ var ajaxAdminEndpoint = '/wp-admin/admin-ajax.php';
     			}
     		}
     	}, false);
-    		cGrid.addEventListener('mouseout', function(ev) {
+    			cGrid.addEventListener('mouseout', function(ev) {
     		const _ev = ev.target;
     		if(_ev){
     			console.log(_ev.classList);
@@ -3577,21 +3659,18 @@ var ajaxAdminEndpoint = '/wp-admin/admin-ajax.php';
 
     letterSearch();
     search();
-    dataTime = document.querySelector('meta[name="data_time"]').content;
+    boxHover(); //		boxMore();
 
-    if (document.body.classList.contains('home')) {
-      boxHover();
-      videoToggle();
-      skipModal();
-      toggleMoreBox();
-      initWebWorker();
-      getLikesAndDislikes();
-    } //		boxMore();
-    //listIndicator();
+    videoToggle(); //listIndicator();
     //detailsToggleAction();
-    // ==========================================
+
+    skipModal();
+    toggleMoreBox(); // ==========================================
     //loadHomeData();
 
+    dataTime = document.querySelector('meta[name="data_time"]').content;
+    initWebWorker();
+    getLikesAndDislikes();
   };
 
   var onWindowBlur = function onWindowBlur() {

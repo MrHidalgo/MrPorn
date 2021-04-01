@@ -936,33 +936,24 @@ const ajaxAdminEndpoint = '/wp-admin/admin-ajax.php';
 		letterSearch();
 
 		search();
-
-		dataTime = document.querySelector('meta[name="data_time"]').content;
-
-		if(document.body.classList.contains('home')){
-			boxHover();
-			videoToggle();
-			skipModal();
-			toggleMoreBox();
-			initWebWorker();
-
-			getLikesAndDislikes();
-		}
-
+		boxHover();
 
 //		boxMore();
 
 
-
+		videoToggle();
 		//listIndicator();
 		//detailsToggleAction();
-
+		skipModal();
+		toggleMoreBox();
 		// ==========================================
 
 		//loadHomeData();
+		dataTime = document.querySelector('meta[name="data_time"]').content;
 
+		initWebWorker();
 
-
+		getLikesAndDislikes();
 
 	};
 
