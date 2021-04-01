@@ -8,6 +8,7 @@ const build = (done) => {
     'scss',
     'pug',
     'js',
+		'js_home',
     'fonts',
 		'iconfont',
     'spritePNG',
