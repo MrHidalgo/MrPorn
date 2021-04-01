@@ -951,7 +951,7 @@ const boxHover = () => {
 				swiperSlides[i].addEventListener('touchend', onSlideTouchEnd, false);
 
 				swiperSlides[i].removeEventListener('touchstart', onSlideTouchStart);
-				swiperSlides[i].addEventListener('touchstart', onSlideTouchStart, false);
+				swiperSlides[i].addEventListener('touchstart', onSlideTouchStart, {passive: true});
 
 				//swiperSlides[i].removeEventListener('touchmove', onSlideTouchMove);
 				//swiperSlides[i].addEventListener('touchmove', onSlideTouchMove, false);
