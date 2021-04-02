@@ -11,6 +11,7 @@ const watch = (done) => {
 		'scss:watch',
 		'pug:watch',
 		'js:watch',
+		'js_home:watch',
 		'fonts:watch',
 		'iconfont:watch',
 		'spritePNG:watch',

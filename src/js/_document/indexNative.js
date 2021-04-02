@@ -42,6 +42,37 @@ const ajaxAdminEndpoint = '/wp-admin/admin-ajax.php';
  * ===================================
  */
 
+function initWebWorker(){
+
+	let currentLang = document.documentElement.getAttribute('lang');
+	let dataTag = "homepage_data_"+dataTime+'_'+currentLang;
+
+	removeOtherStorageKeys(dataTag, currentLang);
+
+	homeData = getWithExpiry("homepage_data_"+dataTime+'_'+currentLang);
+	if(homeData){
+		if(document.body.classList.contains('home')) {
+			renderAllOtherCategories();
+		}
+	}else{
+		if(!navigator.userAgent.toLowerCase().includes('lighthouse')){
+			if(document.body.classList.contains('home')){
+				loadHomeData();
+			}
+		}
+	}
+}
+function removeOtherStorageKeys(dataTime, currentLang){
+	let homeDataKey = "homepage_data_"+dataTime+'_'+currentLang;
+	for (var key in localStorage){
+		if(key.includes('homepage_data_')){
+			if(homeDataKey!=key){
+				localStorage.removeItem(key);
+			}
+		}
+	}
+}
+
 
 (function () {
 	/**
@@ -146,6 +177,8 @@ const ajaxAdminEndpoint = '/wp-admin/admin-ajax.php';
 				if(document.querySelector('[video-js]')){
 					playPause(document.querySelector('[video-js]'));
 				}
+			}else if(_ev.closest('.show_more_sites_trigger')){
+				toggleMoreSimilarSites();
 			}else if(_ev.closest('.list__specification-close')){
 				closeBanner(_ev);
 			}else if(_ev.closest('.list__box-more')){
@@ -936,24 +969,32 @@ const ajaxAdminEndpoint = '/wp-admin/admin-ajax.php';
 		letterSearch();
 
 		search();
-		boxHover();
+
+		dataTime = document.querySelector('meta[name="data_time"]').content;
+		if(document.body.classList.contains('home')){
+			boxHover();
+			videoToggle();
+			//listIndicator();
+			//detailsToggleAction();
+			skipModal();
+			toggleMoreBox();
+			getLikesAndDislikes();
+		}
+
+
 
 //		boxMore();
 
 
-		videoToggle();
-		//listIndicator();
-		//detailsToggleAction();
-		skipModal();
-		toggleMoreBox();
+
 		// ==========================================
 
 		//loadHomeData();
-		dataTime = document.querySelector('meta[name="data_time"]').content;
+
 
 		initWebWorker();
 
-		getLikesAndDislikes();
+
 
 	};
 

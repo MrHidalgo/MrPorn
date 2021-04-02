@@ -19,6 +19,7 @@ task('js', (done) => {
 			configPath.src.js + '/*.js',
 			configPath.src.js + '/**/*.js',
 			'!' + configPath.src.js + '/**/_**.js',
+			'!' + configPath.src.js + '/**/frontpage.js',
 		])
 		.pipe(plumber(configOption.pipeBreaking.err))
 
@@ -34,12 +35,39 @@ task('js', (done) => {
 		.pipe(dest(configPath.dest.js))
 });
 
+task('js_home', (done) => {
+	return src([
+		configPath.src.js + '/*.js',
+		configPath.src.js + '/**/*.js',
+		'!' + configPath.src.js + '/**/_**.js',
+	])
+		.pipe(plumber(configOption.pipeBreaking.err))
+
+		.pipe(order([
+			"*",
+			"_lib/**",
+			"_frontpage/**",
+			"_window/**",
+			"_document/**",
+		]))
+		.pipe(concat('frontpage.js'))
+		.pipe(babel(configOption.es6))
+		.pipe(plumber.stop())
+		.pipe(dest(configPath.dest.js))
+});
+
 
 /**
  * @description Gulp Javascript watch - keeps track of changes in files.
  */
 task('js:watch', (done) => {
   watch(configPath.src.js + '/**', series('js'));
+
+	return done();
+});
+
+task('js_home:watch', (done) => {
+	watch(configPath.src.js + '/**', series('js'));
 
 	return done();
 });

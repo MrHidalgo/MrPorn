@@ -945,15 +945,15 @@
 		margin-bottom: 20px;
 	}
 
-	.similar_site_list{
-		counter-reset: number 0;
-	}
+
 
 	.similar_site_item{
 		display: flex;
 		align-items: center;
 		padding: 15px 15px;
 		border-bottom: 3px solid #1e1c1d;
+
+
 
 		&.hover{
 			background: #272628;
@@ -1029,6 +1029,53 @@
 		}
 	}
 
+	.similar_site_list{
+		counter-reset: number 0;
+
+		&.show_10{
+			.similar_site_item:nth-child(n+11){
+				display: none;
+			}
+		}
+
+		&.show_20{
+			.similar_site_item:nth-child(n+21){
+				display: none;
+			}
+		}
+		&.show_30{
+			.similar_site_item:nth-child(n+31){
+				display: none;
+			}
+		}
+		&.show_40{
+			.similar_site_item:nth-child(n+41){
+				display: none;
+			}
+		}
+	}
+
+	.show_more_sites{
+		text-align: center;
+		padding-top: 15px;
+
+		button{
+			margin: 0 auto;
+			background: transparent;
+			border: none;
+			cursor: pointer;
+
+			&:hover, &:focus{
+				background: transparent;
+				border: none;
+			}
+
+			i:before{
+				transform: rotateZ(-90deg);
+				color: #fff;
+			}
+		}
+	}
 
 	#other_categories.more_terms{
 		background: transparent;
