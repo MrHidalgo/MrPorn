@@ -632,6 +632,11 @@ function getPopupSimilarSites(category, currentSiteId){
 				similarSiteItemClass += ' hover';
 			}
 
+			let siteTagLine = moreSite.tagline;
+			if(siteTagLine){
+				siteTagLine = siteTagLine.substr(0, 180);
+			}
+
 			let bannerVideoPoster = moreSite.banner_video_poster;
 			let bannerVideo = moreSite.banner_video;
 
@@ -649,7 +654,7 @@ function getPopupSimilarSites(category, currentSiteId){
 				'<div class="similar_site_item_content">' +
 				'<h3 class="title">'+moreSite.name+'</h3>'+
 				//'<p>'+moreSite.tagline+' <a class="readmore" href="'+moreSite.link+'">Read More</a></p>'+
-				'<p>'+moreSite.tagline+' <span>Read More</span></p>'+
+				'<p>'+siteTagLine+'... <span>Read More</span></p>'+
 				'</div>'+
 				'</a>' +
 
@@ -1008,12 +1013,12 @@ const boxHover = () => {
 				swiperSlides[i].addEventListener('mouseenter', onSlideEnter, false);
 			}
 
-			if(swiperSlides[i].querySelector('.list__box-more')){
+			/*if(swiperSlides[i].querySelector('.list__box-more')){
 				swiperSlides[i].querySelector('.list__box-more').removeEventListener('mouseover', onShowBannerEnter);
 				swiperSlides[i].querySelector('.list__box-more').addEventListener('mouseover', onShowBannerEnter, false);
 
 				swiperSlides[i].querySelector('.list__box-more').addEventListener('mouseout', onShowBannerLeave, false);
-			}
+			}*/
 
 			swiperSlides[i].setAttribute('data-init', '1');
 

@@ -1057,17 +1057,30 @@
 
 	.show_more_sites{
 		text-align: center;
+		position: relative;
 		padding-top: 15px;
+		margin-top: 15px;
+
+		&:before{
+			display: block;
+			content: ' ';
+			border-top: 2px solid #666;
+		}
 
 		button{
+			position: absolute;
+			top: 0;
 			margin: 0 auto;
-			background: transparent;
-			border: none;
+			background: #151314;
+			border: 1px solid #ccc;
 			cursor: pointer;
+			padding: 10px;
+			border-radius: 30px;
 
 			&:hover, &:focus{
-				background: transparent;
-				border: none;
+				border-radius: 30px;
+				outline-width: 0;
+				background: #333;
 			}
 
 			i:before{
