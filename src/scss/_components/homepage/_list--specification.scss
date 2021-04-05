@@ -42,6 +42,10 @@
 		scrollbar-width: none;  /* Firefox */
 
 		border: 3px solid #7d848e;
+
+		@include adaptive(767) {
+			border: none;
+		}
 	}
 
 	&.is-open {
@@ -80,6 +84,12 @@
 		overflow: auto;
 
 		@include transition(opacity, visibility, transform);
+
+		@include adaptive(767) {
+			opacity: 0;
+			transform: scale(0.5);
+			visibility: hidden;
+		}
 
 
 		&.is-open {

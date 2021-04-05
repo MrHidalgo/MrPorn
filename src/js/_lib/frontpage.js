@@ -185,51 +185,57 @@ function openSlideModal(e) {
 		return true;
 	}
 
-	// Get bounding box of triggering element
-	const triggerBBox = trigger.getBoundingClientRect();
-
-
-
-	// Temporarily show modal container to measure modal
-	dimmerRenderer.set('display', 'block').render();
-	modalContainerRenderer.set('display', 'flex').render();
-	modalRenderer.set('opacity', 0).render();
-
-
-
-	document.body.classList.add('opened');
-
-	// Get bounding box of final modal position
-	const modalBBox = modal.getBoundingClientRect();
-
 	if(!isMobileOrTablet){
-		getModalStartPoint(triggerBBox, modalBBox);
-		modalRenderer.set('opacity', 1).render();
-	}
-
-	// Get a function to tween the modal from the trigger
-	const modalTweener = generateModalTweener(triggerBBox, modalBBox);
-
-	// Fade in overlay
-	tween({
-		duration: 20,
-		onUpdate: (v) => dimmerRenderer.set('opacity', v)
-	}).start();
+		// Get bounding box of triggering element
+		const triggerBBox = trigger.getBoundingClientRect();
 
 
-	let modalDuration = 600;
-	if(isMobileOrTablet){
-		modalDuration = 200;
-	}
 
-	chain([
-		delay(75),
+		// Temporarily show modal container to measure modal
+		dimmerRenderer.set('display', 'block').render();
+		modalContainerRenderer.set('display', 'flex').render();
+		modalRenderer.set('opacity', 0).render();
+
+
+
+		document.body.classList.add('opened');
+
+		// Get bounding box of final modal position
+		const modalBBox = modal.getBoundingClientRect();
+
+		if(!isMobileOrTablet){
+			getModalStartPoint(triggerBBox, modalBBox);
+			modalRenderer.set('opacity', 1).render();
+		}
+
+		// Get a function to tween the modal from the trigger
+		const modalTweener = generateModalTweener(triggerBBox, modalBBox);
+
+		// Fade in overlay
 		tween({
-			duration: modalDuration,
-			ease: easing.easeOut,
-			onUpdate: modalTweener
-		})
-	]).start();
+			duration: 20,
+			onUpdate: (v) => dimmerRenderer.set('opacity', v)
+		}).start();
+
+
+		let modalDuration = 600;
+		if(isMobileOrTablet){
+			modalDuration = 200;
+		}
+
+		chain([
+			delay(75),
+			tween({
+				duration: modalDuration,
+				ease: easing.easeOut,
+				onUpdate: modalTweener
+			})
+		]).start();
+	}else{
+		if(modalContainer){
+			modalContainer.style.display = 'flex'
+		}
+	}
 }
 
 function closeComplete() {
@@ -254,10 +260,7 @@ function cancelModal(e) {
 
 	isClosing = true;
 
-	const triggerBBox = trigger.getBoundingClientRect();
-	const modalBBox = modal.getBoundingClientRect();
 
-	const modalTweener = generateModalTweener(triggerBBox, modalBBox, false);
 
 	if(document.querySelector('[video-js]')){
 		document.querySelector('[video-js]').pause();
@@ -265,20 +268,38 @@ function cancelModal(e) {
 
 	document.body.classList.remove('opened');
 
-	parallel([
-		tween({
-			from: dimmerRenderer.get('opacity'),
-			to: 0,
-			onUpdate: (v) => dimmerRenderer.set('opacity', v)
-		}),
-		tween({
-			from: modalRenderer.get('opacity'),
-			to: 0,
-			duration: 600,
-			onUpdate: modalTweener,
-			onComplete: closeComplete
-		})
-	]).start();
+
+	if(isMobileOrTablet){
+		var _isOpen = document.querySelector('.list__specification.is-open')
+		if(_isOpen){
+			_isOpen.classList.remove('is-open');
+		}
+		setTimeout(()=>{
+			modalContainer.style.display= 'none' ;
+		}, 400);
+	}else{
+		const triggerBBox = trigger.getBoundingClientRect();
+		const modalBBox = modal.getBoundingClientRect();
+
+		const modalTweener = generateModalTweener(triggerBBox, modalBBox, false);
+
+		parallel([
+			tween({
+				from: dimmerRenderer.get('opacity'),
+				to: 0,
+				onUpdate: (v) => dimmerRenderer.set('opacity', v)
+			}),
+			tween({
+				from: modalRenderer.get('opacity'),
+				to: 0,
+				duration: 600,
+				onUpdate: modalTweener,
+				onComplete: closeComplete
+			})
+		]).start();
+	}
+
+
 }
 
 const initHomeLazyLoad = () =>{
@@ -634,7 +655,11 @@ function getPopupSimilarSites(category, currentSiteId){
 
 			let siteTagLine = moreSite.tagline;
 			if(siteTagLine){
-				siteTagLine = siteTagLine.substr(0, 180);
+				if(window.innerWidth<1449){
+					siteTagLine = siteTagLine.substr(0, 115);
+				}else{
+					siteTagLine = siteTagLine.substr(0, 180);
+				}
 			}
 
 			let bannerVideoPoster = moreSite.banner_video_poster;
@@ -1000,7 +1025,7 @@ const boxHover = () => {
 				swiperSlides[i].addEventListener('touchend', onSlideTouchEnd, false);
 
 				swiperSlides[i].removeEventListener('touchstart', onSlideTouchStart);
-				swiperSlides[i].addEventListener('touchstart', onSlideTouchStart, false);
+				swiperSlides[i].addEventListener('touchstart', onSlideTouchStart, {passive: true});
 
 				//swiperSlides[i].removeEventListener('touchmove', onSlideTouchMove);
 				//swiperSlides[i].addEventListener('touchmove', onSlideTouchMove, false);
