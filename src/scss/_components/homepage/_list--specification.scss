@@ -101,8 +101,13 @@
 		&.zoom_box.is-open{
 			opacity: 0.5;
 			transform: scale(0.5);
+			visibility: hidden;
+			transition: opacity 0.15s ease-in-out, visibility 0.15s ease-in-out, transform 0.15s ease-in-out, -webkit-transform 0.15s ease-in-out;
 		}
-
+		&.skip{
+			animation-name: skipMobile;
+			animation-duration: 300ms;
+		}
 
 		&.is-snapshot {
 			opacity: 1;
@@ -1026,6 +1031,10 @@
 
 					span{
 						color: #4099f9;
+
+						&:hover, &:focus{
+							color: #fff;
+						}
 					}
 				}
 			}
@@ -1103,5 +1112,24 @@
 	#other_categories.more_terms{
 		background: transparent;
 		padding: 15px 0;
+	}
+}
+
+
+@keyframes skipMobile {
+	from {
+		opacity: 1;
+		visibility: visible;
+		transform: scale(1);
+	}
+	50% {
+		opacity: 0.5;
+		transform: scale(0.5);
+		visibility: hidden;
+	}
+	to {
+		opacity: 1;
+		visibility: visible;
+		transform: scale(1);
 	}
 }
