@@ -1174,6 +1174,7 @@ var clonedPopupBanner;
 var clonedPopupTimeout;
 var isLoggedUser = false;
 var dataTime;
+var videoPaused = false;
 var currentLang = 'en';
 
 if (!Element.prototype.matches) {
@@ -1654,6 +1655,11 @@ function removeOtherStorageKeys(dataTime, currentLang) {
     el.classList.remove('is-active');
     parentVideoNode.querySelector('[video-toggle-js]').classList.remove('is-active');
     playPause(parentVideoNode.querySelector('[video-js]'));
+    var videoJs = document.querySelector('[video-js]');
+
+    if (videoJs.paused) {
+      videoPaused = true;
+    }
   }
 
   function toggleVideoPlay(el) {

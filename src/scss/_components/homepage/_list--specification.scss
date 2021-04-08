@@ -60,7 +60,15 @@
 				height: 360px;
 			}
 			@include adaptive(1449.98){
+				//height: auto;
+			}
+			@include adaptive(1330){
+				height: 300px;
+				overflow: hidden;
+			}
+			@include adaptive(767) {
 				height: auto;
+				overflow: visible;
 			}
 		}
 	}
@@ -76,7 +84,7 @@
 		top: 0;
 		left: 0;
 		display: flex !important;
-		width: 100vw;
+		width: 100%;
 		//height: auto;
 		min-height: 100%;
 		border: none;
@@ -323,13 +331,15 @@
 		background-color: #151414;
 
 
-		@media screen and (min-width: 767px) {
+		@media screen and (min-width: 767.98px) {
 			display: flex;
 			flex-direction: column;
 			align-items: flex-start;
 			justify-content: center;
 			clip-path: polygon(0 0, 90% 0, 100% 100%, 0% 100%);
 		}
+
+
 
 		@include adaptive(1449.98){
 			flex: 1;
@@ -511,6 +521,7 @@
 
 		@include adaptive(1449.98){
 			max-height: 65px;
+			max-width: 95%;
 		}
 	}
 
@@ -556,6 +567,10 @@
 						display: none;
 					}
 				}
+				@include adaptive(900){
+					width: 30px;
+				}
+
 				@include adaptive(767) {
 					width: 30px;
 				}
@@ -685,6 +700,12 @@
 			width: 40px;
 			height: 40px;
 		}
+
+		@include adaptive(900){
+			width: 30px;
+			height: 30px;
+		}
+
 		@include adaptive(767) {
 			flex-direction: column;
 			width: 100%;
@@ -759,6 +780,10 @@
 			@include adaptive(1279) {
 				font-size: 20px;
 			}
+			@include adaptive(900){
+				font-size: 14px;
+			}
+
 			@include adaptive(767) {
 				font-size: 26px;
 			}
@@ -983,6 +1008,10 @@
 		font-size: 28px;
 		font-weight: 600;
 		margin-bottom: 20px;
+
+		@include adaptive(1330){
+			font-size: 22px;
+		}
 	}
 
 
@@ -1078,8 +1107,15 @@
 			.similar_site_item_buttons{
 				display: flex;
 
+				@include adaptive(900){
+					flex-direction: column;
+				}
+
 				a{
 					margin: 0 5px;
+					@include adaptive(900.98){
+						margin: 3px 5px;
+					}
 				}
 			}
 		}

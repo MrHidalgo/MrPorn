@@ -237,9 +237,7 @@ body.is_open{
 }
 
 
-body.opened{
-	overflow: hidden;
-}
+
 
 .modal-container {
 	position: fixed;
@@ -258,6 +256,17 @@ body.opened{
 		background: rgba(0, 0, 0, 0.6);
 	}
 }
+
+body.opened{
+	overflow: hidden;
+}
+
+body:not(.opened){
+	.modal-container{
+		overflow: hidden;
+	}
+}
+
 
 .overlay {
 	display: none;
@@ -288,10 +297,18 @@ body.opened{
 		width: 100%;
 	}
 	@include adaptive(1449.98){
-		max-width: 1350px;
+		max-width: 1330px;
 		/*left: 15px;
 		right: 15px;
 		width: auto;*/
+	}
+
+	@include adaptive(1330){
+		max-width: calc(100% - 20px);
+	}
+
+	@include adaptive(900){
+		margin-top: 40px;
 	}
 
 	@include adaptive(767) {

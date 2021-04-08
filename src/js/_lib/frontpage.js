@@ -185,7 +185,7 @@ function openSlideModal(e) {
 		return true;
 	}
 
-	if(!isMobileOrTablet){
+	if(window.innerWidth>767){
 		// Get bounding box of triggering element
 		const triggerBBox = trigger.getBoundingClientRect();
 
@@ -269,7 +269,7 @@ function cancelModal(e) {
 	document.body.classList.remove('opened');
 
 
-	if(isMobileOrTablet){
+	if(window.innerWidth<767){
 		var _isOpen = document.querySelector('.list__specification.is-open')
 		if(_isOpen){
 			_isOpen.classList.remove('is-open');
@@ -1701,6 +1701,8 @@ function onShowBannerLeave(__ev){
 
 function showBanner(_el, isSkip = false, target = false){
 
+	videoPaused = true;
+
 /*	if(true){
 		return;
 	}*/
@@ -1763,7 +1765,7 @@ function showBanner(_el, isSkip = false, target = false){
 		document.body.classList.remove('is_open');
 	}
 
-	if(window.innerWidth < 1024) {
+	if(window.innerWidth < 768) {
 
 		setTimeout(() => {
 			_parentNode.classList.add('is-open');
@@ -1816,7 +1818,7 @@ function onModalContainerScroll(e){
 				vidPlayer.pause();
 			}
 		}else{
-			if(vidPlayer.paused){
+			if(!videoPaused && vidPlayer.paused){
 				vidPlayer.play();
 			}
 		}

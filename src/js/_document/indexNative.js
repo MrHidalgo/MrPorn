@@ -10,6 +10,7 @@ let clonedPopupBanner;
 let clonedPopupTimeout;
 let isLoggedUser = false;
 let dataTime;
+let videoPaused = false;
 
 let currentLang = 'en';
 
@@ -547,7 +548,13 @@ function removeOtherStorageKeys(dataTime, currentLang){
 		el.classList.remove('is-active');
 		parentVideoNode.querySelector('[video-toggle-js]').classList.remove('is-active');
 
+
 		playPause(parentVideoNode.querySelector('[video-js]'));
+
+		let videoJs = document.querySelector('[video-js]');
+		if(videoJs.paused){
+			videoPaused = true;
+		}
 	}
 
 	function toggleVideoPlay(el){
