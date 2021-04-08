@@ -577,6 +577,11 @@ function renderSiteBottomBanner(category, index){
 
 		let siteUrl = siteItem.url;
 
+		let siteLink = siteItem.link;
+		if(siteItem.review_link){
+			siteLink = siteItem.review_link;
+		}
+
 		var bannerRight = '';
 		var bannerClass = '';
 
@@ -639,7 +644,7 @@ function renderSiteBottomBanner(category, index){
 			'<img class="list__specification-logo" src="'+siteLogo+'"/>'+
 			'<div class="list__specification-action" spec-actionNode-js>'+
 			'<div><a class="list__specification-visit nav_link" href="'+siteUrl+'" target="_blank">VISIT WEBSITE</a></div>'+
-			'<div><a class="list__specification-read nav_link" href="'+siteItem.link+'" hreflang="'+currentLang+'" target="_blank">READ REVIEW</a></div>'+
+			'<div><a class="list__specification-read nav_link" href="'+siteLink+'" hreflang="'+currentLang+'" target="_blank">READ REVIEW</a></div>'+
 			'<div class="list__specification-action-desc">'+
 			'<p>'+tagLIne+'</p>'+
 			'</div>'+
@@ -711,10 +716,15 @@ function getPopupSimilarSites(category, currentSiteId){
 			let siteTagLine = moreSite.tagline;
 			if(siteTagLine){
 				if(window.innerWidth<1449){
-					siteTagLine = siteTagLine.substr(0, 115);
+					siteTagLine = siteTagLine.substr(0, 130);
 				}else{
 					siteTagLine = siteTagLine.substr(0, 180);
 				}
+			}
+
+			let siteLink = moreSite.link;
+			if(moreSite.review_link){
+				siteLink = moreSite.review_link;
 			}
 
 			let bannerVideoPoster = moreSite.banner_video_poster;
@@ -729,7 +739,7 @@ function getPopupSimilarSites(category, currentSiteId){
 
 			similarHtml += '<div class="'+similarSiteItemClass+' '+siteHasVideo+'" '+similarSiteVideo+'>' +
 				'<div class="similar_site_item_inner">' +
-				'<a class="similar_site_item_link" href="'+moreSite.link+'" hreflang="'+currentLang+'">' +
+				'<a class="similar_site_item_link" href="'+siteLink+'" hreflang="'+currentLang+'">' +
 				'<div class="similar_site_item_thumb" style="background-image: url('+moreSite.banner_image+')"></div>'+
 				'<div class="similar_site_item_content">' +
 				'<h3 class="title">'+moreSite.name+'</h3>'+
@@ -740,7 +750,7 @@ function getPopupSimilarSites(category, currentSiteId){
 
 				'<div class="similar_site_item_buttons">' +
 				'<a class="visit_site list__specification-read nav_link" href="'+moreSite.url+'" target="_blank">VISIT WEBSITE</a>'+
-				'<a class="read_review list__specification-visit nav_link" href="'+moreSite.link+'"  hreflang="'+currentLang+'">READ REVIEW</a>'+
+				'<a class="read_review list__specification-visit nav_link" href="'+siteLink+'"  hreflang="'+currentLang+'">READ REVIEW</a>'+
 				'</div>'+
 				'</div>'+
 				'</div>';

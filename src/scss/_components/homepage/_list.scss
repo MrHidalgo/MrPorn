@@ -255,6 +255,7 @@ body.opened{
 
 	@include adaptive(1023) {
 		z-index: 110;
+		background: rgba(0, 0, 0, 0.6);
 	}
 }
 
@@ -286,11 +287,16 @@ body.opened{
 		max-width: 75%;
 		width: 100%;
 	}
+	@include adaptive(1449.98){
+		max-width: 1350px;
+		/*left: 15px;
+		right: 15px;
+		width: auto;*/
+	}
 
-	@include adaptive(1023) {
+	@include adaptive(767) {
 		background: transparent;
 		margin: 0;
-		width: 100%;
 		max-width: 100%;
 	}
 

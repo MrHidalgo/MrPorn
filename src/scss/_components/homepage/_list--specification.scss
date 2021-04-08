@@ -43,6 +43,10 @@
 
 		border: 3px solid #7d848e;
 
+		@include adaptive(1449.98){
+			height: auto;
+		}
+
 		@include adaptive(767) {
 			border: none;
 		}
@@ -51,17 +55,17 @@
 	&.is-open {
 		.list__specification__inner{
 			height: 322px;
-		}
-	}
 
-	@media screen and (min-width: 1450px) {
-		&.is-open {
-			.list__specification__inner {
+			@media screen and (min-width: 1450px) {
 				height: 360px;
+			}
+			@include adaptive(1449.98){
+				height: auto;
 			}
 		}
 	}
-	@include adaptive(1023) {
+	//@include adaptive(1023) {
+	@include adaptive(767) {
 		/*opacity: 0;
 		visibility: hidden;*/
 		opacity: 1;
@@ -150,7 +154,7 @@
 		display: flex;
 		width: 100%;
 		/*height: 100%;*/
-		@include adaptive(1023) {
+		@include adaptive(767) {
 			flex-direction: column;
 
 			/*min-height: 100%;*/
@@ -319,7 +323,7 @@
 		background-color: #151414;
 
 
-		@media screen and (min-width: 1023px) {
+		@media screen and (min-width: 767px) {
 			display: flex;
 			flex-direction: column;
 			align-items: flex-start;
@@ -327,11 +331,15 @@
 			clip-path: polygon(0 0, 90% 0, 100% 100%, 0% 100%);
 		}
 
+		@include adaptive(1449.98){
+			flex: 1;
+		}
+
 		@include adaptive(1279) {
 			width: 50%;
 			padding: 20px 40px 20px 20px;
 		}
-		@include adaptive(1023) {
+		@include adaptive(767) {
 			order: 3;
 			width: 100%;
 			/*clip-path: unset;
@@ -361,6 +369,11 @@
 		position: relative;
 		width: 100%;
 		max-width: calc(100% - 650px);
+
+		@include adaptive(1449.98){
+			flex: 1;
+		}
+
 		@include adaptive(1279) {
 			max-width: 50%;
 		}
@@ -385,7 +398,7 @@
 			height: 100%;
 			left: -65px;
 			right: 0;
-			@include adaptive(1023) {
+			@include adaptive(767) {
 				left: 0;
 				width: 100%;
 			}
@@ -445,13 +458,8 @@
 		display: flex;
 		cursor: pointer;
 
-		@include adaptive(1023) {
-			display: none;
-		}
 		@include adaptive(767) {
-			z-index: 1600;
-			top: 50%;
-			transform: translateY(-50%);
+			display: none;
 		}
 
 		.icon-font {
@@ -468,7 +476,7 @@
 		justify-content: center;
 		height: 70px;
 		padding: 5px 40px;
-		@include adaptive(1023) {
+		@include adaptive(767) {
 			display: flex;
 			min-height: 70px;
 		}
@@ -478,14 +486,14 @@
 			max-height: 100%;
 			margin-bottom: 0;
 
-			@include adaptive(1023) {
+			@include adaptive(767) {
 				max-width: 90%;
 			}
 		}
 
 		.list__specification-close {
 			display: none;
-			@include adaptive(1023) {
+			@include adaptive(767) {
 				display: flex;
 				top: 50%;
 				transform: translateY(-50%);
@@ -500,6 +508,10 @@
 		max-height: 120px;
 		height: auto;
 		margin-bottom: 10px;
+
+		@include adaptive(1449.98){
+			max-height: 65px;
+		}
 	}
 
 	&-action {
@@ -512,7 +524,7 @@
 
 		> div {
 			@include transition(opacity, width, visibility, margin);
-			@include adaptive(1023) {
+			@include adaptive(767) {
 				&:nth-of-type(1),
 				&:nth-of-type(2) {
 					width: 50%;
@@ -544,14 +556,14 @@
 						display: none;
 					}
 				}
-				@include adaptive(1023) {
+				@include adaptive(767) {
 					width: 30px;
 				}
 			}
 
 			&.list__specification-action-desc {
 				display: none;
-				@include adaptive(1023) {
+				@include adaptive(767) {
 					display: flex;
 					padding-bottom: 10px;
 
@@ -569,7 +581,7 @@
 
 			&.list__specification-action-skip {
 				display: none;
-				@include adaptive(1023) {
+				@include adaptive(767) {
 					display: flex;
 				}
 			}
@@ -580,7 +592,7 @@
 				width: 0;
 				margin: 0 !important;
 				@include transition(opacity, width, visibility, margin);
-				@include adaptive(1023) {
+				@include adaptive(767) {
 					width: 0 !important;
 				}
 			}
@@ -590,7 +602,7 @@
 				@include adaptive(1279) {
 					margin-right: 5px;
 				}
-				@include adaptive(1023) {
+				@include adaptive(767) {
 					margin-right: 0;
 				}
 			}
@@ -615,13 +627,12 @@
 		&:focus{
 			color: #fff;
 		}
-
-		@include adaptive(1279) {
+		@include adaptive(1449.98){
 			min-width: 100px;
 			height: 40px;
-			font-size: 12px;
+			font-size: 11px;
 		}
-		@include adaptive(1023) {
+		@include adaptive(767) {
 			min-width: 150px;
 			height: 48px;
 			font-size: 15px;
@@ -674,7 +685,7 @@
 			width: 40px;
 			height: 40px;
 		}
-		@include adaptive(1023) {
+		@include adaptive(767) {
 			flex-direction: column;
 			width: 100%;
 			height: 50px;
@@ -704,7 +715,7 @@
 			background-color: rgba(#000, 0.85);
 			transform: scale(1.05);
 			transition: all 0.4s ease-in-out;
-			@include adaptive(1023) {
+			@include adaptive(767) {
 				background-color: transparent;
 				transform: scale(1);
 			}
@@ -713,13 +724,13 @@
 		&.is-active {
 			border-color: rgb(197, 240, 21);
 			transition: all 0.4s ease-in-out;
-			@include adaptive(1023) {
+			@include adaptive(767) {
 				border-color: transparent;
 			}
 
 			&:after {
 				animation-name: flashBlinking;
-				@include adaptive(1023) {
+				@include adaptive(767) {
 					animation: unset;
 				}
 			}
@@ -748,7 +759,7 @@
 			@include adaptive(1279) {
 				font-size: 20px;
 			}
-			@include adaptive(1023) {
+			@include adaptive(767) {
 				font-size: 26px;
 			}
 		}
@@ -759,7 +770,7 @@
 			text-transform: uppercase;
 			font-size: 8px;
 			color: #ffffff;
-			@include adaptive(1023) {
+			@include adaptive(767) {
 				display: flex;
 			}
 		}
@@ -800,7 +811,7 @@
 				opacity: 0;
 				visibility: hidden;
 				position: absolute;
-				@include adaptive(1023) {
+				@include adaptive(767) {
 					top: 3px;
 				}
 			}
@@ -812,7 +823,17 @@
 		max-width: 460px;
 		color: #8e8c8c;
 		font-size: 14px;
-		@include adaptive(1023) {
+
+		@include adaptive(1449.98){
+			font-size: 13px;
+			text-overflow: ellipsis;
+			display: -webkit-box;
+			-webkit-line-clamp: 4;
+			-webkit-box-orient: vertical;
+			overflow: hidden;
+		}
+
+		@include adaptive(767) {
 			display: none;
 		}
 	}
@@ -831,7 +852,7 @@
 		border-radius: 50%;
 		background-color: rgba(#343434, 0.43);
 		@include transition(transform, opacity, visibility);
-		@include adaptive(1023) {
+		@include adaptive(767) {
 			width: 115px;
 			height: 115px;
 		}
@@ -852,7 +873,7 @@
 			left: 5px;
 			color: #ffffff;
 			font-size: 57px;
-			@include adaptive(1023) {
+			@include adaptive(767) {
 				font-size: 45px;
 			}
 		}
@@ -888,7 +909,7 @@
 		flex: 1;
 		min-height: 1px;
 		max-height: 100%;
-		@include adaptive(1023) {
+		@include adaptive(767) {
 			display: flex;
 		}
 		@include adaptive(767) {
@@ -947,6 +968,10 @@
 	background: #151314;
 	padding: 25px 50px 15px;
 
+	@include adaptive(1449.98){
+		padding: 25px 15px 15px;
+	}
+
 	@include adaptive(767) {
 		display: none;
 	}
@@ -968,7 +993,9 @@
 		padding: 15px 15px;
 		border-bottom: 3px solid #1e1c1d;
 
-
+		@include adaptive(1449.98){
+			padding: 15px 10px 15px 7px;
+		}
 
 		&.hover{
 			background: #272628;
@@ -1012,6 +1039,11 @@
 				border-radius: 5px;
 				overflow: hidden;
 
+				@include adaptive(1449.98){
+					height: 130px;
+					width: 200px;
+				}
+
 				video{
 					height: 100%;
 				}
@@ -1024,17 +1056,22 @@
 					color: #fff;
 					font-weight: 600;
 					font-size: 24px;
+
+					@include adaptive(1449.98){
+						font-size: 18px;
+						margin-bottom: 10px;
+					}
 				}
 				p{
 					color: #6d6d78;
 					font-size: 14px;
 
+					@include adaptive(1449.98){
+						font-size: 12px;
+					}
+
 					span{
 						color: #4099f9;
-
-						&:hover, &:focus{
-							color: #fff;
-						}
 					}
 				}
 			}

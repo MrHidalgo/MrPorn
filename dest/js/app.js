@@ -1321,7 +1321,7 @@ function removeOtherStorageKeys(dataTime, currentLang) {
         }
       } else if (_ev.closest('.show_more_sites_trigger')) {
         toggleMoreSimilarSites();
-      } else if (_ev.closest('.read_more') | _ev.closest('.list__specification-more')) {} else if (_ev.closest('.list__specification-close')) {
+      } else if (_ev.classList.contains('read_more') | _ev.closest('.read_more') | _ev.closest('.list__specification-more')) {} else if (_ev.closest('.list__specification-close')) {
         closeBanner(_ev);
       } else if (_ev.closest('.list__box-more')) {
         showBanner(_ev, false, ev); //openSlideModal(ev);
