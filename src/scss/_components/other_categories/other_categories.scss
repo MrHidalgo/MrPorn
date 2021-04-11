@@ -108,7 +108,7 @@
 				z-index: 5;
 				line-height: 17px;
 
-				@include adaptive(1330){
+				@include respond('max-large'){
 					font-size: 12px;
 				}
 
@@ -136,7 +136,7 @@
 					-webkit-line-clamp: 1;
 					-webkit-box-orient: vertical;
 
-					@include adaptive(1330){
+					@include respond('max-large'){
 						font-size: 10px;
 					}
 

@@ -59,9 +59,6 @@
 			@media screen and (min-width: 1450px) {
 				height: 360px;
 			}
-			@include adaptive(1449.98){
-				//height: auto;
-			}
 			@include adaptive(1330){
 				height: 300px;
 				overflow: hidden;
@@ -642,7 +639,7 @@
 		&:focus{
 			color: #fff;
 		}
-		@include adaptive(1449.98){
+		@include respond('max-large'){
 			min-width: 100px;
 			height: 40px;
 			font-size: 11px;
@@ -849,7 +846,7 @@
 		color: #8e8c8c;
 		font-size: 14px;
 
-		@include adaptive(1449.98){
+		@include adaptive(1023){
 			font-size: 13px;
 			text-overflow: ellipsis;
 			display: -webkit-box;
@@ -993,7 +990,7 @@
 	background: #151314;
 	padding: 25px 50px 15px;
 
-	@include adaptive(1449.98){
+	@include respond('max-large'){
 		padding: 25px 15px 15px;
 	}
 
@@ -1009,7 +1006,7 @@
 		font-weight: 600;
 		margin-bottom: 20px;
 
-		@include adaptive(1330){
+		@include respond('max-large'){
 			font-size: 22px;
 		}
 	}
@@ -1022,7 +1019,7 @@
 		padding: 15px 15px;
 		border-bottom: 3px solid #1e1c1d;
 
-		@include adaptive(1449.98){
+		@include respond('max-large'){
 			padding: 15px 10px 15px 7px;
 		}
 
@@ -1053,6 +1050,7 @@
 			.similar_site_item_link{
 				display: flex;
 				align-items: center;
+				flex: 1;
 			}
 
 			.similar_site_item_thumb{
@@ -1068,7 +1066,7 @@
 				border-radius: 5px;
 				overflow: hidden;
 
-				@include adaptive(1449.98){
+				@include respond('max-large'){
 					height: 130px;
 					width: 200px;
 				}
@@ -1086,7 +1084,7 @@
 					font-weight: 600;
 					font-size: 24px;
 
-					@include adaptive(1449.98){
+					@include respond('max-large'){
 						font-size: 18px;
 						margin-bottom: 10px;
 					}
@@ -1095,8 +1093,8 @@
 					color: #6d6d78;
 					font-size: 14px;
 
-					@include adaptive(1449.98){
-						font-size: 12px;
+					@include respond('max-large'){
+						font-size: 13px;
 					}
 
 					span{

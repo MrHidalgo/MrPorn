@@ -433,17 +433,13 @@ function removeOtherStorageKeys(dataTime, currentLang){
 
 	};
 
-	function playPause11(vid) {
-		vid.pause();
-		vid.currentTime = 0;
-		vid.load();
-	}
-
 	function playPause(vid) {
 		if (vid.paused) {
+			videoPaused = false;
 			vid.play();
 		} else {
 			vid.pause();
+			videoPaused = true;
 		}
 	}
 
@@ -809,12 +805,11 @@ function removeOtherStorageKeys(dataTime, currentLang){
 			elParent = document.querySelector('.list__box-wrapper[data-name="category_'+elCategory+'"]');
 
 			var currentCategory = el.dataset.category;
-
-
-		if(window.innerWidth < 1024) {
 			if(document.querySelector('[video-js]')){
 				document.querySelector('[video-js]').pause();
 			}
+
+		if(window.innerWidth < 1024) {
 			cloneCurrentPopupBanner();
 		}
 

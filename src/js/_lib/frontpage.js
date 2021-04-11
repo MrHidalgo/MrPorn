@@ -185,6 +185,8 @@ function openSlideModal(e) {
 		return true;
 	}
 
+	document.body.classList.add('opened');
+
 	if(window.innerWidth>767){
 		// Get bounding box of triggering element
 		const triggerBBox = trigger.getBoundingClientRect();
@@ -198,7 +200,7 @@ function openSlideModal(e) {
 
 
 
-		document.body.classList.add('opened');
+
 
 		// Get bounding box of final modal position
 		const modalBBox = modal.getBoundingClientRect();
@@ -715,8 +717,8 @@ function getPopupSimilarSites(category, currentSiteId){
 
 			let siteTagLine = moreSite.tagline;
 			if(siteTagLine){
-				if(window.innerWidth<1449){
-					siteTagLine = siteTagLine.substr(0, 130);
+				if(window.innerWidth<1366.98){
+					siteTagLine = siteTagLine.substr(0, 116);
 				}else{
 					siteTagLine = siteTagLine.substr(0, 180);
 				}

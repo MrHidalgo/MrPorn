@@ -296,12 +296,9 @@ body:not(.opened){
 		max-width: 75%;
 		width: 100%;
 	}
-	@include adaptive(1449.98){
-		max-width: 1330px;
-		/*left: 15px;
-		right: 15px;
-		width: auto;*/
-	}
+	//@include adaptive(1449.98){
+	//	max-width: 1330px;
+	//}
 
 	@include adaptive(1330){
 		max-width: calc(100% - 20px);
