@@ -153,9 +153,6 @@ function removeOtherStorageKeys(dataTime, currentLang){
 				//ev.preventDefault();
 			}
 
-			console.log(_ev);
-
-
 			if(!_ev.closest('[sort-node-js]')){
 				let openSort = document.querySelector('.sort__drop.is-open');
 				if(openSort){
@@ -184,7 +181,7 @@ function removeOtherStorageKeys(dataTime, currentLang){
 				toggleMoreSimilarSites();
 			}else if(_ev.classList.contains('read_more') | _ev.closest('.read_more') | _ev.closest('.list__specification-more')){
 
-			}else if(_ev.closest('.list__specification-close')){
+			}else if( _ev.classList.contains('list__specification-close') | _ev.parentNode.classList.contains('list__specification-close')){
 				closeBanner(_ev);
 			}else if(_ev.closest('.list__box-more')){
 				showBanner(_ev, false, ev);
@@ -237,7 +234,7 @@ function removeOtherStorageKeys(dataTime, currentLang){
 			}else if(_ev.classList.contains('hdrfavttl')){
 				ev.preventDefault();
 				document.querySelector('.mobile_fav_link').classList.toggle('open');
-			}else if(_ev.closest('.close-modal')){
+			}else if(_ev.classList.contains('close-modal') | _ev.parentNode.classList.contains('close-modal')){
 				if(!isMobileOrTablet){
 					cancelModal(ev);
 				}
