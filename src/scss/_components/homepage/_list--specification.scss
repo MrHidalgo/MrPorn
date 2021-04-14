@@ -340,6 +340,7 @@
 
 		@include adaptive(1449.98){
 			flex: 1;
+			padding-right: 25px;
 		}
 
 		@include adaptive(1279) {
@@ -378,7 +379,7 @@
 		max-width: calc(100% - 650px);
 
 		@include adaptive(1449.98){
-			flex: 1;
+			flex: 0.95;
 		}
 
 		@include adaptive(1279) {
@@ -403,11 +404,13 @@
 			/*left: -10%;
 			width: calc(100% + 10%);*/
 			height: 100%;
-			left: -65px;
+			left: -75px;
 			right: 0;
 			@include adaptive(767) {
 				left: 0;
 				width: 100%;
+				top: -2px;
+				height: 105%;
 			}
 		}
 

@@ -1,17 +1,21 @@
 .category.search_form{
-	max-height: 54px;
+	max-height: 34px;
 
 	@include adaptive(767) {
 		height: 54px;
+		max-height: 54px;
 	}
 	@include respond('mobile_landscape'){
 		height: 54px;
+		max-height: 54px;
 	}
 	@include respond('iphone_x_landscape'){
 		height: 54px;
+		max-height: 54px;
 	}
 	@include respond('iphone_8_landscape'){
 		height: 54px;
+		max-height: 54px;
 	}
 }
 

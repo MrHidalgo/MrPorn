@@ -21,8 +21,16 @@
 		font-size: 36px;
 		padding: 10px 30px;
 
+		h1{
+			font-size: 36px;
+		}
+
 		@include respond('ipad'){
 			font-size: 30px;
+
+			h1{
+				font-size: 30px;
+			}
 		}
 
 		p{
@@ -78,6 +86,10 @@
 			margin: 0;
 			font-size: 16px;
 			line-height: 48px;
+
+			h1{
+				font-size: 16px;
+			}
 		}
 	}
 }

@@ -719,6 +719,8 @@ function getPopupSimilarSites(category, currentSiteId){
 			if(siteTagLine){
 				if(window.innerWidth<1366.98){
 					siteTagLine = siteTagLine.substr(0, 116);
+				}else if(window.innerWidth<1441){
+					siteTagLine = siteTagLine.substr(0, 130);
 				}else{
 					siteTagLine = siteTagLine.substr(0, 180);
 				}
