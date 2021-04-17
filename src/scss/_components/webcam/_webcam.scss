@@ -7,6 +7,9 @@
 		margin-top: 130px;
 	}
 }
+.blue_heading.tags_title{
+	text-transform: uppercase;
+}
 .webcams_content{
 	background: #fff;
 	margin-top: -1px;
@@ -40,8 +43,16 @@
 		border: 1px solid #e5ebf2;
 		transition: color .3s,background .3s;
 
+		&.all_tags{
+			padding: 0;
+		}
+
 		&:hover{
 			background-color: #1e559a;
+
+			a{
+				color: #fff;
+			}
 		}
 
 		&.wide{

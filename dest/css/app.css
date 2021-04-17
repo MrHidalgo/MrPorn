@@ -2768,6 +2768,11 @@ strong {
 }
 
 /* line 7, src/scss/_shared/_common.scss */
+fieldset {
+  border: none;
+}
+
+/* line 11, src/scss/_shared/_common.scss */
 .copyright {
   display: -webkit-box;
   display: -webkit-flex;
@@ -2783,7 +2788,7 @@ strong {
           justify-content: center;
 }
 
-/* line 12, src/scss/_shared/_common.scss */
+/* line 16, src/scss/_shared/_common.scss */
 .copyright__text {
   text-align: center;
   font-size: 16px;
@@ -2791,18 +2796,18 @@ strong {
   line-height: 2.273;
 }
 
-/* line 18, src/scss/_shared/_common.scss */
+/* line 22, src/scss/_shared/_common.scss */
 .copyright__text a {
   color: #4099f9;
 }
 
-/* line 21, src/scss/_shared/_common.scss */
+/* line 25, src/scss/_shared/_common.scss */
 .copyright__text a:hover, .copyright__text a:focus {
   color: #4099f9;
 }
 
 @media screen and (max-width: 767px) {
-  /* line 12, src/scss/_shared/_common.scss */
+  /* line 16, src/scss/_shared/_common.scss */
   .copyright__text {
     font-size: 12px;
     line-height: 2;
@@ -2810,13 +2815,13 @@ strong {
 }
 
 @media screen and (max-width: 424px) {
-  /* line 12, src/scss/_shared/_common.scss */
+  /* line 16, src/scss/_shared/_common.scss */
   .copyright__text {
     font-size: 10px;
   }
 }
 
-/* line 36, src/scss/_shared/_common.scss */
+/* line 40, src/scss/_shared/_common.scss */
 .deIcon::before {
   content: ' ';
   width: 16px;
