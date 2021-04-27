@@ -601,6 +601,43 @@
 	}
 }
 
+
+.pirateC{
+	margin: 10px 0;
+	text-align: center;
+
+	span{
+		display: inline-block;
+		vertical-align: middle;
+	}
+
+	div{
+		display: inline-block;
+		vertical-align: middle;
+		font-size:22px;
+		font-weight: 400;
+		text-align: left;
+		color: #fff;
+		text-align: center;
+
+		@include adaptive(1230){
+			font-size:18px;
+			width: 90%;
+		}
+		@include adaptive(1110){
+			font-size:22px;
+			width: 90%;
+		}
+
+
+
+		a{
+			text-decoration: underline;
+			font-weight: 700;
+		}
+	}
+}
+
 .screen_shot{
 	@include adaptive(767){
 		margin-bottom: 15px;
@@ -1750,6 +1787,12 @@
 
 		&:hover, &:focus{
 			color: #337ab7;
+		}
+	}
+
+	.pirateC{
+		div{
+			color: rgb(51, 51, 51);
 		}
 	}
 }

@@ -388,9 +388,10 @@
   font-family: "iconFont";
   src: url("../fonts/iconFont.eot");
   src: url("../fonts/iconFont.eot?#iefix") format("eot"), url("../fonts/iconFont.woff2") format("woff2"), url("../fonts/iconFont.woff") format("woff"), url("../fonts/iconFont.ttf") format("truetype"), url("../fonts/iconFont.svg#iconFont") format("svg");
+  font-display: swap;
 }
 
-/* line 23, src/scss/_generated/_spriteFont.scss */
+/* line 24, src/scss/_generated/_spriteFont.scss */
 .icon-arrow-angle:before, .icon-close:before, .icon-delete:before, .icon-enter:before, .icon-key:before, .icon-left-arrow:before, .icon-like:before, .icon-moon:before, .icon-out:before, .icon-pause:before, .icon-play-button:before, .icon-point:before, .icon-search:before, .icon-sort:before, .icon-star-fill:before, .icon-star:before, .icon-sun:before {
   font-family: "iconFont", sans-serif;
   -webkit-font-smoothing: antialiased;
@@ -402,87 +403,87 @@
   text-transform: none;
 }
 
-/* line 86, src/scss/_generated/_spriteFont.scss */
+/* line 87, src/scss/_generated/_spriteFont.scss */
 .icon-arrow-angle:before {
   content: "";
 }
 
-/* line 86, src/scss/_generated/_spriteFont.scss */
+/* line 87, src/scss/_generated/_spriteFont.scss */
 .icon-close:before {
   content: "";
 }
 
-/* line 86, src/scss/_generated/_spriteFont.scss */
+/* line 87, src/scss/_generated/_spriteFont.scss */
 .icon-delete:before {
   content: "";
 }
 
-/* line 86, src/scss/_generated/_spriteFont.scss */
+/* line 87, src/scss/_generated/_spriteFont.scss */
 .icon-enter:before {
   content: "";
 }
 
-/* line 86, src/scss/_generated/_spriteFont.scss */
+/* line 87, src/scss/_generated/_spriteFont.scss */
 .icon-key:before {
   content: "";
 }
 
-/* line 86, src/scss/_generated/_spriteFont.scss */
+/* line 87, src/scss/_generated/_spriteFont.scss */
 .icon-left-arrow:before {
   content: "";
 }
 
-/* line 86, src/scss/_generated/_spriteFont.scss */
+/* line 87, src/scss/_generated/_spriteFont.scss */
 .icon-like:before {
   content: "";
 }
 
-/* line 86, src/scss/_generated/_spriteFont.scss */
+/* line 87, src/scss/_generated/_spriteFont.scss */
 .icon-moon:before {
   content: "";
 }
 
-/* line 86, src/scss/_generated/_spriteFont.scss */
+/* line 87, src/scss/_generated/_spriteFont.scss */
 .icon-out:before {
   content: "";
 }
 
-/* line 86, src/scss/_generated/_spriteFont.scss */
+/* line 87, src/scss/_generated/_spriteFont.scss */
 .icon-pause:before {
   content: "";
 }
 
-/* line 86, src/scss/_generated/_spriteFont.scss */
+/* line 87, src/scss/_generated/_spriteFont.scss */
 .icon-play-button:before {
   content: "";
 }
 
-/* line 86, src/scss/_generated/_spriteFont.scss */
+/* line 87, src/scss/_generated/_spriteFont.scss */
 .icon-point:before {
   content: "";
 }
 
-/* line 86, src/scss/_generated/_spriteFont.scss */
+/* line 87, src/scss/_generated/_spriteFont.scss */
 .icon-search:before {
   content: "";
 }
 
-/* line 86, src/scss/_generated/_spriteFont.scss */
+/* line 87, src/scss/_generated/_spriteFont.scss */
 .icon-sort:before {
   content: "";
 }
 
-/* line 86, src/scss/_generated/_spriteFont.scss */
+/* line 87, src/scss/_generated/_spriteFont.scss */
 .icon-star-fill:before {
   content: "";
 }
 
-/* line 86, src/scss/_generated/_spriteFont.scss */
+/* line 87, src/scss/_generated/_spriteFont.scss */
 .icon-star:before {
   content: "";
 }
 
-/* line 86, src/scss/_generated/_spriteFont.scss */
+/* line 87, src/scss/_generated/_spriteFont.scss */
 .icon-sun:before {
   content: "";
 }
@@ -6212,7 +6213,6 @@ body.chatbot_active .go-top {
 .login_container .login_form input {
   -webkit-border-radius: 5px;
           border-radius: 5px;
-  width: 410px;
 }
 
 @media screen and (max-width: 767px) {
@@ -9789,8 +9789,15 @@ body.chatbot_active .go-top {
 
 /* line 1059, src/scss/_components/homepage/_list--specification.scss */
 .list .list__specification-bottom .similar_site_item .similar_site_item_inner .similar_site_item_thumb {
-  display: block;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
   content: ' ';
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+      -ms-flex-pack: center;
+          justify-content: center;
   /*flex: 0 0 20%;*/
   height: 150px;
   width: 250px;
@@ -9811,12 +9818,13 @@ body.chatbot_active .go-top {
   }
 }
 
-/* line 1077, src/scss/_components/homepage/_list--specification.scss */
+/* line 1078, src/scss/_components/homepage/_list--specification.scss */
 .list .list__specification-bottom .similar_site_item .similar_site_item_inner .similar_site_item_thumb video {
-  height: 100%;
+  min-height: 100%;
+  width: 110%;
 }
 
-/* line 1081, src/scss/_components/homepage/_list--specification.scss */
+/* line 1083, src/scss/_components/homepage/_list--specification.scss */
 .list .list__specification-bottom .similar_site_item .similar_site_item_inner .similar_site_item_content {
   padding: 15px;
   -webkit-box-flex: 1;
@@ -9825,7 +9833,7 @@ body.chatbot_active .go-top {
           flex: 1;
 }
 
-/* line 1085, src/scss/_components/homepage/_list--specification.scss */
+/* line 1087, src/scss/_components/homepage/_list--specification.scss */
 .list .list__specification-bottom .similar_site_item .similar_site_item_inner .similar_site_item_content .title {
   color: #fff;
   font-weight: 600;
@@ -9833,32 +9841,32 @@ body.chatbot_active .go-top {
 }
 
 @media screen and (max-width: 1199px) {
-  /* line 1085, src/scss/_components/homepage/_list--specification.scss */
+  /* line 1087, src/scss/_components/homepage/_list--specification.scss */
   .list .list__specification-bottom .similar_site_item .similar_site_item_inner .similar_site_item_content .title {
     font-size: 18px;
     margin-bottom: 10px;
   }
 }
 
-/* line 1095, src/scss/_components/homepage/_list--specification.scss */
+/* line 1097, src/scss/_components/homepage/_list--specification.scss */
 .list .list__specification-bottom .similar_site_item .similar_site_item_inner .similar_site_item_content p {
   color: #6d6d78;
   font-size: 14px;
 }
 
 @media screen and (max-width: 1199px) {
-  /* line 1095, src/scss/_components/homepage/_list--specification.scss */
+  /* line 1097, src/scss/_components/homepage/_list--specification.scss */
   .list .list__specification-bottom .similar_site_item .similar_site_item_inner .similar_site_item_content p {
     font-size: 13px;
   }
 }
 
-/* line 1103, src/scss/_components/homepage/_list--specification.scss */
+/* line 1105, src/scss/_components/homepage/_list--specification.scss */
 .list .list__specification-bottom .similar_site_item .similar_site_item_inner .similar_site_item_content p span {
   color: #4099f9;
 }
 
-/* line 1108, src/scss/_components/homepage/_list--specification.scss */
+/* line 1110, src/scss/_components/homepage/_list--specification.scss */
 .list .list__specification-bottom .similar_site_item .similar_site_item_inner .similar_site_item_buttons {
   display: -webkit-box;
   display: -webkit-flex;
@@ -9867,7 +9875,7 @@ body.chatbot_active .go-top {
 }
 
 @media screen and (max-width: 900px) {
-  /* line 1108, src/scss/_components/homepage/_list--specification.scss */
+  /* line 1110, src/scss/_components/homepage/_list--specification.scss */
   .list .list__specification-bottom .similar_site_item .similar_site_item_inner .similar_site_item_buttons {
     -webkit-box-orient: vertical;
     -webkit-box-direction: normal;
@@ -9877,44 +9885,44 @@ body.chatbot_active .go-top {
   }
 }
 
-/* line 1115, src/scss/_components/homepage/_list--specification.scss */
+/* line 1117, src/scss/_components/homepage/_list--specification.scss */
 .list .list__specification-bottom .similar_site_item .similar_site_item_inner .similar_site_item_buttons a {
   margin: 0 5px;
 }
 
 @media screen and (max-width: 900.98px) {
-  /* line 1115, src/scss/_components/homepage/_list--specification.scss */
+  /* line 1117, src/scss/_components/homepage/_list--specification.scss */
   .list .list__specification-bottom .similar_site_item .similar_site_item_inner .similar_site_item_buttons a {
     margin: 3px 5px;
   }
 }
 
-/* line 1125, src/scss/_components/homepage/_list--specification.scss */
+/* line 1127, src/scss/_components/homepage/_list--specification.scss */
 .list .list__specification-bottom .similar_site_list {
   counter-reset: number 0;
 }
 
-/* line 1129, src/scss/_components/homepage/_list--specification.scss */
+/* line 1131, src/scss/_components/homepage/_list--specification.scss */
 .list .list__specification-bottom .similar_site_list.show_10 .similar_site_item:nth-child(n+11) {
   display: none;
 }
 
-/* line 1135, src/scss/_components/homepage/_list--specification.scss */
+/* line 1137, src/scss/_components/homepage/_list--specification.scss */
 .list .list__specification-bottom .similar_site_list.show_20 .similar_site_item:nth-child(n+21) {
   display: none;
 }
 
-/* line 1140, src/scss/_components/homepage/_list--specification.scss */
+/* line 1142, src/scss/_components/homepage/_list--specification.scss */
 .list .list__specification-bottom .similar_site_list.show_30 .similar_site_item:nth-child(n+31) {
   display: none;
 }
 
-/* line 1145, src/scss/_components/homepage/_list--specification.scss */
+/* line 1147, src/scss/_components/homepage/_list--specification.scss */
 .list .list__specification-bottom .similar_site_list.show_40 .similar_site_item:nth-child(n+41) {
   display: none;
 }
 
-/* line 1151, src/scss/_components/homepage/_list--specification.scss */
+/* line 1153, src/scss/_components/homepage/_list--specification.scss */
 .list .list__specification-bottom .show_more_sites {
   text-align: center;
   position: relative;
@@ -9922,14 +9930,14 @@ body.chatbot_active .go-top {
   margin-top: 15px;
 }
 
-/* line 1157, src/scss/_components/homepage/_list--specification.scss */
+/* line 1159, src/scss/_components/homepage/_list--specification.scss */
 .list .list__specification-bottom .show_more_sites:before {
   display: block;
   content: ' ';
   border-top: 2px solid #666;
 }
 
-/* line 1163, src/scss/_components/homepage/_list--specification.scss */
+/* line 1165, src/scss/_components/homepage/_list--specification.scss */
 .list .list__specification-bottom .show_more_sites button {
   position: absolute;
   top: 0;
@@ -9942,7 +9950,7 @@ body.chatbot_active .go-top {
           border-radius: 30px;
 }
 
-/* line 1173, src/scss/_components/homepage/_list--specification.scss */
+/* line 1175, src/scss/_components/homepage/_list--specification.scss */
 .list .list__specification-bottom .show_more_sites button:hover, .list .list__specification-bottom .show_more_sites button:focus {
   -webkit-border-radius: 30px;
           border-radius: 30px;
@@ -9950,7 +9958,7 @@ body.chatbot_active .go-top {
   background: #333;
 }
 
-/* line 1179, src/scss/_components/homepage/_list--specification.scss */
+/* line 1181, src/scss/_components/homepage/_list--specification.scss */
 .list .list__specification-bottom .show_more_sites button i:before {
   -webkit-transform: rotateZ(-90deg);
       -ms-transform: rotate(-90deg);
@@ -9958,7 +9966,7 @@ body.chatbot_active .go-top {
   color: #fff;
 }
 
-/* line 1186, src/scss/_components/homepage/_list--specification.scss */
+/* line 1188, src/scss/_components/homepage/_list--specification.scss */
 .list .list__specification-bottom #other_categories.more_terms {
   background: transparent;
   padding: 15px 0;

@@ -1057,8 +1057,9 @@
 			}
 
 			.similar_site_item_thumb{
-				display: block;
+				display: flex;
 				content: ' ';
+				justify-content: center;
 
 				/*flex: 0 0 20%;*/
 				height: 150px;
@@ -1075,7 +1076,8 @@
 				}
 
 				video{
-					height: 100%;
+					min-height: 100%;
+					width: 110%;
 				}
 			}
 			.similar_site_item_content{

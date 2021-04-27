@@ -74,6 +74,7 @@
 					position: relative;
 					left: auto;
 					transform: none;
+					aspect-ratio: calc(510 / 315);
 				}
 			}
 		}
@@ -128,6 +129,9 @@
 
 				a{
 					color: #e8e8e8;
+					display: block;
+					overflow: hidden;
+					text-overflow: ellipsis;
 				}
 
 				@include respond('ipad_portrait'){
