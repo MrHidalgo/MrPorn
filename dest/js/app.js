@@ -1880,10 +1880,12 @@ function removeOtherStorageKeys(dataTime, currentLang) {
       }
     };
 
-    goTop.onclick = function (event) {
-      doScrolling(0, 200);
-      return false;
-    };
+    if (goTop) {
+      goTop.onclick = function (event) {
+        doScrolling(0, 200);
+        return false;
+      };
+    }
   }
 
   var siteBoxHover = function siteBoxHover(el) {

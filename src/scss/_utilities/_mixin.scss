@@ -313,3 +313,9 @@ $breakpointsMedia: (
 		@content;
 	}
 }
+
+@mixin adaptiveMinMax($max, $min) {
+	@media screen and (min-width: #{$min}px) and (max-width: #{$max}px) {
+		@content;
+	}
+}

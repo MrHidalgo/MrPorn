@@ -537,70 +537,66 @@
 		flex-direction: column;
 	}
 
-	@include adaptive(991.98) {
+	/*@include adaptive(991.98) {
 		flex-direction: column;
+	}*/
+
+
+}
+
+.review_column{
+	width: 50%;
+
+	@include adaptive(991.98) {
+		width: 100%;
+		padding: 0;
+	}
+
+	@include respond('ipad_portrait'){
+		width: 100%;
+		padding: 0;
+	}
+}
+.screen_shot{
+	padding-right: 15px;
+
+	@include adaptiveMinMax(1023.98, 768) {
+		padding-right: 0;
+	}
+	@include respond('ipad_portrait'){
+		padding-right: 0;
+		margin-bottom: 15px;
+	}
+
+	@include adaptive(767){
+		margin-bottom: 15px;
+		padding-right: 0;
+	}
+}
+.review_con{
+	padding-left: 35px;
+
+	@include adaptiveMinMax(1449.98, 768){
+		padding-left: 15px;
+	}
+
+	@include adaptiveMinMax(1199.98, 768){
+		padding-left: 15px;
+	}
+
+	@include respond('ipad_portrait'){
+		padding-left: 0;
 	}
 
 	@include adaptive(767) {
-		flex-direction: column;
+		padding-left: 0;
 	}
 
-	.review_column{
-		width: 50%;
-
-		@include adaptive(991.98) {
-			width: 100%;
-		}
-
-		@include respond('ipad_portrait'){
-			width: 100%;
-			padding: 0;
-		}
-
-		@include adaptive(767) {
-			width: 100%;
-			padding: 0;
-		}
-	}
-	.screen_shot{
-		padding-right: 15px;
-
-		@include adaptive(1023.98) {
-			padding-right: 0;
-		}
-		@include respond('ipad_portrait'){
-			padding-right: 0;
-		}
-		@include adaptive(767) {
-			padding-right: 0;
-		}
-	}
-	.review_con{
-		padding-left: 35px;
-
-		@include adaptive(1449.98){
-			padding-left: 15px;
-		}
-
-		@include adaptive(1199.98){
-			padding-left: 15px;
-		}
-
-		@include respond('ipad_portrait'){
-			padding-left: 0;
-		}
-
-		@include adaptive(767) {
-			padding-left: 0;
-		}
-
-		mark {
-			background-color: #1e559a;
-			color: #fff;
-		}
+	mark {
+		background-color: #1e559a;
+		color: #fff;
 	}
 }
-
 
 .pirateC{
 	margin: 10px 0;
@@ -635,12 +631,6 @@
 			text-decoration: underline;
 			font-weight: 700;
 		}
-	}
-}
-
-.screen_shot{
-	@include adaptive(767){
-		margin-bottom: 15px;
 	}
 }
 
