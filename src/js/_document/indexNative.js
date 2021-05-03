@@ -82,7 +82,9 @@ function removeOtherStorageKeys(dataTime, currentLang){
 	 */
 
 	let vh = window.innerHeight * 0.01;
-	document.documentElement.style.setProperty('--vh', `${vh}px`);
+	if(document.body.classList.contains('home')){
+		document.documentElement.style.setProperty('--vh', `${vh}px`);
+	}
 
 	initLoggedUser();
 

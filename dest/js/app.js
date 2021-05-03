@@ -1322,7 +1322,11 @@ function removeOtherStorageKeys(dataTime, currentLang) {
    * ===================================
    */
   var vh = window.innerHeight * 0.01;
-  document.documentElement.style.setProperty('--vh', "".concat(vh, "px"));
+
+  if (document.body.classList.contains('home')) {
+    document.documentElement.style.setProperty('--vh', "".concat(vh, "px"));
+  }
+
   initLoggedUser();
   initGotoTop();
   var headerHeight = 0;
