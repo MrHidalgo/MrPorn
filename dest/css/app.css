@@ -9960,6 +9960,65 @@ body.chatbot_active .go-top {
 }
 
 /* line 1188, src/scss/_components/homepage/_list--specification.scss */
+.list .list__specification-bottom .category_link {
+  background: #1a1b21;
+  padding: 15px;
+  display: none;
+}
+
+/* line 1193, src/scss/_components/homepage/_list--specification.scss */
+.list .list__specification-bottom .category_link.show {
+  display: block;
+}
+
+/* line 1197, src/scss/_components/homepage/_list--specification.scss */
+.list .list__specification-bottom .category_link a {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+  -webkit-align-items: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  padding: 10px 15px;
+}
+
+/* line 1203, src/scss/_components/homepage/_list--specification.scss */
+.list .list__specification-bottom .category_link a:hover {
+  color: #d6d6d6;
+}
+
+/* line 1207, src/scss/_components/homepage/_list--specification.scss */
+.list .list__specification-bottom .category_link a img {
+  height: 48px;
+  margin-right: 15px;
+}
+
+/* line 1212, src/scss/_components/homepage/_list--specification.scss */
+.list .list__specification-bottom .category_link a:after {
+  display: inline-block;
+  content: ' ';
+  width: 33px;
+  height: 18px;
+  background: url(../images/arrow-right-white.svg) no-repeat;
+  -webkit-background-size: contain;
+          background-size: contain;
+  background-position: center;
+  margin-left: 50px;
+}
+
+/* line 1224, src/scss/_components/homepage/_list--specification.scss */
+.list .list__specification-bottom .category_link a:hover:after {
+  -webkit-animation: rightArrowAnim 1s infinite;
+          animation: rightArrowAnim 1s infinite;
+}
+
+/* line 1231, src/scss/_components/homepage/_list--specification.scss */
 .list .list__specification-bottom #other_categories.more_terms {
   background: transparent;
   padding: 15px 0;
@@ -10004,6 +10063,36 @@ body.chatbot_active .go-top {
     visibility: visible;
     -webkit-transform: scale(1);
             transform: scale(1);
+  }
+}
+
+@-webkit-keyframes rightArrowAnim {
+  0% {
+    -webkit-transform: translateX(0px);
+            transform: translateX(0px);
+  }
+  50% {
+    -webkit-transform: translateX(5px);
+            transform: translateX(5px);
+  }
+  100% {
+    -webkit-transform: translateX(0px);
+            transform: translateX(0px);
+  }
+}
+
+@keyframes rightArrowAnim {
+  0% {
+    -webkit-transform: translateX(0px);
+            transform: translateX(0px);
+  }
+  50% {
+    -webkit-transform: translateX(5px);
+            transform: translateX(5px);
+  }
+  100% {
+    -webkit-transform: translateX(0px);
+            transform: translateX(0px);
   }
 }
 

@@ -427,7 +427,7 @@ function scrollToCategoryOnHome(ev, _ev){
 const loadHomeData = () => {
 	let currentLang = document.documentElement.getAttribute('lang');
 
-	console.log('Loading home data');
+
 
 	let url = '/wp-json/mpg/home/';
 	if(currentLang!='en'){
@@ -765,13 +765,31 @@ function getPopupSimilarSites(category, currentSiteId){
 
 	similarHtml += '</div>';
 
+	let _catCount = homeData.categories[category].count;
+	let _catTitle = homeData.categories[category].title;
+	let _catLink = homeData.categories[category].link;
+	let _catIconUrl = homeData.categories[category].logo.url;
+	let _catIcon = '<img src="'+_catIconUrl+'"/>';
+
+	let showCategoryLink = false;
+
 	if(totalSimilarSiteCount>10){
 		similarHtml += '<div class="show_more_sites">' +
 			'<button class="show_more_sites_trigger">' +
 			'<i class="icon-font icon-arrow-angle"></i>'+
 			'</button>'+
 			'</div>';
+	}else{
+		showCategoryLink = true;
 	}
+
+
+
+	//Category link
+	similarHtml += '<div class="category_link '+(showCategoryLink?'show':'')+'">';
+	similarHtml += '<a class="link_btn" href="'+_catLink+'">'+_catIcon+'See All ('+_catCount+') '+_catTitle+'</a>';
+	similarHtml += '</div>';
+	//Category link end
 
 	similarHtml += '<div id="other_categories" class="more_terms">';
 	similarHtml += '<div class="similar_site_title">MORE CATEGORIES</div>';
@@ -817,30 +835,37 @@ function toggleMoreSimilarSites(){
 	let similarSiteList = document.querySelector('.similar_site_list');
 	if(similarSiteList){
 		let siteCount = similarSiteList.dataset.count;
+
+		let _categoryLink = document.querySelector('.list__specification-bottom .category_link');
+
 		if(siteCount>10 && similarSiteList.classList.contains('show_10')){
 			similarSiteList.classList.remove('show_10');
 			similarSiteList.classList.add('show_20');
 
 			if(siteCount<21){
 				document.querySelector('.show_more_sites').remove();
+				_categoryLink.classList.add('show');
 			}
 		}else if(siteCount>20 && similarSiteList.classList.contains('show_20')){
 			similarSiteList.classList.remove('show_20');
 			similarSiteList.classList.add('show_30');
 			if(siteCount<31){
 				document.querySelector('.show_more_sites').remove();
+				_categoryLink.classList.add('show');
 			}
 		}else if(siteCount>30 && similarSiteList.classList.contains('show_30')){
 			similarSiteList.classList.remove('show_30');
 			similarSiteList.classList.add('show_40');
 			if(siteCount<41){
 				document.querySelector('.show_more_sites').remove();
+				_categoryLink.classList.add('show');
 			}
 		}else if(siteCount>40 && similarSiteList.classList.contains('show_40')){
 			similarSiteList.classList.remove('show_40');
 			similarSiteList.classList.add('show_60');
 			if(siteCount<51){
 				document.querySelector('.show_more_sites').remove();
+				_categoryLink.classList.add('show');
 			}
 		}
 	}

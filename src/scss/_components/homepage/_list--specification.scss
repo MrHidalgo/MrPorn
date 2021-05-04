@@ -1185,6 +1185,49 @@
 		}
 	}
 
+	.category_link{
+		background: #1a1b21;
+		padding: 15px;
+		display: none;
+
+		&.show{
+			display: block;
+		}
+
+		a{
+			display: flex;
+			align-items: center;
+			justify-content: center;
+			padding: 10px 15px;
+
+			&:hover{
+				color: #d6d6d6;
+			}
+
+			img{
+				height: 48px;
+				margin-right: 15px;
+			}
+
+			&:after{
+				display: inline-block;
+				content: ' ';
+				width: 33px;
+				height: 18px;
+				background: url(../images/arrow-right-white.svg) no-repeat;
+				background-size: contain;
+				background-position: center;
+				margin-left: 50px;
+			}
+
+			&:hover{
+				&:after{
+					animation: rightArrowAnim 1s infinite;
+				}
+			}
+		}
+	}
+
 	#other_categories.more_terms{
 		background: transparent;
 		padding: 15px 0;
@@ -1207,5 +1250,17 @@
 		opacity: 1;
 		visibility: visible;
 		transform: scale(1);
+	}
+}
+
+@keyframes rightArrowAnim{
+	0%{
+		transform:translateX(0px);
+	}
+	50%{
+		transform:translateX(5px);
+	}
+	100%{
+		transform:translateX(0px);
 	}
 }

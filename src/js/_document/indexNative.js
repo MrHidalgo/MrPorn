@@ -63,8 +63,7 @@ function initWebWorker(){
 		}
 	}
 }
-function removeOtherStorageKeys(dataTime, currentLang){
-	let homeDataKey = "homepage_data_"+dataTime+'_'+currentLang;
+function removeOtherStorageKeys(homeDataKey, currentLang){
 	for (var key in localStorage){
 		if(key.includes('homepage_data_')){
 			if(homeDataKey!=key){
