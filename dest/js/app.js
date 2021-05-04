@@ -634,26 +634,32 @@ var markFavourites = function markFavourites() {
 };
 
 var letterSearch = function letterSearch() {
-  fetch('/wp-json/mpg/letter_matrix/').then(function (res) {
-    return res.json();
-  }).then(function (result) {
-    Object.keys(result).forEach(function (key) {
-      var letter = key;
-      var suggestions = result[key];
-      var letterSuggestions = [];
-      suggestions.map(function (suggestion) {
-        var sName = suggestion.name;
-        var sIcon = suggestion.icon;
-        var sHd = suggestion.hd;
-        var sFree = suggestion.free;
-        letterSuggestions.push(suggestion);
+  letterData = getWithExpiry("letter_data_" + dataTime);
+
+  if (!letterData) {
+    letterData = [];
+    fetch('/wp-json/mpg/letter_matrix/').then(function (res) {
+      return res.json();
+    }).then(function (result) {
+      Object.keys(result).forEach(function (key) {
+        var letter = key;
+        var suggestions = result[key];
+        var letterSuggestions = [];
+        suggestions.map(function (suggestion) {
+          var sName = suggestion.name;
+          var sIcon = suggestion.icon;
+          var sHd = suggestion.hd;
+          var sFree = suggestion.free;
+          letterSuggestions.push(suggestion);
+        });
+        letterData[letter] = letterSuggestions;
       });
-      letterData[letter] = letterSuggestions;
+      renderSorting();
+      setWithExpiry("letter_data_" + dataTime, letterData, 30 * 60 * 1000);
+    })["catch"](function (err) {
+      throw err;
     });
-    renderSorting();
-  })["catch"](function (err) {
-    throw err;
-  });
+  }
   /*getRequest('/wp-json/mpg/letter_matrix/', {
   	}, function (result) {
   	Object.keys(result).forEach(function (key) {
@@ -672,6 +678,42 @@ var letterSearch = function letterSearch() {
   	renderSorting();
   	//initLetterHover();
   });*/
+
+};
+
+var loadTranslations = function loadTranslations() {
+  translations = getWithExpiry("i18n_" + dataTime);
+
+  if (!translations) {
+    fetch('/wp-json/mpg/i18n/').then(function (res) {
+      return res.json();
+    }).then(function (result) {
+      translations = result;
+      setWithExpiry("i18n_" + dataTime, translations, 60 * 60 * 1000);
+    })["catch"](function (err) {
+      throw err;
+    });
+  }
+};
+
+var _t = function _t(key, _default) {
+  if (!currentLang) {
+    currentLang = document.documentElement.getAttribute('lang');
+  }
+
+  if (translations) {
+    if (currentLang == 'en') {
+      return _default;
+    } else if (translations[key]) {
+      var transVal = translations[key];
+
+      if (transVal[currentLang]) {
+        return transVal[currentLang];
+      }
+
+      return _default;
+    }
+  }
 };
 
 var renderSorting = function renderSorting() {
@@ -1250,6 +1292,7 @@ function renderLeftAndRight(category, swiper) {
 
 var isMobileDevice = false;
 var homeData = [];
+var translations = [];
 var currentPopupBanner;
 var clonedPopupBanner;
 var clonedPopupTimeout;
@@ -1286,9 +1329,9 @@ var ajaxAdminEndpoint = '/wp-admin/admin-ajax.php';
  */
 
 function initWebWorker() {
-  var currentLang = document.documentElement.getAttribute('lang');
+  currentLang = document.documentElement.getAttribute('lang');
   var dataTag = "homepage_data_" + dataTime + '_' + currentLang;
-  removeOtherStorageKeys(dataTag, currentLang);
+  removeOtherStorageKeys(dataTime, currentLang);
   homeData = getWithExpiry("homepage_data_" + dataTime + '_' + currentLang);
 
   if (homeData) {
@@ -1304,10 +1347,19 @@ function initWebWorker() {
   }
 }
 
-function removeOtherStorageKeys(homeDataKey, currentLang) {
+function removeOtherStorageKeys(dataTime, currentLang) {
+  var homeDataKey = "homepage_data_" + dataTime + '_' + currentLang;
+  var translationDataKey = "i18n_" + dataTime;
+
   for (var key in localStorage) {
     if (key.includes('homepage_data_')) {
       if (homeDataKey != key) {
+        localStorage.removeItem(key);
+      }
+    }
+
+    if (key.includes('i18n_')) {
+      if (translationDataKey != key) {
         localStorage.removeItem(key);
       }
     }
@@ -2060,9 +2112,10 @@ function removeOtherStorageKeys(homeDataKey, currentLang) {
       sortCB();
     }
 
-    letterSearch();
-    search();
     dataTime = document.querySelector('meta[name="data_time"]').content;
+    letterSearch();
+    loadTranslations();
+    search();
 
     if (document.body.classList.contains('home')) {
       boxHover();

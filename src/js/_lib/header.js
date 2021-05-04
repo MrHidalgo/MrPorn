@@ -168,29 +168,39 @@ const markFavourites = () =>{
 }
 
 const letterSearch = () => {
-	fetch('/wp-json/mpg/letter_matrix/')
-		.then(res => res.json())
-		.then((result) => {
-			Object.keys(result).forEach(function (key) {
-				var letter = key;
-				var suggestions = result[key];
 
-				var letterSuggestions = [];
+	letterData = getWithExpiry("letter_data_"+dataTime);
+	if(!letterData){
+		letterData = [];
 
-				suggestions.map(function (suggestion) {
-					let sName = suggestion.name;
-					let sIcon = suggestion.icon;
-					let sHd = suggestion.hd;
-					let sFree = suggestion.free;
+		fetch('/wp-json/mpg/letter_matrix/')
+			.then(res => res.json())
+			.then((result) => {
+				Object.keys(result).forEach(function (key) {
+					var letter = key;
+					var suggestions = result[key];
 
-					letterSuggestions.push(suggestion);
+					var letterSuggestions = [];
+
+					suggestions.map(function (suggestion) {
+						let sName = suggestion.name;
+						let sIcon = suggestion.icon;
+						let sHd = suggestion.hd;
+						let sFree = suggestion.free;
+
+						letterSuggestions.push(suggestion);
+					});
+
+					letterData[letter] = letterSuggestions;
 				});
+				renderSorting();
 
-				letterData[letter] = letterSuggestions;
-			});
-			renderSorting();
-		})
-		.catch(err => { throw err });
+				setWithExpiry("letter_data_"+dataTime, letterData, 30*60*1000);
+			})
+			.catch(err => { throw err });
+	}
+
+
 
 
 
@@ -217,6 +227,38 @@ const letterSearch = () => {
 		renderSorting();
 		//initLetterHover();
 	});*/
+}
+
+const loadTranslations = () => {
+	translations = getWithExpiry("i18n_"+dataTime);
+	if(!translations){
+		fetch('/wp-json/mpg/i18n/')
+			.then(res => res.json())
+			.then((result) => {
+				translations = result;
+
+				setWithExpiry("i18n_"+dataTime, translations, 60*60*1000);
+			})
+			.catch(err => { throw err });
+	}
+}
+
+const _t = (key, _default) => {
+	if(!currentLang){
+		currentLang = document.documentElement.getAttribute('lang');
+	}
+
+	if(translations){
+		if(currentLang=='en'){
+			return _default;
+		}else if(translations[key]){
+			let transVal = translations[key];
+			if(transVal[currentLang]){
+				return 	transVal[currentLang]
+			}
+			return _default;
+		}
+	}
 }
 
 const renderSorting = () => {

@@ -5,6 +5,7 @@
 
 let isMobileDevice = false;
 let homeData = [];
+let translations = [];
 let currentPopupBanner;
 let clonedPopupBanner;
 let clonedPopupTimeout;
@@ -45,10 +46,10 @@ const ajaxAdminEndpoint = '/wp-admin/admin-ajax.php';
 
 function initWebWorker(){
 
-	let currentLang = document.documentElement.getAttribute('lang');
+	currentLang = document.documentElement.getAttribute('lang');
 	let dataTag = "homepage_data_"+dataTime+'_'+currentLang;
 
-	removeOtherStorageKeys(dataTag, currentLang);
+	removeOtherStorageKeys(dataTime, currentLang);
 
 	homeData = getWithExpiry("homepage_data_"+dataTime+'_'+currentLang);
 	if(homeData){
@@ -63,13 +64,23 @@ function initWebWorker(){
 		}
 	}
 }
-function removeOtherStorageKeys(homeDataKey, currentLang){
+function removeOtherStorageKeys(dataTime, currentLang){
+	let homeDataKey = "homepage_data_"+dataTime+'_'+currentLang;
+	let translationDataKey = "i18n_"+dataTime;
+
 	for (var key in localStorage){
 		if(key.includes('homepage_data_')){
 			if(homeDataKey!=key){
 				localStorage.removeItem(key);
 			}
 		}
+
+		if(key.includes('i18n_')){
+			if(translationDataKey!=key){
+				localStorage.removeItem(key);
+			}
+		}
+
 	}
 }
 
@@ -915,12 +926,14 @@ function removeOtherStorageKeys(homeDataKey, currentLang){
 			sortCB();
 		}
 
+		dataTime = document.querySelector('meta[name="data_time"]').content;
 
 		letterSearch();
+		loadTranslations();
 
 		search();
 
-		dataTime = document.querySelector('meta[name="data_time"]').content;
+
 		if(document.body.classList.contains('home')){
 			boxHover();
 			videoToggle();

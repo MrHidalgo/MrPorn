@@ -425,9 +425,6 @@ function scrollToCategoryOnHome(ev, _ev){
 }
 
 const loadHomeData = () => {
-	let currentLang = document.documentElement.getAttribute('lang');
-
-
 
 	let url = '/wp-json/mpg/home/';
 	if(currentLang!='en'){
@@ -485,7 +482,7 @@ function renderHompageSiteSlide(category, index){
 			'<i class="icon-font icon-out"></i>'+
 			'<p class="list__box-details-title">'+siteName+'</p>'+
 			'</a>'+
-			'<div class="list__rating"><span>User Rating:</span>'+
+			'<div class="list__rating"><span>'+_t('user_rating', 'User Rating')+':</span>'+
 			'<div><i class="icon-font icon-star"></i><i class="icon-font icon-star"></i><i class="icon-font icon-star"></i><i class="icon-font icon-star"></i><i class="icon-font icon-star-fill"></i></div>'+
 			'</div>'+
 			'</div>'+
@@ -539,7 +536,7 @@ function renderSiteHoverContent(category, index){
 			'<i class="icon-font icon-out"></i>'+
 			'<p class="list__box-details-title">'+siteName+'</p>'+
 			'</a>'+
-		'<div class="list__rating"><span>User Rating:</span>'+
+		'<div class="list__rating"><span>'+_t('user_rating', 'User Rating')+':</span>'+
 		'<div><i class="icon-font icon-star"></i><i class="icon-font icon-star"></i><i class="icon-font icon-star"></i><i class="icon-font icon-star"></i><i class="icon-font icon-star-fill"></i></div>'+
 		'</div>'+
 		'</div>'+
@@ -645,8 +642,8 @@ function renderSiteBottomBanner(category, index){
 			'<div>' +
 			'<img class="list__specification-logo" src="'+siteLogo+'"/>'+
 			'<div class="list__specification-action" spec-actionNode-js>'+
-			'<div><a class="list__specification-visit nav_link" href="'+siteUrl+'" target="_blank">VISIT WEBSITE</a></div>'+
-			'<div><a class="list__specification-read nav_link" href="'+siteLink+'" hreflang="'+currentLang+'" target="_blank">READ REVIEW</a></div>'+
+			'<div><a class="list__specification-visit nav_link" href="'+siteUrl+'" target="_blank">'+_t('lbl_visit_website', 'VISIT WEBSITE')+'</a></div>'+
+			'<div><a class="list__specification-read nav_link" href="'+siteLink+'" hreflang="'+currentLang+'" target="_blank">'+_t('read_review', 'READ REVIEW')+'</a></div>'+
 			'<div class="list__specification-action-desc">'+
 			'<p>'+tagLIne+'</p>'+
 			'</div>'+
@@ -696,7 +693,7 @@ function getPopupSimilarSites(category, currentSiteId){
 
 	let similarHtml = '<div class="list__specification-bottom">';
 
-	similarHtml += '<div class="similar_site_title">MORE SIMILAR SITES</div>';
+	similarHtml += '<div class="similar_site_title">'+_t('more_similar_sites', 'MORE SIMILAR SITES')+'</div>';
 
 	similarHtml += '<div class="similar_site_list show_10" data-count="'+totalSimilarSiteCount+'">';
 
@@ -748,13 +745,13 @@ function getPopupSimilarSites(category, currentSiteId){
 				'<div class="similar_site_item_content">' +
 				'<h3 class="title">'+moreSite.name+'</h3>'+
 				//'<p>'+moreSite.tagline+' <a class="readmore" href="'+moreSite.link+'">Read More</a></p>'+
-				'<p>'+siteTagLine+'... <span class="read_more">Read More</span></p>'+
+				'<p>'+siteTagLine+'... <span class="read_more">'+_t('read_more', 'Read More')+'</span></p>'+
 				'</div>'+
 				'</a>' +
 
 				'<div class="similar_site_item_buttons">' +
-				'<a class="visit_site list__specification-read nav_link" href="'+moreSite.url+'" target="_blank">VISIT WEBSITE</a>'+
-				'<a class="read_review list__specification-visit nav_link" href="'+siteLink+'"  hreflang="'+currentLang+'">READ REVIEW</a>'+
+				'<a class="visit_site list__specification-read nav_link" href="'+moreSite.url+'" target="_blank">'+_t('lbl_visit_website', 'VISIT WEBSITE')+'</a>'+
+				'<a class="read_review list__specification-visit nav_link" href="'+siteLink+'"  hreflang="'+currentLang+'">'+_t('read_review', 'READ REVIEW')+'</a>'+
 				'</div>'+
 				'</div>'+
 				'</div>';
@@ -787,12 +784,12 @@ function getPopupSimilarSites(category, currentSiteId){
 
 	//Category link
 	similarHtml += '<div class="category_link '+(showCategoryLink?'show':'')+'">';
-	similarHtml += '<a class="link_btn" href="'+_catLink+'">'+_catIcon+'See All ('+_catCount+') '+_catTitle+'</a>';
+	similarHtml += '<a class="link_btn" href="'+_catLink+'">'+_catIcon+_t('see_all', 'See All')+' ('+_catCount+') '+_catTitle+'</a>';
 	similarHtml += '</div>';
 	//Category link end
 
 	similarHtml += '<div id="other_categories" class="more_terms">';
-	similarHtml += '<div class="similar_site_title">MORE CATEGORIES</div>';
+	similarHtml += '<div class="similar_site_title">'+_t('more_categories', 'MORE CATEGORIES')+'</div>';
 	similarHtml += '<div class="more_categories_list category_box">';
 
 	homeData['more_terms'].map(function (term, index) {
@@ -813,7 +810,7 @@ function getPopupSimilarSites(category, currentSiteId){
 			moreTermHtml += '<img class="nolazy" src="'+moreTermCat['thumbnail']+'" alt="'+moreTermCat['title']+'"/>';
 		}
 
-		moreTermHtml += '<div class="catD">'+moreTermCat['title']+'<small>Click Here to See ('+moreTermCat['count']+') Sites</small></div>';
+		moreTermHtml += '<div class="catD">'+moreTermCat['title']+'<small>'+_t('click_here_to_see', 'Click Here to See')+' ('+moreTermCat['count']+') '+_t('sites', 'Sites')+'</small></div>';
 
 		moreTermHtml += '</a>';
 
@@ -1050,7 +1047,7 @@ function renderSiteCategory(categoryIndex){
 												'<span>'+categoryTagLine+'</span>'+
 											'</div>'+
 										'</div>'+
-                    '<a class="list__btn nav_link" href="'+categoryData.link+'" hreflang="'+currentLang+'">SEE&nbsp;<span>'+categoryData.count+' MORE</span><i class="icon-font icon-arrow-angle"></i></a>'+
+                    '<a class="list__btn nav_link" href="'+categoryData.link+'" hreflang="'+currentLang+'">'+_t('see', 'SEE')+'&nbsp;<span>'+categoryData.count+' '+_t('more', 'MORE')+'</span><i class="icon-font icon-arrow-angle"></i></a>'+
                   '</div>'+
                   '<div class="list__box-line">'+
                     '<u list-line-ind-js></u><span class="list_green_line" list-line-js></span>'+
