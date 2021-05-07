@@ -5,11 +5,13 @@
 	justify-content: center;
 	min-width: 145px;
 	height: 45px;
+	line-height: 45px;
 	border-radius: 5px;
 	background-color: rgb(213, 243, 74);
 	color: #080915;
 	font-size: 16px;
 	font-weight: 700;
+	text-transform: uppercase;
 
 	&:hover, &:focus{
 		color: #d5f34a;
@@ -17,6 +19,7 @@
 
 	&.nav_link{
 		color: #080915;
+
 
 		&:hover, &:focus{
 			color: #080915;
@@ -26,6 +29,7 @@
 	@include adaptive(1279) {
 		min-width: 125px;
 		height: 40px;
+		line-height: 40px;
 		font-size: 14px;
 	}
 	@include adaptive(1023) {
@@ -34,12 +38,14 @@
 		right: 0;
 		min-width: unset;
 		height: 34px;
+		line-height: 34px;
 		background-color: transparent;
 		color: rgb(213, 243, 74);
 	}
 	@include adaptive(767) {
 		right: 10px;
 		height: 28px;
+		line-height: 28px;
 		font-size: 12px;
 		top: 5px;
 	}

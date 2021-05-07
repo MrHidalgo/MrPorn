@@ -124,7 +124,7 @@ const renderMobileMenu = () => {
 		'                    <div><i class="icon-png header-nav-pornstars"></i></div>' +
 		'                    <div><span>Pornstars</span></div></a></li>' +
 		'                <li class="header__nav-item header__nav-item--saparator"><span class="header__nav-separator"></span></li>' +
-		'                <li class="header__nav-item"><a class="header__nav-link" href="/coupons/" hreflang="en">' +
+		'                <li class="header__nav-item"><a class="header__nav-link" href="/porn-deals/" hreflang="en">' +
 		'                    <div><i class="icon-png header-nav-porncoupons"></i></div>' +
 		'                    <div><span>Porn Coupons</span></div></a></li>' +
 		'                <li class="header__nav-item header__nav-item--saparator"><span class="header__nav-separator"></span></li>' +
