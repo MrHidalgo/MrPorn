@@ -199,34 +199,6 @@ const letterSearch = () => {
 			})
 			.catch(err => { throw err });
 	}
-
-
-
-
-
-	/*getRequest('/wp-json/mpg/letter_matrix/', {
-
-	}, function (result) {
-		Object.keys(result).forEach(function (key) {
-			var letter = key;
-			var suggestions = result[key];
-
-			var letterSuggestions = [];
-
-			suggestions.map(function (suggestion) {
-				let sName = suggestion.name;
-				let sIcon = suggestion.icon;
-				let sHd = suggestion.hd;
-				let sFree = suggestion.free;
-
-				letterSuggestions.push(suggestion);
-			});
-
-			letterData[letter] = letterSuggestions;
-		});
-		renderSorting();
-		//initLetterHover();
-	});*/
 }
 
 const loadTranslations = () => {
