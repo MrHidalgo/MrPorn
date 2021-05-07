@@ -397,7 +397,7 @@ const loadLoginForm = () => {
                         '<div class="title">Log in</div>'+
                     '</div>'+
 
-                    '<form class="cleanlogin-form ajax-login-form cleanlogin-container login_bottom" action="login" method="post">'+
+                    '<form class="cleanlogin-form ajax-login-form cleanlogin-container login_bottom" action="/login/" method="post">'+
                         '<p class="status result-message"></p>'+
                         '<fieldset>'+
                             '<div class="cleanlogin-field">'+
@@ -438,7 +438,7 @@ const loadLoginForm = () => {
 
 
                     '<div class="forgot_page">'+
-                        '<form class="cleanlogin-form cleanlogin-container login_bottom" method="post" action="#">'+
+                        '<form class="cleanlogin-form cleanlogin-container login_bottom" method="post" action="/forgot/">'+
                             '<div class="info is_desktop">'+
                                 'Enter your email address and we\'ll email you a link to reset your password or <a href="/sign-up/" class="popup_link_signup">Sign Up</a>'+
 
@@ -473,7 +473,7 @@ const loadLoginForm = () => {
                         '<div class="title">Sign up</div>'+
                     '</div>'+
                     '<div class="cleanlogin-container login_bottom">'+
-                        '<form class="cleanlogin-form fv-form fv-form-bootstrap registraion-form" method="post" action="#" novalidate="novalidate">'+
+                        '<form class="cleanlogin-form fv-form fv-form-bootstrap registraion-form" method="post" action="/sign-up/" novalidate="novalidate">'+
                             '<div class="join_results">'+
                                 '<div class="indicator"></div>'+
                                 '<div class="alert result-message"></div>'+
