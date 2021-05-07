@@ -360,16 +360,18 @@ function removeOtherStorageKeys(dataTime, currentLang){
 			const toggleSort = document.querySelector('[sort-toggle-js]'),
 				nodeSort = document.querySelector('[sort-node-js]');
 
-			toggleSort.addEventListener('click', (ev) => {
-				if(nodeSort.innerHTML.trim()==''){
-					renderSorting();
+			if(toggleSort){
+				toggleSort.addEventListener('click', (ev) => {
+					if(nodeSort.innerHTML.trim()==''){
+						renderSorting();
 
-					sortDropInner();
-					sortCollapse();
-				}
+						sortDropInner();
+						sortCollapse();
+					}
 
-				nodeSort.classList.toggle('is-open');
-			}, false);
+					nodeSort.classList.toggle('is-open');
+				}, false);
+			}
 		};
 		const sortDropInner = () => {
 			const links = document.querySelectorAll('.sort__drop-link'),

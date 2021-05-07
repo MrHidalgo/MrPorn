@@ -1587,15 +1587,18 @@ function removeOtherStorageKeys(dataTime, currentLang) {
     var sortToggle = function sortToggle() {
       var toggleSort = document.querySelector('[sort-toggle-js]'),
           nodeSort = document.querySelector('[sort-node-js]');
-      toggleSort.addEventListener('click', function (ev) {
-        if (nodeSort.innerHTML.trim() == '') {
-          renderSorting();
-          sortDropInner();
-          sortCollapse();
-        }
 
-        nodeSort.classList.toggle('is-open');
-      }, false);
+      if (toggleSort) {
+        toggleSort.addEventListener('click', function (ev) {
+          if (nodeSort.innerHTML.trim() == '') {
+            renderSorting();
+            sortDropInner();
+            sortCollapse();
+          }
+
+          nodeSort.classList.toggle('is-open');
+        }, false);
+      }
     };
 
     var sortDropInner = function sortDropInner() {
