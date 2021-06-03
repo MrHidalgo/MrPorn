@@ -630,7 +630,7 @@ function removeOtherStorageKeys(dataTime, currentLang){
 		addToFavourites(elID);
 
 		//const listBlock = elParent.querySelector('.list__box[data-id="' + elID + '"]'),
-			const listFavoritesBtn = elParent.querySelector('.list__box-favorites[data-id="' + elID + '"]');
+			const listFavoritesBtn = document.querySelector('.list__box-favorites[data-id="' + elID + '"]');
 
 			console.log('Clicking favourite button');
 
