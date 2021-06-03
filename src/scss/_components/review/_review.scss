@@ -494,11 +494,6 @@
 		}
 	}
 
-
-
-
-
-
 	.site_dead{
 		position: absolute;
 		top: 0;
@@ -804,6 +799,29 @@
 		}
 	}
 }
+
+.joinarrw{
+	border: 2px solid #f30808;
+	background: #fff;
+	padding: 20px 15px 20px 140px;
+	display:inline-block;
+	margin: 20px auto 35px;
+	background: url(../images/red-arrow.png) left 10px center no-repeat;
+	vertical-align: middle;
+	font-size: 24px;
+	font-weight: 700;
+	color: #f5f5f5;
+
+	a{
+		color: #dcecff;
+		text-decoration: underline;
+		white-space:nowrap;
+	}
+}
+.single-sites .joinarrw a{
+	white-space:normal;
+}
+
 .ratingtu{
 	margin: 5px 0 0;
 	position: relative;
@@ -1698,6 +1716,10 @@
 }
 
 .light{
+	.joinarrw a{
+		color: #0056c2;
+	}
+
 	.ratingtu{
 		margin: 5px 0 0;
 		position: relative;

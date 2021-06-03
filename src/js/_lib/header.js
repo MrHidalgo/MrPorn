@@ -1,4 +1,5 @@
 let letterData = [];
+let translations = [];
 let loggedUsername='';
 let logoutUrl='';
 let sortTimout;
@@ -172,6 +173,10 @@ const letterSearch = () => {
 	letterData = getWithExpiry("letter_data_"+dataTime);
 	if(!letterData){
 		letterData = [];
+	}
+
+	if(!letterData | letterData.length===0){
+
 
 		fetch('/wp-json/mpg/letter_matrix/')
 			.then(res => res.json())
@@ -204,6 +209,9 @@ const letterSearch = () => {
 const loadTranslations = () => {
 	translations = getWithExpiry("i18n_"+dataTime);
 	if(!translations){
+		translations = [];
+	}
+	if(!translations | translations.length===0){
 		fetch('/wp-json/mpg/i18n/')
 			.then(res => res.json())
 			.then((result) => {
@@ -231,6 +239,7 @@ const _t = (key, _default) => {
 			return _default;
 		}
 	}
+	return _default;
 }
 
 const renderSorting = () => {

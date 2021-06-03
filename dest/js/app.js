@@ -480,6 +480,7 @@ function initFavDelete() {
 }
 
 var letterData = [];
+var translations = [];
 var loggedUsername = '';
 var logoutUrl = '';
 var sortTimout;
@@ -638,6 +639,9 @@ var letterSearch = function letterSearch() {
 
   if (!letterData) {
     letterData = [];
+  }
+
+  if (!letterData | letterData.length === 0) {
     fetch('/wp-json/mpg/letter_matrix/').then(function (res) {
       return res.json();
     }).then(function (result) {
@@ -666,6 +670,10 @@ var loadTranslations = function loadTranslations() {
   translations = getWithExpiry("i18n_" + dataTime);
 
   if (!translations) {
+    translations = [];
+  }
+
+  if (!translations | translations.length === 0) {
     fetch('/wp-json/mpg/i18n/').then(function (res) {
       return res.json();
     }).then(function (result) {
@@ -695,6 +703,8 @@ var _t = function _t(key, _default) {
       return _default;
     }
   }
+
+  return _default;
 };
 
 var renderSorting = function renderSorting() {
@@ -1273,7 +1283,6 @@ function renderLeftAndRight(category, swiper) {
 
 var isMobileDevice = false;
 var homeData = [];
-var translations = [];
 var currentPopupBanner;
 var clonedPopupBanner;
 var clonedPopupTimeout;
@@ -1331,6 +1340,7 @@ function initWebWorker() {
 function removeOtherStorageKeys(dataTime, currentLang) {
   var homeDataKey = "homepage_data_" + dataTime + '_' + currentLang;
   var translationDataKey = "i18n_" + dataTime;
+  var letterMatrixDataKey = "letter_data_" + dataTime;
 
   for (var key in localStorage) {
     if (key.includes('homepage_data_')) {
@@ -1341,6 +1351,12 @@ function removeOtherStorageKeys(dataTime, currentLang) {
 
     if (key.includes('i18n_')) {
       if (translationDataKey != key) {
+        localStorage.removeItem(key);
+      }
+    }
+
+    if (key.includes('letter_data_')) {
+      if (letterMatrixDataKey != key) {
         localStorage.removeItem(key);
       }
     }
@@ -1571,8 +1587,18 @@ function removeOtherStorageKeys(dataTime, currentLang) {
 
         _node.classList.toggle('is-open');
 
-        document.querySelector('[sort-node-js]').classList.remove('is-open');
-        document.querySelector('.sort__drop-inner').classList.remove('is-open');
+        var sortNode = document.querySelector('[sort-node-js]');
+
+        if (sortNode) {
+          sortNode.classList.remove('is-open');
+        }
+
+        var sortDropInner = document.querySelector('.sort__drop-inner');
+
+        if (sortDropInner) {
+          sortDropInner.classList.remove('is-open');
+        }
+
         var i = null,
             len = document.querySelectorAll('.sort__drop-link').length;
 
@@ -2088,6 +2114,8 @@ function removeOtherStorageKeys(dataTime, currentLang) {
 
     detectDevice();
     bodyClick();
+    dataTime = document.querySelector('meta[name="data_time"]').content;
+    loadTranslations();
     initHome();
     renderFavourites();
     viewFavoritesToggle(); //sortCB();
@@ -2096,9 +2124,7 @@ function removeOtherStorageKeys(dataTime, currentLang) {
       sortCB();
     }
 
-    dataTime = document.querySelector('meta[name="data_time"]').content;
     letterSearch();
-    loadTranslations();
     search();
 
     if (document.body.classList.contains('home')) {

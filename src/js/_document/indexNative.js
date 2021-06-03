@@ -5,7 +5,7 @@
 
 let isMobileDevice = false;
 let homeData = [];
-let translations = [];
+
 let currentPopupBanner;
 let clonedPopupBanner;
 let clonedPopupTimeout;
@@ -67,6 +67,7 @@ function initWebWorker(){
 function removeOtherStorageKeys(dataTime, currentLang){
 	let homeDataKey = "homepage_data_"+dataTime+'_'+currentLang;
 	let translationDataKey = "i18n_"+dataTime;
+	let letterMatrixDataKey = "letter_data_"+dataTime;
 
 	for (var key in localStorage){
 		if(key.includes('homepage_data_')){
@@ -81,6 +82,11 @@ function removeOtherStorageKeys(dataTime, currentLang){
 			}
 		}
 
+		if(key.includes('letter_data_')){
+			if(letterMatrixDataKey!=key){
+				localStorage.removeItem(key);
+			}
+		}
 	}
 }
 
@@ -341,8 +347,15 @@ function removeOtherStorageKeys(dataTime, currentLang){
 				_btn.classList.toggle('is-active');
 				_node.classList.toggle('is-open');
 
-				document.querySelector('[sort-node-js]').classList.remove('is-open');
-				document.querySelector('.sort__drop-inner').classList.remove('is-open');
+				let sortNode = document.querySelector('[sort-node-js]');
+				if(sortNode){
+					sortNode.classList.remove('is-open');
+				}
+
+				let sortDropInner = document.querySelector('.sort__drop-inner');
+				if(sortDropInner){
+					sortDropInner.classList.remove('is-open');
+				}
 
 				let i = null,
 					len = document.querySelectorAll('.sort__drop-link').length;
@@ -917,6 +930,9 @@ function removeOtherStorageKeys(dataTime, currentLang){
 		detectDevice();
 		bodyClick();
 
+		dataTime = document.querySelector('meta[name="data_time"]').content;
+		loadTranslations();
+
 		initHome();
 
 		renderFavourites();
@@ -928,10 +944,10 @@ function removeOtherStorageKeys(dataTime, currentLang){
 			sortCB();
 		}
 
-		dataTime = document.querySelector('meta[name="data_time"]').content;
+
 
 		letterSearch();
-		loadTranslations();
+
 
 		search();
 

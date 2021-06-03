@@ -36,7 +36,7 @@
 		p{
 			color: #fff;
 			font-size: 13px;
-			margin-bottom: 0;
+			margin: 0;
 
 			@include adaptive(767){
 				display: none;
@@ -644,6 +644,7 @@
 				width: auto;
 				max-height: 100px;
 				max-width: 240px;
+				object-fit: contain;
 			}
 
 			&:after {
@@ -1092,6 +1093,9 @@ i.link2deal{background-position: -180px 0;}
 		vertical-align: top;
 		margin-top: -25px;
 	}
+}
+.deal_center{
+	flex: 1;
 }
 .deal_image {
 	margin: 20px 20px 15px;

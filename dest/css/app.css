@@ -1728,6 +1728,7 @@ strong {
           justify-content: flex-end;
   width: 100%;
   height: 100%;
+  cursor: pointer;
 }
 
 @media screen and (max-width: 1023px) {
@@ -1740,13 +1741,13 @@ strong {
   }
 }
 
-/* line 303, src/scss/_shared/macros/_category.scss */
+/* line 305, src/scss/_shared/macros/_category.scss */
 .category__close .icon-font {
   color: #33529e;
   font-size: 24px;
 }
 
-/* line 309, src/scss/_shared/macros/_category.scss */
+/* line 311, src/scss/_shared/macros/_category.scss */
 .category__list {
   display: -webkit-box;
   display: -webkit-flex;
@@ -1762,13 +1763,13 @@ strong {
 }
 
 @media screen and (max-width: 1023px) {
-  /* line 309, src/scss/_shared/macros/_category.scss */
+  /* line 311, src/scss/_shared/macros/_category.scss */
   .category__list {
     height: 100%;
   }
 }
 
-/* line 318, src/scss/_shared/macros/_category.scss */
+/* line 320, src/scss/_shared/macros/_category.scss */
 .category__list-wrapper {
   display: -webkit-box;
   display: -webkit-flex;
@@ -1781,13 +1782,13 @@ strong {
 }
 
 @media screen and (max-width: 1023px) {
-  /* line 318, src/scss/_shared/macros/_category.scss */
+  /* line 320, src/scss/_shared/macros/_category.scss */
   .category__list-wrapper {
     min-height: 100%;
   }
 }
 
-/* line 326, src/scss/_shared/macros/_category.scss */
+/* line 328, src/scss/_shared/macros/_category.scss */
 .category__list-wrapper > div {
   width: 100%;
   max-width: -webkit-calc(100% / 6);
@@ -1797,7 +1798,7 @@ strong {
 }
 
 @media screen and (max-width: 1535px) {
-  /* line 326, src/scss/_shared/macros/_category.scss */
+  /* line 328, src/scss/_shared/macros/_category.scss */
   .category__list-wrapper > div {
     max-width: -webkit-calc(100% / 5);
     max-width: calc(100% / 5);
@@ -1805,7 +1806,7 @@ strong {
 }
 
 @media screen and (max-width: 1365px) {
-  /* line 326, src/scss/_shared/macros/_category.scss */
+  /* line 328, src/scss/_shared/macros/_category.scss */
   .category__list-wrapper > div {
     max-width: -webkit-calc(100% / 4);
     max-width: calc(100% / 4);
@@ -1813,7 +1814,7 @@ strong {
 }
 
 @media screen and (max-width: 1279px) {
-  /* line 326, src/scss/_shared/macros/_category.scss */
+  /* line 328, src/scss/_shared/macros/_category.scss */
   .category__list-wrapper > div {
     max-width: -webkit-calc(100% / 3);
     max-width: calc(100% / 3);
@@ -1821,41 +1822,41 @@ strong {
 }
 
 @media screen and (max-width: 1535px) {
-  /* line 341, src/scss/_shared/macros/_category.scss */
+  /* line 343, src/scss/_shared/macros/_category.scss */
   .category__list-wrapper > div:nth-last-child(1), .category__list-wrapper > div:nth-last-child(2) {
     display: none;
   }
 }
 
 @media screen and (max-width: 1365px) {
-  /* line 348, src/scss/_shared/macros/_category.scss */
+  /* line 350, src/scss/_shared/macros/_category.scss */
   .category__list-wrapper > div:nth-last-child(3), .category__list-wrapper > div:nth-last-child(4) {
     display: none;
   }
 }
 
 @media screen and (max-width: 1023px) {
-  /* line 355, src/scss/_shared/macros/_category.scss */
+  /* line 357, src/scss/_shared/macros/_category.scss */
   .category__list-wrapper > div:nth-last-child(4) {
     display: block;
   }
 }
 
 @media screen and (max-width: 1279px) {
-  /* line 361, src/scss/_shared/macros/_category.scss */
+  /* line 363, src/scss/_shared/macros/_category.scss */
   .category__list-wrapper > div:nth-last-child(5), .category__list-wrapper > div:nth-last-child(6) {
     display: none;
   }
 }
 
 @media screen and (max-width: 1023px) {
-  /* line 361, src/scss/_shared/macros/_category.scss */
+  /* line 363, src/scss/_shared/macros/_category.scss */
   .category__list-wrapper > div:nth-last-child(5), .category__list-wrapper > div:nth-last-child(6) {
     display: block;
   }
 }
 
-/* line 373, src/scss/_shared/macros/_category.scss */
+/* line 375, src/scss/_shared/macros/_category.scss */
 .category__list-head {
   display: -webkit-box;
   display: -webkit-flex;
@@ -1872,7 +1873,7 @@ strong {
   height: 37px;
 }
 
-/* line 380, src/scss/_shared/macros/_category.scss */
+/* line 382, src/scss/_shared/macros/_category.scss */
 .category__list-head > div:nth-of-type(1) {
   overflow: hidden;
   position: relative;
@@ -1895,29 +1896,29 @@ strong {
 }
 
 @media screen and (max-width: 767px) {
-  /* line 380, src/scss/_shared/macros/_category.scss */
+  /* line 382, src/scss/_shared/macros/_category.scss */
   .category__list-head > div:nth-of-type(1) {
     width: 18px;
     height: 18px;
   }
 }
 
-/* line 395, src/scss/_shared/macros/_category.scss */
+/* line 397, src/scss/_shared/macros/_category.scss */
 .category__list-head > div:nth-of-type(1).gf--pink {
   background-color: #b32eae;
 }
 
-/* line 398, src/scss/_shared/macros/_category.scss */
+/* line 400, src/scss/_shared/macros/_category.scss */
 .category__list-head > div:nth-of-type(1).gf--green {
   background-color: #13aea1;
 }
 
-/* line 404, src/scss/_shared/macros/_category.scss */
+/* line 406, src/scss/_shared/macros/_category.scss */
 .category__list-head > div:nth-of-type(2) {
   padding-left: 5px;
 }
 
-/* line 412, src/scss/_shared/macros/_category.scss */
+/* line 414, src/scss/_shared/macros/_category.scss */
 .category__list-head > div span {
   color: #ffffff;
   font-size: 11px;
@@ -1925,13 +1926,13 @@ strong {
 }
 
 @media screen and (max-width: 767px) {
-  /* line 412, src/scss/_shared/macros/_category.scss */
+  /* line 414, src/scss/_shared/macros/_category.scss */
   .category__list-head > div span {
     font-size: 9px;
   }
 }
 
-/* line 422, src/scss/_shared/macros/_category.scss */
+/* line 424, src/scss/_shared/macros/_category.scss */
 .category__list-head p {
   color: #0a3e83;
   font-size: 12px;
@@ -1939,20 +1940,20 @@ strong {
 }
 
 @media screen and (max-width: 1023px) {
-  /* line 422, src/scss/_shared/macros/_category.scss */
+  /* line 424, src/scss/_shared/macros/_category.scss */
   .category__list-head p {
     color: #ffffff;
   }
 }
 
 @media screen and (max-width: 767px) {
-  /* line 422, src/scss/_shared/macros/_category.scss */
+  /* line 424, src/scss/_shared/macros/_category.scss */
   .category__list-head p {
     font-size: 10px;
   }
 }
 
-/* line 435, src/scss/_shared/macros/_category.scss */
+/* line 437, src/scss/_shared/macros/_category.scss */
 .category__list-body {
   display: -webkit-box;
   display: -webkit-flex;
@@ -1966,7 +1967,7 @@ strong {
   height: 100%;
 }
 
-/* line 441, src/scss/_shared/macros/_category.scss */
+/* line 443, src/scss/_shared/macros/_category.scss */
 .category__list-body > div:nth-of-type(1) {
   overflow: hidden;
   position: relative;
@@ -1981,7 +1982,7 @@ strong {
   border-right: 1px solid #9ca4ad;
 }
 
-/* line 455, src/scss/_shared/macros/_category.scss */
+/* line 457, src/scss/_shared/macros/_category.scss */
 .category__list-body > div:nth-of-type(2) {
   display: -webkit-box;
   display: -webkit-flex;
@@ -2000,7 +2001,7 @@ strong {
   background-color: #0a3e83;
 }
 
-/* line 463, src/scss/_shared/macros/_category.scss */
+/* line 465, src/scss/_shared/macros/_category.scss */
 .category__list-body > div:nth-of-type(2) p {
   position: relative;
   top: -1px;
@@ -2011,7 +2012,7 @@ strong {
   text-align: center;
 }
 
-/* line 477, src/scss/_shared/macros/_category.scss */
+/* line 479, src/scss/_shared/macros/_category.scss */
 .category__load {
   display: none;
   -webkit-box-align: center;
@@ -2031,7 +2032,7 @@ strong {
 }
 
 @media screen and (max-width: 1023px) {
-  /* line 477, src/scss/_shared/macros/_category.scss */
+  /* line 479, src/scss/_shared/macros/_category.scss */
   .category__load {
     display: -webkit-box;
     display: -webkit-flex;
@@ -2040,7 +2041,7 @@ strong {
   }
 }
 
-/* line 492, src/scss/_shared/macros/_category.scss */
+/* line 494, src/scss/_shared/macros/_category.scss */
 .category__pagination {
   display: -webkit-box;
   display: -webkit-flex;
@@ -2057,13 +2058,13 @@ strong {
 }
 
 @media screen and (max-width: 1023px) {
-  /* line 492, src/scss/_shared/macros/_category.scss */
+  /* line 494, src/scss/_shared/macros/_category.scss */
   .category__pagination {
     display: none;
   }
 }
 
-/* line 500, src/scss/_shared/macros/_category.scss */
+/* line 502, src/scss/_shared/macros/_category.scss */
 .category__pagination-btn, .category__pagination-arrow {
   display: -webkit-box;
   display: -webkit-flex;
@@ -2083,7 +2084,7 @@ strong {
   margin-right: 7px;
 }
 
-/* line 511, src/scss/_shared/macros/_category.scss */
+/* line 513, src/scss/_shared/macros/_category.scss */
 .category__pagination-btn {
   background-color: #e4e4e4;
   color: #8a8a8a;
@@ -2094,7 +2095,7 @@ strong {
   transition: background-color 0.35s ease-in-out, color 0.35s ease-in-out;
 }
 
-/* line 518, src/scss/_shared/macros/_category.scss */
+/* line 520, src/scss/_shared/macros/_category.scss */
 .category__pagination-btn:hover, .category__pagination-btn.is-active {
   background-color: #07113b;
   color: #d5f34a;
@@ -2103,7 +2104,7 @@ strong {
   transition: background-color 0.35s ease-in-out, color 0.35s ease-in-out;
 }
 
-/* line 527, src/scss/_shared/macros/_category.scss */
+/* line 529, src/scss/_shared/macros/_category.scss */
 .category__pagination-arrow .icon-font {
   color: #07113b;
   font-size: 18px;
@@ -2112,7 +2113,7 @@ strong {
           transform: scaleX(-1);
 }
 
-/* line 537, src/scss/_shared/macros/_category.scss */
+/* line 539, src/scss/_shared/macros/_category.scss */
 .light .category__btn {
   color: #fff;
 }
@@ -2175,6 +2176,7 @@ strong {
   -webkit-justify-content: center;
       -ms-flex-pack: center;
           justify-content: center;
+  cursor: pointer;
   width: 100%;
   height: 100%;
   -webkit-border-radius: 5px 0 0 5px;
@@ -2190,7 +2192,7 @@ strong {
   }
 }
 
-/* line 41, src/scss/_shared/macros/_sort.scss */
+/* line 42, src/scss/_shared/macros/_sort.scss */
 .sort__toggle .icon-font {
   color: #ffffff;
   font-size: 20px;
@@ -2199,7 +2201,7 @@ strong {
           transform: rotate(-90deg);
 }
 
-/* line 47, src/scss/_shared/macros/_sort.scss */
+/* line 48, src/scss/_shared/macros/_sort.scss */
 .sort__toggle p {
   display: -webkit-box;
   display: -webkit-flex;
@@ -2215,7 +2217,7 @@ strong {
           transform: translateX(-3px);
 }
 
-/* line 52, src/scss/_shared/macros/_sort.scss */
+/* line 53, src/scss/_shared/macros/_sort.scss */
 .sort__toggle p span {
   font-weight: 700;
   font-size: 12px;
@@ -2223,7 +2225,7 @@ strong {
   line-height: 1;
 }
 
-/* line 63, src/scss/_shared/macros/_sort.scss */
+/* line 64, src/scss/_shared/macros/_sort.scss */
 .sort__drop {
   z-index: 1100;
   opacity: 0;
@@ -2257,7 +2259,7 @@ strong {
 }
 
 @media screen and (max-width: 1023px) {
-  /* line 63, src/scss/_shared/macros/_sort.scss */
+  /* line 64, src/scss/_shared/macros/_sort.scss */
   .sort__drop {
     position: relative;
     top: 5px;
@@ -2274,7 +2276,7 @@ strong {
 }
 
 @media screen and (device-width: 320px) and (device-height: 640px) and (-webkit-device-pixel-ratio: 2) and (orientation: landscape) {
-  /* line 63, src/scss/_shared/macros/_sort.scss */
+  /* line 64, src/scss/_shared/macros/_sort.scss */
   .sort__drop {
     max-height: -webkit-calc((var(--vh, 1vh) * 100) - 70px);
     max-height: calc((var(--vh, 1vh) * 100) - 70px);
@@ -2283,7 +2285,7 @@ strong {
 }
 
 @media screen and (min-device-width: 375px) and (max-device-width: 812px) and (-webkit-min-device-pixel-ratio: 3) and (orientation: landscape) {
-  /* line 63, src/scss/_shared/macros/_sort.scss */
+  /* line 64, src/scss/_shared/macros/_sort.scss */
   .sort__drop {
     max-height: -webkit-calc((var(--vh, 1vh) * 100) - 70px);
     max-height: calc((var(--vh, 1vh) * 100) - 70px);
@@ -2292,7 +2294,7 @@ strong {
 }
 
 @media screen and (min-device-width: 414px) and (max-device-width: 736px) and (-webkit-min-device-pixel-ratio: 3) and (orientation: landscape) {
-  /* line 63, src/scss/_shared/macros/_sort.scss */
+  /* line 64, src/scss/_shared/macros/_sort.scss */
   .sort__drop {
     max-height: -webkit-calc((var(--vh, 1vh) * 100) - 70px);
     max-height: calc((var(--vh, 1vh) * 100) - 70px);
@@ -2300,7 +2302,7 @@ strong {
   }
 }
 
-/* line 104, src/scss/_shared/macros/_sort.scss */
+/* line 105, src/scss/_shared/macros/_sort.scss */
 .sort__drop.is-open {
   z-index: 1650;
   opacity: 1;
@@ -2316,7 +2318,7 @@ strong {
 }
 
 @media screen and (max-width: 1023px) {
-  /* line 104, src/scss/_shared/macros/_sort.scss */
+  /* line 105, src/scss/_shared/macros/_sort.scss */
   .sort__drop.is-open {
     -webkit-transform: unset;
         -ms-transform: unset;
@@ -2324,7 +2326,7 @@ strong {
   }
 }
 
-/* line 115, src/scss/_shared/macros/_sort.scss */
+/* line 116, src/scss/_shared/macros/_sort.scss */
 .sort__drop:after {
   content: '';
   position: absolute;
@@ -2341,7 +2343,7 @@ strong {
 }
 
 @media screen and (max-width: 1023px) {
-  /* line 115, src/scss/_shared/macros/_sort.scss */
+  /* line 116, src/scss/_shared/macros/_sort.scss */
   .sort__drop:after {
     top: -10px;
     left: 35px;
@@ -2352,7 +2354,7 @@ strong {
   }
 }
 
-/* line 134, src/scss/_shared/macros/_sort.scss */
+/* line 135, src/scss/_shared/macros/_sort.scss */
 .sort__drop-link {
   display: -webkit-box;
   display: -webkit-flex;
@@ -2382,14 +2384,14 @@ strong {
 }
 
 @media screen and (max-width: 1023px) {
-  /* line 134, src/scss/_shared/macros/_sort.scss */
+  /* line 135, src/scss/_shared/macros/_sort.scss */
   .sort__drop-link {
     max-width: -webkit-calc(100% / 7);
     max-width: calc(100% / 7);
   }
 }
 
-/* line 152, src/scss/_shared/macros/_sort.scss */
+/* line 153, src/scss/_shared/macros/_sort.scss */
 .sort__drop-link:hover {
   color: #004eb4;
   -webkit-transition: color 0.35s ease-in-out;
@@ -2397,7 +2399,7 @@ strong {
   transition: color 0.35s ease-in-out;
 }
 
-/* line 157, src/scss/_shared/macros/_sort.scss */
+/* line 158, src/scss/_shared/macros/_sort.scss */
 .sort__drop-link.is-active {
   text-decoration: underline;
   color: #004eb4;
@@ -2406,7 +2408,7 @@ strong {
   transition: color 0.35s ease-in-out;
 }
 
-/* line 164, src/scss/_shared/macros/_sort.scss */
+/* line 165, src/scss/_shared/macros/_sort.scss */
 .sort__drop-inner {
   z-index: 1000;
   opacity: 0;
@@ -2433,7 +2435,7 @@ strong {
 }
 
 @media screen and (max-width: 1023px) {
-  /* line 164, src/scss/_shared/macros/_sort.scss */
+  /* line 165, src/scss/_shared/macros/_sort.scss */
   .sort__drop-inner {
     position: relative;
     top: 10px;
@@ -2451,7 +2453,7 @@ strong {
   }
 }
 
-/* line 192, src/scss/_shared/macros/_sort.scss */
+/* line 193, src/scss/_shared/macros/_sort.scss */
 .sort__drop-inner.is-open {
   opacity: 1;
   visibility: visible;
@@ -2466,7 +2468,7 @@ strong {
   transition: opacity 0.35s ease-in-out, visibility 0.35s ease-in-out, transform 0.35s ease-in-out, -webkit-transform 0.35s ease-in-out;
 }
 
-/* line 202, src/scss/_shared/macros/_sort.scss */
+/* line 203, src/scss/_shared/macros/_sort.scss */
 .sort:hover > .sort__drop,
 .sort.is-open > .sort__drop {
   z-index: 1650;
@@ -2483,7 +2485,7 @@ strong {
 }
 
 @media screen and (max-width: 1023px) {
-  /* line 202, src/scss/_shared/macros/_sort.scss */
+  /* line 203, src/scss/_shared/macros/_sort.scss */
   .sort:hover > .sort__drop,
   .sort.is-open > .sort__drop {
     -webkit-transform: unset;
@@ -2493,7 +2495,7 @@ strong {
 }
 
 @media screen and (min-device-width: 375px) and (max-device-width: 812px) and (-webkit-min-device-pixel-ratio: 3) and (orientation: landscape) {
-  /* line 202, src/scss/_shared/macros/_sort.scss */
+  /* line 203, src/scss/_shared/macros/_sort.scss */
   .sort:hover > .sort__drop,
   .sort.is-open > .sort__drop {
     max-height: -webkit-calc(100vh - 64px);
@@ -2503,7 +2505,7 @@ strong {
 }
 
 @media screen and (min-device-width: 320px) and (max-device-width: 480px) and (-webkit-min-device-pixel-ratio: 2) and (orientation: landscape) {
-  /* line 202, src/scss/_shared/macros/_sort.scss */
+  /* line 203, src/scss/_shared/macros/_sort.scss */
   .sort:hover > .sort__drop,
   .sort.is-open > .sort__drop {
     max-height: -webkit-calc(100vh - 64px);
@@ -2513,7 +2515,7 @@ strong {
 }
 
 @media screen and (max-width: 1023px) and (orientation: landscape) {
-  /* line 202, src/scss/_shared/macros/_sort.scss */
+  /* line 203, src/scss/_shared/macros/_sort.scss */
   .sort:hover > .sort__drop,
   .sort.is-open > .sort__drop {
     max-height: -webkit-calc(100vh - 64px);
@@ -2523,7 +2525,7 @@ strong {
 }
 
 @media screen and (max-width: 767px) {
-  /* line 202, src/scss/_shared/macros/_sort.scss */
+  /* line 203, src/scss/_shared/macros/_sort.scss */
   .sort:hover > .sort__drop,
   .sort.is-open > .sort__drop {
     max-height: -webkit-calc(100vh - 64px);
@@ -2532,7 +2534,7 @@ strong {
   }
 }
 
-/* line 234, src/scss/_shared/macros/_sort.scss */
+/* line 235, src/scss/_shared/macros/_sort.scss */
 .sort__collapse {
   position: relative;
   display: -webkit-box;
@@ -2546,12 +2548,12 @@ strong {
           flex-direction: column;
 }
 
-/* line 240, src/scss/_shared/macros/_sort.scss */
+/* line 241, src/scss/_shared/macros/_sort.scss */
 .sort__collapse:not(:last-of-type) .sort__collapse-toggle {
   border-bottom: 1px solid #bac4dd;
 }
 
-/* line 245, src/scss/_shared/macros/_sort.scss */
+/* line 246, src/scss/_shared/macros/_sort.scss */
 .sort__collapse-toggle {
   display: -webkit-box;
   display: -webkit-flex;
@@ -2564,7 +2566,7 @@ strong {
   transition: background-color 0.35s ease-in-out;
 }
 
-/* line 251, src/scss/_shared/macros/_sort.scss */
+/* line 252, src/scss/_shared/macros/_sort.scss */
 .sort__collapse-toggle:hover, .sort__collapse-toggle.is-active {
   background-color: #778098;
   -webkit-transition: background-color 0.35s ease-in-out;
@@ -2572,7 +2574,7 @@ strong {
   transition: background-color 0.35s ease-in-out;
 }
 
-/* line 257, src/scss/_shared/macros/_sort.scss */
+/* line 258, src/scss/_shared/macros/_sort.scss */
 .sort__collapse-toggle:hover > div > span, .sort__collapse-toggle.is-active > div > span {
   color: #c7f228;
   -webkit-transition: color 0.35s ease-in-out;
@@ -2580,7 +2582,7 @@ strong {
   transition: color 0.35s ease-in-out;
 }
 
-/* line 263, src/scss/_shared/macros/_sort.scss */
+/* line 264, src/scss/_shared/macros/_sort.scss */
 .sort__collapse-toggle:hover .icon-font, .sort__collapse-toggle.is-active .icon-font {
   opacity: 1;
   visibility: visible;
@@ -2589,7 +2591,7 @@ strong {
   transition: opacity 0.35s ease-in-out, visibility 0.35s ease-in-out;
 }
 
-/* line 270, src/scss/_shared/macros/_sort.scss */
+/* line 271, src/scss/_shared/macros/_sort.scss */
 .sort__collapse-toggle > div {
   display: -webkit-box;
   display: -webkit-flex;
@@ -2602,7 +2604,7 @@ strong {
   height: 100%;
 }
 
-/* line 275, src/scss/_shared/macros/_sort.scss */
+/* line 276, src/scss/_shared/macros/_sort.scss */
 .sort__collapse-toggle > div:nth-of-type(1), .sort__collapse-toggle > div:nth-of-type(3) {
   -webkit-box-pack: center;
   -webkit-justify-content: center;
@@ -2611,12 +2613,12 @@ strong {
   width: 50px;
 }
 
-/* line 281, src/scss/_shared/macros/_sort.scss */
+/* line 282, src/scss/_shared/macros/_sort.scss */
 .sort__collapse-toggle > div:nth-of-type(1) {
   border-right: 1px solid #bac4dd;
 }
 
-/* line 285, src/scss/_shared/macros/_sort.scss */
+/* line 286, src/scss/_shared/macros/_sort.scss */
 .sort__collapse-toggle > div:nth-of-type(2) {
   -webkit-box-flex: 1;
   -webkit-flex: 1;
@@ -2627,7 +2629,7 @@ strong {
   padding-left: 12px;
 }
 
-/* line 293, src/scss/_shared/macros/_sort.scss */
+/* line 294, src/scss/_shared/macros/_sort.scss */
 .sort__collapse-toggle span {
   color: #dbe2f1;
   font-size: 16px;
@@ -2637,7 +2639,7 @@ strong {
   transition: color 0.35s ease-in-out;
 }
 
-/* line 300, src/scss/_shared/macros/_sort.scss */
+/* line 301, src/scss/_shared/macros/_sort.scss */
 .sort__collapse-toggle img {
   display: block;
   max-width: 100%;
@@ -2646,7 +2648,7 @@ strong {
   margin-right: 7px;
 }
 
-/* line 308, src/scss/_shared/macros/_sort.scss */
+/* line 309, src/scss/_shared/macros/_sort.scss */
 .sort__collapse-toggle p {
   color: #ffffff;
   font-size: 16px;
@@ -2656,12 +2658,12 @@ strong {
   transition: color 0.35s ease-in-out;
 }
 
-/* line 314, src/scss/_shared/macros/_sort.scss */
+/* line 315, src/scss/_shared/macros/_sort.scss */
 .sort__collapse-toggle p b, .sort__collapse-toggle p span {
   color: #0a3e83;
 }
 
-/* line 319, src/scss/_shared/macros/_sort.scss */
+/* line 320, src/scss/_shared/macros/_sort.scss */
 .sort__collapse-toggle .icon-font {
   opacity: 0;
   visibility: hidden;
@@ -2676,14 +2678,14 @@ strong {
 }
 
 @media screen and (max-width: 1023px) {
-  /* line 319, src/scss/_shared/macros/_sort.scss */
+  /* line 320, src/scss/_shared/macros/_sort.scss */
   .sort__collapse-toggle .icon-font {
     opacity: 1;
     visibility: visible;
   }
 }
 
-/* line 333, src/scss/_shared/macros/_sort.scss */
+/* line 334, src/scss/_shared/macros/_sort.scss */
 .sort__collapse-body {
   overflow: hidden;
   display: none;
@@ -2701,7 +2703,7 @@ strong {
   background-color: #262e45;
 }
 
-/* line 343, src/scss/_shared/macros/_sort.scss */
+/* line 344, src/scss/_shared/macros/_sort.scss */
 .sort__collapse-body.is-open {
   display: -webkit-box;
   display: -webkit-flex;
@@ -2709,7 +2711,7 @@ strong {
   display: flex;
 }
 
-/* line 347, src/scss/_shared/macros/_sort.scss */
+/* line 348, src/scss/_shared/macros/_sort.scss */
 .sort__collapse-body .site_free {
   outline: none;
   cursor: pointer;
@@ -2740,7 +2742,7 @@ strong {
   transition: background-color 0.35s ease-in-out;
 }
 
-/* line 363, src/scss/_shared/macros/_sort.scss */
+/* line 364, src/scss/_shared/macros/_sort.scss */
 .sort__collapse-body .site_free:hover {
   background-color: #004aac;
   -webkit-transition: background-color 0.35s ease-in-out;
@@ -2748,7 +2750,7 @@ strong {
   transition: background-color 0.35s ease-in-out;
 }
 
-/* line 368, src/scss/_shared/macros/_sort.scss */
+/* line 369, src/scss/_shared/macros/_sort.scss */
 .sort__collapse-body .site_free span {
   color: #ffffff;
   text-transform: uppercase;
@@ -2756,7 +2758,7 @@ strong {
   font-weight: 700;
 }
 
-/* line 376, src/scss/_shared/macros/_sort.scss */
+/* line 377, src/scss/_shared/macros/_sort.scss */
 .sort__collapse-body img {
   display: block;
   max-width: 100%;
@@ -2764,7 +2766,7 @@ strong {
   height: auto;
 }
 
-/* line 387, src/scss/_shared/macros/_sort.scss */
+/* line 388, src/scss/_shared/macros/_sort.scss */
 .light .sort__drop-link {
   color: #081b49;
 }
