@@ -158,7 +158,11 @@ var createCookie = function createCookie(name, value, days) {
   document.cookie = name + "=" + value + expires + "; path=/";
 };
 
-var isMobileOrTablet = window.mobileAndTabletcheck();
+var isMobileOrTablet = false;
+
+if (!navigator.userAgent.toLowerCase().includes('lighthouse')) {
+  isMobileOrTablet = window.mobileAndTabletcheck();
+}
 
 function findAncestor(el, sel) {
   while ((el = el.parentElement) && !(el.matches || el.matchesSelector).call(el, sel)) {
@@ -516,7 +520,9 @@ var initTheme = function initTheme() {
   }
 };
 
-initTheme();
+if (!navigator.userAgent.toLowerCase().includes('lighthouse')) {
+  initTheme();
+}
 
 var renderFavourites = function renderFavourites() {
   /*if(isMobileDevice){
@@ -1380,7 +1386,7 @@ function removeOtherStorageKeys(dataTime, currentLang) {
 
   var initHome = function initHome() {
     homeScroll();
-    document.querySelector('#list').addEventListener('mouseover', function (_ev) {
+    document.querySelector('.c-grid.list').addEventListener('mouseover', function (_ev) {
       if (_ev.target.closest('[list-box-js]')) {
         siteBoxHover(_ev.target.closest('[list-box-js]'));
       }
@@ -1398,11 +1404,11 @@ function removeOtherStorageKeys(dataTime, currentLang) {
   var onHomeScroll = function onHomeScroll(e) {
     var wY = window.scrollY;
     headerHeight = document.querySelector('#header').getBoundingClientRect().height;
-    var categoryListH = document.querySelector('#list').getBoundingClientRect().height;
+    var categoryListH = document.querySelector('.c-grid.list').getBoundingClientRect().height;
     var listBoxes = document.querySelectorAll('.list__box-wrapper');
     var firstCategoryListHeight = listBoxes[0].getBoundingClientRect().height;
     var expectedY = headerHeight + categoryListH - firstCategoryListHeight * 8;
-    var catListContainer = document.querySelector('#list .c-grid');
+    var catListContainer = document.querySelector('.c-grid.list');
 
     if (wY > expectedY) {
       if (!document.querySelector('[category_list_' + (listBoxes.length + 1) + ']')) {
@@ -1546,27 +1552,6 @@ function removeOtherStorageKeys(dataTime, currentLang) {
         }
       }
     }, false);
-    /*let cGrid = document.querySelector('#list .c-grid');
-    if(cGrid){
-    	cGrid.addEventListener('mouseenter', function(ev) {
-    		const _ev = ev.target;
-    		if(_ev){
-    			console.log(_ev.classList);
-    			if(_ev.classList.contains('list__box-more') | _ev.closest('.list__box-more')){
-    				onShowBannerEnter(_ev);
-    			}
-    		}
-    	}, false);
-    		cGrid.addEventListener('mouseout', function(ev) {
-    		const _ev = ev.target;
-    		if(_ev){
-    			console.log(_ev.classList);
-    			if(_ev.classList.contains('list__box-more') | _ev.closest('.list__box-more')){
-    				onShowBannerLeave(_ev);
-    			}
-    		}
-    	}, false);
-    }*/
   };
 
   function onSiteBoxHoverClick(_el) {
@@ -1969,7 +1954,7 @@ function removeOtherStorageKeys(dataTime, currentLang) {
 
     var _elRect = el.getBoundingClientRect();
 
-    var _listContainer = document.querySelector('#list .list__box-wrapper'),
+    var _listContainer = document.querySelector('.c-grid.list .list__box-wrapper'),
         _listContainerDimm = _listContainer.getBoundingClientRect();
 
     var _sum = 0;

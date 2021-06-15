@@ -1075,7 +1075,7 @@ function renderSiteCategory(categoryIndex){
 }
 
 function renderAllOtherCategories(){
-	let catListContainer = document.querySelector('#list .c-grid');
+	let catListContainer = document.querySelector('.c-grid.list');
 
 	for (let i=0; i<homeData.categories_count; i++){
 		let catId = homeData.categories_indexes[i];

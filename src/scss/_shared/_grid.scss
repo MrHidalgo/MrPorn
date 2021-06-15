@@ -18,10 +18,13 @@ $paddingRight: $paddingLeft;
 /// MAIN
 /// ===============
 .c-grid {
+
   @extend %grid;
   @if($maxWidth) {
     max-width: $maxWidth;
   }
+
+
 
 	@include adaptive(1449.98){
 		/*max-width: 1149px;*/
@@ -52,8 +55,14 @@ $paddingRight: $paddingLeft;
   }
 }
 
+
+
 .page-id-17{
 	.c-grid {
+		&.list{
+			padding-top: 25px;
+		}
+
 		@media screen and (min-width: 1450px) {
 			max-width: 75%;
 		}

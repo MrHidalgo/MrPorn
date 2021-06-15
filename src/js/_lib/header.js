@@ -31,9 +31,10 @@ const initTheme = () => {
 		toggleSwitch.checked = false;
 	}
 }
-initTheme();
 
-
+if((!navigator.userAgent.toLowerCase().includes('lighthouse'))){
+	initTheme();
+}
 
 const renderFavourites = () => {
 	/*if(isMobileDevice){

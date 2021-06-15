@@ -4,9 +4,11 @@
 	position: relative;
 	display: flex;
 	flex-direction: column;
+	background-color: #07113b;
 
-	@import "header--conatainer";
 	@import "header--wrapper";
+	@import "header--conatainer";
+
 	@import "header--toggle";
 	@import "header--action";
 	@import "header--category";
@@ -192,6 +194,21 @@
 
 
 
+@keyframes showNSlideUp {
+	0% {
+		display: none;
+		opacity: 0;
+	}
+	1% {
+		display: block;
+		opacity: 0;
+		transform: translateY(50px);
+	}
+	100% {
+		opacity: 1;
+		transform: translateY(0);
+	}
+}
 
 
 // HEADER :: END
