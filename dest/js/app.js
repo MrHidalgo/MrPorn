@@ -1369,6 +1369,44 @@ function removeOtherStorageKeys(dataTime, currentLang) {
   }
 }
 
+function showAgeVerification() {
+  if (document.documentElement.lang == 'de') {
+    var isVerified = getCookieMpgCookie("age");
+
+    if (!isVerified) {
+      var avHtml = '<div class="modal_age">' + '<div class="modal_inner">' + '<img src="/wp-content/themes/mpg/images/logo-mob.png"/>' + '<div class="title">Altersüberprüfung</div>' + '<p>MrPornGeek ist eine Erwachsenen-Community, die altersbeschränkte Inhalte enthält.<br/>' + 'Du musst 18 Jahre oder älter sein, um teilnehmen zu können.</p>' + '<button class="btnPrimary greyButton js-closeAgeModal">Ich bin 18 oder älter - Eingabe</button>' + '</div>' + '</div>';
+      document.body.insertAdjacentHTML('beforeend', avHtml);
+    }
+  }
+}
+
+function verifyAge() {
+  createCookie("age", "1", 356);
+
+  if (document.querySelector('.modal_age')) {
+    document.querySelector('.modal_age').remove();
+  }
+}
+
+function showAcceptCookie() {
+  if (document.documentElement.lang == 'de') {
+    var isAccepted = getCookieMpgCookie("accept");
+
+    if (!isAccepted) {
+      var avHtml = '<div class="cookieBanner">' + 'Wir benutzen Cookies um die Funktionalität der Webseite zu optimieren und dir die beste Erfahrung mit uns zu bieten. ' + '<button id="acceptCookie" class="acceptCookie">OK</button>' + '</div>';
+      document.body.insertAdjacentHTML('beforeend', avHtml);
+    }
+  }
+}
+
+function verifyCookie() {
+  createCookie("accept", "1", 356);
+
+  if (document.querySelector('.cookieBanner')) {
+    document.querySelector('.cookieBanner').remove();
+  }
+}
+
 (function () {
   /**
    * MAIN CALLBACK
@@ -1469,6 +1507,10 @@ function removeOtherStorageKeys(dataTime, currentLang) {
         onBannerLikeClick(_ev.closest('[spec-like-js]'));
       } else if (_ev.closest('[spec-dislike-js]')) {
         onBannerDislikeClick(_ev.closest('[spec-dislike-js]'));
+      } else if (_ev.classList.contains('js-closeAgeModal')) {
+        verifyAge();
+      } else if (_ev.classList.contains('acceptCookie')) {
+        verifyCookie();
       } else if (_ev.closest('[like-toggle-js]')) {
         onSiteBoxLikeClick(_ev.closest('[like-toggle-js]'));
       } else if (_ev.closest('[dislike-toggle-js]')) {
@@ -2126,6 +2168,8 @@ function removeOtherStorageKeys(dataTime, currentLang) {
 
 
     initWebWorker();
+    showAgeVerification();
+    showAcceptCookie();
   };
 
   var onWindowBlur = function onWindowBlur() {
