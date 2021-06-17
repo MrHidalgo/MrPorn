@@ -147,7 +147,9 @@ function verifyCookie(){
 		document.documentElement.style.setProperty('--vh', `${vh}px`);
 	}
 
-	initLoggedUser();
+	if(window.innerWidth>1024){
+		initLoggedUser();
+	}
 
 	initGotoTop();
 
@@ -1009,8 +1011,10 @@ function verifyCookie(){
 	}
 
 	const onWindowChange = () =>{
-		let __vh = window.innerHeight * 0.01;
-		document.documentElement.style.setProperty('--vh', `${__vh}px`);
+		if(document.body.classList.contains('home')){
+			let __vh = window.innerHeight * 0.01;
+			document.documentElement.style.setProperty('--vh', `${__vh}px`);
+		}
 	}
 
 	/**

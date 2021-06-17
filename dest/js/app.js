@@ -454,7 +454,9 @@ var renderMobileMenu = function renderMobileMenu() {
   initFavDelete();
 
   if (typeof initLoggedUser === "function") {
-    initLoggedUser();
+    if (window.innerWidth > 1024) {
+      initLoggedUser();
+    }
   }
 };
 
@@ -1418,7 +1420,10 @@ function verifyCookie() {
     document.documentElement.style.setProperty('--vh', "".concat(vh, "px"));
   }
 
-  initLoggedUser();
+  if (window.innerWidth > 1024) {
+    initLoggedUser();
+  }
+
   initGotoTop();
   var headerHeight = 0;
 
@@ -2179,9 +2184,11 @@ function verifyCookie() {
   };
 
   var onWindowChange = function onWindowChange() {
-    var __vh = window.innerHeight * 0.01;
+    if (document.body.classList.contains('home')) {
+      var __vh = window.innerHeight * 0.01;
 
-    document.documentElement.style.setProperty('--vh', "".concat(__vh, "px"));
+      document.documentElement.style.setProperty('--vh', "".concat(__vh, "px"));
+    }
   };
   /**
    * @description Init all CB after page load

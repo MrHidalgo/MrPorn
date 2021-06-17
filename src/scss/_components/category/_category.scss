@@ -199,19 +199,11 @@
 		cursor: pointer;
 		position: relative;
 		background: #fc337b;
-		padding: 5px 50px 5px 15px;
-		display: inline-block;
-
-		&:after{
-			position: absolute;
-			top: 7px;
-			right: 10px;
-			width: 26px;
-			height: 26px;
-			background: url(../images/drp-arrw-w2.png) center top no-repeat;
-			content: '';
-		}
+		padding: 5px 10px 5px 15px;
+		display: flex;
+		align-items: center;
 	}
+	.down_arrow{margin-left: 12px;}
 
 	ul {
 		position: absolute;

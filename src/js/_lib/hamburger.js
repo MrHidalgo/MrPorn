@@ -167,7 +167,9 @@ const renderMobileMenu = () => {
 	initFavDelete();
 
 	if(typeof initLoggedUser === "function"){
-		initLoggedUser();
+		if(window.innerWidth>1024){
+			initLoggedUser();
+		}
 	}
 }
 
