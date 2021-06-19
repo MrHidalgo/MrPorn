@@ -26,12 +26,12 @@ $paddingRight: $paddingLeft;
 
 
 
-	@include adaptive(1449.98){
+	@include adaptiveMinMax(1449.98, 1199.98){
 		/*max-width: 1149px;*/
 		padding-left: 0;
 		padding-right: 0;
 	}
-	@include adaptive(1199.98){
+	@include adaptiveMinMax(1199.98, 767){
 		padding-left: 15px;
 		padding-right: 15px;
 	}

@@ -6,14 +6,6 @@
 		padding-top: 0;
 	}
 
-	> * {
-		/*height: 34px;*/
-		@include adaptive(1023) {
-			z-index: 2;
-			position: relative;
-		}
-	}
-
 	&__left {
 		width: 43px;
 	}
@@ -357,109 +349,6 @@
 					}
 					@include adaptive(1023) {
 						display: block;
-					}
-				}
-			}
-		}
-
-		&-head {
-			display: flex;
-			align-items: center;
-			justify-content: center;
-			height: 37px;
-
-			> div {
-				&:nth-of-type(1) {
-					overflow: hidden;
-					position: relative;
-					display: flex;
-					align-items: center;
-					justify-content: center;
-					width: 21px;
-					height: 21px;
-					border-radius: 50%;
-					@include adaptive(767) {
-						width: 18px;
-						height: 18px;
-					}
-
-					&.gf {
-						&--pink {
-							background-color: #b32eae;
-						}
-						&--green {
-							background-color: #13aea1;
-						}
-					}
-				}
-
-				&:nth-of-type(2) {
-					padding-left: 5px;
-				}
-
-				img {
-					@extend %imageResCoverAbs;
-				}
-
-				span {
-					color: #ffffff;
-					font-size: 11px;
-					font-weight: 700;
-					@include adaptive(767) {
-						font-size: 9px;
-					}
-				}
-			}
-
-			p {
-				color: #0a3e83;
-				font-size: 12px;
-				font-weight: 700;
-				@include adaptive(1023) {
-					color: #ffffff;
-				}
-				@include adaptive(767) {
-					font-size: 10px;
-				}
-			}
-		}
-
-		&-body {
-			display: flex;
-			flex-direction: column;
-			height: 100%;
-
-			> div {
-				&:nth-of-type(1) {
-					overflow: hidden;
-					position: relative;
-					flex: 1;
-					min-width: 1px;
-					max-width: 100%;
-					border-top: 1px solid #9ca4ad;
-					border-left: 1px solid #9ca4ad;
-					border-right: 1px solid #9ca4ad;
-
-					img {
-						@extend %imageResCoverAbs;
-					}
-				}
-				&:nth-of-type(2) {
-					display: flex;
-					align-items: center;
-					justify-content: center;
-					height: 15px;
-					border: 1px solid #9ca4ad;
-					background-color: #0a3e83;
-
-					p {
-						position: relative;
-						top: -1px;
-						color: #ffffff;
-						line-height: 1;
-						font-size: 10px;
-						font-weight: 700;
-						text-align: center;
 					}
 				}
 			}

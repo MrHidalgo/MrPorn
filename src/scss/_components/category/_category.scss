@@ -195,7 +195,7 @@
 	color: #fff;
 	position: relative;
 
-	span{
+	&__span{
 		cursor: pointer;
 		position: relative;
 		background: #fc337b;
@@ -203,9 +203,9 @@
 		display: flex;
 		align-items: center;
 	}
-	.down_arrow{margin-left: 12px;}
+	&__arrow{margin-left: 12px;}
 
-	ul {
+	&__ul {
 		position: absolute;
 		z-index: 10;
 		top: 38px;
@@ -220,10 +220,9 @@
 		li{
 			padding: 8px 10px;
 			border-bottom: 1px solid;
-
-			a{
-				color: #000;
-			}
+		}
+		a{
+			color: #000;
 		}
 	}
 
@@ -234,54 +233,44 @@
 .blue_heading.has_dropdown{
 	position: relative;
 }
-.discounted_deals_container{
-	width: 100%;
-	@include respond('ipad_portrait'){
-		display: none;
+
+
+@include respond('large'){
+	.discounted_deals_container{
+		width: 100%;
+		@include respond('ipad_portrait'){
+			display: none;
+		}
+
+		@include adaptive(767) {
+			display: none;
+		}
 	}
+	.discounted_deals {
+		margin: 30px 10px;
+		border: 5px solid #eaeaea;
+		background: #cecece;
+		padding: 25px;
+		text-align: center;
 
-	@include adaptive(767) {
-		display: none;
-	}
-}
-.discounted_deals {
-	margin: 30px 10px;
-	border: 5px solid #eaeaea;
-	background: #cecece;
-	padding: 25px;
-	text-align: center;
-
-	.deals_title_bar {
-		padding-top: 12.39092495636998%;
-		content: ' ';
-		display: block;
-		background: url(../images/evil-torrent.png) center top no-repeat;
-		margin: 0 auto;
-		background-size: 100% auto;
-		background-position: center top;
-
-		&.category9 {
-			background-image: url(../images/Porn-Tubes-Are-For-FreeLoaders.png);
+		.deals_title_bar {
+			padding-top: 12.39092495636998%;
+			content: ' ';
+			display: block;
+			background: url(../images/evil-torrent.png) center top no-repeat;
+			margin: 0 auto;
 			background-size: 100% auto;
+			background-position: center top;
+
+			&.category9 {
+				background-image: url(../images/Porn-Tubes-Are-For-FreeLoaders.png);
+				background-size: 100% auto;
+			}
 		}
 	}
 
 	.discount_items{display: flex; flex-wrap: wrap; margin: 20px 0 0;}
 	.discounted_item{width: 25%; padding: 0 10px; position: relative; }
-
-	ul{
-		margin: 20px 0 0;
-		padding: 0;
-
-		li{
-			display: inline-block;
-			width: 25%;
-			text-align: left;
-			padding: 0 10px;
-			position: relative;
-			vertical-align: top;
-		}
-	}
 
 	.discounted_deals_inner {
 		background: #fff;
@@ -333,6 +322,8 @@
 		}
 	}
 }
+
+
 
 .light{
 	.readmore{
