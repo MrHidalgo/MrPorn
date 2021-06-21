@@ -72,6 +72,7 @@
 			top: 0;
 			flex-direction: column;
 			z-index: 2;
+			content-visibility: auto;
 
 			a{
 				padding: 16px 0;
@@ -160,18 +161,20 @@
 		}
 
 		&_thumb{
+			display: block;
+			position: relative;
 			line-height: 0;
 			overflow: hidden;
-			position: relative;
-			display: block;
+			padding-bottom: 84.8%;
+
 
 			&__img{
 				aspect-ratio:1.18110;
-
-				/*position: absolute;
+				position: absolute;
 				top: -1px;
-				left: 0;*/
+				left: 0;
 				width: 100%;
+				height: auto;
 				transform: scale(1);
 				transition: opacity 250ms,transform .3s !important;
 				transform-origin: top left;
@@ -223,6 +226,7 @@
 			font-weight: 600;
 			justify-content: center;
 			color: #fff;
+			content-visibility: auto;
 
 			@include adaptive(767) {
 				font-size: 13px;
@@ -256,13 +260,7 @@
 			}
 
 			.deIcon{
-				&:before{
-					content: ' ';
-					display: block;
-					width: 16px;
-					height: 16px;
-					margin-right: 5px;
-				}
+				width: 21px;
 			}
 
 			h2{
@@ -305,6 +303,7 @@
 			display: -webkit-box;
 			-webkit-line-clamp: 4;
 			-webkit-box-orient: vertical;
+			content-visibility: auto;
 
 			@include respond('ipad'){
 				font-size: 12px;
@@ -314,7 +313,7 @@
 				font-size: 12px;
 				-webkit-line-clamp: 5;
 				line-height: 17px;
-				height: auto;
+				height: 90px;
 				margin: 12px 0 3px;
 			}
 		}
@@ -439,6 +438,7 @@
 			color: #fff;
 			margin: 0 0 10px;
 			font-weight: 700;
+			content-visibility: auto;
 
 			@include adaptive(767) {
 				font-size: 16px;
@@ -458,13 +458,19 @@
 			padding: 0;
 			font-size: 16px;
 			margin: 0 0 10px;
+			content-visibility: auto;
+		}
 
-			@include respond('max-medium'){
-				display: none;
+		@include adaptive(767) {
+			&:not(show_all){
+				h3{display: none;}
+				h3:first-of-type{display: block;}
 
-				&:first-of-type{display: block; flex: 1; overflow: hidden;}
+				p{display: none;}
+				p:first-of-type{display: block;}
 			}
 		}
+
 
 		&.show_all{
 			.category_description{
@@ -504,6 +510,18 @@
 
 
 	.category_sites_item_title h2{
+	}
+}
+
+.deIcon{
+	content-visibility: auto;
+
+	&:before{
+		content: ' ';
+		display: block;
+		width: 16px;
+		height: 16px;
+		margin-right: 5px;
 	}
 }
 

@@ -64,16 +64,16 @@ const renderFavourites = () => {
 			if(res.status=='true'){
 				isLoggedUser = true;
 
-				window.logoutUrl = res.logout;
+				let logoutLink = '/wp-login.php?action=logout';
 
 				if(document.querySelector('.header__action-link--logout')){
-					document.querySelector('.header__action-link--logout').setAttribute('href', res.logout);
+					document.querySelector('.header__action-link--logout').setAttribute('href', logoutLink);
 				}
 
 
 
 				if(document.querySelector('.mobile_signup_link')){
-					document.querySelector('.mobile_signup_link').setAttribute('href', res.logout);
+					document.querySelector('.mobile_signup_link').setAttribute('href', logoutLink);
 				}
 
 

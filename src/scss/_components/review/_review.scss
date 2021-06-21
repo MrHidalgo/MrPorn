@@ -348,6 +348,7 @@
 	padding-top: 85.4729%;
 	position: relative;
 	background: #000;
+	content-visibility: auto;
 
 	img {
 		position: absolute;
@@ -380,16 +381,27 @@
 .gallery-thumbs{
 	height: 20%;
 	box-sizing: border-box;
-	padding: 10px 0 0;
-	margin-top: 10px;
+	padding: 0 0 0;
+	margin-top: 20px;
+	height: 119px;
+
+	@include adaptive(767) {
+		height: 70px;
+	}
 
 	.swiper-slide{
-		max-width: 25%;
+		//max-width: 25%;
 		opacity: 0.4;
 
+		width: 140px !important;
+		height: 119px;
+		object-fit: cover;
 
 		@include adaptive(767) {
-			aspect-ratio: calc(70 / 60);
+			//aspect-ratio: calc(70 / 60);
+			object-fit: cover;
+			height: 70px;
+			width: 75px !important;
 			margin-right: 10px;
 		}
 	}
@@ -433,7 +445,7 @@
 		z-index: 10;
 	}
 
-	.review_screenshot_hover{
+	&_hover{
 		position: absolute;
 		top: 0;
 		left: 0;
@@ -460,6 +472,7 @@
 
 			&.games{
 				max-width: 300px;
+				height: auto;
 			}
 		}
 
@@ -644,7 +657,7 @@
 		width: 100%;
 		font-weight: 600;
 
-		@include adaptive(1449.98){
+		@include adaptiveMinMax(1449.98, 767){
 			font-size: 36px;
 		}
 

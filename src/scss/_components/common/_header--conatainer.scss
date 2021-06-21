@@ -1,6 +1,8 @@
 &__container {
 	&-1 {
 		background-color: #07113b;
+		content-visibility: auto;
+
 		@include adaptive(1023) {
 			display: none;
 		}
@@ -8,6 +10,8 @@
 
 	&-2 {
 		background-color: #081b49;
+		content-visibility: auto;
+
 		@include adaptive(1023) {
 			z-index: 1600;
 			opacity: 0;
@@ -42,6 +46,7 @@
 	}
 
 	&-3 {
+		content-visibility: auto;
 		background-color: rgb(11, 13, 40);
 		box-shadow: 1.482px 16.935px 35px 0px rgba(31, 37, 103, 0.33);
 		@include adaptive(1023) {

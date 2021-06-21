@@ -550,14 +550,14 @@ var renderFavourites = function renderFavourites() {
     if (res.status) {
       if (res.status == 'true') {
         isLoggedUser = true;
-        window.logoutUrl = res.logout;
+        var logoutLink = '/wp-login.php?action=logout';
 
         if (document.querySelector('.header__action-link--logout')) {
-          document.querySelector('.header__action-link--logout').setAttribute('href', res.logout);
+          document.querySelector('.header__action-link--logout').setAttribute('href', logoutLink);
         }
 
         if (document.querySelector('.mobile_signup_link')) {
-          document.querySelector('.mobile_signup_link').setAttribute('href', res.logout);
+          document.querySelector('.mobile_signup_link').setAttribute('href', logoutLink);
         }
       } else {//loadLoginForm();
       }
@@ -1414,11 +1414,7 @@ function verifyCookie() {
     document.documentElement.style.setProperty('--vh', "".concat(vh, "px"));
   }
 
-  if (window.innerWidth > 1024) {
-    initLoggedUser();
-  }
-
-  initGotoTop();
+  initLoggedUser();
   var headerHeight = 0;
 
   var initHome = function initHome() {
@@ -2150,6 +2146,7 @@ function verifyCookie() {
       sortCB();
     }
 
+    initGotoTop();
     letterSearch();
     search();
 
@@ -2191,32 +2188,32 @@ function verifyCookie() {
 
   window.addEventListener('load', function (ev) {
     initNative();
-  });
-  window.addEventListener('blur', function (ev) {
-    onWindowBlur();
-  });
-  window.addEventListener("orientationchange", function (event) {
-    onWindowChange();
-    setTimeout(function () {
-      onWindowChange();
-    }, 500);
-  });
-  window.addEventListener('resize', function () {
-    if (window.innerWidth > 1023) {
-      if (document.querySelector('.list__specification.is-open')) {
-        document.getElementsByTagName('html')[0].classList.remove('is-hideScroll');
-        document.getElementsByTagName('body')[0].classList.remove('is-hideScroll');
-      }
-    } else {
+    window.addEventListener('blur', function (ev) {
+      onWindowBlur();
+    });
+    window.addEventListener("orientationchange", function (event) {
       onWindowChange();
       setTimeout(function () {
         onWindowChange();
       }, 500);
+    });
+    window.addEventListener('resize', function () {
+      if (window.innerWidth > 1023) {
+        if (document.querySelector('.list__specification.is-open')) {
+          document.getElementsByTagName('html')[0].classList.remove('is-hideScroll');
+          document.getElementsByTagName('body')[0].classList.remove('is-hideScroll');
+        }
+      } else {
+        onWindowChange();
+        setTimeout(function () {
+          onWindowChange();
+        }, 500);
 
-      if (document.querySelector('.list__specification.is-open')) {
-        document.getElementsByTagName('html')[0].classList.add('is-hideScroll');
-        document.getElementsByTagName('body')[0].classList.add('is-hideScroll');
+        if (document.querySelector('.list__specification.is-open')) {
+          document.getElementsByTagName('html')[0].classList.add('is-hideScroll');
+          document.getElementsByTagName('body')[0].classList.add('is-hideScroll');
+        }
       }
-    }
+    });
   });
 })();

@@ -802,8 +802,8 @@ strong {
 @media screen and (max-width: 767px) {
   /* line 20, src/scss/_shared/_grid.scss */
   .c-grid {
-    padding-left: 10px;
-    padding-right: 10px;
+    padding-left: 5px;
+    padding-right: 5px;
   }
 }
 
@@ -2979,6 +2979,7 @@ fieldset {
 /* line 2, src/scss/_components/common/_header--conatainer.scss */
 .header__container-1 {
   background-color: #07113b;
+  content-visibility: auto;
 }
 
 @media screen and (max-width: 1023px) {
@@ -2988,13 +2989,14 @@ fieldset {
   }
 }
 
-/* line 9, src/scss/_components/common/_header--conatainer.scss */
+/* line 11, src/scss/_components/common/_header--conatainer.scss */
 .header__container-2 {
   background-color: #081b49;
+  content-visibility: auto;
 }
 
 @media screen and (max-width: 1023px) {
-  /* line 9, src/scss/_components/common/_header--conatainer.scss */
+  /* line 11, src/scss/_components/common/_header--conatainer.scss */
   .header__container-2 {
     z-index: 1600;
     opacity: 0;
@@ -3013,7 +3015,7 @@ fieldset {
     padding: 10px 20px 0 20px;
     background-color: rgba(8, 9, 21, 0.975);
   }
-  /* line 27, src/scss/_components/common/_header--conatainer.scss */
+  /* line 31, src/scss/_components/common/_header--conatainer.scss */
   .header__container-2.is-open {
     opacity: 1;
     visibility: visible;
@@ -3028,28 +3030,29 @@ fieldset {
   }
 }
 
-/* line 35, src/scss/_components/common/_header--conatainer.scss */
+/* line 39, src/scss/_components/common/_header--conatainer.scss */
 .header__container-2 .c-grid {
   position: relative;
 }
 
 @media screen and (max-width: 1023px) {
-  /* line 35, src/scss/_components/common/_header--conatainer.scss */
+  /* line 39, src/scss/_components/common/_header--conatainer.scss */
   .header__container-2 .c-grid {
     padding-left: 0;
     padding-right: 0;
   }
 }
 
-/* line 44, src/scss/_components/common/_header--conatainer.scss */
+/* line 48, src/scss/_components/common/_header--conatainer.scss */
 .header__container-3 {
+  content-visibility: auto;
   background-color: #0b0d28;
   -webkit-box-shadow: 1.482px 16.935px 35px 0px rgba(31, 37, 103, 0.33);
           box-shadow: 1.482px 16.935px 35px 0px rgba(31, 37, 103, 0.33);
 }
 
 @media screen and (max-width: 1023px) {
-  /* line 44, src/scss/_components/common/_header--conatainer.scss */
+  /* line 48, src/scss/_components/common/_header--conatainer.scss */
   .header__container-3 {
     display: none;
   }
