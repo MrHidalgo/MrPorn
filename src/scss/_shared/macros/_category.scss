@@ -158,45 +158,6 @@
 			@include transition(opacity, visibility, transform);
 		}
 
-		&-head {
-			display: flex;
-			align-items: center;
-			justify-content: space-between;
-			min-height: 46px;
-			padding: 5px 15px;
-			background-color: #0a3e83;
-			@include adaptive(1023) {
-				padding-right: 0;
-				padding-left: 20px;
-			}
-
-			> div {
-				&:nth-of-type(1) {
-					width: 275px;
-					@include adaptive(1023) {
-						width: auto;
-						padding-right: 20px;
-					}
-				}
-				&:nth-of-type(2) {
-					display: flex;
-					align-items: center;
-					justify-content: flex-end;
-					flex: 1;
-					min-width: 1px;
-					max-width: 100%;
-				}
-			}
-		}
-
-		&-body {
-			flex: 1;
-			min-height: 1px;
-			max-height: 100%;
-			padding-left: 10px;
-			padding-right: 10px;
-		}
-
 		&-footer {
 			display: flex;
 			align-items: center;
@@ -237,22 +198,6 @@
 					margin-right: 0;
 				}
 
-				&--1 {
-					background-color: #090b27;
-				}
-				&--2 {
-					background-color: #0677ce;
-				}
-				&--3 {
-					background-color: #767676;
-				}
-				&--4 {
-					background-color: #625e73;
-				}
-				&--5 {
-					background-color: #65a6bb;
-				}
-
 				img {
 					display: inline-block;
 					vertical-align: middle;
@@ -287,71 +232,6 @@
 		.icon-font {
 			color: #33529e;
 			font-size: 24px;
-		}
-	}
-
-	&__list {
-		display: flex;
-		flex-direction: column;
-		width: 100%;
-		height: 210px;
-		@include adaptive(1023) {
-			height: 100%;
-		}
-
-		&-wrapper {
-			display: flex;
-			flex-wrap: wrap;
-			width: 100%;
-			@include adaptive(1023) {
-				min-height: 100%;
-			}
-
-			> div {
-				width: 100%;
-				max-width: calc(100% / 6);
-				padding-left: 5px;
-				padding-right: 5px;
-				@include adaptive(1535) {
-					max-width: calc(100% / 5);
-				}
-				@include adaptive(1365) {
-					max-width: calc(100% / 4);
-				}
-				@include adaptive(1279) {
-					max-width: calc(100% / 3);
-				}
-
-				&:nth-last-child(1),
-				&:nth-last-child(2) {
-					@include adaptive(1535) {
-						display: none;
-					}
-				}
-
-				&:nth-last-child(3),
-				&:nth-last-child(4) {
-					@include adaptive(1365) {
-						display: none;
-					}
-				}
-
-				&:nth-last-child(4) {
-					@include adaptive(1023) {
-						display: block;
-					}
-				}
-
-				&:nth-last-child(5),
-				&:nth-last-child(6) {
-					@include adaptive(1279) {
-						display: none;
-					}
-					@include adaptive(1023) {
-						display: block;
-					}
-				}
-			}
 		}
 	}
 

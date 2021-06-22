@@ -112,13 +112,13 @@ function getModalStartPoint(sourceBBox, destinationBBox, isOpen=true){
 	const toX = sourceCenter.x - destinationCenter.x;
 	const toY = sourceCenter.y - destinationCenter.y;
 
-	modalRenderer.set({
+	/*modalRenderer.set({
 		x: toX,
 		y: toY,
 		scaleX: 1,
 		scaleY: 1,
 		transformOrigin: '50% 50%'
-	});
+	});*/
 
 	let fullWidth = window.innerWidth;
 	if(fullWidth>1450){
@@ -131,16 +131,21 @@ function getModalStartPoint(sourceBBox, destinationBBox, isOpen=true){
 	const toScaleX = 350 / fullWidth;
 	const toScaleY = 260 / fullHeight;
 
-	console.log(sourceBBox.height+' - '+destinationBBox.height+' - '+destinationBBox.width+' - '+fullWidth);
+	let startScaleX = sourceBBox.width/ modalBBox.width;
+	let startScaleY = sourceBBox.height/ modalBBox.height;
 
-	modalRenderer.set({
+	console.log(sourceBBox.height+' '+sourceBBox.width+' - '+destinationBBox.height+' - '+destinationBBox.width+' - '+fullWidth+'  - '+startScaleX+' - '+startScaleY);
+
+	modal.style.transform = 'scaleX('+startScaleX+') scaleY('+startScaleY+')';
+
+	/*modalRenderer.set({
 		x: toX,
 		y: toY,
 		scaleX: toScaleX,
 		scaleY: toScaleY,
 		transformOrigin: '50% 50%'
 		//transformOrigin: '50% 0'
-	});
+	});*/
 }
 function openSlideModal2(e) {
 	if(!e.target){
@@ -194,24 +199,26 @@ function openSlideModal(e) {
 
 
 		// Temporarily show modal container to measure modal
-		dimmerRenderer.set('display', 'block').render();
+		/*dimmerRenderer.set('display', 'block').render();
 		modalContainerRenderer.set('display', 'flex').render();
-		modalRenderer.set('opacity', 0).render();
+		modalRenderer.set('opacity', 0).render();*/
 
 
-
+		modalContainer.style.display = 'flex';
 
 
 		// Get bounding box of final modal position
 		const modalBBox = modal.getBoundingClientRect();
 
 		if(!isMobileOrTablet){
+
+
 			getModalStartPoint(triggerBBox, modalBBox);
-			modalRenderer.set('opacity', 1).render();
+			// modalRenderer.set('opacity', 1).render();
 		}
 
 		// Get a function to tween the modal from the trigger
-		const modalTweener = generateModalTweener(triggerBBox, modalBBox);
+		/*const modalTweener = generateModalTweener(triggerBBox, modalBBox);
 
 		// Fade in overlay
 		tween({
@@ -232,7 +239,7 @@ function openSlideModal(e) {
 				ease: easing.easeOut,
 				onUpdate: modalTweener
 			})
-		]).start();
+		]).start();*/
 	}else{
 		if(modalContainer){
 			modalContainer.style.display = 'flex'

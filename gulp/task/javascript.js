@@ -20,6 +20,7 @@ task('js', (done) => {
 			configPath.src.js + '/**/*.js',
 			'!' + configPath.src.js + '/**/_**.js',
 			'!' + configPath.src.js + '/**/frontpage.js',
+		'!' + configPath.src.js + '/_frontpage/*.js',
 		])
 		.pipe(plumber(configOption.pipeBreaking.err))
 
@@ -46,9 +47,9 @@ task('js_home', (done) => {
 		.pipe(order([
 			"*",
 			"_lib/**",
-			"_frontpage/**",
 			"_window/**",
 			"_document/**",
+			"_frontpage/**",
 		]))
 		.pipe(concat('frontpage.js'))
 		.pipe(babel(configOption.es6))
