@@ -34,9 +34,9 @@ const modalContainer = document.querySelector('.modal-container');
 const modal = document.querySelector('.modal');
 
 // Create CSS renderers
-const dimmerRenderer = css(dimmer);
-const modalContainerRenderer = css(modalContainer);
-const modalRenderer = css(modal);
+// const dimmerRenderer = css(dimmer);
+// const modalContainerRenderer = css(modalContainer);
+//const modalRenderer = css(modal);
 
 // Return the center x, y of a bounding box
 function findCenter({ top, left, height, width }, isOpen = true) {
@@ -133,10 +133,16 @@ function getModalStartPoint(sourceBBox, destinationBBox, isOpen=true){
 
 	let startScaleX = sourceBBox.width/ modalBBox.width;
 	let startScaleY = sourceBBox.height/ modalBBox.height;
+	let modalTop = sourceBBox.top - 100;
 
 	console.log(sourceBBox.height+' '+sourceBBox.width+' - '+destinationBBox.height+' - '+destinationBBox.width+' - '+fullWidth+'  - '+startScaleX+' - '+startScaleY);
 
+
+	modal.style.left = sourceBBox.left+'px';
+	modal.style.top = modalTop+'px';
 	modal.style.transform = 'scaleX('+startScaleX+') scaleY('+startScaleY+')';
+
+	modalContainer.classList.add('open');
 
 	/*modalRenderer.set({
 		x: toX,
@@ -204,7 +210,6 @@ function openSlideModal(e) {
 		modalRenderer.set('opacity', 0).render();*/
 
 
-		modalContainer.style.display = 'flex';
 
 
 		// Get bounding box of final modal position
@@ -252,14 +257,14 @@ function closeComplete() {
 	dimmerRenderer.set('display', 'none').render();
 	modalContainerRenderer.set('display', 'none').render();
 
-	modalRenderer.set({
+	/*modalRenderer.set({
 		x:0,
 		y: 0,
 		scaleX: 1,
 		scaleY: 1,
 		transformOrigin: '50% 50%'
 		//transformOrigin: '50% 0'
-	});
+	});*/
 }
 
 function cancelModal(e) {
@@ -290,7 +295,7 @@ function cancelModal(e) {
 		const triggerBBox = trigger.getBoundingClientRect();
 		const modalBBox = modal.getBoundingClientRect();
 
-		const modalTweener = generateModalTweener(triggerBBox, modalBBox, false);
+		/*const modalTweener = generateModalTweener(triggerBBox, modalBBox, false);
 
 		parallel([
 			tween({
@@ -305,7 +310,7 @@ function cancelModal(e) {
 				onUpdate: modalTweener,
 				onComplete: closeComplete
 			})
-		]).start();
+		]).start();*/
 	}
 
 
