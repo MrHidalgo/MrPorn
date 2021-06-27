@@ -288,12 +288,7 @@ body:not(.opened){
 	margin-top: 100px;
 	display: flex;
 	position: absolute;
-	transform-origin:top left;
 	/*align-items: flex-end;*/
-
-	&.open{
-		transition: transform .3s;
-	}
 
 	@media screen and (min-width: 1450px) {
 		max-width: 75%;
