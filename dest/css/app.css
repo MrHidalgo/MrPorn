@@ -119,9 +119,9 @@
 
 /* line 9, src/scss/_vendor/hamburger/types/_squeeze.scss */
 .hamburger-inner::before {
-  -webkit-transition: top 0.075s 0.12s ease, opacity 0.075s ease;
-  -o-transition: top 0.075s 0.12s ease, opacity 0.075s ease;
-  transition: top 0.075s 0.12s ease, opacity 0.075s ease;
+  -webkit-transition: top 0.075s 0.12s ease, opacity 0.075s ease;
+  -o-transition: top 0.075s 0.12s ease, opacity 0.075s ease;
+  transition: top 0.075s 0.12s ease, opacity 0.075s ease;
 }
 
 /* line 14, src/scss/_vendor/hamburger/types/_squeeze.scss */
@@ -150,9 +150,9 @@
 .hamburger--squeeze.is-active .hamburger-inner::before {
   top: 0;
   opacity: 0;
-  -webkit-transition: top 0.075s ease, opacity 0.075s 0.12s ease;
-  -o-transition: top 0.075s ease, opacity 0.075s 0.12s ease;
-  transition: top 0.075s ease, opacity 0.075s 0.12s ease;
+  -webkit-transition: top 0.075s ease, opacity 0.075s 0.12s ease;
+  -o-transition: top 0.075s ease, opacity 0.075s 0.12s ease;
+  transition: top 0.075s ease, opacity 0.075s 0.12s ease;
 }
 
 /* line 36, src/scss/_vendor/hamburger/types/_squeeze.scss */
@@ -2964,16 +2964,18 @@ fieldset {
   }
 }
 
-/* line 76, src/scss/_components/common/_header--wrapper.scss */
-.header__wrapper-3 {
-  -webkit-box-align: center;
-  -webkit-align-items: center;
-      -ms-flex-align: center;
-          align-items: center;
-  -webkit-box-pack: justify;
-  -webkit-justify-content: space-between;
-      -ms-flex-pack: justify;
-          justify-content: space-between;
+@media screen and (min-width: 1024px) {
+  /* line 77, src/scss/_components/common/_header--wrapper.scss */
+  .header__wrapper-3 {
+    -webkit-box-align: center;
+    -webkit-align-items: center;
+        -ms-flex-align: center;
+            align-items: center;
+    -webkit-box-pack: justify;
+    -webkit-justify-content: space-between;
+        -ms-flex-pack: justify;
+            justify-content: space-between;
+  }
 }
 
 /* line 2, src/scss/_components/common/_header--conatainer.scss */
@@ -3041,162 +3043,154 @@ fieldset {
   }
 }
 
-/* line 44, src/scss/_components/common/_header--conatainer.scss */
-.header__container-3 {
-  background-color: #0b0d28;
-  -webkit-box-shadow: 1.482px 16.935px 35px 0px rgba(31, 37, 103, 0.33);
-          box-shadow: 1.482px 16.935px 35px 0px rgba(31, 37, 103, 0.33);
+@media screen and (min-width: 1024px) {
+  /* line 45, src/scss/_components/common/_header--conatainer.scss */
+  .header__container-3 {
+    background-color: #0b0d28;
+    -webkit-box-shadow: 1.482px 16.935px 35px 0px rgba(31, 37, 103, 0.33);
+            box-shadow: 1.482px 16.935px 35px 0px rgba(31, 37, 103, 0.33);
+  }
 }
 
 @media screen and (max-width: 1023px) {
-  /* line 44, src/scss/_components/common/_header--conatainer.scss */
+  /* line 45, src/scss/_components/common/_header--conatainer.scss */
   .header__container-3 {
     display: none;
   }
 }
 
-/* line 1, src/scss/_components/common/_header--toggle.scss */
-.header__toggle {
-  position: relative;
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  width: 45px;
-  height: 20px;
-  border-width: 1px;
-  border-color: white;
-  border-style: solid;
-  -webkit-border-radius: 2em;
-          border-radius: 2em;
-  background-color: #030b2e;
-}
-
-/* line 12, src/scss/_components/common/_header--toggle.scss */
-.header__toggle-left, .header__toggle-right {
-  z-index: 0;
-  position: absolute;
-  top: 0;
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-align: center;
-  -webkit-align-items: center;
-      -ms-flex-align: center;
-          align-items: center;
-  width: 50%;
-  height: 100%;
-}
-
-/* line 22, src/scss/_components/common/_header--toggle.scss */
-.header__toggle-left .icon-font, .header__toggle-right .icon-font {
-  color: #ffffff;
-  font-size: 12px;
-  -webkit-transition: opacity 0.35s ease-in-out;
-  -o-transition: opacity 0.35s ease-in-out;
-  transition: opacity 0.35s ease-in-out;
-}
-
-/* line 27, src/scss/_components/common/_header--toggle.scss */
-.header__toggle-left .icon-font.icon-moon, .header__toggle-right .icon-font.icon-moon {
-  opacity: 0;
-  font-size: 9px;
-}
-
-/* line 34, src/scss/_components/common/_header--toggle.scss */
-.header__toggle-left {
-  left: 0;
-  -webkit-box-pack: end;
-  -webkit-justify-content: flex-end;
-      -ms-flex-pack: end;
-          justify-content: flex-end;
-}
-
-/* line 39, src/scss/_components/common/_header--toggle.scss */
-.header__toggle-right {
-  right: 0;
-  -webkit-box-pack: start;
-  -webkit-justify-content: flex-start;
-      -ms-flex-pack: start;
-          justify-content: flex-start;
-}
-
-/* line 44, src/scss/_components/common/_header--toggle.scss */
-.header__toggle input {
-  opacity: 0;
-  visibility: hidden;
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 0;
-  height: 0;
-}
-
-/* line 55, src/scss/_components/common/_header--toggle.scss */
-.header__toggle input:checked + label .icon-font {
-  -webkit-transition: opacity 0.35s ease-in-out;
-  -o-transition: opacity 0.35s ease-in-out;
-  transition: opacity 0.35s ease-in-out;
-}
-
-/* line 58, src/scss/_components/common/_header--toggle.scss */
-.header__toggle input:checked + label .icon-font.icon-sun {
-  opacity: 0;
-}
-
-/* line 61, src/scss/_components/common/_header--toggle.scss */
-.header__toggle input:checked + label .icon-font.icon-moon {
-  opacity: 1;
-}
-
-/* line 66, src/scss/_components/common/_header--toggle.scss */
-.header__toggle input:checked + label span {
-  -webkit-transform: translateX(-25px);
-      -ms-transform: translateX(-25px);
-          transform: translateX(-25px);
-  -webkit-transition: -webkit-transform 0.35s ease-in-out;
-  transition: -webkit-transform 0.35s ease-in-out;
-  -o-transition: transform 0.35s ease-in-out;
-  transition: transform 0.35s ease-in-out;
-  transition: transform 0.35s ease-in-out, -webkit-transform 0.35s ease-in-out;
-}
-
-/* line 74, src/scss/_components/common/_header--toggle.scss */
-.header__toggle label {
-  z-index: 2;
-  cursor: pointer;
-  position: absolute;
-  top: 0;
-  left: 0;
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  width: 100%;
-  height: 100%;
-}
-
-/* line 85, src/scss/_components/common/_header--toggle.scss */
-.header__toggle span {
-  position: absolute;
-  top: 2px;
-  right: 2px;
-  -webkit-border-radius: 50%;
-          border-radius: 50%;
-  background-color: #d7f24a;
-  width: 14px;
-  height: 14px;
-  -webkit-backface-visibility: hidden;
-          backface-visibility: hidden;
-  -webkit-transform-origin: center;
-      -ms-transform-origin: center;
-          transform-origin: center;
-  -webkit-transition: -webkit-transform 0.35s ease-in-out;
-  transition: -webkit-transform 0.35s ease-in-out;
-  -o-transition: transform 0.35s ease-in-out;
-  transition: transform 0.35s ease-in-out;
-  transition: transform 0.35s ease-in-out, -webkit-transform 0.35s ease-in-out;
+@media screen and (min-width: 1024px) {
+  /* line 2, src/scss/_components/common/_header--toggle.scss */
+  .header__toggle {
+    position: relative;
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -ms-flexbox;
+    display: flex;
+    width: 45px;
+    height: 20px;
+    border-width: 1px;
+    border-color: white;
+    border-style: solid;
+    -webkit-border-radius: 2em;
+            border-radius: 2em;
+    background-color: #030b2e;
+  }
+  /* line 13, src/scss/_components/common/_header--toggle.scss */
+  .header__toggle-left, .header__toggle-right {
+    z-index: 0;
+    position: absolute;
+    top: 0;
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-align: center;
+    -webkit-align-items: center;
+        -ms-flex-align: center;
+            align-items: center;
+    width: 50%;
+    height: 100%;
+  }
+  /* line 23, src/scss/_components/common/_header--toggle.scss */
+  .header__toggle-left .icon-font, .header__toggle-right .icon-font {
+    color: #ffffff;
+    font-size: 12px;
+    -webkit-transition: opacity 0.35s ease-in-out;
+    -o-transition: opacity 0.35s ease-in-out;
+    transition: opacity 0.35s ease-in-out;
+  }
+  /* line 28, src/scss/_components/common/_header--toggle.scss */
+  .header__toggle-left .icon-font.icon-moon, .header__toggle-right .icon-font.icon-moon {
+    opacity: 0;
+    font-size: 9px;
+  }
+  /* line 35, src/scss/_components/common/_header--toggle.scss */
+  .header__toggle-left {
+    left: 0;
+    -webkit-box-pack: end;
+    -webkit-justify-content: flex-end;
+        -ms-flex-pack: end;
+            justify-content: flex-end;
+  }
+  /* line 40, src/scss/_components/common/_header--toggle.scss */
+  .header__toggle-right {
+    right: 0;
+    -webkit-box-pack: start;
+    -webkit-justify-content: flex-start;
+        -ms-flex-pack: start;
+            justify-content: flex-start;
+  }
+  /* line 45, src/scss/_components/common/_header--toggle.scss */
+  .header__toggle input {
+    opacity: 0;
+    visibility: hidden;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 0;
+    height: 0;
+  }
+  /* line 56, src/scss/_components/common/_header--toggle.scss */
+  .header__toggle input:checked + label .icon-font {
+    -webkit-transition: opacity 0.35s ease-in-out;
+    -o-transition: opacity 0.35s ease-in-out;
+    transition: opacity 0.35s ease-in-out;
+  }
+  /* line 59, src/scss/_components/common/_header--toggle.scss */
+  .header__toggle input:checked + label .icon-font.icon-sun {
+    opacity: 0;
+  }
+  /* line 62, src/scss/_components/common/_header--toggle.scss */
+  .header__toggle input:checked + label .icon-font.icon-moon {
+    opacity: 1;
+  }
+  /* line 67, src/scss/_components/common/_header--toggle.scss */
+  .header__toggle input:checked + label span {
+    -webkit-transform: translateX(-25px);
+        -ms-transform: translateX(-25px);
+            transform: translateX(-25px);
+    -webkit-transition: -webkit-transform 0.35s ease-in-out;
+    transition: -webkit-transform 0.35s ease-in-out;
+    -o-transition: transform 0.35s ease-in-out;
+    transition: transform 0.35s ease-in-out;
+    transition: transform 0.35s ease-in-out, -webkit-transform 0.35s ease-in-out;
+  }
+  /* line 75, src/scss/_components/common/_header--toggle.scss */
+  .header__toggle label {
+    z-index: 2;
+    cursor: pointer;
+    position: absolute;
+    top: 0;
+    left: 0;
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -ms-flexbox;
+    display: flex;
+    width: 100%;
+    height: 100%;
+  }
+  /* line 86, src/scss/_components/common/_header--toggle.scss */
+  .header__toggle span {
+    position: absolute;
+    top: 2px;
+    right: 2px;
+    -webkit-border-radius: 50%;
+            border-radius: 50%;
+    background-color: #d7f24a;
+    width: 14px;
+    height: 14px;
+    -webkit-backface-visibility: hidden;
+            backface-visibility: hidden;
+    -webkit-transform-origin: center;
+        -ms-transform-origin: center;
+            transform-origin: center;
+    -webkit-transition: -webkit-transform 0.35s ease-in-out;
+    transition: -webkit-transform 0.35s ease-in-out;
+    -o-transition: transform 0.35s ease-in-out;
+    transition: transform 0.35s ease-in-out;
+    transition: transform 0.35s ease-in-out, -webkit-transform 0.35s ease-in-out;
+  }
 }
 
 /* line 1, src/scss/_components/common/_header--action.scss */

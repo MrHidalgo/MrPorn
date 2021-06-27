@@ -73,8 +73,10 @@
 		}
 	}
 
-	&-3 {
-		align-items: center;
-		justify-content: space-between;
+	@include respond('desktop'){
+		&-3 {
+			align-items: center;
+			justify-content: space-between;
+		}
 	}
 }

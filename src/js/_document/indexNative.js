@@ -158,11 +158,14 @@ function verifyCookie(){
 	const initHome = () =>{
 		homeScroll();
 
-		document.querySelector('.c-grid.list').addEventListener('mouseover', function(_ev) {
-			if(_ev.target.closest('[list-box-js]')){
-				siteBoxHover(_ev.target.closest('[list-box-js]'));
-			}
-		});
+		let cGridList = document.querySelector('.c-grid.list');
+		if(cGridList){
+			cGridList.addEventListener('mouseover', function(_ev) {
+				if(_ev.target.closest('[list-box-js]')){
+					siteBoxHover(_ev.target.closest('[list-box-js]'));
+				}
+			});
+		}
 	}
 
 	const homeScroll = () => {

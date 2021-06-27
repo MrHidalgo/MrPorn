@@ -578,7 +578,7 @@ var renderFavourites = function renderFavourites() {
           if(favLink){
           	favLink.classList.add('is-active');
           }
-          	if(document.querySelector('.list__box-favorites[data-id="'+fav.id+'"]')){
+          		if(document.querySelector('.list__box-favorites[data-id="'+fav.id+'"]')){
           	document.querySelector('.list__box-favorites[data-id="'+fav.id+'"]').classList.add('is-active');
           }
           if(document.querySelector('.list__specification-circle[data-id="'+fav.id+'"]')){
@@ -734,7 +734,7 @@ var renderSorting = function renderSorting() {
       /*if(sortTimout){
       	clearTimeout(sortTimout);
       }
-      	sortTimout = setTimeout(function (){
+      		sortTimout = setTimeout(function (){
       	onSortLetterClick(_ev.target);
       }, 1000);*/
     });
@@ -846,12 +846,12 @@ var loadLoginForm = function loadLoginForm() {
       /*postTextRequest(ajaxAdminEndpoint, {
       	action:'get_login_form'
       }, function (result) {
-      		let loginHtml = '<a class="login_popup_close"><img src="'+themeBase+'images/btn_close.png"/></a>'+result;
-      		var e = document.createElement('div');
+      			let loginHtml = '<a class="login_popup_close"><img src="'+themeBase+'images/btn_close.png"/></a>'+result;
+      			var e = document.createElement('div');
       	e.setAttribute('id', 'login_popup');
       	e.innerHTML = loginHtml;
-      		document.body.appendChild(e);
-      		renderLoginForm();
+      			document.body.appendChild(e);
+      			renderLoginForm();
       });*/
 
       var loginHtml = '<a class="login_popup_close"><img src="' + themeBase + 'images/btn_close.png"/></a>' + htmlLogin;
@@ -1423,11 +1423,15 @@ function verifyCookie() {
 
   var initHome = function initHome() {
     homeScroll();
-    document.querySelector('.c-grid.list').addEventListener('mouseover', function (_ev) {
-      if (_ev.target.closest('[list-box-js]')) {
-        siteBoxHover(_ev.target.closest('[list-box-js]'));
-      }
-    });
+    var cGridList = document.querySelector('.c-grid.list');
+
+    if (cGridList) {
+      cGridList.addEventListener('mouseover', function (_ev) {
+        if (_ev.target.closest('[list-box-js]')) {
+          siteBoxHover(_ev.target.closest('[list-box-js]'));
+        }
+      });
+    }
   };
 
   var homeScroll = function homeScroll() {
