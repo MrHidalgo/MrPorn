@@ -1,4 +1,18 @@
 // MISC :: START
+.favbadge {
+	position: absolute;
+	top: 10px;
+	left: 10px;
+	width: 32px;
+	height: 32px;
+	background: url(../images/cat-icons.png) 0 -85px no-repeat;
+	display: none
+}
+
+.rightCat a:hover .favbadge {
+	background-position-y: -123px
+}
+
 .hdbadge {
 	position: absolute;
 	top: 10px;

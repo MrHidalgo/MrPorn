@@ -22,37 +22,7 @@
 	margin: 30px 2%
 }
 
-.favbadge {
-	position: absolute;
-	top: 10px;
-	left: 10px;
-	width: 32px;
-	height: 32px;
-	background: url(../images/cat-icons.png) 0 -85px no-repeat;
-	display: none
-}
 
-.rightCat a:hover .favbadge {
-	background-position-y: -123px
-}
-
-.ytbadge {
-	position: absolute;
-	top: 10px;
-	right: 10px;
-	width: 46px;
-	height: 30px;
-	background: url(../images/cat-icons.png) 0 0 no-repeat
-}
-
-.hdbadge {
-	position: absolute;
-	top: 10px;
-	right: 10px;
-	width: 43px;
-	height: 41px;
-	background: url(../images/cat-icons.png) 0 -34px no-repeat
-}
 
 @include respond('large') {
 	.discounted_deals{
