@@ -15,6 +15,7 @@ const build = (done) => {
     'spriteSVG',
     'vendorScript',
     'vendorStyle',
+    'vendorHomeScript',
     'list-pages',
 	)(done);
 };

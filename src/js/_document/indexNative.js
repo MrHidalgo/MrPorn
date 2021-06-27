@@ -147,11 +147,7 @@ function verifyCookie(){
 		document.documentElement.style.setProperty('--vh', `${vh}px`);
 	}
 
-	if(window.innerWidth>1024){
-		initLoggedUser();
-	}
-
-	initGotoTop();
+	initLoggedUser();
 
 	let headerHeight = 0;
 
@@ -973,6 +969,7 @@ function verifyCookie(){
 		}
 
 
+		initGotoTop();
 
 		letterSearch();
 
@@ -1025,35 +1022,40 @@ function verifyCookie(){
 	 */
 	window.addEventListener('load', (ev) => {
 		initNative();
-	});
 
-	window.addEventListener('blur', (ev) => {
-		onWindowBlur();
-	});
+		window.addEventListener('blur', (ev) => {
+			onWindowBlur();
+		});
 
-	window.addEventListener("orientationchange", function(event) {
-		onWindowChange();
-		setTimeout(() => {
-			onWindowChange();
-		}, 500);
-	});
-
-	window.addEventListener('resize', () => {
-		if(window.innerWidth > 1023) {
-			if(document.querySelector('.list__specification.is-open')) {
-				document.getElementsByTagName('html')[0].classList.remove('is-hideScroll');
-				document.getElementsByTagName('body')[0].classList.remove('is-hideScroll');
-			}
-		} else {
+		window.addEventListener("orientationchange", function(event) {
 			onWindowChange();
 			setTimeout(() => {
 				onWindowChange();
 			}, 500);
+		});
 
-			if(document.querySelector('.list__specification.is-open')) {
-				document.getElementsByTagName('html')[0].classList.add('is-hideScroll');
-				document.getElementsByTagName('body')[0].classList.add('is-hideScroll');
+		window.addEventListener('resize', () => {
+			if(window.innerWidth > 1023) {
+				if(document.querySelector('.list__specification.is-open')) {
+					document.getElementsByTagName('html')[0].classList.remove('is-hideScroll');
+					document.getElementsByTagName('body')[0].classList.remove('is-hideScroll');
+				}
+			} else {
+				onWindowChange();
+				setTimeout(() => {
+					onWindowChange();
+				}, 500);
+
+				if(document.querySelector('.list__specification.is-open')) {
+					document.getElementsByTagName('html')[0].classList.add('is-hideScroll');
+					document.getElementsByTagName('body')[0].classList.add('is-hideScroll');
+				}
 			}
-		}
+		});
+
 	});
+
+
+
+
 })();

@@ -22,7 +22,8 @@ task('vendorScript', function() {
     configPath.src.vendorScript + "/*.js",
     "!" + configPath.src.vendorScript + "/*.js",
     configPath.src.vendorScript + "/**/*.js",
-    "!" + configPath.src.vendorScript + "/**/_**.js"
+    "!" + configPath.src.vendorScript + "/**/_**.js",
+		"!" + configPath.src.vendorScript + "/_shared/popmotion.min.js"
   );
 
   return src(files)
@@ -58,4 +59,28 @@ task('vendorScript:watch', (done) => {
   watch(configPath.src.vendorScript + '/**', series('vendorScript'));
 
   return done();
+});
+
+
+
+task('vendorHomeScript', function() {
+	let files = [];
+
+	files.push(
+		configPath.src.vendorScript + "/*.js",
+		"!" + configPath.src.vendorScript + "/*.js",
+		configPath.src.vendorScript + "/**/*.js",
+		"!" + configPath.src.vendorScript + "/**/_**.js"
+	);
+
+	return src(files)
+		.pipe(plumber(configOption.pipeBreaking.err))
+		.pipe(order([
+			//'jquery.js',
+			'popper.js',
+			'*'
+		]))
+		.pipe(concat('vendor_home.js'))
+		.pipe(dest(configPath.dest.js))
+
 });
