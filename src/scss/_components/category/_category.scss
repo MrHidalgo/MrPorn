@@ -139,7 +139,6 @@
 
 	.go_back {
 		margin-top: 15px;
-		background: url(../images/geek_blue_button_bg.png);
 		color: #fff;
 		font-family: roboto,sans-serif;
 		font-weight: 700;
@@ -150,6 +149,14 @@
 		display: inline-block;
 		border-radius: 5px;
 		position: relative;
+
+		/* Permalink - use to edit and share this gradient: https://colorzilla.com/gradient-editor/#065cc0+0,0451b6+24,0244a6+50,00398c+100 */
+		background: #065cc0; /* Old browsers */
+		background: -moz-linear-gradient(top,  #065cc0 0%, #0451b6 24%, #0244a6 50%, #00398c 100%); /* FF3.6-15 */
+		background: -webkit-linear-gradient(top,  #065cc0 0%,#0451b6 24%,#0244a6 50%,#00398c 100%); /* Chrome10-25,Safari5.1-6 */
+		background: linear-gradient(to bottom,  #065cc0 0%,#0451b6 24%,#0244a6 50%,#00398c 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+		filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#065cc0', endColorstr='#00398c',GradientType=0 ); /* IE6-9 */
+
 
 		@include respond('ipad'){
 			font-size: 14px;
