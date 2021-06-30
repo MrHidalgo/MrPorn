@@ -38,3 +38,37 @@
 	height: 30px;
 	background: url(../images/cat-icons.png) 0 0 no-repeat;
 }
+
+@keyframes pulse-blue {
+	0% {
+		-webkit-box-shadow: 0 0 0 0 rgba(0, 74, 173, 0.9);
+		box-shadow: 0 0 0 0 rgba(0,27,173,0.7)
+	}
+
+	70% {
+		-webkit-box-shadow: 0 0 0 10px rgba(0, 74, 173, 0);
+		box-shadow: 0 0 0 10px rgba(0,74,173,0)
+	}
+
+	100% {
+		-webkit-box-shadow: 0 0 0 0 rgba(0, 74, 173, 0);
+		box-shadow: 0 0 0 0 rgba(0, 74, 173, 0)
+	}
+}
+
+@keyframes pulse-green {
+	0% {
+		-webkit-box-shadow: 0 0 0 0 rgba(51, 217, 178, 0.7);
+		box-shadow: 0 0 0 0 rgba(51,217,178,0.7)
+	}
+
+	70% {
+		-webkit-box-shadow: 0 0 0 10px rgba(51, 217, 178, 0);
+		box-shadow: 0 0 0 10px rgba(51,217,178,0)
+	}
+
+	100% {
+		-webkit-box-shadow: 0 0 0 0 rgba(51, 217, 178, 0);
+		box-shadow: 0 0 0 0 rgba(51, 217, 178, 0)
+	}
+}

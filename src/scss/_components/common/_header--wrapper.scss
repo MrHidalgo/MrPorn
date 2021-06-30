@@ -5,42 +5,46 @@
 		align-items: center;
 		min-height: 40px;
 
-		.header__col {
-			&-1 {
-				width: 100%;
-				max-width: 200px;
-				@include adaptive(1799) {
-					width: auto;
-					max-width: unset;
-					padding-right: 15px;
-				}
-			}
-
-			&-2 {
-				flex: 1;
-				min-width: 1px;
-				max-width: 100%;
-				display: flex;
-				justify-content: center;
-			}
-
-			&-3 {
-				display: flex;
-				align-items: center;
-				justify-content: flex-end;
-				width: 100%;
-				max-width: 254px;
-				@include adaptive(1279) {
-					max-width: 194px;
+		@include respond('desktop'){
+			.header__col {
+				&-1 {
+					width: 100%;
+					max-width: 200px;
+					@include adaptive(1799) {
+						width: auto;
+						max-width: unset;
+						padding-right: 15px;
+					}
 				}
 
-				> div {
-					&:not(:first-of-type) {
-						padding-left: 4px;
+				&-2 {
+					flex: 1;
+					min-width: 1px;
+					max-width: 100%;
+					display: flex;
+					justify-content: center;
+				}
+
+				&-3 {
+					display: flex;
+					align-items: center;
+					justify-content: flex-end;
+					width: 100%;
+					max-width: 254px;
+					@include adaptive(1279) {
+						max-width: 194px;
+					}
+
+					> div {
+						&:not(:first-of-type) {
+							padding-left: 4px;
+						}
 					}
 				}
 			}
 		}
+
+
 	}
 
 	&-2 {
