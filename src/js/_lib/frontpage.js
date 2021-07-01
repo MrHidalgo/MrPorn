@@ -34,9 +34,9 @@ const modalContainer = document.querySelector('.modal-container');
 const modal = document.querySelector('.modal');
 
 // Create CSS renderers
-// const dimmerRenderer = css(dimmer);
-// const modalContainerRenderer = css(modalContainer);
-//const modalRenderer = css(modal);
+const dimmerRenderer = css(dimmer);
+const modalContainerRenderer = css(modalContainer);
+const modalRenderer = css(modal);
 
 // Return the center x, y of a bounding box
 function findCenter({ top, left, height, width }, isOpen = true) {
@@ -112,13 +112,13 @@ function getModalStartPoint(sourceBBox, destinationBBox, isOpen=true){
 	const toX = sourceCenter.x - destinationCenter.x;
 	const toY = sourceCenter.y - destinationCenter.y;
 
-	/*modalRenderer.set({
+	modalRenderer.set({
 		x: toX,
 		y: toY,
 		scaleX: 1,
 		scaleY: 1,
 		transformOrigin: '50% 50%'
-	});*/
+	});
 
 	let fullWidth = window.innerWidth;
 	if(fullWidth>1450){
@@ -131,27 +131,16 @@ function getModalStartPoint(sourceBBox, destinationBBox, isOpen=true){
 	const toScaleX = 350 / fullWidth;
 	const toScaleY = 260 / fullHeight;
 
-	let startScaleX = sourceBBox.width/ modalBBox.width;
-	let startScaleY = sourceBBox.height/ modalBBox.height;
-	let modalTop = sourceBBox.top - 100;
+	console.log(sourceBBox.height+' - '+destinationBBox.height+' - '+destinationBBox.width+' - '+fullWidth);
 
-	console.log(sourceBBox.height+' '+sourceBBox.width+' - '+destinationBBox.height+' - '+destinationBBox.width+' - '+fullWidth+'  - '+startScaleX+' - '+startScaleY);
-
-
-	modal.style.left = sourceBBox.left+'px';
-	modal.style.top = modalTop+'px';
-	modal.style.transform = 'scaleX('+startScaleX+') scaleY('+startScaleY+')';
-
-	modalContainer.classList.add('open');
-
-	/*modalRenderer.set({
+	modalRenderer.set({
 		x: toX,
 		y: toY,
 		scaleX: toScaleX,
 		scaleY: toScaleY,
 		transformOrigin: '50% 50%'
 		//transformOrigin: '50% 0'
-	});*/
+	});
 }
 function openSlideModal2(e) {
 	if(!e.target){
@@ -205,9 +194,10 @@ function openSlideModal(e) {
 
 
 		// Temporarily show modal container to measure modal
-		/*dimmerRenderer.set('display', 'block').render();
+		dimmerRenderer.set('display', 'block').render();
 		modalContainerRenderer.set('display', 'flex').render();
-		modalRenderer.set('opacity', 0).render();*/
+		modalRenderer.set('opacity', 0).render();
+
 
 
 
@@ -216,14 +206,12 @@ function openSlideModal(e) {
 		const modalBBox = modal.getBoundingClientRect();
 
 		if(!isMobileOrTablet){
-
-
 			getModalStartPoint(triggerBBox, modalBBox);
-			// modalRenderer.set('opacity', 1).render();
+			modalRenderer.set('opacity', 1).render();
 		}
 
 		// Get a function to tween the modal from the trigger
-		/*const modalTweener = generateModalTweener(triggerBBox, modalBBox);
+		const modalTweener = generateModalTweener(triggerBBox, modalBBox);
 
 		// Fade in overlay
 		tween({
@@ -244,7 +232,7 @@ function openSlideModal(e) {
 				ease: easing.easeOut,
 				onUpdate: modalTweener
 			})
-		]).start();*/
+		]).start();
 	}else{
 		if(modalContainer){
 			modalContainer.style.display = 'flex'
@@ -257,14 +245,14 @@ function closeComplete() {
 	dimmerRenderer.set('display', 'none').render();
 	modalContainerRenderer.set('display', 'none').render();
 
-	/*modalRenderer.set({
+	modalRenderer.set({
 		x:0,
 		y: 0,
 		scaleX: 1,
 		scaleY: 1,
 		transformOrigin: '50% 50%'
 		//transformOrigin: '50% 0'
-	});*/
+	});
 }
 
 function cancelModal(e) {
@@ -295,7 +283,7 @@ function cancelModal(e) {
 		const triggerBBox = trigger.getBoundingClientRect();
 		const modalBBox = modal.getBoundingClientRect();
 
-		/*const modalTweener = generateModalTweener(triggerBBox, modalBBox, false);
+		const modalTweener = generateModalTweener(triggerBBox, modalBBox, false);
 
 		parallel([
 			tween({
@@ -310,7 +298,7 @@ function cancelModal(e) {
 				onUpdate: modalTweener,
 				onComplete: closeComplete
 			})
-		]).start();*/
+		]).start();
 	}
 
 
@@ -374,24 +362,24 @@ function closeBanner(_el){
 const initHomeLazyLoad = () =>{
 	let listElm = document.querySelector('#infinite-list');
 
-		let nextItem = 1;
-		const loadMore = () => {
-			for (var i = 0; i < 20; i++) {
-				var item = document.createElement('li');
-				item.innerText = 'Item ' + nextItem++;
-				listElm.appendChild(item);
-			}
+	let nextItem = 1;
+	const loadMore = () => {
+		for (var i = 0; i < 20; i++) {
+			var item = document.createElement('li');
+			item.innerText = 'Item ' + nextItem++;
+			listElm.appendChild(item);
 		}
+	}
 
 	// Detect when scrolled to bottom.
-		listElm.addEventListener('scroll', function() {
-			if (listElm.scrollTop + listElm.clientHeight >= listElm.scrollHeight) {
-				loadMore();
-			}
-		});
+	listElm.addEventListener('scroll', function() {
+		if (listElm.scrollTop + listElm.clientHeight >= listElm.scrollHeight) {
+			loadMore();
+		}
+	});
 
 	// Initially load some items.
-		loadMore();
+	loadMore();
 }
 
 function scrollToCategoryOnHome(ev, _ev){
@@ -548,21 +536,21 @@ function renderSiteHoverContent(category, index){
 			'<i class="icon-font icon-out"></i>'+
 			'<p class="list__box-details-title">'+siteName+'</p>'+
 			'</a>'+
-		'<div class="list__rating"><span>'+_t('user_rating', 'User Rating')+':</span>'+
-		'<div><i class="icon-font icon-star"></i><i class="icon-font icon-star"></i><i class="icon-font icon-star"></i><i class="icon-font icon-star"></i><i class="icon-font icon-star-fill"></i></div>'+
-		'</div>'+
-		'</div>'+
-		'<div class="list__box-details-right">'+
-		'<button class="list__box-like" type="button" data-id="'+siteId+'" like-toggle-js><i class="icon-font icon-like"></i></button>'+
-		'<button class="list__box-dislike" type="button" data-id="'+siteId+'" dislike-toggle-js><i class="icon-font icon-like"></i></button>'+
-		'<div class="c-popper">'+
+			'<div class="list__rating"><span>'+_t('user_rating', 'User Rating')+':</span>'+
+			'<div><i class="icon-font icon-star"></i><i class="icon-font icon-star"></i><i class="icon-font icon-star"></i><i class="icon-font icon-star"></i><i class="icon-font icon-star-fill"></i></div>'+
+			'</div>'+
+			'</div>'+
+			'<div class="list__box-details-right">'+
+			'<button class="list__box-like" type="button" data-id="'+siteId+'" like-toggle-js><i class="icon-font icon-like"></i></button>'+
+			'<button class="list__box-dislike" type="button" data-id="'+siteId+'" dislike-toggle-js><i class="icon-font icon-like"></i></button>'+
+			'<div class="c-popper">'+
 			btnFav+
-		'<div class="c-poppertext">'+
-		'<u>'+btnFavToolTip+'</u>'+
-		'<u>Remove From Favourites</u>'+
-		'</div>'+
-		'</div>'+
-		'</div>';
+			'<div class="c-poppertext">'+
+			'<u>'+btnFavToolTip+'</u>'+
+			'<u>Remove From Favourites</u>'+
+			'</div>'+
+			'</div>'+
+			'</div>';
 
 		return hoverContent;
 	}
@@ -694,7 +682,7 @@ function renderSiteBottomBanner(category, index){
 
 		//Loading bottom part in the drop down
 
-			return bannerHtml;
+		return bannerHtml;
 	}
 
 	return false;
@@ -892,7 +880,7 @@ function renderSkipSiteBottomBanner(category, index){
 		let bannerVideoPoster = siteItem.banner_video_poster;
 		let siteLogo = siteItem.logo;
 
-			let tagLIne = siteItem.tagline;
+		let tagLIne = siteItem.tagline;
 		if(tagLIne!=''){
 			tagLIne = tagLIne.replaceAll("\'", "'");
 			tagLIne = tagLIne.replaceAll("\\'", "'");
@@ -1048,39 +1036,39 @@ function renderSiteCategory(categoryIndex){
 
 
 	let categoryBoxHtml = '<div class="list__box-wrapper" list-parent-js data-name="category_'+categoryId+'" data-index="'+categoryIndex+'">'+
-									'<div id="category_wrapper_'+categoryId+'" class="list__box-wrapper-handle"></div>'+
-                  '<div class="list__box-head">'+
-										'<div class="list__info">'+
-											'<div class="list__info-circle"><img src="'+categoryLogo+'" alt=""/></div>'+
-											'<div class="category_title">'+
-												'<div class="category_title_inner">'+
-													'<a href="'+categoryData.link+'" hreflang="'+currentLang+'">'+categoryData.title+'</a>' +
-												'</div>'+
-												'<span>'+categoryTagLine+'</span>'+
-											'</div>'+
-										'</div>'+
-                    '<a class="list__btn nav_link" href="'+categoryData.link+'" hreflang="'+currentLang+'">'+_t('see', 'SEE')+'&nbsp;<span>'+categoryData.count+' '+_t('more', 'MORE')+'</span><i class="icon-font icon-arrow-angle"></i></a>'+
-                  '</div>'+
-                  '<div class="list__box-line">'+
-                    '<u list-line-ind-js></u><span class="list_green_line" list-line-js></span>'+
-                  '</div>'+
-									'<div class="list__box-body">'+
-										'<div class="list__arrow-wrapper">'+
-											'<a class="list__arrow list__arrow--prev" >'+
-                        '<div class="list__arrow-box"><i class="icon-font icon-arrow-angle"></i></div>'+
-											'</a>'+
-											'<a class="list__arrow list__arrow--next" >'+
-                        '<div class="list__arrow-box"><i class="icon-font icon-arrow-angle"></i></div>'+
-											'</a>'+
-										'</div>'+
-										'<div class="swiper-container listSwiper" data-id="listSlider_'+categoryData.id+'" data-category="18">'+
-											'<div class="swiper-wrapper'+(parseInt(categoryData.count)<6?' short_list':'')+'" data-category="'+categoryData.id+'" data-count="'+categoryData.count+'" data-slidecount="'+categoryData.site_limit+'">'+
-												categorySites+
-											'</div>'+
-										'</div>'+
-									'</div>'+
-									'<div class="list__specification-wrapper"></div>'+
-									'</div>';
+		'<div id="category_wrapper_'+categoryId+'" class="list__box-wrapper-handle"></div>'+
+		'<div class="list__box-head">'+
+		'<div class="list__info">'+
+		'<div class="list__info-circle"><img src="'+categoryLogo+'" alt=""/></div>'+
+		'<div class="category_title">'+
+		'<div class="category_title_inner">'+
+		'<a href="'+categoryData.link+'" hreflang="'+currentLang+'">'+categoryData.title+'</a>' +
+		'</div>'+
+		'<span>'+categoryTagLine+'</span>'+
+		'</div>'+
+		'</div>'+
+		'<a class="list__btn nav_link" href="'+categoryData.link+'" hreflang="'+currentLang+'">'+_t('see', 'SEE')+'&nbsp;<span>'+categoryData.count+' '+_t('more', 'MORE')+'</span><i class="icon-font icon-arrow-angle"></i></a>'+
+		'</div>'+
+		'<div class="list__box-line">'+
+		'<u list-line-ind-js></u><span class="list_green_line" list-line-js></span>'+
+		'</div>'+
+		'<div class="list__box-body">'+
+		'<div class="list__arrow-wrapper">'+
+		'<a class="list__arrow list__arrow--prev" >'+
+		'<div class="list__arrow-box"><i class="icon-font icon-arrow-angle"></i></div>'+
+		'</a>'+
+		'<a class="list__arrow list__arrow--next" >'+
+		'<div class="list__arrow-box"><i class="icon-font icon-arrow-angle"></i></div>'+
+		'</a>'+
+		'</div>'+
+		'<div class="swiper-container listSwiper" data-id="listSlider_'+categoryData.id+'" data-category="18">'+
+		'<div class="swiper-wrapper'+(parseInt(categoryData.count)<6?' short_list':'')+'" data-category="'+categoryData.id+'" data-count="'+categoryData.count+'" data-slidecount="'+categoryData.site_limit+'">'+
+		categorySites+
+		'</div>'+
+		'</div>'+
+		'</div>'+
+		'<div class="list__specification-wrapper"></div>'+
+		'</div>';
 
 	return categoryBoxHtml;
 
@@ -1283,7 +1271,7 @@ function onSlideEnter(ev){
 function onSlideTouchStart(ev){
 	const el = ev.currentTarget,
 		elParent = el.closest('[list-parent-js]'),
-	slideIndex = el.dataset.index,
+		slideIndex = el.dataset.index,
 		slideSwiper = elParent.querySelector('.swiper-container'),
 		greenBar = elParent.querySelector('[list-line-js]');
 
@@ -1312,7 +1300,7 @@ function onSlideTouchStart(ev){
 	let hoverBoxPosition = (slideIndex - activeSlide);
 
 	let slideWidth = 236,
-	slideOffset = 178,
+		slideOffset = 178,
 		greenBarWidth = 74;
 
 	let sliderBox = document.querySelector('.swiper-slide:not(.is-hover)');
@@ -1590,7 +1578,7 @@ function onSwiperTranslate(e, translate){
 	let slideWidth = 236,
 		slideOffset = 178,
 		greenBarWidth = 34,
-	hoverBoxLeft = parseInt(greenBar.style.transform.replace("translateX(", ""));
+		hoverBoxLeft = parseInt(greenBar.style.transform.replace("translateX(", ""));
 
 	let sliderBox = document.querySelector('.swiper-slide:not(.is-hover)');
 	if(sliderBox){
@@ -1741,9 +1729,9 @@ function showBanner(_el, isSkip = false, target = false){
 
 	videoPaused = true;
 
-/*	if(true){
-		return;
-	}*/
+	/*	if(true){
+			return;
+		}*/
 
 	var _boxParent = _el.closest('.list__box'),
 		_boxID = _boxParent.getAttribute('data-id'),

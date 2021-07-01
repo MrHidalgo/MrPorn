@@ -23,7 +23,7 @@ task('vendorScript', function() {
     "!" + configPath.src.vendorScript + "/*.js",
     configPath.src.vendorScript + "/**/*.js",
     "!" + configPath.src.vendorScript + "/**/_**.js",
-		"!" + configPath.src.vendorScript + "/_shared/popmotion.min.js"
+		//"!" + configPath.src.vendorScript + "/_shared/popmotion.min.js"
   );
 
   return src(files)
