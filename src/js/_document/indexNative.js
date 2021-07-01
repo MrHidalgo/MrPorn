@@ -54,7 +54,7 @@ function initWebWorker(){
 	homeData = getWithExpiry("homepage_data_"+dataTime+'_'+currentLang);
 	if(homeData){
 		if(document.body.classList.contains('home')) {
-			renderAllOtherCategories();
+			//renderAllOtherCategories();
 		}
 	}else{
 		if(!navigator.userAgent.toLowerCase().includes('lighthouse')){
@@ -946,7 +946,7 @@ function verifyCookie(){
 		currentLang = document.documentElement.getAttribute('lang');
 
 		// lib
-		initSwiper();
+		//initSwiper();
 		initHamburger();
 		// ==========================================
 

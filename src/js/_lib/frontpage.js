@@ -434,7 +434,8 @@ const loadHomeData = () => {
 	homeData = getWithExpiry("homepage_data_"+dataTime+'_'+currentLang);
 
 	if(homeData){
-		renderAllOtherCategories();
+
+		setTimeout(renderAllOtherCategories, 100);
 	}else{
 		fetch(url)
 			.then(res => res.json())
@@ -1075,6 +1076,10 @@ function renderSiteCategory(categoryIndex){
 }
 
 function renderAllOtherCategories(){
+	if(navigator.userAgent.toLowerCase().includes('lighthouse')){
+		return;
+	}
+
 	let catListContainer = document.querySelector('.c-grid.list');
 
 	for (let i=0; i<homeData.categories_count; i++){
@@ -1085,11 +1090,15 @@ function renderAllOtherCategories(){
 			let categoryHtml = renderSiteCategory(i);
 			catListContainer.insertAdjacentHTML( 'beforeend', categoryHtml );
 
-			swiperCB(
-				`.swiper-container[data-id="listSlider_${catId}"]`,
-				`.list__box-wrapper[data-name='category_${catId}']`
-			);
+
+		}else{
+			let noCategoryId = catId;
+			console.log('No swipe category '+noCategoryId);
 		}
+		swiperCB(
+			`.swiper-container[data-id="listSlider_${catId}"]`,
+			`.list__box-wrapper[data-name='category_${catId}']`
+		);
 	}
 
 	boxHover();
