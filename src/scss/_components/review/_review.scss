@@ -392,11 +392,12 @@
 		opacity: 0.4;
 			height: 119px;
 			object-fit: cover;
+			margin-right: 10px;
 
 
 		@include adaptive(767) {
 			aspect-ratio: calc(70 / 60);
-			margin-right: 10px;
+
 			height: 75px;
 			object-fit: cover;
 		}
