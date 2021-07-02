@@ -55,6 +55,7 @@ function initWebWorker(){
 	if(homeData){
 		if(document.body.classList.contains('home')) {
 			//renderAllOtherCategories();
+			setTimeout(renderAllOtherCategories, 100);
 		}
 	}else{
 		if(!navigator.userAgent.toLowerCase().includes('lighthouse')){
