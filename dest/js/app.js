@@ -2168,7 +2168,8 @@ function verifyCookie() {
     //loadHomeData();
 
 
-    initWebWorker();
+    loadJS('/wp-content/themes/mpg/js/vendor.js', initWebWorker, document.body); //initWebWorker();
+
     showAgeVerification();
     showAcceptCookie();
   };

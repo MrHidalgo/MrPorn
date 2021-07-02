@@ -999,6 +999,8 @@ function verifyCookie(){
 		//loadHomeData();
 
 
+		//loadJS('/wp-content/themes/mpg/js/vendor.js', initWebWorker, document.body);
+
 		initWebWorker();
 
 		showAgeVerification();
