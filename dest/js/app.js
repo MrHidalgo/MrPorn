@@ -2166,10 +2166,10 @@ function verifyCookie() {
     } //		boxMore();
     // ==========================================
     //loadHomeData();
+    //loadJS('/wp-content/themes/mpg/js/vendor.js', initWebWorker, document.body);
 
 
-    loadJS('/wp-content/themes/mpg/js/vendor.js', initWebWorker, document.body); //initWebWorker();
-
+    initWebWorker();
     showAgeVerification();
     showAcceptCookie();
   };
