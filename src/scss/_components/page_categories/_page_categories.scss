@@ -187,76 +187,10 @@
 					color: #75787b;
 					padding: 2px 0;
 					position: relative;
-
-					.tip-content {
-						position: absolute;
-						display: none;
-						top: 100%;
-						left: -5px;
-						right: -5px;
-						z-index: 100;
-						background: #fff;
-						font-size: 12px;
-						padding: 5px;
-						font-family: helvetica neue,Helvetica,Arial,sans-serif;
-
-						p {
-							font-family: helvetica neue,Helvetica,Arial,sans-serif;
-							color: #9b9b9b;
-							max-height: 153px;
-							line-height: 17px;
-							overflow: hidden;
-							text-overflow: ellipsis;
-							display: -webkit-box;
-							-webkit-line-clamp: 9;
-							-webkit-box-orient: vertical;
-						}
-					}
-
-					.aw_item_rating {
-						font-size: 12px;
-						display: block;
-
-						.aw_item_rating span {
-							float: left;
-							color: #464646;
-							font-weight: 700;
-							font-size: 11px;
-							text-transform: lowercase;
-						}
-
-						.ratings {
-							display: block;
-							float: left;
-							content: ' ';
-							height: 11px;
-							width: 65px;
-							background-repeat: no-repeat;
-							background-size: contain;
-							margin-top: 2px;
-							margin-left: 5px;
-
-							&.rating_1 {
-								background-image: url(../images/rating_1.png);
-							}
-							&.rating_2 {
-								background-image: url(../images/rating_2.png);
-							}
-							&.rating_3 {
-								background-image: url(../images/rating_3.png);
-							}
-							&.rating_4 {
-								background-image: url(../images/rating_4.png);
-							}
-							&.rating_5 {
-								background-image: url(../images/rating_5.png);
-							}
-						}
-					}
 				}
 
 				&:hover{
-					.tip-content{
+					.aw-tip-content{
 						display: block;
 
 						@include respond('ipad'){
@@ -269,6 +203,71 @@
 					}
 				}
 			}
+		}
+	}
+}
+
+.aw-tip-content {
+	position: absolute;
+	display: none;
+	top: 100%;
+	left: -5px;
+	right: -5px;
+	z-index: 100;
+	background: #fff;
+	font-size: 12px;
+	padding: 5px;
+	font-family: helvetica neue,Helvetica,Arial,sans-serif;
+
+	&-p {
+		color: #9b9b9b;
+		max-height: 153px;
+		line-height: 17px;
+		overflow: hidden;
+		text-overflow: ellipsis;
+		display: -webkit-box;
+		-webkit-line-clamp: 9;
+		-webkit-box-orient: vertical;
+		margin-bottom: 10px;
+	}
+}
+.aw_item_rating {
+	font-size: 12px;
+	display: block;
+
+	span {
+		float: left;
+		color: #464646;
+		font-weight: 700;
+		font-size: 11px;
+		text-transform: lowercase;
+	}
+
+	.ratings {
+		display: block;
+		float: left;
+		content: ' ';
+		height: 11px;
+		width: 65px;
+		background-repeat: no-repeat;
+		background-size: contain;
+		margin-top: 2px;
+		margin-left: 5px;
+
+		&.rating_1 {
+			background-image: url(../images/rating_1.png);
+		}
+		&.rating_2 {
+			background-image: url(../images/rating_2.png);
+		}
+		&.rating_3 {
+			background-image: url(../images/rating_3.png);
+		}
+		&.rating_4 {
+			background-image: url(../images/rating_4.png);
+		}
+		&.rating_5 {
+			background-image: url(../images/rating_5.png);
 		}
 	}
 }

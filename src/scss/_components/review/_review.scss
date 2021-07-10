@@ -349,6 +349,10 @@
 	position: relative;
 	background: #000;
 
+	&:nth-child(n+2){
+		display: none;
+	}
+
 	img {
 		position: absolute;
 		height: 100%;
@@ -374,6 +378,14 @@
 	.slider_inner.slide_0 {
 		top: 0;
 		bottom: 0;
+	}
+}
+
+.swiper-container-initialized{
+	.review_slide{
+		&:nth-child(n+2){
+			display: block;
+		}
 	}
 }
 
@@ -412,6 +424,13 @@
 	margin-top: 5px;
 	position: relative;
 	opacity: 1 !important;
+}
+
+.swiper-button-next:after, .swiper-container-rtl .swiper-button-prev:after{
+	content: '' !important;
+}
+.swiper-button-prev:after, .swiper-container-rtl .swiper-button-next:after{
+	content: '' !important;
 }
 
 .review_screenshot {
@@ -469,6 +488,7 @@
 
 			&.games{
 				max-width: 300px;
+				height: auto;
 			}
 		}
 

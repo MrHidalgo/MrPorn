@@ -10,13 +10,17 @@ const initWebFontLoader = () => {
 	/**
    * @description
 	 */
-	WebFont.load({
-    google: {
-      families: [
-        'Roboto:100,300,400,500,700,900'
-      ]
-    }
-  });
+	setTimeout(function (){
+		WebFont.load({
+			google: {
+				families: [
+					'Roboto:100,300,400,500,700,900'
+				]
+			}
+		});
+	}, 300);
+
+
 
 	/**
    * @description

@@ -92,6 +92,10 @@
 		transform-origin: center;
 		@include transition(opacity, visibility, transform);
 
+		@include adaptive(480) {
+			min-width: 320px;
+		}
+
 		&-col {
 			display: flex;
 			align-items: flex-start;
