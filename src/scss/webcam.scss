@@ -13,9 +13,7 @@
 ///
 /// GENERATED
 /// ===============
-@import "_generated/spritePNG";
-//@import "_generated/spriteSVG";
-@import "_generated/spriteFont";
+
 ///
 /// SHARED
 /// ===============
@@ -27,14 +25,11 @@
 //@import "_shared/magnificPopup";
 //@import "_shared/swiper";
 //@import "_shared/objectFitImages";
-@import "_shared/iconPNG";
-//@import "_shared/iconSVG";
-@import "_shared/iconFont";
+
 ///
 /// MACROS
 /// ===============
 @import "_macros/logotype";
-@import "_macros/popper";
 //@import "_macros/nav";
 //@import "_macros/title";
 //@import "_macros/subtitle";
@@ -45,6 +40,7 @@
 /// COMPONENTS
 /// ===============
 @import "_components/common/header";
+@import "_components/common/header--awe";
 @import "_components/common/pre-header";
 @import "_components/search/search";
 @import "_components/common/container";
@@ -52,7 +48,14 @@
 @import "_components/breadcrumbs/breadcrumbs";
 @import "_components/pagination/pagination";
 @import "_components/blue_button/blue_button";
-@import "_components/common/footer";
+
 
 @import "_components/webcam/webcam";
 @import "_components/other_categories/other_categories";
+
+
+//@import "_generated/spritePNG";
+//@import "_generated/spriteFont";
+@import "_shared/iconPNG";
+@import "_shared/iconFont";
+//@import "_components/common/footer";

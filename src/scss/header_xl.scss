@@ -1,0 +1,16 @@
+@import "_utilities/function";
+@import "_utilities/mixin";
+@import "_utilities/extend";
+@import "_utilities/variable";
+
+.header {
+	position: relative;
+	display: flex;
+	flex-direction: column;
+	background-color: #07113b;
+
+	@import "_components/common/header--wrapper";
+	@import "_components/common/header--toggle";
+	@import "_components/common/header--action";
+	@import "_components/common/header--category";
+}

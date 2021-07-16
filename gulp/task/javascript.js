@@ -21,6 +21,7 @@ task('js', (done) => {
 			'!' + configPath.src.js + '/**/_**.js',
 			'!' + configPath.src.js + '/**/frontpage.js',
 		'!' + configPath.src.js + '/_frontpage/*.js',
+		'!' + configPath.src.js + '/_lib/swiper.js',
 		])
 		.pipe(plumber(configOption.pipeBreaking.err))
 

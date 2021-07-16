@@ -1,0 +1,68 @@
+@import "_utilities/mixin";
+
+.leftCat{
+	@include respond('medium') {
+		display: block;
+		flex: 0 0 235px;
+		background: #666;
+		text-align: left;
+
+		&__top{
+			background: #1c3f87;
+			background: -moz-linear-gradient(top,#1c3f87 0%,#121f5e 39%,#0e285d 100%);
+			background: -webkit-linear-gradient(top,#1c3f87 0%,#121f5e 39%,#0e285d 100%);
+			background: linear-gradient(to bottom,#1c3f87 0%,#121f5e 39%,#0e285d 100%);
+			filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#1c3f87',endColorstr='#0e285d',GradientType=0 );
+			font-size: 18px;
+			font-weight: 700;
+			color: #fff;
+			text-transform: uppercase;
+			padding: 10px;
+			display: flex;
+			align-items: center;
+
+		}
+
+		&__icon{
+			width: 27px;
+			height: 27px;
+			margin: 0 10px 0 0;
+			background: url(../images/cat-icons.png) 0 -164px no-repeat;
+		}
+
+		&__ul{
+			list-style: none;
+			margin: 0;
+			padding: 0 0 5px;
+		}
+		&__li{
+			border-bottom: 1px solid #626262;
+			padding: 10px 15px;
+
+			@include respond('ipad'){
+				padding: 8px 15px;
+			}
+
+			&__a{
+				font-size: 14px;
+				font-weight: 700;
+				color: #fff;
+				line-height: 20px;
+				overflow: hidden;
+				text-overflow: ellipsis;
+				display: -webkit-box;
+				-webkit-line-clamp: 1;
+				-webkit-box-orient: vertical;
+
+				@include respond('ipad'){
+					font-size: 12px;
+				}
+
+				&:hover{
+					color: #fff;
+					text-decoration: underline;
+				}
+			}
+		}
+	}
+}

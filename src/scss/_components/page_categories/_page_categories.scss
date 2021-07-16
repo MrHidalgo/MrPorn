@@ -8,122 +8,72 @@
 	display: flex;
 	align-content: flex-start;
 	align-items: flex-start;
+	padding-top: 15px;
+}
 
-	.leftCat{
-		flex: 0 0 235px;
-		background: #666;
-		text-align: left;
+//.leftCat
+.leftCat{
+	display: none;
+}
 
-		@include respond('ipad_portrait'){
-			display: none;
-		}
-		@include respond('max-small'){
-			display: none;
-		}
+.rightCat{
+	padding-left: 10px;
 
-		.lcatT{
-			background: #1c3f87;
-			background: -moz-linear-gradient(top,#1c3f87 0%,#121f5e 39%,#0e285d 100%);
-			background: -webkit-linear-gradient(top,#1c3f87 0%,#121f5e 39%,#0e285d 100%);
-			background: linear-gradient(to bottom,#1c3f87 0%,#121f5e 39%,#0e285d 100%);
-			filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#1c3f87',endColorstr='#0e285d',GradientType=0 );
-			font-size: 18px;
-			font-weight: 700;
-			color: #fff;
-			text-transform: uppercase;
-			padding: 10px;
-			display: flex;
-			align-items: center;
-
-			i{
-				width: 27px;
-				height: 27px;
-				margin: 0 10px 0 0;
-				background: url(../images/cat-icons.png) 0 -164px no-repeat;
-			}
-		}
-
-		ul{
-			list-style: none;
-			margin: 0;
-			padding: 0 0 5px;
-
-			li{
-				border-bottom: 1px solid #626262;
-				padding: 10px 15px;
-
-				@include respond('ipad'){
-					padding: 8px 15px;
-				}
-
-				a{
-					font-size: 14px;
-					font-weight: 700;
-					color: #fff;
-					line-height: 20px;
-					overflow: hidden;
-					text-overflow: ellipsis;
-					display: -webkit-box;
-					-webkit-line-clamp: 1;
-					-webkit-box-orient: vertical;
-
-					@include respond('ipad'){
-						font-size: 12px;
-					}
-				}
-			}
-		}
+	@include respond('ipad_portrait'){
+		padding-left: 0;
 	}
-	.rightCat{
-		padding-left: 10px;
+	@include respond('max-small'){
+		padding-left: 0;
+	}
 
-		@include respond('ipad_portrait'){
-			padding-left: 0;
+	h1{
+		color: #fff;
+		padding: 20px 0 25px 0;
+		text-align: left;
+		font-size: 30px;
+		font-weight: 700;
+
+		@include respond('ipad'){
+			font-size: 25px;
+			padding: 10px 0 10px 0;
 		}
-		@include respond('max-small'){
-			padding-left: 0;
-		}
-
-		h1{
-			color: #fff;
-			padding: 20px 0 25px 0;
-			text-align: left;
-			font-size: 30px;
-			font-weight: 700;
-
-			@include respond('ipad'){
-				font-size: 25px;
-				padding: 10px 0 10px 0;
-			}
-			@include adaptive(767) {
-				font-size: 17px;
-				padding: 20px 0 20px 0;
-				text-align: center;
-			}
+		@include adaptive(767) {
+			font-size: 17px;
+			padding: 20px 0 20px 0;
+			text-align: center;
 		}
 	}
 }
 
 .award_winning_container{
 	.aw_title{
-		background: url(../images/award_bg.jpg);
+		//background: url(../images/award_bg.jpg);
 		color: #fff;
 		line-height: 61px;
 		font-size: 24px;
 		font-weight: 700;
 		font-family: helvetica neue,Helvetica,Arial,sans-serif;
-		text-shadow: 3px 2px #000;
-		text-overflow: ellipsis;
-		overflow: hidden;
-		white-space: nowrap;
+		position: relative;
 
 		@include adaptive(767) {
 			font-size: 16px;
 		}
 
-		&::before{
-			content: ' ';
-			background: url(../images/icon_award.png);
+		&__bg{
+			position: absolute;
+			height: 61px;
+			z-index: 0;
+		}
+		&__inner{
+			position: relative;
+			z-index: 10;
+			text-shadow: 3px 2px #000;
+			text-overflow: ellipsis;
+			overflow: hidden;
+			white-space: nowrap;
+		}
+
+		&__icon{
 			display: block;
 			height: 61px;
 			width: 92px;
@@ -232,43 +182,19 @@
 	}
 }
 .aw_item_rating {
-	font-size: 12px;
-	display: block;
-
-	span {
-		float: left;
-		color: #464646;
-		font-weight: 700;
-		font-size: 11px;
-		text-transform: lowercase;
-	}
+	display: flex;
+	justify-content: flex-start;
+	color: #464646;
+	font-weight: 700;
+	font-size: 11px;
+	text-transform: lowercase;
+	align-items: center;
 
 	.ratings {
 		display: block;
-		float: left;
-		content: ' ';
 		height: 11px;
 		width: 65px;
-		background-repeat: no-repeat;
-		background-size: contain;
-		margin-top: 2px;
 		margin-left: 5px;
-
-		&.rating_1 {
-			background-image: url(../images/rating_1.png);
-		}
-		&.rating_2 {
-			background-image: url(../images/rating_2.png);
-		}
-		&.rating_3 {
-			background-image: url(../images/rating_3.png);
-		}
-		&.rating_4 {
-			background-image: url(../images/rating_4.png);
-		}
-		&.rating_5 {
-			background-image: url(../images/rating_5.png);
-		}
 	}
 }
 

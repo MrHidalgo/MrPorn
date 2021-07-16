@@ -1,4 +1,5 @@
 @import "_utilities/mixin";
+//@import "_shared/macros/lang";
 @import "_components/misc/misc";
 @import "_components/misc/sort";
 @import "_components/misc/header";
@@ -10,3 +11,7 @@
 .header {
 	@import "_components/common/header--view";
 }
+
+@import "_generated/spritePNG";
+@import "_generated/spriteFont";
+@import "_components/common/footer";

@@ -806,9 +806,9 @@ function getPopupSimilarSites(category, currentSiteId){
 		let videoThumb = moreTermCat['video_thumb'];
 
 		if(videoThumb!=''){
-			moreTermHtml += '<video class="nolazy" autoplay loop muted playsinline><source src="'+videoThumb+'" type="video/mp4">Your browser does not support the video tag.</video>';
+			moreTermHtml += '<video class="category_item__content nolazy" autoplay loop muted playsinline><source src="'+videoThumb+'" type="video/mp4">Your browser does not support the video tag.</video>';
 		}else{
-			moreTermHtml += '<img class="nolazy" src="'+moreTermCat['thumbnail']+'" alt="'+moreTermCat['title']+'"/>';
+			moreTermHtml += '<img class="category_item__content nolazy" src="'+moreTermCat['thumbnail']+'" alt="'+moreTermCat['title']+'"/>';
 		}
 
 		moreTermHtml += '<div class="catD">'+moreTermCat['title']+'<small>'+_t('click_here_to_see', 'Click Here to See')+' ('+moreTermCat['count']+') '+_t('sites', 'Sites')+'</small></div>';
