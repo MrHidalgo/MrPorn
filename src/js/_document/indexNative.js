@@ -233,7 +233,7 @@ function verifyCookie(){
 			}
 
 			if(_ev.classList.contains('search_category_item')){
-				if(document.body.classList.contains('home')){
+				if(document.body.classList.contains('home') && !document.body.classList.contains('is-mobile')){
 
 					scrollToCategoryOnHome(ev, _ev);
 					hide(document.querySelector('[search-drop-js]'));

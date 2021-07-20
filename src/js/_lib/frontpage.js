@@ -800,8 +800,16 @@ function getPopupSimilarSites(category, currentSiteId){
 		let moreTermHtml = '<div class="category_item">';
 		moreTermHtml += '<a class="category_item_inner" hreflang="en" href="'+moreTermCat.link+'">';
 
-		if(moreTermCat['youtube_hd_opt']){
-			moreTermHtml += '<i className="'+moreTermCat['youtube_hd_opt']+'"></i>';
+		let youtubeIcon = moreTermCat['youtube_hd_opt'];
+		if(Array.isArray(youtubeIcon)){
+			youtubeIcon = youtubeIcon.join().trim();
+		}
+		youtubeIcon = youtubeIcon.trim();
+		if(youtubeIcon=='hdbadge'){
+			//moreTermHtml += '<i className="'+moreTermCat['youtube_hd_opt']+'"></i>';
+			moreTermHtml += '<img class="yt_icon" src="/wp-content/themes/mpg/images/icon_hd.png"/>';
+		}else if(youtubeIcon=='ytbadge'){
+			moreTermHtml += '<img class="yt_icon" src="/wp-content/themes/mpg/images/icon_youtube.png"/>';
 		}
 		let videoThumb = moreTermCat['video_thumb'];
 
