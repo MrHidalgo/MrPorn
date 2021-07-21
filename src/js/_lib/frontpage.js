@@ -384,7 +384,7 @@ const initHomeLazyLoad = () =>{
 
 function scrollToCategoryOnHome(ev, _ev){
 	if(_ev){
-		let catId = _ev.dataset.objectId;
+		let catId = _ev.dataset.objectId?_ev.dataset.objectId:_ev.dataset.category;
 		if(catId){
 			if(document.querySelector('#category_wrapper_'+catId)){
 				ev.preventDefault();

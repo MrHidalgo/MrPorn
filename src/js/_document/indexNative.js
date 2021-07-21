@@ -232,6 +232,13 @@ function verifyCookie(){
 				hide(document.querySelector('.awe_search_result'))
 			}
 
+			if(_ev.closest('.scroll_to_category')){
+				if(document.body.classList.contains('home') && !document.body.classList.contains('is-mobile')){
+					ev.preventDefault();
+					scrollToCategoryOnHome(ev, _ev.closest('.scroll_to_category'));
+				}
+			}
+
 			if(_ev.classList.contains('search_category_item')){
 				if(document.body.classList.contains('home') && !document.body.classList.contains('is-mobile')){
 
@@ -787,7 +794,7 @@ function verifyCookie(){
 
 	function adjustStickHeader(){
 		if(!isMobileDevice){
-			if (window.pageYOffset >= headerHeight) {
+			if (window.pageYOffset >= 60) {
 				document.body.classList.add('sticky_header');
 			} else {
 				document.body.classList.remove('sticky_header');
