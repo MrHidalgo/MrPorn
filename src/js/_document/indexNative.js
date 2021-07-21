@@ -150,7 +150,7 @@ function verifyCookie(){
 
 	initLoggedUser();
 
-	let headerHeight = 0;
+	let headerHeight = document.querySelector('#header').getBoundingClientRect().height;;
 
 	const initHome = () =>{
 		homeScroll();
@@ -755,7 +755,11 @@ function verifyCookie(){
 	function initGotoTop(){
 		var goTop = document.querySelector('.go-top');
 
+		adjustStickHeader();
+
 		window.onscroll = function(){
+			adjustStickHeader();
+
 			if (window.scrollY > 200) {
 				show(goTop);
 			} else {
@@ -779,6 +783,16 @@ function verifyCookie(){
 			}
 		}
 
+	}
+
+	function adjustStickHeader(){
+		if(!isMobileDevice){
+			if (window.pageYOffset >= headerHeight) {
+				document.body.classList.add('sticky_header');
+			} else {
+				document.body.classList.remove('sticky_header');
+			}
+		}
 	}
 
 	const siteBoxHover = (el) => {
