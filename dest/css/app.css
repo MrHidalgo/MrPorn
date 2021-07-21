@@ -4297,6 +4297,7 @@ body.chatbot_active .go-top {
 
 /* line 130, src/scss/_components/homepage/_list--box.scss */
 .list__box-wrapper {
+  position: relative;
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -4324,7 +4325,7 @@ body.chatbot_active .go-top {
   }
 }
 
-/* line 144, src/scss/_components/homepage/_list--box.scss */
+/* line 143, src/scss/_components/homepage/_list--box.scss */
 .list__box-wrapper.is-open {
   padding-bottom: 0;
   position: relative;
@@ -4334,13 +4335,13 @@ body.chatbot_active .go-top {
 }
 
 @media screen and (max-width: 767px) {
-  /* line 144, src/scss/_components/homepage/_list--box.scss */
+  /* line 143, src/scss/_components/homepage/_list--box.scss */
   .list__box-wrapper.is-open {
     /*margin-bottom: 0;*/
   }
 }
 
-/* line 154, src/scss/_components/homepage/_list--box.scss */
+/* line 153, src/scss/_components/homepage/_list--box.scss */
 .list__box-wrapper.is-open .list__box-body {
   -webkit-transition: padding-bottom 0.35s ease-in-out;
   -o-transition: padding-bottom 0.35s ease-in-out;
@@ -4348,13 +4349,25 @@ body.chatbot_active .go-top {
 }
 
 @media screen and (max-width: 767px) {
-  /* line 154, src/scss/_components/homepage/_list--box.scss */
+  /* line 153, src/scss/_components/homepage/_list--box.scss */
   .list__box-wrapper.is-open .list__box-body {
     /*padding-bottom: 10px;*/
   }
 }
 
-/* line 164, src/scss/_components/homepage/_list--box.scss */
+/* line 163, src/scss/_components/homepage/_list--box.scss */
+.list__box-wrapper-handle {
+  position: absolute;
+  top: -115px;
+  z-index: 0;
+}
+
+/* line 170, src/scss/_components/homepage/_list--box.scss */
+.list__box-wrapper:first-child .list__box-wrapper-handle {
+  top: -35px;
+}
+
+/* line 176, src/scss/_components/homepage/_list--box.scss */
 .list__box-head {
   position: relative;
   display: -webkit-box;
@@ -4373,13 +4386,13 @@ body.chatbot_active .go-top {
 }
 
 @media screen and (max-width: 767px) {
-  /* line 164, src/scss/_components/homepage/_list--box.scss */
+  /* line 176, src/scss/_components/homepage/_list--box.scss */
   .list__box-head {
     padding-right: 10px;
   }
 }
 
-/* line 175, src/scss/_components/homepage/_list--box.scss */
+/* line 187, src/scss/_components/homepage/_list--box.scss */
 .list__box-line {
   position: relative;
   width: 100%;
@@ -4390,7 +4403,7 @@ body.chatbot_active .go-top {
   transition: background-color 1s ease-in-out;
 }
 
-/* line 182, src/scss/_components/homepage/_list--box.scss */
+/* line 194, src/scss/_components/homepage/_list--box.scss */
 .list__box-line u,
 .list__box-line span {
   cursor: pointer;
@@ -4413,7 +4426,7 @@ body.chatbot_active .go-top {
   transition: width 0.35s ease-in-out, transform 0.35s ease-in-out, -webkit-transform 0.35s ease-in-out;
 }
 
-/* line 199, src/scss/_components/homepage/_list--box.scss */
+/* line 211, src/scss/_components/homepage/_list--box.scss */
 .list__box-line u.no_anim,
 .list__box-line span.no_anim {
   -webkit-transition: width 0.35s ease-in-out;
@@ -4422,7 +4435,7 @@ body.chatbot_active .go-top {
 }
 
 @media screen and (min-device-width: 1366px) and (max-device-width: 1366px) and (orientation: landscape) and (-webkit-min-device-pixel-ratio: 2) {
-  /* line 182, src/scss/_components/homepage/_list--box.scss */
+  /* line 194, src/scss/_components/homepage/_list--box.scss */
   .list__box-line u,
   .list__box-line span {
     width: 34px;
@@ -4434,7 +4447,7 @@ body.chatbot_active .go-top {
 }
 
 @media screen and (min-device-width: 1024px) and (max-device-width: 1024px) and (orientation: portrait) and (-webkit-min-device-pixel-ratio: 2) {
-  /* line 182, src/scss/_components/homepage/_list--box.scss */
+  /* line 194, src/scss/_components/homepage/_list--box.scss */
   .list__box-line u,
   .list__box-line span {
     width: 34px;
@@ -4446,7 +4459,7 @@ body.chatbot_active .go-top {
 }
 
 @media screen and (min-device-width: 768px) and (max-device-width: 1024px) and (orientation: landscape) and (-webkit-min-device-pixel-ratio: 2) {
-  /* line 182, src/scss/_components/homepage/_list--box.scss */
+  /* line 194, src/scss/_components/homepage/_list--box.scss */
   .list__box-line u,
   .list__box-line span {
     width: 34px;
@@ -4458,7 +4471,7 @@ body.chatbot_active .go-top {
 }
 
 @media screen and (max-width: 1023px) {
-  /* line 182, src/scss/_components/homepage/_list--box.scss */
+  /* line 194, src/scss/_components/homepage/_list--box.scss */
   .list__box-line u,
   .list__box-line span {
     width: 34px;
@@ -4470,7 +4483,7 @@ body.chatbot_active .go-top {
 }
 
 @media screen and (max-width: 767px) {
-  /* line 182, src/scss/_components/homepage/_list--box.scss */
+  /* line 194, src/scss/_components/homepage/_list--box.scss */
   .list__box-line u,
   .list__box-line span {
     width: 19px;
@@ -4486,14 +4499,14 @@ body.chatbot_active .go-top {
   }
 }
 
-/* line 249, src/scss/_components/homepage/_list--box.scss */
+/* line 261, src/scss/_components/homepage/_list--box.scss */
 .list__box-line u {
   z-index: -1;
   opacity: 0;
   visibility: hidden;
 }
 
-/* line 256, src/scss/_components/homepage/_list--box.scss */
+/* line 268, src/scss/_components/homepage/_list--box.scss */
 .list__box-body {
   z-index: 20;
   position: relative;
@@ -4507,14 +4520,14 @@ body.chatbot_active .go-top {
 }
 
 @media screen and (max-width: 767px) {
-  /* line 256, src/scss/_components/homepage/_list--box.scss */
+  /* line 268, src/scss/_components/homepage/_list--box.scss */
   .list__box-body {
     overflow: hidden;
     padding-bottom: 0;
   }
 }
 
-/* line 268, src/scss/_components/homepage/_list--box.scss */
+/* line 280, src/scss/_components/homepage/_list--box.scss */
 .list__box-body.is-transition {
   -webkit-transform: translateX(-120px);
       -ms-transform: translateX(-120px);
@@ -4526,7 +4539,7 @@ body.chatbot_active .go-top {
   transition: transform 0.35s ease-in-out, -webkit-transform 0.35s ease-in-out;
 }
 
-/* line 274, src/scss/_components/homepage/_list--box.scss */
+/* line 286, src/scss/_components/homepage/_list--box.scss */
 .list__box-overlay {
   z-index: 0;
   position: absolute;
@@ -4540,7 +4553,7 @@ body.chatbot_active .go-top {
   transition: background-color 0.35s ease-in-out;
 }
 
-/* line 285, src/scss/_components/homepage/_list--box.scss */
+/* line 297, src/scss/_components/homepage/_list--box.scss */
 .list__box_more_item {
   width: -webkit-calc(100%/3) !important;
   width: calc(100%/3) !important;
@@ -4549,7 +4562,7 @@ body.chatbot_active .go-top {
   padding: 4px;
 }
 
-/* line 290, src/scss/_components/homepage/_list--box.scss */
+/* line 302, src/scss/_components/homepage/_list--box.scss */
 .list__box_more_item a {
   padding-top: 100%;
   display: block;
@@ -4560,7 +4573,7 @@ body.chatbot_active .go-top {
   border: 1px dashed #fff;
 }
 
-/* line 300, src/scss/_components/homepage/_list--box.scss */
+/* line 312, src/scss/_components/homepage/_list--box.scss */
 .list__box-border {
   z-index: 0;
   position: absolute;
@@ -4576,7 +4589,7 @@ body.chatbot_active .go-top {
   transition: border-style 0.35s ease-in-out, border-width 0.35s ease-in-out;
 }
 
-/* line 311, src/scss/_components/homepage/_list--box.scss */
+/* line 323, src/scss/_components/homepage/_list--box.scss */
 .list__box-logo {
   z-index: 15;
   position: relative;
@@ -4589,13 +4602,13 @@ body.chatbot_active .go-top {
 }
 
 @media screen and (max-width: 1279px) {
-  /* line 311, src/scss/_components/homepage/_list--box.scss */
+  /* line 323, src/scss/_components/homepage/_list--box.scss */
   .list__box-logo {
     max-width: 100%;
   }
 }
 
-/* line 326, src/scss/_components/homepage/_list--box.scss */
+/* line 338, src/scss/_components/homepage/_list--box.scss */
 .list__box-details {
   z-index: 11;
   opacity: 0;
@@ -4631,13 +4644,13 @@ body.chatbot_active .go-top {
 }
 
 @media screen and (max-width: 1279px) {
-  /* line 326, src/scss/_components/homepage/_list--box.scss */
+  /* line 338, src/scss/_components/homepage/_list--box.scss */
   .list__box-details {
     display: none;
   }
 }
 
-/* line 346, src/scss/_components/homepage/_list--box.scss */
+/* line 358, src/scss/_components/homepage/_list--box.scss */
 .list__box-details-left {
   display: -webkit-box;
   display: -webkit-flex;
@@ -4657,12 +4670,12 @@ body.chatbot_active .go-top {
   max-width: calc(100% - 30px);
 }
 
-/* line 353, src/scss/_components/homepage/_list--box.scss */
+/* line 365, src/scss/_components/homepage/_list--box.scss */
 .list__box-details-left > * {
   width: 100%;
 }
 
-/* line 357, src/scss/_components/homepage/_list--box.scss */
+/* line 369, src/scss/_components/homepage/_list--box.scss */
 .list__box-details-left button {
   outline: none;
   cursor: pointer;
@@ -4675,29 +4688,29 @@ body.chatbot_active .go-top {
   background-color: transparent;
 }
 
-/* line 367, src/scss/_components/homepage/_list--box.scss */
+/* line 379, src/scss/_components/homepage/_list--box.scss */
 .list__box-details-left button.list__box-external .icon-font {
   margin-bottom: 5px;
 }
 
-/* line 372, src/scss/_components/homepage/_list--box.scss */
+/* line 384, src/scss/_components/homepage/_list--box.scss */
 .list__box-details-left button .icon-font {
   color: #cecece;
   font-size: 20px;
 }
 
-/* line 378, src/scss/_components/homepage/_list--box.scss */
+/* line 390, src/scss/_components/homepage/_list--box.scss */
 .list__box-details-left a.site_link {
   display: block;
 }
 
-/* line 381, src/scss/_components/homepage/_list--box.scss */
+/* line 393, src/scss/_components/homepage/_list--box.scss */
 .list__box-details-left a.site_link i.icon-font {
   color: #cecece;
   font-size: 20px;
 }
 
-/* line 388, src/scss/_components/homepage/_list--box.scss */
+/* line 400, src/scss/_components/homepage/_list--box.scss */
 .list__box-details-right {
   display: -webkit-box;
   display: -webkit-flex;
@@ -4719,7 +4732,7 @@ body.chatbot_active .go-top {
   width: 30px;
 }
 
-/* line 395, src/scss/_components/homepage/_list--box.scss */
+/* line 407, src/scss/_components/homepage/_list--box.scss */
 .list__box-details-right > * {
   margin-top: 3px;
   -webkit-transition: all 0.4s ease-in-out;
@@ -4727,7 +4740,7 @@ body.chatbot_active .go-top {
   transition: all 0.4s ease-in-out;
 }
 
-/* line 400, src/scss/_components/homepage/_list--box.scss */
+/* line 412, src/scss/_components/homepage/_list--box.scss */
 .list__box-details-right button {
   outline: none;
   cursor: pointer;
@@ -4762,7 +4775,7 @@ body.chatbot_active .go-top {
   transition: all 0.4s ease-in-out;
 }
 
-/* line 418, src/scss/_components/homepage/_list--box.scss */
+/* line 430, src/scss/_components/homepage/_list--box.scss */
 .list__box-details-right button.is-hide {
   opacity: 0;
   visibility: hidden;
@@ -4778,7 +4791,7 @@ body.chatbot_active .go-top {
   transition: opacity 0.35s ease-in-out, visibility 0.35s ease-in-out, height 0.35s ease-in-out, transform 0.35s ease-in-out, -webkit-transform 0.35s ease-in-out;
 }
 
-/* line 427, src/scss/_components/homepage/_list--box.scss */
+/* line 439, src/scss/_components/homepage/_list--box.scss */
 .list__box-details-right button:after {
   content: '';
   z-index: 0;
@@ -4807,7 +4820,7 @@ body.chatbot_active .go-top {
           animation-timing-function: ease-in-out;
 }
 
-/* line 445, src/scss/_components/homepage/_list--box.scss */
+/* line 457, src/scss/_components/homepage/_list--box.scss */
 .list__box-details-right button:hover {
   background-color: rgba(0, 0, 0, 0.85);
   -webkit-transform: scale(1.05);
@@ -4818,14 +4831,14 @@ body.chatbot_active .go-top {
   transition: all 0.4s ease-in-out;
 }
 
-/* line 450, src/scss/_components/homepage/_list--box.scss */
+/* line 462, src/scss/_components/homepage/_list--box.scss */
 .list__box-details-right button:hover .icon-font {
   -webkit-transition: color 0.35s ease-in-out;
   -o-transition: color 0.35s ease-in-out;
   transition: color 0.35s ease-in-out;
 }
 
-/* line 455, src/scss/_components/homepage/_list--box.scss */
+/* line 467, src/scss/_components/homepage/_list--box.scss */
 .list__box-details-right button.is-active {
   border-color: #c5f015;
   -webkit-transition: all 0.4s ease-in-out;
@@ -4833,23 +4846,23 @@ body.chatbot_active .go-top {
   transition: all 0.4s ease-in-out;
 }
 
-/* line 459, src/scss/_components/homepage/_list--box.scss */
+/* line 471, src/scss/_components/homepage/_list--box.scss */
 .list__box-details-right button.is-active:after {
   -webkit-animation-name: flashBlinking;
           animation-name: flashBlinking;
 }
 
-/* line 465, src/scss/_components/homepage/_list--box.scss */
+/* line 477, src/scss/_components/homepage/_list--box.scss */
 .list__box-details-right button.is-active + .c-poppertext > u:nth-of-type(1) {
   display: none;
 }
 
-/* line 468, src/scss/_components/homepage/_list--box.scss */
+/* line 480, src/scss/_components/homepage/_list--box.scss */
 .list__box-details-right button.is-active + .c-poppertext > u:nth-of-type(2) {
   display: block;
 }
 
-/* line 474, src/scss/_components/homepage/_list--box.scss */
+/* line 486, src/scss/_components/homepage/_list--box.scss */
 .list__box-details-right button.is-active .icon-font {
   color: #c5f015;
   -webkit-transition: color 0.35s ease-in-out;
@@ -4857,54 +4870,54 @@ body.chatbot_active .go-top {
   transition: color 0.35s ease-in-out;
 }
 
-/* line 481, src/scss/_components/homepage/_list--box.scss */
+/* line 493, src/scss/_components/homepage/_list--box.scss */
 .list__box-details-right button.list__box-like .icon-font {
   -webkit-transform: scaleX(-1);
       -ms-transform: scaleX(-1);
           transform: scaleX(-1);
 }
 
-/* line 486, src/scss/_components/homepage/_list--box.scss */
+/* line 498, src/scss/_components/homepage/_list--box.scss */
 .list__box-details-right button.list__box-dislike .icon-font {
   -webkit-transform: scale(-1);
       -ms-transform: scale(-1);
           transform: scale(-1);
 }
 
-/* line 493, src/scss/_components/homepage/_list--box.scss */
+/* line 505, src/scss/_components/homepage/_list--box.scss */
 .list__box-details-right button.list__box-favorites.is-active .icon-font {
   -webkit-transition: color 0.35s ease-in-out, opacity 0.35s ease-in-out, visibility 0.35s ease-in-out;
   -o-transition: color 0.35s ease-in-out, opacity 0.35s ease-in-out, visibility 0.35s ease-in-out;
   transition: color 0.35s ease-in-out, opacity 0.35s ease-in-out, visibility 0.35s ease-in-out;
 }
 
-/* line 496, src/scss/_components/homepage/_list--box.scss */
+/* line 508, src/scss/_components/homepage/_list--box.scss */
 .list__box-details-right button.list__box-favorites.is-active .icon-font.icon-star-fill {
   opacity: 0;
   visibility: hidden;
 }
 
-/* line 500, src/scss/_components/homepage/_list--box.scss */
+/* line 512, src/scss/_components/homepage/_list--box.scss */
 .list__box-details-right button.list__box-favorites.is-active .icon-font.icon-star {
   opacity: 1;
   visibility: visible;
 }
 
-/* line 507, src/scss/_components/homepage/_list--box.scss */
+/* line 519, src/scss/_components/homepage/_list--box.scss */
 .list__box-details-right button.list__box-favorites .icon-font {
   -webkit-transition: color 0.35s ease-in-out, opacity 0.35s ease-in-out, visibility 0.35s ease-in-out;
   -o-transition: color 0.35s ease-in-out, opacity 0.35s ease-in-out, visibility 0.35s ease-in-out;
   transition: color 0.35s ease-in-out, opacity 0.35s ease-in-out, visibility 0.35s ease-in-out;
 }
 
-/* line 510, src/scss/_components/homepage/_list--box.scss */
+/* line 522, src/scss/_components/homepage/_list--box.scss */
 .list__box-details-right button.list__box-favorites .icon-font.icon-star {
   opacity: 0;
   visibility: hidden;
   position: absolute;
 }
 
-/* line 516, src/scss/_components/homepage/_list--box.scss */
+/* line 528, src/scss/_components/homepage/_list--box.scss */
 .list__box-details-right button.list__box-favorites .icon-font.icon-more-arrow {
   -webkit-transform: rotateZ(-90deg);
       -ms-transform: rotate(-90deg);
@@ -4912,7 +4925,7 @@ body.chatbot_active .go-top {
   font-size: 11px;
 }
 
-/* line 523, src/scss/_components/homepage/_list--box.scss */
+/* line 535, src/scss/_components/homepage/_list--box.scss */
 .list__box-details-right button .icon-font {
   color: #ffffff;
   font-size: 18px;
@@ -4921,7 +4934,7 @@ body.chatbot_active .go-top {
   transition: color 0.35s ease-in-out, opacity 0.35s ease-in-out, visibility 0.35s ease-in-out;
 }
 
-/* line 531, src/scss/_components/homepage/_list--box.scss */
+/* line 543, src/scss/_components/homepage/_list--box.scss */
 .list__box-details-title {
   overflow: hidden;
   white-space: nowrap;
@@ -4932,7 +4945,7 @@ body.chatbot_active .go-top {
   font-weight: 700;
 }
 
-/* line 541, src/scss/_components/homepage/_list--box.scss */
+/* line 553, src/scss/_components/homepage/_list--box.scss */
 .list__box-more {
   z-index: 22;
   outline: none;
@@ -4969,7 +4982,7 @@ body.chatbot_active .go-top {
 }
 
 @media screen and (max-width: 1279px) {
-  /* line 541, src/scss/_components/homepage/_list--box.scss */
+  /* line 553, src/scss/_components/homepage/_list--box.scss */
   .list__box-more {
     z-index: 99;
     opacity: 1;
@@ -4978,13 +4991,13 @@ body.chatbot_active .go-top {
     left: 0;
     height: 100%;
   }
-  /* line 569, src/scss/_components/homepage/_list--box.scss */
+  /* line 581, src/scss/_components/homepage/_list--box.scss */
   .list__box-more .icon-font {
     display: none;
   }
 }
 
-/* line 574, src/scss/_components/homepage/_list--box.scss */
+/* line 586, src/scss/_components/homepage/_list--box.scss */
 .list__box-more .icon-font {
   color: #c5f015;
   font-size: 16px;

@@ -388,6 +388,11 @@ function scrollToCategoryOnHome(ev, _ev){
 		if(catId){
 			if(document.querySelector('#category_wrapper_'+catId)){
 				ev.preventDefault();
+
+				if(catId!=55 && !document.body.classList.contains('sticky_header')){
+					document.body.classList.add('sticky_header');
+				}
+
 				pauseHoverAnimation = true;
 				document.querySelector('#category_wrapper_'+catId).scrollIntoView({
 					behavior: 'smooth'

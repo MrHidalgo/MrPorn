@@ -123,7 +123,7 @@
 		position: fixed;
 		width: 100%;
 		top: 0;
-		z-index: 50;
+		z-index: 21;
 
 		&:after{
 			display: block;
@@ -159,5 +159,9 @@
 		.header__nav{
 			height: 38px;
 		}
+	}
+	.list__box-wrapper-handle{
+		position: absolute;
+		top: -115px;
 	}
 }
