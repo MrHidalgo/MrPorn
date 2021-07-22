@@ -11,6 +11,7 @@ function swiperCB(swiperName, sliderArrow, scrollBar) {
 		grabCursor: false,
 		effect: 'slide',
 		speed: 900,
+		lazy: true,
 		touchMoveStopPropagation:false,
 		simulateTouch : false,
 		allowSwipeToNext: true,
