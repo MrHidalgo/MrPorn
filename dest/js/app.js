@@ -1110,9 +1110,7 @@ function initWebWorker() {
   homeData = getWithExpiry("homepage_data_" + dataTime + '_' + currentLang);
 
   if (homeData) {
-    if (document.body.classList.contains('home')) {
-      //renderAllOtherCategories();
-      setTimeout(renderAllOtherCategories, 100);
+    if (document.body.classList.contains('home')) {//setTimeout(renderAllOtherCategories, 100);
     }
   } else {
     if (!navigator.userAgent.toLowerCase().includes('lighthouse')) {
@@ -1201,6 +1199,7 @@ function verifyCookie() {
   initLoggedUser();
   var headerHeight = document.querySelector('#header').getBoundingClientRect().height;
   ;
+  var isCategoriesRendered = false;
 
   var initHome = function initHome() {
     homeScroll();
@@ -1542,64 +1541,6 @@ function verifyCookie() {
     }
   };
 
-  var detailsToggleAction = function detailsToggleAction() {
-    var favoritesBtns = document.querySelectorAll('[favorites-toggle-js]'),
-        specFavoritesBtns = document.querySelectorAll('[spec-favorites-js]'),
-        likeBtns = document.querySelectorAll('[like-toggle-js]'),
-        specLikeBtns = document.querySelectorAll('[spec-like-js]'),
-        dislikeBtns = document.querySelectorAll('[dislike-toggle-js]'),
-        specDislikeBtns = document.querySelectorAll('[spec-dislike-js]'),
-        skipBtns = document.querySelectorAll('.list__specification-skip');
-
-    for (var i = 0, len = favoritesBtns.length; i < len; i++) {
-      favoritesBtns[i].addEventListener('click', function (ev) {
-        var el = ev.currentTarget;
-        onSiteBoxFavourite(el);
-      }, false);
-    }
-
-    for (var _i2 = 0, _len2 = skipBtns.length; _i2 < _len2; _i2++) {
-      skipBtns[_i2].addEventListener('click', function (ev) {
-        ev.currentTarget.classList.toggle('is-active');
-      }, false);
-    }
-
-    for (var _i3 = 0, _len3 = specFavoritesBtns.length; _i3 < _len3; _i3++) {
-      specFavoritesBtns[_i3].addEventListener('click', function (ev) {
-        var el = ev.currentTarget;
-        onBannerFavourite(el);
-      }, false);
-    }
-
-    for (var _i4 = 0, _len4 = likeBtns.length; _i4 < _len4; _i4++) {
-      likeBtns[_i4].addEventListener('click', function (ev) {
-        var el = ev.currentTarget;
-        onSiteBoxLikeClick(el);
-      }, false);
-    }
-
-    for (var _i5 = 0, _len5 = specLikeBtns.length; _i5 < _len5; _i5++) {
-      specLikeBtns[_i5].addEventListener('click', function (ev) {
-        var el = ev.currentTarget;
-        onBannerLikeClick(el);
-      }, false);
-    }
-
-    for (var _i6 = 0, _len6 = dislikeBtns.length; _i6 < _len6; _i6++) {
-      dislikeBtns[_i6].addEventListener('click', function (ev) {
-        var el = ev.currentTarget;
-        onSiteBoxDislikeClick(el);
-      }, false);
-    }
-
-    for (var _i7 = 0, _len7 = specDislikeBtns.length; _i7 < _len7; _i7++) {
-      specDislikeBtns[_i7].addEventListener('click', function (ev) {
-        var el = ev.currentTarget;
-        onBannerDislikeClick(el);
-      }, false);
-    }
-  };
-
   function onPlayClick(el) {
     var parentVideoNode = el.closest('[video-parent-js]');
     el.classList.add('is-active');
@@ -1742,9 +1683,11 @@ function verifyCookie() {
   function initGotoTop() {
     var goTop = document.querySelector('.go-top');
     adjustStickHeader();
+    loadOtherHomeCategories();
 
     window.onscroll = function () {
       adjustStickHeader();
+      loadOtherHomeCategories();
 
       if (window.scrollY > 200) {
         show(goTop);
@@ -1779,6 +1722,17 @@ function verifyCookie() {
         document.body.classList.add('sticky_header');
       } else {
         document.body.classList.remove('sticky_header');
+      }
+    }
+  }
+
+  function loadOtherHomeCategories() {
+    if (window.scrollY > 500) {
+      if (homeData && homeData.categories_indexes) {
+        if (!isCategoriesRendered) {
+          isCategoriesRendered = true;
+          renderAllOtherCategories();
+        }
       }
     }
   }
@@ -1967,6 +1921,7 @@ function verifyCookie() {
       skipModal();
       toggleMoreBox();
       getLikesAndDislikes();
+      initHomeSwippers();
     } //		boxMore();
     // ==========================================
     //loadHomeData();

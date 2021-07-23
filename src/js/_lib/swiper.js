@@ -228,7 +228,7 @@ function renderLeftAndRight(category, swiper) {
 	let totalSites = swipeWrapper.dataset.count;
 
 	for (var i = 0; i < totalSites; i++) {
-		if(i>(currentSlideIndex-6) && i<(currentSlideIndex+8)){
+		if(i>(currentSlideIndex-6) && i<(currentSlideIndex+24)){
 			if(swiper.slides[i] && swiper.slides[i].innerHTML.trim()==''){
 				let slideItem = renderHompageSiteSlide(category, i);
 				if(slideItem){

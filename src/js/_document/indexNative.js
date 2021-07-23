@@ -54,8 +54,7 @@ function initWebWorker(){
 	homeData = getWithExpiry("homepage_data_"+dataTime+'_'+currentLang);
 	if(homeData){
 		if(document.body.classList.contains('home')) {
-			//renderAllOtherCategories();
-			setTimeout(renderAllOtherCategories, 100);
+			//setTimeout(renderAllOtherCategories, 100);
 		}
 	}else{
 		if(!navigator.userAgent.toLowerCase().includes('lighthouse')){
@@ -151,6 +150,7 @@ function verifyCookie(){
 	initLoggedUser();
 
 	let headerHeight = document.querySelector('#header').getBoundingClientRect().height;;
+	let isCategoriesRendered = false;
 
 	const initHome = () =>{
 		homeScroll();
@@ -525,66 +525,6 @@ function verifyCookie(){
 		}
 	};
 
-
-	const detailsToggleAction = () => {
-		const favoritesBtns = document.querySelectorAll('[favorites-toggle-js]'),
-			specFavoritesBtns = document.querySelectorAll('[spec-favorites-js]'),
-			likeBtns = document.querySelectorAll('[like-toggle-js]'),
-			specLikeBtns = document.querySelectorAll('[spec-like-js]'),
-			dislikeBtns = document.querySelectorAll('[dislike-toggle-js]'),
-			specDislikeBtns = document.querySelectorAll('[spec-dislike-js]'),
-			skipBtns = document.querySelectorAll('.list__specification-skip');
-
-		for(let i = 0, len = favoritesBtns.length; i < len; i++) {
-			favoritesBtns[i].addEventListener('click', (ev) => {
-				const el = ev.currentTarget;
-					onSiteBoxFavourite(el);
-			}, false);
-		}
-
-		for(let i = 0, len = skipBtns.length; i < len; i++) {
-			skipBtns[i].addEventListener('click', (ev) => {
-				ev.currentTarget.classList.toggle('is-active');
-			}, false);
-		}
-
-		for(let i = 0, len = specFavoritesBtns.length; i < len; i++) {
-			specFavoritesBtns[i].addEventListener('click', (ev) => {
-				const el = ev.currentTarget;
-					onBannerFavourite(el);
-			}, false);
-		}
-
-		for(let i = 0, len = likeBtns.length; i < len; i++) {
-			likeBtns[i].addEventListener('click', (ev) => {
-				const el = ev.currentTarget;
-				onSiteBoxLikeClick(el);
-
-			}, false);
-		}
-
-		for(let i = 0, len = specLikeBtns.length; i < len; i++) {
-			specLikeBtns[i].addEventListener('click', (ev) => {
-				const el = ev.currentTarget;
-				onBannerLikeClick(el);
-			}, false);
-		}
-
-		for(let i = 0, len = dislikeBtns.length; i < len; i++) {
-			dislikeBtns[i].addEventListener('click', (ev) => {
-				const el = ev.currentTarget;
-				onSiteBoxDislikeClick(el);
-			}, false);
-		}
-
-		for(let i = 0, len = specDislikeBtns.length; i < len; i++) {
-			specDislikeBtns[i].addEventListener('click', (ev) => {
-				const el = ev.currentTarget;
-				onBannerDislikeClick(el);
-			}, false);
-		}
-	};
-
 	function onPlayClick(el){
 		var parentVideoNode = el.closest('[video-parent-js]');
 
@@ -763,9 +703,11 @@ function verifyCookie(){
 		var goTop = document.querySelector('.go-top');
 
 		adjustStickHeader();
+		loadOtherHomeCategories();
 
 		window.onscroll = function(){
 			adjustStickHeader();
+			loadOtherHomeCategories();
 
 			if (window.scrollY > 200) {
 				show(goTop);
@@ -798,6 +740,18 @@ function verifyCookie(){
 				document.body.classList.add('sticky_header');
 			} else {
 				document.body.classList.remove('sticky_header');
+			}
+		}
+	}
+
+	function loadOtherHomeCategories(){
+		if (window.scrollY > 500) {
+			if(homeData && homeData.categories_indexes){
+				if(!isCategoriesRendered){
+					isCategoriesRendered = true;
+					renderAllOtherCategories();
+
+				}
 			}
 		}
 	}
@@ -1007,6 +961,8 @@ function verifyCookie(){
 			skipModal();
 			toggleMoreBox();
 			getLikesAndDislikes();
+
+			initHomeSwippers();
 		}
 
 
