@@ -578,7 +578,7 @@ var renderFavourites = function renderFavourites() {
           if(favLink){
           	favLink.classList.add('is-active');
           }
-          		if(document.querySelector('.list__box-favorites[data-id="'+fav.id+'"]')){
+          	if(document.querySelector('.list__box-favorites[data-id="'+fav.id+'"]')){
           	document.querySelector('.list__box-favorites[data-id="'+fav.id+'"]').classList.add('is-active');
           }
           if(document.querySelector('.list__specification-circle[data-id="'+fav.id+'"]')){
@@ -734,7 +734,7 @@ var renderSorting = function renderSorting() {
       /*if(sortTimout){
       	clearTimeout(sortTimout);
       }
-      		sortTimout = setTimeout(function (){
+      	sortTimout = setTimeout(function (){
       	onSortLetterClick(_ev.target);
       }, 1000);*/
     });
@@ -769,18 +769,20 @@ var onSortLetterClick = function onSortLetterClick(letterItem) {
     //suggessionName = suggessionName.replace(uL, '<span>'+uL+'</span>');
 
     var siteFree = suggession.free;
+    var freeId = suggession.free_id;
     var siteHd = suggession.hd;
+    var hdId = suggession.hd_id;
     var catIcon = suggession.icon;
     var htmlFree = '';
 
     if (siteFree) {
-      htmlFree = '<a href="' + siteFree + '" class="site_free"><span>Free</span></a>';
+      htmlFree = '<a href="' + siteFree + '" class="site_free scroll_to_category" data-category="' + freeId + '"><span>Free</span></a>';
     }
 
     var htmlHd = '';
 
     if (siteHd) {
-      htmlHd = '<a href="' + siteHd + '"><img src="' + themeBase + 'images/img-badge-premium.png" srcset="' + themeBase + 'images/img-badge-premium@2x.png 2x" alt=""/></a>';
+      htmlHd = '<a href="' + siteHd + '" class="scroll_to_category" data-category="' + hdId + '"><img src="' + themeBase + 'images/img-badge-premium.png" srcset="' + themeBase + 'images/img-badge-premium@2x.png 2x" alt=""/></a>';
     }
 
     var showLetterToggle = false;
@@ -790,9 +792,9 @@ var onSortLetterClick = function onSortLetterClick(letterItem) {
     }
 
     if (showLetterToggle) {
-      letterSuggessions += '<div class="sort__collapse">' + '<a class="sort__collapse-toggle" href="#" collapse-toggle-js data-container="sort-collapse-' + suggessionIndex + '">' + '<div><span>#' + suggessionIndex + '</span></div>' + '<div><img src="' + catIcon + '" />' + '<p>' + suggessionName + '</p>' + '</div>' + '<div><i class="icon-font icon-arrow-angle"></i></div></a>' + '<div class="sort__collapse-body" id="sort-collapse-' + suggessionIndex + '" collapse-body-js>' + htmlFree + htmlHd + '</div>' + '</div>';
+      letterSuggessions += '<div class="sort__collapse">' + '<a class="sort__collapse-toggle" collapse-toggle-js data-container="sort-collapse-' + suggessionIndex + '">' + '<div><span>#' + suggessionIndex + '</span></div>' + '<div><img src="' + catIcon + '" />' + '<p>' + suggessionName + '</p>' + '</div>' + '<div><i class="icon-font icon-arrow-angle"></i></div></a>' + '<div class="sort__collapse-body" id="sort-collapse-' + suggessionIndex + '" collapse-body-js>' + htmlFree + htmlHd + '</div>' + '</div>';
     } else {
-      letterSuggessions += '<div class="sort__collapse">' + '<a class="sort__collapse-toggle" href="' + (siteHd != '' ? siteHd : siteFree) + '">' + '<div><span>#' + suggessionIndex + '</span></div>' + '<div><img src="' + catIcon + '" />' + '<p>' + suggessionName + '</p>' + '</div>' + '</a>' + '<div class="sort__collapse-body" id="sort-collapse-' + suggessionIndex + '" collapse-body-js>' + htmlFree + htmlHd + '</div>' + '</div>';
+      letterSuggessions += '<div class="sort__collapse">' + '<a class="sort__collapse-toggle scroll_to_category" data-category="' + (hdId != '' ? hdId : freeId) + '" href="' + (siteHd != '' ? siteHd : siteFree) + '">' + '<div><span>#' + suggessionIndex + '</span></div>' + '<div><img src="' + catIcon + '" />' + '<p>' + suggessionName + '</p>' + '</div>' + '</a>' + '<div class="sort__collapse-body" id="sort-collapse-' + suggessionIndex + '" collapse-body-js>' + htmlFree + htmlHd + '</div>' + '</div>';
     }
 
     suggessionIndex++;
@@ -846,12 +848,12 @@ var loadLoginForm = function loadLoginForm() {
       /*postTextRequest(ajaxAdminEndpoint, {
       	action:'get_login_form'
       }, function (result) {
-      			let loginHtml = '<a class="login_popup_close"><img src="'+themeBase+'images/btn_close.png"/></a>'+result;
-      			var e = document.createElement('div');
+      		let loginHtml = '<a class="login_popup_close"><img src="'+themeBase+'images/btn_close.png"/></a>'+result;
+      		var e = document.createElement('div');
       	e.setAttribute('id', 'login_popup');
       	e.innerHTML = loginHtml;
-      			document.body.appendChild(e);
-      			renderLoginForm();
+      		document.body.appendChild(e);
+      		renderLoginForm();
       });*/
 
       var loginHtml = '<a class="login_popup_close"><img src="' + themeBase + 'images/btn_close.png"/></a>' + htmlLogin;
@@ -1108,9 +1110,7 @@ function initWebWorker() {
   homeData = getWithExpiry("homepage_data_" + dataTime + '_' + currentLang);
 
   if (homeData) {
-    if (document.body.classList.contains('home')) {
-      //renderAllOtherCategories();
-      setTimeout(renderAllOtherCategories, 100);
+    if (document.body.classList.contains('home')) {//setTimeout(renderAllOtherCategories, 100);
     }
   } else {
     if (!navigator.userAgent.toLowerCase().includes('lighthouse')) {
@@ -1197,7 +1197,9 @@ function verifyCookie() {
   }
 
   initLoggedUser();
-  var headerHeight = 0;
+  var headerHeight = document.querySelector('#header').getBoundingClientRect().height;
+  ;
+  var isCategoriesRendered = false;
 
   var initHome = function initHome() {
     homeScroll();
@@ -1264,6 +1266,13 @@ function verifyCookie() {
         }
 
         hide(document.querySelector('.awe_search_result'));
+      }
+
+      if (_ev.closest('.scroll_to_category')) {
+        if (document.body.classList.contains('home') && !document.body.classList.contains('is-mobile')) {
+          ev.preventDefault();
+          scrollToCategoryOnHome(ev, _ev.closest('.scroll_to_category'));
+        }
       }
 
       if (_ev.classList.contains('search_category_item')) {
@@ -1532,64 +1541,6 @@ function verifyCookie() {
     }
   };
 
-  var detailsToggleAction = function detailsToggleAction() {
-    var favoritesBtns = document.querySelectorAll('[favorites-toggle-js]'),
-        specFavoritesBtns = document.querySelectorAll('[spec-favorites-js]'),
-        likeBtns = document.querySelectorAll('[like-toggle-js]'),
-        specLikeBtns = document.querySelectorAll('[spec-like-js]'),
-        dislikeBtns = document.querySelectorAll('[dislike-toggle-js]'),
-        specDislikeBtns = document.querySelectorAll('[spec-dislike-js]'),
-        skipBtns = document.querySelectorAll('.list__specification-skip');
-
-    for (var i = 0, len = favoritesBtns.length; i < len; i++) {
-      favoritesBtns[i].addEventListener('click', function (ev) {
-        var el = ev.currentTarget;
-        onSiteBoxFavourite(el);
-      }, false);
-    }
-
-    for (var _i2 = 0, _len2 = skipBtns.length; _i2 < _len2; _i2++) {
-      skipBtns[_i2].addEventListener('click', function (ev) {
-        ev.currentTarget.classList.toggle('is-active');
-      }, false);
-    }
-
-    for (var _i3 = 0, _len3 = specFavoritesBtns.length; _i3 < _len3; _i3++) {
-      specFavoritesBtns[_i3].addEventListener('click', function (ev) {
-        var el = ev.currentTarget;
-        onBannerFavourite(el);
-      }, false);
-    }
-
-    for (var _i4 = 0, _len4 = likeBtns.length; _i4 < _len4; _i4++) {
-      likeBtns[_i4].addEventListener('click', function (ev) {
-        var el = ev.currentTarget;
-        onSiteBoxLikeClick(el);
-      }, false);
-    }
-
-    for (var _i5 = 0, _len5 = specLikeBtns.length; _i5 < _len5; _i5++) {
-      specLikeBtns[_i5].addEventListener('click', function (ev) {
-        var el = ev.currentTarget;
-        onBannerLikeClick(el);
-      }, false);
-    }
-
-    for (var _i6 = 0, _len6 = dislikeBtns.length; _i6 < _len6; _i6++) {
-      dislikeBtns[_i6].addEventListener('click', function (ev) {
-        var el = ev.currentTarget;
-        onSiteBoxDislikeClick(el);
-      }, false);
-    }
-
-    for (var _i7 = 0, _len7 = specDislikeBtns.length; _i7 < _len7; _i7++) {
-      specDislikeBtns[_i7].addEventListener('click', function (ev) {
-        var el = ev.currentTarget;
-        onBannerDislikeClick(el);
-      }, false);
-    }
-  };
-
   function onPlayClick(el) {
     var parentVideoNode = el.closest('[video-parent-js]');
     el.classList.add('is-active');
@@ -1730,9 +1681,14 @@ function verifyCookie() {
   }
 
   function initGotoTop() {
-    var goTop = document.querySelector('.go-top');
+    var goTop = document.querySelector('.go-top'); //adjustStickHeader();
+
+    loadOtherHomeCategories();
 
     window.onscroll = function () {
+      //adjustStickHeader();
+      loadOtherHomeCategories();
+
       if (window.scrollY > 200) {
         show(goTop);
       } else {
@@ -1757,6 +1713,27 @@ function verifyCookie() {
         doScrolling(0, 200);
         return false;
       };
+    }
+  }
+
+  function adjustStickHeader() {
+    if (!isMobileDevice && !document.body.classList.contains('single-sites')) {
+      if (window.pageYOffset >= 60) {
+        document.body.classList.add('sticky_header');
+      } else {
+        document.body.classList.remove('sticky_header');
+      }
+    }
+  }
+
+  function loadOtherHomeCategories() {
+    if (window.scrollY > 500) {
+      if (homeData && homeData.categories_indexes) {
+        if (!isCategoriesRendered) {
+          isCategoriesRendered = true;
+          renderAllOtherCategories();
+        }
+      }
     }
   }
 
@@ -1944,6 +1921,7 @@ function verifyCookie() {
       skipModal();
       toggleMoreBox();
       getLikesAndDislikes();
+      initHomeSwippers();
     } //		boxMore();
     // ==========================================
     //loadHomeData();

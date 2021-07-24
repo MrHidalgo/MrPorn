@@ -305,16 +305,18 @@ const onSortLetterClick = (letterItem) => {
 		//suggessionName = suggessionName.replace(uL, '<span>'+uL+'</span>');
 
 		let siteFree = suggession.free;
+		let freeId = suggession.free_id;
 		let siteHd = suggession.hd;
+		let hdId = suggession.hd_id;
 		let catIcon = suggession.icon;
 
 		let htmlFree = '';
 		if(siteFree){
-			htmlFree = '<a href="'+siteFree+'" class="site_free"><span>Free</span></a>';
+			htmlFree = '<a href="'+siteFree+'" class="site_free scroll_to_category" data-category="'+freeId+'"><span>Free</span></a>';
 		}
 		let htmlHd = '';
 		if(siteHd){
-			htmlHd = '<a href="'+siteHd+'"><img src="'+themeBase +'images/img-badge-premium.png" srcset="'+themeBase+'images/img-badge-premium@2x.png 2x" alt=""/></a>';
+			htmlHd = '<a href="'+siteHd+'" class="scroll_to_category" data-category="'+hdId+'"><img src="'+themeBase +'images/img-badge-premium.png" srcset="'+themeBase+'images/img-badge-premium@2x.png 2x" alt=""/></a>';
 		}
 
 		let showLetterToggle = false;
@@ -324,7 +326,7 @@ const onSortLetterClick = (letterItem) => {
 
 		if(showLetterToggle) {
 			letterSuggessions += '<div class="sort__collapse">' +
-				'<a class="sort__collapse-toggle" href="#" collapse-toggle-js data-container="sort-collapse-'+suggessionIndex+'">'+
+				'<a class="sort__collapse-toggle" collapse-toggle-js data-container="sort-collapse-'+suggessionIndex+'">'+
 				'<div><span>#'+suggessionIndex+'</span></div>'+
 				'<div><img src="'+catIcon+'" />'+
 				'<p>'+suggessionName+'</p>'+
@@ -337,7 +339,7 @@ const onSortLetterClick = (letterItem) => {
 				'</div>';
 		}else{
 			letterSuggessions += '<div class="sort__collapse">' +
-				'<a class="sort__collapse-toggle" href="'+((siteHd!='')?siteHd:siteFree)+'">'+
+				'<a class="sort__collapse-toggle scroll_to_category" data-category="'+((hdId!='')?hdId:freeId)+'" href="'+((siteHd!='')?siteHd:siteFree)+'">'+
 				'<div><span>#'+suggessionIndex+'</span></div>'+
 				'<div><img src="'+catIcon+'" />'+
 				'<p>'+suggessionName+'</p>'+

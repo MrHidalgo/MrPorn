@@ -11,6 +11,7 @@ function swiperCB(swiperName, sliderArrow, scrollBar) {
 		grabCursor: false,
 		effect: 'slide',
 		speed: 900,
+		lazy: true,
 		touchMoveStopPropagation:false,
 		simulateTouch : false,
 		allowSwipeToNext: true,
@@ -227,7 +228,7 @@ function renderLeftAndRight(category, swiper) {
 	let totalSites = swipeWrapper.dataset.count;
 
 	for (var i = 0; i < totalSites; i++) {
-		if(i>(currentSlideIndex-6) && i<(currentSlideIndex+8)){
+		if(i>(currentSlideIndex-6) && i<(currentSlideIndex+24)){
 			if(swiper.slides[i] && swiper.slides[i].innerHTML.trim()==''){
 				let slideItem = renderHompageSiteSlide(category, i);
 				if(slideItem){

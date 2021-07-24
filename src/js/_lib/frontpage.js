@@ -384,10 +384,15 @@ const initHomeLazyLoad = () =>{
 
 function scrollToCategoryOnHome(ev, _ev){
 	if(_ev){
-		let catId = _ev.dataset.objectId;
+		let catId = _ev.dataset.objectId?_ev.dataset.objectId:_ev.dataset.category;
 		if(catId){
 			if(document.querySelector('#category_wrapper_'+catId)){
 				ev.preventDefault();
+
+				if(catId!=55 && !document.body.classList.contains('sticky_header')){
+					document.body.classList.add('sticky_header');
+				}
+
 				pauseHoverAnimation = true;
 				document.querySelector('#category_wrapper_'+catId).scrollIntoView({
 					behavior: 'smooth'
@@ -435,7 +440,7 @@ const loadHomeData = () => {
 
 	if(homeData){
 
-		setTimeout(renderAllOtherCategories, 100);
+		//setTimeout(renderAllOtherCategories, 100);
 	}else{
 		fetch(url)
 			.then(res => res.json())
@@ -448,9 +453,7 @@ const loadHomeData = () => {
 					setWithExpiry("homepage_data_"+dataTime+'_'+currentLang, homeData, 30*60*1000);
 				}
 
-				//renderAllOtherCategories();
-
-				setTimeout(renderAllOtherCategories, 100);
+				//setTimeout(renderAllOtherCategories, 100);
 			})
 			.catch(err => { throw err });
 	}
@@ -1112,6 +1115,24 @@ function renderAllOtherCategories(){
 	boxHover();
 }
 
+function initHomeSwippers(){
+	if(navigator.userAgent.toLowerCase().includes('lighthouse')){
+		return;
+	}
+
+	let listBoxWrappers = document.querySelectorAll('.list__box-wrapper');
+	if(listBoxWrappers){
+		listBoxWrappers.forEach(function(wrapper){
+			console.log(wrapper.dataset.category);
+			let catId = wrapper.dataset.category;
+			swiperCB(
+				`.swiper-container[data-id="listSlider_${catId}"]`,
+				`.list__box-wrapper[data-name='category_${catId}']`
+			);
+		});
+	}
+}
+
 let tOut = null,
 	hoverBool = false;
 let previousHoverBox = null;
@@ -1246,8 +1267,13 @@ function onSlideEnter(ev){
 			}
 		}
 
+		if(!slideSwiper.swiper){
+			return;
+		}
+
 		let activeSlide = 0;
 		if(slideSwiper){
+
 			activeSlide = slideSwiper.swiper.activeIndex;
 		}
 
