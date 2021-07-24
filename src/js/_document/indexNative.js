@@ -735,7 +735,7 @@ function verifyCookie(){
 	}
 
 	function adjustStickHeader(){
-		if(!isMobileDevice){
+		if(!isMobileDevice && !document.body.classList.contains('single-sites')){
 			if (window.pageYOffset >= 60) {
 				document.body.classList.add('sticky_header');
 			} else {
