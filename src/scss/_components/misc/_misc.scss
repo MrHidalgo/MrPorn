@@ -3,6 +3,17 @@
 
 }
 
+.list__specification--banner {
+	.list__specification-right {
+		&:after {
+			background-image: url('../images/img-list-spec-curve@2x.png');
+		}
+	}
+}
+.list .list__specification-bottom .category_link a:after {
+	background: url(../images/arrow-right-white.svg) no-repeat;
+}
+
 .badge{
 	&.lazy {
 		background-image: none;
