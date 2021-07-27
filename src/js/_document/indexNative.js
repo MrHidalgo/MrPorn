@@ -218,6 +218,15 @@ function verifyCookie(){
 				//ev.preventDefault();
 			}
 
+			if(_ev.closest('[sort-node-js]')){
+				console.log('Clicked sorting');
+				if(!isCategoriesRendered){
+					isCategoriesRendered = true;
+					renderAllOtherCategories();
+
+				}
+			}
+
 			if(!_ev.closest('[sort-node-js]')){
 				let openSort = document.querySelector('.sort__drop.is-open');
 				if(openSort){

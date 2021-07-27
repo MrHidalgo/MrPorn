@@ -1258,6 +1258,15 @@ function verifyCookie() {
       if (!_ev.closest('.nav_link')) {//ev.preventDefault();
       }
 
+      if (_ev.closest('[sort-node-js]')) {
+        console.log('Clicked sorting');
+
+        if (!isCategoriesRendered) {
+          isCategoriesRendered = true;
+          renderAllOtherCategories();
+        }
+      }
+
       if (!_ev.closest('[sort-node-js]')) {
         var openSort = document.querySelector('.sort__drop.is-open');
 
