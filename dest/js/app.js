@@ -537,6 +537,12 @@ var renderFavourites = function renderFavourites() {
     return;
   }
 
+  var hfToggle = document.querySelector('.header_f_toggle');
+
+  if (hfToggle) {
+    hfToggle.innerHTML = '<p>VIEW YOUR FAVORITES!</p><u></u><span>Quickly Access All Your Favorite Sites Here!</span>';
+  }
+
   var favouritesDropDown = document.querySelector('[view-favorites-drop-js]');
   var favouritesHtml = '';
   postRequest(ajaxEndpoint, {
