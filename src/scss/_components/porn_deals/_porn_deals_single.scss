@@ -1,4 +1,4 @@
-// PORN_DEALS :: START
+// PORN_DEALS_SINGLE :: START
 .single-coupon{
 	@include adaptive(767){
 		padding-bottom: 75px;
@@ -93,348 +93,19 @@
 		}
 	}
 }
-.coupon_banner{
-	position: relative;
-	line-height: 0;
-
-	@include adaptive(767) {
-		display: none;
-	}
-
-	.banner_image{
-		width: 100%;
-		aspect-ratio: calc(1260 / 431);
-	}
-
-	.cpnnav{
-		position: absolute;
-		top: 50%;
-		left: -15px;
-		margin: 0;
-		transform: translateY(-50%);
-		padding: 0;
-		list-style: none;
-
-		li{
-			position: relative;
-			background: #0e478e;
-			padding: 14px 10px;
-			font-size: 18px;
-			font-weight: 700;
-			border-bottom: 1px solid #000;
-
-			@include adaptive(1198.98) {
-				padding: 8px 5px;
-				font-size: 12px;
-			}
-		}
-
-		i{
-			width: 40px;
-			height: 40px;
-			background-image: url(../images/coupon/prem-icon.png);
-			background-repeat: no-repeat!important;
-
-			@include adaptive(1198.98) {
-				width: 25px;
-				height: 25px;
-				background-size: 100%;
-			}
-		}
-		.premIcon, .vrIcon, .liveIcon, .adultIcon, .toyIcon, .hentaiIcon, .gayIcon {
-			display: inline-block;
-			vertical-align: middle;
-			margin-right: 8px;
-		}
-
-		i.vrIcon {
-			background-image: url(../images/coupon/vr-icon.png);
-		}
-
-		i.liveIcon {
-			background-image: url(../images/coupon/live-icon.png);
-		}
-
-		i.adultIcon {
-			background-image: url(../images/coupon/adult-icon.png);
-		}
-		i.hentaiIcon {
-			background-image: url(../images/coupon/hentai-icon.png);
-		}
-
-		i.vrIcon, i.liveIcon, i.adultIcon, i.hentaiIcon {
-			@include adaptive(1198.98) {
-				width: 25px;
-				height: 25px;
-				background-size: 100%;
-			}
-		}
-
-
-
-		a{
-			color: #fff;
-			display: flex;
-			align-items: center;
-
-			span{
-				flex: 1;
-			}
-
-			small{
-				color: #8bbbf7;
-				font-size: 14px;
-				margin-left: 30px;
-			}
-		}
-
-		@include respond('ipad'){
-			li{
-				padding: 8px 5px;
-				font-size: 12px;
-
-				i{
-					width: 25px;
-					height: 25px;
-					background-size: 100%;
-				}
-			}
-		}
-
-		@include respond('ipad_landscape'){
-			width: 185px;
-		}
-
-		@include respond('ipad_portrait'){
-			width: 150px;
-		}
-	}
-
-	.check_coupons {
-		position: absolute;
-		right: 4.5%;
-		bottom: 0;
-		width: 31.8%;
-
-		img{
-			max-width: 100%;
-		}
-	}
-}
-.banner_bottom{
-	background: #002047 url(../images/coupon/bgtop-slider.jpg) top no-repeat;
-	background-size: 100%;
-	padding: 15px 60px 30px;
-	text-align: center;
-
-	@include adaptive(767) {
-		display: none;
-	}
-
-	.sub_title{
-		font-size: 40px;
-		color: #d2f44c;
-		font-family: gloria hallelujah,cursive;
-		background: url(../images/coupon/head-icon.png) left center no-repeat;
-		padding: 19px 0 19px 105px;
-		display: inline-block;
-
-		@include respond('ipad_landscape'){
-			font-size: 28px;
-		}
-
-		@include respond('ipad_portrait'){
-			font-size: 24px;
-		}
-	}
-
-	p{
-		font-size: 18px;
-		color: #fff;
-		line-height: 30px;
-
-		@include respond('ipad_portrait'){
-			font-size: 16px;
-		}
-	}
-}
-.coupon_search{
-	display: block;
-	margin: 30px 35px 20px;
-	padding: 20px 30px;
-	background: #666;
-
-	@include adaptive(767) {
-		margin: 0 0 10px;
-		padding: 15px;
-	}
-
-	&_inner{
-		position: relative;
-	}
-
-	.search_input{
-		background-color: #515151;
-		background-image: url(../images/coupon/search-icon-white.png);
-		background-position: right 15px center;
-		background-repeat: no-repeat;
-		border: 1px solid #8c8c8c;
-		display: inline-block;
-		width: 65%;
-		vertical-align: top;
-		transition-property: all;
-		transition-duration: .3s;
-		transition-timing-function: ease-in-out;
-		transition-delay: 0;
-		height: 45px;
-		position: relative;
-		padding: 0;
-
-		@include respond('ipad_portrait'){
-			position: absolute;
-			width: 50px;
-			right: 0;
-			height: 34px;
-			border: none;
-			top: 0;
-			background-size: 24px;
-		}
-
-		@include adaptive(767) {
-			position: absolute;
-			width: 50px;
-			right: 0;
-			height: 36px;
-			top: 0;
-			background-size: 24px;
-		}
-
-		input{
-			border: 0;
-			background: transparent none;
-			font-size: 18px;
-			margin: 0;
-			padding: 0 20px;
-			font-family: gloria hallelujah,cursive;
-			text-transform: uppercase;
-			width: 91%;
-			display: block;
-			vertical-align: top;
-			color: #afafaf;
-			height: 45px;
-			top: 0;
-
-			&:focus, &:active{
-				outline: none;
-			}
-
-			&:-moz-placeholder { color: #fff; }
-			&::-moz-placeholder { color: #fff; }
-			&:-ms-input-placeholder { color: #fff; }
-			&::-webkit-input-placeholder { color: #fff; }
-
-			@include respond('ipad_portrait'){
-				visibility: hidden;
-			}
-			@include adaptive(767) {
-				visibility: hidden;
-				height: 36px;
-				line-height: 36px;
-			}
-		}
-
-		.groupon-ajax-search{
-			position: absolute;
-			background: #eee;
-			width: 500px;
-			z-index: 999;
-			right: 0;
-			top: 47px;
-			width: 100%;
-			list-style-type: none;
-			border: 1px solid #d8d5bf;
-			border-top: none;
-			padding: 0;
-			display: none;
-		}
-	}
-
-	.coupon_select{
-		width: 32.5%;
-		display: inline-block;
-		margin-left: 1.5%;
-
-		@include respond('ipad_portrait'){
-			width: 100%;
-			margin: 0;
-			padding-right: 50px;
-		}
-
-		@include adaptive(767) {
-			width: 100%;
-			margin: 0;
-			padding-right: 50px;
-		}
-
-		select{
-			width: 100%;
-			outline: 0;
-			border: 0;
-			border-radius: 0;
-			-webkit-appearance: none;
-			-moz-appearance: none;
-			padding: 9px 26px 9px 20px;
-			background: #113d74;
-			background-image: url(../images/coupon/drp-arrw.png);
-			background-repeat: no-repeat;
-			background-position: right 20px center;
-			color: #fff;
-			font-size: 24px;
-
-			@include respond('ipad_portrait'){
-				font-size: 14px;
-			}
-			@include adaptive(767) {
-				 font-size: 14px;
-			}
-
-			option:first-child {
-				display: none;
-			}
-		}
-	}
-
-	.close_search{
-		display: none;
-
-		@include respond('ipad_portrait'){
-			display: none;
-			position: absolute;
-			right: 10px;
-			top: 50%;
-			transform: translateY(-50%);
-			font-size: 28px;
-			cursor: pointer;
-		}
-
-		@include  adaptive(767){
-			display: none;
-			position: absolute;
-			right: 10px;
-			top: 50%;
-			transform: translateY(-50%);
-			font-size: 28px;
-			cursor: pointer;
-		}
-	}
-}
 
 .grey_title{
 	font-size: 30px;
 	padding: 0 30px;
 	color: #fff;
 	margin-bottom: 15px;
-	background: #2b333c url(../images/coupon/lytblck-bar.png) top repeat-x;
+	/* Permalink - use to edit and share this gradient: https://colorzilla.com/gradient-editor/#535961+0,4a5159+42,2c343d+100 */
+	background: rgb(83,89,97); /* Old browsers */
+	background: -moz-linear-gradient(top,  rgba(83,89,97,1) 0%, rgba(74,81,89,1) 42%, rgba(44,52,61,1) 100%); /* FF3.6-15 */
+	background: -webkit-linear-gradient(top,  rgba(83,89,97,1) 0%,rgba(74,81,89,1) 42%,rgba(44,52,61,1) 100%); /* Chrome10-25,Safari5.1-6 */
+	background: linear-gradient(to bottom,  rgba(83,89,97,1) 0%,rgba(74,81,89,1) 42%,rgba(44,52,61,1) 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#535961', endColorstr='#2c343d',GradientType=0 ); /* IE6-9 */
+
 	min-height: 48px;
 	display: flex;
 	align-items: center;
@@ -1134,34 +805,36 @@ i.link2deal{background-position: -180px 0;}
 		display: none;
 	}
 
-	.dealPrice {
-		padding: 16px 20px;
-		text-align: center;
-		border: 1px solid #ededed;
-		background: #ededed url(../images/coupon/bg-cpn-box.jpg) center top -1px repeat-x;
-		margin-bottom: 15px;
-	}
-	.buy4frnd {
-		border: 1px solid #ededed;
-		background: #ededed url(../images/coupon/bg-cpn-box.jpg) center top -1px repeat-x;
-		margin-bottom: 15px;
-	}
-	.target {
-		margin: 10px 0;
-		background: #ededed;
-	}
-	.dealon {
-		display: none;
-	}
-	h5 {
-		font-size: 20px;
-		color: #ff4e00;
-		background: url(../images/coupon/btm-shade.png) center bottom no-repeat;
-		padding: 5px 0 30px;
-		text-align: center;
-	}
-	.deal_inner_col{
-		height: 100%;
+	@include respond('medium'){
+		.dealPrice {
+			padding: 16px 20px;
+			text-align: center;
+			border: 1px solid #ededed;
+			background: #ededed url(../images/coupon/bg-cpn-box.jpg) center top -1px repeat-x;
+			margin-bottom: 15px;
+		}
+		.buy4frnd {
+			border: 1px solid #ededed;
+			background: #ededed url(../images/coupon/bg-cpn-box.jpg) center top -1px repeat-x;
+			margin-bottom: 15px;
+		}
+		.target {
+			margin: 10px 0;
+			background: #ededed;
+		}
+		.dealon {
+			display: none;
+		}
+		h5 {
+			font-size: 20px;
+			color: #ff4e00;
+			background: url(../images/coupon/btm-shade.png) center bottom no-repeat;
+			padding: 5px 0 30px;
+			text-align: center;
+		}
+		.deal_inner_col{
+			height: 100%;
+		}
 	}
 }
 .deal_right{
@@ -1200,104 +873,61 @@ i.link2deal{background-position: -180px 0;}
 	height: 100%;
 }
 
-.btn_redeem {
-	display: block;
-	position: absolute;
-	top: 0;
-	width: 100%;
-	height: 100%;
-	left: 0;
-	background: #fff;
-
-	.coupon_redeem_container{
+@include respond('medium'){
+	.btn_redeem {
+		display: block;
 		position: absolute;
-		top: 20px;
-		left: 20px;
-		right: 20px;
-		bottom: 20px;
-		background: #e2e2e2;
-		padding: 35px;
+		top: 0;
+		width: 100%;
+		height: 100%;
+		left: 0;
+		background: #fff;
 
-		.coupon_redeem_inner {
-			border: 10px dashed #b2b2b2;
-			padding: 15px 0;
-			text-align: center;
-			height: 100%;
-			cursor: pointer;
+		.coupon_redeem_container{
+			position: absolute;
+			top: 20px;
+			left: 20px;
+			right: 20px;
+			bottom: 20px;
+			background: #e2e2e2;
+			padding: 35px;
 
-			&:before{
-				position: absolute;
-				bottom: 12%;
-				left: 5px;
-				background: url(../images/coupon/scissor.png);
-				width: 70px;
-				height: 81px;
-				content: '';
-				background-size: 100%;
-			}
+			.coupon_redeem_inner {
+				border: 10px dashed #b2b2b2;
+				padding: 15px 0;
+				text-align: center;
+				height: 100%;
+				cursor: pointer;
 
-			.coupon_redeem_valign {
-				position: absolute;
-				top: 50%;
-				left: 30px;
-				right: 30px;
-				-webkit-transform: translateY(-50%);
-				-moz-transform: translateY(-50%);
-				transform: translateY(-50%);
+				&:before{
+					position: absolute;
+					bottom: 12%;
+					left: 5px;
+					background: url(../images/coupon/scissor.png);
+					width: 70px;
+					height: 81px;
+					content: '';
+					background-size: 100%;
+				}
 
-				img{
-					max-width: 70%;
+				.coupon_redeem_valign {
+					position: absolute;
+					top: 50%;
+					left: 30px;
+					right: 30px;
+					-webkit-transform: translateY(-50%);
+					-moz-transform: translateY(-50%);
+					transform: translateY(-50%);
+
+					img{
+						max-width: 70%;
+					}
 				}
 			}
 		}
 	}
 }
 
-.dealPrice{
-	padding: 16px 20px;
-	text-align: center;
-	border: 1px solid #ededed;
-	background: #ededed url(../images/coupon/bg-cpn-box.jpg) center top -1px repeat-x;
-	margin-bottom: 15px;
-
-	span{
-		display: inline-block;
-		background: url(../images/coupon/vert-line.png) right top repeat-y;
-		width: 38%;
-		font-size: 55px;
-		color: #474747;
-		text-shadow: 1px 1px 0 #fff;
-		vertical-align: middle;
-		text-align: center;
-	}
-	.bluBuy {
-		display: inline-block;
-		width: 40%;
-		font-size: 30px;
-		padding: 10px;
-		vertical-align: middle;
-		background: #004dab;
-		background: -moz-linear-gradient(top,#004dab 0%,#002451 100%);
-		background: -webkit-gradient(left top,left bottom,color-stop(0%,#004dab),color-stop(100%,#002451));
-		background: -webkit-linear-gradient(top,#004dab 0%,#002451 100%);
-		background: -o-linear-gradient(top,#004dab 0%,#002451 100%);
-		background: -ms-linear-gradient(top,#004dab 0%,#002451 100%);
-		background: linear-gradient(to bottom,#004dab 0%,#002451 100%);
-		filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#004dab',endColorstr='#002451',GradientType=0 );
-		color: #fff;
-		font-family: gloria hallelujah,cursive;
-		margin-left: 8%;
-	}
-	.tip {
-		font-size: 20px;
-		font-weight: 600;
-	}
-}
-.buy4frnd{
-	border: 1px solid #ededed;
-	background: #ededed url(../images/coupon/bg-cpn-box.jpg) center top -1px repeat-x;
-	margin-bottom: 15px;
-}
 .more_deal_inner_col{
 	background: #fff;
 	height: 100%;
@@ -1677,24 +1307,6 @@ i.link2deal{background-position: -180px 0;}
 
 			h4{
 				color: #375590;
-			}
-		}
-	}
-	.coupon_search{
-		background: #929ca8;
-
-		.search_input{
-			background-color: #fff;
-			background-image: url(../images/coupon/search-icon.png);
-
-			input{
-				color: inherit;
-
-
-				&:-moz-placeholder { color: #333; }
-				&::-moz-placeholder { color: #333; }
-				&:-ms-input-placeholder { color: #333; }
-				&::-webkit-input-placeholder { color: #333 }
 			}
 		}
 	}
