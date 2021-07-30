@@ -580,6 +580,7 @@
 		margin: 0 -3px;
 
 		max-height: 559px;
+
 		overflow: auto;
 		margin: 10px;
 
@@ -647,4 +648,7 @@
 			}
 		}
 	}
+}
+.is-mobile .thumbs-cols {
+	max-height: calc(var(--vh) -  160px);
 }
