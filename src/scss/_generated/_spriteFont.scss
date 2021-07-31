@@ -28,6 +28,9 @@
 @function icon-char($filename) {
 	$char: "";
 
+	@if $filename == check {
+		$char: "\eed8";
+	}
 	@if $filename == arrow-angle {
 		$char: "\E001";
 	}
@@ -94,6 +97,10 @@
 	}
 }
 
+.icon-check {
+	@include icon(check);
+
+}
 .icon-arrow-angle {
 	@include icon(arrow-angle);
 

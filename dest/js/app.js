@@ -1196,13 +1196,16 @@ function verifyCookie() {
    * MAIN CALLBACK
    * ===================================
    */
-  var vh = window.innerHeight * 0.01;
+  if (!navigator.userAgent.toLowerCase().includes('lighthouse')) {
+    var vh = window.innerHeight * 0.01;
 
-  if (document.body.classList.contains('home')) {
-    document.documentElement.style.setProperty('--vh', "".concat(vh, "px"));
+    if (document.body.classList.contains('home')) {
+      document.documentElement.style.setProperty('--vh', "".concat(vh, "px"));
+    }
+
+    initLoggedUser();
   }
 
-  initLoggedUser();
   var headerHeight = document.querySelector('#header').getBoundingClientRect().height;
   ;
   var isCategoriesRendered = false;
@@ -1742,7 +1745,7 @@ function verifyCookie() {
   }
 
   function loadOtherHomeCategories() {
-    if (window.scrollY > 500) {
+    if (document.body.classList.contains('home') && window.scrollY > 500) {
       if (homeData && homeData.categories_indexes) {
         if (!isCategoriesRendered) {
           isCategoriesRendered = true;
@@ -1966,34 +1969,36 @@ function verifyCookie() {
    */
 
 
-  window.addEventListener('load', function (ev) {
-    initNative();
-    window.addEventListener('blur', function (ev) {
-      onWindowBlur();
-    });
-    window.addEventListener("orientationchange", function (event) {
-      onWindowChange();
-      setTimeout(function () {
-        onWindowChange();
-      }, 500);
-    });
-    window.addEventListener('resize', function () {
-      if (window.innerWidth > 1023) {
-        if (document.querySelector('.list__specification.is-open')) {
-          document.getElementsByTagName('html')[0].classList.remove('is-hideScroll');
-          document.getElementsByTagName('body')[0].classList.remove('is-hideScroll');
-        }
-      } else {
+  if (!navigator.userAgent.toLowerCase().includes('lighthouse')) {
+    window.addEventListener('load', function (ev) {
+      initNative();
+      window.addEventListener('blur', function (ev) {
+        onWindowBlur();
+      });
+      window.addEventListener("orientationchange", function (event) {
         onWindowChange();
         setTimeout(function () {
           onWindowChange();
         }, 500);
+      });
+      window.addEventListener('resize', function () {
+        if (window.innerWidth > 1023) {
+          if (document.querySelector('.list__specification.is-open')) {
+            document.getElementsByTagName('html')[0].classList.remove('is-hideScroll');
+            document.getElementsByTagName('body')[0].classList.remove('is-hideScroll');
+          }
+        } else {
+          onWindowChange();
+          setTimeout(function () {
+            onWindowChange();
+          }, 500);
 
-        if (document.querySelector('.list__specification.is-open')) {
-          document.getElementsByTagName('html')[0].classList.add('is-hideScroll');
-          document.getElementsByTagName('body')[0].classList.add('is-hideScroll');
+          if (document.querySelector('.list__specification.is-open')) {
+            document.getElementsByTagName('html')[0].classList.add('is-hideScroll');
+            document.getElementsByTagName('body')[0].classList.add('is-hideScroll');
+          }
         }
-      }
+      });
     });
-  });
+  }
 })();

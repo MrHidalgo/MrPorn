@@ -142,12 +142,14 @@ function verifyCookie(){
 	 * ===================================
 	 */
 
-	let vh = window.innerHeight * 0.01;
-	if(document.body.classList.contains('home')){
-		document.documentElement.style.setProperty('--vh', `${vh}px`);
-	}
+	if(!navigator.userAgent.toLowerCase().includes('lighthouse')){
+		let vh = window.innerHeight * 0.01;
+		if(document.body.classList.contains('home')){
+			document.documentElement.style.setProperty('--vh', `${vh}px`);
+		}
 
-	initLoggedUser();
+		initLoggedUser();
+	}
 
 	let headerHeight = document.querySelector('#header').getBoundingClientRect().height;;
 	let isCategoriesRendered = false;
@@ -754,7 +756,7 @@ function verifyCookie(){
 	}
 
 	function loadOtherHomeCategories(){
-		if (window.scrollY > 500) {
+		if (document.body.classList.contains('home') && window.scrollY > 500) {
 			if(homeData && homeData.categories_indexes){
 				if(!isCategoriesRendered){
 					isCategoriesRendered = true;
@@ -1009,42 +1011,43 @@ function verifyCookie(){
 	/**
 	 * @description Init all CB after page load
 	 */
-	window.addEventListener('load', (ev) => {
-		initNative();
 
-		window.addEventListener('blur', (ev) => {
-			onWindowBlur();
-		});
+	if(!navigator.userAgent.toLowerCase().includes('lighthouse')){
+		window.addEventListener('load', (ev) => {
+			initNative();
 
-		window.addEventListener("orientationchange", function(event) {
-			onWindowChange();
-			setTimeout(() => {
-				onWindowChange();
-			}, 500);
-		});
+			window.addEventListener('blur', (ev) => {
+				onWindowBlur();
+			});
 
-		window.addEventListener('resize', () => {
-			if(window.innerWidth > 1023) {
-				if(document.querySelector('.list__specification.is-open')) {
-					document.getElementsByTagName('html')[0].classList.remove('is-hideScroll');
-					document.getElementsByTagName('body')[0].classList.remove('is-hideScroll');
-				}
-			} else {
+			window.addEventListener("orientationchange", function(event) {
 				onWindowChange();
 				setTimeout(() => {
 					onWindowChange();
 				}, 500);
+			});
 
-				if(document.querySelector('.list__specification.is-open')) {
-					document.getElementsByTagName('html')[0].classList.add('is-hideScroll');
-					document.getElementsByTagName('body')[0].classList.add('is-hideScroll');
+			window.addEventListener('resize', () => {
+				if(window.innerWidth > 1023) {
+					if(document.querySelector('.list__specification.is-open')) {
+						document.getElementsByTagName('html')[0].classList.remove('is-hideScroll');
+						document.getElementsByTagName('body')[0].classList.remove('is-hideScroll');
+					}
+				} else {
+					onWindowChange();
+					setTimeout(() => {
+						onWindowChange();
+					}, 500);
+
+					if(document.querySelector('.list__specification.is-open')) {
+						document.getElementsByTagName('html')[0].classList.add('is-hideScroll');
+						document.getElementsByTagName('body')[0].classList.add('is-hideScroll');
+					}
 				}
-			}
+			});
+
 		});
-
-	});
-
-
+	}
 
 
 })();

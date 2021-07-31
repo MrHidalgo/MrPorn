@@ -595,32 +595,38 @@ i.link2deal{background-position: -180px 0;}
 		}
 	}
 
-	i.only1-icon {
-		position: absolute;
-		top: -5px;
-		right: -5px;
-		width: 121px;
-		height: 102px;
-		background: url(../images/coupon/only1.png);
-	}
-	.only_value {
-		font-size: 16px;
-		color: #fff77f;
-		position: absolute;
-		right: 40px;
-		top: 34px;
-		font-weight: 600;
-
-		.rotate {
+	@include respond('medium'){
+		i.only1-icon {
 			position: absolute;
-			top: 50%;
-			left: 50%;
-			white-space: nowrap;
-			-webkit-transform: translateX(-50%) translateY(-50%) rotate(40deg);
-			-moz-transform: translateX(-50%) translateY(-50%) rotate(40deg);
-			transform: translateX(-50%) translateY(-50%) rotate(40deg);
+			top: -5px;
+			right: -5px;
+			width: 121px;
+			height: 102px;
+			background: url(../images/coupon/only1.png);
+		}
+
+		.only_value {
+			font-size: 16px;
+			color: #fff77f;
+			position: absolute;
+			right: 40px;
+			top: 34px;
+			font-weight: 600;
+
+			.rotate {
+				position: absolute;
+				top: 50%;
+				left: 50%;
+				white-space: nowrap;
+				-webkit-transform: translateX(-50%) translateY(-50%) rotate(40deg);
+				-moz-transform: translateX(-50%) translateY(-50%) rotate(40deg);
+				transform: translateX(-50%) translateY(-50%) rotate(40deg);
+			}
 		}
 	}
+
+
+
 	.pledge_0_subtitle {
 		display: inline-block;
 		font-size: 20px;
