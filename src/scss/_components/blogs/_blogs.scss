@@ -12,9 +12,26 @@
 	&__terms{
 		display: flex;
 		justify-content: space-between;
+		-ms-overflow-style: none;  /* IE and Edge */
+		scrollbar-width: none;  /* Firefox */
+
+		&::-webkit-scrollbar {
+			display: none;
+		}
+
+		@include adaptive(767){
+			white-space: nowrap;
+			overflow: auto;
+		}
 
 		&__item{
 			display: block;
+			text-align: center;
+
+			@include adaptive(767){
+				width: calc(100%/4 - 10px);
+				min-width: calc(100%/4 - 10px);
+			}
 		}
 		&-icon{
 		}
@@ -25,6 +42,9 @@
 			color: #fff;
 		}
 	}
+}
+.blog-crumbs{
+	margin: -10px 0 10px;
 }
 
 .blog_list{
