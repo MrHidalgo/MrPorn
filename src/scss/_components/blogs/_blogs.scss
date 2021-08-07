@@ -8,6 +8,25 @@
 	}
 }
 
+.blog{
+	&__terms{
+		display: flex;
+		justify-content: space-between;
+
+		&__item{
+			display: block;
+		}
+		&-icon{
+		}
+		&-name{
+			display: block;
+			padding: 5px;
+			text-align: center;
+			color: #fff;
+		}
+	}
+}
+
 .blog_list{
 
 	.blog_list_item{

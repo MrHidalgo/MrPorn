@@ -475,10 +475,10 @@ function renderHompageSiteSlide(category, index){
 			'<button class="list__box-favorites" type="button" data-id="'+siteId+'" more-toggle-js><i class="icon-font icon-arrow-angle icon-more-arrow"></i></button>';
 		let btnFavToolTip = (isLoggedUser!="")?'Add To Favourites':'More Info';
 
-		let slideHtml = '<div class="list__box nolazy" list-box-js data-id="'+siteId+'" style="background-image: url('+siteThumb+')">'+
-			/*'<div class="list__box-overlay"></div>'+*/
+		let slideHtml = '<a href="'+siteLink+'" hreflang="'+currentLang+'" target="_blank">' +
+			'<div class="list__box nolazy" list-box-js data-id="'+siteId+'" style="background-image: url('+siteThumb+')">'+
 			'<div class="list__box-border"></div>' +
-			'<a href="'+siteLink+'" hreflang="'+currentLang+'" target="_blank"></a>'+
+			'</a>'+
 			//'<img class="list__box-logo nolazy" src="'+siteLogo+'" alt=""/>'+
 			'<div class="list__box-details">'+
 			'<div class="list__box-details-left">'+
@@ -1025,11 +1025,12 @@ function renderSiteCategory(categoryIndex){
 		}
 
 		categorySites += '<div class="swiper-slide" data-index="'+index+'" data-siteid="'+site.id+'" data-init="0">' +
-			'<div class="list__box" list-box-js  data-id="'+site.id+'" style="background-image: url('+site.banner_image+')">'+
-			/*'<div class="list__box-overlay"></div>'+*/
-			'<div class="list__box-border"></div>'+
+			'<div class="list__box" list-box-js  data-id="'+site.id+'">'+
 			'<a class="nav_link" href="'+site.link+'" hreflang="'+currentLang+'">' +
-			//siteLogo+
+			/*'<div class="list__box-overlay"></div>'+*/
+			'<img class="list__box__thumb" src="'+site.banner_image+'"/>'+
+			'<div class="list__box-border"></div>'+
+
 			'</a>'+
 			'<div class="list__box-details">'+
 
