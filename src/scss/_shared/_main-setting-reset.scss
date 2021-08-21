@@ -197,8 +197,11 @@ strong{
 	}
 }
 
+.show-xs{display: none;}
+
 @include adaptive(767) {
 	.hidden-xs{
 		display: none;
 	}
+	.show-xs{display: block;}
 }

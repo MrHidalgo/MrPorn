@@ -728,10 +728,19 @@ strong {
   }
 }
 
+/* line 200, src/scss/_shared/_main-setting-reset.scss */
+.show-xs {
+  display: none;
+}
+
 @media screen and (max-width: 767px) {
-  /* line 201, src/scss/_shared/_main-setting-reset.scss */
+  /* line 203, src/scss/_shared/_main-setting-reset.scss */
   .hidden-xs {
     display: none;
+  }
+  /* line 206, src/scss/_shared/_main-setting-reset.scss */
+  .show-xs {
+    display: block;
   }
 }
 
