@@ -724,7 +724,7 @@ var _t = function _t(key, _default) {
 var renderSorting = function renderSorting() {
   var letterHtml = '';
   Object.entries(letterData).forEach(function (letter) {
-    letterHtml += '<a class="sort__drop-link" sort-letter-collapse-js data-letter="' + letter[0] + '">' + letter[0].toUpperCase() + '</a>';
+    letterHtml += '<span class="sort__drop-link" sort-letter-collapse-js data-letter="' + letter[0] + '">' + letter[0].toUpperCase() + '</span>';
   });
   letterHtml += '<div class="sort__drop-inner"></div>';
   var sortcontainer = document.querySelector('[sort-node-js]');
@@ -798,7 +798,7 @@ var onSortLetterClick = function onSortLetterClick(letterItem) {
     }
 
     if (showLetterToggle) {
-      letterSuggessions += '<div class="sort__collapse">' + '<a class="sort__collapse-toggle" collapse-toggle-js data-container="sort-collapse-' + suggessionIndex + '">' + '<div><span>#' + suggessionIndex + '</span></div>' + '<div><img src="' + catIcon + '" />' + '<p>' + suggessionName + '</p>' + '</div>' + '<div><i class="icon-font icon-arrow-angle"></i></div></a>' + '<div class="sort__collapse-body" id="sort-collapse-' + suggessionIndex + '" collapse-body-js>' + htmlFree + htmlHd + '</div>' + '</div>';
+      letterSuggessions += '<div class="sort__collapse">' + '<div class="sort__collapse-toggle" collapse-toggle-js data-container="sort-collapse-' + suggessionIndex + '">' + '<div><span>#' + suggessionIndex + '</span></div>' + '<div><img src="' + catIcon + '" />' + '<p>' + suggessionName + '</p>' + '</div>' + '<div><i class="icon-font icon-arrow-angle"></i></div></div>' + '<div class="sort__collapse-body" id="sort-collapse-' + suggessionIndex + '" collapse-body-js>' + htmlFree + htmlHd + '</div>' + '</div>';
     } else {
       letterSuggessions += '<div class="sort__collapse">' + '<a class="sort__collapse-toggle scroll_to_category" data-category="' + (hdId != '' ? hdId : freeId) + '" href="' + (siteHd != '' ? siteHd : siteFree) + '">' + '<div><span>#' + suggessionIndex + '</span></div>' + '<div><img src="' + catIcon + '" />' + '<p>' + suggessionName + '</p>' + '</div>' + '</a>' + '<div class="sort__collapse-body" id="sort-collapse-' + suggessionIndex + '" collapse-body-js>' + htmlFree + htmlHd + '</div>' + '</div>';
     }

@@ -27,6 +27,8 @@
 		&__item{
 			display: block;
 			text-align: center;
+			position: relative;
+			margin: 0 8px;
 
 			@include adaptive(767){
 				width: calc(100%/4 - 10px);
@@ -39,6 +41,15 @@
 			display: block;
 			padding: 5px;
 			text-align: center;
+			color: #fff;
+			font-weight: 600;
+		}
+		&-count{
+			border-radius: 5px;
+			position: absolute;
+			//background: #565656;
+			top: -5px;
+			right: -5px;
 			color: #fff;
 		}
 	}
@@ -338,6 +349,14 @@
 			color: #333;
 		}
 	}
+	.blog__terms-name{
+		color: #333;
+	}
+
+	.blog__terms-count{
+		color: #333;
+	}
+
 	.blog_list .blog_list_item{
 		border-top: 12px solid #d1f34b;
 		background: #fff;
