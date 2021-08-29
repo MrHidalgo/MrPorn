@@ -1191,6 +1191,8 @@ function verifyCookie() {
   }
 }
 
+var isCategoriesRendered = false;
+
 (function () {
   /**
    * MAIN CALLBACK
@@ -1208,7 +1210,6 @@ function verifyCookie() {
 
   var headerHeight = document.querySelector('#header').getBoundingClientRect().height;
   ;
-  var isCategoriesRendered = false;
 
   var initHome = function initHome() {
     homeScroll();

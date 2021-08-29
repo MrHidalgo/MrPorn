@@ -136,6 +136,8 @@ function verifyCookie(){
 	}
 }
 
+let isCategoriesRendered = false;
+
 (function () {
 	/**
 	 * MAIN CALLBACK
@@ -152,7 +154,7 @@ function verifyCookie(){
 	}
 
 	let headerHeight = document.querySelector('#header').getBoundingClientRect().height;;
-	let isCategoriesRendered = false;
+
 
 	const initHome = () =>{
 		homeScroll();
