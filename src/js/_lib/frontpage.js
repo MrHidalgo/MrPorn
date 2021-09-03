@@ -1105,7 +1105,6 @@ function renderAllOtherCategories(){
 
 		}else{
 			let noCategoryId = catId;
-			console.log('No swipe category '+noCategoryId);
 		}
 		swiperCB(
 			`.swiper-container[data-id="listSlider_${catId}"]`,
@@ -1124,7 +1123,6 @@ function initHomeSwippers(){
 	let listBoxWrappers = document.querySelectorAll('.list__box-wrapper');
 	if(listBoxWrappers){
 		listBoxWrappers.forEach(function(wrapper){
-			console.log(wrapper.dataset.category);
 			let catId = wrapper.dataset.category;
 			swiperCB(
 				`.swiper-container[data-id="listSlider_${catId}"]`,
