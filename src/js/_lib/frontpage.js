@@ -1094,10 +1094,16 @@ function renderAllOtherCategories(){
 
 	let catListContainer = document.querySelector('.c-grid.list');
 
+	let catDummies = document.querySelectorAll('.category--placeholder');
+	catDummies.forEach(function (dummy){
+		dummy.remove();
+	});
+
 	for (let i=0; i<homeData.categories_count; i++){
 		let catId = homeData.categories_indexes[i];
 		let catBox = document.querySelector('.list__box-wrapper[data-name="category_'+catId+'"]');
 		if(!catBox){
+
 			let listBoxes = document.querySelectorAll('.list__box-wrapper');
 			let categoryHtml = renderSiteCategory(i);
 			catListContainer.insertAdjacentHTML( 'beforeend', categoryHtml );
@@ -1111,6 +1117,8 @@ function renderAllOtherCategories(){
 			`.list__box-wrapper[data-name='category_${catId}']`
 		);
 	}
+
+
 
 	boxHover();
 }

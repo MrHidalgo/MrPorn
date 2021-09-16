@@ -716,11 +716,11 @@ let isCategoriesRendered = false;
 		var goTop = document.querySelector('.go-top');
 
 		//adjustStickHeader();
-		loadOtherHomeCategories();
+		//loadOtherHomeCategories();
 
 		window.onscroll = function(){
 			//adjustStickHeader();
-			loadOtherHomeCategories();
+			//loadOtherHomeCategories();
 
 			if (window.scrollY > 200) {
 				show(goTop);
@@ -757,8 +757,38 @@ let isCategoriesRendered = false;
 		}
 	}
 
+	//Loading other categories on home
 	function loadOtherHomeCategories(){
-		if (document.body.classList.contains('home') && window.scrollY > 500) {
+
+		const myEls = document.querySelectorAll(".observer-block");
+		if(myEls.length==0){
+			return;
+		}
+
+		const myObserver = new IntersectionObserver((elements) => {
+			elements.forEach(function (index) {
+				if (index.intersectionRatio > 0) {
+
+					if(homeData && homeData.categories_indexes){
+						if(!isCategoriesRendered){
+							isCategoriesRendered = true;
+							renderAllOtherCategories();
+							myObserver.unobserve(myEls[0]);
+						}
+					}
+				}
+			});
+		});
+
+
+		if (myEls.length) {
+			myObserver.observe(myEls[0]);
+		}
+		if (myEls.offsetTop < window.scrollY) {
+			renderAllOtherCategories();
+		}
+
+		/*if (document.body.classList.contains('home') && window.scrollY > 500) {
 			if(homeData && homeData.categories_indexes){
 				if(!isCategoriesRendered){
 					isCategoriesRendered = true;
@@ -766,7 +796,7 @@ let isCategoriesRendered = false;
 
 				}
 			}
-		}
+		}*/
 	}
 
 	const siteBoxHover = (el) => {
@@ -959,6 +989,8 @@ let isCategoriesRendered = false;
 
 
 		initGotoTop();
+
+		loadOtherHomeCategories();
 
 		letterSearch();
 

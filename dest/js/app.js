@@ -1701,13 +1701,11 @@ var isCategoriesRendered = false;
 
   function initGotoTop() {
     var goTop = document.querySelector('.go-top'); //adjustStickHeader();
-
-    loadOtherHomeCategories();
+    //loadOtherHomeCategories();
 
     window.onscroll = function () {
       //adjustStickHeader();
-      loadOtherHomeCategories();
-
+      //loadOtherHomeCategories();
       if (window.scrollY > 200) {
         show(goTop);
       } else {
@@ -1743,17 +1741,46 @@ var isCategoriesRendered = false;
         document.body.classList.remove('sticky_header');
       }
     }
-  }
+  } //Loading other categories on home
+
 
   function loadOtherHomeCategories() {
-    if (document.body.classList.contains('home') && window.scrollY > 500) {
-      if (homeData && homeData.categories_indexes) {
-        if (!isCategoriesRendered) {
-          isCategoriesRendered = true;
-          renderAllOtherCategories();
-        }
-      }
+    var myEls = document.querySelectorAll(".observer-block");
+
+    if (myEls.length == 0) {
+      return;
     }
+
+    var myObserver = new IntersectionObserver(function (elements) {
+      elements.forEach(function (index) {
+        if (index.intersectionRatio > 0) {
+          if (homeData && homeData.categories_indexes) {
+            if (!isCategoriesRendered) {
+              isCategoriesRendered = true;
+              renderAllOtherCategories();
+              myObserver.unobserve(myEls[0]);
+            }
+          }
+        }
+      });
+    });
+
+    if (myEls.length) {
+      myObserver.observe(myEls[0]);
+    }
+
+    if (myEls.offsetTop < window.scrollY) {
+      renderAllOtherCategories();
+    }
+    /*if (document.body.classList.contains('home') && window.scrollY > 500) {
+    	if(homeData && homeData.categories_indexes){
+    		if(!isCategoriesRendered){
+    			isCategoriesRendered = true;
+    			renderAllOtherCategories();
+    			}
+    	}
+    }*/
+
   }
 
   var siteBoxHover = function siteBoxHover(el) {
@@ -1929,6 +1956,7 @@ var isCategoriesRendered = false;
     }
 
     initGotoTop();
+    loadOtherHomeCategories();
     letterSearch();
     search();
 
