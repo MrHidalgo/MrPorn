@@ -475,7 +475,7 @@ function renderHompageSiteSlide(category, index){
 			'<button class="list__box-favorites" type="button" data-id="'+siteId+'" more-toggle-js><i class="icon-font icon-arrow-angle icon-more-arrow"></i></button>';
 		let btnFavToolTip = (isLoggedUser!="")?'Add To Favourites':'More Info';
 
-		let slideHtml = '<a class="list__box-border" href="'+siteLink+'" hreflang="'+currentLang+'" target="_blank">' +
+		let slideHtml = '<a class="site--link list__box-border" href="'+siteLink+'" hreflang="'+currentLang+'" target="_blank">' +
 			'<div class="list__box nolazy" list-box-js data-id="'+siteId+'" style="background-image: url('+siteThumb+')"/>'+
 			'</a>'+
 			//'<img class="list__box-logo nolazy" src="'+siteLogo+'" alt=""/>'+
@@ -1022,7 +1022,7 @@ function renderSiteCategory(categoryIndex){
 
 		categorySites += '<div class="swiper-slide" data-index="'+index+'" data-siteid="'+site.id+'" data-init="0">' +
 			'<div class="list__box" list-box-js  data-id="'+site.id+'">'+
-			'<a class="nav_link list__box-border" href="'+site.link+'" hreflang="'+currentLang+'">' +
+			'<a class="nav_link site--link list__box-border" href="'+site.link+'" hreflang="'+currentLang+'">' +
 				'<img class="list__box__thumb" src="'+site.banner_image+'"/>'+
 			'</a>'+
 			'<div class="list__box-details">'+
@@ -1089,7 +1089,7 @@ function renderAllOtherCategories(){
 
 	let catDummies = document.querySelectorAll('.category--placeholder');
 	catDummies.forEach(function (dummy){
-		dummy.remove();
+		//dummy.remove();
 	});
 
 	for (let i=0; i<homeData.categories_count; i++){
@@ -1253,19 +1253,41 @@ function onSlideEnter(ev){
 			elParent = el.closest('[list-parent-js]'),
 			elBox = el.querySelector('.list__box'),
 			lineInd = elParent.querySelector('[list-line-js]'),
-			slideSwiper = elParent.querySelector('.swiper-container');
+			slideSwiper = elParent.querySelector('.swiper-container'),
+			siteLink = el.querySelector('.site--link');
 
 		const swiperParent  = el.parentNode;
 		var slideIndex = el.dataset.index;
 		var slideCategory = swiperParent.dataset.category;
 
-		var slideHoverContainer = el.querySelector('.list__box-details');
-		if(slideHoverContainer && slideHoverContainer.innerHTML.trim()==''){
-			var slideHoverContent = renderSiteHoverContent(slideCategory, slideIndex);
-			if(slideHoverContent){
-				slideHoverContainer.innerHTML = slideHoverContent;
-			}
+		//element.parentNode.insertBefore(newElement, element.nextSibling);
+
+		if(!el.querySelector('.list__box-details')){
+			let slideHoverContent = renderSiteHoverContent(slideCategory, slideIndex);
+
+			var lbD = document.createElement('div');
+			lbD.className='list__box-details'
+			lbD.innerHTML = slideHoverContent;
+
+			siteLink.insertAdjacentElement('afterend', lbD);
+
+			let btReadMore = document.createElement('button');
+			btReadMore.className = 'list__box-more';
+			btReadMore.type='button';
+			btReadMore.innerHTML = '<i className="icon-font icon-arrow-angle"></i>';
+
+			elBox.appendChild(btReadMore);
+
+			/*var slideHoverContainer = el.querySelector('.list__box-details');
+			if(slideHoverContainer && slideHoverContainer.innerHTML.trim()==''){
+				var slideHoverContent = renderSiteHoverContent(slideCategory, slideIndex);
+				if(slideHoverContent){
+					slideHoverContainer.innerHTML = slideHoverContent;
+				}
+			}*/
 		}
+
+
 
 		if(!slideSwiper.swiper){
 			return;
