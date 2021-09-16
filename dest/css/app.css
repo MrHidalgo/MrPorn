@@ -385,9 +385,10 @@
   font-family: "iconFont";
   src: url("../fonts/iconFont.eot");
   src: url("../fonts/iconFont.eot?#iefix") format("eot"), url("../fonts/iconFont.woff2") format("woff2"), url("../fonts/iconFont.woff") format("woff"), url("../fonts/iconFont.ttf") format("truetype"), url("../fonts/iconFont.svg#iconFont") format("svg");
+  font-display: swap;
 }
 
-/* line 23, src/scss/_generated/_spriteFont.scss */
+/* line 24, src/scss/_generated/_spriteFont.scss */
 .icon-arrow-angle:before, .icon-close:before, .icon-delete:before, .icon-enter:before, .icon-key:before, .icon-left-arrow:before, .icon-like:before, .icon-moon:before, .icon-out:before, .icon-pause:before, .icon-play-button:before, .icon-point:before, .icon-search:before, .icon-sort:before, .icon-star-fill:before, .icon-star:before, .icon-sun:before {
   font-family: "iconFont", sans-serif;
   -webkit-font-smoothing: antialiased;
@@ -399,87 +400,87 @@
   text-transform: none;
 }
 
-/* line 86, src/scss/_generated/_spriteFont.scss */
+/* line 87, src/scss/_generated/_spriteFont.scss */
 .icon-arrow-angle:before {
   content: "";
 }
 
-/* line 86, src/scss/_generated/_spriteFont.scss */
+/* line 87, src/scss/_generated/_spriteFont.scss */
 .icon-close:before {
   content: "";
 }
 
-/* line 86, src/scss/_generated/_spriteFont.scss */
+/* line 87, src/scss/_generated/_spriteFont.scss */
 .icon-delete:before {
   content: "";
 }
 
-/* line 86, src/scss/_generated/_spriteFont.scss */
+/* line 87, src/scss/_generated/_spriteFont.scss */
 .icon-enter:before {
   content: "";
 }
 
-/* line 86, src/scss/_generated/_spriteFont.scss */
+/* line 87, src/scss/_generated/_spriteFont.scss */
 .icon-key:before {
   content: "";
 }
 
-/* line 86, src/scss/_generated/_spriteFont.scss */
+/* line 87, src/scss/_generated/_spriteFont.scss */
 .icon-left-arrow:before {
   content: "";
 }
 
-/* line 86, src/scss/_generated/_spriteFont.scss */
+/* line 87, src/scss/_generated/_spriteFont.scss */
 .icon-like:before {
   content: "";
 }
 
-/* line 86, src/scss/_generated/_spriteFont.scss */
+/* line 87, src/scss/_generated/_spriteFont.scss */
 .icon-moon:before {
   content: "";
 }
 
-/* line 86, src/scss/_generated/_spriteFont.scss */
+/* line 87, src/scss/_generated/_spriteFont.scss */
 .icon-out:before {
   content: "";
 }
 
-/* line 86, src/scss/_generated/_spriteFont.scss */
+/* line 87, src/scss/_generated/_spriteFont.scss */
 .icon-pause:before {
   content: "";
 }
 
-/* line 86, src/scss/_generated/_spriteFont.scss */
+/* line 87, src/scss/_generated/_spriteFont.scss */
 .icon-play-button:before {
   content: "";
 }
 
-/* line 86, src/scss/_generated/_spriteFont.scss */
+/* line 87, src/scss/_generated/_spriteFont.scss */
 .icon-point:before {
   content: "";
 }
 
-/* line 86, src/scss/_generated/_spriteFont.scss */
+/* line 87, src/scss/_generated/_spriteFont.scss */
 .icon-search:before {
   content: "";
 }
 
-/* line 86, src/scss/_generated/_spriteFont.scss */
+/* line 87, src/scss/_generated/_spriteFont.scss */
 .icon-sort:before {
   content: "";
 }
 
-/* line 86, src/scss/_generated/_spriteFont.scss */
+/* line 87, src/scss/_generated/_spriteFont.scss */
 .icon-star-fill:before {
   content: "";
 }
 
-/* line 86, src/scss/_generated/_spriteFont.scss */
+/* line 87, src/scss/_generated/_spriteFont.scss */
 .icon-star:before {
   content: "";
 }
 
-/* line 86, src/scss/_generated/_spriteFont.scss */
+/* line 87, src/scss/_generated/_spriteFont.scss */
 .icon-sun:before {
   content: "";
 }
@@ -7145,12 +7146,12 @@ body.chatbot_active .go-top {
 }
 
 /* line 185, src/scss/_components/homepage/_list.scss */
-.site--p {
+.site--dummy {
   position: relative;
 }
 
 /* line 188, src/scss/_components/homepage/_list.scss */
-.site--p--thumb {
+.site--dummy--thumb {
   width: 230px;
   height: 230px;
   border: 1px dashed #fff;
@@ -7159,7 +7160,7 @@ body.chatbot_active .go-top {
 
 @media screen and (max-width: 1279px) {
   /* line 188, src/scss/_components/homepage/_list.scss */
-  .site--p--thumb {
+  .site--dummy--thumb {
     width: 195px !important;
     height: 195px;
   }
@@ -7167,7 +7168,7 @@ body.chatbot_active .go-top {
 
 @media screen and (max-width: 1023px) {
   /* line 188, src/scss/_components/homepage/_list.scss */
-  .site--p--thumb {
+  .site--dummy--thumb {
     width: 150px !important;
     height: 150px;
   }
@@ -7175,14 +7176,14 @@ body.chatbot_active .go-top {
 
 @media screen and (max-width: 767px) {
   /* line 188, src/scss/_components/homepage/_list.scss */
-  .site--p--thumb {
+  .site--dummy--thumb {
     width: 100px !important;
     height: 100px;
   }
 }
 
 /* line 208, src/scss/_components/homepage/_list.scss */
-.site--p--title {
+.site--dummy--title {
   position: absolute;
   left: 15px;
   right: 15px;
@@ -7198,50 +7199,147 @@ body.chatbot_active .go-top {
 
 @media screen and (max-width: 767px) {
   /* line 208, src/scss/_components/homepage/_list.scss */
+  .site--dummy--title {
+    font-size: 12px;
+  }
+}
+
+/* line 228, src/scss/_components/homepage/_list.scss */
+.category--placeholder--title {
+  display: block;
+  color: #ffffff;
+  font-size: 28px;
+  font-weight: 700;
+  padding: 10px 0 20px;
+}
+
+@media screen and (max-width: 1279px) {
+  /* line 228, src/scss/_components/homepage/_list.scss */
+  .category--placeholder--title {
+    font-size: 24px;
+  }
+}
+
+@media screen and (max-width: 767px) {
+  /* line 228, src/scss/_components/homepage/_list.scss */
+  .category--placeholder--title {
+    font-size: 18px;
+  }
+}
+
+@media screen and (max-width: 375px) {
+  /* line 228, src/scss/_components/homepage/_list.scss */
+  .category--placeholder--title {
+    font-size: 16px;
+  }
+}
+
+/* line 246, src/scss/_components/homepage/_list.scss */
+.category--placeholder--sites {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+/* line 251, src/scss/_components/homepage/_list.scss */
+.site--p {
+  position: relative;
+}
+
+/* line 254, src/scss/_components/homepage/_list.scss */
+.site--p--thumb {
+  width: 230px;
+  height: 230px;
+  border: 1px dashed #fff;
+  margin: 0 3px;
+}
+
+@media screen and (max-width: 1279px) {
+  /* line 254, src/scss/_components/homepage/_list.scss */
+  .site--p--thumb {
+    width: 195px !important;
+    height: 195px;
+  }
+}
+
+@media screen and (max-width: 1023px) {
+  /* line 254, src/scss/_components/homepage/_list.scss */
+  .site--p--thumb {
+    width: 150px !important;
+    height: 150px;
+  }
+}
+
+@media screen and (max-width: 767px) {
+  /* line 254, src/scss/_components/homepage/_list.scss */
+  .site--p--thumb {
+    width: 100px !important;
+    height: 100px;
+  }
+}
+
+/* line 274, src/scss/_components/homepage/_list.scss */
+.site--p--title {
+  position: absolute;
+  left: 15px;
+  right: 15px;
+  bottom: 15px;
+  overflow: hidden;
+  white-space: nowrap;
+  -o-text-overflow: ellipsis;
+     text-overflow: ellipsis;
+  color: #ffffff;
+  font-size: 16px;
+  font-weight: 700;
+}
+
+@media screen and (max-width: 767px) {
+  /* line 274, src/scss/_components/homepage/_list.scss */
   .site--p--title {
     font-size: 12px;
   }
 }
 
-/* line 230, src/scss/_components/homepage/_list.scss */
+/* line 296, src/scss/_components/homepage/_list.scss */
 .light .list__info .category_title a {
   color: #000;
 }
 
-/* line 234, src/scss/_components/homepage/_list.scss */
+/* line 300, src/scss/_components/homepage/_list.scss */
 .light .list__info span {
   color: #636471;
 }
 
 @media screen and (max-width: 767px) {
-  /* line 238, src/scss/_components/homepage/_list.scss */
+  /* line 304, src/scss/_components/homepage/_list.scss */
   .light .list__info span:after {
     display: none;
   }
 }
 
-/* line 245, src/scss/_components/homepage/_list.scss */
+/* line 311, src/scss/_components/homepage/_list.scss */
 .light .list__btn {
   background: #004cb0;
   color: #fff;
 }
 
-/* line 249, src/scss/_components/homepage/_list.scss */
+/* line 315, src/scss/_components/homepage/_list.scss */
 .light .list__btn:hover, .light .list__btn:active, .light .list__btn:focus {
   color: #fff;
 }
 
-/* line 253, src/scss/_components/homepage/_list.scss */
+/* line 319, src/scss/_components/homepage/_list.scss */
 .light .list__btn span {
   color: #c3f228;
 }
 
-/* line 258, src/scss/_components/homepage/_list.scss */
+/* line 324, src/scss/_components/homepage/_list.scss */
 .light .list__box-line {
   background-color: #c0c3cc;
 }
 
-/* line 262, src/scss/_components/homepage/_list.scss */
+/* line 328, src/scss/_components/homepage/_list.scss */
 .light .list__box-line u,
 .light .list__box-line span {
   background-color: #005FDB;
@@ -7285,7 +7383,7 @@ body.chatbot_active .go-top {
   }
 }
 
-/* line 277, src/scss/_components/homepage/_list.scss */
+/* line 343, src/scss/_components/homepage/_list.scss */
 .modal_mask {
   position: absolute;
   display: none;
@@ -7297,12 +7395,12 @@ body.chatbot_active .go-top {
   z-index: 19;
 }
 
-/* line 288, src/scss/_components/homepage/_list.scss */
+/* line 354, src/scss/_components/homepage/_list.scss */
 body.is_open .modal_mask {
   display: block;
 }
 
-/* line 291, src/scss/_components/homepage/_list.scss */
+/* line 357, src/scss/_components/homepage/_list.scss */
 body.is_open .swiper-slide:not(.is-hover):after {
   position: absolute;
   content: ' ';
@@ -7314,7 +7412,7 @@ body.is_open .swiper-slide:not(.is-hover):after {
   bottom: -5px;
 }
 
-/* line 306, src/scss/_components/homepage/_list.scss */
+/* line 372, src/scss/_components/homepage/_list.scss */
 .modal-container {
   position: fixed;
   top: 0;
@@ -7332,24 +7430,24 @@ body.is_open .swiper-slide:not(.is-hover):after {
 }
 
 @media screen and (max-width: 1023px) {
-  /* line 306, src/scss/_components/homepage/_list.scss */
+  /* line 372, src/scss/_components/homepage/_list.scss */
   .modal-container {
     z-index: 110;
     background: rgba(0, 0, 0, 0.6);
   }
 }
 
-/* line 324, src/scss/_components/homepage/_list.scss */
+/* line 390, src/scss/_components/homepage/_list.scss */
 body.opened {
   overflow: hidden;
 }
 
-/* line 329, src/scss/_components/homepage/_list.scss */
+/* line 395, src/scss/_components/homepage/_list.scss */
 body:not(.opened) .modal-container {
   overflow: hidden;
 }
 
-/* line 335, src/scss/_components/homepage/_list.scss */
+/* line 401, src/scss/_components/homepage/_list.scss */
 .overlay {
   display: none;
   position: absolute;
@@ -7364,7 +7462,7 @@ body:not(.opened) .modal-container {
   z-index: 21;
 }
 
-/* line 348, src/scss/_components/homepage/_list.scss */
+/* line 414, src/scss/_components/homepage/_list.scss */
 #site_modal.modal {
   background: #fff;
   -webkit-border-radius: 10px;
@@ -7382,7 +7480,7 @@ body:not(.opened) .modal-container {
 }
 
 @media screen and (min-width: 1450px) {
-  /* line 348, src/scss/_components/homepage/_list.scss */
+  /* line 414, src/scss/_components/homepage/_list.scss */
   #site_modal.modal {
     max-width: 75%;
     width: 100%;
@@ -7390,7 +7488,7 @@ body:not(.opened) .modal-container {
 }
 
 @media screen and (max-width: 1330px) {
-  /* line 348, src/scss/_components/homepage/_list.scss */
+  /* line 414, src/scss/_components/homepage/_list.scss */
   #site_modal.modal {
     max-width: -webkit-calc(100% - 20px);
     max-width: calc(100% - 20px);
@@ -7398,14 +7496,14 @@ body:not(.opened) .modal-container {
 }
 
 @media screen and (max-width: 900px) {
-  /* line 348, src/scss/_components/homepage/_list.scss */
+  /* line 414, src/scss/_components/homepage/_list.scss */
   #site_modal.modal {
     margin-top: 40px;
   }
 }
 
 @media screen and (max-width: 767px) {
-  /* line 348, src/scss/_components/homepage/_list.scss */
+  /* line 414, src/scss/_components/homepage/_list.scss */
   #site_modal.modal {
     background: transparent;
     margin: 0;
@@ -7413,7 +7511,7 @@ body:not(.opened) .modal-container {
   }
 }
 
-/* line 381, src/scss/_components/homepage/_list.scss */
+/* line 447, src/scss/_components/homepage/_list.scss */
 #site_modal.modal footer {
   width: 100%;
   display: -webkit-box;
@@ -7426,12 +7524,12 @@ body:not(.opened) .modal-container {
           justify-content: flex-end;
 }
 
-/* line 388, src/scss/_components/homepage/_list.scss */
+/* line 454, src/scss/_components/homepage/_list.scss */
 .submit {
   background: #8CDA26;
 }
 
-/* line 392, src/scss/_components/homepage/_list.scss */
+/* line 458, src/scss/_components/homepage/_list.scss */
 .cancel {
   background: #DA2632;
 }
