@@ -462,6 +462,7 @@ const loadHomeData = () => {
 }
 
 function renderHompageSiteSlide(category, index){
+	//rendering single slide
 
 	let siteItem = homeData.categories[category].sites[index];
 	if(siteItem){
@@ -475,11 +476,11 @@ function renderHompageSiteSlide(category, index){
 			'<button class="list__box-favorites" type="button" data-id="'+siteId+'" more-toggle-js><i class="icon-font icon-arrow-angle icon-more-arrow"></i></button>';
 		let btnFavToolTip = (isLoggedUser!="")?'Add To Favourites':'More Info';
 
-		let slideHtml = '<a class="site--link list__box-border" href="'+siteLink+'" hreflang="'+currentLang+'" target="_blank">' +
+		/*let slideHtml = '<a class="site--link" href="'+siteLink+'" hreflang="'+currentLang+'" target="_blank">' +
 			'<div class="list__box nolazy" list-box-js data-id="'+siteId+'" style="background-image: url('+siteThumb+')"/>'+
 			'</a>'+
 			//'<img class="list__box-logo nolazy" src="'+siteLogo+'" alt=""/>'+
-			'<div class="list__box-details">'+
+			'<div class="list__box-details hope_its">'+
 			'<div class="list__box-details-left">'+
 			'<a class="site_link" href="'+siteLink+'" hreflang="'+currentLang+'" target="_blank">' +
 			'<i class="icon-font icon-out"></i>'+
@@ -503,6 +504,15 @@ function renderHompageSiteSlide(category, index){
 			'</div>'+
 			'<button class="list__box-more" type="button"><i class="icon-font icon-arrow-angle"></i></button>'+
 			'</div>';
+		return slideHtml;*/
+
+		let slideHtml = '<div class="list__box" list-box-js  data-id="'+siteItem.id+'">'+
+			'<a class="nav_link site--link" href="'+siteItem.link+'" hreflang="'+currentLang+'">' +
+			'<img class="list__box__thumb" src="'+siteItem.banner_image+'"/>'+
+			'<p className="list__box--title">'+siteItem.name+'</p>'+
+			'</a>'+
+			'</div>';
+
 		return slideHtml;
 	}
 	return false;
@@ -1022,7 +1032,7 @@ function renderSiteCategory(categoryIndex){
 
 		categorySites += '<div class="swiper-slide" data-index="'+index+'" data-siteid="'+site.id+'" data-init="0">' +
 			'<div class="list__box" list-box-js  data-id="'+site.id+'">'+
-			'<a class="nav_link site--link list__box-border" href="'+site.link+'" hreflang="'+currentLang+'">' +
+			'<a class="nav_link site--link" href="'+site.link+'" hreflang="'+currentLang+'">' +
 				'<img class="list__box__thumb" src="'+site.banner_image+'"/>'+
 			'</a>'+
 			'<div class="list__box-details">'+
@@ -1043,18 +1053,16 @@ function renderSiteCategory(categoryIndex){
 
 	let categoryBoxHtml = '<div class="list__box-wrapper" list-parent-js data-name="category_'+categoryId+'" data-index="'+categoryIndex+'">'+
 		'<div id="category_wrapper_'+categoryId+'" class="list__box-wrapper-handle"></div>'+
+
 		'<div class="list__box-head">'+
-		'<div class="list__info">'+
-		'<div class="list__info-circle"><img src="'+categoryLogo+'" alt=""/></div>'+
-		'<div class="category_title">'+
-		'<div class="category_title_inner">'+
-		'<a href="'+categoryData.link+'" hreflang="'+currentLang+'">'+categoryData.title+'</a>' +
-		'</div>'+
-		'<span>'+categoryTagLine+'</span>'+
-		'</div>'+
+		'<img className="list__info-circle" src="'+categoryLogo+'" alt=""/>'+
+		'<div class="list__info--title category_title">'+
+		'<a class="list__info--title_a" href="'+categoryData.link+'" hreflang="'+currentLang+'">'+categoryData.title+'</a>' +
+		'<span class="list__info--title_span">'+categoryTagLine+'</span>'+
 		'</div>'+
 		'<a class="list__btn nav_link" href="'+categoryData.link+'" hreflang="'+currentLang+'">'+_t('see', 'SEE')+'&nbsp;<span>'+categoryData.count+' '+_t('more', 'MORE')+'</span><i class="icon-font icon-arrow-angle"></i></a>'+
 		'</div>'+
+
 		'<div class="list__box-line">'+
 		'<u list-line-ind-js></u><span class="list_green_line" list-line-js></span>'+
 		'</div>'+
@@ -1094,7 +1102,7 @@ function renderAllOtherCategories(){
 
 	for (let i=0; i<homeData.categories_count; i++){
 		let catId = homeData.categories_indexes[i];
-		let catBox = document.querySelector('.list__box-wrapper[data-name="category_'+catId+'"]');
+		/*let catBox = document.querySelector('.list__box-wrapper[data-name="category_'+catId+'"]');
 		if(!catBox){
 
 			let listBoxes = document.querySelectorAll('.list__box-wrapper');
@@ -1104,16 +1112,97 @@ function renderAllOtherCategories(){
 
 		}else{
 			let noCategoryId = catId;
+		}*/
+
+		renderMissingSlides(catId);
+		generateSwiper(catId);
+
+		if(window.innerWidth < 768) {
+			renderMobileMoreButton(catId);
 		}
-		swiperCB(
-			`.swiper-container[data-id="listSlider_${catId}"]`,
-			`.list__box-wrapper[data-name='category_${catId}']`
-		);
 	}
 
 
 
+
+
 	boxHover();
+}
+
+function renderMissingSlides(catId){
+	if(homeData.categories[catId]){
+		homeData.categories[catId].sites.map(function (site, index) {
+
+			let categoryWrapper = document.querySelector('.swiper-wrapper[data-category="'+catId+'"]');
+
+			if(!categoryWrapper.querySelector('.swiper-slide[data-siteid="'+site.id+'"]')){
+				let siteSlide = '<div class="swiper-slide" data-index="'+index+'" data-siteid="'+site.id+'" data-init="0">' +
+					'<div class="list__box" list-box-js  data-id="'+site.id+'">'+
+					'<a class="nav_link site--link" href="'+site.link+'" hreflang="'+currentLang+'">' +
+					'<img class="list__box__thumb" src="'+site.banner_image+'"/>'+
+					'</a>'+
+					'<div class="list__box-details">'+
+
+					'</div>'+
+					'<button class="list__box-more" type="button"><i class="icon-font icon-arrow-angle"></i></button>' +
+					'</div>'+
+					'</div>';
+
+				categoryWrapper.insertAdjacentHTML('beforeend', siteSlide);
+			}
+		});
+	}
+}
+
+function generateSwiper(catId){
+	let categoryWrapper = document.querySelector('.list__box-wrapper[data-category="'+catId+'"]')
+	if(categoryWrapper){
+		let swiperArrows = '<div class="list__arrow-wrapper">' +
+			'                                    <a class="list__arrow list__arrow--prev" href="#">' +
+			'                                        <div class="list__arrow-box"><i class="icon-font icon-arrow-angle"></i></div>' +
+			'                                    </a>' +
+			'                                    <a class="list__arrow list__arrow--next" href="#">' +
+			'                                        <div class="list__arrow-box"><i class="icon-font icon-arrow-angle"></i></div>' +
+			'                                    </a>' +
+			'                                </div>';
+
+		let swiperBody = document.querySelector('.list__box-body[data-id="listSlider_'+catId+'"]');
+		if(swiperBody){
+			swiperBody.insertAdjacentHTML( 'afterbegin', swiperArrows );
+		}
+
+
+		swiperCB(
+			`.swiper-container[data-id="listSlider_${catId}"]`,
+			`.list__box-wrapper[data-name='category_${catId}']`
+		);
+
+		if(!categoryWrapper.querySelector('.list__specification-wrapper')){
+			categoryWrapper.insertAdjacentHTML('beforeend', '<div class="list__specification-wrapper"></div>');
+		}
+	}
+
+	renderMobileMoreButton();
+
+}
+
+function renderMobileMoreButton(){
+	if(window.innerWidth < 768) {
+		let siteBoxes = document.querySelectorAll('[list-box-js]');
+		siteBoxes.forEach((site)=>{
+			if(!site.querySelector('.list__box-more')){
+				let btReadMore = document.createElement('button');
+				btReadMore.className = 'list__box-more';
+				btReadMore.type='button';
+				btReadMore.innerHTML = '<i class="icon-font icon-arrow-angle"></i>';
+
+				//elBox.appendChild(btReadMore);
+				site.insertAdjacentElement('beforeend', btReadMore);
+			}
+		});
+	}
+
+
 }
 
 function initHomeSwippers(){
@@ -1125,10 +1214,9 @@ function initHomeSwippers(){
 	if(listBoxWrappers){
 		listBoxWrappers.forEach(function(wrapper){
 			let catId = wrapper.dataset.category;
-			swiperCB(
-				`.swiper-container[data-id="listSlider_${catId}"]`,
-				`.list__box-wrapper[data-name='category_${catId}']`
-			);
+
+
+			generateSwiper(catId);
 		});
 	}
 }
@@ -1274,9 +1362,10 @@ function onSlideEnter(ev){
 			let btReadMore = document.createElement('button');
 			btReadMore.className = 'list__box-more';
 			btReadMore.type='button';
-			btReadMore.innerHTML = '<i className="icon-font icon-arrow-angle"></i>';
+			btReadMore.innerHTML = '<i class="icon-font icon-arrow-angle"></i>';
 
-			elBox.appendChild(btReadMore);
+			//elBox.appendChild(btReadMore);
+			elBox.insertAdjacentElement('beforeend', btReadMore);
 
 			/*var slideHoverContainer = el.querySelector('.list__box-details');
 			if(slideHoverContainer && slideHoverContainer.innerHTML.trim()==''){

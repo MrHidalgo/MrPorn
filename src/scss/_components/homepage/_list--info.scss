@@ -4,20 +4,57 @@
 		align-items: center;
 	}
 
-	> div {
-		&:nth-of-type(1) {
-			width: 55px;
-			padding-top: 3px;
+	&--title{
+		flex: 1;
+		min-width: 1px;
+		max-width: 100%;
+		padding-left: 11px;
+
+		&_a{
+			color: #ffffff;
+			font-size: 28px;
+			font-weight: 700;
+
+			&:hover{
+				text-decoration: underline;
+				color: #fff;
+			}
+			@include adaptive(1279) {
+				font-size: 24px;
+			}
 			@include adaptive(767) {
-				width: 45px;
+				padding-right: 120px;
+				font-size: 18px;
+			}
+
+			@include adaptive(375) {
+				padding-right: 95px;
+				font-size: 16px;
 			}
 		}
+		&_span{
+			display: block;
+			color: #4b4e6b;
+			font-size: 16px;
 
-		&:nth-of-type(2) {
-			flex: 1;
-			min-width: 1px;
-			max-width: 100%;
-			padding-left: 11px;
+			@include adaptive(767) {
+				white-space: nowrap;
+				overflow: hidden;
+				display: block;
+				font-size: 10px;
+				line-height: 1.2;
+				/*width: calc(100vw - (10px + 45px + 15px));*/
+
+				&:after {
+					content: '';
+					position: absolute;
+					top: 0;
+					right: 0;
+					width: 60px;
+					height: 100%;
+					background: linear-gradient(to right, rgba(0,0,0,0) 0%,rgba(8,9,21,1) 100%);
+				}
+			}
 		}
 	}
 
@@ -49,34 +86,6 @@
 		@include adaptive(767) {
 			padding-right: 120px;
 			font-size: 18px;
-		}
-	}
-
-	.category_title{
-		a {
-			color: #ffffff;
-			font-size: 28px;
-			font-weight: 700;
-
-			&:hover{
-				text-decoration: underline;
-			}
-			@include adaptive(1279) {
-				font-size: 24px;
-			}
-			@include adaptive(767) {
-				padding-right: 120px;
-				font-size: 18px;
-			}
-
-			@include adaptive(375) {
-				padding-right: 95px;
-				font-size: 16px;
-			}
-		}
-
-		span{
-			display: block;
 		}
 	}
 

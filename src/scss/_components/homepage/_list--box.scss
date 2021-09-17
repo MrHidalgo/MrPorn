@@ -7,8 +7,8 @@
 	display: flex;
 	align-items: center;
 	justify-content: center;
-	width: 230px;
-	height: 230px;
+	width: 226px;
+	height: 226px;
 	padding: 10px;
 	background-color: #080915;
 	background-position: center;
@@ -16,6 +16,9 @@
 	background-size: cover;
 	backface-visibility: hidden;
 	transform-origin: center;
+	border: 1px dashed #fff;
+
+
 	@include transition(width, height);
 	@include adaptive(1279) {
 		width: 195px;
@@ -28,8 +31,8 @@
 		padding: 15px;
 	}
 	@include adaptive(767) {
-		width: 100px;
-		height: 100px;
+		width: 96px;
+		height: 96px;
 		padding: 10px 8px;
 	}
 
@@ -54,7 +57,7 @@
 	&--title{
 		position: absolute;
 		bottom: 50px;
-		left: 10px;
+		left: 13px;
 		visibility: hidden;
 		opacity: 0;
 
@@ -286,6 +289,8 @@
 		position: relative;
 		overflow: hidden;
 		padding: 15px 0;
+		width: 100%;
+		overflow: hidden;
 
 		@include transition(transform, padding-bottom);
 		@include adaptive(767) {
