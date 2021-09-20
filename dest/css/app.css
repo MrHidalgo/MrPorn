@@ -2214,11 +2214,19 @@ fieldset {
   }
 }
 
-/* line 86, src/scss/_components/common/_header--nav.scss */
+/* line 85, src/scss/_components/common/_header--nav.scss */
+.header__nav-link .icon-png.icon-category:before {
+  background: url(../images/icon-category.svg);
+  background-repeat: no-repeat;
+  width: 22px;
+  height: 17px;
+}
+
+/* line 93, src/scss/_components/common/_header--nav.scss */
 .header__nav-link span {
   text-transform: uppercase;
   font-size: 13px;
-  color: #646f9d;
+  color: #e2e3e6;
   font-weight: bold;
   line-height: 1.2;
   -webkit-transition: color 0.35s ease-in-out;
@@ -2227,14 +2235,14 @@ fieldset {
 }
 
 @media screen and (max-width: 1279px) {
-  /* line 86, src/scss/_components/common/_header--nav.scss */
+  /* line 93, src/scss/_components/common/_header--nav.scss */
   .header__nav-link span {
     font-size: 11px;
   }
 }
 
 @media screen and (max-width: 1023px) {
-  /* line 86, src/scss/_components/common/_header--nav.scss */
+  /* line 93, src/scss/_components/common/_header--nav.scss */
   .header__nav-link span {
     color: #ffffff;
     min-width: 115px;
@@ -2242,7 +2250,7 @@ fieldset {
   }
 }
 
-/* line 104, src/scss/_components/common/_header--nav.scss */
+/* line 112, src/scss/_components/common/_header--nav.scss */
 .header__nav-separator {
   position: absolute;
   top: 50%;
@@ -2257,7 +2265,7 @@ fieldset {
 }
 
 @media screen and (max-width: 1023px) {
-  /* line 104, src/scss/_components/common/_header--nav.scss */
+  /* line 112, src/scss/_components/common/_header--nav.scss */
   .header__nav-separator {
     display: none;
   }

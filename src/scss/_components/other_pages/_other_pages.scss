@@ -65,8 +65,12 @@ ul{
 		border-radius: 10px;
 		background: #2f2f2f;
 		border: 2px solid #444;
-		padding: 20px 20px 20px 40px;
+		padding: 20px 20px 36px 40px;
 		margin-left: 60px;
+
+		font-size: 16px;
+		color: #ddd;
+		line-height: 24px;
 
 		h5{
 			font-size: 24px;
@@ -92,6 +96,17 @@ ul{
 .acontact {
 	text-align: center;
 	margin: 40px auto 10px;
+	max-width: 75%;
+	display: flex;
+	justify-content: center;
+
+	@include respond('ipad'){
+		flex-direction: column;
+	}
+	@include adaptive(767){
+		flex-direction: column;
+		max-width: 100%;
+	}
 
 	img{
 		max-width: 90%;
@@ -306,6 +321,59 @@ ul{
 		}
 	}
 }
+
+.btn_contact{
+	display: inline-flex;
+	align-items: center;
+	border-radius: 6px;
+	font-size: 32px;
+	color: #fff;
+	padding: 0 25px 0 0;
+	text-transform: uppercase;
+	margin: 0 8px;
+
+	&:not(.bt_about){
+		flex: 1;
+	}
+
+	&.me{
+		background: url("../images/btn_bg_contact.png");
+
+
+	}
+	&.donate{
+		background: url("../images/btn_bg_donation.png");
+	}
+
+	&:hover{
+		color: #fff;
+	}
+
+	@include respond('ipad'){
+		margin-top: 10px;
+		font-size: 24px;
+	}
+
+	@include adaptive(767){
+		font-size: 14px;
+		margin-top: 10px;
+	}
+
+	img{
+		display: inline-block;
+		max-height: 100%;
+		margin: 0 25px 0 0;
+
+		@include adaptive(767){
+			margin-right: 10px;
+		}
+	}
+	span{
+		flex: 1;
+	}
+}
+
+
 .contgry {
 	background: #2f2f2f;
 	border: 2px solid #444;
@@ -431,6 +499,54 @@ ul{
 		color: #fff;
 		display: block;
 		margin: 20px 10px 30px;
+	}
+}
+.btn_advertise{
+	display: inline-flex;
+	align-items: center;
+	border-radius: 6px;
+	background: url("../images/btn_blue_bg.png");
+	font-size: 28px;
+	color: #fff;
+	padding: 0 25px 0 0;
+	text-transform: uppercase;
+
+	&:hover{
+		color: #fff;
+	}
+
+	@include adaptive(767){
+		font-size: 14px;
+	}
+
+	&--icon{
+		display: inline-block;
+		max-height: 100%;
+		margin-right: 25px;
+
+		@include adaptive(767){
+			margin-right: 10px;
+		}
+	}
+}
+.btn_advertise1{
+	position: relative;
+	display: inline-flex;
+	vertical-align: middle;
+
+	a{
+		position: absolute;
+		top: 50%;
+		left: 20%;
+		transform: translateY(-50%);
+		color: #fff;
+		font-size: 30px;
+		text-transform: uppercase;
+		font-weight: 600;
+
+		@include adaptive(767){
+			font-size: 12px;
+		}
 	}
 }
 

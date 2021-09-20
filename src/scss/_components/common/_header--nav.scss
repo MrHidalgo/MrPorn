@@ -81,12 +81,20 @@
 			@include adaptive(1023) {
 				transform: scale(1.2);
 			}
+
+			&.icon-category:before{
+				background: url(../images/icon-category.svg);
+				background-repeat: no-repeat;
+				width: 22px;
+				height: 17px;
+			}
 		}
 
 		span {
 			text-transform: uppercase;
 			font-size: 13px;
-			color: rgb(100, 111, 157);
+			//color: rgb(100, 111, 157);
+			color: #e2e3e6;
 			font-weight: bold;
 			line-height: 1.2;
 			@include transition(color);
