@@ -97,6 +97,39 @@
 			display: none;
 		}
 	}
+
+	&_back_green{
+		display: flex;
+		align-items: center;
+		background: none;
+		padding-left: 35px;
+		color: #fff;
+		font-weight: 600;
+		font-size: 14px;
+		line-height: 48px;
+		margin-right: 18px;
+
+		&:before{
+			display: inline-block;
+			background: url(../images/var-icons.png) 0 0 no-repeat;
+			background-position: -218px -91px;
+			background-repeat: no-repeat;
+			width: 24px;
+			height: 24px;
+			content: ' ';
+			margin-right: 5px;
+		}
+
+		&:hover{
+			color: #fff;
+		}
+		@include adaptive(767) {
+			font-size: 0;
+			text-indent: 0;
+			margin-right: 10px;
+		}
+	}
+
 }
 
 .light{
