@@ -304,6 +304,8 @@ const onSortLetterClick = (letterItem) => {
 		}
 	}
 
+	let siteOrigin = document.location.origin;
+
 	letterData[letter].forEach(function (suggession){
 		let suggessionName = suggession.name;
 		let uL = letter.toUpperCase();
@@ -315,6 +317,12 @@ const onSortLetterClick = (letterItem) => {
 		let siteHd = suggession.hd;
 		let hdId = suggession.hd_id;
 		let catIcon = suggession.icon;
+
+		if(currentLang!='en'){
+			siteFree = siteFree.replace(siteOrigin+'/', siteOrigin+'/'+currentLang+'/');
+			siteHd = siteHd.replace(siteOrigin+'/', siteOrigin+'/'+currentLang+'/');
+		}
+
 
 		let htmlFree = '';
 		if(siteFree){
@@ -344,8 +352,14 @@ const onSortLetterClick = (letterItem) => {
 				'</div>'+
 				'</div>';
 		}else{
+			let toggleLink = ((siteHd!='')?siteHd:siteFree);
+
+			if(currentLang!='en'){
+				//toggleLink = toggleLink.replace(siteOrigin+'/', siteOrigin+'/'+currentLang+'/');
+			}
+
 			letterSuggessions += '<div class="sort__collapse">' +
-				'<a class="sort__collapse-toggle scroll_to_category" data-category="'+((hdId!='')?hdId:freeId)+'" href="'+((siteHd!='')?siteHd:siteFree)+'">'+
+				'<a class="sort__collapse-toggle scroll_to_category" data-category="'+((hdId!='')?hdId:freeId)+'" href="'+toggleLink+'">'+
 				'<div><span>#'+suggessionIndex+'</span></div>'+
 				'<div><img src="'+catIcon+'" />'+
 				'<p>'+suggessionName+'</p>'+

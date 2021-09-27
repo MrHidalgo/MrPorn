@@ -769,6 +769,7 @@ var onSortLetterClick = function onSortLetterClick(letterItem) {
     }
   }
 
+  var siteOrigin = document.location.origin;
   letterData[letter].forEach(function (suggession) {
     var suggessionName = suggession.name;
     var uL = letter.toUpperCase(); //suggessionName = suggessionName.replace(letter, '<span>'+letter+'</span>');
@@ -779,6 +780,12 @@ var onSortLetterClick = function onSortLetterClick(letterItem) {
     var siteHd = suggession.hd;
     var hdId = suggession.hd_id;
     var catIcon = suggession.icon;
+
+    if (currentLang != 'en') {
+      siteFree = siteFree.replace(siteOrigin + '/', siteOrigin + '/' + currentLang + '/');
+      siteHd = siteHd.replace(siteOrigin + '/', siteOrigin + '/' + currentLang + '/');
+    }
+
     var htmlFree = '';
 
     if (siteFree) {
@@ -800,7 +807,12 @@ var onSortLetterClick = function onSortLetterClick(letterItem) {
     if (showLetterToggle) {
       letterSuggessions += '<div class="sort__collapse">' + '<div class="sort__collapse-toggle" collapse-toggle-js data-container="sort-collapse-' + suggessionIndex + '">' + '<div><span>#' + suggessionIndex + '</span></div>' + '<div><img src="' + catIcon + '" />' + '<p>' + suggessionName + '</p>' + '</div>' + '<div><i class="icon-font icon-arrow-angle"></i></div></div>' + '<div class="sort__collapse-body" id="sort-collapse-' + suggessionIndex + '" collapse-body-js>' + htmlFree + htmlHd + '</div>' + '</div>';
     } else {
-      letterSuggessions += '<div class="sort__collapse">' + '<a class="sort__collapse-toggle scroll_to_category" data-category="' + (hdId != '' ? hdId : freeId) + '" href="' + (siteHd != '' ? siteHd : siteFree) + '">' + '<div><span>#' + suggessionIndex + '</span></div>' + '<div><img src="' + catIcon + '" />' + '<p>' + suggessionName + '</p>' + '</div>' + '</a>' + '<div class="sort__collapse-body" id="sort-collapse-' + suggessionIndex + '" collapse-body-js>' + htmlFree + htmlHd + '</div>' + '</div>';
+      var toggleLink = siteHd != '' ? siteHd : siteFree;
+
+      if (currentLang != 'en') {//toggleLink = toggleLink.replace(siteOrigin+'/', siteOrigin+'/'+currentLang+'/');
+      }
+
+      letterSuggessions += '<div class="sort__collapse">' + '<a class="sort__collapse-toggle scroll_to_category" data-category="' + (hdId != '' ? hdId : freeId) + '" href="' + toggleLink + '">' + '<div><span>#' + suggessionIndex + '</span></div>' + '<div><img src="' + catIcon + '" />' + '<p>' + suggessionName + '</p>' + '</div>' + '</a>' + '<div class="sort__collapse-body" id="sort-collapse-' + suggessionIndex + '" collapse-body-js>' + htmlFree + htmlHd + '</div>' + '</div>';
     }
 
     suggessionIndex++;
