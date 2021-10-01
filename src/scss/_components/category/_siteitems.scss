@@ -8,6 +8,8 @@
 	/*font:400 14px/1.2 Roboto,sans-serif,sans-serif;*/
 	font:400 14px/1.2;
 
+
+
 	@include adaptive(767) {
 		padding: 0 1px;
 	}
@@ -21,6 +23,10 @@
 		@include respond('ipad_portrait'){
 			width: 100%;
 			order: -1;
+		}
+
+		@include respond('max-medium'){
+			padding-left: 0;
 		}
 
 		@include adaptive(767) {
@@ -99,7 +105,7 @@
 		}
 
 		h3{
-			font-size: 16px;
+			font-size: 20px;
 			color: #fff;
 			margin: 0 0 10px;
 			font-weight: 700;
@@ -113,7 +119,7 @@
 			}
 
 			@include adaptive(767) {
-				font-size: 16px;
+				font-size: 17px;
 				line-height: 22px;
 				margin: 0 0 5px;
 			}
@@ -491,7 +497,7 @@
 		}
 	}
 
-	@include respond('medium'){
+	@include respond('large'){
 		&.cat_archive{
 			.category_sites_item{
 				&:nth-child(2){order: -2;}

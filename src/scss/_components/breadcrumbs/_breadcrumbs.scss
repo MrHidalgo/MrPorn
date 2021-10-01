@@ -20,6 +20,7 @@
 		font-size: 11px;
 		margin: 0 -20px 10px;
 	}
+
 	@include respond('max-small'){
 
 	}
@@ -101,6 +102,13 @@
 		}
 	}
 }
+
+@include respond('max-medium'){
+	.archive.category .bread-crumb{
+		display: none;
+	}
+}
+
 .light{
 	.bread-crumb{
 		background: #eee;

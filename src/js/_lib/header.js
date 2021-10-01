@@ -241,7 +241,8 @@ const _t = (key, _default) => {
 		}else if(translations[key]){
 			let transVal = translations[key];
 			if(transVal[currentLang]){
-				return 	transVal[currentLang]
+				//return 	transVal[currentLang]
+				return decodeURIComponent(JSON.parse('"' + transVal[currentLang].replace(/\"/g, '\\"') + '"'))
 			}
 			return _default;
 		}

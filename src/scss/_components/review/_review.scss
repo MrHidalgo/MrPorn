@@ -674,7 +674,7 @@
 	h1, h2 {
 		font-size: 45px;
 		color: #fff;
-		margin: 0;
+		margin: 0 0 -5px;
 		width: 100%;
 		font-weight: 600;
 
@@ -694,14 +694,15 @@
 		margin: 0 0 9px;
 		color: #fff;
 		font-weight: 700;
-	}
 
-	.site_review_title_content h3 {
-		padding: 0;
-		margin: -5px 0 0;
-		font-size: 18px;
-		color: #e2e2e2;
-		font-weight: 500;
+
+		&.site_name{
+			padding: 0;
+			margin: 0;
+			font-size: 18px;
+			color: #e2e2e2;
+			font-weight: 500;
+		}
 	}
 
 	.review_scroll_container{
@@ -832,6 +833,10 @@
 			}
 		}
 	}
+}
+
+.review_site_link{
+	display: inline-block;
 }
 
 .joinarrw{
