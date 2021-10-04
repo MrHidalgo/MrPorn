@@ -63,6 +63,12 @@ $paddingRight: $paddingLeft;
 			padding-top: 25px;
 		}
 
+		&--inner{
+			display: flex;
+			flex-wrap: wrap;
+			margin: 0 -15px;
+		}
+
 		@media screen and (min-width: 1450px) {
 			max-width: 75%;
 		}

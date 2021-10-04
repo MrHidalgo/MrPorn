@@ -167,6 +167,15 @@
 		margin-bottom: 0;
 		@include transition(opacity);
 		@include transition(padding-bottom);
+
+
+		@include respond('large') {
+			width: 50%;
+			max-width: 50%;
+
+			padding: 0 15px;
+		}
+
 		@include adaptive(767) {
 			overflow: unset;
 			padding-bottom: 10px;
