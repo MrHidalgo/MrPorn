@@ -772,16 +772,16 @@
 			}
 
 			p {
-				font-size: 18px;
+				font-size: 16px;
 				margin: 0 0 10px;
 
-				@include adaptive(1449.98){
+				/*@include adaptive(1449.98){
 					font-size: 14px;
 				}
 
 				@include respond('ipad_portrait'){
 					font-size: 14px;
-				}
+				}*/
 			}
 		}
 
@@ -851,6 +851,10 @@
 	font-weight: 700;
 	color: #f5f5f5;
 	word-break: break-word;
+
+	@include adaptive(767) {
+		display: none;
+	}
 
 	a{
 		color: #dcecff;

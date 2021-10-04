@@ -57,7 +57,7 @@
 				@include transition(width);
 
 				&.last-box{
-					.list__box{
+					.list__box:not(.less_5){
 						transform: translate(calc(-50% - 55px), -50%);
 					}
 				}
@@ -75,7 +75,7 @@
 		.swiper-slide{
 			&.is-hover {
 				&:last-of-type {
-					.list__box{
+					.list__box:not(.less_5){
 						transform: translate(calc(-50% - 120px), -50%);
 					}
 				}
@@ -125,6 +125,26 @@
 		&:hover{
 			color: #333;
 		}
+	}
+	@include adaptive(767) {
+		.list__btn{
+			right: 0;
+			height: 23px;
+			top: 3px;
+			min-width: 120px;
+			padding: 0 10px;
+		}
+	}
+
+
+	.list__arrow--prev{
+		background: linear-gradient(to left, rgba(8,9,21,0) 0%, #d6d9e2);
+	}
+	.list__arrow--next{
+		background: linear-gradient(to right, rgba(8,9,21,0) 0%, #d6d9e2);
+	}
+	.list__info--title_span:after{
+		display: none;
 	}
 }
 
