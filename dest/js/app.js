@@ -671,14 +671,14 @@ function initWebWorker() {
         } else {
         	// Sorry! No Web Worker support..
         }
-        	if (typeof(w) == "undefined") {
+        		if (typeof(w) == "undefined") {
         	webworkerFrontpage = new Worker("/wp-content/themes/mpg/js/worker.js");
         }
         webworkerFrontpage.onmessage = function(event) {
         	//document.getElementById("result").innerHTML = event.data;
         	console.log('Webworker data');
         	console.log(event.data);
-        		};*/
+        				};*/
       }
     }
   }
@@ -1208,12 +1208,12 @@ function swiperCB(swiperName, sliderArrow) {
       /*slideChange: function (e, t) {
       	let swipeWrapper = categorySwiper.$wrapperEl[0];
       	let currentSlideIndex = categorySwiper.activeIndex;
-      		console.log('transisioning');
+      			console.log('transisioning');
       	console.log(e);
       	console.log(t);
       	fixPrevSlides(swipeWrapper.dataset.category, categorySwiper);
       	fixNextSlides(swipeWrapper.dataset.category, categorySwiper);
-      		//console.log('changing slide -'+swipeWrapper.dataset.category+' - '+categorySwiper.slides.length+' - '+currentSlideIndex);
+      			//console.log('changing slide -'+swipeWrapper.dataset.category+' - '+categorySwiper.slides.length+' - '+currentSlideIndex);
       },*/
       slidePrevTransitionEnd: function slidePrevTransitionEnd(e) {
         var swipeWrapper = categorySwiper.$wrapperEl[0];
@@ -1694,7 +1694,7 @@ var ajaxAdminEndpoint = '/wp-admin/admin-ajax.php';
     /*for(jInner = 0; jInner < lInner; jInner++) {
     	document.querySelectorAll('[video-toggle-js]')[jInner].classList.remove('is-active');
     	document.querySelectorAll('[video-pause-js]')[jInner].classList.remove('is-active');
-    		if(document.querySelectorAll('.list__specification video')[jInner].length){
+    			if(document.querySelectorAll('.list__specification video')[jInner].length){
     		playPause(document.querySelectorAll('.list__specification video')[jInner]);
     	}
     }*/
@@ -1998,7 +1998,8 @@ var ajaxAdminEndpoint = '/wp-admin/admin-ajax.php';
   }
   /*const listIndicator = () => {
   	const listBoxes = document.querySelectorAll('[list-box-js]');
-  		for(let i = 0, len = listBoxes.length; i < len; i++) {
+  
+  	for(let i = 0, len = listBoxes.length; i < len; i++) {
   		listBoxes[i].addEventListener('mouseenter', function(ev) {
   			const el = ev.currentTarget;
   				siteBoxHover(el);
@@ -2077,13 +2078,13 @@ var ajaxAdminEndpoint = '/wp-admin/admin-ajax.php';
     		const el = ev.currentTarget,
     			elID = el.getAttribute('data-id'),
     			elParent = el.closest('.list__box-wrapper');
-    			setTimeout(() => {
+    				setTimeout(() => {
     			el.closest('.list__specification').querySelector('.list__specification-close').click();
     		}, 0);
-    			if(elParent.querySelector('.list__specification[data-id="' + (Number(elID) + 1) + '"]')) {
+    				if(elParent.querySelector('.list__specification[data-id="' + (Number(elID) + 1) + '"]')) {
     			elParent.querySelector('.list__specification[data-id="' + (Number(elID) + 1) + '"]').classList.add('is-open');
     		}
-    		}, false);
+    			}, false);
     }*/
   };
 
