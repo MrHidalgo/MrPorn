@@ -52,7 +52,7 @@
 				margin-right: 0;
 			}
 
-			&.is-hover {
+			/*&.is-hover {
 				width: 350px !important;
 				@include transition(width);
 
@@ -61,13 +61,7 @@
 						transform: translate(calc(-50% - 55px), -50%);
 					}
 				}
-
-				/*&:last-of-type {
-					.list__box{
-						transform: translate(calc(-50% - 120px), -50%);
-					}
-				}*/
-			}
+			}*/
 		}
 	}
 
@@ -113,6 +107,68 @@
 .list_green_line{
 	transition: transform 1s;
 	transform: translateX(-50%);
+}
+
+.previewModal{
+	display: none;
+	justify-content: center;
+	position: absolute;
+	top: 0;
+	left: 0;
+	will-change: scroll-position;
+	box-sizing: border-box;
+
+	&.slide-open{
+		display: flex;
+	}
+
+	&--container{
+		width: 1px;
+		height: 1px;
+		position: absolute;
+		color: #fff;
+		background-color: transparent;
+		font-size: 16px;
+		z-index: 20;
+		border-radius: 6px;
+		border: 1px dashed #fff;
+	}
+	&--banner{
+		width: 100%;
+		height: 100%;
+	}
+	&--inner{
+		width: 185px;
+		height: 185px;
+		will-change: width, height, transform;
+		background-size: cover !important;
+		transition: all .35s ease-in-out;
+		transform: translateX(-50%) translateY(-50%);
+		border: 1px dashed #fff;
+		box-shadow: rgba(0, 0, 0, 0.95) 0px 3px 10px;
+
+		&:hover{
+			width: 350px;
+			height: 260px;
+		}
+	}
+
+	&.slide-open{
+		.list__box-more{
+			opacity: 1;
+			visibility: visible;
+			@include transition(opacity, visibility);
+
+			.icon-font {
+				animation-fill-mode: both;
+				animation-duration: 1.5s;
+				animation-iteration-count: infinite;
+				animation-timing-function: ease-in-out;
+				animation-name: slideToggle;
+				animation-delay: 1s;
+			}
+		}
+	}
 }
 
 .light{

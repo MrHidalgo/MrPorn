@@ -37,6 +37,10 @@
 			color: #4b4e6b;
 			font-size: 16px;
 
+			white-space: nowrap;
+			overflow: hidden;
+			text-overflow: ellipsis;
+
 			@include adaptive(767) {
 				white-space: nowrap;
 				overflow: hidden;
