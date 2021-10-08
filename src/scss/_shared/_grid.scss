@@ -67,6 +67,10 @@ $paddingRight: $paddingLeft;
 			display: flex;
 			flex-wrap: wrap;
 			margin: 0 -15px;
+
+			@include respond('max-medium'){
+				margin: 0;
+			}
 		}
 
 		@media screen and (min-width: 1450px) {

@@ -117,6 +117,7 @@
 	left: 0;
 	will-change: scroll-position;
 	box-sizing: border-box;
+	cursor: pointer;
 
 	&.slide-open{
 		display: flex;
@@ -190,6 +191,10 @@
 			min-width: 120px;
 			padding: 0 10px;
 		}
+
+		.list__btn span{
+			text-decoration: none;
+		}
 	}
 
 
@@ -202,6 +207,10 @@
 	.list__info--title_span:after{
 		display: none;
 	}
+	.list__btn.nav_link .svg-icon{
+		fill: #fff;
+	}
+
 }
 
 @keyframes slideToggle {

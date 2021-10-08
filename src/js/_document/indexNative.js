@@ -376,7 +376,7 @@ let isCategoriesRendered = false;
 	};
 
 	function onSiteBoxHoverClick(_el){
-		let siteBoxLink = _el.previousSibling;
+		let siteBoxLink = _el.querySelector('.site_link')
 
 		if(siteBoxLink && siteBoxLink.tagName=='A'){
 			siteBoxLink.click();

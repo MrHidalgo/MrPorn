@@ -1419,7 +1419,7 @@ var isCategoriesRendered = false;
   };
 
   function onSiteBoxHoverClick(_el) {
-    var siteBoxLink = _el.previousSibling;
+    var siteBoxLink = _el.querySelector('.site_link');
 
     if (siteBoxLink && siteBoxLink.tagName == 'A') {
       siteBoxLink.click();
@@ -1790,7 +1790,7 @@ var isCategoriesRendered = false;
     		if(!isCategoriesRendered){
     			isCategoriesRendered = true;
     			renderAllOtherCategories();
-    				}
+    			}
     	}
     }*/
 

@@ -4,12 +4,12 @@
 	align-items: center;
 	justify-content: center;
 	min-width: 145px;
-	height: 45px;
+	height: 25px;
 	line-height: 45px;
 	border-radius: 5px;
 	background-color: rgb(213, 243, 74);
 	color: #080915;
-	font-size: 16px;
+	font-size: 14px;
 	font-weight: 700;
 	text-transform: uppercase;
 
@@ -19,6 +19,22 @@
 
 	&.nav_link{
 		color: #080915;
+		padding: 0 10px;
+
+		.svg-icon{
+			margin-left: 5px;
+			fill: #000;
+
+			@include adaptive(1023) {
+				display: none;
+			}
+		}
+
+		&:hover{
+			.svg-icon{
+				animation: rightArrowAnim 1s infinite;
+			}
+		}
 
 
 		&:hover, &:focus{
@@ -48,14 +64,31 @@
 		line-height: 28px;
 		font-size: 12px;
 		top: 5px;
+		min-width: 100px;
 	}
 
 	span {
 		color: #0c3495;
 		margin-left: 4px;
 
+		&.see{
+			color: #080915;
+		}
+
+		&.m{
+			display: none;
+		}
+
 		@include adaptive(1023) {
 			color: rgb(213, 243, 74);
+			text-decoration: underline;
+
+			&.d{
+				display: none;
+			}
+			&.m{
+				display: inline;
+			}
 		}
 	}
 

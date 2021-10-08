@@ -4,6 +4,12 @@
 		align-items: center;
 	}
 
+	&--top{
+		display: flex;
+		justify-content: space-between;
+		align-items: center;
+	}
+
 	&--title{
 		flex: 1;
 		min-width: 1px;
@@ -12,7 +18,7 @@
 
 		&_a{
 			color: #ffffff;
-			font-size: 28px;
+			font-size: 22px;
 			font-weight: 700;
 
 			&:hover{
@@ -20,22 +26,20 @@
 				color: #fff;
 			}
 			@include adaptive(1279) {
-				font-size: 24px;
+				font-size: 22px;
 			}
 			@include adaptive(767) {
-				padding-right: 120px;
 				font-size: 18px;
 			}
 
 			@include adaptive(375) {
-				padding-right: 95px;
 				font-size: 16px;
 			}
 		}
 		&_span{
 			display: block;
 			color: #4b4e6b;
-			font-size: 16px;
+			font-size: 14px;
 
 			white-space: nowrap;
 			overflow: hidden;
