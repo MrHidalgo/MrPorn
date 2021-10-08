@@ -20,6 +20,9 @@
 			color: #ffffff;
 			font-size: 22px;
 			font-weight: 700;
+			white-space: nowrap;
+			overflow: hidden;
+			text-overflow: ellipsis;
 
 			&:hover{
 				text-decoration: underline;
@@ -28,6 +31,7 @@
 			@include adaptive(1279) {
 				font-size: 22px;
 			}
+
 			@include adaptive(767) {
 				font-size: 18px;
 			}
@@ -44,6 +48,7 @@
 			white-space: nowrap;
 			overflow: hidden;
 			text-overflow: ellipsis;
+			min-height: 20px;
 
 			@include adaptive(767) {
 				white-space: nowrap;

@@ -33,17 +33,23 @@
 				width: 150px !important;
 				height: 150px;
 			}
+			@include respond('ipad_landscape'){
+				width: 130px !important;
+				height: 130px;
+			}
 			@include adaptive(767) {
 				width: 100px !important;
 				height: 100px;
 			}
 
 			.is-mobile & {
-				@media screen and (orientation: landscape) {
+				/*@media screen and (orientation: landscape) {
 					width: 150px !important;
 					height: 150px;
-				}
+				}*/
+
 			}
+
 
 			&:first-of-type {
 				margin-left: 0;
@@ -524,6 +530,10 @@ body:not(.opened){
 
 	@include adaptive(1330){
 		max-width: calc(100% - 20px);
+	}
+
+	@include respond('ipad_landscape'){
+		margin-top: 30px;
 	}
 
 	@include adaptive(900){
