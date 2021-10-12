@@ -475,42 +475,13 @@ function renderHompageSiteSlide(category, index){
 
 		let btnFav = (isLoggedUser!="")?'<button class="list__box-favorites" type="button" data-id="'+siteId+'" favorites-toggle-js><i class="icon-font icon-star-fill"></i><i class="icon-font icon-star"></i></button>':
 			'<button class="list__box-favorites" type="button" data-id="'+siteId+'" more-toggle-js><i class="icon-font icon-arrow-angle icon-more-arrow"></i></button>';
-		let btnFavToolTip = (isLoggedUser!="")?'Add To Favourites':'More Info';
-
-		/*let slideHtml = '<a class="site--link" href="'+siteLink+'" hreflang="'+currentLang+'" target="_blank">' +
-			'<div class="list__box nolazy" list-box-js data-id="'+siteId+'" style="background-image: url('+siteThumb+')"/>'+
-			'</a>'+
-			//'<img class="list__box-logo nolazy" src="'+siteLogo+'" alt=""/>'+
-			'<div class="list__box-details hope_its">'+
-			'<div class="list__box-details-left">'+
-			'<a class="site_link" href="'+siteLink+'" hreflang="'+currentLang+'" target="_blank">' +
-			'<i class="icon-font icon-out"></i>'+
-			'<p class="list__box-details-title">'+siteName+'</p>'+
-			'</a>'+
-			'<div class="list__rating"><span>'+_t('user_rating', 'User Rating')+':</span>'+
-			'<div><i class="icon-font icon-star"></i><i class="icon-font icon-star"></i><i class="icon-font icon-star"></i><i class="icon-font icon-star"></i><i class="icon-font icon-star-fill"></i></div>'+
-			'</div>'+
-			'</div>'+
-			'<div class="list__box-details-right">'+
-			'<button class="list__box-like" type="button" data-id="'+siteId+'" like-toggle-js><i class="icon-font icon-like"></i></button>'+
-			'<button class="list__box-dislike" type="button" data-id="'+siteId+'" dislike-toggle-js><i class="icon-font icon-like"></i></button>'+
-			'<div class="c-popper">'+
-			btnFav+
-			'<div class="c-poppertext">'+
-			'<u>'+btnFavToolTip+'</u>'+
-			'<u>Remove From Favourites</u>'+
-			'</div>'+
-			'</div>'+
-			'</div>'+
-			'</div>'+
-			'<button class="list__box-more" type="button"><i class="icon-font icon-arrow-angle"></i></button>'+
-			'</div>';
-		return slideHtml;*/
+		let btnFavToolTip = (isLoggedUser!="")?_t('add-to-favourites', 'Add To Favourites'):_t('more-info', 'More Info');
 
 		let slideHtml = '<div class="list__box" list-box-js  data-id="'+siteItem.id+'">'+
 			'<a class="nav_link site--link" href="'+siteItem.link+'" hreflang="'+currentLang+'">' +
 			'<img class="list__box__thumb" src="'+siteItem.banner_image+'"/>'+
-			'<p className="list__box--title">'+siteItem.name+'</p>'+
+			'<p class="list__box--title">'+siteItem.name+'</p>'+
+			'<p class="list__box--tagline">'+siteItem.tagline+'</p>'+
 			'</a>'+
 			'</div>';
 
@@ -520,56 +491,70 @@ function renderHompageSiteSlide(category, index){
 
 }
 
-function renderSiteHoverContent(category, index){
-	if(!homeData){
-		return false;
+function renderSiteHoverContent(category, index, siteId, siteLink, siteName, siteTagline, siteRating){
+	// if(!homeData){
+	// 	return false;
+	// }
+	//
+	// if(homeData.categories === undefined){
+	// 	return false;
+	// }
+	//
+	// if(!homeData.categories[category]){
+	// 	return false;
+	// }
+
+	let ratingHtml = '';
+
+	for (let _i = siteRating; _i < 5; _i++) {
+		ratingHtml += '<i class="icon-font icon-star-fill"></i>'
+	}
+	for (let _i = 0; _i < siteRating; _i++) {
+		ratingHtml += '<i class="icon-font icon-star"></i>'
 	}
 
-	if(homeData.categories === undefined){
-		return false;
-	}
+	let btnFav = (isLoggedUser!="")?'<button class="list__box-favorites" type="button" data-id="'+siteId+'" favorites-toggle-js><i class="icon-font icon-star-fill"></i><i class="icon-font icon-star"></i></button>':
+		'<button class="list__box-favorites" type="button" data-id="'+siteId+'" more-toggle-js><i class="icon-font icon-arrow-angle icon-more-arrow"></i></button>';
 
-	if(!homeData.categories[category]){
-		return false;
-	}
+	let btnFavToolTip = (isLoggedUser!="")?_t('add-to-favourites', 'Add To Favourites'):_t('more-info', 'More Info');
 
-	let siteItem = homeData.categories[category].sites[index];
-	if(siteItem) {
-		let siteId = siteItem.id;
-		let siteLink = siteItem.link;
-		let siteName = siteItem.name;
-		let siteThumb = siteItem.thumb;
 
-		let btnFav = (isLoggedUser!="")?'<button class="list__box-favorites" type="button" data-id="'+siteId+'" favorites-toggle-js><i class="icon-font icon-star-fill"></i><i class="icon-font icon-star"></i></button>':
-			'<button class="list__box-favorites" type="button" data-id="'+siteId+'" more-toggle-js><i class="icon-font icon-arrow-angle icon-more-arrow"></i></button>';
+	var hoverContent = '<div class="list__box-details-left">'+
+		'<a class="site_link" href="'+siteLink+'" target="_blank">' +
+		'<i class="icon-font icon-out"></i>'+
+		'<p class="list__box-details-title">'+siteName+'</p>'+
+		'</a>'+
+		'<div class="list__rating">' +
+		'<div class="list__rating--front">' +
+		'<span>'+_t('user_rating', 'User Rating')+':</span>'+
+		'<div class="rating_stars">' +
+		ratingHtml+
+		'</div>'+
+		'</div>'+
+		'<div class="list__rating--back">Thanks for voting!</div>'+
+		'</div>'+
+		'</div>'+
+		'<div class="list__box-details-right">'+
+		'<button class="list__box-like" type="button" data-id="'+siteId+'" like-toggle-js><i class="icon-font icon-like"></i></button>'+
+		'<button class="list__box-dislike" type="button" data-id="'+siteId+'" dislike-toggle-js><i class="icon-font icon-like"></i></button>'+
+		'<div class="c-popper">'+
+		btnFav+
+		'<div class="c-poppertext">'+
+		'<u>'+btnFavToolTip+'</u>'+
+		'<u>Remove From Favourites</u>'+
+		'</div>'+
+		'</div>'+
+		'</div>'+
+		'<a href="'+siteLink+'" target="_blank" class="list__box--tooltip">'+siteTagline+'</a>';
 
-		let btnFavToolTip = (isLoggedUser!="")?'Add To Favourites':'More Info';
+	return hoverContent;
+}
 
-		var hoverContent = '<div class="list__box-details-left">'+
-			'<a class="site_link" href="'+siteLink+'" target="_blank">' +
-			'<i class="icon-font icon-out"></i>'+
-			'<p class="list__box-details-title">'+siteName+'</p>'+
-			'</a>'+
-			'<div class="list__rating"><span>'+_t('user_rating', 'User Rating')+':</span>'+
-			'<div><i class="icon-font icon-star"></i><i class="icon-font icon-star"></i><i class="icon-font icon-star"></i><i class="icon-font icon-star"></i><i class="icon-font icon-star-fill"></i></div>'+
-			'</div>'+
-			'</div>'+
-			'<div class="list__box-details-right">'+
-			'<button class="list__box-like" type="button" data-id="'+siteId+'" like-toggle-js><i class="icon-font icon-like"></i></button>'+
-			'<button class="list__box-dislike" type="button" data-id="'+siteId+'" dislike-toggle-js><i class="icon-font icon-like"></i></button>'+
-			'<div class="c-popper">'+
-			btnFav+
-			'<div class="c-poppertext">'+
-			'<u>'+btnFavToolTip+'</u>'+
-			'<u>Remove From Favourites</u>'+
-			'</div>'+
-			'</div>'+
-			'</div>';
-
-		return hoverContent;
-	}
-
-	return false;
+function onRatingClick(){
+	previewModal.querySelector('.list__rating').classList.add('active');
+	setTimeout(function (){
+		previewModal.querySelector('.list__rating').classList.remove('active');
+	}, 2000);
 }
 
 function renderSiteBottomBanner(category, index){
@@ -1228,6 +1213,7 @@ let previousHoverBox = null;
 
 let previewModal = document.querySelector('#previewModal');
 let previewModalInner = previewModal.querySelector('.previewModal--inner');
+let prevContainer = previewModal.querySelector('.previewModal--container');
 
 const boxHover = () => {
 	//const swiperSlides = document.querySelectorAll('.swiper-slide[data-init="0"]'),
@@ -1328,9 +1314,9 @@ function onSlideLeave(ev){
 
 			let hoverBoxPosition = (slideIndex - activeSlide);
 
-			let hoverBoxLeft = (236*hoverBoxPosition) + 93;
+			let hoverBoxLeft = (188*hoverBoxPosition) + 64;
 			if(hoverBoxPosition>0){
-				hoverBoxLeft-=10;
+				//hoverBoxLeft-=10;
 			}
 
 			//let transformVal = 'left: '+hoverBoxLeft+'px';
@@ -1349,19 +1335,31 @@ function onSlideEnter(ev){
 	}
 
 	if(window.innerWidth >= 1280) {
-		const el = ev.currentTarget,
+		let el = ev.currentTarget,
 			elParent = el.closest('[list-parent-js]'),
 			elBox = el.querySelector('.list__box'),
 			lineInd = elParent.querySelector('[list-line-js]'),
 			slideSwiper = elParent.querySelector('.swiper-container'),
-			siteLink = el.querySelector('.site--link');
+			siteLink = el.querySelector('.site--link'),
+			siteTitle = el.querySelector('.list__box--title'),
+			tagLine = el.querySelector('.list__box--tagline');
 
+		if(siteTitle){
+			siteTitle = siteTitle.innerHTML;
+		}
+		if(tagLine){
+			tagLine = tagLine.innerHTML;
+		}
+
+		let siteRating = el.dataset.rating;
+		let _siteId = el.dataset.siteid;
+		let _siteUrl = siteLink.href;
 		const swiperParent  = el.parentNode;
 		var slideIndex = el.dataset.index;
 		var slideCategory = swiperParent.dataset.category;
 
 		if(!el.querySelector('.list__box-details')){
-			let slideHoverContent = renderSiteHoverContent(slideCategory, slideIndex);
+			let slideHoverContent = renderSiteHoverContent(slideCategory, slideIndex, _siteId, _siteUrl, siteTitle, tagLine, siteRating);
 
 			document.querySelector('.previewModal--inner').innerHTML = slideHoverContent;
 
@@ -1443,8 +1441,19 @@ function generatePreviewModal(slideBox){
 			//previewModal.querySelector('.previewModal--banner').src = slideThumbSrc;
 			previewModal.querySelector('.previewModal--inner').style.background = 'url('+slideThumbSrc+')';
 
+			if(boxX <175){
+				boxX = boxBounds.x;
+				previewModalInner.classList.add('left');
+			}else if((window.innerWidth-boxX)< 210){
+				boxX = boxBounds.x + boxW;
+				previewModalInner.classList.add('right');
+			}else{
+				previewModalInner.classList.remove('left');
+				previewModalInner.classList.remove('right');
+			}
 
-			let prevContainer = previewModal.querySelector('.previewModal--container')
+
+
 			if(prevContainer){
 				// prevContainer.style.width = boxW+'px';
 				// prevContainer.style.height = boxH+'px';
@@ -1495,7 +1504,7 @@ function onSlideTouchStart(ev){
 
 	let hoverBoxPosition = (slideIndex - activeSlide);
 
-	let slideWidth = 236,
+	let slideWidth = 188,
 		slideOffset = 178,
 		greenBarWidth = 74;
 
@@ -1571,7 +1580,7 @@ function onSlideTouchMove(ev){
 	let hoverBoxPosition = (slideIndex - activeSlide);
 
 
-	let slideWidth = 236,
+	let slideWidth = 188,
 		slideOffset = 178,
 		greenBarWidth = 74;
 
@@ -1864,7 +1873,7 @@ function tempRepositionGreenBar(elParent, hoverBoxPosition, isSmall){
 		let hoverBoxLeft = 0;
 		if(greenBar){
 
-			hoverBoxLeft = (236*hoverBoxPosition) + 83;
+			hoverBoxLeft = (188*hoverBoxPosition)
 
 			if(window.innerWidth<1449 && hoverBoxPosition == 4){
 				hoverBoxLeft -= 55;

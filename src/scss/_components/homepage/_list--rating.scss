@@ -1,16 +1,40 @@
 &__rating {
-	display: flex;
+	//display: flex;
 	align-items: center;
+	position: relative;
+	transition: transform 0.8s;
+	transform-style: preserve-3d;
+
+	&.active{
+		transform: rotateX(180deg);
+	}
+
+	&--front{
+		display: flex;
+	}
+
+	&--back{
+		position: absolute;
+		top: 0;
+		width: 100%;
+		height: 100%;
+		transform: rotateX(180deg);
+	}
+
+	&--front, &--back{
+		backface-visibility: hidden;
+	}
 
 	span {
 		color: #4a70a1;
 		font-size: 14px;
 	}
 
-	> div {
+	.rating_stars {
 		display: flex;
 		align-items: center;
 		padding-left: 10px;
+		direction: rtl;
 
 		.icon-font {
 			color: #004aac;
@@ -19,6 +43,20 @@
 			&:not(:last-of-type) {
 				margin-right: 3px;
 			}
+
+			&:hover:before{
+				//content: "";
+				content: "";
+			}
+		}
+
+		&:hover .icon-font:before{
+			content: "";
+		}
+
+		& > .icon-font:hover:before, & > .icon-font:hover ~ .icon-font:before {
+			// content: "";
+			content: "";
 		}
 	}
 }

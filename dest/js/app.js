@@ -1358,6 +1358,9 @@ var isCategoriesRendered = false;
         onSortToggle(_ev.closest('[collapse-toggle-js]'));
       } else if (_ev.classList.contains('list__box-details')) {
         onSiteBoxHoverClick(_ev);
+      } else if (_ev.closest('.rating_stars') || _ev.classList.contains('rating_stars')) {
+        console.log('clicked ratings');
+        onRatingClick();
       } else if (_ev.closest('.login_popup_close')) {
         closeLoginPopups();
       } else if (_ev.classList.contains('popup_link_signup')) {
@@ -1647,12 +1650,12 @@ var isCategoriesRendered = false;
   }
 
   function onSiteBoxLikeClick(el) {
-    var elID = el.getAttribute('data-id'),
-        elParent = el.closest('.list__box-wrapper');
+    var elID = el.getAttribute('data-id');
     el.classList.toggle('is-active');
     onLike(el, elID);
-    elParent.querySelector('[dislike-toggle-js][data-id="' + elID + '"]').classList.toggle('is-hide');
-    var specificationBlock = elParent.querySelector('.list__specification[data-id="' + elID + '"]');
+    document.querySelector('.list__box-dislike[data-id="' + elID + '"]').classList.toggle('is-hide'); //const specificationBlock = elParent.querySelector('.list__specification[data-id="' + elID + '"]');
+
+    var specificationBlock = document.querySelector('.list__specification[data-id="' + elID + '"]');
 
     if (specificationBlock) {
       var specificationLikeBtn = specificationBlock.querySelector('[data-like="' + elID + '"]'),
@@ -1664,7 +1667,6 @@ var isCategoriesRendered = false;
 
   function onBannerLikeClick(el) {
     var elID = el.getAttribute('data-like'),
-        elParent = el.closest('.list__box-wrapper'),
         elActionNode = el.closest('[spec-actionNode-js]'),
         dislikeBtn = elActionNode.querySelector('[spec-dislike-js]');
     console.log('Trying to like ' + elID);
@@ -1683,12 +1685,11 @@ var isCategoriesRendered = false;
   }
 
   function onSiteBoxDislikeClick(el) {
-    var elID = el.getAttribute('data-id'),
-        elParent = el.closest('.list__box-wrapper');
+    var elID = el.getAttribute('data-id');
     console.log('Disliking ' + elID);
     onDisLike(el, elID);
-    elParent.querySelector('[like-toggle-js][data-id="' + elID + '"]').classList.toggle('is-hide');
-    var specificationBlock = elParent.querySelector('.list__specification[data-id="' + elID + '"]');
+    document.querySelector('.list__box-like[data-id="' + elID + '"]').classList.toggle('is-hide');
+    var specificationBlock = document.querySelector('.list__specification[data-id="' + elID + '"]');
 
     if (specificationBlock) {
       var specificationDislikeBtn = specificationBlock.querySelector('[data-dislike="' + elID + '"]'),
@@ -1700,7 +1701,6 @@ var isCategoriesRendered = false;
 
   function onBannerDislikeClick(el) {
     var elID = el.getAttribute('data-dislike'),
-        elParent = el.closest('.list__box-wrapper'),
         elActionNode = el.closest('[spec-actionNode-js]'),
         likeBtn = elActionNode.querySelector('[spec-like-js]');
     likeBtn.parentElement.classList.toggle('is-hide'); //const listBlock = elParent.querySelector('.list__box[data-id="' + elID + '"]'),
