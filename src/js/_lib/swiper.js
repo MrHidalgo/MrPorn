@@ -58,12 +58,20 @@ function swiperCB(swiperName, sliderArrow, scrollBar) {
 				minLeft = (swiperSlideWidth/2) - ((swiperSlideWidth-greenBarWidth)/2);
 
 			},
+			slidePrevTransitionStart: function (e){
+				delayPreview = true;
+			},
+			slideNextTransitionStart: function (e){
+				delayPreview = true;
+			},
 			slidePrevTransitionEnd: function (e) {
+				delayPreview = false;
 				let swipeWrapper = categorySwiper.$wrapperEl[0];
 
 				renderLeftAndRight(swipeWrapper.dataset.category, categorySwiper);
 			},
 			slideNextTransitionEnd: function (e) {
+				delayPreview = false;
 				let swipeWrapper = categorySwiper.$wrapperEl[0];
 
 				renderLeftAndRight(swipeWrapper.dataset.category, categorySwiper);

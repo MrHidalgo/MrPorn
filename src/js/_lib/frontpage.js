@@ -472,6 +472,10 @@ function renderHompageSiteSlide(category, index){
 		let siteName = siteItem.name;
 		let siteThumb = (siteItem.banner_image)?siteItem.banner_image:siteItem.thumb;
 		let siteLogo = (siteItem.logo)?siteItem.logo.src:'';
+		let siteTagline = siteItem.tagline;
+		if(siteTagline){
+			siteTagline = siteTagline.replace(/\\(.)/mg, "$1")
+		}
 
 		let btnFav = (isLoggedUser!="")?'<button class="list__box-favorites" type="button" data-id="'+siteId+'" favorites-toggle-js><i class="icon-font icon-star-fill"></i><i class="icon-font icon-star"></i></button>':
 			'<button class="list__box-favorites" type="button" data-id="'+siteId+'" more-toggle-js><i class="icon-font icon-arrow-angle icon-more-arrow"></i></button>';
@@ -480,8 +484,8 @@ function renderHompageSiteSlide(category, index){
 		let slideHtml = '<div class="list__box" list-box-js  data-id="'+siteItem.id+'">'+
 			'<a class="nav_link site--link" href="'+siteItem.link+'" hreflang="'+currentLang+'">' +
 			'<img class="list__box__thumb" src="'+siteItem.banner_image+'"/>'+
-			'<p class="list__box--title">'+siteItem.name+'</p>'+
-			'<p class="list__box--tagline">'+siteItem.tagline+'</p>'+
+			'<p class="list__box--title">'+siteName+'</p>'+
+			'<p class="list__box--tagline">'+siteTagline+'</p>'+
 			'</a>'+
 			'</div>';
 
@@ -531,7 +535,7 @@ function renderSiteHoverContent(category, index, siteId, siteLink, siteName, sit
 		ratingHtml+
 		'</div>'+
 		'</div>'+
-		'<div class="list__rating--back">Thanks for voting!</div>'+
+		'<div class="list__rating--back">'+_t('thanks-for-voting', 'Thanks for voting!')+'</div>'+
 		'</div>'+
 		'</div>'+
 		'<div class="list__box-details-right">'+
@@ -541,7 +545,7 @@ function renderSiteHoverContent(category, index, siteId, siteLink, siteName, sit
 		btnFav+
 		'<div class="c-poppertext">'+
 		'<u>'+btnFavToolTip+'</u>'+
-		'<u>Remove From Favourites</u>'+
+		'<u>'+_t('remove-from-favorites', 'Remove From Favourites')+'</u>'+
 		'</div>'+
 		'</div>'+
 		'</div>'+
@@ -654,8 +658,8 @@ function renderSiteBottomBanner(category, index){
 			'<div class="c-popper">' +
 			'<button class="list__specification-circle list__specification-favorites" data-id="'+siteId+'" data-favorites="'+siteId+'" spec-favorites-js><i class="icon-font icon-star-fill"></i><i class="icon-font icon-star"></i><span>Favorites</span></button>'+
 			'<div class="c-poppertext">'+
-			'<u>Add To Favourites</u>'+
-			'<u>Remove From Favourites</u>'+
+			'<u>'+_t('add-to-favourites', 'Add To Favourites')+'</u>'+
+			'<u>'+_t('remove-from-favorites', 'Remove From Favourites')+'</u>'+
 			'</div>'+
 			'</div>'+
 			'</div>'+
@@ -666,7 +670,7 @@ function renderSiteBottomBanner(category, index){
 			bannerRight+
 			'<div class="list__specification-more">'+
 			'<div>'+
-			'<p>More Like This</p>'+
+			'<p>'+_t('more-like-this', 'More Like This')+'</p>'+
 			'</div>'+
 			'<div class="site_banner_more_sites">' +
 			moreSites+
@@ -1211,6 +1215,7 @@ let tOut = null,
 	hoverBool = false;
 let previousHoverBox = null;
 
+let delayPreview = false;
 let previewModal = document.querySelector('#previewModal');
 let previewModalInner = previewModal.querySelector('.previewModal--inner');
 let prevContainer = previewModal.querySelector('.previewModal--container');
@@ -1410,8 +1415,14 @@ function onSlideEnter(ev){
 			tempRepositionGreenBar(elParent, hoverBoxPosition);
 
 		}
-		generatePreviewModal(elBox);
 
+		if(delayPreview){
+			setTimeout(function (){
+				generatePreviewModal(elBox);
+			}, 400)
+		}else{
+			generatePreviewModal(elBox);
+		}
 		previousHoverBox = el;
 	}
 
@@ -1420,7 +1431,6 @@ function onSlideEnter(ev){
 }
 
 function generatePreviewModal(slideBox){
-	console.log(slideBox);
 	if(previewModal && slideBox){
 		let _siteId = slideBox.dataset.id;
 		previewModal.dataset.siteId = _siteId;
@@ -1433,11 +1443,9 @@ function generatePreviewModal(slideBox){
 			let boxH = boxBounds.height;
 			let boxX = boxBounds.x + (boxW/2);
 			let boxY = boxBounds.y + (boxH/2) +  window.scrollY;
-			console.log(boxBounds);
 
 
 			let slideThumbSrc =slideThumb.src;
-				console.log('slide thumb '+slideThumb);
 			//previewModal.querySelector('.previewModal--banner').src = slideThumbSrc;
 			previewModal.querySelector('.previewModal--inner').style.background = 'url('+slideThumbSrc+')';
 
