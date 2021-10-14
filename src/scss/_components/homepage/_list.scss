@@ -20,14 +20,18 @@
 
 		&-slide {
 			position: relative;
-			width: 185px !important;
+			width: 185px;
 			height: 185px;
 			margin-left: 3px;
 			margin-right: 3px;
 			@include transition(width);
+
 			@include adaptive(1279) {
-				width: 195px !important;
-				height: 195px;
+				//width: 195px !important;
+				width: calc(16vw - 31px);
+
+				//height: 195px;
+				height: calc(16vw - 31px);
 			}
 			@include adaptive(1023) {
 				width: 150px !important;

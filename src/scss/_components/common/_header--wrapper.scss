@@ -49,6 +49,8 @@
 
 	&-2 {
 		min-height: 121px;
+
+
 		@include adaptive(1023) {
 			flex-direction: column;
 			min-height: unset;
@@ -58,6 +60,10 @@
 			&-1 {
 				width: 100%;
 				max-width: 410px;
+
+				@include adaptive(1449.98){
+					position: relative;
+				}
 			}
 
 			&-2 {

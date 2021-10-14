@@ -1339,7 +1339,7 @@ function onSlideEnter(ev){
 		return;
 	}
 
-	if(window.innerWidth >= 1280) {
+	if(window.innerWidth >= 1242) {
 		let el = ev.currentTarget,
 			elParent = el.closest('[list-parent-js]'),
 			elBox = el.querySelector('.list__box'),

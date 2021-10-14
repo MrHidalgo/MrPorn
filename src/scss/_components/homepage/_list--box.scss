@@ -21,24 +21,24 @@
 
 	@include transition(width, height);
 	@include adaptive(1279) {
-		width: 195px;
-		height: 195px;
+		/*width: 195px;
+		height: 195px;*/
 		padding: 10px;
 	}
 	@include adaptive(1023) {
-		width: 150px;
-		height: 150px;
+		/*width: 150px;
+		height: 150px;*/
 		padding: 15px;
 	}
 
 	@include respond('ipad_landscape'){
-		width: 130px !important;
-		height: 130px;
+		/*width: 130px !important;
+		height: 130px;*/
 	}
 
 	@include adaptive(767) {
-		width: 96px;
-		height: 96px;
+		/*width: 96px;
+		height: 96px;*/
 		padding: 10px 8px;
 	}
 
