@@ -1339,7 +1339,14 @@ function onSlideEnter(ev){
 		return;
 	}
 
-	if(window.innerWidth >= 1280) {
+	let zoomLevel = Math.round(window.devicePixelRatio * 100);
+
+	let minScreenWidth = 1280;
+	if(zoomLevel>100){
+		minScreenWidth = (minScreenWidth / zoomLevel) * 100
+	}
+
+	if(window.innerWidth >= minScreenWidth) {
 		let el = ev.currentTarget,
 			elParent = el.closest('[list-parent-js]'),
 			elBox = el.querySelector('.list__box'),
