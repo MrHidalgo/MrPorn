@@ -178,6 +178,11 @@ let isCategoriesRendered = false;
 	}
 
 	const onHomeScroll = (e) => {
+		if(true){
+			return;
+		}
+
+
 		let wY = window.scrollY;
 		headerHeight = document.querySelector('#header').getBoundingClientRect().height;
 

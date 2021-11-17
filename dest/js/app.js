@@ -1246,6 +1246,10 @@ var isCategoriesRendered = false;
   };
 
   var onHomeScroll = function onHomeScroll(e) {
+    if (true) {
+      return;
+    }
+
     var wY = window.scrollY;
     headerHeight = document.querySelector('#header').getBoundingClientRect().height;
     var categoryListH = document.querySelector('.c-grid.list').getBoundingClientRect().height;

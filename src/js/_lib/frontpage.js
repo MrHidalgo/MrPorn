@@ -496,17 +496,8 @@ function renderHompageSiteSlide(category, index){
 }
 
 function renderSiteHoverContent(category, index, siteId, siteLink, siteName, siteTagline, siteRating){
-	// if(!homeData){
-	// 	return false;
-	// }
-	//
-	// if(homeData.categories === undefined){
-	// 	return false;
-	// }
-	//
-	// if(!homeData.categories[category]){
-	// 	return false;
-	// }
+	//console.log('current site link '+siteId+' - - '+siteName+' - - '+siteLink)
+
 
 	let ratingHtml = '';
 
@@ -1024,11 +1015,9 @@ function renderSiteCategory(categoryIndex){
 			'<div class="list__box" list-box-js  data-id="'+site.id+'">'+
 			'<a class="nav_link site--link" href="'+site.link+'" hreflang="'+currentLang+'">' +
 				'<img class="list__box__thumb" src="'+site.banner_image+'"/>'+
+				'<p class="list__box--title">'+site.name+'</p>'+
+				'<p class="list__box--tagline">'+site.tagline+'</p>'+
 			'</a>'+
-			'<div class="list__box-details">'+
-
-			'</div>'+
-			'<button class="list__box-more" type="button"><i class="icon-font icon-arrow-angle"></i></button>' +
 			'</div>'+
 			'</div>';
 	});
@@ -1085,24 +1074,9 @@ function renderAllOtherCategories(){
 
 	let catListContainer = document.querySelector('.c-grid.list');
 
-	let catDummies = document.querySelectorAll('.category--placeholder');
-	catDummies.forEach(function (dummy){
-		//dummy.remove();
-	});
 
 	for (let i=0; i<homeData.categories_count; i++){
 		let catId = homeData.categories_indexes[i];
-		/*let catBox = document.querySelector('.list__box-wrapper[data-name="category_'+catId+'"]');
-		if(!catBox){
-
-			let listBoxes = document.querySelectorAll('.list__box-wrapper');
-			let categoryHtml = renderSiteCategory(i);
-			catListContainer.insertAdjacentHTML( 'beforeend', categoryHtml );
-
-
-		}else{
-			let noCategoryId = catId;
-		}*/
 
 		renderMissingSlides(catId);
 		generateSwiper(catId);
@@ -1111,10 +1085,6 @@ function renderAllOtherCategories(){
 			renderMobileMoreButton(catId);
 		}
 	}
-
-
-
-
 
 	boxHover();
 }
@@ -1128,13 +1098,11 @@ function renderMissingSlides(catId){
 			if(!categoryWrapper.querySelector('.swiper-slide[data-siteid="'+site.id+'"]')){
 				let siteSlide = '<div class="swiper-slide" data-index="'+index+'" data-siteid="'+site.id+'" data-init="0">' +
 					'<div class="list__box" list-box-js  data-id="'+site.id+'">'+
-					'<a class="nav_link site--link" href="'+site.link+'" hreflang="'+currentLang+'">' +
+					'<a class="site--link" href="'+site.link+'" hreflang="'+currentLang+'">' +
 					'<img class="list__box__thumb" src="'+site.banner_image+'"/>'+
+					'<p class="list__box--title">'+site.name+'</p>'+
+					'<p class="list__box--tagline">'+site.tagline+'</p>'+
 					'</a>'+
-					'<div class="list__box-details">'+
-
-					'</div>'+
-					'<button class="list__box-more" type="button"><i class="icon-font icon-arrow-angle"></i></button>' +
 					'</div>'+
 					'</div>';
 
@@ -1356,6 +1324,10 @@ function onSlideEnter(ev){
 			siteTitle = el.querySelector('.list__box--title'),
 			tagLine = el.querySelector('.list__box--tagline');
 
+		if(!siteLink){
+			return;
+		}
+
 		if(siteTitle){
 			siteTitle = siteTitle.innerHTML;
 		}
@@ -1363,25 +1335,7 @@ function onSlideEnter(ev){
 			tagLine = tagLine.innerHTML;
 		}
 
-		let siteRating = el.dataset.rating;
-		let _siteId = el.dataset.siteid;
-		let _siteUrl = siteLink.href;
-		const swiperParent  = el.parentNode;
-		var slideIndex = el.dataset.index;
-		var slideCategory = swiperParent.dataset.category;
 
-		if(!el.querySelector('.list__box-details')){
-			let slideHoverContent = renderSiteHoverContent(slideCategory, slideIndex, _siteId, _siteUrl, siteTitle, tagLine, siteRating);
-
-			document.querySelector('.previewModal--inner').innerHTML = slideHoverContent;
-
-			let btReadMore = document.createElement('button');
-			btReadMore.className = 'list__box-more';
-			btReadMore.type='button';
-			btReadMore.innerHTML = '<i class="icon-font icon-arrow-angle"></i>';
-
-			previewModalInner.insertAdjacentElement('beforeend', btReadMore);
-		}
 
 
 
@@ -1425,9 +1379,41 @@ function onSlideEnter(ev){
 
 		if(delayPreview){
 			setTimeout(function (){
+
+				let siteRating = el.dataset.rating;
+				let _siteId = el.dataset.siteid;
+				let _siteUrl = siteLink.href;
+				const swiperParent  = el.parentNode;
+				var slideIndex = el.dataset.index;
+				var slideCategory = swiperParent.dataset.category;
+
+				let slideHoverContent = renderSiteHoverContent(slideCategory, slideIndex, _siteId, _siteUrl, siteTitle, tagLine, siteRating);
+				slideHoverContent += '<button class="list__box-more" type="button"><i class="icon-font icon-arrow-angle"></i></button>';
+
+				previewModalInner.innerHTML = slideHoverContent;
+
+				document.querySelector('.previewModal--inner').innerHTML = slideHoverContent;
+
 				generatePreviewModal(elBox);
-			}, 400)
+			}, 600)
 		}else{
+
+			let siteRating = el.dataset.rating;
+			let _siteId = el.dataset.siteid;
+			let _siteUrl = siteLink.href;
+			const swiperParent  = el.parentNode;
+			var slideIndex = el.dataset.index;
+			var slideCategory = swiperParent.dataset.category;
+
+			if(!el.querySelector('.list__box-details')){
+
+			}
+			let slideHoverContent = renderSiteHoverContent(slideCategory, slideIndex, _siteId, _siteUrl, siteTitle, tagLine, siteRating);
+			slideHoverContent += '<button class="list__box-more" type="button"><i class="icon-font icon-arrow-angle"></i></button>';
+
+			previewModalInner.innerHTML = slideHoverContent;
+			document.querySelector('.previewModal--inner').innerHTML = slideHoverContent;
+
 			generatePreviewModal(elBox);
 		}
 		previousHoverBox = el;
@@ -1452,9 +1438,14 @@ function generatePreviewModal(slideBox){
 			let boxY = boxBounds.y + (boxH/2) +  window.scrollY;
 
 
+
+
+			//let slideHoverContent = renderSiteHoverContent(slideCategory, slideIndex, _siteId, _siteUrl, siteTitle, tagLine, siteRating);
+
+
 			let slideThumbSrc =slideThumb.src;
 			//previewModal.querySelector('.previewModal--banner').src = slideThumbSrc;
-			previewModal.querySelector('.previewModal--inner').style.background = 'url('+slideThumbSrc+')';
+			previewModal.querySelector('.previewModal--inner').style.backgroundImage = 'url('+slideThumbSrc+')';
 
 			if(boxX <175){
 				boxX = boxBounds.x;
