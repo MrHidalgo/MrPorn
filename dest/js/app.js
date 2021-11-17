@@ -1222,7 +1222,6 @@ var isCategoriesRendered = false;
   }
 
   var headerHeight = document.querySelector('#header').getBoundingClientRect().height;
-  ;
 
   var initHome = function initHome() {
     homeScroll();

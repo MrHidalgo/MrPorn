@@ -153,7 +153,7 @@ let isCategoriesRendered = false;
 		initLoggedUser();
 	}
 
-	let headerHeight = document.querySelector('#header').getBoundingClientRect().height;;
+	let headerHeight = document.querySelector('#header').getBoundingClientRect().height;
 
 
 	const initHome = () =>{
