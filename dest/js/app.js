@@ -1890,6 +1890,7 @@ var isCategoriesRendered = false;
         } else {
           var nextIndex = nextSite.dataset.index;
           var prevItem = renderHompageSiteSlide(currentCategory, nextIndex);
+          renderMobileMoreButton();
 
           if (prevItem && nextSite) {
             nextSite.innerHTML = prevItem;

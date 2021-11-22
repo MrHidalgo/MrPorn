@@ -901,6 +901,7 @@ let isCategoriesRendered = false;
 					var nextIndex = nextSite.dataset.index;
 
 					let prevItem = renderHompageSiteSlide(currentCategory, nextIndex);
+					renderMobileMoreButton()
 					if(prevItem && nextSite){
 						nextSite.innerHTML = prevItem;
 						showBanner(nextSite.querySelector('.list__box-more'), true);

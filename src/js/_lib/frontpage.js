@@ -487,7 +487,10 @@ function renderHompageSiteSlide(category, index){
 			'<p class="list__box--title">'+siteName+'</p>'+
 			'<p class="list__box--tagline">'+siteTagline+'</p>'+
 			'</a>'+
+			'<button class="list__box-more" type="button"><i class="icon-font icon-arrow-angle"></i></button>'+
 			'</div>';
+
+
 
 		return slideHtml;
 	}
@@ -948,7 +951,11 @@ function renderSkipSiteBottomBanner(category, index){
 		document.querySelector('.list__specification .list__specification-dislike').setAttribute('data-dislike', siteId);
 		document.querySelector('.list__specification .list__specification-favorites').setAttribute('data-id', siteId);
 
-		document.querySelector('.site_banner_more_sites').innerHTML = moreSites;
+		//document.querySelector('.site_banner_more_sites').innerHTML = moreSites;
+
+		document.querySelectorAll('.site_banner_more_sites').forEach(function (moreSiteDiv, index) {
+			moreSiteDiv.innerHTML = moreSites;
+		})
 
 
 
