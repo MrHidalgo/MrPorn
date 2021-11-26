@@ -643,10 +643,10 @@ function renderSiteBottomBanner(category, index){
 			'</div>'+
 			'<div class="list__specification-action-skip"><a class="list__specification-circle list__specification-skip" data-id="'+siteId+'" data-category="'+category+'" data-index="'+index+'" spec-skip-js><i class="icon-font icon-point"></i><span>Skip</span></a></div>'+
 			'<div class="list__specification-action-circle">' +
-			'<button class="list__specification-circle list__specification-like" data-like="'+siteId+'" spec-like-js><i class="icon-font icon-like"></i><span>Like</span></button>' +
+			'<button class="list__specification-circle list__specification-like" data-id="'+siteId+'" data-like="'+siteId+'" spec-like-js><i class="icon-font icon-like"></i><span>Like</span></button>' +
 			'</div>'+
 			'<div class="list__specification-action-circle">' +
-			'<button class="list__specification-circle list__specification-dislike" data-dislike="'+siteId+'" spec-dislike-js><i class="icon-font icon-like"></i><span>Dislike</span></button>' +
+			'<button class="list__specification-circle list__specification-dislike" data-id="'+siteId+'" data-dislike="'+siteId+'" spec-dislike-js><i class="icon-font icon-like"></i><span>Dislike</span></button>' +
 			'</div>'+
 			'<div class="list__specification-action-circle">'+
 			'<div class="c-popper">' +
@@ -923,8 +923,25 @@ function renderSkipSiteBottomBanner(category, index){
 
 		let moreSites = '';
 		let moreSiteCount = 0;
+		let similarSiteCount = homeData.categories[category].sites.length
 
-		homeData.categories[category].sites.map(function (moreSite, index) {
+		let msStart = 0;
+		let msEnd = 6;
+
+		if(index > 3){
+			msStart = index - 3;
+			msEnd = index+3;
+
+			if(msEnd > similarSiteCount){
+				msEnd = similarSiteCount
+			}
+		}else{
+			msEnd = similarSiteCount
+		}
+
+		for (let i = msStart; i < msEnd; i++) {
+			let moreSite = homeData.categories[category].sites[i];
+
 			if(moreSiteCount<6 && moreSite.id!=siteId){
 				let moreSiteLogo = moreSite.logo ? moreSite.logo.src: '';
 
@@ -934,7 +951,19 @@ function renderSkipSiteBottomBanner(category, index){
 
 				moreSiteCount++;
 			}
-		});
+		}
+
+		/*homeData.categories[category].sites.map(function (moreSite, index) {
+			if(moreSiteCount<6 && moreSite.id!=siteId){
+				let moreSiteLogo = moreSite.logo ? moreSite.logo.src: '';
+
+				moreSites +='<div class="list__box_more_item" list-box-more-js  data-id="'+moreSite.id+'" data-count="1" >'+
+					'<a class="list__box_more_thumb" href="'+moreSite.link+'" style="background-image: url('+moreSite.banner_image+')"></a>' +
+					'</div>';
+
+				moreSiteCount++;
+			}
+		});*/
 
 		document.querySelector('.list__specification .list__specification-right').innerHTML = bannerRight;
 		document.querySelector('.list__specification .list__specification-action-desc p').innerHTML = tagLIne;
@@ -2176,7 +2205,7 @@ function onLike(el, elID){
 	setWithExpiry("likes", window.likes, 30*24*3600*1000);
 }
 function onDisLike(el, elID){
-	el.classList.toggle('is-active');
+	//el.classList.toggle('is-active');
 	if(el.classList.contains('is-active')){
 		window.dislikes.push(elID);
 	}else{

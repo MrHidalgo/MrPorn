@@ -600,13 +600,13 @@ let isCategoriesRendered = false;
 
 		console.log('Fav box '+elID);
 
-		const specificationFavoritesBtn = elParent.querySelector('[data-favorites="' + elID + '"]');
+		// const specificationFavoritesBtn = elParent.querySelector('[data-favorites="' + elID + '"]');
 
 		el.classList.toggle('is-active');
 
-		if(specificationFavoritesBtn){
+		/*if(specificationFavoritesBtn){
 			//specificationFavoritesBtn.classList.toggle('is-active');
-		}
+		}*/
 
 		addToFavourites(elID);
 	}
@@ -665,18 +665,33 @@ let isCategoriesRendered = false;
 		dislikeBtn.parentElement.classList.toggle('is-hide');
 
 		//const listBlock = elParent.querySelector('.list__box[data-id="' + elID + '"]'),
-			const listLikeBtn = document.querySelector('.list__specification-like.list__box-like[data-id="' + elID + '"]'),
-			listDislikeBtn = document.querySelector('.list__box-dislike.list__specification-dislike[data-id="' + elID + '"]');
+		// 	const listLikeBtn = document.querySelector('.list__specification-like.list__box-like[data-like="' + elID + '"]'),
+		// 	listDislikeBtn = document.querySelector('.list__box-dislike.list__specification-dislike[data-dislike="' + elID + '"]');
 
-		el.classList.toggle('is-active');
+		let listLikeBtn = document.querySelector('.list__specification-like[data-id="' + elID + '"]'),
+			listDislikeBtn = document.querySelector('.list__specification-dislike[data-id="' + elID + '"]');
 
-		onLike(el, elID);
+		if(!listLikeBtn){
+			listLikeBtn = document.querySelector('.list__specification-like[data-like="' + elID + '"]');
+		}
+		if(!listDislikeBtn){
+			listDislikeBtn = document.querySelector('.list__specification-dislike[data-dislike="' + elID + '"]');
+		}
+
+		//el.classList.toggle('is-active');
+
+
 
 		if(listLikeBtn){
 			listLikeBtn.classList.toggle('is-active');
 		}
+		if(listDislikeBtn){
+			listDislikeBtn.classList.remove('is-active');
+		}
 
 		listDislikeBtn.classList.toggle('is-hide');
+
+		onLike(el, elID);
 	}
 
 	function onSiteBoxDislikeClick(el){
@@ -684,18 +699,21 @@ let isCategoriesRendered = false;
 
 		console.log('Disliking '+elID);
 
-		onDisLike(el, elID);
+
 
 		document.querySelector('.list__box-like[data-id="' + elID + '"]').classList.toggle('is-hide');
 
-		const specificationBlock = document.querySelector('.list__specification[data-id="' + elID + '"]');
+		const specificationBlock = document.querySelector('.previewModal[data-site-id="' + elID + '"]');
 		if(specificationBlock){
-			var specificationDislikeBtn = specificationBlock.querySelector('[data-dislike="' + elID + '"]'),
-				specificationLikeBtn = specificationBlock.querySelector('[data-like="' + elID + '"]');
+			var specificationLikeBtn = specificationBlock.querySelector('.list__box-like[data-id="' + elID + '"]'),
+				specificationDislikeBtn = specificationBlock.querySelector('.list__box-dislike[data-id="' + elID + '"]');
 
+
+			specificationLikeBtn.classList.remove('is-active')
 			specificationDislikeBtn.classList.toggle('is-active');
 			specificationLikeBtn.parentElement.classList.toggle('is-hide');
 
+			onDisLike(el, elID);
 		}
 
 	}
@@ -708,13 +726,27 @@ let isCategoriesRendered = false;
 		likeBtn.parentElement.classList.toggle('is-hide');
 
 		//const listBlock = elParent.querySelector('.list__box[data-id="' + elID + '"]'),
-		const listLikeBtn = document.querySelector('.list__specification-like.list__box-like[data-id="' + elID + '"]'),
-			listDislikeBtn = document.querySelector('.list__box-dislike.list__specification-dislike[data-id="' + elID + '"]');
+		// const listLikeBtn = document.querySelector('.list__specification-like.list__box-like[data-id="' + elID + '"]'),
+		// 	listDislikeBtn = document.querySelector('.list__box-dislike.list__specification-dislike[data-id="' + elID + '"]');
+		let listLikeBtn = document.querySelector('.list__specification-like[data-id="' + elID + '"]'),
+			listDislikeBtn = document.querySelector('.list__specification-dislike[data-id="' + elID + '"]');
+
+		if(!listLikeBtn){
+			listLikeBtn = document.querySelector('.list__specification-like[data-like="' + elID + '"]')
+		}
+		if(!listDislikeBtn){
+			listDislikeBtn = document.querySelector('.list__specification-dislike[data-dislike="' + elID + '"]')
+		}
+
+		if(listLikeBtn){
+			listLikeBtn.classList.remove('is-active');
+		}
+		if(listDislikeBtn){
+			listDislikeBtn.classList.toggle('is-active');
+		}
+		listLikeBtn.classList.toggle('is-hide');
 
 		onDisLike(el, elID);
-
-		listDislikeBtn.classList.toggle('is-active');
-		listLikeBtn.classList.toggle('is-hide');
 	}
 
 	function initGotoTop(){

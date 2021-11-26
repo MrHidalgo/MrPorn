@@ -1623,12 +1623,12 @@ var isCategoriesRendered = false;
 
     var elID = el.getAttribute('data-id'),
         elParent = el.closest('.list__box-wrapper');
-    console.log('Fav box ' + elID);
-    var specificationFavoritesBtn = elParent.querySelector('[data-favorites="' + elID + '"]');
-    el.classList.toggle('is-active');
+    console.log('Fav box ' + elID); // const specificationFavoritesBtn = elParent.querySelector('[data-favorites="' + elID + '"]');
 
-    if (specificationFavoritesBtn) {//specificationFavoritesBtn.classList.toggle('is-active');
-    }
+    el.classList.toggle('is-active');
+    /*if(specificationFavoritesBtn){
+    	//specificationFavoritesBtn.classList.toggle('is-active');
+    }*/
 
     addToFavourites(elID);
   }
@@ -1674,31 +1674,46 @@ var isCategoriesRendered = false;
         dislikeBtn = elActionNode.querySelector('[spec-dislike-js]');
     console.log('Trying to like ' + elID);
     dislikeBtn.parentElement.classList.toggle('is-hide'); //const listBlock = elParent.querySelector('.list__box[data-id="' + elID + '"]'),
+    // 	const listLikeBtn = document.querySelector('.list__specification-like.list__box-like[data-like="' + elID + '"]'),
+    // 	listDislikeBtn = document.querySelector('.list__box-dislike.list__specification-dislike[data-dislike="' + elID + '"]');
 
-    var listLikeBtn = document.querySelector('.list__specification-like.list__box-like[data-id="' + elID + '"]'),
-        listDislikeBtn = document.querySelector('.list__box-dislike.list__specification-dislike[data-id="' + elID + '"]');
-    el.classList.toggle('is-active');
-    onLike(el, elID);
+    var listLikeBtn = document.querySelector('.list__specification-like[data-id="' + elID + '"]'),
+        listDislikeBtn = document.querySelector('.list__specification-dislike[data-id="' + elID + '"]');
+
+    if (!listLikeBtn) {
+      listLikeBtn = document.querySelector('.list__specification-like[data-like="' + elID + '"]');
+    }
+
+    if (!listDislikeBtn) {
+      listDislikeBtn = document.querySelector('.list__specification-dislike[data-dislike="' + elID + '"]');
+    } //el.classList.toggle('is-active');
+
 
     if (listLikeBtn) {
       listLikeBtn.classList.toggle('is-active');
     }
 
+    if (listDislikeBtn) {
+      listDislikeBtn.classList.remove('is-active');
+    }
+
     listDislikeBtn.classList.toggle('is-hide');
+    onLike(el, elID);
   }
 
   function onSiteBoxDislikeClick(el) {
     var elID = el.getAttribute('data-id');
     console.log('Disliking ' + elID);
-    onDisLike(el, elID);
     document.querySelector('.list__box-like[data-id="' + elID + '"]').classList.toggle('is-hide');
-    var specificationBlock = document.querySelector('.list__specification[data-id="' + elID + '"]');
+    var specificationBlock = document.querySelector('.previewModal[data-site-id="' + elID + '"]');
 
     if (specificationBlock) {
-      var specificationDislikeBtn = specificationBlock.querySelector('[data-dislike="' + elID + '"]'),
-          specificationLikeBtn = specificationBlock.querySelector('[data-like="' + elID + '"]');
+      var specificationLikeBtn = specificationBlock.querySelector('.list__box-like[data-id="' + elID + '"]'),
+          specificationDislikeBtn = specificationBlock.querySelector('.list__box-dislike[data-id="' + elID + '"]');
+      specificationLikeBtn.classList.remove('is-active');
       specificationDislikeBtn.classList.toggle('is-active');
       specificationLikeBtn.parentElement.classList.toggle('is-hide');
+      onDisLike(el, elID);
     }
   }
 
@@ -1707,12 +1722,30 @@ var isCategoriesRendered = false;
         elActionNode = el.closest('[spec-actionNode-js]'),
         likeBtn = elActionNode.querySelector('[spec-like-js]');
     likeBtn.parentElement.classList.toggle('is-hide'); //const listBlock = elParent.querySelector('.list__box[data-id="' + elID + '"]'),
+    // const listLikeBtn = document.querySelector('.list__specification-like.list__box-like[data-id="' + elID + '"]'),
+    // 	listDislikeBtn = document.querySelector('.list__box-dislike.list__specification-dislike[data-id="' + elID + '"]');
 
-    var listLikeBtn = document.querySelector('.list__specification-like.list__box-like[data-id="' + elID + '"]'),
-        listDislikeBtn = document.querySelector('.list__box-dislike.list__specification-dislike[data-id="' + elID + '"]');
-    onDisLike(el, elID);
-    listDislikeBtn.classList.toggle('is-active');
+    var listLikeBtn = document.querySelector('.list__specification-like[data-id="' + elID + '"]'),
+        listDislikeBtn = document.querySelector('.list__specification-dislike[data-id="' + elID + '"]');
+
+    if (!listLikeBtn) {
+      listLikeBtn = document.querySelector('.list__specification-like[data-like="' + elID + '"]');
+    }
+
+    if (!listDislikeBtn) {
+      listDislikeBtn = document.querySelector('.list__specification-dislike[data-dislike="' + elID + '"]');
+    }
+
+    if (listLikeBtn) {
+      listLikeBtn.classList.remove('is-active');
+    }
+
+    if (listDislikeBtn) {
+      listDislikeBtn.classList.toggle('is-active');
+    }
+
     listLikeBtn.classList.toggle('is-hide');
+    onDisLike(el, elID);
   }
 
   function initGotoTop() {
