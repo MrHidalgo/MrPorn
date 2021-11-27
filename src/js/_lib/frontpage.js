@@ -953,17 +953,6 @@ function renderSkipSiteBottomBanner(category, index){
 			}
 		}
 
-		/*homeData.categories[category].sites.map(function (moreSite, index) {
-			if(moreSiteCount<6 && moreSite.id!=siteId){
-				let moreSiteLogo = moreSite.logo ? moreSite.logo.src: '';
-
-				moreSites +='<div class="list__box_more_item" list-box-more-js  data-id="'+moreSite.id+'" data-count="1" >'+
-					'<a class="list__box_more_thumb" href="'+moreSite.link+'" style="background-image: url('+moreSite.banner_image+')"></a>' +
-					'</div>';
-
-				moreSiteCount++;
-			}
-		});*/
 
 		document.querySelector('.list__specification .list__specification-right').innerHTML = bannerRight;
 		document.querySelector('.list__specification .list__specification-action-desc p').innerHTML = tagLIne;
@@ -979,6 +968,8 @@ function renderSkipSiteBottomBanner(category, index){
 		document.querySelector('.list__specification .list__specification-like').setAttribute('data-like', siteId);
 		document.querySelector('.list__specification .list__specification-dislike').setAttribute('data-dislike', siteId);
 		document.querySelector('.list__specification .list__specification-favorites').setAttribute('data-id', siteId);
+
+		document.querySelector('.list__specification .list__specification-read.nav_link').setAttribute('href', siteLink);
 
 		//document.querySelector('.site_banner_more_sites').innerHTML = moreSites;
 
