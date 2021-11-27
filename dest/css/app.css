@@ -537,6 +537,8 @@ body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   font-family: helvetica neue,Helvetica,Arial,sans-serif;
+  -webkit-transform: translate3d(0, 0, 0);
+          transform: translate3d(0, 0, 0);
 }
 
 /* line 46, src/scss/_shared/_main-setting-reset.scss */
@@ -7854,7 +7856,7 @@ body.is_open .swiper-slide:not(.is-hover):after {
 @media screen and (max-width: 767px) {
   /* line 744, src/scss/_components/homepage/_list.scss */
   .modal-container {
-    position: absolute;
+    /*position: absolute;*/
   }
 }
 
