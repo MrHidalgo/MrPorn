@@ -172,7 +172,7 @@ let isCategoriesRendered = false;
 	const homeScroll = () => {
 		if(document.body.classList.contains('home')){
 			window.addEventListener('scroll', function(e) {
-				onHomeScroll(e);
+				//onHomeScroll(e);
 			});
 		}
 	}

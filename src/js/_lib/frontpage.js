@@ -1195,7 +1195,7 @@ function initHomeSwippers(){
 		return;
 	}
 
-	let listBoxWrappers = document.querySelectorAll('.list__box-wrapper');
+	/*let listBoxWrappers = document.querySelectorAll('.list__box-wrapper');
 	if(listBoxWrappers){
 		listBoxWrappers.forEach(function(wrapper){
 			let catId = wrapper.dataset.category;
@@ -1203,7 +1203,7 @@ function initHomeSwippers(){
 
 			generateSwiper(catId);
 		});
-	}
+	}*/
 }
 
 let tOut = null,
@@ -1754,9 +1754,6 @@ function onSlideTouchEnd(ev){
 		greenBarWidth = 34;
 	}
 
-	console.log('Bar width '+greenBarWidth+' - '+slideSwiper.swiper.translate);
-
-	//hoverBoxLeft = ((slideIndex*slideWidth) + translate)+slideOffset-12;
 
 	if(!_isGreenBarMoving){
 		let barLeft = getGreenBarTranslateX(greenBar);

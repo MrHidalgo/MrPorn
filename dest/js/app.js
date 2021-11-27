@@ -1238,8 +1238,7 @@ var isCategoriesRendered = false;
 
   var homeScroll = function homeScroll() {
     if (document.body.classList.contains('home')) {
-      window.addEventListener('scroll', function (e) {
-        onHomeScroll(e);
+      window.addEventListener('scroll', function (e) {//onHomeScroll(e);
       });
     }
   };
