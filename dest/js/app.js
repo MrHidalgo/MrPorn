@@ -1237,9 +1237,9 @@ var isCategoriesRendered = false;
   };
 
   var homeScroll = function homeScroll() {
-    if (document.body.classList.contains('home')) {
-      window.addEventListener('scroll', function (e) {//onHomeScroll(e);
-      });
+    if (document.body.classList.contains('home')) {// window.addEventListener('scroll', function(e) {
+      // 	onHomeScroll(e);
+      // });
     }
   };
 
@@ -2071,9 +2071,11 @@ var isCategoriesRendered = false;
             onWindowChange();
           }, 500);
 
-          if (document.querySelector('.list__specification.is-open')) {
-            document.getElementsByTagName('html')[0].classList.add('is-hideScroll');
-            document.getElementsByTagName('body')[0].classList.add('is-hideScroll');
+          if (!isMobileOrTablet) {
+            if (document.querySelector('.list__specification.is-open')) {
+              document.getElementsByTagName('html')[0].classList.add('is-hideScroll');
+              document.getElementsByTagName('body')[0].classList.add('is-hideScroll');
+            }
           }
         }
       });

@@ -1,13 +1,16 @@
 html,
 body {
   width: 100%;
-  min-height: 100vh;
+  min-height: 100%;
 	font-family: helvetica neue,Helvetica,Arial,sans-serif;
 	color: #333;
 
   &.is-hideScroll {
     width: 100%;
-    overflow: hidden !important;
+
+		@include respond('medium'){
+			overflow: hidden !important;
+		}
 
 		#wp-chatbot-chat-container{
 			display: none;

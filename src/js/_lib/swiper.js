@@ -9,6 +9,7 @@ function swiperCB(swiperName, sliderArrow, scrollBar) {
 	let categorySwiper = new Swiper(swiperName, {
 		loop: false,
 		grabCursor: false,
+		observer: true,
 		effect: 'slide',
 		speed: 900,
 		lazy: true,
@@ -18,7 +19,7 @@ function swiperCB(swiperName, sliderArrow, scrollBar) {
 		allowSwipeToPrev: true,
 		allowPageScroll: "auto",
 		slidesPerView: 'auto',
-		watchSlidesVisibility:true,
+		//watchSlidesVisibility:true,
 		spaceBetween: 0,
 		slidesPerGroup: 3,
 		navigation: {

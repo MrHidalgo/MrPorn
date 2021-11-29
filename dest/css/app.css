@@ -489,7 +489,7 @@
 html,
 body {
   width: 100%;
-  min-height: 100vh;
+  min-height: 100%;
   font-family: helvetica neue,Helvetica,Arial,sans-serif;
   color: #333;
 }
@@ -498,22 +498,29 @@ body {
 html.is-hideScroll,
 body.is-hideScroll {
   width: 100%;
-  overflow: hidden !important;
 }
 
-/* line 12, src/scss/_shared/_main-setting-reset.scss */
+@media screen and (min-width: 768px) {
+  /* line 8, src/scss/_shared/_main-setting-reset.scss */
+  html.is-hideScroll,
+  body.is-hideScroll {
+    overflow: hidden !important;
+  }
+}
+
+/* line 15, src/scss/_shared/_main-setting-reset.scss */
 html.is-hideScroll #wp-chatbot-chat-container,
 body.is-hideScroll #wp-chatbot-chat-container {
   display: none;
 }
 
-/* line 19, src/scss/_shared/_main-setting-reset.scss */
+/* line 22, src/scss/_shared/_main-setting-reset.scss */
 html {
   -ms-overflow-style: scrollbar;
   -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
 }
 
-/* line 25, src/scss/_shared/_main-setting-reset.scss */
+/* line 28, src/scss/_shared/_main-setting-reset.scss */
 body {
   overflow-x: hidden;
   position: relative;
@@ -539,27 +546,27 @@ body {
   font-family: helvetica neue,Helvetica,Arial,sans-serif;
 }
 
-/* line 46, src/scss/_shared/_main-setting-reset.scss */
+/* line 49, src/scss/_shared/_main-setting-reset.scss */
 .light body {
   background: #cad4df;
 }
 
-/* line 49, src/scss/_shared/_main-setting-reset.scss */
+/* line 52, src/scss/_shared/_main-setting-reset.scss */
 .light body.home {
   background: #d6d9e2;
 }
 
-/* line 53, src/scss/_shared/_main-setting-reset.scss */
+/* line 56, src/scss/_shared/_main-setting-reset.scss */
 a {
   color: #4099f9;
 }
 
-/* line 56, src/scss/_shared/_main-setting-reset.scss */
+/* line 59, src/scss/_shared/_main-setting-reset.scss */
 a:hover {
   color: #337ab7;
 }
 
-/* line 59, src/scss/_shared/_main-setting-reset.scss */
+/* line 62, src/scss/_shared/_main-setting-reset.scss */
 a:focus {
   color: #337ab7;
 }
@@ -569,19 +576,19 @@ a:focus {
 		color: #337ab7;
 	}
 }*/
-/* line 71, src/scss/_shared/_main-setting-reset.scss */
+/* line 74, src/scss/_shared/_main-setting-reset.scss */
 * {
   -webkit-box-sizing: border-box;
           box-sizing: border-box;
 }
 
-/* line 74, src/scss/_shared/_main-setting-reset.scss */
+/* line 77, src/scss/_shared/_main-setting-reset.scss */
 *:before, *:after {
   -webkit-box-sizing: border-box;
           box-sizing: border-box;
 }
 
-/* line 80, src/scss/_shared/_main-setting-reset.scss */
+/* line 83, src/scss/_shared/_main-setting-reset.scss */
 h1, h2, h3, h4, h5, h6 {
   font-family: inherit;
   font-weight: 500;
@@ -592,7 +599,7 @@ h1, h2, h3, h4, h5, h6 {
 /*p{
 	margin: 0 0 10px;
 }*/
-/* line 90, src/scss/_shared/_main-setting-reset.scss */
+/* line 93, src/scss/_shared/_main-setting-reset.scss */
 button,
 input,
 optgroup,
@@ -602,65 +609,65 @@ textarea {
   margin: 0;
 }
 
-/* line 100, src/scss/_shared/_main-setting-reset.scss */
+/* line 103, src/scss/_shared/_main-setting-reset.scss */
 button,
 input {
   overflow: visible;
 }
 
-/* line 106, src/scss/_shared/_main-setting-reset.scss */
+/* line 109, src/scss/_shared/_main-setting-reset.scss */
 button[disabled] {
   opacity: 0.55;
   cursor: not-allowed;
 }
 
-/* line 112, src/scss/_shared/_main-setting-reset.scss */
+/* line 115, src/scss/_shared/_main-setting-reset.scss */
 [type="search"] {
   -webkit-appearance: textfield;
   outline-offset: -2px;
 }
 
-/* line 118, src/scss/_shared/_main-setting-reset.scss */
+/* line 121, src/scss/_shared/_main-setting-reset.scss */
 [type="search"]::-webkit-search-cancel-button,
 [type="search"]::-webkit-search-decoration {
   -webkit-appearance: none;
 }
 
-/* line 124, src/scss/_shared/_main-setting-reset.scss */
+/* line 127, src/scss/_shared/_main-setting-reset.scss */
 textarea {
   overflow: auto;
 }
 
-/* line 129, src/scss/_shared/_main-setting-reset.scss */
+/* line 132, src/scss/_shared/_main-setting-reset.scss */
 h1, h2, h3, h4, h5, h6,
 hr {
   margin: 0;
   padding: 0;
 }
 
-/* line 136, src/scss/_shared/_main-setting-reset.scss */
+/* line 139, src/scss/_shared/_main-setting-reset.scss */
 ul {
   margin: 0;
   padding: 0;
 }
 
-/* line 141, src/scss/_shared/_main-setting-reset.scss */
+/* line 144, src/scss/_shared/_main-setting-reset.scss */
 ul li {
   list-style: none;
 }
 
-/* line 147, src/scss/_shared/_main-setting-reset.scss */
+/* line 150, src/scss/_shared/_main-setting-reset.scss */
 a {
   outline: none;
   text-decoration: none;
 }
 
-/* line 152, src/scss/_shared/_main-setting-reset.scss */
+/* line 155, src/scss/_shared/_main-setting-reset.scss */
 a:hover, a:focus {
   text-decoration: none;
 }
 
-/* line 159, src/scss/_shared/_main-setting-reset.scss */
+/* line 162, src/scss/_shared/_main-setting-reset.scss */
 input[type="text"] {
   -webkit-appearance: none;
      -moz-appearance: none;
@@ -674,71 +681,71 @@ input[type="text"] {
   width: 100%;
   height: 100%;
 }*/
-/* line 171, src/scss/_shared/_main-setting-reset.scss */
+/* line 174, src/scss/_shared/_main-setting-reset.scss */
 .custom_scroll {
   scrollbar-color: #131313 #525252;
 }
 
-/* line 172, src/scss/_shared/_main-setting-reset.scss */
+/* line 175, src/scss/_shared/_main-setting-reset.scss */
 .custom_scroll::-webkit-scrollbar {
   width: 10px;
 }
 
-/* line 173, src/scss/_shared/_main-setting-reset.scss */
+/* line 176, src/scss/_shared/_main-setting-reset.scss */
 .custom_scroll::-webkit-scrollbar-track {
   background: rgba(0, 0, 0, 0.1);
 }
 
-/* line 174, src/scss/_shared/_main-setting-reset.scss */
+/* line 177, src/scss/_shared/_main-setting-reset.scss */
 .custom_scroll::-webkit-scrollbar-thumb {
   background: #9c9b9c;
 }
 
-/* line 177, src/scss/_shared/_main-setting-reset.scss */
+/* line 180, src/scss/_shared/_main-setting-reset.scss */
 .light .custom_scroll:hover::-webkit-scrollbar-thumb {
   background: #225396;
 }
 
-/* line 180, src/scss/_shared/_main-setting-reset.scss */
+/* line 183, src/scss/_shared/_main-setting-reset.scss */
 strong {
   font-weight: 700;
 }
 
-/* line 184, src/scss/_shared/_main-setting-reset.scss */
+/* line 187, src/scss/_shared/_main-setting-reset.scss */
 [data-label-desc]::after {
   content: attr(data-label-desc);
 }
 
 @media screen and (max-width: 767px) {
-  /* line 184, src/scss/_shared/_main-setting-reset.scss */
+  /* line 187, src/scss/_shared/_main-setting-reset.scss */
   [data-label-desc]::after {
     content: attr(data-label-mobile);
   }
 }
 
-/* line 192, src/scss/_shared/_main-setting-reset.scss */
+/* line 195, src/scss/_shared/_main-setting-reset.scss */
 .visible-xs-inline {
   display: none;
 }
 
 @media screen and (max-width: 767px) {
-  /* line 192, src/scss/_shared/_main-setting-reset.scss */
+  /* line 195, src/scss/_shared/_main-setting-reset.scss */
   .visible-xs-inline {
     display: inline-block;
   }
 }
 
-/* line 200, src/scss/_shared/_main-setting-reset.scss */
+/* line 203, src/scss/_shared/_main-setting-reset.scss */
 .show-xs {
   display: none;
 }
 
 @media screen and (max-width: 767px) {
-  /* line 203, src/scss/_shared/_main-setting-reset.scss */
+  /* line 206, src/scss/_shared/_main-setting-reset.scss */
   .hidden-xs {
     display: none;
   }
-  /* line 206, src/scss/_shared/_main-setting-reset.scss */
+  /* line 209, src/scss/_shared/_main-setting-reset.scss */
   .show-xs {
     display: block;
   }
@@ -5448,10 +5455,8 @@ body.chatbot_active .go-top {
   /* line 1, src/scss/_components/homepage/_list--specification.scss */
   .list__specification, .list__snapshot {
     height: 100vh;
-    height: -webkit-calc(var(--vh, 1vh) * 100);
-    height: calc(var(--vh, 1vh) * 100);
-    min-height: -webkit-calc(var(--vh, 1vh) * 100);
-    min-height: calc(var(--vh, 1vh) * 100);
+    /*height: calc(var(--vh, 1vh) * 100);
+		min-height: calc(var(--vh, 1vh) * 100);*/
     overflow: auto;
   }
 }
@@ -6002,11 +6007,17 @@ body.chatbot_active .go-top {
     -webkit-transform: translateY(-50%);
         -ms-transform: translateY(-50%);
             transform: translateY(-50%);
-    right: 20px;
+    right: 10px;
+    padding: 10px;
+    height: 100%;
+    -webkit-box-align: center;
+    -webkit-align-items: center;
+        -ms-flex-align: center;
+            align-items: center;
   }
 }
 
-/* line 494, src/scss/_components/homepage/_list--specification.scss */
+/* line 497, src/scss/_components/homepage/_list--specification.scss */
 .list__specification-logo, .list__snapshot-logo {
   display: block;
   max-width: 350px;
@@ -6016,14 +6027,14 @@ body.chatbot_active .go-top {
 }
 
 @media screen and (max-width: 1449.98px) {
-  /* line 494, src/scss/_components/homepage/_list--specification.scss */
+  /* line 497, src/scss/_components/homepage/_list--specification.scss */
   .list__specification-logo, .list__snapshot-logo {
     max-height: 65px;
     max-width: 95%;
   }
 }
 
-/* line 507, src/scss/_components/homepage/_list--specification.scss */
+/* line 510, src/scss/_components/homepage/_list--specification.scss */
 .list__specification-action, .list__snapshot-action {
   display: -webkit-box;
   display: -webkit-flex;
@@ -6040,7 +6051,7 @@ body.chatbot_active .go-top {
   -webkit-flex: 1 1 auto;
 }
 
-/* line 515, src/scss/_components/homepage/_list--specification.scss */
+/* line 518, src/scss/_components/homepage/_list--specification.scss */
 .list__specification-action > div, .list__snapshot-action > div {
   -webkit-transition: opacity 0.35s ease-in-out, width 0.35s ease-in-out, visibility 0.35s ease-in-out, margin 0.35s ease-in-out;
   -o-transition: opacity 0.35s ease-in-out, width 0.35s ease-in-out, visibility 0.35s ease-in-out, margin 0.35s ease-in-out;
@@ -6048,62 +6059,62 @@ body.chatbot_active .go-top {
 }
 
 @media screen and (max-width: 767px) {
-  /* line 518, src/scss/_components/homepage/_list--specification.scss */
+  /* line 521, src/scss/_components/homepage/_list--specification.scss */
   .list__specification-action > div:nth-of-type(1), .list__specification-action > div:nth-of-type(2), .list__snapshot-action > div:nth-of-type(1), .list__snapshot-action > div:nth-of-type(2) {
     width: 50%;
     padding-bottom: 10px;
   }
-  /* line 524, src/scss/_components/homepage/_list--specification.scss */
+  /* line 527, src/scss/_components/homepage/_list--specification.scss */
   .list__specification-action > div:nth-of-type(1), .list__snapshot-action > div:nth-of-type(1) {
     padding-right: 5px;
   }
-  /* line 528, src/scss/_components/homepage/_list--specification.scss */
+  /* line 531, src/scss/_components/homepage/_list--specification.scss */
   .list__specification-action > div:nth-of-type(2), .list__snapshot-action > div:nth-of-type(2) {
     padding-left: 5px;
   }
-  /* line 532, src/scss/_components/homepage/_list--specification.scss */
+  /* line 535, src/scss/_components/homepage/_list--specification.scss */
   .list__specification-action > div:nth-of-type(4), .list__specification-action > div:nth-of-type(5), .list__specification-action > div:nth-of-type(6), .list__specification-action > div:nth-of-type(7), .list__snapshot-action > div:nth-of-type(4), .list__snapshot-action > div:nth-of-type(5), .list__snapshot-action > div:nth-of-type(6), .list__snapshot-action > div:nth-of-type(7) {
     width: 25% !important;
   }
 }
 
-/* line 540, src/scss/_components/homepage/_list--specification.scss */
+/* line 543, src/scss/_components/homepage/_list--specification.scss */
 .list__specification-action > div.list__specification-action-circle, .list__snapshot-action > div.list__specification-action-circle {
   width: 46px;
 }
 
 @media screen and (max-width: 1279px) {
-  /* line 540, src/scss/_components/homepage/_list--specification.scss */
+  /* line 543, src/scss/_components/homepage/_list--specification.scss */
   .list__specification-action > div.list__specification-action-circle, .list__snapshot-action > div.list__specification-action-circle {
     width: 40px;
   }
-  /* line 545, src/scss/_components/homepage/_list--specification.scss */
+  /* line 548, src/scss/_components/homepage/_list--specification.scss */
   .list__specification-action > div.list__specification-action-circle .c-poppertext, .list__snapshot-action > div.list__specification-action-circle .c-poppertext {
     display: none;
   }
 }
 
 @media screen and (max-width: 900px) {
-  /* line 540, src/scss/_components/homepage/_list--specification.scss */
+  /* line 543, src/scss/_components/homepage/_list--specification.scss */
   .list__specification-action > div.list__specification-action-circle, .list__snapshot-action > div.list__specification-action-circle {
     width: 30px;
   }
 }
 
 @media screen and (max-width: 767px) {
-  /* line 540, src/scss/_components/homepage/_list--specification.scss */
+  /* line 543, src/scss/_components/homepage/_list--specification.scss */
   .list__specification-action > div.list__specification-action-circle, .list__snapshot-action > div.list__specification-action-circle {
     width: 30px;
   }
 }
 
-/* line 558, src/scss/_components/homepage/_list--specification.scss */
+/* line 561, src/scss/_components/homepage/_list--specification.scss */
 .list__specification-action > div.list__specification-action-desc, .list__snapshot-action > div.list__specification-action-desc {
   display: none;
 }
 
 @media screen and (max-width: 767px) {
-  /* line 558, src/scss/_components/homepage/_list--specification.scss */
+  /* line 561, src/scss/_components/homepage/_list--specification.scss */
   .list__specification-action > div.list__specification-action-desc, .list__snapshot-action > div.list__specification-action-desc {
     display: -webkit-box;
     display: -webkit-flex;
@@ -6111,11 +6122,11 @@ body.chatbot_active .go-top {
     display: flex;
     padding-bottom: 10px;
   }
-  /* line 564, src/scss/_components/homepage/_list--specification.scss */
+  /* line 567, src/scss/_components/homepage/_list--specification.scss */
   .list__specification-action > div.list__specification-action-desc p, .list__snapshot-action > div.list__specification-action-desc p {
     color: #6d6d78;
   }
-  /* line 567, src/scss/_components/homepage/_list--specification.scss */
+  /* line 570, src/scss/_components/homepage/_list--specification.scss */
   .list__specification-action > div.list__specification-action-desc p a, .list__snapshot-action > div.list__specification-action-desc p a {
     font-size: 10px;
     text-transform: uppercase;
@@ -6123,13 +6134,13 @@ body.chatbot_active .go-top {
   }
 }
 
-/* line 576, src/scss/_components/homepage/_list--specification.scss */
+/* line 579, src/scss/_components/homepage/_list--specification.scss */
 .list__specification-action > div.list__specification-action-skip, .list__snapshot-action > div.list__specification-action-skip {
   display: none;
 }
 
 @media screen and (max-width: 767px) {
-  /* line 576, src/scss/_components/homepage/_list--specification.scss */
+  /* line 579, src/scss/_components/homepage/_list--specification.scss */
   .list__specification-action > div.list__specification-action-skip, .list__snapshot-action > div.list__specification-action-skip {
     display: -webkit-box;
     display: -webkit-flex;
@@ -6138,7 +6149,7 @@ body.chatbot_active .go-top {
   }
 }
 
-/* line 583, src/scss/_components/homepage/_list--specification.scss */
+/* line 586, src/scss/_components/homepage/_list--specification.scss */
 .list__specification-action > div.is-hide, .list__snapshot-action > div.is-hide {
   opacity: 0;
   visibility: hidden;
@@ -6150,32 +6161,32 @@ body.chatbot_active .go-top {
 }
 
 @media screen and (max-width: 767px) {
-  /* line 583, src/scss/_components/homepage/_list--specification.scss */
+  /* line 586, src/scss/_components/homepage/_list--specification.scss */
   .list__specification-action > div.is-hide, .list__snapshot-action > div.is-hide {
     width: 0 !important;
   }
 }
 
-/* line 594, src/scss/_components/homepage/_list--specification.scss */
+/* line 597, src/scss/_components/homepage/_list--specification.scss */
 .list__specification-action > div:not(:last-of-type), .list__snapshot-action > div:not(:last-of-type) {
   margin-right: 10px;
 }
 
 @media screen and (max-width: 1279px) {
-  /* line 594, src/scss/_components/homepage/_list--specification.scss */
+  /* line 597, src/scss/_components/homepage/_list--specification.scss */
   .list__specification-action > div:not(:last-of-type), .list__snapshot-action > div:not(:last-of-type) {
     margin-right: 5px;
   }
 }
 
 @media screen and (max-width: 767.98px) {
-  /* line 594, src/scss/_components/homepage/_list--specification.scss */
+  /* line 597, src/scss/_components/homepage/_list--specification.scss */
   .list__specification-action > div:not(:last-of-type), .list__snapshot-action > div:not(:last-of-type) {
     margin-right: 0;
   }
 }
 
-/* line 606, src/scss/_components/homepage/_list--specification.scss */
+/* line 609, src/scss/_components/homepage/_list--specification.scss */
 .list__specification-visit, .list__specification-read, .list__snapshot-visit, .list__snapshot-read {
   position: relative;
   display: -webkit-box;
@@ -6199,18 +6210,18 @@ body.chatbot_active .go-top {
   padding: 0 10px;
 }
 
-/* line 620, src/scss/_components/homepage/_list--specification.scss */
+/* line 623, src/scss/_components/homepage/_list--specification.scss */
 .list__specification-visit:hover, .list__specification-read:hover, .list__snapshot-visit:hover, .list__snapshot-read:hover {
   color: #fff;
 }
 
-/* line 623, src/scss/_components/homepage/_list--specification.scss */
+/* line 626, src/scss/_components/homepage/_list--specification.scss */
 .list__specification-visit:focus, .list__specification-read:focus, .list__snapshot-visit:focus, .list__snapshot-read:focus {
   color: #fff;
 }
 
 @media screen and (max-width: 1199px) {
-  /* line 606, src/scss/_components/homepage/_list--specification.scss */
+  /* line 609, src/scss/_components/homepage/_list--specification.scss */
   .list__specification-visit, .list__specification-read, .list__snapshot-visit, .list__snapshot-read {
     min-width: 100px;
     height: 40px;
@@ -6219,7 +6230,7 @@ body.chatbot_active .go-top {
 }
 
 @media screen and (max-width: 767px) {
-  /* line 606, src/scss/_components/homepage/_list--specification.scss */
+  /* line 609, src/scss/_components/homepage/_list--specification.scss */
   .list__specification-visit, .list__specification-read, .list__snapshot-visit, .list__snapshot-read {
     min-width: 150px;
     height: 48px;
@@ -6227,7 +6238,7 @@ body.chatbot_active .go-top {
   }
 }
 
-/* line 638, src/scss/_components/homepage/_list--specification.scss */
+/* line 641, src/scss/_components/homepage/_list--specification.scss */
 .list__specification-visit, .list__snapshot-visit {
   -webkit-border-radius: 5px;
           border-radius: 5px;
@@ -6238,7 +6249,7 @@ body.chatbot_active .go-top {
   transition: background-color 0.35s ease-in-out;
 }
 
-/* line 644, src/scss/_components/homepage/_list--specification.scss */
+/* line 647, src/scss/_components/homepage/_list--specification.scss */
 .list__specification-visit:hover, .list__specification-visit:active, .list__specification-visit:focus, .list__snapshot-visit:hover, .list__snapshot-visit:active, .list__snapshot-visit:focus {
   background-color: transparent;
   -webkit-transition: background-color 0.35s ease-in-out;
@@ -6246,7 +6257,7 @@ body.chatbot_active .go-top {
   transition: background-color 0.35s ease-in-out;
 }
 
-/* line 650, src/scss/_components/homepage/_list--specification.scss */
+/* line 653, src/scss/_components/homepage/_list--specification.scss */
 .list__specification-read, .list__snapshot-read {
   border-width: 2px;
   border-color: #c5f015;
@@ -6258,7 +6269,7 @@ body.chatbot_active .go-top {
   transition: color 0.35s ease-in-out, background-color 0.35s ease-in-out;
 }
 
-/* line 657, src/scss/_components/homepage/_list--specification.scss */
+/* line 660, src/scss/_components/homepage/_list--specification.scss */
 .list__specification-read:hover, .list__snapshot-read:hover {
   background-color: #c5f015;
   color: #222222;
@@ -6267,7 +6278,7 @@ body.chatbot_active .go-top {
   transition: color 0.35s ease-in-out, background-color 0.35s ease-in-out;
 }
 
-/* line 664, src/scss/_components/homepage/_list--specification.scss */
+/* line 667, src/scss/_components/homepage/_list--specification.scss */
 .list__specification-circle, .list__snapshot-circle {
   overflow: hidden;
   position: relative;
@@ -6299,7 +6310,7 @@ body.chatbot_active .go-top {
 }
 
 @media screen and (max-width: 1279px) {
-  /* line 664, src/scss/_components/homepage/_list--specification.scss */
+  /* line 667, src/scss/_components/homepage/_list--specification.scss */
   .list__specification-circle, .list__snapshot-circle {
     width: 40px;
     height: 40px;
@@ -6307,7 +6318,7 @@ body.chatbot_active .go-top {
 }
 
 @media screen and (max-width: 900px) {
-  /* line 664, src/scss/_components/homepage/_list--specification.scss */
+  /* line 667, src/scss/_components/homepage/_list--specification.scss */
   .list__specification-circle, .list__snapshot-circle {
     width: 30px;
     height: 30px;
@@ -6315,7 +6326,7 @@ body.chatbot_active .go-top {
 }
 
 @media screen and (max-width: 767px) {
-  /* line 664, src/scss/_components/homepage/_list--specification.scss */
+  /* line 667, src/scss/_components/homepage/_list--specification.scss */
   .list__specification-circle, .list__snapshot-circle {
     -webkit-box-orient: vertical;
     -webkit-box-direction: normal;
@@ -6330,7 +6341,7 @@ body.chatbot_active .go-top {
   }
 }
 
-/* line 698, src/scss/_components/homepage/_list--specification.scss */
+/* line 701, src/scss/_components/homepage/_list--specification.scss */
 .list__specification-circle:after, .list__snapshot-circle:after {
   content: '';
   z-index: 0;
@@ -6359,7 +6370,7 @@ body.chatbot_active .go-top {
           animation-timing-function: ease-in-out;
 }
 
-/* line 716, src/scss/_components/homepage/_list--specification.scss */
+/* line 719, src/scss/_components/homepage/_list--specification.scss */
 .list__specification-circle:hover, .list__snapshot-circle:hover {
   background-color: rgba(0, 0, 0, 0.85);
   -webkit-transform: scale(1.05);
@@ -6371,7 +6382,7 @@ body.chatbot_active .go-top {
 }
 
 @media screen and (max-width: 767px) {
-  /* line 716, src/scss/_components/homepage/_list--specification.scss */
+  /* line 719, src/scss/_components/homepage/_list--specification.scss */
   .list__specification-circle:hover, .list__snapshot-circle:hover {
     background-color: transparent;
     -webkit-transform: scale(1);
@@ -6380,7 +6391,7 @@ body.chatbot_active .go-top {
   }
 }
 
-/* line 726, src/scss/_components/homepage/_list--specification.scss */
+/* line 729, src/scss/_components/homepage/_list--specification.scss */
 .list__specification-circle.is-active, .list__snapshot-circle.is-active {
   border-color: #c5f015;
   -webkit-transition: all 0.4s ease-in-out;
@@ -6389,37 +6400,37 @@ body.chatbot_active .go-top {
 }
 
 @media screen and (max-width: 767px) {
-  /* line 726, src/scss/_components/homepage/_list--specification.scss */
+  /* line 729, src/scss/_components/homepage/_list--specification.scss */
   .list__specification-circle.is-active, .list__snapshot-circle.is-active {
     border-color: transparent;
   }
 }
 
-/* line 733, src/scss/_components/homepage/_list--specification.scss */
+/* line 736, src/scss/_components/homepage/_list--specification.scss */
 .list__specification-circle.is-active:after, .list__snapshot-circle.is-active:after {
   -webkit-animation-name: flashBlinking;
           animation-name: flashBlinking;
 }
 
 @media screen and (max-width: 767px) {
-  /* line 733, src/scss/_components/homepage/_list--specification.scss */
+  /* line 736, src/scss/_components/homepage/_list--specification.scss */
   .list__specification-circle.is-active:after, .list__snapshot-circle.is-active:after {
     -webkit-animation: unset;
             animation: unset;
   }
 }
 
-/* line 742, src/scss/_components/homepage/_list--specification.scss */
+/* line 745, src/scss/_components/homepage/_list--specification.scss */
 .list__specification-circle.is-active + .c-poppertext > u:nth-of-type(1), .list__snapshot-circle.is-active + .c-poppertext > u:nth-of-type(1) {
   display: none;
 }
 
-/* line 745, src/scss/_components/homepage/_list--specification.scss */
+/* line 748, src/scss/_components/homepage/_list--specification.scss */
 .list__specification-circle.is-active + .c-poppertext > u:nth-of-type(2), .list__snapshot-circle.is-active + .c-poppertext > u:nth-of-type(2) {
   display: block;
 }
 
-/* line 751, src/scss/_components/homepage/_list--specification.scss */
+/* line 754, src/scss/_components/homepage/_list--specification.scss */
 .list__specification-circle.is-active .icon-font, .list__snapshot-circle.is-active .icon-font {
   color: #c5f015;
   -webkit-transition: all 0.4s ease-in-out;
@@ -6427,7 +6438,7 @@ body.chatbot_active .go-top {
   transition: all 0.4s ease-in-out;
 }
 
-/* line 757, src/scss/_components/homepage/_list--specification.scss */
+/* line 760, src/scss/_components/homepage/_list--specification.scss */
 .list__specification-circle .icon-font, .list__snapshot-circle .icon-font {
   color: #ffffff;
   font-size: 24px;
@@ -6437,27 +6448,27 @@ body.chatbot_active .go-top {
 }
 
 @media screen and (max-width: 1279px) {
-  /* line 757, src/scss/_components/homepage/_list--specification.scss */
+  /* line 760, src/scss/_components/homepage/_list--specification.scss */
   .list__specification-circle .icon-font, .list__snapshot-circle .icon-font {
     font-size: 20px;
   }
 }
 
 @media screen and (max-width: 900px) {
-  /* line 757, src/scss/_components/homepage/_list--specification.scss */
+  /* line 760, src/scss/_components/homepage/_list--specification.scss */
   .list__specification-circle .icon-font, .list__snapshot-circle .icon-font {
     font-size: 14px;
   }
 }
 
 @media screen and (max-width: 767px) {
-  /* line 757, src/scss/_components/homepage/_list--specification.scss */
+  /* line 760, src/scss/_components/homepage/_list--specification.scss */
   .list__specification-circle .icon-font, .list__snapshot-circle .icon-font {
     font-size: 26px;
   }
 }
 
-/* line 773, src/scss/_components/homepage/_list--specification.scss */
+/* line 776, src/scss/_components/homepage/_list--specification.scss */
 .list__specification-circle span, .list__snapshot-circle span {
   display: none;
   padding-top: 3px;
@@ -6467,7 +6478,7 @@ body.chatbot_active .go-top {
 }
 
 @media screen and (max-width: 767px) {
-  /* line 773, src/scss/_components/homepage/_list--specification.scss */
+  /* line 776, src/scss/_components/homepage/_list--specification.scss */
   .list__specification-circle span, .list__snapshot-circle span {
     display: -webkit-box;
     display: -webkit-flex;
@@ -6476,47 +6487,47 @@ body.chatbot_active .go-top {
   }
 }
 
-/* line 786, src/scss/_components/homepage/_list--specification.scss */
+/* line 789, src/scss/_components/homepage/_list--specification.scss */
 .list__specification-like .icon-font, .list__snapshot-like .icon-font {
   -webkit-transform: scaleX(-1);
       -ms-transform: scaleX(-1);
           transform: scaleX(-1);
 }
 
-/* line 792, src/scss/_components/homepage/_list--specification.scss */
+/* line 795, src/scss/_components/homepage/_list--specification.scss */
 .list__specification-dislike .icon-font, .list__snapshot-dislike .icon-font {
   -webkit-transform: scale(-1);
       -ms-transform: scale(-1);
           transform: scale(-1);
 }
 
-/* line 799, src/scss/_components/homepage/_list--specification.scss */
+/* line 802, src/scss/_components/homepage/_list--specification.scss */
 .list__specification-favorites.is-active .icon-font, .list__snapshot-favorites.is-active .icon-font {
   -webkit-transition: all 0.4s ease-in-out;
   -o-transition: all 0.4s ease-in-out;
   transition: all 0.4s ease-in-out;
 }
 
-/* line 802, src/scss/_components/homepage/_list--specification.scss */
+/* line 805, src/scss/_components/homepage/_list--specification.scss */
 .list__specification-favorites.is-active .icon-font.icon-star-fill, .list__snapshot-favorites.is-active .icon-font.icon-star-fill {
   opacity: 0;
   visibility: hidden;
 }
 
-/* line 806, src/scss/_components/homepage/_list--specification.scss */
+/* line 809, src/scss/_components/homepage/_list--specification.scss */
 .list__specification-favorites.is-active .icon-font.icon-star, .list__snapshot-favorites.is-active .icon-font.icon-star {
   opacity: 1;
   visibility: visible;
 }
 
-/* line 813, src/scss/_components/homepage/_list--specification.scss */
+/* line 816, src/scss/_components/homepage/_list--specification.scss */
 .list__specification-favorites .icon-font, .list__snapshot-favorites .icon-font {
   -webkit-transition: all 0.4s ease-in-out;
   -o-transition: all 0.4s ease-in-out;
   transition: all 0.4s ease-in-out;
 }
 
-/* line 816, src/scss/_components/homepage/_list--specification.scss */
+/* line 819, src/scss/_components/homepage/_list--specification.scss */
 .list__specification-favorites .icon-font.icon-star, .list__snapshot-favorites .icon-font.icon-star {
   opacity: 0;
   visibility: hidden;
@@ -6524,13 +6535,13 @@ body.chatbot_active .go-top {
 }
 
 @media screen and (max-width: 767px) {
-  /* line 816, src/scss/_components/homepage/_list--specification.scss */
+  /* line 819, src/scss/_components/homepage/_list--specification.scss */
   .list__specification-favorites .icon-font.icon-star, .list__snapshot-favorites .icon-font.icon-star {
     top: 3px;
   }
 }
 
-/* line 827, src/scss/_components/homepage/_list--specification.scss */
+/* line 830, src/scss/_components/homepage/_list--specification.scss */
 .list__specification-desc, .list__snapshot-desc {
   width: 100%;
   max-width: 460px;
@@ -6539,7 +6550,7 @@ body.chatbot_active .go-top {
 }
 
 @media screen and (max-width: 1023px) {
-  /* line 827, src/scss/_components/homepage/_list--specification.scss */
+  /* line 830, src/scss/_components/homepage/_list--specification.scss */
   .list__specification-desc, .list__snapshot-desc {
     font-size: 13px;
     -o-text-overflow: ellipsis;
@@ -6552,13 +6563,13 @@ body.chatbot_active .go-top {
 }
 
 @media screen and (max-width: 767px) {
-  /* line 827, src/scss/_components/homepage/_list--specification.scss */
+  /* line 830, src/scss/_components/homepage/_list--specification.scss */
   .list__specification-desc, .list__snapshot-desc {
     display: none;
   }
 }
 
-/* line 847, src/scss/_components/homepage/_list--specification.scss */
+/* line 850, src/scss/_components/homepage/_list--specification.scss */
 .list__specification-play, .list__snapshot-play {
   z-index: 20;
   position: absolute;
@@ -6592,14 +6603,14 @@ body.chatbot_active .go-top {
 }
 
 @media screen and (max-width: 767px) {
-  /* line 847, src/scss/_components/homepage/_list--specification.scss */
+  /* line 850, src/scss/_components/homepage/_list--specification.scss */
   .list__specification-play, .list__snapshot-play {
     width: 115px;
     height: 115px;
   }
 }
 
-/* line 866, src/scss/_components/homepage/_list--specification.scss */
+/* line 869, src/scss/_components/homepage/_list--specification.scss */
 .list__specification-play:hover, .list__snapshot-play:hover {
   -webkit-transform: translate(-50%, -50%) scale(0.8);
       -ms-transform: translate(-50%, -50%) scale(0.8);
@@ -6611,7 +6622,7 @@ body.chatbot_active .go-top {
   transition: transform 0.55s ease-in-out, -webkit-transform 0.55s ease-in-out;
 }
 
-/* line 871, src/scss/_components/homepage/_list--specification.scss */
+/* line 874, src/scss/_components/homepage/_list--specification.scss */
 .list__specification-play.is-active, .list__snapshot-play.is-active {
   opacity: 0;
   visibility: hidden;
@@ -6620,7 +6631,7 @@ body.chatbot_active .go-top {
   transition: opacity 0.35s ease-in-out, visibility 0.35s ease-in-out;
 }
 
-/* line 877, src/scss/_components/homepage/_list--specification.scss */
+/* line 880, src/scss/_components/homepage/_list--specification.scss */
 .list__specification-play .icon-font, .list__snapshot-play .icon-font {
   position: relative;
   left: 5px;
@@ -6629,13 +6640,13 @@ body.chatbot_active .go-top {
 }
 
 @media screen and (max-width: 767px) {
-  /* line 877, src/scss/_components/homepage/_list--specification.scss */
+  /* line 880, src/scss/_components/homepage/_list--specification.scss */
   .list__specification-play .icon-font, .list__snapshot-play .icon-font {
     font-size: 45px;
   }
 }
 
-/* line 888, src/scss/_components/homepage/_list--specification.scss */
+/* line 891, src/scss/_components/homepage/_list--specification.scss */
 .list__specification-pause, .list__snapshot-pause {
   z-index: 20;
   opacity: 0;
@@ -6652,7 +6663,7 @@ body.chatbot_active .go-top {
   transition: opacity 0.35s ease-in-out, visibility 0.35s ease-in-out;
 }
 
-/* line 898, src/scss/_components/homepage/_list--specification.scss */
+/* line 901, src/scss/_components/homepage/_list--specification.scss */
 .list__specification-pause.is-active, .list__snapshot-pause.is-active {
   opacity: 1;
   visibility: visible;
@@ -6661,13 +6672,13 @@ body.chatbot_active .go-top {
   transition: opacity 0.35s ease-in-out, visibility 0.35s ease-in-out;
 }
 
-/* line 904, src/scss/_components/homepage/_list--specification.scss */
+/* line 907, src/scss/_components/homepage/_list--specification.scss */
 .list__specification-pause .icon-font, .list__snapshot-pause .icon-font {
   color: #ffffff;
   font-size: 18px;
 }
 
-/* line 910, src/scss/_components/homepage/_list--specification.scss */
+/* line 913, src/scss/_components/homepage/_list--specification.scss */
 .list__specification-more, .list__snapshot-more {
   display: none;
   -webkit-box-ordinal-group: 5;
@@ -6689,7 +6700,7 @@ body.chatbot_active .go-top {
 }
 
 @media screen and (max-width: 767px) {
-  /* line 910, src/scss/_components/homepage/_list--specification.scss */
+  /* line 913, src/scss/_components/homepage/_list--specification.scss */
   .list__specification-more, .list__snapshot-more {
     display: -webkit-box;
     display: -webkit-flex;
@@ -6699,14 +6710,14 @@ body.chatbot_active .go-top {
 }
 
 @media screen and (max-width: 767px) {
-  /* line 910, src/scss/_components/homepage/_list--specification.scss */
+  /* line 913, src/scss/_components/homepage/_list--specification.scss */
   .list__specification-more, .list__snapshot-more {
     min-height: 320px;
     padding: 10px;
   }
 }
 
-/* line 927, src/scss/_components/homepage/_list--specification.scss */
+/* line 930, src/scss/_components/homepage/_list--specification.scss */
 .list__specification-more > div:nth-of-type(1), .list__snapshot-more > div:nth-of-type(1) {
   display: -webkit-box;
   display: -webkit-flex;
@@ -6716,7 +6727,7 @@ body.chatbot_active .go-top {
   padding-bottom: 20px;
 }
 
-/* line 932, src/scss/_components/homepage/_list--specification.scss */
+/* line 935, src/scss/_components/homepage/_list--specification.scss */
 .list__specification-more > div:nth-of-type(1) p, .list__snapshot-more > div:nth-of-type(1) p {
   color: #ffffff;
   font-size: 18px;
@@ -6724,7 +6735,7 @@ body.chatbot_active .go-top {
   border-bottom: 2px solid #c5f015;
 }
 
-/* line 939, src/scss/_components/homepage/_list--specification.scss */
+/* line 942, src/scss/_components/homepage/_list--specification.scss */
 .list__specification-more > div:nth-of-type(2), .list__snapshot-more > div:nth-of-type(2) {
   display: -webkit-box;
   display: -webkit-flex;
@@ -6737,13 +6748,13 @@ body.chatbot_active .go-top {
 }
 
 @media screen and (max-width: 767px) {
-  /* line 939, src/scss/_components/homepage/_list--specification.scss */
+  /* line 942, src/scss/_components/homepage/_list--specification.scss */
   .list__specification-more > div:nth-of-type(2), .list__snapshot-more > div:nth-of-type(2) {
     height: auto;
   }
 }
 
-/* line 950, src/scss/_components/homepage/_list--specification.scss */
+/* line 953, src/scss/_components/homepage/_list--specification.scss */
 .list__specification-more .list__box, .list__snapshot-more .list__box {
   z-index: -1;
   position: relative;
@@ -6761,13 +6772,13 @@ body.chatbot_active .go-top {
 }
 
 @media screen and (max-width: 767px) {
-  /* line 950, src/scss/_components/homepage/_list--specification.scss */
+  /* line 953, src/scss/_components/homepage/_list--specification.scss */
   .list__specification-more .list__box, .list__snapshot-more .list__box {
     padding: 15px;
   }
 }
 
-/* line 964, src/scss/_components/homepage/_list--specification.scss */
+/* line 967, src/scss/_components/homepage/_list--specification.scss */
 .is-open .list__specification-more .list__box, .is-open .list__snapshot-more .list__box {
   z-index: auto;
 }

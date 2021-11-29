@@ -128,8 +128,8 @@
 
 	@include adaptive(767) {
 		height: 100vh;
-		height: calc(var(--vh, 1vh) * 100);
-		min-height: calc(var(--vh, 1vh) * 100);
+		/*height: calc(var(--vh, 1vh) * 100);
+		min-height: calc(var(--vh, 1vh) * 100);*/
 		overflow: auto;
 	}
 
@@ -486,7 +486,10 @@
 				display: flex;
 				top: 50%;
 				transform: translateY(-50%);
-				right: 20px;
+				right: 10px;
+				padding: 10px;
+				height: 100%;
+				align-items: center;
 			}
 		}
 	}
