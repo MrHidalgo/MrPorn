@@ -38,6 +38,8 @@
 		display: block;
 		max-width: 100%;
 		height: auto;
+		will-change: transform;
+		transform: translateZ(0);
 
 		&.logo_footer{
 			aspect-ratio: attr(width) / attr(height);

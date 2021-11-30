@@ -14,6 +14,8 @@ let dataTime;
 let videoPaused = false;
 
 let currentLang = 'en';
+let goTop;
+let wInnerWidth;
 
 
 if (!Element.prototype.matches) {
@@ -116,6 +118,38 @@ function verifyAge(){
 	}
 }
 
+const debounce = (fn) => {
+
+	// This holds the requestAnimationFrame reference, so we can cancel it if we wish
+	let frame;
+
+	// The debounce function returns a new function that can receive a variable number of arguments
+	return (...params) => {
+
+		// If the frame variable has been defined, clear it now, and queue for next frame
+		if (frame) {
+			cancelAnimationFrame(frame);
+		}
+
+		// Queue our function call for the next frame
+		frame = requestAnimationFrame(() => {
+
+			// Call our function and pass any params we received
+			fn(...params);
+		});
+
+	}
+};
+
+const storeScroll = () => {
+	//document.documentElement.dataset.scroll = window.scrollY;
+	if (window.scrollY > 200) {
+		show(goTop);
+	} else {
+		hide(goTop);
+	}
+}
+
 function showAcceptCookie(){
 	if(document.documentElement.lang=='de'){
 		var isAccepted = getCookieMpgCookie("accept");
@@ -145,15 +179,10 @@ let isCategoriesRendered = false;
 	 */
 
 	if(!navigator.userAgent.toLowerCase().includes('lighthouse')){
-		let vh = window.innerHeight * 0.01;
-		if(document.body.classList.contains('home')){
-			document.documentElement.style.setProperty('--vh', `${vh}px`);
-		}
-
 		initLoggedUser();
 	}
 
-	let headerHeight = document.querySelector('#header').getBoundingClientRect().height;
+	let headerHeight = 0;
 
 
 	const initHome = () =>{
@@ -184,7 +213,6 @@ let isCategoriesRendered = false;
 
 
 		let wY = window.scrollY;
-		headerHeight = document.querySelector('#header').getBoundingClientRect().height;
 
 		let categoryListH = document.querySelector('.c-grid.list').getBoundingClientRect().height;
 		let listBoxes = document.querySelectorAll('.list__box-wrapper');
@@ -750,12 +778,15 @@ let isCategoriesRendered = false;
 	}
 
 	function initGotoTop(){
-		var goTop = document.querySelector('.go-top');
+		//var goTop = document.querySelector('.go-top');
 
 		//adjustStickHeader();
 		//loadOtherHomeCategories();
 
-		window.onscroll = function(){
+		document.addEventListener('scroll', debounce(storeScroll), { passive: true });
+		storeScroll();
+
+		/*window.onscroll = function(){
 			//adjustStickHeader();
 			//loadOtherHomeCategories();
 
@@ -774,7 +805,7 @@ let isCategoriesRendered = false;
 					hide(goTop);
 				}
 			}
-		}
+		}*/
 		if(goTop){
 			goTop.onclick = function(event) {
 				doScrolling(0, 200);
@@ -1025,6 +1056,8 @@ let isCategoriesRendered = false;
 			sortCB();
 		}
 
+		goTop = document.querySelector('.go-top');
+
 
 		initGotoTop();
 
@@ -1100,7 +1133,14 @@ let isCategoriesRendered = false;
 			});
 
 			window.addEventListener('resize', () => {
-				if(window.innerWidth > 1023) {
+				wInnerWidth = window.innerWidth;
+				headerHeight = document.querySelector('#header').getBoundingClientRect().height;
+				if (document.body.classList.contains('home')) {
+					let vh = window.innerHeight * 0.01;
+					document.documentElement.style.setProperty('--vh', `${vh}px`);
+				}
+
+				if(wInnerWidth > 1023) {
 					if(document.querySelector('.list__specification.is-open')) {
 						document.getElementsByTagName('html')[0].classList.remove('is-hideScroll');
 						document.getElementsByTagName('body')[0].classList.remove('is-hideScroll');

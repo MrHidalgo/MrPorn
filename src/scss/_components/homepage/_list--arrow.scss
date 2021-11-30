@@ -6,6 +6,8 @@
 	width: 75px;
 	/*height: calc(100% - 30px);*/
 	height: 100%;
+	will-change: transform;
+	transform: translateZ(0);
 	@include transition(opacity, visibility, height);
 	@include adaptive(767) {
 		width: 40px;

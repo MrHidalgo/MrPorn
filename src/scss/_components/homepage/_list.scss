@@ -36,10 +36,14 @@
 			@include respond('ipad_landscape'){
 				width: 130px !important;
 				height: 130px;
+				will-change: transform;
+				transform: translateZ(0);
 			}
 			@include adaptive(767) {
 				width: 100px !important;
 				height: 100px;
+				will-change: transform;
+				transform: translateZ(0);
 			}
 
 			.is-mobile & {
@@ -388,6 +392,8 @@
 		z-index: 20;
 		border-radius: 6px;
 		border: 1px dashed #fff;
+		will-change: transform;
+		transform: translateZ(0);
 	}
 	&--banner{
 		width: 100%;

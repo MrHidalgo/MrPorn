@@ -1094,6 +1094,8 @@ var isLoggedUser = false;
 var dataTime;
 var videoPaused = false;
 var currentLang = 'en';
+var goTop;
+var wInnerWidth;
 
 if (!Element.prototype.matches) {
   Element.prototype.matches = Element.prototype.msMatchesSelector || Element.prototype.webkitMatchesSelector;
@@ -1185,6 +1187,37 @@ function verifyAge() {
   }
 }
 
+var debounce = function debounce(fn) {
+  // This holds the requestAnimationFrame reference, so we can cancel it if we wish
+  var frame; // The debounce function returns a new function that can receive a variable number of arguments
+
+  return function () {
+    for (var _len = arguments.length, params = new Array(_len), _key = 0; _key < _len; _key++) {
+      params[_key] = arguments[_key];
+    }
+
+    // If the frame variable has been defined, clear it now, and queue for next frame
+    if (frame) {
+      cancelAnimationFrame(frame);
+    } // Queue our function call for the next frame
+
+
+    frame = requestAnimationFrame(function () {
+      // Call our function and pass any params we received
+      fn.apply(void 0, params);
+    });
+  };
+};
+
+var storeScroll = function storeScroll() {
+  //document.documentElement.dataset.scroll = window.scrollY;
+  if (window.scrollY > 200) {
+    show(goTop);
+  } else {
+    hide(goTop);
+  }
+};
+
 function showAcceptCookie() {
   if (document.documentElement.lang == 'de') {
     var isAccepted = getCookieMpgCookie("accept");
@@ -1212,16 +1245,10 @@ var isCategoriesRendered = false;
    * ===================================
    */
   if (!navigator.userAgent.toLowerCase().includes('lighthouse')) {
-    var vh = window.innerHeight * 0.01;
-
-    if (document.body.classList.contains('home')) {
-      document.documentElement.style.setProperty('--vh', "".concat(vh, "px"));
-    }
-
     initLoggedUser();
   }
 
-  var headerHeight = document.querySelector('#header').getBoundingClientRect().height;
+  var headerHeight = 0;
 
   var initHome = function initHome() {
     homeScroll();
@@ -1249,7 +1276,6 @@ var isCategoriesRendered = false;
     }
 
     var wY = window.scrollY;
-    headerHeight = document.querySelector('#header').getBoundingClientRect().height;
     var categoryListH = document.querySelector('.c-grid.list').getBoundingClientRect().height;
     var listBoxes = document.querySelectorAll('.list__box-wrapper');
     var firstCategoryListHeight = listBoxes[0].getBoundingClientRect().height;
@@ -1570,7 +1596,7 @@ var isCategoriesRendered = false;
       }, false);
     }
 
-    for (var _i = 0, _len = videoPauseBtns.length; _i < _len; _i++) {
+    for (var _i = 0, _len2 = videoPauseBtns.length; _i < _len2; _i++) {
       videoPauseBtns[_i].addEventListener('click', function (ev) {
         var el = ev.currentTarget;
         onPauseClick(el);
@@ -1748,30 +1774,32 @@ var isCategoriesRendered = false;
   }
 
   function initGotoTop() {
-    var goTop = document.querySelector('.go-top'); //adjustStickHeader();
+    //var goTop = document.querySelector('.go-top');
+    //adjustStickHeader();
     //loadOtherHomeCategories();
-
-    window.onscroll = function () {
-      //adjustStickHeader();
-      //loadOtherHomeCategories();
-      if (window.scrollY > 200) {
-        show(goTop);
-      } else {
-        hide(goTop);
-      }
-    };
-
-    document.querySelector('body').ontouchmove = function () {
-      if (document.querySelector(".main-outer")) {
-        var mainScroll = -document.querySelector(".main-outer").getBoundingClientRect().top;
-
-        if (mainScroll > 200) {
-          show(goTop);
-        } else {
-          hide(goTop);
-        }
-      }
-    };
+    document.addEventListener('scroll', debounce(storeScroll), {
+      passive: true
+    });
+    storeScroll();
+    /*window.onscroll = function(){
+    	//adjustStickHeader();
+    	//loadOtherHomeCategories();
+    		if (window.scrollY > 200) {
+    		show(goTop);
+    	} else {
+    		hide(goTop);
+    	}
+    }
+    document.querySelector('body').ontouchmove = function(){
+    	if(document.querySelector(".main-outer")){
+    		var mainScroll = -document.querySelector(".main-outer").getBoundingClientRect().top;
+    		if (mainScroll > 200) {
+    			show(goTop);
+    		} else {
+    			hide(goTop);
+    		}
+    	}
+    }*/
 
     if (goTop) {
       goTop.onclick = function (event) {
@@ -2004,6 +2032,7 @@ var isCategoriesRendered = false;
       sortCB();
     }
 
+    goTop = document.querySelector('.go-top');
     initGotoTop();
     loadOtherHomeCategories();
     letterSearch();
@@ -2060,7 +2089,15 @@ var isCategoriesRendered = false;
         }, 500);
       });
       window.addEventListener('resize', function () {
-        if (window.innerWidth > 1023) {
+        wInnerWidth = window.innerWidth;
+        headerHeight = document.querySelector('#header').getBoundingClientRect().height;
+
+        if (document.body.classList.contains('home')) {
+          var vh = window.innerHeight * 0.01;
+          document.documentElement.style.setProperty('--vh', "".concat(vh, "px"));
+        }
+
+        if (wInnerWidth > 1023) {
           if (document.querySelector('.list__specification.is-open')) {
             document.getElementsByTagName('html')[0].classList.remove('is-hideScroll');
             document.getElementsByTagName('body')[0].classList.remove('is-hideScroll');
