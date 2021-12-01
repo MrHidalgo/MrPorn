@@ -231,10 +231,12 @@ let isCategoriesRendered = false;
 					let categoryHtml = renderSiteCategory(listBoxes.length);
 					catListContainer.insertAdjacentHTML( 'beforeend', categoryHtml );
 
-					swiperCB(
+					/*swiperCB(
 						`.swiper-container[data-id="listSlider_${catId}"]`,
 						`.list__box-wrapper[data-name='category_${catId}']`
-					);
+					);*/
+
+					glideCB(`.glide[data-category="${catId}"]`)
 
 					boxHover();
 				}

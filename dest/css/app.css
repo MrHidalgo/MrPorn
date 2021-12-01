@@ -7937,4 +7937,94 @@ body:not(.opened) .modal-container {
   background: #DA2632;
 }
 
+/* line 850, src/scss/_components/homepage/_list.scss */
+.wrap {
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+/* line 855, src/scss/_components/homepage/_list.scss */
+.glide__slide {
+  border: 1px solid black;
+  text-align: center;
+}
+
+/* line 862, src/scss/_components/homepage/_list.scss */
+#glide1 .glide__slide,
+#glide2 .glide__slide {
+  height: 100px;
+  line-height: 100px;
+}
+
+/* line 869, src/scss/_components/homepage/_list.scss */
+#glide3 .glide__slide {
+  position: relative;
+  height: 60px;
+}
+
+/* line 874, src/scss/_components/homepage/_list.scss */
+#glide3 a {
+  display: block;
+  width: 100%;
+  border: 1px red solid;
+  position: absolute;
+  bottom: 0;
+}
+
+/* line 881, src/scss/_components/homepage/_list.scss */
+#glide3 img {
+  border: 1px solid blue;
+  margin: 0 auto;
+  display: block;
+  max-width: 90%;
+  max-height: 60px;
+}
+
+/* line 893, src/scss/_components/homepage/_list.scss */
+#glide4 .glide__slides {
+  background-color: #f3f1f1;
+  margin-top: 40px;
+  padding: 20px 0;
+}
+
+/* line 898, src/scss/_components/homepage/_list.scss */
+#glide4 .glide__slide {
+  position: relative;
+  height: 60px;
+  border: none;
+}
+
+/* line 904, src/scss/_components/homepage/_list.scss */
+#glide4 a {
+  display: block;
+  width: 100%;
+  position: absolute;
+  bottom: 0;
+}
+
+/* line 911, src/scss/_components/homepage/_list.scss */
+#glide4 img {
+  margin: 0 auto;
+  display: block;
+  max-width: 70%;
+  max-height: 60px;
+}
+
+/* line 922, src/scss/_components/homepage/_list.scss */
+button.glide__arrow {
+  background-color: red;
+  border: none;
+  font-size: 11px;
+}
+
+/* line 927, src/scss/_components/homepage/_list.scss */
+button.glide__arrow--left {
+  left: 5px;
+}
+
+/* line 931, src/scss/_components/homepage/_list.scss */
+button.glide__arrow--right {
+  right: 5px;
+}
+
 /*# sourceMappingURL=maps/app.css.map */

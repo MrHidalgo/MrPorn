@@ -1288,7 +1288,12 @@ var isCategoriesRendered = false;
           var catId = homeData.categories_indexes[listBoxes.length];
           var categoryHtml = renderSiteCategory(listBoxes.length);
           catListContainer.insertAdjacentHTML('beforeend', categoryHtml);
-          swiperCB(".swiper-container[data-id=\"listSlider_".concat(catId, "\"]"), ".list__box-wrapper[data-name='category_".concat(catId, "']"));
+          /*swiperCB(
+          	`.swiper-container[data-id="listSlider_${catId}"]`,
+          	`.list__box-wrapper[data-name='category_${catId}']`
+          );*/
+
+          glideCB(".glide[data-category=\"".concat(catId, "\"]"));
           boxHover();
         }
       }

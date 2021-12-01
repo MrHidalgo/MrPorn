@@ -1157,10 +1157,11 @@ function generateSwiper(catId){
 		}
 
 
-		swiperCB(
+		/*swiperCB(
 			`.swiper[data-id="listSlider_${catId}"]`,
 			`.list__box-wrapper[data-name='category_${catId}']`
-		);
+		);*/
+		glideCB(`.glide[data-category="${catId}"]`)
 
 		if(!categoryWrapper.querySelector('.list__specification-wrapper')){
 			categoryWrapper.insertAdjacentHTML('beforeend', '<div class="list__specification-wrapper"></div>');

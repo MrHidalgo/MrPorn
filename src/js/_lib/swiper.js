@@ -5,7 +5,29 @@
  *
  * @description initialize Swiper
  */
+function glideCB(swiperName, sliderArrow, scrollBar) {
+	let glide = new Glide(swiperName, {
+		type: 'carousel',
+		autoplay: false,
+		perView: 3
+	})
+	glide.mount()
+	glide.on('run.before', evt => {
+		const scrollSteps = 3;
+		if (evt.direction === '>') {
+			evt.steps = -scrollSteps;
+		} else if (evt.direction === '<') {
+			evt.steps = scrollSteps;
+		}
+	});
+}
+
 function swiperCB(swiperName, sliderArrow, scrollBar) {
+
+	if(true){
+		return;
+	}
+
 	let categorySwiper = new Swiper(swiperName, {
 		loop: false,
 		// cssMode: true,
