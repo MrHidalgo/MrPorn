@@ -219,9 +219,6 @@ let isCategoriesRendered = false;
 		document.addEventListener('click', function(ev) {
 			const _ev = ev.target;
 
-			if(!_ev.closest('.nav_link')){
-				//ev.preventDefault();
-			}
 
 			if(_ev.closest('[sort-node-js]')){
 				console.log('Clicked sorting');
@@ -381,6 +378,22 @@ let isCategoriesRendered = false;
 			}
 		}, false);
 	};
+
+	function initTouchEvents(){
+		document.addEventListener('touchstart', function(ev) {
+			const _ev = ev.target;
+
+			if(_ev.closest('.swiper-slide') || _ev.classList.contains('swiper-slide')){
+				onSlideTouchStart(ev)
+			}
+		});
+		document.addEventListener('touchend', function(ev) {
+			const _ev = ev.target;
+			if(_ev.closest('.swiper-slide') || _ev.classList.contains('swiper-slide')){
+				onSlideTouchEnd(ev)
+			}
+		});
+	}
 
 	function onSiteBoxHoverClick(_el){
 		let siteBoxLink = _el.querySelector('.site_link')
@@ -749,22 +762,14 @@ let isCategoriesRendered = false;
 	}
 
 	function initGotoTop(){
-		var goTop = document.querySelector('.go-top');
-
-		//adjustStickHeader();
-		//loadOtherHomeCategories();
-
-		window.onscroll = function(){
-			//adjustStickHeader();
-			//loadOtherHomeCategories();
-
-			if (window.scrollY > 200) {
-				show(goTop);
-			} else {
-				hide(goTop);
-			}
-		}
-		document.querySelector('body').ontouchmove = function(){
+		// window.onscroll = function(){
+		// 	if (window.scrollY > 200) {
+		// 		show(goTop);
+		// 	} else {
+		// 		hide(goTop);
+		// 	}
+		// }
+		/*document.querySelector('body').ontouchmove = function(){
 			if(document.querySelector(".main-outer")){
 				var mainScroll = -document.querySelector(".main-outer").getBoundingClientRect().top;
 				if (mainScroll > 200) {
@@ -773,7 +778,7 @@ let isCategoriesRendered = false;
 					hide(goTop);
 				}
 			}
-		}
+		}*/
 		if(goTop){
 			goTop.onclick = function(event) {
 				doScrolling(0, 200);
@@ -1008,6 +1013,10 @@ let isCategoriesRendered = false;
 		// callback
 		detectDevice();
 		bodyClick();
+
+		if(isMobileOrTablet){
+			initTouchEvents();
+		}
 
 		dataTime = document.querySelector('meta[name="data_time"]').content;
 		loadTranslations();

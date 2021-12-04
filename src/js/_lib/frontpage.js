@@ -22,6 +22,7 @@ let siteModal;
 let headerHeight = null;
 let swiperClientWidth = null;
 let swiperClientHeight = null;
+let currentBannerSection = null;
 
 let _slideWidth, _slidePaddingLeft, _slidePaddingRight, _slideMarginLeft, _slideMarginRight, _slideBoxSizing = null;
 
@@ -1231,11 +1232,11 @@ const boxHover = () => {
 
 			if(isMobileOrTablet){
 
-				swiperSlides[i].removeEventListener('touchend', onSlideTouchEnd);
+				/*swiperSlides[i].removeEventListener('touchend', onSlideTouchEnd);
 				swiperSlides[i].addEventListener('touchend', onSlideTouchEnd, false);
 
 				swiperSlides[i].removeEventListener('touchstart', onSlideTouchStart);
-				swiperSlides[i].addEventListener('touchstart', onSlideTouchStart, {passive: true});
+				swiperSlides[i].addEventListener('touchstart', onSlideTouchStart, {passive: true});*/
 
 				//swiperSlides[i].removeEventListener('touchmove', onSlideTouchMove);
 				//swiperSlides[i].addEventListener('touchmove', onSlideTouchMove, false);
@@ -1579,14 +1580,14 @@ function onSlideTouchStart(ev){
 	greenBar.style.width = greenBarWidth+'px';
 	if(!isAnimationStarted){
 		isAnimationStarted = true;
-		requestAnimationFrame(animateGreenBar);
+		//requestAnimationFrame(animateGreenBar);
 	}
 
-	if(_greenBarTimer){
-		clearInterval(_greenBarTimer);
-	}
+	// if(_greenBarTimer){
+	// 	clearInterval(_greenBarTimer);
+	// }
 
-	moveGreenBar(barLeft, hoverBoxLeft);
+	//moveGreenBar(barLeft, hoverBoxLeft);
 
 	//greenBar.setAttribute('style', transformVal + '; transition-duration:350ms; width: '+greenBarWidth+'px');
 }
@@ -1954,9 +1955,6 @@ function showBanner(_el, isSkip = false, target = false){
 
 	videoPaused = true;
 
-	/*	if(true){
-			return;
-		}*/
 	let _boxId = 0;
 	if(!isMobileOrTablet){
 		_boxId = previewModal.dataset.siteId;
@@ -1973,7 +1971,6 @@ function showBanner(_el, isSkip = false, target = false){
 	var swiperWrapper = _el.closest('.swiper-wrapper');
 	var listBoxWrapper = _el.closest('.list__box-wrapper');
 
-	var currentBannerSection = document.querySelector('.list__specification');
 	if(currentBannerSection && !isSkip){
 		currentBannerSection.remove();
 	}
@@ -1992,6 +1989,9 @@ function showBanner(_el, isSkip = false, target = false){
 		var bottomBanner = renderSiteBottomBanner(swiperWrapper.dataset.category, swiperSlide.dataset.index);
 		if(bottomBanner){
 			document.querySelector('#site_modal').innerHTML = bottomBanner;
+
+			currentBannerSection = document.querySelector('.list__specification');
+
 			openSlideModal(target, _boxId);
 			initSimilarSiteEvents();
 		}
