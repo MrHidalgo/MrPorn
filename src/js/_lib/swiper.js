@@ -8,6 +8,7 @@
 function swiperCB(swiperName, sliderArrow, scrollBar) {
 	let categorySwiper = new Swiper(swiperName, {
 		loop: false,
+		//cssMode: true,
 		grabCursor: false,
 		observer: true,
 		effect: 'slide',
@@ -28,35 +29,30 @@ function swiperCB(swiperName, sliderArrow, scrollBar) {
 		},
 		on: {
 			init: function () {
-				const swiperSlide = document.querySelectorAll('.swiper-slide');
+				//const swiperSlide = document.querySelectorAll('.swiper-slide');
 
-				document.querySelector(swiperName).closest('.list__box-wrapper').style.opacity = '1';
-				document.querySelector(swiperName).closest('.list__box-wrapper').classList.add('is-visible');
+				//document.querySelector(swiperName).closest('.list__box-wrapper').style.opacity = '1';
+				//document.querySelector(swiperName).closest('.list__box-wrapper').classList.add('is-visible');
 
-				swiperSlide[swiperSlide.length - 1].classList.add('is-last');
+				//swiperSlide[swiperSlide.length - 1].classList.add('is-last');
 
 
 
-				let visibleSlides = document.querySelectorAll('[list-parent-js]')[0].querySelectorAll('.swiper-slide-visible').length;
+				/*let visibleSlides = document.querySelectorAll('[list-parent-js]')[0].querySelectorAll('.swiper-slide-visible').length;
 				let greenBarWidth = 74;
-				if(window.innerWidth<1279){
+				if(wInnerWidth<1279){
 					swiperSlideWidth = 100;
-				}else if(window.innerWidth<=1024){
+				}else if(wInnerWidth<=1024){
 					swiperSlideWidth = 150;
-				}else if(window.innerWidth<768){
-					swiperSlideWidth = 195;
-				}
-
-				if(window.innerWidth<768){
-					greenBarWidth = 48;
-
-				}else if(window.innerWidth<=1024){
 					greenBarWidth = 74;
+				}else if(wInnerWidth<768){
+					swiperSlideWidth = 195;
+					greenBarWidth = 48;
 				}
 
 
 				maxLeft = (visibleSlides-1)*(swiperSlideWidth+6) + ((swiperSlideWidth-greenBarWidth)/2)+12;
-				minLeft = (swiperSlideWidth/2) - ((swiperSlideWidth-greenBarWidth)/2);
+				minLeft = (swiperSlideWidth/2) - ((swiperSlideWidth-greenBarWidth)/2);*/
 
 			},
 			slidePrevTransitionStart: function (e){

@@ -404,7 +404,7 @@
       var html = selector.trim();
 
       if (html.indexOf('<') >= 0 && html.indexOf('>') >= 0) {
-        var toCreate = 'div';
+        /*var toCreate = 'div';
         if (html.indexOf('<li') === 0) toCreate = 'ul';
         if (html.indexOf('<tr') === 0) toCreate = 'tbody';
         if (html.indexOf('<td') === 0 || html.indexOf('<th') === 0) toCreate = 'tr';
@@ -415,7 +415,7 @@
 
         for (var i = 0; i < tempParent.childNodes.length; i += 1) {
           arr.push(tempParent.childNodes[i]);
-        }
+        }*/
       } else {
         arr = qsa(selector.trim(), context || document);
       } // arr = qsa(selector, document);
@@ -1704,21 +1704,28 @@
   };
 
   function updateSize() {
+
     var swiper = this;
     var width;
     var height;
     var $el = swiper.$el;
 
-    if (typeof swiper.params.width !== 'undefined' && swiper.params.width !== null) {
-      width = swiper.params.width;
-    } else {
-      width = $el[0].clientWidth;
-    }
+		if (typeof swiper.params.width !== 'undefined' && swiper.params.width !== null) {
+			width = swiper.params.width;
+		} else {
+			if(swiperClientWidth==null){
+				swiperClientWidth = $el[0].clientWidth;
+			}
+			width = swiperClientWidth;
+		}
 
     if (typeof swiper.params.height !== 'undefined' && swiper.params.height !== null) {
       height = swiper.params.height;
     } else {
-      height = $el[0].clientHeight;
+			if(swiperClientHeight==null){
+				swiperClientHeight = $el[0].clientHeight;
+			}
+      height = swiperClientHeight;
     }
 
     if (width === 0 && swiper.isHorizontal() || height === 0 && swiper.isVertical()) {

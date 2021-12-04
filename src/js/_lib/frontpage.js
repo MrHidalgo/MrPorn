@@ -19,6 +19,14 @@ let minLeft;
 let swiperSlideWidth = 230;
 let pauseHoverAnimation = false;
 let siteModal;
+let headerHeight = null;
+let swiperClientWidth = null;
+let swiperClientHeight = null;
+
+let _slideWidth, _slidePaddingLeft, _slidePaddingRight, _slideMarginLeft, _slideMarginRight, _slideBoxSizing = null;
+
+let swiperWrappers = [];
+let popupVideo = null;
 
 
 const { css, transform, chain, delay, tween, easing, parallel } = window.popmotion;
@@ -142,31 +150,6 @@ function getModalStartPoint(sourceBBox, destinationBBox, isOpen=true){
 		//transformOrigin: '50% 0'
 	});
 }
-function openSlideModal2(e) {
-	if(!e.target){
-		return;
-	}
-
-	trigger = e.target.parents('.swiper-slide');
-	if(Array.isArray(trigger)){
-		trigger = trigger[0];
-	}
-	if(!trigger){
-		return true;
-	}
-
-	if(!siteModal){
-		siteModal = document.querySelector('#site_modal');
-	}
-
-	// Get bounding box of triggering element
-	const triggerBBox = trigger.getBoundingClientRect();
-	console.log(triggerBBox);
-	siteModal.style.width = triggerBBox.width+'px';
-	siteModal.style.height = triggerBBox.height+'px';
-	siteModal.style.left = triggerBBox.left+'px';
-	siteModal.style.right = triggerBBox.right+'px';
-}
 
 function openSlideModal(e, siteId) {
 	if (e.target && e.target.classList.contains('modal-trigger')) {
@@ -188,7 +171,7 @@ function openSlideModal(e, siteId) {
 
 	document.body.classList.add('opened');
 
-	if(window.innerWidth>767){
+	if(wInnerWidth>767){
 		// Get bounding box of triggering element
 		const triggerBBox = trigger.getBoundingClientRect();
 
@@ -1081,7 +1064,7 @@ function renderSiteCategory(categoryIndex){
 		'<div class="list__arrow-box"><i class="icon-font icon-arrow-angle"></i></div>'+
 		'</a>'+
 		'</div>'+
-		'<div class="swiper-container listSwiper" data-id="listSlider_'+categoryData.id+'" data-category="18">'+
+		'<div class=.swiper listSwiper" data-id="listSlider_'+categoryData.id+'" data-category="18">'+
 		'<div class="swiper-wrapper'+(parseInt(categoryData.count)<6?' short_list':'')+'" data-category="'+categoryData.id+'" data-count="'+categoryData.count+'" data-slidecount="'+categoryData.site_limit+'">'+
 		categorySites+
 		'</div>'+
@@ -1098,9 +1081,11 @@ function renderAllOtherCategories(){
 	if(navigator.userAgent.toLowerCase().includes('lighthouse')){
 		return;
 	}
-
-	let catListContainer = document.querySelector('.c-grid.list');
-
+	swiperWrappers = [];
+	let _sWrappers = document.querySelectorAll('.swiper-wrapper');
+	_sWrappers.forEach((sw)=>{
+		swiperWrappers[sw.dataset.category] = sw;
+	})
 
 	for (let i=0; i<homeData.categories_count; i++){
 		let catId = homeData.categories_indexes[i];
@@ -1108,9 +1093,9 @@ function renderAllOtherCategories(){
 		renderMissingSlides(catId);
 		// generateSwiper(catId);
 
-		if(window.innerWidth < 768) {
+		/*if(wInnerWidth < 768) {
 			renderMobileMoreButton(catId);
-		}
+		}*/
 	}
 
 	boxHover();
@@ -1118,9 +1103,11 @@ function renderAllOtherCategories(){
 
 function renderMissingSlides(catId){
 	if(homeData.categories[catId]){
-		homeData.categories[catId].sites.map(function (site, index) {
+		let categoryWrapper = swiperWrappers[catId];
+		let missingSlidesHtml = '';
+		/*homeData.categories[catId].sites.map(function (site, index) {
 
-			let categoryWrapper = document.querySelector('.swiper-wrapper[data-category="'+catId+'"]');
+
 
 			if(!categoryWrapper.querySelector('.swiper-slide[data-siteid="'+site.id+'"]')){
 				let siteSlide = '<div class="swiper-slide" data-index="'+index+'" data-siteid="'+site.id+'" data-init="0">' +
@@ -1133,53 +1120,52 @@ function renderMissingSlides(catId){
 					'</div>'+
 					'</div>';
 
-				categoryWrapper.insertAdjacentHTML('beforeend', siteSlide);
+				missingSlidesHtml += siteSlide;
 			}
 		});
+
+		categoryWrapper.insertAdjacentHTML('beforeend', missingSlidesHtml);*/
 	}
 }
 
 function generateSwiper(catId){
-	let categoryWrapper = document.querySelector('.list__box-wrapper[data-category="'+catId+'"]')
-	if(categoryWrapper){
-		let swiperArrows = '<div class="list__arrow-wrapper">' +
-			'                                    <a class="list__arrow list__arrow--prev" href="#">' +
-			'                                        <div class="list__arrow-box"><i class="icon-font icon-arrow-angle"></i></div>' +
-			'                                    </a>' +
-			'                                    <a class="list__arrow list__arrow--next" href="#">' +
-			'                                        <div class="list__arrow-box"><i class="icon-font icon-arrow-angle"></i></div>' +
-			'                                    </a>' +
-			'                                </div>';
+	let swiperArrows = '<div class="list__arrow-wrapper">' +
+		'                                    <a class="list__arrow list__arrow--prev" href="#">' +
+		'                                        <div class="list__arrow-box"><i class="icon-font icon-arrow-angle"></i></div>' +
+		'                                    </a>' +
+		'                                    <a class="list__arrow list__arrow--next" href="#">' +
+		'                                        <div class="list__arrow-box"><i class="icon-font icon-arrow-angle"></i></div>' +
+		'                                    </a>' +
+		'                                </div>';
 
-		let swiperBody = document.querySelector('.list__box-body[data-id="listSlider_'+catId+'"]');
-		if(swiperBody){
-			swiperBody.insertAdjacentHTML( 'afterbegin', swiperArrows );
-		}
-
-
-		swiperCB(
-			`.swiper-container[data-id="listSlider_${catId}"]`,
-			`.list__box-wrapper[data-name='category_${catId}']`
-		);
-
-		if(!categoryWrapper.querySelector('.list__specification-wrapper')){
-			categoryWrapper.insertAdjacentHTML('beforeend', '<div class="list__specification-wrapper"></div>');
-		}
+	let swiperBody = document.querySelector('.list__box-body[data-id="listSlider_'+catId+'"]');
+	if(swiperBody){
+		swiperBody.insertAdjacentHTML( 'afterbegin', swiperArrows );
 	}
 
-	renderMobileMoreButton();
+
+	swiperCB(
+		`.swiper[data-id="listSlider_${catId}"]`,
+		`.list__box-wrapper[data-name='category_${catId}']`
+	);
+
+	/*if(!categoryWrapper.querySelector('.list__specification-wrapper')){
+		categoryWrapper.insertAdjacentHTML('beforeend', '<div class="list__specification-wrapper"></div>');
+	}*/
+
+	// renderMobileMoreButton();
 
 }
 
 function renderMobileMoreButton(){
-	if(window.innerWidth < 768 | document.body.classList.contains('is-mobile')) {
+	if(wInnerWidth < 768 | document.body.classList.contains('is-mobile')) {
 		let siteBoxes = document.querySelectorAll('[list-box-js]');
 		siteBoxes.forEach((site)=>{
 			if(!site.querySelector('.list__box-more')){
 				let btReadMore = document.createElement('button');
 				btReadMore.className = 'list__box-more';
 				btReadMore.type='button';
-				btReadMore.innerHTML = '<i class="icon-font icon-arrow-angle"></i>';
+				//btReadMore.innerHTML = '<i class="icon-font icon-arrow-angle"></i>';
 
 				//elBox.appendChild(btReadMore);
 				site.insertAdjacentElement('beforeend', btReadMore);
@@ -1194,6 +1180,23 @@ function initHomeSwippers(){
 	if(navigator.userAgent.toLowerCase().includes('lighthouse')){
 		return;
 	}
+
+	let visibleSlides = 3;
+	let greenBarWidth = 74;
+	if(wInnerWidth<1279){
+		swiperSlideWidth = 100;
+	}else if(wInnerWidth<=1024){
+		swiperSlideWidth = 150;
+		greenBarWidth = 74;
+	}else if(wInnerWidth<768){
+		swiperSlideWidth = 195;
+		greenBarWidth = 48;
+	}
+
+
+	maxLeft = (visibleSlides-1)*(swiperSlideWidth+6) + ((swiperSlideWidth-greenBarWidth)/2)+12;
+	minLeft = (swiperSlideWidth/2) - ((swiperSlideWidth-greenBarWidth)/2);
+
 
 	let listBoxWrappers = document.querySelectorAll('.list__box-wrapper');
 	if(listBoxWrappers){
@@ -1287,7 +1290,7 @@ function onSlideLeave(ev){
 	if(window.innerWidth >= 1280) {
 		const el = ev.currentTarget,
 			elParent = el.closest('[list-parent-js]'),
-			slideSwiper = elParent.querySelector('.swiper-container'),
+			slideSwiper = elParent.querySelector('.swiper'),
 			slideIndex = el.dataset.index;
 
 		let greenBar = elParent.querySelector('[list-line-js]');
@@ -1340,7 +1343,7 @@ function onSlideEnter(ev){
 			elParent = el.closest('[list-parent-js]'),
 			elBox = el.querySelector('.list__box'),
 			lineInd = elParent.querySelector('[list-line-js]'),
-			slideSwiper = elParent.querySelector('.swiper-container'),
+			slideSwiper = elParent.querySelector('.swiper'),
 			siteLink = el.querySelector('.site--link'),
 			siteTitle = el.querySelector('.list__box--title'),
 			tagLine = el.querySelector('.list__box--tagline');
@@ -1504,7 +1507,7 @@ function onSlideTouchStart(ev){
 	const el = ev.currentTarget,
 		elParent = el.closest('[list-parent-js]'),
 		slideIndex = el.dataset.index,
-		slideSwiper = elParent.querySelector('.swiper-container'),
+		slideSwiper = elParent.querySelector('.swiper'),
 		greenBar = elParent.querySelector('[list-line-js]');
 
 	isMouseDown = true;
@@ -1538,15 +1541,19 @@ function onSlideTouchStart(ev){
 	let sliderBox = document.querySelector('.swiper-slide:not(.is-hover)');
 
 	if(sliderBox){
-		slideWidth = 	sliderBox.offsetWidth + 6;
-		slideOffset = slideWidth/2;
+
 	}
 
-	if(window.innerWidth<768){
+	if(wInnerWidth<768){
+		slideWidth = 	100 + 6;
 		greenBarWidth = 48;
-	}else if(window.innerWidth<=1024){
+	}else if(wInnerWidth<1024){
+		slideWidth = 	150 + 6;
 		greenBarWidth = 74;
+	}else{
+		slideWidth = 	185 + 6;
 	}
+
 
 	slideOffset = (slideWidth - greenBarWidth)/2;
 
@@ -1589,7 +1596,7 @@ function onSlideTouchMove(ev){
 	const el = ev.currentTarget,
 		elParent = el.closest('[list-parent-js]'),
 		slideIndex = el.dataset.index,
-		slideSwiper = elParent.querySelector('.swiper-container'),
+		slideSwiper = elParent.querySelector('.swiper'),
 		greenBar = elParent.querySelector('[list-line-js]');
 
 	let isLastBox = false;
@@ -1716,14 +1723,8 @@ function onSlideTouchEnd(ev){
 	const el = ev.currentTarget,
 		elParent = el.closest('[list-parent-js]'),
 		slideIndex = el.dataset.index,
-		slideSwiper = elParent.querySelector('.swiper-container'),
+		slideSwiper = elParent.querySelector('.swiper'),
 		greenBar = elParent.querySelector('[list-line-js]');
-
-	// isMouseDown = false;
-
-	if(greenBar){
-		//greenBar.classList.remove('no_anim');
-	}
 
 	let slideWidth = 236,
 		slideOffset = 178,
@@ -1731,26 +1732,16 @@ function onSlideTouchEnd(ev){
 
 	let sliderBox = document.querySelector('.swiper-slide:not(.is-hover)');
 
-	let isLastBox = false;
-
-	if (typeof el.nextSibling === "undefined" | el.nextSibling==null){
-		isLastBox = true;
-	}
-
 	if(sliderBox){
 		slideWidth = 	sliderBox.offsetWidth + 6;
 		slideOffset = slideWidth/2;
 	}
 
-	if(window.innerWidth<768){
+	if(wInnerWidth<768){
 		greenBarWidth = 20;
-	}else if(window.innerWidth<1024){
+	}else if(wInnerWidth<1024){
 		greenBarWidth = 34;
 	}
-
-	console.log('Bar width '+greenBarWidth+' - '+slideSwiper.swiper.translate);
-
-	//hoverBoxLeft = ((slideIndex*slideWidth) + translate)+slideOffset-12;
 
 	if(!_isGreenBarMoving){
 		let barLeft = getGreenBarTranslateX(greenBar);
@@ -1784,7 +1775,7 @@ function onSwiperTranslate(e, translate){
 	const el = lastActiveHoverBox,
 		elParent = el.closest('[list-parent-js]'),
 		slideIndex = el.dataset.index,
-		slideSwiper = elParent.querySelector('.swiper-container'),
+		slideSwiper = elParent.querySelector('.swiper'),
 		greenBar = elParent.querySelector('[list-line-js]');
 
 	if(!_isGreenBarMoving){
@@ -1845,7 +1836,7 @@ function onSwiperTranslate(e, translate){
 		}
 
 		if(isLargeJump){
-			console.log('large jump '+translate);
+			//console.log('large jump '+translate);
 			_greenBarDuration = 500;
 			_isGreenBarMoving = false;
 
@@ -1881,7 +1872,7 @@ function onSwiperTranslate(e, translate){
 function tempRepositionGreenBar(elParent, hoverBoxPosition, isSmall){
 	let greenBar = elParent.querySelector('[list-line-js]');
 	let activeBox = elParent.querySelector('.swiper-slide.is-hover');
-	let slideSwiper = elParent.querySelector('.swiper-container');
+	let slideSwiper = elParent.querySelector('.swiper');
 	let slideWidth = 0;
 
 	let sliderBox = document.querySelector('.swiper-slide:not(.is-hover)');
@@ -1977,11 +1968,6 @@ function showBanner(_el, isSkip = false, target = false){
 	var _boxParent = _el.closest('.list__box'),
 		_parentNode = _el.closest('.list__box-wrapper');
 
-	/*let currentBannerBox = document.querySelector('.list__specification[data-id="'+_boxID+'"]')
-
-	if(currentBannerBox && currentBannerBox.classList.contains('is-open')){
-		return;
-	}*/
 
 	var swiperSlide = _el.closest('.swiper-slide');
 	var swiperWrapper = _el.closest('.swiper-wrapper');
@@ -1998,16 +1984,13 @@ function showBanner(_el, isSkip = false, target = false){
 	if(isSkip){
 		currentBannerSection.classList.add('skip');
 		renderSkipSiteBottomBanner(swiperWrapper.dataset.category, swiperSlide.dataset.index);
+
+		setTimeout(()=>{
+			currentBannerSection.classList.remove('skip');
+		}, 300);
 	}else{
 		var bottomBanner = renderSiteBottomBanner(swiperWrapper.dataset.category, swiperSlide.dataset.index);
 		if(bottomBanner){
-			/*if(isMobileOrTablet){
-				bannerWrapper.innerHTML = bottomBanner;
-			}else{
-				document.querySelector('#site_modal').innerHTML = bottomBanner;
-				openSlideModal(target);
-				initSimilarSiteEvents();
-			}*/
 			document.querySelector('#site_modal').innerHTML = bottomBanner;
 			openSlideModal(target, _boxId);
 			initSimilarSiteEvents();
@@ -2030,7 +2013,7 @@ function showBanner(_el, isSkip = false, target = false){
 		document.body.classList.remove('is_open');
 	}
 
-	if(window.innerWidth < 768) {
+	if(wInnerWidth < 768) {
 
 		setTimeout(() => {
 			_parentNode.classList.add('is-open');
@@ -2059,13 +2042,6 @@ function showBanner(_el, isSkip = false, target = false){
 
 			//document.body.classList.add('is_open');
 		}
-	}
-
-
-	if(window.innerWidth <= 1023) {
-		/*hideScrollContainer.forEach((val, idx) => {
-			val.classList.add("is-hideScroll");
-		});*/
 	}
 
 	markFavourites();

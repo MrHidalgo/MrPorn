@@ -4085,7 +4085,6 @@ body.chatbot_active .go-top {
 /* line 1, src/scss/_components/homepage/_list--arrow.scss */
 .list__arrow {
   z-index: 10;
-  opacity: 0;
   position: absolute;
   top: 0;
   width: 75px;
@@ -4393,7 +4392,7 @@ body.chatbot_active .go-top {
   .list__box {
     width: 96px;
     height: 96px;
-    padding: 10px 8px;
+    padding: 0;
   }
 }
 
@@ -5394,11 +5393,6 @@ body.chatbot_active .go-top {
     -webkit-transform: scale(1);
         -ms-transform: scale(1);
             transform: scale(1);
-    -webkit-transition: opacity 0.35s ease-in-out, visibility 0.35s ease-in-out, -webkit-transform 0.35s ease-in-out;
-    transition: opacity 0.35s ease-in-out, visibility 0.35s ease-in-out, -webkit-transform 0.35s ease-in-out;
-    -o-transition: opacity 0.35s ease-in-out, visibility 0.35s ease-in-out, transform 0.35s ease-in-out;
-    transition: opacity 0.35s ease-in-out, visibility 0.35s ease-in-out, transform 0.35s ease-in-out;
-    transition: opacity 0.35s ease-in-out, visibility 0.35s ease-in-out, transform 0.35s ease-in-out, -webkit-transform 0.35s ease-in-out;
   }
   /* line 89, src/scss/_components/homepage/_list--specification.scss */
   .list__specification.zoom_box.is-open, .list__snapshot.zoom_box.is-open {
