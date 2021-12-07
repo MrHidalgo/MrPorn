@@ -18,16 +18,23 @@ let maxLeft;
 let minLeft;
 let swiperSlideWidth = 230;
 let pauseHoverAnimation = false;
-let siteModal;
-let headerHeight = null;
+
 let swiperClientWidth = null;
 let swiperClientHeight = null;
-let currentBannerSection = null;
 
+let defaultSlideWidth = 0;
+let defaultSlidePaddingLeft = 0;
+let defaultSlidePaddingRight = 0;
+let defaultSlideMarginLeft = 0;
+let defaultSlideMarginRight = 0;
+
+let currentBannerSection = null;
 let _slideWidth, _slidePaddingLeft, _slidePaddingRight, _slideMarginLeft, _slideMarginRight, _slideBoxSizing = null;
 
 let swiperWrappers = [];
 let popupVideo = null;
+let siteModal = document.querySelector('#site_modal');
+
 
 
 const { css, transform, chain, delay, tween, easing, parallel } = window.popmotion;
@@ -43,9 +50,9 @@ const modalContainer = document.querySelector('.modal-container');
 const modal = document.querySelector('.modal');
 
 // Create CSS renderers
-const dimmerRenderer = css(dimmer);
-const modalContainerRenderer = css(modalContainer);
-const modalRenderer = css(modal);
+let dimmerRenderer = css(dimmer);
+let modalContainerRenderer = css(modalContainer);
+let modalRenderer = css(modal);
 
 // Return the center x, y of a bounding box
 function findCenter({ top, left, height, width }, isOpen = true) {
@@ -68,25 +75,9 @@ function findHCenter({ top, left, height, width }, isOpen = true) {
 const vRange = [0, 1];
 function generateModalTweener(sourceBBox, destinationBBox, isOpen = true) {
 	const sourceCenter = findCenter(sourceBBox);
-	//const destinationCenter = findHCenter(destinationBBox, isOpen);
 	const destinationCenter = findCenter(destinationBBox, isOpen);
-
-
-
 	const toX = interpolate(vRange, [sourceCenter.x - destinationCenter.x, 0]);
 
-	/*let toY = 0;
-
-	if(isOpen){
-		//toY = interpolate(vRange, [sourceCenter.y - destinationCenter.y + window.scrollY, 0]);
-		toY = interpolate(vRange, [200 + window.scrollY, 0]);
-
-		console.log('Opening '+(200 + window.scrollY));
-
-	}else{
-		toY = interpolate(vRange, [sourceCenter.y - destinationCenter.y, 0]);
-		console.log('Closing '+(sourceCenter.y - destinationCenter.y));
-	}*/
 
 	const toY = interpolate(vRange, [sourceCenter.y - destinationCenter.y, 0]);
 	const toScaleX = interpolate(vRange, [sourceBBox.width / destinationBBox.width, 1]);
@@ -153,19 +144,11 @@ function getModalStartPoint(sourceBBox, destinationBBox, isOpen=true){
 }
 
 function openSlideModal(e, siteId) {
-	if (e.target && e.target.classList.contains('modal-trigger')) {
-
-	}
-
 	if(!e.target){
 		return;
 	}
 
-	trigger = e.target.parents('.swiper-slide');
 	trigger = document.querySelector('.swiper-slide[data-siteid="'+siteId+'"]');
-	if(Array.isArray(trigger)){
-		trigger = trigger[0];
-	}
 	if(!trigger){
 		return true;
 	}
@@ -177,13 +160,13 @@ function openSlideModal(e, siteId) {
 		const triggerBBox = trigger.getBoundingClientRect();
 
 
-
 		// Temporarily show modal container to measure modal
 		dimmerRenderer.set('display', 'block').render();
 		modalContainerRenderer.set('display', 'flex').render();
 		modalRenderer.set('opacity', 0).render();
 
 
+		console.log('Openibng slide popup');
 
 
 
@@ -293,7 +276,7 @@ function cloneCurrentPopupBanner(){
 	currentPopupBanner = document.querySelector('.list__specification.is-open');
 	if(currentPopupBanner){
 		//let popupBannerWrapper = currentPopupBanner.closest('.list__specification-wrapper');
-		let popupBannerWrapper = document.querySelector('#site_modal');
+		let popupBannerWrapper = siteModal;
 		if(popupBannerWrapper){
 			clonedPopupBanner = currentPopupBanner.cloneNode(true);
 			clonedPopupBanner.setAttribute('class', 'list__snapshot is-snapshot');
@@ -1082,11 +1065,6 @@ function renderAllOtherCategories(){
 	if(navigator.userAgent.toLowerCase().includes('lighthouse')){
 		return;
 	}
-	swiperWrappers = [];
-	let _sWrappers = document.querySelectorAll('.swiper-wrapper');
-	_sWrappers.forEach((sw)=>{
-		swiperWrappers[sw.dataset.category] = sw;
-	})
 
 	for (let i=0; i<homeData.categories_count; i++){
 		let catId = homeData.categories_indexes[i];
@@ -1099,7 +1077,7 @@ function renderAllOtherCategories(){
 		}*/
 	}
 
-	boxHover();
+	// boxHover();
 }
 
 function renderMissingSlides(catId){
@@ -1198,6 +1176,9 @@ function initHomeSwippers(){
 	maxLeft = (visibleSlides-1)*(swiperSlideWidth+6) + ((swiperSlideWidth-greenBarWidth)/2)+12;
 	minLeft = (swiperSlideWidth/2) - ((swiperSlideWidth-greenBarWidth)/2);
 
+	swiperClientWidth = document.querySelector('.listSwiper').clientWidth;
+	swiperClientHeight = document.querySelector('.listSwiper').clientHeight;
+
 
 	let listBoxWrappers = document.querySelectorAll('.list__box-wrapper');
 	if(listBoxWrappers){
@@ -1208,6 +1189,12 @@ function initHomeSwippers(){
 			generateSwiper(catId);
 		});
 	}
+
+	swiperWrappers = [];
+	let _sWrappers = document.querySelectorAll('.swiper-wrapper');
+	_sWrappers.forEach((sw)=>{
+		swiperWrappers[sw.dataset.category] = sw;
+	})
 }
 
 let tOut = null,
@@ -1988,7 +1975,7 @@ function showBanner(_el, isSkip = false, target = false){
 	}else{
 		var bottomBanner = renderSiteBottomBanner(swiperWrapper.dataset.category, swiperSlide.dataset.index);
 		if(bottomBanner){
-			document.querySelector('#site_modal').innerHTML = bottomBanner;
+			siteModal.innerHTML = bottomBanner;
 
 			currentBannerSection = document.querySelector('.list__specification');
 
@@ -2036,6 +2023,17 @@ function showBanner(_el, isSkip = false, target = false){
 	} else {
 		_parentNode.classList.add('is-open');
 		//_boxParent.classList.add('is-active');
+
+		if(dimmerRenderer==null){
+			dimmerRenderer = css(dimmer);
+		}
+		if(modalContainerRenderer==null){
+			modalContainerRenderer = css(modalContainer);
+		}
+		if(modalRenderer==null){
+			modalRenderer = css(modal);
+		}
+		console.log('Init popups');
 
 		if(_specificationBox){
 			_specificationBox.classList.add('is-open');

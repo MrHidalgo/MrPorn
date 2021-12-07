@@ -5,17 +5,41 @@
  *
  * @description initialize Swiper
  */
-function swiperCB(swiperName, sliderArrow, scrollBar) {
+function swiperCB(swiperName, sliderArrow, is_first) {
 	let categorySwiper = new Swiper(swiperName, {
 		loop: false,
+		modules: [
+			'virtual',
+			'keyboard',
+			'navigation',
+			'pagination',
+			'scrollbar',
+			'lazy',
+			'controller',
+			'a11y',
+			'history',
+			'autoplay',
+			'effect-fade',
+			'thumbs'
+		],
 		//cssMode: true,
 		grabCursor: false,
 		observer: true,
 		effect: 'slide',
-		width: 355,
-		height:100,
+		// width: 355,
+		// height:100,
 		speed: 900,
 		lazy: true,
+		//init: false,
+		defaultWidth: swiperClientWidth,
+		defaultHeight: swiperClientHeight,
+
+		defaultSlideWidth,
+		defaultSlidePaddingLeft,
+		defaultSlidePaddingRight,
+		defaultSlideMarginLeft,
+		defaultSlideMarginRight,
+
 		touchMoveStopPropagation:false,
 		simulateTouch : false,
 		allowSwipeToNext: true,
@@ -57,6 +81,12 @@ function swiperCB(swiperName, sliderArrow, scrollBar) {
 				minLeft = (swiperSlideWidth/2) - ((swiperSlideWidth-greenBarWidth)/2);*/
 
 			},
+			/*touchStart: function (swiper, e){
+				console.log('Touch start', e);
+			},
+			touchEnd: function (swiper, e){
+				console.log('Touch end', e);
+			},*/
 			slidePrevTransitionStart: function (e){
 				delayPreview = true;
 			},

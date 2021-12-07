@@ -16,6 +16,7 @@ let videoPaused = false;
 let currentLang = 'en';
 let goTop;
 let wInnerWidth;
+let headerHeight = null;
 
 
 if (!Element.prototype.matches) {
@@ -311,8 +312,15 @@ let isCategoriesRendered = false;
 			}else if(_ev.classList.contains('list__box-details')){
 				onSiteBoxHoverClick(_ev);
 			}else if(_ev.closest('.rating_stars') || _ev.classList.contains('rating_stars')){
-				console.log('clicked ratings');
 				onRatingClick();
+			}else if(_ev.closest('.list__specification-play')){
+				onPlayClick(_ev.closest('.list__specification-play'));
+			}else if(_ev.classList.contains('list__specification-play')){
+				onPlayClick(_ev);
+			}else if(_ev.closest('.list__specification-pause')){
+				onPauseClick(_ev.closest('.list__specification-pause'));
+			}else if(_ev.classList.contains('list__specification-pause')){
+				onPauseClick(_ev);
 			}else if(_ev.closest('.login_popup_close')){
 				closeLoginPopups();
 			}else if(_ev.classList.contains('popup_link_signup')){
@@ -379,21 +387,6 @@ let isCategoriesRendered = false;
 		}, false);
 	};
 
-	function initTouchEvents(){
-		document.addEventListener('touchstart', function(ev) {
-			const _ev = ev.target;
-
-			if(_ev.closest('.swiper-slide') || _ev.classList.contains('swiper-slide')){
-				onSlideTouchStart(ev)
-			}
-		});
-		document.addEventListener('touchend', function(ev) {
-			const _ev = ev.target;
-			if(_ev.closest('.swiper-slide') || _ev.classList.contains('swiper-slide')){
-				onSlideTouchEnd(ev)
-			}
-		});
-	}
 
 	function onSiteBoxHoverClick(_el){
 		let siteBoxLink = _el.querySelector('.site_link')
@@ -998,6 +991,7 @@ let isCategoriesRendered = false;
 	 */
 	const initNative = () => {
 		console.log('initNative');
+		wInnerWidth = window.innerWidth;
 
 		// default
 		initPreventBehavior();
@@ -1013,10 +1007,6 @@ let isCategoriesRendered = false;
 		// callback
 		detectDevice();
 		bodyClick();
-
-		if(isMobileOrTablet){
-			initTouchEvents();
-		}
 
 		dataTime = document.querySelector('meta[name="data_time"]').content;
 		loadTranslations();
@@ -1047,7 +1037,8 @@ let isCategoriesRendered = false;
 
 		if(document.body.classList.contains('home')){
 			boxHover();
-			videoToggle();
+			//videoToggle();
+
 			//listIndicator();
 			//detailsToggleAction();
 			skipModal();
