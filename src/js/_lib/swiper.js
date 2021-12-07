@@ -101,9 +101,9 @@ function swiperCB(swiperName, sliderArrow, is_first) {
 			},
 			slideNextTransitionEnd: function (e) {
 				delayPreview = false;
-				let swipeWrapper = categorySwiper.$wrapperEl[0];
+				//let swipeWrapper = categorySwiper.$wrapperEl[0];
 
-				renderLeftAndRight(swipeWrapper.dataset.category, categorySwiper);
+				//renderLeftAndRight(swipeWrapper.dataset.category, categorySwiper);
 			},
 			setTranslate: function (e, translate){
 				onSwiperTranslate(e, translate);
