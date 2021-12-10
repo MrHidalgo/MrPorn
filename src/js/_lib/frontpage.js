@@ -153,9 +153,11 @@ function openSlideModal(e, siteId) {
 		return true;
 	}
 
-	document.body.classList.add('opened');
+
 
 	if(wInnerWidth>767){
+		document.body.classList.add('opened');
+
 		// Get bounding box of triggering element
 		const triggerBBox = trigger.getBoundingClientRect();
 
@@ -2006,8 +2008,8 @@ function showBanner(_el, isSkip = false, target = false){
 			_parentNode.classList.add('is-open');
 			//_boxParent.classList.add('is-active');
 
-			let __vh = window.innerHeight * 0.01;
-			document.documentElement.style.setProperty('--vh', `${__vh}px`);
+			/*let __vh = window.innerHeight * 0.01;
+			document.documentElement.style.setProperty('--vh', `${__vh}px`);*/
 
 			if(_specificationBox){
 				_specificationBox.classList.add('is-open');

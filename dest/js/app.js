@@ -1909,33 +1909,37 @@ var isCategoriesRendered = false;
       cloneCurrentPopupBanner();
     } //el.closest('.list__specification').querySelector('.list__specification-close').click();
 
+    /*setTimeout(() => {
+    	}, 100);*/
 
-    setTimeout(function () {
-      var nextSite = elParent.querySelector('.swiper-slide[data-siteid="' + elID + '"]').nextSibling;
 
-      if (nextSite) {
-        if (nextSite.querySelector('.list__box-more')) {
-          showBanner(nextSite.querySelector('.list__box-more'), true);
-        } else {
-          var nextIndex = nextSite.dataset.index;
-          var prevItem = renderHompageSiteSlide(currentCategory, nextIndex);
-          renderMobileMoreButton();
+    var nextSite = elParent.querySelector('.swiper-slide[data-siteid="' + elID + '"]').nextSibling;
 
-          if (prevItem && nextSite) {
-            nextSite.innerHTML = prevItem;
-            showBanner(nextSite.querySelector('.list__box-more'), true);
-          }
-        }
+    if (nextSite) {
+      var nextSiteMore = nextSite.querySelector('.list__box-more');
+
+      if (nextSiteMore) {
+        showBanner(nextSiteMore, true);
       } else {
-        var firstSite = elParent.querySelector('.swiper-slide').firstChild;
+        var nextIndex = nextSite.dataset.index;
+        var prevItem = renderHompageSiteSlide(currentCategory, nextIndex); //renderMobileMoreButton()
 
-        if (firstSite) {
-          if (firstSite.querySelector('.list__box-more')) {
-            showBanner(firstSite.querySelector('.list__box-more'), true);
-          }
+        if (prevItem && nextSite) {
+          nextSite.innerHTML = prevItem;
+          showBanner(nextSiteMore, true);
         }
       }
-    }, 100);
+    } else {
+      var firstSite = elParent.querySelector('.swiper-slide').firstChild;
+
+      if (firstSite) {
+        var firstSiteMore = firstSite.querySelector('.list__box-more');
+
+        if (firstSiteMore) {
+          showBanner(firstSiteMore, true);
+        }
+      }
+    }
   }
 
   var toggleMoreBox = function toggleMoreBox() {
