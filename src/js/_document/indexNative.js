@@ -269,9 +269,9 @@ let isCategoriesRendered = false;
 				closeBanner(_ev);
 			}else if(_ev.closest('.site--link.review-site-link') && isMobileOrTablet){
 				ev.preventDefault();
-				showBanner(_ev, false, ev);
+				showBanner(_ev.closest('.site--link.review-site-link').dataset.id, false, ev);
 			}else if(_ev.closest('.list__box-more')){
-				showBanner(_ev, false, ev);
+				showBanner(_ev.closest('.list__box-more').dataset.id, false, ev);
 
 				//openSlideModal(ev);
 			}else if(_ev.closest('[more-toggle-js]')){
@@ -916,21 +916,14 @@ let isCategoriesRendered = false;
 			cloneCurrentPopupBanner();
 		}
 
-
-		//el.closest('.list__specification').querySelector('.list__specification-close').click();
-
-		/*setTimeout(() => {
-
-		}, 100);*/
-
 		var nextSite = elParent.querySelector('.swiper-slide[data-siteid="'+elID+'"]').nextSibling;
 
 		if(nextSite){
-			let nextSiteMore = nextSite.querySelector('.list__box-more');
-			if(nextSiteMore){
-				showBanner(nextSiteMore, true);
+			if(isMobileOrTablet){
+				showBanner(nextSite.dataset.siteid, true);
 			}else{
 				var nextIndex = nextSite.dataset.index;
+				let nextSiteMore = nextSite.querySelector('.list__box');
 
 				let prevItem = renderHompageSiteSlide(currentCategory, nextIndex);
 				//renderMobileMoreButton()
