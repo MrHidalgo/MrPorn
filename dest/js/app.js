@@ -1898,7 +1898,7 @@ var isCategoriesRendered = false;
   function onSkip(el) {
     var elID = el.getAttribute('data-id'),
         elCategory = el.getAttribute('data-category'),
-        elParent = document.querySelector('.list__box-wrapper[data-name="category_' + elCategory + '"]');
+        elParent = listBoxWrappers[elCategory];
     var currentCategory = el.dataset.category;
 
     if (popupVideo = document.querySelector('[video-js]')) {
@@ -1910,6 +1910,10 @@ var isCategoriesRendered = false;
     }
 
     var nextSite = elParent.querySelector('.swiper-slide[data-siteid="' + elID + '"]').nextSibling;
+
+    if (nextSite == null || nextSite === undefined) {
+      nextSite = elParent.querySelector('.swiper-slide');
+    }
 
     if (nextSite) {
       if (isMobileOrTablet) {

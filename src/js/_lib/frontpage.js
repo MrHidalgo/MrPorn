@@ -10,8 +10,17 @@ let _greenBarAnimSpeed = 0;
 let _greenBarDuration = 500;
 let _greenBarFrom = 0;
 let _lastGreenBar;
+let _lastGreenBarTransformX;
+let _lastGreenBarTranslate;
+let _greenBarDW = 0;
+let	greenBarWidth;
+
+let _lastSwiperWrapper;
+let _lastSlideSwiper;
+
 let _touchStartPosition = 0;
 let _greenBarTimer;
+
 let _isGreenBarMoving = false;
 let isAnimationStarted = false;
 let maxLeft;
@@ -32,6 +41,7 @@ let currentBannerSection = null;
 let _slideWidth, _slidePaddingLeft, _slidePaddingRight, _slideMarginLeft, _slideMarginRight, _slideBoxSizing = null;
 
 let swiperWrappers = [];
+let listBoxWrappers = [];
 let popupVideo = null;
 let siteModal = document.querySelector('#site_modal');
 
@@ -1134,6 +1144,7 @@ function initHomeSwippers(){
 
 	let visibleSlides = 3;
 	let greenBarWidth = 74;
+	_greenBarDW = 10;
 	if(wInnerWidth<1279){
 		swiperSlideWidth = 100;
 	}else if(wInnerWidth<=1024){
@@ -1142,6 +1153,12 @@ function initHomeSwippers(){
 	}else if(wInnerWidth<768){
 		swiperSlideWidth = 195;
 		greenBarWidth = 48;
+
+	}
+	if(wInnerWidth<768){
+		_greenBarDW = 18;
+	}else if(wInnerWidth<=1024){
+		_greenBarDW = 30;
 	}
 
 
@@ -1152,21 +1169,24 @@ function initHomeSwippers(){
 	swiperClientHeight = document.querySelector('.listSwiper').clientHeight;
 
 
-	let listBoxWrappers = document.querySelectorAll('.list__box-wrapper');
-	if(listBoxWrappers){
-		listBoxWrappers.forEach(function(wrapper){
+	listBoxWrappers = [];
+	let _listBoxWrappers = document.querySelectorAll('.list__box-wrapper');
+	if(_listBoxWrappers){
+		_listBoxWrappers.forEach(function(wrapper, wrapperIndex){
 			let catId = wrapper.dataset.category;
-
+			listBoxWrappers[catId] = wrapper;
 
 			generateSwiper(catId);
 		});
 	}
 
 	swiperWrappers = [];
+
 	let _sWrappers = document.querySelectorAll('.swiper-wrapper');
 	_sWrappers.forEach((sw)=>{
 		swiperWrappers[sw.dataset.category] = sw;
 	})
+
 }
 
 let tOut = null,
@@ -1179,7 +1199,6 @@ let previewModalInner = previewModal.querySelector('.previewModal--inner');
 let prevContainer = previewModal.querySelector('.previewModal--container');
 
 const boxHover = () => {
-	//const swiperSlides = document.querySelectorAll('.swiper-slide[data-init="0"]'),
 	const swiperSlides = document.querySelectorAll('.swiper-slide'),
 		parentSlides = document.querySelectorAll('[list-parent-js]'),
 		listBoxBody = document.querySelectorAll('.list__box-body');
@@ -1191,11 +1210,11 @@ const boxHover = () => {
 
 			if(isMobileOrTablet){
 
-				/*swiperSlides[i].removeEventListener('touchend', onSlideTouchEnd);
+				swiperSlides[i].removeEventListener('touchend', onSlideTouchEnd);
 				swiperSlides[i].addEventListener('touchend', onSlideTouchEnd, false);
 
 				swiperSlides[i].removeEventListener('touchstart', onSlideTouchStart);
-				swiperSlides[i].addEventListener('touchstart', onSlideTouchStart, {passive: true});*/
+				swiperSlides[i].addEventListener('touchstart', onSlideTouchStart, {passive: true});
 
 				//swiperSlides[i].removeEventListener('touchmove', onSlideTouchMove);
 				//swiperSlides[i].addEventListener('touchmove', onSlideTouchMove, false);
@@ -1214,22 +1233,6 @@ const boxHover = () => {
 
 		}
 	}
-
-
-
-	/*for(let i = 0, len = listBoxBody.length; i < len; i++) {
-		listBoxBody[i].addEventListener('mouseleave', function(ev) {
-			if(window.innerWidth >= 1280) {
-				hoverBool = false;
-
-				clearTimeout(tOut);
-
-				for(let j = 0, l = swiperSlides.length; j < l; j++) {
-					swiperSlides[j].classList.remove('is-hover');
-				}
-			}
-		}, false);
-	}*/
 
 	if(!isMobileOrTablet){
 		for(let i = 0, len = parentSlides.length; i < len; i++) {
@@ -1297,6 +1300,7 @@ function onSlideEnter(ev){
 	if(zoomLevel>100){
 		minScreenWidth = (minScreenWidth / zoomLevel) * 100
 	}
+
 
 	if(window.innerWidth >= minScreenWidth) {
 		let el = ev.currentTarget,
@@ -1444,29 +1448,45 @@ function onPreviewLeave(){
 	previewModal.classList.remove('slide-open');
 }
 
+function onSwiperWrapperDragStart(ev){
+	const el = ev.currentTarget,
+		slideIndex = el.dataset.index,
+		swiperWrapper = el.parentNode,
+		slideSwiper = swiperWrapper.parentNode;
+
+	console.log('Drag start');
+}
+
+function onSwiperWrapperDragEnd(ev){
+	const el = ev.currentTarget,
+		slideIndex = el.dataset.index,
+		swiperWrapper = el.parentNode,
+		slideSwiper = swiperWrapper.parentNode;
+
+	console.log('Drag ended');
+}
+
 function onSlideTouchStart(ev){
 	const el = ev.currentTarget,
-		elParent = el.closest('[list-parent-js]'),
 		slideIndex = el.dataset.index,
-		slideSwiper = elParent.querySelector('.swiper'),
-		greenBar = elParent.querySelector('[list-line-js]');
+		swiperWrapper = _lastSwiperWrapper = el.parentNode,
+		slideSwiper = _lastSlideSwiper = swiperWrapper.parentNode;
+
+	//_lastGreenBar.classList.remove('no_anim');
+
+
+		const slideCategory = swiperWrapper.dataset.category;
+	const elParent = listBoxWrappers[slideCategory];
+
+	let greenBar = elParent.querySelector('[list-line-js]');
 
 	isMouseDown = true;
 	_touchStartPosition = ev.touches[0].pageX;
 
 	if(greenBar){
-		greenBar.classList.add('no_anim');
-
 		_lastGreenBar = greenBar;
 	}
-
 	lastActiveHoverBox = el;
-
-	let isLastBox = false;
-
-	if (typeof el.nextSibling === "undefined" | el.nextSibling==null){
-		isLastBox = true;
-	}
 
 	let activeSlide = 0;
 	if(slideSwiper){
@@ -1479,11 +1499,6 @@ function onSlideTouchStart(ev){
 		slideOffset = 178,
 		greenBarWidth = 74;
 
-	let sliderBox = document.querySelector('.swiper-slide:not(.is-hover)');
-
-	if(sliderBox){
-
-	}
 
 	if(wInnerWidth<768){
 		slideWidth = 	100 + 6;
@@ -1501,7 +1516,7 @@ function onSlideTouchStart(ev){
 	let hoverBoxLeft = (slideWidth*hoverBoxPosition) + slideOffset;
 
 
-	let barLeft = getGreenBarTranslateX(greenBar);
+	//let barLeft = getGreenBarTranslateX(greenBar);
 
 	_greenBarAnimSpeed = 0;
 
@@ -1517,19 +1532,15 @@ function onSlideTouchStart(ev){
 
 	//greenBar.style['transition-duration'] = _greenBarAnimSpeed;
 
-	greenBar.style.width = greenBarWidth+'px';
+	//greenBar.style.width = greenBarWidth+'px';
 	if(!isAnimationStarted){
 		isAnimationStarted = true;
 		//requestAnimationFrame(animateGreenBar);
 	}
 
-	// if(_greenBarTimer){
-	// 	clearInterval(_greenBarTimer);
-	// }
+	_lastGreenBarTransformX = _greenBarLeft;
 
-	//moveGreenBar(barLeft, hoverBoxLeft);
-
-	//greenBar.setAttribute('style', transformVal + '; transition-duration:350ms; width: '+greenBarWidth+'px');
+	greenBar.setAttribute('style', 'transform: translateX('+_greenBarLeft+'px); width: '+greenBarWidth+'px');
 }
 
 
@@ -1662,45 +1673,45 @@ function moveGreenBar(from, to) {
 
 function onSlideTouchEnd(ev){
 	const el = ev.currentTarget,
-		elParent = el.closest('[list-parent-js]'),
 		slideIndex = el.dataset.index,
-		slideSwiper = elParent.querySelector('.swiper'),
-		greenBar = elParent.querySelector('[list-line-js]');
+		swiperWrapper = el.parentNode,
+		slideSwiper = swiperWrapper.parentNode;
 
-	let slideWidth = 236,
-		slideOffset = 178,
-		greenBarWidth = 34;
+	const slideCategory = swiperWrapper.dataset.category;
+	const elParent = listBoxWrappers[slideCategory];
 
-	let sliderBox = document.querySelector('.swiper-slide:not(.is-hover)');
+	let greenBar = elParent.querySelector('[list-line-js]');
 
-	if(sliderBox){
-		slideWidth = 	sliderBox.offsetWidth + 6;
-		slideOffset = slideWidth/2;
+	let activeSlide = 0;
+	if(slideSwiper){
+		activeSlide = slideSwiper.swiper.activeIndex;
 	}
+
+	let hoverBoxPosition = (slideIndex - activeSlide);
+
+	let slideWidth = 188,
+		slideOffset = 178;
+
+	greenBarWidth = 64;
+
 
 	if(wInnerWidth<768){
-		greenBarWidth = 20;
+		slideWidth = 	100 + 6;
+		greenBarWidth = 19;
 	}else if(wInnerWidth<1024){
+		slideWidth = 	150 + 6;
 		greenBarWidth = 34;
+	}else{
+		slideWidth = 	185 + 6;
 	}
+	slideOffset = (slideWidth - greenBarWidth)/2;
 
-	if(!_isGreenBarMoving){
-		let barLeft = getGreenBarTranslateX(greenBar);
-		let hoverBoxLeft = ((slideIndex*slideWidth) + slideSwiper.swiper.translate)+slideOffset-12;
+	greenBar.classList.remove('no_anim');
 
-		if(hoverBoxLeft<0){
-			hoverBoxLeft = minLeft;
-		}
-		if(hoverBoxLeft>0){
-			if(_greenBarTimer){
-				clearInterval(_greenBarTimer);
-			}
+	let hoverBoxLeft = (slideWidth*hoverBoxPosition) + slideOffset;
+	_greenBarLeft = hoverBoxLeft;
 
-			moveGreenBar(barLeft, hoverBoxLeft);
-		}
-	}
-	greenBar.style.width = greenBarWidth+'px';
-
+	greenBar.setAttribute('style', 'transform: translateX('+_greenBarLeft+'px); width: '+greenBarWidth+'px');
 }
 
 function onSwiperTranslate(e, translate){
@@ -1709,9 +1720,12 @@ function onSwiperTranslate(e, translate){
 		return;
 	}
 
+
 	if(typeof lastActiveHoverBox === "undefined" ){
 		return;
 	}
+
+	//_lastGreenBar.classList.add('no_anim');
 
 	const el = lastActiveHoverBox,
 		elParent = el.closest('[list-parent-js]'),
@@ -1719,7 +1733,19 @@ function onSwiperTranslate(e, translate){
 		slideSwiper = elParent.querySelector('.swiper'),
 		greenBar = elParent.querySelector('[list-line-js]');
 
-	if(!_isGreenBarMoving){
+	var matrix = new WebKitCSSMatrix(_lastGreenBar.webkitTransform);
+	let _transformX = matrix.m41;
+
+	_greenBarLeft = _lastGreenBarTransformX + translate - _lastGreenBarTranslate;
+	if(_greenBarLeft < minLeft){
+		_greenBarLeft = minLeft;
+	}else if(_greenBarLeft > maxLeft){
+		_greenBarLeft = maxLeft;
+	}
+
+	greenBar.setAttribute('style', 'transform: translateX('+(_greenBarLeft+_greenBarDW)+'px); width: '+greenBarWidth+'px');
+
+	/*if(!_isGreenBarMoving){
 		_isGreenBarMoving = true;
 	}
 
@@ -1807,7 +1833,7 @@ function onSwiperTranslate(e, translate){
 			}
 		}
 
-	}
+	}*/
 }
 
 function tempRepositionGreenBar(elParent, hoverBoxPosition, isSmall){
