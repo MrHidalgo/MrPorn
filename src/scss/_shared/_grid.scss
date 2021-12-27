@@ -64,9 +64,10 @@ $paddingRight: $paddingLeft;
 		}
 
 		&--inner{
-			display: flex;
+			position: relative;
 			flex-wrap: wrap;
 			margin: 0 -15px;
+
 
 			@include respond('max-medium'){
 				margin: 0;

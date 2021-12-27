@@ -78,14 +78,14 @@
 	&-circle {
 		overflow: hidden;
 		position: relative;
-		width: 55px;
-		height: 55px;
+		height: 33px;
 		border-radius: 50%;
-		background-color: rgb(32, 33, 47);
+		margin-right: 10px;
+		/*background-color: rgb(32, 33, 47);
 		@include adaptive(767) {
 			width: 45px;
 			height: 45px;
-		}
+		}*/
 
 		img {
 			@extend %imageResCoverAbs;

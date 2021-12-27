@@ -56,9 +56,6 @@ function initWebWorker(){
 
 	homeData = getWithExpiry("homepage_data_"+dataTime+'_'+currentLang);
 	if(homeData){
-		if(document.body.classList.contains('home')) {
-			//setTimeout(renderAllOtherCategories, 100);
-		}
 	}else{
 		if(!navigator.userAgent.toLowerCase().includes('lighthouse')){
 			if(document.body.classList.contains('home')){
@@ -151,66 +148,10 @@ let isCategoriesRendered = false;
 		initLoggedUser();
 	}
 	const initHome = () =>{
-		homeScroll();
 
 		let cGridList = document.querySelector('.c-grid.list');
 		if(cGridList){
-			cGridList.addEventListener('mouseover', function(_ev) {
-				if(_ev.target.closest('[list-box-js]')){
-					siteBoxHover(_ev.target.closest('[list-box-js]'));
-				}
-			});
 		}
-	}
-
-	const homeScroll = () => {
-		if(document.body.classList.contains('home')){
-			// window.addEventListener('scroll', function(e) {
-			// 	onHomeScroll(e);
-			// });
-		}
-	}
-
-	const onHomeScroll = (e) => {
-		if(true){
-			return;
-		}
-
-
-		let wY = window.scrollY;
-		if(headerHeight==null){
-			headerHeight = document.querySelector('#header').getBoundingClientRect().height;
-		}
-
-
-		let categoryListH = document.querySelector('.c-grid.list').getBoundingClientRect().height;
-		let listBoxes = document.querySelectorAll('.list__box-wrapper');
-		let firstCategoryListHeight = listBoxes[0].getBoundingClientRect().height;
-
-		let expectedY = headerHeight + categoryListH - (firstCategoryListHeight*8);
-
-		let catListContainer = document.querySelector('.c-grid.list');
-
-		if(wY > expectedY){
-			if(!document.querySelector('[category_list_'+(listBoxes.length+1)+']')){
-
-				if(homeData && homeData.categories_indexes){
-					let catId = homeData.categories_indexes[listBoxes.length];
-
-					let categoryHtml = renderSiteCategory(listBoxes.length);
-					catListContainer.insertAdjacentHTML( 'beforeend', categoryHtml );
-
-					swiperCB(
-						`.swiper[data-id="listSlider_${catId}"]`,
-						`.list__box-wrapper[data-name='category_${catId}']`
-					);
-
-					boxHover();
-				}
-			}
-		}
-
-
 	}
 
 	const bodyClick = () => {
@@ -223,11 +164,6 @@ let isCategoriesRendered = false;
 
 			if(_ev.closest('[sort-node-js]')){
 				console.log('Clicked sorting');
-				if(!isCategoriesRendered){
-					isCategoriesRendered = true;
-					renderAllOtherCategories();
-
-				}
 			}
 
 			if(!_ev.closest('[sort-node-js]')){
@@ -791,47 +727,6 @@ let isCategoriesRendered = false;
 		}
 	}
 
-	//Loading other categories on home
-	function loadOtherHomeCategories(){
-
-		const myEls = document.querySelectorAll(".observer-block");
-		if(myEls.length==0){
-			return;
-		}
-
-		const myObserver = new IntersectionObserver((elements) => {
-			elements.forEach(function (index) {
-				if (index.intersectionRatio > 0) {
-
-					if(homeData && homeData.categories_indexes){
-						if(!isCategoriesRendered){
-							isCategoriesRendered = true;
-							renderAllOtherCategories();
-							myObserver.unobserve(myEls[0]);
-						}
-					}
-				}
-			});
-		});
-
-
-		if (myEls.length) {
-			myObserver.observe(myEls[0]);
-		}
-		/*if (myEls.offsetTop < window.scrollY) {
-			renderAllOtherCategories();
-		}*/
-
-		/*if (document.body.classList.contains('home') && window.scrollY > 500) {
-			if(homeData && homeData.categories_indexes){
-				if(!isCategoriesRendered){
-					isCategoriesRendered = true;
-					renderAllOtherCategories();
-
-				}
-			}
-		}*/
-	}
 
 	const siteBoxHover = (el) => {
 		let elID = el.getAttribute('data-id'),
@@ -946,38 +841,6 @@ let isCategoriesRendered = false;
 		}
 	}
 
-
-	const toggleMoreBox = () => {
-		const moreBoxes = document.querySelectorAll('[list-box-more-js]');
-
-		for(let i = 0; i < moreBoxes.length; i++) {
-			moreBoxes[i].addEventListener('click', (ev) => {
-				const el = ev.currentTarget,
-					elID = Number(el.getAttribute('data-id')),
-					elCount = Number(el.getAttribute('data-count')),
-					elParent = el.closest('.list__box-wrapper');
-
-				const listBoxCount = elParent.querySelectorAll('.list__box-body .list__box').length;
-
-				el.closest('.list__specification').querySelector('.list__specification-close').click();
-
-				if((elID + 6) <= listBoxCount) {
-					elParent.querySelector('.list__specification[data-id="' + (elID + elCount) + '"]').classList.add('is-open');
-				} else {
-					const remainder = 6 - (listBoxCount - elID);
-
-					if(remainder === 6) {
-						elParent.querySelector('.list__specification[data-id="' + (elCount) + '"]').classList.add('is-open');
-					} else {
-						elParent.querySelector('.list__specification[data-id="' + (elID + elCount) + '"]').classList.add('is-open');
-					}
-
-					elParent.querySelector('.list__specification[data-id="' + (elCount) + '"]').classList.add('is-open');
-				}
-
-			}, false);
-		}
-	};
 	/**
 	 * end MAIN CALLBACK
 	 * ===================================
@@ -1027,7 +890,6 @@ let isCategoriesRendered = false;
 
 		initGotoTop();
 
-		loadOtherHomeCategories();
 
 		letterSearch();
 
@@ -1036,16 +898,13 @@ let isCategoriesRendered = false;
 
 
 		if(document.body.classList.contains('home')){
-			boxHover();
 			//videoToggle();
 
 			//listIndicator();
 			//detailsToggleAction();
 			skipModal();
-			toggleMoreBox();
 			getLikesAndDislikes();
 
-			initHomeSwippers();
 		}
 
 

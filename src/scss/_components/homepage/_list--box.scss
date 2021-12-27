@@ -1,46 +1,35 @@
 &__box {
-	cursor: pointer;
 	position: absolute;
-	top: 50%;
-	left: 50%;
-	transform: translate(-50%, -50%);
-	display: flex;
+	cursor: pointer;
 	align-items: center;
 	justify-content: center;
-	width: 100%;
-	height: 100%;
-	padding: 10px;
 	background-color: #080915;
 	background-position: center;
 	background-repeat: no-repeat;
 	background-size: cover;
 	backface-visibility: hidden;
 	transform-origin: center;
-	border: 1px dashed #fff;
+	padding: 0 7px;
+
+	/*div, ul{scrollbar-color: #131313 #525252;}
+	div::-webkit-scrollbar, ul::-webkit-scrollbar {width: 10px; }
+	div::-webkit-scrollbar-track, ul::-webkit-scrollbar-track{ background: rgba(0,0,0,0.1) }
+	div::-webkit-scrollbar-thumb, ul::-webkit-scrollbar-thumb { background: #9c9b9c }
+	div:hover::-webkit-scrollbar-thumb, ul:hover::-webkit-scrollbar-thumb { background: #225396 }*/
 
 
-	@include transition(width, height);
-	@include adaptive(1279) {
-		width: 195px;
-		height: 195px;
-		padding: 10px;
-	}
-	@include adaptive(1023) {
-		width: 150px;
-		height: 150px;
-		padding: 15px;
+	div, ul{scrollbar-color: #131313 #525252;}
+	div::-webkit-scrollbar, ul::-webkit-scrollbar {width: 10px; }
+	div::-webkit-scrollbar-corner, ul::-webkit-scrollbar-corner { background: rgba(0,0,0,0); }
+	div::-webkit-scrollbar-track, ul::-webkit-scrollbar-track{background: #131313; border-left:1px solid #333;}
+	div::-webkit-scrollbar-thumb, ul::-webkit-scrollbar-thumb { background: #525252; }
+	div:hover::-webkit-scrollbar-thumb, ul:hover::-webkit-scrollbar-thumb { background: #323232; }
+
+
+	@include respond('large'){
+		width: 25%;
 	}
 
-	@include respond('ipad_landscape'){
-		width: 130px !important;
-		height: 130px;
-	}
-
-	@include adaptive(767) {
-		width: 96px;
-		height: 96px;
-		padding: 0;
-	}
 
 	&__thumb{
 		position: absolute;
@@ -52,13 +41,85 @@
 
 	}
 
-	a{
-		width: 100%;
-		height: 100%;
+	&-list{
+		list-style-type: none;
+		padding: 0;
+		font-weight: 500;
+		margin: 0;
+		overflow: auto;
+		-webkit-overflow-scrolling: touch;
+		counter-reset: number 0;
+
+		/*scrollbar-color: #131313 #525252;
+
+		&::-webkit-scrollbar-corner{ background: rgba(0,0,0,0); }
+		&::-webkit-scrollbar-track{background: #131313; border-left:1px solid #333;}
+		&::-webkit-scrollbar-thumb{ background: #525252; }
+		&:hover::-webkit-scrollbar-thumb{ background: #323232; }*/
+	}
+
+	&__item{
 		display: flex;
+		width: 100%;
 		align-items: center;
 		z-index: 20;
+
+		padding: 10px 10px 10px 5px;
+		//border-bottom: 1px solid #ededed;
+		height: 38px;
+		position: relative;
+
+		background: #454545;
+		border-bottom: 1px solid #585858;
+		color: #ddd;
+		font-weight: 500;
+
+		&:before{
+			counter-increment: number;
+			content: counters(number, ".") ". ";
+			display: inline-block;
+			width: 30px;
+			text-align: center;
+			border: 0;
+			font-weight: 400;
+			color: #adadad;
+			font-size: 14px;
+		}
+
+		.deIcon::before{
+			content: ' ';
+			width: 16px;
+			height: 16px;
+			margin: 0 5px 0;
+			display: inline-block;
+		}
+
+		&-link{
+			color: #fff;
+			flex: 1;
+			&:hover{
+				color: #fff;
+			}
+		}
+
+		&-icon{
+			height: 16px;
+		}
+		&-fav{
+			display: none;
+			margin: 0 8px;
+			font-size: 16px;
+		}
+		&:hover{
+			.list__box__item-fav{
+				display: block;
+			}
+		}
+		&-preview{
+			height: 16px;
+		}
 	}
+
 
 	&--title{
 		position: absolute;
@@ -165,14 +226,33 @@
 	}
 
 	&-head {
-		position: relative;
 		display: flex;
+		background: #2663b0;
+		background: linear-gradient(to bottom, #2663b0 0%,#1b4f90 50%,#113d74 100%);
+		color: #d1f34b;
+		font-weight: 800;
+		font-size: 16px;
+		text-align: center;
+		height: 45px;
 		align-items: center;
-		justify-content: space-between;
-		padding-bottom: 15px;
+		justify-content: center;
+
+
 		@include adaptive(767) {
 			padding-right: 10px;
 		}
+	}
+	&-subtext{
+		background: #0e2644;
+		color: #ccc;
+		padding: 0 5px;
+		text-align: center;
+		font-size: 13px;
+		text-overflow: ellipsis;
+		display: -webkit-box;
+		-webkit-line-clamp: 2;
+		-webkit-box-orient: vertical;
+		overflow: hidden;
 	}
 
 	&-line {

@@ -1131,10 +1131,7 @@ function initWebWorker() {
   removeOtherStorageKeys(dataTime, currentLang);
   homeData = getWithExpiry("homepage_data_" + dataTime + '_' + currentLang);
 
-  if (homeData) {
-    if (document.body.classList.contains('home')) {//setTimeout(renderAllOtherCategories, 100);
-    }
-  } else {
+  if (homeData) {} else {
     if (!navigator.userAgent.toLowerCase().includes('lighthouse')) {
       if (document.body.classList.contains('home')) {
         loadHomeData();
@@ -1219,53 +1216,9 @@ var isCategoriesRendered = false;
   }
 
   var initHome = function initHome() {
-    homeScroll();
     var cGridList = document.querySelector('.c-grid.list');
 
-    if (cGridList) {
-      cGridList.addEventListener('mouseover', function (_ev) {
-        if (_ev.target.closest('[list-box-js]')) {
-          siteBoxHover(_ev.target.closest('[list-box-js]'));
-        }
-      });
-    }
-  };
-
-  var homeScroll = function homeScroll() {
-    if (document.body.classList.contains('home')) {// window.addEventListener('scroll', function(e) {
-      // 	onHomeScroll(e);
-      // });
-    }
-  };
-
-  var onHomeScroll = function onHomeScroll(e) {
-    if (true) {
-      return;
-    }
-
-    var wY = window.scrollY;
-
-    if (headerHeight == null) {
-      headerHeight = document.querySelector('#header').getBoundingClientRect().height;
-    }
-
-    var categoryListH = document.querySelector('.c-grid.list').getBoundingClientRect().height;
-    var listBoxes = document.querySelectorAll('.list__box-wrapper');
-    var firstCategoryListHeight = listBoxes[0].getBoundingClientRect().height;
-    var expectedY = headerHeight + categoryListH - firstCategoryListHeight * 8;
-    var catListContainer = document.querySelector('.c-grid.list');
-
-    if (wY > expectedY) {
-      if (!document.querySelector('[category_list_' + (listBoxes.length + 1) + ']')) {
-        if (homeData && homeData.categories_indexes) {
-          var catId = homeData.categories_indexes[listBoxes.length];
-          var categoryHtml = renderSiteCategory(listBoxes.length);
-          catListContainer.insertAdjacentHTML('beforeend', categoryHtml);
-          swiperCB(".swiper[data-id=\"listSlider_".concat(catId, "\"]"), ".list__box-wrapper[data-name='category_".concat(catId, "']"));
-          boxHover();
-        }
-      }
-    }
+    if (cGridList) {}
   };
 
   var bodyClick = function bodyClick() {
@@ -1275,11 +1228,6 @@ var isCategoriesRendered = false;
 
       if (_ev.closest('[sort-node-js]')) {
         console.log('Clicked sorting');
-
-        if (!isCategoriesRendered) {
-          isCategoriesRendered = true;
-          renderAllOtherCategories();
-        }
       }
 
       if (!_ev.closest('[sort-node-js]')) {
@@ -1788,46 +1736,6 @@ var isCategoriesRendered = false;
         document.body.classList.remove('sticky_header');
       }
     }
-  } //Loading other categories on home
-
-
-  function loadOtherHomeCategories() {
-    var myEls = document.querySelectorAll(".observer-block");
-
-    if (myEls.length == 0) {
-      return;
-    }
-
-    var myObserver = new IntersectionObserver(function (elements) {
-      elements.forEach(function (index) {
-        if (index.intersectionRatio > 0) {
-          if (homeData && homeData.categories_indexes) {
-            if (!isCategoriesRendered) {
-              isCategoriesRendered = true;
-              renderAllOtherCategories();
-              myObserver.unobserve(myEls[0]);
-            }
-          }
-        }
-      });
-    });
-
-    if (myEls.length) {
-      myObserver.observe(myEls[0]);
-    }
-    /*if (myEls.offsetTop < window.scrollY) {
-    	renderAllOtherCategories();
-    }*/
-
-    /*if (document.body.classList.contains('home') && window.scrollY > 500) {
-    	if(homeData && homeData.categories_indexes){
-    		if(!isCategoriesRendered){
-    			isCategoriesRendered = true;
-    			renderAllOtherCategories();
-    			}
-    	}
-    }*/
-
   }
 
   var siteBoxHover = function siteBoxHover(el) {
@@ -1940,35 +1848,6 @@ var isCategoriesRendered = false;
       }
     }
   }
-
-  var toggleMoreBox = function toggleMoreBox() {
-    var moreBoxes = document.querySelectorAll('[list-box-more-js]');
-
-    for (var i = 0; i < moreBoxes.length; i++) {
-      moreBoxes[i].addEventListener('click', function (ev) {
-        var el = ev.currentTarget,
-            elID = Number(el.getAttribute('data-id')),
-            elCount = Number(el.getAttribute('data-count')),
-            elParent = el.closest('.list__box-wrapper');
-        var listBoxCount = elParent.querySelectorAll('.list__box-body .list__box').length;
-        el.closest('.list__specification').querySelector('.list__specification-close').click();
-
-        if (elID + 6 <= listBoxCount) {
-          elParent.querySelector('.list__specification[data-id="' + (elID + elCount) + '"]').classList.add('is-open');
-        } else {
-          var remainder = 6 - (listBoxCount - elID);
-
-          if (remainder === 6) {
-            elParent.querySelector('.list__specification[data-id="' + elCount + '"]').classList.add('is-open');
-          } else {
-            elParent.querySelector('.list__specification[data-id="' + (elID + elCount) + '"]').classList.add('is-open');
-          }
-
-          elParent.querySelector('.list__specification[data-id="' + elCount + '"]').classList.add('is-open');
-        }
-      }, false);
-    }
-  };
   /**
    * end MAIN CALLBACK
    * ===================================
@@ -2007,19 +1886,15 @@ var isCategoriesRendered = false;
 
     goTop = document.querySelector('.go-top');
     initGotoTop();
-    loadOtherHomeCategories();
     letterSearch();
     search();
 
     if (document.body.classList.contains('home')) {
-      boxHover(); //videoToggle();
+      //videoToggle();
       //listIndicator();
       //detailsToggleAction();
-
       skipModal();
-      toggleMoreBox();
       getLikesAndDislikes();
-      initHomeSwippers();
     } //		boxMore();
     // ==========================================
     //loadHomeData();
