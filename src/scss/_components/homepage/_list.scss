@@ -340,6 +340,71 @@
 	}
 }
 
+.popover{
+	position: absolute;
+	display: none;
+	background: #fff;
+	z-index: 11100;
+	color: #000;
+	border-radius: 0;
+	padding: 0;
+	font-size: 15px;
+	line-height: 17px;
+	transform: translateY(-100%);
+	box-shadow: 0px 0px 0px 6px #a6a5a5;
+	text-align: center;
+
+	&:after, &:before {
+		content: "";
+		position: absolute;
+		width: 0;
+		height: 0;
+		border-style: solid;
+		top: 100%;
+		left: 0;
+		right: 0;
+		margin: auto;
+	}
+	&:before{
+		margin-top: 7px;
+		border-width: 11px 11px 0 11px;
+		border-color: #fff transparent transparent transparent;
+	}
+	&:after {
+		margin-top: 6px;
+		border-width: 10px 10px 0 10px;
+		border-color: rgba(166,165,165,1) transparent transparent transparent;
+	}
+
+	&-outer{
+		border: 1px solid #fff;
+	}
+	&-title{
+		font-size: 15px;
+		font-weight: 700;
+		background: #e6dfdf;
+		padding: 4px 8px;
+		text-align: center;
+
+		&-a{
+			color: #337ab7;
+			line-height: 26px;
+		}
+	}
+	&-content {
+		background: #f1f1f1;
+		margin: 0 0 0 0;
+		color: #333;
+		padding: 5px;
+		font-size: 12px;
+		text-overflow: ellipsis;
+		display: -webkit-box;
+		-webkit-line-clamp: 3;
+		-webkit-box-orient: vertical;
+		overflow: hidden;
+		max-height: 56px;
+	}
+}
 
 .swiper-scrollbar {
 	left: 1%;

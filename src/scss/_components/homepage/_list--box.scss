@@ -1,5 +1,5 @@
 &__box {
-	position: absolute;
+
 	cursor: pointer;
 	align-items: center;
 	justify-content: center;
@@ -10,13 +10,7 @@
 	backface-visibility: hidden;
 	transform-origin: center;
 	padding: 0 7px;
-
-	/*div, ul{scrollbar-color: #131313 #525252;}
-	div::-webkit-scrollbar, ul::-webkit-scrollbar {width: 10px; }
-	div::-webkit-scrollbar-track, ul::-webkit-scrollbar-track{ background: rgba(0,0,0,0.1) }
-	div::-webkit-scrollbar-thumb, ul::-webkit-scrollbar-thumb { background: #9c9b9c }
-	div:hover::-webkit-scrollbar-thumb, ul:hover::-webkit-scrollbar-thumb { background: #225396 }*/
-
+	margin-bottom: 15px;
 
 	div, ul{scrollbar-color: #131313 #525252;}
 	div::-webkit-scrollbar, ul::-webkit-scrollbar {width: 10px; }
@@ -25,6 +19,10 @@
 	div::-webkit-scrollbar-thumb, ul::-webkit-scrollbar-thumb { background: #525252; }
 	div:hover::-webkit-scrollbar-thumb, ul:hover::-webkit-scrollbar-thumb { background: #323232; }
 
+
+	@include respond('medium'){
+		position: absolute;
+	}
 
 	@include respond('large'){
 		width: 25%;
@@ -42,6 +40,7 @@
 	}
 
 	&-list{
+		background: #454545;
 		list-style-type: none;
 		padding: 0;
 		font-weight: 500;
@@ -56,6 +55,13 @@
 		&::-webkit-scrollbar-track{background: #131313; border-left:1px solid #333;}
 		&::-webkit-scrollbar-thumb{ background: #525252; }
 		&:hover::-webkit-scrollbar-thumb{ background: #323232; }*/
+
+		scrollbar-color: #131313 #525252;
+		&::-webkit-scrollbar{width: 10px; }
+		&::-webkit-scrollbar-corner{ background: rgba(0,0,0,0); }
+		&::-webkit-scrollbar-track{background: #131313; border-left:1px solid #333;}
+		&::-webkit-scrollbar-thumb{ background: #525252; }
+		&:hover::-webkit-scrollbar-thumb{ background: #323232; }
 	}
 
 	&__item{
@@ -109,6 +115,12 @@
 			display: none;
 			margin: 0 8px;
 			font-size: 16px;
+
+			&.favourite{
+				background: url("../images/golden_star.png");
+				width: 24px;
+				height: 24px;
+			}
 		}
 		&:hover{
 			.list__box__item-fav{
@@ -231,7 +243,7 @@
 		background: linear-gradient(to bottom, #2663b0 0%,#1b4f90 50%,#113d74 100%);
 		color: #d1f34b;
 		font-weight: 800;
-		font-size: 16px;
+		font-size: 15px;
 		text-align: center;
 		height: 45px;
 		align-items: center;

@@ -1576,13 +1576,8 @@ var isCategoriesRendered = false;
 
     var elID = el.getAttribute('data-id'),
         elParent = el.closest('.list__box-wrapper');
-    console.log('Fav box ' + elID); // const specificationFavoritesBtn = elParent.querySelector('[data-favorites="' + elID + '"]');
-
+    console.log('Fav box ' + elID);
     el.classList.toggle('is-active');
-    /*if(specificationFavoritesBtn){
-    	//specificationFavoritesBtn.classList.toggle('is-active');
-    }*/
-
     addToFavourites(elID);
   }
 
@@ -1895,6 +1890,7 @@ var isCategoriesRendered = false;
       //detailsToggleAction();
       skipModal();
       getLikesAndDislikes();
+      initHomeTooltip();
     } //		boxMore();
     // ==========================================
     //loadHomeData();

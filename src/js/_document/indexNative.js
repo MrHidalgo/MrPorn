@@ -540,15 +540,7 @@ let isCategoriesRendered = false;
 			elParent = el.closest('.list__box-wrapper');
 
 		console.log('Fav box '+elID);
-
-		// const specificationFavoritesBtn = elParent.querySelector('[data-favorites="' + elID + '"]');
-
 		el.classList.toggle('is-active');
-
-		/*if(specificationFavoritesBtn){
-			//specificationFavoritesBtn.classList.toggle('is-active');
-		}*/
-
 		addToFavourites(elID);
 	}
 
@@ -904,7 +896,7 @@ let isCategoriesRendered = false;
 			//detailsToggleAction();
 			skipModal();
 			getLikesAndDislikes();
-
+			initHomeTooltip()
 		}
 
 

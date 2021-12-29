@@ -1,37 +1,16 @@
-var webworkerFrontpage;
 let currentBannerTimeout;
 let lastActiveHoverBox;
-let lastTranslate = 0;
 let isMouseDown = false;
 let _greenBarLeft = 0;
-let _greenBarWidth = 20;
-let _greenBarCurrent = 0;
-let _greenBarAnimSpeed = 0;
-let _greenBarDuration = 500;
-let _greenBarFrom = 0;
-let _lastGreenBar;
-let _lastGreenBarTransformX;
-let _lastGreenBarTranslate;
-let _greenBarDW = 0;
 let	greenBarWidth;
 
-let _lastSwiperWrapper;
-let _lastSlideSwiper;
 
-let _touchStartPosition = 0;
-let _greenBarTimer;
-
-let _isGreenBarMoving = false;
 let isAnimationStarted = false;
-let maxLeft;
-let minLeft;
-let swiperSlideWidth = 230;
 let pauseHoverAnimation = false;
 
 let swiperClientWidth = null;
 let swiperClientHeight = null;
 
-let defaultSlideWidth = 0;
 let defaultSlidePaddingLeft = 0;
 let defaultSlidePaddingRight = 0;
 let defaultSlideMarginLeft = 0;
@@ -54,6 +33,12 @@ const dimmer = document.querySelector('.overlay');
 const modalContainer = document.querySelector('.modal-container');
 const modal = document.querySelector('.modal');
 
+let homeMainContainer = document.querySelector('.c-grid--inner');
+let isPopVisible = false;
+let popover = document.querySelector('.popover');
+let popoverTitle = popover.querySelector('.popover-title-inner');
+let popoverLink = popover.querySelector('.popover-title-inner .link');
+let popoverTagline = popover.querySelector('.popover-content');
 
 // Return the center x, y of a bounding box
 function findCenter({ top, left, height, width }, isOpen = true) {
@@ -125,8 +110,60 @@ function cancelModal(e) {
 	}else{
 
 	}
+}
 
+function initHomeTooltip(){
+	if (!window.mobileAndTabletcheck()) {
 
+		if(homeGridInner){
+			homeGridInner.onmouseover = function(e){
+				let hoverTarget = e.target;
+				if(hoverTarget.matches('.list__box__item') | hoverTarget.parents('.list__box__item').length>0){
+					if(hoverTarget.parents('.list__box__item').length>0){
+						hoverTarget = hoverTarget.parents('.list__box__item')[0];
+					}
+
+					let siteId = hoverTarget.dataset.id;
+					let siteCategory = hoverTarget.dataset.category;
+					let siteIndex = hoverTarget.dataset.index;
+
+					if(homeData && homeData.categories !== undefined){
+						let siteData = homeData.categories[siteCategory].sites[siteIndex];
+						if(siteData){
+							let siteName = siteData.name;
+							let siteTagline = siteData.tagline;
+							siteTagline = siteTagline.replace("\\", "").replace("\\", "");
+							let siteReviewLink = siteData.review_link;
+							let siteFx = siteData.f_x;
+							let siteFy = siteData.f_y;
+
+							var wallDimensions = homeMainContainer.getBoundingClientRect();
+							var wallX = wallDimensions.left;
+							var wallY = wallDimensions.top;
+							var hoverTargetBounds = hoverTarget.getBoundingClientRect();
+							var popW = hoverTargetBounds.width - 7;
+							var popY =  hoverTargetBounds.top - wallY-16;
+							var popX = hoverTargetBounds.left +7 - wallX;
+
+							popover.style.display = 'block';
+							popover.style.top = popY+'px';
+							popover.style.left = popX+'px';
+							popover.style.width = popW+'px';
+							popoverLink.innerHTML = siteName;
+							popoverTitle.className = 'popover-title-inner deIcon  fx_'+siteFx+' fy_'+siteFy+' fi'+siteId;
+							popoverLink.setAttribute('href', siteReviewLink);
+							popoverTagline.innerHTML = siteTagline;
+							isPopVisible = true;
+						}
+					}
+				}else{
+					if(isPopVisible){
+						popover.style.display = 'none';
+					}
+				}
+			}
+		}
+	}
 }
 
 function cloneCurrentPopupBanner(){
@@ -835,15 +872,9 @@ function shuffleArray(arra1){
 }
 
 
-let tOut = null,
-	hoverBool = false;
-let previousHoverBox = null;
+let tOut = null;
 
-let delayPreview = false;
-let previewModal = document.querySelector('#previewModal');
-let previewModalInner = previewModal.querySelector('.previewModal--inner');
-let prevContainer = previewModal.querySelector('.previewModal--container');
-
+let homeGridInner = document.querySelector(".c-grid--inner");
 
 function getGreenBarTranslateX(greenBar) {
 	var translateX = parseInt(getComputedStyle(greenBar, null).getPropertyValue("transform").split(",")[4]);
@@ -865,85 +896,6 @@ function easeInOutQuart(t, b, c, d) {
 	return -c / 2 * ((t -= 2) * t * t * t - 2) + b;
 }
 
-function moveGreenBar(from, to) {
-	_greenBarFrom = from;
-	let start = new Date().getTime();
-
-
-	if(to<0){
-		clearInterval(_greenBarTimer);
-		return;
-	}
-
-	_greenBarTimer = setInterval(function() {
-		var time = new Date().getTime() - start;
-		var x = easeInOutQuart(time, _greenBarFrom, to - _greenBarFrom, _greenBarDuration);
-
-		if(x<0){
-			clearInterval(_greenBarTimer);
-		}else if(x>maxLeft){
-			clearInterval(_greenBarTimer);
-		}
-		_greenBarLeft = x;
-		if (time >= _greenBarDuration) clearInterval(_greenBarTimer);
-	}, 1000 / 60);
-	//rect.setAttribute('x', from);
-
-	if(_greenBarLeft>maxLeft){
-		_greenBarLeft = maxLeft;
-	}
-
-	if(_greenBarLeft<0){
-		_greenBarLeft = minLeft;
-	}
-
-	if(_greenBarFrom>0){
-		_greenBarLeft = _greenBarFrom;
-	}
-}
-
-function onSlideTouchEnd(ev){
-	const el = ev.currentTarget,
-		slideIndex = el.dataset.index,
-		swiperWrapper = el.parentNode,
-		slideSwiper = swiperWrapper.parentNode;
-
-	const slideCategory = swiperWrapper.dataset.category;
-	const elParent = listBoxWrappers[slideCategory];
-
-	let greenBar = elParent.querySelector('[list-line-js]');
-
-	let activeSlide = 0;
-	if(slideSwiper){
-		activeSlide = slideSwiper.swiper.activeIndex;
-	}
-
-	let hoverBoxPosition = (slideIndex - activeSlide);
-
-	let slideWidth = 188,
-		slideOffset = 178;
-
-	greenBarWidth = 64;
-
-
-	if(wInnerWidth<768){
-		slideWidth = 	100 + 6;
-		greenBarWidth = 19;
-	}else if(wInnerWidth<1024){
-		slideWidth = 	150 + 6;
-		greenBarWidth = 34;
-	}else{
-		slideWidth = 	185 + 6;
-	}
-	slideOffset = (slideWidth - greenBarWidth)/2;
-
-	greenBar.classList.remove('no_anim');
-
-	let hoverBoxLeft = (slideWidth*hoverBoxPosition) + slideOffset;
-	_greenBarLeft = hoverBoxLeft;
-
-	greenBar.setAttribute('style', 'transform: translateX('+_greenBarLeft+'px); width: '+greenBarWidth+'px');
-}
 
 
 function tempRepositionGreenBar(elParent, hoverBoxPosition, isSmall){
@@ -990,41 +942,6 @@ function tempRepositionGreenBar(elParent, hoverBoxPosition, isSmall){
 
 		}
 	}
-}
-
-function onParentSideLeave(ev){
-	let parentSlideBox = ev.target;
-	if(parentSlideBox){
-		let openBanner = parentSlideBox.querySelector('.list__specification.is-open');
-		if(openBanner){
-			let btCloseBanner = openBanner.querySelector('.list__specification-close');
-			if(btCloseBanner){
-				btCloseBanner.click();
-			}
-		}
-	}
-}
-
-
-
-function onShowBannerEnter(__ev){
-
-	const el = lastActiveHoverBox,
-		elParent = __ev.currentTarget.closest('[list-parent-js]'),
-		greenBar = elParent.querySelector('[list-line-js]');
-
-	if(currentBannerTimeout){
-		clearTimeout(currentBannerTimeout);
-	}
-
-	currentBannerTimeout = window.setTimeout(function(){
-		showBanner(__ev.target);
-	}, 1000);
-
-}
-
-function onShowBannerLeave(__ev){
-	window.clearTimeout(currentBannerTimeout)
 }
 
 function showBanner(siteId, isSkip = false, target = false){
