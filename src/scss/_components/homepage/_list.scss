@@ -354,6 +354,10 @@
 	box-shadow: 0px 0px 0px 6px #a6a5a5;
 	text-align: center;
 
+	@include respond('max-small'){
+		display: none;
+	}
+
 	&:after, &:before {
 		content: "";
 		position: absolute;
@@ -512,16 +516,28 @@
 }
 
 .light{
+	.list__box-subtext{
+		background: linear-gradient(to bottom, #ffffff 0%,#f9f3eb 100%);
+		color: #333;
+	}
+	.list__box__item{
+		background: #fff;
+		border-bottom: 1px solid #ededed;
+
+		&:after{
+			background: url('../images/icon-glass-dark.svg');
+		}
+	}
+	.list__box__item-link{
+		color: #113d74;
+	}
 	.list__info p{
 		color: #0b0d28;
 	}
-
-	.list__info--title_a{
-		color: #333;
-		&:hover{
-			color: #333;
-		}
+	.list__box__item:hover .list__box__item-fav{
+		color: #113d74;
 	}
+
 	@include adaptive(767) {
 		.list__btn{
 			right: 0;
@@ -550,6 +566,16 @@
 		fill: #fff;
 	}
 
+	.list__box-list{
+		background: #fff;
+
+		scrollbar-color: #131313 #525252;
+		&::-webkit-scrollbar {width: 10px; }
+		&::-webkit-scrollbar-corner{ background: rgba(0,0,0, 0.1); }
+		&::-webkit-scrollbar-track{ background: rgba(0,0,0,0.1) }
+		&::-webkit-scrollbar-thumb{ background: #9c9b9c }
+		&:hover::-webkit-scrollbar-thumb{ background: #225396 }
+	}
 }
 
 @keyframes slideToggle {

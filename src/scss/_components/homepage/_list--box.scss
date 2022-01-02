@@ -3,7 +3,6 @@
 	cursor: pointer;
 	align-items: center;
 	justify-content: center;
-	background-color: #080915;
 	background-position: center;
 	background-repeat: no-repeat;
 	background-size: cover;
@@ -49,12 +48,7 @@
 		-webkit-overflow-scrolling: touch;
 		counter-reset: number 0;
 
-		/*scrollbar-color: #131313 #525252;
 
-		&::-webkit-scrollbar-corner{ background: rgba(0,0,0,0); }
-		&::-webkit-scrollbar-track{background: #131313; border-left:1px solid #333;}
-		&::-webkit-scrollbar-thumb{ background: #525252; }
-		&:hover::-webkit-scrollbar-thumb{ background: #323232; }*/
 
 		scrollbar-color: #131313 #525252;
 		&::-webkit-scrollbar{width: 10px; }
@@ -68,7 +62,7 @@
 		display: flex;
 		width: 100%;
 		align-items: center;
-		z-index: 20;
+
 
 		padding: 10px 10px 10px 5px;
 		//border-bottom: 1px solid #ededed;
@@ -91,6 +85,14 @@
 			color: #adadad;
 			font-size: 14px;
 		}
+		&:after{
+			display: block;
+			content: ' ';
+			width: 16px;
+			height: 16px;
+			background: url('../images/icon-glass-light.svg');
+			background-size: contain !important;
+		}
 
 		.deIcon::before{
 			content: ' ';
@@ -103,6 +105,8 @@
 		&-link{
 			color: #fff;
 			flex: 1;
+			font-weight: 600;
+
 			&:hover{
 				color: #fff;
 			}
@@ -116,10 +120,15 @@
 			margin: 0 8px;
 			font-size: 16px;
 
-			&.favourite{
+			&.is-active{
 				background: url("../images/golden_star.png");
-				width: 24px;
-				height: 24px;
+				background-size: contain;
+				height: 18px;
+				width: 18px;
+
+				&:before{
+					content: ' ';
+				}
 			}
 		}
 		&:hover{
@@ -249,6 +258,10 @@
 		align-items: center;
 		justify-content: center;
 
+		&:hover, &:focus{
+			color: #d1f34b;
+			text-decoration: underline;
+		}
 
 		@include adaptive(767) {
 			padding-right: 10px;

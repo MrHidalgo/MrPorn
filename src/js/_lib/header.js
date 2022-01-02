@@ -81,9 +81,6 @@ const renderFavourites = () => {
 				if(document.querySelector('.mobile_signup_link')){
 					document.querySelector('.mobile_signup_link').setAttribute('href', logoutLink);
 				}
-
-
-
 			}else{
 				//loadLoginForm();
 			}
@@ -105,19 +102,6 @@ const renderFavourites = () => {
 						'<div><img src="'+fav.favicon+'"/><p><a href="'+fav.permalink+'">'+fav.title+'</a></p></div>' +
 						'<div><button type="button" data-id="'+fav.id+'" un-favorites-js><i class="icon-font icon-delete"></i></button><a href="'+fav.permalink+'" class="glass"><i class="icon-font icon-search"></i></a></div>' +
 						'</div>';
-
-					/*let favLink = document.querySelector('[data-id="'+fav.id+'"] [favorites-toggle-js]');
-					if(favLink){
-						favLink.classList.add('is-active');
-					}
-
-					if(document.querySelector('.list__box-favorites[data-id="'+fav.id+'"]')){
-						document.querySelector('.list__box-favorites[data-id="'+fav.id+'"]').classList.add('is-active');
-					}
-					if(document.querySelector('.list__specification-circle[data-id="'+fav.id+'"]')){
-						document.querySelector('.list__specification-circle[data-id="'+fav.id+'"]').classList.add('is-active');
-					}*/
-
 				})
 
 				if(favouritesDropDown){
@@ -327,11 +311,11 @@ const onSortLetterClick = (letterItem) => {
 
 		let htmlFree = '';
 		if(siteFree){
-			htmlFree = '<a href="'+siteFree+'" class="site_free scroll_to_category" data-category="'+freeId+'"><span>Free</span></a>';
+			htmlFree = '<a href="'+siteFree+'" class="site_free scroll_to_category11" data-category="'+freeId+'"><span>Free</span></a>';
 		}
 		let htmlHd = '';
 		if(siteHd){
-			htmlHd = '<a href="'+siteHd+'" class="scroll_to_category" data-category="'+hdId+'"><img src="'+themeBase +'images/img-badge-premium.png" srcset="'+themeBase+'images/img-badge-premium@2x.png 2x" alt=""/></a>';
+			htmlHd = '<a href="'+siteHd+'" class="scroll_to_category11" data-category="'+hdId+'"><img src="'+themeBase +'images/img-badge-premium.png" srcset="'+themeBase+'images/img-badge-premium@2x.png 2x" alt=""/></a>';
 		}
 
 		let showLetterToggle = false;
