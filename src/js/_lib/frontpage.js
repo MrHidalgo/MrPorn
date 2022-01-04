@@ -147,22 +147,20 @@ function initHomeTooltip(){
 
 							if(!popoverOuter){
 								popover.innerHTML = '<div class="popover-outer">\n' +
-									'            <div class="popover-title">\n' +
-									'                <div class="popover-title-inner deIcon ">\n' +
+									'            <div class="popover-title deIcon">\n' +
 									'                    <a class="popover-title-a link direct_1 step_1_" target="_blank" hreflang="en" href=""></a>\n' +
-									'                </div>\n' +
 									'            </div>\n' +
 									'            <div class="popover-content"></div>\n' +
 									'        </div>';
 
-								popoverTitle = popover.querySelector('.popover-title-inner');
-								popoverLink = popover.querySelector('.popover-title-inner .link');
+								popoverTitle = popover.querySelector('.popover-title');
+								popoverLink = popover.querySelector('.popover-title-a');
 								popoverTagline = popover.querySelector('.popover-content');
 							}
 
 
 							popoverLink.innerHTML = siteName;
-							popoverTitle.className = 'popover-title-inner deIcon  fx_'+siteFx+' fy_'+siteFy+' fi'+siteId;
+							popoverTitle.className = 'popover-title deIcon  fx_'+siteFx+' fy_'+siteFy+' fi'+siteId;
 							popoverLink.setAttribute('href', siteReviewLink);
 							popoverTagline.innerHTML = siteTagline;
 							isPopVisible = true;

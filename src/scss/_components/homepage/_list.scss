@@ -370,7 +370,7 @@
 		margin: auto;
 	}
 	&:before{
-		margin-top: 7px;
+		margin-top: 6px;
 		border-width: 11px 11px 0 11px;
 		border-color: #fff transparent transparent transparent;
 	}
@@ -384,11 +384,22 @@
 		border: 1px solid #fff;
 	}
 	&-title{
+		display: flex;
+		justify-content: center;
+		align-items: center;
 		font-size: 15px;
 		font-weight: 700;
 		background: #e6dfdf;
 		padding: 4px 8px;
 		text-align: center;
+
+		&.deIcon::before{
+			content: ' ';
+			width: 16px;
+			height: 16px;
+			margin: 0 5px 0 -16px;
+			display: inline-block;
+		}
 
 		&-a{
 			color: #337ab7;
