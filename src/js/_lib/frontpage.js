@@ -181,69 +181,13 @@ function initHomeTooltip(){
 }
 
 function renderFavouriteButtons(){
-	let siteItems = document.querySelectorAll('.list__box__item');
-	siteItems.forEach((link)=>{
-		var favI = document.createElement('i');
-		favI.className = 'list__box__item-fav icon-star-fill';
-		favI.dataset.id = link.dataset.id;
-		favI.setAttribute('favorites-toggle-js', '');
-		link.appendChild(favI);
+	let sitePreviewItems = document.querySelectorAll('.list__box__item-preview');
+	sitePreviewItems.forEach((linkPreview)=>{
+		let favI = '<i class="list__box__item-fav icon-star-fill" data-id="'+linkPreview.dataset.id+'" favorites-toggle-js></i>';
+		linkPreview.insertAdjacentHTML('beforebegin', favI);
 	});
 }
 
-function cloneCurrentPopupBanner(){
-	currentPopupBanner = document.querySelector('.list__specification.is-open');
-	if(currentPopupBanner){
-		//let popupBannerWrapper = currentPopupBanner.closest('.list__specification-wrapper');
-		let popupBannerWrapper = siteModal;
-		if(popupBannerWrapper){
-			clonedPopupBanner = currentPopupBanner.cloneNode(true);
-			clonedPopupBanner.setAttribute('class', 'list__snapshot is-snapshot');
-			popupBannerWrapper.insertBefore(clonedPopupBanner, currentPopupBanner);
-		}
-	}
-}
-
-function closeBanner(_el){
-
-	if(true){
-		cancelModal(_el);
-		return;
-	}
-
-	parent = _el.closest('.list__specification');
-
-	_el.closest('.list__box-wrapper').classList.remove('is-open');
-	_el.closest('.list__specification').classList.remove('is-open');
-
-	document.body.classList.remove('is_open');
-
-	if(window.innerWidth <= 1024) {
-		document.querySelectorAll("html, body").forEach((val, idx) => {
-			val.classList.remove("is-hideScroll");
-		});
-	}
-
-	if(document.querySelector('[video-js]')){
-		document.querySelector('[video-js]').pause();
-
-		//playPause(document.querySelector('[video-js]'));
-	}
-
-	if(parent.querySelector('[video-toggle-js]')) {
-		parent.querySelector('[video-pause-js]').classList.remove('is-active');
-		parent.querySelector('[video-toggle-js]').classList.remove('is-active');
-	}
-
-	let jInner = null,
-		lInner = document.querySelectorAll('.list__box-more').length;
-
-	for(jInner = 0; jInner < lInner; jInner++) {
-		if(document.querySelectorAll('.list__box-more')[jInner].closest('.list__box').classList.contains('is-active')) {
-			document.querySelectorAll('.list__box-more')[jInner].closest('.list__box').classList.remove('is-active');
-		}
-	}
-}
 
 function scrollToCategoryOnHome(ev, _ev){
 	if(_ev){

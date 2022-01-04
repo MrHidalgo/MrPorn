@@ -523,10 +523,6 @@
 	.list__box__item{
 		background: #fff;
 		border-bottom: 1px solid #ededed;
-
-		&:after{
-			background: url('../images/icon-glass-dark.svg');
-		}
 	}
 	.list__box__item-link{
 		color: #113d74;
@@ -536,6 +532,19 @@
 	}
 	.list__box__item:hover .list__box__item-fav{
 		color: #113d74;
+	}
+	.list__box__item-preview{
+		background: url('../images/icon-glass-dark.svg');
+	}
+
+	.list__box-all{
+		color: #337ab7;
+		background: #f9f3eb;
+		background: linear-gradient(to bottom,#f9f3eb 0%,#fff 100%);
+
+		&:after{
+			background: url("../images/icon-right-arrow-light.svg");
+		}
 	}
 
 	@include adaptive(767) {

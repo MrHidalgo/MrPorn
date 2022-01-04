@@ -1800,14 +1800,15 @@ fieldset {
   font-size: 16px;
   color: #8790b0;
   line-height: 2.273;
+  margin: 0;
 }
 
-/* line 22, src/scss/_shared/_common.scss */
+/* line 23, src/scss/_shared/_common.scss */
 .copyright__text a {
   color: #4099f9;
 }
 
-/* line 25, src/scss/_shared/_common.scss */
+/* line 26, src/scss/_shared/_common.scss */
 .copyright__text a:hover, .copyright__text a:focus {
   color: #4099f9;
 }
@@ -3166,7 +3167,7 @@ body.chatbot_active .go-top {
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
-  padding-top: 30px;
+  padding-top: 55px;
   padding-bottom: 30px;
 }
 
@@ -3318,6 +3319,7 @@ body.chatbot_active .go-top {
 /* line 199, src/scss/_components/common/_footer.scss */
 .footer__nav a {
   font-size: 16px;
+  font-weight: 600;
   color: #4099f9;
   line-height: 2.273;
   padding: 0 10px;
@@ -3349,7 +3351,7 @@ body.chatbot_active .go-top {
   }
 }
 
-/* line 215, src/scss/_components/common/_footer.scss */
+/* line 216, src/scss/_components/common/_footer.scss */
 .footer__nav a:hover {
   color: #ffffff;
   -webkit-transition: color 0.35s ease-in-out;
@@ -3357,7 +3359,7 @@ body.chatbot_active .go-top {
   transition: color 0.35s ease-in-out;
 }
 
-/* line 221, src/scss/_components/common/_footer.scss */
+/* line 222, src/scss/_components/common/_footer.scss */
 .footer__nav-item {
   display: -webkit-box;
   display: -webkit-flex;
@@ -3365,7 +3367,7 @@ body.chatbot_active .go-top {
   display: flex;
 }
 
-/* line 224, src/scss/_components/common/_footer.scss */
+/* line 225, src/scss/_components/common/_footer.scss */
 .footer__nav-item span {
   margin-left: 15px;
   margin-right: 15px;
@@ -3375,7 +3377,7 @@ body.chatbot_active .go-top {
 }
 
 @media screen and (max-width: 1023px) {
-  /* line 224, src/scss/_components/common/_footer.scss */
+  /* line 225, src/scss/_components/common/_footer.scss */
   .footer__nav-item span {
     margin-left: 10px;
     margin-right: 10px;
@@ -3384,13 +3386,13 @@ body.chatbot_active .go-top {
 }
 
 @media screen and (max-width: 767px) {
-  /* line 224, src/scss/_components/common/_footer.scss */
+  /* line 225, src/scss/_components/common/_footer.scss */
   .footer__nav-item span {
     font-size: 0;
   }
 }
 
-/* line 241, src/scss/_components/common/_footer.scss */
+/* line 242, src/scss/_components/common/_footer.scss */
 .footer__nav-link {
   font-size: 16px;
   color: #4680ca;
@@ -3401,14 +3403,14 @@ body.chatbot_active .go-top {
 }
 
 @media screen and (max-width: 1023px) {
-  /* line 241, src/scss/_components/common/_footer.scss */
+  /* line 242, src/scss/_components/common/_footer.scss */
   .footer__nav-link {
     font-size: 14px;
   }
 }
 
 @media screen and (max-width: 767px) {
-  /* line 241, src/scss/_components/common/_footer.scss */
+  /* line 242, src/scss/_components/common/_footer.scss */
   .footer__nav-link {
     display: -webkit-box;
     display: -webkit-flex;
@@ -3423,7 +3425,7 @@ body.chatbot_active .go-top {
   }
 }
 
-/* line 256, src/scss/_components/common/_footer.scss */
+/* line 257, src/scss/_components/common/_footer.scss */
 .footer__nav-link:hover {
   color: #ffffff;
   -webkit-transition: color 0.35s ease-in-out;
@@ -3431,7 +3433,7 @@ body.chatbot_active .go-top {
   transition: color 0.35s ease-in-out;
 }
 
-/* line 265, src/scss/_components/common/_footer.scss */
+/* line 266, src/scss/_components/common/_footer.scss */
 .footer_description h2 {
   padding-bottom: 10px;
   color: #ffffff;
@@ -3440,20 +3442,20 @@ body.chatbot_active .go-top {
 }
 
 @media screen and (max-width: 1023px) {
-  /* line 265, src/scss/_components/common/_footer.scss */
+  /* line 266, src/scss/_components/common/_footer.scss */
   .footer_description h2 {
     font-size: 20px;
   }
 }
 
 @media screen and (max-width: 767px) {
-  /* line 265, src/scss/_components/common/_footer.scss */
+  /* line 266, src/scss/_components/common/_footer.scss */
   .footer_description h2 {
     font-size: 14px;
   }
 }
 
-/* line 278, src/scss/_components/common/_footer.scss */
+/* line 279, src/scss/_components/common/_footer.scss */
 .footer_description h3 {
   padding-bottom: 10px;
   color: #ffffff;
@@ -3462,20 +3464,20 @@ body.chatbot_active .go-top {
 }
 
 @media screen and (max-width: 1023px) {
-  /* line 278, src/scss/_components/common/_footer.scss */
+  /* line 279, src/scss/_components/common/_footer.scss */
   .footer_description h3 {
     font-size: 20px;
   }
 }
 
 @media screen and (max-width: 767px) {
-  /* line 278, src/scss/_components/common/_footer.scss */
+  /* line 279, src/scss/_components/common/_footer.scss */
   .footer_description h3 {
     font-size: 14px;
   }
 }
 
-/* line 291, src/scss/_components/common/_footer.scss */
+/* line 292, src/scss/_components/common/_footer.scss */
 .footer_description p {
   padding-bottom: 30px;
   color: #d7d7d7;
@@ -3484,35 +3486,55 @@ body.chatbot_active .go-top {
 }
 
 @media screen and (max-width: 1023px) {
-  /* line 291, src/scss/_components/common/_footer.scss */
+  /* line 292, src/scss/_components/common/_footer.scss */
   .footer_description p {
     font-size: 14px;
   }
 }
 
 @media screen and (max-width: 767px) {
-  /* line 291, src/scss/_components/common/_footer.scss */
+  /* line 292, src/scss/_components/common/_footer.scss */
   .footer_description p {
     font-size: 12px;
   }
 }
 
-/* line 306, src/scss/_components/common/_footer.scss */
+/* line 307, src/scss/_components/common/_footer.scss */
+.light .footer {
+  background: #b7c2d0;
+}
+
+/* line 310, src/scss/_components/common/_footer.scss */
+.light .footer__nav a {
+  color: #014293;
+}
+
+/* line 314, src/scss/_components/common/_footer.scss */
 .light .footer__title {
   color: #576576;
 }
 
-/* line 310, src/scss/_components/common/_footer.scss */
+/* line 318, src/scss/_components/common/_footer.scss */
 .light .footer_description h2 {
   color: #000;
 }
 
-/* line 313, src/scss/_components/common/_footer.scss */
+/* line 321, src/scss/_components/common/_footer.scss */
 .light .footer_description h3 {
   color: #000;
 }
 
-/* line 322, src/scss/_components/common/_footer.scss */
+/* line 324, src/scss/_components/common/_footer.scss */
+.light .footer_description p {
+  color: #576576;
+}
+
+/* line 327, src/scss/_components/common/_footer.scss */
+.light .footer_description a {
+  color: #014293;
+}
+
+/* line 336, src/scss/_components/common/_footer.scss */
 #login_popup {
   position: fixed;
   display: -webkit-box;
@@ -3550,14 +3572,14 @@ body.chatbot_active .go-top {
   transition: all 0.8s;
 }
 
-/* line 340, src/scss/_components/common/_footer.scss */
+/* line 354, src/scss/_components/common/_footer.scss */
 #login_popup.is-open {
   height: 100%;
   top: 0;
   opacity: 1;
 }
 
-/* line 346, src/scss/_components/common/_footer.scss */
+/* line 360, src/scss/_components/common/_footer.scss */
 #login_popup .login_container {
   background-color: #0e123c;
   padding: 15px;
@@ -3565,17 +3587,17 @@ body.chatbot_active .go-top {
 }
 
 @media screen and (max-width: 767px) {
-  /* line 346, src/scss/_components/common/_footer.scss */
+  /* line 360, src/scss/_components/common/_footer.scss */
   #login_popup .login_container {
     width: 90%;
   }
-  /* line 354, src/scss/_components/common/_footer.scss */
+  /* line 368, src/scss/_components/common/_footer.scss */
   #login_popup .login_container .user_tab_login {
     width: 100%;
   }
 }
 
-/* line 360, src/scss/_components/common/_footer.scss */
+/* line 374, src/scss/_components/common/_footer.scss */
 #login_popup .login_popup_close {
   position: absolute;
   right: 15px;
@@ -3584,7 +3606,7 @@ body.chatbot_active .go-top {
 }
 
 @media screen and (max-width: 767px) {
-  /* line 367, src/scss/_components/common/_footer.scss */
+  /* line 381, src/scss/_components/common/_footer.scss */
   #login_popup .login_popup_close img {
     width: 25px;
     height: 25px;
@@ -3825,9 +3847,10 @@ body.chatbot_active .go-top {
   position: relative;
   height: 33px;
   margin-right: 10px;
+  -webkit-user-drag: none;
 }
 
-/* line 90, src/scss/_components/homepage/_list--info.scss */
+/* line 91, src/scss/_components/homepage/_list--info.scss */
 .list__info p {
   color: #ffffff;
   font-size: 28px;
@@ -3835,21 +3858,21 @@ body.chatbot_active .go-top {
 }
 
 @media screen and (max-width: 1279px) {
-  /* line 90, src/scss/_components/homepage/_list--info.scss */
+  /* line 91, src/scss/_components/homepage/_list--info.scss */
   .list__info p {
     font-size: 24px;
   }
 }
 
 @media screen and (max-width: 767px) {
-  /* line 90, src/scss/_components/homepage/_list--info.scss */
+  /* line 91, src/scss/_components/homepage/_list--info.scss */
   .list__info p {
     padding-right: 120px;
     font-size: 18px;
   }
 }
 
-/* line 103, src/scss/_components/homepage/_list--info.scss */
+/* line 104, src/scss/_components/homepage/_list--info.scss */
 .list__info span {
   position: relative;
   color: #4b4e6b;
@@ -3857,7 +3880,7 @@ body.chatbot_active .go-top {
 }
 
 @media screen and (max-width: 767px) {
-  /* line 103, src/scss/_components/homepage/_list--info.scss */
+  /* line 104, src/scss/_components/homepage/_list--info.scss */
   .list__info span {
     white-space: nowrap;
     overflow: hidden;
@@ -3867,7 +3890,7 @@ body.chatbot_active .go-top {
     width: -webkit-calc(100vw - (10px + 45px + 15px));
     width: calc(100vw - (10px + 45px + 15px));
   }
-  /* line 115, src/scss/_components/homepage/_list--info.scss */
+  /* line 116, src/scss/_components/homepage/_list--info.scss */
   .list__info span:after {
     content: '';
     position: absolute;
@@ -4395,6 +4418,7 @@ body.chatbot_active .go-top {
   list-style-type: none;
   padding: 0;
   font-weight: 500;
+  font-size: 13.5px;
   margin: 0;
   overflow: auto;
   -webkit-overflow-scrolling: touch;
@@ -4402,33 +4426,33 @@ body.chatbot_active .go-top {
   scrollbar-color: #131313 #525252;
 }
 
-/* line 54, src/scss/_components/homepage/_list--box.scss */
+/* line 55, src/scss/_components/homepage/_list--box.scss */
 .list__box-list::-webkit-scrollbar {
   width: 10px;
 }
 
-/* line 55, src/scss/_components/homepage/_list--box.scss */
+/* line 56, src/scss/_components/homepage/_list--box.scss */
 .list__box-list::-webkit-scrollbar-corner {
   background: rgba(0, 0, 0, 0);
 }
 
-/* line 56, src/scss/_components/homepage/_list--box.scss */
+/* line 57, src/scss/_components/homepage/_list--box.scss */
 .list__box-list::-webkit-scrollbar-track {
   background: #131313;
   border-left: 1px solid #333;
 }
 
-/* line 57, src/scss/_components/homepage/_list--box.scss */
+/* line 58, src/scss/_components/homepage/_list--box.scss */
 .list__box-list::-webkit-scrollbar-thumb {
   background: #525252;
 }
 
-/* line 58, src/scss/_components/homepage/_list--box.scss */
+/* line 59, src/scss/_components/homepage/_list--box.scss */
 .list__box-list:hover::-webkit-scrollbar-thumb {
   background: #323232;
 }
 
-/* line 61, src/scss/_components/homepage/_list--box.scss */
+/* line 62, src/scss/_components/homepage/_list--box.scss */
 .list__box__item {
   display: -webkit-box;
   display: -webkit-flex;
@@ -4448,7 +4472,7 @@ body.chatbot_active .go-top {
   font-weight: 500;
 }
 
-/* line 77, src/scss/_components/homepage/_list--box.scss */
+/* line 78, src/scss/_components/homepage/_list--box.scss */
 .list__box__item:before {
   counter-increment: number;
   content: counters(number, ".") ". ";
@@ -4461,18 +4485,7 @@ body.chatbot_active .go-top {
   font-size: 14px;
 }
 
-/* line 88, src/scss/_components/homepage/_list--box.scss */
-.list__box__item:after {
-  display: block;
-  content: ' ';
-  width: 16px;
-  height: 16px;
-  background: url("../images/icon-glass-light.svg");
-  -webkit-background-size: contain !important;
-          background-size: contain !important;
-}
-
-/* line 97, src/scss/_components/homepage/_list--box.scss */
+/* line 90, src/scss/_components/homepage/_list--box.scss */
 .list__box__item .deIcon::before {
   content: ' ';
   width: 16px;
@@ -4481,7 +4494,7 @@ body.chatbot_active .go-top {
   display: inline-block;
 }
 
-/* line 105, src/scss/_components/homepage/_list--box.scss */
+/* line 98, src/scss/_components/homepage/_list--box.scss */
 .list__box__item-link {
   color: #fff;
   -webkit-box-flex: 1;
@@ -4491,24 +4504,35 @@ body.chatbot_active .go-top {
   font-weight: 600;
 }
 
-/* line 110, src/scss/_components/homepage/_list--box.scss */
+/* line 103, src/scss/_components/homepage/_list--box.scss */
 .list__box__item-link:hover {
   color: #fff;
 }
 
-/* line 115, src/scss/_components/homepage/_list--box.scss */
+/* line 108, src/scss/_components/homepage/_list--box.scss */
+.list__box__item-preview {
+  display: block;
+  content: ' ';
+  width: 16px;
+  height: 16px;
+  background: url("../images/icon-glass-light.svg");
+  -webkit-background-size: contain !important;
+          background-size: contain !important;
+}
+
+/* line 117, src/scss/_components/homepage/_list--box.scss */
 .list__box__item-icon {
   height: 16px;
 }
 
-/* line 118, src/scss/_components/homepage/_list--box.scss */
+/* line 120, src/scss/_components/homepage/_list--box.scss */
 .list__box__item-fav {
   display: none;
   margin: 0 8px;
   font-size: 16px;
 }
 
-/* line 123, src/scss/_components/homepage/_list--box.scss */
+/* line 125, src/scss/_components/homepage/_list--box.scss */
 .list__box__item-fav.is-active {
   background: url("../images/golden_star.png");
   -webkit-background-size: contain;
@@ -4517,22 +4541,22 @@ body.chatbot_active .go-top {
   width: 18px;
 }
 
-/* line 129, src/scss/_components/homepage/_list--box.scss */
+/* line 131, src/scss/_components/homepage/_list--box.scss */
 .list__box__item-fav.is-active:before {
   content: ' ';
 }
 
-/* line 135, src/scss/_components/homepage/_list--box.scss */
+/* line 137, src/scss/_components/homepage/_list--box.scss */
 .list__box__item:hover .list__box__item-fav {
   display: block;
 }
 
-/* line 139, src/scss/_components/homepage/_list--box.scss */
+/* line 141, src/scss/_components/homepage/_list--box.scss */
 .list__box__item-preview {
   height: 16px;
 }
 
-/* line 145, src/scss/_components/homepage/_list--box.scss */
+/* line 147, src/scss/_components/homepage/_list--box.scss */
 .list__box--title {
   position: absolute;
   bottom: 50px;
@@ -4554,14 +4578,14 @@ body.chatbot_active .go-top {
   font-weight: 700;
 }
 
-/* line 164, src/scss/_components/homepage/_list--box.scss */
+/* line 166, src/scss/_components/homepage/_list--box.scss */
 .list__box--tagline {
   display: none;
   font-size: 12px;
 }
 
 @media screen and (orientation: landscape) {
-  /* line 169, src/scss/_components/homepage/_list--box.scss */
+  /* line 171, src/scss/_components/homepage/_list--box.scss */
   .is-mobile .list__box {
     /*width: 150px !important;
 			height: 150px;*/
@@ -4569,7 +4593,7 @@ body.chatbot_active .go-top {
   }
 }
 
-/* line 179, src/scss/_components/homepage/_list--box.scss */
+/* line 181, src/scss/_components/homepage/_list--box.scss */
 .list__box.is-active .list__box-border {
   border-style: solid;
   border-width: 4px;
@@ -4578,7 +4602,7 @@ body.chatbot_active .go-top {
   transition: border-style 0.35s ease-in-out, border-width 0.35s ease-in-out;
 }
 
-/* line 185, src/scss/_components/homepage/_list--box.scss */
+/* line 187, src/scss/_components/homepage/_list--box.scss */
 .list__box.is-active .list__box-details {
   /*opacity: 0;
 			visibility: hidden;*/
@@ -4592,7 +4616,7 @@ body.chatbot_active .go-top {
   transition: opacity 0.55s ease-in-out, visibility 0.55s ease-in-out, transform 0.55s ease-in-out, -webkit-transform 0.55s ease-in-out;
 }
 
-/* line 192, src/scss/_components/homepage/_list--box.scss */
+/* line 194, src/scss/_components/homepage/_list--box.scss */
 .list__box.is-active:after {
   content: '';
   position: absolute;
@@ -4608,7 +4632,7 @@ body.chatbot_active .go-top {
   border-color: #fff transparent transparent transparent;
 }
 
-/* line 206, src/scss/_components/homepage/_list--box.scss */
+/* line 208, src/scss/_components/homepage/_list--box.scss */
 .list__box-wrapper {
   position: relative;
   max-width: 100%;
@@ -4632,7 +4656,7 @@ body.chatbot_active .go-top {
 }
 
 @media screen and (min-width: 992px) {
-  /* line 206, src/scss/_components/homepage/_list--box.scss */
+  /* line 208, src/scss/_components/homepage/_list--box.scss */
   .list__box-wrapper {
     width: 50%;
     max-width: 50%;
@@ -4641,14 +4665,14 @@ body.chatbot_active .go-top {
 }
 
 @media screen and (max-width: 767px) {
-  /* line 206, src/scss/_components/homepage/_list--box.scss */
+  /* line 208, src/scss/_components/homepage/_list--box.scss */
   .list__box-wrapper {
     overflow: unset;
     padding-bottom: 10px;
   }
 }
 
-/* line 229, src/scss/_components/homepage/_list--box.scss */
+/* line 231, src/scss/_components/homepage/_list--box.scss */
 .list__box-wrapper.is-open {
   padding-bottom: 0;
   position: relative;
@@ -4658,13 +4682,13 @@ body.chatbot_active .go-top {
 }
 
 @media screen and (max-width: 767px) {
-  /* line 229, src/scss/_components/homepage/_list--box.scss */
+  /* line 231, src/scss/_components/homepage/_list--box.scss */
   .list__box-wrapper.is-open {
     /*margin-bottom: 0;*/
   }
 }
 
-/* line 239, src/scss/_components/homepage/_list--box.scss */
+/* line 241, src/scss/_components/homepage/_list--box.scss */
 .list__box-wrapper.is-open .list__box-body {
   -webkit-transition: padding-bottom 0.35s ease-in-out;
   -o-transition: padding-bottom 0.35s ease-in-out;
@@ -4672,13 +4696,13 @@ body.chatbot_active .go-top {
 }
 
 @media screen and (max-width: 767px) {
-  /* line 239, src/scss/_components/homepage/_list--box.scss */
+  /* line 241, src/scss/_components/homepage/_list--box.scss */
   .list__box-wrapper.is-open .list__box-body {
     /*padding-bottom: 10px;*/
   }
 }
 
-/* line 249, src/scss/_components/homepage/_list--box.scss */
+/* line 251, src/scss/_components/homepage/_list--box.scss */
 .list__box-head {
   display: -webkit-box;
   display: -webkit-flex;
@@ -4689,10 +4713,10 @@ body.chatbot_active .go-top {
   background: -webkit-linear-gradient(top, #2663b0 0%, #1b4f90 50%, #113d74 100%);
   background: -o-linear-gradient(top, #2663b0 0%, #1b4f90 50%, #113d74 100%);
   background: linear-gradient(to bottom, #2663b0 0%, #1b4f90 50%, #113d74 100%);
-  color: #d1f34b;
   font-weight: 800;
   font-size: 15px;
   text-align: center;
+  color: #d1f34b;
   height: 45px;
   -webkit-box-align: center;
   -webkit-align-items: center;
@@ -4704,20 +4728,20 @@ body.chatbot_active .go-top {
           justify-content: center;
 }
 
-/* line 261, src/scss/_components/homepage/_list--box.scss */
+/* line 263, src/scss/_components/homepage/_list--box.scss */
 .list__box-head:hover, .list__box-head:focus {
   color: #d1f34b;
   text-decoration: underline;
 }
 
 @media screen and (max-width: 767px) {
-  /* line 249, src/scss/_components/homepage/_list--box.scss */
+  /* line 251, src/scss/_components/homepage/_list--box.scss */
   .list__box-head {
     padding-right: 10px;
   }
 }
 
-/* line 270, src/scss/_components/homepage/_list--box.scss */
+/* line 272, src/scss/_components/homepage/_list--box.scss */
 .list__box-subtext {
   background: #0e2644;
   color: #ccc;
@@ -4732,7 +4756,7 @@ body.chatbot_active .go-top {
   overflow: hidden;
 }
 
-/* line 283, src/scss/_components/homepage/_list--box.scss */
+/* line 285, src/scss/_components/homepage/_list--box.scss */
 .list__box-line {
   position: relative;
   width: 100%;
@@ -4743,7 +4767,7 @@ body.chatbot_active .go-top {
   transition: background-color 1s ease-in-out;
 }
 
-/* line 290, src/scss/_components/homepage/_list--box.scss */
+/* line 292, src/scss/_components/homepage/_list--box.scss */
 .list__box-line u,
 .list__box-line span {
   cursor: pointer;
@@ -4766,7 +4790,7 @@ body.chatbot_active .go-top {
   transition: width 0.35s ease-in-out, transform 0.35s ease-in-out, -webkit-transform 0.35s ease-in-out;
 }
 
-/* line 307, src/scss/_components/homepage/_list--box.scss */
+/* line 309, src/scss/_components/homepage/_list--box.scss */
 .list__box-line u.no_anim,
 .list__box-line span.no_anim {
   -webkit-transition: width 0.35s ease-in-out;
@@ -4775,7 +4799,7 @@ body.chatbot_active .go-top {
 }
 
 @media screen and (min-device-width: 1366px) and (max-device-width: 1366px) and (orientation: landscape) and (-webkit-min-device-pixel-ratio: 2) {
-  /* line 290, src/scss/_components/homepage/_list--box.scss */
+  /* line 292, src/scss/_components/homepage/_list--box.scss */
   .list__box-line u,
   .list__box-line span {
     width: 34px;
@@ -4787,7 +4811,7 @@ body.chatbot_active .go-top {
 }
 
 @media screen and (min-device-width: 1024px) and (max-device-width: 1024px) and (orientation: portrait) and (-webkit-min-device-pixel-ratio: 2) {
-  /* line 290, src/scss/_components/homepage/_list--box.scss */
+  /* line 292, src/scss/_components/homepage/_list--box.scss */
   .list__box-line u,
   .list__box-line span {
     width: 34px;
@@ -4799,7 +4823,7 @@ body.chatbot_active .go-top {
 }
 
 @media screen and (min-device-width: 768px) and (max-device-width: 1024px) and (orientation: landscape) and (-webkit-min-device-pixel-ratio: 2) {
-  /* line 290, src/scss/_components/homepage/_list--box.scss */
+  /* line 292, src/scss/_components/homepage/_list--box.scss */
   .list__box-line u,
   .list__box-line span {
     width: 34px;
@@ -4811,7 +4835,7 @@ body.chatbot_active .go-top {
 }
 
 @media screen and (max-width: 1023px) {
-  /* line 290, src/scss/_components/homepage/_list--box.scss */
+  /* line 292, src/scss/_components/homepage/_list--box.scss */
   .list__box-line u,
   .list__box-line span {
     width: 34px;
@@ -4823,7 +4847,7 @@ body.chatbot_active .go-top {
 }
 
 @media screen and (max-width: 767px) {
-  /* line 290, src/scss/_components/homepage/_list--box.scss */
+  /* line 292, src/scss/_components/homepage/_list--box.scss */
   .list__box-line u,
   .list__box-line span {
     width: 19px;
@@ -4841,14 +4865,64 @@ body.chatbot_active .go-top {
   }
 }
 
-/* line 357, src/scss/_components/homepage/_list--box.scss */
+/* line 359, src/scss/_components/homepage/_list--box.scss */
 .list__box-line u {
   z-index: -1;
   opacity: 0;
   visibility: hidden;
 }
 
-/* line 364, src/scss/_components/homepage/_list--box.scss */
+/* line 366, src/scss/_components/homepage/_list--box.scss */
+.list__box-all {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+  -webkit-align-items: center;
+      -ms-flex-align: center;
+          align-items: center;
+  background: #706f70;
+  border-bottom: 1px solid #585858;
+  padding: 0 10px;
+  text-align: center;
+  line-height: 38px;
+  white-space: nowrap;
+  overflow: hidden;
+  -o-text-overflow: ellipsis;
+     text-overflow: ellipsis;
+  font-size: 14px;
+  font-weight: 600;
+  color: #fff;
+  border-top: 1px solid #585858;
+}
+
+/* line 384, src/scss/_components/homepage/_list--box.scss */
+.list__box-all:after {
+  display: block;
+  content: ' ';
+  margin-left: 10px;
+  width: 25px;
+  height: 10px;
+  background: url("../images/icon-right-arrow-dark.svg");
+}
+
+/* line 393, src/scss/_components/homepage/_list--box.scss */
+.list__box-all:hover, .list__box-all:focus {
+  color: #fff;
+}
+
+/* line 396, src/scss/_components/homepage/_list--box.scss */
+.list__box-all:hover:after, .list__box-all:focus:after {
+  -webkit-animation: rightArrowAnim 1s infinite;
+          animation: rightArrowAnim 1s infinite;
+}
+
+/* line 402, src/scss/_components/homepage/_list--box.scss */
 .list__box-body {
   z-index: 20;
   position: relative;
@@ -4863,14 +4937,14 @@ body.chatbot_active .go-top {
 }
 
 @media screen and (max-width: 767px) {
-  /* line 364, src/scss/_components/homepage/_list--box.scss */
+  /* line 402, src/scss/_components/homepage/_list--box.scss */
   .list__box-body {
     overflow: hidden;
     padding-bottom: 0;
   }
 }
 
-/* line 377, src/scss/_components/homepage/_list--box.scss */
+/* line 415, src/scss/_components/homepage/_list--box.scss */
 .list__box-body.is-transition {
   -webkit-transform: translateX(-120px);
       -ms-transform: translateX(-120px);
@@ -4882,7 +4956,7 @@ body.chatbot_active .go-top {
   transition: transform 0.35s ease-in-out, -webkit-transform 0.35s ease-in-out;
 }
 
-/* line 383, src/scss/_components/homepage/_list--box.scss */
+/* line 421, src/scss/_components/homepage/_list--box.scss */
 .list__box-overlay {
   z-index: 0;
   position: absolute;
@@ -4896,7 +4970,7 @@ body.chatbot_active .go-top {
   transition: background-color 0.35s ease-in-out;
 }
 
-/* line 394, src/scss/_components/homepage/_list--box.scss */
+/* line 432, src/scss/_components/homepage/_list--box.scss */
 .list__box_more_item {
   width: -webkit-calc(100%/3) !important;
   width: calc(100%/3) !important;
@@ -4905,7 +4979,7 @@ body.chatbot_active .go-top {
   padding: 4px;
 }
 
-/* line 399, src/scss/_components/homepage/_list--box.scss */
+/* line 437, src/scss/_components/homepage/_list--box.scss */
 .list__box_more_item a {
   padding-top: 100%;
   display: block;
@@ -4916,7 +4990,7 @@ body.chatbot_active .go-top {
   border: 1px dashed #fff;
 }
 
-/* line 409, src/scss/_components/homepage/_list--box.scss */
+/* line 447, src/scss/_components/homepage/_list--box.scss */
 .list__box-border {
   z-index: 0;
   position: absolute;
@@ -4932,7 +5006,7 @@ body.chatbot_active .go-top {
   transition: border-style 0.35s ease-in-out, border-width 0.35s ease-in-out;
 }
 
-/* line 420, src/scss/_components/homepage/_list--box.scss */
+/* line 458, src/scss/_components/homepage/_list--box.scss */
 .list__box-logo {
   z-index: 15;
   position: relative;
@@ -4945,13 +5019,13 @@ body.chatbot_active .go-top {
 }
 
 @media screen and (max-width: 1279px) {
-  /* line 420, src/scss/_components/homepage/_list--box.scss */
+  /* line 458, src/scss/_components/homepage/_list--box.scss */
   .list__box-logo {
     max-width: 100%;
   }
 }
 
-/* line 435, src/scss/_components/homepage/_list--box.scss */
+/* line 473, src/scss/_components/homepage/_list--box.scss */
 .list__box-details {
   z-index: 11;
   /*opacity: 0;
@@ -4984,7 +5058,7 @@ body.chatbot_active .go-top {
   transition: opacity 0.35s ease-in-out, visibility 0.35s ease-in-out;
 }
 
-/* line 455, src/scss/_components/homepage/_list--box.scss */
+/* line 493, src/scss/_components/homepage/_list--box.scss */
 .list__box-details-left {
   display: -webkit-box;
   display: -webkit-flex;
@@ -5007,12 +5081,12 @@ body.chatbot_active .go-top {
   visibility: hidden;
 }
 
-/* line 467, src/scss/_components/homepage/_list--box.scss */
+/* line 505, src/scss/_components/homepage/_list--box.scss */
 .list__box-details-left > * {
   width: 100%;
 }
 
-/* line 471, src/scss/_components/homepage/_list--box.scss */
+/* line 509, src/scss/_components/homepage/_list--box.scss */
 .list__box-details-left button {
   outline: none;
   cursor: pointer;
@@ -5025,29 +5099,29 @@ body.chatbot_active .go-top {
   background-color: transparent;
 }
 
-/* line 481, src/scss/_components/homepage/_list--box.scss */
+/* line 519, src/scss/_components/homepage/_list--box.scss */
 .list__box-details-left button.list__box-external .icon-font {
   margin-bottom: 5px;
 }
 
-/* line 486, src/scss/_components/homepage/_list--box.scss */
+/* line 524, src/scss/_components/homepage/_list--box.scss */
 .list__box-details-left button .icon-font {
   color: #cecece;
   font-size: 20px;
 }
 
-/* line 492, src/scss/_components/homepage/_list--box.scss */
+/* line 530, src/scss/_components/homepage/_list--box.scss */
 .list__box-details-left a.site_link {
   display: block;
 }
 
-/* line 495, src/scss/_components/homepage/_list--box.scss */
+/* line 533, src/scss/_components/homepage/_list--box.scss */
 .list__box-details-left a.site_link i.icon-font {
   color: #cecece;
   font-size: 20px;
 }
 
-/* line 502, src/scss/_components/homepage/_list--box.scss */
+/* line 540, src/scss/_components/homepage/_list--box.scss */
 .list__box-details-right {
   display: -webkit-box;
   display: -webkit-flex;
@@ -5071,7 +5145,7 @@ body.chatbot_active .go-top {
   visibility: hidden;
 }
 
-/* line 513, src/scss/_components/homepage/_list--box.scss */
+/* line 551, src/scss/_components/homepage/_list--box.scss */
 .list__box-details-right > * {
   margin-top: 3px;
   -webkit-transition: all 0.4s ease-in-out;
@@ -5079,7 +5153,7 @@ body.chatbot_active .go-top {
   transition: all 0.4s ease-in-out;
 }
 
-/* line 518, src/scss/_components/homepage/_list--box.scss */
+/* line 556, src/scss/_components/homepage/_list--box.scss */
 .list__box-details-right button {
   outline: none;
   cursor: pointer;
@@ -5114,7 +5188,7 @@ body.chatbot_active .go-top {
   transition: all 0.4s ease-in-out;
 }
 
-/* line 536, src/scss/_components/homepage/_list--box.scss */
+/* line 574, src/scss/_components/homepage/_list--box.scss */
 .list__box-details-right button.is-hide {
   opacity: 0;
   visibility: hidden;
@@ -5130,7 +5204,7 @@ body.chatbot_active .go-top {
   transition: opacity 0.35s ease-in-out, visibility 0.35s ease-in-out, height 0.35s ease-in-out, transform 0.35s ease-in-out, -webkit-transform 0.35s ease-in-out;
 }
 
-/* line 545, src/scss/_components/homepage/_list--box.scss */
+/* line 583, src/scss/_components/homepage/_list--box.scss */
 .list__box-details-right button:after {
   content: '';
   z-index: 0;
@@ -5159,7 +5233,7 @@ body.chatbot_active .go-top {
           animation-timing-function: ease-in-out;
 }
 
-/* line 563, src/scss/_components/homepage/_list--box.scss */
+/* line 601, src/scss/_components/homepage/_list--box.scss */
 .list__box-details-right button:hover {
   background-color: rgba(0, 0, 0, 0.85);
   -webkit-transform: scale(1.05);
@@ -5170,14 +5244,14 @@ body.chatbot_active .go-top {
   transition: all 0.4s ease-in-out;
 }
 
-/* line 568, src/scss/_components/homepage/_list--box.scss */
+/* line 606, src/scss/_components/homepage/_list--box.scss */
 .list__box-details-right button:hover .icon-font {
   -webkit-transition: color 0.35s ease-in-out;
   -o-transition: color 0.35s ease-in-out;
   transition: color 0.35s ease-in-out;
 }
 
-/* line 573, src/scss/_components/homepage/_list--box.scss */
+/* line 611, src/scss/_components/homepage/_list--box.scss */
 .list__box-details-right button.is-active {
   border-color: #c5f015;
   -webkit-transition: all 0.4s ease-in-out;
@@ -5185,23 +5259,23 @@ body.chatbot_active .go-top {
   transition: all 0.4s ease-in-out;
 }
 
-/* line 577, src/scss/_components/homepage/_list--box.scss */
+/* line 615, src/scss/_components/homepage/_list--box.scss */
 .list__box-details-right button.is-active:after {
   -webkit-animation-name: flashBlinking;
           animation-name: flashBlinking;
 }
 
-/* line 583, src/scss/_components/homepage/_list--box.scss */
+/* line 621, src/scss/_components/homepage/_list--box.scss */
 .list__box-details-right button.is-active + .c-poppertext > u:nth-of-type(1) {
   display: none;
 }
 
-/* line 586, src/scss/_components/homepage/_list--box.scss */
+/* line 624, src/scss/_components/homepage/_list--box.scss */
 .list__box-details-right button.is-active + .c-poppertext > u:nth-of-type(2) {
   display: block;
 }
 
-/* line 592, src/scss/_components/homepage/_list--box.scss */
+/* line 630, src/scss/_components/homepage/_list--box.scss */
 .list__box-details-right button.is-active .icon-font {
   color: #c5f015;
   -webkit-transition: color 0.35s ease-in-out;
@@ -5209,54 +5283,54 @@ body.chatbot_active .go-top {
   transition: color 0.35s ease-in-out;
 }
 
-/* line 599, src/scss/_components/homepage/_list--box.scss */
+/* line 637, src/scss/_components/homepage/_list--box.scss */
 .list__box-details-right button.list__box-like .icon-font {
   -webkit-transform: scaleX(-1);
       -ms-transform: scaleX(-1);
           transform: scaleX(-1);
 }
 
-/* line 604, src/scss/_components/homepage/_list--box.scss */
+/* line 642, src/scss/_components/homepage/_list--box.scss */
 .list__box-details-right button.list__box-dislike .icon-font {
   -webkit-transform: scale(-1);
       -ms-transform: scale(-1);
           transform: scale(-1);
 }
 
-/* line 611, src/scss/_components/homepage/_list--box.scss */
+/* line 649, src/scss/_components/homepage/_list--box.scss */
 .list__box-details-right button.list__box-favorites.is-active .icon-font {
   -webkit-transition: color 0.35s ease-in-out, opacity 0.35s ease-in-out, visibility 0.35s ease-in-out;
   -o-transition: color 0.35s ease-in-out, opacity 0.35s ease-in-out, visibility 0.35s ease-in-out;
   transition: color 0.35s ease-in-out, opacity 0.35s ease-in-out, visibility 0.35s ease-in-out;
 }
 
-/* line 614, src/scss/_components/homepage/_list--box.scss */
+/* line 652, src/scss/_components/homepage/_list--box.scss */
 .list__box-details-right button.list__box-favorites.is-active .icon-font.icon-star-fill {
   opacity: 0;
   visibility: hidden;
 }
 
-/* line 618, src/scss/_components/homepage/_list--box.scss */
+/* line 656, src/scss/_components/homepage/_list--box.scss */
 .list__box-details-right button.list__box-favorites.is-active .icon-font.icon-star {
   opacity: 1;
   visibility: visible;
 }
 
-/* line 625, src/scss/_components/homepage/_list--box.scss */
+/* line 663, src/scss/_components/homepage/_list--box.scss */
 .list__box-details-right button.list__box-favorites .icon-font {
   -webkit-transition: color 0.35s ease-in-out, opacity 0.35s ease-in-out, visibility 0.35s ease-in-out;
   -o-transition: color 0.35s ease-in-out, opacity 0.35s ease-in-out, visibility 0.35s ease-in-out;
   transition: color 0.35s ease-in-out, opacity 0.35s ease-in-out, visibility 0.35s ease-in-out;
 }
 
-/* line 628, src/scss/_components/homepage/_list--box.scss */
+/* line 666, src/scss/_components/homepage/_list--box.scss */
 .list__box-details-right button.list__box-favorites .icon-font.icon-star {
   opacity: 0;
   visibility: hidden;
   position: absolute;
 }
 
-/* line 634, src/scss/_components/homepage/_list--box.scss */
+/* line 672, src/scss/_components/homepage/_list--box.scss */
 .list__box-details-right button.list__box-favorites .icon-font.icon-more-arrow {
   -webkit-transform: rotateZ(-90deg);
       -ms-transform: rotate(-90deg);
@@ -5264,7 +5338,7 @@ body.chatbot_active .go-top {
   font-size: 11px;
 }
 
-/* line 641, src/scss/_components/homepage/_list--box.scss */
+/* line 679, src/scss/_components/homepage/_list--box.scss */
 .list__box-details-right button .icon-font {
   color: #ffffff;
   font-size: 18px;
@@ -5273,7 +5347,7 @@ body.chatbot_active .go-top {
   transition: color 0.35s ease-in-out, opacity 0.35s ease-in-out, visibility 0.35s ease-in-out;
 }
 
-/* line 649, src/scss/_components/homepage/_list--box.scss */
+/* line 687, src/scss/_components/homepage/_list--box.scss */
 .list__box-details-title {
   overflow: hidden;
   white-space: nowrap;
@@ -5284,7 +5358,7 @@ body.chatbot_active .go-top {
   font-weight: 700;
 }
 
-/* line 659, src/scss/_components/homepage/_list--box.scss */
+/* line 697, src/scss/_components/homepage/_list--box.scss */
 .list__box--tooltip {
   display: block;
   position: absolute;
@@ -5301,12 +5375,12 @@ body.chatbot_active .go-top {
   opacity: 0;
 }
 
-/* line 675, src/scss/_components/homepage/_list--box.scss */
+/* line 713, src/scss/_components/homepage/_list--box.scss */
 .list__box--tooltip:hover {
   color: #fff;
 }
 
-/* line 679, src/scss/_components/homepage/_list--box.scss */
+/* line 717, src/scss/_components/homepage/_list--box.scss */
 .list__box--tooltip:before {
   position: absolute;
   left: 50%;
@@ -5323,7 +5397,7 @@ body.chatbot_active .go-top {
   border-color: #ccc transparent transparent transparent;
 }
 
-/* line 693, src/scss/_components/homepage/_list--box.scss */
+/* line 731, src/scss/_components/homepage/_list--box.scss */
 .list__box--tooltip:after {
   position: absolute;
   left: 50%;
@@ -5340,7 +5414,7 @@ body.chatbot_active .go-top {
   border-color: #000000 transparent transparent transparent;
 }
 
-/* line 708, src/scss/_components/homepage/_list--box.scss */
+/* line 746, src/scss/_components/homepage/_list--box.scss */
 .list__box-more {
   z-index: 22;
   outline: none;
@@ -5377,7 +5451,7 @@ body.chatbot_active .go-top {
 }
 
 @media screen and (max-width: 1279px) {
-  /* line 708, src/scss/_components/homepage/_list--box.scss */
+  /* line 746, src/scss/_components/homepage/_list--box.scss */
   .list__box-more {
     z-index: 99;
     opacity: 1;
@@ -5386,13 +5460,13 @@ body.chatbot_active .go-top {
     left: 0;
     height: 100%;
   }
-  /* line 736, src/scss/_components/homepage/_list--box.scss */
+  /* line 774, src/scss/_components/homepage/_list--box.scss */
   .list__box-more .icon-font {
     display: none;
   }
 }
 
-/* line 741, src/scss/_components/homepage/_list--box.scss */
+/* line 779, src/scss/_components/homepage/_list--box.scss */
 .list__box-more .icon-font {
   color: #c5f015;
   font-size: 16px;
@@ -7608,27 +7682,42 @@ body.chatbot_active .go-top {
 }
 
 /* line 527, src/scss/_components/homepage/_list.scss */
-.light .list__box__item:after {
-  background: url("../images/icon-glass-dark.svg");
-}
-
-/* line 531, src/scss/_components/homepage/_list.scss */
 .light .list__box__item-link {
   color: #113d74;
 }
 
-/* line 534, src/scss/_components/homepage/_list.scss */
+/* line 530, src/scss/_components/homepage/_list.scss */
 .light .list__info p {
   color: #0b0d28;
 }
 
-/* line 537, src/scss/_components/homepage/_list.scss */
+/* line 533, src/scss/_components/homepage/_list.scss */
 .light .list__box__item:hover .list__box__item-fav {
   color: #113d74;
 }
 
+/* line 536, src/scss/_components/homepage/_list.scss */
+.light .list__box__item-preview {
+  background: url("../images/icon-glass-dark.svg");
+}
+
+/* line 540, src/scss/_components/homepage/_list.scss */
+.light .list__box-all {
+  color: #337ab7;
+  background: #f9f3eb;
+  background: -webkit-gradient(linear, left top, left bottom, from(#f9f3eb), to(#fff));
+  background: -webkit-linear-gradient(top, #f9f3eb 0%, #fff 100%);
+  background: -o-linear-gradient(top, #f9f3eb 0%, #fff 100%);
+  background: linear-gradient(to bottom, #f9f3eb 0%, #fff 100%);
+}
+
+/* line 545, src/scss/_components/homepage/_list.scss */
+.light .list__box-all:after {
+  background: url("../images/icon-right-arrow-light.svg");
+}
+
 @media screen and (max-width: 767px) {
-  /* line 542, src/scss/_components/homepage/_list.scss */
+  /* line 551, src/scss/_components/homepage/_list.scss */
   .light .list__btn {
     right: 0;
     height: 23px;
@@ -7636,13 +7725,13 @@ body.chatbot_active .go-top {
     min-width: 120px;
     padding: 0 10px;
   }
-  /* line 550, src/scss/_components/homepage/_list.scss */
+  /* line 559, src/scss/_components/homepage/_list.scss */
   .light .list__btn span {
     text-decoration: none;
   }
 }
 
-/* line 556, src/scss/_components/homepage/_list.scss */
+/* line 565, src/scss/_components/homepage/_list.scss */
 .light .list__arrow--prev {
   background: -webkit-gradient(linear, right top, left top, from(rgba(8, 9, 21, 0)), to(#d6d9e2));
   background: -webkit-linear-gradient(right, rgba(8, 9, 21, 0) 0%, #d6d9e2);
@@ -7650,7 +7739,7 @@ body.chatbot_active .go-top {
   background: linear-gradient(to left, rgba(8, 9, 21, 0) 0%, #d6d9e2);
 }
 
-/* line 559, src/scss/_components/homepage/_list.scss */
+/* line 568, src/scss/_components/homepage/_list.scss */
 .light .list__arrow--next {
   background: -webkit-gradient(linear, left top, right top, from(rgba(8, 9, 21, 0)), to(#d6d9e2));
   background: -webkit-linear-gradient(left, rgba(8, 9, 21, 0) 0%, #d6d9e2);
@@ -7658,43 +7747,43 @@ body.chatbot_active .go-top {
   background: linear-gradient(to right, rgba(8, 9, 21, 0) 0%, #d6d9e2);
 }
 
-/* line 562, src/scss/_components/homepage/_list.scss */
+/* line 571, src/scss/_components/homepage/_list.scss */
 .light .list__info--title_span:after {
   display: none;
 }
 
-/* line 565, src/scss/_components/homepage/_list.scss */
+/* line 574, src/scss/_components/homepage/_list.scss */
 .light .list__btn.nav_link .svg-icon {
   fill: #fff;
 }
 
-/* line 569, src/scss/_components/homepage/_list.scss */
+/* line 578, src/scss/_components/homepage/_list.scss */
 .light .list__box-list {
   background: #fff;
   scrollbar-color: #131313 #525252;
 }
 
-/* line 573, src/scss/_components/homepage/_list.scss */
+/* line 582, src/scss/_components/homepage/_list.scss */
 .light .list__box-list::-webkit-scrollbar {
   width: 10px;
 }
 
-/* line 574, src/scss/_components/homepage/_list.scss */
+/* line 583, src/scss/_components/homepage/_list.scss */
 .light .list__box-list::-webkit-scrollbar-corner {
   background: rgba(0, 0, 0, 0.1);
 }
 
-/* line 575, src/scss/_components/homepage/_list.scss */
+/* line 584, src/scss/_components/homepage/_list.scss */
 .light .list__box-list::-webkit-scrollbar-track {
   background: rgba(0, 0, 0, 0.1);
 }
 
-/* line 576, src/scss/_components/homepage/_list.scss */
+/* line 585, src/scss/_components/homepage/_list.scss */
 .light .list__box-list::-webkit-scrollbar-thumb {
   background: #9c9b9c;
 }
 
-/* line 577, src/scss/_components/homepage/_list.scss */
+/* line 586, src/scss/_components/homepage/_list.scss */
 .light .list__box-list:hover::-webkit-scrollbar-thumb {
   background: #225396;
 }
@@ -7771,12 +7860,12 @@ body.chatbot_active .go-top {
   }
 }
 
-/* line 613, src/scss/_components/homepage/_list.scss */
+/* line 622, src/scss/_components/homepage/_list.scss */
 .list__box-wrapper.last-box-selected .list__arrow--next {
   width: 75px;
 }
 
-/* line 619, src/scss/_components/homepage/_list.scss */
+/* line 628, src/scss/_components/homepage/_list.scss */
 .category--placeholder--title {
   display: block;
   color: #ffffff;
@@ -7786,27 +7875,27 @@ body.chatbot_active .go-top {
 }
 
 @media screen and (max-width: 1279px) {
-  /* line 619, src/scss/_components/homepage/_list.scss */
+  /* line 628, src/scss/_components/homepage/_list.scss */
   .category--placeholder--title {
     font-size: 24px;
   }
 }
 
 @media screen and (max-width: 767px) {
-  /* line 619, src/scss/_components/homepage/_list.scss */
+  /* line 628, src/scss/_components/homepage/_list.scss */
   .category--placeholder--title {
     font-size: 18px;
   }
 }
 
 @media screen and (max-width: 375px) {
-  /* line 619, src/scss/_components/homepage/_list.scss */
+  /* line 628, src/scss/_components/homepage/_list.scss */
   .category--placeholder--title {
     font-size: 16px;
   }
 }
 
-/* line 637, src/scss/_components/homepage/_list.scss */
+/* line 646, src/scss/_components/homepage/_list.scss */
 .category--placeholder--sites {
   display: -webkit-box;
   display: -webkit-flex;
@@ -7814,12 +7903,12 @@ body.chatbot_active .go-top {
   display: flex;
 }
 
-/* line 642, src/scss/_components/homepage/_list.scss */
+/* line 651, src/scss/_components/homepage/_list.scss */
 .site--dummy {
   position: relative;
 }
 
-/* line 645, src/scss/_components/homepage/_list.scss */
+/* line 654, src/scss/_components/homepage/_list.scss */
 .site--dummy--thumb {
   width: 230px;
   height: 230px;
@@ -7828,7 +7917,7 @@ body.chatbot_active .go-top {
 }
 
 @media screen and (max-width: 1279px) {
-  /* line 645, src/scss/_components/homepage/_list.scss */
+  /* line 654, src/scss/_components/homepage/_list.scss */
   .site--dummy--thumb {
     width: 195px !important;
     height: 195px;
@@ -7836,7 +7925,7 @@ body.chatbot_active .go-top {
 }
 
 @media screen and (max-width: 1023px) {
-  /* line 645, src/scss/_components/homepage/_list.scss */
+  /* line 654, src/scss/_components/homepage/_list.scss */
   .site--dummy--thumb {
     width: 150px !important;
     height: 150px;
@@ -7844,14 +7933,14 @@ body.chatbot_active .go-top {
 }
 
 @media screen and (max-width: 767px) {
-  /* line 645, src/scss/_components/homepage/_list.scss */
+  /* line 654, src/scss/_components/homepage/_list.scss */
   .site--dummy--thumb {
     width: 100px !important;
     height: 100px;
   }
 }
 
-/* line 665, src/scss/_components/homepage/_list.scss */
+/* line 674, src/scss/_components/homepage/_list.scss */
 .site--dummy--title {
   position: absolute;
   left: 15px;
@@ -7867,13 +7956,13 @@ body.chatbot_active .go-top {
 }
 
 @media screen and (max-width: 767px) {
-  /* line 665, src/scss/_components/homepage/_list.scss */
+  /* line 674, src/scss/_components/homepage/_list.scss */
   .site--dummy--title {
     font-size: 12px;
   }
 }
 
-/* line 685, src/scss/_components/homepage/_list.scss */
+/* line 694, src/scss/_components/homepage/_list.scss */
 .category--placeholder--title {
   display: block;
   color: #ffffff;
@@ -7883,27 +7972,27 @@ body.chatbot_active .go-top {
 }
 
 @media screen and (max-width: 1279px) {
-  /* line 685, src/scss/_components/homepage/_list.scss */
+  /* line 694, src/scss/_components/homepage/_list.scss */
   .category--placeholder--title {
     font-size: 24px;
   }
 }
 
 @media screen and (max-width: 767px) {
-  /* line 685, src/scss/_components/homepage/_list.scss */
+  /* line 694, src/scss/_components/homepage/_list.scss */
   .category--placeholder--title {
     font-size: 18px;
   }
 }
 
 @media screen and (max-width: 375px) {
-  /* line 685, src/scss/_components/homepage/_list.scss */
+  /* line 694, src/scss/_components/homepage/_list.scss */
   .category--placeholder--title {
     font-size: 16px;
   }
 }
 
-/* line 703, src/scss/_components/homepage/_list.scss */
+/* line 712, src/scss/_components/homepage/_list.scss */
 .category--placeholder--sites {
   display: -webkit-box;
   display: -webkit-flex;
@@ -7911,12 +8000,12 @@ body.chatbot_active .go-top {
   display: flex;
 }
 
-/* line 708, src/scss/_components/homepage/_list.scss */
+/* line 717, src/scss/_components/homepage/_list.scss */
 .site--p {
   position: relative;
 }
 
-/* line 711, src/scss/_components/homepage/_list.scss */
+/* line 720, src/scss/_components/homepage/_list.scss */
 .site--p--thumb {
   width: 230px;
   height: 230px;
@@ -7925,7 +8014,7 @@ body.chatbot_active .go-top {
 }
 
 @media screen and (max-width: 1279px) {
-  /* line 711, src/scss/_components/homepage/_list.scss */
+  /* line 720, src/scss/_components/homepage/_list.scss */
   .site--p--thumb {
     width: 195px !important;
     height: 195px;
@@ -7933,7 +8022,7 @@ body.chatbot_active .go-top {
 }
 
 @media screen and (max-width: 1023px) {
-  /* line 711, src/scss/_components/homepage/_list.scss */
+  /* line 720, src/scss/_components/homepage/_list.scss */
   .site--p--thumb {
     width: 150px !important;
     height: 150px;
@@ -7941,14 +8030,14 @@ body.chatbot_active .go-top {
 }
 
 @media screen and (max-width: 767px) {
-  /* line 711, src/scss/_components/homepage/_list.scss */
+  /* line 720, src/scss/_components/homepage/_list.scss */
   .site--p--thumb {
     width: 100px !important;
     height: 100px;
   }
 }
 
-/* line 731, src/scss/_components/homepage/_list.scss */
+/* line 740, src/scss/_components/homepage/_list.scss */
 .site--p--title {
   position: absolute;
   left: 15px;
@@ -7964,51 +8053,51 @@ body.chatbot_active .go-top {
 }
 
 @media screen and (max-width: 767px) {
-  /* line 731, src/scss/_components/homepage/_list.scss */
+  /* line 740, src/scss/_components/homepage/_list.scss */
   .site--p--title {
     font-size: 12px;
   }
 }
 
-/* line 753, src/scss/_components/homepage/_list.scss */
+/* line 762, src/scss/_components/homepage/_list.scss */
 .light .list__info .category_title a {
   color: #000;
 }
 
-/* line 757, src/scss/_components/homepage/_list.scss */
+/* line 766, src/scss/_components/homepage/_list.scss */
 .light .list__info span {
   color: #636471;
 }
 
 @media screen and (max-width: 767px) {
-  /* line 761, src/scss/_components/homepage/_list.scss */
+  /* line 770, src/scss/_components/homepage/_list.scss */
   .light .list__info span:after {
     display: none;
   }
 }
 
-/* line 768, src/scss/_components/homepage/_list.scss */
+/* line 777, src/scss/_components/homepage/_list.scss */
 .light .list__btn {
   background: #004cb0;
   color: #fff;
 }
 
-/* line 772, src/scss/_components/homepage/_list.scss */
+/* line 781, src/scss/_components/homepage/_list.scss */
 .light .list__btn:hover, .light .list__btn:active, .light .list__btn:focus {
   color: #fff;
 }
 
-/* line 776, src/scss/_components/homepage/_list.scss */
+/* line 785, src/scss/_components/homepage/_list.scss */
 .light .list__btn span {
   color: #c3f228;
 }
 
-/* line 781, src/scss/_components/homepage/_list.scss */
+/* line 790, src/scss/_components/homepage/_list.scss */
 .light .list__box-line {
   background-color: #c0c3cc;
 }
 
-/* line 785, src/scss/_components/homepage/_list.scss */
+/* line 794, src/scss/_components/homepage/_list.scss */
 .light .list__box-line u,
 .light .list__box-line span {
   background-color: #005FDB;
@@ -8076,7 +8165,7 @@ body.chatbot_active .go-top {
   }
 }
 
-/* line 807, src/scss/_components/homepage/_list.scss */
+/* line 816, src/scss/_components/homepage/_list.scss */
 .modal_mask {
   position: absolute;
   display: none;
@@ -8088,12 +8177,12 @@ body.chatbot_active .go-top {
   z-index: 19;
 }
 
-/* line 818, src/scss/_components/homepage/_list.scss */
+/* line 827, src/scss/_components/homepage/_list.scss */
 body.is_open .modal_mask {
   display: block;
 }
 
-/* line 821, src/scss/_components/homepage/_list.scss */
+/* line 830, src/scss/_components/homepage/_list.scss */
 body.is_open .swiper-slide:not(.is-hover):after {
   position: absolute;
   content: ' ';
@@ -8105,7 +8194,7 @@ body.is_open .swiper-slide:not(.is-hover):after {
   bottom: -5px;
 }
 
-/* line 836, src/scss/_components/homepage/_list.scss */
+/* line 845, src/scss/_components/homepage/_list.scss */
 .modal-container {
   position: fixed;
   top: 0;
@@ -8123,7 +8212,7 @@ body.is_open .swiper-slide:not(.is-hover):after {
 }
 
 @media screen and (max-width: 1023px) {
-  /* line 836, src/scss/_components/homepage/_list.scss */
+  /* line 845, src/scss/_components/homepage/_list.scss */
   .modal-container {
     z-index: 110;
     background: rgba(0, 0, 0, 0.6);
@@ -8131,23 +8220,23 @@ body.is_open .swiper-slide:not(.is-hover):after {
 }
 
 @media screen and (max-width: 767px) {
-  /* line 836, src/scss/_components/homepage/_list.scss */
+  /* line 845, src/scss/_components/homepage/_list.scss */
   .modal-container {
     /*position: absolute;*/
   }
 }
 
-/* line 858, src/scss/_components/homepage/_list.scss */
+/* line 867, src/scss/_components/homepage/_list.scss */
 body.opened {
   overflow: hidden;
 }
 
-/* line 863, src/scss/_components/homepage/_list.scss */
+/* line 872, src/scss/_components/homepage/_list.scss */
 body:not(.opened) .modal-container {
   overflow: hidden;
 }
 
-/* line 869, src/scss/_components/homepage/_list.scss */
+/* line 878, src/scss/_components/homepage/_list.scss */
 .overlay {
   display: none;
   position: absolute;
@@ -8162,7 +8251,7 @@ body:not(.opened) .modal-container {
   z-index: 21;
 }
 
-/* line 882, src/scss/_components/homepage/_list.scss */
+/* line 891, src/scss/_components/homepage/_list.scss */
 #site_modal.modal {
   background: #fff;
   -webkit-border-radius: 10px;
@@ -8180,7 +8269,7 @@ body:not(.opened) .modal-container {
 }
 
 @media screen and (min-width: 1450px) {
-  /* line 882, src/scss/_components/homepage/_list.scss */
+  /* line 891, src/scss/_components/homepage/_list.scss */
   #site_modal.modal {
     max-width: 75%;
     width: 100%;
@@ -8188,7 +8277,7 @@ body:not(.opened) .modal-container {
 }
 
 @media screen and (max-width: 1330px) {
-  /* line 882, src/scss/_components/homepage/_list.scss */
+  /* line 891, src/scss/_components/homepage/_list.scss */
   #site_modal.modal {
     max-width: -webkit-calc(100% - 20px);
     max-width: calc(100% - 20px);
@@ -8196,21 +8285,21 @@ body:not(.opened) .modal-container {
 }
 
 @media screen and (min-device-width: 768px) and (max-device-width: 1024px) and (orientation: landscape) and (-webkit-min-device-pixel-ratio: 2) {
-  /* line 882, src/scss/_components/homepage/_list.scss */
+  /* line 891, src/scss/_components/homepage/_list.scss */
   #site_modal.modal {
     margin-top: 30px;
   }
 }
 
 @media screen and (max-width: 900px) {
-  /* line 882, src/scss/_components/homepage/_list.scss */
+  /* line 891, src/scss/_components/homepage/_list.scss */
   #site_modal.modal {
     margin-top: 40px;
   }
 }
 
 @media screen and (max-width: 767px) {
-  /* line 882, src/scss/_components/homepage/_list.scss */
+  /* line 891, src/scss/_components/homepage/_list.scss */
   #site_modal.modal {
     background: transparent;
     margin: 0;
@@ -8218,7 +8307,7 @@ body:not(.opened) .modal-container {
   }
 }
 
-/* line 919, src/scss/_components/homepage/_list.scss */
+/* line 928, src/scss/_components/homepage/_list.scss */
 #site_modal.modal footer {
   width: 100%;
   display: -webkit-box;
@@ -8231,12 +8320,12 @@ body:not(.opened) .modal-container {
           justify-content: flex-end;
 }
 
-/* line 926, src/scss/_components/homepage/_list.scss */
+/* line 935, src/scss/_components/homepage/_list.scss */
 .submit {
   background: #8CDA26;
 }
 
-/* line 930, src/scss/_components/homepage/_list.scss */
+/* line 939, src/scss/_components/homepage/_list.scss */
 .cancel {
   background: #DA2632;
 }
