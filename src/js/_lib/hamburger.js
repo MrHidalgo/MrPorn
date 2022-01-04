@@ -103,6 +103,13 @@ const renderMobileMenu = () => {
 		'            </div>' +
 		'            <div class="pre-header__mobile-middle">' +
 									'<p class="pre-header__heading"><i></i><span>Main</span></p>'+
+		'<div class="header__toggle">' +
+		'                <input type="checkbox" name="" id="toggle-mode-mobile" class="toggle-mode" '+((isDark=='1')?'checked':'')+'>' +
+		'                <label for="toggle-mode-mobile">' +
+		'                    <div class="header__toggle-left"><i class="icon-font icon-sun"></i></div>' +
+		'                    <div class="header__toggle-right"><i class="icon-font icon-moon"></i></div><span></span>' +
+		'                </label>' +
+		'            </div>'+
 		'              <div>'+langHtml+'</div>' +
 		'            </div>' +
 		'            <div class="pre-header__mobile-bottom main_mobile_menu">' +
@@ -165,6 +172,7 @@ const renderMobileMenu = () => {
 	mobileContainer.innerHTML = mobileNavHtml;
 
 	initFavDelete();
+	initMobileThemeToggle()
 
 	if(typeof initLoggedUser === "function"){
 		if(window.innerWidth>1024){

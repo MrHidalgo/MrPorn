@@ -4,6 +4,7 @@ let loggedUsername='';
 let logoutUrl='';
 let sortTimout;
 let favouriteList = [];
+let isDark = '1';
 
 const initTheme = () => {
 	let toggleSwitch = document.querySelector('#toggle-mode');
@@ -19,7 +20,7 @@ const initTheme = () => {
 		})
 	}
 
-	var isDark = getCookieMpgCookie("is_dark");
+	isDark = getCookieMpgCookie("is_dark");
 	if(isDark==''){
 		isDark = '1';
 	}
@@ -28,6 +29,31 @@ const initTheme = () => {
 		toggleSwitch.checked = true;
 	}else{
 		//document.documentElement.classList.add('light');
+		toggleSwitch.checked = false;
+	}
+}
+
+const initMobileThemeToggle = ()=>{
+	let toggleSwitch = document.querySelector('#toggle-mode-mobile');
+	if(toggleSwitch){
+		toggleSwitch.addEventListener('change', (event) => {
+			if (event.target.checked) {
+				createCookie("is_dark", "1", 7);
+				document.documentElement.classList.remove('light');
+			} else {
+				createCookie("is_dark", "0", 7);
+				document.documentElement.classList.add('light');
+			}
+		})
+	}
+
+	isDark = getCookieMpgCookie("is_dark");
+	if(isDark==''){
+		isDark = '1';
+	}
+	if(isDark=='1'){
+		toggleSwitch.checked = true;
+	}else{
 		toggleSwitch.checked = false;
 	}
 }
