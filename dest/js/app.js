@@ -1824,7 +1824,7 @@ var isCategoriesRendered = false;
     		if(!isCategoriesRendered){
     			isCategoriesRendered = true;
     			renderAllOtherCategories();
-    			}
+    				}
     	}
     }*/
 
