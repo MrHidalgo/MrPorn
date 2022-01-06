@@ -566,11 +566,11 @@
 		flex-direction: column;
 	}
 
-	/*@include adaptive(991.98) {
-		flex-direction: column;
-	}*/
-
-
+	@include adaptive(991.98) {
+		&.dummy_thumb{
+			display: none;
+		}
+	}
 }
 
 .review_column{
@@ -588,6 +588,12 @@
 }
 .screen_shot{
 	padding-right: 15px;
+
+	&_dummy{
+		&.hide{
+			display: none;
+		}
+	}
 
 	@include adaptiveMinMax(1023.98, 768) {
 		padding-right: 0;

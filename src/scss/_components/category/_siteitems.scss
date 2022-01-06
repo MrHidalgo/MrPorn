@@ -251,6 +251,11 @@
 					font-size: 14px;
 				}
 
+				@include adaptive(767) {
+					padding: 5px 0;
+					font-size: 12px;
+				}
+
 				i{
 					transition: all 0.2s linear 0s;
 					opacity: 0;
@@ -276,17 +281,14 @@
 				}
 			}
 
-			/*.link_read:hover{
-				animation: pulse-blue 1s;
-			}
-			.link_site:hover{
-				animation: pulse-green 1s;
-			}*/
-
 			.link_site{
 				background: #c4f015;
 				color: #000;
 				margin-top: 15px;
+
+				@include adaptive(767) {
+					margin-top: 10px;
+				}
 			}
 		}
 
@@ -302,6 +304,13 @@
 
 					@include adaptive(767) {
 						display: none;
+					}
+				}
+			}
+			@include adaptive(767) {
+				&.touched{
+					.category_sites_item_overlay {
+						display: flex;
 					}
 				}
 			}

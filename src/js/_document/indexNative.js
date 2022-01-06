@@ -50,20 +50,52 @@ const ajaxAdminEndpoint = '/wp-admin/admin-ajax.php';
 function initWebWorker(){
 
 	currentLang = document.documentElement.getAttribute('lang');
-	let dataTag = "homepage_data_"+dataTime+'_'+currentLang;
 
-	removeOtherStorageKeys(dataTime, currentLang);
-
-	homeData = getWithExpiry("homepage_data_"+dataTime+'_'+currentLang);
-	if(homeData){
-	}else{
-		if(!navigator.userAgent.toLowerCase().includes('lighthouse')){
-			if(document.body.classList.contains('home')){
+	if(document.body.classList.contains('home')){
+		let dataTag = "homepage_data_"+dataTime+'_'+currentLang;
+		removeOtherStorageKeys(dataTime, currentLang);
+		homeData = getWithExpiry("homepage_data_"+dataTime+'_'+currentLang);
+		if(homeData){
+		}else{
+			if(!navigator.userAgent.toLowerCase().includes('lighthouse')){
 				loadHomeData();
 			}
 		}
+	}else if(document.body.classList.contains('single-sites')){
+		const event = new Event('loadCategoryData');
+		window.dispatchEvent(event);
+		console.log('emiting category load event');
 	}
 }
+
+const loadHomeData = () => {
+
+	let url = '/wp-json/mpg/home/';
+	if(currentLang!='en'){
+		url = '/wp-json/mpg/home/?lang='+currentLang;
+	}
+
+	homeData = getWithExpiry("homepage_data_"+dataTime+'_'+currentLang);
+
+	if(homeData){
+
+	}else{
+		fetch(url)
+			.then(res => res.json())
+			.then((out) => {
+				homeData = out;
+
+				if(homeData.code=='rest_login_required'){
+
+				}else{
+					setWithExpiry("homepage_data_"+dataTime+'_'+currentLang, homeData, 30*60*1000);
+				}
+
+			})
+			.catch(err => { throw err });
+	}
+}
+
 function removeOtherStorageKeys(dataTime, currentLang){
 	let homeDataKey = "homepage_data_"+dataTime+'_'+currentLang;
 	let translationDataKey = "i18n_"+dataTime;
@@ -137,6 +169,7 @@ function verifyCookie(){
 }
 
 let isCategoriesRendered = false;
+let lastMobileSimilarSite;
 
 (function () {
 	/**
@@ -158,8 +191,10 @@ let isCategoriesRendered = false;
 		const className = '.header__view-wrapper, .sort';
 
 
+
 		document.addEventListener('click', function(ev) {
 			const _ev = ev.target;
+			let currentMobileSimilarSite;
 
 
 			if(_ev.closest('[sort-node-js]')){
@@ -250,6 +285,10 @@ let isCategoriesRendered = false;
 			}else if(_ev.classList.contains('popup_link_forgot')){
 				ev.preventDefault();
 				toggleLoginPopups('forgot');
+			}else if(isMobileOrTablet && (currentMobileSimilarSite = _ev.closest('.similar_sites .category_sites_item_thumb'))){
+				ev.preventDefault();
+				onSimilarSiteTouch(currentMobileSimilarSite)
+				console.log('clicked similar site');
 			}else if(_ev.classList.contains('hdrfavttl')){
 				ev.preventDefault();
 				document.querySelector('.mobile_fav_link').classList.toggle('open');
@@ -305,6 +344,14 @@ let isCategoriesRendered = false;
 		}, false);
 	};
 
+	function onSimilarSiteTouch(siteItem){
+
+		siteItem.parentNode.classList.add('touched');
+		if(lastMobileSimilarSite){
+			lastMobileSimilarSite.classList.remove('touched');
+		}
+		lastMobileSimilarSite = siteItem.parentNode;
+	}
 
 	function onSiteBoxHoverClick(_el){
 		let siteBoxLink = _el.querySelector('.site_link')

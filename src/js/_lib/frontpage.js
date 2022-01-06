@@ -224,33 +224,7 @@ function scrollToCategoryOnHome(ev, _ev){
 
 }
 
-const loadHomeData = () => {
 
-	let url = '/wp-json/mpg/home/';
-	if(currentLang!='en'){
-		url = '/wp-json/mpg/home/?lang='+currentLang;
-	}
-
-	homeData = getWithExpiry("homepage_data_"+dataTime+'_'+currentLang);
-
-	if(homeData){
-
-	}else{
-		fetch(url)
-			.then(res => res.json())
-			.then((out) => {
-				homeData = out;
-
-				if(homeData.code=='rest_login_required'){
-
-				}else{
-					setWithExpiry("homepage_data_"+dataTime+'_'+currentLang, homeData, 30*60*1000);
-				}
-
-			})
-			.catch(err => { throw err });
-	}
-}
 
 
 function onRatingClick(){
