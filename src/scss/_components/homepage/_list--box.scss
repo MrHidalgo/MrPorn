@@ -1,15 +1,15 @@
 &__box {
-
+	display: flex;
+	flex-direction: column;
 	cursor: pointer;
-	align-items: center;
-	justify-content: center;
+	/*align-items: center;
+	justify-content: center;*/
 	background-position: center;
 	background-repeat: no-repeat;
 	background-size: cover;
 	backface-visibility: hidden;
 	transform-origin: center;
 	padding: 0 7px;
-	margin-bottom: 15px;
 
 	div, ul{scrollbar-color: #131313 #525252;}
 	div::-webkit-scrollbar, ul::-webkit-scrollbar {width: 10px; }
@@ -20,11 +20,10 @@
 
 
 	@include respond('medium'){
-		position: absolute;
+		//position: absolute;
 	}
 
 	@include respond('large'){
-		width: 25%;
 	}
 
 
@@ -39,6 +38,7 @@
 	}
 
 	&-list{
+		flex: 1;
 		background: #454545;
 		list-style-type: none;
 		padding: 0;
@@ -57,6 +57,10 @@
 		&::-webkit-scrollbar-track{background: #131313; border-left:1px solid #333;}
 		&::-webkit-scrollbar-thumb{ background: #525252; }
 		&:hover::-webkit-scrollbar-thumb{ background: #323232; }
+
+		@include respond('ipad_landscape'){
+			font-size: 12px;
+		}
 	}
 
 	&__item{
@@ -169,11 +173,7 @@
 	}
 
 	.is-mobile & {
-		@media screen and (orientation: landscape) {
-			/*width: 150px !important;
-			height: 150px;*/
-			padding: 15px;
-		}
+		//padding: 0 10px;
 	}
 
 
@@ -263,6 +263,10 @@
 		&:hover, &:focus{
 			color: #d1f34b;
 			text-decoration: underline;
+		}
+
+		@include respond('ipad_landscape'){
+			font-size: 13.5px;
 		}
 
 		@include adaptive(767) {
@@ -368,7 +372,6 @@
 		justify-content: center;
 		align-items: center;
 		background: #0e2644;
-		border-bottom: 1px solid #585858;
 		padding: 0 10px;
 		text-align: center;
 		line-height: 38px;
@@ -379,7 +382,10 @@
 		font-size: 14px;
 		font-weight: 600;
 		color: #fff;
-		border-top: 1px solid #585858;
+
+		@include respond('ipad_landscape'){
+			font-size: 12.5px;
+		}
 
 		&:after{
 			display: block;

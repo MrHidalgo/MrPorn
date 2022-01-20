@@ -285,18 +285,19 @@ let lastMobileSimilarSite;
 			}else if(_ev.classList.contains('popup_link_forgot')){
 				ev.preventDefault();
 				toggleLoginPopups('forgot');
-			}else if(isMobileOrTablet && (currentMobileSimilarSite = _ev.closest('.similar_sites .category_sites_item_thumb'))){
-				ev.preventDefault();
-				onSimilarSiteTouch(currentMobileSimilarSite)
+			}else if(isMobileOrTablet && (currentMobileSimilarSite = _ev.closest('.category_sites_item .category_sites_item_thumb'))){
+
+				onSimilarSiteTouch(ev, currentMobileSimilarSite)
 				console.log('clicked similar site');
 			}else if(_ev.classList.contains('hdrfavttl')){
 				ev.preventDefault();
 				document.querySelector('.mobile_fav_link').classList.toggle('open');
-			}else if(_ev.classList.contains('close-modal') | _ev.parentNode.classList.contains('close-modal')){
+			}
+			/*else if(_ev.classList.contains('close-modal') | _ev.parentNode.classList.contains('close-modal')){
 				if(!isMobileOrTablet){
 					cancelModal(ev);
 				}
-			}
+			}*/
 
 
 
@@ -344,7 +345,12 @@ let lastMobileSimilarSite;
 		}, false);
 	};
 
-	function onSimilarSiteTouch(siteItem){
+	function onSimilarSiteTouch(ev, siteItem){
+
+		if(!siteItem.parentNode.classList.contains('touched')){
+			ev.preventDefault();
+		}
+
 
 		siteItem.parentNode.classList.add('touched');
 		if(lastMobileSimilarSite){

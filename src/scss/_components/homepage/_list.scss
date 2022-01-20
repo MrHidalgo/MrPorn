@@ -530,6 +530,10 @@
 	.list__box-subtext{
 		background: linear-gradient(to bottom, #ffffff 0%,#f9f3eb 100%);
 		color: #333;
+
+		@include respond('ipad_landscape'){
+			font-size: 11.3px;
+		}
 	}
 	.list__box__item{
 		background: #fff;

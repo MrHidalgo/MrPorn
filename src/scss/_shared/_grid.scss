@@ -61,6 +61,10 @@ $paddingRight: $paddingLeft;
 	.c-grid {
 		&.list{
 			padding-top: 25px;
+
+			@include respond('ipad_landscape'){
+				padding: 15px 20px 25px;
+			}
 		}
 
 		&--inner{
@@ -68,9 +72,26 @@ $paddingRight: $paddingLeft;
 			flex-wrap: wrap;
 			margin: 0 -15px;
 
+			display: grid;
+			grid-row-gap: 9px;
+			row-gap: 9px;
+			-webkit-column-gap: 8px;
+			column-gap: 0;
+			grid-template-rows: initial;
+			grid-template-columns: repeat(4, 1fr);
+			grid-template-areas: initial;
+			grid-auto-flow: row dense;
+			grid-auto-rows: 1px;
+			grid-auto-columns: initial;
+
 
 			@include respond('max-medium'){
 				margin: 0;
+				grid-template-columns: repeat(2, 1fr);
+			}
+			@include respond('max-small'){
+				margin: 0;
+				grid-template-columns: repeat(1, 1fr);
 			}
 		}
 
