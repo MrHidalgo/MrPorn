@@ -707,6 +707,8 @@ function getPopupSimilarSites(category, currentSiteId){
 				siteHasVideo = ' has_video';
 			}
 
+			let isNoFollow = moreSite.is_nofollow?' rel="nofollow"':'';
+
 			similarHtml += '<div class="'+similarSiteItemClass+' '+siteHasVideo+'" '+similarSiteVideo+'>' +
 				'<div class="similar_site_item_inner">' +
 				'<a class="similar_site_item_link" href="'+siteLink+'" hreflang="'+currentLang+'">' +
@@ -719,7 +721,7 @@ function getPopupSimilarSites(category, currentSiteId){
 				'</a>' +
 
 				'<div class="similar_site_item_buttons">' +
-				'<a class="visit_site list__specification-read nav_link" href="'+moreSite.url+'" target="_blank">'+_t('lbl_visit_website', 'VISIT WEBSITE')+'</a>'+
+				'<a class="visit_site list__specification-read nav_link" href="'+moreSite.url+'" target="_blank"'+isNoFollow+'>'+_t('lbl_visit_website', 'VISIT WEBSITE')+'</a>'+
 				'<a class="read_review list__specification-visit nav_link" href="'+siteLink+'"  hreflang="'+currentLang+'">'+_t('read_review', 'READ REVIEW')+'</a>'+
 				'</div>'+
 				'</div>'+

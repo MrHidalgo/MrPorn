@@ -132,7 +132,7 @@ const renderMobileMenu = () => {
 		'                    <div><i class="icon-png header-nav-porngames"></i></div>' +
 		'                    <div><span>Porn Games</span></div></a></li>' +
 		'                <li class="header__nav-item header__nav-item--saparator"><span class="header__nav-separator"></span></li>' +
-		'                <li class="header__nav-item"><a class="header__nav-link" href="'+navLinkMeet+'" target="_blank">' +
+		'                <li class="header__nav-item"><a class="header__nav-link" href="'+navLinkMeet+'" target="_blank" rel="nofollow">' +
 		'                    <div><i class="icon-png header-nav-meetfuck"></i></div>' +
 		'                    <div><span>Meet & Fuck</span></div></a></li>' +
 		'                <li class="header__nav-item header__nav-item--saparator"><span class="header__nav-separator"></span></li>' +
