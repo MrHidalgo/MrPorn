@@ -538,6 +538,7 @@ function renderSiteBottomBanner(category, index){
 		let bannerVideo = siteItem.banner_video;
 		let bannerVideoPoster = siteItem.banner_video_poster;
 		let siteLogo = siteItem.logo;
+		let isNoFollow = siteItem.is_nofollow;
 
 		let tagLIne = siteItem.tagline;
 		if(tagLIne!=''){
@@ -610,7 +611,7 @@ function renderSiteBottomBanner(category, index){
 			'<div>' +
 			'<img class="list__specification-logo" src="'+siteLogo+'"/>'+
 			'<div class="list__specification-action" spec-actionNode-js>'+
-			'<div><a class="list__specification-visit nav_link" href="'+siteUrl+'" target="_blank">'+_t('lbl_visit_website', 'VISIT WEBSITE')+'</a></div>'+
+			'<div><a class="list__specification-visit nav_link" href="'+siteUrl+'" target="_blank" '+(isNoFollow?'rel="nofollow"':'')+'>'+_t('lbl_visit_website', 'VISIT WEBSITE')+'</a></div>'+
 			'<div><a class="list__specification-read nav_link" href="'+siteLink+'" hreflang="'+currentLang+'" target="_blank">'+_t('read_review', 'READ REVIEW')+'</a></div>'+
 			'<div class="list__specification-action-desc">'+
 			'<p>'+tagLIne+'</p>'+

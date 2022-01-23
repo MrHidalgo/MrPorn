@@ -1325,7 +1325,7 @@ var isCategoriesRendered = false;
         showBanner(_ev.closest('.list__box-more').dataset.id, false, ev); //openSlideModal(ev);
       } else if (_ev.closest('[more-toggle-js]')) {
         //showBanner(_ev);
-        showBanner(_ev, false, ev);
+        showBanner(_ev.closest('[more-toggle-js]').dataset.id, false, ev);
       } else if (_ev.closest('[spec-like-js]')) {
         onBannerLikeClick(_ev.closest('[spec-like-js]'));
       } else if (_ev.closest('[spec-dislike-js]')) {
@@ -1824,7 +1824,7 @@ var isCategoriesRendered = false;
     		if(!isCategoriesRendered){
     			isCategoriesRendered = true;
     			renderAllOtherCategories();
-    				}
+    			}
     	}
     }*/
 

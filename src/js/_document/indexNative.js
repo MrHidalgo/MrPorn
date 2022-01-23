@@ -276,7 +276,7 @@ let isCategoriesRendered = false;
 				//openSlideModal(ev);
 			}else if(_ev.closest('[more-toggle-js]')){
 				//showBanner(_ev);
-				showBanner(_ev, false, ev);
+				showBanner(_ev.closest('[more-toggle-js]').dataset.id, false, ev);
 			}else if(_ev.closest('[spec-like-js]')){
 				onBannerLikeClick(_ev.closest('[spec-like-js]'));
 			}else if(_ev.closest('[spec-dislike-js]')){
