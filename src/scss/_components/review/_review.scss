@@ -393,6 +393,8 @@
 		height: 100%;
 		width: 100%;
 		object-fit: cover;
+		z-index: 11;
+		text-indent: 100vw;
 	}
 
 	.slider_inner {
@@ -452,6 +454,10 @@
 			object-fit: cover;
 			margin-right: 10px;
 
+		&.swiper-slide-active{
+			opacity: 1;
+		}
+
 
 		@include respond('ipad_portrait'){
 			max-width: 100%;
@@ -467,6 +473,23 @@
 	}
 	.swiper-slide-thumb-active{
 		opacity: 1;
+	}
+}
+.review-slides{
+	.slide_item_inner{
+		padding-bottom: 100px;
+	}
+	.gallery-thumbs-wrapper{
+		position: absolute;
+		width: calc(100vw - 30px);
+		left: 50%;
+		transform: translateX(-50%);
+		display: none;
+	}
+	.swiper-slide-active{
+		.gallery-thumbs-wrapper{
+			display: block;
+		}
 	}
 }
 
