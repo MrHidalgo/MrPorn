@@ -244,6 +244,46 @@ function postRequest() {
     console.log(err);
     throw err;
   });
+  return response;
+}
+
+function postRequestAbortable() {
+  var url = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : '';
+  var signal = arguments.length > 1 ? arguments[1] : undefined;
+  var data = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : {};
+  var callback = arguments.length > 3 ? arguments[3] : undefined;
+  var searchParams = Object.keys(data).map(function (key) {
+    return encodeURIComponent(key) + '=' + encodeURIComponent(data[key]);
+  }).join('&'); // Default options are marked with *
+
+  var response = fetch(url, {
+    method: 'POST',
+    // *GET, POST, PUT, DELETE, etc.
+    headers: {
+      'Content-Type': 'application/x-www-form-urlencoded; charset=UTF-8'
+    },
+    signal: signal,
+    mode: 'cors',
+    // no-cors, *cors, same-origin
+    cache: 'no-cache',
+    // *default, no-cache, reload, force-cache, only-if-cached
+    credentials: 'same-origin',
+    // include, *same-origin, omit
+    redirect: 'follow',
+    // manual, *follow, error
+    referrerPolicy: 'no-referrer',
+    // no-referrer, *client
+    body: searchParams // body data type must match "Content-Type" header
+
+  }).then(function (response) {
+    return response.json();
+  }).then(function (out) {
+    callback(out);
+  })["catch"](function (err) {
+    console.log(err);
+    throw err;
+  });
+  return response;
 }
 
 function postTextRequest() {
