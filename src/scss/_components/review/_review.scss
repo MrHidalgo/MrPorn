@@ -365,16 +365,17 @@
 		height: 140px;
 		content: ' ';
 		display: block;
+		transition: height 0.2s ease-in-out;
 
 		@include respond('ipad_landscape'){
-			display: none;
+			height: 0;
 		}
 		@include respond('max-medium'){
-			display: none;
+			height: 0;
 		}
 
 		@include adaptive(767){
-			display: none;
+			height: 0;
 		}
 	}
 }

@@ -83,7 +83,7 @@ const renderMobileMenu = () => {
 
 	const navLinkGames = document.querySelector('.header_nav_games').getAttribute('href');
 	const navLinkMeet = document.querySelector('.header_nav_meet').getAttribute('href');
-	const navLinkLiveSex = document.querySelector('.header_nav_dating').getAttribute('href');
+	const navLinkLiveSex = document.querySelector('.header_nav_dating.live_sex_nav').getAttribute('href');
 
 	let currentLang = document.documentElement.getAttribute('lang');
 
@@ -135,15 +135,15 @@ const renderMobileMenu = () => {
 		'                    <div><i class="icon-png header-nav-porncoupons"></i></div>' +
 		'                    <div><span>Porn Coupons</span></div></a></li>' +
 		'                <li class="header__nav-item header__nav-item--saparator"><span class="header__nav-separator"></span></li>' +
-		'                <li class="header__nav-item"><a class="header__nav-link" href="'+navLinkGames+'" target="_blank">' +
+		'                <li class="header__nav-item"><a class="header__nav-link" href="'+navLinkGames+'" hreflang="'+currentLang+'" target="_blank">' +
 		'                    <div><i class="icon-png header-nav-porngames"></i></div>' +
 		'                    <div><span>Porn Games</span></div></a></li>' +
 		'                <li class="header__nav-item header__nav-item--saparator"><span class="header__nav-separator"></span></li>' +
-		'                <li class="header__nav-item"><a class="header__nav-link" href="'+navLinkMeet+'" target="_blank">' +
+		'                <li class="header__nav-item"><a class="header__nav-link" href="'+navLinkMeet+'" target="_blank" rel="nofollow">' +
 		'                    <div><i class="icon-png header-nav-meetfuck"></i></div>' +
 		'                    <div><span>Meet & Fuck</span></div></a></li>' +
 		'                <li class="header__nav-item header__nav-item--saparator"><span class="header__nav-separator"></span></li>' +
-		'                <li class="header__nav-item"><a class="header__nav-link" href="'+navLinkLiveSex+'" target="_blank">' +
+		'                <li class="header__nav-item"><a class="header__nav-link" href="'+navLinkLiveSex+'" rel="nofollow" target="_blank">' +
 		'                    <div><i class="icon-png header-nav-livesex"></i></div>' +
 		'                    <div><span>Live sex</span></div></a></li>' +
 		'              </ul>' +
@@ -156,13 +156,13 @@ const renderMobileMenu = () => {
 		'            </div>' +
 		'            <div class="pre-header__mobile-bottom">' +
 		'              <ul class="header__nav">' +
-		'                <li class="header__nav-item"><a class="header__nav-link" href="/about-us/">' +
+		'                <li class="header__nav-item"><a class="header__nav-link" href="'+translateLink('about-us')+'" hreflang="'+currentLang+'">' +
 		'                    <div><i class="icon-png header-nav-info"></i></div>' +
 		'                    <div><span>About Us</span></div></a></li>' +
-		'                <li class="header__nav-item"><a class="header__nav-link" href="/contact/">' +
+		'                <li class="header__nav-item"><a class="header__nav-link" href="'+translateLink('contact')+'" hreflang="'+currentLang+'">' +
 		'                    <div><i class="icon-png header-nav-email"></i></div>' +
 		'                    <div><span>Contact Us</span></div></a></li>' +
-		'                <li class="header__nav-item"><a class="header__nav-link" href="/advertising/">' +
+		'                <li class="header__nav-item"><a class="header__nav-link" href="'+translateLink('advertising')+'" hreflang="'+currentLang+'">' +
 		'                    <div><i class="icon-png header-nav-megaphone"></i></div>' +
 		'                    <div><span>Advertising</span></div></a></li>' +
 		'              </ul>' +
@@ -181,7 +181,12 @@ const renderMobileMenu = () => {
 	}
 }
 
-
+function translateLink(link){
+	if(currentLang=='en'){
+		return '/'+link+'/';
+	}
+	return '/'+currentLang+'/'+link+'/';
+}
 
 function initFavDelete(){
 	document.querySelectorAll(".fav_delete").forEach(function(target){
