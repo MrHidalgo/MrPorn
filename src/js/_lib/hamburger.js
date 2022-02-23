@@ -116,35 +116,35 @@ const renderMobileMenu = () => {
 		window.favHtmlMobile+
 		'              <ul class="header__nav">' +
 		'                <li class="header__nav-item"><a class="header__nav-link" href="/categories/" hreflang="'+currentLang+'">' +
-		'                    <div><i class="icon-png header-nav-folder"></i></div>' +
+		'                    <div><img class="icon-nav-folder" src="/wp-content/themes/mpg/images/menu/menu.svg#folder"/></div>' +
 		'                    <div><span>View All Categories</span></div></a></li>' +
 		'                <li class="header__nav-item header__nav-item--saparator"><span class="header__nav-separator"></span></li>' +
 		'                <li class="header__nav-item"><a class="header__nav-link" href="/blog/" hreflang="en">' +
-		'                    <div><i class="icon-png header-nav-blog"></i></div>' +
+		'                    <div><img class="icon-nav-blog" src="/wp-content/themes/mpg/images/menu/menu.svg#blog"/></div>' +
 		'                    <div><span>Blog</span></div></a></li>' +
 		'                <li class="header__nav-item header__nav-item--saparator"><span class="header__nav-separator"></span></li>' +
 		'                <li class="header__nav-item"><a class="header__nav-link" href="/webcam-videos/" hreflang="en">' +
-		'                    <div><i class="icon-png header-nav-videos"></i></div>' +
+		'                    <div><img class="icon-nav-videos" src="/wp-content/themes/mpg/images/menu/menu.svg#videos"/></div>' +
 		'                    <div><span>Videos</span></div></a></li>' +
 		'                <li class="header__nav-item header__nav-item--saparator"><span class="header__nav-separator"></span></li>' +
 		'                <li class="header__nav-item"><a class="header__nav-link" href="/pornstars/" hreflang="en">' +
-		'                    <div><i class="icon-png header-nav-pornstars"></i></div>' +
+		'                    <div><img class="icon-nav-pornstars" src="/wp-content/themes/mpg/images/menu/menu.svg#pornstars"/></div>' +
 		'                    <div><span>Pornstars</span></div></a></li>' +
 		'                <li class="header__nav-item header__nav-item--saparator"><span class="header__nav-separator"></span></li>' +
 		'                <li class="header__nav-item"><a class="header__nav-link" href="/porn-deals/" hreflang="en">' +
-		'                    <div><i class="icon-png header-nav-porncoupons"></i></div>' +
+		'                    <div><img class="icon-nav-porncoupons" src="/wp-content/themes/mpg/images/menu/menu.svg#ticket"/></div>' +
 		'                    <div><span>Porn Coupons</span></div></a></li>' +
 		'                <li class="header__nav-item header__nav-item--saparator"><span class="header__nav-separator"></span></li>' +
 		'                <li class="header__nav-item"><a class="header__nav-link" href="'+navLinkGames+'" hreflang="'+currentLang+'" target="_blank">' +
-		'                    <div><i class="icon-png header-nav-porngames"></i></div>' +
+		'                    <div><img class="icon-nav-porngames" src="/wp-content/themes/mpg/images/menu/menu.svg#joystick"/></div>' +
 		'                    <div><span>Porn Games</span></div></a></li>' +
 		'                <li class="header__nav-item header__nav-item--saparator"><span class="header__nav-separator"></span></li>' +
 		'                <li class="header__nav-item"><a class="header__nav-link" href="'+navLinkMeet+'" target="_blank" rel="nofollow">' +
-		'                    <div><i class="icon-png header-nav-meetfuck"></i></div>' +
+		'                    <div><img class="icon-nav-sex" src="/wp-content/themes/mpg/images/menu/sex-icon.png"/></div>' +
 		'                    <div><span>Meet & Fuck</span></div></a></li>' +
 		'                <li class="header__nav-item header__nav-item--saparator"><span class="header__nav-separator"></span></li>' +
 		'                <li class="header__nav-item"><a class="header__nav-link" href="'+navLinkLiveSex+'" rel="nofollow" target="_blank">' +
-		'                    <div><i class="icon-png header-nav-livesex"></i></div>' +
+		'                    <div><img class="icon-nav-livesex" src="/wp-content/themes/mpg/images/menu/menu.svg#webcam"/></div>' +
 		'                    <div><span>Live sex</span></div></a></li>' +
 		'              </ul>' +
 		'            </div>' +
@@ -157,13 +157,13 @@ const renderMobileMenu = () => {
 		'            <div class="pre-header__mobile-bottom">' +
 		'              <ul class="header__nav">' +
 		'                <li class="header__nav-item"><a class="header__nav-link" href="'+translateLink('about-us')+'" hreflang="'+currentLang+'">' +
-		'                    <div><i class="icon-png header-nav-info"></i></div>' +
+		'                    <div><img class="icon-nav-info" src="/wp-content/themes/mpg/images/menu/menu.svg#info"/></div>' +
 		'                    <div><span>About Us</span></div></a></li>' +
 		'                <li class="header__nav-item"><a class="header__nav-link" href="'+translateLink('contact')+'" hreflang="'+currentLang+'">' +
-		'                    <div><i class="icon-png header-nav-email"></i></div>' +
+		'                    <div><img class="icon-nav-mail" src="/wp-content/themes/mpg/images/menu/menu.svg#mail"/></div>' +
 		'                    <div><span>Contact Us</span></div></a></li>' +
 		'                <li class="header__nav-item"><a class="header__nav-link" href="'+translateLink('advertising')+'" hreflang="'+currentLang+'">' +
-		'                    <div><i class="icon-png header-nav-megaphone"></i></div>' +
+		'                    <div><img class="icon-nav-megaphone" src="/wp-content/themes/mpg/images/menu/menu.svg#megaphone"/></div>' +
 		'                    <div><span>Advertising</span></div></a></li>' +
 		'              </ul>' +
 		'            </div>' +

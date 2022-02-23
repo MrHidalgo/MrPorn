@@ -93,21 +93,25 @@
 				font-size: 14px;
 				font-weight: 700;
 				color: #d1f34b;
-				padding: 5px 0;
+				padding: 5px;
 				background: rgba(0,0,0,.8);
 				text-align: center;
 				z-index: 5;
 				line-height: 17px;
 
+				text-overflow: ellipsis;
+				overflow: hidden;
+				white-space: nowrap;
+
 				@include respond('max-large'){
-					font-size: 12px;
+					font-size: 13px;
 				}
 				@include respond('ipad'){
-					font-size: 12.5px;
+					font-size: 13px;
 				}
 
 				@include adaptive(767) {
-					font-size: 12px;
+					font-size: 13px;
 				}
 
 				small {
@@ -123,11 +127,11 @@
 					-webkit-box-orient: vertical;
 
 					@include respond('max-large'){
-						font-size: 10px;
+						font-size: 12px;
 					}
 
 					@include adaptive(767) {
-						font-size: 10px;
+						font-size: 12px;
 					}
 				}
 			}
