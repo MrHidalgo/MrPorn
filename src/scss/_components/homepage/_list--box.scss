@@ -109,6 +109,26 @@
 			}
 		}
 
+		&__flag{
+			width: 16px;
+			height: 11px;
+			content: ' ';
+			display: inline-block;
+			margin-left: 10px;
+			background: url("../images/review_flags.jpg");
+
+			&.flag_{background:none;}
+			&.flag_aus{background-position:0 0;}
+			&.flag_br{background-position:0 -11px;}
+			&.flag_can{background-position:0 -22px;}
+			&.flag_ind{background-position:0 -33px;}
+			&.flag_ire{background-position:0 -44px;}
+			&.flag_nz{background-position:0 -55px;}
+			&.flag_sp{background-position:0 -66px;}
+			&.flag_uk{background-position:0 -77px;}
+			&.flag_usa{background-position:0 -88px;}
+		}
+
 		&-preview{
 			display: block;
 			content: ' ';

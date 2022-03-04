@@ -13,6 +13,9 @@
 		@include adaptive(767) {
 			height: 44px;
 		}
+		@include respond('mobile_landscape'){
+			height: 44px;
+		}
 	}
 
 	&__middle {

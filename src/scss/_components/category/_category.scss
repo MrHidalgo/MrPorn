@@ -28,14 +28,20 @@
 	}
 }
 
-.site-content{
-	@include adaptive(767) {
-		margin-top: 110px;
-	}
-}
-.gaming_cat_1{
-	@include adaptive(767) {
-		.site-content {
+//.site-content{
+//	@include adaptive(767) {
+//		margin-top: 110px;
+//	}
+//	@include respond('mobile_landscape'){
+//		margin-top: 120px;
+//	}
+//}
+.gaming_cat_11{
+	.site-content {
+		@include adaptive(767) {
+			margin-top: 70px;
+		}
+		@include respond('mobile_landscape'){
 			margin-top: 70px;
 		}
 	}

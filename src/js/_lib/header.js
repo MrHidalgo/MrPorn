@@ -22,7 +22,7 @@ const initTheme = () => {
 
 	isDark = getCookieMpgCookie("is_dark");
 	if(isDark==''){
-		isDark = '1';
+		isDark = '0';
 	}
 	if(isDark=='1'){
 		//document.documentElement.classList.remove('light');

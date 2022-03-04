@@ -233,6 +233,9 @@
 			flex-direction: column;
 			z-index: 2;
 
+			@include adaptive(767) {
+			}
+
 			a{
 				padding: 16px 0;
 				justify-content: center;
@@ -251,8 +254,9 @@
 				transition: all 0.2s linear 0s;
 
 				@include adaptive(1024) {
-					padding: 10px 0;
-					font-size: 14px;
+					padding: 5px 0;
+					font-size: 12px;
+					width: 70%;
 				}
 
 				i{
@@ -315,6 +319,12 @@
 					.category_sites_item_overlay{
 						display: none;
 					}
+				}
+			}
+
+			&.touched{
+				.category_sites_item_overlay{
+					display: flex;
 				}
 			}
 		}
@@ -531,7 +541,11 @@
 		}
 	}
 
-
+	.category_sites_description__readmore{
+		//background: url(../images/graident_bg_light.svg);
+		background: rgb(255,255,255);
+		background: linear-gradient(0deg, rgba(255,255,255,1) 0%, rgba(255,255,255,0.8) 85%, rgba(255,255,255,0) 100%);
+	}
 
 	.category_sites_item_title h2{
 	}

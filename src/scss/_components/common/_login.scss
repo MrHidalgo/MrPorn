@@ -32,6 +32,12 @@
 				border-color: #0e123c transparent transparent transparent;
 			}
 		}
+
+		@include respond('mobile_landscape'){
+			max-width: 430px;
+			margin: 0 auto;
+			text-align: center;
+		}
 	}
 
 	.login_container_inner{
@@ -86,6 +92,14 @@
 				background: #080915;
 				padding: 15px 30px;
 				text-align: center;
+			}
+
+			@include respond('mobile_landscape'){
+				&_outer{
+					background: #080915;
+				}
+				max-width: 430px;
+				margin: 0 auto;
 			}
 
 			a{
@@ -365,6 +379,10 @@
 
 	@include adaptive(1023){
 		padding: 35px 30px 15px;
+	}
+
+	@include respond('mobile_landscape'){
+		margin: 0 auto;
 	}
 
 	.join_button, input[type=submit], .submit{

@@ -24,7 +24,7 @@ $paddingRight: $paddingLeft;
     max-width: $maxWidth;
   }
 
-
+	padding-top: 15px;
 
 	@include adaptiveMinMax(1449.98, 1199.98){
 		/*max-width: 1149px;*/
@@ -47,6 +47,15 @@ $paddingRight: $paddingLeft;
 	@include adaptive(767) {
 		padding-left: 10px;
 		padding-right: 10px;
+
+		&-main{
+			margin-top: 115px;
+		}
+	}
+	@include respond('mobile_landscape'){
+		&-main{
+			margin-top: 120px;
+		}
 	}
 
   &-fluid {
@@ -54,8 +63,49 @@ $paddingRight: $paddingLeft;
     max-width: 100%;
   }
 }
+.show_2nd_header_{
+	.c-grid-main{
+		@include adaptive(767) {
+			margin-top: 80px;
+		}
+		@include respond('mobile_landscape'){
+			margin-top: 80px;
+		}
+	}
+	&1{
+		.c-grid-main{
+			@include adaptive(767) {
+				margin-top: 120px;
+			}
+			@include respond('mobile_landscape'){
+				margin-top: 125px;
+			}
+		}
+	}
+}
 
 
+.gaming_cat_1{
+	.c-grid-main{
+		@include adaptive(767) {
+			margin-top: 80px;
+		}
+		@include respond('mobile_landscape'){
+			margin-top: 80px;
+		}
+	}
+}
+
+.user_page_1{
+	.c-grid-main{
+		@include adaptive(767) {
+			margin-top: 120px;
+		}
+		@include respond('mobile_landscape'){
+			margin-top: 120px;
+		}
+	}
+}
 
 .page-id-17{
 	.c-grid {
