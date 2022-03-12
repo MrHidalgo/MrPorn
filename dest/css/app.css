@@ -818,7 +818,11 @@ strong {
 /* line 20, src/scss/_shared/_grid.scss */
 .c-grid {
   max-width: 1300px;
-  padding-top: 15px;
+}
+
+/* line 29, src/scss/_shared/_grid.scss */
+.c-grid_nav {
+  padding-top: 0;
 }
 
 @media screen and (min-width: 1199.98px) and (max-width: 1449.98px) {
@@ -844,93 +848,93 @@ strong {
     padding-left: 10px;
     padding-right: 10px;
   }
-  /* line 51, src/scss/_shared/_grid.scss */
+  /* line 55, src/scss/_shared/_grid.scss */
   .c-grid-main {
     margin-top: 115px;
   }
 }
 
 @media screen and (max-width: 1023px) and (orientation: landscape) {
-  /* line 56, src/scss/_shared/_grid.scss */
+  /* line 60, src/scss/_shared/_grid.scss */
   .c-grid-main {
     margin-top: 120px;
   }
 }
 
-/* line 61, src/scss/_shared/_grid.scss */
+/* line 65, src/scss/_shared/_grid.scss */
 .c-grid-fluid {
   max-width: 100%;
 }
 
 @media screen and (max-width: 767px) {
-  /* line 67, src/scss/_shared/_grid.scss */
+  /* line 71, src/scss/_shared/_grid.scss */
   .show_2nd_header_ .c-grid-main {
     margin-top: 80px;
   }
 }
 
 @media screen and (max-width: 1023px) and (orientation: landscape) {
-  /* line 67, src/scss/_shared/_grid.scss */
+  /* line 71, src/scss/_shared/_grid.scss */
   .show_2nd_header_ .c-grid-main {
     margin-top: 80px;
   }
 }
 
 @media screen and (max-width: 767px) {
-  /* line 76, src/scss/_shared/_grid.scss */
+  /* line 80, src/scss/_shared/_grid.scss */
   .show_2nd_header_1 .c-grid-main {
     margin-top: 120px;
   }
 }
 
 @media screen and (max-width: 1023px) and (orientation: landscape) {
-  /* line 76, src/scss/_shared/_grid.scss */
+  /* line 80, src/scss/_shared/_grid.scss */
   .show_2nd_header_1 .c-grid-main {
     margin-top: 125px;
   }
 }
 
 @media screen and (max-width: 767px) {
-  /* line 89, src/scss/_shared/_grid.scss */
+  /* line 93, src/scss/_shared/_grid.scss */
   .gaming_cat_1 .c-grid-main {
     margin-top: 80px;
   }
 }
 
 @media screen and (max-width: 1023px) and (orientation: landscape) {
-  /* line 89, src/scss/_shared/_grid.scss */
+  /* line 93, src/scss/_shared/_grid.scss */
   .gaming_cat_1 .c-grid-main {
     margin-top: 80px;
   }
 }
 
 @media screen and (max-width: 767px) {
-  /* line 100, src/scss/_shared/_grid.scss */
+  /* line 104, src/scss/_shared/_grid.scss */
   .user_page_1 .c-grid-main {
     margin-top: 120px;
   }
 }
 
 @media screen and (max-width: 1023px) and (orientation: landscape) {
-  /* line 100, src/scss/_shared/_grid.scss */
+  /* line 104, src/scss/_shared/_grid.scss */
   .user_page_1 .c-grid-main {
     margin-top: 120px;
   }
 }
 
-/* line 112, src/scss/_shared/_grid.scss */
+/* line 116, src/scss/_shared/_grid.scss */
 .page-id-17 .c-grid.list {
   padding-top: 25px;
 }
 
 @media screen and (min-device-width: 768px) and (max-device-width: 1024px) and (orientation: landscape) and (-webkit-min-device-pixel-ratio: 2) {
-  /* line 112, src/scss/_shared/_grid.scss */
+  /* line 116, src/scss/_shared/_grid.scss */
   .page-id-17 .c-grid.list {
     padding: 15px 20px 25px;
   }
 }
 
-/* line 120, src/scss/_shared/_grid.scss */
+/* line 124, src/scss/_shared/_grid.scss */
 .page-id-17 .c-grid--inner {
   position: relative;
   -webkit-flex-wrap: wrap;
@@ -952,7 +956,7 @@ strong {
 }
 
 @media screen and (max-width: 991px) {
-  /* line 120, src/scss/_shared/_grid.scss */
+  /* line 124, src/scss/_shared/_grid.scss */
   .page-id-17 .c-grid--inner {
     margin: 0;
     grid-template-columns: repeat(2, 1fr);
@@ -960,7 +964,7 @@ strong {
 }
 
 @media screen and (max-width: 767px) {
-  /* line 120, src/scss/_shared/_grid.scss */
+  /* line 124, src/scss/_shared/_grid.scss */
   .page-id-17 .c-grid--inner {
     margin: 0;
     grid-template-columns: repeat(1, 1fr);
@@ -968,7 +972,7 @@ strong {
 }
 
 @media screen and (min-width: 1450px) {
-  /* line 111, src/scss/_shared/_grid.scss */
+  /* line 115, src/scss/_shared/_grid.scss */
   .page-id-17 .c-grid {
     max-width: 75%;
   }

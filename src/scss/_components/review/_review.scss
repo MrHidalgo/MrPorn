@@ -86,17 +86,28 @@
 			align-items: center;
 			margin: 0;
 
+			&::-webkit-scrollbar {
+				display: none
+			}
+
+
 			@include respond('ipad_portrait'){
 				justify-content: center;
 				color: #fff;
 			}
 
 			@include adaptive(1023.98) {
-				justify-content: center;
+				//justify-content: center;
+				overflow-y: hidden;
+				overflow-X: auto;
+				will-change: transform;
+				scroll-behavior: smooth;
+				scrollbar-width: none;
+				-ms-overflow-style: none;
 			}
 
 			@include adaptive(767) {
-				justify-content: center;
+				//justify-content: center;
 				color: #fff;
 				padding: 5px 15px;
 			}
@@ -187,10 +198,9 @@
 		}
 		.icons {
 			flex-grow: 0;
-			display: inline-block;
+			display: flex;
 			margin: 0 0 0 5px;
 			height: 22px;
-			overflow: hidden;
 
 			.deIcon {
 				position: relative;
@@ -433,6 +443,10 @@
 	box-sizing: border-box;
 	padding: 0;
 	margin-top: 20px;
+
+	@include adaptive(1024) {
+		display: none;
+	}
 
 	&-wrapper{
 		@include respond('ipad_portrait'){
@@ -1552,12 +1566,31 @@
 		a{
 			font-weight: 600;
 			font-size: 14px;
+
+			@include adaptive(767) {
+				display: flex;
+				align-items: center;
+				justify-content: center;
+				padding: 5px 10px;
+				font-size: 16px;
+				font-weight: 600;
+				color: #fff;
+				min-height: 50px;
+				line-height: 26px;
+			}
 		}
 	}
 	.link_btn a.visit_web.grey{
-		font-size: 19.5px;
+		//font-size: 19.5px;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		padding: 5px 10px;
+		font-size: 16px;
 		font-weight: 600;
 		color: #fff;
+		min-height: 50px;
+		line-height: 26px;
 	}
 	#other_categories{
 		margin-bottom: 25px;

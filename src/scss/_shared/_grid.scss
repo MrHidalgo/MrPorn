@@ -24,7 +24,11 @@ $paddingRight: $paddingLeft;
     max-width: $maxWidth;
   }
 
-	padding-top: 15px;
+	//padding-top: 15px;
+
+	&_nav{
+		padding-top: 0;
+	}
 
 	@include adaptiveMinMax(1449.98, 1199.98){
 		/*max-width: 1149px;*/
