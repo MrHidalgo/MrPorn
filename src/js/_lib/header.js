@@ -47,10 +47,10 @@ const initMobileThemeToggle = ()=>{
 		})
 	}
 
-	isDark = getCookieMpgCookie("is_dark");
-	if(isDark==''){
-		isDark = '1';
-	}
+	// isDark = getCookieMpgCookie("is_dark");
+	// if(isDark==''){
+	// 	isDark = '1';
+	// }
 	if(isDark=='1'){
 		toggleSwitch.checked = true;
 	}else{
@@ -370,7 +370,7 @@ const onSortLetterClick = (letterItem) => {
 			}
 
 			letterSuggessions += '<div class="sort__collapse">' +
-				'<a class="sort__collapse-toggle scroll_to_category" data-category="'+((hdId!='')?hdId:freeId)+'" href="'+toggleLink+'">'+
+				'<a class="sort__collapse-toggle scroll_to_category11" data-category="'+((hdId!='')?hdId:freeId)+'" href="'+toggleLink+'">'+
 				'<div><span>#'+suggessionIndex+'</span></div>'+
 				'<div><img src="'+catIcon+'" />'+
 				'<p>'+suggessionName+'</p>'+

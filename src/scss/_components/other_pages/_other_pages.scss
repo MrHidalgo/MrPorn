@@ -1,5 +1,16 @@
 // OTHER_PAGES :: START
 .other_page{
+	padding-top: 15px;
+
+	@include respond('ipad_portrait'){
+		padding-top: 0;
+	}
+	@include adaptive(767) {
+		padding-top: 0;
+		padding-bottom: 0;
+	}
+
+
 	&_content{
 		padding: 30px 35px;
 		background: #3b3b3b;

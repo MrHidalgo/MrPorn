@@ -87,7 +87,7 @@ const renderMobileMenu = () => {
 
 	let currentLang = document.documentElement.getAttribute('lang');
 
-	let linkSignup = '<div><a class="pre-header__signup mobile_signup_link" href="/sign-up/"><i class="icon-font icon-key"></i><span>Sign Up</span></a></div>';
+	let linkSignup = '<div><a class="pre-header__signup mobile_signup_link" href="/sign-up/"><i class="icon-font icon-key"></i><span>'+_t('sign_up', 'Sign Up')+'</span></a></div>';
 	if(window.logoutUrl){
 		linkSignup = '<div><a class="pre-header__signup mobile_signup_link" href="'+window.logoutUrl+'"><i class="icon-font icon-key"></i><span>LOGOUT</span></a></div>';
 	}
@@ -98,13 +98,13 @@ const renderMobileMenu = () => {
 
 	const mobileNavHtml = '<div>' +
 		'            <div class="pre-header__mobile-top">' +
-		'              <div><a class="pre-header__signin mobile_login_link" href="/login/"><i class="icon-font icon-enter"></i><span>Login</span></a></div>' +
+		'              <div><a class="pre-header__signin mobile_login_link" href="/login/"><i class="icon-font icon-enter"></i><span>'+_t('login', 'Login')+'</span></a></div>' +
 		linkSignup+
 		'            </div>' +
 		'            <div class="pre-header__mobile-middle">' +
-									'<p class="pre-header__heading"><i></i><span>Main</span></p>'+
+									'<p class="pre-header__heading"><i></i><span>'+_t('main', 'Main')+'</span></p>'+
 		'<div class="header__toggle">' +
-		'                <input type="checkbox" name="" id="toggle-mode-mobile" class="toggle-mode" '+((isDark=='1')?'checked':'')+'>' +
+		'                <input type="checkbox" name="" id="toggle-mode-mobile" class="toggle-mode">' +
 		'                <label for="toggle-mode-mobile">' +
 		'                    <div class="header__toggle-left"><i class="icon-font icon-sun"></i></div>' +
 		'                    <div class="header__toggle-right"><i class="icon-font icon-moon"></i></div><span></span>' +
@@ -117,40 +117,40 @@ const renderMobileMenu = () => {
 		'              <ul class="header__nav">' +
 		'                <li class="header__nav-item"><a class="header__nav-link" href="/categories/" hreflang="'+currentLang+'">' +
 		'                    <div><img class="icon-nav-folder" src="/wp-content/themes/mpg/images/menu/menu.svg#folder"/></div>' +
-		'                    <div><span>View All Categories</span></div></a></li>' +
+		'                    <div><span>'+_t('view_all_categories', 'View All Categories')+'</span></div></a></li>' +
 		'                <li class="header__nav-item header__nav-item--saparator"><span class="header__nav-separator"></span></li>' +
 		'                <li class="header__nav-item"><a class="header__nav-link" href="/blog/" hreflang="en">' +
 		'                    <div><img class="icon-nav-blog" src="/wp-content/themes/mpg/images/menu/menu.svg#blog"/></div>' +
-		'                    <div><span>Blog</span></div></a></li>' +
+		'                    <div><span>'+_t('blog', 'Blog')+'</span></div></a></li>' +
 		'                <li class="header__nav-item header__nav-item--saparator"><span class="header__nav-separator"></span></li>' +
 		'                <li class="header__nav-item"><a class="header__nav-link" href="/webcam-videos/" hreflang="en">' +
 		'                    <div><img class="icon-nav-videos" src="/wp-content/themes/mpg/images/menu/menu.svg#videos"/></div>' +
-		'                    <div><span>Videos</span></div></a></li>' +
+		'                    <div><span>'+_t('videos', 'Videos')+'</span></div></a></li>' +
 		'                <li class="header__nav-item header__nav-item--saparator"><span class="header__nav-separator"></span></li>' +
 		'                <li class="header__nav-item"><a class="header__nav-link" href="/pornstars/" hreflang="en">' +
 		'                    <div><img class="icon-nav-pornstars" src="/wp-content/themes/mpg/images/menu/menu.svg#pornstars"/></div>' +
-		'                    <div><span>Pornstars</span></div></a></li>' +
+		'                    <div><span>'+_t('pornstars', 'Pornstars')+'</span></div></a></li>' +
 		'                <li class="header__nav-item header__nav-item--saparator"><span class="header__nav-separator"></span></li>' +
 		'                <li class="header__nav-item"><a class="header__nav-link" href="/porn-deals/" hreflang="en">' +
 		'                    <div><img class="icon-nav-porncoupons" src="/wp-content/themes/mpg/images/menu/menu.svg#ticket"/></div>' +
-		'                    <div><span>Porn Coupons</span></div></a></li>' +
+		'                    <div><span>'+_t('porn-coupons', 'Porn Coupons')+'</span></div></a></li>' +
 		'                <li class="header__nav-item header__nav-item--saparator"><span class="header__nav-separator"></span></li>' +
 		'                <li class="header__nav-item"><a class="header__nav-link" href="'+navLinkGames+'" hreflang="'+currentLang+'" target="_blank">' +
 		'                    <div><img class="icon-nav-porngames" src="/wp-content/themes/mpg/images/menu/menu.svg#joystick"/></div>' +
-		'                    <div><span>Porn Games</span></div></a></li>' +
+		'                    <div><span>'+_t('porn-games', 'Porn Games')+'</span></div></a></li>' +
 		'                <li class="header__nav-item header__nav-item--saparator"><span class="header__nav-separator"></span></li>' +
 		'                <li class="header__nav-item"><a class="header__nav-link" href="'+navLinkMeet+'" target="_blank" rel="nofollow">' +
 		'                    <div><img class="icon-nav-sex" src="/wp-content/themes/mpg/images/menu/sex-icon.png"/></div>' +
-		'                    <div><span>Meet & Fuck</span></div></a></li>' +
+		'                    <div><span>'+_t('meet-and-fuck', 'Meet & Fuck')+'</span></div></a></li>' +
 		'                <li class="header__nav-item header__nav-item--saparator"><span class="header__nav-separator"></span></li>' +
 		'                <li class="header__nav-item"><a class="header__nav-link" href="'+navLinkLiveSex+'" rel="nofollow" target="_blank">' +
 		'                    <div><img class="icon-nav-livesex" src="/wp-content/themes/mpg/images/menu/menu.svg#webcam"/></div>' +
-		'                    <div><span>Live sex</span></div></a></li>' +
+		'                    <div><span>'+_t('live-sex', 'Live sex')+'</span></div></a></li>' +
 		'              </ul>' +
 		'            </div>' +
 		'            <div class="pre-header__mobile-middle">' +
 		'              <div>' +
-		'                <p class="pre-header__heading"><i></i><span>Connect With Us</span></p>' +
+		'                <p class="pre-header__heading"><i></i><span>'+_t('connect_with_us', 'Connect With Us')+'</span></p>' +
 		'              </div>' +
 		'              <div></div>' +
 		'            </div>' +
@@ -158,13 +158,13 @@ const renderMobileMenu = () => {
 		'              <ul class="header__nav">' +
 		'                <li class="header__nav-item"><a class="header__nav-link" href="'+translateLink('about-us')+'" hreflang="'+currentLang+'">' +
 		'                    <div><img class="icon-nav-info" src="/wp-content/themes/mpg/images/menu/menu.svg#info"/></div>' +
-		'                    <div><span>About Us</span></div></a></li>' +
+		'                    <div><span>'+_t('footer_about', 'About Us')+'</span></div></a></li>' +
 		'                <li class="header__nav-item"><a class="header__nav-link" href="'+translateLink('contact')+'" hreflang="'+currentLang+'">' +
 		'                    <div><img class="icon-nav-mail" src="/wp-content/themes/mpg/images/menu/menu.svg#mail"/></div>' +
-		'                    <div><span>Contact Us</span></div></a></li>' +
+		'                    <div><span>'+_t('footer_contact', 'Contact Us')+'</span></div></a></li>' +
 		'                <li class="header__nav-item"><a class="header__nav-link" href="'+translateLink('advertising')+'" hreflang="'+currentLang+'">' +
 		'                    <div><img class="icon-nav-megaphone" src="/wp-content/themes/mpg/images/menu/menu.svg#megaphone"/></div>' +
-		'                    <div><span>Advertising</span></div></a></li>' +
+		'                    <div><span>'+_t('title_advertising', 'Advertising')+'</span></div></a></li>' +
 		'              </ul>' +
 		'            </div>' +
 		'          </div>';

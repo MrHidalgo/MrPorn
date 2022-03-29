@@ -7,6 +7,17 @@
 		margin-top: 130px;
 	}
 }*/
+.list {
+	padding-top: 15px;
+
+	@include respond('ipad_portrait'){
+		padding-top: 0;
+	}
+	@include adaptive(767) {
+		padding-top: 0;
+		padding-bottom: 0;
+	}
+}
 .blue_heading.tags_title{
 	text-transform: uppercase;
 }

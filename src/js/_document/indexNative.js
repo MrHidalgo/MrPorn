@@ -51,16 +51,18 @@ function initWebWorker(){
 
 	currentLang = document.documentElement.getAttribute('lang');
 
-	if(document.body.classList.contains('home')){
-		let dataTag = "homepage_data_"+dataTime+'_'+currentLang;
-		removeOtherStorageKeys(dataTime, currentLang);
-		homeData = getWithExpiry("homepage_data_"+dataTime+'_'+currentLang);
-		if(homeData){
-		}else{
-			if(!navigator.userAgent.toLowerCase().includes('lighthouse')){
-				loadHomeData();
-			}
+	let dataTag = "homepage_data_"+dataTime+'_'+currentLang;
+	removeOtherStorageKeys(dataTime, currentLang);
+	homeData = getWithExpiry("homepage_data_"+dataTime+'_'+currentLang);
+	if(homeData){
+	}else{
+		if(!navigator.userAgent.toLowerCase().includes('lighthouse')){
+			loadHomeData();
 		}
+	}
+
+	if(document.body.classList.contains('home')){
+
 	}else if(document.body.classList.contains('single-sites')){
 		const event = new Event('loadCategoryData');
 		window.dispatchEvent(event);
