@@ -139,7 +139,7 @@ $paddingRight: $paddingLeft;
 			grid-auto-columns: initial;
 
 
-			@include respond('max-medium'){
+			@include adaptive(1023.98){
 				margin: 0;
 				grid-template-columns: repeat(2, 1fr);
 			}
@@ -149,11 +149,16 @@ $paddingRight: $paddingLeft;
 			}
 		}
 
-		@media screen and (min-width: 1450px) {
+		/*@media screen and (min-width: 1450px) {
 			max-width: 75%;
+		}*/
+		@media screen and (min-width: 1330px) {
+			max-width: 75%;
+			min-width: 1300px;
 		}
-		@media screen and (min-width: 992px) and (max-width: 1449.98px) {
-			max-width: 1149px;
+		@media screen and (max-width: 1329.98px) {
+			max-width: 100%;
+			min-width: auto;
 		}
 	}
 }

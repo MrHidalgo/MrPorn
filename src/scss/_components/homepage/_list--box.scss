@@ -104,10 +104,6 @@
 			flex: 1;
 			font-weight: 600;
 
-			@media screen and (min-width: 992px) and (max-width: 1449.98px) {
-				font-size: 12px;
-			}
-
 			&:hover{
 				color: #fff;
 			}
@@ -408,9 +404,6 @@
 		color: #fff;
 
 		@include respond('ipad_landscape'){
-			font-size: 12.5px;
-		}
-		@media screen and (min-width: 992px) and (max-width: 1449.98px) {
 			font-size: 12.5px;
 		}
 
