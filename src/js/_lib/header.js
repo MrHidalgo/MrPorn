@@ -24,11 +24,12 @@ const initTheme = () => {
 	if(isDark==''){
 		isDark = '0';
 	}
+	console.log('dark_'+isDark+'--');
 	if(isDark=='1'){
-		//document.documentElement.classList.remove('light');
+		document.documentElement.classList.remove('light');
 		toggleSwitch.checked = true;
 	}else{
-		//document.documentElement.classList.add('light');
+		document.documentElement.classList.add('light');
 		toggleSwitch.checked = false;
 	}
 }
