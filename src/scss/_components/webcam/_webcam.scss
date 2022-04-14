@@ -477,11 +477,13 @@
 			}
 			@include adaptive(992) {
 				min-width: 200px;
-				width: 300px;
+				width: 720px;
+				margin: 0 auto;
 
 				iframe{
-					transform: scale(calc(300/400)) translate3d(0,0%,0);
-					height: calc(100% / calc(300/400));
+					width: 775px;
+					transform: scale(calc(720/775)) translate3d(0,0%,0);
+					height: calc(100% / calc(322/400));
 					transform-origin: 0 0;
 				}
 			}
@@ -493,15 +495,13 @@
 				}
 			}
 			@include adaptive(660) {
-				width: 400px;
+				width: 350px;
 
 				iframe{
 					width: 590px;
-					transform: scale(calc(400/590)) translate3d(0, 0%, 0);
+					transform: scale(calc(350/590)) translate3d(0, 0%, 0);
+					height: calc(100% / calc(321/400));
 				}
-			}
-			@include adaptive(480) {
-				width: 205px;
 			}
 		}
 		iframe{
