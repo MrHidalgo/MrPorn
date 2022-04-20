@@ -7,6 +7,9 @@
 		margin-top: 130px;
 	}
 }*/
+:root{
+	--cams_frame_width : calc((100vw - 50px) / 775);
+}
 .list {
 	padding-top: 15px;
 
@@ -458,49 +461,40 @@
 			}
 
 			@media screen and (min-width: 1198.1px){
+				height: auto !important;
+
 				iframe{
-					transform: scale(calc(375/400)) translate3d(0,0%,0);
+					transform: scale(calc(375/400)) translate3d(0,0%,0) !important;
 					transform-origin: 0 0;
 					height: calc(100% / calc(375/400));
 				}
 			}
 
-			@include adaptive(1198) {
-				min-width: 200px;
-				width: 350px;
+			//@include adaptive(1198) {
+			//	min-width: 200px;
+			//	width: 100%;
+			//	height: calc((376/775)* var(--vw));
+			//
+			//	iframe{
+			//		width: 775px;
+			//		height: 376px;
+			//
+			//		transform: scale(var(--vw767)) translate3d(0,0%,0);
+			//		transform-origin: 0 0;
+			//	}
+			//}
 
-				iframe{
-					transform: scale(calc(350/400)) translate3d(0,0%,0);
-					height: calc(100% / calc(350/400));
-					transform-origin: 0 0;
-				}
-			}
-			@include adaptive(992) {
-				min-width: 200px;
+			@include adaptive(767) {
 				width: 720px;
 				margin: 0 auto;
+				height: calc((376/775)* var(--vw));
 
 				iframe{
 					width: 775px;
-					transform: scale(calc(720/775)) translate3d(0,0%,0);
-					height: calc(100% / calc(322/400));
+					height: 376px;
 					transform-origin: 0 0;
-				}
-			}
-			@include adaptive(767) {
-				width: 590px;
-				iframe{
-					width: 780px;
-					transform: scale(calc(590/780)) translate3d(0,0%,0);
-				}
-			}
-			@include adaptive(660) {
-				width: 350px;
 
-				iframe{
-					width: 590px;
-					transform: scale(calc(350/590)) translate3d(0, 0%, 0);
-					height: calc(100% / calc(321/400));
+					transform: scale(var(--vw767)) translate3d(0,0%,0);
 				}
 			}
 		}

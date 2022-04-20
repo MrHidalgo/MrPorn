@@ -316,6 +316,8 @@
 
 		display: flex;
 		align-items: center;
+		-webkit-touch-callout: none;
+		user-select: none;
 
 		@include adaptive(767){
 			padding: 0 15px;
@@ -778,6 +780,8 @@
 
 	.site_review_title_content{
 		position: relative;
+		-webkit-touch-callout: none;
+		user-select: none;
 	}
 
 	h1, h2 {
@@ -811,6 +815,9 @@
 			font-size: 18px;
 			color: #e2e2e2;
 			font-weight: 500;
+
+			-webkit-touch-callout: none;
+			user-select: none;
 		}
 	}
 
