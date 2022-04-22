@@ -460,7 +460,7 @@
 				&:hover::-webkit-scrollbar-thumb, &:hover::-webkit-scrollbar-thumb { background: #323232; }*/
 			}
 
-			@media screen and (min-width: 1198.1px){
+			@media screen and (min-width: 768.01px){
 				height: auto !important;
 
 				iframe{
@@ -485,7 +485,7 @@
 			//}
 
 			@include adaptive(767) {
-				width: 720px;
+				width: 100%;
 				margin: 0 auto;
 				height: calc((376/775)* var(--vw));
 
