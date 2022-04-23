@@ -137,7 +137,7 @@ const renderMobileMenu = () => {
 		'                <li class="header__nav-item header__nav-item--saparator"><span class="header__nav-separator"></span></li>' +
 		'                <li class="header__nav-item"><a class="header__nav-link" href="'+navLinkGames+'" hreflang="'+currentLang+'" target="_blank">' +
 		'                    <div><img class="icon-nav-porngames" src="/wp-content/themes/mpg/images/menu/menu.svg#joystick"/></div>' +
-		'                    <div><span>'+_t('porn-games', 'Porn Games')+'</span></div></a></li>' +
+		'                    <div><span>'+_t('porn-games', 'Sex Games')+'</span></div></a></li>' +
 		'                <li class="header__nav-item header__nav-item--saparator"><span class="header__nav-separator"></span></li>' +
 		'                <li class="header__nav-item"><a class="header__nav-link" href="'+navLinkMeet+'" target="_blank" rel="nofollow">' +
 		'                    <div><img class="icon-nav-sex" src="/wp-content/themes/mpg/images/menu/sex-icon.png"/></div>' +
