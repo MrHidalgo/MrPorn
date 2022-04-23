@@ -443,7 +443,8 @@
 		flex-shrink: 0;
 		margin-left: 26px;
 		padding: 0;
-		background-color: #f3f8fe;
+		//background-color: #f3f8fe;
+		background-color: #fff;
 
 		.cb_container{
 			width: 375px;
@@ -495,6 +496,21 @@
 					transform-origin: 0 0;
 
 					transform: scale(var(--vw767)) translate3d(0,0%,0);
+				}
+			}
+
+			@include respond('mobile_portrait'){
+				width: 100%;
+				margin: 0 auto;
+				height: calc((376/396)* var(--vw));
+				overflow: hidden;
+
+				iframe{
+					width: 396px;
+					height: 376px;
+					transform-origin: 0 0;
+
+					transform: scale(var(--vwMobileP)) translate3d(0,0%,0);
 				}
 			}
 		}
