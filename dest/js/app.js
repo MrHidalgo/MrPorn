@@ -1799,24 +1799,25 @@ var lastMobileSimilarSite;
   }
 
   function initGotoTop() {
-    // window.onscroll = function(){
-    // 	if (window.scrollY > 200) {
-    // 		show(goTop);
-    // 	} else {
-    // 		hide(goTop);
-    // 	}
-    // }
-
-    /*document.querySelector('body').ontouchmove = function(){
-    	if(document.querySelector(".main-outer")){
-    		var mainScroll = -document.querySelector(".main-outer").getBoundingClientRect().top;
+    /*if(isMobileOrTablet){
+    	document.querySelector('body').ontouchmove = function(){
+    		var mainScroll = -document.body.getBoundingClientRect().top;
     		if (mainScroll > 200) {
     			show(goTop);
     		} else {
     			hide(goTop);
     		}
     	}
-    }*/
+    }else{
+    	}*/
+    window.onscroll = function () {
+      if (window.scrollY > 200) {
+        show(goTop);
+      } else {
+        hide(goTop);
+      }
+    };
+
     if (goTop) {
       goTop.onclick = function (event) {
         doScrolling(0, 200);

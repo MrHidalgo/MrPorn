@@ -137,7 +137,7 @@ function initHomeTooltip(){
 							var wallY = wallDimensions.top;
 							var hoverTargetBounds = hoverTarget.getBoundingClientRect();
 							var popW = hoverTargetBounds.width - 7;
-							var popY =  hoverTargetBounds.top - wallY-16;
+							var popY =  hoverTargetBounds.top - wallY-10;
 							var popX = hoverTargetBounds.left +7 - wallX;
 
 							popover.style.display = 'block';
