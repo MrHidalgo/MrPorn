@@ -31,10 +31,10 @@
 	.search_results_box_mobile{
 		display: block;
 
-		@include adaptive(767) {
+		/*@include adaptive(767) {
 
 			overflow: auto;
-		}
+		}*/
 
 		@include respond('ipad_portrait'){
 			position: absolute;
@@ -55,6 +55,8 @@
 			height: 100vh;
 			height: calc((var(--vh, 1vh) * 100) - 64px);
 			min-height: calc((var(--vh, 1vh) * 100) - 64px);
+
+			max-height: calc(100% - 54px);
 		}
 	}
 }

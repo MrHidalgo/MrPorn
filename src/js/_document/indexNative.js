@@ -924,6 +924,9 @@ let lastMobileSimilarSite;
 					document.documentElement.style.setProperty('--vh', `${vh}px`);
 				}*/
 
+				let wInnerHeight = window.innerHeight;
+				document.documentElement.style.setProperty('--wih', `${wInnerHeight}px`);
+
 				if(wInnerWidth > 1023) {
 					if(document.querySelector('.list__specification.is-open')) {
 						document.getElementsByTagName('html')[0].classList.remove('is-hideScroll');

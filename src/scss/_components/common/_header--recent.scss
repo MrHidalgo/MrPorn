@@ -35,6 +35,8 @@
 		align-items: center;
 		padding: 20px;
 
+		height: calc(var(--wih) - 104px);
+		overflow: auto;
 
 		@include respond('ipad_portrait'){
 			max-height: calc((var(--vh, 1vh) * 100) - 110px);

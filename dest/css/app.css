@@ -2713,6 +2713,9 @@ fieldset {
       -ms-flex-align: center;
           align-items: center;
   padding: 20px;
+  height: -webkit-calc(var(--wih) - 104px);
+  height: calc(var(--wih) - 104px);
+  overflow: auto;
 }
 
 @media screen and (min-device-width: 768px) and (max-device-width: 1024px) and (orientation: portrait) and (-webkit-min-device-pixel-ratio: 2) {
@@ -2760,7 +2763,7 @@ fieldset {
   }
 }
 
-/* line 60, src/scss/_components/common/_header--recent.scss */
+/* line 62, src/scss/_components/common/_header--recent.scss */
 .header__recent-body a {
   display: -webkit-box;
   display: -webkit-flex;
@@ -2778,12 +2781,12 @@ fieldset {
   min-height: 65px;
 }
 
-/* line 67, src/scss/_components/common/_header--recent.scss */
+/* line 69, src/scss/_components/common/_header--recent.scss */
 .header__recent-body a:not(:last-of-type) {
   border-bottom: 1px solid #1b1d30;
 }
 
-/* line 71, src/scss/_components/common/_header--recent.scss */
+/* line 73, src/scss/_components/common/_header--recent.scss */
 .header__recent-body a .icon-font {
   margin-right: 5px;
   font-size: 20px;
@@ -2793,7 +2796,7 @@ fieldset {
           transform: scaleX(-1);
 }
 
-/* line 78, src/scss/_components/common/_header--recent.scss */
+/* line 80, src/scss/_components/common/_header--recent.scss */
 .header__recent-body a span {
   color: #ffffff;
   font-weight: 700;
@@ -3322,13 +3325,10 @@ fieldset {
 /* line 31, src/scss/_components/search/_search.scss */
 .header__container-2.is-open .search_results_box_mobile {
   display: block;
-}
+  /*@include adaptive(767) {
 
-@media screen and (max-width: 767px) {
-  /* line 31, src/scss/_components/search/_search.scss */
-  .header__container-2.is-open .search_results_box_mobile {
-    overflow: auto;
-  }
+			overflow: auto;
+		}*/
 }
 
 @media screen and (min-device-width: 768px) and (max-device-width: 1024px) and (orientation: portrait) and (-webkit-min-device-pixel-ratio: 2) {
@@ -3357,6 +3357,8 @@ fieldset {
     height: calc((var(--vh, 1vh) * 100) - 64px);
     min-height: -webkit-calc((var(--vh, 1vh) * 100) - 64px);
     min-height: calc((var(--vh, 1vh) * 100) - 64px);
+    max-height: -webkit-calc(100% - 54px);
+    max-height: calc(100% - 54px);
   }
 }
 
