@@ -3,6 +3,10 @@
 	background: #3b3b3b;
 	padding-bottom: 25px;
 	margin-bottom: 20px;
+
+	@include adaptive(767) {
+		padding-bottom: 3px;
+	}
 }
 .similar_sites{
 	display: flex;
