@@ -81,6 +81,7 @@ const renderMobileMenu = () => {
 	const langHtml = document.querySelector('.lang').outerHTML;
 	const mobileContainer = document.querySelector("[mobile-block-js]");
 
+	const navCategoriesLink = document.querySelector('.header__nav-link.link_categories').getAttribute('href');
 	const navLinkGames = document.querySelector('.header_nav_games').getAttribute('href');
 	const navLinkMeet = document.querySelector('.header_nav_meet').getAttribute('href');
 	const navLinkLiveSex = document.querySelector('.header_nav_dating.live_sex_nav').getAttribute('href');
@@ -115,7 +116,7 @@ const renderMobileMenu = () => {
 		'            <div class="pre-header__mobile-bottom main_mobile_menu">' +
 		window.favHtmlMobile+
 		'              <ul class="header__nav">' +
-		'                <li class="header__nav-item"><a class="header__nav-link" href="/categories/" hreflang="'+currentLang+'">' +
+		'                <li class="header__nav-item"><a class="header__nav-link" href="'+navCategoriesLink+'" hreflang="'+currentLang+'">' +
 		'                    <div><img class="icon-nav-folder" src="/wp-content/themes/mpg/images/menu/menu.svg#folder"/></div>' +
 		'                    <div><span>'+_t('view_all_categories', 'View All Categories')+'</span></div></a></li>' +
 		'                <li class="header__nav-item header__nav-item--saparator"><span class="header__nav-separator"></span></li>' +
