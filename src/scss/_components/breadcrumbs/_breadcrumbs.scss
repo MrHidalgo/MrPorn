@@ -7,6 +7,10 @@
 	font-weight: 600;
 	color: #fff;
 
+	@media screen and (min-width: 1070.02px) {
+		padding: 5px 5px;
+	}
+
 	@include respond('ipad'){
 		font-size: 12px;
 		margin-bottom: -1px;
@@ -31,6 +35,12 @@
 		white-space: nowrap;
 		text-overflow: ellipsis;
 
+		@media screen and (min-width: 1070.02px) {
+			span:first-child{
+				display: none;
+			}
+		}
+
 		@include respond('ipad_portrait'){
 			width: 100%;
 		}
@@ -51,7 +61,6 @@
 		}
 	}
 	.show_similar_sites{
-		width: 50%;
 
 		@include respond('ipad_portrait'){
 			width: 100%;
