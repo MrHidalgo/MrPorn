@@ -84,6 +84,7 @@
 		top: 30px;
 		left: 365px;
 		right: 310px;
+		z-index: 1;
 	}
 
 	@include adaptive(1070) {
@@ -792,6 +793,12 @@
 	@include adaptive(1070) {
 		display: none;
 	}
+
+	@include adaptive(768) {
+		display: block;
+		margin-top: 10px;
+		padding: 0 15px;
+	}
 }
 .back_block img{width: 100%;}
 .back_block .all_porn_sites{
@@ -866,11 +873,33 @@
 		justify-content: space-between;
 		align-items: center;
 		padding-bottom: 15px;
+		flex-wrap: wrap;
+
+		.rtu-ty{
+			flex: 0 0 100%;
+			flex-shrink: 0;
+			flex-grow: 1;
+			margin-bottom: 5px;
+		}
 
 		@include adaptive(1070) {
 			align-items: start;
 			flex-direction: column;
 			padding-bottom: 0;
+		}
+	}
+
+	.rtu-ty {
+		font-size: 14px;
+		font-weight: 700;
+		color: #dcecff;
+		display: none;
+
+		@include adaptive(767) {
+			font-size: 13px;
+			white-space: nowrap;
+			overflow: hidden;
+			text-overflow: ellipsis;
 		}
 	}
 
@@ -888,7 +917,7 @@
 		@include adaptive(767) {
 			font-size: 24px;
 			line-height: 25px;
-			margin-bottom: 10px;
+			margin-bottom: 0;
 		}
 	}
 
@@ -1064,6 +1093,10 @@
 		}
 	}
 }
+
+.light .rtu-ty {
+	color: #0641a3;
+}
 .review_top_bar{
 }
 
@@ -1106,19 +1139,7 @@
 	margin: 5px 0 0;
 	position: relative;
 
-	.rtu-ty {
-		font-size: 14px;
-		font-weight: 700;
-		color: #dcecff;
-		display: none;
 
-		@include adaptive(767) {
-			font-size: 13px;
-			white-space: nowrap;
-			overflow: hidden;
-			text-overflow: ellipsis;
-		}
-	}
 	.rtu-txt {
 		display: flex;
 		font-size: 13px;
@@ -1151,7 +1172,7 @@
 	vertical-align: middle;
 	cursor: pointer;
 	margin-left: 10px;
-	margin-bottom: 2px;
+	margin-bottom: 5px;
 
 	@include adaptive(1070) {
 			width: 180px;
@@ -1573,7 +1594,6 @@
 	background: #55a126;
 	text-align: center;
 	z-index: 12;
-	line-height: 70px;
 	background: #59c404;
 	background: -moz-linear-gradient(top,#59c404 0%,#4dab03 60%,#367602 100%);
 	background: -webkit-linear-gradient(top,#59c404 0%,#4dab03 60%,#367602 100%);
@@ -1594,7 +1614,7 @@
 		line-height: 45px;
 	}
 
-	a{
+	&_visit{
 		color: #fff;
 		font-size: 20px;
 		font-weight: 300;
@@ -1604,7 +1624,7 @@
 		display: -webkit-box;
 		-webkit-line-clamp: 1;
 		-webkit-box-orient: vertical;
-		line-height: 70px;
+		line-height: 50px;
 
 		@include adaptive(767) {
 
@@ -1623,8 +1643,8 @@
 
 		i{
 			position: absolute;
-			height: 70px;
-			width: 70px;
+			height: 50px;
+			width: 50px;
 			right: 0;
 			top: 0;
 			background: #3a8300;
@@ -1640,12 +1660,13 @@
 				height: 45px;
 			}
 
-			b{
+			&:before{
 				width: 100%;
 				height: 100%;
 				content: ' ';
 				display: block;
 				background: url(../images/icon_review_floating.png)no-repeat;
+				background-size: 30px;
 				background-position: center;
 
 				@include respond('iphone_x_landscape'){
@@ -1659,6 +1680,59 @@
 			@include adaptive(767) {
 				/*height: 40px;*/
 			}
+		}
+	}
+
+	&_links{
+		display: flex;
+		background: #fff;
+		padding-top: 8px;
+
+		.item-link{
+			width: 100%;
+			text-align: center;
+			position: relative;
+			flex: 1;
+		}
+
+		.item-counter {
+			position: absolute;
+			left: calc(50% + 20px);
+			color: #000;
+		}
+
+		.item-ico {
+			height: 32px;
+			width: 32px;
+			display: flex;
+			margin: 0 auto;
+			align-items: center;
+			justify-content: center;
+
+			&:before{
+				content: '';
+				display: block;
+				width: 32px;
+				height: 32px;
+			}
+
+			&.all_sites:before{
+				background: url("../images/review/circle_left.svg");
+			}
+			&.category:before{
+				background: url("../images/review/circle_down.svg");
+			}
+		}
+		.item-title{
+			margin-top: 4px;
+			color: #000;
+			white-space: nowrap;
+			display: inline-block;
+			overflow: hidden;
+			text-overflow: ellipsis;
+			width: 100%;
+			font-size: 12px;
+			text-transform: capitalize;
 		}
 	}
 }
