@@ -699,6 +699,7 @@
 
 .review_row{
 	display: flex;
+	flex-wrap: wrap;
 
 	@include respond('ipad_portrait'){
 		flex-direction: column;
@@ -791,7 +792,18 @@
 	z-index: 1;
 
 	@include adaptive(1070) {
-		display: none;
+		//display: none;
+
+		display: flex;
+		margin-top: 10px;
+		padding: 0 15px;
+
+		flex: 0 0 100%;
+		flex-shrink: 0;
+		flex-grow: 1;
+
+		flex-direction: column;
+		align-items: center;
 	}
 
 	@include adaptive(768) {
@@ -800,7 +812,7 @@
 		padding: 0 15px;
 	}
 }
-.back_block img{width: 100%;}
+.back_block img{max-width: 100%;}
 .back_block .all_porn_sites{
 	display: inline-block;
 	background: linear-gradient(#12478c, #4d74a8);
@@ -1686,7 +1698,7 @@
 	&_links{
 		display: flex;
 		background: #fff;
-		padding-top: 8px;
+		padding-top: 4px;
 
 		.item-link{
 			width: 100%;
@@ -1696,38 +1708,55 @@
 		}
 
 		.item-counter {
-			position: absolute;
-			left: calc(50% + 20px);
+			//position: absolute;
+			//left: calc(50% + 20px);
 			color: #000;
 		}
 
+		.item-top{
+			display: inline-block;
+		}
 		.item-ico {
-			height: 32px;
-			width: 32px;
+			height: 30px;
+			color: #000;
 			display: flex;
 			margin: 0 auto;
 			align-items: center;
 			justify-content: center;
+			border-radius: 14px;
+			font-weight: 600;
 
 			&:before{
 				content: '';
 				display: block;
-				width: 32px;
-				height: 32px;
+				width: 30px;
+				height: 30px;
+				background-size: 100%;
+				margin-right: 5px;
+				background-image: url("../images/review/arrow_left.svg");
 			}
 
-			&.all_sites:before{
-				background: url("../images/review/circle_left.svg");
+			&.all_sites{
+				background: #fc9e55;
+				padding: 0 7px 0 2px;
+
+				&:before{
+
+				}
 			}
-			&.category:before{
-				background: url("../images/review/circle_down.svg");
+			&.category{
+				background: #000;
+				padding: 0 12px 0 2px;
+				color: #fff;
+
+				&:before{
+					transform: rotateZ(90deg);
+				}
 			}
 		}
 		.item-title{
-			margin-top: 4px;
 			color: #000;
 			white-space: nowrap;
-			display: inline-block;
 			overflow: hidden;
 			text-overflow: ellipsis;
 			width: 100%;
@@ -2340,7 +2369,7 @@
 
 .footer {
 	@include adaptive(767) {
-		padding-bottom: 70px;
+		padding-bottom: 120px;
 	}
 }
 
