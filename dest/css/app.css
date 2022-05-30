@@ -2960,6 +2960,7 @@ fieldset {
   color: #ffffff;
   font-size: 14px;
   text-align: center;
+  display: inline-block;
 }
 
 @media screen and (max-width: 767px) {
@@ -2969,14 +2970,7 @@ fieldset {
   }
 }
 
-@media screen and (device-aspect-ratio: 40 / 71) {
-  /* line 9, src/scss/_components/common/_pre-header.scss */
-  .pre-header__title {
-    display: none;
-  }
-}
-
-/* line 22, src/scss/_components/common/_pre-header.scss */
+/* line 25, src/scss/_components/common/_pre-header.scss */
 .pre-header__hamburger {
   display: -webkit-box;
   display: -webkit-flex;
@@ -2986,7 +2980,7 @@ fieldset {
   padding-bottom: 15px;
 }
 
-/* line 27, src/scss/_components/common/_pre-header.scss */
+/* line 30, src/scss/_components/common/_pre-header.scss */
 .pre-header__hamburger-inner {
   display: -webkit-box;
   display: -webkit-flex;
@@ -3004,13 +2998,13 @@ fieldset {
   height: 19px;
 }
 
-/* line 35, src/scss/_components/common/_pre-header.scss */
+/* line 38, src/scss/_components/common/_pre-header.scss */
 .pre-header__hamburger .icon-font {
   color: #ffffff;
   font-size: 20px;
 }
 
-/* line 41, src/scss/_components/common/_pre-header.scss */
+/* line 44, src/scss/_components/common/_pre-header.scss */
 .pre-header__link {
   display: -webkit-box;
   display: -webkit-flex;
@@ -3032,7 +3026,7 @@ fieldset {
 }
 
 @media screen and (max-width: 767px) {
-  /* line 41, src/scss/_components/common/_pre-header.scss */
+  /* line 44, src/scss/_components/common/_pre-header.scss */
   .pre-header__link {
     font-size: 14px;
   }
