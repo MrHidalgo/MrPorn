@@ -58,6 +58,17 @@
 			&-1 {
 				width: 100%;
 				max-width: 410px;
+
+				@include respond('ipad_portrait'){
+					max-width: 100%;
+				}
+
+				@include respond('mobile_landscape'){
+					max-width: 100%;
+				}
+				@include adaptive(768) {
+					max-width: 100%;
+				}
 			}
 
 			&-2 {

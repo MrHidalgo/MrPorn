@@ -9,7 +9,14 @@
 	&__title {
 		color: #ffffff;
 		font-size: 14px;
+		font-weight: 600;
 		text-align: center;
+		display: inline-block;
+
+		@include adaptive(1023) {
+			display: block;
+		}
+
 		@include adaptive(767) {
 			font-size: 10px;
 		}

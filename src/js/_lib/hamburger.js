@@ -73,6 +73,8 @@ const initHamburger = () => {
 			document.querySelector('[search-js]').value = '';
 			hide(document.querySelector('[search-drop-mobile-js]'));
 			document.querySelector('.category__drop').classList.remove('is-open');
+
+			setInnerHeight();
 		});
 	}
 };

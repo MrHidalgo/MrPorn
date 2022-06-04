@@ -38,23 +38,27 @@
 
 		@include respond('ipad_portrait'){
 			position: absolute;
-			left: -20px;
-			right: -20px;
-			top: 54px;
+			left: 0;
+			right: 0;
+			top: 64px;
 			bottom: 0;
 			z-index: 2;
 		}
 		@include adaptive(767) {
 			position: absolute;
-			left: -20px;
-			right: -20px;
-			top: 54px;
+			left: 0;
+			right: 0;
+			top: 64px;
 			bottom: 0;
 			z-index: 2;
 
+			//height: 100vh;
+			//height: calc((var(--vh, 1vh) * 100) - 64px);
+			//min-height: calc((var(--vh, 1vh) * 100) - 64px);
+
 			height: 100vh;
-			height: calc((var(--vh, 1vh) * 100) - 64px);
-			min-height: calc((var(--vh, 1vh) * 100) - 64px);
+			height: calc(var(--vh, 100vh) - 64px);
+			min-height: calc(var(--vh, 100vh) - 64px);
 
 			max-height: calc(100% - 54px);
 		}
