@@ -81,6 +81,11 @@ const initHamburger = () => {
 			setInnerHeight();
 			// enableScroll()
 			document.body.classList.remove('has_search');
+			document.querySelector('.search_pagination').style.display = 'block'
+
+			if(searchPage){
+				searchPage = 0;
+			}
 		});
 	}
 };
