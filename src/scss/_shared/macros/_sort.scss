@@ -4,12 +4,13 @@
 	@include adaptive(767) {
 		height: 44px;
 		max-height: 44px;
-		margin-bottom: 10px;
+
+		margin: 10px 20px;
 	}
 	@include respond('mobile_landscape'){
 		height: 44px;
 		max-height: 44px;
-		margin-bottom: 10px;
+		margin: 10px 20px;
 	}
 	@include respond('iphone_x_landscape'){
 		height: 54px;

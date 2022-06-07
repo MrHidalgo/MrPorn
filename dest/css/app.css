@@ -2307,10 +2307,18 @@ fieldset {
   /* line 38, src/scss/_components/common/_header--conatainer.scss */
   .header__container-2.is-open .header__view-actions {
     opacity: 1;
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+    -webkit-flex-direction: column;
+        -ms-flex-direction: column;
+            flex-direction: column;
     visibility: visible;
-    -webkit-transform: translateY(0);
-        -ms-transform: translateY(0);
-            transform: translateY(0);
+    -webkit-transform: translateY(0) translateZ(0);
+            transform: translateY(0) translateZ(0);
     -webkit-transition: opacity 0.35s ease-in-out, visibility 0.35s ease-in-out, -webkit-transform 0.35s ease-in-out;
     transition: opacity 0.35s ease-in-out, visibility 0.35s ease-in-out, -webkit-transform 0.35s ease-in-out;
     -o-transition: opacity 0.35s ease-in-out, visibility 0.35s ease-in-out, transform 0.35s ease-in-out;
@@ -2319,13 +2327,13 @@ fieldset {
   }
 }
 
-/* line 47, src/scss/_components/common/_header--conatainer.scss */
+/* line 49, src/scss/_components/common/_header--conatainer.scss */
 .header__container-2 .c-grid {
   position: relative;
 }
 
 @media screen and (max-width: 1023px) {
-  /* line 47, src/scss/_components/common/_header--conatainer.scss */
+  /* line 49, src/scss/_components/common/_header--conatainer.scss */
   .header__container-2 .c-grid {
     padding-left: 0;
     padding-right: 0;
@@ -2333,7 +2341,7 @@ fieldset {
 }
 
 @media screen and (min-width: 1024px) {
-  /* line 57, src/scss/_components/common/_header--conatainer.scss */
+  /* line 59, src/scss/_components/common/_header--conatainer.scss */
   .header__container-3 {
     background-color: #0b0d28;
     -webkit-box-shadow: 1.482px 16.935px 35px 0px rgba(31, 37, 103, 0.33);
@@ -2342,7 +2350,7 @@ fieldset {
 }
 
 @media screen and (max-width: 1023px) {
-  /* line 57, src/scss/_components/common/_header--conatainer.scss */
+  /* line 59, src/scss/_components/common/_header--conatainer.scss */
   .header__container-3 {
     display: none;
   }
@@ -2742,10 +2750,14 @@ fieldset {
     display: -webkit-flex;
     display: -ms-flexbox;
     display: flex;
+    -webkit-box-flex: 1;
+    -webkit-flex: 1;
+        -ms-flex: 1;
+            flex: 1;
   }
 }
 
-/* line 11, src/scss/_components/common/_header--recent.scss */
+/* line 12, src/scss/_components/common/_header--recent.scss */
 .header__recent-head {
   display: -webkit-box;
   display: -webkit-flex;
@@ -2764,14 +2776,14 @@ fieldset {
   background-color: #0a3e83;
 }
 
-/* line 19, src/scss/_components/common/_header--recent.scss */
+/* line 20, src/scss/_components/common/_header--recent.scss */
 .header__recent-head p {
   color: #abbde7;
   font-weight: 700;
   margin: 0;
 }
 
-/* line 25, src/scss/_components/common/_header--recent.scss */
+/* line 26, src/scss/_components/common/_header--recent.scss */
 .header__recent-head .icon-font {
   margin-left: 5px;
   -webkit-transform: rotate(-90deg);
@@ -2780,7 +2792,7 @@ fieldset {
   color: #ffffff;
 }
 
-/* line 32, src/scss/_components/common/_header--recent.scss */
+/* line 33, src/scss/_components/common/_header--recent.scss */
 .header__recent-body {
   display: -webkit-box;
   display: -webkit-flex;
@@ -2796,13 +2808,21 @@ fieldset {
       -ms-flex-align: center;
           align-items: center;
   padding: 20px;
-  height: -webkit-calc(var(--wih) - 104px);
-  height: calc(var(--wih) - 104px);
   overflow: auto;
 }
 
+@media screen and (max-width: 1023px) {
+  /* line 33, src/scss/_components/common/_header--recent.scss */
+  .header__recent-body {
+    -webkit-box-flex: 1;
+    -webkit-flex: 1;
+        -ms-flex: 1;
+            flex: 1;
+  }
+}
+
 @media screen and (min-device-width: 768px) and (max-device-width: 1024px) and (orientation: portrait) and (-webkit-min-device-pixel-ratio: 2) {
-  /* line 32, src/scss/_components/common/_header--recent.scss */
+  /* line 33, src/scss/_components/common/_header--recent.scss */
   .header__recent-body {
     max-height: -webkit-calc((var(--vh, 1vh) * 100) - 110px);
     max-height: calc((var(--vh, 1vh) * 100) - 110px);
@@ -2811,7 +2831,7 @@ fieldset {
 }
 
 @media screen and (min-device-width: 375px) and (max-device-width: 812px) and (-webkit-min-device-pixel-ratio: 3) and (orientation: landscape) {
-  /* line 32, src/scss/_components/common/_header--recent.scss */
+  /* line 33, src/scss/_components/common/_header--recent.scss */
   .header__recent-body {
     max-height: -webkit-calc((var(--vh, 1vh) * 100) - 110px);
     max-height: calc((var(--vh, 1vh) * 100) - 110px);
@@ -2820,7 +2840,7 @@ fieldset {
 }
 
 @media screen and (min-device-width: 320px) and (max-device-width: 480px) and (-webkit-min-device-pixel-ratio: 2) and (orientation: landscape) {
-  /* line 32, src/scss/_components/common/_header--recent.scss */
+  /* line 33, src/scss/_components/common/_header--recent.scss */
   .header__recent-body {
     max-height: -webkit-calc((var(--vh, 1vh) * 100) - 110px);
     max-height: calc((var(--vh, 1vh) * 100) - 110px);
@@ -2829,7 +2849,7 @@ fieldset {
 }
 
 @media screen and (max-width: 1023px) and (orientation: landscape) {
-  /* line 32, src/scss/_components/common/_header--recent.scss */
+  /* line 33, src/scss/_components/common/_header--recent.scss */
   .header__recent-body {
     max-height: -webkit-calc((var(--vh, 1vh) * 100) - 110px);
     max-height: calc((var(--vh, 1vh) * 100) - 110px);
@@ -2838,7 +2858,7 @@ fieldset {
 }
 
 @media screen and (device-width: 320px) and (device-height: 640px) and (-webkit-device-pixel-ratio: 2) and (orientation: landscape) {
-  /* line 32, src/scss/_components/common/_header--recent.scss */
+  /* line 33, src/scss/_components/common/_header--recent.scss */
   .header__recent-body {
     max-height: -webkit-calc((var(--vh, 1vh) * 100) - 110px);
     max-height: calc((var(--vh, 1vh) * 100) - 110px);
@@ -2846,7 +2866,7 @@ fieldset {
   }
 }
 
-/* line 62, src/scss/_components/common/_header--recent.scss */
+/* line 67, src/scss/_components/common/_header--recent.scss */
 .header__recent-body a {
   display: -webkit-box;
   display: -webkit-flex;
@@ -2864,12 +2884,12 @@ fieldset {
   min-height: 65px;
 }
 
-/* line 69, src/scss/_components/common/_header--recent.scss */
+/* line 74, src/scss/_components/common/_header--recent.scss */
 .header__recent-body a:not(:last-of-type) {
   border-bottom: 1px solid #1b1d30;
 }
 
-/* line 73, src/scss/_components/common/_header--recent.scss */
+/* line 78, src/scss/_components/common/_header--recent.scss */
 .header__recent-body a .icon-font {
   margin-right: 5px;
   font-size: 20px;
@@ -2879,7 +2899,7 @@ fieldset {
           transform: scaleX(-1);
 }
 
-/* line 80, src/scss/_components/common/_header--recent.scss */
+/* line 85, src/scss/_components/common/_header--recent.scss */
 .header__recent-body a span {
   color: #ffffff;
   font-weight: 700;
@@ -2982,6 +3002,11 @@ fieldset {
   [data-label-xs]::after {
     content: attr(data-label-xs);
   }
+}
+
+/* line 87, src/scss/_components/common/_header.scss */
+.has_search .header__recent {
+  display: none;
 }
 
 /* line 3, src/scss/_components/common/_pre-header.scss */
@@ -3444,13 +3469,6 @@ fieldset {
     top: 64px;
     bottom: 0;
     z-index: 2;
-    height: 100vh;
-    height: -webkit-calc(var(--vh, 100vh) - 64px);
-    height: calc(var(--vh, 100vh) - 64px);
-    min-height: -webkit-calc(var(--vh, 100vh) - 64px);
-    min-height: calc(var(--vh, 100vh) - 64px);
-    max-height: -webkit-calc(100% - 54px);
-    max-height: calc(100% - 54px);
   }
 }
 

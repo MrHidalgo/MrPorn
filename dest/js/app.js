@@ -441,6 +441,8 @@ var initHamburger = function initHamburger() {
 
   if (searchHamburger) {
     searchHamburger.addEventListener("click", function (ev) {
+      setInnerHeight(); // disableScroll()
+
       btnHamburger.classList.remove("is-active");
 
       if (mobileContainer.classList.contains('is-open')) {
@@ -467,7 +469,10 @@ var initHamburger = function initHamburger() {
       document.querySelector('[search-js]').value = '';
       hide(document.querySelector('[search-drop-mobile-js]'));
       document.querySelector('.category__drop').classList.remove('is-open');
-      setInnerHeight();
+      console.log('closing hamburger');
+      setInnerHeight(); // enableScroll()
+
+      document.body.classList.remove('has_search');
     });
   }
 };
@@ -1313,6 +1318,20 @@ function setInnerHeight() {
   document.documentElement.style.setProperty('--wih', "".concat(wInnerHeight, "px"));
 }
 
+function preventDefault(e) {
+  e.preventDefault();
+}
+
+function disableScroll() {
+  document.body.addEventListener('touchmove', preventDefault, {
+    passive: false
+  });
+}
+
+function enableScroll() {
+  document.body.removeEventListener('touchmove', preventDefault);
+}
+
 var isCategoriesRendered = false;
 var lastMobileSimilarSite;
 
@@ -1982,21 +2001,14 @@ var lastMobileSimilarSite;
         wInnerWidth = window.innerWidth;
         headerHeight = document.querySelector('#header').getBoundingClientRect().height;
         setInnerHeight();
-
-        if (wInnerWidth > 1023) {
-          if (document.querySelector('.list__specification.is-open')) {
-            document.getElementsByTagName('html')[0].classList.remove('is-hideScroll');
-            document.getElementsByTagName('body')[0].classList.remove('is-hideScroll');
-          }
-        } else {
-          if (!isMobileOrTablet) {
-            if (document.querySelector('.list__specification.is-open')) {
-              document.getElementsByTagName('html')[0].classList.add('is-hideScroll');
-              document.getElementsByTagName('body')[0].classList.add('is-hideScroll');
-            }
-          }
-        }
       });
+
+      if (window.visualViewport) {
+        window.visualViewport.addEventListener("resize", function () {
+          setInnerHeight();
+          console.log("visualViewport RESIZE IS TRIGGERED");
+        });
+      }
     });
   }
 })();
