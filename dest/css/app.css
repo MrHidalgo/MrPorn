@@ -547,9 +547,10 @@ body {
   min-height: 100%;
   font-family: helvetica neue,Helvetica,Arial,sans-serif;
   color: #333;
+  -webkit-overflow-scrolling: touch;
 }
 
-/* line 8, src/scss/_shared/_main-setting-reset.scss */
+/* line 9, src/scss/_shared/_main-setting-reset.scss */
 html.is-hideScroll,
 body.is-hideScroll {
   width: 100%;
@@ -557,26 +558,26 @@ body.is-hideScroll {
 }
 
 @media screen and (min-width: 768px) {
-  /* line 8, src/scss/_shared/_main-setting-reset.scss */
+  /* line 9, src/scss/_shared/_main-setting-reset.scss */
   html.is-hideScroll,
   body.is-hideScroll {
     overflow: hidden !important;
   }
 }
 
-/* line 16, src/scss/_shared/_main-setting-reset.scss */
+/* line 17, src/scss/_shared/_main-setting-reset.scss */
 html.is-hideScroll #wp-chatbot-chat-container,
 body.is-hideScroll #wp-chatbot-chat-container {
   display: none;
 }
 
-/* line 23, src/scss/_shared/_main-setting-reset.scss */
+/* line 24, src/scss/_shared/_main-setting-reset.scss */
 html {
   -ms-overflow-style: scrollbar;
   -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
 }
 
-/* line 29, src/scss/_shared/_main-setting-reset.scss */
+/* line 30, src/scss/_shared/_main-setting-reset.scss */
 body {
   overflow-x: hidden;
   position: relative;
@@ -602,27 +603,27 @@ body {
   font-family: helvetica neue,Helvetica,Arial,sans-serif;
 }
 
-/* line 50, src/scss/_shared/_main-setting-reset.scss */
+/* line 51, src/scss/_shared/_main-setting-reset.scss */
 .light body {
   background: #cad4df;
 }
 
-/* line 53, src/scss/_shared/_main-setting-reset.scss */
+/* line 54, src/scss/_shared/_main-setting-reset.scss */
 .light body.home {
   background: #d6d9e2;
 }
 
-/* line 57, src/scss/_shared/_main-setting-reset.scss */
+/* line 58, src/scss/_shared/_main-setting-reset.scss */
 a {
   color: #4099f9;
 }
 
-/* line 60, src/scss/_shared/_main-setting-reset.scss */
+/* line 61, src/scss/_shared/_main-setting-reset.scss */
 a:hover {
   color: #337ab7;
 }
 
-/* line 63, src/scss/_shared/_main-setting-reset.scss */
+/* line 64, src/scss/_shared/_main-setting-reset.scss */
 a:focus {
   color: #337ab7;
 }
@@ -632,19 +633,19 @@ a:focus {
 		color: #337ab7;
 	}
 }*/
-/* line 75, src/scss/_shared/_main-setting-reset.scss */
+/* line 76, src/scss/_shared/_main-setting-reset.scss */
 * {
   -webkit-box-sizing: border-box;
           box-sizing: border-box;
 }
 
-/* line 78, src/scss/_shared/_main-setting-reset.scss */
+/* line 79, src/scss/_shared/_main-setting-reset.scss */
 *:before, *:after {
   -webkit-box-sizing: border-box;
           box-sizing: border-box;
 }
 
-/* line 84, src/scss/_shared/_main-setting-reset.scss */
+/* line 85, src/scss/_shared/_main-setting-reset.scss */
 h1, h2, h3, h4, h5, h6 {
   font-family: inherit;
   font-weight: 500;
@@ -655,7 +656,7 @@ h1, h2, h3, h4, h5, h6 {
 /*p{
 	margin: 0 0 10px;
 }*/
-/* line 94, src/scss/_shared/_main-setting-reset.scss */
+/* line 95, src/scss/_shared/_main-setting-reset.scss */
 button,
 input,
 optgroup,
@@ -665,65 +666,65 @@ textarea {
   margin: 0;
 }
 
-/* line 104, src/scss/_shared/_main-setting-reset.scss */
+/* line 105, src/scss/_shared/_main-setting-reset.scss */
 button,
 input {
   overflow: visible;
 }
 
-/* line 110, src/scss/_shared/_main-setting-reset.scss */
+/* line 111, src/scss/_shared/_main-setting-reset.scss */
 button[disabled] {
   opacity: 0.55;
   cursor: not-allowed;
 }
 
-/* line 116, src/scss/_shared/_main-setting-reset.scss */
+/* line 117, src/scss/_shared/_main-setting-reset.scss */
 [type="search"] {
   -webkit-appearance: textfield;
   outline-offset: -2px;
 }
 
-/* line 122, src/scss/_shared/_main-setting-reset.scss */
+/* line 123, src/scss/_shared/_main-setting-reset.scss */
 [type="search"]::-webkit-search-cancel-button,
 [type="search"]::-webkit-search-decoration {
   -webkit-appearance: none;
 }
 
-/* line 128, src/scss/_shared/_main-setting-reset.scss */
+/* line 129, src/scss/_shared/_main-setting-reset.scss */
 textarea {
   overflow: auto;
 }
 
-/* line 133, src/scss/_shared/_main-setting-reset.scss */
+/* line 134, src/scss/_shared/_main-setting-reset.scss */
 h1, h2, h3, h4, h5, h6,
 hr {
   margin: 0;
   padding: 0;
 }
 
-/* line 140, src/scss/_shared/_main-setting-reset.scss */
+/* line 141, src/scss/_shared/_main-setting-reset.scss */
 ul {
   margin: 0;
   padding: 0;
 }
 
-/* line 145, src/scss/_shared/_main-setting-reset.scss */
+/* line 146, src/scss/_shared/_main-setting-reset.scss */
 ul li {
   list-style: none;
 }
 
-/* line 151, src/scss/_shared/_main-setting-reset.scss */
+/* line 152, src/scss/_shared/_main-setting-reset.scss */
 a {
   outline: none;
   text-decoration: none;
 }
 
-/* line 156, src/scss/_shared/_main-setting-reset.scss */
+/* line 157, src/scss/_shared/_main-setting-reset.scss */
 a:hover, a:focus {
   text-decoration: none;
 }
 
-/* line 163, src/scss/_shared/_main-setting-reset.scss */
+/* line 164, src/scss/_shared/_main-setting-reset.scss */
 input[type="text"] {
   -webkit-appearance: none;
      -moz-appearance: none;
@@ -737,71 +738,71 @@ input[type="text"] {
   width: 100%;
   height: 100%;
 }*/
-/* line 175, src/scss/_shared/_main-setting-reset.scss */
+/* line 176, src/scss/_shared/_main-setting-reset.scss */
 .custom_scroll {
   scrollbar-color: #131313 #525252;
 }
 
-/* line 176, src/scss/_shared/_main-setting-reset.scss */
+/* line 177, src/scss/_shared/_main-setting-reset.scss */
 .custom_scroll::-webkit-scrollbar {
   width: 10px;
 }
 
-/* line 177, src/scss/_shared/_main-setting-reset.scss */
+/* line 178, src/scss/_shared/_main-setting-reset.scss */
 .custom_scroll::-webkit-scrollbar-track {
   background: rgba(0, 0, 0, 0.1);
 }
 
-/* line 178, src/scss/_shared/_main-setting-reset.scss */
+/* line 179, src/scss/_shared/_main-setting-reset.scss */
 .custom_scroll::-webkit-scrollbar-thumb {
   background: #9c9b9c;
 }
 
-/* line 181, src/scss/_shared/_main-setting-reset.scss */
+/* line 182, src/scss/_shared/_main-setting-reset.scss */
 .light .custom_scroll:hover::-webkit-scrollbar-thumb {
   background: #225396;
 }
 
-/* line 184, src/scss/_shared/_main-setting-reset.scss */
+/* line 185, src/scss/_shared/_main-setting-reset.scss */
 strong {
   font-weight: 700;
 }
 
-/* line 188, src/scss/_shared/_main-setting-reset.scss */
+/* line 189, src/scss/_shared/_main-setting-reset.scss */
 [data-label-desc]::after {
   content: attr(data-label-desc);
 }
 
 @media screen and (max-width: 767px) {
-  /* line 188, src/scss/_shared/_main-setting-reset.scss */
+  /* line 189, src/scss/_shared/_main-setting-reset.scss */
   [data-label-desc]::after {
     content: attr(data-label-mobile);
   }
 }
 
-/* line 196, src/scss/_shared/_main-setting-reset.scss */
+/* line 197, src/scss/_shared/_main-setting-reset.scss */
 .visible-xs-inline {
   display: none;
 }
 
 @media screen and (max-width: 767px) {
-  /* line 196, src/scss/_shared/_main-setting-reset.scss */
+  /* line 197, src/scss/_shared/_main-setting-reset.scss */
   .visible-xs-inline {
     display: inline-block;
   }
 }
 
-/* line 204, src/scss/_shared/_main-setting-reset.scss */
+/* line 205, src/scss/_shared/_main-setting-reset.scss */
 .show-xs {
   display: none;
 }
 
 @media screen and (max-width: 767px) {
-  /* line 207, src/scss/_shared/_main-setting-reset.scss */
+  /* line 208, src/scss/_shared/_main-setting-reset.scss */
   .hidden-xs {
     display: none;
   }
-  /* line 210, src/scss/_shared/_main-setting-reset.scss */
+  /* line 211, src/scss/_shared/_main-setting-reset.scss */
   .show-xs {
     display: block;
   }
@@ -1708,7 +1709,6 @@ strong {
 
 /* line 135, src/scss/_shared/macros/_category.scss */
 .category__drop {
-  overflow: hidden;
   z-index: 1000;
   opacity: 0;
   visibility: hidden;
