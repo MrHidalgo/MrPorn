@@ -280,6 +280,8 @@ $breakpointsMedia: (
 	hd        				: "(min-width: 1920px)",		/// hd
 	mobile_portrait		:	"(max-width: 767px) and (orientation: portrait)",
 	ipad							:	"(min-device-width: 768px) and (max-device-width: 1024px) and (-webkit-min-device-pixel-ratio: 2)", //ipad
+	ipad_mini_portrait:	"(width:768px) and (resolution: 163dpi)", //ipad min portrait
+	ipad_mini_landscape:	"(width:1024px) and (resolution: 163dpi)", //ipad min landscape
 	ipad_portrait			:	"(min-device-width: 768px) and (max-device-width: 1024px) and (orientation: portrait) and (-webkit-min-device-pixel-ratio: 2)", //ipad portrait
 	ipad_landscape		: "(min-device-width: 768px) and (max-device-width: 1024px) and (orientation: landscape) and (-webkit-min-device-pixel-ratio: 2)", //ipad landscape
 	ipad_pro_portrait	: "(min-device-width: 1024px) and (max-device-width: 1024px) and (orientation: portrait) and (-webkit-min-device-pixel-ratio: 2)",

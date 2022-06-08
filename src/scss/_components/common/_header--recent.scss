@@ -6,6 +6,10 @@
 	width: calc(100% + 40px);
 	@include adaptive(1023) {
 		display: flex;
+		flex: 1;
+
+		width: 100%;
+		left: 0;
 	}
 
 	&-head {
@@ -34,9 +38,11 @@
 		flex-direction: column;
 		align-items: center;
 		padding: 20px;
-
-		height: calc(var(--wih) - 104px);
 		overflow: auto;
+
+		@include adaptive(1023) {
+			flex: 1;
+		}
 
 		@include respond('ipad_portrait'){
 			max-height: calc((var(--vh, 1vh) * 100) - 110px);
@@ -58,6 +64,8 @@
 			max-height: calc((var(--vh, 1vh) * 100) - 110px);
 			overflow: auto;
 		}
+
+
 
 		a {
 			display: flex;
@@ -85,3 +93,5 @@
 		}
 	}
 }
+
+

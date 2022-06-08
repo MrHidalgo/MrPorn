@@ -16,7 +16,9 @@
 			max-width: 295px;
 		}
 		@include adaptive(1023) {
-			display: none;
+			position: relative;
+			left: 0;
+			transform: none;
 		}
 	}
 
@@ -44,6 +46,18 @@
 		}
 		&.logo_mobile{
 			aspect-ratio: attr(width) / attr(height);
+		}
+
+		&_xs{
+			display: none;
+		}
+
+		@include adaptive(1023) {
+			display: none;
+
+			&_xs{
+				display: block;
+			}
 		}
 	}
 }

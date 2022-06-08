@@ -44,6 +44,9 @@ const initHamburger = () => {
 
 	if(searchHamburger) {
 		searchHamburger.addEventListener("click", (ev) => {
+			setInnerHeight();
+			// disableScroll()
+
 			btnHamburger.classList.remove("is-active");
 
 			if(mobileContainer.classList.contains('is-open')){
@@ -73,6 +76,16 @@ const initHamburger = () => {
 			document.querySelector('[search-js]').value = '';
 			hide(document.querySelector('[search-drop-mobile-js]'));
 			document.querySelector('.category__drop').classList.remove('is-open');
+
+			console.log('closing hamburger');
+			setInnerHeight();
+			// enableScroll()
+			document.body.classList.remove('has_search');
+			document.querySelector('.search_pagination').style.display = 'block'
+
+			if(searchPage){
+				searchPage = 0;
+			}
 		});
 	}
 };
