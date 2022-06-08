@@ -443,6 +443,7 @@ var initHamburger = function initHamburger() {
     searchHamburger.addEventListener("click", function (ev) {
       setInnerHeight(); // disableScroll()
 
+      isSearchActive = true;
       btnHamburger.classList.remove("is-active");
 
       if (mobileContainer.classList.contains('is-open')) {
@@ -470,7 +471,8 @@ var initHamburger = function initHamburger() {
       hide(document.querySelector('[search-drop-mobile-js]'));
       document.querySelector('.category__drop').classList.remove('is-open');
       console.log('closing hamburger');
-      setInnerHeight(); // enableScroll()
+      setInnerHeight();
+      isSearchActive = false; // enableScroll()
 
       document.body.classList.remove('has_search');
       document.querySelector('.search_pagination').style.display = 'block';

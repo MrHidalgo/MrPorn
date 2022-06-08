@@ -46,6 +46,7 @@ const initHamburger = () => {
 		searchHamburger.addEventListener("click", (ev) => {
 			setInnerHeight();
 			// disableScroll()
+			isSearchActive = true;
 
 			btnHamburger.classList.remove("is-active");
 
@@ -79,6 +80,7 @@ const initHamburger = () => {
 
 			console.log('closing hamburger');
 			setInnerHeight();
+			isSearchActive = false;
 			// enableScroll()
 			document.body.classList.remove('has_search');
 			document.querySelector('.search_pagination').style.display = 'block'
