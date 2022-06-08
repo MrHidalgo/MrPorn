@@ -10,6 +10,10 @@
 		width: 43px;
 		height: 34px;
 
+		@include respond('ipad_portrait'){
+			height: 44px;
+		}
+
 		@include adaptive(767) {
 			height: 44px;
 		}
