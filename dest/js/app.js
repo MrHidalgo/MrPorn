@@ -443,6 +443,8 @@ var initHamburger = function initHamburger() {
     searchHamburger.addEventListener("click", function (ev) {
       setInnerHeight(); // disableScroll()
 
+      isSearchActive = true;
+      bodyScrollLock.disableBodyScroll(searchViewContainer);
       btnHamburger.classList.remove("is-active");
 
       if (mobileContainer.classList.contains('is-open')) {
@@ -470,10 +472,16 @@ var initHamburger = function initHamburger() {
       hide(document.querySelector('[search-drop-mobile-js]'));
       document.querySelector('.category__drop').classList.remove('is-open');
       console.log('closing hamburger');
-      setInnerHeight(); // enableScroll()
+      setInnerHeight();
+      isSearchActive = false; // enableScroll()
+      // bodyScrollLock.enableBodyScroll(searchViewContainer);
 
       document.body.classList.remove('has_search');
-      document.querySelector('.search_pagination').style.display = 'block';
+      var searchPagination = document.querySelector('.search_pagination');
+
+      if (searchPagination) {
+        searchPagination.style.display = 'block';
+      }
 
       if (searchPage) {
         searchPage = 0;
@@ -1313,11 +1321,20 @@ function verifyCookie() {
 
 function setInnerHeight() {
   var vh = window.innerHeight;
+  var deviceHeight = window.innerHeight;
+  var keyboardHeight = 0;
 
   if (window.visualViewport) {
     vh = window.visualViewport.height;
   }
 
+  keyboardHeight = deviceHeight - vh;
+
+  if (keyboardHeight > 0) {
+    keyboardHeight += 100;
+  }
+
+  document.documentElement.style.setProperty('--kh', "".concat(keyboardHeight, "px"));
   document.documentElement.style.setProperty('--vh', "".concat(vh, "px"));
   var wInnerHeight = window.innerHeight;
   document.documentElement.style.setProperty('--wih', "".concat(wInnerHeight, "px"));
