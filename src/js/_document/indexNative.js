@@ -172,11 +172,19 @@ function verifyCookie(){
 
 function setInnerHeight(){
 	let vh = window.innerHeight;
+	let deviceHeight = window.innerHeight;
+	let keyboardHeight = 0;
 
 	if(window.visualViewport){
 		vh = window.visualViewport.height;
 	}
+	keyboardHeight = deviceHeight - vh;
 
+	if(keyboardHeight>0){
+		keyboardHeight += 100;
+	}
+
+	document.documentElement.style.setProperty('--kh', `${keyboardHeight}px`);
 	document.documentElement.style.setProperty('--vh', `${vh}px`);
 
 	let wInnerHeight = window.innerHeight;

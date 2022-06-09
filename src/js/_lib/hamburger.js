@@ -1,10 +1,9 @@
-
-
 /**
  * @name initHamburger
  *
  * @description Init hamburger logic with animated
  */
+
 const initHamburger = () => {
 
   const btnHamburger = document.querySelector("[hamburger-js]"),
@@ -48,6 +47,8 @@ const initHamburger = () => {
 			// disableScroll()
 			isSearchActive = true;
 
+			bodyScrollLock.disableBodyScroll(searchViewContainer);
+
 			btnHamburger.classList.remove("is-active");
 
 			if(mobileContainer.classList.contains('is-open')){
@@ -82,8 +83,14 @@ const initHamburger = () => {
 			setInnerHeight();
 			isSearchActive = false;
 			// enableScroll()
+			// bodyScrollLock.enableBodyScroll(searchViewContainer);
+
 			document.body.classList.remove('has_search');
-			document.querySelector('.search_pagination').style.display = 'block'
+
+			let searchPagination = document.querySelector('.search_pagination');
+			if(searchPagination){
+				searchPagination.style.display = 'block'
+			}
 
 			if(searchPage){
 				searchPage = 0;
