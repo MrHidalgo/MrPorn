@@ -373,24 +373,6 @@
 			}
 		}
 	}
-
-	.no_sneak_peek{
-		height: 140px;
-		content: ' ';
-		display: block;
-		transition: height 0.2s ease-in-out;
-
-		@include respond('ipad_landscape'){
-			height: 0;
-		}
-		@include respond('max-medium'){
-			height: 0;
-		}
-
-		@include adaptive(767){
-			height: 0;
-		}
-	}
 }
 
 .review_slide{
@@ -414,10 +396,11 @@
 	.slider_inner {
 		position: absolute;
 		display: block;
-		top: 60px;
-		bottom: 60px;
+		top: 0;
+		bottom: 0;
 		left: 0;
 		width: 100%;
+		z-index: 0;
 		overflow: hidden;
 
 		@include adaptive(767){
