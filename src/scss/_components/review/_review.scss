@@ -265,7 +265,7 @@
 .review_container{
 	background: #3b3b3b;
 	margin-bottom: 15px;
-	padding: 10px 25px 25px;
+	padding: 10px 25px 10px;
 
 	@include respond('max-medium'){
 		padding: 10px 0;
@@ -489,10 +489,11 @@
 
 .screen_shot_dummy{
 
-	margin: 0 auto;
+	margin: 0 auto 140px;
 
 	@include respond('max-medium'){
 		width: 71.42857%;
+		margin-bottom: 0;
 	}
 }
 
@@ -520,10 +521,10 @@
 	left: 0;
 	right: 0;
 	height: 100%;
-	top: 0;
+	top: -1px;
 	z-index: 9;
 	content: " ";
-	padding-top: 85.4545%;
+	padding-top: 85.30%;
 	border: 1px solid #ccc;
 	border-radius: 5px;
 	background-size: auto 100%!important;
