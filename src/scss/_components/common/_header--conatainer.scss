@@ -1,3 +1,21 @@
+&__col{
+	&-menu, &-search{
+		display: none;
+
+		@include adaptive(1023) {
+			display: block;
+		}
+	}
+}
+
+@include adaptive(1023) {
+	&__row_left{
+		display: flex;
+		justify-content: center;
+	}
+}
+
+
 &__container {
 	&-1 {
 		background-color: #07113b;
@@ -8,27 +26,24 @@
 
 	&-2 {
 		background-color: #081b49;
+
 		@include adaptive(1023) {
-			z-index: 1600;
-			opacity: 0;
-			visibility: hidden;
-			transform: translateY(50px);
-			overflow: hidden;
-			/*overflow-y: auto;*/
-			position: fixed;
-			top: 0;
-			left: 0;
-			width: 100%;
-			bottom: 0;
-			min-height: 100%;
-			padding: 10px 20px 0 20px;
-			background-color: rgba(#080915, 0.975);
+			display: flex;
+			align-items: center;
+			min-height: 80px;
+			padding: 5px 20px;
 
 			&.is-open {
-				opacity: 1;
-				visibility: visible;
-				transform: translateY(0);
-				@include transition(opacity, visibility, transform);
+
+				.header__view-actions{
+					opacity: 1;
+					display: flex;
+					overflow: auto;
+					flex-direction: column;
+					visibility: visible;
+					transform: translateY(0) translateZ(0);
+					@include transition(opacity, visibility, transform);
+				}
 			}
 		}
 

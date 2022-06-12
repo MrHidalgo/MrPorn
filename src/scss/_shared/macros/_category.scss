@@ -10,6 +10,10 @@
 		width: 43px;
 		height: 34px;
 
+		@include respond('ipad_portrait'){
+			height: 44px;
+		}
+
 		@include adaptive(767) {
 			height: 44px;
 		}
@@ -133,7 +137,7 @@
 	}
 
 	&__drop {
-		overflow: hidden;
+		//overflow: hidden;
 		z-index: 1000;
 		opacity: 0;
 		visibility: hidden;
