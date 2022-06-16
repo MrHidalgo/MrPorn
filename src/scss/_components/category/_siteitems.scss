@@ -566,3 +566,16 @@
 	}
 }
 
+.gpgIcon{
+	height: 16px;
+
+	&::before{
+		content: ' ';
+		width: 16px;
+		height: 16px;
+		margin: 0 5px 0;
+		display: inline-block;
+		background: url("../images/gpgIcon.png");
+	}
+}
+
