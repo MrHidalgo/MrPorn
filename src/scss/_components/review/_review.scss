@@ -2154,3 +2154,9 @@
 		}
 	}
 }
+
+@include adaptive(1023.98) {
+	.fixed_header.show_2nd_header_ .bread-crumb .show_similar_sites{
+		top: 80px;
+	}
+}
