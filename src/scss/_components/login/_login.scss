@@ -7,10 +7,15 @@
 }
 
 .login_panel_container {
-	padding: 0 15px;
+	padding: 15px 0;
 
 	@include adaptive(1023) {
 		padding: 0;
+	}
+
+	@include adaptive(767) {
+		flex: 1;
+		background: #000;
 	}
 }
 
