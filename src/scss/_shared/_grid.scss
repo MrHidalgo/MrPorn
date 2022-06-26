@@ -104,6 +104,9 @@ $paddingRight: $paddingLeft;
 
 		&.category{
 			.c-grid-main{
+				@include respond('ipad_portrait'){
+					margin-top: 115px;
+				}
 				@include adaptive(767) {
 					margin-top: 115px;
 				}
@@ -115,6 +118,10 @@ $paddingRight: $paddingLeft;
 
 		&.single-sites.gaming_cat_{
 			.c-grid-main{
+
+				@include respond('ipad_portrait'){
+					margin-top: 120px;
+				}
 				@include adaptive(767) {
 					margin-top: 120px;
 				}
