@@ -7,6 +7,13 @@
 	font-weight: 600;
 	color: #fff;
 
+	@media screen and (min-width: 1070.02px) {
+		padding: 5px 5px;
+	}
+	@include adaptive(1070) {
+		padding: 5px 10px;
+	}
+
 	@include respond('ipad'){
 		font-size: 12px;
 		margin-bottom: -1px;
