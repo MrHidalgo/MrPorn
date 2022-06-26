@@ -659,7 +659,10 @@
 }
 
 .review_column{
-	width: 50%;
+
+	&.screen_shot{
+		width: 350px;
+	}
 
 	@include adaptive(991.98) {
 		width: 100%;
@@ -671,6 +674,14 @@
 		padding: 0;
 	}
 }
+.back_block{
+	flex: 0 0 280px;
+
+	&_img{
+		width: 100%;
+	}
+}
+
 .screen_shot{
 	padding-right: 15px;
 
@@ -757,6 +768,8 @@
 .review_con{
 	display: flex;
 	flex-direction: column;
+	flex: 1;
+	padding: 0 15px;
 
 	.site_review_title_content{
 		position: relative;
@@ -802,7 +815,7 @@
 	}
 
 	.review_scroll_container{
-		flex: 1;
+		height: 260px;
 		position: relative;
 		font-size: 18px;
 		padding-bottom: 20px;
@@ -1165,7 +1178,6 @@
 }
 
 .pros_container{
-	display: flex;
 	padding-bottom: 15px;
 
 	@include adaptive(767) {
@@ -1173,7 +1185,6 @@
 	}
 
 	&_col{
-		width: 50%;
 
 		@include adaptive(767){
 			width: 100%;
@@ -1181,11 +1192,16 @@
 	}
 
 	.pros_title{
-		font-weight: 600;
-		font-size: 18px;
-		margin: 20px 0 10px;
-		line-height: 19px;
-		color: #fff;
+		display: none;
+
+		@include adaptive(1070) {
+			display: block;
+			font-weight: 600;
+			font-size: 18px;
+			margin: 20px 0 10px;
+			line-height: 19px;
+			color: #fff;
+		}
 	}
 	ul{
 		padding: 0;
@@ -1196,17 +1212,45 @@
 		}
 
 		li{
+			float: left;
 			background: url(../images/icon_pro.png) no-repeat;
-			padding-left: 35px;
-			line-height: 30px;
+			padding-left: 25px;
+			padding-right: 10px;
+			line-height: 25px;
 			color: #bbb;
 			font-weight: 600;
+			background-size: 20px;
+			background-position: 0 center;
+
+			@include adaptive(1070) {
+				padding-left: 35px;
+				line-height: 30px;
+				background-size: auto;
+			}
+
+			@include adaptive(1070) {
+				float: none;
+			}
 		}
 
 		&.conns{
 			li{
 				background: url(../images/icon_conn.png) no-repeat;
+				background-size: 12px;
+				background-position: 3px center;
+
+				@include adaptive(1070) {
+					padding-left: 35px;
+					line-height: 30px;
+					background-size: auto;
+				}
 			}
+		}
+
+		&:after{
+			display: block;
+			content: ' ';
+			clear: both;
 		}
 	}
 }
