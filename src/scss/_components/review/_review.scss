@@ -523,7 +523,7 @@
 
 .screen_shot_dummy{
 
-	margin: 0 auto 140px;
+	margin: 0 auto 85px;
 
 	@include respond('max-medium'){
 		width: 71.42857%;
@@ -584,6 +584,22 @@
 		z-index: 10;
 	}
 
+	.open_site{
+		display: flex;
+		align-items: center;
+		padding: 10px 20px 10px 15px;
+		background: #4d74a8;
+		color: #fff;
+		font-size: 18px;
+		border-radius: 10px;
+
+		&:not(.nolazy)::before{
+			transform: scale(1.3);
+			border-radius: 50%;
+			margin-right: 8px;
+		}
+	}
+
 	.review_screenshot_hover{
 		position: absolute;
 		top: 0;
@@ -617,7 +633,7 @@
 
 		p{
 			color: #fff;
-			font-size: 24px;
+			font-size: 20px;
 			margin-top: 20px;
 			white-space: nowrap;
 
@@ -704,7 +720,7 @@
 
 	&.screen_shot{
 		@media screen and (min-width: 1070.98px) {
-			width: 350px;
+			width: 420px;
 		}
 
 		@include respond('ipad_portrait'){
@@ -717,6 +733,65 @@
 		padding: 0;
 	}
 }
+.review_visit_cat{
+	display: flex;
+	border-radius: 10px;
+	border: 2px solid #767676;
+	margin: 10px 0 0 0;
+	padding: 9px 7px 9px 8px;
+	align-items: center;
+	justify-content: center;
+	color: #767676;
+	font-weight: 500;
+	text-transform: capitalize;
+	font-size: 16px;
+	position: relative;
+
+
+
+	&_link{
+		font-weight: 600;
+		color: #767676;
+
+		&:before{
+			position: absolute;
+			left: 10px;
+			top: 50%;
+			transform: translateY(-50%);
+			margin: 0;
+		}
+
+		&:hover, &:focus{
+			color: #767676;
+		}
+	}
+
+	i{
+		position: absolute;
+		right: 10px;
+		top: 50%;
+		transform: translateY(-50%) rotateZ(90deg);
+
+		&:after{
+			display: block;
+			content: ' ';
+			background-image: url('../images/icon-arrow-right.svg');
+			background-repeat: no-repeat;
+			background-size: cover;
+			width: 26px;
+			height: 13px;
+		}
+	}
+
+	&:hover{
+		animation: pulseVisitCat 1s;
+
+		i:after{
+			animation: animArrowDown 1s infinite;
+		}
+	}
+}
+
 .screen_shot{
 	padding-right: 15px;
 
@@ -773,6 +848,14 @@
 	margin-top: -22px;
 	z-index: 1;
 
+
+	&_link{
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		height: 100%;
+	}
+
 	@include adaptive(1070) {
 		//display: none;
 
@@ -789,19 +872,18 @@
 	}
 
 	@include adaptive(768) {
-		display: block;
 		margin-top: 10px;
 		padding: 0 15px;
 	}
 }
-.back_block img{max-width: 100%;}
+.back_block img{max-width: 100%; flex: 1;}
 .back_block .all_porn_sites{
 	display: inline-block;
 	background: linear-gradient(#12478c, #4d74a8);
 	padding: 5px 20px;
 	border-radius: 3px;
 	color: #fff;
-	margin-top: 10px;
+	margin: 10px 0;
 }
 
 .pirateC{
@@ -869,6 +951,12 @@
 		padding-bottom: 15px;
 		flex-wrap: wrap;
 
+		//@include adaptive(1070) {
+			align-items: start;
+			flex-direction: column;
+			padding-bottom: 0;
+		//}
+
 		.rtu-ty{
 			flex: 0 0 100%;
 			flex-shrink: 0;
@@ -876,11 +964,7 @@
 			margin-bottom: 5px;
 		}
 
-		@include adaptive(1070) {
-			align-items: start;
-			flex-direction: column;
-			padding-bottom: 0;
-		}
+
 	}
 
 	.rtu-ty {
@@ -1143,11 +1227,11 @@
 		flex-direction: column-reverse;
 		align-items: end;
 
-		@include adaptive(1070) {
+		//@include adaptive(1070) {
 			font-size: 20px;
 			flex-direction: row;
 			align-items: center;
-		}
+		//}
 
 		@include adaptive(767) {
 			margin-bottom: 10px;
@@ -1168,10 +1252,10 @@
 	margin-left: 10px;
 	margin-bottom: 5px;
 
-	@include adaptive(1070) {
+	//@include adaptive(1070) {
 			width: 180px;
 			height: 36px;
-	}
+	//}
 
 	@include adaptive(767) {
 		width: 150px;
@@ -1181,14 +1265,14 @@
 }
 .new-ratingt > span {
 	position: relative;
-	width: 28px;
-	height: 28px;
+	//width: 28px;
+	//height: 28px;
 	margin: 0 0 0 0;
 
-	@include adaptive(1070) {
+	//@include adaptive(1070) {
 		width: 36px;
 		height: 36px;
-	}
+	//}
 
 	@include adaptive(767) {
 		width: 30px;
@@ -1196,13 +1280,13 @@
 	}
 }
 .new-ratingt:hover > span{
-	background: url(../images/ratings_2_small.png) 0 -28px no-repeat;
-	background-size: 28px;
+	//background: url(../images/ratings_2_small.png) 0 -28px no-repeat;
+	//background-size: 28px;
 
-	@include adaptive(1070) {
+	//@include adaptive(1070) {
 		background: url(../images/ratings_2.png) 0 -36px no-repeat;
 		background-size: 36px;
-	}
+	//}
 
 	@include adaptive(767) {
 		background: url(../images/ratings_2_small.png) 0 -30px no-repeat;
@@ -1210,20 +1294,20 @@
 	}
 }
 .new-ratingt > span:hover:before, .new-ratingt > span:hover ~ span:before {
-	width: 28px;
-	height: 28px;
-	background: url(../images/ratings_2_small.png) 0 0 no-repeat;
+	//width: 28px;
+	//height: 28px;
+	//background: url(../images/ratings_2_small.png) 0 0 no-repeat;
 	position: absolute;
 	content: '';
 	left:0;
 	top: 0;
 
-	@include adaptive(1070) {
+	//@include adaptive(1070) {
 		background: url(../images/ratings_2.png) 0 0 no-repeat;
 		background-size: 36px;
 		width: 36px;
 		height: 36px;
-	}
+	//}
 
 	@include adaptive(767) {
 		width: 30px;
@@ -1237,23 +1321,19 @@
 .new-ratingt[data-percent="3"]:BEFORE,
 .new-ratingt[data-percent="4"]:BEFORE,
 .new-ratingt[data-percent="5"]:BEFORE {
-	width:140px;
-	height: 28px;
-	background: url(../images/ratings-140.png) 0 -144px no-repeat;
+	//width:140px;
+	//height: 28px;
+	//background: url(../images/ratings-140.png) 0 -144px no-repeat;
 	position: absolute;
 	content: '';
 	left: 0;
 	top: 0;
 
-	@include adaptive(1070) {
+	//@include adaptive(1070) {
 		width:180px;
 		height: 36px;
 		background: url(../images/ratings.png) 0 -144px no-repeat;
-	}
-
-	@include adaptive(1070) {
-		width:180px;height: 36px;
-	}
+	//}
 
 	@include adaptive(767) {
 		height: 30px;
@@ -2372,5 +2452,33 @@
 @include adaptive(1023.98) {
 	.fixed_header.show_2nd_header_ .bread-crumb .show_similar_sites{
 		top: 80px;
+	}
+}
+
+@keyframes animArrowDown {
+	0% {
+		transform: translateX(0px)
+	}
+
+	50% {
+		transform: translateX(5px)
+	}
+
+	100% {
+		transform: translateX(0px)
+	}
+}
+
+@keyframes pulseVisitCat {
+	0% {
+		box-shadow: 0 0 0 0 rgba(118,118,118,0.7)
+	}
+
+	70% {
+		box-shadow: 0 0 0 10px rgba(118,118,118,0)
+	}
+
+	100% {
+		box-shadow: 0 0 0 0 rgba(118, 118, 118, 0)
 	}
 }
