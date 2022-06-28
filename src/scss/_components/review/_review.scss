@@ -874,6 +874,10 @@
 		flex-direction: column;
 		align-items: center;
 		height: 100%;
+
+		@include adaptive(768) {
+			display: block;
+		}
 	}
 
 	@include adaptive(1070) {
@@ -896,7 +900,17 @@
 		padding: 0 15px;
 	}
 }
-.back_block img{max-width: 100%; flex: 1;}
+.back_block img{
+	max-width: 100%;
+	flex: 1;
+
+	@include adaptive(768) {
+		height: 300px;
+		width: 100%;
+		object-fit: cover;
+		object-position: top;
+	}
+}
 .back_block .all_porn_sites{
 	display: inline-block;
 	background: linear-gradient(#12478c, #4d74a8);
@@ -1234,7 +1248,6 @@
 }
 
 .ratingtu{
-	margin: 5px 0 0;
 	position: relative;
 
 
@@ -1243,7 +1256,6 @@
 		font-size: 13px;
 		font-weight: 900;
 		color: #fff;
-		margin-bottom: 6px;
 		flex-direction: column-reverse;
 		align-items: end;
 
@@ -1270,7 +1282,6 @@
 	vertical-align: middle;
 	cursor: pointer;
 	margin-left: 10px;
-	margin-bottom: 5px;
 
 	//@include adaptive(1070) {
 			width: 180px;
@@ -2285,7 +2296,6 @@
 	}
 
 	.ratingtu{
-		margin: 5px 0 0;
 		position: relative;
 
 		.rtu-ty {
