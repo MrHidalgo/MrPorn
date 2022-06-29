@@ -418,14 +418,21 @@
 		display: none;
 	}
 
-	img {
+	&_a{
 		position: absolute;
 		height: 100%;
 		width: 100%;
-		object-fit: cover;
 		z-index: 11;
-		text-indent: 100vw;
+
+		img, picture {
+			height: 100%;
+			width: 100%;
+			object-fit: cover;
+			text-indent: 100vw;
+		}
 	}
+
+
 
 	.slider_inner {
 		position: absolute;
@@ -584,42 +591,6 @@
 		z-index: 10;
 	}
 
-	.open_site{
-		display: flex;
-		align-items: center;
-		padding: 10px 20px 10px 15px;
-		background: #d1f34b;
-		color: #000;
-		font-size: 18px;
-		font-weight: 600;
-		border-radius: 10px;
-		width: 80%;
-
-		&:hover{
-			animation: pulseVisitCat 1s;
-		}
-
-		&:not(.nolazy)::before{
-			transform: scale(1.3);
-			border-radius: 50%;
-			margin-right: 8px;
-		}
-
-		span{
-			flex: 1;
-			text-align: left;
-		}
-
-		&:after{
-			display: block;
-			content: ' ';
-			background-image: url('../images/review/nav-icon-visit.png');
-			background-size: contain;
-			width: 20px;
-			height: 20px;
-		}
-	}
-
 	.review_screenshot_hover{
 		position: absolute;
 		top: 0;
@@ -706,6 +677,53 @@
 		.site_dead_red{color: #e00911; font-size: 26px; }
 	}
 
+}
+
+.open_site_bar{
+	display: flex;
+	align-items: center;
+	padding: 10px 20px 10px 15px;
+	background: #d1f34b;
+	color: #000;
+	font-size: 18px;
+	font-weight: 600;
+	border-radius: 5px;
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	transform: translateX(-50%) translateY(-50%);
+	width: 92%;
+
+	@include adaptive(991.98) {
+		font-size: 14px;
+	}
+
+	&:hover{
+		animation: pulseVisitCat 1s;
+	}
+
+	&:not(.nolazy)::before{
+		transform: scale(1.3);
+		border-radius: 50%;
+		margin-right: 15px;
+	}
+
+	span{
+		flex: 1;
+		text-align: left;
+		white-space: nowrap;
+		overflow: hidden;
+		text-overflow: ellipsis;
+	}
+
+	&:after{
+		display: block;
+		content: ' ';
+		background-image: url('../images/review/nav-icon-visit.png');
+		background-size: contain;
+		width: 20px;
+		height: 20px;
+	}
 }
 
 .swiper-container[data-slide="0"] .site_dead{
@@ -983,6 +1001,7 @@
 		justify-content: space-between;
 		align-items: center;
 		padding-bottom: 15px;
+		padding-right: 160px;
 		flex-wrap: wrap;
 
 		//@include adaptive(1070) {
@@ -1053,7 +1072,7 @@
 
 	.review_scroll_container{
 		//flex: 1;
-		height: 300px;
+		height: 320px;
 		position: relative;
 		font-size: 18px;
 		padding-bottom: 20px;
@@ -1370,7 +1389,7 @@
 	//}
 
 	@include adaptive(767) {
-		height: 30px;
+		height: 28px;
 		background-position: 0 -30px;
 		background-size: auto 500%;
 	}
