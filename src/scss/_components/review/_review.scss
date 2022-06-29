@@ -988,14 +988,13 @@
 		//@include adaptive(1070) {
 			align-items: start;
 			flex-direction: column;
-			padding-bottom: 0;
+			padding-bottom: 12px;
 		//}
 
 		.rtu-ty{
 			flex: 0 0 100%;
 			flex-shrink: 0;
 			flex-grow: 1;
-			margin-bottom: 5px;
 		}
 
 
@@ -1248,8 +1247,12 @@
 }
 
 .ratingtu{
-	position: relative;
-
+	position: absolute;
+	top: 0;
+	right: 0;
+	font-size: 12px;
+	text-align: center;
+	margin-bottom: 3px;
 
 	.rtu-txt {
 		display: flex;
@@ -1258,6 +1261,7 @@
 		color: #fff;
 		flex-direction: column-reverse;
 		align-items: end;
+		padding-bottom: 5px;
 
 		//@include adaptive(1070) {
 			font-size: 20px;
@@ -1281,11 +1285,10 @@
 	display: flex;
 	vertical-align: middle;
 	cursor: pointer;
-	margin-left: 10px;
 
 	//@include adaptive(1070) {
-			width: 180px;
-			height: 36px;
+	//		width: 180px;
+	//		height: 36px;
 	//}
 
 	@include adaptive(767) {
@@ -1296,13 +1299,13 @@
 }
 .new-ratingt > span {
 	position: relative;
-	//width: 28px;
-	//height: 28px;
+	width: 28px;
+	height: 28px;
 	margin: 0 0 0 0;
 
 	//@include adaptive(1070) {
-		width: 36px;
-		height: 36px;
+	//	width: 36px;
+	//	height: 36px;
 	//}
 
 	@include adaptive(767) {
@@ -1311,12 +1314,12 @@
 	}
 }
 .new-ratingt:hover > span{
-	//background: url(../images/ratings_2_small.png) 0 -28px no-repeat;
-	//background-size: 28px;
+	background: url(../images/ratings_2_small.png) 0 -28px no-repeat;
+	background-size: 28px;
 
 	//@include adaptive(1070) {
-		background: url(../images/ratings_2.png) 0 -36px no-repeat;
-		background-size: 36px;
+	//	background: url(../images/ratings_2.png) 0 -36px no-repeat;
+	//	background-size: 36px;
 	//}
 
 	@include adaptive(767) {
@@ -1325,19 +1328,19 @@
 	}
 }
 .new-ratingt > span:hover:before, .new-ratingt > span:hover ~ span:before {
-	//width: 28px;
-	//height: 28px;
-	//background: url(../images/ratings_2_small.png) 0 0 no-repeat;
+	width: 28px;
+	height: 28px;
+	background: url(../images/ratings_2_small.png) 0 0 no-repeat;
 	position: absolute;
 	content: '';
 	left:0;
 	top: 0;
 
 	//@include adaptive(1070) {
-		background: url(../images/ratings_2.png) 0 0 no-repeat;
-		background-size: 36px;
-		width: 36px;
-		height: 36px;
+	//	background: url(../images/ratings_2.png) 0 0 no-repeat;
+	//	background-size: 36px;
+	//	width: 36px;
+	//	height: 36px;
 	//}
 
 	@include adaptive(767) {
@@ -1352,18 +1355,18 @@
 .new-ratingt[data-percent="3"]:BEFORE,
 .new-ratingt[data-percent="4"]:BEFORE,
 .new-ratingt[data-percent="5"]:BEFORE {
-	//width:140px;
-	//height: 28px;
-	//background: url(../images/ratings-140.png) 0 -144px no-repeat;
+	width:140px;
+	height: 28px;
+	background: url(../images/ratings-140.png) 0 -144px no-repeat;
 	position: absolute;
 	content: '';
 	left: 0;
 	top: 0;
 
 	//@include adaptive(1070) {
-		width:180px;
-		height: 36px;
-		background: url(../images/ratings.png) 0 -144px no-repeat;
+	//	width:180px;
+	//	height: 36px;
+	//	background: url(../images/ratings.png) 0 -144px no-repeat;
 	//}
 
 	@include adaptive(767) {
@@ -2296,8 +2299,6 @@
 	}
 
 	.ratingtu{
-		position: relative;
-
 		.rtu-ty {
 			color: #0641a3;
 		}
