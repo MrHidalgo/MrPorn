@@ -43,6 +43,10 @@
 					visibility: visible;
 					transform: translateY(0) translateZ(0);
 					@include transition(opacity, visibility, transform);
+
+					&.awe{
+						padding: 10px 20px 0;
+					}
 				}
 			}
 		}

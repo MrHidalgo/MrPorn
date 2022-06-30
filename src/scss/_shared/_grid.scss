@@ -69,6 +69,9 @@ $paddingRight: $paddingLeft;
 }
 .show_2nd_header_{
 	.c-grid-main{
+		@include respond('ipad_portrait'){
+			margin-top: 80px;
+		}
 		@include adaptive(767) {
 			margin-top: 80px;
 		}
@@ -77,6 +80,7 @@ $paddingRight: $paddingLeft;
 		}
 	}
 	&.category.gaming_cat_1 .c-grid-main{
+
 		@include adaptive(767) {
 			margin-top: 75px;
 		}
@@ -86,6 +90,9 @@ $paddingRight: $paddingLeft;
 	}
 	&1{
 		.c-grid-main{
+			@include respond('ipad_portrait'){
+				margin-top: 130px;
+			}
 			@include adaptive(767) {
 				margin-top: 130px;
 			}
@@ -115,6 +122,9 @@ $paddingRight: $paddingLeft;
 
 		&.single-sites.gaming_cat_{
 			.c-grid-main{
+				@include respond('ipad_portrait'){
+					margin-top: 120px;
+				}
 				@include adaptive(767) {
 					margin-top: 120px;
 				}
@@ -128,6 +138,10 @@ $paddingRight: $paddingLeft;
 
 .gaming_cat_1{
 	.c-grid-main{
+		@include respond('ipad_portrait'){
+			margin-top: 80px;
+		}
+
 		@include adaptive(767) {
 			margin-top: 80px;
 		}

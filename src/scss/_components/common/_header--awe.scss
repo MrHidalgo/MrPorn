@@ -13,6 +13,29 @@
 		margin: 0;
 		font: 400 22px/1.2 "Arial Black",sans-serif;
 
+		@include respond('ipad_portrait'){
+			font-size: 18px;
+			padding: 8px 50px 15px 14px;
+			width: 100%;
+
+			.awe__close{
+				position: absolute;
+				right: 0;
+				top: -4px;
+			}
+		}
+
+		@include adaptive(767) {
+			font-size: 18px;
+			padding: 8px 50px 15px 14px;
+
+			.awe__close{
+				position: absolute;
+				right: 0;
+				top: -4px;
+			}
+		}
+
 		.name {
 			position: relative;
 			z-index: 1;
@@ -28,6 +51,14 @@
 			display: block;
 			background: url(../images/arrow-form.png);
 			background-size: contain;
+
+			@include respond('ipad_portrait'){
+				display: none;
+			}
+
+			@include adaptive(767) {
+				display: none;
+			}
 		}
 	}
 

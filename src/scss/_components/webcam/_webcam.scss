@@ -459,6 +459,14 @@
 				&::-webkit-scrollbar-track, &::-webkit-scrollbar-track{background: #131313; border-left:1px solid #333;}
 				&::-webkit-scrollbar-thumb, &::-webkit-scrollbar-thumb { background: #525252; }
 				&:hover::-webkit-scrollbar-thumb, &:hover::-webkit-scrollbar-thumb { background: #323232; }*/
+
+				@include respond('ipad_portrait'){
+					width: 800px;
+				}
+			}
+
+			@include respond('ipad_portrait'){
+				width: 100%;
 			}
 
 			@media screen and (min-width: 768.01px){
@@ -670,6 +678,16 @@
 	background: #fff;
 	display: none;
 	top: 118px;
+
+	@include respond('ipad_portrait'){
+		left: 20px;
+		right: 20px;
+	}
+
+	@include adaptive(767) {
+		left: 20px;
+		right: 20px;
+	}
 
 	.thumbs-cols {
 		display: flex;
