@@ -3018,53 +3018,97 @@ fieldset {
   }
 }
 
+/* line 44, src/scss/_components/common/_header.scss */
+.header__mobile {
+  position: fixed;
+  width: 100%;
+  -webkit-box-align: center;
+  -webkit-align-items: center;
+      -ms-flex-align: center;
+          align-items: center;
+  min-height: 80px;
+  padding: 5px 20px;
+  z-index: 107;
+  display: none;
+}
+
+@media screen and (min-device-width: 768px) and (max-device-width: 1024px) and (orientation: portrait) and (-webkit-min-device-pixel-ratio: 2) {
+  /* line 44, src/scss/_components/common/_header.scss */
+  .header__mobile {
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -ms-flexbox;
+    display: flex;
+  }
+}
+
+@media screen and (min-device-width: 1366px) and (max-device-width: 1366px) and (orientation: landscape) and (-webkit-min-device-pixel-ratio: 2) {
+  /* line 44, src/scss/_components/common/_header.scss */
+  .header__mobile {
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -ms-flexbox;
+    display: flex;
+  }
+}
+
 @media screen and (max-width: 1023px) {
-  /* line 46, src/scss/_components/common/_header.scss */
+  /* line 44, src/scss/_components/common/_header.scss */
+  .header__mobile {
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -ms-flexbox;
+    display: flex;
+  }
+}
+
+@media screen and (max-width: 1023px) {
+  /* line 66, src/scss/_components/common/_header.scss */
   .light .pre-header__mobile {
     background-color: #303030fa;
   }
-  /* line 49, src/scss/_components/common/_header.scss */
+  /* line 69, src/scss/_components/common/_header.scss */
   .light .header__nav-item:not(:last-of-type) {
     border-bottom: 1px solid #4a4a4a;
   }
-  /* line 52, src/scss/_components/common/_header.scss */
+  /* line 72, src/scss/_components/common/_header.scss */
   .light .pre-header__mobile-middle {
     border-top: 1px solid #4a4a4a;
     border-bottom: 1px solid #4a4a4a;
   }
 }
 
-/* line 60, src/scss/_components/common/_header.scss */
+/* line 80, src/scss/_components/common/_header.scss */
 .is_logged .header__view-wrapper {
   display: block;
 }
 
 @media screen and (max-width: 1023px) {
-  /* line 60, src/scss/_components/common/_header.scss */
+  /* line 80, src/scss/_components/common/_header.scss */
   .is_logged .header__view-wrapper {
     display: none;
   }
 }
 
-/* line 67, src/scss/_components/common/_header.scss */
+/* line 87, src/scss/_components/common/_header.scss */
 .is_logged .header__view-text {
   display: none;
 }
 
-/* line 72, src/scss/_components/common/_header.scss */
+/* line 92, src/scss/_components/common/_header.scss */
 [data-label-lg]::after {
   content: attr(data-label-lg);
 }
 
 @media screen and (max-width: 767px) {
   /* line 189, src/scss/_shared/_main-setting-reset.scss */
-  /* line 78, src/scss/_components/common/_header.scss */
+  /* line 98, src/scss/_components/common/_header.scss */
   [data-label-xs]::after {
     content: attr(data-label-xs);
   }
 }
 
-/* line 87, src/scss/_components/common/_header.scss */
+/* line 107, src/scss/_components/common/_header.scss */
 .has_search .header__recent {
   display: none;
 }

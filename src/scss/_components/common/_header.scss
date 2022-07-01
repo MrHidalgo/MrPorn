@@ -41,6 +41,26 @@
 	}
 }
 
+.header__mobile{
+	position: fixed;
+	width: 100%;
+	align-items: center;
+	min-height: 80px;
+	padding: 5px 20px;
+	z-index: 107;
+	display: none;
+
+	@include respond('ipad_portrait'){
+		display: flex;
+	}
+	@include respond('ipad_pro_landscape'){
+		display: flex;
+	}
+	@include adaptive(1023) {
+		display: flex;
+	}
+}
+
 .light{
 	@include adaptive(1023) {
 		.pre-header__mobile{
