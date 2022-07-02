@@ -3062,53 +3062,66 @@ fieldset {
   }
 }
 
+/* line 63, src/scss/_components/common/_header.scss */
+.header__mobile_logo {
+  -webkit-box-flex: 1;
+  -webkit-flex: 1;
+      -ms-flex: 1;
+          flex: 1;
+}
+
+/* line 65, src/scss/_components/common/_header.scss */
+.header__mobile_logo img {
+  margin: 0 auto;
+}
+
 @media screen and (max-width: 1023px) {
-  /* line 66, src/scss/_components/common/_header.scss */
+  /* line 73, src/scss/_components/common/_header.scss */
   .light .pre-header__mobile {
     background-color: #303030fa;
   }
-  /* line 69, src/scss/_components/common/_header.scss */
+  /* line 76, src/scss/_components/common/_header.scss */
   .light .header__nav-item:not(:last-of-type) {
     border-bottom: 1px solid #4a4a4a;
   }
-  /* line 72, src/scss/_components/common/_header.scss */
+  /* line 79, src/scss/_components/common/_header.scss */
   .light .pre-header__mobile-middle {
     border-top: 1px solid #4a4a4a;
     border-bottom: 1px solid #4a4a4a;
   }
 }
 
-/* line 80, src/scss/_components/common/_header.scss */
+/* line 87, src/scss/_components/common/_header.scss */
 .is_logged .header__view-wrapper {
   display: block;
 }
 
 @media screen and (max-width: 1023px) {
-  /* line 80, src/scss/_components/common/_header.scss */
+  /* line 87, src/scss/_components/common/_header.scss */
   .is_logged .header__view-wrapper {
     display: none;
   }
 }
 
-/* line 87, src/scss/_components/common/_header.scss */
+/* line 94, src/scss/_components/common/_header.scss */
 .is_logged .header__view-text {
   display: none;
 }
 
-/* line 92, src/scss/_components/common/_header.scss */
+/* line 99, src/scss/_components/common/_header.scss */
 [data-label-lg]::after {
   content: attr(data-label-lg);
 }
 
 @media screen and (max-width: 767px) {
   /* line 189, src/scss/_shared/_main-setting-reset.scss */
-  /* line 98, src/scss/_components/common/_header.scss */
+  /* line 105, src/scss/_components/common/_header.scss */
   [data-label-xs]::after {
     content: attr(data-label-xs);
   }
 }
 
-/* line 107, src/scss/_components/common/_header.scss */
+/* line 114, src/scss/_components/common/_header.scss */
 .has_search .header__recent {
   display: none;
 }

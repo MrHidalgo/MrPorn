@@ -59,6 +59,13 @@
 	@include adaptive(1023) {
 		display: flex;
 	}
+
+	&_logo{
+		flex: 1;
+		img{
+			margin: 0 auto;
+		}
+	}
 }
 
 .light{

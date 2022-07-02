@@ -148,7 +148,7 @@ function initHomeTooltip(){
 							if(!popoverOuter){
 								popover.innerHTML = '<div class="popover-outer">\n' +
 									'            <div class="popover-title deIcon">\n' +
-									'                    <a class="popover-title-a link direct_1 step_1_" target="_blank" hreflang="en" href=""></a>\n' +
+									'                    <a class="popover-title-a link direct_1 step_1_" target="_blank" href=""></a>\n' +
 									'            </div>\n' +
 									'            <div class="popover-content"></div>\n' +
 									'        </div>';

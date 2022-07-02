@@ -138,27 +138,27 @@ const renderMobileMenu = () => {
 		'            <div class="pre-header__mobile-bottom main_mobile_menu">' +
 		window.favHtmlMobile+
 		'              <ul class="header__nav">' +
-		'                <li class="header__nav-item"><a class="header__nav-link" href="'+navCategoriesLink+'" hreflang="'+currentLang+'">' +
+		'                <li class="header__nav-item"><a class="header__nav-link" href="'+navCategoriesLink+'">' +
 		'                    <div><img class="icon-nav-folder" src="/wp-content/themes/mpg/images/menu/menu.svg#folder"/></div>' +
 		'                    <div><span>'+_t('view_all_categories', 'View All Categories')+'</span></div></a></li>' +
 		'                <li class="header__nav-item header__nav-item--saparator"><span class="header__nav-separator"></span></li>' +
-		'                <li class="header__nav-item"><a class="header__nav-link" href="/blog/" hreflang="en">' +
+		'                <li class="header__nav-item"><a class="header__nav-link" href="/blog/">' +
 		'                    <div><img class="icon-nav-blog" src="/wp-content/themes/mpg/images/menu/menu.svg#blog"/></div>' +
 		'                    <div><span>'+_t('blog', 'Blog')+'</span></div></a></li>' +
 		'                <li class="header__nav-item header__nav-item--saparator"><span class="header__nav-separator"></span></li>' +
-		'                <li class="header__nav-item"><a class="header__nav-link" href="/webcam-videos/" hreflang="en">' +
+		'                <li class="header__nav-item"><a class="header__nav-link" href="/webcam-videos/">' +
 		'                    <div><img class="icon-nav-videos" src="/wp-content/themes/mpg/images/menu/menu.svg#videos"/></div>' +
 		'                    <div><span>'+_t('videos', 'Videos')+'</span></div></a></li>' +
 		'                <li class="header__nav-item header__nav-item--saparator"><span class="header__nav-separator"></span></li>' +
-		'                <li class="header__nav-item"><a class="header__nav-link" href="/pornstars/" hreflang="en">' +
+		'                <li class="header__nav-item"><a class="header__nav-link" href="/pornstars/">' +
 		'                    <div><img class="icon-nav-pornstars" src="/wp-content/themes/mpg/images/menu/menu.svg#pornstars"/></div>' +
 		'                    <div><span>'+_t('pornstars', 'Pornstars')+'</span></div></a></li>' +
 		'                <li class="header__nav-item header__nav-item--saparator"><span class="header__nav-separator"></span></li>' +
-		'                <li class="header__nav-item"><a class="header__nav-link" href="/porn-deals/" hreflang="en">' +
+		'                <li class="header__nav-item"><a class="header__nav-link" href="/porn-deals/">' +
 		'                    <div><img class="icon-nav-porncoupons" src="/wp-content/themes/mpg/images/menu/menu.svg#ticket"/></div>' +
 		'                    <div><span>'+_t('porn-coupons', 'Porn Coupons')+'</span></div></a></li>' +
 		'                <li class="header__nav-item header__nav-item--saparator"><span class="header__nav-separator"></span></li>' +
-		'                <li class="header__nav-item"><a class="header__nav-link" href="'+navLinkGames+'" hreflang="'+currentLang+'" target="_blank">' +
+		'                <li class="header__nav-item"><a class="header__nav-link" href="'+navLinkGames+'" target="_blank">' +
 		'                    <div><img class="icon-nav-porngames" src="/wp-content/themes/mpg/images/menu/menu.svg#joystick"/></div>' +
 		'                    <div><span>'+_t('porn-games', 'Sex Games')+'</span></div></a></li>' +
 		'                <li class="header__nav-item header__nav-item--saparator"><span class="header__nav-separator"></span></li>' +
@@ -179,13 +179,13 @@ const renderMobileMenu = () => {
 		'            </div>' +
 		'            <div class="pre-header__mobile-bottom">' +
 		'              <ul class="header__nav">' +
-		'                <li class="header__nav-item"><a class="header__nav-link" href="'+translateLink('about-us')+'" hreflang="'+currentLang+'">' +
+		'                <li class="header__nav-item"><a class="header__nav-link" href="'+translateLink('about-us')+'">' +
 		'                    <div><img class="icon-nav-info" src="/wp-content/themes/mpg/images/menu/menu.svg#info"/></div>' +
 		'                    <div><span>'+_t('footer_about', 'About Us')+'</span></div></a></li>' +
-		'                <li class="header__nav-item"><a class="header__nav-link" href="'+translateLink('contact')+'" hreflang="'+currentLang+'">' +
+		'                <li class="header__nav-item"><a class="header__nav-link" href="'+translateLink('contact')+'">' +
 		'                    <div><img class="icon-nav-mail" src="/wp-content/themes/mpg/images/menu/menu.svg#mail"/></div>' +
 		'                    <div><span>'+_t('footer_contact', 'Contact Us')+'</span></div></a></li>' +
-		'                <li class="header__nav-item"><a class="header__nav-link" href="'+translateLink('advertising')+'" hreflang="'+currentLang+'">' +
+		'                <li class="header__nav-item"><a class="header__nav-link" href="'+translateLink('advertising')+'">' +
 		'                    <div><img class="icon-nav-megaphone" src="/wp-content/themes/mpg/images/menu/menu.svg#megaphone"/></div>' +
 		'                    <div><span>'+_t('title_advertising', 'Advertising')+'</span></div></a></li>' +
 		'              </ul>' +
