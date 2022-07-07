@@ -2326,26 +2326,14 @@ fieldset {
   }
 }
 
-/* line 20, src/scss/_components/common/_header--conatainer.scss */
-.header__container-1 {
-  background-color: #07113b;
+/* line 18, src/scss/_components/common/_header--conatainer.scss */
+.header__mobile {
+  display: none;
 }
 
-@media screen and (max-width: 1023px) {
-  /* line 20, src/scss/_components/common/_header--conatainer.scss */
-  .header__container-1 {
-    display: none;
-  }
-}
-
-/* line 27, src/scss/_components/common/_header--conatainer.scss */
-.header__container-2 {
-  background-color: #081b49;
-}
-
-@media screen and (max-width: 1023px) {
-  /* line 27, src/scss/_components/common/_header--conatainer.scss */
-  .header__container-2 {
+@media screen and (max-width: 1023.98px) {
+  /* line 18, src/scss/_components/common/_header--conatainer.scss */
+  .header__mobile {
     display: -webkit-box;
     display: -webkit-flex;
     display: -ms-flexbox;
@@ -2357,7 +2345,59 @@ fieldset {
     min-height: 80px;
     padding: 5px 20px;
   }
-  /* line 38, src/scss/_components/common/_header--conatainer.scss */
+}
+
+/* line 27, src/scss/_components/common/_header--conatainer.scss */
+.header__mobile-center {
+  -webkit-box-flex: 1;
+  -webkit-flex: 1;
+      -ms-flex: 1;
+          flex: 1;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+  -webkit-align-items: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
+
+/* line 36, src/scss/_components/common/_header--conatainer.scss */
+.header__container-1 {
+  background-color: #07113b;
+}
+
+@media screen and (max-width: 1023px) {
+  /* line 36, src/scss/_components/common/_header--conatainer.scss */
+  .header__container-1 {
+    position: relative;
+    background-color: #303030fa;
+  }
+}
+
+/* line 44, src/scss/_components/common/_header--conatainer.scss */
+.header__container-2 {
+  background-color: #081b49;
+}
+
+@media screen and (max-width: 1023px) {
+  /* line 44, src/scss/_components/common/_header--conatainer.scss */
+  .header__container-2 {
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-align: center;
+    -webkit-align-items: center;
+        -ms-flex-align: center;
+            align-items: center;
+  }
+  /* line 53, src/scss/_components/common/_header--conatainer.scss */
   .header__container-2.is-open .header__view-actions {
     opacity: 1;
     display: -webkit-box;
@@ -2379,19 +2419,19 @@ fieldset {
     transition: opacity 0.35s ease-in-out, visibility 0.35s ease-in-out, transform 0.35s ease-in-out;
     transition: opacity 0.35s ease-in-out, visibility 0.35s ease-in-out, transform 0.35s ease-in-out, -webkit-transform 0.35s ease-in-out;
   }
-  /* line 47, src/scss/_components/common/_header--conatainer.scss */
+  /* line 62, src/scss/_components/common/_header--conatainer.scss */
   .header__container-2.is-open .header__view-actions.awe {
     padding: 10px 20px 0;
   }
 }
 
-/* line 54, src/scss/_components/common/_header--conatainer.scss */
+/* line 69, src/scss/_components/common/_header--conatainer.scss */
 .header__container-2 .c-grid {
   position: relative;
 }
 
 @media screen and (max-width: 1023px) {
-  /* line 54, src/scss/_components/common/_header--conatainer.scss */
+  /* line 69, src/scss/_components/common/_header--conatainer.scss */
   .header__container-2 .c-grid {
     padding-left: 0;
     padding-right: 0;
@@ -2399,7 +2439,7 @@ fieldset {
 }
 
 @media screen and (min-width: 1024px) {
-  /* line 64, src/scss/_components/common/_header--conatainer.scss */
+  /* line 79, src/scss/_components/common/_header--conatainer.scss */
   .header__container-3 {
     background-color: #0b0d28;
     -webkit-box-shadow: 1.482px 16.935px 35px 0px rgba(31, 37, 103, 0.33);
@@ -2408,9 +2448,9 @@ fieldset {
 }
 
 @media screen and (max-width: 1023px) {
-  /* line 64, src/scss/_components/common/_header--conatainer.scss */
+  /* line 79, src/scss/_components/common/_header--conatainer.scss */
   .header__container-3 {
-    display: none;
+    background-color: #303030fa;
   }
 }
 
@@ -2437,10 +2477,11 @@ fieldset {
     position: absolute;
     left: 50%;
     margin-left: -22.5px;
+    bottom: 15px;
   }
 }
 
-/* line 21, src/scss/_components/common/_header--toggle.scss */
+/* line 26, src/scss/_components/common/_header--toggle.scss */
 .header__toggle-left, .header__toggle-right {
   z-index: 0;
   position: absolute;
@@ -2457,7 +2498,7 @@ fieldset {
   height: 100%;
 }
 
-/* line 31, src/scss/_components/common/_header--toggle.scss */
+/* line 36, src/scss/_components/common/_header--toggle.scss */
 .header__toggle-left .icon-font, .header__toggle-right .icon-font {
   color: #ffffff;
   font-size: 12px;
@@ -2466,13 +2507,13 @@ fieldset {
   transition: opacity 0.35s ease-in-out;
 }
 
-/* line 36, src/scss/_components/common/_header--toggle.scss */
+/* line 41, src/scss/_components/common/_header--toggle.scss */
 .header__toggle-left .icon-font.icon-moon, .header__toggle-right .icon-font.icon-moon {
   opacity: 0;
   font-size: 9px;
 }
 
-/* line 43, src/scss/_components/common/_header--toggle.scss */
+/* line 48, src/scss/_components/common/_header--toggle.scss */
 .header__toggle-left {
   left: 0;
   -webkit-box-pack: end;
@@ -2481,7 +2522,7 @@ fieldset {
           justify-content: flex-end;
 }
 
-/* line 48, src/scss/_components/common/_header--toggle.scss */
+/* line 53, src/scss/_components/common/_header--toggle.scss */
 .header__toggle-right {
   right: 0;
   -webkit-box-pack: start;
@@ -2490,7 +2531,7 @@ fieldset {
           justify-content: flex-start;
 }
 
-/* line 53, src/scss/_components/common/_header--toggle.scss */
+/* line 58, src/scss/_components/common/_header--toggle.scss */
 .header__toggle input {
   opacity: 0;
   visibility: hidden;
@@ -2501,24 +2542,24 @@ fieldset {
   height: 0;
 }
 
-/* line 64, src/scss/_components/common/_header--toggle.scss */
+/* line 69, src/scss/_components/common/_header--toggle.scss */
 .header__toggle input:checked + label .icon-font {
   -webkit-transition: opacity 0.35s ease-in-out;
   -o-transition: opacity 0.35s ease-in-out;
   transition: opacity 0.35s ease-in-out;
 }
 
-/* line 67, src/scss/_components/common/_header--toggle.scss */
+/* line 72, src/scss/_components/common/_header--toggle.scss */
 .header__toggle input:checked + label .icon-font.icon-sun {
   opacity: 0;
 }
 
-/* line 70, src/scss/_components/common/_header--toggle.scss */
+/* line 75, src/scss/_components/common/_header--toggle.scss */
 .header__toggle input:checked + label .icon-font.icon-moon {
   opacity: 1;
 }
 
-/* line 75, src/scss/_components/common/_header--toggle.scss */
+/* line 80, src/scss/_components/common/_header--toggle.scss */
 .header__toggle input:checked + label span {
   -webkit-transform: translateX(-25px);
       -ms-transform: translateX(-25px);
@@ -2530,7 +2571,7 @@ fieldset {
   transition: transform 0.35s ease-in-out, -webkit-transform 0.35s ease-in-out;
 }
 
-/* line 83, src/scss/_components/common/_header--toggle.scss */
+/* line 88, src/scss/_components/common/_header--toggle.scss */
 .header__toggle label {
   z-index: 2;
   cursor: pointer;
@@ -2545,7 +2586,7 @@ fieldset {
   height: 100%;
 }
 
-/* line 94, src/scss/_components/common/_header--toggle.scss */
+/* line 99, src/scss/_components/common/_header--toggle.scss */
 .header__toggle span {
   position: absolute;
   top: 2px;
@@ -2565,6 +2606,149 @@ fieldset {
   -o-transition: transform 0.35s ease-in-out;
   transition: transform 0.35s ease-in-out;
   transition: transform 0.35s ease-in-out, -webkit-transform 0.35s ease-in-out;
+}
+
+/* line 1, src/scss/_components/common/_header--action.scss */
+.header__action {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+  -webkit-align-items: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: justify;
+  -webkit-justify-content: space-between;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  height: 29px;
+  padding-left: 10px;
+  padding-right: 10px;
+  border-width: 2px;
+  border-color: #004aac;
+  border-style: solid;
+  -webkit-border-radius: 5px;
+          border-radius: 5px;
+}
+
+@media screen and (max-width: 1279px) {
+  /* line 1, src/scss/_components/common/_header--action.scss */
+  .header__action {
+    width: 125px;
+  }
+}
+
+@media screen and (max-width: 1023px) {
+  /* line 1, src/scss/_components/common/_header--action.scss */
+  .header__action {
+    width: 100%;
+    border: none;
+    -webkit-border-radius: 0;
+            border-radius: 0;
+    background-color: #303030fa;
+    -webkit-flex-wrap: wrap;
+        -ms-flex-wrap: wrap;
+            flex-wrap: wrap;
+    min-height: 40px;
+    border-top: 1px solid #0a3e83;
+    padding: 0;
+  }
+}
+
+/* line 28, src/scss/_components/common/_header--action.scss */
+.header__action-link {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  font-size: 12px;
+  font-weight: 700;
+  color: #768fa9;
+}
+
+/* line 34, src/scss/_components/common/_header--action.scss */
+.header__action-link:hover, .header__action-link:focus {
+  color: #768fa9;
+}
+
+/* line 38, src/scss/_components/common/_header--action.scss */
+.header__action-link:first-child {
+  margin-right: 10px;
+}
+
+@media screen and (max-width: 1023px) {
+  /* line 38, src/scss/_components/common/_header--action.scss */
+  .header__action-link:first-child {
+    margin-right: 0;
+  }
+}
+
+@media screen and (max-width: 1279px) {
+  /* line 28, src/scss/_components/common/_header--action.scss */
+  .header__action-link {
+    font-size: 12px;
+  }
+}
+
+@media screen and (max-width: 1023px) {
+  /* line 28, src/scss/_components/common/_header--action.scss */
+  .header__action-link {
+    width: 50%;
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-pack: center;
+    -webkit-justify-content: center;
+        -ms-flex-pack: center;
+            justify-content: center;
+    -webkit-box-align: center;
+    -webkit-align-items: center;
+        -ms-flex-align: center;
+            align-items: center;
+    color: #fff;
+    text-transform: uppercase;
+    font-size: 14px;
+    font-weight: 400;
+  }
+  /* line 60, src/scss/_components/common/_header--action.scss */
+  .header__action-link i {
+    margin-right: 5px;
+    font-size: 16px;
+  }
+}
+
+/* line 66, src/scss/_components/common/_header--action.scss */
+.header__action-link--logout {
+  color: #9294ad;
+}
+
+/* line 69, src/scss/_components/common/_header--action.scss */
+.header__action-link--admin {
+  color: #91a538;
+}
+
+@media screen and (max-width: 1023px) {
+  /* line 76, src/scss/_components/common/_header--action.scss */
+  .header__col-lang {
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-pack: justify;
+    -webkit-justify-content: space-between;
+        -ms-flex-pack: justify;
+            justify-content: space-between;
+    padding: 0 20px;
+    min-height: 50px;
+    -webkit-box-align: center;
+    -webkit-align-items: center;
+        -ms-flex-align: center;
+            align-items: center;
+    border-top: 1px solid #4a4a4a;
+    border-bottom: 1px solid #4a4a4a;
+  }
 }
 
 /* line 1, src/scss/_components/common/_header--nav.scss */
@@ -3019,52 +3203,52 @@ fieldset {
 }
 
 @media screen and (max-width: 1023px) {
-  /* line 46, src/scss/_components/common/_header.scss */
+  /* line 49, src/scss/_components/common/_header.scss */
   .light .pre-header__mobile {
     background-color: #303030fa;
   }
-  /* line 49, src/scss/_components/common/_header.scss */
+  /* line 52, src/scss/_components/common/_header.scss */
   .light .header__nav-item:not(:last-of-type) {
     border-bottom: 1px solid #4a4a4a;
   }
-  /* line 52, src/scss/_components/common/_header.scss */
+  /* line 55, src/scss/_components/common/_header.scss */
   .light .pre-header__mobile-middle {
     border-top: 1px solid #4a4a4a;
     border-bottom: 1px solid #4a4a4a;
   }
 }
 
-/* line 60, src/scss/_components/common/_header.scss */
+/* line 63, src/scss/_components/common/_header.scss */
 .is_logged .header__view-wrapper {
   display: block;
 }
 
 @media screen and (max-width: 1023px) {
-  /* line 60, src/scss/_components/common/_header.scss */
+  /* line 63, src/scss/_components/common/_header.scss */
   .is_logged .header__view-wrapper {
     display: none;
   }
 }
 
-/* line 67, src/scss/_components/common/_header.scss */
+/* line 70, src/scss/_components/common/_header.scss */
 .is_logged .header__view-text {
   display: none;
 }
 
-/* line 72, src/scss/_components/common/_header.scss */
+/* line 75, src/scss/_components/common/_header.scss */
 [data-label-lg]::after {
   content: attr(data-label-lg);
 }
 
 @media screen and (max-width: 767px) {
   /* line 189, src/scss/_shared/_main-setting-reset.scss */
-  /* line 78, src/scss/_components/common/_header.scss */
+  /* line 81, src/scss/_components/common/_header.scss */
   [data-label-xs]::after {
     content: attr(data-label-xs);
   }
 }
 
-/* line 87, src/scss/_components/common/_header.scss */
+/* line 90, src/scss/_components/common/_header.scss */
 .has_search .header__recent {
   display: none;
 }
@@ -3391,17 +3575,24 @@ fieldset {
 
 /* line 1, src/scss/_components/common/_pre-header--heading.scss */
 .pre-header__heading {
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-align: center;
-  -webkit-align-items: center;
-      -ms-flex-align: center;
-          align-items: center;
+  display: none;
 }
 
-/* line 5, src/scss/_components/common/_pre-header--heading.scss */
+@media screen and (max-width: 1023px) {
+  /* line 1, src/scss/_components/common/_pre-header--heading.scss */
+  .pre-header__heading {
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-align: center;
+    -webkit-align-items: center;
+        -ms-flex-align: center;
+            align-items: center;
+  }
+}
+
+/* line 9, src/scss/_components/common/_pre-header--heading.scss */
 .pre-header__heading i {
   position: relative;
   top: 3px;
@@ -3413,7 +3604,7 @@ fieldset {
   border-color: #fff transparent transparent transparent;
 }
 
-/* line 16, src/scss/_components/common/_pre-header--heading.scss */
+/* line 20, src/scss/_components/common/_pre-header--heading.scss */
 .pre-header__heading span {
   color: #ffffff;
 }

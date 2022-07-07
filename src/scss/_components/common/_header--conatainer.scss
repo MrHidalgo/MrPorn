@@ -15,12 +15,29 @@
 	}
 }
 
+&__mobile{
+	display: none;
+	@include adaptive(1023.98) {
+		display: flex;
+		align-items: center;
+		min-height: 80px;
+		padding: 5px 20px;
+	}
+
+	&-center{
+		flex: 1;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+	}
+}
 
 &__container {
 	&-1 {
 		background-color: #07113b;
 		@include adaptive(1023) {
-			display: none;
+			position: relative;
+			background-color: #303030fa;
 		}
 	}
 
@@ -30,8 +47,6 @@
 		@include adaptive(1023) {
 			display: flex;
 			align-items: center;
-			min-height: 80px;
-			padding: 5px 20px;
 
 			&.is-open {
 
@@ -66,9 +81,8 @@
 			background-color: rgb(11, 13, 40);
 			box-shadow: 1.482px 16.935px 35px 0px rgba(31, 37, 103, 0.33);
 		}
-
 		@include adaptive(1023) {
-			display: none;
+				background-color: #303030fa;
 		}
 	}
 }

@@ -13,6 +13,18 @@
 		width: 125px;
 	}
 
+	@include adaptive(1023) {
+		width: 100%;
+		border: none;
+		border-radius: 0;
+		background-color: #303030fa;
+
+		flex-wrap: wrap;
+		min-height: 40px;
+		border-top: 1px solid #0a3e83;
+		padding: 0;
+	}
+
 	&-link {
 		display: flex;
 		font-size: 12px;
@@ -25,10 +37,30 @@
 
 		&:first-child{
 			margin-right: 10px;
+
+			@include adaptive(1023) {
+				margin-right: 0;
+			}
 		}
 
 		@include adaptive(1279) {
 			font-size: 12px;
+		}
+
+		@include adaptive(1023) {
+			width: 50%;
+			display: flex;
+			justify-content: center;
+			align-items: center;
+			color: #fff;
+			text-transform: uppercase;
+			font-size: 14px;
+			font-weight: 400;
+
+			i{
+				margin-right: 5px;
+				font-size: 16px;
+			}
 		}
 
 		&--logout {
@@ -37,5 +69,17 @@
 		&--admin {
 			color: #91a538;
 		}
+	}
+}
+
+@include adaptive(1023) {
+	&__col-lang {
+		display: flex;
+		justify-content: space-between;
+		padding: 0 20px;
+		min-height: 50px;
+		align-items: center;
+		border-top: 1px solid #4a4a4a;
+		border-bottom: 1px solid #4a4a4a;
 	}
 }
