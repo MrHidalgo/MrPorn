@@ -498,6 +498,13 @@
 	}
 }
 
+@include respond('large'){
+	.link-thumbs-holder{
+		display: none;
+	}
+}
+
+
 .link-thumbs-holder > .swiper-slide{
 	width: 71.42857%;
 }
@@ -696,7 +703,7 @@
 		margin-bottom: 15px;
 	}
 
-	@include adaptive(1024){
+	@include adaptive(991.98){
 		margin-bottom: 15px;
 		padding-right: 0;
 	}
