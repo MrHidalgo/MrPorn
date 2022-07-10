@@ -182,52 +182,52 @@
 				background: #0caa26;
 			}
 
-			&:before{
-				content: ' ';
-				display: inline-block;
-				width: 0;
-				height: 0;
-				border-style: solid;
-				border-width: 9px 6.5px 0;
-				border-color: #fff transparent transparent transparent;
+				&:before{
+					content: ' ';
+					display: inline-block;
+					width: 0;
+					height: 0;
+					border-style: solid;
+					border-width: 9px 6.5px 0;
+					border-color: #fff transparent transparent transparent;
+
+					@include respond('ipad_portrait'){
+						border-color: #fff transparent transparent transparent;
+					}
+
+					@include adaptive(767) {
+						border-color: #fff transparent transparent transparent;
+					}
+				}
+			}
+			.site_count {
+				color: #d1f34b;
 
 				@include respond('ipad_portrait'){
-					border-color: #fff transparent transparent transparent;
+					color: #fff;
+				}
+				@include adaptive(767) {
+					color: #fff;
+				}
+			}
+			.site_name {
+				color: #fff;
+				font-weight: 900;
+
+				@include respond('ipad_portrait'){
+					color: #fff;
 				}
 
 				@include adaptive(767) {
-					border-color: #fff transparent transparent transparent;
+					color: #fff;
 				}
 			}
 		}
-		.site_count {
-			color: #d1f34b;
-
-			@include respond('ipad_portrait'){
-				color: #fff;
-			}
-			@include adaptive(767) {
-				color: #fff;
-			}
-		}
-		.site_name {
-			color: #fff;
-			font-weight: 900;
-
-			@include respond('ipad_portrait'){
-				color: #fff;
-			}
-
-			@include adaptive(767) {
-				color: #fff;
-			}
-		}
-	}
-	.icons {
-		flex-grow: 0;
-		//display: flex;
-		margin: 0 0 0 5px;
-		height: 22px;
+		.icons {
+			flex-grow: 0;
+			display: flex;
+			margin: 0 0 0 5px;
+			height: 22px;
 
 		@include adaptive(1070) {
 			display: flex;
@@ -530,13 +530,20 @@
 
 .screen_shot_dummy{
 
-	margin: 0 auto 85px;
+	margin: 0 auto 140px;
 
 	@include respond('max-medium'){
 		width: 71.42857%;
 		margin-bottom: 0;
 	}
 }
+
+@include respond('large'){
+	.link-thumbs-holder{
+		display: none;
+	}
+}
+
 
 .link-thumbs-holder > .swiper-slide{
 	width: 71.42857%;
@@ -597,9 +604,9 @@
 		left: 0;
 		right: 0;
 		height: 100%;
-		//background-color: rgba(0,0,0,.8);
+		background-color: rgba(0,0,0,.8);
 		text-align: center;
-		//display: none;
+		display: none;
 
 		@include adaptive(767) {
 			display: block;
@@ -653,30 +660,38 @@
 		}
 	}
 
+}
+
+.review_screenshot .site_dead,
+.slider_inner .site_dead{
+	position: absolute;
+	top: 0;
+	left: 0;
+	right: 0;
+	height: 100%;
+	background-color:rgba(216,10,18,.8);
+	text-align:center;
+	padding: 25px 0;
+	display: flex;
+	justify-content: center;
+	flex-direction: column;
+	align-items: center;
+	display: none;
+
+	a:hover{text-decoration: none;}
+	.alternative_title{color: #fff; font-size: 40px;}
+	img{width: auto; max-width: 75%;}
+	.dead_site_hand{height: 120px;}
+	.mpg_head{height: 150px;}
+	.site_dead_bottom{display: flex; align-items: center; justify-content: center; margin-top: 50px;}
+	.site_dead_red{color: #e00911; font-size: 26px; }
+}
+.slide_item_inner{
+	position: relative;
 	.site_dead{
-		position: absolute;
-		top: 0;
-		left: 0;
-		right: 0;
-		height: 100%;
-		background-color:rgba(216,10,18,.8);
-		text-align:center;
-		padding: 25px 0;
 		display: flex;
-		justify-content: center;
-		flex-direction: column;
-		align-items: center;
-		display: none;
-
-		a:hover{text-decoration: none;}
-		.alternative_title{color: #fff; font-size: 40px;}
-		img{width: auto; max-width: 75%;}
-		.dead_site_hand{height: 120px;}
-		.mpg_head{height: 150px;}
-		.site_dead_bottom{display: flex; align-items: center; justify-content: center; margin-top: 50px;}
-		.site_dead_red{color: #e00911; font-size: 26px; }
+		z-index: 2;
 	}
-
 }
 
 .open_site_bar{
@@ -1407,20 +1422,20 @@
 	}
 }
 .new-ratingt[data-percent="2"]:BEFORE {
-	background-position: 0 -108px;
+	background-position: 0 -84px;
 	@include adaptive(767) {
 		background-position: 0 -90px;
 	}
 }
 .new-ratingt[data-percent="3"]:BEFORE {
-	background-position: 0 -72px;
+	background-position: 0 -56px;
 
 	@include adaptive(767) {
 		background-position: 0 -60px;
 	}
 }
 .new-ratingt[data-percent="4"]:BEFORE {
-	background-position: 0 -36px;
+	background-position: 0 -28px;
 	@include adaptive(767) {
 		background-position: 0 -30px;
 	}
