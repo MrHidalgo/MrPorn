@@ -15,12 +15,33 @@
 	}
 }
 
+&__mobile{
+	display: none;
+	@include adaptive(1023.98) {
+		display: flex;
+		align-items: center;
+		min-height: 80px;
+		padding: 5px 20px;
+	}
+
+	&-center{
+		flex: 1;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+
+		@include adaptive(1023) {
+			padding-bottom: 11px;
+		}
+	}
+}
 
 &__container {
 	&-1 {
 		background-color: #07113b;
 		@include adaptive(1023) {
-			display: none;
+			position: relative;
+			background-color: #303030fa;
 		}
 	}
 
@@ -30,8 +51,12 @@
 		@include adaptive(1023) {
 			display: flex;
 			align-items: center;
-			min-height: 80px;
-			padding: 5px 20px;
+
+			position: absolute;
+			left: 50%;
+			transform: translateX(-50%);
+			white-space: nowrap;
+			top: 54px;
 
 			&.is-open {
 
@@ -66,9 +91,51 @@
 			background-color: rgb(11, 13, 40);
 			box-shadow: 1.482px 16.935px 35px 0px rgba(31, 37, 103, 0.33);
 		}
-
 		@include adaptive(1023) {
-			display: none;
+				background-color: #303030fa;
+		}
+	}
+}
+&__top{
+	position: absolute;
+	top: 0;
+	width: 100%;
+
+	@include adaptive(1023) {
+		position: relative;
+	}
+}
+&__menu_section{
+
+	@include adaptive(1023) {
+		opacity: 0;
+		visibility: hidden;
+		transform: translateY(50px);
+
+		overflow: hidden;
+		overflow-y: auto;
+		position: fixed;
+		top: 80px;
+		left: 0;
+		display: block;
+		width: 100%;
+		height: calc(100% - 80px);
+		background-color: rgba(#080915, 0.975);
+		backface-visibility: hidden;
+		//@include transition(opacity, visibility, transform);
+
+		> div {
+			display: flex;
+			flex-direction: column;
+		}
+
+		&.is-open {
+			background: #303030fa;
+			z-index: 1600;
+			opacity: 1;
+			visibility: visible;
+			transform: translateY(0);
+			@include transition(opacity, visibility, transform);
 		}
 	}
 }

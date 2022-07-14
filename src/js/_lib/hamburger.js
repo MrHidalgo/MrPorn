@@ -8,7 +8,8 @@ const initHamburger = () => {
 
   const btnHamburger = document.querySelector("[hamburger-js]"),
     hideScrollContainer = document.querySelectorAll("html, body"),
-    mobileContainer = document.querySelector("[mobile-block-js]");
+    mobileContainer = document.querySelector("[mobile-block-js]"),
+		menuContainer = document.querySelector('.header__menu_section');
 
   const mobileMenuTop = document.querySelector(".pre-header__mobile-top");
 
@@ -16,12 +17,12 @@ const initHamburger = () => {
 		btnHamburger.addEventListener("click", (ev) => {
 			const elem = ev.currentTarget;
 
-			if(!mobileMenuTop){
-				renderMobileMenu();
-			}
+			// if(!mobileMenuTop){
+			// 	renderMobileMenu();
+			// }
 
 			elem.classList.toggle("is-active");
-			mobileContainer.classList.toggle("is-open");
+			menuContainer.classList.toggle("is-open");
 
 			hideScrollContainer.forEach((val, idx) => {
 				val.classList.toggle("is-hideScroll");

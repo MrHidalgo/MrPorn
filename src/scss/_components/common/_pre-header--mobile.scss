@@ -3,32 +3,7 @@
 	visibility: hidden;
 	transform: translateY(50px);
 	display: none;
-	@include adaptive(1023) {
-		overflow: hidden;
-		overflow-y: auto;
-		position: fixed;
-		top: 80px;
-		left: 0;
-		display: block;
-		width: 100%;
-		height: calc(100% - 80px);
-		background-color: rgba(#080915, 0.975);
-		backface-visibility: hidden;
-		//@include transition(opacity, visibility, transform);
 
-		> div {
-			display: flex;
-			flex-direction: column;
-		}
-
-		&.is-open {
-			z-index: 1600;
-			opacity: 1;
-			visibility: visible;
-			transform: translateY(0);
-			@include transition(opacity, visibility, transform);
-		}
-	}
 
 	&-top {
 		position: relative;
