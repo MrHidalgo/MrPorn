@@ -2467,12 +2467,16 @@ fieldset {
 }
 
 /* line 36, src/scss/_components/common/_header--toggle.scss */
-.header__toggle-left .icon-font.icon-moon, .header__toggle-right .icon-font.icon-moon {
+.header__toggle-left .icon-font.icon-sun, .header__toggle-right .icon-font.icon-sun {
   opacity: 0;
-  font-size: 9px;
 }
 
-/* line 43, src/scss/_components/common/_header--toggle.scss */
+/* line 39, src/scss/_components/common/_header--toggle.scss */
+.header__toggle-left .icon-font.icon-moon, .header__toggle-right .icon-font.icon-moon {
+  opacity: 1;
+}
+
+/* line 45, src/scss/_components/common/_header--toggle.scss */
 .header__toggle-left {
   left: 0;
   -webkit-box-pack: end;
@@ -2481,7 +2485,7 @@ fieldset {
           justify-content: flex-end;
 }
 
-/* line 48, src/scss/_components/common/_header--toggle.scss */
+/* line 50, src/scss/_components/common/_header--toggle.scss */
 .header__toggle-right {
   right: 0;
   -webkit-box-pack: start;
@@ -2490,7 +2494,7 @@ fieldset {
           justify-content: flex-start;
 }
 
-/* line 53, src/scss/_components/common/_header--toggle.scss */
+/* line 55, src/scss/_components/common/_header--toggle.scss */
 .header__toggle input {
   opacity: 0;
   visibility: hidden;
@@ -2499,38 +2503,28 @@ fieldset {
   left: 0;
   width: 0;
   height: 0;
+  /*&:checked {
+			& + label {
+				.icon-font {
+					@include transition(opacity);
+
+					&.icon-sun {
+						opacity: 0;
+					}
+					&.icon-moon {
+						opacity: 1;
+					}
+				}
+
+				span {
+					transform: translateX(-25px);
+					@include transition(transform);
+				}
+			}
+		}*/
 }
 
-/* line 64, src/scss/_components/common/_header--toggle.scss */
-.header__toggle input:checked + label .icon-font {
-  -webkit-transition: opacity 0.35s ease-in-out;
-  -o-transition: opacity 0.35s ease-in-out;
-  transition: opacity 0.35s ease-in-out;
-}
-
-/* line 67, src/scss/_components/common/_header--toggle.scss */
-.header__toggle input:checked + label .icon-font.icon-sun {
-  opacity: 0;
-}
-
-/* line 70, src/scss/_components/common/_header--toggle.scss */
-.header__toggle input:checked + label .icon-font.icon-moon {
-  opacity: 1;
-}
-
-/* line 75, src/scss/_components/common/_header--toggle.scss */
-.header__toggle input:checked + label span {
-  -webkit-transform: translateX(-25px);
-      -ms-transform: translateX(-25px);
-          transform: translateX(-25px);
-  -webkit-transition: -webkit-transform 0.35s ease-in-out;
-  transition: -webkit-transform 0.35s ease-in-out;
-  -o-transition: transform 0.35s ease-in-out;
-  transition: transform 0.35s ease-in-out;
-  transition: transform 0.35s ease-in-out, -webkit-transform 0.35s ease-in-out;
-}
-
-/* line 83, src/scss/_components/common/_header--toggle.scss */
+/* line 85, src/scss/_components/common/_header--toggle.scss */
 .header__toggle label {
   z-index: 2;
   cursor: pointer;
@@ -2545,7 +2539,7 @@ fieldset {
   height: 100%;
 }
 
-/* line 94, src/scss/_components/common/_header--toggle.scss */
+/* line 96, src/scss/_components/common/_header--toggle.scss */
 .header__toggle span {
   position: absolute;
   top: 2px;
@@ -2560,6 +2554,9 @@ fieldset {
   -webkit-transform-origin: center;
       -ms-transform-origin: center;
           transform-origin: center;
+  -webkit-transform: translateX(-25px);
+      -ms-transform: translateX(-25px);
+          transform: translateX(-25px);
   -webkit-transition: -webkit-transform 0.35s ease-in-out;
   transition: -webkit-transform 0.35s ease-in-out;
   -o-transition: transform 0.35s ease-in-out;
@@ -3035,36 +3032,65 @@ fieldset {
 }
 
 /* line 60, src/scss/_components/common/_header.scss */
+.light .header__toggle label .icon-font {
+  -webkit-transition: opacity 0.35s ease-in-out;
+  -o-transition: opacity 0.35s ease-in-out;
+  transition: opacity 0.35s ease-in-out;
+}
+
+/* line 63, src/scss/_components/common/_header.scss */
+.light .header__toggle label .icon-font.icon-sun {
+  opacity: 1;
+}
+
+/* line 66, src/scss/_components/common/_header.scss */
+.light .header__toggle label .icon-font.icon-moon {
+  opacity: 0;
+}
+
+/* line 71, src/scss/_components/common/_header.scss */
+.light .header__toggle label span {
+  -webkit-transform: translateX(0);
+      -ms-transform: translateX(0);
+          transform: translateX(0);
+  -webkit-transition: -webkit-transform 0.35s ease-in-out;
+  transition: -webkit-transform 0.35s ease-in-out;
+  -o-transition: transform 0.35s ease-in-out;
+  transition: transform 0.35s ease-in-out;
+  transition: transform 0.35s ease-in-out, -webkit-transform 0.35s ease-in-out;
+}
+
+/* line 80, src/scss/_components/common/_header.scss */
 .is_logged .header__view-wrapper {
   display: block;
 }
 
 @media screen and (max-width: 1023px) {
-  /* line 60, src/scss/_components/common/_header.scss */
+  /* line 80, src/scss/_components/common/_header.scss */
   .is_logged .header__view-wrapper {
     display: none;
   }
 }
 
-/* line 67, src/scss/_components/common/_header.scss */
+/* line 87, src/scss/_components/common/_header.scss */
 .is_logged .header__view-text {
   display: none;
 }
 
-/* line 72, src/scss/_components/common/_header.scss */
+/* line 92, src/scss/_components/common/_header.scss */
 [data-label-lg]::after {
   content: attr(data-label-lg);
 }
 
 @media screen and (max-width: 767px) {
   /* line 189, src/scss/_shared/_main-setting-reset.scss */
-  /* line 78, src/scss/_components/common/_header.scss */
+  /* line 98, src/scss/_components/common/_header.scss */
   [data-label-xs]::after {
     content: attr(data-label-xs);
   }
 }
 
-/* line 87, src/scss/_components/common/_header.scss */
+/* line 107, src/scss/_components/common/_header.scss */
 .has_search .header__recent {
   display: none;
 }

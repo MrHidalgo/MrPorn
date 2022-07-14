@@ -18,6 +18,7 @@ const initHamburger = () => {
 
 			if(!mobileMenuTop){
 				renderMobileMenu();
+				initMobileThemeToggle()
 			}
 
 			elem.classList.toggle("is-active");
@@ -26,6 +27,8 @@ const initHamburger = () => {
 			hideScrollContainer.forEach((val, idx) => {
 				val.classList.toggle("is-hideScroll");
 			});
+
+			// initMobileThemeToggle();
 
 
 			if(document.body.classList.contains('is-hideScroll')){
@@ -195,7 +198,6 @@ const renderMobileMenu = () => {
 	mobileContainer.innerHTML = mobileNavHtml;
 
 	initFavDelete();
-	initMobileThemeToggle()
 
 	if(typeof initLoggedUser === "function"){
 		if(window.innerWidth>1024){

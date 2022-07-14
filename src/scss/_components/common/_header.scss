@@ -54,6 +54,26 @@
 			border-bottom: 1px solid #4a4a4a;
 		}
 	}
+
+	.header__toggle {
+		label{
+			.icon-font {
+				@include transition(opacity);
+
+				&.icon-sun {
+					opacity: 1;
+				}
+				&.icon-moon {
+					opacity: 0;
+				}
+			}
+
+			span {
+				transform: translateX(0);
+				@include transition(transform);
+			}
+		}
+	}
 }
 
 .is_logged{

@@ -5,12 +5,13 @@ let logoutUrl='';
 let sortTimout;
 let favouriteList = [];
 let isDark = '1';
+let toggleSwitch = document.querySelector('#toggle-mode');
 
 const initTheme = () => {
-	let toggleSwitch = document.querySelector('#toggle-mode');
+
 	if(toggleSwitch){
 		toggleSwitch.addEventListener('change', (event) => {
-			if (event.target.checked) {
+			if (document.documentElement.classList.contains('light')) {
 				createCookie("is_dark", "1", 7);
 				document.documentElement.classList.remove('light');
 			} else {
@@ -35,10 +36,10 @@ const initTheme = () => {
 }
 
 const initMobileThemeToggle = ()=>{
-	let toggleSwitch = document.querySelector('#toggle-mode-mobile');
-	if(toggleSwitch){
-		toggleSwitch.addEventListener('change', (event) => {
-			if (event.target.checked) {
+	let toggleMobileSwitch = document.querySelector('#toggle-mode-mobile');
+	if(toggleMobileSwitch){
+		toggleMobileSwitch.addEventListener('change', (event) => {
+			if (document.documentElement.classList.contains('light')) {
 				createCookie("is_dark", "1", 7);
 				document.documentElement.classList.remove('light');
 			} else {
@@ -46,16 +47,16 @@ const initMobileThemeToggle = ()=>{
 				document.documentElement.classList.add('light');
 			}
 		})
-	}
 
-	// isDark = getCookieMpgCookie("is_dark");
-	// if(isDark==''){
-	// 	isDark = '1';
-	// }
-	if(isDark=='1'){
-		toggleSwitch.checked = true;
-	}else{
-		toggleSwitch.checked = false;
+		console.log('current theme'+isDark);
+
+		if(isDark=='1'){
+			toggleMobileSwitch.checked = true;
+			toggleSwitch.checked = true;
+		}else{
+			toggleMobileSwitch.checked = false;
+			toggleSwitch.checked = false;
+		}
 	}
 }
 

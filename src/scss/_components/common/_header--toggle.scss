@@ -33,9 +33,11 @@
 			font-size: 12px;
 			@include transition(opacity);
 
-			&.icon-moon {
+			&.icon-sun {
 				opacity: 0;
-				font-size: 9px;
+			}
+			&.icon-moon {
+				opacity: 1;
 			}
 		}
 	}
@@ -59,7 +61,7 @@
 		width: 0;
 		height: 0;
 
-		&:checked {
+		/*&:checked {
 			& + label {
 				.icon-font {
 					@include transition(opacity);
@@ -77,7 +79,7 @@
 					@include transition(transform);
 				}
 			}
-		}
+		}*/
 	}
 
 	label {
@@ -101,6 +103,7 @@
 		height: 14px;
 		backface-visibility: hidden;
 		transform-origin: center;
+		transform: translateX(-25px);
 		@include transition(transform);
 	}
 }
