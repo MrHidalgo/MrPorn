@@ -185,7 +185,7 @@ $paddingRight: $paddingLeft;
 			-webkit-column-gap: 8px;
 			column-gap: 0;
 			grid-template-rows: initial;
-			grid-template-columns: repeat(4, 1fr);
+			grid-template-columns: repeat(4, minmax(0, 1fr));
 			grid-template-areas: initial;
 			grid-auto-flow: row dense;
 			grid-auto-rows: 1px;
