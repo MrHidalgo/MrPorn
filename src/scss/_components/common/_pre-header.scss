@@ -65,4 +65,32 @@
 	@import "pre-header--sign";
 }
 
+
+.header__nav-link{
+	&-lg{
+		@include adaptive(1023) {
+			display: none !important;
+		}
+	}
+	&-xs{
+		@include respond('desktop'){
+			display: none !important;
+		}
+
+		@include adaptive(1023) {
+			display: block;
+		}
+	}
+
+	&-xsf{
+		@include respond('desktop'){
+			display: none !important;
+		}
+
+		@include adaptive(1023) {
+			display: flex;
+		}
+	}
+}
+
 // SECTION :: END

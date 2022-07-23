@@ -6,6 +6,13 @@
 			display: block;
 		}
 	}
+
+	&-3{
+		@include adaptive(1023) {
+			display: block;
+			width: 100%;
+		}
+	}
 }
 
 @include adaptive(1023) {
@@ -31,7 +38,9 @@
 		justify-content: center;
 
 		@include adaptive(1023) {
-			padding-bottom: 11px;
+			&.has_caption{
+				padding-bottom: 11px;
+			}
 		}
 	}
 }
@@ -41,7 +50,7 @@
 		background-color: #07113b;
 		@include adaptive(1023) {
 			position: relative;
-			background-color: #303030fa;
+			background-color: transparent;
 		}
 	}
 
@@ -53,10 +62,13 @@
 			align-items: center;
 
 			position: absolute;
-			left: 50%;
-			transform: translateX(-50%);
+			//left: 50%;
+			//transform: translateX(-50%);
+			left: 50px;
+			right: 50px;
 			white-space: nowrap;
 			top: 54px;
+			background: transparent;
 
 			&.is-open {
 
@@ -130,7 +142,7 @@
 		}
 
 		&.is-open {
-			background: #303030fa;
+
 			z-index: 1600;
 			opacity: 1;
 			visibility: visible;

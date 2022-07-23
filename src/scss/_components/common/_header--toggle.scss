@@ -12,15 +12,11 @@
 	border-radius: 2em;
 	background-color: #030b2e;
 
-	@include respond('max-small'){
+	@include adaptive(1023) {
 		position: absolute;
 		left: 50%;
 		margin-left: -22.5px;
 		bottom: 15px;
-	}
-
-	@include adaptive(1023) {
-
 	}
 
 	&-left,
