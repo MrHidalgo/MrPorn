@@ -24,11 +24,6 @@
 	}
 
 	@include adaptive(767) {
-		//position: absolute;
-		//top: 44px;
-		//width: 100%;
-		//bottom: 0;
-		//height: calc(var(--wih) - 104px);
 		background: #000;
 		flex: 1;
 	}
@@ -324,7 +319,7 @@
 	text-align: center;
 	padding: 10px 0;
 
-	@include adaptive(1023) {
+	@include respond('max-small'){
 		padding: 0;
 	}
 
