@@ -18,8 +18,27 @@ function setWithExpiry(key, value, ttl) {
 		value: value,
 		expiry: now.getTime() + ttl,
 	}
-	localStorage.setItem(key, JSON.stringify(item))
+
+	try {
+		localStorage.setItem(key, JSON.stringify(item))
+	} catch (e) {
+		console.log(e);
+		clearOldLocalData();
+		// if (e == QUOTA_EXCEEDED_ERR) {
+		// 	console.log('storage exceeded');
+		// 	clearOldLocalData();
+		// }
+	}
 }
+
+function clearOldLocalData(){
+	for (let key in localStorage){
+		if(key.indexOf('cat_') > -1 || key.indexOf('site_') > -1){
+			localStorage.removeItem(key);
+		}
+	}
+}
+
 function getWithExpiry(key) {
 	const itemStr = localStorage.getItem(key)
 	// if the item doesn't exist, return null

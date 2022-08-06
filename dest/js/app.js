@@ -18,7 +18,24 @@ function setWithExpiry(key, value, ttl) {
     value: value,
     expiry: now.getTime() + ttl
   };
-  localStorage.setItem(key, JSON.stringify(item));
+
+  try {
+    localStorage.setItem(key, JSON.stringify(item));
+  } catch (e) {
+    console.log(e);
+    clearOldLocalData(); // if (e == QUOTA_EXCEEDED_ERR) {
+    // 	console.log('storage exceeded');
+    // 	clearOldLocalData();
+    // }
+  }
+}
+
+function clearOldLocalData() {
+  for (var key in localStorage) {
+    if (key.indexOf('cat_') > -1 || key.indexOf('site_') > -1) {
+      localStorage.removeItem(key);
+    }
+  }
 }
 
 function getWithExpiry(key) {
@@ -527,13 +544,12 @@ var logoutUrl = '';
 var sortTimout;
 var favouriteList = [];
 var isDark = '1';
+var toggleSwitch = document.querySelector('#toggle-mode');
 
 var initTheme = function initTheme() {
-  var toggleSwitch = document.querySelector('#toggle-mode');
-
   if (toggleSwitch) {
     toggleSwitch.addEventListener('change', function (event) {
-      if (event.target.checked) {
+      if (document.documentElement.classList.contains('light')) {
         createCookie("is_dark", "1", 7);
         document.documentElement.classList.remove('light');
       } else {
@@ -561,11 +577,11 @@ var initTheme = function initTheme() {
 };
 
 var initMobileThemeToggle = function initMobileThemeToggle() {
-  var toggleSwitch = document.querySelector('#toggle-mode-mobile');
+  var toggleMobileSwitch = document.querySelector('#toggle-mode-mobile');
 
-  if (toggleSwitch) {
-    toggleSwitch.addEventListener('change', function (event) {
-      if (event.target.checked) {
+  if (toggleMobileSwitch) {
+    toggleMobileSwitch.addEventListener('change', function (event) {
+      if (document.documentElement.classList.contains('light')) {
         createCookie("is_dark", "1", 7);
         document.documentElement.classList.remove('light');
       } else {
@@ -573,16 +589,15 @@ var initMobileThemeToggle = function initMobileThemeToggle() {
         document.documentElement.classList.add('light');
       }
     });
-  } // isDark = getCookieMpgCookie("is_dark");
-  // if(isDark==''){
-  // 	isDark = '1';
-  // }
+    console.log('current theme' + isDark);
 
-
-  if (isDark == '1') {
-    toggleSwitch.checked = true;
-  } else {
-    toggleSwitch.checked = false;
+    if (isDark == '1') {
+      toggleMobileSwitch.checked = true;
+      toggleSwitch.checked = true;
+    } else {
+      toggleMobileSwitch.checked = false;
+      toggleSwitch.checked = false;
+    }
   }
 };
 
@@ -795,7 +810,7 @@ var renderSorting = function renderSorting() {
       /*if(sortTimout){
       	clearTimeout(sortTimout);
       }
-      		sortTimout = setTimeout(function (){
+      	sortTimout = setTimeout(function (){
       	onSortLetterClick(_ev.target);
       }, 1000);*/
     });
@@ -921,12 +936,12 @@ var loadLoginForm = function loadLoginForm() {
       /*postTextRequest(ajaxAdminEndpoint, {
       	action:'get_login_form'
       }, function (result) {
-      			let loginHtml = '<a class="login_popup_close"><img src="'+themeBase+'images/btn_close.png"/></a>'+result;
-      			var e = document.createElement('div');
+      		let loginHtml = '<a class="login_popup_close"><img src="'+themeBase+'images/btn_close.png"/></a>'+result;
+      		var e = document.createElement('div');
       	e.setAttribute('id', 'login_popup');
       	e.innerHTML = loginHtml;
-      			document.body.appendChild(e);
-      			renderLoginForm();
+      		document.body.appendChild(e);
+      		renderLoginForm();
       });*/
 
       var loginHtml = '<a class="login_popup_close"><img src="' + themeBase + 'images/btn_close.png"/></a>' + htmlLogin;
