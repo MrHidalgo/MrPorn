@@ -843,7 +843,7 @@ var renderSorting = function renderSorting() {
       /*if(sortTimout){
       	clearTimeout(sortTimout);
       }
-      		sortTimout = setTimeout(function (){
+      	sortTimout = setTimeout(function (){
       	onSortLetterClick(_ev.target);
       }, 1000);*/
     });
@@ -969,12 +969,12 @@ var loadLoginForm = function loadLoginForm() {
       /*postTextRequest(ajaxAdminEndpoint, {
       	action:'get_login_form'
       }, function (result) {
-      			let loginHtml = '<a class="login_popup_close"><img src="'+themeBase+'images/btn_close.png"/></a>'+result;
-      			var e = document.createElement('div');
+      		let loginHtml = '<a class="login_popup_close"><img src="'+themeBase+'images/btn_close.png"/></a>'+result;
+      		var e = document.createElement('div');
       	e.setAttribute('id', 'login_popup');
       	e.innerHTML = loginHtml;
-      			document.body.appendChild(e);
-      			renderLoginForm();
+      		document.body.appendChild(e);
+      		renderLoginForm();
       });*/
 
       var loginHtml = '<a class="login_popup_close"><img src="' + themeBase + 'images/btn_close.png"/></a>' + htmlLogin;

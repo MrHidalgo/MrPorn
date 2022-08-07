@@ -1012,6 +1012,33 @@ strong {
 
 /* line 168, src/scss/_shared/_grid.scss */
 .page-id-17 .c-grid {
+  /*&--inner{
+			position: relative;
+			flex-wrap: wrap;
+			margin: 0 -7px;
+
+			display: grid;
+			grid-row-gap: 9px;
+			row-gap: 9px;
+			-webkit-column-gap: 8px;
+			column-gap: 0;
+			grid-template-rows: initial;
+			grid-template-columns: repeat(4, minmax(0, 1fr));
+			grid-template-areas: initial;
+			grid-auto-flow: row dense;
+			grid-auto-rows: 1px;
+			grid-auto-columns: initial;
+
+
+			@include adaptive(1023.98){
+				margin: 0;
+				grid-template-columns: repeat(2, 1fr);
+			}
+			@include respond('max-small'){
+				margin: 0;
+				grid-template-columns: repeat(1, 1fr);
+			}
+		}*/
   /*@media screen and (min-width: 1450px) {
 			max-width: 75%;
 		}*/
@@ -1026,43 +1053,6 @@ strong {
   /* line 169, src/scss/_shared/_grid.scss */
   .page-id-17 .c-grid.list {
     padding: 15px 20px 25px;
-  }
-}
-
-/* line 177, src/scss/_shared/_grid.scss */
-.page-id-17 .c-grid--inner {
-  position: relative;
-  -webkit-flex-wrap: wrap;
-      -ms-flex-wrap: wrap;
-          flex-wrap: wrap;
-  margin: 0 -7px;
-  display: grid;
-  grid-row-gap: 9px;
-  row-gap: 9px;
-  -webkit-column-gap: 8px;
-  -moz-column-gap: 0;
-       column-gap: 0;
-  grid-template-rows: initial;
-  grid-template-columns: repeat(4, minmax(0, 1fr));
-  grid-template-areas: initial;
-  grid-auto-flow: row dense;
-  grid-auto-rows: 1px;
-  grid-auto-columns: initial;
-}
-
-@media screen and (max-width: 1023.98px) {
-  /* line 177, src/scss/_shared/_grid.scss */
-  .page-id-17 .c-grid--inner {
-    margin: 0;
-    grid-template-columns: repeat(2, 1fr);
-  }
-}
-
-@media screen and (max-width: 767px) {
-  /* line 177, src/scss/_shared/_grid.scss */
-  .page-id-17 .c-grid--inner {
-    margin: 0;
-    grid-template-columns: repeat(1, 1fr);
   }
 }
 
