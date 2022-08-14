@@ -6,13 +6,18 @@
 	flex-direction: column;
 	background-color: #07113b;
 
-	//@import "header--wrapper";
+
 	@import "header--conatainer";
 
+	@media screen and (min-width: 768px) {
+		@import "header--wrapper";
+		@import "header--action";
+		@import "header--category";
+	}
+
 	@import "header--toggle";
-	//@import "header--action";
-	//@import "header--category";
-	//@import "header--view";
+
+	@import "header--view";
 	@import "header--nav";
 	@import "header--recent";
 	@import "header--update";
@@ -109,3 +114,14 @@
 	}
 }
 // HEADER :: END
+
+
+@import "../misc/misc";
+@import "../misc/sort";
+@import "../misc/header";
+@import "../misc/search";
+@import "../common/login";
+
+@import "../../_generated/spritePNG";
+@import "../../_generated/spriteFont";
+@import "../../_components/common/footer";
