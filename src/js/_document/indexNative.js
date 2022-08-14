@@ -869,7 +869,6 @@ let lastMobileSimilarSite;
 	 * @description Init all method
 	 */
 	const initNative = () => {
-		console.log('initNative');
 		wInnerWidth = window.innerWidth;
 
 		// default
@@ -958,7 +957,6 @@ let lastMobileSimilarSite;
 			if (window.visualViewport) {
 				window.visualViewport.addEventListener("resize", () => {
 					setInnerHeight();
-					console.log("visualViewport RESIZE IS TRIGGERED");
 				});
 			}
 

@@ -86,7 +86,7 @@ const initHamburger = () => {
 			setInnerHeight();
 			isSearchActive = false;
 			// enableScroll()
-			// bodyScrollLock.enableBodyScroll(searchViewContainer);
+			bodyScrollLock.enableBodyScroll(searchViewContainer);
 
 			document.body.classList.remove('has_search');
 

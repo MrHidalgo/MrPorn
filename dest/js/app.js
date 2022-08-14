@@ -492,8 +492,8 @@ var initHamburger = function initHamburger() {
       console.log('closing hamburger');
       setInnerHeight();
       isSearchActive = false; // enableScroll()
-      // bodyScrollLock.enableBodyScroll(searchViewContainer);
 
+      bodyScrollLock.enableBodyScroll(searchViewContainer);
       document.body.classList.remove('has_search');
       var searchPagination = document.querySelector('.search_pagination');
 
@@ -597,8 +597,6 @@ var initTheme = function initTheme() {
   if (isDark == '') {
     isDark = '0';
   }
-
-  console.log('dark_' + isDark + '--');
 
   if (isDark == '1') {
     document.documentElement.classList.remove('light');
@@ -1981,7 +1979,6 @@ var lastMobileSimilarSite;
 
 
   var initNative = function initNative() {
-    console.log('initNative');
     wInnerWidth = window.innerWidth; // default
 
     initPreventBehavior(); // ==========================================
@@ -2043,7 +2040,6 @@ var lastMobileSimilarSite;
       if (window.visualViewport) {
         window.visualViewport.addEventListener("resize", function () {
           setInnerHeight();
-          console.log("visualViewport RESIZE IS TRIGGERED");
         });
       }
     });
