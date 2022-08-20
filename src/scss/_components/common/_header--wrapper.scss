@@ -5,6 +5,10 @@
 		align-items: center;
 		min-height: 40px;
 
+		@include adaptive(1023) {
+			display: none;
+		}
+
 		@include respond('desktop'){
 			.header__col {
 				&-1 {
@@ -58,6 +62,10 @@
 			&-1 {
 				width: 100%;
 				max-width: 410px;
+
+				@include adaptive(1023) {
+					max-width: 100%;
+				}
 
 				@include respond('ipad_portrait'){
 					max-width: 100%;

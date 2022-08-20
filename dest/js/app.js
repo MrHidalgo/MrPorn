@@ -774,8 +774,7 @@ var letterSearch = function letterSearch() {
       });
       renderSorting();
       setWithExpiry("letter_data_" + dataTime, letterData, 30 * 60 * 1000);
-    })["catch"](function (err) {
-      throw err;
+    })["catch"](function (err) {// console.log('didnt load letter matrix');
     });
   }
 };
@@ -793,8 +792,7 @@ var loadTranslations = function loadTranslations() {
     }).then(function (result) {
       translations = result;
       setWithExpiry("i18n_" + dataTime, translations, 60 * 60 * 1000);
-    })["catch"](function (err) {
-      throw err;
+    })["catch"](function (err) {// console.log('didnt load translations');
     });
   }
 };
@@ -1239,8 +1237,7 @@ function initWebWorker() {
 
   if (document.body.classList.contains('home')) {} else if (document.body.classList.contains('single-sites')) {
     var event = new Event('loadCategoryData');
-    window.dispatchEvent(event);
-    console.log('emiting category load event');
+    window.dispatchEvent(event); // console.log('emiting category load event');
   }
 }
 
@@ -1262,8 +1259,7 @@ var loadHomeData = function loadHomeData() {
       if (homeData.code == 'rest_login_required') {} else {
         setWithExpiry("homepage_data_" + dataTime + '_' + currentLang, homeData, 30 * 60 * 1000);
       }
-    })["catch"](function (err) {
-      throw err;
+    })["catch"](function (err) {// console.log('didnt load home data');
     });
   }
 };

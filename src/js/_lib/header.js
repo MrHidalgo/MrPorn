@@ -220,7 +220,9 @@ const letterSearch = () => {
 
 				setWithExpiry("letter_data_"+dataTime, letterData, 30*60*1000);
 			})
-			.catch(err => { throw err });
+			.catch(err => {
+				// console.log('didnt load letter matrix');
+			});
 	}
 }
 
@@ -237,7 +239,9 @@ const loadTranslations = () => {
 
 				setWithExpiry("i18n_"+dataTime, translations, 60*60*1000);
 			})
-			.catch(err => { throw err });
+			.catch(err => {
+				// console.log('didnt load translations');
+			});
 	}
 }
 

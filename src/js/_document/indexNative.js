@@ -66,7 +66,7 @@ function initWebWorker(){
 	}else if(document.body.classList.contains('single-sites')){
 		const event = new Event('loadCategoryData');
 		window.dispatchEvent(event);
-		console.log('emiting category load event');
+		// console.log('emiting category load event');
 	}
 }
 
@@ -94,7 +94,9 @@ const loadHomeData = () => {
 				}
 
 			})
-			.catch(err => { throw err });
+			.catch(err => {
+				// console.log('didnt load home data');
+			});
 	}
 }
 

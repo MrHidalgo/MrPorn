@@ -302,8 +302,6 @@
 			position: relative;
 			overflow: hidden;
 
-
-
 			&:hover{
 				.category_sites_item_overlay{
 					display: flex;
@@ -378,10 +376,6 @@
 			}
 		}
 
-
-
-
-
 		&_title{
 			position: absolute;
 			z-index: 2;
@@ -425,8 +419,6 @@
 					font-size: 12px;
 				}
 			}
-
-
 
 			h2{
 				color: #fff;
@@ -521,6 +513,12 @@
 	}
 }
 
+.category_sites_item_content:hover{
+	.category_sites_item_title{
+		z-index: 4;
+	}
+}
+
 .deadsite{
 	&-drop{
 		position: absolute;
@@ -537,6 +535,9 @@
 		display: inline-block;
 		transition: opacity .2s ease, visibility .2s ease;
 
+		&.dead{
+			background: rgba(216,10,18,.8);
+		}
 
 		.icon-holder {
 			display: inline-block;
@@ -609,6 +610,10 @@
 	&-drop.dead-review{
 		background: rgba(216,10,18,.8);
 
+		&.unlisted{
+			background: rgba(0, 0, 0,.8);
+		}
+
 		.icon-holder{
 			background-size: 350px;
 
@@ -625,6 +630,9 @@
 		}
 		.item-link{
 			bottom: 25px;
+			right: auto;
+			top: auto;
+			flex-direction: revert;
 
 			.text{
 				font-size: 20px;

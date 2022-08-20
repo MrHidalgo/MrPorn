@@ -605,7 +605,7 @@
 		}
 	}
 
-	&:not(.is_dead):hover {
+	&:not(.is_dead):not(.is_unlisted):hover {
 		.review_screenshot_hover{
 			display: block;
 
@@ -1032,7 +1032,12 @@
 		margin-bottom: 6px;
 
 		@include adaptive(767) {
-			margin-bottom: 10px;
+			margin: 0 0 10px;
+			overflow: hidden;
+
+			&.not_en{
+				font-size: 18px;
+			}
 		}
 	}
 }
@@ -1086,6 +1091,7 @@
 	width:180px;height: 36px;background: url(/wp-content/themes/mpg/images/ratings.png) 0 -144px no-repeat;position: absolute;content: '';left: 0;top: 0;
 
 	@include adaptive(767) {
+		width: 150px;
 		height: 30px;
 		background-position: 0 -30px;
 		background-size: auto 500%;
@@ -1408,6 +1414,7 @@
 	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#59c404',endColorstr='#367602',GradientType=0 );
 	-webkit-backface-visibility: hidden;
 	backface-visibility: hidden;
+	padding-left: 15px;
 	display: none;
 
 	@include adaptive(767){
@@ -1428,9 +1435,8 @@
 		display: block;
 		padding-right: 70px;
 		text-overflow: ellipsis;
-		display: -webkit-box;
-		-webkit-line-clamp: 1;
-		-webkit-box-orient: vertical;
+		overflow: hidden;
+		white-space: nowrap;
 		line-height: 70px;
 
 		@include adaptive(767) {

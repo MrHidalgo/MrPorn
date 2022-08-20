@@ -2,7 +2,11 @@
 .related_sites_container{
 	background: #3b3b3b;
 	padding-bottom: 25px;
-	margin-bottom: 20px;
+
+
+	@include adaptive(767) {
+		margin-bottom: 0;
+	}
 }
 .similar_sites{
 	display: flex;
@@ -100,6 +104,8 @@
 		}
 	}
 }
+
+.bottom_back{padding: 0 15px;}
 
 .light{
 	.related_sites_container{
