@@ -63,7 +63,11 @@
 
 		> div {
 			display: flex;
+			margin-right: 6px;
+
 			@include adaptive(1023) {
+				margin-right: 0;
+
 				&:nth-of-type(1) {
 					width: 40px;
 				}
@@ -80,6 +84,8 @@
 			mix-blend-mode: screen;
 			@include adaptive(1023) {
 				transform: scale(1.2);
+				width: 40px;
+				margin-right: 0;
 			}
 
 			&.icon-category:before{
@@ -107,6 +113,7 @@
 				font-size: 20px;
 			}
 		}
+
 	}
 
 	&-separator {
@@ -119,6 +126,37 @@
 		background-color: #161e3e;
 		@include adaptive(1023) {
 			display: none;
+		}
+	}
+
+	.icon-nav{
+
+		&-videos{
+			width: 21px; height: 16px;
+			@include adaptive(1023) {
+				width: 22px;
+				height: auto;
+			}
+		}
+		&-porndeals{
+			width: 20px; height: auto;
+
+			@include adaptive(1023) {
+				width: 22px;
+			}
+		}
+
+		&-blog{
+			height: 18px;
+			@include adaptive(1023) {
+				height: auto;
+			}
+		}
+		&-sex{
+			width: 27px;
+			@include adaptive(1023) {
+				width: auto;
+			}
 		}
 	}
 }

@@ -1,6 +1,10 @@
 &__heading {
-	display: flex;
-	align-items: center;
+	display: none;
+
+	@include adaptive(1023) {
+		display: flex;
+		align-items: center;
+	}
 
 	i {
 		position: relative;

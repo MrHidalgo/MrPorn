@@ -12,10 +12,10 @@
 	border-radius: 2em;
 	background-color: #030b2e;
 
-	@include respond('max-small'){
+	@include adaptive(1023) {
 		position: absolute;
-		left: 50%;
-		margin-left: -22.5px;
+		left: 20px;
+		bottom: 15px;
 	}
 
 	&-left,
@@ -33,11 +33,9 @@
 			font-size: 12px;
 			@include transition(opacity);
 
-			&.icon-sun {
-				opacity: 0;
-			}
 			&.icon-moon {
-				opacity: 1;
+				opacity: 0;
+				font-size: 9px;
 			}
 		}
 	}
@@ -61,7 +59,7 @@
 		width: 0;
 		height: 0;
 
-		/*&:checked {
+		&:checked {
 			& + label {
 				.icon-font {
 					@include transition(opacity);
@@ -79,7 +77,7 @@
 					@include transition(transform);
 				}
 			}
-		}*/
+		}
 	}
 
 	label {
@@ -103,7 +101,6 @@
 		height: 14px;
 		backface-visibility: hidden;
 		transform-origin: center;
-		transform: translateX(-25px);
 		@include transition(transform);
 	}
 }
