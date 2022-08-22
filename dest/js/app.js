@@ -428,16 +428,16 @@ function postTextRequest() {
 var initHamburger = function initHamburger() {
   var btnHamburger = document.querySelector("[hamburger-js]"),
       hideScrollContainer = document.querySelectorAll("html, body"),
-      mobileContainer = document.querySelector("[mobile-block-js]");
+      //mobileContainer = document.querySelector("[mobile-block-js]");
+  mobileContainer = document.querySelector(".header__bottom");
   var mobileMenuTop = document.querySelector(".pre-header__mobile-top");
 
   if (btnHamburger) {
     btnHamburger.addEventListener("click", function (ev) {
       var elem = ev.currentTarget;
 
-      if (!mobileMenuTop) {
-        renderMobileMenu();
-        initMobileThemeToggle();
+      if (!mobileMenuTop) {// renderMobileMenu();
+        // initMobileThemeToggle()
       }
 
       elem.classList.toggle("is-active");
@@ -839,7 +839,7 @@ var renderSorting = function renderSorting() {
       /*if(sortTimout){
       	clearTimeout(sortTimout);
       }
-      	sortTimout = setTimeout(function (){
+      		sortTimout = setTimeout(function (){
       	onSortLetterClick(_ev.target);
       }, 1000);*/
     });
@@ -965,12 +965,12 @@ var loadLoginForm = function loadLoginForm() {
       /*postTextRequest(ajaxAdminEndpoint, {
       	action:'get_login_form'
       }, function (result) {
-      		let loginHtml = '<a class="login_popup_close"><img src="'+themeBase+'images/btn_close.png"/></a>'+result;
-      		var e = document.createElement('div');
+      			let loginHtml = '<a class="login_popup_close"><img src="'+themeBase+'images/btn_close.png"/></a>'+result;
+      			var e = document.createElement('div');
       	e.setAttribute('id', 'login_popup');
       	e.innerHTML = loginHtml;
-      		document.body.appendChild(e);
-      		renderLoginForm();
+      			document.body.appendChild(e);
+      			renderLoginForm();
       });*/
 
       var loginHtml = '<a class="login_popup_close"><img src="' + themeBase + 'images/btn_close.png"/></a>' + htmlLogin;

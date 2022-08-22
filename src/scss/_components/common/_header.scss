@@ -6,14 +6,20 @@
 	flex-direction: column;
 	background-color: #07113b;
 
+	padding-top: 40px;
+
+	@include adaptive(1023.98) {
+		padding-top: 0;
+	}
+
 
 	@import "header--conatainer";
 
-	@media screen and (min-width: 768px) {
+	//@media screen and (min-width: 768px) {
 		@import "header--wrapper";
 		@import "header--action";
 		@import "header--category";
-	}
+	//}
 
 	@import "header--toggle";
 

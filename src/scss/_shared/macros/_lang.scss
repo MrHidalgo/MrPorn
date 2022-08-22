@@ -1,6 +1,18 @@
 .lang {
 	position: relative;
 
+	&__outer{
+		@include adaptive(1023) {
+			display: flex;
+			justify-content: end;
+			padding: 0 20px;
+			height: 40px;
+			align-items: center;
+		}
+	}
+
+
+
 	&:hover {
 		.lang {
 			&__toggle {

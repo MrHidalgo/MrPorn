@@ -8,7 +8,8 @@ const initHamburger = () => {
 
   const btnHamburger = document.querySelector("[hamburger-js]"),
     hideScrollContainer = document.querySelectorAll("html, body"),
-    mobileContainer = document.querySelector("[mobile-block-js]");
+    //mobileContainer = document.querySelector("[mobile-block-js]");
+		mobileContainer = document.querySelector(".header__bottom");
 
   const mobileMenuTop = document.querySelector(".pre-header__mobile-top");
 
@@ -17,8 +18,8 @@ const initHamburger = () => {
 			const elem = ev.currentTarget;
 
 			if(!mobileMenuTop){
-				renderMobileMenu();
-				initMobileThemeToggle()
+				// renderMobileMenu();
+				// initMobileThemeToggle()
 			}
 
 			elem.classList.toggle("is-active");

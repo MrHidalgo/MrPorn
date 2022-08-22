@@ -1,13 +1,52 @@
+&__row{
+	&-1{
+		position: absolute;
+		left: 0;
+		top: 0;
+		width: 100%;
+
+		@include adaptive(1023) {
+			position: relative;
+		}
+	}
+}
+&__bottom{
+	@include adaptive(1023) {
+		opacity: 0;
+		visibility: hidden;
+		transform: translateY(50px);
+		display: none;
+
+		overflow: hidden;
+		overflow-y: auto;
+		position: fixed;
+		top: 80px;
+		left: 0;
+		display: block;
+		width: 100%;
+		height: calc(100% - 80px);
+		background-color: rgba(#080915, 0.975);
+		backface-visibility: hidden;
+
+		&.is-open{
+			z-index: 1600;
+			background: #303030fa;
+			opacity: 1;
+			visibility: visible;
+			transform: translateY(0);
+			@include transition(opacity, visibility, transform);
+		}
+	}
+}
+
 &__wrapper {
 	display: flex;
 
 	&-1 {
+		display: flex;
+		justify-content: space-between;
 		align-items: center;
 		min-height: 40px;
-
-		@include adaptive(1023) {
-			display: none;
-		}
 
 		@include respond('desktop'){
 			.header__col {
@@ -47,8 +86,10 @@
 				}
 			}
 		}
-
-
+		@include adaptive(1023) {
+			padding: 0;
+			background: transparent;
+		}
 	}
 
 	&-2 {
