@@ -54,6 +54,10 @@
 
 .light{
 	@include adaptive(1023) {
+		.header__bottom.is-open {
+			background: #303030fa;
+		}
+
 		.pre-header__mobile{
 			background-color: #303030fa;
 		}
