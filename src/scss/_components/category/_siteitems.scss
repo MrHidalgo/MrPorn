@@ -551,6 +551,10 @@
 			height: 100%;
 			text-align: center;
 			z-index: -1;
+
+			@include adaptive(768) {
+				background-size: 150px;
+			}
 		}
 
 		.item-link {
@@ -567,6 +571,10 @@
 			transform: translateX(-50%);
 			background: #004aad;
 
+			@include adaptive(768) {
+				padding: 5px 10px;
+			}
+
 			.text {
 				font-size: 14px;
 				margin-right: 10px;
@@ -576,6 +584,10 @@
 				white-space: nowrap;
 				text-overflow: ellipsis;
 				overflow: hidden;
+
+				@include adaptive(768) {
+					font-size: 12px;
+				}
 			}
 			.btn-icon {
 				color: #fff;
@@ -597,6 +609,10 @@
 		text-align: center;
 		text-transform: uppercase;
 		display: block;
+
+		@include adaptive(768) {
+			font-size: 16px;
+		}
 	}
 	&-subtitle {
 		color: #ffffff;
