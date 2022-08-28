@@ -1,6 +1,6 @@
 @charset "UTF-8";
 /* line 14, src/scss/_utilities/_extend.scss */
-.list__info-circle img, .list__specification-right video, .list__snapshot-right video {
+.list__specification-right video, .list__snapshot-right video {
   position: absolute;
   top: 0;
   left: 0;
@@ -3650,6 +3650,12 @@ fieldset {
 .header__nav-link .icon-png {
   margin-right: 6px;
   mix-blend-mode: screen;
+  /*&.icon-category:before{
+				background: url(../images/icon-category.svg);
+				background-repeat: no-repeat;
+				width: 22px;
+				height: 17px;
+			}*/
 }
 
 @media screen and (max-width: 1023px) {
@@ -3661,36 +3667,40 @@ fieldset {
   }
 }
 
-/* line 85, src/scss/_components/common/_header--nav.scss */
-.header__nav-link .icon-png.icon-category:before {
-  background: url(../images/icon-category.svg);
-  background-repeat: no-repeat;
-  width: 22px;
-  height: 17px;
+/* line 84, src/scss/_components/common/_header--nav.scss */
+.header__nav-link .icon-png.icon-nav-home {
+  height: 16px;
+  margin-right: 8px;
 }
 
-/* line 91, src/scss/_components/common/_header--nav.scss */
+/* line 95, src/scss/_components/common/_header--nav.scss */
+.header__nav-link .icon-png.icon-nav-category {
+  height: 16px;
+  margin-right: 12px;
+}
+
+/* line 99, src/scss/_components/common/_header--nav.scss */
 .header__nav-link .icon-png.icon-nav-porncoupons {
   width: 19px;
 }
 
-/* line 94, src/scss/_components/common/_header--nav.scss */
+/* line 102, src/scss/_components/common/_header--nav.scss */
 .header__nav-link .icon-png.icon-nav-blog {
   height: 18px;
 }
 
-/* line 97, src/scss/_components/common/_header--nav.scss */
+/* line 105, src/scss/_components/common/_header--nav.scss */
 .header__nav-link .icon-png.icon-nav-videos {
   height: 17px;
 }
 
-/* line 100, src/scss/_components/common/_header--nav.scss */
+/* line 108, src/scss/_components/common/_header--nav.scss */
 .header__nav-link .icon-png.icon-nav-sex {
   width: auto;
   height: 26px;
 }
 
-/* line 106, src/scss/_components/common/_header--nav.scss */
+/* line 114, src/scss/_components/common/_header--nav.scss */
 .header__nav-link span {
   text-transform: uppercase;
   font-size: 13px;
@@ -3703,14 +3713,14 @@ fieldset {
 }
 
 @media screen and (max-width: 1279px) {
-  /* line 106, src/scss/_components/common/_header--nav.scss */
+  /* line 114, src/scss/_components/common/_header--nav.scss */
   .header__nav-link span {
     font-size: 11px;
   }
 }
 
 @media screen and (max-width: 1023px) {
-  /* line 106, src/scss/_components/common/_header--nav.scss */
+  /* line 114, src/scss/_components/common/_header--nav.scss */
   .header__nav-link span {
     color: #ffffff;
     min-width: 115px;
@@ -3719,13 +3729,13 @@ fieldset {
 }
 
 @media screen and (max-width: 1023px) {
-  /* line 126, src/scss/_components/common/_header--nav.scss */
+  /* line 134, src/scss/_components/common/_header--nav.scss */
   .header__nav-icon {
     width: 40px;
   }
 }
 
-/* line 131, src/scss/_components/common/_header--nav.scss */
+/* line 139, src/scss/_components/common/_header--nav.scss */
 .header__nav-separator {
   position: absolute;
   top: 50%;
@@ -3740,7 +3750,7 @@ fieldset {
 }
 
 @media screen and (max-width: 1023px) {
-  /* line 131, src/scss/_components/common/_header--nav.scss */
+  /* line 139, src/scss/_components/common/_header--nav.scss */
   .header__nav-separator {
     display: none;
   }
@@ -8765,7 +8775,7 @@ body.chatbot_active .go-top {
   -webkit-user-drag: none;
 }
 
-/* line 91, src/scss/_components/homepage/_list--info.scss */
+/* line 86, src/scss/_components/homepage/_list--info.scss */
 .list__info p {
   color: #ffffff;
   font-size: 28px;
@@ -8773,21 +8783,21 @@ body.chatbot_active .go-top {
 }
 
 @media screen and (max-width: 1279px) {
-  /* line 91, src/scss/_components/homepage/_list--info.scss */
+  /* line 86, src/scss/_components/homepage/_list--info.scss */
   .list__info p {
     font-size: 24px;
   }
 }
 
 @media screen and (max-width: 767px) {
-  /* line 91, src/scss/_components/homepage/_list--info.scss */
+  /* line 86, src/scss/_components/homepage/_list--info.scss */
   .list__info p {
     padding-right: 120px;
     font-size: 18px;
   }
 }
 
-/* line 104, src/scss/_components/homepage/_list--info.scss */
+/* line 99, src/scss/_components/homepage/_list--info.scss */
 .list__info span {
   position: relative;
   color: #4b4e6b;
@@ -8795,7 +8805,7 @@ body.chatbot_active .go-top {
 }
 
 @media screen and (max-width: 767px) {
-  /* line 104, src/scss/_components/homepage/_list--info.scss */
+  /* line 99, src/scss/_components/homepage/_list--info.scss */
   .list__info span {
     white-space: nowrap;
     overflow: hidden;
@@ -8805,7 +8815,7 @@ body.chatbot_active .go-top {
     width: -webkit-calc(100vw - (10px + 45px + 15px));
     width: calc(100vw - (10px + 45px + 15px));
   }
-  /* line 116, src/scss/_components/homepage/_list--info.scss */
+  /* line 111, src/scss/_components/homepage/_list--info.scss */
   .list__info span:after {
     content: '';
     position: absolute;

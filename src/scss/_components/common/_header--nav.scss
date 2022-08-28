@@ -81,12 +81,20 @@
 			@include adaptive(1023) {
 				transform: scale(1.2);
 			}
+			&.icon-nav-home{
+				height: 16px;
+				margin-right: 8px;
+			}
 
-			&.icon-category:before{
+			/*&.icon-category:before{
 				background: url(../images/icon-category.svg);
 				background-repeat: no-repeat;
 				width: 22px;
 				height: 17px;
+			}*/
+			&.icon-nav-category{
+				height: 16px;
+				margin-right: 12px;
 			}
 			&.icon-nav-porncoupons{
 				width: 19px;

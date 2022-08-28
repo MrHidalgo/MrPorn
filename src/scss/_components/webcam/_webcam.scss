@@ -328,6 +328,7 @@
 
 .video-wrapper{
 	display: flex;
+	background: #fff;
 	padding: 25px 20px 25px;
 
 	@include respond('ipad_portrait'){
@@ -371,6 +372,7 @@
 		.awe_mpgcams_image{
 			width: 100%;
 			aspect-ratio: 880 / 111;
+			height: auto;
 		}
 
 		.video-info {
@@ -385,8 +387,6 @@
 			b{
 				font-weight: 700;
 			}
-
-
 
 			.webcam_video_uploader {
 				padding-bottom: 5px;
