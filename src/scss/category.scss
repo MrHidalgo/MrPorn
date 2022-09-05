@@ -22,8 +22,8 @@
 //@import "_shared/grid";
 @import "_shared/common";
 @import "_shared/iconPNG";
-//@import "_shared/iconSVG";
-//@import "_shared/iconFont";
+@import "_shared/iconSVG";
+@import "_shared/iconFont";
 ///
 /// MACROS
 /// ===============
@@ -52,16 +52,13 @@
 .header {
 	@import "_components/common/header--view";
 }
-@import "_generated/spritePNG";
-@import "_generated/spriteFont";
+//@import "_generated/spritePNG";
+//@import "_generated/spriteFont";
 
 
 //@import "_components/category/list";
 //@import "_components/category/deals";
 
 
-
-//@import "_generated/spritePNG";
-//@import "_generated/spriteFont";
 @import "_components/other_categories/other_categories";
 @import "_components/category/deals";
