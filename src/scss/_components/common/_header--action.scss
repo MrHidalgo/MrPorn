@@ -83,4 +83,114 @@
 			}
 		}
 	}
+
+	&_bitcoin{
+		position: absolute;
+		z-index: 1;
+		top: 10px;
+		left: 430px;
+		background: #e58616;
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		border-radius: 3px;
+		padding: 0px 15px;
+		font-weight: 600;
+		color: #000;
+		transition: transform 0.6s;
+		transform-style: preserve-3d;
+
+		&.copied {
+			transform: rotateX(180deg);
+		}
+
+		@include adaptiveMinMax(1449.98, 1199.98){
+			left: 410px;
+		}
+
+		&_inner{
+			display: flex;
+			overflow: hidden;
+			cursor: pointer;
+			backface-visibility: hidden;
+
+			@include adaptive(1023) {
+				flex-direction: column;
+				align-items: center;
+			}
+		}
+		&_copied{
+			position: absolute;
+			width: 100%;
+			text-align: center;
+			color: #fff;
+			transform: rotateX(180deg);
+			background: #e58616;
+			border-radius: 3px;
+			backface-visibility: hidden;
+		}
+
+		@include adaptive(1023) {
+			position: relative;
+			height: 45px;
+			left: 0;
+			top: 0;
+			white-space: nowrap;
+		}
+
+		img{
+			height: 24px;
+			margin: -3px 5px;
+		}
+		span{
+			color: #fff;
+			position: relative;
+
+			&:before{
+				display: inline-block;
+				content: ' ';
+				position: absolute;
+				right: 0;
+				top: 0;
+				width: 40px;
+				height: 24px;
+				padding-left: 15px;
+				background: rgb(229,134,22);
+				background: linear-gradient(270deg, rgba(229,134,22,1) 0%, rgba(229,134,22,1) 60%, rgba(229,134,22,0) 100%);
+			}
+
+			&:after{
+				position: absolute;
+				display: block;
+				right: 0;
+				top: 0;
+				width: 24px;
+				height: 18px;
+				content: ' ';
+				background: url(/wp-content/themes/mpg/images/copy.svg);
+				background-repeat: no-repeat;
+				background-position: center;
+			}
+
+			@include adaptive(1023) {
+				overflow: hidden;
+				position: relative;
+			}
+
+
+		}
+
+		.btc-close{
+			margin-left: 40px;
+			cursor: pointer;
+			width: 13px;
+			height: 13px;
+
+			@include adaptive(1023) {
+				position: absolute;
+				margin: 0;
+				left: 10px;
+			}
+		}
+	}
 }

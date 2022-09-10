@@ -827,6 +827,11 @@ strong {
   padding-top: 0;
 }
 
+/* line 33, src/scss/_shared/_grid.scss */
+.c-grid.bitcoin {
+  display: none;
+}
+
 @media screen and (min-width: 1199.98px) and (max-width: 1449.98px) {
   /* line 20, src/scss/_shared/_grid.scss */
   .c-grid {
@@ -850,145 +855,152 @@ strong {
     padding-left: 10px;
     padding-right: 10px;
   }
-  /* line 55, src/scss/_shared/_grid.scss */
+  /* line 59, src/scss/_shared/_grid.scss */
   .c-grid-main {
     margin-top: 115px;
   }
 }
 
 @media screen and (max-width: 1023px) and (orientation: landscape) {
-  /* line 60, src/scss/_shared/_grid.scss */
+  /* line 64, src/scss/_shared/_grid.scss */
   .c-grid-main {
     margin-top: 120px;
   }
 }
 
-/* line 65, src/scss/_shared/_grid.scss */
+/* line 69, src/scss/_shared/_grid.scss */
 .c-grid-fluid {
   max-width: 100%;
 }
 
 @media screen and (min-device-width: 768px) and (max-device-width: 1024px) and (orientation: portrait) and (-webkit-min-device-pixel-ratio: 2) {
-  /* line 71, src/scss/_shared/_grid.scss */
+  /* line 77, src/scss/_shared/_grid.scss */
   .show_2nd_header_ .c-grid-main {
     margin-top: 80px;
   }
 }
 
 @media screen and (max-width: 767px) {
-  /* line 71, src/scss/_shared/_grid.scss */
+  /* line 77, src/scss/_shared/_grid.scss */
   .show_2nd_header_ .c-grid-main {
     margin-top: 80px;
   }
 }
 
 @media screen and (max-width: 1023px) and (orientation: landscape) {
-  /* line 71, src/scss/_shared/_grid.scss */
+  /* line 77, src/scss/_shared/_grid.scss */
   .show_2nd_header_ .c-grid-main {
     margin-top: 80px;
   }
 }
 
 @media screen and (max-width: 767px) {
-  /* line 82, src/scss/_shared/_grid.scss */
+  /* line 88, src/scss/_shared/_grid.scss */
   .show_2nd_header_.category.gaming_cat_1 .c-grid-main {
     margin-top: 75px;
   }
 }
 
 @media screen and (max-width: 1023px) and (orientation: landscape) {
-  /* line 82, src/scss/_shared/_grid.scss */
+  /* line 88, src/scss/_shared/_grid.scss */
   .show_2nd_header_.category.gaming_cat_1 .c-grid-main {
     margin-top: 75px;
   }
 }
 
 @media screen and (min-device-width: 768px) and (max-device-width: 1024px) and (orientation: portrait) and (-webkit-min-device-pixel-ratio: 2) {
-  /* line 92, src/scss/_shared/_grid.scss */
+  /* line 98, src/scss/_shared/_grid.scss */
   .show_2nd_header_1 .c-grid-main {
     margin-top: 130px;
   }
 }
 
 @media screen and (max-width: 1023px) {
-  /* line 92, src/scss/_shared/_grid.scss */
+  /* line 98, src/scss/_shared/_grid.scss */
   .show_2nd_header_1 .c-grid-main {
     margin-top: 130px;
   }
 }
 
 @media screen and (max-width: 1023px) and (orientation: landscape) {
-  /* line 92, src/scss/_shared/_grid.scss */
+  /* line 98, src/scss/_shared/_grid.scss */
   .show_2nd_header_1 .c-grid-main {
     margin-top: 130px;
   }
 }
 
 @media screen and (max-width: 767px) {
-  /* line 105, src/scss/_shared/_grid.scss */
+  /* line 111, src/scss/_shared/_grid.scss */
   .show_2nd_header_1.page-id-17 .c-grid-main {
     margin-top: 115px;
   }
 }
 
 @media screen and (max-width: 767px) {
-  /* line 113, src/scss/_shared/_grid.scss */
+  /* line 119, src/scss/_shared/_grid.scss */
   .show_2nd_header_1.category .c-grid-main {
     margin-top: 115px;
   }
 }
 
 @media screen and (max-width: 1023px) and (orientation: landscape) {
-  /* line 113, src/scss/_shared/_grid.scss */
+  /* line 119, src/scss/_shared/_grid.scss */
   .show_2nd_header_1.category .c-grid-main {
     margin-top: 115px;
   }
 }
 
 @media screen and (min-device-width: 768px) and (max-device-width: 1024px) and (orientation: portrait) and (-webkit-min-device-pixel-ratio: 2) {
-  /* line 124, src/scss/_shared/_grid.scss */
+  /* line 130, src/scss/_shared/_grid.scss */
   .show_2nd_header_1.single-sites.gaming_cat_ .c-grid-main {
     margin-top: 120px;
   }
 }
 
 @media screen and (max-width: 767px) {
-  /* line 124, src/scss/_shared/_grid.scss */
+  /* line 130, src/scss/_shared/_grid.scss */
   .show_2nd_header_1.single-sites.gaming_cat_ .c-grid-main {
     margin-top: 120px;
   }
 }
 
 @media screen and (max-width: 1023px) and (orientation: landscape) {
-  /* line 124, src/scss/_shared/_grid.scss */
+  /* line 130, src/scss/_shared/_grid.scss */
   .show_2nd_header_1.single-sites.gaming_cat_ .c-grid-main {
     margin-top: 120px;
+  }
+}
+
+@media screen and (max-width: 1023.98px) {
+  /* line 146, src/scss/_shared/_grid.scss */
+  body.fund {
+    padding-top: 45px;
   }
 }
 
 @media screen and (min-device-width: 768px) and (max-device-width: 1024px) and (orientation: portrait) and (-webkit-min-device-pixel-ratio: 2) {
-  /* line 140, src/scss/_shared/_grid.scss */
+  /* line 153, src/scss/_shared/_grid.scss */
   .gaming_cat_1 .c-grid-main {
     margin-top: 80px;
   }
 }
 
 @media screen and (max-width: 767px) {
-  /* line 140, src/scss/_shared/_grid.scss */
+  /* line 153, src/scss/_shared/_grid.scss */
   .gaming_cat_1 .c-grid-main {
     margin-top: 80px;
   }
 }
 
 @media screen and (max-width: 1023px) and (orientation: landscape) {
-  /* line 140, src/scss/_shared/_grid.scss */
+  /* line 153, src/scss/_shared/_grid.scss */
   .gaming_cat_1 .c-grid-main {
     margin-top: 80px;
   }
 }
 
 @media screen and (max-width: 767px) {
-  /* line 155, src/scss/_shared/_grid.scss */
+  /* line 168, src/scss/_shared/_grid.scss */
   .user_page_1 .c-grid-main {
     margin-top: 120px;
     display: -webkit-box;
@@ -1004,13 +1016,13 @@ strong {
 }
 
 @media screen and (max-width: 1023px) and (orientation: landscape) {
-  /* line 155, src/scss/_shared/_grid.scss */
+  /* line 168, src/scss/_shared/_grid.scss */
   .user_page_1 .c-grid-main {
     margin-top: 120px;
   }
 }
 
-/* line 168, src/scss/_shared/_grid.scss */
+/* line 181, src/scss/_shared/_grid.scss */
 .page-id-17 .c-grid {
   /*&--inner{
 			position: relative;
@@ -1044,20 +1056,20 @@ strong {
 		}*/
 }
 
-/* line 169, src/scss/_shared/_grid.scss */
+/* line 182, src/scss/_shared/_grid.scss */
 .page-id-17 .c-grid.list {
   padding-top: 15px;
 }
 
 @media screen and (min-device-width: 768px) and (max-device-width: 1024px) and (orientation: landscape) and (-webkit-min-device-pixel-ratio: 2) {
-  /* line 169, src/scss/_shared/_grid.scss */
+  /* line 182, src/scss/_shared/_grid.scss */
   .page-id-17 .c-grid.list {
     padding: 15px 20px 25px;
   }
 }
 
 @media screen and (min-width: 1330px) {
-  /* line 168, src/scss/_shared/_grid.scss */
+  /* line 181, src/scss/_shared/_grid.scss */
   .page-id-17 .c-grid {
     max-width: 75%;
     min-width: 1300px;
@@ -1065,7 +1077,7 @@ strong {
 }
 
 @media screen and (max-width: 1329.98px) {
-  /* line 168, src/scss/_shared/_grid.scss */
+  /* line 181, src/scss/_shared/_grid.scss */
   .page-id-17 .c-grid {
     max-width: 100%;
     min-width: auto;
@@ -2497,6 +2509,7 @@ fieldset {
 
 /* line 46, src/scss/_components/common/_header--wrapper.scss */
 .header__wrapper-1 {
+  position: relative;
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -2513,7 +2526,7 @@ fieldset {
 }
 
 @media screen and (min-width: 1024px) {
-  /* line 54, src/scss/_components/common/_header--wrapper.scss */
+  /* line 55, src/scss/_components/common/_header--wrapper.scss */
   .header__wrapper-1 .header__col-1 {
     width: 100%;
     max-width: 200px;
@@ -2521,7 +2534,7 @@ fieldset {
 }
 
 @media screen and (min-width: 1024px) and (max-width: 1799px) {
-  /* line 54, src/scss/_components/common/_header--wrapper.scss */
+  /* line 55, src/scss/_components/common/_header--wrapper.scss */
   .header__wrapper-1 .header__col-1 {
     width: auto;
     max-width: unset;
@@ -2530,7 +2543,7 @@ fieldset {
 }
 
 @media screen and (min-width: 1024px) {
-  /* line 64, src/scss/_components/common/_header--wrapper.scss */
+  /* line 65, src/scss/_components/common/_header--wrapper.scss */
   .header__wrapper-1 .header__col-2 {
     -webkit-box-flex: 1;
     -webkit-flex: 1;
@@ -2547,7 +2560,7 @@ fieldset {
         -ms-flex-pack: center;
             justify-content: center;
   }
-  /* line 72, src/scss/_components/common/_header--wrapper.scss */
+  /* line 73, src/scss/_components/common/_header--wrapper.scss */
   .header__wrapper-1 .header__col-3 {
     display: -webkit-box;
     display: -webkit-flex;
@@ -2565,18 +2578,18 @@ fieldset {
 }
 
 @media screen and (min-width: 1024px) and (max-width: 1279px) {
-  /* line 72, src/scss/_components/common/_header--wrapper.scss */
+  /* line 73, src/scss/_components/common/_header--wrapper.scss */
   .header__wrapper-1 .header__col-3 {
     max-width: 194px;
   }
 }
 
 @media screen and (min-width: 1024px) {
-  /* line 83, src/scss/_components/common/_header--wrapper.scss */
+  /* line 84, src/scss/_components/common/_header--wrapper.scss */
   .header__wrapper-1 .header__col-3 > div:not(:first-of-type) {
     padding-left: 4px;
   }
-  /* line 88, src/scss/_components/common/_header--wrapper.scss */
+  /* line 89, src/scss/_components/common/_header--wrapper.scss */
   .header__wrapper-1 .header__col-3 .hdrfav {
     display: none;
   }
@@ -2590,13 +2603,13 @@ fieldset {
   }
 }
 
-/* line 100, src/scss/_components/common/_header--wrapper.scss */
+/* line 101, src/scss/_components/common/_header--wrapper.scss */
 .header__wrapper-2 {
   min-height: 121px;
 }
 
 @media screen and (max-width: 1023px) {
-  /* line 100, src/scss/_components/common/_header--wrapper.scss */
+  /* line 101, src/scss/_components/common/_header--wrapper.scss */
   .header__wrapper-2 {
     -webkit-box-orient: vertical;
     -webkit-box-direction: normal;
@@ -2607,41 +2620,41 @@ fieldset {
   }
 }
 
-/* line 108, src/scss/_components/common/_header--wrapper.scss */
+/* line 109, src/scss/_components/common/_header--wrapper.scss */
 .header__wrapper-2 .header__col-1 {
   width: 100%;
   max-width: 410px;
 }
 
 @media screen and (max-width: 1023px) {
-  /* line 108, src/scss/_components/common/_header--wrapper.scss */
+  /* line 109, src/scss/_components/common/_header--wrapper.scss */
   .header__wrapper-2 .header__col-1 {
     max-width: 100%;
   }
 }
 
 @media screen and (min-device-width: 768px) and (max-device-width: 1024px) and (orientation: portrait) and (-webkit-min-device-pixel-ratio: 2) {
-  /* line 108, src/scss/_components/common/_header--wrapper.scss */
+  /* line 109, src/scss/_components/common/_header--wrapper.scss */
   .header__wrapper-2 .header__col-1 {
     max-width: 100%;
   }
 }
 
 @media screen and (max-width: 1023px) and (orientation: landscape) {
-  /* line 108, src/scss/_components/common/_header--wrapper.scss */
+  /* line 109, src/scss/_components/common/_header--wrapper.scss */
   .header__wrapper-2 .header__col-1 {
     max-width: 100%;
   }
 }
 
 @media screen and (max-width: 768px) {
-  /* line 108, src/scss/_components/common/_header--wrapper.scss */
+  /* line 109, src/scss/_components/common/_header--wrapper.scss */
   .header__wrapper-2 .header__col-1 {
     max-width: 100%;
   }
 }
 
-/* line 128, src/scss/_components/common/_header--wrapper.scss */
+/* line 129, src/scss/_components/common/_header--wrapper.scss */
 .header__wrapper-2 .header__col-2 {
   display: -webkit-box;
   display: -webkit-flex;
@@ -2667,7 +2680,7 @@ fieldset {
 }
 
 @media screen and (max-width: 1023px) {
-  /* line 128, src/scss/_components/common/_header--wrapper.scss */
+  /* line 129, src/scss/_components/common/_header--wrapper.scss */
   .header__wrapper-2 .header__col-2 {
     padding: 0;
     position: relative;
@@ -2675,7 +2688,7 @@ fieldset {
 }
 
 @media screen and (min-width: 1024px) {
-  /* line 146, src/scss/_components/common/_header--wrapper.scss */
+  /* line 147, src/scss/_components/common/_header--wrapper.scss */
   .header__wrapper-3 {
     -webkit-box-align: center;
     -webkit-align-items: center;
@@ -2830,6 +2843,173 @@ fieldset {
   /* line 79, src/scss/_components/common/_header--action.scss */
   .header__action-link--admin {
     color: #fff;
+  }
+}
+
+/* line 87, src/scss/_components/common/_header--action.scss */
+.header__action_bitcoin {
+  position: absolute;
+  z-index: 1;
+  top: 10px;
+  left: 430px;
+  background: #e58616;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+  -webkit-align-items: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-border-radius: 3px;
+          border-radius: 3px;
+  padding: 0px 15px;
+  font-weight: 600;
+  color: #000;
+  -webkit-transition: -webkit-transform 0.6s;
+  transition: -webkit-transform 0.6s;
+  -o-transition: transform 0.6s;
+  transition: transform 0.6s;
+  transition: transform 0.6s, -webkit-transform 0.6s;
+  -webkit-transform-style: preserve-3d;
+          transform-style: preserve-3d;
+}
+
+/* line 103, src/scss/_components/common/_header--action.scss */
+.header__action_bitcoin.copied {
+  -webkit-transform: rotateX(180deg);
+          transform: rotateX(180deg);
+}
+
+@media screen and (min-width: 1199.98px) and (max-width: 1449.98px) {
+  /* line 87, src/scss/_components/common/_header--action.scss */
+  .header__action_bitcoin {
+    left: 410px;
+  }
+}
+
+/* line 111, src/scss/_components/common/_header--action.scss */
+.header__action_bitcoin_inner {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  overflow: hidden;
+  cursor: pointer;
+  -webkit-backface-visibility: hidden;
+          backface-visibility: hidden;
+}
+
+@media screen and (max-width: 1023px) {
+  /* line 111, src/scss/_components/common/_header--action.scss */
+  .header__action_bitcoin_inner {
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+    -webkit-flex-direction: column;
+        -ms-flex-direction: column;
+            flex-direction: column;
+    -webkit-box-align: center;
+    -webkit-align-items: center;
+        -ms-flex-align: center;
+            align-items: center;
+  }
+}
+
+/* line 122, src/scss/_components/common/_header--action.scss */
+.header__action_bitcoin_copied {
+  position: absolute;
+  width: 100%;
+  text-align: center;
+  color: #fff;
+  -webkit-transform: rotateX(180deg);
+          transform: rotateX(180deg);
+  background: #e58616;
+  -webkit-border-radius: 3px;
+          border-radius: 3px;
+  -webkit-backface-visibility: hidden;
+          backface-visibility: hidden;
+}
+
+@media screen and (max-width: 1023px) {
+  /* line 87, src/scss/_components/common/_header--action.scss */
+  .header__action_bitcoin {
+    position: relative;
+    height: 45px;
+    left: 0;
+    top: 0;
+    white-space: nowrap;
+  }
+}
+
+/* line 141, src/scss/_components/common/_header--action.scss */
+.header__action_bitcoin img {
+  height: 24px;
+  margin: -3px 5px;
+}
+
+/* line 145, src/scss/_components/common/_header--action.scss */
+.header__action_bitcoin span {
+  color: #fff;
+  position: relative;
+}
+
+/* line 149, src/scss/_components/common/_header--action.scss */
+.header__action_bitcoin span:before {
+  display: inline-block;
+  content: ' ';
+  position: absolute;
+  right: 0;
+  top: 0;
+  width: 40px;
+  height: 24px;
+  padding-left: 15px;
+  background: #e58616;
+  background: -webkit-gradient(linear, right top, left top, from(#e58616), color-stop(60%, #e58616), to(rgba(229, 134, 22, 0)));
+  background: -webkit-linear-gradient(right, #e58616 0%, #e58616 60%, rgba(229, 134, 22, 0) 100%);
+  background: -o-linear-gradient(right, #e58616 0%, #e58616 60%, rgba(229, 134, 22, 0) 100%);
+  background: linear-gradient(270deg, #e58616 0%, #e58616 60%, rgba(229, 134, 22, 0) 100%);
+}
+
+/* line 162, src/scss/_components/common/_header--action.scss */
+.header__action_bitcoin span:after {
+  position: absolute;
+  display: block;
+  right: 0;
+  top: 0;
+  width: 24px;
+  height: 18px;
+  content: ' ';
+  background: url(/wp-content/themes/mpg/images/copy.svg);
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
+@media screen and (max-width: 1023px) {
+  /* line 145, src/scss/_components/common/_header--action.scss */
+  .header__action_bitcoin span {
+    overflow: hidden;
+    position: relative;
+  }
+}
+
+/* line 183, src/scss/_components/common/_header--action.scss */
+.header__action_bitcoin .btc-close {
+  margin-left: 40px;
+  cursor: pointer;
+  width: 13px;
+  height: 13px;
+}
+
+@media screen and (max-width: 1023px) {
+  /* line 183, src/scss/_components/common/_header--action.scss */
+  .header__action_bitcoin .btc-close {
+    position: absolute;
+    margin: 0;
+    left: 10px;
   }
 }
 
@@ -4069,6 +4249,108 @@ fieldset {
 /* line 122, src/scss/_components/common/_header.scss */
 .has_search .header__recent {
   display: none;
+}
+
+@media screen and (max-width: 1023.98px) {
+  /* line 130, src/scss/_components/common/_header.scss */
+  .fund .header {
+    top: 45px;
+  }
+}
+
+/* line 134, src/scss/_components/common/_header.scss */
+.fund .c-grid.bitcoin {
+  display: block;
+  position: relative;
+}
+
+@media screen and (max-width: 1023.98px) {
+  /* line 134, src/scss/_components/common/_header.scss */
+  .fund .c-grid.bitcoin {
+    position: fixed;
+    z-index: 105;
+    top: 0;
+    left: 0;
+    padding: 0;
+  }
+}
+
+/* line 147, src/scss/_components/common/_header.scss */
+.fund .header__action_bitcoin {
+  position: absolute;
+  z-index: 1;
+  top: 10px;
+  left: 430px;
+  background: #e58616;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+  -webkit-align-items: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-border-radius: 3px;
+          border-radius: 3px;
+  padding: 0px 15px;
+  font-weight: 600;
+  color: #000;
+}
+
+@media screen and (min-width: 1199.98px) and (max-width: 1449.98px) {
+  /* line 147, src/scss/_components/common/_header.scss */
+  .fund .header__action_bitcoin {
+    left: 410px;
+  }
+}
+
+@media screen and (max-width: 1023px) {
+  /* line 147, src/scss/_components/common/_header.scss */
+  .fund .header__action_bitcoin {
+    position: relative;
+    height: 45px;
+    left: 0;
+    top: 0;
+    white-space: nowrap;
+    font-size: 13px;
+  }
+}
+
+/* line 174, src/scss/_components/common/_header.scss */
+.fund .header__action_bitcoin img {
+  height: 24px;
+  margin: -3px 5px;
+}
+
+/* line 178, src/scss/_components/common/_header.scss */
+.fund .header__action_bitcoin span {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  color: #fff;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
+
+@media screen and (max-width: 1023px) {
+  /* line 178, src/scss/_components/common/_header.scss */
+  .fund .header__action_bitcoin span {
+    overflow: hidden;
+  }
+}
+
+@media screen and (max-width: 1023px) {
+  /* line 190, src/scss/_components/common/_header.scss */
+  .fund .header__bottom {
+    top: 110px;
+  }
 }
 
 /* line 8, src/scss/_components/misc/_misc.scss */

@@ -125,6 +125,74 @@
 }
 // HEADER :: END
 
+.fund {
+	@include adaptive(1023.98) {
+		.header{
+			top: 45px;
+		}
+	}
+	.c-grid.bitcoin{
+		display: block;
+		position: relative;
+
+		@include adaptive(1023.98) {
+			position: fixed;
+			z-index: 105;
+			top: 0;
+			left: 0;
+			padding: 0;
+		}
+	}
+
+	.header__action_bitcoin{
+		position: absolute;
+		z-index: 1;
+		top: 10px;
+		left: 430px;
+		background: #e58616;
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		border-radius: 3px;
+		padding: 0px 15px;
+		font-weight: 600;
+		color: #000;
+
+		@include adaptiveMinMax(1449.98, 1199.98){
+			left: 410px;
+		}
+
+		@include adaptive(1023) {
+			position: relative;
+			height: 45px;
+			left: 0;
+			top: 0;
+			white-space: nowrap;
+			font-size: 13px;
+		}
+
+		img{
+			height: 24px;
+			margin: -3px 5px;
+		}
+		span{
+			display: flex;
+			color: #fff;
+			justify-content: center;
+
+			@include adaptive(1023) {
+				overflow: hidden;
+			}
+		}
+	}
+
+	@include adaptive(1023) {
+		.header__bottom{
+			top: 110px;
+		}
+	}
+}
+
 
 @import "../misc/misc";
 @import "../misc/sort";

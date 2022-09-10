@@ -108,15 +108,34 @@ ul{
 	text-align: center;
 	margin: 40px auto 10px;
 	max-width: 75%;
-	display: flex;
-	justify-content: center;
 
-	@include respond('ipad'){
-		flex-direction: column;
+	&_inner{
+		display: flex;
+		justify-content: center;
+
+		@include respond('ipad'){
+			flex-direction: column;
+		}
+		@include adaptive(767){
+			flex-direction: column;
+			max-width: 100%;
+		}
 	}
-	@include adaptive(767){
-		flex-direction: column;
-		max-width: 100%;
+
+	&_btc{
+		display: none;
+		color: #fc022d;
+		padding-bottom: 15px;
+		font-size: 18px;
+		font-weight: 600;
+
+		@include adaptive(1023) {
+			font-size: 12px;
+		}
+
+		&.fund{
+			display: block;
+		}
 	}
 
 	img{
@@ -343,6 +362,10 @@ ul{
 	text-transform: uppercase;
 	margin: 0 8px;
 	background-size: auto 100% !important;
+
+	&:focus, &:hover{
+		color: #fff;
+	}
 
 	&:not(.bt_about){
 		flex: 1;

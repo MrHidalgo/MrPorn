@@ -30,6 +30,10 @@ $paddingRight: $paddingLeft;
 		padding-top: 0;
 	}
 
+	&.bitcoin{
+		display: none;
+	}
+
 	@include adaptiveMinMax(1449.98, 1199.98){
 		/*max-width: 1149px;*/
 		padding-left: 0;
@@ -67,6 +71,8 @@ $paddingRight: $paddingLeft;
     max-width: 100%;
   }
 }
+
+
 .show_2nd_header_{
 	.c-grid-main{
 		@include respond('ipad_portrait'){
@@ -135,6 +141,13 @@ $paddingRight: $paddingLeft;
 		}
 	}
 }
+
+@include adaptive(1023.98) {
+	body.fund{
+		padding-top: 45px;
+	}
+}
+
 
 .gaming_cat_1{
 	.c-grid-main{
