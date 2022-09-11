@@ -1553,32 +1553,61 @@ var lastMobileSimilarSite;
   }
 
   var initBtcShare = function initBtcShare() {
-    var btcContainer = document.querySelector('.header__action_bitcoin');
-    var btcHash = document.querySelector('.header__action_bitcoin_inner');
+    var canShowBtc = getCookieMpgCookie("btch");
 
-    if (btcHash) {
-      var btcHashAddress = document.querySelector('.header__action_bitcoin .btc_hash');
-      btcHash.addEventListener('click', function (ev) {
-        if (btcHashAddress) {
-          navigator.clipboard.writeText(btcHashAddress.innerText);
-          console.log('copied btc');
+    if (!ifBot() && !canShowBtc) {
+      renderBtcShare();
+      var btcContainer = document.querySelector('.header__action_bitcoin');
+      var btcHash = document.querySelector('.header__action_bitcoin_inner');
 
-          if (btcContainer) {
-            btcContainer.classList.add('copied'); // setTimeout(() => {
-            // 	btcContainer.remove()
-            // 	document.body.classList.remove('fund')
-            // }, 2000);
+      if (btcHash) {
+        var btcHashAddress = document.querySelector('.header__action_bitcoin .btc_hash');
+        btcHash.addEventListener('click', function (ev) {
+          if (btcHashAddress) {
+            navigator.clipboard.writeText(btcHashAddress.innerText);
+            console.log('copied btc');
+
+            if (btcContainer) {
+              btcContainer.classList.add('copied'); // setTimeout(() => {
+              // 	btcContainer.remove()
+              // 	document.body.classList.remove('fund')
+              // }, 2000);
+            }
           }
-        }
-      });
+        });
+      }
+
+      var btcClose = document.querySelector('.btc-close');
+
+      if (btcClose) {
+        btcClose.addEventListener('click', function (ev) {
+          document.body.classList.remove('fund');
+          createCookie("btch", "1", 7);
+        });
+      }
     }
+  };
 
-    var btcClose = document.querySelector('.btc-close');
+  var ifBot = function ifBot() {
+    var botUserAgentsArray = ['googlebot', 'bingbot', 'linkedinbot', 'mediapartners-google', 'lighthouse', 'insights'];
+    var agent = window.navigator.userAgent;
+    var isBotUserAgent = false;
+    botUserAgentsArray.forEach(function (_agent) {
+      if (agent.toLowerCase().indexOf(_agent.toLowerCase()) !== -1) {
+        return true;
+      }
+    });
+    return false;
+  };
 
-    if (btcClose) {
-      btcClose.addEventListener('click', function (ev) {
-        document.body.classList.remove('fund');
-      });
+  var renderBtcShare = function renderBtcShare() {
+    var _btcHtml = '<div class="header__action_bitcoin">' + '        <div class="header__action_bitcoin_inner">Show Some Love For Our Work? <span class="btc_hash"><img src="/wp-content/themes/mpg/images/bitcoin.svg"/> 1Avmt3WehQVuX4uto7rRStAuEwbYZrS9op</span></div>' + '        <div class="header__action_bitcoin_copied">Copied</div>' + '        <i class="icon-font btc-close icon-close"></i>' + '    </div>';
+
+    var btcContainer = document.querySelector('.c-grid.bitcoin');
+
+    if (btcContainer) {
+      btcContainer.innerHTML = _btcHtml;
+      document.body.classList.add('fund');
     }
   };
 

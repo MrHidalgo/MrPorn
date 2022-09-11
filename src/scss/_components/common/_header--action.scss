@@ -100,9 +100,7 @@
 		transition: transform 0.6s;
 		transform-style: preserve-3d;
 
-		&.copied {
-			transform: rotateX(180deg);
-		}
+
 
 		@include adaptiveMinMax(1449.98, 1199.98){
 			left: 410px;
@@ -121,7 +119,8 @@
 		}
 		&_copied{
 			position: absolute;
-			width: 100%;
+			left: 15px;
+			right: 45px;
 			text-align: center;
 			color: #fff;
 			transform: rotateX(180deg);
@@ -190,6 +189,14 @@
 				position: absolute;
 				margin: 0;
 				left: 10px;
+			}
+		}
+
+		&.copied {
+			transform: rotateX(180deg);
+
+			.btc-close{
+				transform: rotateX(180deg);
 			}
 		}
 	}

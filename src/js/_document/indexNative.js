@@ -404,33 +404,68 @@ let lastMobileSimilarSite;
 	}
 
 	const initBtcShare = () => {
-		let btcContainer = document.querySelector('.header__action_bitcoin');
-		let btcHash = document.querySelector('.header__action_bitcoin_inner')
-		if(btcHash){
-			let btcHashAddress = document.querySelector('.header__action_bitcoin .btc_hash')
+		let canShowBtc = getCookieMpgCookie("btch");
 
-			btcHash.addEventListener('click', (ev) => {
-				if(btcHashAddress){
-					navigator.clipboard.writeText(btcHashAddress.innerText);
-					console.log('copied btc');
+		if(!ifBot() && !canShowBtc){
+			renderBtcShare()
 
-					if(btcContainer){
-						btcContainer.classList.add('copied');
-						// setTimeout(() => {
-						// 	btcContainer.remove()
-						// 	document.body.classList.remove('fund')
-						// }, 2000);
+			let btcContainer = document.querySelector('.header__action_bitcoin');
+			let btcHash = document.querySelector('.header__action_bitcoin_inner')
+			if(btcHash){
+				let btcHashAddress = document.querySelector('.header__action_bitcoin .btc_hash')
+
+				btcHash.addEventListener('click', (ev) => {
+					if(btcHashAddress){
+						navigator.clipboard.writeText(btcHashAddress.innerText);
+						console.log('copied btc');
+
+						if(btcContainer){
+							btcContainer.classList.add('copied');
+							// setTimeout(() => {
+							// 	btcContainer.remove()
+							// 	document.body.classList.remove('fund')
+							// }, 2000);
+						}
 					}
-				}
 
-			});
+				});
+			}
+
+			let btcClose = document.querySelector('.btc-close')
+			if(btcClose){
+				btcClose.addEventListener('click', (ev) => {
+					document.body.classList.remove('fund');
+
+					createCookie("btch", "1", 7);
+				});
+			}
 		}
+	}
 
-		let btcClose = document.querySelector('.btc-close')
-		if(btcClose){
-			btcClose.addEventListener('click', (ev) => {
-				document.body.classList.remove('fund');
-			});
+	const ifBot = () => {
+		const botUserAgentsArray = ['googlebot', 'bingbot', 'linkedinbot', 'mediapartners-google', 'lighthouse', 'insights'];
+
+		const agent = window.navigator.userAgent;
+		let isBotUserAgent = false;
+		botUserAgentsArray.forEach((_agent)=>{
+			if (agent.toLowerCase().indexOf(_agent.toLowerCase()) !== -1){
+				return true;
+			}
+		})
+		return false;
+	}
+
+	const renderBtcShare = () => {
+		let _btcHtml = '<div class="header__action_bitcoin">' +
+			'        <div class="header__action_bitcoin_inner">Show Some Love For Our Work? <span class="btc_hash"><img src="/wp-content/themes/mpg/images/bitcoin.svg"/> 1Avmt3WehQVuX4uto7rRStAuEwbYZrS9op</span></div>' +
+			'        <div class="header__action_bitcoin_copied">Copied</div>' +
+			'        <i class="icon-font btc-close icon-close"></i>' +
+			'    </div>'
+
+		let btcContainer = document.querySelector('.c-grid.bitcoin')
+		if(btcContainer){
+			btcContainer.innerHTML = _btcHtml;
+			document.body.classList.add('fund')
 		}
 	}
 
