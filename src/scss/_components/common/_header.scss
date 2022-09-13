@@ -149,14 +149,31 @@
 		z-index: 1;
 		top: 10px;
 		left: 430px;
-		background: #e58616;
 		display: flex;
 		justify-content: center;
 		align-items: center;
 		border-radius: 3px;
-		padding: 0px 15px;
 		font-weight: 600;
 		color: #000;
+		//transition: transform 0.6s;
+		transform-style: preserve-3d;
+
+		-webkit-perspective: 0;
+		backface-visibility: hidden;
+		transform: translate3d(0,0,0);
+
+		//&.green{
+		//	background: #269552;
+		//}
+		&.copied{
+			//transform: rotateX(180deg);
+			animation: rotateBtc 3.7s ease-in-out;
+			animation-fill-mode: forwards;
+
+			.btc-close{
+				transform: translateY(-50%) rotateX(180deg)
+			}
+		}
 
 		@include adaptiveMinMax(1449.98, 1199.98){
 			left: 410px;
@@ -179,6 +196,7 @@
 			display: flex;
 			color: #fff;
 			justify-content: center;
+			font-weight: 300;
 
 			@include adaptive(1023) {
 				overflow: hidden;
@@ -191,6 +209,13 @@
 			top: 110px;
 		}
 	}
+}
+
+@keyframes rotateBtc {
+	0% { transform: rotateX(0deg); background-color: #e58616; }
+	17% { transform: rotateX(180deg); background-color: #269552; }
+	83% { transform: rotateX(180deg); background-color: #269552; }
+	100% { transform: rotateX(0deg); background-color: #e58616; }
 }
 
 

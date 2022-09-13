@@ -213,9 +213,9 @@ let lastMobileSimilarSite;
 	 * ===================================
 	 */
 
-	if(!navigator.userAgent.toLowerCase().includes('lighthouse')){
+	/*if(!navigator.userAgent.toLowerCase().includes('lighthouse')){
 		initLoggedUser();
-	}
+	}*/
 	const initHome = () =>{
 
 		let cGridList = document.querySelector('.c-grid.list');
@@ -406,8 +406,9 @@ let lastMobileSimilarSite;
 	const initBtcShare = () => {
 		let canShowBtc = getCookieMpgCookie("btch");
 
-		if(!ifBot() && !canShowBtc){
+		if(true | (!ifBot() && (canShowBtc=='' | canShowBtc!='1'))){
 			renderBtcShare()
+
 
 			let btcContainer = document.querySelector('.header__action_bitcoin');
 			let btcHash = document.querySelector('.header__action_bitcoin_inner')
@@ -421,10 +422,9 @@ let lastMobileSimilarSite;
 
 						if(btcContainer){
 							btcContainer.classList.add('copied');
-							// setTimeout(() => {
-							// 	btcContainer.remove()
-							// 	document.body.classList.remove('fund')
-							// }, 2000);
+							setTimeout(() => {
+								btcContainer.classList.remove('copied');
+							}, 3700);
 						}
 					}
 
