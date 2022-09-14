@@ -2913,10 +2913,12 @@ fieldset {
         -ms-flex-align: center;
             align-items: center;
     padding: 0 15px;
+    -webkit-border-radius: 0;
+            border-radius: 0;
   }
 }
 
-/* line 135, src/scss/_components/common/_header--action.scss */
+/* line 136, src/scss/_components/common/_header--action.scss */
 .header__action_bitcoin_copied {
   position: absolute;
   display: -webkit-box;
@@ -2944,14 +2946,10 @@ fieldset {
           backface-visibility: hidden;
 }
 
-/* line 149, src/scss/_components/common/_header--action.scss */
-.header__action_bitcoin_copied .icon-close {
-  position: absolute;
-  right: 15px;
-  top: 50%;
-  -webkit-transform: translateY(-50%);
-      -ms-transform: translateY(-50%);
-          transform: translateY(-50%);
+/* line 150, src/scss/_components/common/_header--action.scss */
+.header__action_bitcoin_copied img {
+  height: 14px !important;
+  margin-left: 15px;
 }
 
 @media screen and (max-width: 1023px) {
@@ -2965,20 +2963,20 @@ fieldset {
   }
 }
 
-/* line 165, src/scss/_components/common/_header--action.scss */
+/* line 161, src/scss/_components/common/_header--action.scss */
 .header__action_bitcoin img {
   height: 24px;
   margin: -3px 5px;
 }
 
-/* line 169, src/scss/_components/common/_header--action.scss */
+/* line 165, src/scss/_components/common/_header--action.scss */
 .header__action_bitcoin span {
   color: #fff;
   position: relative;
 }
 
 @media screen and (max-width: 1023px) {
-  /* line 174, src/scss/_components/common/_header--action.scss */
+  /* line 170, src/scss/_components/common/_header--action.scss */
   .header__action_bitcoin span:before {
     display: inline-block;
     content: ' ';
@@ -2996,7 +2994,7 @@ fieldset {
   }
 }
 
-/* line 188, src/scss/_components/common/_header--action.scss */
+/* line 184, src/scss/_components/common/_header--action.scss */
 .header__action_bitcoin span:after {
   display: block;
   right: 0;
@@ -3010,43 +3008,17 @@ fieldset {
 }
 
 @media screen and (max-width: 1023px) {
-  /* line 188, src/scss/_components/common/_header--action.scss */
+  /* line 184, src/scss/_components/common/_header--action.scss */
   .header__action_bitcoin span:after {
     position: absolute;
   }
 }
 
 @media screen and (max-width: 1023px) {
-  /* line 169, src/scss/_components/common/_header--action.scss */
+  /* line 165, src/scss/_components/common/_header--action.scss */
   .header__action_bitcoin span {
     overflow: hidden;
     position: relative;
-  }
-}
-
-/* line 211, src/scss/_components/common/_header--action.scss */
-.header__action_bitcoin .btc-close {
-  position: absolute;
-  right: 15px;
-  top: 50%;
-  cursor: pointer;
-  width: 13px;
-  height: 13px;
-  -webkit-transform: translateY(-50%);
-      -ms-transform: translateY(-50%);
-          transform: translateY(-50%);
-}
-
-@media screen and (max-width: 1023px) {
-  /* line 211, src/scss/_components/common/_header--action.scss */
-  .header__action_bitcoin .btc-close {
-    position: absolute;
-    margin: 0;
-    left: 10px;
-    top: 50%;
-    -webkit-transform: translateY(-50%);
-        -ms-transform: translateY(-50%);
-            transform: translateY(-50%);
   }
 }
 
@@ -4313,11 +4285,48 @@ fieldset {
 }
 
 /* line 147, src/scss/_components/common/_header.scss */
-.fund .header__action_bitcoin {
+.fund .header__action_bitcoin-outer {
   position: absolute;
   z-index: 1;
   top: 10px;
   left: 430px;
+}
+
+@media screen and (max-width: 1023px) {
+  /* line 147, src/scss/_components/common/_header.scss */
+  .fund .header__action_bitcoin-outer {
+    position: relative;
+    height: 45px;
+    left: 0;
+    top: 0;
+    white-space: nowrap;
+    font-size: 13px;
+  }
+}
+
+/* line 162, src/scss/_components/common/_header.scss */
+.fund .header__action_bitcoin-outer .btc-close {
+  position: absolute;
+  right: 15px;
+  top: 50%;
+  -webkit-transform: translateY(-50%) translateZ(20px);
+          transform: translateY(-50%) translateZ(20px);
+  cursor: pointer;
+  width: 13px;
+  height: 13px;
+  z-index: 2;
+}
+
+@media screen and (max-width: 1023px) {
+  /* line 162, src/scss/_components/common/_header.scss */
+  .fund .header__action_bitcoin-outer .btc-close {
+    left: 15px;
+    right: auto;
+  }
+}
+
+/* line 178, src/scss/_components/common/_header.scss */
+.fund .header__action_bitcoin {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -4336,14 +4345,19 @@ fieldset {
   color: #000;
   -webkit-transform-style: preserve-3d;
           transform-style: preserve-3d;
-  -webkit-perspective: 0;
   -webkit-backface-visibility: hidden;
           backface-visibility: hidden;
   -webkit-transform: translate3d(0, 0, 0);
           transform: translate3d(0, 0, 0);
 }
 
-/* line 168, src/scss/_components/common/_header.scss */
+/* line 191, src/scss/_components/common/_header.scss */
+.fund .header__action_bitcoin .btc_hash img {
+  height: 24px;
+  margin: -3px 5px;
+}
+
+/* line 196, src/scss/_components/common/_header.scss */
 .fund .header__action_bitcoin.copied {
   -webkit-animation: rotateBtc 3.7s ease-in-out;
           animation: rotateBtc 3.7s ease-in-out;
@@ -4351,38 +4365,20 @@ fieldset {
           animation-fill-mode: forwards;
 }
 
-/* line 173, src/scss/_components/common/_header.scss */
+/* line 200, src/scss/_components/common/_header.scss */
 .fund .header__action_bitcoin.copied .btc-close {
   -webkit-transform: translateY(-50%) rotateX(180deg);
           transform: translateY(-50%) rotateX(180deg);
 }
 
 @media screen and (min-width: 1199.98px) and (max-width: 1449.98px) {
-  /* line 147, src/scss/_components/common/_header.scss */
+  /* line 178, src/scss/_components/common/_header.scss */
   .fund .header__action_bitcoin {
     left: 410px;
   }
 }
 
-@media screen and (max-width: 1023px) {
-  /* line 147, src/scss/_components/common/_header.scss */
-  .fund .header__action_bitcoin {
-    position: relative;
-    height: 45px;
-    left: 0;
-    top: 0;
-    white-space: nowrap;
-    font-size: 13px;
-  }
-}
-
-/* line 191, src/scss/_components/common/_header.scss */
-.fund .header__action_bitcoin img {
-  height: 24px;
-  margin: -3px 5px;
-}
-
-/* line 195, src/scss/_components/common/_header.scss */
+/* line 212, src/scss/_components/common/_header.scss */
 .fund .header__action_bitcoin span {
   display: -webkit-box;
   display: -webkit-flex;
@@ -4393,18 +4389,18 @@ fieldset {
   -webkit-justify-content: center;
       -ms-flex-pack: center;
           justify-content: center;
-  font-weight: 300;
+  font-weight: 600;
 }
 
 @media screen and (max-width: 1023px) {
-  /* line 195, src/scss/_components/common/_header.scss */
+  /* line 212, src/scss/_components/common/_header.scss */
   .fund .header__action_bitcoin span {
     overflow: hidden;
   }
 }
 
 @media screen and (max-width: 1023px) {
-  /* line 208, src/scss/_components/common/_header.scss */
+  /* line 225, src/scss/_components/common/_header.scss */
   .fund .header__bottom {
     top: 110px;
   }

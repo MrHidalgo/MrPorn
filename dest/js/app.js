@@ -1555,7 +1555,7 @@ var lastMobileSimilarSite;
   var initBtcShare = function initBtcShare() {
     var canShowBtc = getCookieMpgCookie("btch");
 
-    if (true | (!ifBot() && canShowBtc == '' | canShowBtc != '1')) {
+    if (!ifBot() && canShowBtc == '' | canShowBtc != '1') {
       renderBtcShare();
       var btcContainer = document.querySelector('.header__action_bitcoin');
       var btcHash = document.querySelector('.header__action_bitcoin_inner');
@@ -1601,7 +1601,7 @@ var lastMobileSimilarSite;
   };
 
   var renderBtcShare = function renderBtcShare() {
-    var _btcHtml = '<div class="header__action_bitcoin">' + '        <div class="header__action_bitcoin_inner">Show Some Love For Our Work? <span class="btc_hash"><img src="/wp-content/themes/mpg/images/bitcoin.svg"/> 1Avmt3WehQVuX4uto7rRStAuEwbYZrS9op</span></div>' + '        <div class="header__action_bitcoin_copied">Copied</div>' + '        <i class="icon-font btc-close icon-close"></i>' + '    </div>';
+    var _btcHtml = '<div class="header__action_bitcoin-outer">' + '<div class="header__action_bitcoin">' + '        <div class="header__action_bitcoin_inner">Show Some Love For Our Work? <span class="btc_hash"><img src="/wp-content/themes/mpg/images/bitcoin.svg"/> 1Avmt3WehQVuX4uto7rRStAuEwbYZrS9op</span></div>' + '        <div class="header__action_bitcoin_copied">Copied <img src="/wp-content/themes/mpg/images/tick-icon.svg"/></div>' + '    </div>' + '        <i class="icon-font btc-close icon-close"></i>' + '    </div>';
 
     var btcContainer = document.querySelector('.c-grid.bitcoin');
 

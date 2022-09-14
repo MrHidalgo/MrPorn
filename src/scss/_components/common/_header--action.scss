@@ -130,6 +130,7 @@
 				flex-direction: column;
 				align-items: center;
 				padding: 0 15px;
+				border-radius: 0;
 			}
 		}
 		&_copied{
@@ -146,12 +147,7 @@
 			background: #269552;
 			backface-visibility: hidden;
 
-			.icon-close{
-				position: absolute;
-				right: 15px;
-				top: 50%;
-				transform: translateY(-50%);
-			}
+			img{height: 14px !important; margin-left: 15px;}
 		}
 
 		@include adaptive(1023) {
@@ -207,25 +203,5 @@
 
 
 		}
-
-		.btc-close{
-			position: absolute;
-			right: 15px;
-			top: 50%;
-			cursor: pointer;
-			width: 13px;
-			height: 13px;
-			transform: translateY(-50%);
-
-			@include adaptive(1023) {
-				position: absolute;
-				margin: 0;
-				left: 10px;
-				top: 50%;
-				transform: translateY(-50%);
-			}
-		}
-
-
 	}
 }

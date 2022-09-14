@@ -144,29 +144,56 @@
 		}
 	}
 
-	.header__action_bitcoin{
+	.header__action_bitcoin-outer{
 		position: absolute;
 		z-index: 1;
 		top: 10px;
 		left: 430px;
+
+		@include adaptive(1023) {
+			position: relative;
+			height: 45px;
+			left: 0;
+			top: 0;
+			white-space: nowrap;
+			font-size: 13px;
+		}
+
+		.btc-close{
+			position: absolute;
+			right: 15px;
+			top: 50%;
+			transform: translateY(-50%) translateZ(20px);
+			cursor: pointer;
+			width: 13px;
+			height: 13px;
+			z-index: 2;
+
+			@include adaptive(1023) {
+				left: 15px;
+				right: auto;
+			}
+		}
+	}
+	.header__action_bitcoin{
+
 		display: flex;
 		justify-content: center;
 		align-items: center;
 		border-radius: 3px;
 		font-weight: 600;
 		color: #000;
-		//transition: transform 0.6s;
 		transform-style: preserve-3d;
 
-		-webkit-perspective: 0;
 		backface-visibility: hidden;
 		transform: translate3d(0,0,0);
 
-		//&.green{
-		//	background: #269552;
-		//}
+		.btc_hash img{
+			height: 24px;
+			margin: -3px 5px;
+		}
+
 		&.copied{
-			//transform: rotateX(180deg);
 			animation: rotateBtc 3.7s ease-in-out;
 			animation-fill-mode: forwards;
 
@@ -179,24 +206,14 @@
 			left: 410px;
 		}
 
-		@include adaptive(1023) {
-			position: relative;
-			height: 45px;
-			left: 0;
-			top: 0;
-			white-space: nowrap;
-			font-size: 13px;
-		}
 
-		img{
-			height: 24px;
-			margin: -3px 5px;
-		}
+
+
 		span{
 			display: flex;
 			color: #fff;
 			justify-content: center;
-			font-weight: 300;
+			font-weight: 600;
 
 			@include adaptive(1023) {
 				overflow: hidden;
