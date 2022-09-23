@@ -2051,8 +2051,8 @@ var lastMobileSimilarSite;
     loadTranslations();
     initHome();
     renderFavourites();
-    viewFavoritesToggle();
-    initBtcShare(); //sortCB();
+    viewFavoritesToggle(); // initBtcShare();
+    //sortCB();
 
     if (isMobileOrTablet) {
       sortCB();

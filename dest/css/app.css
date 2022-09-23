@@ -2362,27 +2362,31 @@ fieldset {
     width: 100%;
     border-bottom: 1px solid #4a4a4a;
   }
+  /* line 22, src/scss/_components/common/_header--conatainer.scss */
+  .header__most-popular {
+    display: none;
+  }
 }
 
-/* line 26, src/scss/_components/common/_header--conatainer.scss */
+/* line 29, src/scss/_components/common/_header--conatainer.scss */
 .header__container-1 {
   background-color: #07113b;
 }
 
 @media screen and (max-width: 1023px) {
-  /* line 26, src/scss/_components/common/_header--conatainer.scss */
+  /* line 29, src/scss/_components/common/_header--conatainer.scss */
   .header__container-1 {
     display: none;
   }
 }
 
-/* line 33, src/scss/_components/common/_header--conatainer.scss */
+/* line 36, src/scss/_components/common/_header--conatainer.scss */
 .header__container-2 {
   background-color: #081b49;
 }
 
 @media screen and (max-width: 1023px) {
-  /* line 33, src/scss/_components/common/_header--conatainer.scss */
+  /* line 36, src/scss/_components/common/_header--conatainer.scss */
   .header__container-2 {
     display: -webkit-box;
     display: -webkit-flex;
@@ -2395,7 +2399,7 @@ fieldset {
     min-height: 80px;
     padding: 5px 10px;
   }
-  /* line 44, src/scss/_components/common/_header--conatainer.scss */
+  /* line 47, src/scss/_components/common/_header--conatainer.scss */
   .header__container-2.is-open .header__view-actions {
     opacity: 1;
     display: -webkit-box;
@@ -2417,19 +2421,19 @@ fieldset {
     transition: opacity 0.35s ease-in-out, visibility 0.35s ease-in-out, transform 0.35s ease-in-out;
     transition: opacity 0.35s ease-in-out, visibility 0.35s ease-in-out, transform 0.35s ease-in-out, -webkit-transform 0.35s ease-in-out;
   }
-  /* line 53, src/scss/_components/common/_header--conatainer.scss */
+  /* line 56, src/scss/_components/common/_header--conatainer.scss */
   .header__container-2.is-open .header__view-actions.awe {
     padding: 10px 20px 0;
   }
 }
 
-/* line 60, src/scss/_components/common/_header--conatainer.scss */
+/* line 63, src/scss/_components/common/_header--conatainer.scss */
 .header__container-2 .c-grid {
   position: relative;
 }
 
 @media screen and (max-width: 1023px) {
-  /* line 60, src/scss/_components/common/_header--conatainer.scss */
+  /* line 63, src/scss/_components/common/_header--conatainer.scss */
   .header__container-2 .c-grid {
     padding-left: 0;
     padding-right: 0;
@@ -2437,7 +2441,7 @@ fieldset {
 }
 
 @media screen and (min-width: 1024px) {
-  /* line 70, src/scss/_components/common/_header--conatainer.scss */
+  /* line 73, src/scss/_components/common/_header--conatainer.scss */
   .header__container-3 {
     background-color: #0b0d28;
     -webkit-box-shadow: 1.482px 16.935px 35px 0px rgba(31, 37, 103, 0.33);

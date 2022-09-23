@@ -965,7 +965,7 @@ let lastMobileSimilarSite;
 
 		viewFavoritesToggle();
 
-		initBtcShare();
+		// initBtcShare();
 		//sortCB();
 
 		if(isMobileOrTablet){
