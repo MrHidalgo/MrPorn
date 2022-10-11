@@ -17,7 +17,11 @@ let currentLang = 'en';
 let goTop;
 let wInnerWidth;
 let headerHeight = null;
-
+let isSingleBlog = false;
+let blogContent;
+let blogContentHeight = 0;
+let blogScrollPercent = 0;
+let blogProgressBar;
 
 if (!Element.prototype.matches) {
 	Element.prototype.matches = Element.prototype.msMatchesSelector ||
@@ -840,6 +844,10 @@ let lastMobileSimilarSite;
 			} else {
 				hide(goTop);
 			}
+
+			if(isSingleBlog && blogContent){
+				onBlogScroll()
+			}
 		}
 
 		if(goTop){
@@ -849,6 +857,14 @@ let lastMobileSimilarSite;
 			}
 		}
 
+	}
+
+	function onBlogScroll(){
+		if(window.scrollY < blogContentHeight | blogScrollPercent < 101){
+			blogScrollPercent = (window.scrollY/ (blogContentHeight))*100;
+			blogProgressBar.style.width = blogScrollPercent+'%'
+			console.log('blog scroll percentage '+window.scrollY+' - '+blogContentHeight, blogScrollPercent)
+		}
 	}
 
 	function adjustStickHeader(){
@@ -990,6 +1006,14 @@ let lastMobileSimilarSite;
 
 			if(isLoggedUser!=''){
 				renderFavouriteButtons()
+			}
+		}else if(document.body.classList.contains('single-blog')){
+			isSingleBlog = true;
+			blogContent = document.querySelector('.blog_content');
+			if(blogContent){
+				blogContentHeight	= blogContent.getBoundingClientRect().height - window.innerHeight - 10;
+				blogProgressBar = document.querySelector('.blog_progress');
+				onBlogScroll()
 			}
 		}
 

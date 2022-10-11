@@ -53,6 +53,20 @@
 			color: #fff;
 		}
 	}
+
+	&_progress{
+		display: none;
+
+		@include adaptive(1023) {
+			display: block;
+			position: absolute;
+			top: 100%;
+			background: rgb(56, 97, 251);
+			transition: width 300ms linear 0s;
+			height: 4px;
+			width: 0;
+		}
+	}
 }
 .blog-crumbs{
 	margin: -10px 0 10px;
