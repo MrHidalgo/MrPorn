@@ -119,9 +119,10 @@ body.chatbot_active{
 	&__wrapper {
 		&-1 {
 			display: flex;
-			padding-top: 30px;
+			padding-top: 45px;
 			padding-bottom: 30px;
 			@include adaptive(767) {
+				padding-top: 15px;
 				padding-bottom: 15px;
 			}
 		}
@@ -133,6 +134,10 @@ body.chatbot_active{
 			padding-bottom: 10px;
 			margin-top: 10px;
 			background-color: #081b49;
+
+			@include adaptive(767) {
+				margin-top: 0;
+			}
 		}
 	}
 
@@ -198,6 +203,7 @@ body.chatbot_active{
 
 		a {
 			font-size: 16px;
+			font-weight: 600;
 			color: #4099f9;
 			line-height: 2.273;
 			padding: 0 10px;
@@ -261,6 +267,100 @@ body.chatbot_active{
 	}
 }
 
+.user_page_1 .footer__wrapper-1{
+	@include adaptive(767) {
+		padding-top: 0;
+	}
+}
+
+.footer_b{
+	padding: 0 15px 15px 15px;
+	background: #fff;
+
+	&.nopadding{
+		padding: 0 0 15px;
+		background: transparent;
+	}
+
+	&_title{
+		display: flex;
+		align-items: center;
+		color: #fff;
+		font-size: 22px;
+		padding: 15px 15px 10px;
+
+		a{
+			color: #fff;
+		}
+
+		&:hover, &:focus{
+			color: #fff;
+		}
+
+		@include adaptive(767) {
+			font-size: 18px;
+			line-height: 20px;
+			padding: 7px 15px;
+		}
+
+		&:before{
+			display: inline-block;
+			content: ' ';
+			background-image: url("../images/mpg-icon.png");
+			background-size: contain;
+			background-repeat: no-repeat;
+			width: 32px;
+			height: 32px;
+			margin-right: 10px;
+
+			@include adaptive(767) {
+				width: 48px;
+				height: 48px;
+			}
+		}
+	}
+
+	&_top{
+		background: #1e559a;
+		border-radius: 8px;
+
+
+		img{
+			width: 100%;
+			border: 8px;
+		}
+	}
+	&_inner{
+	 	padding: 0 10px 10px 10px;
+	}
+	&_link{
+		display: flex;
+		margin-top: 8px;
+		border-radius: 8px;
+		background: #d1f34b;
+		border: 1px solid #12478c;
+		color: #12478c;
+		text-align: center;
+		font-size: 25px;
+		font-weight: 600;
+		text-transform: uppercase;
+		min-height: 50px;
+		align-items: center;
+		justify-content: center;
+		padding: 10px;
+
+		@include adaptive(767) {
+			font-size: 18px;
+			line-height: 20px;
+			padding: 4px 10px;
+		}
+
+		&:hover{
+			color: #12478c;
+		}
+	}
+}
+
 .footer_description{
 	h2{
 		padding-bottom: 10px;
@@ -293,6 +393,8 @@ body.chatbot_active{
 		color: #d7d7d7;
 		line-height: 1.8;
 		font-size: 16px;
+		margin: 0;
+
 		@include adaptive(1023) {
 			font-size: 14px;
 		}

@@ -24,7 +24,15 @@ $paddingRight: $paddingLeft;
     max-width: $maxWidth;
   }
 
+	//padding-top: 15px;
 
+	&_nav{
+		padding-top: 0;
+	}
+
+	&.bitcoin{
+		display: none;
+	}
 
 	@include adaptiveMinMax(1449.98, 1199.98){
 		/*max-width: 1149px;*/
@@ -47,6 +55,15 @@ $paddingRight: $paddingLeft;
 	@include adaptive(767) {
 		padding-left: 10px;
 		padding-right: 10px;
+
+		&-main{
+			margin-top: 115px;
+		}
+	}
+	@include respond('mobile_landscape'){
+		&-main{
+			margin-top: 120px;
+		}
 	}
 
   &-fluid {
@@ -56,25 +73,158 @@ $paddingRight: $paddingLeft;
 }
 
 
+.show_2nd_header_{
+	.c-grid-main{
+		@include respond('ipad_portrait'){
+			margin-top: 80px;
+		}
+		@include adaptive(767) {
+			margin-top: 80px;
+		}
+		@include respond('mobile_landscape'){
+			margin-top: 80px;
+		}
+	}
+	&.category.gaming_cat_1 .c-grid-main{
+
+		@include adaptive(767) {
+			margin-top: 75px;
+		}
+		@include respond('mobile_landscape'){
+			margin-top: 75px;
+		}
+	}
+	&1{
+		.c-grid-main{
+			@include respond('ipad_portrait'){
+				margin-top: 130px;
+			}
+			@include adaptive(1023) {
+				margin-top: 130px;
+			}
+			@include respond('mobile_landscape'){
+				margin-top: 130px;
+			}
+		}
+
+		&.page-id-17{
+			.c-grid-main {
+				@include adaptive(767) {
+					margin-top: 115px;
+				}
+			}
+		}
+
+		&.category{
+			.c-grid-main{
+				@include adaptive(767) {
+					margin-top: 115px;
+				}
+				@include respond('mobile_landscape'){
+					margin-top: 115px;
+				}
+			}
+		}
+
+		&.single-sites.gaming_cat_{
+			.c-grid-main{
+				@include respond('ipad_portrait'){
+					margin-top: 120px;
+				}
+				@include adaptive(767) {
+					margin-top: 120px;
+				}
+				@include respond('mobile_landscape'){
+					margin-top: 120px;
+				}
+			}
+		}
+	}
+}
+
+@include adaptive(1023.98) {
+	body.fund{
+		padding-top: 45px;
+	}
+}
+
+
+.gaming_cat_1{
+	.c-grid-main{
+		@include respond('ipad_portrait'){
+			margin-top: 80px;
+		}
+
+		@include adaptive(767) {
+			margin-top: 80px;
+		}
+		@include respond('mobile_landscape'){
+			margin-top: 80px;
+		}
+	}
+}
+
+.user_page_1{
+	.c-grid-main{
+		@include adaptive(767) {
+			margin-top: 120px;
+			display: flex;
+			flex-direction: column;
+		}
+		@include respond('mobile_landscape'){
+			margin-top: 120px;
+		}
+	}
+}
 
 .page-id-17{
 	.c-grid {
 		&.list{
-			padding-top: 25px;
-		}
+			padding-top: 15px;
 
-		&--inner{
-			display: flex;
-			flex-wrap: wrap;
-			margin: 0 -15px;
-
-			@include respond('max-medium'){
-				margin: 0;
+			@include respond('ipad_landscape'){
+				padding: 15px 20px 25px;
 			}
 		}
 
-		@media screen and (min-width: 1450px) {
+		/*&--inner{
+			position: relative;
+			flex-wrap: wrap;
+			margin: 0 -7px;
+
+			display: grid;
+			grid-row-gap: 9px;
+			row-gap: 9px;
+			-webkit-column-gap: 8px;
+			column-gap: 0;
+			grid-template-rows: initial;
+			grid-template-columns: repeat(4, minmax(0, 1fr));
+			grid-template-areas: initial;
+			grid-auto-flow: row dense;
+			grid-auto-rows: 1px;
+			grid-auto-columns: initial;
+
+
+			@include adaptive(1023.98){
+				margin: 0;
+				grid-template-columns: repeat(2, 1fr);
+			}
+			@include respond('max-small'){
+				margin: 0;
+				grid-template-columns: repeat(1, 1fr);
+			}
+		}*/
+
+		/*@media screen and (min-width: 1450px) {
 			max-width: 75%;
+		}*/
+		@media screen and (min-width: 1330px) {
+			max-width: 75%;
+			min-width: 1300px;
+		}
+		@media screen and (max-width: 1329.98px) {
+			max-width: 100%;
+			min-width: auto;
 		}
 	}
 }

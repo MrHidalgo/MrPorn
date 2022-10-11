@@ -32,6 +32,12 @@
 				border-color: #0e123c transparent transparent transparent;
 			}
 		}
+
+		@include respond('mobile_landscape'){
+			max-width: 430px;
+			margin: 0 auto;
+			text-align: center;
+		}
 	}
 
 	.login_container_inner{
@@ -86,6 +92,14 @@
 				background: #080915;
 				padding: 15px 30px;
 				text-align: center;
+			}
+
+			@include respond('mobile_landscape'){
+				&_outer{
+					background: #080915;
+				}
+				max-width: 430px;
+				margin: 0 auto;
 			}
 
 			a{
@@ -182,7 +196,7 @@
 
 	.login_banner{
 		width: 50%;
-		max-width: 580px;
+		//max-width: 580px;
 
 		@include adaptive(1023) {
 			display: none;
@@ -257,6 +271,10 @@
 
 	&.alert-danger{
 		color: #ff6d6d;
+	}
+
+	.check_folder{
+		color: #d1f34b;
 	}
 }
 
@@ -361,18 +379,26 @@
 }
 .cleanlogin-container{
 	padding: 15px;
-	max-width: 430px;
 
 	@include adaptive(1023){
 		padding: 35px 30px 15px;
 	}
 
+	@include respond('mobile_landscape'){
+		margin: 0 auto;
+	}
+
+	.status.alert-danger{
+		color: #ff4f4f;
+		text-align: center;
+		padding-bottom: 15px;
+	}
+
 	.join_button, input[type=submit], .submit{
-		width: 100%!important;
+		width: 100%;
 		border: none;
-		height: 60px!important;
-		line-height: 60px;
-		padding: 0!important;
+		height: 60px;
+		padding: 0;
 		font-size: 26px;
 		font-weight: 600;
 		color: #021b3b;
@@ -406,7 +432,6 @@
 .cleanlogin-field{
 	margin-bottom: 25px;
 	border-radius: 8px;
-	max-width: 420px;
 
 	input{
 		padding: 15px 25px;
@@ -416,6 +441,17 @@
 
 		&.error{
 			border-color: red;
+		}
+	}
+}
+
+.btn_ajax{
+	&.loading{
+		font-size: 0;
+		text-indent: 0;
+
+		.loading_spinner{
+			display: block;
 		}
 	}
 }

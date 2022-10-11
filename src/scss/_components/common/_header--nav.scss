@@ -50,8 +50,8 @@
 		@include adaptive(1023) {
 			justify-content: flex-start;
 			min-height: 60px;
-			padding-left: 20px;
-			padding-right: 20px;
+			padding-left: 10px;
+			padding-right: 10px;
 		}
 
 		&:hover {
@@ -81,12 +81,33 @@
 			@include adaptive(1023) {
 				transform: scale(1.2);
 			}
+			&.icon-nav-home{
+				height: 16px;
+				margin-right: 8px;
+			}
 
-			&.icon-category:before{
+			/*&.icon-category:before{
 				background: url(../images/icon-category.svg);
 				background-repeat: no-repeat;
 				width: 22px;
 				height: 17px;
+			}*/
+			&.icon-nav-category{
+				height: 16px;
+				margin-right: 12px;
+			}
+			&.icon-nav-porncoupons{
+				width: 19px;
+			}
+			&.icon-nav-blog{
+				height: 18px;
+			}
+			&.icon-nav-videos{
+				height: 17px;
+			}
+			&.icon-nav-sex{
+				width: auto;
+				height: 26px;
 			}
 		}
 
@@ -106,6 +127,12 @@
 				min-width: 115px;
 				font-size: 20px;
 			}
+		}
+	}
+
+	@include adaptive(1023) {
+		&-icon{
+			width: 40px;
 		}
 	}
 

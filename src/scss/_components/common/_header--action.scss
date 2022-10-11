@@ -13,29 +13,195 @@
 		width: 125px;
 	}
 
+	&-col{
+		&:first-child{
+			.header__action-link{
+				margin-right: 10px;
+			}
+		}
+	}
+
+	@include adaptive(1023) {
+		width: 100%;
+		height: 40px;
+		border: none;
+		border-top: 1px solid #0a3e83;
+		border-bottom: 1px solid #4a4a4a;
+		align-items: stretch;
+
+		&-col{
+			display: flex;
+			flex: 1;
+			justify-content: center;
+			align-items: center;
+
+			&:first-child{
+				border-right: 1px solid #0a3e83;
+			}
+		}
+	}
+
 	&-link {
-		display: flex;
 		font-size: 12px;
 		font-weight: 700;
 		color: #768fa9;
 
+		i{display: none;}
+
 		&:hover, &:focus{
 			color: #768fa9;
-		}
-
-		&:first-child{
-			margin-right: 10px;
 		}
 
 		@include adaptive(1279) {
 			font-size: 12px;
 		}
 
+		@include adaptive(1023) {
+			display: flex;
+			align-items: center;
+			font-size: 14px;
+			color: #fff;
+			text-transform: uppercase;
+			font-weight: 400;
+
+			i{
+				display: block;
+				margin-right: 5px;
+			}
+		}
+
 		&--logout {
 			color: #9294ad;
+			@include adaptive(1023) {
+				color: #fff;
+			}
 		}
 		&--admin {
 			color: #91a538;
+			@include adaptive(1023) {
+				color: #fff;
+			}
+		}
+	}
+
+	&_bitcoin{
+		/*position: absolute;
+		z-index: 1;
+		top: 10px;
+		left: 430px;
+		background: #e58616;
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		border-radius: 3px;
+		padding: 0px 15px;
+		font-weight: 600;
+		color: #000;
+		transition: transform 0.6s;
+		transform-style: preserve-3d;*/
+
+
+
+
+
+		@include adaptiveMinMax(1449.98, 1199.98){
+			left: 410px;
+		}
+
+		&_inner{
+			display: flex;
+			width: 100%;
+			height: 100%;
+			overflow: hidden;
+			cursor: pointer;
+			border-radius: 3px;
+			padding: 0px 65px 0 15px;
+			background: #e58616;
+			-webkit-perspective: 0;
+			-webkit-backface-visibility: hidden;
+			-webkit-transform: translate3d(0,0,0);
+			visibility:visible;
+			backface-visibility: hidden;
+			align-items: center;
+			justify-content: center;
+			//transform-style: preserve-3d;
+
+			@include adaptive(1023) {
+				flex-direction: column;
+				align-items: center;
+				padding: 0 15px;
+				border-radius: 0;
+			}
+		}
+		&_copied{
+			position: absolute;
+			display: flex;
+			justify-content: center;
+			align-items: center;
+			border-radius: 3px;
+			width: 100%;
+			height: 100%;
+			text-align: center;
+			color: #fff;
+			transform: rotateX(180deg);
+			background: #269552;
+			backface-visibility: hidden;
+
+			img{height: 14px !important; margin-left: 15px;}
+		}
+
+		@include adaptive(1023) {
+			position: relative;
+			height: 45px;
+			left: 0;
+			top: 0;
+			white-space: nowrap;
+		}
+
+		img{
+			height: 24px;
+			margin: -3px 5px;
+		}
+		span{
+			color: #fff;
+			position: relative;
+
+			@include adaptive(1023) {
+				&:before {
+					display: inline-block;
+					content: ' ';
+					position: absolute;
+					right: 0;
+					top: 0;
+					width: 40px;
+					height: 24px;
+					padding-left: 15px;
+					background: rgb(229, 134, 22);
+					background: linear-gradient(270deg, rgba(229, 134, 22, 1) 0%, rgba(229, 134, 22, 1) 60%, rgba(229, 134, 22, 0) 100%);
+				}
+			}
+
+			&:after{
+				@include adaptive(1023) {
+					position: absolute;
+				}
+				display: block;
+				right: 0;
+				top: 0;
+				width: 24px;
+				height: 18px;
+				content: ' ';
+				background: url(/wp-content/themes/mpg/images/copy.svg);
+				background-repeat: no-repeat;
+				background-position: center;
+			}
+
+			@include adaptive(1023) {
+				overflow: hidden;
+				position: relative;
+			}
+
+
 		}
 	}
 }
