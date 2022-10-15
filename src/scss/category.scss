@@ -8,7 +8,7 @@
 ///
 /// VENDOR
 /// ===============
-@import "_vendor/hamburger/_hamburgers";
+//  @import "_vendor/hamburger/_hamburgers";
 //@import "_vendor/selectric/_selectric";
 ///
 /// GENERATED
@@ -22,7 +22,7 @@
 @import "_shared/grid";
 @import "_shared/common";
 @import "_shared/iconPNG";
-//@import "_shared/iconSVG";
+@import "_shared/iconSVG";
 @import "_shared/iconFont";
 ///
 /// MACROS
@@ -37,18 +37,28 @@
 @import "_components/search/search";
 @import "_components/headings/blue_heading";
 @import "_components/breadcrumbs/breadcrumbs";
-//@import "_components/pagination/pagination";
+@import "_components/pagination/pagination";
 @import "_components/blue_button/blue_button";
 
 @import "_components/category/siteitems";
 @import "_components/category/category";
-//@import "_components/common/footer";
+@import "_components/common/footer";
+
+@import "_components/misc/misc";
+@import "_components/misc/sort";
+@import "_components/misc/header";
+@import "_components/misc/search";
+@import "_components/common/login";
+.header {
+	@import "_components/common/header--view";
+}
+//@import "_generated/spritePNG";
+//@import "_generated/spriteFont";
+
 
 //@import "_components/category/list";
 //@import "_components/category/deals";
 
 
-
-//@import "_generated/spritePNG";
-//@import "_generated/spriteFont";
-//@import "_components/other_categories/other_categories";
+@import "_components/other_categories/other_categories";
+@import "_components/category/deals";
