@@ -799,7 +799,7 @@ var loadTranslations = function loadTranslations() {
 };
 
 var _t = function _t(key, _default) {
-  if (!currentLang) {
+  if (!currentLang || currentLang == 'en') {
     currentLang = document.documentElement.getAttribute('lang');
   }
 
@@ -2124,6 +2124,10 @@ var lastMobileSimilarSite;
         window.visualViewport.addEventListener("resize", function () {
           setInnerHeight();
         });
+      }
+
+      if (document.body.classList.contains('single-sites')) {
+        onReviewPageLoad();
       }
     });
   }

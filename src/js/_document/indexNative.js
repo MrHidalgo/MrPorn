@@ -1056,6 +1056,12 @@ let lastMobileSimilarSite;
 				});
 			}
 
+			if(document.body.classList.contains('single-sites')){
+				onReviewPageLoad();
+			}
+
+
+
 		});
 	}
 

@@ -640,9 +640,18 @@
 		.deadsite-title{
 			margin-top: 30px;
 			font-size: 36px;
+
+			@include adaptive(767){
+				margin-top: 5px;
+				font-size: 12px;
+			}
 		}
 		.deadsite-subtitle{
 			font-size: 20px;
+
+			@include adaptive(767){
+				font-size: 16px;
+			}
 		}
 		.item-link{
 			bottom: 25px;

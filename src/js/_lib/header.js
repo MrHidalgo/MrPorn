@@ -248,7 +248,7 @@ const loadTranslations = () => {
 }
 
 const _t = (key, _default) => {
-	if(!currentLang){
+	if(!currentLang || currentLang=='en'){
 		currentLang = document.documentElement.getAttribute('lang');
 	}
 

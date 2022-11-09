@@ -539,6 +539,16 @@
 	background-repeat: no-repeat!important;
 	background-position: 50% 50%!important;
 
+	@include respond('large'){
+		.deadsite-drop{
+			display: none;
+		}
+		&.is_unlisted, &.is_dead{
+			.deadsite-drop{
+				display: block;
+			}
+		}
+	}
 
 	@include respond('max-medium'){
 		border: none;
