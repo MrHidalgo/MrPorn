@@ -409,38 +409,6 @@ function scrollToCategoryOnHome(ev, _ev){
 
 }
 
-const loadHomeData = () => {
-
-	let url = '/wp-json/mpg/home/';
-	if(currentLang!='en'){
-		url = '/wp-json/mpg/home/?lang='+currentLang;
-	}
-
-	homeData = getWithExpiry("homepage_data_"+dataTime+'_'+currentLang);
-
-	if(homeData){
-
-		//setTimeout(renderAllOtherCategories, 100);
-	}else{
-		fetch(url)
-			.then(res => res.json())
-			.then((out) => {
-				homeData = out;
-
-				if(homeData.code=='rest_login_required'){
-
-				}else{
-					setWithExpiry("homepage_data_"+dataTime+'_'+currentLang, homeData, 30*60*1000);
-				}
-
-				//setTimeout(renderAllOtherCategories, 100);
-			})
-			.catch(err => { throw err });
-	}
-
-
-}
-
 function renderHompageSiteSlide(category, index){
 	//rendering single slide
 

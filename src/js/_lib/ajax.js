@@ -35,7 +35,6 @@ function postRequest(url = '', data = {}, callback){
 
 	// Default options are marked with *
 	const response = fetch(url, {
-
 		method: 'POST', // *GET, POST, PUT, DELETE, etc.
 		headers: {
 			'Content-Type': 'application/x-www-form-urlencoded; charset=UTF-8'
@@ -81,8 +80,8 @@ function postRequestAbortable(url = '', signal, data = {}, callback){
 		.then((out) => {
 			callback(out);
 		}).catch(err => {
-			console.log(err);
-			throw err;
+			// console.log(err);
+			// throw err;
 		});
 
 	return response;

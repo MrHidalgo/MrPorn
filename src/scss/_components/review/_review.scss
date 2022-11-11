@@ -12,12 +12,9 @@
 }
 
 @include respond('ipad_portrait'){
-	#primary{
-		margin-top: 120px;
-	}
 }
 
-.site-content{
+/*.site-content{
 	@include adaptive(1023.98) {
 		margin-top: 120px;
 	}
@@ -35,7 +32,7 @@
 			margin-top: 80px;
 		}
 	}
-}
+}*/
 
 @include adaptive(767) {
 	.c-grid{

@@ -1,15 +1,15 @@
-
-
 /**
  * @name initHamburger
  *
  * @description Init hamburger logic with animated
  */
+
 const initHamburger = () => {
 
   const btnHamburger = document.querySelector("[hamburger-js]"),
     hideScrollContainer = document.querySelectorAll("html, body"),
-    mobileContainer = document.querySelector("[mobile-block-js]");
+    //mobileContainer = document.querySelector("[mobile-block-js]");
+		mobileContainer = document.querySelector(".header__bottom");
 
   const mobileMenuTop = document.querySelector(".pre-header__mobile-top");
 
@@ -18,7 +18,8 @@ const initHamburger = () => {
 			const elem = ev.currentTarget;
 
 			if(!mobileMenuTop){
-				renderMobileMenu();
+				// renderMobileMenu();
+				// initMobileThemeToggle()
 			}
 
 			elem.classList.toggle("is-active");
@@ -27,6 +28,8 @@ const initHamburger = () => {
 			hideScrollContainer.forEach((val, idx) => {
 				val.classList.toggle("is-hideScroll");
 			});
+
+			// initMobileThemeToggle();
 
 
 			if(document.body.classList.contains('is-hideScroll')){
@@ -44,6 +47,12 @@ const initHamburger = () => {
 
 	if(searchHamburger) {
 		searchHamburger.addEventListener("click", (ev) => {
+			setInnerHeight();
+			// disableScroll()
+			isSearchActive = true;
+
+			bodyScrollLock.disableBodyScroll(searchViewContainer);
+
 			btnHamburger.classList.remove("is-active");
 
 			if(mobileContainer.classList.contains('is-open')){
@@ -73,6 +82,23 @@ const initHamburger = () => {
 			document.querySelector('[search-js]').value = '';
 			hide(document.querySelector('[search-drop-mobile-js]'));
 			document.querySelector('.category__drop').classList.remove('is-open');
+
+			console.log('closing hamburger');
+			setInnerHeight();
+			isSearchActive = false;
+			// enableScroll()
+			bodyScrollLock.enableBodyScroll(searchViewContainer);
+
+			document.body.classList.remove('has_search');
+
+			let searchPagination = document.querySelector('.search_pagination');
+			if(searchPagination){
+				searchPagination.style.display = 'block'
+			}
+
+			if(searchPage){
+				searchPage = 0;
+			}
 		});
 	}
 };
@@ -81,13 +107,14 @@ const renderMobileMenu = () => {
 	const langHtml = document.querySelector('.lang').outerHTML;
 	const mobileContainer = document.querySelector("[mobile-block-js]");
 
+	const navCategoriesLink = document.querySelector('.header__nav-link.link_categories').getAttribute('href');
 	const navLinkGames = document.querySelector('.header_nav_games').getAttribute('href');
 	const navLinkMeet = document.querySelector('.header_nav_meet').getAttribute('href');
 	const navLinkLiveSex = document.querySelector('.header_nav_dating.live_sex_nav').getAttribute('href');
 
 	let currentLang = document.documentElement.getAttribute('lang');
 
-	let linkSignup = '<div><a class="pre-header__signup mobile_signup_link" href="/sign-up/"><i class="icon-font icon-key"></i><span>Sign Up</span></a></div>';
+	let linkSignup = '<div><a class="pre-header__signup mobile_signup_link" href="/sign-up/"><i class="icon-font icon-key"></i><span>'+_t('sign_up', 'Sign Up')+'</span></a></div>';
 	if(window.logoutUrl){
 		linkSignup = '<div><a class="pre-header__signup mobile_signup_link" href="'+window.logoutUrl+'"><i class="icon-font icon-key"></i><span>LOGOUT</span></a></div>';
 	}
@@ -98,66 +125,73 @@ const renderMobileMenu = () => {
 
 	const mobileNavHtml = '<div>' +
 		'            <div class="pre-header__mobile-top">' +
-		'              <div><a class="pre-header__signin mobile_login_link" href="/login/"><i class="icon-font icon-enter"></i><span>Login</span></a></div>' +
+		'              <div><a class="pre-header__signin mobile_login_link" href="/login/"><i class="icon-font icon-enter"></i><span>'+_t('login', 'Login')+'</span></a></div>' +
 		linkSignup+
 		'            </div>' +
 		'            <div class="pre-header__mobile-middle">' +
-									'<p class="pre-header__heading"><i></i><span>Main</span></p>'+
+									'<p class="pre-header__heading"><i></i><span>'+_t('main', 'Main')+'</span></p>'+
+		'<div class="header__toggle">' +
+		'                <input type="checkbox" name="" id="toggle-mode-mobile" class="toggle-mode">' +
+		'                <label for="toggle-mode-mobile">' +
+		'                    <div class="header__toggle-left"><i class="icon-font icon-sun"></i></div>' +
+		'                    <div class="header__toggle-right"><i class="icon-font icon-moon"></i></div><span></span>' +
+		'                </label>' +
+		'            </div>'+
 		'              <div>'+langHtml+'</div>' +
 		'            </div>' +
 		'            <div class="pre-header__mobile-bottom main_mobile_menu">' +
 		window.favHtmlMobile+
 		'              <ul class="header__nav">' +
-		'                <li class="header__nav-item"><a class="header__nav-link" href="/categories/" hreflang="'+currentLang+'">' +
-		'                    <div><i class="icon-png header-nav-folder"></i></div>' +
-		'                    <div><span>View All Categories</span></div></a></li>' +
+		'                <li class="header__nav-item"><a class="header__nav-link" href="'+navCategoriesLink+'">' +
+		'                    <div><img class="icon-nav-folder" src="/wp-content/themes/mpg/images/menu/menu.svg#folder"/></div>' +
+		'                    <div><span>'+_t('view_all_categories', 'View All Categories')+'</span></div></a></li>' +
 		'                <li class="header__nav-item header__nav-item--saparator"><span class="header__nav-separator"></span></li>' +
-		'                <li class="header__nav-item"><a class="header__nav-link" href="/blog/" hreflang="en">' +
-		'                    <div><i class="icon-png header-nav-blog"></i></div>' +
-		'                    <div><span>Blog</span></div></a></li>' +
+		'                <li class="header__nav-item"><a class="header__nav-link" href="/blog/">' +
+		'                    <div><img class="icon-nav-blog" src="/wp-content/themes/mpg/images/menu/menu.svg#blog"/></div>' +
+		'                    <div><span>'+_t('blog', 'Blog')+'</span></div></a></li>' +
 		'                <li class="header__nav-item header__nav-item--saparator"><span class="header__nav-separator"></span></li>' +
-		'                <li class="header__nav-item"><a class="header__nav-link" href="/webcam-videos/" hreflang="en">' +
-		'                    <div><i class="icon-png header-nav-videos"></i></div>' +
-		'                    <div><span>Videos</span></div></a></li>' +
+		'                <li class="header__nav-item"><a class="header__nav-link" href="/webcam-videos/">' +
+		'                    <div><img class="icon-nav-videos" src="/wp-content/themes/mpg/images/menu/menu.svg#videos"/></div>' +
+		'                    <div><span>'+_t('videos', 'Videos')+'</span></div></a></li>' +
 		'                <li class="header__nav-item header__nav-item--saparator"><span class="header__nav-separator"></span></li>' +
-		'                <li class="header__nav-item"><a class="header__nav-link" href="/pornstars/" hreflang="en">' +
-		'                    <div><i class="icon-png header-nav-pornstars"></i></div>' +
-		'                    <div><span>Pornstars</span></div></a></li>' +
+		'                <li class="header__nav-item"><a class="header__nav-link" href="/pornstars/">' +
+		'                    <div><img class="icon-nav-pornstars" src="/wp-content/themes/mpg/images/menu/menu.svg#pornstars"/></div>' +
+		'                    <div><span>'+_t('pornstars', 'Pornstars')+'</span></div></a></li>' +
 		'                <li class="header__nav-item header__nav-item--saparator"><span class="header__nav-separator"></span></li>' +
-		'                <li class="header__nav-item"><a class="header__nav-link" href="/porn-deals/" hreflang="en">' +
-		'                    <div><i class="icon-png header-nav-porncoupons"></i></div>' +
-		'                    <div><span>Porn Coupons</span></div></a></li>' +
+		'                <li class="header__nav-item"><a class="header__nav-link" href="/porn-deals/">' +
+		'                    <div><img class="icon-nav-porncoupons" src="/wp-content/themes/mpg/images/menu/menu.svg#ticket"/></div>' +
+		'                    <div><span>'+_t('porn-coupons', 'Porn Coupons')+'</span></div></a></li>' +
 		'                <li class="header__nav-item header__nav-item--saparator"><span class="header__nav-separator"></span></li>' +
-		'                <li class="header__nav-item"><a class="header__nav-link" href="'+navLinkGames+'" hreflang="'+currentLang+'" target="_blank">' +
-		'                    <div><i class="icon-png header-nav-porngames"></i></div>' +
-		'                    <div><span>Porn Games</span></div></a></li>' +
+		'                <li class="header__nav-item"><a class="header__nav-link" href="'+navLinkGames+'" target="_blank">' +
+		'                    <div><img class="icon-nav-porngames" src="/wp-content/themes/mpg/images/menu/menu.svg#joystick"/></div>' +
+		'                    <div><span>'+_t('porn-games', 'Sex Games')+'</span></div></a></li>' +
 		'                <li class="header__nav-item header__nav-item--saparator"><span class="header__nav-separator"></span></li>' +
 		'                <li class="header__nav-item"><a class="header__nav-link" href="'+navLinkMeet+'" target="_blank" rel="nofollow">' +
-		'                    <div><i class="icon-png header-nav-meetfuck"></i></div>' +
-		'                    <div><span>Meet & Fuck</span></div></a></li>' +
+		'                    <div><img class="icon-nav-sex" src="/wp-content/themes/mpg/images/menu/sex-icon.png"/></div>' +
+		'                    <div><span>'+_t('meet-and-fuck', 'Meet & Fuck')+'</span></div></a></li>' +
 		'                <li class="header__nav-item header__nav-item--saparator"><span class="header__nav-separator"></span></li>' +
 		'                <li class="header__nav-item"><a class="header__nav-link" href="'+navLinkLiveSex+'" rel="nofollow" target="_blank">' +
-		'                    <div><i class="icon-png header-nav-livesex"></i></div>' +
-		'                    <div><span>Live sex</span></div></a></li>' +
+		'                    <div><img class="icon-nav-livesex" src="/wp-content/themes/mpg/images/menu/menu.svg#webcam"/></div>' +
+		'                    <div><span>'+_t('live-sex', 'Live sex')+'</span></div></a></li>' +
 		'              </ul>' +
 		'            </div>' +
 		'            <div class="pre-header__mobile-middle">' +
 		'              <div>' +
-		'                <p class="pre-header__heading"><i></i><span>Connect With Us</span></p>' +
+		'                <p class="pre-header__heading"><i></i><span>'+_t('connect_with_us', 'Connect With Us')+'</span></p>' +
 		'              </div>' +
 		'              <div></div>' +
 		'            </div>' +
 		'            <div class="pre-header__mobile-bottom">' +
 		'              <ul class="header__nav">' +
-		'                <li class="header__nav-item"><a class="header__nav-link" href="'+translateLink('about-us')+'" hreflang="'+currentLang+'">' +
-		'                    <div><i class="icon-png header-nav-info"></i></div>' +
-		'                    <div><span>About Us</span></div></a></li>' +
-		'                <li class="header__nav-item"><a class="header__nav-link" href="'+translateLink('contact')+'" hreflang="'+currentLang+'">' +
-		'                    <div><i class="icon-png header-nav-email"></i></div>' +
-		'                    <div><span>Contact Us</span></div></a></li>' +
-		'                <li class="header__nav-item"><a class="header__nav-link" href="'+translateLink('advertising')+'" hreflang="'+currentLang+'">' +
-		'                    <div><i class="icon-png header-nav-megaphone"></i></div>' +
-		'                    <div><span>Advertising</span></div></a></li>' +
+		'                <li class="header__nav-item"><a class="header__nav-link" href="'+translateLink('about-us')+'">' +
+		'                    <div><img class="icon-nav-info" src="/wp-content/themes/mpg/images/menu/menu.svg#info"/></div>' +
+		'                    <div><span>'+_t('footer_about', 'About Us')+'</span></div></a></li>' +
+		'                <li class="header__nav-item"><a class="header__nav-link" href="'+translateLink('contact')+'">' +
+		'                    <div><img class="icon-nav-mail" src="/wp-content/themes/mpg/images/menu/menu.svg#mail"/></div>' +
+		'                    <div><span>'+_t('footer_contact', 'Contact Us')+'</span></div></a></li>' +
+		'                <li class="header__nav-item"><a class="header__nav-link" href="'+translateLink('advertising')+'">' +
+		'                    <div><img class="icon-nav-megaphone" src="/wp-content/themes/mpg/images/menu/menu.svg#megaphone"/></div>' +
+		'                    <div><span>'+_t('title_advertising', 'Advertising')+'</span></div></a></li>' +
 		'              </ul>' +
 		'            </div>' +
 		'          </div>';

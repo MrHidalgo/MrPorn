@@ -1,21 +1,21 @@
 // LOGIN :: START
-.show_2nd_header_1 .site-content{
-	@include adaptive(767) {
-		margin-top: 120px;
-	}
-}
-
 .c-grid{
 	@include adaptive(1023) {
 		padding: 0;
+		flex: 1;
 	}
 }
 
 .login_panel_container {
-	padding: 0 15px;
+	padding: 15px 0;
 
 	@include adaptive(1023) {
 		padding: 0;
+	}
+
+	@include adaptive(767) {
+		flex: 1;
+		background: #000;
 	}
 }
 

@@ -4,12 +4,14 @@ let loggedUsername='';
 let logoutUrl='';
 let sortTimout;
 let favouriteList = [];
+let isDark = '1';
+let toggleSwitch = document.querySelector('#toggle-mode');
 
 const initTheme = () => {
-	let toggleSwitch = document.querySelector('#toggle-mode');
+
 	if(toggleSwitch){
 		toggleSwitch.addEventListener('change', (event) => {
-			if (event.target.checked) {
+			if (document.documentElement.classList.contains('light')) {
 				createCookie("is_dark", "1", 7);
 				document.documentElement.classList.remove('light');
 			} else {
@@ -19,16 +21,41 @@ const initTheme = () => {
 		})
 	}
 
-	var isDark = getCookieMpgCookie("is_dark");
+	isDark = getCookieMpgCookie("is_dark");
 	if(isDark==''){
-		isDark = '1';
+		isDark = '0';
 	}
 	if(isDark=='1'){
-		//document.documentElement.classList.remove('light');
+		document.documentElement.classList.remove('light');
 		toggleSwitch.checked = true;
 	}else{
-		//document.documentElement.classList.add('light');
+		document.documentElement.classList.add('light');
 		toggleSwitch.checked = false;
+	}
+}
+
+const initMobileThemeToggle = ()=>{
+	let toggleMobileSwitch = document.querySelector('#toggle-mode-mobile');
+	if(toggleMobileSwitch){
+		toggleMobileSwitch.addEventListener('change', (event) => {
+			if (document.documentElement.classList.contains('light')) {
+				createCookie("is_dark", "1", 7);
+				document.documentElement.classList.remove('light');
+			} else {
+				createCookie("is_dark", "0", 7);
+				document.documentElement.classList.add('light');
+			}
+		})
+
+		console.log('current theme'+isDark);
+
+		if(isDark=='1'){
+			toggleMobileSwitch.checked = true;
+			toggleSwitch.checked = true;
+		}else{
+			toggleMobileSwitch.checked = false;
+			toggleSwitch.checked = false;
+		}
 	}
 }
 
@@ -81,9 +108,6 @@ const renderFavourites = () => {
 				if(document.querySelector('.mobile_signup_link')){
 					document.querySelector('.mobile_signup_link').setAttribute('href', logoutLink);
 				}
-
-
-
 			}else{
 				//loadLoginForm();
 			}
@@ -105,19 +129,6 @@ const renderFavourites = () => {
 						'<div><img src="'+fav.favicon+'"/><p><a href="'+fav.permalink+'">'+fav.title+'</a></p></div>' +
 						'<div><button type="button" data-id="'+fav.id+'" un-favorites-js><i class="icon-font icon-delete"></i></button><a href="'+fav.permalink+'" class="glass"><i class="icon-font icon-search"></i></a></div>' +
 						'</div>';
-
-					/*let favLink = document.querySelector('[data-id="'+fav.id+'"] [favorites-toggle-js]');
-					if(favLink){
-						favLink.classList.add('is-active');
-					}
-
-					if(document.querySelector('.list__box-favorites[data-id="'+fav.id+'"]')){
-						document.querySelector('.list__box-favorites[data-id="'+fav.id+'"]').classList.add('is-active');
-					}
-					if(document.querySelector('.list__specification-circle[data-id="'+fav.id+'"]')){
-						document.querySelector('.list__specification-circle[data-id="'+fav.id+'"]').classList.add('is-active');
-					}*/
-
 				})
 
 				if(favouritesDropDown){
@@ -145,10 +156,12 @@ function renderMobileFavourites(response){
 
 	window.favHtmlMobile = '<div class="hdrfav mobile_fav_link"><div class="hdrfavttl">Your Favourite Sites</div><div class="site_list favourite_list">'+favHtml+'</div></div>'
 
-	if(document.querySelector(".main_mobile_menu")){
-		document.querySelector(".main_mobile_menu").insertAdjacentHTML("afterbegin", window.favHtmlMobile);
+	let menuUserBlock = document.querySelector('.header__user-block');
+
+	if(menuUserBlock){
+		menuUserBlock.insertAdjacentHTML("beforeend", window.favHtmlMobile);
 		document.querySelector('.mobile_fav_link .hdrfavttl').onclick = function(event){
-			document.querySelector('.mobile_fav_link').classList.toggle('open');
+			document.querySelector('.mobile_fav_link').classList.toggle('open1');
 		}
 	}
 }
@@ -209,7 +222,9 @@ const letterSearch = () => {
 
 				setWithExpiry("letter_data_"+dataTime, letterData, 30*60*1000);
 			})
-			.catch(err => { throw err });
+			.catch(err => {
+				// console.log('didnt load letter matrix');
+			});
 	}
 }
 
@@ -226,12 +241,14 @@ const loadTranslations = () => {
 
 				setWithExpiry("i18n_"+dataTime, translations, 60*60*1000);
 			})
-			.catch(err => { throw err });
+			.catch(err => {
+				// console.log('didnt load translations');
+			});
 	}
 }
 
 const _t = (key, _default) => {
-	if(!currentLang){
+	if(!currentLang || currentLang=='en'){
 		currentLang = document.documentElement.getAttribute('lang');
 	}
 
@@ -327,11 +344,11 @@ const onSortLetterClick = (letterItem) => {
 
 		let htmlFree = '';
 		if(siteFree){
-			htmlFree = '<a href="'+siteFree+'" class="site_free scroll_to_category" data-category="'+freeId+'"><span>Free</span></a>';
+			htmlFree = '<a href="'+siteFree+'" class="site_free scroll_to_category11" data-category="'+freeId+'"><span>Free</span></a>';
 		}
 		let htmlHd = '';
 		if(siteHd){
-			htmlHd = '<a href="'+siteHd+'" class="scroll_to_category" data-category="'+hdId+'"><img src="'+themeBase +'images/img-badge-premium.png" srcset="'+themeBase+'images/img-badge-premium@2x.png 2x" alt=""/></a>';
+			htmlHd = '<a href="'+siteHd+'" class="scroll_to_category11" data-category="'+hdId+'"><img src="'+themeBase +'images/img-badge-premium.png" srcset="'+themeBase+'images/img-badge-premium@2x.png 2x" alt=""/></a>';
 		}
 
 		let showLetterToggle = false;
@@ -360,7 +377,7 @@ const onSortLetterClick = (letterItem) => {
 			}
 
 			letterSuggessions += '<div class="sort__collapse">' +
-				'<a class="sort__collapse-toggle scroll_to_category" data-category="'+((hdId!='')?hdId:freeId)+'" href="'+toggleLink+'">'+
+				'<a class="sort__collapse-toggle scroll_to_category11" data-category="'+((hdId!='')?hdId:freeId)+'" href="'+toggleLink+'">'+
 				'<div><span>#'+suggessionIndex+'</span></div>'+
 				'<div><img src="'+catIcon+'" />'+
 				'<p>'+suggessionName+'</p>'+

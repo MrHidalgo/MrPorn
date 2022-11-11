@@ -17,7 +17,11 @@ let currentLang = 'en';
 let goTop;
 let wInnerWidth;
 let headerHeight = null;
-
+let isSingleBlog = false;
+let blogContent;
+let blogContentHeight = 0;
+let blogScrollPercent = 0;
+let blogProgressBar;
 
 if (!Element.prototype.matches) {
 	Element.prototype.matches = Element.prototype.msMatchesSelector ||
@@ -50,23 +54,56 @@ const ajaxAdminEndpoint = '/wp-admin/admin-ajax.php';
 function initWebWorker(){
 
 	currentLang = document.documentElement.getAttribute('lang');
+
 	let dataTag = "homepage_data_"+dataTime+'_'+currentLang;
-
 	removeOtherStorageKeys(dataTime, currentLang);
-
 	homeData = getWithExpiry("homepage_data_"+dataTime+'_'+currentLang);
 	if(homeData){
-		if(document.body.classList.contains('home')) {
-			//setTimeout(renderAllOtherCategories, 100);
-		}
 	}else{
 		if(!navigator.userAgent.toLowerCase().includes('lighthouse')){
-			if(document.body.classList.contains('home')){
-				loadHomeData();
-			}
+			loadHomeData();
 		}
 	}
+
+	if(document.body.classList.contains('home')){
+
+	}else if(document.body.classList.contains('single-sites')){
+		const event = new Event('loadCategoryData');
+		window.dispatchEvent(event);
+		// console.log('emiting category load event');
+	}
 }
+
+const loadHomeData = () => {
+
+	let url = '/wp-json/mpg/home/';
+	if(currentLang!='en'){
+		url = '/wp-json/mpg/home/?lang='+currentLang;
+	}
+
+	homeData = getWithExpiry("homepage_data_"+dataTime+'_'+currentLang);
+
+	if(homeData){
+
+	}else{
+		fetch(url)
+			.then(res => res.json())
+			.then((out) => {
+				homeData = out;
+
+				if(homeData.code=='rest_login_required'){
+
+				}else{
+					setWithExpiry("homepage_data_"+dataTime+'_'+currentLang, homeData, 30*60*1000);
+				}
+
+			})
+			.catch(err => {
+				// console.log('didnt load home data');
+			});
+	}
+}
+
 function removeOtherStorageKeys(dataTime, currentLang){
 	let homeDataKey = "homepage_data_"+dataTime+'_'+currentLang;
 	let translationDataKey = "i18n_"+dataTime;
@@ -139,7 +176,40 @@ function verifyCookie(){
 	}
 }
 
+function setInnerHeight(){
+	let vh = window.innerHeight;
+	let deviceHeight = window.innerHeight;
+	let keyboardHeight = 0;
+
+	if(window.visualViewport){
+		vh = window.visualViewport.height;
+	}
+	keyboardHeight = deviceHeight - vh;
+
+	if(keyboardHeight>0){
+		keyboardHeight += 100;
+	}
+
+	document.documentElement.style.setProperty('--kh', `${keyboardHeight}px`);
+	document.documentElement.style.setProperty('--vh', `${vh}px`);
+
+	let wInnerHeight = window.innerHeight;
+	document.documentElement.style.setProperty('--wih', `${wInnerHeight}px`);
+}
+
+function preventDefault(e){
+	e.preventDefault();
+}
+
+function disableScroll(){
+	document.body.addEventListener('touchmove', preventDefault, { passive: false });
+}
+function enableScroll(){
+	document.body.removeEventListener('touchmove', preventDefault);
+}
+
 let isCategoriesRendered = false;
+let lastMobileSimilarSite;
 
 (function () {
 	/**
@@ -147,87 +217,28 @@ let isCategoriesRendered = false;
 	 * ===================================
 	 */
 
-	if(!navigator.userAgent.toLowerCase().includes('lighthouse')){
+	/*if(!navigator.userAgent.toLowerCase().includes('lighthouse')){
 		initLoggedUser();
-	}
+	}*/
 	const initHome = () =>{
-		homeScroll();
 
 		let cGridList = document.querySelector('.c-grid.list');
 		if(cGridList){
-			cGridList.addEventListener('mouseover', function(_ev) {
-				if(_ev.target.closest('[list-box-js]')){
-					siteBoxHover(_ev.target.closest('[list-box-js]'));
-				}
-			});
 		}
-	}
-
-	const homeScroll = () => {
-		if(document.body.classList.contains('home')){
-			// window.addEventListener('scroll', function(e) {
-			// 	onHomeScroll(e);
-			// });
-		}
-	}
-
-	const onHomeScroll = (e) => {
-		if(true){
-			return;
-		}
-
-
-		let wY = window.scrollY;
-		if(headerHeight==null){
-			headerHeight = document.querySelector('#header').getBoundingClientRect().height;
-		}
-
-
-		let categoryListH = document.querySelector('.c-grid.list').getBoundingClientRect().height;
-		let listBoxes = document.querySelectorAll('.list__box-wrapper');
-		let firstCategoryListHeight = listBoxes[0].getBoundingClientRect().height;
-
-		let expectedY = headerHeight + categoryListH - (firstCategoryListHeight*8);
-
-		let catListContainer = document.querySelector('.c-grid.list');
-
-		if(wY > expectedY){
-			if(!document.querySelector('[category_list_'+(listBoxes.length+1)+']')){
-
-				if(homeData && homeData.categories_indexes){
-					let catId = homeData.categories_indexes[listBoxes.length];
-
-					let categoryHtml = renderSiteCategory(listBoxes.length);
-					catListContainer.insertAdjacentHTML( 'beforeend', categoryHtml );
-
-					swiperCB(
-						`.swiper[data-id="listSlider_${catId}"]`,
-						`.list__box-wrapper[data-name='category_${catId}']`
-					);
-
-					boxHover();
-				}
-			}
-		}
-
-
 	}
 
 	const bodyClick = () => {
 		const className = '.header__view-wrapper, .sort';
 
 
+
 		document.addEventListener('click', function(ev) {
 			const _ev = ev.target;
+			let currentMobileSimilarSite;
 
 
 			if(_ev.closest('[sort-node-js]')){
 				console.log('Clicked sorting');
-				if(!isCategoriesRendered){
-					isCategoriesRendered = true;
-					renderAllOtherCategories();
-
-				}
 			}
 
 			if(!_ev.closest('[sort-node-js]')){
@@ -332,6 +343,10 @@ let isCategoriesRendered = false;
 			}else if(_ev.classList.contains('popup_link_forgot')){
 				ev.preventDefault();
 				toggleLoginPopups('forgot');
+			}else if(isMobileOrTablet && (currentMobileSimilarSite = _ev.closest('.category_sites_item .category_sites_item_thumb'))){
+
+				onSimilarSiteTouch(ev, currentMobileSimilarSite)
+				console.log('clicked similar site');
 			}else if(_ev.classList.contains('hdrfavttl')){
 				ev.preventDefault();
 				document.querySelector('.mobile_fav_link').classList.toggle('open');
@@ -387,12 +402,93 @@ let isCategoriesRendered = false;
 		}, false);
 	};
 
+	function onSimilarSiteTouch(ev, siteItem){
+
+		if(!siteItem.parentNode.classList.contains('touched')){
+			ev.preventDefault();
+		}
+
+
+		siteItem.parentNode.classList.add('touched');
+		if(lastMobileSimilarSite){
+			lastMobileSimilarSite.classList.remove('touched');
+		}
+		lastMobileSimilarSite = siteItem.parentNode;
+	}
 
 	function onSiteBoxHoverClick(_el){
 		let siteBoxLink = _el.querySelector('.site_link')
 
 		if(siteBoxLink && siteBoxLink.tagName=='A'){
 			siteBoxLink.click();
+		}
+	}
+
+	const initBtcShare = () => {
+		let canShowBtc = getCookieMpgCookie("btch");
+
+		if((!ifBot() && (canShowBtc=='' | canShowBtc!='1'))){
+			renderBtcShare()
+
+
+			let btcContainer = document.querySelector('.header__action_bitcoin');
+			let btcHash = document.querySelector('.header__action_bitcoin_inner')
+			if(btcHash){
+				let btcHashAddress = document.querySelector('.header__action_bitcoin .btc_hash')
+
+				btcHash.addEventListener('click', (ev) => {
+					if(btcHashAddress){
+						navigator.clipboard.writeText(btcHashAddress.innerText);
+						console.log('copied btc');
+
+						if(btcContainer){
+							btcContainer.classList.add('copied');
+							setTimeout(() => {
+								btcContainer.classList.remove('copied');
+							}, 3700);
+						}
+					}
+
+				});
+			}
+
+			let btcClose = document.querySelector('.btc-close')
+			if(btcClose){
+				btcClose.addEventListener('click', (ev) => {
+					document.body.classList.remove('fund');
+
+					createCookie("btch", "1", 7);
+				});
+			}
+		}
+	}
+
+	const ifBot = () => {
+		const botUserAgentsArray = ['googlebot', 'bingbot', 'linkedinbot', 'mediapartners-google', 'lighthouse', 'insights'];
+
+		const agent = window.navigator.userAgent;
+		let isBotUserAgent = false;
+		botUserAgentsArray.forEach((_agent)=>{
+			if (agent.toLowerCase().indexOf(_agent.toLowerCase()) !== -1){
+				return true;
+			}
+		})
+		return false;
+	}
+
+	const renderBtcShare = () => {
+		let _btcHtml = '<div class="header__action_bitcoin-outer">' +
+			'<div class="header__action_bitcoin">' +
+			'        <div class="header__action_bitcoin_inner">Show Some Love For Our Work? <span class="btc_hash"><img src="/wp-content/themes/mpg/images/bitcoin.svg"/> 1Avmt3WehQVuX4uto7rRStAuEwbYZrS9op</span></div>' +
+			'        <div class="header__action_bitcoin_copied">Copied <img src="/wp-content/themes/mpg/images/tick-icon.svg"/></div>' +
+			'    </div>'+
+			'        <i class="icon-font btc-close icon-close"></i>' +
+			'    </div>'
+
+		let btcContainer = document.querySelector('.c-grid.bitcoin')
+		if(btcContainer){
+			btcContainer.innerHTML = _btcHtml;
+			document.body.classList.add('fund')
 		}
 	}
 
@@ -600,19 +696,11 @@ let isCategoriesRendered = false;
 			return ;
 		}
 
-		var elID = el.getAttribute('data-id'),
+		var elID = el.dataset.id,
 			elParent = el.closest('.list__box-wrapper');
 
 		console.log('Fav box '+elID);
-
-		// const specificationFavoritesBtn = elParent.querySelector('[data-favorites="' + elID + '"]');
-
 		el.classList.toggle('is-active');
-
-		/*if(specificationFavoritesBtn){
-			//specificationFavoritesBtn.classList.toggle('is-active');
-		}*/
-
 		addToFavourites(elID);
 	}
 
@@ -755,23 +843,30 @@ let isCategoriesRendered = false;
 	}
 
 	function initGotoTop(){
-		// window.onscroll = function(){
-		// 	if (window.scrollY > 200) {
-		// 		show(goTop);
-		// 	} else {
-		// 		hide(goTop);
-		// 	}
-		// }
-		/*document.querySelector('body').ontouchmove = function(){
-			if(document.querySelector(".main-outer")){
-				var mainScroll = -document.querySelector(".main-outer").getBoundingClientRect().top;
+		/*if(isMobileOrTablet){
+			document.querySelector('body').ontouchmove = function(){
+				var mainScroll = -document.body.getBoundingClientRect().top;
 				if (mainScroll > 200) {
 					show(goTop);
 				} else {
 					hide(goTop);
 				}
 			}
+		}else{
+
 		}*/
+		window.onscroll = function(){
+			if (window.scrollY > 200) {
+				show(goTop);
+			} else {
+				hide(goTop);
+			}
+
+			if(isSingleBlog && blogContent){
+				onBlogScroll()
+			}
+		}
+
 		if(goTop){
 			goTop.onclick = function(event) {
 				doScrolling(0, 200);
@@ -779,6 +874,14 @@ let isCategoriesRendered = false;
 			}
 		}
 
+	}
+
+	function onBlogScroll(){
+		if(window.scrollY < blogContentHeight | blogScrollPercent < 101){
+			blogScrollPercent = (window.scrollY/ (blogContentHeight))*100;
+			blogProgressBar.style.width = blogScrollPercent+'%'
+			console.log('blog scroll percentage '+window.scrollY+' - '+blogContentHeight, blogScrollPercent)
+		}
 	}
 
 	function adjustStickHeader(){

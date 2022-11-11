@@ -279,9 +279,8 @@ function postRequestAbortable() {
     return response.json();
   }).then(function (out) {
     callback(out);
-  })["catch"](function (err) {
-    console.log(err);
-    throw err;
+  })["catch"](function (err) {// console.log(err);
+    // throw err;
   });
   return response;
 }
@@ -412,22 +411,23 @@ function postTextRequest() {
 var initHamburger = function initHamburger() {
   var btnHamburger = document.querySelector("[hamburger-js]"),
       hideScrollContainer = document.querySelectorAll("html, body"),
-      mobileContainer = document.querySelector("[mobile-block-js]");
+      //mobileContainer = document.querySelector("[mobile-block-js]");
+  mobileContainer = document.querySelector(".header__bottom");
   var mobileMenuTop = document.querySelector(".pre-header__mobile-top");
 
   if (btnHamburger) {
     btnHamburger.addEventListener("click", function (ev) {
       var elem = ev.currentTarget;
 
-      if (!mobileMenuTop) {
-        renderMobileMenu();
+      if (!mobileMenuTop) {// renderMobileMenu();
+        // initMobileThemeToggle()
       }
 
       elem.classList.toggle("is-active");
       mobileContainer.classList.toggle("is-open");
       hideScrollContainer.forEach(function (val, idx) {
         val.classList.toggle("is-hideScroll");
-      });
+      }); // initMobileThemeToggle();
 
       if (document.body.classList.contains('is-hideScroll')) {
         setTimeout(function () {
@@ -442,6 +442,10 @@ var initHamburger = function initHamburger() {
 
   if (searchHamburger) {
     searchHamburger.addEventListener("click", function (ev) {
+      setInnerHeight(); // disableScroll()
+
+      isSearchActive = true;
+      bodyScrollLock.disableBodyScroll(searchViewContainer);
       btnHamburger.classList.remove("is-active");
 
       if (mobileContainer.classList.contains('is-open')) {
@@ -468,6 +472,21 @@ var initHamburger = function initHamburger() {
       document.querySelector('[search-js]').value = '';
       hide(document.querySelector('[search-drop-mobile-js]'));
       document.querySelector('.category__drop').classList.remove('is-open');
+      console.log('closing hamburger');
+      setInnerHeight();
+      isSearchActive = false; // enableScroll()
+
+      bodyScrollLock.enableBodyScroll(searchViewContainer);
+      document.body.classList.remove('has_search');
+      var searchPagination = document.querySelector('.search_pagination');
+
+      if (searchPagination) {
+        searchPagination.style.display = 'block';
+      }
+
+      if (searchPage) {
+        searchPage = 0;
+      }
     });
   }
 };
@@ -475,11 +494,12 @@ var initHamburger = function initHamburger() {
 var renderMobileMenu = function renderMobileMenu() {
   var langHtml = document.querySelector('.lang').outerHTML;
   var mobileContainer = document.querySelector("[mobile-block-js]");
+  var navCategoriesLink = document.querySelector('.header__nav-link.link_categories').getAttribute('href');
   var navLinkGames = document.querySelector('.header_nav_games').getAttribute('href');
   var navLinkMeet = document.querySelector('.header_nav_meet').getAttribute('href');
   var navLinkLiveSex = document.querySelector('.header_nav_dating.live_sex_nav').getAttribute('href');
   var currentLang = document.documentElement.getAttribute('lang');
-  var linkSignup = '<div><a class="pre-header__signup mobile_signup_link" href="/sign-up/"><i class="icon-font icon-key"></i><span>Sign Up</span></a></div>';
+  var linkSignup = '<div><a class="pre-header__signup mobile_signup_link" href="/sign-up/"><i class="icon-font icon-key"></i><span>' + _t('sign_up', 'Sign Up') + '</span></a></div>';
 
   if (window.logoutUrl) {
     linkSignup = '<div><a class="pre-header__signup mobile_signup_link" href="' + window.logoutUrl + '"><i class="icon-font icon-key"></i><span>LOGOUT</span></a></div>';
@@ -489,7 +509,7 @@ var renderMobileMenu = function renderMobileMenu() {
     window.favHtmlMobile = '';
   }
 
-  var mobileNavHtml = '<div>' + '            <div class="pre-header__mobile-top">' + '              <div><a class="pre-header__signin mobile_login_link" href="/login/"><i class="icon-font icon-enter"></i><span>Login</span></a></div>' + linkSignup + '            </div>' + '            <div class="pre-header__mobile-middle">' + '<p class="pre-header__heading"><i></i><span>Main</span></p>' + '              <div>' + langHtml + '</div>' + '            </div>' + '            <div class="pre-header__mobile-bottom main_mobile_menu">' + window.favHtmlMobile + '              <ul class="header__nav">' + '                <li class="header__nav-item"><a class="header__nav-link" href="/categories/" hreflang="' + currentLang + '">' + '                    <div><i class="icon-png header-nav-folder"></i></div>' + '                    <div><span>View All Categories</span></div></a></li>' + '                <li class="header__nav-item header__nav-item--saparator"><span class="header__nav-separator"></span></li>' + '                <li class="header__nav-item"><a class="header__nav-link" href="/blog/" hreflang="en">' + '                    <div><i class="icon-png header-nav-blog"></i></div>' + '                    <div><span>Blog</span></div></a></li>' + '                <li class="header__nav-item header__nav-item--saparator"><span class="header__nav-separator"></span></li>' + '                <li class="header__nav-item"><a class="header__nav-link" href="/webcam-videos/" hreflang="en">' + '                    <div><i class="icon-png header-nav-videos"></i></div>' + '                    <div><span>Videos</span></div></a></li>' + '                <li class="header__nav-item header__nav-item--saparator"><span class="header__nav-separator"></span></li>' + '                <li class="header__nav-item"><a class="header__nav-link" href="/pornstars/" hreflang="en">' + '                    <div><i class="icon-png header-nav-pornstars"></i></div>' + '                    <div><span>Pornstars</span></div></a></li>' + '                <li class="header__nav-item header__nav-item--saparator"><span class="header__nav-separator"></span></li>' + '                <li class="header__nav-item"><a class="header__nav-link" href="/porn-deals/" hreflang="en">' + '                    <div><i class="icon-png header-nav-porncoupons"></i></div>' + '                    <div><span>Porn Coupons</span></div></a></li>' + '                <li class="header__nav-item header__nav-item--saparator"><span class="header__nav-separator"></span></li>' + '                <li class="header__nav-item"><a class="header__nav-link" href="' + navLinkGames + '" hreflang="' + currentLang + '" target="_blank">' + '                    <div><i class="icon-png header-nav-porngames"></i></div>' + '                    <div><span>Porn Games</span></div></a></li>' + '                <li class="header__nav-item header__nav-item--saparator"><span class="header__nav-separator"></span></li>' + '                <li class="header__nav-item"><a class="header__nav-link" href="' + navLinkMeet + '" target="_blank" rel="nofollow">' + '                    <div><i class="icon-png header-nav-meetfuck"></i></div>' + '                    <div><span>Meet & Fuck</span></div></a></li>' + '                <li class="header__nav-item header__nav-item--saparator"><span class="header__nav-separator"></span></li>' + '                <li class="header__nav-item"><a class="header__nav-link" href="' + navLinkLiveSex + '" rel="nofollow" target="_blank">' + '                    <div><i class="icon-png header-nav-livesex"></i></div>' + '                    <div><span>Live sex</span></div></a></li>' + '              </ul>' + '            </div>' + '            <div class="pre-header__mobile-middle">' + '              <div>' + '                <p class="pre-header__heading"><i></i><span>Connect With Us</span></p>' + '              </div>' + '              <div></div>' + '            </div>' + '            <div class="pre-header__mobile-bottom">' + '              <ul class="header__nav">' + '                <li class="header__nav-item"><a class="header__nav-link" href="' + translateLink('about-us') + '" hreflang="' + currentLang + '">' + '                    <div><i class="icon-png header-nav-info"></i></div>' + '                    <div><span>About Us</span></div></a></li>' + '                <li class="header__nav-item"><a class="header__nav-link" href="' + translateLink('contact') + '" hreflang="' + currentLang + '">' + '                    <div><i class="icon-png header-nav-email"></i></div>' + '                    <div><span>Contact Us</span></div></a></li>' + '                <li class="header__nav-item"><a class="header__nav-link" href="' + translateLink('advertising') + '" hreflang="' + currentLang + '">' + '                    <div><i class="icon-png header-nav-megaphone"></i></div>' + '                    <div><span>Advertising</span></div></a></li>' + '              </ul>' + '            </div>' + '          </div>';
+  var mobileNavHtml = '<div>' + '            <div class="pre-header__mobile-top">' + '              <div><a class="pre-header__signin mobile_login_link" href="/login/"><i class="icon-font icon-enter"></i><span>' + _t('login', 'Login') + '</span></a></div>' + linkSignup + '            </div>' + '            <div class="pre-header__mobile-middle">' + '<p class="pre-header__heading"><i></i><span>' + _t('main', 'Main') + '</span></p>' + '<div class="header__toggle">' + '                <input type="checkbox" name="" id="toggle-mode-mobile" class="toggle-mode">' + '                <label for="toggle-mode-mobile">' + '                    <div class="header__toggle-left"><i class="icon-font icon-sun"></i></div>' + '                    <div class="header__toggle-right"><i class="icon-font icon-moon"></i></div><span></span>' + '                </label>' + '            </div>' + '              <div>' + langHtml + '</div>' + '            </div>' + '            <div class="pre-header__mobile-bottom main_mobile_menu">' + window.favHtmlMobile + '              <ul class="header__nav">' + '                <li class="header__nav-item"><a class="header__nav-link" href="' + navCategoriesLink + '">' + '                    <div><img class="icon-nav-folder" src="/wp-content/themes/mpg/images/menu/menu.svg#folder"/></div>' + '                    <div><span>' + _t('view_all_categories', 'View All Categories') + '</span></div></a></li>' + '                <li class="header__nav-item header__nav-item--saparator"><span class="header__nav-separator"></span></li>' + '                <li class="header__nav-item"><a class="header__nav-link" href="/blog/">' + '                    <div><img class="icon-nav-blog" src="/wp-content/themes/mpg/images/menu/menu.svg#blog"/></div>' + '                    <div><span>' + _t('blog', 'Blog') + '</span></div></a></li>' + '                <li class="header__nav-item header__nav-item--saparator"><span class="header__nav-separator"></span></li>' + '                <li class="header__nav-item"><a class="header__nav-link" href="/webcam-videos/">' + '                    <div><img class="icon-nav-videos" src="/wp-content/themes/mpg/images/menu/menu.svg#videos"/></div>' + '                    <div><span>' + _t('videos', 'Videos') + '</span></div></a></li>' + '                <li class="header__nav-item header__nav-item--saparator"><span class="header__nav-separator"></span></li>' + '                <li class="header__nav-item"><a class="header__nav-link" href="/pornstars/">' + '                    <div><img class="icon-nav-pornstars" src="/wp-content/themes/mpg/images/menu/menu.svg#pornstars"/></div>' + '                    <div><span>' + _t('pornstars', 'Pornstars') + '</span></div></a></li>' + '                <li class="header__nav-item header__nav-item--saparator"><span class="header__nav-separator"></span></li>' + '                <li class="header__nav-item"><a class="header__nav-link" href="/porn-deals/">' + '                    <div><img class="icon-nav-porncoupons" src="/wp-content/themes/mpg/images/menu/menu.svg#ticket"/></div>' + '                    <div><span>' + _t('porn-coupons', 'Porn Coupons') + '</span></div></a></li>' + '                <li class="header__nav-item header__nav-item--saparator"><span class="header__nav-separator"></span></li>' + '                <li class="header__nav-item"><a class="header__nav-link" href="' + navLinkGames + '" target="_blank">' + '                    <div><img class="icon-nav-porngames" src="/wp-content/themes/mpg/images/menu/menu.svg#joystick"/></div>' + '                    <div><span>' + _t('porn-games', 'Sex Games') + '</span></div></a></li>' + '                <li class="header__nav-item header__nav-item--saparator"><span class="header__nav-separator"></span></li>' + '                <li class="header__nav-item"><a class="header__nav-link" href="' + navLinkMeet + '" target="_blank" rel="nofollow">' + '                    <div><img class="icon-nav-sex" src="/wp-content/themes/mpg/images/menu/sex-icon.png"/></div>' + '                    <div><span>' + _t('meet-and-fuck', 'Meet & Fuck') + '</span></div></a></li>' + '                <li class="header__nav-item header__nav-item--saparator"><span class="header__nav-separator"></span></li>' + '                <li class="header__nav-item"><a class="header__nav-link" href="' + navLinkLiveSex + '" rel="nofollow" target="_blank">' + '                    <div><img class="icon-nav-livesex" src="/wp-content/themes/mpg/images/menu/menu.svg#webcam"/></div>' + '                    <div><span>' + _t('live-sex', 'Live sex') + '</span></div></a></li>' + '              </ul>' + '            </div>' + '            <div class="pre-header__mobile-middle">' + '              <div>' + '                <p class="pre-header__heading"><i></i><span>' + _t('connect_with_us', 'Connect With Us') + '</span></p>' + '              </div>' + '              <div></div>' + '            </div>' + '            <div class="pre-header__mobile-bottom">' + '              <ul class="header__nav">' + '                <li class="header__nav-item"><a class="header__nav-link" href="' + translateLink('about-us') + '">' + '                    <div><img class="icon-nav-info" src="/wp-content/themes/mpg/images/menu/menu.svg#info"/></div>' + '                    <div><span>' + _t('footer_about', 'About Us') + '</span></div></a></li>' + '                <li class="header__nav-item"><a class="header__nav-link" href="' + translateLink('contact') + '">' + '                    <div><img class="icon-nav-mail" src="/wp-content/themes/mpg/images/menu/menu.svg#mail"/></div>' + '                    <div><span>' + _t('footer_contact', 'Contact Us') + '</span></div></a></li>' + '                <li class="header__nav-item"><a class="header__nav-link" href="' + translateLink('advertising') + '">' + '                    <div><img class="icon-nav-megaphone" src="/wp-content/themes/mpg/images/menu/menu.svg#megaphone"/></div>' + '                    <div><span>' + _t('title_advertising', 'Advertising') + '</span></div></a></li>' + '              </ul>' + '            </div>' + '          </div>';
   mobileContainer.innerHTML = mobileNavHtml;
   initFavDelete();
 
@@ -539,13 +559,13 @@ var loggedUsername = '';
 var logoutUrl = '';
 var sortTimout;
 var favouriteList = [];
+var isDark = '1';
+var toggleSwitch = document.querySelector('#toggle-mode');
 
 var initTheme = function initTheme() {
-  var toggleSwitch = document.querySelector('#toggle-mode');
-
   if (toggleSwitch) {
     toggleSwitch.addEventListener('change', function (event) {
-      if (event.target.checked) {
+      if (document.documentElement.classList.contains('light')) {
         createCookie("is_dark", "1", 7);
         document.documentElement.classList.remove('light');
       } else {
@@ -555,18 +575,43 @@ var initTheme = function initTheme() {
     });
   }
 
-  var isDark = getCookieMpgCookie("is_dark");
+  isDark = getCookieMpgCookie("is_dark");
 
   if (isDark == '') {
-    isDark = '1';
+    isDark = '0';
   }
 
   if (isDark == '1') {
-    //document.documentElement.classList.remove('light');
+    document.documentElement.classList.remove('light');
     toggleSwitch.checked = true;
   } else {
-    //document.documentElement.classList.add('light');
+    document.documentElement.classList.add('light');
     toggleSwitch.checked = false;
+  }
+};
+
+var initMobileThemeToggle = function initMobileThemeToggle() {
+  var toggleMobileSwitch = document.querySelector('#toggle-mode-mobile');
+
+  if (toggleMobileSwitch) {
+    toggleMobileSwitch.addEventListener('change', function (event) {
+      if (document.documentElement.classList.contains('light')) {
+        createCookie("is_dark", "1", 7);
+        document.documentElement.classList.remove('light');
+      } else {
+        createCookie("is_dark", "0", 7);
+        document.documentElement.classList.add('light');
+      }
+    });
+    console.log('current theme' + isDark);
+
+    if (isDark == '1') {
+      toggleMobileSwitch.checked = true;
+      toggleSwitch.checked = true;
+    } else {
+      toggleMobileSwitch.checked = false;
+      toggleSwitch.checked = false;
+    }
   }
 };
 
@@ -628,16 +673,6 @@ var renderFavourites = function renderFavourites() {
           }
 
           favouritesHtml += '<div class="header__view-link" >' + '<div><span>' + (index + 1) + '.</span></div>' + '<div><img src="' + fav.favicon + '"/><p><a href="' + fav.permalink + '">' + fav.title + '</a></p></div>' + '<div><button type="button" data-id="' + fav.id + '" un-favorites-js><i class="icon-font icon-delete"></i></button><a href="' + fav.permalink + '" class="glass"><i class="icon-font icon-search"></i></a></div>' + '</div>';
-          /*let favLink = document.querySelector('[data-id="'+fav.id+'"] [favorites-toggle-js]');
-          if(favLink){
-          	favLink.classList.add('is-active');
-          }
-          		if(document.querySelector('.list__box-favorites[data-id="'+fav.id+'"]')){
-          	document.querySelector('.list__box-favorites[data-id="'+fav.id+'"]').classList.add('is-active');
-          }
-          if(document.querySelector('.list__specification-circle[data-id="'+fav.id+'"]')){
-          	document.querySelector('.list__specification-circle[data-id="'+fav.id+'"]').classList.add('is-active');
-          }*/
         });
 
         if (favouritesDropDown) {
@@ -662,12 +697,13 @@ function renderMobileFavourites(response) {
     favIndex++;
   });
   window.favHtmlMobile = '<div class="hdrfav mobile_fav_link"><div class="hdrfavttl">Your Favourite Sites</div><div class="site_list favourite_list">' + favHtml + '</div></div>';
+  var menuUserBlock = document.querySelector('.header__user-block');
 
-  if (document.querySelector(".main_mobile_menu")) {
-    document.querySelector(".main_mobile_menu").insertAdjacentHTML("afterbegin", window.favHtmlMobile);
+  if (menuUserBlock) {
+    menuUserBlock.insertAdjacentHTML("beforeend", window.favHtmlMobile);
 
     document.querySelector('.mobile_fav_link .hdrfavttl').onclick = function (event) {
-      document.querySelector('.mobile_fav_link').classList.toggle('open');
+      document.querySelector('.mobile_fav_link').classList.toggle('open1');
     };
   }
 }
@@ -722,8 +758,7 @@ var letterSearch = function letterSearch() {
       });
       renderSorting();
       setWithExpiry("letter_data_" + dataTime, letterData, 30 * 60 * 1000);
-    })["catch"](function (err) {
-      throw err;
+    })["catch"](function (err) {// console.log('didnt load letter matrix');
     });
   }
 };
@@ -741,14 +776,13 @@ var loadTranslations = function loadTranslations() {
     }).then(function (result) {
       translations = result;
       setWithExpiry("i18n_" + dataTime, translations, 60 * 60 * 1000);
-    })["catch"](function (err) {
-      throw err;
+    })["catch"](function (err) {// console.log('didnt load translations');
     });
   }
 };
 
 var _t = function _t(key, _default) {
-  if (!currentLang) {
+  if (!currentLang || currentLang == 'en') {
     currentLang = document.documentElement.getAttribute('lang');
   }
 
@@ -789,7 +823,7 @@ var renderSorting = function renderSorting() {
       /*if(sortTimout){
       	clearTimeout(sortTimout);
       }
-      		sortTimout = setTimeout(function (){
+      	sortTimout = setTimeout(function (){
       	onSortLetterClick(_ev.target);
       }, 1000);*/
     });
@@ -838,13 +872,13 @@ var onSortLetterClick = function onSortLetterClick(letterItem) {
     var htmlFree = '';
 
     if (siteFree) {
-      htmlFree = '<a href="' + siteFree + '" class="site_free scroll_to_category" data-category="' + freeId + '"><span>Free</span></a>';
+      htmlFree = '<a href="' + siteFree + '" class="site_free scroll_to_category11" data-category="' + freeId + '"><span>Free</span></a>';
     }
 
     var htmlHd = '';
 
     if (siteHd) {
-      htmlHd = '<a href="' + siteHd + '" class="scroll_to_category" data-category="' + hdId + '"><img src="' + themeBase + 'images/img-badge-premium.png" srcset="' + themeBase + 'images/img-badge-premium@2x.png 2x" alt=""/></a>';
+      htmlHd = '<a href="' + siteHd + '" class="scroll_to_category11" data-category="' + hdId + '"><img src="' + themeBase + 'images/img-badge-premium.png" srcset="' + themeBase + 'images/img-badge-premium@2x.png 2x" alt=""/></a>';
     }
 
     var showLetterToggle = false;
@@ -861,7 +895,7 @@ var onSortLetterClick = function onSortLetterClick(letterItem) {
       if (currentLang != 'en') {//toggleLink = toggleLink.replace(siteOrigin+'/', siteOrigin+'/'+currentLang+'/');
       }
 
-      letterSuggessions += '<div class="sort__collapse">' + '<a class="sort__collapse-toggle scroll_to_category" data-category="' + (hdId != '' ? hdId : freeId) + '" href="' + toggleLink + '">' + '<div><span>#' + suggessionIndex + '</span></div>' + '<div><img src="' + catIcon + '" />' + '<p>' + suggessionName + '</p>' + '</div>' + '</a>' + '<div class="sort__collapse-body" id="sort-collapse-' + suggessionIndex + '" collapse-body-js>' + htmlFree + htmlHd + '</div>' + '</div>';
+      letterSuggessions += '<div class="sort__collapse">' + '<a class="sort__collapse-toggle scroll_to_category11" data-category="' + (hdId != '' ? hdId : freeId) + '" href="' + toggleLink + '">' + '<div><span>#' + suggessionIndex + '</span></div>' + '<div><img src="' + catIcon + '" />' + '<p>' + suggessionName + '</p>' + '</div>' + '</a>' + '<div class="sort__collapse-body" id="sort-collapse-' + suggessionIndex + '" collapse-body-js>' + htmlFree + htmlHd + '</div>' + '</div>';
     }
 
     suggessionIndex++;
@@ -915,12 +949,12 @@ var loadLoginForm = function loadLoginForm() {
       /*postTextRequest(ajaxAdminEndpoint, {
       	action:'get_login_form'
       }, function (result) {
-      			let loginHtml = '<a class="login_popup_close"><img src="'+themeBase+'images/btn_close.png"/></a>'+result;
-      			var e = document.createElement('div');
+      		let loginHtml = '<a class="login_popup_close"><img src="'+themeBase+'images/btn_close.png"/></a>'+result;
+      		var e = document.createElement('div');
       	e.setAttribute('id', 'login_popup');
       	e.innerHTML = loginHtml;
-      			document.body.appendChild(e);
-      			renderLoginForm();
+      		document.body.appendChild(e);
+      		renderLoginForm();
       });*/
 
       var loginHtml = '<a class="login_popup_close"><img src="' + themeBase + 'images/btn_close.png"/></a>' + htmlLogin;
@@ -1145,6 +1179,11 @@ var currentLang = 'en';
 var goTop;
 var wInnerWidth;
 var headerHeight = null;
+var isSingleBlog = false;
+var blogContent;
+var blogContentHeight = 0;
+var blogScrollPercent = 0;
+var blogProgressBar;
 
 if (!Element.prototype.matches) {
   Element.prototype.matches = Element.prototype.msMatchesSelector || Element.prototype.webkitMatchesSelector;
@@ -1179,17 +1218,40 @@ function initWebWorker() {
   removeOtherStorageKeys(dataTime, currentLang);
   homeData = getWithExpiry("homepage_data_" + dataTime + '_' + currentLang);
 
-  if (homeData) {
-    if (document.body.classList.contains('home')) {//setTimeout(renderAllOtherCategories, 100);
-    }
-  } else {
+  if (homeData) {} else {
     if (!navigator.userAgent.toLowerCase().includes('lighthouse')) {
-      if (document.body.classList.contains('home')) {
-        loadHomeData();
-      }
+      loadHomeData();
     }
   }
+
+  if (document.body.classList.contains('home')) {} else if (document.body.classList.contains('single-sites')) {
+    var event = new Event('loadCategoryData');
+    window.dispatchEvent(event); // console.log('emiting category load event');
+  }
 }
+
+var loadHomeData = function loadHomeData() {
+  var url = '/wp-json/mpg/home/';
+
+  if (currentLang != 'en') {
+    url = '/wp-json/mpg/home/?lang=' + currentLang;
+  }
+
+  homeData = getWithExpiry("homepage_data_" + dataTime + '_' + currentLang);
+
+  if (homeData) {} else {
+    fetch(url).then(function (res) {
+      return res.json();
+    }).then(function (out) {
+      homeData = out;
+
+      if (homeData.code == 'rest_login_required') {} else {
+        setWithExpiry("homepage_data_" + dataTime + '_' + currentLang, homeData, 30 * 60 * 1000);
+      }
+    })["catch"](function (err) {// console.log('didnt load home data');
+    });
+  }
+};
 
 function removeOtherStorageKeys(dataTime, currentLang) {
   var homeDataKey = "homepage_data_" + dataTime + '_' + currentLang;
@@ -1255,79 +1317,67 @@ function verifyCookie() {
   }
 }
 
+function setInnerHeight() {
+  var vh = window.innerHeight;
+  var deviceHeight = window.innerHeight;
+  var keyboardHeight = 0;
+
+  if (window.visualViewport) {
+    vh = window.visualViewport.height;
+  }
+
+  keyboardHeight = deviceHeight - vh;
+
+  if (keyboardHeight > 0) {
+    keyboardHeight += 100;
+  }
+
+  document.documentElement.style.setProperty('--kh', "".concat(keyboardHeight, "px"));
+  document.documentElement.style.setProperty('--vh', "".concat(vh, "px"));
+  var wInnerHeight = window.innerHeight;
+  document.documentElement.style.setProperty('--wih', "".concat(wInnerHeight, "px"));
+}
+
+function preventDefault(e) {
+  e.preventDefault();
+}
+
+function disableScroll() {
+  document.body.addEventListener('touchmove', preventDefault, {
+    passive: false
+  });
+}
+
+function enableScroll() {
+  document.body.removeEventListener('touchmove', preventDefault);
+}
+
 var isCategoriesRendered = false;
+var lastMobileSimilarSite;
 
 (function () {
   /**
    * MAIN CALLBACK
    * ===================================
    */
-  if (!navigator.userAgent.toLowerCase().includes('lighthouse')) {
-    initLoggedUser();
-  }
 
+  /*if(!navigator.userAgent.toLowerCase().includes('lighthouse')){
+  	initLoggedUser();
+  }*/
   var initHome = function initHome() {
-    homeScroll();
     var cGridList = document.querySelector('.c-grid.list');
 
-    if (cGridList) {
-      cGridList.addEventListener('mouseover', function (_ev) {
-        if (_ev.target.closest('[list-box-js]')) {
-          siteBoxHover(_ev.target.closest('[list-box-js]'));
-        }
-      });
-    }
-  };
-
-  var homeScroll = function homeScroll() {
-    if (document.body.classList.contains('home')) {// window.addEventListener('scroll', function(e) {
-      // 	onHomeScroll(e);
-      // });
-    }
-  };
-
-  var onHomeScroll = function onHomeScroll(e) {
-    if (true) {
-      return;
-    }
-
-    var wY = window.scrollY;
-
-    if (headerHeight == null) {
-      headerHeight = document.querySelector('#header').getBoundingClientRect().height;
-    }
-
-    var categoryListH = document.querySelector('.c-grid.list').getBoundingClientRect().height;
-    var listBoxes = document.querySelectorAll('.list__box-wrapper');
-    var firstCategoryListHeight = listBoxes[0].getBoundingClientRect().height;
-    var expectedY = headerHeight + categoryListH - firstCategoryListHeight * 8;
-    var catListContainer = document.querySelector('.c-grid.list');
-
-    if (wY > expectedY) {
-      if (!document.querySelector('[category_list_' + (listBoxes.length + 1) + ']')) {
-        if (homeData && homeData.categories_indexes) {
-          var catId = homeData.categories_indexes[listBoxes.length];
-          var categoryHtml = renderSiteCategory(listBoxes.length);
-          catListContainer.insertAdjacentHTML('beforeend', categoryHtml);
-          swiperCB(".swiper[data-id=\"listSlider_".concat(catId, "\"]"), ".list__box-wrapper[data-name='category_".concat(catId, "']"));
-          boxHover();
-        }
-      }
-    }
+    if (cGridList) {}
   };
 
   var bodyClick = function bodyClick() {
     var className = '.header__view-wrapper, .sort';
     document.addEventListener('click', function (ev) {
       var _ev = ev.target;
+      var currentMobileSimilarSite;
 
       if (_ev.closest('[sort-node-js]')) {
         console.log('Clicked sorting');
-
-        if (!isCategoriesRendered) {
-          isCategoriesRendered = true;
-          renderAllOtherCategories();
-        }
       }
 
       if (!_ev.closest('[sort-node-js]')) {
@@ -1428,6 +1478,9 @@ var isCategoriesRendered = false;
       } else if (_ev.classList.contains('popup_link_forgot')) {
         ev.preventDefault();
         toggleLoginPopups('forgot');
+      } else if (isMobileOrTablet && (currentMobileSimilarSite = _ev.closest('.category_sites_item .category_sites_item_thumb'))) {
+        onSimilarSiteTouch(ev, currentMobileSimilarSite);
+        console.log('clicked similar site');
       } else if (_ev.classList.contains('hdrfavttl')) {
         ev.preventDefault();
         document.querySelector('.mobile_fav_link').classList.toggle('open');
@@ -1477,6 +1530,20 @@ var isCategoriesRendered = false;
     }, false);
   };
 
+  function onSimilarSiteTouch(ev, siteItem) {
+    if (!siteItem.parentNode.classList.contains('touched')) {
+      ev.preventDefault();
+    }
+
+    siteItem.parentNode.classList.add('touched');
+
+    if (lastMobileSimilarSite) {
+      lastMobileSimilarSite.classList.remove('touched');
+    }
+
+    lastMobileSimilarSite = siteItem.parentNode;
+  }
+
   function onSiteBoxHoverClick(_el) {
     var siteBoxLink = _el.querySelector('.site_link');
 
@@ -1484,6 +1551,65 @@ var isCategoriesRendered = false;
       siteBoxLink.click();
     }
   }
+
+  var initBtcShare = function initBtcShare() {
+    var canShowBtc = getCookieMpgCookie("btch");
+
+    if (!ifBot() && canShowBtc == '' | canShowBtc != '1') {
+      renderBtcShare();
+      var btcContainer = document.querySelector('.header__action_bitcoin');
+      var btcHash = document.querySelector('.header__action_bitcoin_inner');
+
+      if (btcHash) {
+        var btcHashAddress = document.querySelector('.header__action_bitcoin .btc_hash');
+        btcHash.addEventListener('click', function (ev) {
+          if (btcHashAddress) {
+            navigator.clipboard.writeText(btcHashAddress.innerText);
+            console.log('copied btc');
+
+            if (btcContainer) {
+              btcContainer.classList.add('copied');
+              setTimeout(function () {
+                btcContainer.classList.remove('copied');
+              }, 3700);
+            }
+          }
+        });
+      }
+
+      var btcClose = document.querySelector('.btc-close');
+
+      if (btcClose) {
+        btcClose.addEventListener('click', function (ev) {
+          document.body.classList.remove('fund');
+          createCookie("btch", "1", 7);
+        });
+      }
+    }
+  };
+
+  var ifBot = function ifBot() {
+    var botUserAgentsArray = ['googlebot', 'bingbot', 'linkedinbot', 'mediapartners-google', 'lighthouse', 'insights'];
+    var agent = window.navigator.userAgent;
+    var isBotUserAgent = false;
+    botUserAgentsArray.forEach(function (_agent) {
+      if (agent.toLowerCase().indexOf(_agent.toLowerCase()) !== -1) {
+        return true;
+      }
+    });
+    return false;
+  };
+
+  var renderBtcShare = function renderBtcShare() {
+    var _btcHtml = '<div class="header__action_bitcoin-outer">' + '<div class="header__action_bitcoin">' + '        <div class="header__action_bitcoin_inner">Show Some Love For Our Work? <span class="btc_hash"><img src="/wp-content/themes/mpg/images/bitcoin.svg"/> 1Avmt3WehQVuX4uto7rRStAuEwbYZrS9op</span></div>' + '        <div class="header__action_bitcoin_copied">Copied <img src="/wp-content/themes/mpg/images/tick-icon.svg"/></div>' + '    </div>' + '        <i class="icon-font btc-close icon-close"></i>' + '    </div>';
+
+    var btcContainer = document.querySelector('.c-grid.bitcoin');
+
+    if (btcContainer) {
+      btcContainer.innerHTML = _btcHtml;
+      document.body.classList.add('fund');
+    }
+  };
 
   var viewFavoritesToggle = function viewFavoritesToggle() {
     var _btn = document.querySelector('[view-favorites-toggle-js]'),
@@ -1674,15 +1800,10 @@ var isCategoriesRendered = false;
       return;
     }
 
-    var elID = el.getAttribute('data-id'),
+    var elID = el.dataset.id,
         elParent = el.closest('.list__box-wrapper');
-    console.log('Fav box ' + elID); // const specificationFavoritesBtn = elParent.querySelector('[data-favorites="' + elID + '"]');
-
+    console.log('Fav box ' + elID);
     el.classList.toggle('is-active');
-    /*if(specificationFavoritesBtn){
-    	//specificationFavoritesBtn.classList.toggle('is-active');
-    }*/
-
     addToFavourites(elID);
   }
 
@@ -1802,29 +1923,42 @@ var isCategoriesRendered = false;
   }
 
   function initGotoTop() {
-    // window.onscroll = function(){
-    // 	if (window.scrollY > 200) {
-    // 		show(goTop);
-    // 	} else {
-    // 		hide(goTop);
-    // 	}
-    // }
-
-    /*document.querySelector('body').ontouchmove = function(){
-    	if(document.querySelector(".main-outer")){
-    		var mainScroll = -document.querySelector(".main-outer").getBoundingClientRect().top;
+    /*if(isMobileOrTablet){
+    	document.querySelector('body').ontouchmove = function(){
+    		var mainScroll = -document.body.getBoundingClientRect().top;
     		if (mainScroll > 200) {
     			show(goTop);
     		} else {
     			hide(goTop);
     		}
     	}
-    }*/
+    }else{
+    	}*/
+    window.onscroll = function () {
+      if (window.scrollY > 200) {
+        show(goTop);
+      } else {
+        hide(goTop);
+      }
+
+      if (isSingleBlog && blogContent) {
+        onBlogScroll();
+      }
+    };
+
     if (goTop) {
       goTop.onclick = function (event) {
         doScrolling(0, 200);
         return false;
       };
+    }
+  }
+
+  function onBlogScroll() {
+    if (window.scrollY < blogContentHeight | blogScrollPercent < 101) {
+      blogScrollPercent = window.scrollY / blogContentHeight * 100;
+      blogProgressBar.style.width = blogScrollPercent + '%';
+      console.log('blog scroll percentage ' + window.scrollY + ' - ' + blogContentHeight, blogScrollPercent);
     }
   }
 
@@ -1872,7 +2006,7 @@ var isCategoriesRendered = false;
     		if(!isCategoriesRendered){
     			isCategoriesRendered = true;
     			renderAllOtherCategories();
-    				}
+    			}
     	}
     }*/
 

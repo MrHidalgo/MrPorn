@@ -1,14 +1,21 @@
 // PAGE_CATEGORIES :: START
-@include adaptive(767) {
+/*@include adaptive(767) {
 	.categories_container{
 		margin-top: 110px;
 	}
-}
+}*/
 .categories_container{
 	display: flex;
 	align-content: flex-start;
 	align-items: flex-start;
 	padding-top: 15px;
+
+	@include adaptive(767) {
+		padding-top: 0;
+	}
+	@include respond('mobile_landscape'){
+		padding-top: 0;
+	}
 }
 
 //.leftCat
@@ -19,9 +26,6 @@
 .rightCat{
 	padding-left: 10px;
 
-	@include respond('ipad_portrait'){
-		padding-left: 0;
-	}
 	@include respond('max-small'){
 		padding-left: 0;
 	}
