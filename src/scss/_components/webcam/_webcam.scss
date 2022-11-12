@@ -1,10 +1,24 @@
 // WEBCAM :: START
-.site-content{
+/*.site-content{
 	@include respond('ipad_portrait'){
 		margin-top: 130px;
 	}
 	@include adaptive(767){
 		margin-top: 130px;
+	}
+}*/
+:root{
+	--cams_frame_width : calc((100vw - 50px) / 775);
+}
+.list {
+	padding-top: 15px;
+
+	@include respond('ipad_portrait'){
+		padding-top: 0;
+	}
+	@include adaptive(767) {
+		padding-top: 0;
+		padding-bottom: 0;
 	}
 }
 .blue_heading.tags_title{
@@ -303,8 +317,18 @@
 	}
 }
 
+.video-description {
+	font-family: Arial,sans-serif;
+	line-height: 18px;
+	color: #333;
+	padding-bottom: 5px;
+
+	b{color: #000;}
+}
+
 .video-wrapper{
 	display: flex;
+	background: #fff;
 	padding: 25px 20px 25px;
 
 	@include respond('ipad_portrait'){
@@ -341,13 +365,14 @@
 			}
 		}
 
-		.awe_banner {
+		.awe_mpgcams {
 			display: block;
 			margin-bottom: 10px;
 		}
-		.awe_banner_image{
+		.awe_mpgcams_image{
 			width: 100%;
 			aspect-ratio: 880 / 111;
+			height: auto;
 		}
 
 		.video-info {
@@ -361,15 +386,6 @@
 
 			b{
 				font-weight: 700;
-			}
-
-			.video-description {
-				font-family: Arial,sans-serif;
-				line-height: 18px;
-				color: #333;
-				padding-bottom: 5px;
-
-				b{color: #000;}
 			}
 
 			.webcam_video_uploader {
@@ -425,10 +441,100 @@
 		}
 	}
 	.spots-col{
+		display: flex;
 		flex-shrink: 0;
 		margin-left: 26px;
-		padding: 38px;
-		background-color: #f3f8fe;
+		padding: 0;
+		//background-color: #f3f8fe;
+		background-color: #fff;
+
+		.cb_container{
+			width: 375px;
+
+			iframe{
+				width: 400px;
+				overflow-x:hidden; overflow-y:scroll;
+				/*scrollbar-color: #131313 #525252;
+
+				&::-webkit-scrollbar, &::-webkit-scrollbar {width: 10px; }
+				&::-webkit-scrollbar-corner, &::-webkit-scrollbar-corner { background: rgba(0,0,0,0); }
+				&::-webkit-scrollbar-track, &::-webkit-scrollbar-track{background: #131313; border-left:1px solid #333;}
+				&::-webkit-scrollbar-thumb, &::-webkit-scrollbar-thumb { background: #525252; }
+				&:hover::-webkit-scrollbar-thumb, &:hover::-webkit-scrollbar-thumb { background: #323232; }*/
+
+				@include respond('ipad_portrait'){
+					width: 800px;
+				}
+			}
+
+			@include respond('ipad_portrait'){
+				width: 100%;
+			}
+
+			@media screen and (min-width: 768.01px){
+				height: auto !important;
+
+				iframe{
+					transform: scale(calc(375/400)) translate3d(0,0%,0) !important;
+					transform-origin: 0 0;
+					height: calc(100% / calc(375/400));
+				}
+			}
+
+			//@include adaptive(1198) {
+			//	min-width: 200px;
+			//	width: 100%;
+			//	height: calc((376/775)* var(--vw));
+			//
+			//	iframe{
+			//		width: 775px;
+			//		height: 376px;
+			//
+			//		transform: scale(var(--vw767)) translate3d(0,0%,0);
+			//		transform-origin: 0 0;
+			//	}
+			//}
+
+			@include adaptive(767) {
+				width: 100%;
+				margin: 0 auto;
+				height: calc((376/775)* var(--vw));
+
+				iframe{
+					width: 775px;
+					height: 376px;
+					transform-origin: 0 0;
+
+					transform: scale(var(--vw767)) translate3d(0,0%,0);
+				}
+			}
+
+			@include respond('mobile_portrait'){
+				width: 100%;
+				margin: 0 auto;
+				height: calc((376/396)* var(--vw));
+				overflow: hidden;
+
+				iframe{
+					width: 396px;
+					height: 376px;
+					transform-origin: 0 0;
+
+					transform: scale(var(--vwMobileP)) translate3d(0,0%,0);
+				}
+			}
+		}
+		iframe{
+			width: 100%;
+			height: 100%;
+			border: none;
+
+			@include adaptive(767) {
+				height: 190px;
+			}
+
+
+		}
 
 
 
@@ -574,6 +680,16 @@
 	background: #fff;
 	display: none;
 	top: 118px;
+
+	@include respond('ipad_portrait'){
+		left: 20px;
+		right: 20px;
+	}
+
+	@include adaptive(767) {
+		left: 20px;
+		right: 20px;
+	}
 
 	.thumbs-cols {
 		display: flex;
