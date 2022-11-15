@@ -184,35 +184,39 @@ function openSlideModal(e, siteId) {
 
 		// Get bounding box of final modal position
 		const modalBBox = modal.getBoundingClientRect();
-
 		if(!isMobileOrTablet){
 			getModalStartPoint(triggerBBox, modalBBox);
 			modalRenderer.set('opacity', 1).render();
 		}
 
-		// Get a function to tween the modal from the trigger
-		const modalTweener = generateModalTweener(triggerBBox, modalBBox);
-
-		// Fade in overlay
-		tween({
-			duration: 20,
-			onUpdate: (v) => dimmerRenderer.set('opacity', v)
-		}).start();
+		setTimeout(()=>{
 
 
-		let modalDuration = 600;
-		if(isMobileOrTablet){
-			modalDuration = 200;
-		}
+				// Get a function to tween the modal from the trigger
+				const modalTweener = generateModalTweener(triggerBBox, modalBBox);
 
-		chain([
-			delay(75),
-			tween({
-				duration: modalDuration,
-				ease: easing.easeOut,
-				onUpdate: modalTweener
-			})
-		]).start();
+				// Fade in overlay
+				tween({
+					duration: 20,
+					onUpdate: (v) => dimmerRenderer.set('opacity', v)
+				}).start();
+
+
+				let modalDuration = 600;
+				if(isMobileOrTablet){
+					modalDuration = 200;
+				}
+
+				chain([
+					delay(75),
+					tween({
+						duration: modalDuration,
+						ease: easing.easeOut,
+						onUpdate: modalTweener
+					})
+				]).start();
+		})
+
 	}else{
 		if(modalContainer){
 			modalContainer.style.display = 'flex'
@@ -1920,6 +1924,8 @@ function showBanner(siteId, isSkip = false, target = false){
 			siteModal.innerHTML = bottomBanner;
 
 			currentBannerSection = document.querySelector('.list__specification');
+
+			console.log('opening modal')
 
 			openSlideModal(target, siteId);
 			initSimilarSiteEvents();
