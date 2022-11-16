@@ -184,6 +184,13 @@ function openSlideModal(e, siteId) {
 
 		// Get bounding box of final modal position
 		const modalBBox = modal.getBoundingClientRect();
+
+		if(true){
+			console.log('modal position', triggerBBox)
+
+			return ;
+		}
+
 		if(!isMobileOrTablet){
 			getModalStartPoint(triggerBBox, modalBBox);
 			modalRenderer.set('opacity', 1).render();
