@@ -1189,7 +1189,7 @@ let lastMobileSimilarSite;
 
 	if(!navigator.userAgent.toLowerCase().includes('lighthouse')){
 		window.addEventListener('load', (ev) => {
-			initNative();
+			// initNative();
 
 			window.addEventListener('blur', (ev) => {
 				onWindowBlur();
@@ -1233,7 +1233,7 @@ let lastMobileSimilarSite;
 			});
 
 		});
+
+		initNative();
 	}
-
-
 })();

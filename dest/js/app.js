@@ -2233,7 +2233,7 @@ var lastMobileSimilarSite;
 
   if (!navigator.userAgent.toLowerCase().includes('lighthouse')) {
     window.addEventListener('load', function (ev) {
-      initNative();
+      // initNative();
       window.addEventListener('blur', function (ev) {
         onWindowBlur();
       });
@@ -2272,5 +2272,6 @@ var lastMobileSimilarSite;
         }
       });
     });
+    initNative();
   }
 })();
