@@ -169,7 +169,53 @@ function openSlideModal(e, siteId) {
 		document.body.classList.add('opened');
 
 		// Get bounding box of triggering element
+
+
+		//new popup effect
+		siteModal.classList.remove('prev_state')
+		modalContainer.style.display = 'block';
+
 		const triggerBBox = trigger.getBoundingClientRect();
+		const modalBBox = modal.getBoundingClientRect();
+
+		let modalMaxWidth = wInnerWidth * .75;
+		if(modalMaxWidth > 1300){
+			modalMaxWidth = 1300;
+		}
+		let modalXTo = (wInnerWidth - modalMaxWidth)/2;
+
+
+		// const toScaleX = interpolate(vRange, [triggerBBox.width / modalBBox.width, 1]);
+		// const toScaleY = interpolate(vRange, [triggerBBox.height / modalBBox.height, 1]);
+
+		const toScaleX = triggerBBox.width / modalBBox.width;
+		const toScaleY = triggerBBox.height / modalBBox.height;
+
+
+		document.documentElement.style.setProperty('--mtx', `${modalXTo}px`);
+		document.documentElement.style.setProperty('--mh', `${modalBBox.height}px`);
+		document.documentElement.style.setProperty('--mscx', toScaleX);
+		document.documentElement.style.setProperty('--mscy', toScaleY);
+
+
+		setTimeout(()=>{
+			/*siteModal.style.left = modalXTo+'px';
+			siteModal.style.top = '100px';
+			siteModal.style.width = modalMaxWidth+'px';
+			siteModal.style.height = 'auto';*/
+			//siteModal.classList.add('active')
+
+			dimmer.style.display = 'block';
+			dimmer.classList.add('open')
+			siteModal.classList.add('animateOpen');
+		})
+
+		if(true){
+			return;
+		}
+
+		//new popup effect end
+
 
 
 		// Temporarily show modal container to measure modal
@@ -183,13 +229,6 @@ function openSlideModal(e, siteId) {
 
 
 		// Get bounding box of final modal position
-		const modalBBox = modal.getBoundingClientRect();
-
-		if(true){
-			console.log('modal position', triggerBBox)
-
-			return ;
-		}
 
 		if(!isMobileOrTablet){
 			getModalStartPoint(triggerBBox, modalBBox);
@@ -271,7 +310,20 @@ function cancelModal(e) {
 			modalContainer.style.display= 'none' ;
 		}, 400);
 	}else{
-		const triggerBBox = trigger.getBoundingClientRect();
+		siteModal.classList.add('animateClose');
+		dimmer.classList.remove('open')
+
+		setTimeout(()=>{
+			modalContainer.style.display = 'none';
+			siteModal.classList.remove('animateClose', 'animateOpen');
+
+			document.documentElement.style.setProperty('--mscx', 1);
+			document.documentElement.style.setProperty('--mscy', 1);
+
+			dimmer.style.display = 'none';
+		}, 800)
+
+		/*const triggerBBox = trigger.getBoundingClientRect();
 		const modalBBox = modal.getBoundingClientRect();
 
 		const modalTweener = generateModalTweener(triggerBBox, modalBBox, false);
@@ -289,7 +341,7 @@ function cancelModal(e) {
 				onUpdate: modalTweener,
 				onComplete: closeComplete
 			})
-		]).start();
+		]).start();*/
 	}
 
 
@@ -1387,9 +1439,7 @@ function generatePreviewModal(slideBox){
 			let boxH = boxBounds.height;
 			let boxX = boxBounds.x + (boxW/2);
 			let boxY = boxBounds.y + (boxH/2) +  window.scrollY;
-
-
-
+			let modalY = boxBounds.y
 
 			//let slideHoverContent = renderSiteHoverContent(slideCategory, slideIndex, _siteId, _siteUrl, siteTitle, tagLine, siteRating);
 
@@ -1419,6 +1469,18 @@ function generatePreviewModal(slideBox){
 				prevContainer.style.left = boxX+'px';
 				prevContainer.style.top = boxY+'px';
 
+				//setting preview container position
+				siteModal.classList.add('prev_state')
+				siteModal.style.left = (boxX -175) +'px';
+				siteModal.style.top = (modalY)+'px';
+
+				console.log('modal prev top='+modalY+' - '+(modalY - 130)+' - '+boxBounds.y);
+
+				document.documentElement.style.setProperty('--msx', `${boxX -175}px`);
+				document.documentElement.style.setProperty('--msy', `${modalY}px`);
+
+				document.documentElement.style.setProperty('--mcx', `${boxX -92.5}px`);
+				document.documentElement.style.setProperty('--mcy', `${modalY}px`);
 			}
 
 			previewModal.classList.add('slide-open')
