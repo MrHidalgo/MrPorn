@@ -208,6 +208,18 @@ function openSlideModal(e, siteId) {
 			dimmer.style.display = 'block';
 			dimmer.classList.add('open')
 			siteModal.classList.add('animateOpen');
+
+			/*document.querySelector(`#site_modal`).animate(
+				[
+					{ transform: 'scale(1)', opacity:1 },
+					{ transform: 'scale(0.1)', opacity:0.3 }
+				],
+				{
+					duration: 400,
+					iterations: Infinity,
+					direction: 'alternate'
+				}
+			);*/
 		})
 
 		if(true){
