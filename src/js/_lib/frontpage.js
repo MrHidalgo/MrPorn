@@ -220,6 +220,8 @@ function openSlideModal(e, siteId) {
 					direction: 'alternate'
 				}
 			);*/
+
+
 		})
 
 		if(true){
