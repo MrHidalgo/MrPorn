@@ -440,10 +440,9 @@
   font-family: "iconFont";
   src: url("../fonts/iconFont.eot");
   src: url("../fonts/iconFont.eot?#iefix") format("eot"), url("../fonts/iconFont.woff2") format("woff2"), url("../fonts/iconFont.woff") format("woff"), url("../fonts/iconFont.ttf") format("truetype"), url("../fonts/iconFont.svg#iconFont") format("svg");
-  font-display: swap;
 }
 
-/* line 24, src/scss/_generated/_spriteFont.scss */
+/* line 23, src/scss/_generated/_spriteFont.scss */
 .icon-arrow-angle:before, .icon-close:before, .icon-delete:before, .icon-enter:before, .icon-key:before, .icon-left-arrow:before, .icon-like:before, .icon-moon:before, .icon-out:before, .icon-pause:before, .icon-play-button:before, .icon-point:before, .icon-search:before, .icon-sort:before, .icon-star-fill:before, .icon-star:before, .icon-sun:before {
   font-family: "iconFont", sans-serif;
   -webkit-font-smoothing: antialiased;
@@ -455,87 +454,87 @@
   text-transform: none;
 }
 
-/* line 87, src/scss/_generated/_spriteFont.scss */
+/* line 86, src/scss/_generated/_spriteFont.scss */
 .icon-arrow-angle:before {
   content: "";
 }
 
-/* line 87, src/scss/_generated/_spriteFont.scss */
+/* line 86, src/scss/_generated/_spriteFont.scss */
 .icon-close:before {
   content: "";
 }
 
-/* line 87, src/scss/_generated/_spriteFont.scss */
+/* line 86, src/scss/_generated/_spriteFont.scss */
 .icon-delete:before {
   content: "";
 }
 
-/* line 87, src/scss/_generated/_spriteFont.scss */
+/* line 86, src/scss/_generated/_spriteFont.scss */
 .icon-enter:before {
   content: "";
 }
 
-/* line 87, src/scss/_generated/_spriteFont.scss */
+/* line 86, src/scss/_generated/_spriteFont.scss */
 .icon-key:before {
   content: "";
 }
 
-/* line 87, src/scss/_generated/_spriteFont.scss */
+/* line 86, src/scss/_generated/_spriteFont.scss */
 .icon-left-arrow:before {
   content: "";
 }
 
-/* line 87, src/scss/_generated/_spriteFont.scss */
+/* line 86, src/scss/_generated/_spriteFont.scss */
 .icon-like:before {
   content: "";
 }
 
-/* line 87, src/scss/_generated/_spriteFont.scss */
+/* line 86, src/scss/_generated/_spriteFont.scss */
 .icon-moon:before {
   content: "";
 }
 
-/* line 87, src/scss/_generated/_spriteFont.scss */
+/* line 86, src/scss/_generated/_spriteFont.scss */
 .icon-out:before {
   content: "";
 }
 
-/* line 87, src/scss/_generated/_spriteFont.scss */
+/* line 86, src/scss/_generated/_spriteFont.scss */
 .icon-pause:before {
   content: "";
 }
 
-/* line 87, src/scss/_generated/_spriteFont.scss */
+/* line 86, src/scss/_generated/_spriteFont.scss */
 .icon-play-button:before {
   content: "";
 }
 
-/* line 87, src/scss/_generated/_spriteFont.scss */
+/* line 86, src/scss/_generated/_spriteFont.scss */
 .icon-point:before {
   content: "";
 }
 
-/* line 87, src/scss/_generated/_spriteFont.scss */
+/* line 86, src/scss/_generated/_spriteFont.scss */
 .icon-search:before {
   content: "";
 }
 
-/* line 87, src/scss/_generated/_spriteFont.scss */
+/* line 86, src/scss/_generated/_spriteFont.scss */
 .icon-sort:before {
   content: "";
 }
 
-/* line 87, src/scss/_generated/_spriteFont.scss */
+/* line 86, src/scss/_generated/_spriteFont.scss */
 .icon-star-fill:before {
   content: "";
 }
 
-/* line 87, src/scss/_generated/_spriteFont.scss */
+/* line 86, src/scss/_generated/_spriteFont.scss */
 .icon-star:before {
   content: "";
 }
 
-/* line 87, src/scss/_generated/_spriteFont.scss */
+/* line 86, src/scss/_generated/_spriteFont.scss */
 .icon-sun:before {
   content: "";
 }
@@ -12868,22 +12867,32 @@ body:not(.opened) .modal-container {
   display: -ms-flexbox;
   display: flex;
   position: absolute;
+  max-width: 90%;
+  width: 1300px;
   /*align-items: flex-end;*/
   /*width: 350px;
 		height: 260px;*/
-  -webkit-animation-fill-mode: forwards;
-          animation-fill-mode: forwards;
-  -webkit-animation-timing-function: ease-in-out;
-          animation-timing-function: ease-in-out;
-  -webkit-animation-duration: 0.6s;
-          animation-duration: 0.6s;
-  -webkit-transform: scaleX(var(--mscx)) scaleY(var(--mscy));
-      -ms-transform: scaleX(var(--mscx)) scaleY(var(--mscy));
-          transform: scaleX(var(--mscx)) scaleY(var(--mscy));
+  /*animation-fill-mode: forwards;
+		animation-timing-function: ease-in-out;
+		animation-duration: 0.6s;*/
   -webkit-transform-origin: 0 0;
       -ms-transform-origin: 0 0;
           transform-origin: 0 0;
   overflow: hidden;
+  will-change: transform;
+  /*&.animateOpen{
+			animation-name: openModalBox;
+		}
+		&.animateClose{
+			animation-name: closeModalBox;
+		}*/
+}
+
+/* line 823, src/scss/_components/homepage/_list.scss */
+#site_modal.modal.scaled {
+  -webkit-transform: scaleX(var(--mscx)) scaleY(var(--mscy));
+      -ms-transform: scaleX(var(--mscx)) scaleY(var(--mscy));
+          transform: scaleX(var(--mscx)) scaleY(var(--mscy));
 }
 
 @media screen and (min-width: 1450px) {
@@ -12894,7 +12903,7 @@ body:not(.opened) .modal-container {
   }
 }
 
-/* line 825, src/scss/_components/homepage/_list.scss */
+/* line 832, src/scss/_components/homepage/_list.scss */
 #site_modal.modal.prev_state {
   margin-top: 0;
   background: transparent;
@@ -12908,25 +12917,13 @@ body:not(.opened) .modal-container {
           filter: blur(3px);
 }
 
-/* line 837, src/scss/_components/homepage/_list.scss */
+/* line 844, src/scss/_components/homepage/_list.scss */
 #site_modal.modal.active {
   left: var(--mtx);
   top: 100px;
   max-width: 90%;
   width: 1300px;
   height: auto;
-}
-
-/* line 847, src/scss/_components/homepage/_list.scss */
-#site_modal.modal.animateOpen {
-  -webkit-animation-name: openModalBox;
-          animation-name: openModalBox;
-}
-
-/* line 850, src/scss/_components/homepage/_list.scss */
-#site_modal.modal.animateClose {
-  -webkit-animation-name: closeModalBox;
-          animation-name: closeModalBox;
 }
 
 @media screen and (max-width: 1330px) {
@@ -12962,7 +12959,7 @@ body:not(.opened) .modal-container {
   }
 }
 
-/* line 878, src/scss/_components/homepage/_list.scss */
+/* line 885, src/scss/_components/homepage/_list.scss */
 #site_modal.modal footer {
   width: 100%;
   display: -webkit-box;
@@ -12975,12 +12972,12 @@ body:not(.opened) .modal-container {
           justify-content: flex-end;
 }
 
-/* line 886, src/scss/_components/homepage/_list.scss */
+/* line 893, src/scss/_components/homepage/_list.scss */
 .submit {
   background: #8CDA26;
 }
 
-/* line 890, src/scss/_components/homepage/_list.scss */
+/* line 897, src/scss/_components/homepage/_list.scss */
 .cancel {
   background: #DA2632;
 }

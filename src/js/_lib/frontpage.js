@@ -45,10 +45,10 @@ let listBoxWrappers = [];
 let popupVideo = null;
 let siteModal = document.querySelector('#site_modal');
 
-
-
-const { css, transform, chain, delay, tween, easing, parallel } = window.popmotion;
-const { interpolate } = transform;
+let modalStartX = 0;
+let modalStartY = 0;
+let toScaleX = 0;
+let toScaleY = 0;
 
 let trigger;
 let isClosing = false;
@@ -58,100 +58,6 @@ const modalTriggersDom = document.querySelectorAll('.modal-trigger');
 const dimmer = document.querySelector('.overlay');
 const modalContainer = document.querySelector('.modal-container');
 const modal = document.querySelector('.modal');
-
-// Create CSS renderers
-let dimmerRenderer = css(dimmer);
-let modalContainerRenderer = css(modalContainer);
-let modalRenderer = css(modal);
-
-// Return the center x, y of a bounding box
-function findCenter({ top, left, height, width }, isOpen = true) {
-	return {
-		x: left + (width / 2),
-		y: top + (height / 2)
-	};
-}
-function findHCenter({ top, left, height, width }, isOpen = true) {
-	return {
-		x: left + (width / 2),
-		y: top + window.scrollY
-	};
-}
-/*
-  Generate a function that will take a progress value (0 - 1)
-  and use that to tween the modal from the source to the destination
-  bounding boxes
-*/
-const vRange = [0, 1];
-function generateModalTweener(sourceBBox, destinationBBox, isOpen = true) {
-	const sourceCenter = findCenter(sourceBBox);
-	const destinationCenter = findCenter(destinationBBox, isOpen);
-	const toX = interpolate(vRange, [sourceCenter.x - destinationCenter.x, 0]);
-
-
-	const toY = interpolate(vRange, [sourceCenter.y - destinationCenter.y, 0]);
-	const toScaleX = interpolate(vRange, [sourceBBox.width / destinationBBox.width, 1]);
-	const toScaleY = interpolate(vRange, [sourceBBox.height / destinationBBox.height, 1]);
-
-	// console.log(sourceCenter.x+' - '+destinationCenter.x);
-
-	console.log(destinationCenter.y);
-
-	if(isMobileOrTablet){
-		return (v) => modalRenderer.set({
-			opacity: v,
-			x: toX(v),
-			y: toY(v),
-			scaleX: toScaleX(v),
-			scaleY: toScaleY(v)
-		});
-	}
-
-	return (v) => modalRenderer.set({
-		// opacity: v,
-		x: toX(v),
-		y: toY(v),
-		scaleX: toScaleX(v),
-		scaleY: toScaleY(v)
-	});
-}
-
-function getModalStartPoint(sourceBBox, destinationBBox, isOpen=true){
-	const sourceCenter = findCenter(sourceBBox);
-	const destinationCenter = findCenter(destinationBBox, isOpen);
-	const toX = sourceCenter.x - destinationCenter.x;
-	const toY = sourceCenter.y - destinationCenter.y;
-
-	modalRenderer.set({
-		x: toX,
-		y: toY,
-		scaleX: 1,
-		scaleY: 1,
-		transformOrigin: '50% 50%'
-	});
-
-	let fullWidth = window.innerWidth;
-	if(fullWidth>1450){
-		fullWidth = fullWidth * 0.75;
-	}
-	const modalBBox = modal.getBoundingClientRect();
-	let fullHeight = document.querySelector('#site_modal .list__specification__inner').clientHeight + document.querySelector('#site_modal .list__specification-bottom').clientHeight;
-	console.log('Full Height '+fullHeight+ ' - '+modalBBox.width);
-
-	const toScaleX = 350 / fullWidth;
-	const toScaleY = 260 / fullHeight;
-
-	console.log(sourceBBox.height+' - '+destinationBBox.height+' - '+destinationBBox.width+' - '+fullWidth);
-
-	modalRenderer.set({
-		x: toX,
-		y: toY,
-		scaleX: toScaleX,
-		scaleY: toScaleY,
-		transformOrigin: '50% 50%'
-		//transformOrigin: '50% 0'
-	});
-}
 
 function openSlideModal(e, siteId) {
 	if(!e.target){
@@ -176,20 +82,16 @@ function openSlideModal(e, siteId) {
 		modalContainer.style.display = 'block';
 
 		const triggerBBox = trigger.getBoundingClientRect();
-		const modalBBox = modal.getBoundingClientRect();
+		const modalBBox = siteModal.getBoundingClientRect();
 
 		let modalMaxWidth = wInnerWidth * .75;
-		if(modalMaxWidth > 1300){
+		if(wInnerWidth < 1450){
 			modalMaxWidth = 1300;
 		}
 		let modalXTo = (wInnerWidth - modalMaxWidth)/2;
 
-
-		// const toScaleX = interpolate(vRange, [triggerBBox.width / modalBBox.width, 1]);
-		// const toScaleY = interpolate(vRange, [triggerBBox.height / modalBBox.height, 1]);
-
-		const toScaleX = triggerBBox.width / modalBBox.width;
-		const toScaleY = triggerBBox.height / modalBBox.height;
+		toScaleX = triggerBBox.width / modalBBox.width;
+		toScaleY = triggerBBox.height / modalBBox.height;
 
 
 		document.documentElement.style.setProperty('--mtx', `${modalXTo}px`);
@@ -199,82 +101,35 @@ function openSlideModal(e, siteId) {
 
 
 		setTimeout(()=>{
-			/*siteModal.style.left = modalXTo+'px';
-			siteModal.style.top = '100px';
-			siteModal.style.width = modalMaxWidth+'px';
-			siteModal.style.height = 'auto';*/
-			//siteModal.classList.add('active')
-
 			dimmer.style.display = 'block';
 			dimmer.classList.add('open')
-			siteModal.classList.add('animateOpen');
 
-			/*document.querySelector(`#site_modal`).animate(
+
+
+			siteModal.style.transform = 'scaleX('+toScaleX+') scaleY('+toScaleY+')';
+			siteModal.style.display = 'block';
+
+
+
+			siteModal.animate(
 				[
-					{ transform: 'scale(1)', opacity:1 },
-					{ transform: 'scale(0.1)', opacity:0.3 }
+					{ transform: 'scaleX('+toScaleX+') scaleY('+toScaleY+')', opacity:0, left: modalStartX, top: modalStartY },
+					{ transform: 'scaleX(1) scaleY(1)', opacity:1, top: 100+'px', left:modalXTo+'px' }
 				],
 				{
-					duration: 400,
-					iterations: Infinity,
-					direction: 'alternate'
+					duration: 300,
+					iterations: 1,
+					// direction: 'alternate'
 				}
-			);*/
+			).onfinish = (e) => {
+				//e.target.effect.target.style.opacity = 1;
+				siteModal.classList.remove('scaled');
+				siteModal.style.transform = 'scaleX(1) scaleY(1)';
+				siteModal.style.left = modalXTo+'px';
+				siteModal.style.top = '100px';
+			};
 
 
-		})
-
-		if(true){
-			return;
-		}
-
-		//new popup effect end
-
-
-
-		// Temporarily show modal container to measure modal
-		dimmerRenderer.set('display', 'block').render();
-		modalContainerRenderer.set('display', 'flex').render();
-		modalRenderer.set('opacity', 0).render();
-
-
-		console.log('Openibng slide popup');
-
-
-
-		// Get bounding box of final modal position
-
-		if(!isMobileOrTablet){
-			getModalStartPoint(triggerBBox, modalBBox);
-			modalRenderer.set('opacity', 1).render();
-		}
-
-		setTimeout(()=>{
-
-
-				// Get a function to tween the modal from the trigger
-				const modalTweener = generateModalTweener(triggerBBox, modalBBox);
-
-				// Fade in overlay
-				tween({
-					duration: 20,
-					onUpdate: (v) => dimmerRenderer.set('opacity', v)
-				}).start();
-
-
-				let modalDuration = 600;
-				if(isMobileOrTablet){
-					modalDuration = 200;
-				}
-
-				chain([
-					delay(75),
-					tween({
-						duration: modalDuration,
-						ease: easing.easeOut,
-						onUpdate: modalTweener
-					})
-				]).start();
 		})
 
 	}else{
@@ -282,21 +137,6 @@ function openSlideModal(e, siteId) {
 			modalContainer.style.display = 'flex'
 		}
 	}
-}
-
-function closeComplete() {
-	isClosing = false;
-	dimmerRenderer.set('display', 'none').render();
-	modalContainerRenderer.set('display', 'none').render();
-
-	modalRenderer.set({
-		x:0,
-		y: 0,
-		scaleX: 1,
-		scaleY: 1,
-		transformOrigin: '50% 50%'
-		//transformOrigin: '50% 0'
-	});
 }
 
 function cancelModal(e) {
@@ -324,41 +164,30 @@ function cancelModal(e) {
 			modalContainer.style.display= 'none' ;
 		}, 400);
 	}else{
-		siteModal.classList.add('animateClose');
-		dimmer.classList.remove('open')
+		console.log('closing modal x '+modalStartX+' -- '+modalStartY+' - '+toScaleX+' - '+toScaleY);
 
-		setTimeout(()=>{
+		siteModal.animate(
+			[
+				{ transform: 'scaleX(1) scaleY(1)', opacity:1, top: 100+'px'},
+				{ transform: 'scaleX('+toScaleX+') scaleY('+toScaleY+')', opacity:0, left: modalStartX, top: modalStartY }
+			],
+			{
+				duration: 300,
+				iterations: 1,
+				// direction: 'alternate'
+			}
+		).onfinish = (e) => {
+			//e.target.effect.target.style.opacity = 1;
+			// siteModal.classList.add('scaled');
+			siteModal.style.transform = 'scaleX(1) scaleY(1)';
+			siteModal.style.left = modalStartX;
+			siteModal.style.top = modalStartY;
+			// siteModal.style.display = 'none';
+
 			modalContainer.style.display = 'none';
-			siteModal.classList.remove('animateClose', 'animateOpen');
-
-			document.documentElement.style.setProperty('--mscx', 1);
-			document.documentElement.style.setProperty('--mscy', 1);
-
 			dimmer.style.display = 'none';
-		}, 800)
-
-		/*const triggerBBox = trigger.getBoundingClientRect();
-		const modalBBox = modal.getBoundingClientRect();
-
-		const modalTweener = generateModalTweener(triggerBBox, modalBBox, false);
-
-		parallel([
-			tween({
-				from: dimmerRenderer.get('opacity'),
-				to: 0,
-				onUpdate: (v) => dimmerRenderer.set('opacity', v)
-			}),
-			tween({
-				from: modalRenderer.get('opacity'),
-				to: 0,
-				duration: 600,
-				onUpdate: modalTweener,
-				onComplete: closeComplete
-			})
-		]).start();*/
+		};
 	}
-
-
 }
 
 function cloneCurrentPopupBanner(){
@@ -1488,7 +1317,11 @@ function generatePreviewModal(slideBox){
 				siteModal.style.left = (boxX -175) +'px';
 				siteModal.style.top = (modalY)+'px';
 
-				console.log('modal prev top='+modalY+' - '+(modalY - 130)+' - '+boxBounds.y);
+				siteModal.classList.add('scaled');
+
+				modalStartX = (boxX -175)+'px';
+				modalStartY = modalY+'px';
+
 
 				document.documentElement.style.setProperty('--msx', `${boxX -175}px`);
 				document.documentElement.style.setProperty('--msy', `${modalY}px`);
@@ -2052,16 +1885,6 @@ function showBanner(siteId, isSkip = false, target = false){
 	} else {
 		//_boxParent.classList.add('is-active');
 
-		if(dimmerRenderer==null){
-			dimmerRenderer = css(dimmer);
-		}
-		if(modalContainerRenderer==null){
-			modalContainerRenderer = css(modalContainer);
-		}
-		if(modalRenderer==null){
-			modalRenderer = css(modal);
-		}
-		console.log('Init popups');
 
 		if(_specificationBox){
 			_specificationBox.classList.add('is-open');

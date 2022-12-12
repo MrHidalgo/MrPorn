@@ -802,20 +802,27 @@ body:not(.opened){
 		//margin-top: 100px;
 		display: flex;
 		position: absolute;
+		max-width: 90%;
+		width: 1300px;
+
 		/*align-items: flex-end;*/
 
 		/*width: 350px;
 		height: 260px;*/
 
-		animation-fill-mode: forwards;
+		/*animation-fill-mode: forwards;
 		animation-timing-function: ease-in-out;
-		animation-duration: 0.6s;
-		transform: scaleX(var(--mscx)) scaleY(var(--mscy));
+		animation-duration: 0.6s;*/
 		transform-origin: 0 0;
 
 		//transform: translateX(-50%);
 		//transition: all .5s ease-in-out;
 		overflow: hidden;
+		will-change: transform;
+
+		&.scaled{
+			transform: scaleX(var(--mscx)) scaleY(var(--mscy));
+		}
 
 		@media screen and (min-width: 1450px) {
 			max-width: 75%;
@@ -844,12 +851,12 @@ body:not(.opened){
 
 
 		}
-		&.animateOpen{
+		/*&.animateOpen{
 			animation-name: openModalBox;
 		}
 		&.animateClose{
 			animation-name: closeModalBox;
-		}
+		}*/
 
 		//@include adaptive(1449.98){
 		//	max-width: 1330px;
