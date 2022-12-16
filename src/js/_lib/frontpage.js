@@ -964,7 +964,10 @@ function renderMissingSlides(catId){
 	if(homeData.categories[catId]){
 		let categoryWrapper = swiperWrappers[catId];
 		let missingSlidesHtml = '';
-		/*homeData.categories[catId].sites.map(function (site, index) {
+
+		console.log('rendering missing slides');
+
+		homeData.categories[catId].sites.map(function (site, index) {
 
 
 
@@ -983,7 +986,7 @@ function renderMissingSlides(catId){
 			}
 		});
 
-		categoryWrapper.insertAdjacentHTML('beforeend', missingSlidesHtml);*/
+		categoryWrapper.insertAdjacentHTML('beforeend', missingSlidesHtml);
 	}
 }
 
