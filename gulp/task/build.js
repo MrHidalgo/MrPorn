@@ -9,6 +9,7 @@ const build = (done) => {
     'pug',
     'js',
 		'js_home',
+		'js_netflix',
     'fonts',
 		'iconfont',
     'spritePNG',
