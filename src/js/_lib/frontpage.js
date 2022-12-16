@@ -1135,7 +1135,10 @@ function renderMissingSlides(catId){
 	if(homeData.categories[catId]){
 		let categoryWrapper = swiperWrappers[catId];
 		let missingSlidesHtml = '';
-		/*homeData.categories[catId].sites.map(function (site, index) {
+
+		console.log('rendering missing slides');
+
+		homeData.categories[catId].sites.map(function (site, index) {
 
 
 
@@ -1154,7 +1157,7 @@ function renderMissingSlides(catId){
 			}
 		});
 
-		categoryWrapper.insertAdjacentHTML('beforeend', missingSlidesHtml);*/
+		categoryWrapper.insertAdjacentHTML('beforeend', missingSlidesHtml);
 	}
 }
 
@@ -1487,8 +1490,6 @@ function generatePreviewModal(slideBox){
 				siteModal.classList.add('prev_state')
 				siteModal.style.left = (boxX -175) +'px';
 				siteModal.style.top = (modalY)+'px';
-
-				console.log('modal prev top='+modalY+' - '+(modalY - 130)+' - '+boxBounds.y);
 
 				document.documentElement.style.setProperty('--msx', `${boxX -175}px`);
 				document.documentElement.style.setProperty('--msy', `${modalY}px`);

@@ -1997,10 +1997,10 @@ var lastMobileSimilarSite;
     if (myEls.length) {
       myObserver.observe(myEls[0]);
     }
-    /*if (myEls.offsetTop < window.scrollY) {
-    	renderAllOtherCategories();
-    }*/
 
+    if (myEls.offsetTop < window.scrollY) {
+      renderAllOtherCategories();
+    }
     /*if (document.body.classList.contains('home') && window.scrollY > 500) {
     	if(homeData && homeData.categories_indexes){
     		if(!isCategoriesRendered){
