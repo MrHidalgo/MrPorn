@@ -17,10 +17,9 @@ const configPath  = require('../config/configPath'),
 task('js', (done) => {
   return src([
 			configPath.src.js + '/*.js',
-			configPath.src.js + '/**/*.js',
-			'!' + configPath.src.js + '/**/_**.js',
-			'!' + configPath.src.js + '/**/frontpage.js',
-		'!' + configPath.src.js + '/_frontpage/*.js',
+			configPath.src.js + '/_document/*.js',
+			configPath.src.js + '/_lib/*.js',
+			configPath.src.js + '/_window/*.js',
 		'!' + configPath.src.js + '/_lib/swiper.js',
 		])
 		.pipe(plumber(configOption.pipeBreaking.err))
@@ -42,6 +41,7 @@ task('js_home', (done) => {
 		configPath.src.js + '/*.js',
 		//configPath.src.js + '/**/*.js',
 		configPath.src.js + '/_document/*.js',
+		configPath.src.js + '/_flat/*.js',
 		configPath.src.js + '/_lib/*.js',
 		configPath.src.js + '/_window/*.js',
 		'!' + configPath.src.js + '/**/_**.js',
@@ -53,6 +53,7 @@ task('js_home', (done) => {
 			"_lib/**",
 			"_window/**",
 			"_document/**",
+			"_flat/**",
 			"_frontpage/**",
 		]))
 		.pipe(concat('frontpage.js'))
@@ -64,9 +65,11 @@ task('js_home', (done) => {
 task('js_netflix', (done) => {
 	return src([
 		configPath.src.js + '/*.js',
-		configPath.src.js + '/**/*.js',
+		configPath.src.js + '/_document/*.js',
+		configPath.src.js + '/_netflix/*.js',
+		configPath.src.js + '/_lib/*.js',
+		configPath.src.js + '/_window/*.js',
 		'!' + configPath.src.js + '/**/_**.js',
-		'!' + configPath.src.js + '/_lib/frontpage.js',
 	])
 		.pipe(plumber(configOption.pipeBreaking.err))
 
@@ -75,6 +78,7 @@ task('js_netflix', (done) => {
 			"_lib/**",
 			"_window/**",
 			"_document/**",
+			"_netflix/**",
 			"_frontpage/**",
 		]))
 		.pipe(concat('nf.js'))
