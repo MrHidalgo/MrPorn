@@ -14,12 +14,23 @@ const configPath  = require('../config/configPath'),
 /**
  * @description Gulp Javascript - converting files to current standards.
  */
+
+/*src([
+	configPath.src.js + '/!*.js',
+	configPath.src.js + '/!**!/!*.js',
+	'!' + configPath.src.js + '/!**!/_**.js',
+	'!' + configPath.src.js + '/!**!/frontpage.js',
+	'!' + configPath.src.js + '/_frontpage/!*.js',
+	'!' + configPath.src.js + '/_lib/swiper.js',
+])*/
+
 task('js', (done) => {
   return src([
 			configPath.src.js + '/*.js',
 			configPath.src.js + '/_document/*.js',
 			configPath.src.js + '/_lib/*.js',
 			configPath.src.js + '/_window/*.js',
+		'!' + configPath.src.js + '/**/_**.js',
 		'!' + configPath.src.js + '/_lib/swiper.js',
 		])
 		.pipe(plumber(configOption.pipeBreaking.err))
@@ -65,9 +76,10 @@ task('js_home', (done) => {
 task('js_netflix', (done) => {
 	return src([
 		configPath.src.js + '/*.js',
-		configPath.src.js + '/_document/*.js',
-		configPath.src.js + '/_netflix/*.js',
+		configPath.src.js + '/_netflix/nf_netflix.js',
 		configPath.src.js + '/_lib/*.js',
+		configPath.src.js + '/_document/*.js',
+		configPath.src.js + '/_netflix/indexNetflix.js',
 		configPath.src.js + '/_window/*.js',
 		'!' + configPath.src.js + '/**/_**.js',
 	])
@@ -76,10 +88,10 @@ task('js_netflix', (done) => {
 		.pipe(order([
 			"*",
 			"_lib/**",
+			"_netflix/nf_netflix.js",
 			"_window/**",
 			"_document/**",
-			"_netflix/**",
-			"_frontpage/**",
+			"_netflix/indexNetflix.js",
 		]))
 		.pipe(concat('nf.js'))
 		.pipe(babel(configOption.es6))

@@ -1,3 +1,9 @@
+/**
+ * @name netflixFunctions
+ *
+ * @description
+ */
+
 var webworkerFrontpage;
 let currentBannerTimeout;
 let lastActiveHoverBox;

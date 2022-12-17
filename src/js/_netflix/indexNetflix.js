@@ -1,6 +1,7 @@
 /**
- * POLYFILL
- * ===================================
+ * @name indexNetflix
+ *
+ * @description
  */
 
 let isMobileDevice = false;
