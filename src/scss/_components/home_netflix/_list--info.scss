@@ -1,0 +1,133 @@
+&__info {
+	display: flex;
+	@include adaptive(767) {
+		align-items: center;
+	}
+
+	&--top{
+		display: flex;
+		justify-content: space-between;
+		align-items: center;
+	}
+
+	&--title{
+		flex: 1;
+		min-width: 1px;
+		max-width: 100%;
+		padding-left: 11px;
+
+		&_h2{
+			color: #ffffff;
+			font-size: 22px;
+			font-weight: 700;
+			white-space: nowrap;
+			overflow: hidden;
+			text-overflow: ellipsis;
+
+			@include adaptive(1279) {
+				font-size: 22px;
+			}
+
+			@include adaptive(767) {
+				font-size: 18px;
+			}
+
+			@include adaptive(375) {
+				font-size: 16px;
+			}
+		}
+		&_a{
+			color: #fff;
+
+			&:hover{
+				text-decoration: underline;
+				color: #fff;
+			}
+		}
+		&_span{
+			display: block;
+			color: #4b4e6b;
+			font-size: 14px;
+
+			white-space: nowrap;
+			overflow: hidden;
+			text-overflow: ellipsis;
+			min-height: 20px;
+
+			@include adaptive(767) {
+				white-space: nowrap;
+				overflow: hidden;
+				display: block;
+				font-size: 10px;
+				line-height: 1.2;
+				/*width: calc(100vw - (10px + 45px + 15px));*/
+
+				&:after {
+					content: '';
+					position: absolute;
+					top: 0;
+					right: 0;
+					width: 60px;
+					height: 100%;
+					background: linear-gradient(to right, rgba(0,0,0,0) 0%,rgba(8,9,21,1) 100%);
+				}
+			}
+		}
+	}
+
+	&-circle {
+		overflow: hidden;
+		position: relative;
+		width: 55px;
+		height: 55px;
+		border-radius: 50%;
+		background-color: rgb(32, 33, 47);
+		@include adaptive(767) {
+			width: 45px;
+			height: 45px;
+		}
+
+		img {
+			@extend %imageResCoverAbs;
+
+		}
+	}
+
+	p {
+		color: #ffffff;
+		font-size: 28px;
+		font-weight: 700;
+		@include adaptive(1279) {
+			font-size: 24px;
+		}
+		@include adaptive(767) {
+			padding-right: 120px;
+			font-size: 18px;
+		}
+	}
+
+	span {
+		position: relative;
+		color: #4b4e6b;
+		font-size: 16px;
+		@include adaptive(767) {
+			white-space: nowrap;
+			overflow: hidden;
+			display: block;
+			font-size: 10px;
+			line-height: 1.2;
+			width: calc(100vw - (10px + 45px + 15px));
+
+			&:after {
+				content: '';
+				position: absolute;
+				top: 0;
+				right: 0;
+				width: 60px;
+				height: 100%;
+				background: linear-gradient(to right, rgba(0,0,0,0) 0%,rgba(8,9,21,1) 100%);
+			}
+		}
+	}
+}
+
