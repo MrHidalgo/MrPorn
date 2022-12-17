@@ -573,6 +573,7 @@ var sortTimout;
 var favouriteList = [];
 var isDark = '1';
 var toggleSwitch = document.querySelector('#toggle-mode');
+var newThemeClose = document.querySelector('#newSiteClose');
 
 var initTheme = function initTheme() {
   if (toggleSwitch) {
@@ -584,6 +585,13 @@ var initTheme = function initTheme() {
         createCookie("is_dark", "0", 7);
         document.documentElement.classList.add('light');
       }
+    });
+  }
+
+  if (newThemeClose) {
+    newThemeClose.addEventListener('click', function (e) {
+      createCookie("new_theme_closed", "1", 7);
+      document.querySelector('.theme_toggle').remove();
     });
   }
 

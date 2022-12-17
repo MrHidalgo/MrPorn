@@ -6,6 +6,7 @@ let sortTimout;
 let favouriteList = [];
 let isDark = '1';
 let toggleSwitch = document.querySelector('#toggle-mode');
+let newThemeClose = document.querySelector('#newSiteClose');
 
 const initTheme = () => {
 
@@ -18,6 +19,13 @@ const initTheme = () => {
 				createCookie("is_dark", "0", 7);
 				document.documentElement.classList.add('light');
 			}
+		})
+	}
+
+	if(newThemeClose){
+		newThemeClose.addEventListener('click', (e)=>{
+			createCookie("new_theme_closed", "1", 7);
+			document.querySelector('.theme_toggle').remove()
 		})
 	}
 

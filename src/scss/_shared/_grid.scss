@@ -232,3 +232,24 @@ $paddingRight: $paddingLeft;
 		min-width: auto;
 	}
 }
+
+
+.page-id-17, .home{
+	.c-grid {
+		&.list{
+			padding-top: 15px;
+
+			@include respond('ipad_landscape'){
+				padding: 15px 20px 25px;
+			}
+		}
+		@media screen and (min-width: 1330px) {
+			max-width: 75%;
+			min-width: 1300px;
+		}
+		@media screen and (max-width: 1329.98px) {
+			max-width: 100%;
+			min-width: auto;
+		}
+	}
+}

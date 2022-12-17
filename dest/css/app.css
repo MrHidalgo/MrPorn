@@ -1094,6 +1094,34 @@ strong {
   }
 }
 
+/* line 239, src/scss/_shared/_grid.scss */
+.page-id-17 .c-grid.list, .home .c-grid.list {
+  padding-top: 15px;
+}
+
+@media screen and (min-device-width: 768px) and (max-device-width: 1024px) and (orientation: landscape) and (-webkit-min-device-pixel-ratio: 2) {
+  /* line 239, src/scss/_shared/_grid.scss */
+  .page-id-17 .c-grid.list, .home .c-grid.list {
+    padding: 15px 20px 25px;
+  }
+}
+
+@media screen and (min-width: 1330px) {
+  /* line 238, src/scss/_shared/_grid.scss */
+  .page-id-17 .c-grid, .home .c-grid {
+    max-width: 75%;
+    min-width: 1300px;
+  }
+}
+
+@media screen and (max-width: 1329.98px) {
+  /* line 238, src/scss/_shared/_grid.scss */
+  .page-id-17 .c-grid, .home .c-grid {
+    max-width: 100%;
+    min-width: auto;
+  }
+}
+
 /* line 1, src/scss/_shared/macros/_lang.scss */
 .lang {
   position: relative;
@@ -2319,7 +2347,82 @@ fieldset {
   display: none;
 }
 
-/* line 3, src/scss/_components/common/_header.scss */
+/* line 2, src/scss/_components/common/_header.scss */
+.theme_toggle {
+  z-index: 30;
+  width: 100%;
+  color: white;
+  left: 0px;
+  top: 0px;
+  position: fixed;
+  font-size: 2rem;
+  font-weight: 600;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+  -webkit-align-items: center;
+      -ms-flex-align: center;
+          align-items: center;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  border: 0px solid;
+}
+
+/* line 17, src/scss/_components/common/_header.scss */
+.theme_toggle_link {
+  height: 32px;
+  background: rgba(0, 0, 0, 0.8);
+  width: 100%;
+  position: relative;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+  -webkit-align-items: center;
+      -ms-flex-align: center;
+          align-items: center;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  border: 0 solid;
+  color: #fff;
+  font-size: 15px;
+  font-weight: 600;
+}
+
+/* line 31, src/scss/_components/common/_header.scss */
+.theme_toggle_link a {
+  color: #fff;
+  font-size: 15px;
+}
+
+/* line 36, src/scss/_components/common/_header.scss */
+.theme_toggle_link #newSiteClose {
+  right: 10px;
+  top: 0;
+  bottom: 0;
+  margin: auto;
+  fill: currentColor;
+  position: absolute;
+  cursor: pointer;
+  display: block;
+  vertical-align: middle;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  border: 0 solid;
+}
+
+/* line 52, src/scss/_components/common/_header.scss */
 .header {
   position: relative;
   display: -webkit-box;
@@ -2336,7 +2439,7 @@ fieldset {
 }
 
 @media screen and (max-width: 1023.98px) {
-  /* line 3, src/scss/_components/common/_header.scss */
+  /* line 52, src/scss/_components/common/_header.scss */
   .header {
     padding-top: 0;
   }
@@ -4155,7 +4258,7 @@ fieldset {
 }
 
 @media screen and (max-width: 1023.98px) {
-  /* line 3, src/scss/_components/common/_header.scss */
+  /* line 52, src/scss/_components/common/_header.scss */
   .header {
     position: fixed;
     width: 100%;
@@ -4164,7 +4267,7 @@ fieldset {
 }
 
 @media screen and (min-device-width: 768px) and (max-device-width: 1024px) and (orientation: portrait) and (-webkit-min-device-pixel-ratio: 2) {
-  /* line 3, src/scss/_components/common/_header.scss */
+  /* line 52, src/scss/_components/common/_header.scss */
   .header {
     position: fixed;
     width: 100%;
@@ -4173,7 +4276,7 @@ fieldset {
 }
 
 @media screen and (min-device-width: 1366px) and (max-device-width: 1366px) and (orientation: landscape) and (-webkit-min-device-pixel-ratio: 2) {
-  /* line 3, src/scss/_components/common/_header.scss */
+  /* line 52, src/scss/_components/common/_header.scss */
   .header {
     position: relative;
     width: 100%;
@@ -4182,7 +4285,7 @@ fieldset {
 }
 
 @media screen and (min-device-width: 1024px) and (max-device-width: 1024px) and (orientation: portrait) and (-webkit-min-device-pixel-ratio: 2) {
-  /* line 3, src/scss/_components/common/_header.scss */
+  /* line 52, src/scss/_components/common/_header.scss */
   .header {
     position: relative;
     width: 100%;
@@ -4191,43 +4294,43 @@ fieldset {
 }
 
 @media screen and (max-width: 1023px) {
-  /* line 57, src/scss/_components/common/_header.scss */
+  /* line 106, src/scss/_components/common/_header.scss */
   .light .header__bottom.is-open {
     background: #303030fa;
   }
-  /* line 61, src/scss/_components/common/_header.scss */
+  /* line 110, src/scss/_components/common/_header.scss */
   .light .pre-header__mobile {
     background-color: #303030fa;
   }
-  /* line 64, src/scss/_components/common/_header.scss */
+  /* line 113, src/scss/_components/common/_header.scss */
   .light .header__nav-item:not(:last-of-type) {
     border-bottom: 1px solid #4a4a4a;
   }
-  /* line 67, src/scss/_components/common/_header.scss */
+  /* line 116, src/scss/_components/common/_header.scss */
   .light .pre-header__mobile-middle {
     border-top: 1px solid #4a4a4a;
     border-bottom: 1px solid #4a4a4a;
   }
 }
 
-/* line 75, src/scss/_components/common/_header.scss */
+/* line 124, src/scss/_components/common/_header.scss */
 .light .header__toggle label .icon-font {
   -webkit-transition: opacity 0.35s ease-in-out;
   -o-transition: opacity 0.35s ease-in-out;
   transition: opacity 0.35s ease-in-out;
 }
 
-/* line 78, src/scss/_components/common/_header.scss */
+/* line 127, src/scss/_components/common/_header.scss */
 .light .header__toggle label .icon-font.icon-sun {
   opacity: 1;
 }
 
-/* line 81, src/scss/_components/common/_header.scss */
+/* line 130, src/scss/_components/common/_header.scss */
 .light .header__toggle label .icon-font.icon-moon {
   opacity: 0;
 }
 
-/* line 86, src/scss/_components/common/_header.scss */
+/* line 135, src/scss/_components/common/_header.scss */
 .light .header__toggle label span {
   -webkit-transform: translateX(0);
       -ms-transform: translateX(0);
@@ -4239,56 +4342,56 @@ fieldset {
   transition: transform 0.35s ease-in-out, -webkit-transform 0.35s ease-in-out;
 }
 
-/* line 95, src/scss/_components/common/_header.scss */
+/* line 144, src/scss/_components/common/_header.scss */
 .is_logged .header__view-wrapper {
   display: block;
 }
 
 @media screen and (max-width: 1023px) {
-  /* line 95, src/scss/_components/common/_header.scss */
+  /* line 144, src/scss/_components/common/_header.scss */
   .is_logged .header__view-wrapper {
     display: none;
   }
 }
 
-/* line 102, src/scss/_components/common/_header.scss */
+/* line 151, src/scss/_components/common/_header.scss */
 .is_logged .header__view-text {
   display: none;
 }
 
-/* line 107, src/scss/_components/common/_header.scss */
+/* line 156, src/scss/_components/common/_header.scss */
 [data-label-lg]::after {
   content: attr(data-label-lg);
 }
 
 @media screen and (max-width: 767px) {
   /* line 189, src/scss/_shared/_main-setting-reset.scss */
-  /* line 113, src/scss/_components/common/_header.scss */
+  /* line 162, src/scss/_components/common/_header.scss */
   [data-label-xs]::after {
     content: attr(data-label-xs);
   }
 }
 
-/* line 122, src/scss/_components/common/_header.scss */
+/* line 171, src/scss/_components/common/_header.scss */
 .has_search .header__recent {
   display: none;
 }
 
 @media screen and (max-width: 1023.98px) {
-  /* line 130, src/scss/_components/common/_header.scss */
+  /* line 179, src/scss/_components/common/_header.scss */
   .fund .header {
     top: 45px;
   }
 }
 
-/* line 134, src/scss/_components/common/_header.scss */
+/* line 183, src/scss/_components/common/_header.scss */
 .fund .c-grid.bitcoin {
   display: block;
   position: relative;
 }
 
 @media screen and (max-width: 1023.98px) {
-  /* line 134, src/scss/_components/common/_header.scss */
+  /* line 183, src/scss/_components/common/_header.scss */
   .fund .c-grid.bitcoin {
     position: fixed;
     z-index: 105;
@@ -4298,7 +4401,7 @@ fieldset {
   }
 }
 
-/* line 147, src/scss/_components/common/_header.scss */
+/* line 196, src/scss/_components/common/_header.scss */
 .fund .header__action_bitcoin-outer {
   position: absolute;
   z-index: 1;
@@ -4307,7 +4410,7 @@ fieldset {
 }
 
 @media screen and (max-width: 1023px) {
-  /* line 147, src/scss/_components/common/_header.scss */
+  /* line 196, src/scss/_components/common/_header.scss */
   .fund .header__action_bitcoin-outer {
     position: relative;
     height: 45px;
@@ -4318,7 +4421,7 @@ fieldset {
   }
 }
 
-/* line 162, src/scss/_components/common/_header.scss */
+/* line 211, src/scss/_components/common/_header.scss */
 .fund .header__action_bitcoin-outer .btc-close {
   position: absolute;
   right: 15px;
@@ -4332,14 +4435,14 @@ fieldset {
 }
 
 @media screen and (max-width: 1023px) {
-  /* line 162, src/scss/_components/common/_header.scss */
+  /* line 211, src/scss/_components/common/_header.scss */
   .fund .header__action_bitcoin-outer .btc-close {
     left: 15px;
     right: auto;
   }
 }
 
-/* line 178, src/scss/_components/common/_header.scss */
+/* line 227, src/scss/_components/common/_header.scss */
 .fund .header__action_bitcoin {
   display: -webkit-box;
   display: -webkit-flex;
@@ -4365,13 +4468,13 @@ fieldset {
           transform: translate3d(0, 0, 0);
 }
 
-/* line 191, src/scss/_components/common/_header.scss */
+/* line 240, src/scss/_components/common/_header.scss */
 .fund .header__action_bitcoin .btc_hash img {
   height: 24px;
   margin: -3px 5px;
 }
 
-/* line 196, src/scss/_components/common/_header.scss */
+/* line 245, src/scss/_components/common/_header.scss */
 .fund .header__action_bitcoin.copied {
   -webkit-animation: rotateBtc 3.7s ease-in-out;
           animation: rotateBtc 3.7s ease-in-out;
@@ -4379,20 +4482,20 @@ fieldset {
           animation-fill-mode: forwards;
 }
 
-/* line 200, src/scss/_components/common/_header.scss */
+/* line 249, src/scss/_components/common/_header.scss */
 .fund .header__action_bitcoin.copied .btc-close {
   -webkit-transform: translateY(-50%) rotateX(180deg);
           transform: translateY(-50%) rotateX(180deg);
 }
 
 @media screen and (min-width: 1199.98px) and (max-width: 1449.98px) {
-  /* line 178, src/scss/_components/common/_header.scss */
+  /* line 227, src/scss/_components/common/_header.scss */
   .fund .header__action_bitcoin {
     left: 410px;
   }
 }
 
-/* line 212, src/scss/_components/common/_header.scss */
+/* line 261, src/scss/_components/common/_header.scss */
 .fund .header__action_bitcoin span {
   display: -webkit-box;
   display: -webkit-flex;
@@ -4407,14 +4510,14 @@ fieldset {
 }
 
 @media screen and (max-width: 1023px) {
-  /* line 212, src/scss/_components/common/_header.scss */
+  /* line 261, src/scss/_components/common/_header.scss */
   .fund .header__action_bitcoin span {
     overflow: hidden;
   }
 }
 
 @media screen and (max-width: 1023px) {
-  /* line 225, src/scss/_components/common/_header.scss */
+  /* line 274, src/scss/_components/common/_header.scss */
   .fund .header__bottom {
     top: 110px;
   }
