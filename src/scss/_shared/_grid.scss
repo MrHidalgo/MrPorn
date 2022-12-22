@@ -142,6 +142,52 @@ $paddingRight: $paddingLeft;
 	}
 }
 
+body:has(.theme_toggle){
+	&.show_2nd_header_{
+		.c-grid-main{
+			@include respond('ipad_portrait'){
+				margin-top: 80px;
+			}
+			@include adaptive(767) {
+				margin-top: 80px;
+			}
+			@include respond('mobile_landscape'){
+				margin-top: 80px;
+			}
+		}
+		&.category.gaming_cat_1 .c-grid-main{
+
+			@include adaptive(767) {
+				margin-top: 75px;
+			}
+			@include respond('mobile_landscape'){
+				margin-top: 75px;
+			}
+		}
+		&1{
+			.c-grid-main{
+				@include respond('ipad_portrait'){
+					margin-top: 160px;
+				}
+				@include adaptive(1023) {
+					margin-top: 160px;
+				}
+				@include respond('mobile_landscape'){
+					margin-top: 160px;
+				}
+			}
+
+			&.home{
+				.c-grid-main {
+					@include adaptive(767) {
+						margin-top: 145px;
+					}
+				}
+			}
+		}
+	}
+}
+
 @include adaptive(1023.98) {
 	body.fund{
 		padding-top: 45px;

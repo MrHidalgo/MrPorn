@@ -1,11 +1,11 @@
 // HEADER :: START
 .theme_toggle{
-	z-index: 30;
+	position: fixed;
 	width: 100%;
 	color: rgb(255, 255, 255);
 	left: 0px;
 	top: 0px;
-	position: fixed;
+	height: 30px;
 	z-index: 106;
 	font-size: 2rem;
 	font-weight: 600;
@@ -26,7 +26,7 @@
 		box-sizing: border-box;
 		border: 0 solid;
 		color: #fff;
-		font-size: 15px;
+		font-size: 14px;
 		font-weight: 600;
 
 		a{
@@ -46,6 +46,19 @@
 			vertical-align: middle;
 			box-sizing: border-box;
 			border: 0 solid;
+		}
+	}
+}
+
+body:has(.theme_toggle) .header{
+	margin-top: 30px;
+
+	@include adaptive(1023) {
+		&__bottom{
+			top: 110px;
+		}
+		&__container-2.is-open .header__view-actions{
+			padding-top: 30px;
 		}
 	}
 }
