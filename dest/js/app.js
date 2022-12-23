@@ -572,6 +572,7 @@ var logoutUrl = '';
 var sortTimout;
 var favouriteList = [];
 var isDark = '1';
+var isNfDark = '1';
 var toggleSwitch = document.querySelector('#toggle-mode');
 var newThemeClose = document.querySelector('#newSiteClose');
 
@@ -579,10 +580,20 @@ var initTheme = function initTheme() {
   if (toggleSwitch) {
     toggleSwitch.addEventListener('change', function (event) {
       if (document.documentElement.classList.contains('light')) {
-        createCookie("is_dark", "1", 7);
+        if (document.body.classList.contains('nf')) {
+          createCookie("is_nf_dark", "1", 7);
+        } else {
+          createCookie("is_dark", "1", 7);
+        }
+
         document.documentElement.classList.remove('light');
       } else {
-        createCookie("is_dark", "0", 7);
+        if (document.body.classList.contains('nf')) {
+          createCookie("is_nf_dark", "0", 7);
+        } else {
+          createCookie("is_dark", "0", 7);
+        }
+
         document.documentElement.classList.add('light');
       }
     });
@@ -596,17 +607,32 @@ var initTheme = function initTheme() {
   }
 
   isDark = getCookieMpgCookie("is_dark");
+  isNfDark = getCookieMpgCookie("is_nf_dark");
 
-  if (isDark == '') {
-    isDark = '0';
-  }
+  if (document.body.classList.contains('nf')) {
+    if (isNfDark == '') {
+      isNfDark = '1';
+    }
 
-  if (isDark == '1') {
-    document.documentElement.classList.remove('light');
-    toggleSwitch.checked = true;
+    if (isNfDark == '1') {
+      document.documentElement.classList.remove('light');
+      toggleSwitch.checked = true;
+    } else {
+      document.documentElement.classList.add('light');
+      toggleSwitch.checked = false;
+    }
   } else {
-    document.documentElement.classList.add('light');
-    toggleSwitch.checked = false;
+    if (isDark == '') {
+      isDark = '0';
+    }
+
+    if (isDark == '1') {
+      document.documentElement.classList.remove('light');
+      toggleSwitch.checked = true;
+    } else {
+      document.documentElement.classList.add('light');
+      toggleSwitch.checked = false;
+    }
   }
 };
 

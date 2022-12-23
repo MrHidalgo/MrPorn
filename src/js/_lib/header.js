@@ -5,6 +5,7 @@ let logoutUrl='';
 let sortTimout;
 let favouriteList = [];
 let isDark = '1';
+let isNfDark = '1';
 let toggleSwitch = document.querySelector('#toggle-mode');
 let newThemeClose = document.querySelector('#newSiteClose');
 
@@ -12,11 +13,20 @@ const initTheme = () => {
 
 	if(toggleSwitch){
 		toggleSwitch.addEventListener('change', (event) => {
+
 			if (document.documentElement.classList.contains('light')) {
-				createCookie("is_dark", "1", 7);
+				if(document.body.classList.contains('nf')){
+					createCookie("is_nf_dark", "1", 7);
+				}else{
+					createCookie("is_dark", "1", 7);
+				}
 				document.documentElement.classList.remove('light');
 			} else {
-				createCookie("is_dark", "0", 7);
+				if(document.body.classList.contains('nf')){
+					createCookie("is_nf_dark", "0", 7);
+				}else{
+					createCookie("is_dark", "0", 7);
+				}
 				document.documentElement.classList.add('light');
 			}
 		})
@@ -30,15 +40,32 @@ const initTheme = () => {
 	}
 
 	isDark = getCookieMpgCookie("is_dark");
-	if(isDark==''){
-		isDark = '0';
-	}
-	if(isDark=='1'){
-		document.documentElement.classList.remove('light');
-		toggleSwitch.checked = true;
+	isNfDark = getCookieMpgCookie("is_nf_dark");
+
+	if(document.body.classList.contains('nf')){
+		if(isNfDark==''){
+			isNfDark = '1';
+		}
+
+		if(isNfDark=='1'){
+			document.documentElement.classList.remove('light');
+			toggleSwitch.checked = true;
+		}else{
+			document.documentElement.classList.add('light');
+			toggleSwitch.checked = false;
+		}
 	}else{
-		document.documentElement.classList.add('light');
-		toggleSwitch.checked = false;
+		if(isDark==''){
+			isDark = '0';
+		}
+
+		if(isDark=='1'){
+			document.documentElement.classList.remove('light');
+			toggleSwitch.checked = true;
+		}else{
+			document.documentElement.classList.add('light');
+			toggleSwitch.checked = false;
+		}
 	}
 }
 
