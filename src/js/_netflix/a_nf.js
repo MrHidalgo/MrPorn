@@ -300,19 +300,12 @@ function scrollToCategoryOnHome(ev, _ev){
 				tempRepositionGreenBar(elParent, 0, true);
 
 				setTimeout(function (){
-					//document.querySelector('.list__box-wrapper[data-name="category_'+catId+'"] .category_title_inner').classList.add('animate__animated', 'animate__pulse', 'animate__repeat-2');
-					//scrollGreenBar.classList.add('animate__animated', 'animate__fadeOut');
-
-
+					scrollGreenBar.setAttribute('style', 'background-color: rgb(25, 26, 40);');
 
 					setTimeout(function (){
-						scrollGreenBar.setAttribute('style', 'background-color: rgb(25, 26, 40);');
-
-						setTimeout(function (){
-							pauseHoverAnimation = false;
-						}, 1000);
+						pauseHoverAnimation = false;
 					}, 1000);
-				}, 1300);
+				}, 2300);
 
 				//animate__animated', 'animate__pulse', 'animate__repeat-2
 			}

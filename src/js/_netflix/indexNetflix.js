@@ -257,15 +257,15 @@ let lastMobileSimilarSite;
 			}
 
 			if(_ev.closest('.scroll_to_category')){
-				if(document.body.classList.contains('home') && !document.body.classList.contains('is-mobile')){
+				if((document.body.classList.contains('home') || document.body.classList.contains('nf')) && !document.body.classList.contains('is-mobile')){
 					ev.preventDefault();
 					scrollToCategoryOnHome(ev, _ev.closest('.scroll_to_category'));
 				}
 			}
 
 			if(_ev.classList.contains('search_category_item')){
-				if(document.body.classList.contains('home') && !document.body.classList.contains('is-mobile')){
-
+				if((document.body.classList.contains('home') || document.body.classList.contains('nf')) && !document.body.classList.contains('is-mobile')){
+					ev.preventDefault();
 					scrollToCategoryOnHome(ev, _ev);
 					hide(document.querySelector('[search-drop-js]'));
 				}
