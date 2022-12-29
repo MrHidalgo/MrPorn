@@ -69,6 +69,36 @@ const initTheme = () => {
 	}
 }
 
+const initSiteVersion = () => {
+	let versionToggle = document.querySelector('.theme_toggle_link a');
+	if(versionToggle){
+		versionToggle.addEventListener('click', (e)=>{
+			e.preventDefault();
+			if(versionToggle.classList.contains('theme_new')){
+				createCookie("is_new_theme", "1", 70);
+				createCookie("is_dark", "1", 7);
+				document.location = '/new/';
+			}else{
+				createCookie("is_new_theme", "0", 70);
+				document.location = '/';
+			}
+		})
+	}
+
+	let currentVersion = getCookieMpgCookie("is_new_theme");
+	if(currentVersion=='1'){
+		document.querySelectorAll('.logo__btn').forEach(_e => {
+			_e.href = '/new/';
+		})
+		let navLinkHome = document.querySelector('.header__nav-link.link_home');
+		if(navLinkHome){
+			navLinkHome.href = '/new/';
+
+		}
+	}
+	console.log('current site version ' + currentVersion)
+}
+
 const initMobileThemeToggle = ()=>{
 	let toggleMobileSwitch = document.querySelector('#toggle-mode-mobile');
 	if(toggleMobileSwitch){
@@ -96,6 +126,7 @@ const initMobileThemeToggle = ()=>{
 
 if((!navigator.userAgent.toLowerCase().includes('lighthouse'))){
 	initTheme();
+	initSiteVersion()
 }
 
 const renderFavourites = () => {

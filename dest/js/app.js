@@ -636,6 +636,40 @@ var initTheme = function initTheme() {
   }
 };
 
+var initSiteVersion = function initSiteVersion() {
+  var versionToggle = document.querySelector('.theme_toggle_link a');
+
+  if (versionToggle) {
+    versionToggle.addEventListener('click', function (e) {
+      e.preventDefault();
+
+      if (versionToggle.classList.contains('theme_new')) {
+        createCookie("is_new_theme", "1", 70);
+        createCookie("is_dark", "1", 7);
+        document.location = '/new/';
+      } else {
+        createCookie("is_new_theme", "0", 70);
+        document.location = '/';
+      }
+    });
+  }
+
+  var currentVersion = getCookieMpgCookie("is_new_theme");
+
+  if (currentVersion == '1') {
+    document.querySelectorAll('.logo__btn').forEach(function (_e) {
+      _e.href = '/new/';
+    });
+    var navLinkHome = document.querySelector('.header__nav-link.link_home');
+
+    if (navLinkHome) {
+      navLinkHome.href = '/new/';
+    }
+  }
+
+  console.log('current site version ' + currentVersion);
+};
+
 var initMobileThemeToggle = function initMobileThemeToggle() {
   var toggleMobileSwitch = document.querySelector('#toggle-mode-mobile');
 
@@ -663,6 +697,7 @@ var initMobileThemeToggle = function initMobileThemeToggle() {
 
 if (!navigator.userAgent.toLowerCase().includes('lighthouse')) {
   initTheme();
+  initSiteVersion();
 }
 
 var renderFavourites = function renderFavourites() {

@@ -967,25 +967,27 @@ function renderMissingSlides(catId){
 		console.log('rendering missing slides');
 
 		homeData.categories[catId].sites.map(function (site, index) {
+			if(categoryWrapper && site.id){
+				if(!categoryWrapper.querySelector('.swiper-slide[data-siteid="'+site.id+'"]')){
+					let siteSlide = '<div class="swiper-slide" data-index="'+index+'" data-siteid="'+site.id+'" data-init="0">' +
+						'<div class="list__box" list-box-js  data-id="'+site.id+'">'+
+						'<a class="site--link" href="'+site.link+'" hreflang="'+currentLang+'">' +
+						'<img class="list__box__thumb" src="'+site.banner_image+'"/>'+
+						'<p class="list__box--title">'+site.name+'</p>'+
+						'<p class="list__box--tagline">'+site.tagline+'</p>'+
+						'</a>'+
+						'</div>'+
+						'</div>';
 
-
-
-			if(!categoryWrapper.querySelector('.swiper-slide[data-siteid="'+site.id+'"]')){
-				let siteSlide = '<div class="swiper-slide" data-index="'+index+'" data-siteid="'+site.id+'" data-init="0">' +
-					'<div class="list__box" list-box-js  data-id="'+site.id+'">'+
-					'<a class="site--link" href="'+site.link+'" hreflang="'+currentLang+'">' +
-					'<img class="list__box__thumb" src="'+site.banner_image+'"/>'+
-					'<p class="list__box--title">'+site.name+'</p>'+
-					'<p class="list__box--tagline">'+site.tagline+'</p>'+
-					'</a>'+
-					'</div>'+
-					'</div>';
-
-				missingSlidesHtml += siteSlide;
+					missingSlidesHtml += siteSlide;
+				}
 			}
 		});
-
-		categoryWrapper.insertAdjacentHTML('beforeend', missingSlidesHtml);
+		if(categoryWrapper){
+			categoryWrapper.insertAdjacentHTML('beforeend', missingSlidesHtml);
+		}else{
+			console.log('no wrapper '+catId);
+		}
 	}
 }
 
