@@ -648,9 +648,10 @@ var initSiteVersion = function initSiteVersion() {
         createCookie("is_dark", "1", 7);
         document.location = '/new/';
       } else {
-        createCookie("is_new_theme", "0", 70);
+        createCookie("is_new_theme", '', 70);
         document.location = '/';
-      }
+      } // document.location = '/';
+
     });
   }
 
@@ -696,8 +697,7 @@ var initMobileThemeToggle = function initMobileThemeToggle() {
 };
 
 if (!navigator.userAgent.toLowerCase().includes('lighthouse')) {
-  initTheme();
-  initSiteVersion();
+  initTheme(); // initSiteVersion()
 }
 
 var renderFavourites = function renderFavourites() {
