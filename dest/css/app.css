@@ -1034,36 +1034,57 @@ strong {
   }
 }
 
+@media screen and (min-device-width: 768px) and (max-device-width: 1024px) and (orientation: portrait) and (-webkit-min-device-pixel-ratio: 2) {
+  /* line 189, src/scss/_shared/_grid.scss */
+  body:has(.theme_toggle).show_2nd_header_1.single-sites.gaming_cat_ .c-grid-main {
+    margin-top: 152px;
+  }
+}
+
+@media screen and (max-width: 767px) {
+  /* line 189, src/scss/_shared/_grid.scss */
+  body:has(.theme_toggle).show_2nd_header_1.single-sites.gaming_cat_ .c-grid-main {
+    margin-top: 152px;
+  }
+}
+
+@media screen and (max-width: 1023px) and (orientation: landscape) {
+  /* line 189, src/scss/_shared/_grid.scss */
+  body:has(.theme_toggle).show_2nd_header_1.single-sites.gaming_cat_ .c-grid-main {
+    margin-top: 152px;
+  }
+}
+
 @media screen and (max-width: 1023.98px) {
-  /* line 192, src/scss/_shared/_grid.scss */
+  /* line 206, src/scss/_shared/_grid.scss */
   body.fund {
     padding-top: 45px;
   }
 }
 
 @media screen and (min-device-width: 768px) and (max-device-width: 1024px) and (orientation: portrait) and (-webkit-min-device-pixel-ratio: 2) {
-  /* line 199, src/scss/_shared/_grid.scss */
+  /* line 213, src/scss/_shared/_grid.scss */
   .gaming_cat_1 .c-grid-main {
     margin-top: 80px;
   }
 }
 
 @media screen and (max-width: 767px) {
-  /* line 199, src/scss/_shared/_grid.scss */
+  /* line 213, src/scss/_shared/_grid.scss */
   .gaming_cat_1 .c-grid-main {
     margin-top: 80px;
   }
 }
 
 @media screen and (max-width: 1023px) and (orientation: landscape) {
-  /* line 199, src/scss/_shared/_grid.scss */
+  /* line 213, src/scss/_shared/_grid.scss */
   .gaming_cat_1 .c-grid-main {
     margin-top: 80px;
   }
 }
 
 @media screen and (max-width: 767px) {
-  /* line 214, src/scss/_shared/_grid.scss */
+  /* line 228, src/scss/_shared/_grid.scss */
   .user_page_1 .c-grid-main {
     margin-top: 120px;
     display: -webkit-box;
@@ -1079,13 +1100,13 @@ strong {
 }
 
 @media screen and (max-width: 1023px) and (orientation: landscape) {
-  /* line 214, src/scss/_shared/_grid.scss */
+  /* line 228, src/scss/_shared/_grid.scss */
   .user_page_1 .c-grid-main {
     margin-top: 120px;
   }
 }
 
-/* line 227, src/scss/_shared/_grid.scss */
+/* line 241, src/scss/_shared/_grid.scss */
 .c-grid-home {
   /*&--inner{
 		position: relative;
@@ -1119,19 +1140,19 @@ strong {
 	}*/
 }
 
-/* line 228, src/scss/_shared/_grid.scss */
+/* line 242, src/scss/_shared/_grid.scss */
 .c-grid-home .c-grid.list {
   padding-top: 15px;
 }
 
 @media screen and (min-device-width: 768px) and (max-device-width: 1024px) and (orientation: landscape) and (-webkit-min-device-pixel-ratio: 2) {
-  /* line 228, src/scss/_shared/_grid.scss */
+  /* line 242, src/scss/_shared/_grid.scss */
   .c-grid-home .c-grid.list {
     padding: 15px 20px 25px;
   }
 }
 
-/* line 235, src/scss/_shared/_grid.scss */
+/* line 249, src/scss/_shared/_grid.scss */
 .c-grid-home .c-grid--inner {
   display: -webkit-box;
   display: -webkit-flex;
@@ -1143,7 +1164,7 @@ strong {
 }
 
 @media screen and (min-width: 1330px) {
-  /* line 227, src/scss/_shared/_grid.scss */
+  /* line 241, src/scss/_shared/_grid.scss */
   .c-grid-home {
     max-width: 75%;
     min-width: 1300px;
@@ -1151,27 +1172,27 @@ strong {
 }
 
 @media screen and (max-width: 1329.98px) {
-  /* line 227, src/scss/_shared/_grid.scss */
+  /* line 241, src/scss/_shared/_grid.scss */
   .c-grid-home {
     max-width: 100%;
     min-width: auto;
   }
 }
 
-/* line 285, src/scss/_shared/_grid.scss */
+/* line 299, src/scss/_shared/_grid.scss */
 .page-id-17 .c-grid.list, .home .c-grid.list {
   padding-top: 15px;
 }
 
 @media screen and (min-device-width: 768px) and (max-device-width: 1024px) and (orientation: landscape) and (-webkit-min-device-pixel-ratio: 2) {
-  /* line 285, src/scss/_shared/_grid.scss */
+  /* line 299, src/scss/_shared/_grid.scss */
   .page-id-17 .c-grid.list, .home .c-grid.list {
     padding: 15px 20px 25px;
   }
 }
 
 @media screen and (min-width: 1330px) {
-  /* line 284, src/scss/_shared/_grid.scss */
+  /* line 298, src/scss/_shared/_grid.scss */
   .page-id-17 .c-grid, .home .c-grid {
     max-width: 75%;
     min-width: 1300px;
@@ -1179,7 +1200,7 @@ strong {
 }
 
 @media screen and (max-width: 1329.98px) {
-  /* line 284, src/scss/_shared/_grid.scss */
+  /* line 298, src/scss/_shared/_grid.scss */
   .page-id-17 .c-grid, .home .c-grid {
     max-width: 100%;
     min-width: auto;

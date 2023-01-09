@@ -2108,4 +2108,9 @@
 	.fixed_header.show_2nd_header_ .bread-crumb .show_similar_sites{
 		top: 80px;
 	}
+	body:has(.theme_toggle){
+		&.fixed_header .bread-crumb .show_similar_sites{
+			top: 150px;
+		}
+	}
 }

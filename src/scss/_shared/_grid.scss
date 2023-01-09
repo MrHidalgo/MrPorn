@@ -184,6 +184,20 @@ body:has(.theme_toggle){
 					}
 				}
 			}
+
+			&.single-sites.gaming_cat_{
+				.c-grid-main{
+					@include respond('ipad_portrait'){
+						margin-top: 152px;
+					}
+					@include adaptive(767) {
+						margin-top: 152px;
+					}
+					@include respond('mobile_landscape'){
+						margin-top: 152px;
+					}
+				}
+			}
 		}
 	}
 }

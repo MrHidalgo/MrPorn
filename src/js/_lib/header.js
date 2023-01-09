@@ -77,27 +77,27 @@ const initSiteVersion = () => {
 			if(versionToggle.classList.contains('theme_new')){
 				createCookie("is_new_theme", "1", 70);
 				createCookie("is_dark", "1", 7);
-				document.location = '/new/';
+				// document.location = '/new/';
 			}else{
-				createCookie("is_new_theme", '', 70);
-				document.location = '/';
+				createCookie("is_new_theme", '0', 70);
+				// document.location = '/';
 			}
-			// document.location = '/';
+			//document.location = '/';
+			window.location.reload()
 		})
 	}
 
-	let currentVersion = getCookieMpgCookie("is_new_theme");
-	if(currentVersion=='1'){
-		document.querySelectorAll('.logo__btn').forEach(_e => {
-			_e.href = '/new/';
-		})
-		let navLinkHome = document.querySelector('.header__nav-link.link_home');
-		if(navLinkHome){
-			navLinkHome.href = '/new/';
-
+	let themeToggleLink = document.querySelector('.theme_toggle_link a');
+	if(themeToggleLink){
+		let currentVersion = getCookieMpgCookie("is_new_theme");
+		if(currentVersion=='1'){
+			themeToggleLink.innerHTML = 'Visit the old MrPornGeek.com';
+			themeToggleLink.className = 'theme_old'
+		}else{
+			themeToggleLink.innerHTML = 'Visit the new MrPornGeek.com';
+			themeToggleLink.className = 'theme_new'
 		}
 	}
-	console.log('current site version ' + currentVersion)
 }
 
 const initMobileThemeToggle = ()=>{
@@ -127,7 +127,7 @@ const initMobileThemeToggle = ()=>{
 
 if((!navigator.userAgent.toLowerCase().includes('lighthouse'))){
 	initTheme();
-	// initSiteVersion()
+	initSiteVersion()
 }
 
 const renderFavourites = () => {
