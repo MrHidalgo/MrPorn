@@ -13,76 +13,6 @@
 		}
 	}
 
-	.swiper {
-		&-container {
-			//overflow: unset;
-		}
-
-		&-slide {
-			position: relative;
-			width: 185px !important;
-			height: 185px;
-			margin-left: 3px;
-			margin-right: 3px;
-			@include transition(width);
-			@include adaptive(1279) {
-				width: 195px !important;
-				height: 195px;
-			}
-			@include adaptive(1023) {
-				width: 150px !important;
-				height: 150px;
-			}
-			@include respond('ipad_landscape'){
-				width: 130px !important;
-				height: 130px;
-			}
-			@include adaptive(767) {
-				width: 100px !important;
-				height: 100px;
-			}
-
-			.is-mobile & {
-				/*@media screen and (orientation: landscape) {
-					width: 150px !important;
-					height: 150px;
-				}*/
-
-			}
-
-
-			&:first-of-type {
-				margin-left: 0;
-			}
-			&:last-of-type {
-				margin-right: 0;
-			}
-
-			/*&.is-hover {
-				width: 350px !important;
-				@include transition(width);
-
-				&.last-box{
-					.list__box:not(.less_5){
-						transform: translate(calc(-50% - 55px), -50%);
-					}
-				}
-			}*/
-		}
-	}
-
-	/*.swiper-wrapper:not(.short_list){
-		.swiper-slide{
-			&.is-hover {
-				&:last-of-type {
-					.list__box:not(.less_5){
-						transform: translate(calc(-50% - 120px), -50%);
-					}
-				}
-			}
-		}
-	}*/
-
 	@import "list--info";
 	@import "../homepage/list--btn";
 	@import "../homepage/list--arrow";
@@ -526,14 +456,6 @@
 }
 
 .light{
-	.list__box-subtext{
-		background: linear-gradient(to bottom, #ffffff 0%,#f9f3eb 100%);
-		color: #333;
-
-		@include respond('ipad_landscape'){
-			font-size: 11.3px;
-		}
-	}
 	.list__box__item{
 		background: #fff;
 		border-bottom: 1px solid #ededed;
@@ -889,6 +811,9 @@ body:not(.opened){
 	}
 }
 
+.list__arrow-wrapper{
+	display: none;
+}
 
 .overlay {
 	display: none;

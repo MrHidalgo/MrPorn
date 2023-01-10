@@ -1,4 +1,4 @@
-&__box {
+&__column{
 	display: flex;
 	flex-direction: column;
 	cursor: pointer;
@@ -17,16 +17,9 @@
 	div::-webkit-scrollbar-track, ul::-webkit-scrollbar-track{background: #131313; border-left:1px solid #333;}
 	div::-webkit-scrollbar-thumb, ul::-webkit-scrollbar-thumb { background: #525252; }
 	div:hover::-webkit-scrollbar-thumb, ul:hover::-webkit-scrollbar-thumb { background: #323232; }
+}
 
-
-	@include respond('medium'){
-		//position: absolute;
-	}
-
-	@include respond('large'){
-	}
-
-
+&__box {
 	&__thumb{
 		position: absolute;
 		width: 100%;
@@ -38,29 +31,9 @@
 	}
 
 	&-list{
-		flex: 1;
-		background: #454545;
-		list-style-type: none;
-		padding: 0;
-		font-weight: 500;
-		font-size: 13.5px;
-		margin: 0;
-		overflow: auto;
-		-webkit-overflow-scrolling: touch;
+		display: block;
 		counter-reset: number 0;
-
-
-
-		scrollbar-color: #131313 #525252;
-		&::-webkit-scrollbar{width: 10px; }
-		&::-webkit-scrollbar-corner{ background: rgba(0,0,0,0); }
-		&::-webkit-scrollbar-track{background: #131313; border-left:1px solid #333;}
-		&::-webkit-scrollbar-thumb{ background: #525252; }
-		&:hover::-webkit-scrollbar-thumb{ background: #323232; }
-
-		@include respond('ipad_landscape'){
-			font-size: 12px;
-		}
+		overflow: auto;
 	}
 
 	&__item{
@@ -74,7 +47,6 @@
 		height: 38px;
 		position: relative;
 
-		background: #454545;
 		border-bottom: 1px solid #585858;
 		color: #ddd;
 		font-weight: 500;
@@ -150,6 +122,8 @@
 			background-size: contain !important;
 		}
 
+
+
 		&-icon{
 			height: 16px;
 		}
@@ -179,35 +153,10 @@
 		}
 	}
 
-
-	&--title{
-		position: absolute;
-		bottom: 50px;
-		left: 13px;
-		visibility: hidden;
-		opacity: 0;
-
-		//@include transition(bottom, opacity);
-		transition: bottom 0.35s ease-in-out, opacity 0.55s ease-in-out;
-		transition-delay: 0.25s;
-
-		overflow: hidden;
-		white-space: nowrap;
-		text-overflow: ellipsis;
-		color: #ffffff;
-		font-size: 16px;
-		font-weight: 700;
-	}
-
 	&--tagline{
 		display: none;
 		font-size: 12px;
 	}
-
-	.is-mobile & {
-		//padding: 0 10px;
-	}
-
 
 	&.is-active {
 		.list__box-border {
@@ -235,87 +184,6 @@
 			border-width: 12px;
 			border-color: #fff transparent transparent transparent;
 		}
-	}
-
-	&-wrapper {
-		position: relative;
-		max-width: 100%;
-		display: flex;
-		flex-direction: column;
-		/*padding-bottom: 30px;*/
-		margin-bottom: 0;
-		@include transition(opacity);
-		@include transition(padding-bottom);
-
-
-		@include respond('large') {
-			width: 50%;
-			max-width: 50%;
-
-			padding: 0 15px;
-		}
-
-		@include adaptive(767) {
-			overflow: unset;
-			padding-bottom: 10px;
-		}
-
-		&.is-open {
-			padding-bottom: 0;
-			//margin-bottom: 30px;
-			position: relative;
-
-			@include transition(padding-bottom);
-			@include adaptive(767) {
-				/*margin-bottom: 0;*/
-			}
-
-			.list__box-body {
-				//padding-bottom: 0;
-				@include transition(padding-bottom);
-				@include adaptive(767) {
-					/*padding-bottom: 10px;*/
-				}
-			}
-		}
-	}
-
-	&-head {
-		display: flex;
-		background: #2663b0;
-		background: linear-gradient(to bottom, #2663b0 0%,#1b4f90 50%,#113d74 100%);
-		font-weight: 800;
-		font-size: 15px;
-		text-align: center;
-		color: #d1f34b;
-		height: 45px;
-		align-items: center;
-		justify-content: center;
-
-		&:hover, &:focus{
-			color: #d1f34b;
-			text-decoration: underline;
-		}
-
-		@include respond('ipad_landscape'){
-			font-size: 13.5px;
-		}
-
-		@include adaptive(767) {
-			padding-right: 10px;
-		}
-	}
-	&-subtext{
-		background: #0e2644;
-		color: #ccc;
-		padding: 0 5px;
-		text-align: center;
-		font-size: 13px;
-		text-overflow: ellipsis;
-		display: -webkit-box;
-		-webkit-line-clamp: 2;
-		-webkit-box-orient: vertical;
-		overflow: hidden;
 	}
 
 	&-line {
@@ -399,50 +267,16 @@
 		}
 	}
 
-	&-all{
-		display: flex;
-		justify-content: center;
-		align-items: center;
-		background: #0e2644;
-		padding: 0 10px;
-		text-align: center;
-		line-height: 38px;
-		white-space: nowrap;
-		overflow: hidden;
-		text-overflow: ellipsis;
 
-		font-size: 14px;
-		font-weight: 600;
-		color: #fff;
-
-		@include respond('ipad_landscape'){
-			font-size: 12.5px;
-		}
-
-		&:after{
-			display: block;
-			content: ' ';
-			margin-left: 10px;
-			width: 25px;
-			height: 10px;
-			background: url("../images/icon-right-arrow-dark.svg");
-		}
-
-		&:hover, &:focus{
-			color: #fff;
-
-			&:after{
-				animation: rightArrowAnim 1s infinite;
-			}
-		}
-	}
 
 	&-body {
 		z-index: 20;
 		position: relative;
 		overflow: hidden;
-		padding: 15px 0;
+		padding: 0;
 		width: 100%;
+		flex: 1;
+		background: #454545;
 
 		@include transition(transform, padding-bottom);
 		@include adaptive(767) {

@@ -49,7 +49,13 @@
 @import "_components/search/search";
 //@import "_components/common/footer";
 
+.home:not(.netflix){
+	@import "_components/home_flat/list";
+}
 @import "_components/home_netflix/list";
+
+@import "_components/homepage/common";
+
 @import "_components/blue_button/blue_button";
 @import "_components/other_categories/other_categories";
 

@@ -1,0 +1,214 @@
+.list__box{
+	&-head {
+		display: flex;
+		background: #2663b0;
+		background: linear-gradient(to bottom, #2663b0 0%,#1b4f90 50%,#113d74 100%);
+		font-weight: 800;
+		font-size: 15px;
+		text-align: center;
+		color: #d1f34b;
+		height: 45px;
+		align-items: center;
+		justify-content: center;
+
+		&:hover, &:focus{
+			color: #d1f34b;
+			text-decoration: underline;
+		}
+
+		@include respond('ipad_landscape'){
+			font-size: 13.5px;
+		}
+
+		@include adaptive(767) {
+			padding-right: 10px;
+		}
+	}
+	&-subtext{
+		background: #0e2644;
+		color: #ccc;
+		padding: 0 5px;
+		text-align: center;
+		font-size: 13px;
+		text-overflow: ellipsis;
+		display: -webkit-box;
+		-webkit-line-clamp: 2;
+		-webkit-box-orient: vertical;
+		overflow: hidden;
+	}
+
+	&-all{
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		background: #0e2644;
+		padding: 0 10px;
+		text-align: center;
+		line-height: 38px;
+		white-space: nowrap;
+		overflow: hidden;
+		text-overflow: ellipsis;
+
+		font-size: 14px;
+		font-weight: 600;
+		color: #fff;
+
+		@include respond('ipad_landscape'){
+			font-size: 12.5px;
+		}
+
+		&:after{
+			display: block;
+			content: ' ';
+			margin-left: 10px;
+			width: 25px;
+			height: 10px;
+			background: url("../images/icon-right-arrow-dark.svg");
+		}
+
+		&:hover, &:focus{
+			color: #fff;
+
+			&:after{
+				animation: rightArrowAnim 1s infinite;
+			}
+		}
+
+		span {
+			color: #0c3495;
+			margin-left: 4px;
+
+			&.see{
+				color: #080915;
+			}
+
+			&.m{
+				display: none;
+			}
+
+			@include respond('ipad_landscape'){
+				color: #d5f34a;
+				text-decoration: underline;
+
+				&.d{
+					display: none;
+				}
+				&.m{
+					display: inline;
+				}
+			}
+
+			@include adaptive(1023) {
+				color: rgb(213, 243, 74);
+				text-decoration: underline;
+
+				&.d{
+					display: none;
+				}
+				&.m{
+					display: inline;
+				}
+			}
+		}
+	}
+}
+body:not(.netflix){
+	.list__box-all{
+		span{
+			color: #fff;
+		}
+	}
+}
+.netflix{
+	.list__box-head{
+		flex: 1;
+		min-width: 1px;
+		max-width: 100%;
+		background: transparent;
+		justify-content: left;
+
+		.list__info--title_a{
+			display: block;
+			padding-bottom: 20px;
+			color: #ffffff;
+			font-size: 22px;
+			font-weight: 700;
+			white-space: nowrap;
+			overflow: hidden;
+			text-overflow: ellipsis;
+			padding-left: 11px;
+		}
+	}
+	.list__box-subtext{
+		position: absolute;
+		left: 75px;
+		top: 33px;
+		background: transparent;
+	}
+	.list__box-all{
+		position: absolute;
+		right: 15px;
+		top: 15px;
+
+		outline: none;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		min-width: 145px;
+		height: 25px;
+		line-height: 45px;
+		-webkit-border-radius: 5px;
+		border-radius: 5px;
+		background-color: #d5f34a;
+		color: #080915;
+		font-size: 14px;
+		font-weight: 700;
+		text-transform: uppercase;
+
+		&:after{
+			background: url(../images/icon-right-arrow-light.svg);
+		}
+	}
+}
+
+.light {
+	.list__box-subtext {
+		background: linear-gradient(to bottom, #ffffff 0%, #f9f3eb 100%);
+		color: #333;
+
+		@include respond('ipad_landscape') {
+			font-size: 11.3px;
+		}
+	}
+
+	.home:not(.netflix) .list__box{
+		&-body{
+			background: #fff;
+		}
+		&__item{
+			border-bottom: 1px solid #ededed;
+
+			&-link{
+				color: #113d74;
+			}
+
+			&-preview{
+				background: url(../images/icon-glass-dark.svg);
+			}
+		}
+
+		&-all{
+			color: #337ab7;
+			background: #f9f3eb;
+			background: linear-gradient(to bottom,#f9f3eb 0%,#fff 100%);
+
+			span{
+				color: #337ab7;
+			}
+
+			&:after{
+				background: url(../images/icon-right-arrow-light.svg);
+			}
+		}
+	}
+}

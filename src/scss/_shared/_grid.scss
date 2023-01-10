@@ -246,7 +246,7 @@ body:has(.theme_toggle){
 			padding: 15px 20px 25px;
 		}
 	}
-	.c-grid--inner{
+	&.netflix .c-grid--inner{
 		display: flex;
 		flex-wrap: wrap;
 	}
@@ -292,7 +292,14 @@ body:has(.theme_toggle){
 		min-width: auto;
 	}
 }
-
+.netflix{
+	.c-grid-home{
+		.c-grid--inner{
+			display: flex;
+			flex-wrap: wrap;
+		}
+	}
+}
 
 .page-id-17, .home{
 	.c-grid {

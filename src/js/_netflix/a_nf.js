@@ -1012,10 +1012,6 @@ function generateSwiper(catId){
 		`.list__box-wrapper[data-name='category_${catId}']`
 	);
 
-	/*if(!categoryWrapper.querySelector('.list__specification-wrapper')){
-		categoryWrapper.insertAdjacentHTML('beforeend', '<div class="list__specification-wrapper"></div>');
-	}*/
-
 }
 
 function initHomeSwippers(){
@@ -1097,21 +1093,14 @@ const boxHover = () => {
 				swiperSlides[i].removeEventListener('touchstart', onSlideTouchStart);
 				swiperSlides[i].addEventListener('touchstart', onSlideTouchStart, {passive: true});
 
-				//swiperSlides[i].removeEventListener('touchmove', onSlideTouchMove);
-				//swiperSlides[i].addEventListener('touchmove', onSlideTouchMove, false);
 			}else{
 				swiperSlides[i].removeEventListener('mouseleave', onSlideLeave);
 				swiperSlides[i].addEventListener('mouseleave', onSlideLeave, false);
 
-
 				swiperSlides[i].removeEventListener('mouseenter', onSlideEnter);
 				swiperSlides[i].addEventListener('mouseenter', onSlideEnter, false);
 			}
-
-
 			swiperSlides[i].setAttribute('data-init', '1');
-
-
 		}
 	}
 
@@ -1172,6 +1161,9 @@ function onSlideLeave(ev){
 
 function onSlideEnter(ev){
 	if(pauseHoverAnimation){
+		return;
+	}
+	if(!document.body.classList.contains('netflix')){
 		return;
 	}
 

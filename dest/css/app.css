@@ -1153,7 +1153,7 @@ strong {
 }
 
 /* line 249, src/scss/_shared/_grid.scss */
-.c-grid-home .c-grid--inner {
+.c-grid-home.netflix .c-grid--inner {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -1179,20 +1179,31 @@ strong {
   }
 }
 
-/* line 299, src/scss/_shared/_grid.scss */
+/* line 297, src/scss/_shared/_grid.scss */
+.netflix .c-grid-home .c-grid--inner {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-wrap: wrap;
+      -ms-flex-wrap: wrap;
+          flex-wrap: wrap;
+}
+
+/* line 306, src/scss/_shared/_grid.scss */
 .page-id-17 .c-grid.list, .home .c-grid.list {
   padding-top: 15px;
 }
 
 @media screen and (min-device-width: 768px) and (max-device-width: 1024px) and (orientation: landscape) and (-webkit-min-device-pixel-ratio: 2) {
-  /* line 299, src/scss/_shared/_grid.scss */
+  /* line 306, src/scss/_shared/_grid.scss */
   .page-id-17 .c-grid.list, .home .c-grid.list {
     padding: 15px 20px 25px;
   }
 }
 
 @media screen and (min-width: 1330px) {
-  /* line 298, src/scss/_shared/_grid.scss */
+  /* line 305, src/scss/_shared/_grid.scss */
   .page-id-17 .c-grid, .home .c-grid {
     max-width: 75%;
     min-width: 1300px;
@@ -1200,7 +1211,7 @@ strong {
 }
 
 @media screen and (max-width: 1329.98px) {
-  /* line 298, src/scss/_shared/_grid.scss */
+  /* line 305, src/scss/_shared/_grid.scss */
   .page-id-17 .c-grid, .home .c-grid {
     max-width: 100%;
     min-width: auto;
