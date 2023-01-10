@@ -1149,7 +1149,9 @@ let lastMobileSimilarSite;
 			toggleMoreBox();
 			getLikesAndDislikes();
 
-			initHomeSwippers();
+			if(document.body.classList.contains('netflix')){
+				initHomeSwippers();
+			}
 		}
 
 
