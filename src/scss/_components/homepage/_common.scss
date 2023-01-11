@@ -144,6 +144,34 @@ body:not(.netflix){
 		left: 75px;
 		top: 33px;
 		background: transparent;
+		right: 10px;
+		overflow: hidden;
+		text-align: left;
+
+		@include adaptive(1023) {
+			left: 61px;
+		}
+
+		@include adaptive(767) {
+			white-space: nowrap;
+			overflow: hidden;
+			display: block;
+			font-size: 10px;
+			line-height: 1.2;
+			left: 51px;
+
+			/*width: calc(100vw - (10px + 45px + 15px));*/
+
+			&:after {
+				content: '';
+				position: absolute;
+				top: 0;
+				right: 0;
+				width: 60px;
+				height: 100%;
+				background: linear-gradient(to right, rgba(0,0,0,0) 0%,rgba(8,9,21,1) 100%);
+			}
+		}
 	}
 	.list__box-all{
 		position: absolute;
@@ -151,9 +179,6 @@ body:not(.netflix){
 		top: 15px;
 
 		outline: none;
-		display: flex;
-		align-items: center;
-		justify-content: center;
 		min-width: 145px;
 		height: 25px;
 		line-height: 45px;
@@ -165,20 +190,52 @@ body:not(.netflix){
 		font-weight: 700;
 		text-transform: uppercase;
 
+		.icon-font{
+			display: none;
+		}
+
 		&:after{
 			background: url(../images/icon-right-arrow-light.svg);
+		}
+
+		@include adaptive(1023) {
+			height: 34px;
+			line-height: 34px;
+			background-color: transparent;
+			color: rgb(213, 243, 74);
+			top: 4px;
+			right: 0;
+
+			.icon-font{
+				display: block;
+				transform: translateY(1px) scaleX(-1);
+				margin-left: 5px;
+			}
+			&:after{
+				display: none;
+			}
+		}
+
+		@include respond('ipad_landscape'){
+			min-width: 100px;
+			margin-left: 10px;
+			background-color: transparent;
+			color: rgb(213, 243, 74);
+		}
+		@include adaptive(767) {
+			top: 4px;
+			right: 0;
+			height: 28px;
+			line-height: 28px;
+			font-size: 12px;
+			min-width: 100px;
 		}
 	}
 }
 
 .light {
 	.list__box-subtext {
-		background: linear-gradient(to bottom, #ffffff 0%, #f9f3eb 100%);
 		color: #333;
-
-		@include respond('ipad_landscape') {
-			font-size: 11.3px;
-		}
 	}
 
 	.home:not(.netflix) .list__box{
@@ -209,6 +266,24 @@ body:not(.netflix){
 			&:after{
 				background: url(../images/icon-right-arrow-light.svg);
 			}
+		}
+		&-subtext {
+			color: #333;
+			background: linear-gradient(to bottom,#ffffff 0%,#f9f3eb 100%);
+
+			@include respond('ipad_landscape') {
+				font-size: 11.3px;
+			}
+		}
+		&-list{
+			background: #fff;
+
+			scrollbar-color: #131313 #525252;
+			&::-webkit-scrollbar {width: 10px; }
+			&::-webkit-scrollbar-corner{ background: rgba(0,0,0, 0.1); }
+			&::-webkit-scrollbar-track{ background: rgba(0,0,0,0.1) }
+			&::-webkit-scrollbar-thumb{ background: #9c9b9c }
+			&:hover::-webkit-scrollbar-thumb{ background: #225396 }
 		}
 	}
 }

@@ -28,6 +28,7 @@ task('js', (done) => {
   return src([
 			configPath.src.js + '/*.js',
 			configPath.src.js + '/_document/*.js',
+			configPath.src.js + '/_flat/indexNative.js',
 			configPath.src.js + '/_lib/*.js',
 			configPath.src.js + '/_window/*.js',
 		'!' + configPath.src.js + '/**/_**.js',

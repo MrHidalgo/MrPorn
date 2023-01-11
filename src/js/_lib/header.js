@@ -15,20 +15,12 @@ const initTheme = () => {
 		toggleSwitch.addEventListener('change', (event) => {
 
 			if (document.documentElement.classList.contains('light')) {
-				if(document.body.classList.contains('nf')){
-					createCookie("is_nf_dark", "1", 7);
-				}else{
-					createCookie("is_dark", "1", 7);
-				}
+				createCookie("is_dark", "1", 7);
 				document.documentElement.classList.remove('light');
 
 				initHomeSwippers();
 			} else {
-				if(document.body.classList.contains('nf')){
-					createCookie("is_nf_dark", "0", 7);
-				}else{
-					createCookie("is_dark", "0", 7);
-				}
+				createCookie("is_dark", "0", 7);
 				document.documentElement.classList.add('light');
 			}
 		})
@@ -44,7 +36,7 @@ const initTheme = () => {
 	isDark = getCookieMpgCookie("is_dark");
 	isNfDark = getCookieMpgCookie("is_nf_dark");
 
-	if(document.body.classList.contains('nf')){
+	/*if(document.body.classList.contains('nf')){
 		if(isNfDark==''){
 			isNfDark = '1';
 		}
@@ -57,18 +49,19 @@ const initTheme = () => {
 			toggleSwitch.checked = false;
 		}
 	}else{
-		if(isDark==''){
-			isDark = '0';
-		}
 
-		if(isDark=='1'){
-			document.documentElement.classList.remove('light');
-			toggleSwitch.checked = true;
-		}else{
-			document.documentElement.classList.add('light');
-			toggleSwitch.checked = false;
-		}
+	}*/
+	/*if(isDark==''){
+		isDark = '0';
 	}
+
+	if(isDark=='1'){
+		document.documentElement.classList.remove('light');
+		toggleSwitch.checked = true;
+	}else{
+		document.documentElement.classList.add('light');
+		toggleSwitch.checked = false;
+	}*/
 }
 
 const initSiteVersion = () => {
@@ -80,15 +73,15 @@ const initSiteVersion = () => {
 				createCookie("is_new_theme", "1", 70);
 				createCookie("is_dark", "1", 7);
 				// document.location = '/new/';
-				document.body.classList.add('netflix');
-				versionToggle.innerHTML = 'Visit the old MrPornGeek.com';
-				versionToggle.classList.remove('theme_new')
+				// document.body.classList.add('netflix');
+				// versionToggle.innerHTML = 'Visit the old MrPornGeek.com';
+				// versionToggle.classList.remove('theme_new')
 			}else{
 				createCookie("is_new_theme", '0', 70);
 				// document.location = '/';
-				document.body.classList.remove('netflix');
-				versionToggle.innerHTML = 'Visit the new MrPornGeek.com';
-				versionToggle.classList.add('theme_new')
+				// document.body.classList.remove('netflix');
+				// versionToggle.innerHTML = 'Visit the new MrPornGeek.com';
+				// versionToggle.classList.add('theme_new')
 			}
 			//document.location = '/';
 			window.location.reload()
