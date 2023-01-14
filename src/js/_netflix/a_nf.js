@@ -102,7 +102,10 @@ function openSlideModal(e, siteId) {
 		const modalBBox = siteModal.getBoundingClientRect();
 
 		let modalMaxWidth = wInnerWidth * .75;
-		if(wInnerWidth < 1450){
+
+		if(wInnerWidth < 1023){
+			modalMaxWidth = wInnerWidth * 0.9;
+		}else if(wInnerWidth < 1450){
 			modalMaxWidth = 1300;
 		}
 		let modalXTo = (wInnerWidth - modalMaxWidth)/2;
