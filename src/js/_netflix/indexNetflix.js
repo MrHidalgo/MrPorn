@@ -881,7 +881,6 @@ let lastMobileSimilarSite;
 		if(window.scrollY < blogContentHeight | blogScrollPercent < 101){
 			blogScrollPercent = (window.scrollY/ (blogContentHeight))*100;
 			blogProgressBar.style.width = blogScrollPercent+'%'
-			console.log('blog scroll percentage '+window.scrollY+' - '+blogContentHeight, blogScrollPercent)
 		}
 	}
 
@@ -1009,7 +1008,8 @@ let lastMobileSimilarSite;
 	function onSkip(el){
 			var elID = el.getAttribute('data-id'),
 				elCategory = el.getAttribute('data-category'),
-			elParent = listBoxWrappers[elCategory];
+			//elParent = listBoxWrappers[elCategory];
+				elParent = document.querySelector('.swiper-wrapper-'+elCategory);
 
 			var currentCategory = el.dataset.category;
 			if(popupVideo = document.querySelector('[video-js]')){
@@ -1020,13 +1020,16 @@ let lastMobileSimilarSite;
 			cloneCurrentPopupBanner();
 		}
 
-		var nextSite = elParent.querySelector('.swiper-slide[data-siteid="'+elID+'"]').nextSibling;
+
+		var nextSite = document.querySelector('.swiper-slide.slide_'+elID).nextElementSibling;
+
 		if(nextSite==null || nextSite === undefined){
 			nextSite = elParent.querySelector('.swiper-slide');
 		}
 
 		if(nextSite){
 			if(isMobileOrTablet){
+				let nextSiteId = nextSite.getAttribute('data-siteid');
 				showBanner(nextSite.dataset.siteid, true);
 			}else{
 				var nextIndex = nextSite.dataset.index;
@@ -1140,7 +1143,14 @@ let lastMobileSimilarSite;
 
 
 		if(document.body.classList.contains('home')){
-			boxHover();
+
+			if(document.body.classList.contains('netflix')){
+				boxHover();
+			}else{
+				initHomeTooltip()
+			}
+
+
 			//videoToggle();
 
 			//listIndicator();

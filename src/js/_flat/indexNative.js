@@ -1002,7 +1002,10 @@ let lastMobileSimilarSite;
 
 		if(document.body.classList.contains('home')){
 			getLikesAndDislikes();
-			initHomeTooltip()
+
+			if(!document.body.classList.contains('netflix')){
+				initHomeTooltip()
+			}
 
 			if(isLoggedUser!=''){
 				renderFavouriteButtons()

@@ -250,7 +250,7 @@
 	padding: 10px 25px 10px;
 
 	@include respond('max-medium'){
-		padding: 10px 0;
+		padding: 0 0 10px 0;
 	}
 
 	audio {
@@ -300,6 +300,10 @@
 		align-items: center;
 		-webkit-touch-callout: none;
 		user-select: none;
+
+		@include respond('max-medium'){
+			margin-top: 0;
+		}
 
 		@include adaptive(767){
 			padding: 0 15px;

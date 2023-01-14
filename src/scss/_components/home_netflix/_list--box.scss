@@ -61,6 +61,12 @@
 		z-index: 20;
 	}
 
+	@include adaptive(1023) {
+		.list__box__item-preview{
+			display: none;
+		}
+	}
+
 	&--title{
 		position: absolute;
 		bottom: 50px;

@@ -59,6 +59,17 @@ let toScaleY = 0;
 let trigger;
 let isClosing = false;
 
+let categoryContainers = [];
+let homeGridInner;
+let isPopVisible = false;
+let homeMainContainer = document.querySelector('.c-grid--inner');
+let popover = document.querySelector('.popover');
+let popoverOuter = document.querySelector('.popover-outer');
+
+let popoverTitle;
+let popoverLink;
+let popoverTagline;
+
 // Select DOM
 const modalTriggersDom = document.querySelectorAll('.modal-trigger');
 const dimmer = document.querySelector('.overlay');
@@ -565,6 +576,9 @@ function getPopupSimilarSites(category, currentSiteId){
 				}
 			}
 
+
+			siteTagLine = siteTagLine.replace(/<\/?[^>]+(>|$)/g, "");
+
 			let siteLink = moreSite.link;
 			if(moreSite.review_link){
 				siteLink = moreSite.review_link;
@@ -609,7 +623,7 @@ function getPopupSimilarSites(category, currentSiteId){
 	let _catCount = homeData.categories[category].count;
 	let _catTitle = homeData.categories[category].title;
 	let _catLink = homeData.categories[category].link;
-	let _catIconUrl = homeData.categories[category].logo.url;
+	let _catIconUrl = homeData.categories[category].logo;
 	let _catIcon = '<img src="'+_catIconUrl+'"/>';
 
 	let showCategoryLink = false;
@@ -815,8 +829,20 @@ function renderSkipSiteBottomBanner(category, index){
 		document.querySelector('.list__specification').setAttribute('href', siteLink);
 
 		document.querySelector('.list__specification .list__specification-skip').setAttribute('data-id', siteId);
-		document.querySelector('.list__specification .list__specification-like').setAttribute('data-like', siteId);
-		document.querySelector('.list__specification .list__specification-dislike').setAttribute('data-dislike', siteId);
+
+		let bannerLike = document.querySelector('.list__specification .list__specification-like');
+		bannerLike.setAttribute('data-like', siteId);
+		bannerLike.classList.remove('is-active')
+
+		let bannerDislike = document.querySelector('.list__specification .list__specification-dislike');
+		bannerDislike.setAttribute('data-dislike', siteId);
+		bannerDislike.classList.remove('is-active')
+
+		let hiddenSpecButton = document.querySelector('.list__specification-action-circle.is-hide');
+		if(hiddenSpecButton){
+			hiddenSpecButton.classList.remove('is-hide')
+		}
+
 		document.querySelector('.list__specification .list__specification-favorites').setAttribute('data-id', siteId);
 
 		document.querySelector('.list__specification .list__specification-read.nav_link').setAttribute('href', siteLink);
@@ -952,7 +978,7 @@ function renderAllOtherCategories(){
 	for (let i=0; i<homeData.categories_count; i++){
 		let catId = homeData.categories_indexes[i];
 
-		renderMissingSlides(catId);
+		// renderMissingSlides(catId);
 		// generateSwiper(catId);
 	}
 
@@ -963,8 +989,6 @@ function renderMissingSlides(catId){
 	if(homeData.categories[catId]){
 		let categoryWrapper = swiperWrappers[catId];
 		let missingSlidesHtml = '';
-
-		console.log('rendering missing slides');
 
 		homeData.categories[catId].sites.map(function (site, index) {
 			if(categoryWrapper && site.id){
@@ -1333,6 +1357,88 @@ function generatePreviewModal(slideBox){
 
 function onPreviewLeave(){
 	previewModal.classList.remove('slide-open');
+}
+
+function initHomeTooltip(){
+	categoryContainers = document.querySelectorAll('.list__box-list');
+	homeGridInner = document.querySelector(".c-grid--inner");
+
+	if (!window.mobileAndTabletcheck()) {
+
+		if(homeGridInner){
+			categoryContainers.forEach((_container)=>{
+				_container.onmouseleave = function (e){
+					if(popover.style.display=='block'){
+						popover.style.display = 'none';
+					}
+				}
+			});
+
+			homeGridInner.onmouseover = function(e){
+				let hoverTarget = e.target;
+				if(hoverTarget.matches('.list__box__item') | hoverTarget.parents('.list__box__item').length>0){
+					if(hoverTarget.parents('.list__box__item').length>0){
+						hoverTarget = hoverTarget.parents('.list__box__item')[0];
+					}
+
+					let siteId = hoverTarget.dataset.id;
+					let siteCategory = hoverTarget.dataset.category;
+					let siteIndex = hoverTarget.dataset.index;
+
+					if(homeData && homeData.categories !== undefined){
+						let siteData = homeData.categories[siteCategory].sites[siteIndex];
+						if(siteData){
+							let siteName = siteData.name;
+							let siteTagline = siteData.tagline;
+							siteTagline = siteTagline.replace("\\", "").replace("\\", "");
+							let siteReviewLink = siteData.review_link;
+							let siteFx = siteData.f_x;
+							let siteFy = siteData.f_y;
+
+							var wallDimensions = homeMainContainer.getBoundingClientRect();
+							var wallX = wallDimensions.left;
+							var wallY = wallDimensions.top;
+							var hoverTargetBounds = hoverTarget.getBoundingClientRect();
+							var popW = hoverTargetBounds.width - 7;
+							var popY =  hoverTargetBounds.top - wallY-10;
+							var popX = hoverTargetBounds.left +7 - wallX;
+
+							popover.style.display = 'block';
+							popover.style.top = popY+'px';
+							popover.style.left = popX+'px';
+							popover.style.width = popW+'px';
+
+							if(!popoverOuter){
+								popover.innerHTML = '<div class="popover-outer">\n' +
+									'            <div class="popover-title deIcon">\n' +
+									'                    <a class="popover-title-a link direct_1 step_1_" target="_blank" href=""></a>\n' +
+									'            </div>\n' +
+									'            <div class="popover-content"></div>\n' +
+									'        </div>';
+
+								popoverTitle = popover.querySelector('.popover-title');
+								popoverLink = popover.querySelector('.popover-title-a');
+								popoverTagline = popover.querySelector('.popover-content');
+							}
+
+
+							popoverLink.innerHTML = siteName;
+							popoverTitle.className = 'popover-title deIcon  fx_'+siteFx+' fy_'+siteFy+' fi'+siteId;
+							popoverLink.setAttribute('href', siteReviewLink);
+							popoverTagline.innerHTML = siteTagline;
+							isPopVisible = true;
+						}
+					}
+				}else{
+					if(isPopVisible){
+						popover.style.display = 'none';
+					}
+				}
+			}
+
+
+		}
+	}
 }
 
 function onSwiperWrapperDragStart(ev){

@@ -769,3 +769,15 @@
 .is-mobile .thumbs-cols {
 	max-height: calc(var(--vh) -  160px);
 }
+
+body:has(.theme_toggle){
+	.awe_search_result{
+		@include respond('ipad_portrait'){
+			top: 138px;
+		}
+
+		@include adaptive(767) {
+			top: 138px;
+		}
+	}
+}

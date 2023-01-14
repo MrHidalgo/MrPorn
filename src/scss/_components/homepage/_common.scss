@@ -116,6 +116,16 @@ body:not(.netflix){
 	.list__box-all{
 		span{
 			color: #fff;
+			display: inline-block;
+			text-decoration: none;
+
+			&.m{
+				display: none;
+			}
+		}
+
+		.icon-font{
+			display: none;
 		}
 	}
 }

@@ -59,7 +59,7 @@
 		position: absolute;
 		top: 0;
 		left: 0;
-		display: flex !important;
+		display: flex;
 		width: 100%;
 		//height: auto;
 		min-height: 100%;
@@ -143,6 +143,14 @@
 
 			/*min-height: 100%;*/
 			height: auto;
+		}
+	}
+
+	.list__specification-bottom,{
+		display: block;
+
+		@include adaptive(767) {
+			display: none;
 		}
 	}
 
