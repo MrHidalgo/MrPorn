@@ -158,10 +158,10 @@ body:has(.theme_toggle){
 		&.category.gaming_cat_1 .c-grid-main{
 
 			@include adaptive(767) {
-				margin-top: 75px;
+				margin-top: 105px;
 			}
 			@include respond('mobile_landscape'){
-				margin-top: 75px;
+				margin-top: 105px;
 			}
 		}
 		&1{
@@ -182,6 +182,12 @@ body:has(.theme_toggle){
 					@include adaptive(767) {
 						margin-top: 145px;
 					}
+				}
+			}
+
+			&.category.gaming_cat_ .c-grid-main{
+				@include adaptive(767) {
+					margin-top: 145px;
 				}
 			}
 

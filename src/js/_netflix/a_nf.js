@@ -226,8 +226,14 @@ function cloneCurrentPopupBanner(){
 function closeBanner(_el){
 	//closeAllSnapshots();
 
+
+
 	if(true){
 		cancelModal(_el);
+		if(isMobileOrTablet && bodyScrollLock){
+			bodyScrollLock.clearAllBodyScrollLocks();
+			setInnerHeight();
+		}
 		return;
 	}
 
@@ -1945,8 +1951,6 @@ function showBanner(siteId, isSkip = false, target = false){
 			siteModal.innerHTML = bottomBanner;
 
 			currentBannerSection = document.querySelector('.list__specification');
-
-			console.log('opening modal')
 
 			openSlideModal(target, siteId);
 			initSimilarSiteEvents();

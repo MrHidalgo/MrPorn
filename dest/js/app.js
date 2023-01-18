@@ -481,14 +481,19 @@ var initHamburger = function initHamburger() {
       hideScrollContainer.forEach(function (val, idx) {
         val.classList.toggle("is-hideScroll");
       });
-      document.querySelector('[search-js]').value = '';
-      hide(document.querySelector('[search-drop-mobile-js]'));
-      document.querySelector('.category__drop').classList.remove('is-open');
+      var searchJs = document.querySelector('[search-js]');
+
+      if (searchJs) {
+        searchJs.value = '';
+        hide(document.querySelector('[search-drop-mobile-js]'));
+        document.querySelector('.category__drop').classList.remove('is-open');
+      }
+
       console.log('closing hamburger');
       setInnerHeight();
       isSearchActive = false; // enableScroll()
 
-      bodyScrollLock.enableBodyScroll(searchViewContainer);
+      bodyScrollLock.clearAllBodyScrollLocks();
       document.body.classList.remove('has_search');
       var searchPagination = document.querySelector('.search_pagination');
 

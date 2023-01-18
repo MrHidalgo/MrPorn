@@ -32,6 +32,17 @@
 	}
 
 	&.is-open {
+		@include adaptive(767) {
+			height: var(--wih, 100vh);
+			max-height: var(--wih, 100vh);
+			min-height: unset;
+
+			/*height: 100vh;
+			height: stretch;
+			max-height: stretch;*/
+			overflow: auto;
+		}
+
 		.list__specification__inner{
 			height: 322px;
 

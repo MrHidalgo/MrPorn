@@ -1506,11 +1506,15 @@
 				align-items: center;
 				justify-content: center;
 				padding: 5px 10px;
-				font-size: 16px;
+				font-size: 14px;
 				font-weight: 600;
 				color: #fff;
 				min-height: 50px;
 				line-height: 26px;
+
+				overflow: hidden;
+				text-overflow: ellipsis;
+				white-space: nowrap;
 			}
 		}
 	}

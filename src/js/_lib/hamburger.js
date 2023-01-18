@@ -79,15 +79,20 @@ const initHamburger = () => {
 				val.classList.toggle("is-hideScroll");
 			});
 
-			document.querySelector('[search-js]').value = '';
-			hide(document.querySelector('[search-drop-mobile-js]'));
-			document.querySelector('.category__drop').classList.remove('is-open');
+			let searchJs = document.querySelector('[search-js]');
+			if(searchJs){
+				searchJs.value = '';
+				hide(document.querySelector('[search-drop-mobile-js]'));
+				document.querySelector('.category__drop').classList.remove('is-open');
+			}
+
+
 
 			console.log('closing hamburger');
 			setInnerHeight();
 			isSearchActive = false;
 			// enableScroll()
-			bodyScrollLock.enableBodyScroll(searchViewContainer);
+			bodyScrollLock.clearAllBodyScrollLocks();
 
 			document.body.classList.remove('has_search');
 

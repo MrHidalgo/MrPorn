@@ -147,6 +147,10 @@ body:not(.netflix){
 			overflow: hidden;
 			text-overflow: ellipsis;
 			padding-left: 11px;
+
+			@include adaptive(767) {
+				font-size: 18px;
+			}
 		}
 	}
 	.list__box-subtext{
@@ -294,6 +298,12 @@ body:not(.netflix){
 			&::-webkit-scrollbar-track{ background: rgba(0,0,0,0.1) }
 			&::-webkit-scrollbar-thumb{ background: #9c9b9c }
 			&:hover::-webkit-scrollbar-thumb{ background: #225396 }
+		}
+	}
+
+	.netflix{
+		.list__info--title_a{
+			color: #333;
 		}
 	}
 }
