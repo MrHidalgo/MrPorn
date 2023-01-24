@@ -150,6 +150,8 @@ body:not(.netflix){
 
 			@include adaptive(767) {
 				font-size: 18px;
+				max-width: calc(100% - 140px);
+				padding-bottom: 15px;
 			}
 		}
 	}
@@ -237,7 +239,7 @@ body:not(.netflix){
 			color: rgb(213, 243, 74);
 		}
 		@include adaptive(767) {
-			top: 4px;
+			top: 2px;
 			right: 0;
 			height: 28px;
 			line-height: 28px;
