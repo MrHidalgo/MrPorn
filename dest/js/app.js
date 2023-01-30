@@ -672,18 +672,22 @@ var initSiteVersion = function initSiteVersion() {
         window.dataLayer.push(gtmThemeData);
       }
 
-      createCookie("theme_ver", "changed", 0); //document.location = '/';
+      createCookie("theme_vers2", "changed", 0); //document.location = '/';
 
       window.location.reload();
     });
   }
 
-  var currentThemeVersion = 'default';
+  var currentThemeVersion = 'netflix';
   var themeToggleLink = document.querySelector('.theme_toggle_link a');
 
   if (themeToggleLink) {
     var currentVersion = getCookieMpgCookie("is_new_theme");
-    var themeRecorded = getCookieMpgCookie("theme_ver");
+    var themeRecorded = getCookieMpgCookie("theme_vers2");
+
+    if (currentVersion == '') {
+      currentVersion = '1';
+    }
 
     if (currentVersion == '1') {
       themeToggleLink.innerHTML = 'Visit the old MrPornGeek.com';
@@ -692,7 +696,7 @@ var initSiteVersion = function initSiteVersion() {
     } else {
       themeToggleLink.innerHTML = 'Visit the new MrPornGeek.com';
       themeToggleLink.className = 'theme_new';
-      currentThemeVersion = 'flat';
+      currentThemeVersion = 'old';
     }
 
     if (themeRecorded == '') {
@@ -700,7 +704,7 @@ var initSiteVersion = function initSiteVersion() {
         action: 'theme_toggle',
         theme: currentThemeVersion
       }, function (res) {
-        createCookie("theme_ver", "1", 365);
+        createCookie("theme_vers2", "1", 365);
       });
     } else if (themeRecorded == 'changed') {
       postTextRequest('/wp-content/themes/mpg/ajax-handler-wp.php', {
@@ -708,7 +712,7 @@ var initSiteVersion = function initSiteVersion() {
         theme: currentThemeVersion,
         changed: true
       }, function (res) {
-        createCookie("theme_ver", "1", 365);
+        createCookie("theme_vers2", "1", 365);
       });
     }
   }

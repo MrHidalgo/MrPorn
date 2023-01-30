@@ -365,7 +365,7 @@ function renderHompageSiteSlide(category, index){
 
 }
 
-function renderSiteHoverContent(category, index, siteId, siteLink, siteName, siteTagline, siteRating){
+function renderSiteHoverContent(category, index, siteId, siteLink, siteName, siteTagline, siteRating, siteLogo){
 	//console.log('current site link '+siteId+' - - '+siteName+' - - '+siteLink)
 
 
@@ -384,7 +384,8 @@ function renderSiteHoverContent(category, index, siteId, siteLink, siteName, sit
 	let btnFavToolTip = (isLoggedUser!="")?_t('add-to-favourites', 'Add To Favourites'):_t('more-info', 'More Info');
 
 
-	var hoverContent = '<div class="list__box-details-left">'+
+	var hoverContent = '<img class="previewModal--logo" src="'+siteLogo+'"/>' +
+		'<div class="list__box-details-left">'+
 		'<a class="site_link" href="'+siteLink+'" target="_blank">' +
 		'<i class="icon-font icon-out"></i>'+
 		'<p class="list__box-details-title">'+siteName+'</p>'+
@@ -1279,7 +1280,15 @@ function onSlideEnter(ev){
 		var slideIndex = el.dataset.index;
 		var slideCategory = swiperParent.dataset.category;
 
-		let slideHoverContent = renderSiteHoverContent(slideCategory, slideIndex, _siteId, _siteUrl, siteTitle, tagLine, siteRating);
+		let siteData = homeData.categories[slideCategory].sites[slideIndex];
+		let siteTagline = '';
+		let siteLogo = '';
+		if(siteData) {
+			siteTagline = siteData.tagline.replace("\\", "").replace("\\", "");
+			siteLogo = siteData.logo;
+		}
+
+		let slideHoverContent = renderSiteHoverContent(slideCategory, slideIndex, _siteId, _siteUrl, siteTitle, siteTagline, siteRating, siteLogo);
 		slideHoverContent += '<button class="list__box-more" type="button" data-id="'+_siteId+'"><i class="icon-font icon-arrow-angle"></i></button>';
 		previewModalInner.innerHTML = slideHoverContent;
 
