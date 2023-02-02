@@ -383,8 +383,12 @@ function renderSiteHoverContent(category, index, siteId, siteLink, siteName, sit
 
 	let btnFavToolTip = (isLoggedUser!="")?_t('add-to-favourites', 'Add To Favourites'):_t('more-info', 'More Info');
 
+	let previewModalLogo = '<img class="previewModal--logo" src="'+siteLogo+'"/>';
+	if(category==55){
+		previewModalLogo = '';
+	}
 
-	var hoverContent = '<img class="previewModal--logo" src="'+siteLogo+'"/>' +
+	var hoverContent = previewModalLogo +
 		'<div class="list__box-details-left">'+
 		'<a class="site_link" href="'+siteLink+'" target="_blank">' +
 		'<i class="icon-font icon-out"></i>'+
@@ -1295,10 +1299,10 @@ function onSlideEnter(ev){
 		if(delayPreview){
 			setTimeout(function (){
 
-				generatePreviewModal(elBox);
+				generatePreviewModal(elBox, slideCategory);
 			}, 600)
 		}else{
-			generatePreviewModal(elBox);
+			generatePreviewModal(elBox, slideCategory);
 		}
 		previousHoverBox = el;
 	}
@@ -1307,7 +1311,7 @@ function onSlideEnter(ev){
 	markLikesDislikes();
 }
 
-function generatePreviewModal(slideBox){
+function generatePreviewModal(slideBox, slideCategory){
 	if(previewModal && slideBox){
 		let _siteId = slideBox.dataset.id;
 		previewModal.dataset.siteId = _siteId;
@@ -1327,7 +1331,16 @@ function generatePreviewModal(slideBox){
 
 			let slideThumbSrc =slideThumb.src;
 			//previewModal.querySelector('.previewModal--banner').src = slideThumbSrc;
-			previewModal.querySelector('.previewModal--inner').style.backgroundImage = 'url('+slideThumbSrc+')';
+			let pmInner = previewModal.querySelector('.previewModal--inner');
+			if(pmInner){
+				pmInner.style.backgroundImage = 'url('+slideThumbSrc+')';
+				if(slideCategory==55){
+					pmInner.classList.remove('not_game');
+				}else{
+					pmInner.classList.add('not_game');
+				}
+			}
+
 
 			if(boxX <175){
 				boxX = boxBounds.x;
