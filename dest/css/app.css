@@ -5720,42 +5720,44 @@ body:has(.theme_toggle) .header {
   /* line 91, src/scss/_components/misc/_search.scss */
   .search_results_tags .search_category_item span {
     overflow: hidden;
+    -o-text-overflow: ellipsis;
+       text-overflow: ellipsis;
   }
 }
 
-/* line 96, src/scss/_components/misc/_search.scss */
+/* line 97, src/scss/_components/misc/_search.scss */
 .search_results_tags .search_category_item img {
   max-height: 22px;
   margin-right: 10px;
 }
 
-/* line 101, src/scss/_components/misc/_search.scss */
+/* line 102, src/scss/_components/misc/_search.scss */
 .search_results_tags .search_category_item:before {
   margin-left: 0;
   zoom: 0.8;
 }
 
-/* line 103, src/scss/_components/misc/_search.scss */
+/* line 104, src/scss/_components/misc/_search.scss */
 .search_results_tags .search_category_item:nth-child(5n+1) {
   background: #0677ce;
 }
 
-/* line 106, src/scss/_components/misc/_search.scss */
+/* line 107, src/scss/_components/misc/_search.scss */
 .search_results_tags .search_category_item:nth-child(5n+2) {
   background: #767676;
 }
 
-/* line 109, src/scss/_components/misc/_search.scss */
+/* line 110, src/scss/_components/misc/_search.scss */
 .search_results_tags .search_category_item:nth-child(5n+3) {
   background: #625e73;
 }
 
-/* line 112, src/scss/_components/misc/_search.scss */
+/* line 113, src/scss/_components/misc/_search.scss */
 .search_results_tags .search_category_item:nth-child(5n+4) {
   background: #65a6bb;
 }
 
-/* line 118, src/scss/_components/misc/_search.scss */
+/* line 119, src/scss/_components/misc/_search.scss */
 .search_site_item {
   padding: 5px;
   text-align: center;
@@ -5778,7 +5780,7 @@ body:has(.theme_toggle) .header {
 }
 
 @media screen and (min-device-width: 768px) and (max-device-width: 1024px) and (orientation: landscape) and (-webkit-min-device-pixel-ratio: 2) {
-  /* line 118, src/scss/_components/misc/_search.scss */
+  /* line 119, src/scss/_components/misc/_search.scss */
   .search_site_item {
     width: 33.333334%;
     max-width: 33.333334%;
@@ -5790,7 +5792,7 @@ body:has(.theme_toggle) .header {
 }
 
 @media screen and (min-device-width: 768px) and (max-device-width: 1024px) and (orientation: portrait) and (-webkit-min-device-pixel-ratio: 2) {
-  /* line 118, src/scss/_components/misc/_search.scss */
+  /* line 119, src/scss/_components/misc/_search.scss */
   .search_site_item {
     width: 33.333334%;
     max-width: 33.333334%;
@@ -5802,7 +5804,7 @@ body:has(.theme_toggle) .header {
 }
 
 @media screen and (max-width: 767px) {
-  /* line 118, src/scss/_components/misc/_search.scss */
+  /* line 119, src/scss/_components/misc/_search.scss */
   .search_site_item {
     width: 50%;
     max-width: 50%;
@@ -5813,12 +5815,12 @@ body:has(.theme_toggle) .header {
   }
 }
 
-/* line 145, src/scss/_components/misc/_search.scss */
+/* line 146, src/scss/_components/misc/_search.scss */
 .search_site_item_inner {
   cursor: pointer;
 }
 
-/* line 149, src/scss/_components/misc/_search.scss */
+/* line 150, src/scss/_components/misc/_search.scss */
 .search_site_item .title {
   position: relative;
   white-space: nowrap;
@@ -5840,20 +5842,20 @@ body:has(.theme_toggle) .header {
 }
 
 @media screen and (min-device-width: 768px) and (max-device-width: 1024px) and (orientation: portrait) and (-webkit-min-device-pixel-ratio: 2) {
-  /* line 149, src/scss/_components/misc/_search.scss */
+  /* line 150, src/scss/_components/misc/_search.scss */
   .search_site_item .title {
     color: #fff;
   }
 }
 
 @media screen and (max-width: 767px) {
-  /* line 149, src/scss/_components/misc/_search.scss */
+  /* line 150, src/scss/_components/misc/_search.scss */
   .search_site_item .title {
     color: #fff;
   }
 }
 
-/* line 168, src/scss/_components/misc/_search.scss */
+/* line 169, src/scss/_components/misc/_search.scss */
 .search_site_item .title:before {
   position: relative;
   top: 0;
@@ -5863,12 +5865,12 @@ body:has(.theme_toggle) .header {
   margin-right: 5px;
 }
 
-/* line 175, src/scss/_components/misc/_search.scss */
+/* line 176, src/scss/_components/misc/_search.scss */
 .search_site_item .title:after {
   display: none;
 }
 
-/* line 178, src/scss/_components/misc/_search.scss */
+/* line 179, src/scss/_components/misc/_search.scss */
 .search_site_item .title span {
   max-width: 100%;
   white-space: nowrap;
@@ -5877,12 +5879,12 @@ body:has(.theme_toggle) .header {
   overflow: hidden;
 }
 
-/* line 184, src/scss/_components/misc/_search.scss */
+/* line 185, src/scss/_components/misc/_search.scss */
 .search_site_item .title img {
   max-width: 100%;
 }
 
-/* line 189, src/scss/_components/misc/_search.scss */
+/* line 190, src/scss/_components/misc/_search.scss */
 .search_site_item .thumb {
   line-height: 0;
   border-top: 1px solid #9ca4ad;
@@ -5900,7 +5902,7 @@ body:has(.theme_toggle) .header {
   position: relative;
 }
 
-/* line 199, src/scss/_components/misc/_search.scss */
+/* line 200, src/scss/_components/misc/_search.scss */
 .search_site_item .thumb img {
   max-width: 100%;
   -o-object-fit: cover;
@@ -5910,7 +5912,7 @@ body:has(.theme_toggle) .header {
   height: 100%;
 }
 
-/* line 208, src/scss/_components/misc/_search.scss */
+/* line 209, src/scss/_components/misc/_search.scss */
 .search_site_item .site_category {
   background: #0a3e83;
   color: #fff;
@@ -5919,7 +5921,7 @@ body:has(.theme_toggle) .header {
 }
 
 @media screen and (min-device-width: 768px) and (max-device-width: 1024px) and (orientation: portrait) and (-webkit-min-device-pixel-ratio: 2) {
-  /* line 208, src/scss/_components/misc/_search.scss */
+  /* line 209, src/scss/_components/misc/_search.scss */
   .search_site_item .site_category {
     border-left: 1px solid #9ca4ad;
     border-right: 1px solid #9ca4ad;
@@ -5928,7 +5930,7 @@ body:has(.theme_toggle) .header {
 }
 
 @media screen and (max-width: 767px) {
-  /* line 208, src/scss/_components/misc/_search.scss */
+  /* line 209, src/scss/_components/misc/_search.scss */
   .search_site_item .site_category {
     border-left: 1px solid #9ca4ad;
     border-right: 1px solid #9ca4ad;
@@ -5936,17 +5938,17 @@ body:has(.theme_toggle) .header {
   }
 }
 
-/* line 226, src/scss/_components/misc/_search.scss */
+/* line 227, src/scss/_components/misc/_search.scss */
 .search_site_item .site_category a {
   color: #fff;
 }
 
-/* line 229, src/scss/_components/misc/_search.scss */
+/* line 230, src/scss/_components/misc/_search.scss */
 .search_site_item .site_category a:hover, .search_site_item .site_category a:focus {
   color: #fff;
 }
 
-/* line 237, src/scss/_components/misc/_search.scss */
+/* line 238, src/scss/_components/misc/_search.scss */
 .search_site_item .search_item_overlay {
   position: absolute;
   -webkit-box-pack: center;
@@ -5971,7 +5973,7 @@ body:has(.theme_toggle) .header {
   z-index: 2;
 }
 
-/* line 250, src/scss/_components/misc/_search.scss */
+/* line 251, src/scss/_components/misc/_search.scss */
 .search_site_item .search_item_overlay a {
   padding: 10px 0;
   -webkit-box-pack: center;
@@ -6002,14 +6004,14 @@ body:has(.theme_toggle) .header {
 }
 
 @media screen and (max-width: 1024px) {
-  /* line 250, src/scss/_components/misc/_search.scss */
+  /* line 251, src/scss/_components/misc/_search.scss */
   .search_site_item .search_item_overlay a {
     padding: 10px 0;
     font-size: 14px;
   }
 }
 
-/* line 272, src/scss/_components/misc/_search.scss */
+/* line 273, src/scss/_components/misc/_search.scss */
 .search_site_item .search_item_overlay a i {
   -webkit-transition: all 0.2s linear 0s;
   -o-transition: all 0.2s linear 0s;
@@ -6018,33 +6020,33 @@ body:has(.theme_toggle) .header {
   width: 0;
 }
 
-/* line 278, src/scss/_components/misc/_search.scss */
+/* line 279, src/scss/_components/misc/_search.scss */
 .search_site_item .search_item_overlay a i.right_angle {
   color: #c4f015;
 }
 
-/* line 281, src/scss/_components/misc/_search.scss */
+/* line 282, src/scss/_components/misc/_search.scss */
 .search_site_item .search_item_overlay a i.right_angle:before {
   -webkit-transform: rotateZ(180deg);
       -ms-transform: rotate(180deg);
           transform: rotateZ(180deg);
 }
 
-/* line 289, src/scss/_components/misc/_search.scss */
+/* line 290, src/scss/_components/misc/_search.scss */
 .search_site_item .search_item_overlay a:hover i {
   opacity: 1;
   width: 18px;
   padding-left: 10px;
 }
 
-/* line 297, src/scss/_components/misc/_search.scss */
+/* line 298, src/scss/_components/misc/_search.scss */
 .search_site_item .search_item_overlay .link_site {
   background: #c4f015;
   color: #000;
   margin-top: 15px;
 }
 
-/* line 305, src/scss/_components/misc/_search.scss */
+/* line 306, src/scss/_components/misc/_search.scss */
 .search_site_item:hover .search_item_overlay {
   display: -webkit-box;
   display: -webkit-flex;
@@ -6053,13 +6055,13 @@ body:has(.theme_toggle) .header {
 }
 
 @media screen and (max-width: 767px) {
-  /* line 305, src/scss/_components/misc/_search.scss */
+  /* line 306, src/scss/_components/misc/_search.scss */
   .search_site_item:hover .search_item_overlay {
     display: none;
   }
 }
 
-/* line 315, src/scss/_components/misc/_search.scss */
+/* line 316, src/scss/_components/misc/_search.scss */
 .search_site_item.touched .search_item_overlay {
   display: -webkit-box;
   display: -webkit-flex;
@@ -6068,7 +6070,7 @@ body:has(.theme_toggle) .header {
 }
 
 @media screen and (max-width: 767px) {
-  /* line 315, src/scss/_components/misc/_search.scss */
+  /* line 316, src/scss/_components/misc/_search.scss */
   .search_site_item.touched .search_item_overlay {
     display: -webkit-box;
     display: -webkit-flex;
@@ -6077,20 +6079,20 @@ body:has(.theme_toggle) .header {
   }
 }
 
-/* line 326, src/scss/_components/misc/_search.scss */
+/* line 327, src/scss/_components/misc/_search.scss */
 .search_pagination {
   text-align: center;
   padding: 10px 0;
 }
 
 @media screen and (max-width: 1023px) {
-  /* line 326, src/scss/_components/misc/_search.scss */
+  /* line 327, src/scss/_components/misc/_search.scss */
   .search_pagination {
     padding: 0;
   }
 }
 
-/* line 334, src/scss/_components/misc/_search.scss */
+/* line 335, src/scss/_components/misc/_search.scss */
 .search_pagination .item {
   background: #e4e4e4;
   color: #8a8a8a;
@@ -6100,13 +6102,13 @@ body:has(.theme_toggle) .header {
   cursor: pointer;
 }
 
-/* line 342, src/scss/_components/misc/_search.scss */
+/* line 343, src/scss/_components/misc/_search.scss */
 .search_pagination .item.active {
   background: #07113b;
   color: #d5f34a;
 }
 
-/* line 347, src/scss/_components/misc/_search.scss */
+/* line 348, src/scss/_components/misc/_search.scss */
 .search_pagination .item.prev:after, .search_pagination .item.next:after {
   content: "";
   display: inline-block;
@@ -6116,7 +6118,7 @@ body:has(.theme_toggle) .header {
   border-width: 0 2px 2px 0;
 }
 
-/* line 355, src/scss/_components/misc/_search.scss */
+/* line 356, src/scss/_components/misc/_search.scss */
 .search_pagination .item.prev:after {
   -ms-transform: rotate(135deg);
       transform: rotate(135deg);
@@ -6124,7 +6126,7 @@ body:has(.theme_toggle) .header {
   margin: 0 -4px 0 0;
 }
 
-/* line 360, src/scss/_components/misc/_search.scss */
+/* line 361, src/scss/_components/misc/_search.scss */
 .search_pagination .item.next:after {
   -ms-transform: rotate(-45deg);
       transform: rotate(-45deg);
@@ -6132,17 +6134,17 @@ body:has(.theme_toggle) .header {
   margin: 0 0 0 -4px;
 }
 
-/* line 366, src/scss/_components/misc/_search.scss */
+/* line 367, src/scss/_components/misc/_search.scss */
 .search_pagination .item.prev:hover:after, .search_pagination .item.next:hover:after {
   border-color: #fff;
 }
 
-/* line 373, src/scss/_components/misc/_search.scss */
+/* line 374, src/scss/_components/misc/_search.scss */
 .loading_spinner {
   display: none;
 }
 
-/* line 376, src/scss/_components/misc/_search.scss */
+/* line 377, src/scss/_components/misc/_search.scss */
 .loading_spinner > div {
   display: inline-block;
   width: 8px;
@@ -6156,25 +6158,25 @@ body:has(.theme_toggle) .header {
   background: #0677ce;
 }
 
-/* line 377, src/scss/_components/misc/_search.scss */
+/* line 378, src/scss/_components/misc/_search.scss */
 .loading_spinner .bounce1 {
   -webkit-animation-delay: -.32s;
           animation-delay: -.32s;
 }
 
-/* line 378, src/scss/_components/misc/_search.scss */
+/* line 379, src/scss/_components/misc/_search.scss */
 .loading_spinner .bounce2 {
   -webkit-animation-delay: -.16s;
           animation-delay: -.16s;
 }
 
-/* line 382, src/scss/_components/misc/_search.scss */
+/* line 383, src/scss/_components/misc/_search.scss */
 .search_load_more.loading {
   font-size: 0;
   text-indent: 0;
 }
 
-/* line 386, src/scss/_components/misc/_search.scss */
+/* line 387, src/scss/_components/misc/_search.scss */
 .search_load_more.loading .loading_spinner {
   display: block;
 }
