@@ -586,8 +586,7 @@ var initTheme = function initTheme() {
     toggleSwitch.addEventListener('change', function (event) {
       if (document.documentElement.classList.contains('light')) {
         createCookie("is_dark", "1", 7);
-        document.documentElement.classList.remove('light');
-        initHomeSwippers();
+        document.documentElement.classList.remove('light'); //initHomeSwippers();
       } else {
         createCookie("is_dark", "0", 7);
         document.documentElement.classList.add('light');
@@ -698,23 +697,23 @@ var initSiteVersion = function initSiteVersion() {
       themeToggleLink.className = 'theme_new';
       currentThemeVersion = 'old';
     }
+    /*if(themeRecorded==''){
+    	postTextRequest('/wp-content/themes/mpg/ajax-handler-wp.php', {
+    		action:'theme_toggle',
+    		theme: currentThemeVersion
+    	}, function (res) {
+    		createCookie("theme_vers2", "1", 365);
+    	});
+    }else if(themeRecorded=='changed'){
+    	postTextRequest('/wp-content/themes/mpg/ajax-handler-wp.php', {
+    		action:'theme_toggle',
+    		theme: currentThemeVersion,
+    		changed: true
+    	}, function (res) {
+    		createCookie("theme_vers2", "1", 365);
+    	});
+    }*/
 
-    if (themeRecorded == '') {
-      postTextRequest('/wp-content/themes/mpg/ajax-handler-wp.php', {
-        action: 'theme_toggle',
-        theme: currentThemeVersion
-      }, function (res) {
-        createCookie("theme_vers2", "1", 365);
-      });
-    } else if (themeRecorded == 'changed') {
-      postTextRequest('/wp-content/themes/mpg/ajax-handler-wp.php', {
-        action: 'theme_toggle',
-        theme: currentThemeVersion,
-        changed: true
-      }, function (res) {
-        createCookie("theme_vers2", "1", 365);
-      });
-    }
   }
 
   gtag('event', 'theme_changed', {
@@ -737,7 +736,6 @@ var initMobileThemeToggle = function initMobileThemeToggle() {
         document.documentElement.classList.add('light');
       }
     });
-    console.log('current theme' + isDark);
 
     if (isDark == '1') {
       toggleMobileSwitch.checked = true;

@@ -18,7 +18,7 @@ const initTheme = () => {
 				createCookie("is_dark", "1", 7);
 				document.documentElement.classList.remove('light');
 
-				initHomeSwippers();
+				//initHomeSwippers();
 			} else {
 				createCookie("is_dark", "0", 7);
 				document.documentElement.classList.add('light');
@@ -132,7 +132,7 @@ const initSiteVersion = () => {
 			currentThemeVersion = 'old';
 		}
 
-		if(themeRecorded==''){
+		/*if(themeRecorded==''){
 			postTextRequest('/wp-content/themes/mpg/ajax-handler-wp.php', {
 				action:'theme_toggle',
 				theme: currentThemeVersion
@@ -147,7 +147,7 @@ const initSiteVersion = () => {
 			}, function (res) {
 				createCookie("theme_vers2", "1", 365);
 			});
-		}
+		}*/
 	}
 
 	gtag('event', 'theme_changed', {
@@ -170,7 +170,6 @@ const initMobileThemeToggle = ()=>{
 			}
 		})
 
-		console.log('current theme'+isDark);
 
 		if(isDark=='1'){
 			toggleMobileSwitch.checked = true;
