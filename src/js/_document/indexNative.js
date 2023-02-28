@@ -261,6 +261,7 @@ let lastMobileSimilarSite;
 					scrollToCategoryOnHome(ev, _ev.closest('.scroll_to_category'));
 					hide(document.querySelector('[search-drop-js]'));
 				}
+
 			}
 
 			if(_ev.classList.contains('search_category_item')){
