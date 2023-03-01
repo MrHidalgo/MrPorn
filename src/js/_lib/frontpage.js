@@ -203,6 +203,14 @@ function scrollToCategoryOnHome(ev, _ev){
 					behavior: 'smooth'
 				});
 
+				let categoryHead = document.querySelector('#category_wrapper_'+catId+' .list__box-head')
+				if(categoryHead){
+					categoryHead.classList.add('shake');
+					setTimeout(function (){
+						categoryHead.classList.remove('shake');
+					}, 4000);
+				}
+
 				/*let elParent = document.querySelector('.list__box-wrapper[data-name="category_'+catId+'"]');
 
 				let scrollGreenBar = document.querySelector('.list__box-wrapper[data-name="category_'+catId+'"] .list__box-line');

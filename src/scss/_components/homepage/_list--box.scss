@@ -304,6 +304,13 @@
 		@include adaptive(767) {
 			padding-right: 10px;
 		}
+
+		&.shake{
+			animation-delay: 2s;
+			animation: shakeCategoryBar 0.82s cubic-bezier(.36,.07,.19,.97) 3 forwards;
+			transform: translate3d(0, 0, 0);
+			backface-visibility: hidden;
+		}
 	}
 	&-subtext{
 		background: #0e2644;
