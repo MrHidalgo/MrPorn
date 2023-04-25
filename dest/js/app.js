@@ -175,11 +175,7 @@ var createCookie = function createCookie(name, value, days) {
   document.cookie = name + "=" + value + expires + "; path=/";
 };
 
-var isMobileOrTablet = false;
-
-if (!navigator.userAgent.toLowerCase().includes('lighthouse')) {
-  isMobileOrTablet = window.mobileAndTabletcheck();
-}
+var isMobileOrTablet = window.mobileAndTabletcheck();
 
 function findAncestor(el, sel) {
   while ((el = el.parentElement) && !(el.matches || el.matchesSelector).call(el, sel)) {
@@ -632,9 +628,7 @@ var initMobileThemeToggle = function initMobileThemeToggle() {
   }
 };
 
-if (!navigator.userAgent.toLowerCase().includes('lighthouse')) {
-  initTheme();
-}
+initTheme();
 
 var renderFavourites = function renderFavourites() {
   /*if(isMobileDevice){
@@ -1236,9 +1230,7 @@ function initWebWorker() {
   homeData = getWithExpiry("homepage_data_" + dataTime + '_' + currentLang);
 
   if (homeData) {} else {
-    if (!navigator.userAgent.toLowerCase().includes('lighthouse')) {
-      loadHomeData();
-    }
+    loadHomeData();
   }
 
   if (document.body.classList.contains('home')) {} else if (document.body.classList.contains('single-sites')) {
@@ -1377,10 +1369,6 @@ var lastMobileSimilarSite;
    * MAIN CALLBACK
    * ===================================
    */
-
-  /*if(!navigator.userAgent.toLowerCase().includes('lighthouse')){
-  	initLoggedUser();
-  }*/
   var initHome = function initHome() {
     var cGridList = document.querySelector('.c-grid.list');
 
@@ -2112,24 +2100,22 @@ var lastMobileSimilarSite;
    */
 
 
-  if (!navigator.userAgent.toLowerCase().includes('lighthouse')) {
-    window.addEventListener('load', function (ev) {
-      initNative();
-      window.addEventListener('resize', function () {
-        wInnerWidth = window.innerWidth;
-        headerHeight = document.querySelector('#header').getBoundingClientRect().height;
+  window.addEventListener('load', function (ev) {
+    initNative();
+    window.addEventListener('resize', function () {
+      wInnerWidth = window.innerWidth;
+      headerHeight = document.querySelector('#header').getBoundingClientRect().height;
+      setInnerHeight();
+    });
+
+    if (window.visualViewport) {
+      window.visualViewport.addEventListener("resize", function () {
         setInnerHeight();
       });
+    }
 
-      if (window.visualViewport) {
-        window.visualViewport.addEventListener("resize", function () {
-          setInnerHeight();
-        });
-      }
-
-      if (document.body.classList.contains('single-sites')) {
-        onReviewPageLoad();
-      }
-    });
-  }
+    if (document.body.classList.contains('single-sites')) {
+      onReviewPageLoad();
+    }
+  });
 })();

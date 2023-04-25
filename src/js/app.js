@@ -167,11 +167,7 @@ var createCookie = function(name, value, days) {
 	}
 	document.cookie = name + "=" + value + expires + "; path=/";
 }
-var isMobileOrTablet = false;
-
-if((!navigator.userAgent.toLowerCase().includes('lighthouse'))){
-	isMobileOrTablet = window.mobileAndTabletcheck();
-}
+var isMobileOrTablet = window.mobileAndTabletcheck();
 
 
 function findAncestor (el, sel) {

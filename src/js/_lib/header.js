@@ -59,9 +59,7 @@ const initMobileThemeToggle = ()=>{
 	}
 }
 
-if((!navigator.userAgent.toLowerCase().includes('lighthouse'))){
-	initTheme();
-}
+initTheme();
 
 const renderFavourites = () => {
 	/*if(isMobileDevice){

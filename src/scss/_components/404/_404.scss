@@ -153,6 +153,147 @@
 		}
 	}
 }
+
+@import url('https://fonts.googleapis.com/css?family=Yantramanav:400,700&display=swap');
+
+.top_404 {
+	padding-bottom: 40px;
+	position: relative;
+	margin: 0 1rem 0 0;
+}
+.top_404 .row {
+	margin-left: 0;
+	margin-right: 1rem;
+}
+.text-red {
+	color: #ff0000;
+}
+.title_1_404 {
+	font-family: 'Yantramanav',cursive;
+	font-weight: 700;
+	font-size: 60px;
+}
+.title_2_404 {
+	font-size: 50px;
+}
+.content_404 p {
+	font-size: 20.5px;
+}
+.title_2_404,
+.content_404 p,
+.content_404 .home_link {
+	font-family: 'Yantramanav',cursive;
+	font-weight: 400;
+}
+.title_mobile_404 {
+	display: none;
+}
+.logo_404 img {
+	width: 98%;
+	position: absolute;
+	top: -2.1rem;
+	left: 55px;
+}
+.wave_404 {
+	position: absolute;
+	bottom: 0;
+	width: 100%;
+	z-index: 3;
+}
+.wave_404 img {
+	width: 100%;
+}
+
+.logo_404,
+.content_404 {
+	z-index: 4;
+}
+
+.foreground {
+	border: 2px solid #192b58;
+	border-radius: 25px;
+	background: #dfeaf5;
+	height: 100%;
+	width: 100%;
+	top: 0;
+	left: 0;
+	position: absolute;
+	z-index: 2;
+}
+.background {
+	border: 2px solid #192b58;
+	border-radius: 25px;
+	background: #849ebb;
+	height: 100%;
+	width: 100%;
+	top: 1rem;
+	left: 1rem;
+	position: absolute;
+	z-index: 1;
+}
+
+@media screen and (max-width: 1450px){
+	.logo_404 img {
+		position: relative;
+		top: 0;
+		left: 0;
+		width: 50%;
+	}
+}
+@media screen and (min-width: 991px) and ( max-width: 1450px ){
+	.logo_404 img {
+		position: relative;
+		top: 0;
+		left: 0;
+		width: 105%;
+	}
+}
+@media screen and (min-width: 768px) and (max-width: 1199.98px) {
+	.top_404 {
+		margin-top: 2rem;
+	}
+}
+@media screen and (max-width: 767px){
+	.top_404 {
+		margin-top: 0;
+		margin-bottom: 2rem;
+		padding-bottom: 2rem;
+	}
+	.site-content-404 h2 {
+		display: none;
+	}
+	.title_1_404 {
+		display: none;
+	}
+	.title_2_404 {
+		display: none;
+	}
+	.content_404 {
+		padding-top: 1rem;
+	}
+	.content_404 p {
+		font-size: 1.7rem;
+		letter-spacing: 1px;
+	}
+	.content_404 .home_link {
+		font-size: 1.6rem;
+		margin-top: 0;
+	}
+	.title_mobile_404 {
+		display: block;
+		font-family: 'Yantramanav',cursive;
+		font-size: 2.4rem;
+		line-height: 3rem;
+		color: #213569;
+		font-weight: 700;
+		text-transform: capitalize;
+		letter-spacing: 1px;
+		text-align: center;
+		text-shadow: 1px 1px 4px rgba(255,255,255,1);
+		margin-bottom: 20px;
+	}
+}
+
 .site-content-404{
 	margin-top: 20px;
 

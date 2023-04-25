@@ -60,9 +60,7 @@ function initWebWorker(){
 	homeData = getWithExpiry("homepage_data_"+dataTime+'_'+currentLang);
 	if(homeData){
 	}else{
-		if(!navigator.userAgent.toLowerCase().includes('lighthouse')){
-			loadHomeData();
-		}
+		loadHomeData();
 	}
 
 	if(document.body.classList.contains('home')){
@@ -216,10 +214,6 @@ let lastMobileSimilarSite;
 	 * MAIN CALLBACK
 	 * ===================================
 	 */
-
-	/*if(!navigator.userAgent.toLowerCase().includes('lighthouse')){
-		initLoggedUser();
-	}*/
 	const initHome = () =>{
 
 		let cGridList = document.querySelector('.c-grid.list');
@@ -1041,31 +1035,26 @@ let lastMobileSimilarSite;
 	 * @description Init all CB after page load
 	 */
 
-	if(!navigator.userAgent.toLowerCase().includes('lighthouse')){
-		window.addEventListener('load', (ev) => {
-			initNative();
+	window.addEventListener('load', (ev) => {
+		initNative();
 
-			window.addEventListener('resize', () => {
-				wInnerWidth = window.innerWidth;
-				headerHeight = document.querySelector('#header').getBoundingClientRect().height;
+		window.addEventListener('resize', () => {
+			wInnerWidth = window.innerWidth;
+			headerHeight = document.querySelector('#header').getBoundingClientRect().height;
 
+			setInnerHeight();
+		});
+
+		if (window.visualViewport) {
+			window.visualViewport.addEventListener("resize", () => {
 				setInnerHeight();
 			});
+		}
 
-			if (window.visualViewport) {
-				window.visualViewport.addEventListener("resize", () => {
-					setInnerHeight();
-				});
-			}
-
-			if(document.body.classList.contains('single-sites')){
-				onReviewPageLoad();
-			}
-
-
-
-		});
-	}
+		if(document.body.classList.contains('single-sites')){
+			onReviewPageLoad();
+		}
+	});
 
 
 })();
