@@ -60,7 +60,7 @@ function initWebWorker(){
 	homeData = getWithExpiry("homepage_data_"+dataTime+'_'+currentLang);
 	if(homeData){
 	}else{
-		loadHomeData();
+		//loadHomeData();
 	}
 
 	if(document.body.classList.contains('home')){
@@ -1020,9 +1020,6 @@ let lastMobileSimilarSite;
 
 
 		// ==========================================
-
-		//loadHomeData();
-
 
 		//loadJS('/wp-content/themes/mpg/js/vendor.js', initWebWorker, document.body);
 

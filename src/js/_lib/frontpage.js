@@ -117,55 +117,52 @@ function initHomeTooltip(){
 					if(hoverTarget.parents('.list__box__item').length>0){
 						hoverTarget = hoverTarget.parents('.list__box__item')[0];
 					}
+					let tagLine = hoverTarget.querySelector('.list__box__item-tagline');
+					let _siteName = hoverTarget.querySelector('.list__box__item-link');
 
 					let siteId = hoverTarget.dataset.id;
 					let siteCategory = hoverTarget.dataset.category;
 					let siteIndex = hoverTarget.dataset.index;
 
-					if(homeData && homeData.categories !== undefined){
-						let siteData = homeData.categories[siteCategory].sites[siteIndex];
-						if(siteData){
-							let siteName = siteData.name;
-							let siteTagline = siteData.tagline;
-							siteTagline = siteTagline.replace("\\", "").replace("\\", "");
-							let siteReviewLink = siteData.review_link;
-							let siteFx = siteData.f_x;
-							let siteFy = siteData.f_y;
+					let siteName = _siteName.innerHTML;
+					let siteTagline = tagLine.innerHTML;
+					siteTagline = siteTagline.replace("\\", "").replace("\\", "");
+					let siteReviewLink = _siteName.getAttribute("href");;
+					let siteFx = tagLine.dataset.fx;
+					let siteFy = tagLine.dataset.fy;
 
-							var wallDimensions = homeMainContainer.getBoundingClientRect();
-							var wallX = wallDimensions.left;
-							var wallY = wallDimensions.top;
-							var hoverTargetBounds = hoverTarget.getBoundingClientRect();
-							var popW = hoverTargetBounds.width - 7;
-							var popY =  hoverTargetBounds.top - wallY-10;
-							var popX = hoverTargetBounds.left +7 - wallX;
+					var wallDimensions = homeMainContainer.getBoundingClientRect();
+					var wallX = wallDimensions.left;
+					var wallY = wallDimensions.top;
+					var hoverTargetBounds = hoverTarget.getBoundingClientRect();
+					var popW = hoverTargetBounds.width - 7;
+					var popY =  hoverTargetBounds.top - wallY-10;
+					var popX = hoverTargetBounds.left +7 - wallX;
 
-							popover.style.display = 'block';
-							popover.style.top = popY+'px';
-							popover.style.left = popX+'px';
-							popover.style.width = popW+'px';
+					popover.style.display = 'block';
+					popover.style.top = popY+'px';
+					popover.style.left = popX+'px';
+					popover.style.width = popW+'px';
 
-							if(!popoverOuter){
-								popover.innerHTML = '<div class="popover-outer">\n' +
-									'            <div class="popover-title deIcon">\n' +
-									'                    <a class="popover-title-a link direct_1 step_1_" target="_blank" href=""></a>\n' +
-									'            </div>\n' +
-									'            <div class="popover-content"></div>\n' +
-									'        </div>';
+					if(!popoverOuter){
+						popover.innerHTML = '<div class="popover-outer">\n' +
+							'            <div class="popover-title deIcon">\n' +
+							'                    <a class="popover-title-a link direct_1 step_1_" target="_blank" href=""></a>\n' +
+							'            </div>\n' +
+							'            <div class="popover-content"></div>\n' +
+							'        </div>';
 
-								popoverTitle = popover.querySelector('.popover-title');
-								popoverLink = popover.querySelector('.popover-title-a');
-								popoverTagline = popover.querySelector('.popover-content');
-							}
-
-
-							popoverLink.innerHTML = siteName;
-							popoverTitle.className = 'popover-title deIcon  fx_'+siteFx+' fy_'+siteFy+' fi'+siteId;
-							popoverLink.setAttribute('href', siteReviewLink);
-							popoverTagline.innerHTML = siteTagline;
-							isPopVisible = true;
-						}
+						popoverTitle = popover.querySelector('.popover-title');
+						popoverLink = popover.querySelector('.popover-title-a');
+						popoverTagline = popover.querySelector('.popover-content');
 					}
+
+
+					popoverLink.innerHTML = siteName;
+					popoverTitle.className = 'popover-title deIcon  fx_'+siteFx+' fy_'+siteFy+' fi'+siteId;
+					popoverLink.setAttribute('href', siteReviewLink);
+					popoverTagline.innerHTML = siteTagline;
+					isPopVisible = true;
 				}else{
 					if(isPopVisible){
 						popover.style.display = 'none';

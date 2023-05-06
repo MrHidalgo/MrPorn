@@ -1229,8 +1229,7 @@ function initWebWorker() {
   removeOtherStorageKeys(dataTime, currentLang);
   homeData = getWithExpiry("homepage_data_" + dataTime + '_' + currentLang);
 
-  if (homeData) {} else {
-    loadHomeData();
+  if (homeData) {} else {//loadHomeData();
   }
 
   if (document.body.classList.contains('home')) {} else if (document.body.classList.contains('single-sites')) {
@@ -2087,7 +2086,6 @@ var lastMobileSimilarSite;
       }
     } //		boxMore();
     // ==========================================
-    //loadHomeData();
     //loadJS('/wp-content/themes/mpg/js/vendor.js', initWebWorker, document.body);
 
 
