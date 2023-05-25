@@ -86,17 +86,25 @@
 		align-items: center;
 
 		@include adaptive(1023) {
-			padding-right: 3px;
+			padding-right: 8px;
+			padding-left: 30px;
+			position: relative;
 
 			span{
 				overflow: hidden;
-				text-overflow: ellipsis;
 			}
 		}
 
 		img{
 			max-height: 22px;
 			margin-right: 10px;
+
+			@include adaptive(1023) {
+				position: absolute;
+				left: 3px;
+				top: 50%;
+				transform: translateY(-50%);
+			}
 		}
 
 		&:before{margin-left: 0; zoom: 0.8;}
