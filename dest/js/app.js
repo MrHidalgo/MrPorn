@@ -421,6 +421,9 @@ function postTextRequest() {
  */
 
 
+var searchPage = 1;
+var isSearchActive = false;
+
 var initHamburger = function initHamburger() {
   var btnHamburger = document.querySelector("[hamburger-js]"),
       hideScrollContainer = document.querySelectorAll("html, body"),
@@ -568,9 +571,6 @@ function initFavDelete() {
 
 var letterData = [];
 var translations = [];
-var loggedUsername = '';
-var logoutUrl = '';
-var sortTimout;
 var favouriteList = [];
 var isDark = '1';
 var toggleSwitch = document.querySelector('#toggle-mode');
@@ -825,18 +825,11 @@ var renderSorting = function renderSorting() {
 
   if (sortcontainer) {
     sortcontainer.innerHTML = letterHtml;
-  } //onSortLetterClick(_ev.closest('[sort-letter-collapse-js]'));
-
+  }
 
   document.querySelectorAll('[sort-letter-collapse-js]').forEach(function (searchLetter) {
     searchLetter.addEventListener('click', function (_ev) {
       onSortLetterClick(_ev.target);
-      /*if(sortTimout){
-      	clearTimeout(sortTimout);
-      }
-      	sortTimout = setTimeout(function (){
-      	onSortLetterClick(_ev.target);
-      }, 1000);*/
     });
   });
 };
@@ -866,9 +859,7 @@ var onSortLetterClick = function onSortLetterClick(letterItem) {
   var siteOrigin = document.location.origin;
   letterData[letter].forEach(function (suggession) {
     var suggessionName = suggession.name;
-    var uL = letter.toUpperCase(); //suggessionName = suggessionName.replace(letter, '<span>'+letter+'</span>');
-    //suggessionName = suggessionName.replace(uL, '<span>'+uL+'</span>');
-
+    var uL = letter.toUpperCase();
     var siteFree = suggession.free;
     var freeId = suggession.free_id;
     var siteHd = suggession.hd;
@@ -902,10 +893,6 @@ var onSortLetterClick = function onSortLetterClick(letterItem) {
       letterSuggessions += '<div class="sort__collapse">' + '<div class="sort__collapse-toggle" collapse-toggle-js data-container="sort-collapse-' + suggessionIndex + '">' + '<div><span>#' + suggessionIndex + '</span></div>' + '<div><img src="' + catIcon + '" />' + '<p>' + suggessionName + '</p>' + '</div>' + '<div><i class="icon-font icon-arrow-angle"></i></div></div>' + '<div class="sort__collapse-body" id="sort-collapse-' + suggessionIndex + '" collapse-body-js>' + htmlFree + htmlHd + '</div>' + '</div>';
     } else {
       var toggleLink = siteHd != '' ? siteHd : siteFree;
-
-      if (currentLang != 'en') {//toggleLink = toggleLink.replace(siteOrigin+'/', siteOrigin+'/'+currentLang+'/');
-      }
-
       letterSuggessions += '<div class="sort__collapse">' + '<a class="sort__collapse-toggle scroll_to_category11" data-category="' + (hdId != '' ? hdId : freeId) + '" href="' + toggleLink + '">' + '<div><span>#' + suggessionIndex + '</span></div>' + '<div><img src="' + catIcon + '" />' + '<p>' + suggessionName + '</p>' + '</div>' + '</a>' + '<div class="sort__collapse-body" id="sort-collapse-' + suggessionIndex + '" collapse-body-js>' + htmlFree + htmlHd + '</div>' + '</div>';
     }
 
@@ -957,17 +944,6 @@ var loadLoginForm = function loadLoginForm() {
   if (!isLoggedUser) {
     if (!document.querySelector('#login_popup')) {
       var htmlLogin = '<div class="login_container">' + '<div class="login_container_inner user_container_popup login">' + '<div class="user_tab_login">' + '<div class="login_form">' + '<div class="login_top">' + '<div class="title">Log in</div>' + '</div>' + '<form class="cleanlogin-form ajax-login-form cleanlogin-container login_bottom" action="/login/" method="post">' + '<p class="status result-message"></p>' + '<fieldset>' + '<div class="cleanlogin-field">' + '<input class="cleanlogin-field-username log_username" type="text" name="username" placeholder="Username">' + '</div>' + '<div class="cleanlogin-field">' + '<input class="cleanlogin-field-password log_password" type="password" name="password" placeholder="Password">' + '</div>' + '</fieldset>' + '<fieldset>' + '<div>' + '<input class="submit cleanlogin-field" type="submit" value="Login" name="submit">' + '<div class="remeber_me is_mobile">' + '<input type="checkbox" name="rememberme" value="forever">' + '<label>Keep me logged in?</label>' + '</div>' + '<a class="signup is_desktop popup_link_signup" href="/sign-up/">Sign up now</a>' + '<a class="forgot popup_link_forgot" href="/forgot/">Forgot password?</a>' + '</div>' + '</fieldset>' + '</form>' + '<div class="info_create_mobile is_mobile">' + '<a class="popup_link_signup" href="/sign-up/">Create New Account</a>' + '</div>' + '</div>' + '<img class="login_banner" src="/wp-content/themes/mpg/images/bg_login.png"/>' + '</div>' + '<div class="user_tab_forgot">' + '<div class="login_form">' + '<div class="login_top">' + '<div class="title">Forgot Password</div>' + '<p class="is_mobile top_forgot_text">Enter the email address associated with your account. An email will then be sent with a link to set up a new password.</p>' + '</div>' + '<div class="forgot_page">' + '<form class="cleanlogin-form cleanlogin-container login_bottom" method="post" action="/forgot/">' + '<div class="info is_desktop">' + 'Enter your email address and we\'ll email you a link to reset your password or <a href="/sign-up/" class="popup_link_signup">Sign Up</a>' + '<p class="status result-message"></p>' + '</div>' + '<input type="hidden" name="website""value=".">' + '<fieldset>' + '<div class="cleanlogin-field">' + '<input class="cleanlogin-field-username" type="text" name="username" value="" placeholder="Username (or E-mail)">' + '</div>' + '</fieldset>' + '<div>' + '<input type="submit" value="Restore password" name="submit">' + '<input type="hidden" name="action" value="restore">' + '</div>' + '</form>' + '<div class="info_create_mobile is_mobile">' + 'If you have not registered join now for free! <a class="popup_link_signup" href="/sign-up/">Create New Account</a>' + '</div>' + '</div>' + '</div>' + '<img class="login_banner" src="/wp-content/themes/mpg/images/bg_forgot.png"/>' + '</div>' + '<div class="user_tab_join">' + '<div class="login_form">' + '<div class="login_top">' + '<div class="title">Sign up</div>' + '</div>' + '<div class="cleanlogin-container login_bottom">' + '<form class="cleanlogin-form fv-form fv-form-bootstrap registraion-form" method="post" action="/sign-up/" novalidate="novalidate">' + '<div class="join_results">' + '<div class="indicator"></div>' + '<div class="alert result-message"></div>' + '</div>' + '<fieldset>' + '<div class="cleanlogin-field form-group">' + '<input class="cleanlogin-field-username" type="text" name="user_login" value="" placeholder="Username" data-fv-notempty="true" data-fv-notempty-message="Username is required" data-fv-stringlength="true" data-fv-stringlength-min="4" data-fv-stringlength-max="12" data-fv-stringlength-message="The username must be greater than 4 and less than 12 characters" data-fv-field="user_login">' + '</div>' + '<div class="cleanlogin-field form-group">' + '<input class="cleanlogin-field-password" type="password" name="user_pass" value="" autocomplete="off" placeholder="Password" data-fv-notempty="true" data-fv-notempty-message="The password is required" data-fv-stringlength="true" data-fv-stringlength-min="4" data-fv-stringlength-max="12" data-fv-stringlength-message="The password must be greater than 4 and less than 12 characters" data-fv-field="pass1">' + '</div>' + '<div class="cleanlogin-field form-group">' + '<input class="cleanlogin-field-email" type="email" name="user_email" value="" placeholder="E-mail" data-fv-notempty="true" data-fv-notempty-message="Email is required" data-fv-emailaddress="true" data-fv-emailaddress-message="Enter a valid email address" data-fv-field="user_email">' + '</div>' + '</fieldset>' + '<div>' + '<input type="submit" class="join_button" value="JOIN MR PORN GEEK NOW!" name="submit" onclick1="this.form.submit(); this.disabled = true;">' + '<input type="hidden" name="action" value="register">' + '</div>' + '<div class="already_have is_desktop">' + 'Already Have an Account? <a class="popup_link_login" href="/login/">Log in now</a>' + '</div>' + '<div class="already_have is_mobile">' + 'By registering on Mr Porn Geek. I certify I am at least 18 years old and have read and agree to its <a href="/terms/">Terms of Use</a> and <a href="/privacy-policy/">Privacy Policy</a>.' + '</div>' + '</form>' + '</div>' + '</div>' + '<img class="login_banner" src="/wp-content/themes/mpg/images/bg_signup.png"/>' + '</div>' + '</div>' + '</div>';
-      /*postTextRequest(ajaxAdminEndpoint, {
-      	action:'get_login_form'
-      }, function (result) {
-      		let loginHtml = '<a class="login_popup_close"><img src="'+themeBase+'images/btn_close.png"/></a>'+result;
-      		var e = document.createElement('div');
-      	e.setAttribute('id', 'login_popup');
-      	e.innerHTML = loginHtml;
-      		document.body.appendChild(e);
-      		renderLoginForm();
-      });*/
-
       var loginHtml = '<a class="login_popup_close"><img src="' + themeBase + 'images/btn_close.png"/></a>' + htmlLogin;
       var e = document.createElement('div');
       e.setAttribute('id', 'login_popup');
@@ -1179,12 +1155,8 @@ var initPreventBehavior = function initPreventBehavior() {
 
 
 var isMobileDevice = false;
-var homeData = [];
-var currentPopupBanner;
-var clonedPopupBanner;
-var clonedPopupTimeout;
 var isLoggedUser = false;
-var dataTime;
+var dataTime = '';
 var videoPaused = false;
 var currentLang = 'en';
 var goTop;
@@ -1213,11 +1185,8 @@ if (!Element.prototype.closest) {
   };
 }
 
-var cdnLink = '//mpgcdn.b-cdn.net';
-var contentBase = '/wp-content/';
 var themeBase = '/wp-content/themes/mpg/';
 var ajaxEndpoint = '/wp-content/themes/mpg/ajax-handler-wp.php';
-var ajaxAdminEndpoint = '/wp-admin/admin-ajax.php';
 /**
  * end POLYFILL
  * ===================================
@@ -1225,65 +1194,10 @@ var ajaxAdminEndpoint = '/wp-admin/admin-ajax.php';
 
 function initWebWorker() {
   currentLang = document.documentElement.getAttribute('lang');
-  var dataTag = "homepage_data_" + dataTime + '_' + currentLang;
-  removeOtherStorageKeys(dataTime, currentLang);
-  homeData = getWithExpiry("homepage_data_" + dataTime + '_' + currentLang);
-
-  if (homeData) {} else {//loadHomeData();
-  }
 
   if (document.body.classList.contains('home')) {} else if (document.body.classList.contains('single-sites')) {
     var event = new Event('loadCategoryData');
     window.dispatchEvent(event); // console.log('emiting category load event');
-  }
-}
-
-var loadHomeData = function loadHomeData() {
-  var url = '/wp-json/mpg/home/';
-
-  if (currentLang != 'en') {
-    url = '/wp-json/mpg/home/?lang=' + currentLang;
-  }
-
-  homeData = getWithExpiry("homepage_data_" + dataTime + '_' + currentLang);
-
-  if (homeData) {} else {
-    fetch(url).then(function (res) {
-      return res.json();
-    }).then(function (out) {
-      homeData = out;
-
-      if (homeData.code == 'rest_login_required') {} else {
-        setWithExpiry("homepage_data_" + dataTime + '_' + currentLang, homeData, 30 * 60 * 1000);
-      }
-    })["catch"](function (err) {// console.log('didnt load home data');
-    });
-  }
-};
-
-function removeOtherStorageKeys(dataTime, currentLang) {
-  var homeDataKey = "homepage_data_" + dataTime + '_' + currentLang;
-  var translationDataKey = "i18n_" + dataTime;
-  var letterMatrixDataKey = "letter_data_" + dataTime;
-
-  for (var key in localStorage) {
-    if (key.includes('homepage_data_')) {
-      if (homeDataKey != key) {
-        localStorage.removeItem(key);
-      }
-    }
-
-    if (key.includes('i18n_')) {
-      if (translationDataKey != key) {
-        localStorage.removeItem(key);
-      }
-    }
-
-    if (key.includes('letter_data_')) {
-      if (letterMatrixDataKey != key) {
-        localStorage.removeItem(key);
-      }
-    }
   }
 }
 
@@ -2052,7 +1966,6 @@ var lastMobileSimilarSite;
 
     detectDevice();
     bodyClick();
-    dataTime = document.querySelector('meta[name="data_time"]').content;
     loadTranslations();
     initHome();
     renderFavourites();
@@ -2064,8 +1977,8 @@ var lastMobileSimilarSite;
     }
 
     goTop = document.querySelector('.go-top');
-    initGotoTop();
-    letterSearch();
+    initGotoTop(); // letterSearch();
+
     search();
 
     if (document.body.classList.contains('home')) {

@@ -1,8 +1,5 @@
 let letterData = [];
 let translations = [];
-let loggedUsername='';
-let logoutUrl='';
-let sortTimout;
 let favouriteList = [];
 let isDark = '1';
 let toggleSwitch = document.querySelector('#toggle-mode');
@@ -278,20 +275,10 @@ const renderSorting = () => {
 		sortcontainer.innerHTML = letterHtml;
 	}
 
-	//onSortLetterClick(_ev.closest('[sort-letter-collapse-js]'));
-
 	document.querySelectorAll('[sort-letter-collapse-js]').forEach(function (searchLetter){
 		searchLetter.addEventListener('click', function (_ev) {
 
 			onSortLetterClick(_ev.target);
-
-			/*if(sortTimout){
-				clearTimeout(sortTimout);
-			}
-
-			sortTimout = setTimeout(function (){
-				onSortLetterClick(_ev.target);
-			}, 1000);*/
 		});
 	});
 
@@ -325,8 +312,6 @@ const onSortLetterClick = (letterItem) => {
 	letterData[letter].forEach(function (suggession){
 		let suggessionName = suggession.name;
 		let uL = letter.toUpperCase();
-		//suggessionName = suggessionName.replace(letter, '<span>'+letter+'</span>');
-		//suggessionName = suggessionName.replace(uL, '<span>'+uL+'</span>');
 
 		let siteFree = suggession.free;
 		let freeId = suggession.free_id;
@@ -369,10 +354,6 @@ const onSortLetterClick = (letterItem) => {
 				'</div>';
 		}else{
 			let toggleLink = ((siteHd!='')?siteHd:siteFree);
-
-			if(currentLang!='en'){
-				//toggleLink = toggleLink.replace(siteOrigin+'/', siteOrigin+'/'+currentLang+'/');
-			}
 
 			letterSuggessions += '<div class="sort__collapse">' +
 				'<a class="sort__collapse-toggle scroll_to_category11" data-category="'+((hdId!='')?hdId:freeId)+'" href="'+toggleLink+'">'+
@@ -556,23 +537,6 @@ const loadLoginForm = () => {
             '</div>'+
         '</div>'+
     '</div>';
-
-
-
-			/*postTextRequest(ajaxAdminEndpoint, {
-				action:'get_login_form'
-			}, function (result) {
-
-				let loginHtml = '<a class="login_popup_close"><img src="'+themeBase+'images/btn_close.png"/></a>'+result;
-
-				var e = document.createElement('div');
-				e.setAttribute('id', 'login_popup');
-				e.innerHTML = loginHtml;
-
-				document.body.appendChild(e);
-
-				renderLoginForm();
-			});*/
 
 			let loginHtml = '<a class="login_popup_close"><img src="'+themeBase+'images/btn_close.png"/></a>'+htmlLogin;
 

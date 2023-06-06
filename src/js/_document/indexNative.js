@@ -4,13 +4,8 @@
  */
 
 let isMobileDevice = false;
-let homeData = [];
-
-let currentPopupBanner;
-let clonedPopupBanner;
-let clonedPopupTimeout;
 let isLoggedUser = false;
-let dataTime;
+let dataTime = '';
 let videoPaused = false;
 
 let currentLang = 'en';
@@ -39,11 +34,8 @@ if (!Element.prototype.closest) {
 	};
 }
 
-const cdnLink = '//mpgcdn.b-cdn.net';
-const contentBase = '/wp-content/';
 const themeBase = '/wp-content/themes/mpg/';
 const ajaxEndpoint = '/wp-content/themes/mpg/ajax-handler-wp.php';
-const ajaxAdminEndpoint = '/wp-admin/admin-ajax.php';
 
 
 /**
@@ -55,13 +47,7 @@ function initWebWorker(){
 
 	currentLang = document.documentElement.getAttribute('lang');
 
-	let dataTag = "homepage_data_"+dataTime+'_'+currentLang;
-	removeOtherStorageKeys(dataTime, currentLang);
-	homeData = getWithExpiry("homepage_data_"+dataTime+'_'+currentLang);
-	if(homeData){
-	}else{
-		//loadHomeData();
-	}
+
 
 	if(document.body.classList.contains('home')){
 
@@ -69,62 +55,6 @@ function initWebWorker(){
 		const event = new Event('loadCategoryData');
 		window.dispatchEvent(event);
 		// console.log('emiting category load event');
-	}
-}
-
-const loadHomeData = () => {
-
-	let url = '/wp-json/mpg/home/';
-	if(currentLang!='en'){
-		url = '/wp-json/mpg/home/?lang='+currentLang;
-	}
-
-	homeData = getWithExpiry("homepage_data_"+dataTime+'_'+currentLang);
-
-	if(homeData){
-
-	}else{
-		fetch(url)
-			.then(res => res.json())
-			.then((out) => {
-				homeData = out;
-
-				if(homeData.code=='rest_login_required'){
-
-				}else{
-					setWithExpiry("homepage_data_"+dataTime+'_'+currentLang, homeData, 30*60*1000);
-				}
-
-			})
-			.catch(err => {
-				// console.log('didnt load home data');
-			});
-	}
-}
-
-function removeOtherStorageKeys(dataTime, currentLang){
-	let homeDataKey = "homepage_data_"+dataTime+'_'+currentLang;
-	let translationDataKey = "i18n_"+dataTime;
-	let letterMatrixDataKey = "letter_data_"+dataTime;
-
-	for (var key in localStorage){
-		if(key.includes('homepage_data_')){
-			if(homeDataKey!=key){
-				localStorage.removeItem(key);
-			}
-		}
-
-		if(key.includes('i18n_')){
-			if(translationDataKey!=key){
-				localStorage.removeItem(key);
-			}
-		}
-
-		if(key.includes('letter_data_')){
-			if(letterMatrixDataKey!=key){
-				localStorage.removeItem(key);
-			}
-		}
 	}
 }
 
@@ -968,7 +898,6 @@ let lastMobileSimilarSite;
 		detectDevice();
 		bodyClick();
 
-		dataTime = document.querySelector('meta[name="data_time"]').content;
 		loadTranslations();
 
 		initHome();
@@ -990,7 +919,7 @@ let lastMobileSimilarSite;
 		initGotoTop();
 
 
-		letterSearch();
+		// letterSearch();
 
 
 		search();

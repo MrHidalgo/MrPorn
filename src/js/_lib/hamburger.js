@@ -3,6 +3,8 @@
  *
  * @description Init hamburger logic with animated
  */
+let searchPage = 1;
+let isSearchActive = false;
 
 const initHamburger = () => {
 
