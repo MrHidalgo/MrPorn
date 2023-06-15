@@ -493,7 +493,6 @@
 	margin: 0 auto 140px;
 
 	@include respond('max-medium'){
-		width: 71.42857%;
 		margin-bottom: 0;
 	}
 }
@@ -715,7 +714,12 @@
 
 	@include adaptive(991.98){
 		margin-bottom: 15px;
-		padding-right: 0;
+		padding: 0 15px;
+	}
+}
+.site_images img{
+	@include adaptive(991.98){
+		height: auto;
 	}
 }
 .review_con{

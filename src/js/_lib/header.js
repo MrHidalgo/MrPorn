@@ -317,11 +317,18 @@ const onSortLetterClick = (letterItem) => {
 		let freeId = suggession.free_id;
 		let siteHd = suggession.hd;
 		let hdId = suggession.hd_id;
-		let catIcon = suggession.icon;
+		let catIcon = '/wp-content/uploads/'+suggession.icon;
 
 		if(currentLang!='en'){
 			siteFree = siteFree.replace(siteOrigin+'/', siteOrigin+'/'+currentLang+'/');
 			siteHd = siteHd.replace(siteOrigin+'/', siteOrigin+'/'+currentLang+'/');
+
+			if(currentLang != 'en' && siteFree!=''){
+				siteFree = '/'+currentLang+siteFree;
+			}
+			if(currentLang != 'en' && siteHd!=''){
+				siteHd = '/'+currentLang+siteHd;
+			}
 		}
 
 

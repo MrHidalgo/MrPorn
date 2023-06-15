@@ -864,11 +864,19 @@ var onSortLetterClick = function onSortLetterClick(letterItem) {
     var freeId = suggession.free_id;
     var siteHd = suggession.hd;
     var hdId = suggession.hd_id;
-    var catIcon = suggession.icon;
+    var catIcon = '/wp-content/uploads/' + suggession.icon;
 
     if (currentLang != 'en') {
       siteFree = siteFree.replace(siteOrigin + '/', siteOrigin + '/' + currentLang + '/');
       siteHd = siteHd.replace(siteOrigin + '/', siteOrigin + '/' + currentLang + '/');
+
+      if (currentLang != 'en' && siteFree != '') {
+        siteFree = '/' + currentLang + siteFree;
+      }
+
+      if (currentLang != 'en' && siteHd != '') {
+        siteHd = '/' + currentLang + siteHd;
+      }
     }
 
     var htmlFree = '';
@@ -1977,8 +1985,8 @@ var lastMobileSimilarSite;
     }
 
     goTop = document.querySelector('.go-top');
-    initGotoTop(); // letterSearch();
-
+    initGotoTop();
+    letterSearch();
     search();
 
     if (document.body.classList.contains('home')) {

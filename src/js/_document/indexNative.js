@@ -919,7 +919,7 @@ let lastMobileSimilarSite;
 		initGotoTop();
 
 
-		// letterSearch();
+		letterSearch();
 
 
 		search();
