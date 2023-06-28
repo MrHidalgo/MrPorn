@@ -47,7 +47,6 @@ var Pagination = {
 		Pagination.page = +this.innerHTML;
 		Pagination.Start();
 
-		console.log('changing page '+Pagination.page);
 		if(Pagination.onChange !=undefined){
 			Pagination.onChange(Pagination.page);
 		}

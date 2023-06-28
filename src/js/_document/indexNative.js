@@ -160,11 +160,6 @@ let lastMobileSimilarSite;
 			const _ev = ev.target;
 			let currentMobileSimilarSite;
 
-
-			if(_ev.closest('[sort-node-js]')){
-				console.log('Clicked sorting');
-			}
-
 			if(!_ev.closest('[sort-node-js]')){
 				let openSort = document.querySelector('.sort__drop.is-open');
 				if(openSort){
@@ -254,7 +249,6 @@ let lastMobileSimilarSite;
 			}else if(isMobileOrTablet && (currentMobileSimilarSite = _ev.closest('.category_sites_item .category_sites_item_thumb'))){
 
 				onSimilarSiteTouch(ev, currentMobileSimilarSite)
-				console.log('clicked similar site');
 			}else if(_ev.classList.contains('hdrfavttl')){
 				ev.preventDefault();
 				document.querySelector('.mobile_fav_link').classList.toggle('open');
@@ -348,7 +342,6 @@ let lastMobileSimilarSite;
 				btcHash.addEventListener('click', (ev) => {
 					if(btcHashAddress){
 						navigator.clipboard.writeText(btcHashAddress.innerText);
-						console.log('copied btc');
 
 						if(btcContainer){
 							btcContainer.classList.add('copied');
@@ -608,7 +601,6 @@ let lastMobileSimilarSite;
 		var elID = el.dataset.id,
 			elParent = el.closest('.list__box-wrapper');
 
-		console.log('Fav box '+elID);
 		el.classList.toggle('is-active');
 		addToFavourites(elID);
 	}
@@ -627,7 +619,6 @@ let lastMobileSimilarSite;
 		//const listBlock = elParent.querySelector('.list__box[data-id="' + elID + '"]'),
 			const listFavoritesBtn = document.querySelector('.list__box-favorites[data-id="' + elID + '"]');
 
-			console.log('Clicking favourite button');
 
 		el.classList.toggle('is-active');
 		if(listFavoritesBtn){
@@ -662,7 +653,6 @@ let lastMobileSimilarSite;
 			elActionNode = el.closest('[spec-actionNode-js]'),
 			dislikeBtn = elActionNode.querySelector('[spec-dislike-js]');
 
-		console.log('Trying to like '+elID);
 
 		dislikeBtn.parentElement.classList.toggle('is-hide');
 
@@ -698,9 +688,6 @@ let lastMobileSimilarSite;
 
 	function onSiteBoxDislikeClick(el){
 		var elID = el.getAttribute('data-id');
-
-		console.log('Disliking '+elID);
-
 
 
 		document.querySelector('.list__box-like[data-id="' + elID + '"]').classList.toggle('is-hide');
@@ -789,7 +776,6 @@ let lastMobileSimilarSite;
 		if(window.scrollY < blogContentHeight | blogScrollPercent < 101){
 			blogScrollPercent = (window.scrollY/ (blogContentHeight))*100;
 			blogProgressBar.style.width = blogScrollPercent+'%'
-			console.log('blog scroll percentage '+window.scrollY+' - '+blogContentHeight, blogScrollPercent)
 		}
 	}
 

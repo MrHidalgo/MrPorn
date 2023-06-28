@@ -44,8 +44,6 @@ const initMobileThemeToggle = ()=>{
 			}
 		})
 
-		console.log('current theme'+isDark);
-
 		if(isDark=='1'){
 			toggleMobileSwitch.checked = true;
 			toggleSwitch.checked = true;
@@ -86,8 +84,6 @@ const renderFavourites = () => {
 		logout:'/',
 		is_fav:true
 	}, function (res) {
-		console.log('Favouroites');
-		console.log(res);
 		if(res.status){
 			if(res.status=='true'){
 				isLoggedUser = true;

@@ -85,7 +85,6 @@ const initHamburger = () => {
 			hide(document.querySelector('[search-drop-mobile-js]'));
 			document.querySelector('.category__drop').classList.remove('is-open');
 
-			console.log('closing hamburger');
 			setInnerHeight();
 			isSearchActive = false;
 			// enableScroll()

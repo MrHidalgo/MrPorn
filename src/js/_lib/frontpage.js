@@ -284,8 +284,6 @@ function addToFavourites(siteId){
 		action:'add_to_fav',
 		site:siteId
 	}, function (res) {
-		console.log('Favouroites');
-		console.log(res);
 		renderFavourites();
 	});
 }
@@ -300,7 +298,6 @@ function removeFavourite(favItem){
 		action:'remove_fav',
 		site:favId
 	}, function (res) {
-		console.log('Removed Favouroites');
 		renderFavourites();
 	});
 }

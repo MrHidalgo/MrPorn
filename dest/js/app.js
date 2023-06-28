@@ -22,7 +22,6 @@ function setWithExpiry(key, value, ttl) {
   try {
     localStorage.setItem(key, JSON.stringify(item));
   } catch (e) {
-    console.log(e);
     clearOldLocalData(); // if (e == QUOTA_EXCEEDED_ERR) {
     // 	console.log('storage exceeded');
     // 	clearOldLocalData();
@@ -214,8 +213,6 @@ function getRequest() {
   }).then(function (response) {
     return response.json();
   }).then(function (out) {
-    console.log('Checkout this JSON! ', out);
-    console.log(data);
     callback(out);
   })["catch"](function (err) {
     console.log(err);
@@ -488,7 +485,6 @@ var initHamburger = function initHamburger() {
       document.querySelector('[search-js]').value = '';
       hide(document.querySelector('[search-drop-mobile-js]'));
       document.querySelector('.category__drop').classList.remove('is-open');
-      console.log('closing hamburger');
       setInnerHeight();
       isSearchActive = false; // enableScroll()
 
@@ -616,7 +612,6 @@ var initMobileThemeToggle = function initMobileThemeToggle() {
         document.documentElement.classList.add('light');
       }
     });
-    console.log('current theme' + isDark);
 
     if (isDark == '1') {
       toggleMobileSwitch.checked = true;
@@ -654,9 +649,6 @@ var renderFavourites = function renderFavourites() {
     logout: '/',
     is_fav: true
   }, function (res) {
-    console.log('Favouroites');
-    console.log(res);
-
     if (res.status) {
       if (res.status == 'true') {
         isLoggedUser = true;
@@ -1044,7 +1036,6 @@ var Pagination = {
   Click: function Click() {
     Pagination.page = +this.innerHTML;
     Pagination.Start();
-    console.log('changing page ' + Pagination.page);
 
     if (Pagination.onChange != undefined) {
       Pagination.onChange(Pagination.page);
@@ -1302,10 +1293,6 @@ var lastMobileSimilarSite;
       var _ev = ev.target;
       var currentMobileSimilarSite;
 
-      if (_ev.closest('[sort-node-js]')) {
-        console.log('Clicked sorting');
-      }
-
       if (!_ev.closest('[sort-node-js]')) {
         var openSort = document.querySelector('.sort__drop.is-open');
 
@@ -1393,7 +1380,6 @@ var lastMobileSimilarSite;
         toggleLoginPopups('forgot');
       } else if (isMobileOrTablet && (currentMobileSimilarSite = _ev.closest('.category_sites_item .category_sites_item_thumb'))) {
         onSimilarSiteTouch(ev, currentMobileSimilarSite);
-        console.log('clicked similar site');
       } else if (_ev.classList.contains('hdrfavttl')) {
         ev.preventDefault();
         document.querySelector('.mobile_fav_link').classList.toggle('open');
@@ -1480,7 +1466,6 @@ var lastMobileSimilarSite;
         btcHash.addEventListener('click', function (ev) {
           if (btcHashAddress) {
             navigator.clipboard.writeText(btcHashAddress.innerText);
-            console.log('copied btc');
 
             if (btcContainer) {
               btcContainer.classList.add('copied');
@@ -1717,7 +1702,6 @@ var lastMobileSimilarSite;
 
     var elID = el.dataset.id,
         elParent = el.closest('.list__box-wrapper');
-    console.log('Fav box ' + elID);
     el.classList.toggle('is-active');
     addToFavourites(elID);
   }
@@ -1733,7 +1717,6 @@ var lastMobileSimilarSite;
     addToFavourites(elID); //const listBlock = elParent.querySelector('.list__box[data-id="' + elID + '"]'),
 
     var listFavoritesBtn = document.querySelector('.list__box-favorites[data-id="' + elID + '"]');
-    console.log('Clicking favourite button');
     el.classList.toggle('is-active');
 
     if (listFavoritesBtn) {
@@ -1761,7 +1744,6 @@ var lastMobileSimilarSite;
     var elID = el.getAttribute('data-like'),
         elActionNode = el.closest('[spec-actionNode-js]'),
         dislikeBtn = elActionNode.querySelector('[spec-dislike-js]');
-    console.log('Trying to like ' + elID);
     dislikeBtn.parentElement.classList.toggle('is-hide'); //const listBlock = elParent.querySelector('.list__box[data-id="' + elID + '"]'),
     // 	const listLikeBtn = document.querySelector('.list__specification-like.list__box-like[data-like="' + elID + '"]'),
     // 	listDislikeBtn = document.querySelector('.list__box-dislike.list__specification-dislike[data-dislike="' + elID + '"]');
@@ -1792,7 +1774,6 @@ var lastMobileSimilarSite;
 
   function onSiteBoxDislikeClick(el) {
     var elID = el.getAttribute('data-id');
-    console.log('Disliking ' + elID);
     document.querySelector('.list__box-like[data-id="' + elID + '"]').classList.toggle('is-hide');
     var specificationBlock = document.querySelector('.previewModal[data-site-id="' + elID + '"]');
 
@@ -1873,7 +1854,6 @@ var lastMobileSimilarSite;
     if (window.scrollY < blogContentHeight | blogScrollPercent < 101) {
       blogScrollPercent = window.scrollY / blogContentHeight * 100;
       blogProgressBar.style.width = blogScrollPercent + '%';
-      console.log('blog scroll percentage ' + window.scrollY + ' - ' + blogContentHeight, blogScrollPercent);
     }
   }
 

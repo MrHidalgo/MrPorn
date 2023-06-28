@@ -18,8 +18,6 @@ function getRequest(url = '', data = {}, callback){
 	})
 		.then(response => response.json())
 		.then((out) => {
-			console.log('Checkout this JSON! ', out);
-			console.log(data);
 			callback(out);
 		}).catch(err => {
 			console.log(err);

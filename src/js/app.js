@@ -22,7 +22,6 @@ function setWithExpiry(key, value, ttl) {
 	try {
 		localStorage.setItem(key, JSON.stringify(item))
 	} catch (e) {
-		console.log(e);
 		clearOldLocalData();
 		// if (e == QUOTA_EXCEEDED_ERR) {
 		// 	console.log('storage exceeded');
