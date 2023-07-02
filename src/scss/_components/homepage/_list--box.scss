@@ -309,6 +309,26 @@
 			padding-right: 10px;
 		}
 
+		&-a{
+			font-weight: 800;
+			font-size: 15px;
+			text-align: center;
+			color: #d1f34b;
+
+			&:hover, &:focus{
+				color: #d1f34b;
+				text-decoration: underline;
+			}
+
+			@include respond('ipad_landscape'){
+				font-size: 13.5px;
+			}
+
+			@include adaptive(767) {
+				padding-right: 10px;
+			}
+		}
+
 		&.shake{
 			animation-delay: 2s;
 			animation: shakeCategoryBar 0.82s cubic-bezier(.36,.07,.19,.97) 3 forwards;
