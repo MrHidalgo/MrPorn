@@ -99,8 +99,6 @@ const renderFavourites = () => {
 				if(document.querySelector('.mobile_signup_link')){
 					document.querySelector('.mobile_signup_link').setAttribute('href', logoutLink);
 				}
-			}else{
-				//loadLoginForm();
 			}
 
 			document.querySelectorAll('.is-active[favorites-toggle-js]').forEach(function (fav) {

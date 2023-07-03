@@ -44,59 +44,6 @@ let popoverTagline;
 
 let categoryContainers = [];
 
-
-
-function openSlideModal(e, siteId) {
-	if(!e.target){
-		return;
-	}
-
-	trigger = document.querySelector('.swiper-slide[data-siteid="'+siteId+'"]');
-	if(!trigger){
-		return true;
-	}
-
-
-
-	if(wInnerWidth>767){
-
-	}else{
-		if(modalContainer){
-			modalContainer.style.display = 'flex'
-		}
-	}
-}
-
-
-function cancelModal(e) {
-	if (e.target && e.target.classList.contains('cancel-modal') && !isClosing) {
-		e.stopPropagation();
-	}
-
-	isClosing = true;
-
-
-
-	if(document.querySelector('[video-js]')){
-		document.querySelector('[video-js]').pause();
-	}
-
-	document.body.classList.remove('opened');
-
-
-	if(window.innerWidth<767){
-		var _isOpen = document.querySelector('.list__specification.is-open')
-		if(_isOpen){
-			_isOpen.classList.remove('is-open');
-		}
-		setTimeout(()=>{
-			modalContainer.style.display= 'none' ;
-		}, 400);
-	}else{
-
-	}
-}
-
 function initHomeTooltip(){
 	categoryContainers = document.querySelectorAll('.list__box-list');
 

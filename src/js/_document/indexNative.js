@@ -10,7 +10,6 @@ let videoPaused = false;
 
 let currentLang = 'en';
 let goTop;
-let wInnerWidth;
 let headerHeight = null;
 let isSingleBlog = false;
 let blogContent;
@@ -252,16 +251,7 @@ let lastMobileSimilarSite;
 			}else if(_ev.classList.contains('hdrfavttl')){
 				ev.preventDefault();
 				document.querySelector('.mobile_fav_link').classList.toggle('open');
-			}
-			/*else if(_ev.classList.contains('close-modal') | _ev.parentNode.classList.contains('close-modal')){
-				if(!isMobileOrTablet){
-					cancelModal(ev);
-				}
-			}*/
-
-
-
-			else if(_ev.parentNode && !_ev.closest('[search-parent-js]')){
+			}else if(_ev.parentNode && !_ev.closest('[search-parent-js]')){
 
 				if(!isMobileOrTablet){
 					if(document.querySelector('[search-js]')){
@@ -867,8 +857,6 @@ let lastMobileSimilarSite;
 	 * @description Init all method
 	 */
 	const initNative = () => {
-		wInnerWidth = window.innerWidth;
-
 		// default
 		initPreventBehavior();
 		// ==========================================
@@ -951,7 +939,6 @@ let lastMobileSimilarSite;
 		initNative();
 
 		window.addEventListener('resize', () => {
-			wInnerWidth = window.innerWidth;
 			headerHeight = document.querySelector('#header').getBoundingClientRect().height;
 
 			setInnerHeight();

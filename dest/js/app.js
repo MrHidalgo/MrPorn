@@ -661,7 +661,6 @@ var renderFavourites = function renderFavourites() {
         if (document.querySelector('.mobile_signup_link')) {
           document.querySelector('.mobile_signup_link').setAttribute('href', logoutLink);
         }
-      } else {//loadLoginForm();
       }
 
       document.querySelectorAll('.is-active[favorites-toggle-js]').forEach(function (fav) {
@@ -1159,7 +1158,6 @@ var dataTime = '';
 var videoPaused = false;
 var currentLang = 'en';
 var goTop;
-var wInnerWidth;
 var headerHeight = null;
 var isSingleBlog = false;
 var blogContent;
@@ -1383,23 +1381,17 @@ var lastMobileSimilarSite;
       } else if (_ev.classList.contains('hdrfavttl')) {
         ev.preventDefault();
         document.querySelector('.mobile_fav_link').classList.toggle('open');
-      }
-      /*else if(_ev.classList.contains('close-modal') | _ev.parentNode.classList.contains('close-modal')){
-      	if(!isMobileOrTablet){
-      		cancelModal(ev);
-      	}
-      }*/
-      else if (_ev.parentNode && !_ev.closest('[search-parent-js]')) {
-          if (!isMobileOrTablet) {
-            if (document.querySelector('[search-js]')) {
-              document.querySelector('[search-js]').value = '';
-            }
+      } else if (_ev.parentNode && !_ev.closest('[search-parent-js]')) {
+        if (!isMobileOrTablet) {
+          if (document.querySelector('[search-js]')) {
+            document.querySelector('[search-js]').value = '';
+          }
 
-            if (!_ev.closest('[search-parent-js]')) {
-              hide(document.querySelector('[search-drop-js]'));
-            }
+          if (!_ev.closest('[search-parent-js]')) {
+            hide(document.querySelector('[search-drop-js]'));
           }
         }
+      }
 
       if (!_ev.closest(className)) {
         // VIEW FAVORITES
@@ -1942,8 +1934,7 @@ var lastMobileSimilarSite;
 
 
   var initNative = function initNative() {
-    wInnerWidth = window.innerWidth; // default
-
+    // default
     initPreventBehavior(); // ==========================================
 
     currentLang = document.documentElement.getAttribute('lang'); // lib
@@ -2002,7 +1993,6 @@ var lastMobileSimilarSite;
   window.addEventListener('load', function (ev) {
     initNative();
     window.addEventListener('resize', function () {
-      wInnerWidth = window.innerWidth;
       headerHeight = document.querySelector('#header').getBoundingClientRect().height;
       setInnerHeight();
     });
