@@ -46,7 +46,6 @@ let categoryContainers = [];
 
 function initHomeTooltip(){
 	categoryContainers = document.querySelectorAll('.list__box-list');
-
 	if (!window.mobileAndTabletcheck()) {
 
 		if(homeGridInner){
