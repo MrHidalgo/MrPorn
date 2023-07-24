@@ -420,7 +420,7 @@
 				}
 			}
 
-			h2{
+			h2, &_a{
 				color: #fff;
 				font-weight: 600;
 				margin: 0;
@@ -432,8 +432,10 @@
 
 
 				&:active,
-				&:hover{
+				&:hover,
+				&:focus{
 					text-decoration: underline;
+					color: #fff;
 				}
 
 				@include adaptive(767) {
