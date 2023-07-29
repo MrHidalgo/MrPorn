@@ -140,7 +140,69 @@
 				}
 			}
 
+			&-overlay{
+				position: absolute;
+				left: 0;
+				top:0;
+				width: 100%;
+				height: 100%;
+				background: rgba(0, 0, 0, 0.5);
+			}
 
+			.url_link_count_sites {
+				position: absolute;
+				right: 8px;
+				top: 3px;
+				font-weight: 500;
+				font-size: 25px;
+				color: #fff;
+				text-shadow: 1px 1px #5a5a5a;
+				z-index: 2;
+				line-height: 30px;
+			}
+
+			.url_link_list_sites {
+				position: absolute;
+				left: 50%;
+				top: 50%;
+				margin: 0;
+				padding: 0 5px;
+				list-style: none;
+				-webkit-transform: translate(-50%, calc(-50% - 22px));
+				-ms-transform: translate(-50%, calc(-50% - 22px));
+				transform: translate(-50%, calc(-50% - 22px));
+				width: 100%;
+				z-index: 2;
+
+				li{
+					display: flex;
+					align-items: center;
+					margin: 0 0 8%;
+					padding-left: 40px;
+					text-align: left;
+					white-space: nowrap;
+					overflow: hidden;
+					text-overflow: ellipsis;
+					font-size: 13px;
+					color: #fff;
+
+					&:last-child{
+						margin-bottom: 0;
+					}
+
+					@include respond('max-large'){
+						font-size: 11px;
+						padding-left: 20px;
+						margin-bottom: 4%;
+					}
+
+					@include adaptive(767) {
+						font-size: 11px;
+						padding-left: 20px;
+						margin-bottom: 4%;
+					}
+				}
+			}
 		}
 
 		&__content{

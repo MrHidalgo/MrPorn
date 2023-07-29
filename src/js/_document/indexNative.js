@@ -898,6 +898,8 @@ let lastMobileSimilarSite;
 
 		search();
 
+		showThumbInfoOnHover();
+
 
 		if(document.body.classList.contains('home')){
 			getLikesAndDislikes();
