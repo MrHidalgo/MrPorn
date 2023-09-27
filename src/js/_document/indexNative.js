@@ -302,11 +302,11 @@ let lastMobileSimilarSite;
 		}
 
 
-		siteItem.parentNode.classList.add('touched');
-		if(lastMobileSimilarSite){
-			lastMobileSimilarSite.classList.remove('touched');
-		}
-		lastMobileSimilarSite = siteItem.parentNode;
+		// siteItem.parentNode.classList.add('touched');
+		// if(lastMobileSimilarSite){
+		// 	lastMobileSimilarSite.classList.remove('touched');
+		// }
+		// lastMobileSimilarSite = siteItem.parentNode;
 	}
 
 	function onSiteBoxHoverClick(_el){

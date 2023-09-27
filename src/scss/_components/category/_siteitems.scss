@@ -360,7 +360,7 @@
 				transform: translateX(-50%) translateY(-50%);
 			}
 
-			&__overlay{
+			&__overlay, &::before{
 				content: '';
 				position: absolute;
 				display: block;

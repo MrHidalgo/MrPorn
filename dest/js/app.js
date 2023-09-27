@@ -1159,7 +1159,13 @@ function showThumbInfoOnHover() {
         text_read = $parent.getAttribute('data-text-read'),
         text_open = $parent.getAttribute('data-text-open'),
         category = $parent.getAttribute('data-category');
-    var $block = '<div class="category_sites_item_overlay">' + '<a class="link_read" href="' + review_link + '" target="_blank">' + text_read + '<i class="icon-font icon-arrow-angle right_angle"></i>' + '</a>' + '<a class="link_site" rel="' + link_rel + '" href="' + external_link + '" target="_blank">' + text_open + '<i class="icon-font icon-out"></i>' + '</a>' + '</div>';
+    var linkOpenSite = '';
+
+    if ($this.hasAttribute('data-showopen')) {
+      linkOpenSite = '<a class="link_site" rel="' + link_rel + '" href="' + external_link + '" target="_blank">' + text_open + '<i class="icon-font icon-out"></i>' + '</a>';
+    }
+
+    var $block = '<div class="category_sites_item_overlay">' + '<a class="link_read" href="' + review_link + '" target="_blank">' + text_read + '<i class="icon-font icon-arrow-angle right_angle"></i>' + '</a>' + linkOpenSite + '</div>';
     $this.insertAdjacentHTML('beforeend', $block);
     /*if (review_link == external_link) {
     	$this.find('.link1').addClass('visibility-hidden');
@@ -1167,44 +1173,37 @@ function showThumbInfoOnHover() {
   }
 
   function removeThumbInfo(el) {
-    el.querySelector('.category_sites_item_overlay').remove();
+    var siteItemOverlay = el.querySelector('.category_sites_item_overlay');
+
+    if (siteItemOverlay) {
+      siteItemOverlay.remove();
+    }
   }
 
   var isMobileDevice = /Android|webOS|BlackBerry|iPhone|iPad|iPod|Opera Mini|IEMobile|mobile/i.test(top.navigator.userAgent);
-
-  if (isMobileDevice) {
-    $('body').on('click', '.thumbs-list-content .url_link_container .url_link_image', function (ev) {
-      var $currentThumb = $(this);
-
-      if (!$(event.target).closest('.item-link').length) {
+  var categorySitesItems = document.querySelectorAll('.category_sites_item_content');
+  categorySitesItems.forEach(function (element) {
+    if (isMobileDevice) {
+      element.addEventListener('click', function (ev) {
         ev.preventDefault();
-      }
+        element.classList.add('touched');
 
-      $currentThumb.find(".link").click(function (lev) {
-        lev.preventDefault();
+        if (lastMobileSimilarSite) {
+          lastMobileSimilarSite.classList.remove('touched');
+        }
+
+        showThumbInfo(element);
+        lastMobileSimilarSite = element;
       });
-
-      if (!$currentThumb.hasClass('touched')) {
-        $('.thumbs-list-content .url_link_container .url_link_image').each(function () {
-          var $this = $(this);
-          $this.removeClass('touched');
-          removeThumbInfo($this);
-        });
-        showThumbInfo($currentThumb);
-        $currentThumb.addClass('touched');
-      }
-    });
-  } else {
-    var categorySitesItems = document.querySelectorAll('.category_sites_item_content');
-    categorySitesItems.forEach(function (element) {
+    } else {
       element.addEventListener('mouseenter', function () {
         showThumbInfo(element);
       });
       element.addEventListener('mouseleave', function () {
         removeThumbInfo(element);
       });
-    });
-  }
+    }
+  });
 }
 /**
  * POLYFILL
@@ -1253,9 +1252,8 @@ function initWebWorker() {
   currentLang = document.documentElement.getAttribute('lang');
 
   if (document.body.classList.contains('home')) {} else if (document.body.classList.contains('single-sites')) {
-    var _event = new Event('loadCategoryData');
-
-    window.dispatchEvent(_event); // console.log('emiting category load event');
+    var event = new Event('loadCategoryData');
+    window.dispatchEvent(event); // console.log('emiting category load event');
   }
 }
 
@@ -1487,15 +1485,12 @@ var lastMobileSimilarSite;
   function onSimilarSiteTouch(ev, siteItem) {
     if (!siteItem.parentNode.classList.contains('touched')) {
       ev.preventDefault();
-    }
+    } // siteItem.parentNode.classList.add('touched');
+    // if(lastMobileSimilarSite){
+    // 	lastMobileSimilarSite.classList.remove('touched');
+    // }
+    // lastMobileSimilarSite = siteItem.parentNode;
 
-    siteItem.parentNode.classList.add('touched');
-
-    if (lastMobileSimilarSite) {
-      lastMobileSimilarSite.classList.remove('touched');
-    }
-
-    lastMobileSimilarSite = siteItem.parentNode;
   }
 
   function onSiteBoxHoverClick(_el) {
