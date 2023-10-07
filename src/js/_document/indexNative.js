@@ -930,6 +930,8 @@ let lastMobileSimilarSite;
 
 		initWebWorker();
 
+		initCategoryPage();
+
 		showAgeVerification();
 		showAcceptCookie();
 	};

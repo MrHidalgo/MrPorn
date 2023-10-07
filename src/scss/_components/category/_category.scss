@@ -39,8 +39,15 @@
 	}
 }
 .category_container{
-	display: flex;
-	flex-direction: column;
+	/*display: flex;
+	flex-direction: column;*/
+}
+.category_list-sites{
+	margin-left: 270px;
+
+	@include adaptive(767) {
+		margin-left: 0;
+	}
 }
 .category_bottom_description{
 	padding: 10px 15px;
