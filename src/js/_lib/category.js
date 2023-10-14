@@ -24,7 +24,7 @@ function initCategoryPage() {
 
             var categorySites = $this.querySelectorAll('.url_link_list_sites .deIcon')
 						var categoryThumb = $this.dataset.thumbnail;
-						var categoryTitle = '<img class="inline-icon" src="'+categoryThumb+'"/><span class="category_title">'+$categoryTitle.innerHTML+'</span>';
+						var categoryTitle = '<span class="category_title">'+$categoryTitle.innerHTML+'</span>';
 
             var count_sites = categorySites.length;
             var icons = '';
@@ -32,7 +32,7 @@ function initCategoryPage() {
                 icons += '<span><span class="' + _site.getAttribute('class') + '"></span></span>';
             })
             //var item = '<li class="item ' + item_class + '" data-id="' + $this.attr('data-id') + '">' + '<a  href="' + link + '" class="mobile_category_name" data-group-link="' + $this.find('.url_link_caption').attr('data-group-link') + '">' + '<span>' + title + '</span>' + '<div class="mobile_link_icons">' + icons + '<span class="mobile_link_ellipsis">...</span>' + '<span class="mobile_link_count">' + count_sites + '</span>' + '</div>' + '</a>' + '</li>';
-            var item = '<li class="item" >' + '<a  href="' + link + '" class="mobile_category_name">' + categoryTitle + '<div class="mobile_link_icons">' + icons + '<span class="mobile_link_ellipsis">...</span>' + '<span class="mobile_link_count">' + count_sites + '</span>' + '</div>' + '</a>' + '</li>';
+            var item = '<li class="item" >' + '<a  href="' + link + '" class="mobile_category_name"><span>' + categoryTitle + '</span><div class="mobile_link_icons">' + icons + '<span class="mobile_link_ellipsis">...</span>' + '<span class="mobile_link_count">' + count_sites + '</span>' + '</div>' + '</a>' + '</li>';
             // console.log('categoryItems '+ _category.getAttribute('href')+' - '+categoryTitle + ' - ' + icons)
             desktopMenulist.insertAdjacentHTML('beforeend', item);
         });
