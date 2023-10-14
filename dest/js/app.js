@@ -316,7 +316,7 @@ function initCategoryPage() {
     //     $('#mobile_menu_list').append('<ul>');
     // }
 
-    var otherCategoryItems = document.querySelectorAll('#other_categories .category_item_inner');
+    var otherCategoryItems = document.querySelectorAll('#other_categories .category_item_title');
     otherCategoryItems.forEach(function (_category) {
       var $this = _category;
       var link = _category.getAttribute('href');
@@ -336,7 +336,7 @@ function initCategoryPage() {
         icons += '<span><span class="' + _site.getAttribute('class') + '"></span></span>';
       });
       //var item = '<li class="item ' + item_class + '" data-id="' + $this.attr('data-id') + '">' + '<a  href="' + link + '" class="mobile_category_name" data-group-link="' + $this.find('.url_link_caption').attr('data-group-link') + '">' + '<span>' + title + '</span>' + '<div class="mobile_link_icons">' + icons + '<span class="mobile_link_ellipsis">...</span>' + '<span class="mobile_link_count">' + count_sites + '</span>' + '</div>' + '</a>' + '</li>';
-      var item = '<li class="item" >' + '<a  href="' + link + '" class="mobile_category_name">' + '<span>' + categoryTitle + '</span>' + '<div class="mobile_link_icons">' + icons + '<span class="mobile_link_ellipsis">...</span>' + '<span class="mobile_link_count">' + count_sites + '</span>' + '</div>' + '</a>' + '</li>';
+      var item = '<li class="item" >' + '<a  href="' + link + '" class="mobile_category_name">' + categoryTitle + '<div class="mobile_link_icons">' + icons + '<span class="mobile_link_ellipsis">...</span>' + '<span class="mobile_link_count">' + count_sites + '</span>' + '</div>' + '</a>' + '</li>';
       // console.log('categoryItems '+ _category.getAttribute('href')+' - '+categoryTitle + ' - ' + icons)
       desktopMenulist.insertAdjacentHTML('beforeend', item);
     });
