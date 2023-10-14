@@ -39,6 +39,14 @@
 	position: absolute;
 	top: 40px;
 	right: 10px;
+
+	@include respond('max-large'){
+		width: 26px;
+	}
+
+	@include adaptive(767) {
+		width: 26px;
+	}
 }
 @keyframes pulse-blue {
 	0% {

@@ -81,6 +81,72 @@
 			padding: 0 5px 10px;
 		}
 
+		&_title{
+			display: block;
+			color: #4e4e4e;
+			padding: 5px;
+			text-align: center;
+		}
+
+		.catD {
+			//position: absolute;
+			//bottom: 0;
+			//left: 0;
+			display: flex;
+			align-items: center;
+			width: 100%;
+			font-size: 14px;
+			font-weight: 700;
+			color: #4e4e4e;
+			padding: 5px;
+			//background: rgba(0,0,0,.8);
+			text-align: center;
+			z-index: 5;
+			line-height: 17px;
+
+			text-overflow: ellipsis;
+			overflow: hidden;
+			white-space: nowrap;
+
+			@include respond('max-large'){
+				font-size: 13px;
+			}
+			@include respond('ipad'){
+				font-size: 13px;
+			}
+
+			@include adaptive(767) {
+				font-size: 13px;
+			}
+
+			small {
+				display: block;
+				font-size: 12px;
+				font-weight: 400;
+				color: #fff;
+				line-height: 17px;
+				overflow: hidden;
+				text-overflow: ellipsis;
+				display: -webkit-box;
+				-webkit-line-clamp: 1;
+				-webkit-box-orient: vertical;
+
+				@include respond('max-large'){
+					font-size: 12px;
+				}
+
+				@include adaptive(767) {
+					font-size: 12px;
+				}
+			}
+
+			&_icon{
+				width: 28px;
+				height: 28px;
+				margin-right: 8px;
+			}
+		}
+
 		&_inner{
 			display: block;
 			width: 100%;
@@ -88,57 +154,6 @@
 			overflow: hidden;
 			outline: 1px solid #989898;
 			line-height: 0;
-
-			.catD {
-				position: absolute;
-				bottom: 0;
-				left: 0;
-				width: 100%;
-				font-size: 14px;
-				font-weight: 700;
-				color: #d1f34b;
-				padding: 5px;
-				background: rgba(0,0,0,.8);
-				text-align: center;
-				z-index: 5;
-				line-height: 17px;
-
-				text-overflow: ellipsis;
-				overflow: hidden;
-				white-space: nowrap;
-
-				@include respond('max-large'){
-					font-size: 13px;
-				}
-				@include respond('ipad'){
-					font-size: 13px;
-				}
-
-				@include adaptive(767) {
-					font-size: 13px;
-				}
-
-				small {
-					display: block;
-					font-size: 12px;
-					font-weight: 400;
-					color: #fff;
-					line-height: 17px;
-					overflow: hidden;
-					text-overflow: ellipsis;
-					display: -webkit-box;
-					-webkit-line-clamp: 1;
-					-webkit-box-orient: vertical;
-
-					@include respond('max-large'){
-						font-size: 12px;
-					}
-
-					@include adaptive(767) {
-						font-size: 12px;
-					}
-				}
-			}
 
 			&-overlay{
 				position: absolute;
@@ -159,6 +174,14 @@
 				text-shadow: 1px 1px #5a5a5a;
 				z-index: 2;
 				line-height: 30px;
+
+				@include respond('max-large'){
+					font-size: 18px;
+				}
+
+				@include adaptive(767) {
+					font-size: 18px;
+				}
 			}
 
 			.url_link_list_sites {
@@ -168,9 +191,7 @@
 				margin: 0;
 				padding: 0 5px;
 				list-style: none;
-				-webkit-transform: translate(-50%, calc(-50% - 22px));
-				-ms-transform: translate(-50%, calc(-50% - 22px));
-				transform: translate(-50%, calc(-50% - 22px));
+				transform: translate(-50%, -50%);
 				width: 100%;
 				z-index: 2;
 
