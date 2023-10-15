@@ -11,14 +11,17 @@
 	}
 
 	.inner-wrapper-sticky{
-		background: #fff;
-		padding: 0 10px;
+		transform: translate(0, 0); /* For browsers don't support translate3d. */
+		transform: translate3d(0, 0, 0);
+		will-change: position, transform;
 	}
 
   ul {
     display: flex;
     flex-wrap: wrap;
     backface-visibility: hidden;
+		background: #fff;
+		padding: 0 10px;
   }
 
   a {
@@ -65,6 +68,7 @@
 			top: 50%;
 			left: 15px;
 			transform: translateY(-50%) scale(1);
+			background-size: cover;
 		}
 		.category_title{
 			display: inline-block;

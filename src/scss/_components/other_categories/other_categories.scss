@@ -92,6 +92,7 @@
 			//position: absolute;
 			//bottom: 0;
 			//left: 0;
+			position: relative;
 			display: flex;
 			align-items: center;
 			width: 100%;
@@ -119,6 +120,11 @@
 				font-size: 13px;
 			}
 
+			&_title{
+				overflow: hidden;
+				text-overflow: ellipsis;
+			}
+
 			small {
 				display: block;
 				font-size: 12px;
@@ -144,6 +150,7 @@
 				width: 28px;
 				height: 28px;
 				margin-right: 8px;
+				background-size: cover;
 			}
 		}
 
@@ -153,7 +160,6 @@
 			position: relative;
 			overflow: hidden;
 			outline: 1px solid #989898;
-			line-height: 0;
 
 			&-overlay{
 				position: absolute;

@@ -340,11 +340,17 @@ function initCategoryPage() {
       // console.log('categoryItems '+ _category.getAttribute('href')+' - '+categoryTitle + ' - ' + icons)
       desktopMenulist.insertAdjacentHTML('beforeend', item);
     });
-    var sidebar = new StickySidebar('.desktop_menu_list', {
-      topSpacing: 20,
-      bottomSpacing: 20
-    });
+    if (document.querySelectorAll('.desktop_menu_list').length > 0) {
+      var sidebar = new StickySidebar('.desktop_menu_list', {
+        topSpacing: 20,
+        // bottomSpacing: 178,
+        containerSelector: '.category_container',
+        innerWrapperSelector: '.inner-wrapper-sticky'
+        // resizeSensor: true
+      });
+    }
   }
+
   if (document.body.classList.contains('category')) {
     createSidebar();
   }
