@@ -33,7 +33,7 @@
 
   li {
     text-transform: uppercase!important;
-    border-bottom: 1px solid #e5e5e5;
+		border-bottom: 1px solid #666;
     display: inline-block;
     width: 100%;
     background: 0 0;
@@ -71,7 +71,7 @@
 	&>span {
 		display: block;
 		padding: 8px 0 0 50px;
-		color: #4e4e4e;
+		color: #fff;
 		font-size: 14px;
 		font-weight: 500;
 
@@ -111,6 +111,17 @@
 	}
 	&:hover:after {
 		animation: pulse-grey 1s;
+	}
+}
+
+.light{
+	.desktop_menu_list li{
+		border-bottom: 1px solid #e5e5e5;
+	}
+	.mobile_category_name {
+		& > span {
+			color: #4e4e4e;
+		}
 	}
 }
 

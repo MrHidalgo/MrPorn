@@ -47,7 +47,7 @@
 		padding: 10px 15px;
 	}
 	&_header{
-		border-bottom: 3px solid #e9ebed;
+		border-bottom: 3px solid #999;
 	}
 	&_container{
 		/*display: flex;
@@ -55,6 +55,9 @@
 	}
 }
 .light{
+	&_header{
+		border-bottom: 3px solid #e9ebed;
+	}
 	.category {
 		&_list {
 			background: #fff;
@@ -76,12 +79,10 @@
 }
 
 .main_con{
-	background: #3b3b3b;
 	color: #d7d7d7;
 }
 .light{
 	.main_con{
-		background: #fff;
 		color: #333;
 	}
 }

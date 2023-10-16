@@ -37,11 +37,11 @@ function showThumbInfoOnHover() {
 	categorySitesItems.forEach(function(element) {
 
 		if (isMobileDevice) {
-			element.addEventListener('click', function(ev) {
+			element.querySelector('.category_sites_item_thumb').addEventListener('click', function(ev) {
 				ev.preventDefault();
 
 				element.classList.add('touched');
-				if(lastMobileSimilarSite){
+				if(lastMobileSimilarSite && ev.target.getAttribute('href') != lastMobileSimilarSite.getAttribute('href')){
 					lastMobileSimilarSite.classList.remove('touched');
 				}
 				showThumbInfo(element);

@@ -18,7 +18,8 @@
 		padding: 0;
 		background-size: 32px;
 		background-position: left center;
-		background-repeat: no-repeat;;
+		background-repeat: no-repeat;
+		color: #fff;
 
 		@include adaptive(1024) {
 			line-height: 26px;
@@ -136,5 +137,10 @@
 .light{
 	.blue_heading{
 		background: #1e559a;
+	}
+	.section_heading{
+		&__h1, &__h2{
+			color: #333;
+		}
 	}
 }

@@ -1,7 +1,6 @@
 // OTHER_CATEGORIES :: START
 #other_categories{
 	padding-bottom: 30px;
-	background: #3b3b3b;
 	margin-top: 20px;
 
 
@@ -83,7 +82,7 @@
 
 		&_title{
 			display: block;
-			color: #4e4e4e;
+			color: #fff;
 			padding: 5px;
 			text-align: center;
 		}
@@ -98,7 +97,7 @@
 			width: 100%;
 			font-size: 14px;
 			font-weight: 700;
-			color: #4e4e4e;
+			color: #fff;
 			padding: 5px;
 			//background: rgba(0,0,0,.8);
 			text-align: center;
@@ -160,6 +159,7 @@
 			position: relative;
 			overflow: hidden;
 			outline: 1px solid #989898;
+			line-height: 0;
 
 			&-overlay{
 				position: absolute;
@@ -249,8 +249,11 @@
 	#other_categories{
 		background: #fff;
 
-		/*.category_box{
-			background: #fff;
-		}*/
+		.category_item_title {
+			color: #4e4e4e;
+		}
+		.category_item .catD{
+			color: #4e4e4e;
+		}
 	}
 }
