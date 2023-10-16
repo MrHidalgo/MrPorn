@@ -1113,7 +1113,7 @@ function showThumbInfoOnHover() {
   var categorySitesItems = document.querySelectorAll('.category_sites_item_content');
   categorySitesItems.forEach(function (element) {
     if (isMobileDevice) {
-      element.addEventListener('click', function (ev) {
+      element.querySelector('.category_sites_item_thumb').addEventListener('click', function (ev) {
         ev.preventDefault();
         element.classList.add('touched');
         if (lastMobileSimilarSite) {
