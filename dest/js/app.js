@@ -330,7 +330,8 @@ function initCategoryPage() {
       var categorySites = $this.querySelectorAll('.url_link_list_sites .deIcon');
       var categoryThumb = $this.dataset.thumbnail;
       var categoryTitle = '<span class="category_title">' + $categoryTitle.innerHTML + '</span>';
-      var count_sites = categorySites.length;
+      var categorySiteCount = $this.querySelector('.url_link_count_sites');
+      var count_sites = categorySiteCount.textContent.replace('+', '');
       var icons = '';
       categorySites.forEach(function (_site) {
         icons += '<span><span class="' + _site.getAttribute('class') + '"></span></span>';
@@ -343,7 +344,7 @@ function initCategoryPage() {
     if (document.querySelectorAll('.desktop_menu_list').length > 0) {
       var sidebar = new StickySidebar('.desktop_menu_list', {
         topSpacing: 20,
-        // bottomSpacing: 178,
+        bottomSpacing: 20,
         containerSelector: '.category_container',
         innerWrapperSelector: '.inner-wrapper-sticky'
         // resizeSensor: true

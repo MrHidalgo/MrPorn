@@ -38,11 +38,30 @@
 		}
 	}
 }
-.category_container{
-	/*display: flex;
-	flex-direction: column;*/
 
+.category{
+	&_list{
+		background-color: #2a2b31;
+		border-color: #151515;
+		border-radius: 5px;
+		padding: 10px 15px;
+	}
+	&_header{
+		border-bottom: 3px solid #e9ebed;
+	}
+	&_container{
+		/*display: flex;
+		flex-direction: column;*/
+	}
 }
+.light{
+	.category {
+		&_list {
+			background: #fff;
+		}
+	}
+}
+
 .category_list-sites{
 	&.has_sidebar{
 		margin-left: 270px;

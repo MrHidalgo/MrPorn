@@ -1,0 +1,140 @@
+// BLUE_HEADING :: START
+.section_heading{
+	display: flex;
+	align-items: center;
+	width: 100%;
+	min-height: 48px;
+	padding-top: 10px;
+
+	@include adaptive(767) {
+	}
+
+	&__h1, &__h2{
+		font-size: 24px;
+		font-weight: 600;
+		white-space: nowrap;
+		flex: 1;
+		line-height: 48px;
+		padding: 0;
+		background-size: 32px;
+		background-position: left center;
+		background-repeat: no-repeat;;
+
+		@include adaptive(1024) {
+			line-height: 26px;
+			padding: 5px 8px;
+			font-size: 24px;
+			white-space: normal;
+		}
+
+		@include adaptive(767) {
+			font-size: 17px;
+			line-height: 20px;
+			white-space: normal;
+		}
+	}
+
+	&__h1{
+		padding-left: 40px;
+	}
+
+	.other_categories_title, .bar_title{
+		font-size: 24px;
+		color: #d1f34b;
+		line-height: 48px;
+		font-weight: 600;
+		margin: 0;
+		display: inline;
+		padding-right: 40px;
+		padding-left: 15px;
+		flex: 1;
+
+		@include respond('ipad_portrait'){
+			font-size: 22px;
+		}
+
+		@include adaptive(767) {
+			padding: 0 8px;
+			font-size: 17px;
+			white-space: normal;
+			display: flex;
+			align-items: center;
+		}
+
+		&:after{
+			content: ' ';
+			display: inline-block;
+			background: url(../images/icon-arrow-down.png) no-repeat;
+			background-position: center;
+			width: 34px;
+			height: 17px;
+			background-size: contain;
+			margin-left: 10px;
+
+			@include adaptive(767) {
+				background-position: center;
+				width: 28px;
+				height: 15px;
+			}
+		}
+	}
+
+	&_back{
+		background: url(../images/back_button_blue.png);
+		background-repeat: no-repeat;
+		background-position: 0 center;
+		padding-left: 35px;
+		color: #fff;
+		font-weight: 600;
+		font-size: 14px;
+		line-height: 48px;
+		margin-right: 18px;
+
+		&:hover{
+			color: #fff;
+		}
+
+		@include adaptive(767) {
+			display: none;
+		}
+	}
+
+	&_back_green{
+		display: flex;
+		align-items: center;
+		background: none;
+		padding-left: 35px;
+		color: #fff;
+		font-weight: 600;
+		font-size: 14px;
+		line-height: 48px;
+		margin-right: 18px;
+
+		&:before{
+			display: inline-block;
+			background: url(../images/var-icons.png) 0 0 no-repeat;
+			background-position: -218px -91px;
+			background-repeat: no-repeat;
+			width: 24px;
+			height: 24px;
+			content: ' ';
+			margin-right: 5px;
+		}
+
+		&:hover{
+			color: #fff;
+		}
+		@include adaptive(767) {
+			font-size: 0;
+			text-indent: 0;
+			margin-right: 10px;
+		}
+	}
+
+}
+
+.light{
+	.blue_heading{
+		background: #1e559a;
+	}
+}

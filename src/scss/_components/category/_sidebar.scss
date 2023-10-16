@@ -4,7 +4,6 @@
   float: left;
   will-change: min-height;
   backface-visibility: hidden;
-	background: #fff;
 
 	@include adaptive(767) {
 		display: none;
@@ -20,7 +19,6 @@
     display: flex;
     flex-wrap: wrap;
     backface-visibility: hidden;
-		background: #fff;
 		padding: 0 10px;
   }
 
@@ -47,6 +45,24 @@
       padding: 0 0 0 50px;
       font-size: 0;
     }
+		.mobile_link_ellipsis,
+		.mobile_link_count{
+			color: #96979f;
+			font-size: 14px;
+		}
+
+		&:after{
+			content: '';
+			display: inline-block;
+			width: 5px;
+			height: 10px;
+			position: absolute;
+			top: 50%;
+			right: 0;
+			transform: translateY(-50%);
+			background: url(../images/icon-angle-right.svg) no-repeat;
+			background-size: contain;
+		}
   }
 }
 
