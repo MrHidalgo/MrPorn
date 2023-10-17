@@ -72,7 +72,7 @@ const initHamburger = () => {
 		});
 	}
 
-	const searchClose = document.querySelector('.category__close');
+	const searchClose = document.querySelector('.search__close');
 	if(searchClose){
 		searchClose.addEventListener("click", (ev) => {
 			searchContainer.classList.toggle("is-open");
@@ -83,7 +83,7 @@ const initHamburger = () => {
 
 			document.querySelector('[search-js]').value = '';
 			hide(document.querySelector('[search-drop-mobile-js]'));
-			document.querySelector('.category__drop').classList.remove('is-open');
+			document.querySelector('.search__drop').classList.remove('is-open');
 
 			setInnerHeight();
 			isSearchActive = false;

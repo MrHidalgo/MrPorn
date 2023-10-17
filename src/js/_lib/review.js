@@ -41,7 +41,7 @@ function showThumbInfoOnHover() {
 				ev.preventDefault();
 
 				element.classList.add('touched');
-				if(lastMobileSimilarSite && ev.target.getAttribute('href') != lastMobileSimilarSite.getAttribute('href')){
+				if(lastMobileSimilarSite){
 					lastMobileSimilarSite.classList.remove('touched');
 				}
 				showThumbInfo(element);

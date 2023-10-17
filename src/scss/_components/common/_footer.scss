@@ -276,7 +276,6 @@ body.chatbot_active{
 
 .footer_b{
 	padding: 0 15px 15px 15px;
-	background: #fff;
 
 	&.nopadding{
 		padding: 0 0 15px;
@@ -358,6 +357,23 @@ body.chatbot_active{
 
 		&:hover{
 			color: #12478c;
+		}
+	}
+	&_img_holder{
+		border-top: none;
+		display: block;
+		margin: 0 auto 0 0;
+		border-radius: 0 0 10px 10px;
+		font-size: 0;
+		overflow: hidden;
+		position: relative;
+		padding-top: 72.41758242%;
+
+		img{
+			max-width: 100%;
+			position: absolute;
+			top: 0;
+			left: 0;
 		}
 	}
 }

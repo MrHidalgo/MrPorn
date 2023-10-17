@@ -301,8 +301,6 @@
 		&_content{
 			position: relative;
 			overflow: hidden;
-			border-radius: 5px;
-			border: 1px solid #e5e5e5;
 
 			&:hover{
 				.category_sites_item_overlay{
@@ -513,6 +511,13 @@
 				&:nth-child(2){order: -2;}
 				&:nth-child(3){order: -1;}
 			}
+		}
+	}
+
+	&.similar_sites{
+		.category_sites_item_overlay a{
+			padding: 16px 0;
+			font-size: 18px;
 		}
 	}
 }
