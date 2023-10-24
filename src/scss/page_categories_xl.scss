@@ -4,7 +4,6 @@
 	@include respond('medium') {
 		display: block;
 		flex: 0 0 235px;
-		background: #666;
 		text-align: left;
 
 		&__top{
@@ -33,7 +32,8 @@
 		&__ul{
 			list-style: none;
 			margin: 0;
-			padding: 0 0 5px;
+			padding: 0 0;
+			background: #fff;
 		}
 		&__li{
 			border-bottom: 1px solid #626262;

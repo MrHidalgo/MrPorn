@@ -119,9 +119,11 @@ $paddingRight: $paddingLeft;
 			.c-grid-main{
 				@include adaptive(767) {
 					margin-top: 115px;
+					padding: 0;
 				}
 				@include respond('mobile_landscape'){
 					margin-top: 115px;
+					padding: 0;
 				}
 			}
 		}

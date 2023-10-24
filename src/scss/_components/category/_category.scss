@@ -45,6 +45,14 @@
 		border-color: #151515;
 		border-radius: 5px;
 		padding: 10px 15px;
+
+
+		@include adaptive(767) {
+			padding: 10px 5px;
+		}
+		@include respond('ipad_portrait'){
+			padding: 10px 5px;
+		}
 	}
 	&_header{
 		border-bottom: 3px solid #999;

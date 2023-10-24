@@ -1,7 +1,6 @@
 // OTHER_CATEGORIES :: START
 #other_categories{
 	padding-bottom: 30px;
-	margin-top: 20px;
 
 
 	@include respond('ipad'){
@@ -69,15 +68,15 @@
 		@include respond('ipad_portrait'){
 			width: 33.333333%;
 			max-width: 33.33333%;
-			padding: 0 5px 10px;
+			padding: 0 0 10px;
 		}
 		@include adaptive(991.98) {
-			padding: 0 5px 10px;
+			padding: 0 0 10px;
 		}
 		@include adaptive(767) {
 			width: 50%;
 			max-width: 50%;
-			padding: 0 5px 10px;
+			padding: 0 0 10px;
 		}
 
 		&_title{
@@ -159,7 +158,6 @@
 			position: relative;
 			overflow: hidden;
 			outline: 1px solid #333;
-			border-radius: 5px;
 			line-height: 0;
 
 			&-overlay{
@@ -229,6 +227,14 @@
 						padding-left: 20px;
 						margin-bottom: 4%;
 					}
+
+					&:before{
+						content: '';
+						display: block;
+						width: 16px;
+						height: 16px;
+						margin-right: 5px;
+					}
 				}
 			}
 		}
@@ -241,6 +247,15 @@
 
 	.no_bg .category_item{
 		padding: 0 5px 10px;
+		@include respond('ipad_portrait'){
+			padding: 0 0 10px;
+		}
+		@include adaptive(991.98) {
+			padding: 0 0 10px;
+		}
+		@include adaptive(767) {
+			padding: 0 0 10px;
+		}
 	}
 }
 
