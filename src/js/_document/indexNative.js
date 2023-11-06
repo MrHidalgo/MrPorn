@@ -298,7 +298,9 @@ let lastMobileSimilarSite;
 	function onSimilarSiteTouch(ev, siteItem){
 
 		if(!siteItem.parentNode.classList.contains('touched')){
-			ev.preventDefault();
+			if(!siteItem.classList.contains('.category_video_item')){
+				ev.preventDefault();
+			}
 		}
 
 

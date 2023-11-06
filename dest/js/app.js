@@ -1128,7 +1128,14 @@ function showThumbInfoOnHover() {
   categorySitesItems.forEach(function (element) {
     if (isMobileDevice) {
       element.querySelector('.category_sites_item_thumb').addEventListener('click', function (ev) {
-        ev.preventDefault();
+        // console.log('clicking thumb info', element.classList)
+
+        if (!element.querySelector('.category_video_item')) {
+          ev.preventDefault();
+        }
+
+        // ev.preventDefault();
+
         element.classList.add('touched');
         if (lastMobileSimilarSite) {
           lastMobileSimilarSite.classList.remove('touched');
@@ -1391,7 +1398,9 @@ var lastMobileSimilarSite;
   };
   function onSimilarSiteTouch(ev, siteItem) {
     if (!siteItem.parentNode.classList.contains('touched')) {
-      ev.preventDefault();
+      if (!siteItem.classList.contains('.category_video_item')) {
+        ev.preventDefault();
+      }
     }
 
     // siteItem.parentNode.classList.add('touched');

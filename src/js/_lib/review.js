@@ -38,7 +38,13 @@ function showThumbInfoOnHover() {
 
 		if (isMobileDevice) {
 			element.querySelector('.category_sites_item_thumb').addEventListener('click', function(ev) {
-				ev.preventDefault();
+				// console.log('clicking thumb info', element.classList)
+
+				if(!element.querySelector('.category_video_item')){
+					ev.preventDefault();
+				}
+
+				// ev.preventDefault();
 
 				element.classList.add('touched');
 				if(lastMobileSimilarSite){
