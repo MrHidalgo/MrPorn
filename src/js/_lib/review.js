@@ -64,3 +64,36 @@ function showThumbInfoOnHover() {
 		}
 	});
 }
+
+function Marquee(selector, speed) {
+	const parentSelector = document.querySelector(selector);
+	const clone = parentSelector.innerHTML;
+	const firstElement = parentSelector.children[0];
+	let i = 0;
+	console.log(firstElement);
+
+	let interval;
+	parentSelector.insertAdjacentHTML('beforeend', clone);
+	parentSelector.insertAdjacentHTML('beforeend', clone);
+
+	parentSelector.onmouseover = function (e) {
+		clearInterval(interval);
+	}
+	parentSelector.onmouseleave = function (e) {
+		startMarquee()
+	}
+
+	function startMarquee(){
+		interval = setInterval(function () {
+			firstElement.style.marginLeft = `-${i}px`;
+			if (i > firstElement.clientWidth) {
+				i = 0;
+			}
+			i = i + speed;
+		}, 0.01);
+	}
+
+	startMarquee()
+}
+
+

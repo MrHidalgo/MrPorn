@@ -4,7 +4,62 @@
 	max-height: 34px;
 }
 .search {
+	&__ad{
+		display: flex;
+		align-items: center;
+		background: #125e16;
+		color: #fff;
+		padding: 5px 15px;
+		font-size: 13px;
+		line-height: 16px;
 
+		@include adaptive(767) {
+			align-items: start;
+		}
+
+		&.hide{
+			display: none;
+		}
+
+		&__link{
+			display: flex;
+			align-items: center;
+			color: #fff;
+			flex: 1;
+			padding-right: 7px;
+
+			&:hover{
+				color: #fff;
+			}
+		}
+
+		&-icon{
+			margin-right: 15px;
+		}
+		&-content{
+			flex: 1;
+
+			a{
+				color: #fff;
+				&:hover{
+					color: #fff;
+				}
+			}
+
+			span{
+				font-weight: 600;
+			}
+		}
+		&-close{
+			color: #fff;
+			font-weight: 600;
+			cursor: pointer;
+
+			&:hover{
+				color: #fff;
+			}
+		}
+	}
 
 	@include adaptive(1023) {
 		padding-top: 0;
