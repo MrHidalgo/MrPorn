@@ -1,0 +1,122 @@
+.babe{
+	&_sponsor{
+		display: flex;
+		align-items: center;
+		color: #eee;
+		padding: 0 0 0 7px;
+
+		@include adaptive(767) {
+			display: none;
+		}
+	}
+	&_slider{
+		background: #23323c;
+		border-radius: 4px;
+		margin-bottom: 10px;
+		overflow: auto;
+		display: flex;
+		align-items: stretch;
+
+		.slider{
+			overflow: hidden;
+			display: flex;
+
+			border-top-right-radius: 40px;
+			border-bottom-right-radius: 40px;
+
+			&_outer{
+				flex: 1;
+				padding: 7px;
+				overflow: hidden;
+			}
+		}
+		&_right{
+			display: flex;
+			background: #19c772;
+		}
+
+		&_item{
+			padding: 0 5px;
+
+			&-inner{
+				display: flex;
+				white-space: nowrap;
+				gap: 5px;
+				padding: 5px;
+				background: #ccc;
+				align-items: center;
+
+				@include adaptive(767) {
+					padding: 5px 35px 5px 5px;
+				}
+			}
+
+			&-icon{
+				//width: 50px;
+				height: 50px;
+
+
+				@include adaptive(767) {
+					width: 32px;
+					height: 32px;
+				}
+			}
+
+			&-title{
+				color: #000;
+				@include adaptive(767) {
+					font-size: 9px;
+				}
+			}
+			&-subtext{
+				color: green; font-weight: 600;
+				@include adaptive(767) {
+					font-size: 9px;
+				}
+			}
+		}
+
+		a{
+			color: #fff;
+			white-space: nowrap;
+		}
+	}
+	&_sitename{
+		display: flex;
+		align-items: center;
+		background: #23323c;
+		padding: 0 15px 0 0px;
+		border-top-right-radius: 40px;
+		border-bottom-right-radius: 40px;
+
+		a{
+			display: flex;
+			align-items: center;
+
+			.icon {
+				margin-right: 5px;
+			}
+		}
+
+		@include adaptive(767) {
+			padding: 0 35px 0 0;
+			border-radius: 0;
+		}
+	}
+	&_joinnow{
+		display: flex;
+		align-items: center;
+		padding: 0 7px;
+
+		&:before{
+			content: '⬤';
+			color: #fff;
+			font-size: 10px;
+			margin-right: 5px;
+		}
+
+		@include adaptive(767) {
+			display: none;
+		}
+	}
+}
