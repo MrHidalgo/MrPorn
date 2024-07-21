@@ -65,7 +65,7 @@ function showThumbInfoOnHover() {
 	});
 }
 
-function Marquee(selector, speed) {
+/*function Marquee(selector, speed) {
 	const parentSelector = document.querySelector(selector);
 	const clone = parentSelector.innerHTML;
 	const firstElement = parentSelector.children[0];
@@ -94,6 +94,6 @@ function Marquee(selector, speed) {
 	}
 
 	startMarquee()
-}
+}*/
 
 

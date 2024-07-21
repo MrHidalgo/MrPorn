@@ -4,6 +4,8 @@
 		align-items: center;
 		color: #eee;
 		padding: 0 0 0 7px;
+		background-position: center;
+		background-repeat: no-repeat;
 
 		@include adaptive(767) {
 			display: none;
@@ -16,6 +18,18 @@
 		overflow: auto;
 		display: flex;
 		align-items: stretch;
+
+		.js-marquee-wrapper{
+			display: flex;
+		}
+
+		.js-marquee{
+			background: #23323c;
+			border-radius: 4px;
+			overflow: auto;
+			display: flex;
+			align-items: stretch;
+		}
 
 		.slider{
 			overflow: hidden;
@@ -32,7 +46,7 @@
 		}
 		&_right{
 			display: flex;
-			background: #19c772;
+			background: #008c48;
 		}
 
 		&_item{
@@ -43,21 +57,17 @@
 				white-space: nowrap;
 				gap: 5px;
 				padding: 5px;
-				background: #ccc;
+				background: #eaeaea;
 				align-items: center;
-
-				@include adaptive(767) {
-					padding: 5px 35px 5px 5px;
-				}
 			}
 
 			&-icon{
 				//width: 50px;
+				max-width: 300px;
 				height: 50px;
 
 
 				@include adaptive(767) {
-					width: 32px;
 					height: 32px;
 				}
 			}
@@ -83,36 +93,46 @@
 	}
 	&_sitename{
 		display: flex;
-		align-items: center;
-		background: #23323c;
-		padding: 0 15px 0 0px;
+		align-items: stretch;
+		background-color: #23323c;
 		border-top-right-radius: 40px;
 		border-bottom-right-radius: 40px;
+		background-position: center;
+		background-repeat: no-repeat;
+		content: ' ';
 
 		a{
-			display: flex;
-			align-items: center;
-
-			.icon {
-				margin-right: 5px;
-			}
+			display: block;
+			width: 90%;
 		}
 
 		@include adaptive(767) {
-			padding: 0 35px 0 0;
+			padding: 0 5px 0 0;
 			border-radius: 0;
 		}
 	}
 	&_joinnow{
+		position: relative;
 		display: flex;
-		align-items: center;
-		padding: 0 7px;
+		align-items: stretch;
+		background-position: center;
+		background-repeat: no-repeat;
+		content: ' ';
+		margin-left: 10px;
 
 		&:before{
+			position: absolute;
+			top: 50%;
+			left: -5px;
+			transform: translateY(-50%);
 			content: '⬤';
 			color: #fff;
 			font-size: 10px;
-			margin-right: 5px;
+		}
+
+		a{
+			display: block;
+			width: 90%;
 		}
 
 		@include adaptive(767) {

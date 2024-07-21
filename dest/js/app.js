@@ -1283,39 +1283,37 @@ function showThumbInfoOnHover() {
     }
   });
 }
+/*function Marquee(selector, speed) {
+	const parentSelector = document.querySelector(selector);
+	const clone = parentSelector.innerHTML;
+	const firstElement = parentSelector.children[0];
+	let i = 0;
+	console.log(firstElement);
 
-function Marquee(selector, speed) {
-  var parentSelector = document.querySelector(selector);
-  var clone = parentSelector.innerHTML;
-  var firstElement = parentSelector.children[0];
-  var i = 0;
-  console.log(firstElement);
-  var interval;
-  parentSelector.insertAdjacentHTML('beforeend', clone);
-  parentSelector.insertAdjacentHTML('beforeend', clone);
+	let interval;
+	parentSelector.insertAdjacentHTML('beforeend', clone);
+	parentSelector.insertAdjacentHTML('beforeend', clone);
 
-  parentSelector.onmouseover = function (e) {
-    clearInterval(interval);
-  };
+	parentSelector.onmouseover = function (e) {
+		clearInterval(interval);
+	}
+	parentSelector.onmouseleave = function (e) {
+		startMarquee()
+	}
 
-  parentSelector.onmouseleave = function (e) {
-    startMarquee();
-  };
+	function startMarquee(){
+		interval = setInterval(function () {
+			firstElement.style.marginLeft = `-${i}px`;
+			if (i > firstElement.clientWidth) {
+				i = 0;
+			}
+			i = i + speed;
+		}, 0.01);
+	}
 
-  function startMarquee() {
-    interval = setInterval(function () {
-      firstElement.style.marginLeft = "-".concat(i, "px");
+	startMarquee()
+}*/
 
-      if (i > firstElement.clientWidth) {
-        i = 0;
-      }
-
-      i = i + speed;
-    }, 0.01);
-  }
-
-  startMarquee();
-}
 /**
  * POLYFILL
  * ===================================
