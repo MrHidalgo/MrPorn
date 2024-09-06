@@ -1,0 +1,13 @@
+// LIVE_JASMIN :: START
+#awe-customiframe-container-desktop{
+	display: block;
+	@include adaptive(767) {
+		display: none;
+	}
+}
+#awe-customiframe-container-mobile{
+	display: none;
+	@include adaptive(767) {
+		display: block;
+	}
+}

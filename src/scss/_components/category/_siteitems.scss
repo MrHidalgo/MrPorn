@@ -506,10 +506,13 @@
 	}
 
 	@include respond('large'){
+
 		&.cat_archive{
-			.category_sites_item{
-				&:nth-child(2){order: -2;}
-				&:nth-child(3){order: -1;}
+			&.page_1{
+				.category_sites_item{
+					&:nth-child(2){order: -2;}
+					&:nth-child(3){order: -1;}
+				}
 			}
 		}
 	}
