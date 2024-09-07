@@ -521,6 +521,12 @@
 		.category_sites_item_overlay a{
 			padding: 16px 0;
 			font-size: 18px;
+
+			@include adaptive(1024) {
+				padding: 5px 0;
+				font-size: 12px;
+				width: 70%;
+			}
 		}
 	}
 }
