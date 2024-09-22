@@ -39,13 +39,39 @@
 	position: absolute;
 	top: 40px;
 	right: 10px;
+	background-size: contain;
 
-	@include respond('max-large'){
-		width: 26px;
+	&.hd{
+		background-image: url(../images/icon_hd.png);
+		background-size: contain;
+		width: 43px;
+		height: 41px;
+
+		@include respond('max-large'){
+			width: 26px;
+			height: 25px;
+		}
+
+		@include adaptive(767) {
+			width: 26px;
+			height: 25px;
+		}
 	}
+	&.yt{
+		background-image: url(../images/icon_youtube.png);
+		background-size: contain;
+		width: 46px;
+		height: 30px; 
 
-	@include adaptive(767) {
-		width: 26px;
+		@include respond('max-large'){
+			width: 26px;
+			height: 17px;
+		}
+
+		@include adaptive(767) {
+			width: 26px;
+			height: 17px;
+		}
 	}
 }
 @keyframes pulse-blue {
