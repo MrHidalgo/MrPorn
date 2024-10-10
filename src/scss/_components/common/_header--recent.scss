@@ -67,6 +67,28 @@
 
 
 
+
+		@include respond('ipad_portrait'){
+			max-height: calc((var(--vh, 1vh) * 100) - 110px);
+			overflow: auto;
+		}
+		@include respond('iphone_x_landscape'){
+			max-height: calc((var(--vh, 1vh) * 100) - 110px);
+			overflow: auto;
+		}
+		@include respond('iphone_landscape'){
+			max-height: calc((var(--vh, 1vh) * 100) - 110px);
+			overflow: auto;
+		}
+		@include respond('mobile_landscape'){
+			max-height: calc((var(--vh, 1vh) * 100) - 110px);
+			overflow: auto;
+		}
+		@include respond('galaxy_landscape'){
+			max-height: calc((var(--vh, 1vh) * 100) - 110px);
+			overflow: auto;
+		}
+
 		a {
 			display: flex;
 			align-items: center;
