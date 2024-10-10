@@ -2,6 +2,9 @@
 #other_categories{
 	padding-bottom: 30px;
 
+	&.review_site{
+		padding-bottom: 0;
+	}
 
 	@include respond('ipad'){
 	}
@@ -26,7 +29,7 @@
 		}
 
 		&.review_site{
-			padding: 15px 10px 15px;
+			padding: 15px 10px 5px;
 
 			@include adaptive(767) {
 				padding: 5px 0;

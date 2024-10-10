@@ -798,6 +798,47 @@
 		-webkit-touch-callout: none;
 		user-select: none;
 	}
+	.site_review_title_block{
+		display: flex;
+		flex-shrink: 0;
+		flex-grow: 0;
+		gap: 8px;
+		align-items: center;
+
+		.review-rank{
+			position: relative;
+			display: flex;
+			flex-shrink: 0;
+			justify-content: center;
+			align-items: center;
+			width: 50px;
+			height: 50px;
+			border-radius: 50%;
+			overflow: hidden;
+			font-weight: 500;
+			line-height: 1;
+			background-color: #767676;
+			color: #fff;
+			border: 2px solid #f0f1f5;
+			font-size: 20px;
+
+			@include adaptive(480) {
+				width: 40px;
+				height: 40px;
+				font-size: 18px;
+			}
+
+			&.rank-first{
+				background-color: #1e559a;
+			}
+			&.rank-second{
+				background-color: #396daf;
+			}
+			&.rank-third{
+				background-color: #6da9f4;
+			}
+		}
+	}
 
 	h1, h2 {
 		font-size: 45px;
@@ -813,7 +854,7 @@
 		@include adaptive(767) {
 			font-size: 24px;
 			line-height: 25px;
-			margin-bottom: 10px;
+			margin: 0;
 		}
 	}
 
