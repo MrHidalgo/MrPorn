@@ -803,40 +803,85 @@
 		flex-shrink: 0;
 		flex-grow: 0;
 		gap: 8px;
-		align-items: center;
+		margin-bottom: 6px;
+		//align-items: center;
 
 		.review-rank{
-			position: relative;
+
 			display: flex;
-			flex-shrink: 0;
-			justify-content: center;
-			align-items: center;
-			width: 50px;
-			height: 50px;
-			border-radius: 50%;
-			overflow: hidden;
-			font-weight: 500;
-			line-height: 1;
-			background-color: #767676;
-			color: #fff;
-			border: 2px solid #f0f1f5;
-			font-size: 20px;
+			flex-direction: column;
 
-			@include adaptive(480) {
-				width: 40px;
-				height: 40px;
-				font-size: 18px;
+			&-number{
+				position: relative;
+				display: flex;
+				flex-shrink: 0;
+				justify-content: center;
+				align-items: center;
+				width: 50px;
+				height: 50px;
+				border-radius: 50%;
+				overflow: hidden;
+				font-weight: 500;
+				line-height: 1;
+				background-color: #767676;
+				color: #fff;
+				border: 2px solid #f0f1f5;
+				font-size: 20px;
+				margin: 0 10px -25px 10px;
+
+				@include adaptive(767) {
+					width: 56px;
+					height: 56px;
+					font-size: 20px;
+					margin: 0;
+				}
+
+				&.rank-first{
+					background-color: #1e559a;
+				}
+				&.rank-second{
+					background-color: #396daf;
+				}
+				&.rank-third{
+					background-color: #6da9f4;
+				}
+			}
+			&-center{
+				background: #113d74;
+				flex: 1;
+				padding-top: 25px;
+				border-top-left-radius: 10px;
+				border-top-right-radius: 10px;
+
+				@include adaptive(767) {
+					display: none;
+				}
+
+				i{
+					display: block;
+					content: ' ';
+					background-image: url("../images/up-arrow.png");
+					background-size: cover;
+					height: 26px;
+					width: 27px;
+					margin: 5px auto;
+				}
 			}
 
-			&.rank-first{
-				background-color: #1e559a;
+			&-label{
+				background: #000;
+				color: #fff;
+				text-align: center;
+				text-transform: uppercase;
+				font-weight: bold;
+				border-bottom-left-radius: 5px;
+				border-bottom-right-radius: 5px;
+
+				@include adaptive(767) {
+					display: none;
+				}
 			}
-			&.rank-second{
-				background-color: #396daf;
-			}
-			&.rank-third{
-				background-color: #6da9f4;
-			}
+
 		}
 	}
 
@@ -1090,7 +1135,6 @@
 		font-weight: 900;
 		color: #fff;
 		margin-right: 10px;
-		margin-bottom: 6px;
 
 		@include adaptive(767) {
 			margin: 0 0 10px;

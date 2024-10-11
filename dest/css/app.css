@@ -4185,7 +4185,52 @@ fieldset {
   }
 }
 
-/* line 70, src/scss/_components/common/_header--recent.scss */
+@media screen and (min-device-width: 768px) and (max-device-width: 1024px) and (orientation: portrait) and (-webkit-min-device-pixel-ratio: 2) {
+  /* line 36, src/scss/_components/common/_header--recent.scss */
+  .header__recent-body {
+    max-height: -webkit-calc((var(--vh, 1vh) * 100) - 110px);
+    max-height: calc((var(--vh, 1vh) * 100) - 110px);
+    overflow: auto;
+  }
+}
+
+@media screen and (min-device-width: 375px) and (max-device-width: 812px) and (-webkit-min-device-pixel-ratio: 3) and (orientation: landscape) {
+  /* line 36, src/scss/_components/common/_header--recent.scss */
+  .header__recent-body {
+    max-height: -webkit-calc((var(--vh, 1vh) * 100) - 110px);
+    max-height: calc((var(--vh, 1vh) * 100) - 110px);
+    overflow: auto;
+  }
+}
+
+@media screen and (min-device-width: 320px) and (max-device-width: 480px) and (-webkit-min-device-pixel-ratio: 2) and (orientation: landscape) {
+  /* line 36, src/scss/_components/common/_header--recent.scss */
+  .header__recent-body {
+    max-height: -webkit-calc((var(--vh, 1vh) * 100) - 110px);
+    max-height: calc((var(--vh, 1vh) * 100) - 110px);
+    overflow: auto;
+  }
+}
+
+@media screen and (max-width: 1023px) and (orientation: landscape) {
+  /* line 36, src/scss/_components/common/_header--recent.scss */
+  .header__recent-body {
+    max-height: -webkit-calc((var(--vh, 1vh) * 100) - 110px);
+    max-height: calc((var(--vh, 1vh) * 100) - 110px);
+    overflow: auto;
+  }
+}
+
+@media screen and (device-width: 320px) and (device-height: 640px) and (-webkit-device-pixel-ratio: 2) and (orientation: landscape) {
+  /* line 36, src/scss/_components/common/_header--recent.scss */
+  .header__recent-body {
+    max-height: -webkit-calc((var(--vh, 1vh) * 100) - 110px);
+    max-height: calc((var(--vh, 1vh) * 100) - 110px);
+    overflow: auto;
+  }
+}
+
+/* line 92, src/scss/_components/common/_header--recent.scss */
 .header__recent-body a {
   display: -webkit-box;
   display: -webkit-flex;
@@ -4203,12 +4248,12 @@ fieldset {
   min-height: 65px;
 }
 
-/* line 77, src/scss/_components/common/_header--recent.scss */
+/* line 99, src/scss/_components/common/_header--recent.scss */
 .header__recent-body a:not(:last-of-type) {
   border-bottom: 1px solid #1b1d30;
 }
 
-/* line 81, src/scss/_components/common/_header--recent.scss */
+/* line 103, src/scss/_components/common/_header--recent.scss */
 .header__recent-body a .icon-font {
   margin-right: 5px;
   font-size: 20px;
@@ -4218,7 +4263,7 @@ fieldset {
           transform: scaleX(-1);
 }
 
-/* line 88, src/scss/_components/common/_header--recent.scss */
+/* line 110, src/scss/_components/common/_header--recent.scss */
 .header__recent-body a span {
   color: #ffffff;
   font-weight: 700;
@@ -7538,6 +7583,10 @@ body.chatbot_active .go-top {
   /* line 9, src/scss/_components/common/_pre-header.scss */
   .pre-header__title {
     font-size: 10px;
+    /*&:before{
+				display: block;
+				content: 'The Best Porn Sites & Reviews Sorted By Quality!';
+			}*/
   }
 }
 
@@ -7548,7 +7597,12 @@ body.chatbot_active .go-top {
   }
 }
 
-/* line 29, src/scss/_components/common/_pre-header.scss */
+/* line 36, src/scss/_components/common/_pre-header.scss */
+.pre-header .mobile_slogan {
+  max-height: 11px;
+}
+
+/* line 40, src/scss/_components/common/_pre-header.scss */
 .pre-header__hamburger {
   display: -webkit-box;
   display: -webkit-flex;
@@ -7558,7 +7612,7 @@ body.chatbot_active .go-top {
   padding-bottom: 15px;
 }
 
-/* line 34, src/scss/_components/common/_pre-header.scss */
+/* line 45, src/scss/_components/common/_pre-header.scss */
 .pre-header__hamburger-inner {
   display: -webkit-box;
   display: -webkit-flex;
@@ -7576,13 +7630,13 @@ body.chatbot_active .go-top {
   height: 19px;
 }
 
-/* line 42, src/scss/_components/common/_pre-header.scss */
+/* line 53, src/scss/_components/common/_pre-header.scss */
 .pre-header__hamburger .icon-font {
   color: #ffffff;
   font-size: 20px;
 }
 
-/* line 48, src/scss/_components/common/_pre-header.scss */
+/* line 59, src/scss/_components/common/_pre-header.scss */
 .pre-header__link {
   display: -webkit-box;
   display: -webkit-flex;
@@ -7604,7 +7658,7 @@ body.chatbot_active .go-top {
 }
 
 @media screen and (max-width: 767px) {
-  /* line 48, src/scss/_components/common/_pre-header.scss */
+  /* line 59, src/scss/_components/common/_pre-header.scss */
   .pre-header__link {
     font-size: 14px;
   }
@@ -7893,35 +7947,35 @@ body.chatbot_active .go-top {
 }
 
 @media screen and (max-width: 1023px) {
-  /* line 70, src/scss/_components/common/_pre-header.scss */
+  /* line 81, src/scss/_components/common/_pre-header.scss */
   .header__nav-link-lg {
     display: none !important;
   }
 }
 
 @media screen and (min-width: 1024px) {
-  /* line 75, src/scss/_components/common/_pre-header.scss */
+  /* line 86, src/scss/_components/common/_pre-header.scss */
   .header__nav-link-xs {
     display: none !important;
   }
 }
 
 @media screen and (max-width: 1023px) {
-  /* line 75, src/scss/_components/common/_pre-header.scss */
+  /* line 86, src/scss/_components/common/_pre-header.scss */
   .header__nav-link-xs {
     display: block;
   }
 }
 
 @media screen and (min-width: 1024px) {
-  /* line 85, src/scss/_components/common/_pre-header.scss */
+  /* line 96, src/scss/_components/common/_pre-header.scss */
   .header__nav-link-xsf {
     display: none !important;
   }
 }
 
 @media screen and (max-width: 1023px) {
-  /* line 85, src/scss/_components/common/_pre-header.scss */
+  /* line 96, src/scss/_components/common/_pre-header.scss */
   .header__nav-link-xsf {
     display: -webkit-box;
     display: -webkit-flex;
