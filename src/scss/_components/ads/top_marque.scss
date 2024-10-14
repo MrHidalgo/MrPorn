@@ -5,6 +5,10 @@
 		color: #eee;
 		padding: 0 0 0 7px;
 
+		img{
+			height: 14px;
+		}
+
 		@include adaptive(767) {
 			display: none;
 		}
@@ -16,6 +20,18 @@
 		overflow: auto;
 		display: flex;
 		align-items: stretch;
+
+		.js-marquee-wrapper{
+			display: flex;
+		}
+
+		.js-marquee{
+			background: #23323c;
+			border-radius: 4px;
+			overflow: auto;
+			display: flex;
+			align-items: stretch;
+		}
 
 		.slider{
 			overflow: hidden;
@@ -55,9 +71,17 @@
 				//width: 50px;
 				height: 50px;
 
-
 				@include adaptive(767) {
 					width: 32px;
+					height: 32px;
+				}
+			}
+
+			&-content{
+				//width: 50px;
+				height: 50px;
+				@include adaptive(767) {
+					max-width: 200px;
 					height: 32px;
 				}
 			}
@@ -93,13 +117,17 @@
 			display: flex;
 			align-items: center;
 
+			img{
+				height: 34px;
+			}
+
 			.icon {
 				margin-right: 5px;
 			}
 		}
 
 		@include adaptive(767) {
-			padding: 0 35px 0 0;
+			padding: 0 15px 0 0;
 			border-radius: 0;
 		}
 	}
@@ -113,6 +141,11 @@
 			color: #fff;
 			font-size: 10px;
 			margin-right: 5px;
+		}
+
+		img{
+			height: 14px;
+			margin-top: 5px;
 		}
 
 		@include adaptive(767) {
