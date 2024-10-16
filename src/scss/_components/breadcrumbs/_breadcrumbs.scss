@@ -26,7 +26,6 @@
 	}
 
 	&-links{
-		width: 50%;
 		color: #fff;
 		white-space: nowrap;
 		text-overflow: ellipsis;
@@ -50,6 +49,17 @@
 			}
 		}
 	}
+
+	&.review-crumbs{
+		padding: 5px 0 10px;
+		background: transparent !important;
+		font-size: 14px;
+
+		.bread-crumb-links{
+			margin: 0 -10px;
+		}
+	}
+
 	.show_similar_sites{
 		width: 50%;
 
