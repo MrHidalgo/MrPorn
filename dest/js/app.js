@@ -1490,51 +1490,16 @@ var lastMobileSimilarSite;
           scrollToCategoryOnHome(ev, _ev);
           hide(document.querySelector('[search-drop-js]'));
         }
-      } else if (_ev.classList.contains('list__specification-visit')) {
-        if (document.querySelector('[video-js]')) {
-          playPause(document.querySelector('[video-js]'));
-        }
-      } else if (_ev.closest('[spec-like-js]')) {
-        onBannerLikeClick(_ev.closest('[spec-like-js]'));
-      } else if (_ev.closest('[spec-dislike-js]')) {
-        onBannerDislikeClick(_ev.closest('[spec-dislike-js]'));
       } else if (_ev.classList.contains('js-closeAgeModal')) {
         verifyAge();
       } else if (_ev.classList.contains('acceptCookie')) {
         verifyCookie();
-      } else if (_ev.closest('[like-toggle-js]')) {
-        onSiteBoxLikeClick(_ev.closest('[like-toggle-js]'));
-      } else if (_ev.closest('[dislike-toggle-js]')) {
-        onSiteBoxDislikeClick(_ev.closest('[dislike-toggle-js]'));
-      } else if (_ev.closest('[favorites-toggle-js]')) {
-        onSiteBoxFavourite(_ev.closest('[favorites-toggle-js]'));
       } else if (_ev.closest('[un-favorites-js]')) {
         removeFavourite(_ev.closest('[un-favorites-js]'));
-      } else if (_ev.closest('[spec-favorites-js]')) {
-        onBannerFavourite(_ev.closest('[spec-favorites-js]'));
-      } else if (_ev.closest('[video-toggle-js]')) {
-        onPlayClick(_ev.closest('[video-toggle-js]'));
-      } else if (_ev.closest('[video-pause-js]')) {
-        onPauseClick(_ev.closest('[video-pause-js]'));
-      } else if (_ev.classList.contains('[video-parent-js]')) {
-        toggleVideoPlay(_ev);
-      } else if (_ev.closest('[video-parent-js]')) {
-        toggleVideoPlay(_ev.closest('[video-parent-js]'));
-      } else if (_ev.closest('[sort-letter-collapse-js]')) {//onSortLetterClick(_ev.closest('[sort-letter-collapse-js]'));
       } else if (_ev.closest('[collapse-toggle-js]')) {
         onSortToggle(_ev.closest('[collapse-toggle-js]'));
-      } else if (_ev.classList.contains('list__box-details')) {
-        onSiteBoxHoverClick(_ev);
       } else if (_ev.closest('.rating_stars') || _ev.classList.contains('rating_stars')) {
         onRatingClick();
-      } else if (_ev.closest('.list__specification-play')) {
-        onPlayClick(_ev.closest('.list__specification-play'));
-      } else if (_ev.classList.contains('list__specification-play')) {
-        onPlayClick(_ev);
-      } else if (_ev.closest('.list__specification-pause')) {
-        onPauseClick(_ev.closest('.list__specification-pause'));
-      } else if (_ev.classList.contains('list__specification-pause')) {
-        onPauseClick(_ev);
       } else if (_ev.closest('.login_popup_close')) {
         closeLoginPopups();
       } else if (_ev.classList.contains('popup_link_signup')) {
@@ -1598,79 +1563,8 @@ var lastMobileSimilarSite;
       if (!siteItem.classList.contains('.category_video_item')) {
         ev.preventDefault();
       }
-    } // siteItem.parentNode.classList.add('touched');
-    // if(lastMobileSimilarSite){
-    // 	lastMobileSimilarSite.classList.remove('touched');
-    // }
-    // lastMobileSimilarSite = siteItem.parentNode;
-
-  }
-
-  function onSiteBoxHoverClick(_el) {
-    var siteBoxLink = _el.querySelector('.site_link');
-
-    if (siteBoxLink && siteBoxLink.tagName == 'A') {
-      siteBoxLink.click();
     }
   }
-
-  var initBtcShare = function initBtcShare() {
-    var canShowBtc = getCookieMpgCookie("btch");
-
-    if (!ifBot() && canShowBtc == '' | canShowBtc != '1') {
-      renderBtcShare();
-      var btcContainer = document.querySelector('.header__action_bitcoin');
-      var btcHash = document.querySelector('.header__action_bitcoin_inner');
-
-      if (btcHash) {
-        var btcHashAddress = document.querySelector('.header__action_bitcoin .btc_hash');
-        btcHash.addEventListener('click', function (ev) {
-          if (btcHashAddress) {
-            navigator.clipboard.writeText(btcHashAddress.innerText);
-
-            if (btcContainer) {
-              btcContainer.classList.add('copied');
-              setTimeout(function () {
-                btcContainer.classList.remove('copied');
-              }, 3700);
-            }
-          }
-        });
-      }
-
-      var btcClose = document.querySelector('.btc-close');
-
-      if (btcClose) {
-        btcClose.addEventListener('click', function (ev) {
-          document.body.classList.remove('fund');
-          createCookie("btch", "1", 7);
-        });
-      }
-    }
-  };
-
-  var ifBot = function ifBot() {
-    var botUserAgentsArray = ['googlebot', 'bingbot', 'linkedinbot', 'mediapartners-google', 'lighthouse', 'insights'];
-    var agent = window.navigator.userAgent;
-    var isBotUserAgent = false;
-    botUserAgentsArray.forEach(function (_agent) {
-      if (agent.toLowerCase().indexOf(_agent.toLowerCase()) !== -1) {
-        return true;
-      }
-    });
-    return false;
-  };
-
-  var renderBtcShare = function renderBtcShare() {
-    var _btcHtml = '<div class="header__action_bitcoin-outer">' + '<div class="header__action_bitcoin">' + '        <div class="header__action_bitcoin_inner">Show Some Love For Our Work? <span class="btc_hash"><img src="/wp-content/themes/mpg/images/bitcoin.svg"/> 1Avmt3WehQVuX4uto7rRStAuEwbYZrS9op</span></div>' + '        <div class="header__action_bitcoin_copied">Copied <img src="/wp-content/themes/mpg/images/tick-icon.svg"/></div>' + '    </div>' + '        <i class="icon-font btc-close icon-close"></i>' + '    </div>';
-
-    var btcContainer = document.querySelector('.c-grid.bitcoin');
-
-    if (btcContainer) {
-      btcContainer.innerHTML = _btcHtml;
-      document.body.classList.add('fund');
-    }
-  };
 
   var viewFavoritesToggle = function viewFavoritesToggle() {
     var _btn = document.querySelector('[view-favorites-toggle-js]'),
@@ -1790,71 +1684,6 @@ var lastMobileSimilarSite;
     }
   };
 
-  function playPause(vid) {
-    if (vid.paused) {
-      videoPaused = false;
-      vid.play();
-    } else {
-      vid.pause();
-      videoPaused = true;
-    }
-  }
-
-  var videoToggle = function videoToggle() {
-    var videoPlayBtns = document.querySelectorAll('[video-toggle-js]'),
-        videoPauseBtns = document.querySelectorAll('[video-pause-js]');
-
-    for (var i = 0, len = videoPlayBtns.length; i < len; i++) {
-      videoPlayBtns[i].addEventListener('click', function (ev) {
-        var el = ev.currentTarget;
-        onPlayClick(el);
-      }, false);
-    }
-
-    for (var _i = 0, _len = videoPauseBtns.length; _i < _len; _i++) {
-      videoPauseBtns[_i].addEventListener('click', function (ev) {
-        var el = ev.currentTarget;
-        onPauseClick(el);
-      }, false);
-    }
-  };
-
-  function onPlayClick(el) {
-    var parentVideoNode = el.closest('[video-parent-js]');
-    el.classList.add('is-active');
-    parentVideoNode.querySelector('[video-pause-js]').classList.add('is-active');
-    playPause(parentVideoNode.querySelector('[video-js]'));
-  }
-
-  function onPauseClick(el) {
-    var parentVideoNode = el.closest('[video-parent-js]');
-    el.classList.remove('is-active');
-    parentVideoNode.querySelector('[video-toggle-js]').classList.remove('is-active');
-    playPause(parentVideoNode.querySelector('[video-js]'));
-    var videoJs = document.querySelector('[video-js]');
-
-    if (videoJs.paused) {
-      videoPaused = true;
-    }
-  }
-
-  function toggleVideoPlay(el) {
-    var parentVideoNode = el;
-    var video = el.querySelector('[video-js]');
-
-    if (video.paused) {
-      el.classList.add('is-active');
-      parentVideoNode.querySelector('[video-toggle-js]').classList.add('is-active');
-      parentVideoNode.querySelector('[video-pause-js]').classList.add('is-active');
-    } else {
-      el.classList.remove('is-active');
-      parentVideoNode.querySelector('[video-toggle-js]').classList.remove('is-active');
-      parentVideoNode.querySelector('[video-pause-js]').classList.remove('is-active');
-    }
-
-    playPause(el.querySelector('[video-js]'));
-  }
-
   function onSiteBoxFavourite(el) {
     if (!isLoggedUser) {
       renderLoginForm();
@@ -1867,130 +1696,7 @@ var lastMobileSimilarSite;
     addToFavourites(elID);
   }
 
-  function onBannerFavourite(el) {
-    if (!isLoggedUser) {
-      renderLoginForm();
-      return;
-    }
-
-    var elID = el.getAttribute('data-id'),
-        elParent = el.closest('.list__box-wrapper');
-    addToFavourites(elID); //const listBlock = elParent.querySelector('.list__box[data-id="' + elID + '"]'),
-
-    var listFavoritesBtn = document.querySelector('.list__box-favorites[data-id="' + elID + '"]');
-    el.classList.toggle('is-active');
-
-    if (listFavoritesBtn) {
-      listFavoritesBtn.classList.toggle('is-active');
-    }
-  }
-
-  function onSiteBoxLikeClick(el) {
-    var elID = el.getAttribute('data-id');
-    el.classList.toggle('is-active');
-    onLike(el, elID);
-    document.querySelector('.list__box-dislike[data-id="' + elID + '"]').classList.toggle('is-hide'); //const specificationBlock = elParent.querySelector('.list__specification[data-id="' + elID + '"]');
-
-    var specificationBlock = document.querySelector('.list__specification[data-id="' + elID + '"]');
-
-    if (specificationBlock) {
-      var specificationLikeBtn = specificationBlock.querySelector('[data-like="' + elID + '"]'),
-          specificationDislikeBtn = specificationBlock.querySelector('[data-dislike="' + elID + '"]');
-      specificationLikeBtn.classList.toggle('is-active');
-      specificationDislikeBtn.parentElement.classList.toggle('is-hide');
-    }
-  }
-
-  function onBannerLikeClick(el) {
-    var elID = el.getAttribute('data-like'),
-        elActionNode = el.closest('[spec-actionNode-js]'),
-        dislikeBtn = elActionNode.querySelector('[spec-dislike-js]');
-    dislikeBtn.parentElement.classList.toggle('is-hide'); //const listBlock = elParent.querySelector('.list__box[data-id="' + elID + '"]'),
-    // 	const listLikeBtn = document.querySelector('.list__specification-like.list__box-like[data-like="' + elID + '"]'),
-    // 	listDislikeBtn = document.querySelector('.list__box-dislike.list__specification-dislike[data-dislike="' + elID + '"]');
-
-    var listLikeBtn = document.querySelector('.list__specification-like[data-id="' + elID + '"]'),
-        listDislikeBtn = document.querySelector('.list__specification-dislike[data-id="' + elID + '"]');
-
-    if (!listLikeBtn) {
-      listLikeBtn = document.querySelector('.list__specification-like[data-like="' + elID + '"]');
-    }
-
-    if (!listDislikeBtn) {
-      listDislikeBtn = document.querySelector('.list__specification-dislike[data-dislike="' + elID + '"]');
-    } //el.classList.toggle('is-active');
-
-
-    if (listLikeBtn) {
-      listLikeBtn.classList.toggle('is-active');
-    }
-
-    if (listDislikeBtn) {
-      listDislikeBtn.classList.remove('is-active');
-    }
-
-    listDislikeBtn.classList.toggle('is-hide');
-    onLike(el, elID);
-  }
-
-  function onSiteBoxDislikeClick(el) {
-    var elID = el.getAttribute('data-id');
-    document.querySelector('.list__box-like[data-id="' + elID + '"]').classList.toggle('is-hide');
-    var specificationBlock = document.querySelector('.previewModal[data-site-id="' + elID + '"]');
-
-    if (specificationBlock) {
-      var specificationLikeBtn = specificationBlock.querySelector('.list__box-like[data-id="' + elID + '"]'),
-          specificationDislikeBtn = specificationBlock.querySelector('.list__box-dislike[data-id="' + elID + '"]');
-      specificationLikeBtn.classList.remove('is-active');
-      specificationDislikeBtn.classList.toggle('is-active');
-      specificationLikeBtn.parentElement.classList.toggle('is-hide');
-      onDisLike(el, elID);
-    }
-  }
-
-  function onBannerDislikeClick(el) {
-    var elID = el.getAttribute('data-dislike'),
-        elActionNode = el.closest('[spec-actionNode-js]'),
-        likeBtn = elActionNode.querySelector('[spec-like-js]');
-    likeBtn.parentElement.classList.toggle('is-hide'); //const listBlock = elParent.querySelector('.list__box[data-id="' + elID + '"]'),
-    // const listLikeBtn = document.querySelector('.list__specification-like.list__box-like[data-id="' + elID + '"]'),
-    // 	listDislikeBtn = document.querySelector('.list__box-dislike.list__specification-dislike[data-id="' + elID + '"]');
-
-    var listLikeBtn = document.querySelector('.list__specification-like[data-id="' + elID + '"]'),
-        listDislikeBtn = document.querySelector('.list__specification-dislike[data-id="' + elID + '"]');
-
-    if (!listLikeBtn) {
-      listLikeBtn = document.querySelector('.list__specification-like[data-like="' + elID + '"]');
-    }
-
-    if (!listDislikeBtn) {
-      listDislikeBtn = document.querySelector('.list__specification-dislike[data-dislike="' + elID + '"]');
-    }
-
-    if (listLikeBtn) {
-      listLikeBtn.classList.remove('is-active');
-    }
-
-    if (listDislikeBtn) {
-      listDislikeBtn.classList.toggle('is-active');
-    }
-
-    listLikeBtn.classList.toggle('is-hide');
-    onDisLike(el, elID);
-  }
-
   function initGotoTop() {
-    /*if(isMobileOrTablet){
-    	document.querySelector('body').ontouchmove = function(){
-    		var mainScroll = -document.body.getBoundingClientRect().top;
-    		if (mainScroll > 200) {
-    			show(goTop);
-    		} else {
-    			hide(goTop);
-    		}
-    	}
-    }else{
-    	}*/
     window.onscroll = function () {
       if (window.scrollY > 200) {
         show(goTop);

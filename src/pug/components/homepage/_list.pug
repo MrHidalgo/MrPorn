@@ -7,33 +7,7 @@ mixin listSliderBox(idVal, bgVal, logoVal)
 
 		img.list__box-logo(src="images/" + logoVal alt="")
 
-		.list__box-details
-			.list__box-details-left
-				button.list__box-external(type='button')
-					i.icon-font.icon-out
-				p.list__box-details-title REALITY KINGS
-				.list__rating
-					span User Rating:
-					div
-						i.icon-font.icon-star
-						i.icon-font.icon-star
-						i.icon-font.icon-star
-						i.icon-font.icon-star
-						i.icon-font.icon-star-fill
 
-			.list__box-details-right
-				button.list__box-like(type='button' data-id!= idVal like-toggle-js)
-					i.icon-font.icon-like
-				button.list__box-dislike(type='button' data-id!= idVal dislike-toggle-js)
-					i.icon-font.icon-like
-				.c-popper
-					button.list__box-favorites(type='button' data-id!= idVal favorites-toggle-js)
-						i.icon-font.icon-star-fill
-						i.icon-font.icon-star
-
-					.c-poppertext
-						u Add To Favourites
-						u Remove From Favourites
 
 		button.list__box-more(type='button')
 			i.icon-font.icon-arrow-angle
@@ -163,23 +137,6 @@ mixin listBox(sliderID, name)
 							div
 								+listSpecificationHeader()
 								+listBoxLeftBar(val)
-
-								.list__specification-right
-									div(video-parent-js)
-										if(idx === 0 || idx === 4 || idx === 8 || idx === 12)
-											//video(preload="none" video-js)
-											video(preload="none" poster='images/images-poster-video.jpg' video-js)
-												source(src="images/video1.mp4" type="video/mp4")
-										else if (idx === 2 || idx === 6 || idx === 10)
-											//video(preload="none" video-js)
-											video(preload="none" poster='images/images-poster-video.jpg' video-js)
-												source(src="images/video2.mp4" type="video/mp4")
-
-										a.list__specification-play(href="#" video-toggle-js)
-											i.icon-font.icon-play-button(video-play-js)
-
-										a.list__specification-pause(href="#" video-pause-js)
-											i.icon-font.icon-pause
 
 								+listSpecificationMoreLike(val)
 
