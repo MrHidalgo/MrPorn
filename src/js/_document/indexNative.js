@@ -135,7 +135,6 @@ function enableScroll(){
 	document.body.removeEventListener('touchmove', preventDefault);
 }
 
-let isCategoriesRendered = false;
 let lastMobileSimilarSite;
 
 (function () {
@@ -389,20 +388,6 @@ let lastMobileSimilarSite;
 
 	};
 
-
-	function onSiteBoxFavourite(el) {
-		if(!isLoggedUser){
-			renderLoginForm();
-			return ;
-		}
-
-		var elID = el.dataset.id,
-			elParent = el.closest('.list__box-wrapper');
-
-		el.classList.toggle('is-active');
-		addToFavourites(elID);
-	}
-
 	function initGotoTop(){
 		window.onscroll = function(){
 			if (window.scrollY > 200) {
@@ -431,60 +416,6 @@ let lastMobileSimilarSite;
 			blogProgressBar.style.width = blogScrollPercent+'%'
 		}
 	}
-
-	function adjustStickHeader(){
-		if(!isMobileDevice && !document.body.classList.contains('single-sites')){
-			if (window.pageYOffset >= 60) {
-				document.body.classList.add('sticky_header');
-			} else {
-				document.body.classList.remove('sticky_header');
-			}
-		}
-	}
-
-
-	const siteBoxHover = (el) => {
-		let elID = el.getAttribute('data-id'),
-			elWidth = el.clientWidth;
-
-		const parent = el.closest('[list-parent-js]'),
-			listIndicator = parent.querySelector('[list-line-js]');
-
-		let listIndicatorWidth = 0;
-
-		if(window.innerWidth >= 1024) {
-			listIndicatorWidth = 64;
-		} else if(window.innerWidth >= 768) {
-			listIndicatorWidth = 34;
-		} else {
-			listIndicatorWidth = 14;
-		}
-
-		const _elRect = el.getBoundingClientRect();
-
-		const _listContainer = document.querySelector('.c-grid.list .list__box-wrapper'),
-			_listContainerDimm = _listContainer.getBoundingClientRect();
-
-		let _sum = 0;
-
-		for(let idx = 1; idx < elID; idx++) {
-			if((_elRect.width * idx) < (_elRect.x - _listContainerDimm.x)) {
-				_sum++;
-			} else {
-				break;
-			}
-		}
-
-		let _indicatorOffset = (elWidth - listIndicatorWidth) / 2,
-			_lineOffset = ((_elRect.width * _sum) + ((_sum * 6) - 3)) + _indicatorOffset;
-
-		/*listIndicator.setAttribute(
-			'style',
-			'transform: translateX(' + _lineOffset + 'px)'
-		);*/
-
-	}
-
 
 	const detectDevice = () => {
 		let check = false;

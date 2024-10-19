@@ -46,7 +46,7 @@
 	margin-bottom: 20px;
 }
 
-.bread-crumb{
+/*.bread-crumb{
 	display: flex;
 	flex-wrap: wrap;
 
@@ -56,7 +56,7 @@
 		padding: 10px 5px;
 		margin: 0 -5px 5px;
 	}
-}
+}*/
 
 .similar-sites-row{
 
@@ -301,7 +301,7 @@
 .review_container{
 	background: #3b3b3b;
 	margin-bottom: 15px;
-	padding: 10px 25px 10px;
+	padding: 2px 25px 10px;
 
 	@include respond('max-medium'){
 		padding: 10px 0;
@@ -715,8 +715,8 @@
 .visit_link_container{
 	position: absolute;
 	top: 50%;
-	left: 10px;
-	right: 10px;
+	left: 20px;
+	right: 20px;
 	transform: translateY(-50%);
 
 	.link_btn{
@@ -724,10 +724,14 @@
 	}
 	.btn-visit_a{
 		font-size: 16px;
-		--animation-rgb-value: 192, 242, 0;
+		--animation-rgb-value: 57, 125, 0;
 
 		&:hover{
 			animation: pulse 1s infinite;
+
+			img{
+				animation: btnMainArrowUp 1s infinite;
+			}
 		}
 	}
 }
@@ -781,6 +785,7 @@
 	@include adaptive(991.98) {
 		display: flex;
 		flex-wrap: wrap;
+		padding: 0 10px;
 
 		&.dummy_thumb{
 			display: none;
@@ -820,6 +825,7 @@
 
 	.report-button{
 		background: transparent;
+		cursor: pointer;
 		border: none;
 		padding: 0;
 		display: inline-flex;
@@ -839,6 +845,10 @@
 			margin-right: 10px;
 			filter: invert(41%) sepia(0) saturate(629%) hue-rotate(138deg) brightness(98%) contrast(87%);
 		}
+	}
+
+	.review-rank-number{
+		color: #000;
 	}
 }
 .review_column{
@@ -870,7 +880,6 @@
 
 	@include adaptive(991.98){
 		margin-bottom: 15px;
-		padding: 0 15px;
 	}
 }
 .site_images img{
@@ -879,25 +888,9 @@
 	}
 }
 .review_con{
-	padding-left: 10px;
+	padding-left: 5px;
 	padding-bottom: 10px;
 	grid-area: 1 / 2 / 2 / 3;
-
-	@include adaptiveMinMax(1449.98, 768){
-		padding-left: 15px;
-	}
-
-	@include adaptiveMinMax(1199.98, 768){
-		padding-left: 15px;
-	}
-
-	@include respond('ipad_portrait'){
-		padding: 0 15px;
-	}
-
-	@include adaptive(767) {
-		padding: 0 15px;
-	}
 
 	mark {
 		background-color: #1e559a;
@@ -1402,12 +1395,11 @@
 	display: flex;
 	vertical-align: middle;
 	cursor: pointer;
-	margin-left: 10px;
 
 	@include adaptive(767) {
 		width: 150px;
 		height: 30px;
-		margin-left: 15px;
+		margin-bottom: 5px;
 	}
 }
 .new-ratingt > span {
@@ -2619,5 +2611,18 @@
 
 	100% {
 		transform: rotate(90deg) translateX(0px)
+	}
+}
+@keyframes btnMainArrowUp {
+	0% {
+		transform: translateY(0px)
+	}
+
+	50% {
+		transform: translateY(5px)
+	}
+
+	100% {
+		transform: translateY(0px)
 	}
 }

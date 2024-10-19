@@ -1,6 +1,8 @@
 // Breadcrumb :: START
 
 .bread-crumb{
+	display: flex;
+	flex-wrap: wrap;
 	padding: 5px 25px;
 	background: #4a4a4a;
 	font-size: 15px;
@@ -57,6 +59,11 @@
 		padding: 0;
 		background: transparent !important;
 		font-size: 14px;
+
+		@include adaptive(991.98) {
+			padding: 0 15px;
+		}
+
 	}
 
 	.show_similar_sites{
@@ -122,9 +129,7 @@
 		}
 
 		@include adaptive(767) {
-			padding: 3px 0;
-			font-size: 11px;
-			margin: 0 5px;
+			font-size: 12px;
 		}
 	}
 }
