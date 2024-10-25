@@ -45,16 +45,6 @@ const ajaxEndpoint = '/wp-content/themes/mpg/ajax-handler-wp.php';
 function initWebWorker(){
 
 	currentLang = document.documentElement.getAttribute('lang');
-
-
-
-	if(document.body.classList.contains('home')){
-
-	}else if(document.body.classList.contains('single-sites')){
-		const event = new Event('loadCategoryData');
-		window.dispatchEvent(event);
-		// console.log('emiting category load event');
-	}
 }
 
 function showAgeVerification(){
