@@ -35,6 +35,7 @@
 
 	.btn {
 		border: none;
+		cursor: pointer;
 		display: flex;
 		justify-content: center;
 		align-items: center;
@@ -56,16 +57,18 @@
 		}
 
 		&-primary {
-			background-color: #ff8c01;
+			background-color: #007aff;
 			color: #fff;
 
+
+
 			&:active {
-				background-color: #d77600;
+				background-color: #024b93;
 			}
 
 			@media (min-width: 1025px) {
 				&:hover {
-					background-color: #d77600;
+					background-color: #007aff;
 				}
 			}
 		}
@@ -195,7 +198,7 @@
 		display: flex;
 		align-items: center;
 		gap: 20px;
-		padding: 19px 20px;
+		padding: 10px 20px;
 
 		@media (max-width: 991px) {
 			padding: 12px 20px;
@@ -206,13 +209,14 @@
 		}
 
 		.inline-icon {
-			width: 30px;
-			height: 30px;
+			width: 40px;
+			height: 40px;
 		}
 	}
 
 	.micromodal-title {
 		display: flex;
+		align-items: center;
 		gap: 14px;
 		overflow: hidden;
 		font-size: 24px;
@@ -345,38 +349,45 @@
 		}
 	}
 }
-
-.icon-broken-link {
-	background-image: url(../images/review/broken-link.svg)
+.micromodal .icon-thumbsup{
+	background-image: url(../images/report/icon-thumbs-up.svg);
+}
+.micromodal .icon-broken-link {
+	background-image: url(../images/report/icon-broken.svg)
+}
+.micromodal .icon-inaccuracy{
+	background-image: url(../images/report/icon-inaccuracy.svg);
+}
+.micromodal .icon-comment-bubble{
+	background-image: url(../images/report/icon-bubble.svg);
+}
+.micromodal .icon-speech-bubble-icon {
+	background-image: url(../images/report/icon-bubble.svg)
+}
+.micromodal .icon-screenshot {
+	background-image: url(../images/report/icon-screen-shot.svg)
 }
 
-.icon-comment-bubble{
-	background-image: url(../images/review/speech-bubble-icon.svg)
-}
-.icon-speech-bubble-icon {
-	background-image: url(../images/review/speech-bubble-icon.svg)
-}
-.icon-screenshot {
-	background-image: url(../images/review/screenshot.svg)
+.micromodal .icon-categories {
+	background-image: url(../images/report/icon-category.svg)
 }
 
-.icon-categories {
-	background-image: url(../images/review/categories.svg)
+.micromodal .icon-spam {
+	background-image: url(../images/report/icon-spam-mail.svg)
 }
 
-.icon-spam {
-	background-image: url(../images/review/spam.svg)
+.micromodal .icon-age-limit {
+	background-image: url(../images/report/icon-18-plus.svg)
 }
 
-.icon-age-limit {
-	background-image: url(../images/review/age-limit.svg)
+.micromodal .icon-revenge {
+	background-image: url(../images/report/icon-revenge.svg)
 }
-
-.icon-revenge {
-	background-image: url(../images/review/revenge.svg)
+.micromodal .icon-speech-bubble-heart-success{
+	background-image: url(../images/report/icon-bubble.svg)
 }
-.icon-speech-bubble-heart-success{
-	background-image: url(../images/review/speech-bubble-heart-success.svg)
+.micromodal .icon-report-success{
+	background-image: url(../images/report/icon-success.svg)
 }
 
 .boogie-list {
@@ -532,6 +543,10 @@
 	background-color: #fff;
 	color: #000;
 	transition: border-color 0.2s ease;
+
+	&.has_error{
+		border: 1px solid red;
+	}
 
 	&:focus {
 		border-color: #ff8c04;
