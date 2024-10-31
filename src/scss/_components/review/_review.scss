@@ -393,7 +393,6 @@
 	border: 2px solid #fff;
 
 	@include adaptive(991.98) {
-		font-size: 0;
 	}
 
 	&:before{
@@ -446,12 +445,17 @@
 .related_sites_container{
 	.review-category{
 		margin: 0;
+
+		@include adaptive(991.98) {
+			font-size: 0;
+		}
 	}
 }
 
 .link-header{
 	position: relative;
 	display: flex;
+	justify-content: space-between;
 	align-items: center;
 	gap: 10px;
 	padding: 15px 15px 0 0;
@@ -461,7 +465,9 @@
 	color: #fff;
 
 	h2{
-		flex-grow: 1;
+		display: flex;
+		align-items: center;
+		gap: 10px;
 		word-break: break-word;
 		text-transform: uppercase;
 		font-weight: 500;
@@ -474,8 +480,6 @@
 		}
 
 		&:after{
-			position: absolute;
-			right: 5px;
 			content: ' ';
 			display: inline-block;
 			width: 22px;
@@ -681,13 +685,17 @@
 		font-size: 20px;
 	}
 	.btn-visit_a{
-		font-size: 16px;
+		font-size: 18px;
 		--animation-rgb-value: 57, 125, 0;
+
+		&::before{
+			transform: scale(1.2);
+		}
 
 		.visit_icon{
 			position: relative;
-			width: 30px;
-			height: 30px;
+			width: 18px;
+			height: 18px;
 
 			&:before{
 				content: ' ';
@@ -903,7 +911,7 @@
 	background-size: cover;
 	background-position: 0 0;
 	transition: opacity .2s ease, background-position .2s ease;
-	background-image: url(../images/back-bg.png);
+	background-image: url(../images/back-img-dark.png);
 
 	@include adaptive(991.98) {
 		order: 5;
@@ -959,6 +967,11 @@
 				animation: btnMainArrowLeft 1s infinite;
 			}
 		}
+	}
+}
+.light {
+	.back-box{
+		background-image: url(../images/back-img.png);
 	}
 }
 
@@ -1338,6 +1351,9 @@
 	.link-header{
 		h2{
 			color: #767676;
+			&::after{
+				background-image: url(../images/icon-right-arrow-light-mode.svg);
+			}
 		}
 	}
 }
@@ -2054,8 +2070,18 @@
 
 		display: flex;
 		align-items: center;
-		justify-content: center;
+		justify-content: space-between;
 		gap: 10px;
+
+		&_title{
+			display: flex;
+			align-items: center;
+			gap: 5px;
+
+			&::before{
+				transform: scale(1.2);
+			}
+		}
 
 		&:hover{
 			color: #000;
@@ -2530,7 +2556,7 @@
 	}
 
 	50% {
-		transform: translate(5px, -5px)
+		transform: translate(2px, -2px)
 	}
 
 	100% {
