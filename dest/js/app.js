@@ -1316,6 +1316,111 @@ function Marquee(selector, speed) {
 
   startMarquee();
 }
+
+var initScrollSpyButton = function initScrollSpyButton(_ref) {
+  var _ref$container = _ref.container,
+      container = _ref$container === void 0 ? null : _ref$container,
+      _ref$sections = _ref.sections,
+      sections = _ref$sections === void 0 ? [] : _ref$sections,
+      _ref$topOffset = _ref.topOffset,
+      topOffset = _ref$topOffset === void 0 ? 0 : _ref$topOffset,
+      _ref$onBeforeClick = _ref.onBeforeClick,
+      onBeforeClickAction = _ref$onBeforeClick === void 0 ? function () {} : _ref$onBeforeClick,
+      _ref$onBeforeScroll = _ref.onBeforeScroll,
+      onBeforeScrollAction = _ref$onBeforeScroll === void 0 ? function () {} : _ref$onBeforeScroll;
+  var $body = document.body;
+  var $buttons = $body.querySelectorAll('.scrollspy-btn');
+  var $container = container;
+  var $sections = sections;
+
+  var _topOffset = Math.floor(topOffset);
+
+  var setContainer = function setContainer($el) {
+    return $container = $el;
+  };
+
+  var setSections = function setSections($els) {
+    return $sections = $els;
+  };
+
+  var setTopOffset = function setTopOffset() {
+    var val = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : 0;
+    return _topOffset = Math.floor(val);
+  };
+
+  var getPercent = function getPercent() {
+    if (!$sections.length) return 0;
+    var $lastSection = $sections[$sections.length - 1];
+    var windowScrollTop = Math.floor(getWindowScrollTop());
+
+    var lastSectionTop = windowScrollTop + Math.floor($lastSection.getBoundingClientRect().top) - _topOffset;
+
+    return Math.min(windowScrollTop / lastSectionTop, 1);
+  };
+
+  var setPercentCSSProperty = function setPercentCSSProperty() {
+    var val = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : '';
+    return $buttons.forEach(function ($btn) {
+      return $btn.style.setProperty('--percent', val);
+    });
+  };
+
+  var toggleTopClass = function toggleTopClass() {
+    var val = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : 0;
+    return $buttons.forEach(function ($btn) {
+      return $btn.classList.toggle('scrollspy-btn-to-top', val >= 1);
+    });
+  };
+
+  var onScroll = function onScroll() {
+    onBeforeScrollAction();
+    var percent = getPercent();
+    setPercentCSSProperty(percent);
+    toggleTopClass(percent);
+  };
+
+  var onClick = function onClick(e) {
+    if (!isDelegatedElement(e.target, '.scrollspy-btn')) return;
+    onBeforeClickAction();
+    var windowScrollTop = Math.floor(getWindowScrollTop());
+    var windowHeight = Math.floor(window.innerHeight);
+    var top = 0;
+    Array.from($sections).some(function ($section, idx) {
+      var sectionTop = windowScrollTop + Math.floor($section.getBoundingClientRect().top);
+      var sectionBottom = windowScrollTop + Math.floor($section.getBoundingClientRect().bottom);
+      var isInView = sectionTop < windowScrollTop + windowHeight && sectionBottom > windowScrollTop + _topOffset;
+
+      if (isInView) {
+        top = $sections[idx + 1] ? windowScrollTop + Math.floor($sections[idx + 1].getBoundingClientRect().top) - _topOffset : 0;
+        return true;
+      }
+    });
+    scrollTo({
+      top: top,
+      behavior: top ? 'smooth' : 'instant'
+    });
+  };
+
+  var toggleBindScroll = function toggleBindScroll() {
+    var val = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : true;
+    return window["".concat(val ? 'add' : 'remove', "EventListener")]('scroll', onScroll);
+  };
+
+  var toggleBindClick = function toggleBindClick() {
+    var val = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : true;
+    return $body["".concat(val ? 'add' : 'remove', "EventListener")]('click', debounce(onClick));
+  };
+
+  toggleBindScroll();
+  toggleBindClick();
+  return {
+    setContainer: setContainer,
+    setSections: setSections,
+    setTopOffset: setTopOffset,
+    toggleBindScroll: toggleBindScroll,
+    toggleBindClick: toggleBindClick
+  };
+};
 /**
  * POLYFILL
  * ===================================

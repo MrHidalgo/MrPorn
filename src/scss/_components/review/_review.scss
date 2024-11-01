@@ -2077,6 +2077,9 @@
 			display: flex;
 			align-items: center;
 			gap: 5px;
+			white-space: nowrap;
+			text-overflow: ellipsis;
+			overflow: hidden;
 
 			&::before{
 				transform: scale(1.2);
