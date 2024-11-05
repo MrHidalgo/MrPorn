@@ -379,24 +379,28 @@ let lastMobileSimilarSite;
 	};
 
 	function initGotoTop(){
-		window.onscroll = function(){
-			if (window.scrollY > 200) {
-				show(goTop);
-			} else {
-				hide(goTop);
-			}
 
-			if(isSingleBlog && blogContent){
+		if(isSingleBlog && blogContent){
+			window.onscroll = function(){
+				// if (window.scrollY > 200) {
+				// 	show(goTop);
+				// } else {
+				// 	hide(goTop);
+				// }
 				onBlogScroll()
 			}
 		}
 
-		if(goTop){
-			goTop.onclick = function(event) {
-				doScrolling(0, 200);
-				return false;
-			}
-		}
+		initScrollSpyButton({
+			sections: document.querySelectorAll("[data-section]")
+		})
+
+		// if(goTop){
+		// 	goTop.onclick = function(event) {
+		// 		doScrolling(0, 200);
+		// 		return false;
+		// 	}
+		// }
 
 	}
 

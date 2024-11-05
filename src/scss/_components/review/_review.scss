@@ -270,7 +270,7 @@
 
 .review_container{
 	background: #3b3b3b;
-	padding: 2px 25px 10px;
+	padding: 2px 15px 10px;
 
 	@include respond('max-medium'){
 		padding: 5px 0 10px;
@@ -393,6 +393,7 @@
 	border: 2px solid #fff;
 
 	@include adaptive(991.98) {
+		display: none;
 	}
 
 	&:before{
@@ -477,6 +478,10 @@
 
 		@include adaptive(991.98) {
 			font-size: 20px;
+		}
+
+		&::before{
+			margin: 0;
 		}
 
 		&:after{
@@ -674,6 +679,31 @@
 	}
 
 }
+
+.visit_icon{
+	position: relative;
+	width: 18px;
+	height: 18px;
+
+	&:before{
+		content: ' ';
+		width: 100%;
+		height: 100%;
+		background-image: url("../images/review/nav-icon-frame.svg");
+		background-size: contain;
+		display: block;
+	}
+	&:after{
+		position: absolute;
+		top: 0;
+		width: 100%;
+		height: 100%;
+		content: ' ';
+		background-size: contain;
+		background-image: url("../images/review/nav-icon-arrow.svg");
+	}
+}
+
 .visit_link_container{
 	position: absolute;
 	top: 50%;
@@ -692,29 +722,7 @@
 			transform: scale(1.2);
 		}
 
-		.visit_icon{
-			position: relative;
-			width: 18px;
-			height: 18px;
 
-			&:before{
-				content: ' ';
-				width: 100%;
-				height: 100%;
-				background-image: url("../images/review/nav-icon-frame.svg");
-				background-size: contain;
-				display: block;
-			}
-			&:after{
-				position: absolute;
-				top: 0;
-				width: 100%;
-				height: 100%;
-				content: ' ';
-				background-size: contain;
-				background-image: url("../images/review/nav-icon-arrow.svg");
-			}
-		}
 
 		&:hover{
 			animation: pulse 1s infinite;
@@ -725,6 +733,8 @@
 		}
 	}
 }
+
+
 
 .review_screenshot .site_dead,
 .slide_item_inner .site_dead{
@@ -1736,100 +1746,7 @@
 	}
 }
 
-.floating_bar {
-	position: fixed;
-	bottom: 0;
-	width: 100%;
-	left: 0;
-	background: #55a126;
-	text-align: center;
-	z-index: 12;
-	line-height: 70px;
-	background: #59c404;
-	background: -moz-linear-gradient(top,#59c404 0%,#4dab03 60%,#367602 100%);
-	background: -webkit-linear-gradient(top,#59c404 0%,#4dab03 60%,#367602 100%);
-	background: linear-gradient(to bottom,#59c404 0%,#4dab03 60%,#367602 100%);
-	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#59c404',endColorstr='#367602',GradientType=0 );
-	-webkit-backface-visibility: hidden;
-	backface-visibility: hidden;
-	padding-left: 15px;
-	display: none;
 
-	@include adaptive(767){
-		display: block;
-	}
-
-	@include respond('iphone_x_landscape'){
-		line-height: 45px;
-	}
-	@include respond('iphone_8_landscape'){
-		line-height: 45px;
-	}
-
-	a{
-		color: #fff;
-		font-size: 20px;
-		font-weight: 300;
-		display: block;
-		padding-right: 70px;
-		text-overflow: ellipsis;
-		overflow: hidden;
-		white-space: nowrap;
-		line-height: 70px;
-
-		@include adaptive(767) {
-
-		}
-
-		@include respond('iphone_x_landscape'){
-			line-height: 45px;
-		}
-		@include respond('iphone_8_landscape'){
-			line-height: 45px;
-		}
-
-		span{
-			font-weight: 600;
-		}
-
-		i{
-			position: absolute;
-			height: 70px;
-			width: 70px;
-			right: 0;
-			top: 0;
-			background: #3a8300;
-			background: -moz-linear-gradient(top,#3a8300 0%,#327200 60%,#245100 100%);
-			background: -webkit-linear-gradient(top,#3a8300 0%,#327200 60%,#245100 100%);
-			background: linear-gradient(to bottom,#3a8300 0%,#327200 60%,#245100 100%);
-			filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#3a8300',endColorstr='#245100',GradientType=0 );
-
-			@include respond('iphone_x_landscape'){
-				height: 45px;
-			}
-			@include respond('iphone_8_landscape'){
-				height: 45px;
-			}
-
-			b{
-				width: 100%;
-				height: 100%;
-				content: ' ';
-				display: block;
-				background: url(../images/icon_review_floating.png)no-repeat;
-				background-position: center;
-
-				@include respond('iphone_x_landscape'){
-					background-size: auto 35px;
-				}
-				@include respond('iphone_8_landscape'){
-					background-size: auto 35px;
-				}
-			}
-
-		}
-	}
-}
 
 .below_text {
 	background: url(../images/below_text_bg.jpg);
@@ -2415,7 +2332,7 @@
 .footer {
 	@include adaptive(767) {
 		&:not(.is_dead){
-			padding-bottom: 70px;
+			padding-bottom: 80px;
 		}
 	}
 }

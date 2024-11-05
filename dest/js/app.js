@@ -1317,6 +1317,36 @@ function Marquee(selector, speed) {
   startMarquee();
 }
 
+var getWindowScrollTop = function getWindowScrollTop() {
+  return window.scrollY || window.pageYOffSet || document.documentElement.scrollTop;
+};
+
+var isDelegatedElement = function isDelegatedElement($target, trigger) {
+  var match = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : false;
+  var method = match ? 'matches' : 'closest';
+  if (!$target || !$target[method]) return false;
+  if (typeof trigger === 'string') return !!$target[method](trigger);
+  if (Array.isArray(trigger)) return trigger.some(function (className) {
+    return !!$target[method](className);
+  });
+  return false;
+};
+
+var debounce = function debounce(cb) {
+  var delay = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : 0;
+  var timer = null;
+  return function () {
+    for (var _len = arguments.length, args = new Array(_len), _key = 0; _key < _len; _key++) {
+      args[_key] = arguments[_key];
+    }
+
+    clearTimeout(timer);
+    timer = setTimeout(function () {
+      return cb.apply(void 0, args);
+    }, delay);
+  };
+};
+
 var initScrollSpyButton = function initScrollSpyButton(_ref) {
   var _ref$container = _ref.container,
       container = _ref$container === void 0 ? null : _ref$container,
@@ -1328,7 +1358,8 @@ var initScrollSpyButton = function initScrollSpyButton(_ref) {
       onBeforeClickAction = _ref$onBeforeClick === void 0 ? function () {} : _ref$onBeforeClick,
       _ref$onBeforeScroll = _ref.onBeforeScroll,
       onBeforeScrollAction = _ref$onBeforeScroll === void 0 ? function () {} : _ref$onBeforeScroll;
-  var $body = document.body;
+  var $body = document.body; // const $buttons = $body.querySelectorAll('.scrollspy-btn');
+
   var $buttons = $body.querySelectorAll('.scrollspy-btn');
   var $container = container;
   var $sections = sections;
@@ -1368,7 +1399,7 @@ var initScrollSpyButton = function initScrollSpyButton(_ref) {
   var toggleTopClass = function toggleTopClass() {
     var val = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : 0;
     return $buttons.forEach(function ($btn) {
-      return $btn.classList.toggle('scrollspy-btn-to-top', val >= 1);
+      return $btn.classList.toggle('scroll-to-top', val >= 1);
     });
   };
 
@@ -1399,6 +1430,7 @@ var initScrollSpyButton = function initScrollSpyButton(_ref) {
       top: top,
       behavior: top ? 'smooth' : 'instant'
     });
+    console.log('Scrolling to next section');
   };
 
   var toggleBindScroll = function toggleBindScroll() {
@@ -1784,24 +1816,25 @@ var lastMobileSimilarSite;
   };
 
   function initGotoTop() {
-    window.onscroll = function () {
-      if (window.scrollY > 200) {
-        show(goTop);
-      } else {
-        hide(goTop);
-      }
-
-      if (isSingleBlog && blogContent) {
+    if (isSingleBlog && blogContent) {
+      window.onscroll = function () {
+        // if (window.scrollY > 200) {
+        // 	show(goTop);
+        // } else {
+        // 	hide(goTop);
+        // }
         onBlogScroll();
-      }
-    };
-
-    if (goTop) {
-      goTop.onclick = function (event) {
-        doScrolling(0, 200);
-        return false;
       };
     }
+
+    initScrollSpyButton({
+      sections: document.querySelectorAll("[data-section]")
+    }); // if(goTop){
+    // 	goTop.onclick = function(event) {
+    // 		doScrolling(0, 200);
+    // 		return false;
+    // 	}
+    // }
   }
 
   function onBlogScroll() {
