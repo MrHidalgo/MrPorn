@@ -6720,7 +6720,7 @@ fieldset {
   text-decoration: none;
   color: #fff;
   font-size: 16px;
-  z-index: 999999;
+  z-index: 1000;
   height: 48px;
   width: 48px;
   -webkit-border-radius: 3px;
@@ -6768,6 +6768,12 @@ fieldset {
 }
 
 /* line 109, src/scss/_components/common/_footer.scss */
+.go-top svg {
+  width: 100%;
+  height: 100%;
+}
+
+/* line 114, src/scss/_components/common/_footer.scss */
 .go-top::before {
   content: '';
   position: absolute;
@@ -6784,7 +6790,7 @@ fieldset {
           mask-image: conic-gradient(var(--border-color) calc(var(--percent) * 100%), transparent 0);
 }
 
-/* line 122, src/scss/_components/common/_footer.scss */
+/* line 127, src/scss/_components/common/_footer.scss */
 .go-top:hover {
   background-color: rgba(167, 167, 167, 0.3);
 }
@@ -6799,14 +6805,14 @@ fieldset {
   }
 }
 
-/* line 132, src/scss/_components/common/_footer.scss */
+/* line 137, src/scss/_components/common/_footer.scss */
 .go-top.scroll-to-top {
   -webkit-transform: rotate(180deg);
       -ms-transform: rotate(180deg);
           transform: rotate(180deg);
 }
 
-/* line 136, src/scss/_components/common/_footer.scss */
+/* line 141, src/scss/_components/common/_footer.scss */
 .go-top .scroll-progress-bar {
   stroke: #fff;
   stroke-dasharray: var(--circ);
@@ -6817,19 +6823,19 @@ fieldset {
 }
 
 @media screen and (max-width: 991.98px) {
-  /* line 145, src/scss/_components/common/_footer.scss */
+  /* line 150, src/scss/_components/common/_footer.scss */
   .archive.category .go-top {
     left: -webkit-calc(75% - 21px);
     left: calc(75% - 21px);
   }
 }
 
-/* line 150, src/scss/_components/common/_footer.scss */
+/* line 155, src/scss/_components/common/_footer.scss */
 body.chatbot_active .go-top {
   display: none;
 }
 
-/* line 154, src/scss/_components/common/_footer.scss */
+/* line 159, src/scss/_components/common/_footer.scss */
 .light {
   /*.go-top{
 		background-color: rgba(0,0,0,.3);
@@ -6841,12 +6847,12 @@ body.chatbot_active .go-top {
 	}*/
 }
 
-/* line 164, src/scss/_components/common/_footer.scss */
+/* line 169, src/scss/_components/common/_footer.scss */
 .light .footer__nav a:hover {
   color: #000;
 }
 
-/* line 169, src/scss/_components/common/_footer.scss */
+/* line 174, src/scss/_components/common/_footer.scss */
 .footer {
   display: -webkit-box;
   display: -webkit-flex;
@@ -6860,7 +6866,7 @@ body.chatbot_active .go-top {
   z-index: 2;
 }
 
-/* line 175, src/scss/_components/common/_footer.scss */
+/* line 180, src/scss/_components/common/_footer.scss */
 .footer__wrapper-1 {
   display: -webkit-box;
   display: -webkit-flex;
@@ -6871,14 +6877,14 @@ body.chatbot_active .go-top {
 }
 
 @media screen and (max-width: 767px) {
-  /* line 175, src/scss/_components/common/_footer.scss */
+  /* line 180, src/scss/_components/common/_footer.scss */
   .footer__wrapper-1 {
     padding-top: 15px;
     padding-bottom: 15px;
   }
 }
 
-/* line 184, src/scss/_components/common/_footer.scss */
+/* line 189, src/scss/_components/common/_footer.scss */
 .footer__wrapper-2 {
   display: -webkit-box;
   display: -webkit-flex;
@@ -6896,13 +6902,13 @@ body.chatbot_active .go-top {
 }
 
 @media screen and (max-width: 767px) {
-  /* line 184, src/scss/_components/common/_footer.scss */
+  /* line 189, src/scss/_components/common/_footer.scss */
   .footer__wrapper-2 {
     margin-top: 0;
   }
 }
 
-/* line 200, src/scss/_components/common/_footer.scss */
+/* line 205, src/scss/_components/common/_footer.scss */
 .footer__container-1 {
   display: -webkit-box;
   display: -webkit-flex;
@@ -6919,7 +6925,7 @@ body.chatbot_active .go-top {
           align-items: center;
 }
 
-/* line 207, src/scss/_components/common/_footer.scss */
+/* line 212, src/scss/_components/common/_footer.scss */
 .footer__title {
   padding-bottom: 10px;
   color: #ffffff;
@@ -6928,20 +6934,20 @@ body.chatbot_active .go-top {
 }
 
 @media screen and (max-width: 1023px) {
-  /* line 207, src/scss/_components/common/_footer.scss */
+  /* line 212, src/scss/_components/common/_footer.scss */
   .footer__title {
     font-size: 20px;
   }
 }
 
 @media screen and (max-width: 767px) {
-  /* line 207, src/scss/_components/common/_footer.scss */
+  /* line 212, src/scss/_components/common/_footer.scss */
   .footer__title {
     font-size: 14px;
   }
 }
 
-/* line 220, src/scss/_components/common/_footer.scss */
+/* line 225, src/scss/_components/common/_footer.scss */
 .footer__desc {
   padding-bottom: 30px;
   color: #4b4e6b;
@@ -6950,20 +6956,20 @@ body.chatbot_active .go-top {
 }
 
 @media screen and (max-width: 1023px) {
-  /* line 220, src/scss/_components/common/_footer.scss */
+  /* line 225, src/scss/_components/common/_footer.scss */
   .footer__desc {
     font-size: 14px;
   }
 }
 
 @media screen and (max-width: 767px) {
-  /* line 220, src/scss/_components/common/_footer.scss */
+  /* line 225, src/scss/_components/common/_footer.scss */
   .footer__desc {
     font-size: 12px;
   }
 }
 
-/* line 233, src/scss/_components/common/_footer.scss */
+/* line 238, src/scss/_components/common/_footer.scss */
 .footer__nav {
   display: -webkit-box;
   display: -webkit-flex;
@@ -6982,14 +6988,14 @@ body.chatbot_active .go-top {
 }
 
 @media screen and (max-width: 1023px) {
-  /* line 233, src/scss/_components/common/_footer.scss */
+  /* line 238, src/scss/_components/common/_footer.scss */
   .footer__nav {
     font-size: 14px;
   }
 }
 
 @media screen and (max-width: 767px) {
-  /* line 233, src/scss/_components/common/_footer.scss */
+  /* line 238, src/scss/_components/common/_footer.scss */
   .footer__nav {
     -webkit-flex-wrap: wrap;
         -ms-flex-wrap: wrap;
@@ -6997,7 +7003,7 @@ body.chatbot_active .go-top {
   }
 }
 
-/* line 248, src/scss/_components/common/_footer.scss */
+/* line 253, src/scss/_components/common/_footer.scss */
 .footer__nav p {
   display: -webkit-box;
   display: -webkit-flex;
@@ -7017,13 +7023,13 @@ body.chatbot_active .go-top {
 }
 
 @media screen and (max-width: 767px) {
-  /* line 248, src/scss/_components/common/_footer.scss */
+  /* line 253, src/scss/_components/common/_footer.scss */
   .footer__nav p {
     font-size: 0;
   }
 }
 
-/* line 259, src/scss/_components/common/_footer.scss */
+/* line 264, src/scss/_components/common/_footer.scss */
 .footer__nav a {
   font-size: 16px;
   font-weight: 600;
@@ -7036,14 +7042,14 @@ body.chatbot_active .go-top {
 }
 
 @media screen and (max-width: 1023px) {
-  /* line 259, src/scss/_components/common/_footer.scss */
+  /* line 264, src/scss/_components/common/_footer.scss */
   .footer__nav a {
     font-size: 14px;
   }
 }
 
 @media screen and (max-width: 767px) {
-  /* line 259, src/scss/_components/common/_footer.scss */
+  /* line 264, src/scss/_components/common/_footer.scss */
   .footer__nav a {
     display: -webkit-box;
     display: -webkit-flex;
@@ -7058,7 +7064,7 @@ body.chatbot_active .go-top {
   }
 }
 
-/* line 276, src/scss/_components/common/_footer.scss */
+/* line 281, src/scss/_components/common/_footer.scss */
 .footer__nav a:hover {
   color: #ffffff;
   -webkit-transition: color 0.35s ease-in-out;
@@ -7066,7 +7072,7 @@ body.chatbot_active .go-top {
   transition: color 0.35s ease-in-out;
 }
 
-/* line 282, src/scss/_components/common/_footer.scss */
+/* line 287, src/scss/_components/common/_footer.scss */
 .footer__nav-item {
   display: -webkit-box;
   display: -webkit-flex;
@@ -7074,7 +7080,7 @@ body.chatbot_active .go-top {
   display: flex;
 }
 
-/* line 285, src/scss/_components/common/_footer.scss */
+/* line 290, src/scss/_components/common/_footer.scss */
 .footer__nav-item span {
   margin-left: 15px;
   margin-right: 15px;
@@ -7084,7 +7090,7 @@ body.chatbot_active .go-top {
 }
 
 @media screen and (max-width: 1023px) {
-  /* line 285, src/scss/_components/common/_footer.scss */
+  /* line 290, src/scss/_components/common/_footer.scss */
   .footer__nav-item span {
     margin-left: 10px;
     margin-right: 10px;
@@ -7093,13 +7099,13 @@ body.chatbot_active .go-top {
 }
 
 @media screen and (max-width: 767px) {
-  /* line 285, src/scss/_components/common/_footer.scss */
+  /* line 290, src/scss/_components/common/_footer.scss */
   .footer__nav-item span {
     font-size: 0;
   }
 }
 
-/* line 302, src/scss/_components/common/_footer.scss */
+/* line 307, src/scss/_components/common/_footer.scss */
 .footer__nav-link {
   font-size: 16px;
   color: #4680ca;
@@ -7110,14 +7116,14 @@ body.chatbot_active .go-top {
 }
 
 @media screen and (max-width: 1023px) {
-  /* line 302, src/scss/_components/common/_footer.scss */
+  /* line 307, src/scss/_components/common/_footer.scss */
   .footer__nav-link {
     font-size: 14px;
   }
 }
 
 @media screen and (max-width: 767px) {
-  /* line 302, src/scss/_components/common/_footer.scss */
+  /* line 307, src/scss/_components/common/_footer.scss */
   .footer__nav-link {
     display: -webkit-box;
     display: -webkit-flex;
@@ -7132,7 +7138,7 @@ body.chatbot_active .go-top {
   }
 }
 
-/* line 317, src/scss/_components/common/_footer.scss */
+/* line 322, src/scss/_components/common/_footer.scss */
 .footer__nav-link:hover {
   color: #ffffff;
   -webkit-transition: color 0.35s ease-in-out;
@@ -7141,24 +7147,24 @@ body.chatbot_active .go-top {
 }
 
 @media screen and (max-width: 767px) {
-  /* line 325, src/scss/_components/common/_footer.scss */
+  /* line 330, src/scss/_components/common/_footer.scss */
   .user_page_1 .footer__wrapper-1 {
     padding-top: 0;
   }
 }
 
-/* line 331, src/scss/_components/common/_footer.scss */
+/* line 336, src/scss/_components/common/_footer.scss */
 .footer_b {
   padding: 0 0 15px 0;
 }
 
-/* line 334, src/scss/_components/common/_footer.scss */
+/* line 339, src/scss/_components/common/_footer.scss */
 .footer_b.nopadding {
   padding: 0 0 15px;
   background: transparent;
 }
 
-/* line 339, src/scss/_components/common/_footer.scss */
+/* line 344, src/scss/_components/common/_footer.scss */
 .footer_b_title {
   display: -webkit-box;
   display: -webkit-flex;
@@ -7173,18 +7179,18 @@ body.chatbot_active .go-top {
   padding: 15px 15px 10px;
 }
 
-/* line 346, src/scss/_components/common/_footer.scss */
+/* line 351, src/scss/_components/common/_footer.scss */
 .footer_b_title a {
   color: #fff;
 }
 
-/* line 350, src/scss/_components/common/_footer.scss */
+/* line 355, src/scss/_components/common/_footer.scss */
 .footer_b_title:hover, .footer_b_title:focus {
   color: #fff;
 }
 
 @media screen and (max-width: 767px) {
-  /* line 339, src/scss/_components/common/_footer.scss */
+  /* line 344, src/scss/_components/common/_footer.scss */
   .footer_b_title {
     font-size: 18px;
     line-height: 20px;
@@ -7192,7 +7198,7 @@ body.chatbot_active .go-top {
   }
 }
 
-/* line 360, src/scss/_components/common/_footer.scss */
+/* line 365, src/scss/_components/common/_footer.scss */
 .footer_b_title:before {
   display: inline-block;
   content: ' ';
@@ -7206,32 +7212,32 @@ body.chatbot_active .go-top {
 }
 
 @media screen and (max-width: 767px) {
-  /* line 360, src/scss/_components/common/_footer.scss */
+  /* line 365, src/scss/_components/common/_footer.scss */
   .footer_b_title:before {
     width: 48px;
     height: 48px;
   }
 }
 
-/* line 377, src/scss/_components/common/_footer.scss */
+/* line 382, src/scss/_components/common/_footer.scss */
 .footer_b_top {
   background: #1e559a;
   -webkit-border-radius: 8px;
           border-radius: 8px;
 }
 
-/* line 382, src/scss/_components/common/_footer.scss */
+/* line 387, src/scss/_components/common/_footer.scss */
 .footer_b_top img {
   width: 100%;
   border: 8px;
 }
 
-/* line 387, src/scss/_components/common/_footer.scss */
+/* line 392, src/scss/_components/common/_footer.scss */
 .footer_b_inner {
   padding: 0 10px 10px 10px;
 }
 
-/* line 390, src/scss/_components/common/_footer.scss */
+/* line 395, src/scss/_components/common/_footer.scss */
 .footer_b_link {
   display: -webkit-box;
   display: -webkit-flex;
@@ -7260,7 +7266,7 @@ body.chatbot_active .go-top {
 }
 
 @media screen and (max-width: 767px) {
-  /* line 390, src/scss/_components/common/_footer.scss */
+  /* line 395, src/scss/_components/common/_footer.scss */
   .footer_b_link {
     font-size: 18px;
     line-height: 20px;
@@ -7268,12 +7274,12 @@ body.chatbot_active .go-top {
   }
 }
 
-/* line 412, src/scss/_components/common/_footer.scss */
+/* line 417, src/scss/_components/common/_footer.scss */
 .footer_b_link:hover {
   color: #12478c;
 }
 
-/* line 416, src/scss/_components/common/_footer.scss */
+/* line 421, src/scss/_components/common/_footer.scss */
 .footer_b_img_holder {
   border-top: none;
   display: block;
@@ -7286,7 +7292,7 @@ body.chatbot_active .go-top {
   padding-top: 72.41758242%;
 }
 
-/* line 426, src/scss/_components/common/_footer.scss */
+/* line 431, src/scss/_components/common/_footer.scss */
 .footer_b_img_holder img {
   max-width: 100%;
   position: absolute;
@@ -7294,7 +7300,7 @@ body.chatbot_active .go-top {
   left: 0;
 }
 
-/* line 435, src/scss/_components/common/_footer.scss */
+/* line 440, src/scss/_components/common/_footer.scss */
 .floating_bar {
   position: fixed;
   bottom: 0;
@@ -7304,56 +7310,54 @@ body.chatbot_active .go-top {
   text-align: center;
   z-index: 12;
   display: none;
-  padding: 5px 0;
 }
 
 @media screen and (max-width: 767px) {
-  /* line 435, src/scss/_components/common/_footer.scss */
+  /* line 440, src/scss/_components/common/_footer.scss */
   .floating_bar {
     display: block;
   }
 }
 
 @media screen and (min-device-width: 375px) and (max-device-width: 812px) and (-webkit-min-device-pixel-ratio: 3) and (orientation: landscape) {
-  /* line 435, src/scss/_components/common/_footer.scss */
+  /* line 440, src/scss/_components/common/_footer.scss */
   .floating_bar {
     line-height: 45px;
   }
 }
 
 @media screen and (min-device-width: 414px) and (max-device-width: 736px) and (-webkit-min-device-pixel-ratio: 3) and (orientation: landscape) {
-  /* line 435, src/scss/_components/common/_footer.scss */
+  /* line 440, src/scss/_components/common/_footer.scss */
   .floating_bar {
     line-height: 45px;
   }
 }
 
-/* line 457, src/scss/_components/common/_footer.scss */
+/* line 461, src/scss/_components/common/_footer.scss */
 .floating_bar a {
   color: #000;
   font-size: 16px;
   display: block;
   -o-text-overflow: ellipsis;
      text-overflow: ellipsis;
-  overflow: hidden;
   white-space: nowrap;
 }
 
 @media screen and (min-device-width: 375px) and (max-device-width: 812px) and (-webkit-min-device-pixel-ratio: 3) and (orientation: landscape) {
-  /* line 457, src/scss/_components/common/_footer.scss */
+  /* line 461, src/scss/_components/common/_footer.scss */
   .floating_bar a {
     line-height: 45px;
   }
 }
 
 @media screen and (min-device-width: 414px) and (max-device-width: 736px) and (-webkit-min-device-pixel-ratio: 3) and (orientation: landscape) {
-  /* line 457, src/scss/_components/common/_footer.scss */
+  /* line 461, src/scss/_components/common/_footer.scss */
   .floating_bar a {
     line-height: 45px;
   }
 }
 
-/* line 476, src/scss/_components/common/_footer.scss */
+/* line 479, src/scss/_components/common/_footer.scss */
 .floating_bar a i {
   position: absolute;
   height: 70px;
@@ -7369,20 +7373,20 @@ body.chatbot_active .go-top {
 }
 
 @media screen and (min-device-width: 375px) and (max-device-width: 812px) and (-webkit-min-device-pixel-ratio: 3) and (orientation: landscape) {
-  /* line 476, src/scss/_components/common/_footer.scss */
+  /* line 479, src/scss/_components/common/_footer.scss */
   .floating_bar a i {
     height: 45px;
   }
 }
 
 @media screen and (min-device-width: 414px) and (max-device-width: 736px) and (-webkit-min-device-pixel-ratio: 3) and (orientation: landscape) {
-  /* line 476, src/scss/_components/common/_footer.scss */
+  /* line 479, src/scss/_components/common/_footer.scss */
   .floating_bar a i {
     height: 45px;
   }
 }
 
-/* line 495, src/scss/_components/common/_footer.scss */
+/* line 498, src/scss/_components/common/_footer.scss */
 .floating_bar a i b {
   width: 100%;
   height: 100%;
@@ -7393,7 +7397,7 @@ body.chatbot_active .go-top {
 }
 
 @media screen and (min-device-width: 375px) and (max-device-width: 812px) and (-webkit-min-device-pixel-ratio: 3) and (orientation: landscape) {
-  /* line 495, src/scss/_components/common/_footer.scss */
+  /* line 498, src/scss/_components/common/_footer.scss */
   .floating_bar a i b {
     -webkit-background-size: auto 35px;
             background-size: auto 35px;
@@ -7401,14 +7405,14 @@ body.chatbot_active .go-top {
 }
 
 @media screen and (min-device-width: 414px) and (max-device-width: 736px) and (-webkit-min-device-pixel-ratio: 3) and (orientation: landscape) {
-  /* line 495, src/scss/_components/common/_footer.scss */
+  /* line 498, src/scss/_components/common/_footer.scss */
   .floating_bar a i b {
     -webkit-background-size: auto 35px;
             background-size: auto 35px;
   }
 }
 
-/* line 514, src/scss/_components/common/_footer.scss */
+/* line 517, src/scss/_components/common/_footer.scss */
 .floating_bar .out-link {
   position: absolute;
   bottom: 100%;
@@ -7432,26 +7436,26 @@ body.chatbot_active .go-top {
   gap: 10px;
 }
 
-/* line 527, src/scss/_components/common/_footer.scss */
+/* line 530, src/scss/_components/common/_footer.scss */
 .floating_bar .out-link .visit_icon {
   margin-left: 5px;
   width: 16px;
   height: 16px;
 }
 
-/* line 534, src/scss/_components/common/_footer.scss */
+/* line 537, src/scss/_components/common/_footer.scss */
 .floating_bar .item-link {
   width: 100%;
   text-align: center;
   position: relative;
 }
 
-/* line 539, src/scss/_components/common/_footer.scss */
+/* line 542, src/scss/_components/common/_footer.scss */
 .floating_bar .item-link .iconCat::before {
   margin: 0;
 }
 
-/* line 544, src/scss/_components/common/_footer.scss */
+/* line 547, src/scss/_components/common/_footer.scss */
 .floating_bar .item-counter {
   position: absolute;
   left: -webkit-calc(50% + 20px);
@@ -7459,10 +7463,10 @@ body.chatbot_active .go-top {
   color: #000;
 }
 
-/* line 549, src/scss/_components/common/_footer.scss */
+/* line 552, src/scss/_components/common/_footer.scss */
 .floating_bar .item-ico {
-  height: 28px;
-  width: 28px;
+  height: 33.5px;
+  width: 33.5px;
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -7478,12 +7482,23 @@ body.chatbot_active .go-top {
           justify-content: center;
 }
 
-/* line 557, src/scss/_components/common/_footer.scss */
+/* line 560, src/scss/_components/common/_footer.scss */
+.floating_bar .item-ico svg {
+  width: 100%;
+  height: 100%;
+}
+
+/* line 565, src/scss/_components/common/_footer.scss */
 .floating_bar .item-title {
   font-size: 12px;
 }
 
-/* line 561, src/scss/_components/common/_footer.scss */
+/* line 569, src/scss/_components/common/_footer.scss */
+.floating_bar .icon-category {
+  height: 33px;
+}
+
+/* line 573, src/scss/_components/common/_footer.scss */
 .floating_bar ul {
   display: -webkit-box;
   display: -webkit-flex;
@@ -7496,15 +7511,15 @@ body.chatbot_active .go-top {
   -webkit-justify-content: space-around;
       -ms-flex-pack: distribute;
           justify-content: space-around;
-  padding: 0 10px;
+  padding: 5px 10px;
 }
 
-/* line 567, src/scss/_components/common/_footer.scss */
+/* line 579, src/scss/_components/common/_footer.scss */
 .floating_bar li {
   width: 33.33%;
 }
 
-/* line 573, src/scss/_components/common/_footer.scss */
+/* line 585, src/scss/_components/common/_footer.scss */
 .footer_description h2 {
   padding-bottom: 10px;
   color: #ffffff;
@@ -7513,20 +7528,20 @@ body.chatbot_active .go-top {
 }
 
 @media screen and (max-width: 1023px) {
-  /* line 573, src/scss/_components/common/_footer.scss */
+  /* line 585, src/scss/_components/common/_footer.scss */
   .footer_description h2 {
     font-size: 20px;
   }
 }
 
 @media screen and (max-width: 767px) {
-  /* line 573, src/scss/_components/common/_footer.scss */
+  /* line 585, src/scss/_components/common/_footer.scss */
   .footer_description h2 {
     font-size: 14px;
   }
 }
 
-/* line 586, src/scss/_components/common/_footer.scss */
+/* line 598, src/scss/_components/common/_footer.scss */
 .footer_description h3 {
   padding-bottom: 10px;
   color: #ffffff;
@@ -7535,20 +7550,20 @@ body.chatbot_active .go-top {
 }
 
 @media screen and (max-width: 1023px) {
-  /* line 586, src/scss/_components/common/_footer.scss */
+  /* line 598, src/scss/_components/common/_footer.scss */
   .footer_description h3 {
     font-size: 20px;
   }
 }
 
 @media screen and (max-width: 767px) {
-  /* line 586, src/scss/_components/common/_footer.scss */
+  /* line 598, src/scss/_components/common/_footer.scss */
   .footer_description h3 {
     font-size: 14px;
   }
 }
 
-/* line 599, src/scss/_components/common/_footer.scss */
+/* line 611, src/scss/_components/common/_footer.scss */
 .footer_description p {
   padding-bottom: 30px;
   color: #d7d7d7;
@@ -7558,55 +7573,55 @@ body.chatbot_active .go-top {
 }
 
 @media screen and (max-width: 1023px) {
-  /* line 599, src/scss/_components/common/_footer.scss */
+  /* line 611, src/scss/_components/common/_footer.scss */
   .footer_description p {
     font-size: 14px;
   }
 }
 
 @media screen and (max-width: 767px) {
-  /* line 599, src/scss/_components/common/_footer.scss */
+  /* line 611, src/scss/_components/common/_footer.scss */
   .footer_description p {
     font-size: 12px;
   }
 }
 
-/* line 616, src/scss/_components/common/_footer.scss */
+/* line 628, src/scss/_components/common/_footer.scss */
 .light .footer {
   background: #b7c2d0;
 }
 
-/* line 619, src/scss/_components/common/_footer.scss */
+/* line 631, src/scss/_components/common/_footer.scss */
 .light .footer__nav a {
   color: #014293;
 }
 
-/* line 623, src/scss/_components/common/_footer.scss */
+/* line 635, src/scss/_components/common/_footer.scss */
 .light .footer__title {
   color: #576576;
 }
 
-/* line 627, src/scss/_components/common/_footer.scss */
+/* line 639, src/scss/_components/common/_footer.scss */
 .light .footer_description h2 {
   color: #000;
 }
 
-/* line 630, src/scss/_components/common/_footer.scss */
+/* line 642, src/scss/_components/common/_footer.scss */
 .light .footer_description h3 {
   color: #000;
 }
 
-/* line 633, src/scss/_components/common/_footer.scss */
+/* line 645, src/scss/_components/common/_footer.scss */
 .light .footer_description p {
   color: #576576;
 }
 
-/* line 636, src/scss/_components/common/_footer.scss */
+/* line 648, src/scss/_components/common/_footer.scss */
 .light .footer_description a {
   color: #014293;
 }
 
-/* line 645, src/scss/_components/common/_footer.scss */
+/* line 657, src/scss/_components/common/_footer.scss */
 #login_popup {
   position: fixed;
   display: -webkit-box;
@@ -7644,14 +7659,14 @@ body.chatbot_active .go-top {
   transition: all 0.8s;
 }
 
-/* line 663, src/scss/_components/common/_footer.scss */
+/* line 675, src/scss/_components/common/_footer.scss */
 #login_popup.is-open {
   height: 100%;
   top: 0;
   opacity: 1;
 }
 
-/* line 669, src/scss/_components/common/_footer.scss */
+/* line 681, src/scss/_components/common/_footer.scss */
 #login_popup .login_container {
   background-color: #0e123c;
   padding: 15px;
@@ -7659,17 +7674,17 @@ body.chatbot_active .go-top {
 }
 
 @media screen and (max-width: 767px) {
-  /* line 669, src/scss/_components/common/_footer.scss */
+  /* line 681, src/scss/_components/common/_footer.scss */
   #login_popup .login_container {
     width: 90%;
   }
-  /* line 677, src/scss/_components/common/_footer.scss */
+  /* line 689, src/scss/_components/common/_footer.scss */
   #login_popup .login_container .user_tab_login {
     width: 100%;
   }
 }
 
-/* line 683, src/scss/_components/common/_footer.scss */
+/* line 695, src/scss/_components/common/_footer.scss */
 #login_popup .login_popup_close {
   position: absolute;
   right: 15px;
@@ -7678,7 +7693,7 @@ body.chatbot_active .go-top {
 }
 
 @media screen and (max-width: 767px) {
-  /* line 690, src/scss/_components/common/_footer.scss */
+  /* line 702, src/scss/_components/common/_footer.scss */
   #login_popup .login_popup_close img {
     width: 25px;
     height: 25px;
@@ -8261,7 +8276,7 @@ body.chatbot_active .go-top {
   text-decoration: none;
   color: #fff;
   font-size: 16px;
-  z-index: 999999;
+  z-index: 1000;
   height: 48px;
   width: 48px;
   -webkit-border-radius: 3px;
@@ -8309,6 +8324,12 @@ body.chatbot_active .go-top {
 }
 
 /* line 109, src/scss/_components/common/_footer.scss */
+.go-top svg {
+  width: 100%;
+  height: 100%;
+}
+
+/* line 114, src/scss/_components/common/_footer.scss */
 .go-top::before {
   content: '';
   position: absolute;
@@ -8325,7 +8346,7 @@ body.chatbot_active .go-top {
           mask-image: conic-gradient(var(--border-color) calc(var(--percent) * 100%), transparent 0);
 }
 
-/* line 122, src/scss/_components/common/_footer.scss */
+/* line 127, src/scss/_components/common/_footer.scss */
 .go-top:hover {
   background-color: rgba(167, 167, 167, 0.3);
 }
@@ -8340,14 +8361,14 @@ body.chatbot_active .go-top {
   }
 }
 
-/* line 132, src/scss/_components/common/_footer.scss */
+/* line 137, src/scss/_components/common/_footer.scss */
 .go-top.scroll-to-top {
   -webkit-transform: rotate(180deg);
       -ms-transform: rotate(180deg);
           transform: rotate(180deg);
 }
 
-/* line 136, src/scss/_components/common/_footer.scss */
+/* line 141, src/scss/_components/common/_footer.scss */
 .go-top .scroll-progress-bar {
   stroke: #fff;
   stroke-dasharray: var(--circ);
@@ -8358,19 +8379,19 @@ body.chatbot_active .go-top {
 }
 
 @media screen and (max-width: 991.98px) {
-  /* line 145, src/scss/_components/common/_footer.scss */
+  /* line 150, src/scss/_components/common/_footer.scss */
   .archive.category .go-top {
     left: -webkit-calc(75% - 21px);
     left: calc(75% - 21px);
   }
 }
 
-/* line 150, src/scss/_components/common/_footer.scss */
+/* line 155, src/scss/_components/common/_footer.scss */
 body.chatbot_active .go-top {
   display: none;
 }
 
-/* line 154, src/scss/_components/common/_footer.scss */
+/* line 159, src/scss/_components/common/_footer.scss */
 .light {
   /*.go-top{
 		background-color: rgba(0,0,0,.3);
@@ -8382,12 +8403,12 @@ body.chatbot_active .go-top {
 	}*/
 }
 
-/* line 164, src/scss/_components/common/_footer.scss */
+/* line 169, src/scss/_components/common/_footer.scss */
 .light .footer__nav a:hover {
   color: #000;
 }
 
-/* line 169, src/scss/_components/common/_footer.scss */
+/* line 174, src/scss/_components/common/_footer.scss */
 .footer {
   display: -webkit-box;
   display: -webkit-flex;
@@ -8401,7 +8422,7 @@ body.chatbot_active .go-top {
   z-index: 2;
 }
 
-/* line 175, src/scss/_components/common/_footer.scss */
+/* line 180, src/scss/_components/common/_footer.scss */
 .footer__wrapper-1 {
   display: -webkit-box;
   display: -webkit-flex;
@@ -8412,14 +8433,14 @@ body.chatbot_active .go-top {
 }
 
 @media screen and (max-width: 767px) {
-  /* line 175, src/scss/_components/common/_footer.scss */
+  /* line 180, src/scss/_components/common/_footer.scss */
   .footer__wrapper-1 {
     padding-top: 15px;
     padding-bottom: 15px;
   }
 }
 
-/* line 184, src/scss/_components/common/_footer.scss */
+/* line 189, src/scss/_components/common/_footer.scss */
 .footer__wrapper-2 {
   display: -webkit-box;
   display: -webkit-flex;
@@ -8437,13 +8458,13 @@ body.chatbot_active .go-top {
 }
 
 @media screen and (max-width: 767px) {
-  /* line 184, src/scss/_components/common/_footer.scss */
+  /* line 189, src/scss/_components/common/_footer.scss */
   .footer__wrapper-2 {
     margin-top: 0;
   }
 }
 
-/* line 200, src/scss/_components/common/_footer.scss */
+/* line 205, src/scss/_components/common/_footer.scss */
 .footer__container-1 {
   display: -webkit-box;
   display: -webkit-flex;
@@ -8460,7 +8481,7 @@ body.chatbot_active .go-top {
           align-items: center;
 }
 
-/* line 207, src/scss/_components/common/_footer.scss */
+/* line 212, src/scss/_components/common/_footer.scss */
 .footer__title {
   padding-bottom: 10px;
   color: #ffffff;
@@ -8469,20 +8490,20 @@ body.chatbot_active .go-top {
 }
 
 @media screen and (max-width: 1023px) {
-  /* line 207, src/scss/_components/common/_footer.scss */
+  /* line 212, src/scss/_components/common/_footer.scss */
   .footer__title {
     font-size: 20px;
   }
 }
 
 @media screen and (max-width: 767px) {
-  /* line 207, src/scss/_components/common/_footer.scss */
+  /* line 212, src/scss/_components/common/_footer.scss */
   .footer__title {
     font-size: 14px;
   }
 }
 
-/* line 220, src/scss/_components/common/_footer.scss */
+/* line 225, src/scss/_components/common/_footer.scss */
 .footer__desc {
   padding-bottom: 30px;
   color: #4b4e6b;
@@ -8491,20 +8512,20 @@ body.chatbot_active .go-top {
 }
 
 @media screen and (max-width: 1023px) {
-  /* line 220, src/scss/_components/common/_footer.scss */
+  /* line 225, src/scss/_components/common/_footer.scss */
   .footer__desc {
     font-size: 14px;
   }
 }
 
 @media screen and (max-width: 767px) {
-  /* line 220, src/scss/_components/common/_footer.scss */
+  /* line 225, src/scss/_components/common/_footer.scss */
   .footer__desc {
     font-size: 12px;
   }
 }
 
-/* line 233, src/scss/_components/common/_footer.scss */
+/* line 238, src/scss/_components/common/_footer.scss */
 .footer__nav {
   display: -webkit-box;
   display: -webkit-flex;
@@ -8523,14 +8544,14 @@ body.chatbot_active .go-top {
 }
 
 @media screen and (max-width: 1023px) {
-  /* line 233, src/scss/_components/common/_footer.scss */
+  /* line 238, src/scss/_components/common/_footer.scss */
   .footer__nav {
     font-size: 14px;
   }
 }
 
 @media screen and (max-width: 767px) {
-  /* line 233, src/scss/_components/common/_footer.scss */
+  /* line 238, src/scss/_components/common/_footer.scss */
   .footer__nav {
     -webkit-flex-wrap: wrap;
         -ms-flex-wrap: wrap;
@@ -8538,7 +8559,7 @@ body.chatbot_active .go-top {
   }
 }
 
-/* line 248, src/scss/_components/common/_footer.scss */
+/* line 253, src/scss/_components/common/_footer.scss */
 .footer__nav p {
   display: -webkit-box;
   display: -webkit-flex;
@@ -8558,13 +8579,13 @@ body.chatbot_active .go-top {
 }
 
 @media screen and (max-width: 767px) {
-  /* line 248, src/scss/_components/common/_footer.scss */
+  /* line 253, src/scss/_components/common/_footer.scss */
   .footer__nav p {
     font-size: 0;
   }
 }
 
-/* line 259, src/scss/_components/common/_footer.scss */
+/* line 264, src/scss/_components/common/_footer.scss */
 .footer__nav a {
   font-size: 16px;
   font-weight: 600;
@@ -8577,14 +8598,14 @@ body.chatbot_active .go-top {
 }
 
 @media screen and (max-width: 1023px) {
-  /* line 259, src/scss/_components/common/_footer.scss */
+  /* line 264, src/scss/_components/common/_footer.scss */
   .footer__nav a {
     font-size: 14px;
   }
 }
 
 @media screen and (max-width: 767px) {
-  /* line 259, src/scss/_components/common/_footer.scss */
+  /* line 264, src/scss/_components/common/_footer.scss */
   .footer__nav a {
     display: -webkit-box;
     display: -webkit-flex;
@@ -8599,7 +8620,7 @@ body.chatbot_active .go-top {
   }
 }
 
-/* line 276, src/scss/_components/common/_footer.scss */
+/* line 281, src/scss/_components/common/_footer.scss */
 .footer__nav a:hover {
   color: #ffffff;
   -webkit-transition: color 0.35s ease-in-out;
@@ -8607,7 +8628,7 @@ body.chatbot_active .go-top {
   transition: color 0.35s ease-in-out;
 }
 
-/* line 282, src/scss/_components/common/_footer.scss */
+/* line 287, src/scss/_components/common/_footer.scss */
 .footer__nav-item {
   display: -webkit-box;
   display: -webkit-flex;
@@ -8615,7 +8636,7 @@ body.chatbot_active .go-top {
   display: flex;
 }
 
-/* line 285, src/scss/_components/common/_footer.scss */
+/* line 290, src/scss/_components/common/_footer.scss */
 .footer__nav-item span {
   margin-left: 15px;
   margin-right: 15px;
@@ -8625,7 +8646,7 @@ body.chatbot_active .go-top {
 }
 
 @media screen and (max-width: 1023px) {
-  /* line 285, src/scss/_components/common/_footer.scss */
+  /* line 290, src/scss/_components/common/_footer.scss */
   .footer__nav-item span {
     margin-left: 10px;
     margin-right: 10px;
@@ -8634,13 +8655,13 @@ body.chatbot_active .go-top {
 }
 
 @media screen and (max-width: 767px) {
-  /* line 285, src/scss/_components/common/_footer.scss */
+  /* line 290, src/scss/_components/common/_footer.scss */
   .footer__nav-item span {
     font-size: 0;
   }
 }
 
-/* line 302, src/scss/_components/common/_footer.scss */
+/* line 307, src/scss/_components/common/_footer.scss */
 .footer__nav-link {
   font-size: 16px;
   color: #4680ca;
@@ -8651,14 +8672,14 @@ body.chatbot_active .go-top {
 }
 
 @media screen and (max-width: 1023px) {
-  /* line 302, src/scss/_components/common/_footer.scss */
+  /* line 307, src/scss/_components/common/_footer.scss */
   .footer__nav-link {
     font-size: 14px;
   }
 }
 
 @media screen and (max-width: 767px) {
-  /* line 302, src/scss/_components/common/_footer.scss */
+  /* line 307, src/scss/_components/common/_footer.scss */
   .footer__nav-link {
     display: -webkit-box;
     display: -webkit-flex;
@@ -8673,7 +8694,7 @@ body.chatbot_active .go-top {
   }
 }
 
-/* line 317, src/scss/_components/common/_footer.scss */
+/* line 322, src/scss/_components/common/_footer.scss */
 .footer__nav-link:hover {
   color: #ffffff;
   -webkit-transition: color 0.35s ease-in-out;
@@ -8682,24 +8703,24 @@ body.chatbot_active .go-top {
 }
 
 @media screen and (max-width: 767px) {
-  /* line 325, src/scss/_components/common/_footer.scss */
+  /* line 330, src/scss/_components/common/_footer.scss */
   .user_page_1 .footer__wrapper-1 {
     padding-top: 0;
   }
 }
 
-/* line 331, src/scss/_components/common/_footer.scss */
+/* line 336, src/scss/_components/common/_footer.scss */
 .footer_b {
   padding: 0 0 15px 0;
 }
 
-/* line 334, src/scss/_components/common/_footer.scss */
+/* line 339, src/scss/_components/common/_footer.scss */
 .footer_b.nopadding {
   padding: 0 0 15px;
   background: transparent;
 }
 
-/* line 339, src/scss/_components/common/_footer.scss */
+/* line 344, src/scss/_components/common/_footer.scss */
 .footer_b_title {
   display: -webkit-box;
   display: -webkit-flex;
@@ -8714,18 +8735,18 @@ body.chatbot_active .go-top {
   padding: 15px 15px 10px;
 }
 
-/* line 346, src/scss/_components/common/_footer.scss */
+/* line 351, src/scss/_components/common/_footer.scss */
 .footer_b_title a {
   color: #fff;
 }
 
-/* line 350, src/scss/_components/common/_footer.scss */
+/* line 355, src/scss/_components/common/_footer.scss */
 .footer_b_title:hover, .footer_b_title:focus {
   color: #fff;
 }
 
 @media screen and (max-width: 767px) {
-  /* line 339, src/scss/_components/common/_footer.scss */
+  /* line 344, src/scss/_components/common/_footer.scss */
   .footer_b_title {
     font-size: 18px;
     line-height: 20px;
@@ -8733,7 +8754,7 @@ body.chatbot_active .go-top {
   }
 }
 
-/* line 360, src/scss/_components/common/_footer.scss */
+/* line 365, src/scss/_components/common/_footer.scss */
 .footer_b_title:before {
   display: inline-block;
   content: ' ';
@@ -8747,32 +8768,32 @@ body.chatbot_active .go-top {
 }
 
 @media screen and (max-width: 767px) {
-  /* line 360, src/scss/_components/common/_footer.scss */
+  /* line 365, src/scss/_components/common/_footer.scss */
   .footer_b_title:before {
     width: 48px;
     height: 48px;
   }
 }
 
-/* line 377, src/scss/_components/common/_footer.scss */
+/* line 382, src/scss/_components/common/_footer.scss */
 .footer_b_top {
   background: #1e559a;
   -webkit-border-radius: 8px;
           border-radius: 8px;
 }
 
-/* line 382, src/scss/_components/common/_footer.scss */
+/* line 387, src/scss/_components/common/_footer.scss */
 .footer_b_top img {
   width: 100%;
   border: 8px;
 }
 
-/* line 387, src/scss/_components/common/_footer.scss */
+/* line 392, src/scss/_components/common/_footer.scss */
 .footer_b_inner {
   padding: 0 10px 10px 10px;
 }
 
-/* line 390, src/scss/_components/common/_footer.scss */
+/* line 395, src/scss/_components/common/_footer.scss */
 .footer_b_link {
   display: -webkit-box;
   display: -webkit-flex;
@@ -8801,7 +8822,7 @@ body.chatbot_active .go-top {
 }
 
 @media screen and (max-width: 767px) {
-  /* line 390, src/scss/_components/common/_footer.scss */
+  /* line 395, src/scss/_components/common/_footer.scss */
   .footer_b_link {
     font-size: 18px;
     line-height: 20px;
@@ -8809,12 +8830,12 @@ body.chatbot_active .go-top {
   }
 }
 
-/* line 412, src/scss/_components/common/_footer.scss */
+/* line 417, src/scss/_components/common/_footer.scss */
 .footer_b_link:hover {
   color: #12478c;
 }
 
-/* line 416, src/scss/_components/common/_footer.scss */
+/* line 421, src/scss/_components/common/_footer.scss */
 .footer_b_img_holder {
   border-top: none;
   display: block;
@@ -8827,7 +8848,7 @@ body.chatbot_active .go-top {
   padding-top: 72.41758242%;
 }
 
-/* line 426, src/scss/_components/common/_footer.scss */
+/* line 431, src/scss/_components/common/_footer.scss */
 .footer_b_img_holder img {
   max-width: 100%;
   position: absolute;
@@ -8835,7 +8856,7 @@ body.chatbot_active .go-top {
   left: 0;
 }
 
-/* line 435, src/scss/_components/common/_footer.scss */
+/* line 440, src/scss/_components/common/_footer.scss */
 .floating_bar {
   position: fixed;
   bottom: 0;
@@ -8845,56 +8866,54 @@ body.chatbot_active .go-top {
   text-align: center;
   z-index: 12;
   display: none;
-  padding: 5px 0;
 }
 
 @media screen and (max-width: 767px) {
-  /* line 435, src/scss/_components/common/_footer.scss */
+  /* line 440, src/scss/_components/common/_footer.scss */
   .floating_bar {
     display: block;
   }
 }
 
 @media screen and (min-device-width: 375px) and (max-device-width: 812px) and (-webkit-min-device-pixel-ratio: 3) and (orientation: landscape) {
-  /* line 435, src/scss/_components/common/_footer.scss */
+  /* line 440, src/scss/_components/common/_footer.scss */
   .floating_bar {
     line-height: 45px;
   }
 }
 
 @media screen and (min-device-width: 414px) and (max-device-width: 736px) and (-webkit-min-device-pixel-ratio: 3) and (orientation: landscape) {
-  /* line 435, src/scss/_components/common/_footer.scss */
+  /* line 440, src/scss/_components/common/_footer.scss */
   .floating_bar {
     line-height: 45px;
   }
 }
 
-/* line 457, src/scss/_components/common/_footer.scss */
+/* line 461, src/scss/_components/common/_footer.scss */
 .floating_bar a {
   color: #000;
   font-size: 16px;
   display: block;
   -o-text-overflow: ellipsis;
      text-overflow: ellipsis;
-  overflow: hidden;
   white-space: nowrap;
 }
 
 @media screen and (min-device-width: 375px) and (max-device-width: 812px) and (-webkit-min-device-pixel-ratio: 3) and (orientation: landscape) {
-  /* line 457, src/scss/_components/common/_footer.scss */
+  /* line 461, src/scss/_components/common/_footer.scss */
   .floating_bar a {
     line-height: 45px;
   }
 }
 
 @media screen and (min-device-width: 414px) and (max-device-width: 736px) and (-webkit-min-device-pixel-ratio: 3) and (orientation: landscape) {
-  /* line 457, src/scss/_components/common/_footer.scss */
+  /* line 461, src/scss/_components/common/_footer.scss */
   .floating_bar a {
     line-height: 45px;
   }
 }
 
-/* line 476, src/scss/_components/common/_footer.scss */
+/* line 479, src/scss/_components/common/_footer.scss */
 .floating_bar a i {
   position: absolute;
   height: 70px;
@@ -8910,20 +8929,20 @@ body.chatbot_active .go-top {
 }
 
 @media screen and (min-device-width: 375px) and (max-device-width: 812px) and (-webkit-min-device-pixel-ratio: 3) and (orientation: landscape) {
-  /* line 476, src/scss/_components/common/_footer.scss */
+  /* line 479, src/scss/_components/common/_footer.scss */
   .floating_bar a i {
     height: 45px;
   }
 }
 
 @media screen and (min-device-width: 414px) and (max-device-width: 736px) and (-webkit-min-device-pixel-ratio: 3) and (orientation: landscape) {
-  /* line 476, src/scss/_components/common/_footer.scss */
+  /* line 479, src/scss/_components/common/_footer.scss */
   .floating_bar a i {
     height: 45px;
   }
 }
 
-/* line 495, src/scss/_components/common/_footer.scss */
+/* line 498, src/scss/_components/common/_footer.scss */
 .floating_bar a i b {
   width: 100%;
   height: 100%;
@@ -8934,7 +8953,7 @@ body.chatbot_active .go-top {
 }
 
 @media screen and (min-device-width: 375px) and (max-device-width: 812px) and (-webkit-min-device-pixel-ratio: 3) and (orientation: landscape) {
-  /* line 495, src/scss/_components/common/_footer.scss */
+  /* line 498, src/scss/_components/common/_footer.scss */
   .floating_bar a i b {
     -webkit-background-size: auto 35px;
             background-size: auto 35px;
@@ -8942,14 +8961,14 @@ body.chatbot_active .go-top {
 }
 
 @media screen and (min-device-width: 414px) and (max-device-width: 736px) and (-webkit-min-device-pixel-ratio: 3) and (orientation: landscape) {
-  /* line 495, src/scss/_components/common/_footer.scss */
+  /* line 498, src/scss/_components/common/_footer.scss */
   .floating_bar a i b {
     -webkit-background-size: auto 35px;
             background-size: auto 35px;
   }
 }
 
-/* line 514, src/scss/_components/common/_footer.scss */
+/* line 517, src/scss/_components/common/_footer.scss */
 .floating_bar .out-link {
   position: absolute;
   bottom: 100%;
@@ -8973,26 +8992,26 @@ body.chatbot_active .go-top {
   gap: 10px;
 }
 
-/* line 527, src/scss/_components/common/_footer.scss */
+/* line 530, src/scss/_components/common/_footer.scss */
 .floating_bar .out-link .visit_icon {
   margin-left: 5px;
   width: 16px;
   height: 16px;
 }
 
-/* line 534, src/scss/_components/common/_footer.scss */
+/* line 537, src/scss/_components/common/_footer.scss */
 .floating_bar .item-link {
   width: 100%;
   text-align: center;
   position: relative;
 }
 
-/* line 539, src/scss/_components/common/_footer.scss */
+/* line 542, src/scss/_components/common/_footer.scss */
 .floating_bar .item-link .iconCat::before {
   margin: 0;
 }
 
-/* line 544, src/scss/_components/common/_footer.scss */
+/* line 547, src/scss/_components/common/_footer.scss */
 .floating_bar .item-counter {
   position: absolute;
   left: -webkit-calc(50% + 20px);
@@ -9000,10 +9019,10 @@ body.chatbot_active .go-top {
   color: #000;
 }
 
-/* line 549, src/scss/_components/common/_footer.scss */
+/* line 552, src/scss/_components/common/_footer.scss */
 .floating_bar .item-ico {
-  height: 28px;
-  width: 28px;
+  height: 33.5px;
+  width: 33.5px;
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -9019,12 +9038,23 @@ body.chatbot_active .go-top {
           justify-content: center;
 }
 
-/* line 557, src/scss/_components/common/_footer.scss */
+/* line 560, src/scss/_components/common/_footer.scss */
+.floating_bar .item-ico svg {
+  width: 100%;
+  height: 100%;
+}
+
+/* line 565, src/scss/_components/common/_footer.scss */
 .floating_bar .item-title {
   font-size: 12px;
 }
 
-/* line 561, src/scss/_components/common/_footer.scss */
+/* line 569, src/scss/_components/common/_footer.scss */
+.floating_bar .icon-category {
+  height: 33px;
+}
+
+/* line 573, src/scss/_components/common/_footer.scss */
 .floating_bar ul {
   display: -webkit-box;
   display: -webkit-flex;
@@ -9037,15 +9067,15 @@ body.chatbot_active .go-top {
   -webkit-justify-content: space-around;
       -ms-flex-pack: distribute;
           justify-content: space-around;
-  padding: 0 10px;
+  padding: 5px 10px;
 }
 
-/* line 567, src/scss/_components/common/_footer.scss */
+/* line 579, src/scss/_components/common/_footer.scss */
 .floating_bar li {
   width: 33.33%;
 }
 
-/* line 573, src/scss/_components/common/_footer.scss */
+/* line 585, src/scss/_components/common/_footer.scss */
 .footer_description h2 {
   padding-bottom: 10px;
   color: #ffffff;
@@ -9054,20 +9084,20 @@ body.chatbot_active .go-top {
 }
 
 @media screen and (max-width: 1023px) {
-  /* line 573, src/scss/_components/common/_footer.scss */
+  /* line 585, src/scss/_components/common/_footer.scss */
   .footer_description h2 {
     font-size: 20px;
   }
 }
 
 @media screen and (max-width: 767px) {
-  /* line 573, src/scss/_components/common/_footer.scss */
+  /* line 585, src/scss/_components/common/_footer.scss */
   .footer_description h2 {
     font-size: 14px;
   }
 }
 
-/* line 586, src/scss/_components/common/_footer.scss */
+/* line 598, src/scss/_components/common/_footer.scss */
 .footer_description h3 {
   padding-bottom: 10px;
   color: #ffffff;
@@ -9076,20 +9106,20 @@ body.chatbot_active .go-top {
 }
 
 @media screen and (max-width: 1023px) {
-  /* line 586, src/scss/_components/common/_footer.scss */
+  /* line 598, src/scss/_components/common/_footer.scss */
   .footer_description h3 {
     font-size: 20px;
   }
 }
 
 @media screen and (max-width: 767px) {
-  /* line 586, src/scss/_components/common/_footer.scss */
+  /* line 598, src/scss/_components/common/_footer.scss */
   .footer_description h3 {
     font-size: 14px;
   }
 }
 
-/* line 599, src/scss/_components/common/_footer.scss */
+/* line 611, src/scss/_components/common/_footer.scss */
 .footer_description p {
   padding-bottom: 30px;
   color: #d7d7d7;
@@ -9099,55 +9129,55 @@ body.chatbot_active .go-top {
 }
 
 @media screen and (max-width: 1023px) {
-  /* line 599, src/scss/_components/common/_footer.scss */
+  /* line 611, src/scss/_components/common/_footer.scss */
   .footer_description p {
     font-size: 14px;
   }
 }
 
 @media screen and (max-width: 767px) {
-  /* line 599, src/scss/_components/common/_footer.scss */
+  /* line 611, src/scss/_components/common/_footer.scss */
   .footer_description p {
     font-size: 12px;
   }
 }
 
-/* line 616, src/scss/_components/common/_footer.scss */
+/* line 628, src/scss/_components/common/_footer.scss */
 .light .footer {
   background: #b7c2d0;
 }
 
-/* line 619, src/scss/_components/common/_footer.scss */
+/* line 631, src/scss/_components/common/_footer.scss */
 .light .footer__nav a {
   color: #014293;
 }
 
-/* line 623, src/scss/_components/common/_footer.scss */
+/* line 635, src/scss/_components/common/_footer.scss */
 .light .footer__title {
   color: #576576;
 }
 
-/* line 627, src/scss/_components/common/_footer.scss */
+/* line 639, src/scss/_components/common/_footer.scss */
 .light .footer_description h2 {
   color: #000;
 }
 
-/* line 630, src/scss/_components/common/_footer.scss */
+/* line 642, src/scss/_components/common/_footer.scss */
 .light .footer_description h3 {
   color: #000;
 }
 
-/* line 633, src/scss/_components/common/_footer.scss */
+/* line 645, src/scss/_components/common/_footer.scss */
 .light .footer_description p {
   color: #576576;
 }
 
-/* line 636, src/scss/_components/common/_footer.scss */
+/* line 648, src/scss/_components/common/_footer.scss */
 .light .footer_description a {
   color: #014293;
 }
 
-/* line 645, src/scss/_components/common/_footer.scss */
+/* line 657, src/scss/_components/common/_footer.scss */
 #login_popup {
   position: fixed;
   display: -webkit-box;
@@ -9185,14 +9215,14 @@ body.chatbot_active .go-top {
   transition: all 0.8s;
 }
 
-/* line 663, src/scss/_components/common/_footer.scss */
+/* line 675, src/scss/_components/common/_footer.scss */
 #login_popup.is-open {
   height: 100%;
   top: 0;
   opacity: 1;
 }
 
-/* line 669, src/scss/_components/common/_footer.scss */
+/* line 681, src/scss/_components/common/_footer.scss */
 #login_popup .login_container {
   background-color: #0e123c;
   padding: 15px;
@@ -9200,17 +9230,17 @@ body.chatbot_active .go-top {
 }
 
 @media screen and (max-width: 767px) {
-  /* line 669, src/scss/_components/common/_footer.scss */
+  /* line 681, src/scss/_components/common/_footer.scss */
   #login_popup .login_container {
     width: 90%;
   }
-  /* line 677, src/scss/_components/common/_footer.scss */
+  /* line 689, src/scss/_components/common/_footer.scss */
   #login_popup .login_container .user_tab_login {
     width: 100%;
   }
 }
 
-/* line 683, src/scss/_components/common/_footer.scss */
+/* line 695, src/scss/_components/common/_footer.scss */
 #login_popup .login_popup_close {
   position: absolute;
   right: 15px;
@@ -9219,7 +9249,7 @@ body.chatbot_active .go-top {
 }
 
 @media screen and (max-width: 767px) {
-  /* line 690, src/scss/_components/common/_footer.scss */
+  /* line 702, src/scss/_components/common/_footer.scss */
   #login_popup .login_popup_close img {
     width: 25px;
     height: 25px;

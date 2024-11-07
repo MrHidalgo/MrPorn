@@ -392,7 +392,8 @@ let lastMobileSimilarSite;
 		}
 
 		initScrollSpyButton({
-			sections: document.querySelectorAll("[data-section]")
+			sections: document.querySelectorAll("[data-section]"),
+			topOffset: 150
 		})
 
 		// if(goTop){

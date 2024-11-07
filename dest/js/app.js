@@ -1399,7 +1399,7 @@ var initScrollSpyButton = function initScrollSpyButton(_ref) {
   var toggleTopClass = function toggleTopClass() {
     var val = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : 0;
     return $buttons.forEach(function ($btn) {
-      return $btn.classList.toggle('scroll-to-top', val >= 1);
+      return $btn.classList.toggle('scroll-to-top', val >= 0.9);
     });
   };
 
@@ -1445,6 +1445,7 @@ var initScrollSpyButton = function initScrollSpyButton(_ref) {
 
   toggleBindScroll();
   toggleBindClick();
+  onScroll();
   return {
     setContainer: setContainer,
     setSections: setSections,
@@ -1828,7 +1829,8 @@ var lastMobileSimilarSite;
     }
 
     initScrollSpyButton({
-      sections: document.querySelectorAll("[data-section]")
+      sections: document.querySelectorAll("[data-section]"),
+      topOffset: 150
     }); // if(goTop){
     // 	goTop.onclick = function(event) {
     // 		doScrolling(0, 200);

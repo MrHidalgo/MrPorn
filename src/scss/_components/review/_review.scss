@@ -428,7 +428,13 @@
 		padding: 8px 15px;
 
 		@include adaptive(991.98) {
-			padding: 10px 5px;
+			padding: 14px 7px;
+			display: flex;
+
+			&::after{
+				width: 18px;
+				height: 10px;
+			}
 		}
 
 		&::after{
@@ -459,15 +465,15 @@
 	justify-content: space-between;
 	align-items: center;
 	gap: 10px;
-	padding: 15px 15px 0 0;
+	padding: 15px 10px 0 0;
 	font-size: 39px;
 	text-transform: uppercase;
 	letter-spacing: -.5px;
 	color: #fff;
 
 	h2{
-		display: flex;
-		align-items: center;
+		//display: flex;
+		//align-items: center;
 		gap: 10px;
 		word-break: break-word;
 		text-transform: uppercase;
@@ -481,14 +487,15 @@
 		}
 
 		&::before{
-			margin: 0;
+			margin: -5px 4px 0 0;
+			vertical-align: middle;
 		}
 
 		&:after{
 			content: ' ';
 			display: inline-block;
 			width: 22px;
-			height: 12px;
+			height: 10px;
 			background: url(../images/icon-right-arrow.svg) no-repeat;
 			background-size: contain;
 			transform: rotate(90deg);
@@ -696,6 +703,7 @@
 	&:after{
 		position: absolute;
 		top: 0;
+		left: 0;
 		width: 100%;
 		height: 100%;
 		content: ' ';
@@ -1480,7 +1488,7 @@
 }
 .new-ratingt:NOT([data-percent]):BEFORE, .new-ratingt[data-percent="0"]:BEFORE {display:none;}
 .new-ratingt[data-percent="1"]:BEFORE, .new-ratingt[data-percent="2"]:BEFORE, .new-ratingt[data-percent="3"]:BEFORE, .new-ratingt[data-percent="4"]:BEFORE, .new-ratingt[data-percent="5"]:BEFORE {
-	width:150px;height: 30px;background: url(/wp-content/themes/mpg/images/ratings.png) 0 -130px no-repeat; background-size: cover; position: absolute;content: '';left: 0;top: 0;
+	width:150px;height: 30px;background: url(/wp-content/themes/mpg/images/ratings.png) 0 -120px no-repeat; background-size: cover; position: absolute;content: '';left: 0;top: 0;
 
 	@include adaptive(767) {
 		width: 150px;
@@ -1496,20 +1504,20 @@
 	}
 }
 .new-ratingt[data-percent="2"]:BEFORE {
-	background-position: 0 -108px;
+	background-position: 0 -90px;
 	@include adaptive(767) {
 		background-position: 0 -90px;
 	}
 }
 .new-ratingt[data-percent="3"]:BEFORE {
-	background-position: 0 -72px;
+	background-position: 0 -60px;
 
 	@include adaptive(767) {
 		background-position: 0 -60px;
 	}
 }
 .new-ratingt[data-percent="4"]:BEFORE {
-	background-position: 0 -36px;
+	background-position: 0 -30px;
 	@include adaptive(767) {
 		background-position: 0 -30px;
 	}
@@ -1825,10 +1833,9 @@
 	top: 0;
 	left: 0;
 	right: 0;
-	z-index: 100;
 	transform: translateY(-100%);
 	transition: transform .3s;
-	z-index: 11100;
+	z-index: 1000;
 
 	@include adaptive(1449.98){
 		padding: 5px 15px;

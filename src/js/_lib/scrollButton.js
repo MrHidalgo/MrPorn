@@ -1,5 +1,5 @@
 const getWindowScrollTop = () => window.scrollY || window.pageYOffSet || document.documentElement.scrollTop;
-const isDelegatedElement = ($target, trigger, match=false) => {
+const isDelegatedElement = ($target, trigger, match = false) => {
 	const method = match ? 'matches' : 'closest';
 	if (!$target || !$target[method])
 		return false;
@@ -10,7 +10,7 @@ const isDelegatedElement = ($target, trigger, match=false) => {
 	return false;
 }
 
-const debounce = (cb, delay=0) => {
+const debounce = (cb, delay = 0) => {
 	let timer = null;
 	return (...args) => {
 		clearTimeout(timer);
@@ -48,7 +48,7 @@ const initScrollSpyButton = ({
 		}
 	;
 	const setPercentCSSProperty = (val = '') => $buttons.forEach($btn => $btn.style.setProperty('--percent', val));
-	const toggleTopClass = (val = 0) => $buttons.forEach($btn => $btn.classList.toggle('scroll-to-top', val >= 1));
+	const toggleTopClass = (val = 0) => $buttons.forEach($btn => $btn.classList.toggle('scroll-to-top', val >= 0.9));
 	const onScroll = () => {
 			onBeforeScrollAction();
 			const percent = getPercent();
@@ -84,6 +84,7 @@ const initScrollSpyButton = ({
 	const toggleBindClick = (val = true) => $body[`${val ? 'add' : 'remove'}EventListener`]('click', debounce(onClick));
 	toggleBindScroll();
 	toggleBindClick();
+	onScroll();
 	return {
 		setContainer,
 		setSections,
