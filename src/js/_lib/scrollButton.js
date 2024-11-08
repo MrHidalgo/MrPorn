@@ -48,10 +48,14 @@ const initScrollSpyButton = ({
 		}
 	;
 	const setPercentCSSProperty = (val = '') => $buttons.forEach($btn => $btn.style.setProperty('--percent', val));
-	const toggleTopClass = (val = 0) => $buttons.forEach($btn => $btn.classList.toggle('scroll-to-top', val >= 0.9));
+	const toggleTopClass = (val = 0) => $buttons.forEach($btn => $btn.classList.toggle('scroll-to-top', val >= 1));
 	const onScroll = () => {
 			onBeforeScrollAction();
-			const percent = getPercent();
+			let percent = getPercent();
+			if(percent > 0.95){
+				percent = 1;
+			}
+			console.log('Percent ', percent)
 			setPercentCSSProperty(percent);
 			toggleTopClass(percent);
 		}
@@ -73,6 +77,11 @@ const initScrollSpyButton = ({
 					}
 				}
 			);
+
+			if($buttons[0].classList.contains('scroll-to-top')){
+				top = 0;
+			}
+
 			scrollTo({
 				top,
 				behavior: top ? 'smooth' : 'instant',

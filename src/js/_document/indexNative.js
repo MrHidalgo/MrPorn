@@ -391,10 +391,58 @@ let lastMobileSimilarSite;
 			}
 		}
 
-		initScrollSpyButton({
-			sections: document.querySelectorAll("[data-section]"),
-			topOffset: 150
-		})
+		let scrollOffset = 0;
+		let bodyClasses = document.body.classList;
+		if(bodyClasses.contains('single-sites') || bodyClasses.contains('category') || bodyClasses.contains('page-template-page-categories')){
+			initReviewScroll();
+		}
+
+
+		if(bodyClasses.contains('show_2nd_header_1')  && bodyClasses.contains('single-sites') ){
+			scrollOffset = 85;
+
+			if(isMobileDevice){
+				scrollOffset = 120;
+			}
+		}else if(isMobileDevice){
+			scrollOffset = 85;
+		}
+
+		/*if(bodyClasses.contains('home')){
+			if(isMobileDevice){
+				scrollOffset = 120;
+			}
+
+			let homeSections = []
+			if(isMobileDevice){
+				homeSections = document.querySelectorAll('.category_col');
+			}else{
+				const items = Array.from(document.querySelectorAll('.category_col.column_1'));
+				homeSections = items.sort((a, b) => {
+					return Number(a.dataset.row) - Number(b.dataset.row);
+				});
+			}
+			initScrollSpyButton({
+				sections: homeSections,
+				topOffset:  scrollOffset
+			})
+		} else if(bodyClasses.contains('page-template-page-categories')) {
+			//
+			if(isMobileDevice){
+				scrollOffset = 120;
+			}
+
+			initScrollSpyButton({
+				sections: document.querySelectorAll(".category_box .category_item:nth-child(4n+1), [data-section]"),
+				topOffset:  scrollOffset
+			})
+		} else{
+			initScrollSpyButton({
+				sections: document.querySelectorAll("[data-section]"),
+				topOffset:  scrollOffset
+			})
+		}*/
+
 
 		// if(goTop){
 		// 	goTop.onclick = function(event) {
@@ -403,6 +451,31 @@ let lastMobileSimilarSite;
 		// 	}
 		// }
 
+	}
+	const initReviewScroll = () => {
+		const headerHeights = {
+			get mobileHeaderHeight() {
+				return document.querySelector("#header").offsetHeight;
+			},
+			get topBarHeight() {
+				return document.querySelector(".review_header").offsetHeight;
+			}
+		};
+
+		const topOffset =  isMobileDevice ? headerHeights.mobileHeaderHeight : headerHeights.topBarHeight;
+
+		const scroller = initScrollSpyButton({
+			sections: document.querySelectorAll("[data-section]"),
+		})
+		const handleResize = () => initResize({
+			breakpoints: 992, // Breakpoint for mobile vs desktop
+			onChange: ({ isLessOrEqual }) => {
+				// const topOffset = getTopOffset(isLessOrEqual); // Determine top offset
+				scroller.setTopOffset(topOffset - 10); // Set the new top offset in scroll spy
+			}
+		});
+
+		handleResize();
 	}
 
 	function onBlogScroll(){

@@ -1220,6 +1220,65 @@ var initPreventBehavior = function initPreventBehavior() {
   });
 };
 
+var findTheClosestValueInArray = function findTheClosestValueInArray(needle, haystack) {
+  return haystack.reduce(function (prev, cur) {
+    return Math.abs(cur - needle) < Math.abs(prev - needle) ? cur : prev;
+  });
+};
+
+var initResize = function initResize(_ref) {
+  var _ref$breakpoints = _ref.breakpoints,
+      breakpoints = _ref$breakpoints === void 0 ? [] : _ref$breakpoints,
+      _ref$onInit = _ref.onInit,
+      onInit = _ref$onInit === void 0 ? function () {} : _ref$onInit,
+      _ref$onChange = _ref.onChange,
+      onChange = _ref$onChange === void 0 ? function () {} : _ref$onChange,
+      _ref$onResize = _ref.onResize,
+      onResize = _ref$onResize === void 0 ? function () {} : _ref$onResize;
+  breakpoints = Array.isArray(breakpoints) ? breakpoints : [breakpoints];
+  if (!breakpoints.length) return;
+  var mappedBreakpoints = breakpoints.map(function (key) {
+    return {
+      width: +key,
+      isEqual: false,
+      isLess: false,
+      isLessOrEqual: false,
+      isMore: false,
+      isMoreOrEqual: false
+    };
+  });
+
+  var handleResize = function handleResize() {
+    var toBeResized = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : true;
+    var windowWidth = window.innerWidth;
+    var closestWidth = findTheClosestValueInArray(windowWidth, breakpoints);
+    var closestBp = mappedBreakpoints.find(function (bp) {
+      return closestWidth === bp.width;
+    });
+    var state = {
+      width: closestWidth,
+      isEqual: windowWidth === closestBp.width,
+      isLess: windowWidth < closestBp.width,
+      isMore: windowWidth > closestBp.width,
+      isLessOrEqual: windowWidth <= closestBp.width,
+      isMoreOrEqual: windowWidth >= closestBp.width
+    };
+    var isStateChanged = Object.keys(state).some(function (key) {
+      return state[key] !== closestBp[key];
+    });
+    Object.assign(closestBp, state);
+    toBeResized ? onResize(closestBp) : onInit(closestBp);
+    isStateChanged && onChange(closestBp);
+  };
+
+  var bindResize = function bindResize() {
+    return window.addEventListener('resize', handleResize);
+  };
+
+  handleResize(false);
+  bindResize();
+};
+
 function showThumbInfoOnHover() {
   function showThumbInfo(el) {
     var $this = el,
@@ -1347,17 +1406,17 @@ var debounce = function debounce(cb) {
   };
 };
 
-var initScrollSpyButton = function initScrollSpyButton(_ref) {
-  var _ref$container = _ref.container,
-      container = _ref$container === void 0 ? null : _ref$container,
-      _ref$sections = _ref.sections,
-      sections = _ref$sections === void 0 ? [] : _ref$sections,
-      _ref$topOffset = _ref.topOffset,
-      topOffset = _ref$topOffset === void 0 ? 0 : _ref$topOffset,
-      _ref$onBeforeClick = _ref.onBeforeClick,
-      onBeforeClickAction = _ref$onBeforeClick === void 0 ? function () {} : _ref$onBeforeClick,
-      _ref$onBeforeScroll = _ref.onBeforeScroll,
-      onBeforeScrollAction = _ref$onBeforeScroll === void 0 ? function () {} : _ref$onBeforeScroll;
+var initScrollSpyButton = function initScrollSpyButton(_ref2) {
+  var _ref2$container = _ref2.container,
+      container = _ref2$container === void 0 ? null : _ref2$container,
+      _ref2$sections = _ref2.sections,
+      sections = _ref2$sections === void 0 ? [] : _ref2$sections,
+      _ref2$topOffset = _ref2.topOffset,
+      topOffset = _ref2$topOffset === void 0 ? 0 : _ref2$topOffset,
+      _ref2$onBeforeClick = _ref2.onBeforeClick,
+      onBeforeClickAction = _ref2$onBeforeClick === void 0 ? function () {} : _ref2$onBeforeClick,
+      _ref2$onBeforeScroll = _ref2.onBeforeScroll,
+      onBeforeScrollAction = _ref2$onBeforeScroll === void 0 ? function () {} : _ref2$onBeforeScroll;
   var $body = document.body; // const $buttons = $body.querySelectorAll('.scrollspy-btn');
 
   var $buttons = $body.querySelectorAll('.scrollspy-btn');
@@ -1399,13 +1458,19 @@ var initScrollSpyButton = function initScrollSpyButton(_ref) {
   var toggleTopClass = function toggleTopClass() {
     var val = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : 0;
     return $buttons.forEach(function ($btn) {
-      return $btn.classList.toggle('scroll-to-top', val >= 0.9);
+      return $btn.classList.toggle('scroll-to-top', val >= 1);
     });
   };
 
   var onScroll = function onScroll() {
     onBeforeScrollAction();
     var percent = getPercent();
+
+    if (percent > 0.95) {
+      percent = 1;
+    }
+
+    console.log('Percent ', percent);
     setPercentCSSProperty(percent);
     toggleTopClass(percent);
   };
@@ -1426,6 +1491,11 @@ var initScrollSpyButton = function initScrollSpyButton(_ref) {
         return true;
       }
     });
+
+    if ($buttons[0].classList.contains('scroll-to-top')) {
+      top = 0;
+    }
+
     scrollTo({
       top: top,
       behavior: top ? 'smooth' : 'instant'
@@ -1828,16 +1898,93 @@ var lastMobileSimilarSite;
       };
     }
 
-    initScrollSpyButton({
-      sections: document.querySelectorAll("[data-section]"),
-      topOffset: 150
-    }); // if(goTop){
+    var scrollOffset = 0;
+    var bodyClasses = document.body.classList;
+
+    if (bodyClasses.contains('single-sites') || bodyClasses.contains('category') || bodyClasses.contains('page-template-page-categories')) {
+      initReviewScroll();
+    }
+
+    if (bodyClasses.contains('show_2nd_header_1') && bodyClasses.contains('single-sites')) {
+      scrollOffset = 85;
+
+      if (isMobileDevice) {
+        scrollOffset = 120;
+      }
+    } else if (isMobileDevice) {
+      scrollOffset = 85;
+    }
+    /*if(bodyClasses.contains('home')){
+    	if(isMobileDevice){
+    		scrollOffset = 120;
+    	}
+    		let homeSections = []
+    	if(isMobileDevice){
+    		homeSections = document.querySelectorAll('.category_col');
+    	}else{
+    		const items = Array.from(document.querySelectorAll('.category_col.column_1'));
+    		homeSections = items.sort((a, b) => {
+    			return Number(a.dataset.row) - Number(b.dataset.row);
+    		});
+    	}
+    	initScrollSpyButton({
+    		sections: homeSections,
+    		topOffset:  scrollOffset
+    	})
+    } else if(bodyClasses.contains('page-template-page-categories')) {
+    	//
+    	if(isMobileDevice){
+    		scrollOffset = 120;
+    	}
+    		initScrollSpyButton({
+    		sections: document.querySelectorAll(".category_box .category_item:nth-child(4n+1), [data-section]"),
+    		topOffset:  scrollOffset
+    	})
+    } else{
+    	initScrollSpyButton({
+    		sections: document.querySelectorAll("[data-section]"),
+    		topOffset:  scrollOffset
+    	})
+    }*/
+    // if(goTop){
     // 	goTop.onclick = function(event) {
     // 		doScrolling(0, 200);
     // 		return false;
     // 	}
     // }
+
   }
+
+  var initReviewScroll = function initReviewScroll() {
+    var headerHeights = {
+      get mobileHeaderHeight() {
+        return document.querySelector("#header").offsetHeight;
+      },
+
+      get topBarHeight() {
+        return document.querySelector(".review_header").offsetHeight;
+      }
+
+    };
+    var topOffset = isMobileDevice ? headerHeights.mobileHeaderHeight : headerHeights.topBarHeight;
+    var scroller = initScrollSpyButton({
+      sections: document.querySelectorAll("[data-section]")
+    });
+
+    var handleResize = function handleResize() {
+      return initResize({
+        breakpoints: 992,
+        // Breakpoint for mobile vs desktop
+        onChange: function onChange(_ref3) {
+          var isLessOrEqual = _ref3.isLessOrEqual;
+          // const topOffset = getTopOffset(isLessOrEqual); // Determine top offset
+          scroller.setTopOffset(topOffset - 10); // Set the new top offset in scroll spy
+        }
+      });
+    };
+
+    handleResize();
+  };
 
   function onBlogScroll() {
     if (window.scrollY < blogContentHeight | blogScrollPercent < 101) {

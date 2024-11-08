@@ -1977,14 +1977,15 @@
 
 	&_a{
 		color: #000;
-		background: #c0f200;
-		background: -moz-linear-gradient(top,#c0f200 0%,#aeef00 50%,#83e900 100%);
-		background: -webkit-linear-gradient(top,#c0f200 0%,#aeef00 50%,#83e900 100%);
-		background: linear-gradient(to bottom,#c0f200 0%,#aeef00 50%,#83e900 100%);
-		filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#c0f200',endColorstr='#83e900',GradientType=0 );
-		border: 1px solid #fff;
+		//background: #c0f200;
+		//background: -moz-linear-gradient(top,#c0f200 0%,#aeef00 50%,#83e900 100%);
+		//background: -webkit-linear-gradient(top,#c0f200 0%,#aeef00 50%,#83e900 100%);
+		//background: linear-gradient(to bottom,#c0f200 0%,#aeef00 50%,#83e900 100%);
+		//filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#c0f200',endColorstr='#83e900',GradientType=0 );
+		background: #2eaf61;
+		//border: 1px solid #fff;
 		border-radius: 3px;
-		color: #000;
+		color: #fff;
 		font-size: 14px;
 		padding: 10px 20px 10px 15px;
 		-webkit-transition: background .1s;
@@ -2339,7 +2340,7 @@
 .footer {
 	@include adaptive(767) {
 		&:not(.is_dead){
-			padding-bottom: 80px;
+			padding-bottom: 90px;
 		}
 	}
 }

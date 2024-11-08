@@ -74,12 +74,11 @@
 			padding: 0 0 10px;
 		}
 		@include adaptive(991.98) {
-			padding: 0 0 10px;
+			padding: 0;
 		}
 		@include adaptive(767) {
 			width: 50%;
 			max-width: 50%;
-			padding: 0 0 10px;
 		}
 
 		&_title{
@@ -87,6 +86,10 @@
 			color: #fff;
 			padding: 5px;
 			text-align: center;
+
+			@include adaptive(991.98) {
+				padding: 0 5px 10px;
+			}
 		}
 
 		.catD {
