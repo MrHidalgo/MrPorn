@@ -395,6 +395,8 @@ let lastMobileSimilarSite;
 		let bodyClasses = document.body.classList;
 		if(bodyClasses.contains('single-sites') || bodyClasses.contains('category') || bodyClasses.contains('page-template-page-categories')){
 			initReviewScroll();
+		}else{
+			initHomeScroll();
 		}
 
 
@@ -452,13 +454,49 @@ let lastMobileSimilarSite;
 		// }
 
 	}
+
+	const initHomeScroll = () => {
+		const headerHeights = {
+			get mobileHeaderHeight() {
+				return document.querySelector("#header").offsetHeight;
+			},
+
+		};
+
+		const topOffset =  isMobileDevice ? headerHeights.mobileHeaderHeight : 0;
+
+		let homeSections = []
+		if(isMobileDevice){
+			homeSections = document.querySelectorAll('.category_col');
+		}else{
+			const items = Array.from(document.querySelectorAll('.category_col.column_1'));
+			homeSections = items.sort((a, b) => {
+				return Number(a.dataset.row) - Number(b.dataset.row);
+			});
+		}
+
+		const scroller = initScrollSpyButton({
+			sections: homeSections,
+		})
+		const handleResize = () => initResize({
+			breakpoints: 992, // Breakpoint for mobile vs desktop
+			onChange: ({ isLessOrEqual }) => {
+				// const topOffset = getTopOffset(isLessOrEqual); // Determine top offset
+				scroller.setTopOffset(topOffset - 10); // Set the new top offset in scroll spy
+			}
+		});
+
+		handleResize();
+	}
 	const initReviewScroll = () => {
 		const headerHeights = {
 			get mobileHeaderHeight() {
 				return document.querySelector("#header").offsetHeight;
 			},
 			get topBarHeight() {
-				return document.querySelector(".review_header").offsetHeight;
+				let reviewHeader = document.querySelector(".review_header");
+
+				return reviewHeader ? reviewHeader.offsetHeight : 0;
 			}
 		};
 

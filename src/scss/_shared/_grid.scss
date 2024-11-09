@@ -95,17 +95,6 @@ $paddingRight: $paddingLeft;
 		}
 	}
 	&1{
-		.c-grid-main{
-			@include respond('ipad_portrait'){
-				margin-top: 130px;
-			}
-			@include adaptive(1023) {
-				margin-top: 130px;
-			}
-			@include respond('mobile_landscape'){
-				margin-top: 130px;
-			}
-		}
 
 		&.page-id-17{
 			.c-grid-main {
@@ -153,16 +142,6 @@ $paddingRight: $paddingLeft;
 
 .gaming_cat_1{
 	.c-grid-main{
-		@include respond('ipad_portrait'){
-			margin-top: 80px;
-		}
-
-		@include adaptive(767) {
-			margin-top: 80px;
-		}
-		@include respond('mobile_landscape'){
-			margin-top: 80px;
-		}
 	}
 }
 
@@ -189,37 +168,6 @@ $paddingRight: $paddingLeft;
 			}
 		}
 
-		/*&--inner{
-			position: relative;
-			flex-wrap: wrap;
-			margin: 0 -7px;
-
-			display: grid;
-			grid-row-gap: 9px;
-			row-gap: 9px;
-			-webkit-column-gap: 8px;
-			column-gap: 0;
-			grid-template-rows: initial;
-			grid-template-columns: repeat(4, minmax(0, 1fr));
-			grid-template-areas: initial;
-			grid-auto-flow: row dense;
-			grid-auto-rows: 1px;
-			grid-auto-columns: initial;
-
-
-			@include adaptive(1023.98){
-				margin: 0;
-				grid-template-columns: repeat(2, 1fr);
-			}
-			@include respond('max-small'){
-				margin: 0;
-				grid-template-columns: repeat(1, 1fr);
-			}
-		}*/
-
-		/*@media screen and (min-width: 1450px) {
-			max-width: 75%;
-		}*/
 		@media screen and (min-width: 1330px) {
 			max-width: 75%;
 			min-width: 1300px;
@@ -227,6 +175,11 @@ $paddingRight: $paddingLeft;
 		@media screen and (max-width: 1329.98px) {
 			max-width: 100%;
 			min-width: auto;
+		}
+		@include adaptive(991.98) {
+			&.p-home{
+				padding: 15px 55px;
+			}
 		}
 	}
 }

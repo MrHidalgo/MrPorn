@@ -48,9 +48,6 @@
 		overflow: auto;
 		-webkit-overflow-scrolling: touch;
 		counter-reset: number 0;
-
-
-
 		scrollbar-color: #131313 #525252;
 		&::-webkit-scrollbar{width: 10px; }
 		&::-webkit-scrollbar-corner{ background: rgba(0,0,0,0); }
@@ -60,6 +57,10 @@
 
 		@include respond('ipad_landscape'){
 			font-size: 12px;
+		}
+
+		@include adaptive(991.98) {
+			font-weight: 400;
 		}
 	}
 
@@ -78,6 +79,13 @@
 		border-bottom: 1px solid #585858;
 		color: #ddd;
 		font-weight: 500;
+
+		@include adaptive(991.98) {
+			padding: 4px 10px 4px 5px;
+			border: none;
+			height: auto;
+			font-weight: 400;
+		}
 
 		&:before{
 			counter-increment: number;
@@ -111,7 +119,6 @@
 		&-link{
 			color: #fff;
 			flex: 1;
-			font-weight: 600;
 			text-overflow: ellipsis;
 			white-space: nowrap;
 			overflow: hidden;
@@ -146,8 +153,14 @@
 			content: ' ';
 			width: 16px;
 			height: 16px;
-			background: url('../images/icon-glass-light.svg');
-			background-size: contain !important;
+			background-image: url('../images/icon-glass-light.svg');
+			background-size: contain;
+			background-repeat: no-repeat;
+			background-position: center;
+
+			@include adaptive(991.98) {
+				height: 12px;
+			}
 		}
 
 		&-tagline{
@@ -177,9 +190,6 @@
 			.list__box__item-fav{
 				display: block;
 			}
-		}
-		&-preview{
-			height: 16px;
 		}
 	}
 
@@ -291,7 +301,7 @@
 		font-weight: 800;
 		font-size: 15px;
 		text-align: center;
-		color: #d1f34b;
+		color: #fff;
 		height: 45px;
 		align-items: center;
 		justify-content: center;
@@ -313,7 +323,9 @@
 			font-weight: 800;
 			font-size: 15px;
 			text-align: center;
-			color: #d1f34b;
+			color: #fff;
+			text-overflow: ellipsis;
+			overflow: hidden;
 
 			&:hover, &:focus{
 				color: #d1f34b;
@@ -322,6 +334,9 @@
 
 			@include respond('ipad_landscape'){
 				font-size: 13.5px;
+			}
+			@include adaptive(991.98) {
+				font-size: 13px;
 			}
 
 			@include adaptive(767) {
@@ -347,6 +362,10 @@
 		-webkit-line-clamp: 2;
 		-webkit-box-orient: vertical;
 		overflow: hidden;
+
+		@include adaptive(991.98) {
+			font-size: 12px;
+		}
 	}
 
 	&-line {
@@ -441,13 +460,17 @@
 		white-space: nowrap;
 		overflow: hidden;
 		text-overflow: ellipsis;
-
+		font-weight: 500;
 		font-size: 14px;
-		font-weight: 600;
 		color: #fff;
+
 
 		@include respond('ipad_landscape'){
 			font-size: 12.5px;
+		}
+
+		@include adaptive(991.98) {
+			line-height: 30px;
 		}
 
 		&:after{

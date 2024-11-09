@@ -124,6 +124,28 @@
 		mask-image: conic-gradient(var(--border-color) calc(var(--percent) * 100%), transparent 0 );
 	}
 
+	&::after {
+		content: "";
+		position: absolute;
+		top: 0;
+		left: 0;
+		z-index: 1;
+		opacity: 0;
+		visibility: hidden;
+		width: 100%;
+		height: 100%;
+		border-radius: 50%;
+		box-shadow: 0 0 6px 12px #007bff;
+		transition: opacity .5s ease,visibility .5s ease,box-shadow .5s ease
+	}
+
+	&:active::after {
+		opacity: 1;
+		visibility: visible;
+		box-shadow: 0 0 0 0 #ff9701;
+		transition: 0s
+	}
+
 	&:hover{
 		background-color: rgba(167, 167, 167, 0.3);
 	}
@@ -147,6 +169,12 @@
 }
 
 @include adaptive(991.98) {
+	.home .go-top{
+		right: 29px;
+		margin-right: -21px;
+		left: auto;
+		bottom: 150px;;
+	}
 	.archive.category .go-top{
 		left: calc(75% - 21px);
 	}
@@ -399,9 +427,8 @@ body.chatbot_active{
 		display: flex;
 		margin-top: 8px;
 		border-radius: 8px;
-		background: #d1f34b;
-		border: 1px solid #12478c;
-		color: #12478c;
+		background: #2eaf61;
+		color: #fff;
 		text-align: center;
 		font-size: 25px;
 		font-weight: 600;
@@ -522,8 +549,8 @@ body.chatbot_active{
 		bottom: 100%;
 		width: 100%;
 		height: 30px;
-		color: #000;
-		background: #c0f200;
+		color: #fff;
+		background: #2eaf61;
 		display: flex;
 		justify-content: center;
 		align-items: center;

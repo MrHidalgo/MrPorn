@@ -1903,6 +1903,8 @@ var lastMobileSimilarSite;
 
     if (bodyClasses.contains('single-sites') || bodyClasses.contains('category') || bodyClasses.contains('page-template-page-categories')) {
       initReviewScroll();
+    } else {
+      initHomeScroll();
     }
 
     if (bodyClasses.contains('show_2nd_header_1') && bodyClasses.contains('single-sites')) {
@@ -1955,6 +1957,44 @@ var lastMobileSimilarSite;
 
   }
 
+  var initHomeScroll = function initHomeScroll() {
+    var headerHeights = {
+      get mobileHeaderHeight() {
+        return document.querySelector("#header").offsetHeight;
+      }
+
+    };
+    var topOffset = isMobileDevice ? headerHeights.mobileHeaderHeight : 0;
+    var homeSections = [];
+
+    if (isMobileDevice) {
+      homeSections = document.querySelectorAll('.category_col');
+    } else {
+      var items = Array.from(document.querySelectorAll('.category_col.column_1'));
+      homeSections = items.sort(function (a, b) {
+        return Number(a.dataset.row) - Number(b.dataset.row);
+      });
+    }
+
+    var scroller = initScrollSpyButton({
+      sections: homeSections
+    });
+
+    var handleResize = function handleResize() {
+      return initResize({
+        breakpoints: 992,
+        // Breakpoint for mobile vs desktop
+        onChange: function onChange(_ref3) {
+          var isLessOrEqual = _ref3.isLessOrEqual;
+          // const topOffset = getTopOffset(isLessOrEqual); // Determine top offset
+          scroller.setTopOffset(topOffset - 10); // Set the new top offset in scroll spy
+        }
+      });
+    };
+
+    handleResize();
+  };
+
   var initReviewScroll = function initReviewScroll() {
     var headerHeights = {
       get mobileHeaderHeight() {
@@ -1962,7 +2002,8 @@ var lastMobileSimilarSite;
       },
 
       get topBarHeight() {
-        return document.querySelector(".review_header").offsetHeight;
+        var reviewHeader = document.querySelector(".review_header");
+        return reviewHeader ? reviewHeader.offsetHeight : 0;
       }
 
     };
@@ -1975,8 +2016,8 @@ var lastMobileSimilarSite;
       return initResize({
         breakpoints: 992,
         // Breakpoint for mobile vs desktop
-        onChange: function onChange(_ref3) {
-          var isLessOrEqual = _ref3.isLessOrEqual;
+        onChange: function onChange(_ref4) {
+          var isLessOrEqual = _ref4.isLessOrEqual;
           // const topOffset = getTopOffset(isLessOrEqual); // Determine top offset
           scroller.setTopOffset(topOffset - 10); // Set the new top offset in scroll spy
         }

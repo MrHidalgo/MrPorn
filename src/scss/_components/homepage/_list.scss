@@ -537,9 +537,16 @@
 	.list__box__item{
 		background: #fff;
 		border-bottom: 1px solid #ededed;
+
+		@include adaptive(991.98) {
+			border: none;
+		}
 	}
 	.list__box__item-link{
 		color: #113d74;
+		@include adaptive(991.98) {
+			color: #000;
+		}
 	}
 	.list__info p{
 		color: #0b0d28;
@@ -548,7 +555,7 @@
 		color: #113d74;
 	}
 	.list__box__item-preview{
-		background: url('../images/icon-glass-dark.svg');
+		background-image: url('../images/icon-glass-dark.svg');
 	}
 
 	.list__box-all{
@@ -558,7 +565,7 @@
 		border: none;
 
 		&:after{
-			background: url("../images/icon-right-arrow-light.svg");
+			background-image: url("../images/icon-right-arrow-light.svg");
 		}
 	}
 
