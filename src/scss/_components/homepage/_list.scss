@@ -526,8 +526,16 @@
 }
 
 .light{
+	.list__box{
+		background: #fff;
+	}
+	.list__box-head-a{
+		color: #000;
+		&:hover{
+			color: #000;
+		}
+	}
 	.list__box-subtext{
-		background: linear-gradient(to bottom, #ffffff 0%,#f9f3eb 100%);
 		color: #333;
 
 		@include respond('ipad_landscape'){
@@ -535,7 +543,6 @@
 		}
 	}
 	.list__box__item{
-		background: #fff;
 		border-bottom: 1px solid #ededed;
 
 		@include adaptive(991.98) {
@@ -559,13 +566,11 @@
 	}
 
 	.list__box-all{
-		color: #337ab7;
-		background: #f9f3eb;
-		background: linear-gradient(to bottom,#f9f3eb 0%,#fff 100%);
+		color: #fff;
 		border: none;
 
 		&:after{
-			background-image: url("../images/icon-right-arrow-light.svg");
+			background-image: url("../images/icon-right-arrow-dark.svg");
 		}
 	}
 

@@ -11,28 +11,6 @@
 	}
 }
 
-@include respond('ipad_portrait'){
-}
-
-/*.site-content{
-	@include adaptive(1023.98) {
-		margin-top: 120px;
-	}
-	@include adaptive(767) {
-		margin-top: 120px;
-	}
-}
-.gaming_cat_1{
-	.site-content{
-		@include adaptive(1023.98) {
-			margin-top: 80px;
-		}
-
-		@include adaptive(767) {
-			margin-top: 80px;
-		}
-	}
-}*/
 
 @include adaptive(767) {
 	.c-grid{
@@ -44,19 +22,12 @@
 	display: flex;
 	flex-direction: column;
 	margin-bottom: 20px;
-}
 
-/*.bread-crumb{
-	display: flex;
-	flex-wrap: wrap;
-
-	@include adaptive(767) {
-		order: -1;
-		z-index: 60;
-		padding: 10px 5px;
-		margin: 0 -5px 5px;
+	&.review{
+		background: #3b3b3b;
 	}
-}*/
+
+}
 
 .similar-sites-row{
 
@@ -989,6 +960,9 @@
 	}
 }
 .light {
+	.site-content.review{
+		background: #fff;
+	}
 	.back-box{
 		background-image: url(../images/back-img.png);
 	}
@@ -1978,13 +1952,7 @@
 
 	&_a{
 		color: #000;
-		//background: #c0f200;
-		//background: -moz-linear-gradient(top,#c0f200 0%,#aeef00 50%,#83e900 100%);
-		//background: -webkit-linear-gradient(top,#c0f200 0%,#aeef00 50%,#83e900 100%);
-		//background: linear-gradient(to bottom,#c0f200 0%,#aeef00 50%,#83e900 100%);
-		//filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#c0f200',endColorstr='#83e900',GradientType=0 );
 		background: #2eaf61;
-		//border: 1px solid #fff;
 		border-radius: 3px;
 		color: #fff;
 		font-size: 14px;
@@ -2018,7 +1986,7 @@
 	}
 
 	img{
-		height: 30px;
+		height: 24px;
 	}
 }
 
