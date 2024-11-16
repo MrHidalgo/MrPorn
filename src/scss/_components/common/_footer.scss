@@ -83,7 +83,7 @@
 	border-radius: 3px;
 	cursor: pointer;
 
-	--button-size: 42px;
+	--button-size: 44px;
 	--border-width: 3px;
 	--button-color: #007bff;
 	--border-color: #ffffff;
@@ -142,7 +142,7 @@
 	&:active::after {
 		opacity: 1;
 		visibility: visible;
-		box-shadow: 0 0 0 0 #ff9701;
+		box-shadow: 0 0 0 0 #007bff;
 		transition: 0s
 	}
 
@@ -211,7 +211,6 @@ body.chatbot_active{
 		&-1 {
 			display: flex;
 			padding-top: 45px;
-			padding-bottom: 30px;
 			@include adaptive(767) {
 				padding-top: 15px;
 				padding-bottom: 15px;
@@ -223,7 +222,6 @@ body.chatbot_active{
 			min-height: 55px;
 			padding-top: 10px;
 			padding-bottom: 10px;
-			margin-top: 10px;
 			background-color: #081b49;
 
 			@include adaptive(767) {
@@ -233,6 +231,7 @@ body.chatbot_active{
 	}
 
 	&__container {
+		padding-bottom: 30px;
 		&-1 {
 			display: flex;
 			flex-direction: column;
@@ -356,6 +355,19 @@ body.chatbot_active{
 			}
 		}
 	}
+
+	&__jobs{
+		text-align: center;
+		font-size: 14px;
+		padding: 15px 0 0;
+
+		&-a{
+			color: #ccc;
+			&:hover {
+				color: #4099f9;
+			}
+		}
+	}
 }
 
 .user_page_1 .footer__wrapper-1{
@@ -365,7 +377,7 @@ body.chatbot_active{
 }
 
 .footer_b{
-	padding: 0 0 15px 0;
+	padding: 5px 0 15px 0;
 
 	&.nopadding{
 		padding: 0 0 15px;
@@ -379,6 +391,8 @@ body.chatbot_active{
 		font-size: 22px;
 		padding: 15px 15px 10px;
 
+
+
 		a{
 			color: #fff;
 		}
@@ -388,9 +402,10 @@ body.chatbot_active{
 		}
 
 		@include adaptive(767) {
-			font-size: 18px;
+			font-size: 14px;
 			line-height: 20px;
 			padding: 7px 15px;
+			justify-content: center;
 		}
 
 		&:before{
@@ -404,6 +419,7 @@ body.chatbot_active{
 			margin-right: 10px;
 
 			@include adaptive(767) {
+				display: none;
 				width: 48px;
 				height: 48px;
 			}
@@ -424,6 +440,7 @@ body.chatbot_active{
 	 	padding: 0 10px 10px 10px;
 	}
 	&_link{
+		--animation-rgb-value: 46, 175, 91;
 		display: flex;
 		margin-top: 8px;
 		border-radius: 8px;
@@ -439,13 +456,18 @@ body.chatbot_active{
 		padding: 10px;
 
 		@include adaptive(767) {
-			font-size: 18px;
+			font-size: 14px;
 			line-height: 20px;
 			padding: 4px 10px;
 		}
 
+		&:focus{
+			color: #fff;
+		}
+
 		&:hover{
-			color: #12478c;
+			color: #fff;
+			animation: pulse 1s infinite;
 		}
 	}
 	&_img_holder{
@@ -472,7 +494,8 @@ body.chatbot_active{
 	bottom: 0;
 	width: 100%;
 	left: 0;
-	background: #fff;
+	background: #2a2b31;
+
 	text-align: center;
 	z-index: 12;
 	display: none;
@@ -488,8 +511,11 @@ body.chatbot_active{
 		line-height: 45px;
 	}
 
+	a, span{
+		color: #fff;
+	}
 	a{
-		color: #000;
+
 		font-size: 16px;
 		display: block;
 		text-overflow: ellipsis;
@@ -544,6 +570,8 @@ body.chatbot_active{
 		}
 	}
 
+
+
 	.out-link {
 		position: absolute;
 		bottom: 100%;
@@ -577,7 +605,7 @@ body.chatbot_active{
 	.item-counter {
 		position: absolute;
 		left: calc(50% + 20px);
-		color: #000;
+		color: #fff;
 	}
 	.item-ico {
 		height: 33.5px;
@@ -662,6 +690,7 @@ body.chatbot_active{
 			color: #014293;
 		}
 	}
+
 	.footer__title{
 		color: #576576;
 	}
@@ -678,6 +707,21 @@ body.chatbot_active{
 		a{
 			color: #014293;
 		}
+	}
+
+	.floating_bar{
+		background: #fff;
+
+		a, span{
+			color: #000;
+		}
+
+		.out-link{
+			color: #fff;
+		}
+	}
+	.footer__jobs-a{
+		color: #014293;
 	}
 }
 // FOOTER :: END

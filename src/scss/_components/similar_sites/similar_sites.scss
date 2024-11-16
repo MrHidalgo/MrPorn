@@ -1,6 +1,5 @@
 // SIMILAR_SITES :: START
 .related_sites_container{
-	background: #3b3b3b;
 	padding-bottom: 10px;
 
 
@@ -9,17 +8,6 @@
 	}
 }
 .similar_sites{
-	display: flex;
-	flex-wrap: wrap;
-	padding: 0 10px 15px;
-
-	@include adaptive(991.98) {
-		padding: 15px 5px;
-	}
-
-	@include adaptive(767) {
-		padding: 0px 0px 15px;
-	}
 
 	&_item{
 		width: 25%;
@@ -108,9 +96,6 @@
 .bottom_back{padding: 0 15px;}
 
 .light{
-	.related_sites_container{
-		background: #fff;
-	}
 	.similar_sites_item .similar_link{
 		color: #337ab7;
 	}

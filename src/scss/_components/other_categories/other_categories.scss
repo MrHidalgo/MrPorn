@@ -1,16 +1,15 @@
 // OTHER_CATEGORIES :: START
 #other_categories{
 	padding-bottom: 30px;
+	margin: 0 -10px;
 
 	&.review_site{
 		padding-bottom: 0;
 	}
 
-	@include respond('ipad'){
-	}
 	@include adaptive(767) {
 		padding-bottom: 20px;
-		margin-bottom: 0;
+		margin: 0;
 	}
 
 	&.transparent{
@@ -28,13 +27,6 @@
 			margin: 0 -5px;
 		}
 
-		&.review_site{
-			padding: 0 5px 5px;
-
-			@include adaptive(767) {
-				padding: 5px 0;
-			}
-		}
 	}
 
 	&.transparent{

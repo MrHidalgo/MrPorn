@@ -7,12 +7,6 @@
 		display: none;
 	}
 }
-
-@include adaptive(767) {
-	.bread-crumb{
-		display: none;
-	}
-}
 @include respond('ipad_portrait'){
 	.c-grid{
 		padding-left: 15px;
@@ -44,7 +38,7 @@
 		background-color: #2a2b31;
 		border-color: #151515;
 		border-radius: 5px;
-		padding: 10px 15px;
+		padding: 2px 15px 10px;
 
 
 		@include adaptive(767) {
@@ -66,10 +60,8 @@
 	&_header{
 		border-bottom: 3px solid #e9ebed;
 	}
-	.category {
-		&_list {
-			background: #fff;
-		}
+	.category_list {
+		background: #fff;
 	}
 }
 

@@ -5,9 +5,15 @@
 	flex-wrap: wrap;
 	padding: 5px 25px;
 	background: #4a4a4a;
-	font-size: 15px;
+	font-size: 14px;
 	font-weight: 600;
 	color: #fff;
+	gap: 10px;
+
+	&.no-bg{
+		background: transparent;
+		padding: 0;
+	}
 
 	@include respond('ipad'){
 		font-size: 12px;
@@ -19,12 +25,7 @@
 
 		padding: 10px;
 		text-align: center;
-		font-size: 11px;
 		margin: 0 -20px 10px;
-	}
-
-	@include respond('max-small'){
-
 	}
 
 	&-links{
@@ -40,7 +41,6 @@
 		}
 		@include respond('max-small'){
 			width: 100%;
-			font-size: 11px;
 			text-align: center;
 			text-overflow: unset;
 			overflow: auto;
@@ -58,12 +58,7 @@
 	&.review-crumbs{
 		padding: 0;
 		background: transparent !important;
-		font-size: 14px;
-
-		@include adaptive(991.98) {
-			padding: 0 15px;
-		}
-
+		font-size: 15px;
 	}
 
 	.show_similar_sites{
@@ -101,10 +96,12 @@
 		display: inline-flex;
 		align-items: center;
 		color: #d7d7d7;
+		gap: 4px;
 
 		&.iconCat:before{
 			margin: 0 0 0 -11px;
 			transform: scale(0.6567164179);
+			transform-origin: right;
 		}
 
 		&.main:before{
@@ -118,30 +115,16 @@
 			height: 22px;
 		}
 
-		@include adaptive(1449.98){
-			font-size: 12px;
-		}
-
 		@include respond('ipad_portrait'){
 			margin: 0;
 			padding: 5px 15px;
 			align-items: center;
 		}
-
-		@include adaptive(767) {
-			font-size: 12px;
-		}
-	}
-}
-
-@include respond('max-medium'){
-	.archive.category .bread-crumb{
-		display: none;
 	}
 }
 
 .light{
-	.bread-crumb{
+	.bread-crumb:not(.no-bg){
 		background: #eee;
 		color: #333;
 	}

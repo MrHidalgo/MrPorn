@@ -55,7 +55,6 @@ const initScrollSpyButton = ({
 			if(percent > 0.95){
 				percent = 1;
 			}
-			console.log('Percent ', percent)
 			setPercentCSSProperty(percent);
 			toggleTopClass(percent);
 		}

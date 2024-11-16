@@ -4,7 +4,7 @@
 	hr {
 		margin: 20px 0;
 		border: none;
-		border-top: 1px solid #d8d8d8;
+		border-top: 1px solid #484a54;
 	}
 
 	p {
@@ -14,7 +14,7 @@
 	}
 
 	.color-primary {
-		color: #1c3f87;
+		color: #3e98cf;
 	}
 
 	.color-secondary {
@@ -189,12 +189,13 @@
 		overflow-y: auto;
 	}
 
-	.micromodal-content {
+	&-content {
 		border-radius: 10px;
-		background-color: #fff;
+		background-color: #2a2b31;
+		color: #fff;
 	}
 
-	.micromodal-header {
+	&-header {
 		display: flex;
 		align-items: center;
 		gap: 20px;
@@ -214,7 +215,7 @@
 		}
 	}
 
-	.micromodal-title {
+	&-title {
 		display: flex;
 		align-items: center;
 		gap: 14px;
@@ -235,13 +236,18 @@
 		display: flex;
 		margin-left: auto;
 		cursor: pointer;
+		fill: #fff;
 
 		.icon {
 			width: 24px;
 			height: 24px;
-			fill: #454545;
+			fill: #fff;
 			transition: fill 0.2s ease;
 			pointer-events: none;
+		}
+
+		&:hover .icon {
+			fill: #1c3f87;
 		}
 
 		&:active .icon {
@@ -410,19 +416,19 @@
 	cursor: pointer;
 	transition: background-color 0.2s ease, color 0.2s ease;
 
-	&:after{
-		width: 20px;
-		height: 20px;
-		content: ' ';
-		background-repeat: no-repeat;
-		background-position: center;
-		background-image: url(../images/review/arrow-right.svg);
+	.arrow{
+		fill: #fff;
 	}
 
 	&:hover {
-		@media (min-width: 1025px) {
-			background-color: #f0f1f5;
-			color: #000;
+		//@media (min-width: 1025px) {
+		//
+		//}
+		background-color: #484a54;
+		color: #3e98cf;
+
+		.arrow{
+			fill: #3e98cf;
 		}
 	}
 
@@ -481,7 +487,8 @@
 	margin-bottom: 20px;
 	padding: 10px;
 	border-radius: 10px;
-	background-color: #f6f6f6;
+	background: #484a54;
+	color: #fff;
 
 	p {
 		font-size: 12px;
@@ -540,8 +547,8 @@
 	padding: 0 20px;
 	border: 1px solid #b7b7b7;
 	border-radius: 10px;
-	background-color: #fff;
-	color: #000;
+	background-color: #484a54;
+	color: #fff;
 	transition: border-color 0.2s ease;
 
 	&.has_error{
@@ -558,7 +565,7 @@
 	}
 
 	&::placeholder {
-		color: #000;
+		color: #fff;
 	}
 }
 
@@ -599,7 +606,7 @@
 			width: 24px;
 			height: 24px;
 			margin-right: 8px;
-			border: 2px solid #b7b7b7;
+			border: 1px solid #b7b7b7;
 			border-radius: 4px;
 			background-image: url(../images/review/tick.svg);
 			background-repeat: no-repeat;
@@ -607,6 +614,10 @@
 			background-size: 0 0;
 			cursor: pointer;
 			transition: background-size 0.1s ease, filter 0.2s ease;
+		}
+
+		&.has_error::before{
+			border-color: #f60000;
 		}
 	}
 }
@@ -617,6 +628,57 @@
 		flex-direction: column;
 		align-items: center;
 		padding-bottom: 70px;
+	}
+}
+
+.light {
+	.micromodal {
+		hr{
+			border-top: 1px solid #d8d8d8;
+		}
+		&-content {
+			background-color: #fff;
+			color: #000;
+		}
+
+		&-close {
+			.icon{
+				fill: #454545;
+			}
+			&:hover{
+				.icon{
+					fill: #1c3f87;
+				}
+			}
+		}
+
+
+
+	}
+	.boogie-disclaimer{
+		background: #f6f6f6;
+		color: #000;
+	}
+	.boogie-input{
+		color: #000;
+		background-color: #fff;
+
+		&::placeholder {
+			color: #000;
+		}
+	}
+	.boogie-list-item{
+		.arrow{
+			fill: #000;
+		}
+		&:hover{
+			background-color: #f0f1f5;
+			color: #000;
+
+			.arrow{
+				fill: #3e98cf;
+			}
+		}
 	}
 }
 

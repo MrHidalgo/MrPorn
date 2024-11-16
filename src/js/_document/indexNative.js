@@ -410,48 +410,6 @@ let lastMobileSimilarSite;
 			scrollOffset = 85;
 		}
 
-		/*if(bodyClasses.contains('home')){
-			if(isMobileDevice){
-				scrollOffset = 120;
-			}
-
-			let homeSections = []
-			if(isMobileDevice){
-				homeSections = document.querySelectorAll('.category_col');
-			}else{
-				const items = Array.from(document.querySelectorAll('.category_col.column_1'));
-				homeSections = items.sort((a, b) => {
-					return Number(a.dataset.row) - Number(b.dataset.row);
-				});
-			}
-			initScrollSpyButton({
-				sections: homeSections,
-				topOffset:  scrollOffset
-			})
-		} else if(bodyClasses.contains('page-template-page-categories')) {
-			//
-			if(isMobileDevice){
-				scrollOffset = 120;
-			}
-
-			initScrollSpyButton({
-				sections: document.querySelectorAll(".category_box .category_item:nth-child(4n+1), [data-section]"),
-				topOffset:  scrollOffset
-			})
-		} else{
-			initScrollSpyButton({
-				sections: document.querySelectorAll("[data-section]"),
-				topOffset:  scrollOffset
-			})
-		}*/
-
-
-		// if(goTop){
-		// 	goTop.onclick = function(event) {
-		// 		doScrolling(0, 200);
-		// 		return false;
-		// 	}
-		// }
 
 	}
 
@@ -482,7 +440,7 @@ let lastMobileSimilarSite;
 			breakpoints: 992, // Breakpoint for mobile vs desktop
 			onChange: ({ isLessOrEqual }) => {
 				// const topOffset = getTopOffset(isLessOrEqual); // Determine top offset
-				scroller.setTopOffset(topOffset - 10); // Set the new top offset in scroll spy
+				scroller.setTopOffset(topOffset + 5); // Set the new top offset in scroll spy
 			}
 		});
 
@@ -509,12 +467,13 @@ let lastMobileSimilarSite;
 			breakpoints: 992, // Breakpoint for mobile vs desktop
 			onChange: ({ isLessOrEqual }) => {
 				// const topOffset = getTopOffset(isLessOrEqual); // Determine top offset
-				scroller.setTopOffset(topOffset - 10); // Set the new top offset in scroll spy
+				scroller.setTopOffset(topOffset); // Set the new top offset in scroll spy
 			}
 		});
 
 		handleResize();
 	}
+
 
 	function onBlogScroll(){
 		if(window.scrollY < blogContentHeight | blogScrollPercent < 101){
@@ -608,6 +567,8 @@ let lastMobileSimilarSite;
 			if(isLoggedUser!=''){
 				renderFavouriteButtons()
 			}
+
+			visitedSites().initVisitedSites('.list__box__item')
 		}else if(document.body.classList.contains('single-blog')){
 			isSingleBlog = true;
 			blogContent = document.querySelector('.blog_content');
@@ -616,6 +577,10 @@ let lastMobileSimilarSite;
 				blogProgressBar = document.querySelector('.blog_progress');
 				onBlogScroll()
 			}
+		} else if(document.body.classList.contains('category')) {
+			visitedSites().initVisitedSites('.category_sites_item')
+		} else if(document.body.classList.contains('single-sites')) {
+			visitedSites().initVisitedSites('.category_sites_item')
 		}
 
 
