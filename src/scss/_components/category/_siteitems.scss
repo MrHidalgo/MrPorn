@@ -554,7 +554,6 @@
 		right: 0;
 		bottom: 0;
 		z-index: 12;
-		transition: opacity .1s;
 		padding: 10px 0 0 0;
 		background-image: initial;
 		background-color: rgba(26, 29, 32, .6);
@@ -658,40 +657,35 @@
 		}
 
 		.icon-holder{
-			background-size: 350px;
+			background-size: 260px;
 
 			@include adaptive(767){
 				background-size: 180px;
 			}
 		}
 		.deadsite-title{
-			margin-top: 30px;
-			font-size: 36px;
+			margin-top: 5px;
+			font-size: 24px;
 
 			@include adaptive(767){
-				margin-top: 5px;
 				font-size: 12px;
 			}
 		}
 		.deadsite-subtitle{
-			font-size: 20px;
+			font-size: 18px;
 
 			@include adaptive(767){
 				font-size: 16px;
 			}
 		}
 		.item-link{
-			bottom: 25px;
+			bottom: 15px;
 			right: auto;
 			top: auto;
 			flex-direction: revert;
 
 			.text{
-				font-size: 20px;
-
-				@include adaptive(767){
-					font-size: 14px;
-				}
+				font-size: 14px;
 			}
 
 			@include adaptive(767){

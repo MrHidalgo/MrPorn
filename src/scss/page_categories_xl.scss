@@ -33,7 +33,7 @@
 			list-style: none;
 			margin: 0;
 			padding: 0 0;
-			background: #fff;
+			background: #454545;
 		}
 		&__li{
 			border-bottom: 1px solid #626262;
@@ -63,6 +63,13 @@
 					text-decoration: underline;
 				}
 			}
+		}
+	}
+}
+.light{
+	.leftCat__ul{
+		@include respond('medium') {
+			background: #fff;
 		}
 	}
 }

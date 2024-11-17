@@ -119,44 +119,9 @@
 }
 
 .category_site_container.category_55{
-	.category_site_lits.page_1{
-		.category_sites_item:nth-child(n+52){
-			display: none;
-		}
 
-		.pagi {
-			display: none;
-		}
-	}
 	.category_bottom_links.page_1{
 		display: none;
-	}
-
-	&.show_all{
-		.category_site_lits.page_1 .pagi{
-			display: block;
-		}
-
-		.click_for_more_games{
-			display: none;
-		}
-
-		.category_bottom_links{
-			display: block;
-			text-align: center;
-
-			@include adaptive(767) {
-				padding: 0 10px 5px;
-			}
-		}
-	}
-}
-
-.category_site_container.category_55.show_all{
-	.category_site_lits.page_1 {
-		.category_sites_item:nth-child(n+52) {
-			display: block;
-		}
 	}
 }
 
