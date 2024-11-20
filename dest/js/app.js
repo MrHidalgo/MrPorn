@@ -1466,7 +1466,7 @@ var initScrollSpyButton = function initScrollSpyButton(_ref2) {
     onBeforeScrollAction();
     var percent = getPercent();
 
-    if (percent > 0.95) {
+    if (!document.body.classList.contains('home') && percent > 0.95) {
       percent = 1;
     }
 
@@ -1935,24 +1935,17 @@ var lastMobileSimilarSite;
   };
 
   function initGotoTop() {
-    if (isSingleBlog && blogContent) {
-      window.onscroll = function () {
-        // if (window.scrollY > 200) {
-        // 	show(goTop);
-        // } else {
-        // 	hide(goTop);
-        // }
-        onBlogScroll();
-      };
-    }
-
     var scrollOffset = 0;
     var bodyClasses = document.body.classList;
 
     if (bodyClasses.contains('single-sites') || bodyClasses.contains('category') || bodyClasses.contains('page-template-page-categories')) {
       initReviewScroll();
-    } else {
+    } else if (bodyClasses.contains('home')) {
       initHomeScroll();
+    } else if (bodyClasses.contains('single-blog')) {
+      window.onscroll = function () {
+        onBlogScroll();
+      };
     }
 
     if (bodyClasses.contains('show_2nd_header_1') && bodyClasses.contains('single-sites')) {

@@ -380,23 +380,16 @@ let lastMobileSimilarSite;
 
 	function initGotoTop(){
 
-		if(isSingleBlog && blogContent){
-			window.onscroll = function(){
-				// if (window.scrollY > 200) {
-				// 	show(goTop);
-				// } else {
-				// 	hide(goTop);
-				// }
-				onBlogScroll()
-			}
-		}
-
 		let scrollOffset = 0;
 		let bodyClasses = document.body.classList;
 		if(bodyClasses.contains('single-sites') || bodyClasses.contains('category') || bodyClasses.contains('page-template-page-categories')){
 			initReviewScroll();
-		}else{
+		}else if(bodyClasses.contains('home')){
 			initHomeScroll();
+		}else if(bodyClasses.contains('single-blog')){
+			window.onscroll = function(){
+				onBlogScroll()
+			}
 		}
 
 

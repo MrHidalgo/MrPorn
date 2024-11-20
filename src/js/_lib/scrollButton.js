@@ -52,7 +52,7 @@ const initScrollSpyButton = ({
 	const onScroll = () => {
 			onBeforeScrollAction();
 			let percent = getPercent();
-			if(percent > 0.95){
+			if(!document.body.classList.contains('home') && percent > 0.95){
 				percent = 1;
 			}
 			setPercentCSSProperty(percent);
