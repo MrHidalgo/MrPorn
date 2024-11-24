@@ -516,7 +516,6 @@ let lastMobileSimilarSite;
 		currentLang = document.documentElement.getAttribute('lang');
 
 		// lib
-		//initSwiper();
 		initHamburger();
 		// ==========================================
 

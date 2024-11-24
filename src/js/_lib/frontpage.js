@@ -1,36 +1,7 @@
-let currentBannerTimeout;
-let lastActiveHoverBox;
-let isMouseDown = false;
-let _greenBarLeft = 0;
-let	greenBarWidth;
-
-
-let isAnimationStarted = false;
 let pauseHoverAnimation = false;
 
-let swiperClientWidth = null;
-let swiperClientHeight = null;
-
-let defaultSlidePaddingLeft = 0;
-let defaultSlidePaddingRight = 0;
-let defaultSlideMarginLeft = 0;
-let defaultSlideMarginRight = 0;
-
-let currentBannerSection = null;
-let _slideWidth, _slidePaddingLeft, _slidePaddingRight, _slideMarginLeft, _slideMarginRight, _slideBoxSizing = null;
-
-let swiperWrappers = [];
-let listBoxWrappers = [];
-let popupVideo = null;
-let siteModal = document.querySelector('#site_modal');
-
 let trigger;
-let isClosing = false;
 
-// Select DOM
-const modalTriggersDom = document.querySelectorAll('.modal-trigger');
-const dimmer = document.querySelector('.overlay');
-const modalContainer = document.querySelector('.modal-container');
 const modal = document.querySelector('.modal');
 
 let homeMainContainer = document.querySelector('.c-grid--inner');
@@ -190,42 +161,6 @@ let tOut = null;
 
 let homeGridInner = document.querySelector(".c-grid--inner");
 
-
-function showBanner(siteId, isSkip = false, target = false){
-
-	videoPaused = true;
-
-
-	let siteBox = document.querySelector('.swiper-slide[data-siteid="'+siteId+'"]');
-	if(!siteBox){
-		return;
-	}
-
-	let swiperSlide = siteBox;
-	let slideIndex = swiperSlide.dataset.index;
-	let swiperWrapper = siteBox.closest('.swiper-wrapper');
-	let slideCategory = swiperWrapper.dataset.category;
-
-	if(currentBannerSection && !isSkip){
-		currentBannerSection.remove();
-	}
-
-	var _isActive = document.querySelector('.list__box.is-active')
-	if(_isActive){
-		_isActive.classList.remove('is-active');
-	}
-
-
-	var _isOpen = document.querySelector('.list__specification.is-open')
-	if(_isOpen && !isSkip){
-		_isOpen.classList.remove('is-open');
-		document.body.classList.remove('is_open');
-	}
-
-	markFavourites();
-	markLikesDislikes();
-}
-
 function addToFavourites(siteId){
 	postRequest(ajaxEndpoint, {
 		action:'add_to_fav',
@@ -281,54 +216,4 @@ function onDisLike(el, elID){
 		window.dislikes.remove(elID);
 	}
 	setWithExpiry("dislikes", window.dislikes, 30*24*3600*1000);
-}
-
-const markLikesDislikes = () =>{
-	window.likes.map(id=>{
-		let btnLike = document.querySelector('.list__box-like[data-id="'+id+'"]')
-		if(btnLike){
-			btnLike.classList.remove('is-hide');
-			btnLike.classList.add('is-active');
-		}
-		let btnDislike = document.querySelector('.list__box-dislike[data-id="'+id+'"]')
-		if(btnDislike){
-			btnDislike.classList.remove('is-active');
-			btnDislike.classList.add('is-hide');
-		}
-
-		btnLike = document.querySelector('.list__specification-like[data-like="'+id+'"]')
-		if(btnLike){
-			btnLike.parentNode.classList.remove('is-hide');
-			btnLike.classList.add('is-active');
-		}
-		btnDislike = document.querySelector('.list__specification-dislike[data-dislike="'+id+'"]')
-		if(btnDislike){
-			btnDislike.classList.remove('is-active');
-			btnDislike.parentNode.classList.add('is-hide');
-		}
-	});
-
-	window.dislikes.map(id=>{
-		let btnDislike = document.querySelector('.list__box-dislike[data-id="'+id+'"]')
-		if(btnDislike){
-			btnDislike.classList.remove('is-hide');
-			btnDislike.classList.add('is-active');
-		}
-		let btnLike = document.querySelector('.list__box-like[data-id="'+id+'"]')
-		if(btnLike){
-			btnLike.classList.remove('is-active');
-			btnLike.classList.add('is-hide');
-		}
-
-		btnDislike = document.querySelector('.list__specification-dislike[data-dislike="'+id+'"]')
-		if(btnDislike){
-			btnDislike.parentNode.classList.remove('is-hide');
-			btnDislike.classList.add('is-active');
-		}
-		btnLike = document.querySelector('.list__specification-like[data-like="'+id+'"]')
-		if(btnLike){
-			btnLike.classList.remove('is-active');
-			btnLike.parentNode.classList.add('is-hide');
-		}
-	});
 }

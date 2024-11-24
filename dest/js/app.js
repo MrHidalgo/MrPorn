@@ -2071,7 +2071,6 @@ var lastMobileSimilarSite;
     initPreventBehavior(); // ==========================================
 
     currentLang = document.documentElement.getAttribute('lang'); // lib
-    //initSwiper();
 
     initHamburger(); // ==========================================
     // callback
