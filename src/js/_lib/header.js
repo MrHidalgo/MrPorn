@@ -311,7 +311,7 @@ const onSortLetterClick = (letterItem) => {
 		let freeId = suggession.free_id;
 		let siteHd = suggession.hd;
 		let hdId = suggession.hd_id;
-		let catIcon = '/wp-content/uploads/'+suggession.icon;
+		let catIcon = suggession.icon;
 
 		if(currentLang!='en'){
 			siteFree = siteFree.replace(siteOrigin+'/', siteOrigin+'/'+currentLang+'/');
@@ -344,7 +344,8 @@ const onSortLetterClick = (letterItem) => {
 			letterSuggessions += '<div class="sort__collapse">' +
 				'<div class="sort__collapse-toggle" collapse-toggle-js data-container="sort-collapse-'+suggessionIndex+'">'+
 				'<div><span>#'+suggessionIndex+'</span></div>'+
-				'<div><img src="'+catIcon+'" />'+
+				'<div class="sort__collapse-title">'+
+				'<i class="icon-category '+catIcon+'"></i>'+
 				'<p>'+suggessionName+'</p>'+
 				'</div>'+
 				'<div><i class="icon-font icon-arrow-angle"></i></div></div>'+
@@ -359,7 +360,8 @@ const onSortLetterClick = (letterItem) => {
 			letterSuggessions += '<div class="sort__collapse">' +
 				'<a class="sort__collapse-toggle scroll_to_category11" data-category="'+((hdId!='')?hdId:freeId)+'" href="'+toggleLink+'">'+
 				'<div><span>#'+suggessionIndex+'</span></div>'+
-				'<div><img src="'+catIcon+'" />'+
+				'<div class="sort__collapse-title">' +
+				'<i class="icon-category '+catIcon+'"></i>'+
 				'<p>'+suggessionName+'</p>'+
 				'</div>'+
 				'</a>'+

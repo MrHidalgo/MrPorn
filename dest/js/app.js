@@ -340,33 +340,28 @@ var categorySidebar;
 function initCategoryPage() {
   function createSidebar() {
     var desktopMenulist = document.querySelector('.desktop_menu_list ul');
-    var otherCategoryItems = document.querySelectorAll('#other_categories .category_item_title');
+    var otherCategoryItems = document.querySelectorAll('#other_categories .category_item_link');
     otherCategoryItems.forEach(function (_category) {
       var $this = _category;
 
       var link = _category.getAttribute('href');
 
-      var $categoryTitle = _category.querySelector('.catD');
-
-      if ($categoryTitle) {
-        var smallElement = $categoryTitle.querySelector('small');
-
-        if (smallElement) {
-          smallElement.parentNode.removeChild(smallElement);
-        }
-      }
-
       var categorySites = $this.querySelectorAll('.url_link_list_sites .deIcon');
-      var categoryThumb = $this.dataset.thumbnail;
-      var categoryTitle = '<span class="category_title">' + $categoryTitle.innerHTML + '</span>';
+
+      var $categoryTitle = _category.querySelector('.category_item_caption_title');
+
+      var categoryTitle = $categoryTitle.innerHTML;
+
+      var $categoryIcon = _category.querySelector('.icon-category');
+
+      var categoryIcon = $categoryIcon.className;
       var categorySiteCount = $this.querySelector('.url_link_count_sites');
       var count_sites = categorySiteCount.textContent.replace('+', '');
       var icons = '';
       categorySites.forEach(function (_site) {
-        icons += '<span><span class="' + _site.getAttribute('class') + '"></span></span>';
-      }); //var item = '<li class="item ' + item_class + '" data-id="' + $this.attr('data-id') + '">' + '<a  href="' + link + '" class="mobile_category_name" data-group-link="' + $this.find('.url_link_caption').attr('data-group-link') + '">' + '<span>' + title + '</span>' + '<div class="mobile_link_icons">' + icons + '<span class="mobile_link_ellipsis">...</span>' + '<span class="mobile_link_count">' + count_sites + '</span>' + '</div>' + '</a>' + '</li>';
-
-      var item = '<li class="item" >' + '<a  href="' + link + '" class="mobile_category_name"><span>' + categoryTitle + '</span><div class="mobile_link_icons">' + icons + '<span class="mobile_link_ellipsis">...</span>' + '<span class="mobile_link_count">' + count_sites + '</span>' + '</div>' + '</a>' + '</li>'; // console.log('categoryItems '+ _category.getAttribute('href')+' - '+categoryTitle + ' - ' + icons)
+        icons += '<i class="' + _site.getAttribute('class') + '"></i>';
+      });
+      var item = '<li class="category-list-item" >' + '<a  href="' + link + '" class="category-list-link"><i class="' + categoryIcon + '"></i><span class="category-list-title">' + categoryTitle + '</span><div class="category-list-icons">' + icons + '<span class="mobile_link_ellipsis">...</span>' + '<span class="mobile_link_count">' + count_sites + '</span>' + '</div>' + '</a>' + '</li>'; // console.log('categoryItems '+ _category.getAttribute('href')+' - '+categoryTitle + ' - ' + icons)
 
       desktopMenulist.insertAdjacentHTML('beforeend', item);
     });
@@ -928,7 +923,7 @@ var onSortLetterClick = function onSortLetterClick(letterItem) {
     var freeId = suggession.free_id;
     var siteHd = suggession.hd;
     var hdId = suggession.hd_id;
-    var catIcon = '/wp-content/uploads/' + suggession.icon;
+    var catIcon = suggession.icon;
 
     if (currentLang != 'en') {
       siteFree = siteFree.replace(siteOrigin + '/', siteOrigin + '/' + currentLang + '/');
@@ -962,10 +957,10 @@ var onSortLetterClick = function onSortLetterClick(letterItem) {
     }
 
     if (showLetterToggle) {
-      letterSuggessions += '<div class="sort__collapse">' + '<div class="sort__collapse-toggle" collapse-toggle-js data-container="sort-collapse-' + suggessionIndex + '">' + '<div><span>#' + suggessionIndex + '</span></div>' + '<div><img src="' + catIcon + '" />' + '<p>' + suggessionName + '</p>' + '</div>' + '<div><i class="icon-font icon-arrow-angle"></i></div></div>' + '<div class="sort__collapse-body" id="sort-collapse-' + suggessionIndex + '" collapse-body-js>' + htmlFree + htmlHd + '</div>' + '</div>';
+      letterSuggessions += '<div class="sort__collapse">' + '<div class="sort__collapse-toggle" collapse-toggle-js data-container="sort-collapse-' + suggessionIndex + '">' + '<div><span>#' + suggessionIndex + '</span></div>' + '<div class="sort__collapse-title">' + '<i class="icon-category ' + catIcon + '"></i>' + '<p>' + suggessionName + '</p>' + '</div>' + '<div><i class="icon-font icon-arrow-angle"></i></div></div>' + '<div class="sort__collapse-body" id="sort-collapse-' + suggessionIndex + '" collapse-body-js>' + htmlFree + htmlHd + '</div>' + '</div>';
     } else {
       var toggleLink = siteHd != '' ? siteHd : siteFree;
-      letterSuggessions += '<div class="sort__collapse">' + '<a class="sort__collapse-toggle scroll_to_category11" data-category="' + (hdId != '' ? hdId : freeId) + '" href="' + toggleLink + '">' + '<div><span>#' + suggessionIndex + '</span></div>' + '<div><img src="' + catIcon + '" />' + '<p>' + suggessionName + '</p>' + '</div>' + '</a>' + '<div class="sort__collapse-body" id="sort-collapse-' + suggessionIndex + '" collapse-body-js>' + htmlFree + htmlHd + '</div>' + '</div>';
+      letterSuggessions += '<div class="sort__collapse">' + '<a class="sort__collapse-toggle scroll_to_category11" data-category="' + (hdId != '' ? hdId : freeId) + '" href="' + toggleLink + '">' + '<div><span>#' + suggessionIndex + '</span></div>' + '<div class="sort__collapse-title">' + '<i class="icon-category ' + catIcon + '"></i>' + '<p>' + suggessionName + '</p>' + '</div>' + '</a>' + '<div class="sort__collapse-body" id="sort-collapse-' + suggessionIndex + '" collapse-body-js>' + htmlFree + htmlHd + '</div>' + '</div>';
     }
 
     suggessionIndex++;

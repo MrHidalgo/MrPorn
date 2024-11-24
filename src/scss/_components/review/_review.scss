@@ -440,9 +440,9 @@
 	}
 
 	h2{
-		//display: flex;
-		//align-items: center;
-		gap: 10px;
+		display: flex;
+		align-items: center;
+		gap:4px;
 		word-break: break-word;
 		text-transform: uppercase;
 		font-weight: 500;
@@ -451,6 +451,7 @@
 		color: #fff;
 
 		@include adaptive(991.98) {
+			display: block;
 			font-size: 20px;
 		}
 
@@ -465,8 +466,10 @@
 			vertical-align: middle;
 			width: 26px;
 			height: 12px;
-			background: url(../images/icon-right-arrow.svg) no-repeat;
+			background-image: url(../images/icon-right-arrow.svg);
+			background-repeat: no-repeat;
 			background-size: contain;
+			background-position: center;
 			transform: rotate(90deg);
 		}
 	}
@@ -1949,19 +1952,9 @@
 			}
 		}
 
-		.iconCat{
-			transform: scale(0.8);
-			margin-top: 4px;
-
-			&:before{
-				margin-left: 0;
-				margin-right: 0;
-			}
-
-			&.icPost1:before {
-				background: url(/wp-content/themes/mpg/images/review/archived.png);
-				background-size: 33.5px;
-			}
+		.icon-category{
+			width: 22px;
+			height: 22px;
 		}
 	}
 }
@@ -2038,6 +2031,15 @@
 			border-right: 0;
 			border-left: 0;
 		}
+	}
+
+	.icon-category{
+		position: absolute;
+		left: 30px;
+		top: 50%;
+		transform: translateY(-50%);
+		display: block;
+		margin: 0;
 	}
 
 	.wank_list {
