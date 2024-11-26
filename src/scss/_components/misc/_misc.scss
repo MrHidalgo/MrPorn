@@ -3,18 +3,6 @@
 
 }
 
-.list__specification--banner {
-	.list__specification-right {
-		&:after {
-			background-image: url('../images/img-list-spec-curve@2x.png');
-		}
-	}
-}
-.list .list__specification-bottom .category_link a:after {
-	background: url(../images/arrow-right-white.svg) no-repeat;
-	background-size: contain;
-	background-position: center;
-}
 
 .badge{
 	&.lazy {
@@ -61,7 +49,7 @@
 		background-image: url(../images/icon_youtube.png);
 		background-size: contain;
 		width: 46px;
-		height: 30px; 
+		height: 30px;
 
 		@include respond('max-large'){
 			width: 26px;

@@ -795,10 +795,6 @@ var markFavourites = function markFavourites() {
     if (document.querySelector('.list__box-favorites[data-id="' + fav + '"]')) {
       document.querySelector('.list__box-favorites[data-id="' + fav + '"]').classList.add('is-active');
     }
-
-    if (document.querySelector('.list__specification-favorites[data-id="' + fav + '"]')) {
-      document.querySelector('.list__specification-favorites[data-id="' + fav + '"]').classList.add('is-active');
-    }
   });
 };
 
