@@ -304,7 +304,13 @@
 						display: none;
 					}
 				}
+
+				.category_sites_item_thumb__img{
+					transform: scale(1.1);
+				}
 			}
+
+
 
 			&.has_video{
 				&:hover{
@@ -340,11 +346,7 @@
 				transform-origin: top left;
 			}
 
-			&:hover{
-				.category_sites_item_thumb__img{
-					transform: scale(1.1);
-				}
-			}
+
 
 			video{
 				position: absolute;

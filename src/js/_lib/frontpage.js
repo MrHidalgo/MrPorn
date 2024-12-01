@@ -15,6 +15,28 @@ let popoverTagline;
 
 let categoryContainers = [];
 
+function isMouseOverPopover(e){
+	const arrowTip = popover.getBoundingClientRect(); // Get the bounding box of the arrow
+	const mouseX = e.clientX; // Mouse X position
+	const mouseY = e.clientY; // Mouse Y position
+
+	const popupTipXStart = arrowTip.left + arrowTip.width - 40;
+	const popupTipYStart = arrowTip.top + arrowTip.height;
+
+	const popupTipXEnd = arrowTip.left + arrowTip.width;
+	const popupTipYEnd = arrowTip.top + arrowTip.height + 30;
+
+	// Check if mouse is within the arrow's bounding box
+	const isOverArrow =
+		mouseX >= popupTipXStart &&
+		mouseX <= popupTipXEnd &&
+		mouseY >= popupTipYStart &&
+		mouseY <= popupTipYEnd;
+
+	return isOverArrow;
+}
+
+
 function initHomeTooltip(){
 	categoryContainers = document.querySelectorAll('.list__box-list');
 
@@ -22,14 +44,18 @@ function initHomeTooltip(){
 
 		if(homeGridInner){
 			categoryContainers.forEach((_container)=>{
-				_container.onmouseleave = function (e){
+				_container.onmouseleave = debounce(function (e){
 					if(popover.style.display=='block'){
-						popover.style.display = 'none';
+
+						if(!isMouseOverPopover(e)){
+							popover.style.display = 'none';
+						}
 					}
-				}
+				})
 			});
 
-			homeGridInner.onmouseover = function(e){
+			// debounce
+			homeGridInner.onmouseover = debounce(function(e){
 				let hoverTarget = e.target;
 				if(hoverTarget.matches('.list__box__item') | hoverTarget.parents('.list__box__item').length>0){
 					if(hoverTarget.parents('.list__box__item').length>0){
@@ -83,10 +109,13 @@ function initHomeTooltip(){
 					isPopVisible = true;
 				}else{
 					if(isPopVisible){
-						popover.style.display = 'none';
+						if(!isMouseOverPopover(e)){
+							popover.style.display = 'none';
+						}
+
 					}
 				}
-			}
+			})
 
 
 		}

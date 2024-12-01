@@ -82,6 +82,13 @@
 			@include adaptive(991.98) {
 				padding: 0 5px 10px;
 			}
+
+			&:hover{
+				.category_item__content{
+					transform: scale(1.1);
+					transform-origin: center;
+				}
+			}
 		}
 
 		&_caption {
@@ -160,6 +167,7 @@
 			overflow: hidden;
 			outline: 1px solid #333;
 			line-height: 0;
+			padding-bottom: 100%;
 
 			&-overlay{
 				position: absolute;
@@ -241,8 +249,13 @@
 		}
 
 		&__content{
+			position: absolute;
+			top: 0;
+			left: 0;
 			width: 100%;
 			height: auto;
+			transform: scale(1);
+			transition: opacity 250ms,transform .3s;
 		}
 	}
 
