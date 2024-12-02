@@ -102,6 +102,20 @@
 			background-color: #1b4f90;
 		}
 
+		&.visited{
+			&::before{
+				content: '';
+				background: transparent;
+				transform: rotate(45deg);
+				width: 6px;
+				height: 11px;
+				border: solid #d5f963;
+				border-width: 0 1px 1px 0;
+				border-radius: 0;
+				margin: -6px 0;
+			}
+		}
+
 		&::after{
 			content: '';
 			display: inline-block;
@@ -177,6 +191,10 @@
 		& > span {
 			color: #4e4e4e;
 		}
+	}
+	.category-list-link.visited::before{
+		border: solid #1b4f90;
+		border-width: 0 1px 1px 0;
 	}
 }
 

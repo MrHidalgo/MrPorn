@@ -570,7 +570,7 @@ let lastMobileSimilarSite;
 				onBlogScroll()
 			}
 		} else if(document.body.classList.contains('category')) {
-			visitedSites().initVisitedSites('.category_sites_item')
+			visitedSites().initVisitedSites('.category_sites_item, .category_item_link')
 		} else if(document.body.classList.contains('single-sites')) {
 			visitedSites().initVisitedSites('.category_sites_item')
 		}

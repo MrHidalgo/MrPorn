@@ -40,12 +40,20 @@ const visitedSites = () => {
 				let siteItem = event.target.closest('.category_sites_item')
 				siteItem.classList.add('visited');
 				setVisitedView('visitedViews', siteItem.dataset.id);
+			} else if (targetClasses.contains('list__box-head-a') || targetClasses.contains('category-list-link')) {
+				event.target.parentNode.classList.add('visited');
+				setVisitedView('visitedTerms', event.target.dataset.id);
+			} else if (targetClasses.contains('icon-category') || targetClasses.contains('category-list-title') || targetClasses.contains('category-list-icons')) {
+				let siteItem = event.target.closest('.category-list-link')
+				siteItem.classList.add('visited');
+				setVisitedView('visitedTerms', siteItem.dataset.id);
 			}
 
 			// list__box__item-preview
 		});
 
 		showVisitedViews('visitedViews', selector);
+		showVisitedViews('visitedTerms', selector);
 	}
 
 	return {
