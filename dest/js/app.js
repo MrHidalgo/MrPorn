@@ -2119,7 +2119,9 @@ var lastMobileSimilarSite;
     } else if (document.body.classList.contains('category')) {
       visitedSites().initVisitedSites('.category_sites_item, .category_item_link');
     } else if (document.body.classList.contains('single-sites')) {
-      visitedSites().initVisitedSites('.category_sites_item');
+      visitedSites().initVisitedSites('.category_sites_item, .category_item_link, .cat_item');
+    } else if (document.body.classList.contains('page-template-page-categories')) {
+      visitedSites().initVisitedSites('.category_item_link');
     } //		boxMore();
     // ==========================================
     //loadJS('/wp-content/themes/mpg/js/vendor.js', initWebWorker, document.body);

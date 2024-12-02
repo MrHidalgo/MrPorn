@@ -114,6 +114,12 @@
 				border-radius: 0;
 				margin: -6px 0;
 			}
+
+			&:hover{
+				&::before {
+					animation: none;
+				}
+			}
 		}
 
 		&::after{
@@ -195,19 +201,5 @@
 	.category-list-link.visited::before{
 		border: solid #1b4f90;
 		border-width: 0 1px 1px 0;
-	}
-}
-
-@keyframes pulse-grey {
-	0% {
-		box-shadow: 0 0 0 0 rgba(118,118,118,0.7)
-	}
-
-	70% {
-		box-shadow: 0 0 0 10px rgba(118,118,118,0)
-	}
-
-	100% {
-		box-shadow: 0 0 0 0 rgba(118, 118, 118, 0)
 	}
 }
