@@ -2015,6 +2015,8 @@
 	padding: 0;
 	margin: 0;
 	border-radius: 0;
+	max-height: calc(100vh - 80px);
+	overflow: auto;
 
 	.site_nav_categories {
 		position: relative;
@@ -2033,13 +2035,27 @@
 		}
 	}
 
-	.icon-category{
+	.category-list-item::after{
+		content: "";
 		position: absolute;
-		left: 30px;
-		top: 50%;
-		transform: translateY(-50%);
-		display: block;
-		margin: 0;
+		top: 10px;
+		bottom: 10px;
+		right: 0;
+		width: 1px;
+		background-color: #c5c5c5;
+	}
+
+	.category-list-item:nth-child(4n){
+		padding-right: 0;
+		&::after{
+			display: none;
+		}
+	}
+
+	.category-list-item:last-child{
+		&::after{
+			display: none;
+		}
 	}
 
 	.wank_list {
@@ -2095,6 +2111,7 @@
 }
 .site_nav_cat_col{
 	position: relative;
+	padding: 0 25px;
 
 	.cat_item{
 		display: block;
@@ -2138,7 +2155,7 @@
 
 		&:hover{
 			text-decoration: underline;
-			&::before {
+			&:not(.visited)::before {
 				animation: pulse-grey 1s infinite;
 			}
 		}

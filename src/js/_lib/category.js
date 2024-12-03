@@ -5,7 +5,7 @@ var categorySidebar;
 
 function initCategoryPage() {
     function createSidebar() {
-        var desktopMenulist = document.querySelector('.desktop_menu_list ul');
+        var desktopMenulist = document.querySelector('.category-list-menu');
 
         let otherCategoryItems = document.querySelectorAll('#other_categories .category_item_link');
         otherCategoryItems.forEach(function (_category){
@@ -29,7 +29,7 @@ function initCategoryPage() {
             let count_sites = categorySiteCount.textContent.replace('+', '');
             let icons = '';
             categorySites.forEach(function (_site){
-                icons += '<i class="' + _site.getAttribute('class') + '"></i>';
+                icons += '<i class="category-site-icon ' + _site.getAttribute('class') + '"></i>';
             })
             let item = '<li class="category-list-item" >' + '<a  href="' + link + '" class="category-list-link '+isVisitedClass+'" data-id="'+categoryId+'"><i class="'+categoryIcon+'"></i><span class="category-list-title">' + categoryTitle + '</span><div class="category-list-icons">' + icons + '<span class="mobile_link_ellipsis">...</span>' + '<span class="mobile_link_count">' + count_sites + '</span>' + '</div>' + '</a>' + '</li>';
             // console.log('categoryItems '+ _category.getAttribute('href')+' - '+categoryTitle + ' - ' + icons)
@@ -37,11 +37,15 @@ function initCategoryPage() {
         });
 
 				if(otherCategoryItems.length){
-					document.querySelector('.category_list-sites').classList.add('has_sidebar')
+					let catListSites = document.querySelector('.category_list-sites');
+					if(catListSites){
+						catListSites.classList.add('has_sidebar')
+					}
+
 				}
     }
 
-    if(document.body.classList.contains('category')){
+    if(document.body.classList.contains('category') || document.body.classList.contains('page-template-page-categories')){
         createSidebar()
 
 			if(document.querySelectorAll('.desktop_menu_list').length>0){
@@ -53,11 +57,9 @@ function initCategoryPage() {
 					resizeSensor: true
 				});
 			}
-
-				// setInterval(function (){
-				// 	categorySidebar.updateSticky()
-				// }, 300)
-    }
+    }else if(document.body.classList.contains('single-sites')){
+			createSidebar()
+		}
 }
 
 

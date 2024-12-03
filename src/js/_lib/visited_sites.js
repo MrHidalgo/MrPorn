@@ -43,12 +43,28 @@ const visitedSites = () => {
 			} else if (targetClasses.contains('list__box-head-a') || targetClasses.contains('category-list-link')) {
 				event.target.parentNode.classList.add('visited');
 				setVisitedView('visitedTerms', event.target.dataset.id);
-			} else if (targetClasses.contains('icon-category') || targetClasses.contains('category-list-title') || targetClasses.contains('category-list-icons')) {
-				let siteItem = event.target.closest('.category-list-link')
-				siteItem.classList.add('visited');
-				setVisitedView('visitedTerms', siteItem.dataset.id);
-			}
+			} else if (targetClasses.contains('icon-category') || targetClasses.contains('category-list-title') || targetClasses.contains('category-list-icons')
+				|| targetClasses.contains('category-site-icon') || targetClasses.contains('category_item_caption') || targetClasses.contains('category_item_caption_title')
+				|| targetClasses.contains('category_item_inner') || targetClasses.contains('url_link_count_sites') || targetClasses.contains('category_item__content')
+				|| targetClasses.contains('category_item_inner-overlay') || targetClasses.contains('url_link_list_sites')
 
+			) {
+				let siteItem = event.target.closest('.category-list-link')
+				if(siteItem){
+					siteItem.classList.add('visited');
+					setVisitedView('visitedTerms', siteItem.dataset.id);
+				}else{
+				 siteItem = event.target.closest('.category_item_link')
+					if(siteItem){
+						siteItem.classList.add('visited');
+						setVisitedView('visitedTerms', siteItem.dataset.id);
+					}
+
+				}
+			} else if (targetClasses.contains('category_item_link')) {
+				event.target.parentNode.classList.add('visited');
+				setVisitedView('visitedTerms', event.target.dataset.id);
+			}
 			// list__box__item-preview
 		});
 

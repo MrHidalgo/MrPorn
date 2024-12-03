@@ -339,7 +339,7 @@ var categorySidebar;
 
 function initCategoryPage() {
   function createSidebar() {
-    var desktopMenulist = document.querySelector('.desktop_menu_list ul');
+    var desktopMenulist = document.querySelector('.category-list-menu');
     var otherCategoryItems = document.querySelectorAll('#other_categories .category_item_link');
     otherCategoryItems.forEach(function (_category) {
       var $this = _category;
@@ -364,7 +364,7 @@ function initCategoryPage() {
       var count_sites = categorySiteCount.textContent.replace('+', '');
       var icons = '';
       categorySites.forEach(function (_site) {
-        icons += '<i class="' + _site.getAttribute('class') + '"></i>';
+        icons += '<i class="category-site-icon ' + _site.getAttribute('class') + '"></i>';
       });
       var item = '<li class="category-list-item" >' + '<a  href="' + link + '" class="category-list-link ' + isVisitedClass + '" data-id="' + categoryId + '"><i class="' + categoryIcon + '"></i><span class="category-list-title">' + categoryTitle + '</span><div class="category-list-icons">' + icons + '<span class="mobile_link_ellipsis">...</span>' + '<span class="mobile_link_count">' + count_sites + '</span>' + '</div>' + '</a>' + '</li>'; // console.log('categoryItems '+ _category.getAttribute('href')+' - '+categoryTitle + ' - ' + icons)
 
@@ -372,11 +372,15 @@ function initCategoryPage() {
     });
 
     if (otherCategoryItems.length) {
-      document.querySelector('.category_list-sites').classList.add('has_sidebar');
+      var catListSites = document.querySelector('.category_list-sites');
+
+      if (catListSites) {
+        catListSites.classList.add('has_sidebar');
+      }
     }
   }
 
-  if (document.body.classList.contains('category')) {
+  if (document.body.classList.contains('category') || document.body.classList.contains('page-template-page-categories')) {
     createSidebar();
 
     if (document.querySelectorAll('.desktop_menu_list').length > 0) {
@@ -387,10 +391,9 @@ function initCategoryPage() {
         // innerWrapperSelector: '.inner-wrapper-sticky',
         resizeSensor: true
       });
-    } // setInterval(function (){
-    // 	categorySidebar.updateSticky()
-    // }, 300)
-
+    }
+  } else if (document.body.classList.contains('single-sites')) {
+    createSidebar();
   }
 }
 
@@ -1553,12 +1556,25 @@ var visitedSites = function visitedSites() {
       } else if (targetClasses.contains('list__box-head-a') || targetClasses.contains('category-list-link')) {
         event.target.parentNode.classList.add('visited');
         setVisitedView('visitedTerms', event.target.dataset.id);
-      } else if (targetClasses.contains('icon-category') || targetClasses.contains('category-list-title') || targetClasses.contains('category-list-icons')) {
+      } else if (targetClasses.contains('icon-category') || targetClasses.contains('category-list-title') || targetClasses.contains('category-list-icons') || targetClasses.contains('category-site-icon') || targetClasses.contains('category_item_caption') || targetClasses.contains('category_item_caption_title') || targetClasses.contains('category_item_inner') || targetClasses.contains('url_link_count_sites') || targetClasses.contains('category_item__content') || targetClasses.contains('category_item_inner-overlay') || targetClasses.contains('url_link_list_sites')) {
         var _siteItem = event.target.closest('.category-list-link');
 
-        _siteItem.classList.add('visited');
+        if (_siteItem) {
+          _siteItem.classList.add('visited');
 
-        setVisitedView('visitedTerms', _siteItem.dataset.id);
+          setVisitedView('visitedTerms', _siteItem.dataset.id);
+        } else {
+          _siteItem = event.target.closest('.category_item_link');
+
+          if (_siteItem) {
+            _siteItem.classList.add('visited');
+
+            setVisitedView('visitedTerms', _siteItem.dataset.id);
+          }
+        }
+      } else if (targetClasses.contains('category_item_link')) {
+        event.target.parentNode.classList.add('visited');
+        setVisitedView('visitedTerms', event.target.dataset.id);
       } // list__box__item-preview
 
     });
@@ -2119,9 +2135,9 @@ var lastMobileSimilarSite;
     } else if (document.body.classList.contains('category')) {
       visitedSites().initVisitedSites('.category_sites_item, .category_item_link');
     } else if (document.body.classList.contains('single-sites')) {
-      visitedSites().initVisitedSites('.category_sites_item, .category_item_link, .cat_item');
+      visitedSites().initVisitedSites('.category_sites_item, .category_item_link, .category-list-link, .cat_item');
     } else if (document.body.classList.contains('page-template-page-categories')) {
-      visitedSites().initVisitedSites('.category_item_link');
+      visitedSites().initVisitedSites('.category_item_link, .category-list-link');
     } //		boxMore();
     // ==========================================
     //loadJS('/wp-content/themes/mpg/js/vendor.js', initWebWorker, document.body);

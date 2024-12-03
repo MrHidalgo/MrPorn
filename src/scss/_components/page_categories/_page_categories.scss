@@ -28,8 +28,8 @@
 #sticky_category_list{
 	padding-bottom: 15px;
 }
-.rightCat{
-	padding-left: 10px;
+.categories-container{
+	margin-left: 270px;
 
 	@include respond('max-small'){
 		padding-left: 0;
@@ -231,7 +231,7 @@
 			}
 		}
 
-		.rightCat{
+		.categories-container{
 			h1{
 				color: #333;
 			}
