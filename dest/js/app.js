@@ -338,8 +338,11 @@ function postTextRequest() {
 var categorySidebar;
 
 function initCategoryPage() {
+  var filter = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : '';
+  var desktopMenulist = document.querySelector('.category-list-menu');
+
   function createSidebar() {
-    var desktopMenulist = document.querySelector('.category-list-menu');
+    var categoryItems = [];
     var otherCategoryItems = document.querySelectorAll('#other_categories .category_item_link');
     otherCategoryItems.forEach(function (_category) {
       var $this = _category;
@@ -347,6 +350,7 @@ function initCategoryPage() {
       var link = _category.getAttribute('href');
 
       var categoryId = _category.dataset.id;
+      var categoryOrder = _category.dataset.order;
 
       var isVisited = _category.classList.contains('visited');
 
@@ -366,10 +370,66 @@ function initCategoryPage() {
       categorySites.forEach(function (_site) {
         icons += '<i class="category-site-icon ' + _site.getAttribute('class') + '"></i>';
       });
-      var item = '<li class="category-list-item" >' + '<a  href="' + link + '" class="category-list-link ' + isVisitedClass + '" data-id="' + categoryId + '"><i class="' + categoryIcon + '"></i><span class="category-list-title">' + categoryTitle + '</span><div class="category-list-icons">' + icons + '<span class="mobile_link_ellipsis">...</span>' + '<span class="mobile_link_count">' + count_sites + '</span>' + '</div>' + '</a>' + '</li>'; // console.log('categoryItems '+ _category.getAttribute('href')+' - '+categoryTitle + ' - ' + icons)
-
-      desktopMenulist.insertAdjacentHTML('beforeend', item);
+      categoryItems.push({
+        'id': categoryId,
+        'title': categoryTitle,
+        'icon': categoryIcon,
+        'link': link,
+        'count': count_sites,
+        'icons': icons,
+        'visited': isVisited,
+        'order': categoryOrder
+      });
     });
+    var filteredCategories = [].concat(categoryItems);
+    ;
+    var categoryFilter = document.querySelector('.category-list-filter');
+
+    if (categoryFilter) {
+      categoryFilter.addEventListener('input', debounce(function (evt) {
+        var filter = evt.target.value.toLowerCase().trim();
+
+        if (filter == '') {
+          renderCategorySidebar(categoryItems);
+          return;
+        } // categoryItems = categoryItems.sort((a, b) => b.title.localeCompare(a.title));
+
+
+        filteredCategories = filteredCategories.sort(function (a, b) {
+          var titleA = a.title.toLowerCase();
+          var titleB = b.title.toLowerCase();
+          var posA = titleA.indexOf(filter);
+          var posB = titleB.indexOf(filter);
+          var isPremiumA = titleA.includes('premium');
+          var isPremiumB = titleB.includes('premium'); // Strings with the search term come first
+
+          if (posA !== -1 && posB === -1) return -1;
+          if (posA === -1 && posB !== -1) return 1; // If both contain the term, sort by position
+
+          if (posA !== -1 && posB !== -1) return posA - posB; // Otherwise, keep the original order
+
+          return a.order - b.order;
+        }); // Order premium categories first
+
+        /*filteredCategories = filteredCategories.sort((a, b) =>{
+        	const titleA = a.title.toLowerCase();
+        	const titleB = b.title.toLowerCase();
+        		const posA = titleA.includes('premium');
+        	const posB = titleB.includes('premium');
+        			// Strings with the search term come first
+        	if (posA !== -1 && posB === -1) return -1;
+        	if (posA === -1 && posB !== -1) return 1;
+        		// If both contain the term, sort by position
+        	if (posA !== -1 && posB !== -1) return posA - posB;
+        		// Otherwise, keep the original order
+        	return a.order - b.order;
+        });*/
+
+        renderCategorySidebar(filteredCategories, filter);
+      }));
+    }
+
+    renderCategorySidebar(categoryItems);
 
     if (otherCategoryItems.length) {
       var catListSites = document.querySelector('.category_list-sites');
@@ -379,6 +439,25 @@ function initCategoryPage() {
       }
     }
   }
+
+  var renderCategorySidebar = function renderCategorySidebar(categoryItems) {
+    var filter = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : '';
+    desktopMenulist.innerHTML = '';
+    categoryItems.map(function (categoryItem) {
+      var catTitle = categoryItem.title;
+      var catExtraClasses = categoryItem.visited ? ' visited' : '';
+
+      if (filter != '' && catTitle.toLowerCase().indexOf(filter) > -1) {
+        catTitle = catTitle.replace(new RegExp(filter, 'gi'), function (match) {
+          return "<span class=\"highlight\">".concat(match, "</span>");
+        });
+        catExtraClasses += ' pulse';
+      }
+
+      var item = '<li class="category-list-item" >' + '<a  href="' + categoryItem.link + '" class="category-list-link ' + catExtraClasses + '" data-id="' + categoryItem.id + '"><i class="' + categoryItem.icon + '"></i><span class="category-list-title">' + catTitle + '</span><div class="category-list-icons">' + categoryItem.icons + '<span class="mobile_link_ellipsis">...</span>' + '<span class="mobile_link_count">' + categoryItem.count + '</span>' + '</div>' + '</a>' + '</li>';
+      desktopMenulist.insertAdjacentHTML('beforeend', item);
+    });
+  };
 
   if (document.body.classList.contains('category') || document.body.classList.contains('page-template-page-categories')) {
     createSidebar();
