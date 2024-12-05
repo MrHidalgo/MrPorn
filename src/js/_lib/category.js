@@ -1,9 +1,9 @@
 /*
 * Category page scripts
 * */
-var categorySidebar;
 
-function initCategoryPage(filter = '') {
+function initCategoryPage() {
+	let categorySidebar;
 	let desktopMenulist = document.querySelector('.category-list-menu');
 
     function createSidebar() {
@@ -15,7 +15,7 @@ function initCategoryPage(filter = '') {
             let $this = _category;
             let link = _category.getAttribute('href');
 						let categoryId = _category.dataset.id;
-						let categoryOrder = _category.dataset.order;
+						let categoryOrder = +_category.dataset.order;
 						let isVisited = _category.classList.contains('visited');
 						let isVisitedClass = isVisited ? 'visited' : '';
 
@@ -39,7 +39,7 @@ function initCategoryPage(filter = '') {
 						categoryItems.push({'id': categoryId, 'title': categoryTitle, 'icon': categoryIcon, 'link': link, 'count': count_sites, 'icons': icons, 'visited': isVisited, 'order': categoryOrder});
         });
 
-			let filteredCategories = [...categoryItems];;
+
 
 			let categoryFilter = document.querySelector('.category-list-filter')
 			if(categoryFilter){
@@ -51,16 +51,15 @@ function initCategoryPage(filter = '') {
 						return;
 
 					}
+					let filteredCategories = [...categoryItems];;
+					const catCount = filteredCategories.length
 					// categoryItems = categoryItems.sort((a, b) => b.title.localeCompare(a.title));
 					filteredCategories = filteredCategories.sort((a, b) =>{
 						const titleA = a.title.toLowerCase();
 						const titleB = b.title.toLowerCase();
 
-						const posA = titleA.indexOf(filter);
-						const posB = titleB.indexOf(filter);
-
-						const isPremiumA = titleA.includes('premium');
-						const isPremiumB = titleB.includes('premium');
+						let posA = titleA.indexOf(filter);
+						let posB = titleB.indexOf(filter);
 
 
 						// Strings with the search term come first
@@ -74,26 +73,21 @@ function initCategoryPage(filter = '') {
 						return a.order - b.order;
 					});
 
-					// Order premium categories first
-					/*filteredCategories = filteredCategories.sort((a, b) =>{
-						const titleA = a.title.toLowerCase();
-						const titleB = b.title.toLowerCase();
+					filteredCategories.forEach((item, index) => {
+							item.index = index;
+					});
 
-						const posA = titleA.includes('premium');
-						const posB = titleB.includes('premium');
+					const premiumItems = filteredCategories.filter(item =>
+						item.title.toLowerCase().includes("premium") &&
+						item.title.toLowerCase().includes(filter.toLowerCase())
+					);
 
-
-						// Strings with the search term come first
-						if (posA !== -1 && posB === -1) return -1;
-						if (posA === -1 && posB !== -1) return 1;
-
-						// If both contain the term, sort by position
-						if (posA !== -1 && posB !== -1) return posA - posB;
-
-						// Otherwise, keep the original order
-						return a.order - b.order;
-					});*/
-
+					let nonPremiumItems = filteredCategories.filter(item => !(item.title.toLowerCase().includes("premium") &&
+						item.title.toLowerCase().includes(filter.toLowerCase()))); // Remove 'Premium' items
+					nonPremiumItems = nonPremiumItems.sort((a, b) =>{
+						return a.index - b.index;
+					});
+					filteredCategories = premiumItems.concat(nonPremiumItems);
 					renderCategorySidebar(filteredCategories, filter);
 				}));
 			}

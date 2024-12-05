@@ -592,6 +592,8 @@ let lastMobileSimilarSite;
 
 		showAgeVerification();
 		showAcceptCookie();
+
+		// new CategoryPopup()
 	};
 	/**
 	 * @description Init all CB after page load
