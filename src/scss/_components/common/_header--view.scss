@@ -239,7 +239,7 @@
 		}
 
 		&-actions{
-			@include respond('max-medium') {
+			@include adaptive(1023) {
 				z-index: 1600;
 				opacity: 0;
 				visibility: hidden;

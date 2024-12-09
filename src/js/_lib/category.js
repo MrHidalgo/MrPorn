@@ -4,20 +4,22 @@
 
 function initCategoryPage() {
 	let categorySidebar;
-	let desktopMenulist = document.querySelector('.category-list-menu');
+	let desktopMenuList = document.querySelector('.category-list-menu');
+	let mobileMenuList = document.querySelector('.category-list-menu-mobile');
 
 	function createSidebar() {
 
-		if (isMobileOrTablet) {
-			desktopMenulist = document.querySelector('.category-list-menu-mobile');
-		}
-
 		let categoryItems = [];
+		let otherCategoryItems = [];
+		let isPreLoaded = false
 
-		let otherCategoryItems = document.querySelectorAll('#other_categories .category_item_link, .category_box.category_col');
-		if (desktopMenulist && desktopMenulist.children.length > 0) {
+		if(mobileMenuList.classList.contains('loaded')){
+			isPreLoaded = true;
 			otherCategoryItems = document.querySelectorAll('.category-list-menu-mobile .category-list-link ');
+		}else{
+			otherCategoryItems = document.querySelectorAll('#other_categories .category_item_link, .category_box.category_col');
 		}
+
 		let categoryIndex = 0;
 		otherCategoryItems.forEach(function (_category) {
 			let $this = _category;
@@ -30,7 +32,7 @@ function initCategoryPage() {
 			let count_sites = 0;
 			let categoryTitle = '';
 
-			if (desktopMenulist && desktopMenulist.classList.contains('loaded')) {
+			if (isPreLoaded) {
 				// Category list is already loaded
 				link = _category.getAttribute('href');
 				categoryId = _category.dataset.id;
@@ -98,19 +100,17 @@ function initCategoryPage() {
 			});
 		});
 
-		if (!desktopMenulist || desktopMenulist.children.length == 0) {
+		if (!desktopMenuList || desktopMenuList.children.length == 0) {
 			renderCategorySidebar(categoryItems);
 		}
 
-		let categoryFilter = document.querySelectorAll('.desktop_menu_list .category-list-filter, .category-list-search .category-list-filter')
-		if (isMobileOrTablet) {
-			categoryFilter = document.querySelectorAll('.header__categories-mobile .category-list-filter')
-		}else{
-			let catSearch = document.querySelector('.desktop_menu_list .category-list-search')
-			if(catSearch){
-				catSearch.style.display = 'block';
-			}
+
+		let categoryFilter = document.querySelectorAll('.category-list-filter')
+		let catSearch = document.querySelector('.desktop_menu_list .category-list-search')
+		if(catSearch){
+			catSearch.style.display = 'block';
 		}
+
 		if (categoryFilter.length > 0) {
 			for (let i = 0; i < categoryFilter.length; i++) {
 				categoryFilter[i].addEventListener('input', debounce(function (evt) {
@@ -174,12 +174,15 @@ function initCategoryPage() {
 	}
 
 	const renderCategorySidebar = (categoryItems, filter = '', hideVisited = false) => {
-		if(!desktopMenulist){
-			return;
+
+		if(desktopMenuList !== null){
+			desktopMenuList.innerHTML = '';
+		}
+		if(mobileMenuList !== null){
+			mobileMenuList.innerHTML = '';
 		}
 
 
-		desktopMenulist.innerHTML = '';
 		categoryItems.map(
 			(categoryItem) => {
 
@@ -191,7 +194,13 @@ function initCategoryPage() {
 				}
 
 				let item = '<li class="category-list-item" >' + '<a  href="' + categoryItem.link + '" class="category-list-link ' + catExtraClasses + '" data-id="' + categoryItem.id + '"><i class="' + categoryItem.icon + '"></i><span class="category-list-title">' + catTitle + '</span><div class="category-list-icons">' + categoryItem.icons + '<span class="mobile_link_ellipsis">...</span>' + '<span class="mobile_link_count">' + categoryItem.count + '</span>' + '</div>' + '</a>' + '</li>';
-				desktopMenulist.insertAdjacentHTML('beforeend', item);
+
+				if(desktopMenuList !== null){
+					desktopMenuList.insertAdjacentHTML('beforeend', item);
+				}
+				if(mobileMenuList !== null) {
+					mobileMenuList.insertAdjacentHTML('beforeend', item);
+				}
 			}
 		)
 	}

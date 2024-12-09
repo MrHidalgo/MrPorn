@@ -80,11 +80,14 @@
 	}
 }
 .light{
-	.header{
-		&__action{
-			&-link{
-				color: #4e4e4e;
+	@include respond('max-medium') {
+		.header{
+			&__action{
+				&-link{
+					color: #4e4e4e;
+				}
 			}
 		}
 	}
+
 }

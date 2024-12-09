@@ -404,18 +404,19 @@ function postTextRequest() {
 
 function initCategoryPage() {
   var categorySidebar;
-  var desktopMenulist = document.querySelector('.category-list-menu');
+  var desktopMenuList = document.querySelector('.category-list-menu');
+  var mobileMenuList = document.querySelector('.category-list-menu-mobile');
 
   function createSidebar() {
-    if (isMobileOrTablet) {
-      desktopMenulist = document.querySelector('.category-list-menu-mobile');
-    }
-
     var categoryItems = [];
-    var otherCategoryItems = document.querySelectorAll('#other_categories .category_item_link, .category_box.category_col');
+    var otherCategoryItems = [];
+    var isPreLoaded = false;
 
-    if (desktopMenulist && desktopMenulist.children.length > 0) {
+    if (mobileMenuList.classList.contains('loaded')) {
+      isPreLoaded = true;
       otherCategoryItems = document.querySelectorAll('.category-list-menu-mobile .category-list-link ');
+    } else {
+      otherCategoryItems = document.querySelectorAll('#other_categories .category_item_link, .category_box.category_col');
     }
 
     var categoryIndex = 0;
@@ -430,7 +431,7 @@ function initCategoryPage() {
       var count_sites = 0;
       var categoryTitle = '';
 
-      if (desktopMenulist && desktopMenulist.classList.contains('loaded')) {
+      if (isPreLoaded) {
         // Category list is already loaded
         link = _category.getAttribute('href');
         categoryId = _category.dataset.id;
@@ -497,20 +498,15 @@ function initCategoryPage() {
       });
     });
 
-    if (!desktopMenulist || desktopMenulist.children.length == 0) {
+    if (!desktopMenuList || desktopMenuList.children.length == 0) {
       renderCategorySidebar(categoryItems);
     }
 
-    var categoryFilter = document.querySelectorAll('.desktop_menu_list .category-list-filter, .category-list-search .category-list-filter');
+    var categoryFilter = document.querySelectorAll('.category-list-filter');
+    var catSearch = document.querySelector('.desktop_menu_list .category-list-search');
 
-    if (isMobileOrTablet) {
-      categoryFilter = document.querySelectorAll('.header__categories-mobile .category-list-filter');
-    } else {
-      var catSearch = document.querySelector('.desktop_menu_list .category-list-search');
-
-      if (catSearch) {
-        catSearch.style.display = 'block';
-      }
+    if (catSearch) {
+      catSearch.style.display = 'block';
     }
 
     if (categoryFilter.length > 0) {
@@ -571,11 +567,14 @@ function initCategoryPage() {
     var filter = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : '';
     var hideVisited = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : false;
 
-    if (!desktopMenulist) {
-      return;
+    if (desktopMenuList !== null) {
+      desktopMenuList.innerHTML = '';
     }
 
-    desktopMenulist.innerHTML = '';
+    if (mobileMenuList !== null) {
+      mobileMenuList.innerHTML = '';
+    }
+
     categoryItems.map(function (categoryItem) {
       var catTitle = categoryItem.title;
       var catExtraClasses = hideVisited ? '' : categoryItem.visited ? ' visited' : '';
@@ -588,7 +587,14 @@ function initCategoryPage() {
       }
 
       var item = '<li class="category-list-item" >' + '<a  href="' + categoryItem.link + '" class="category-list-link ' + catExtraClasses + '" data-id="' + categoryItem.id + '"><i class="' + categoryItem.icon + '"></i><span class="category-list-title">' + catTitle + '</span><div class="category-list-icons">' + categoryItem.icons + '<span class="mobile_link_ellipsis">...</span>' + '<span class="mobile_link_count">' + categoryItem.count + '</span>' + '</div>' + '</a>' + '</li>';
-      desktopMenulist.insertAdjacentHTML('beforeend', item);
+
+      if (desktopMenuList !== null) {
+        desktopMenuList.insertAdjacentHTML('beforeend', item);
+      }
+
+      if (mobileMenuList !== null) {
+        mobileMenuList.insertAdjacentHTML('beforeend', item);
+      }
     });
   };
 

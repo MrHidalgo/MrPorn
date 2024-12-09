@@ -8,7 +8,7 @@
 		margin: 10px 20px;
 	}
 
-	@include adaptive(767) {
+	@include adaptive(1023) {
 		height: 44px;
 		max-height: 44px;
 
@@ -80,7 +80,17 @@
 }
 
 .light{
-	.sort__drop-link{
-		color: #081b49;
+	.sort{
+
+		&__drop-link{
+			color: #081b49;
+		}
+
+		@include respond('max-medium') {
+			&__toggle{
+				background-color: #3d3d3d;;
+			}
+		}
+
 	}
 }
