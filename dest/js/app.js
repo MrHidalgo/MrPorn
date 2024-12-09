@@ -407,33 +407,82 @@ function initCategoryPage() {
   var desktopMenulist = document.querySelector('.category-list-menu');
 
   function createSidebar() {
+    if (isMobileOrTablet) {
+      desktopMenulist = document.querySelector('.category-list-menu-mobile');
+    }
+
     var categoryItems = [];
-    var otherCategoryItems = document.querySelectorAll('#other_categories .category_item_link');
+    var otherCategoryItems = document.querySelectorAll('#other_categories .category_item_link, .category_box.category_col');
+
+    if (desktopMenulist && desktopMenulist.children.length > 0) {
+      otherCategoryItems = document.querySelectorAll('.category-list-menu-mobile .category-list-link ');
+    }
+
+    var categoryIndex = 0;
     otherCategoryItems.forEach(function (_category) {
       var $this = _category;
+      var link = '';
+      var categoryId = '';
+      var categoryOrder = 0;
+      var isVisited = '';
+      var isVisitedClass = '';
+      var categorySites = [];
+      var count_sites = 0;
+      var categoryTitle = '';
 
-      var link = _category.getAttribute('href');
+      if (desktopMenulist && desktopMenulist.classList.contains('loaded')) {
+        // Category list is already loaded
+        link = _category.getAttribute('href');
+        categoryId = _category.dataset.id;
+        categoryOrder = +categoryIndex;
+        isVisited = _category.classList.contains('visited');
+        isVisitedClass = isVisited ? 'visited' : '';
+        categorySites = $this.querySelectorAll('.category-list-icons .category-site-icon');
+        count_sites = +_category.querySelector('.mobile_link_count').innerHTML;
 
-      var categoryId = _category.dataset.id;
-      var categoryOrder = +_category.dataset.order;
+        var $categoryTitle = _category.querySelector('.category-list-title');
 
-      var isVisited = _category.classList.contains('visited');
+        categoryTitle = $categoryTitle.innerHTML;
+        categoryIndex++;
+      } else if (document.body.classList.contains('home')) {
+        var catLink = _category.querySelector('.list__box-head-a');
 
-      var isVisitedClass = isVisited ? 'visited' : '';
-      var categorySites = $this.querySelectorAll('.url_link_list_sites .deIcon');
+        link = catLink.getAttribute('href');
+        categoryId = catLink.dataset.id;
+        categoryOrder = +catLink.dataset.order;
+        isVisited = _category.classList.contains('visited');
+        isVisitedClass = isVisited ? 'visited' : '';
+        categorySites = $this.querySelectorAll('.list__box__item-icon');
+        count_sites = +_category.dataset.count;
 
-      var $categoryTitle = _category.querySelector('.category_item_caption_title');
+        var _$categoryTitle = _category.querySelector('.list__box-head-a');
 
-      var categoryTitle = $categoryTitle.innerHTML;
+        categoryTitle = _$categoryTitle.innerHTML;
+      } else {
+        link = _category.getAttribute('href');
+        categoryId = _category.dataset.id;
+        categoryOrder = +_category.dataset.order;
+        isVisited = _category.classList.contains('visited');
+        isVisitedClass = isVisited ? 'visited' : '';
+        categorySites = $this.querySelectorAll('.url_link_list_sites .deIcon');
+        var categorySiteCount = $this.querySelector('.url_link_count_sites');
+        count_sites = categorySiteCount.textContent.replace('+', '');
+
+        var _$categoryTitle2 = _category.querySelector('.category_item_caption_title');
+
+        categoryTitle = _$categoryTitle2.innerHTML;
+      }
 
       var $categoryIcon = _category.querySelector('.icon-category');
 
       var categoryIcon = $categoryIcon.className;
-      var categorySiteCount = $this.querySelector('.url_link_count_sites');
-      var count_sites = categorySiteCount.textContent.replace('+', '');
       var icons = '';
+      var siteIndex = 0;
       categorySites.forEach(function (_site) {
-        icons += '<i class="category-site-icon ' + _site.getAttribute('class') + '"></i>';
+        if (siteIndex < 5) {
+          icons += '<i class="category-site-icon ' + _site.getAttribute('class') + '"></i>';
+          siteIndex++;
+        }
       });
       categoryItems.push({
         'id': categoryId,
@@ -443,56 +492,71 @@ function initCategoryPage() {
         'count': count_sites,
         'icons': icons,
         'visited': isVisited,
+        'visited_o': isVisited,
         'order': categoryOrder
       });
     });
-    var categoryFilter = document.querySelector('.category-list-filter');
 
-    if (categoryFilter) {
-      categoryFilter.addEventListener('input', debounce(function (evt) {
-        var filter = evt.target.value.toLowerCase().trim();
-
-        if (filter == '') {
-          renderCategorySidebar(categoryItems);
-          return;
-        }
-
-        var filteredCategories = [].concat(categoryItems);
-        ;
-        var catCount = filteredCategories.length; // categoryItems = categoryItems.sort((a, b) => b.title.localeCompare(a.title));
-
-        filteredCategories = filteredCategories.sort(function (a, b) {
-          var titleA = a.title.toLowerCase();
-          var titleB = b.title.toLowerCase();
-          var posA = titleA.indexOf(filter);
-          var posB = titleB.indexOf(filter); // Strings with the search term come first
-
-          if (posA !== -1 && posB === -1) return -1;
-          if (posA === -1 && posB !== -1) return 1; // If both contain the term, sort by position
-
-          if (posA !== -1 && posB !== -1) return posA - posB; // Otherwise, keep the original order
-
-          return a.order - b.order;
-        });
-        filteredCategories.forEach(function (item, index) {
-          item.index = index;
-        });
-        var premiumItems = filteredCategories.filter(function (item) {
-          return item.title.toLowerCase().includes("premium") && item.title.toLowerCase().includes(filter.toLowerCase());
-        });
-        var nonPremiumItems = filteredCategories.filter(function (item) {
-          return !(item.title.toLowerCase().includes("premium") && item.title.toLowerCase().includes(filter.toLowerCase()));
-        }); // Remove 'Premium' items
-
-        nonPremiumItems = nonPremiumItems.sort(function (a, b) {
-          return a.index - b.index;
-        });
-        filteredCategories = premiumItems.concat(nonPremiumItems);
-        renderCategorySidebar(filteredCategories, filter);
-      }));
+    if (!desktopMenulist || desktopMenulist.children.length == 0) {
+      renderCategorySidebar(categoryItems);
     }
 
-    renderCategorySidebar(categoryItems);
+    var categoryFilter = document.querySelectorAll('.desktop_menu_list .category-list-filter, .category-list-search .category-list-filter');
+
+    if (isMobileOrTablet) {
+      categoryFilter = document.querySelectorAll('.header__categories-mobile .category-list-filter');
+    } else {
+      var catSearch = document.querySelector('.desktop_menu_list .category-list-search');
+
+      if (catSearch) {
+        catSearch.style.display = 'block';
+      }
+    }
+
+    if (categoryFilter.length > 0) {
+      for (var i = 0; i < categoryFilter.length; i++) {
+        categoryFilter[i].addEventListener('input', debounce(function (evt) {
+          var filter = evt.target.value.toLowerCase().trim();
+
+          if (filter == '') {
+            renderCategorySidebar(categoryItems);
+            return;
+          }
+
+          var filteredCategories = [].concat(categoryItems);
+          var catCount = filteredCategories.length; // categoryItems = categoryItems.sort((a, b) => b.title.localeCompare(a.title));
+
+          filteredCategories = filteredCategories.sort(function (a, b) {
+            var titleA = a.title.toLowerCase();
+            var titleB = b.title.toLowerCase();
+            var posA = titleA.indexOf(filter);
+            var posB = titleB.indexOf(filter); // Strings with the search term come first
+
+            if (posA !== -1 && posB === -1) return -1;
+            if (posA === -1 && posB !== -1) return 1; // If both contain the term, sort by position
+
+            if (posA !== -1 && posB !== -1) return posA - posB; // Otherwise, keep the original order
+
+            return a.order - b.order;
+          });
+          filteredCategories.forEach(function (item, index) {
+            item.index = index;
+          });
+          var premiumItems = filteredCategories.filter(function (item) {
+            return item.title.toLowerCase().includes("premium") && item.title.toLowerCase().includes(filter.toLowerCase());
+          });
+          var nonPremiumItems = filteredCategories.filter(function (item) {
+            return !(item.title.toLowerCase().includes("premium") && item.title.toLowerCase().includes(filter.toLowerCase()));
+          }); // Remove 'Premium' items
+
+          nonPremiumItems = nonPremiumItems.sort(function (a, b) {
+            return a.index - b.index;
+          });
+          filteredCategories = premiumItems.concat(nonPremiumItems);
+          renderCategorySidebar(filteredCategories, filter, true);
+        }));
+      }
+    }
 
     if (otherCategoryItems.length) {
       var catListSites = document.querySelector('.category_list-sites');
@@ -505,10 +569,16 @@ function initCategoryPage() {
 
   var renderCategorySidebar = function renderCategorySidebar(categoryItems) {
     var filter = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : '';
+    var hideVisited = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : false;
+
+    if (!desktopMenulist) {
+      return;
+    }
+
     desktopMenulist.innerHTML = '';
     categoryItems.map(function (categoryItem) {
       var catTitle = categoryItem.title;
-      var catExtraClasses = categoryItem.visited ? ' visited' : '';
+      var catExtraClasses = hideVisited ? '' : categoryItem.visited ? ' visited' : '';
 
       if (filter != '' && catTitle.toLowerCase().indexOf(filter) > -1) {
         catTitle = catTitle.replace(new RegExp(filter, 'gi'), function (match) {
@@ -522,6 +592,8 @@ function initCategoryPage() {
     });
   };
 
+  var bodyClasses = document.body.classList;
+
   if (document.body.classList.contains('category') || document.body.classList.contains('page-template-page-categories')) {
     createSidebar();
 
@@ -534,7 +606,7 @@ function initCategoryPage() {
         resizeSensor: true
       });
     }
-  } else if (document.body.classList.contains('single-sites')) {
+  } else {
     createSidebar();
   }
 }
@@ -906,11 +978,11 @@ function renderMobileFavourites(response) {
     window.fav_list.push(fav.id);
     favIndex++;
   });
-  window.favHtmlMobile = '<div class="hdrfav mobile_fav_link"><div class="hdrfavttl">Your Favourite Sites</div><div class="site_list favourite_list">' + favHtml + '</div></div>';
-  var menuUserBlock = document.querySelector('.header__user-block');
+  window.favHtmlMobile = '<div class="hdrfavttl">Your Favourite Sites</div><div class="site_list favourite_list">' + favHtml + '</div>';
+  var menuUserBlock = document.querySelector('.mobile_fav_link');
 
   if (menuUserBlock) {
-    menuUserBlock.insertAdjacentHTML("beforeend", window.favHtmlMobile);
+    menuUserBlock.innerHTML = window.favHtmlMobile;
 
     document.querySelector('.mobile_fav_link .hdrfavttl').onclick = function (event) {
       document.querySelector('.mobile_fav_link').classList.toggle('open1');

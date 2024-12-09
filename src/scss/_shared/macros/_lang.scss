@@ -8,6 +8,7 @@
 			padding: 0 20px;
 			height: 40px;
 			align-items: center;
+			grid-area: 2/3/2/4;
 		}
 	}
 
@@ -344,6 +345,16 @@
 		&--zu {
 			&:before {
 				background-position: 0 -110px
+			}
+		}
+	}
+}
+.light{
+	.lang{
+		&__toggle {
+			color: #4e4e4e;
+			span{
+				color: #4e4e4e;
 			}
 		}
 	}

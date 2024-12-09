@@ -19,3 +19,43 @@
 	}
 }
 
+.light{
+	@include adaptive(767) {
+		.login_panel_container{
+			background: #fff;
+		}
+		.login_bottom{
+			background: #fff;
+		}
+		.login_container{
+			.login_top{
+				background: #eee;
+
+				.title{
+					color: #000;
+				}
+
+				&::after{
+					border-color: #eee transparent transparent transparent;
+				}
+			}
+			&_inner .info_create_mobile{
+				background: #fff;
+
+				a{
+					color: #003b85;
+				}
+			}
+			.login_form .already_have{
+				color: #000;
+			}
+			.top_forgot_text,
+			.info_create_mobile{
+				color: #000;
+			}
+		}
+		.remeber_me{
+			color: #000;
+		}
+	}
+}

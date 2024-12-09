@@ -1,0 +1,14 @@
+.header{
+	&__categories-mobile{
+		display: none;
+		@include adaptive(1023) {
+			display: block;
+			padding: 0 15px;
+		}
+	}
+}
+.light {
+	.header {
+	}
+
+}

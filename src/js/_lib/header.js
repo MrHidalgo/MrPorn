@@ -143,12 +143,12 @@ function renderMobileFavourites(response){
 		favIndex++;
 	});
 
-	window.favHtmlMobile = '<div class="hdrfav mobile_fav_link"><div class="hdrfavttl">Your Favourite Sites</div><div class="site_list favourite_list">'+favHtml+'</div></div>'
+	window.favHtmlMobile = '<div class="hdrfavttl">Your Favourite Sites</div><div class="site_list favourite_list">'+favHtml+'</div>'
 
-	let menuUserBlock = document.querySelector('.header__user-block');
+	let menuUserBlock = document.querySelector('.mobile_fav_link');
 
 	if(menuUserBlock){
-		menuUserBlock.insertAdjacentHTML("beforeend", window.favHtmlMobile);
+		menuUserBlock.innerHTML = window.favHtmlMobile;
 		document.querySelector('.mobile_fav_link .hdrfavttl').onclick = function(event){
 			document.querySelector('.mobile_fav_link').classList.toggle('open1');
 		}

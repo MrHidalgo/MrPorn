@@ -6,55 +6,125 @@ function initCategoryPage() {
 	let categorySidebar;
 	let desktopMenulist = document.querySelector('.category-list-menu');
 
-    function createSidebar() {
+	function createSidebar() {
 
-				let categoryItems = [];
+		if (isMobileOrTablet) {
+			desktopMenulist = document.querySelector('.category-list-menu-mobile');
+		}
 
-        let otherCategoryItems = document.querySelectorAll('#other_categories .category_item_link');
-        otherCategoryItems.forEach(function (_category){
-            let $this = _category;
-            let link = _category.getAttribute('href');
-						let categoryId = _category.dataset.id;
-						let categoryOrder = +_category.dataset.order;
-						let isVisited = _category.classList.contains('visited');
-						let isVisitedClass = isVisited ? 'visited' : '';
+		let categoryItems = [];
 
-						let categorySites = $this.querySelectorAll('.url_link_list_sites .deIcon')
+		let otherCategoryItems = document.querySelectorAll('#other_categories .category_item_link, .category_box.category_col');
+		if (desktopMenulist && desktopMenulist.children.length > 0) {
+			otherCategoryItems = document.querySelectorAll('.category-list-menu-mobile .category-list-link ');
+		}
+		let categoryIndex = 0;
+		otherCategoryItems.forEach(function (_category) {
+			let $this = _category;
+			let link = '';
+			let categoryId = '';
+			let categoryOrder = 0;
+			let isVisited = '';
+			let isVisitedClass = '';
+			let categorySites = [];
+			let count_sites = 0;
+			let categoryTitle = '';
 
-					  let $categoryTitle =  _category.querySelector('.category_item_caption_title')
-						let categoryTitle = $categoryTitle.innerHTML;
+			if (desktopMenulist && desktopMenulist.classList.contains('loaded')) {
+				// Category list is already loaded
+				link = _category.getAttribute('href');
+				categoryId = _category.dataset.id;
+				categoryOrder = +categoryIndex;
+				isVisited = _category.classList.contains('visited');
+				isVisitedClass = isVisited ? 'visited' : '';
+				categorySites = $this.querySelectorAll('.category-list-icons .category-site-icon')
+				count_sites = +_category.querySelector('.mobile_link_count').innerHTML;
 
-						let $categoryIcon =  _category.querySelector('.icon-category')
-						let categoryIcon = $categoryIcon.className;
+				let $categoryTitle = _category.querySelector('.category-list-title')
+				categoryTitle = $categoryTitle.innerHTML;
+				categoryIndex++;
+			} else if (document.body.classList.contains('home')) {
+				let catLink = _category.querySelector('.list__box-head-a')
+				link = catLink.getAttribute('href');
+				categoryId = catLink.dataset.id;
+				categoryOrder = +catLink.dataset.order;
+				isVisited = _category.classList.contains('visited');
+				isVisitedClass = isVisited ? 'visited' : '';
+				categorySites = $this.querySelectorAll('.list__box__item-icon')
+				count_sites = +_category.dataset.count;
+
+				let $categoryTitle = _category.querySelector('.list__box-head-a')
+				categoryTitle = $categoryTitle.innerHTML;
+			} else {
+				link = _category.getAttribute('href');
+				categoryId = _category.dataset.id;
+				categoryOrder = +_category.dataset.order;
+				isVisited = _category.classList.contains('visited');
+				isVisitedClass = isVisited ? 'visited' : '';
+
+				categorySites = $this.querySelectorAll('.url_link_list_sites .deIcon')
+
+				let categorySiteCount = $this.querySelector('.url_link_count_sites')
+
+				count_sites = categorySiteCount.textContent.replace('+', '');
+
+				let $categoryTitle = _category.querySelector('.category_item_caption_title')
+				categoryTitle = $categoryTitle.innerHTML;
+			}
+
+			let $categoryIcon = _category.querySelector('.icon-category')
+			let categoryIcon = $categoryIcon.className;
 
 
-						let categorySiteCount = $this.querySelector('.url_link_count_sites')
+			let icons = '';
+			let siteIndex = 0;
+			categorySites.forEach(function (_site) {
+				if (siteIndex < 5) {
+					icons += '<i class="category-site-icon ' + _site.getAttribute('class') + '"></i>';
+					siteIndex++;
+				}
+			})
 
-            let count_sites = categorySiteCount.textContent.replace('+', '');
-            let icons = '';
-            categorySites.forEach(function (_site){
-                icons += '<i class="category-site-icon ' + _site.getAttribute('class') + '"></i>';
-            })
+			categoryItems.push({
+				'id': categoryId,
+				'title': categoryTitle,
+				'icon': categoryIcon,
+				'link': link,
+				'count': count_sites,
+				'icons': icons,
+				'visited': isVisited,
+				'visited_o': isVisited,
+				'order': categoryOrder
+			});
+		});
 
-						categoryItems.push({'id': categoryId, 'title': categoryTitle, 'icon': categoryIcon, 'link': link, 'count': count_sites, 'icons': icons, 'visited': isVisited, 'order': categoryOrder});
-        });
+		if (!desktopMenulist || desktopMenulist.children.length == 0) {
+			renderCategorySidebar(categoryItems);
+		}
 
-
-
-			let categoryFilter = document.querySelector('.category-list-filter')
-			if(categoryFilter){
-				categoryFilter.addEventListener('input', debounce(function (evt) {
+		let categoryFilter = document.querySelectorAll('.desktop_menu_list .category-list-filter, .category-list-search .category-list-filter')
+		if (isMobileOrTablet) {
+			categoryFilter = document.querySelectorAll('.header__categories-mobile .category-list-filter')
+		}else{
+			let catSearch = document.querySelector('.desktop_menu_list .category-list-search')
+			if(catSearch){
+				catSearch.style.display = 'block';
+			}
+		}
+		if (categoryFilter.length > 0) {
+			for (let i = 0; i < categoryFilter.length; i++) {
+				categoryFilter[i].addEventListener('input', debounce(function (evt) {
 
 					let filter = evt.target.value.toLowerCase().trim();
-					if(filter == ''){
+					if (filter == '') {
 						renderCategorySidebar(categoryItems);
 						return;
 
 					}
-					let filteredCategories = [...categoryItems];;
+					let filteredCategories = [...categoryItems];
 					const catCount = filteredCategories.length
 					// categoryItems = categoryItems.sort((a, b) => b.title.localeCompare(a.title));
-					filteredCategories = filteredCategories.sort((a, b) =>{
+					filteredCategories = filteredCategories.sort((a, b) => {
 						const titleA = a.title.toLowerCase();
 						const titleB = b.title.toLowerCase();
 
@@ -74,7 +144,7 @@ function initCategoryPage() {
 					});
 
 					filteredCategories.forEach((item, index) => {
-							item.index = index;
+						item.index = index;
 					});
 
 					const premiumItems = filteredCategories.filter(item =>
@@ -84,57 +154,64 @@ function initCategoryPage() {
 
 					let nonPremiumItems = filteredCategories.filter(item => !(item.title.toLowerCase().includes("premium") &&
 						item.title.toLowerCase().includes(filter.toLowerCase()))); // Remove 'Premium' items
-					nonPremiumItems = nonPremiumItems.sort((a, b) =>{
+					nonPremiumItems = nonPremiumItems.sort((a, b) => {
 						return a.index - b.index;
 					});
 					filteredCategories = premiumItems.concat(nonPremiumItems);
-					renderCategorySidebar(filteredCategories, filter);
+					renderCategorySidebar(filteredCategories, filter, true);
 				}));
 			}
 
-			renderCategorySidebar(categoryItems);
-
-				if(otherCategoryItems.length){
-					let catListSites = document.querySelector('.category_list-sites');
-					if(catListSites){
-						catListSites.classList.add('has_sidebar')
-					}
-				}
-    }
-
-		const renderCategorySidebar = (categoryItems, filter = '') => {
-			desktopMenulist.innerHTML = '';
-			categoryItems.map(
-				(categoryItem) => {
-
-					let catTitle = categoryItem.title;
-					let catExtraClasses = categoryItem.visited ?' visited':'';
-					if(filter!='' && catTitle.toLowerCase().indexOf(filter) > -1){
-						catTitle = catTitle.replace(new RegExp(filter, 'gi'), (match) => `<span class="highlight">${match}</span>`);
-						catExtraClasses += ' pulse';
-					}
-
-					let item = '<li class="category-list-item" >' + '<a  href="' + categoryItem.link + '" class="category-list-link '+catExtraClasses+'" data-id="'+categoryItem.id+'"><i class="'+categoryItem.icon+'"></i><span class="category-list-title">' + catTitle + '</span><div class="category-list-icons">' + categoryItem.icons + '<span class="mobile_link_ellipsis">...</span>' + '<span class="mobile_link_count">' + categoryItem.count + '</span>' + '</div>' + '</a>' + '</li>';
-					desktopMenulist.insertAdjacentHTML('beforeend', item);
-				}
-			)
 		}
 
-    if(document.body.classList.contains('category') || document.body.classList.contains('page-template-page-categories')){
-        createSidebar()
 
-			if(document.querySelectorAll('.desktop_menu_list').length>0){
-				categorySidebar = new StickySidebar('.desktop_menu_list', {
-					topSpacing: 20,
-					bottomSpacing: 20,
-					// containerSelector: '.category_container',
-					// innerWrapperSelector: '.inner-wrapper-sticky',
-					resizeSensor: true
-				});
+		if (otherCategoryItems.length) {
+			let catListSites = document.querySelector('.category_list-sites');
+			if (catListSites) {
+				catListSites.classList.add('has_sidebar')
 			}
-    }else if(document.body.classList.contains('single-sites')){
-			createSidebar()
 		}
+	}
+
+	const renderCategorySidebar = (categoryItems, filter = '', hideVisited = false) => {
+		if(!desktopMenulist){
+			return;
+		}
+
+
+		desktopMenulist.innerHTML = '';
+		categoryItems.map(
+			(categoryItem) => {
+
+				let catTitle = categoryItem.title;
+				let catExtraClasses = hideVisited? '' : (categoryItem.visited ? ' visited' : '') ;
+				if (filter != '' && catTitle.toLowerCase().indexOf(filter) > -1) {
+					catTitle = catTitle.replace(new RegExp(filter, 'gi'), (match) => `<span class="highlight">${match}</span>`);
+					catExtraClasses += ' pulse';
+				}
+
+				let item = '<li class="category-list-item" >' + '<a  href="' + categoryItem.link + '" class="category-list-link ' + catExtraClasses + '" data-id="' + categoryItem.id + '"><i class="' + categoryItem.icon + '"></i><span class="category-list-title">' + catTitle + '</span><div class="category-list-icons">' + categoryItem.icons + '<span class="mobile_link_ellipsis">...</span>' + '<span class="mobile_link_count">' + categoryItem.count + '</span>' + '</div>' + '</a>' + '</li>';
+				desktopMenulist.insertAdjacentHTML('beforeend', item);
+			}
+		)
+	}
+
+	const bodyClasses = document.body.classList;
+	if (document.body.classList.contains('category') || document.body.classList.contains('page-template-page-categories')) {
+		createSidebar()
+
+		if (document.querySelectorAll('.desktop_menu_list').length > 0) {
+			categorySidebar = new StickySidebar('.desktop_menu_list', {
+				topSpacing: 20,
+				bottomSpacing: 20,
+				// containerSelector: '.category_container',
+				// innerWrapperSelector: '.inner-wrapper-sticky',
+				resizeSensor: true
+			});
+		}
+	} else {
+		createSidebar()
+	}
 }
 
 

@@ -1,0 +1,21 @@
+&__mobile{
+	display: none;
+	@include adaptive(1023) {
+		display: flex;
+		grid-area: 2 / 2 / 2 / 3;
+		justify-content: center;
+		align-items: center;
+		gap: 30px;
+	}
+
+	&-link{
+		line-height: 0;
+	}
+
+	&-favourites{
+		display: none;
+		@include adaptive(1023) {
+			display: block;
+		}
+	}
+}

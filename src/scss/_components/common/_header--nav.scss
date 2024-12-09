@@ -1,151 +1,171 @@
-&__nav {
-	display: flex;
-	align-items: center;
-	justify-content: space-between;
-	height: 44px;
-	@include adaptive(1023) {
-		height: auto;
-		flex-direction: column;
-	}
-
-	&-item,
-	&-link,
-	&-separator {
-		position: relative;
-		height: 100%;
-		@include adaptive(1023) {
-			width: 100%;
-		}
-	}
-
-	&-item {
+.header{
+	&__nav {
 		display: flex;
-		flex: 1;
-		min-width: 1px;
-		max-width: 100%;
+		align-items: center;
+		justify-content: space-between;
+		height: 44px;
 		@include adaptive(1023) {
-			&:not(:last-of-type) {
-				border-bottom: 1px solid #1b1d30;
+			display: none;
+			height: auto;
+			flex-direction: column;
+		}
+
+		&-item,
+		&-link,
+		&-separator {
+			position: relative;
+			height: 100%;
+			@include adaptive(1023) {
+				width: 100%;
 			}
 		}
 
-		&--saparator {
-			flex: unset;
-			width: 3px;
+		&-item {
+			display: flex;
+			flex: 1;
+			min-width: 1px;
+			max-width: 100%;
+			@include adaptive(1023) {
+				&:not(:last-of-type) {
+					border-bottom: 1px solid #1b1d30;
+				}
+			}
+
+			&--saparator {
+				flex: unset;
+				width: 3px;
+				@include adaptive(1023) {
+					display: none;
+				}
+			}
+		}
+
+		&-link {
+			display: flex;
+			align-items: center;
+			justify-content: center;
+			width: 100%;
+			height: 100%;
+			flex: 1;
+			min-width: 1px;
+			max-width: 100%;
+			@include adaptive(1023) {
+				justify-content: flex-start;
+				min-height: 60px;
+				padding-left: 10px;
+				padding-right: 10px;
+			}
+
+			&:hover {
+				span {
+					color: #ffffff;
+					@include transition(color);
+				}
+			}
+
+			> div {
+				display: flex;
+				@include adaptive(1023) {
+					&:nth-of-type(1) {
+						width: 40px;
+					}
+					&:nth-of-type(2) {
+						flex: 1;
+						min-width: 1px;
+						max-width: 100%;
+					}
+				}
+			}
+
+			.icon-png {
+				margin-right: 6px;
+				mix-blend-mode: screen;
+				@include adaptive(1023) {
+					transform: scale(1.2);
+				}
+				&.icon-nav-home{
+					height: 16px;
+					margin-right: 8px;
+				}
+
+				/*&.icon-category:before{
+					background: url(../images/icon-category.svg);
+					background-repeat: no-repeat;
+					width: 22px;
+					height: 17px;
+				}*/
+				&.icon-nav-category{
+					height: 16px;
+					margin-right: 12px;
+				}
+				&.icon-nav-porncoupons{
+					width: 19px;
+				}
+				&.icon-nav-blog{
+					height: 18px;
+				}
+				&.icon-nav-videos{
+					height: 17px;
+				}
+				&.icon-nav-sex{
+					width: auto;
+					height: 26px;
+				}
+			}
+
+			span {
+				text-transform: uppercase;
+				font-size: 13px;
+				//color: rgb(100, 111, 157);
+				color: #e2e3e6;
+				font-weight: bold;
+				line-height: 1.2;
+				@include transition(color);
+				@include adaptive(1279) {
+					font-size: 11px;
+				}
+				@include adaptive(1023) {
+					color: #ffffff;
+					min-width: 115px;
+					font-size: 20px;
+				}
+			}
+		}
+
+		@include adaptive(1023) {
+			&-icon{
+				width: 40px;
+			}
+		}
+
+		&-separator {
+			position: absolute;
+			top: 50%;
+			transform: translateY(-50%);
+			left: 0;
+			width: 100%;
+			height: calc(100% - 14px);
+			background-color: #161e3e;
 			@include adaptive(1023) {
 				display: none;
 			}
 		}
-	}
-
-	&-link {
-		display: flex;
-		align-items: center;
-		justify-content: center;
-		width: 100%;
-		height: 100%;
-		flex: 1;
-		min-width: 1px;
-		max-width: 100%;
-		@include adaptive(1023) {
-			justify-content: flex-start;
-			min-height: 60px;
-			padding-left: 10px;
-			padding-right: 10px;
-		}
-
-		&:hover {
-			span {
-				color: #ffffff;
-				@include transition(color);
-			}
-		}
-
-		> div {
-			display: flex;
-			@include adaptive(1023) {
-				&:nth-of-type(1) {
-					width: 40px;
-				}
-				&:nth-of-type(2) {
-					flex: 1;
-					min-width: 1px;
-					max-width: 100%;
-				}
-			}
-		}
-
-		.icon-png {
-			margin-right: 6px;
-			mix-blend-mode: screen;
-			@include adaptive(1023) {
-				transform: scale(1.2);
-			}
-			&.icon-nav-home{
-				height: 16px;
-				margin-right: 8px;
-			}
-
-			/*&.icon-category:before{
-				background: url(../images/icon-category.svg);
-				background-repeat: no-repeat;
-				width: 22px;
-				height: 17px;
-			}*/
-			&.icon-nav-category{
-				height: 16px;
-				margin-right: 12px;
-			}
-			&.icon-nav-porncoupons{
-				width: 19px;
-			}
-			&.icon-nav-blog{
-				height: 18px;
-			}
-			&.icon-nav-videos{
-				height: 17px;
-			}
-			&.icon-nav-sex{
-				width: auto;
-				height: 26px;
-			}
-		}
-
-		span {
-			text-transform: uppercase;
-			font-size: 13px;
-			//color: rgb(100, 111, 157);
-			color: #e2e3e6;
-			font-weight: bold;
-			line-height: 1.2;
-			@include transition(color);
-			@include adaptive(1279) {
-				font-size: 11px;
-			}
-			@include adaptive(1023) {
-				color: #ffffff;
-				min-width: 115px;
-				font-size: 20px;
-			}
-		}
-	}
-
-	@include adaptive(1023) {
 		&-icon{
-			width: 40px;
+			fill: #c1f002;
+
+			&-outline{
+				fill: #000;
+			}
 		}
 	}
-
-	&-separator {
-		position: absolute;
-		top: 50%;
-		transform: translateY(-50%);
-		left: 0;
-		width: 100%;
-		height: calc(100% - 14px);
-		background-color: #161e3e;
-		@include adaptive(1023) {
-			display: none;
+}
+.light{
+	.header{
+		&__nav-icon{
+			fill: #000;
+			&-outline{
+				fill: #fff;
+			}
 		}
 	}
 }

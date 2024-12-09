@@ -1,5 +1,7 @@
 // HEADER :: START
 
+
+
 .header {
 	position: relative;
 	display: flex;
@@ -17,15 +19,18 @@
 
 	//@media screen and (min-width: 768px) {
 		@import "header--wrapper";
-		@import "header--action";
+
+		@import "header--user";
+	@import "header--mobile";
 		@import "header--category";
+
 	//}
 
-	@import "header--toggle";
 
-	@import "header--view";
-	@import "header--nav";
-	@import "header--recent";
+
+
+
+
 	@import "header--update";
 	//@import "header--awe";
 
@@ -51,11 +56,17 @@
 		z-index: 105;
 	}
 }
+@import "header--view";
+@import "header--toggle";
+@import "header--recent";
+@import "header--nav";
+@import "header--action";
+@import "header--categories-search";
 
 .light{
 	@include adaptive(1023) {
 		.header__bottom.is-open {
-			background: #303030fa;
+			background: #fff;
 		}
 
 		.pre-header__mobile{
@@ -242,6 +253,9 @@
 @import "../misc/search";
 @import "../common/login";
 @import "../icons/category_icons";
+
+@import "../category/sidebar";
+@import "../misc/animation";
 
 //@import "../../_generated/spritePNG";
 //@import "../../_generated/spriteFont";
