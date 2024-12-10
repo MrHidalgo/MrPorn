@@ -1768,28 +1768,34 @@ var visitedSites = function visitedSites() {
       if (targetClasses.contains('list__box__item-link') || targetClasses.contains('list__box__item-preview')) {
         event.target.parentNode.classList.add('visited');
         setVisitedView('visitedViews', event.target.dataset.id);
-      } else if (targetClasses.contains('link_read') || targetClasses.contains('link_site') || targetClasses.contains('category_sites_item_title') || targetClasses.contains('category_sites_item_thumb')) {
+      } else if (targetClasses.contains('link_read') || targetClasses.contains('link_site') || targetClasses.contains('category_sites_item_title')) {
         console.log('targetClasses:', targetClasses);
         var siteItem = event.target.closest('.category_sites_item');
         siteItem.classList.add('visited');
         setVisitedView('visitedViews', siteItem.dataset.id);
+      } else if (targetClasses.contains('category_sites_item_thumb') && targetClasses.contains('has_video')) {
+        var _siteItem = event.target.closest('.category_sites_item');
+
+        _siteItem.classList.add('visited');
+
+        setVisitedView('visitedViews', _siteItem.dataset.id);
       } else if (targetClasses.contains('list__box-head-a') || targetClasses.contains('category-list-link')) {
         event.target.parentNode.classList.add('visited');
         setVisitedView('visitedTerms', event.target.dataset.id);
-      } else if (targetClasses.contains('icon-category') || targetClasses.contains('category-list-title') || targetClasses.contains('category-list-icons') || targetClasses.contains('category-site-icon') || targetClasses.contains('category_item_caption') || targetClasses.contains('category_item_caption_title') || targetClasses.contains('category_item_inner') || targetClasses.contains('url_link_count_sites') || targetClasses.contains('category_item__content') || targetClasses.contains('category_item_inner-overlay') || targetClasses.contains('url_link_list_sites')) {
-        var _siteItem = event.target.closest('.category-list-link');
+      } else if (targetClasses.contains('icon-category') || targetClasses.contains('category-list-title') || targetClasses.contains('category-list-icons') || targetClasses.contains('category-site-icon') || targetClasses.contains('category_item_caption') || targetClasses.contains('category_item_caption_title') || targetClasses.contains('category_item_inner') || targetClasses.contains('url_link_count_sites') || targetClasses.contains('category_item_inner-overlay') || targetClasses.contains('url_link_list_sites')) {
+        var _siteItem2 = event.target.closest('.category-list-link');
 
-        if (_siteItem) {
-          _siteItem.classList.add('visited');
+        if (_siteItem2) {
+          _siteItem2.classList.add('visited');
 
-          setVisitedView('visitedTerms', _siteItem.dataset.id);
+          setVisitedView('visitedTerms', _siteItem2.dataset.id);
         } else {
-          _siteItem = event.target.closest('.category_item_link');
+          _siteItem2 = event.target.closest('.category_item_link');
 
-          if (_siteItem) {
-            _siteItem.classList.add('visited');
+          if (_siteItem2) {
+            _siteItem2.classList.add('visited');
 
-            setVisitedView('visitedTerms', _siteItem.dataset.id);
+            setVisitedView('visitedTerms', _siteItem2.dataset.id);
           }
         }
       } else if (targetClasses.contains('category_item_link')) {

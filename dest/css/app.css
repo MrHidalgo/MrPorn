@@ -1026,7 +1026,6 @@ strong {
 @media screen and (min-width: 1330px) {
   /* line 166, src/scss/_shared/_grid.scss */
   .page-id-17 .c-grid {
-    max-width: 75%;
     min-width: 1300px;
   }
 }
@@ -1044,6 +1043,11 @@ strong {
   .page-id-17 .c-grid.p-home {
     padding: 15px 55px;
   }
+}
+
+/* line 191, src/scss/_shared/_grid.scss */
+.p-15 {
+  padding: 0 15px;
 }
 
 /* line 1, src/scss/_shared/macros/_lang.scss */
@@ -2505,25 +2509,20 @@ fieldset {
     visibility: visible;
     -webkit-transform: translateY(0) translateZ(0);
             transform: translateY(0) translateZ(0);
-    -webkit-transition: opacity 0.35s ease-in-out, visibility 0.35s ease-in-out, -webkit-transform 0.35s ease-in-out;
-    transition: opacity 0.35s ease-in-out, visibility 0.35s ease-in-out, -webkit-transform 0.35s ease-in-out;
-    -o-transition: opacity 0.35s ease-in-out, visibility 0.35s ease-in-out, transform 0.35s ease-in-out;
-    transition: opacity 0.35s ease-in-out, visibility 0.35s ease-in-out, transform 0.35s ease-in-out;
-    transition: opacity 0.35s ease-in-out, visibility 0.35s ease-in-out, transform 0.35s ease-in-out, -webkit-transform 0.35s ease-in-out;
   }
-  /* line 52, src/scss/_components/common/_header--conatainer.scss */
+  /* line 51, src/scss/_components/common/_header--conatainer.scss */
   .header__container-2.is-open .header__view-actions.awe {
     padding: 10px 20px 0;
   }
 }
 
-/* line 59, src/scss/_components/common/_header--conatainer.scss */
+/* line 58, src/scss/_components/common/_header--conatainer.scss */
 .header__container-2 .c-grid {
   position: relative;
 }
 
 @media screen and (max-width: 1023px) {
-  /* line 59, src/scss/_components/common/_header--conatainer.scss */
+  /* line 58, src/scss/_components/common/_header--conatainer.scss */
   .header__container-2 .c-grid {
     padding-left: 0;
     padding-right: 0;
@@ -2531,7 +2530,7 @@ fieldset {
 }
 
 @media screen and (min-width: 1024px) {
-  /* line 69, src/scss/_components/common/_header--conatainer.scss */
+  /* line 68, src/scss/_components/common/_header--conatainer.scss */
   .header__container-3 {
     background-color: #0b0d28;
     -webkit-box-shadow: 1.482px 16.935px 35px 0px rgba(31, 37, 103, 0.33);
@@ -7256,6 +7255,11 @@ fieldset {
 }
 
 /* line 307, src/scss/_components/icons/_category_icons.scss */
+.icon-gay-games {
+  background-image: url(../images/categories/gay-games.svg);
+}
+
+/* line 310, src/scss/_components/icons/_category_icons.scss */
 .icon-circled {
   height: 22px;
   width: 22px;

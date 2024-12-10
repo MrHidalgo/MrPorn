@@ -442,7 +442,7 @@
 	h2{
 		display: flex;
 		align-items: center;
-		gap:4px;
+		//gap:4px;
 		word-break: break-word;
 		text-transform: uppercase;
 		font-weight: 500;
@@ -471,6 +471,11 @@
 			background-size: contain;
 			background-position: center;
 			transform: rotate(90deg);
+
+			@include adaptive(991.98) {
+				width: 20px;
+				vertical-align: initial;
+			}
 		}
 	}
 
@@ -479,6 +484,10 @@
 
 .similar_title{
 	padding: 5px 8px 5px 0;
+
+	.icon-category{
+		margin-right: 4px;
+	}
 
 	@include adaptive(767) {
 		padding: 15px 8px 5px;

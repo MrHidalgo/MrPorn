@@ -248,9 +248,9 @@
 				transition: all 0.2s linear 0s;
 
 				@include adaptive(1024) {
-					padding: 5px 0;
+					padding: 10px 0;
 					font-size: 12px;
-					width: 70%;
+					width: 80%;
 				}
 
 				i{
@@ -277,13 +277,6 @@
 					}
 				}
 			}
-
-			/*.link_read:hover{
-				animation: pulse-blue 1s;
-			}
-			.link_site:hover{
-				animation: pulse-green 1s;
-			}*/
 
 			.link_site{
 				background: #c4f015;
@@ -465,7 +458,7 @@
 
 			@include adaptive(767) {
 				font-size: 12px;
-				-webkit-line-clamp: 5;
+				-webkit-line-clamp: 3;
 				line-height: 17px;
 				height: auto;
 				margin: 0 0 3px;

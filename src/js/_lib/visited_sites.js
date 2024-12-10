@@ -35,8 +35,12 @@ const visitedSites = () => {
 			if (targetClasses.contains('list__box__item-link') || targetClasses.contains('list__box__item-preview')) {
 				event.target.parentNode.classList.add('visited');
 				setVisitedView('visitedViews', event.target.dataset.id);
-			}else if(targetClasses.contains('link_read') || targetClasses.contains('link_site') || targetClasses.contains('category_sites_item_title') || targetClasses.contains('category_sites_item_thumb')){
+			}else if(targetClasses.contains('link_read') || targetClasses.contains('link_site') || targetClasses.contains('category_sites_item_title') ){
 				 console.log('targetClasses:', targetClasses);
+				let siteItem = event.target.closest('.category_sites_item')
+				siteItem.classList.add('visited');
+				setVisitedView('visitedViews', siteItem.dataset.id);
+			} else if(targetClasses.contains('category_sites_item_thumb') && targetClasses.contains('has_video')){
 				let siteItem = event.target.closest('.category_sites_item')
 				siteItem.classList.add('visited');
 				setVisitedView('visitedViews', siteItem.dataset.id);
@@ -45,7 +49,7 @@ const visitedSites = () => {
 				setVisitedView('visitedTerms', event.target.dataset.id);
 			} else if (targetClasses.contains('icon-category') || targetClasses.contains('category-list-title') || targetClasses.contains('category-list-icons')
 				|| targetClasses.contains('category-site-icon') || targetClasses.contains('category_item_caption') || targetClasses.contains('category_item_caption_title')
-				|| targetClasses.contains('category_item_inner') || targetClasses.contains('url_link_count_sites') || targetClasses.contains('category_item__content')
+				|| targetClasses.contains('category_item_inner') || targetClasses.contains('url_link_count_sites')
 				|| targetClasses.contains('category_item_inner-overlay') || targetClasses.contains('url_link_list_sites')
 
 			) {
