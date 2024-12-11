@@ -15,7 +15,7 @@
 	&_description{
 		flex-grow: 1;
 		width: 50%;
-		padding: 15px 0 0 10px;
+		padding: 10px 0 0 10px;
 		position: relative;
 
 		@include respond('ipad_portrait'){
@@ -445,7 +445,7 @@
 			font-size: 12px;
 			padding-top: 5px;
 			line-height: 20px;
-			height: 85px;
+			height: 60px;
 			overflow: hidden;
 			text-overflow: ellipsis;
 			display: -webkit-box;
@@ -517,19 +517,6 @@
 					&:nth-child(2){order: -2;}
 					&:nth-child(3){order: -1;}
 				}
-			}
-		}
-	}
-
-	&.similar_sites{
-		.category_sites_item_overlay a{
-			padding: 16px 0;
-			font-size: 18px;
-
-			@include adaptive(1024) {
-				padding: 5px 0;
-				font-size: 12px;
-				width: 70%;
 			}
 		}
 	}

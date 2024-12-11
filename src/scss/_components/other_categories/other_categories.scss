@@ -156,6 +156,10 @@
 			&_title{
 				overflow: hidden;
 				text-overflow: ellipsis;
+
+				.highlight{
+					color: #d5f963;
+				}
 			}
 
 			small {
@@ -187,9 +191,12 @@
 			}
 		}
 
-		&_link:not(.visited):hover{
-			.category_item_caption::before{
-				animation: pulse-grey 1s infinite;
+		&_link{
+			&:not(.visited):hover,
+			&.pulse{
+				.category_item_caption::before{
+					animation: pulse-grey 1s infinite;
+				}
 			}
 		}
 
@@ -312,18 +319,27 @@
 	#other_categories{
 		background: #fff;
 
-		.category_item_link {
-			color: #4e4e4e;
-		}
-		.category_item_caption{
-			color: #4e4e4e;
-		}
+		.category_item{
+			&_link {
+				color: #4e4e4e;
 
-		.category_item_link.visited{
-			.category_item_caption::before{
-				border: solid #1b4f90;
-				border-width: 0 1px 1px 0;
+				&.visited{
+					.category_item_caption::before{
+						border: solid #1b4f90;
+						border-width: 0 1px 1px 0;
+					}
+				}
+			}
+			&_caption{
+				color: #4e4e4e;
+
+				&_title{
+					.highlight{
+						color: #000;
+					}
+				}
 			}
 		}
+
 	}
 }

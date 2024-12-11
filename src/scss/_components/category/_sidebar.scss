@@ -40,6 +40,8 @@
 		color: #fff;
 		text-align: center;
 
+
+
 		.icon-search{
 			width: 18px;
 			position: absolute;
@@ -55,6 +57,19 @@
 		&-title{
 			padding-bottom: 10px;
 			font-weight: 600;
+		}
+
+		&-mobile{
+			display: none;
+
+			@include adaptive(1023) {
+				display: block;
+				padding: 0;
+
+				.icon-search{
+					top: -4px;
+				}
+			}
 		}
 	}
 	&-filter{
@@ -153,7 +168,7 @@
 		grid-template-columns: auto 1fr;
 		align-items: center;
 		gap: 6px 5px;
-		padding: 8px 10px 8px 12px;
+		padding: 8px 10px 8px 14px;
 		color: #767676;
 		font-size: 14px;
 		font-weight: 400;
@@ -189,6 +204,7 @@
 				content: '';
 				background: transparent;
 				transform: rotate(45deg);
+				left: 2px;
 				width: 6px;
 				height: 11px;
 				border: solid #d5f963;

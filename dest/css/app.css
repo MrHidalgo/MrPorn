@@ -1062,21 +1062,23 @@ strong {
     display: -webkit-flex;
     display: -ms-flexbox;
     display: flex;
+    position: absolute;
+    right: 0;
+    top: 40px;
     -webkit-box-pack: end;
     -webkit-justify-content: end;
         -ms-flex-pack: end;
             justify-content: end;
-    padding: 0 20px;
+    padding: 0 5px;
     height: 40px;
     -webkit-box-align: center;
     -webkit-align-items: center;
         -ms-flex-align: center;
             align-items: center;
-    grid-area: 2/3/2/4;
   }
 }
 
-/* line 19, src/scss/_shared/macros/_lang.scss */
+/* line 21, src/scss/_shared/macros/_lang.scss */
 .lang:hover .lang__toggle {
   border-color: #fff;
   -webkit-border-bottom-left-radius: 0;
@@ -1091,7 +1093,7 @@ strong {
   transition: border-color 0.35s ease-in-out, background-color 0.35s ease-in-out, border-radius 0.35s ease-in-out, -webkit-border-radius 0.35s ease-in-out;
 }
 
-/* line 26, src/scss/_shared/macros/_lang.scss */
+/* line 28, src/scss/_shared/macros/_lang.scss */
 .lang:hover .lang__toggle span,
 .lang:hover .lang__toggle .icon-font {
   color: #080915;
@@ -1100,7 +1102,7 @@ strong {
   transition: color 0.35s ease-in-out;
 }
 
-/* line 33, src/scss/_shared/macros/_lang.scss */
+/* line 35, src/scss/_shared/macros/_lang.scss */
 .lang:hover .lang__drop {
   display: block;
   opacity: 1;
@@ -1115,7 +1117,7 @@ strong {
   transition: opacity 0.35s ease-in-out, visibility 0.35s ease-in-out, transform 0.35s ease-in-out, -webkit-transform 0.35s ease-in-out;
 }
 
-/* line 43, src/scss/_shared/macros/_lang.scss */
+/* line 45, src/scss/_shared/macros/_lang.scss */
 .lang__toggle {
   display: -webkit-box;
   display: -webkit-flex;
@@ -1148,14 +1150,14 @@ strong {
 }
 
 @media screen and (max-width: 1279px) {
-  /* line 43, src/scss/_shared/macros/_lang.scss */
+  /* line 45, src/scss/_shared/macros/_lang.scss */
   .lang__toggle {
     width: 65px;
   }
 }
 
 @media screen and (max-width: 1023px) {
-  /* line 43, src/scss/_shared/macros/_lang.scss */
+  /* line 45, src/scss/_shared/macros/_lang.scss */
   .lang__toggle {
     width: 84px;
     padding-right: 0;
@@ -1163,7 +1165,7 @@ strong {
   }
 }
 
-/* line 67, src/scss/_shared/macros/_lang.scss */
+/* line 69, src/scss/_shared/macros/_lang.scss */
 .lang__toggle span,
 .lang__toggle .icon-font {
   color: #9294ad;
@@ -1172,27 +1174,27 @@ strong {
   transition: color 0.35s ease-in-out;
 }
 
-/* line 73, src/scss/_shared/macros/_lang.scss */
+/* line 75, src/scss/_shared/macros/_lang.scss */
 .lang__toggle span {
   font-weight: 700;
   text-transform: uppercase;
 }
 
 @media screen and (max-width: 1279px) {
-  /* line 73, src/scss/_shared/macros/_lang.scss */
+  /* line 75, src/scss/_shared/macros/_lang.scss */
   .lang__toggle span {
     display: none;
   }
 }
 
 @media screen and (max-width: 1023px) {
-  /* line 73, src/scss/_shared/macros/_lang.scss */
+  /* line 75, src/scss/_shared/macros/_lang.scss */
   .lang__toggle span {
     display: inline-block;
   }
 }
 
-/* line 84, src/scss/_shared/macros/_lang.scss */
+/* line 86, src/scss/_shared/macros/_lang.scss */
 .lang__toggle .icon-font {
   margin-left: 10px;
   font-size: 8px;
@@ -1201,7 +1203,7 @@ strong {
           transform: rotate(-90deg);
 }
 
-/* line 91, src/scss/_shared/macros/_lang.scss */
+/* line 93, src/scss/_shared/macros/_lang.scss */
 .lang__drop {
   -webkit-transform: translateY(10px);
       -ms-transform: translateY(10px);
@@ -1228,13 +1230,13 @@ strong {
 }
 
 @media screen and (max-width: 480px) {
-  /* line 91, src/scss/_shared/macros/_lang.scss */
+  /* line 93, src/scss/_shared/macros/_lang.scss */
   .lang__drop {
     min-width: 320px;
   }
 }
 
-/* line 111, src/scss/_shared/macros/_lang.scss */
+/* line 113, src/scss/_shared/macros/_lang.scss */
 .lang__drop-col {
   display: -webkit-box;
   display: -webkit-flex;
@@ -1251,7 +1253,7 @@ strong {
   padding: 15px;
 }
 
-/* line 119, src/scss/_shared/macros/_lang.scss */
+/* line 121, src/scss/_shared/macros/_lang.scss */
 .lang__drop-link {
   position: relative;
   display: -webkit-box;
@@ -1267,7 +1269,7 @@ strong {
   margin-bottom: 5px;
 }
 
-/* line 128, src/scss/_shared/macros/_lang.scss */
+/* line 130, src/scss/_shared/macros/_lang.scss */
 .lang__drop-link:hover::before, .lang__drop-link:hover::after {
   width: 50%;
   -webkit-transition: width 0.35s ease-in-out;
@@ -1275,7 +1277,7 @@ strong {
   transition: width 0.35s ease-in-out;
 }
 
-/* line 135, src/scss/_shared/macros/_lang.scss */
+/* line 137, src/scss/_shared/macros/_lang.scss */
 .lang__drop-link::before {
   content: '';
   position: absolute;
@@ -1288,7 +1290,7 @@ strong {
   transition: width 0.35s ease-in-out;
 }
 
-/* line 144, src/scss/_shared/macros/_lang.scss */
+/* line 146, src/scss/_shared/macros/_lang.scss */
 .lang__drop-link::after {
   content: '';
   position: absolute;
@@ -1301,22 +1303,22 @@ strong {
   transition: width 0.35s ease-in-out;
 }
 
-/* line 154, src/scss/_shared/macros/_lang.scss */
+/* line 156, src/scss/_shared/macros/_lang.scss */
 .lang__drop-link::before {
   left: 50%;
 }
 
-/* line 157, src/scss/_shared/macros/_lang.scss */
+/* line 159, src/scss/_shared/macros/_lang.scss */
 .lang__drop-link::after {
   right: 50%;
 }
 
-/* line 161, src/scss/_shared/macros/_lang.scss */
+/* line 163, src/scss/_shared/macros/_lang.scss */
 .lang__drop-link span {
   color: #080915;
 }
 
-/* line 167, src/scss/_shared/macros/_lang.scss */
+/* line 169, src/scss/_shared/macros/_lang.scss */
 .lang__flag {
   display: -webkit-box;
   display: -webkit-flex;
@@ -1325,7 +1327,7 @@ strong {
   margin-right: 5px;
 }
 
-/* line 171, src/scss/_shared/macros/_lang.scss */
+/* line 173, src/scss/_shared/macros/_lang.scss */
 .lang__flag:before {
   content: "";
   display: -webkit-box;
@@ -1337,182 +1339,182 @@ strong {
   background-repeat: no-repeat;
 }
 
-/* line 181, src/scss/_shared/macros/_lang.scss */
+/* line 183, src/scss/_shared/macros/_lang.scss */
 .lang__flag--en:before {
   background-position: -48px 0;
 }
 
-/* line 186, src/scss/_shared/macros/_lang.scss */
+/* line 188, src/scss/_shared/macros/_lang.scss */
 .lang__flag--de:before {
   background-position: 0 -22px;
 }
 
-/* line 191, src/scss/_shared/macros/_lang.scss */
+/* line 193, src/scss/_shared/macros/_lang.scss */
 .lang__flag--fr:before {
   background-position: -32px -33px;
 }
 
-/* line 196, src/scss/_shared/macros/_lang.scss */
+/* line 198, src/scss/_shared/macros/_lang.scss */
 .lang__flag--it:before {
   background-position: -16px -44px;
 }
 
-/* line 201, src/scss/_shared/macros/_lang.scss */
+/* line 203, src/scss/_shared/macros/_lang.scss */
 .lang__flag--ro:before {
   background-position: -64px -44px;
 }
 
-/* line 206, src/scss/_shared/macros/_lang.scss */
+/* line 208, src/scss/_shared/macros/_lang.scss */
 .lang__flag--pt:before {
   background-position: -64px -33px;
 }
 
-/* line 211, src/scss/_shared/macros/_lang.scss */
+/* line 213, src/scss/_shared/macros/_lang.scss */
 .lang__flag--ru:before {
   background-position: 0 -55px;
 }
 
-/* line 216, src/scss/_shared/macros/_lang.scss */
+/* line 218, src/scss/_shared/macros/_lang.scss */
 .lang__flag--es:before {
   background-position: 0 -33px;
 }
 
-/* line 221, src/scss/_shared/macros/_lang.scss */
+/* line 223, src/scss/_shared/macros/_lang.scss */
 .lang__flag--nl:before {
   background-position: -64px 0;
 }
 
-/* line 226, src/scss/_shared/macros/_lang.scss */
+/* line 228, src/scss/_shared/macros/_lang.scss */
 .lang__flag--tr:before {
   background-position: -64px -55px;
 }
 
-/* line 231, src/scss/_shared/macros/_lang.scss */
+/* line 233, src/scss/_shared/macros/_lang.scss */
 .lang__flag--sv:before {
   background-position: -32px -55px;
 }
 
-/* line 236, src/scss/_shared/macros/_lang.scss */
+/* line 238, src/scss/_shared/macros/_lang.scss */
 .lang__flag--no:before {
   background-position: -64px -11px;
 }
 
-/* line 241, src/scss/_shared/macros/_lang.scss */
+/* line 243, src/scss/_shared/macros/_lang.scss */
 .lang__flag--be:before {
   background-position: 0 -11px;
 }
 
-/* line 246, src/scss/_shared/macros/_lang.scss */
+/* line 248, src/scss/_shared/macros/_lang.scss */
 .lang__flag--ja:before {
   background-position: -32px -44px;
 }
 
-/* line 251, src/scss/_shared/macros/_lang.scss */
+/* line 253, src/scss/_shared/macros/_lang.scss */
 .lang__flag--el:before {
   background-position: -32px -22px;
 }
 
-/* line 256, src/scss/_shared/macros/_lang.scss */
+/* line 258, src/scss/_shared/macros/_lang.scss */
 .lang__flag--hi:before {
   background-position: -48px -11px;
 }
 
-/* line 261, src/scss/_shared/macros/_lang.scss */
+/* line 263, src/scss/_shared/macros/_lang.scss */
 .lang__flag--vi:before {
   background-position: -16px -66px;
 }
 
-/* line 266, src/scss/_shared/macros/_lang.scss */
+/* line 268, src/scss/_shared/macros/_lang.scss */
 .lang__flag--pl:before {
   background-position: -64px -22px;
 }
 
-/* line 271, src/scss/_shared/macros/_lang.scss */
+/* line 273, src/scss/_shared/macros/_lang.scss */
 .lang__flag--fi:before {
   background-position: -16px -33px;
 }
 
-/* line 276, src/scss/_shared/macros/_lang.scss */
+/* line 278, src/scss/_shared/macros/_lang.scss */
 .lang__flag--da:before {
   background-position: -32px -11px;
 }
 
-/* line 281, src/scss/_shared/macros/_lang.scss */
+/* line 283, src/scss/_shared/macros/_lang.scss */
 .lang__flag--sl:before {
   background-position: -16px -55px;
 }
 
-/* line 286, src/scss/_shared/macros/_lang.scss */
+/* line 288, src/scss/_shared/macros/_lang.scss */
 .lang__flag--hr:before {
   background-position: -48px -33px;
 }
 
-/* line 291, src/scss/_shared/macros/_lang.scss */
+/* line 293, src/scss/_shared/macros/_lang.scss */
 .lang__flag--ar:before {
   background-position: 0 0;
 }
 
-/* line 296, src/scss/_shared/macros/_lang.scss */
+/* line 298, src/scss/_shared/macros/_lang.scss */
 .lang__flag--hu:before {
   background-position: -48px -22px;
 }
 
-/* line 301, src/scss/_shared/macros/_lang.scss */
+/* line 303, src/scss/_shared/macros/_lang.scss */
 .lang__flag--cs:before {
   background-position: -32px 0;
 }
 
-/* line 306, src/scss/_shared/macros/_lang.scss */
+/* line 308, src/scss/_shared/macros/_lang.scss */
 .lang__flag--zh:before {
   background-position: -32px -66px;
 }
 
-/* line 311, src/scss/_shared/macros/_lang.scss */
+/* line 313, src/scss/_shared/macros/_lang.scss */
 .lang__flag--ko:before {
   background-position: -48px -44px;
 }
 
-/* line 316, src/scss/_shared/macros/_lang.scss */
+/* line 318, src/scss/_shared/macros/_lang.scss */
 .lang__flag--th:before {
   background-position: -48px -55px;
 }
 
-/* line 321, src/scss/_shared/macros/_lang.scss */
+/* line 323, src/scss/_shared/macros/_lang.scss */
 .lang__flag--id:before {
   background-position: 0 -44px;
 }
 
-/* line 326, src/scss/_shared/macros/_lang.scss */
+/* line 328, src/scss/_shared/macros/_lang.scss */
 .lang__flag--he:before {
   background-position: -64px -88px;
 }
 
-/* line 331, src/scss/_shared/macros/_lang.scss */
+/* line 333, src/scss/_shared/macros/_lang.scss */
 .lang__flag--bg:before {
   background-position: -16px -110px;
 }
 
-/* line 336, src/scss/_shared/macros/_lang.scss */
+/* line 338, src/scss/_shared/macros/_lang.scss */
 .lang__flag--hu:before {
   background-position: -32px -110px;
 }
 
-/* line 341, src/scss/_shared/macros/_lang.scss */
+/* line 343, src/scss/_shared/macros/_lang.scss */
 .lang__flag--ms:before {
   background-position: -64px -99px;
 }
 
-/* line 346, src/scss/_shared/macros/_lang.scss */
+/* line 348, src/scss/_shared/macros/_lang.scss */
 .lang__flag--zu:before {
   background-position: 0 -110px;
 }
 
-/* line 354, src/scss/_shared/macros/_lang.scss */
+/* line 356, src/scss/_shared/macros/_lang.scss */
 .light .lang__toggle {
   color: #4e4e4e;
 }
 
-/* line 356, src/scss/_shared/macros/_lang.scss */
+/* line 358, src/scss/_shared/macros/_lang.scss */
 .light .lang__toggle span {
   color: #4e4e4e;
 }
@@ -2691,24 +2693,21 @@ fieldset {
 @media screen and (max-width: 1023px) {
   /* line 46, src/scss/_components/common/_header--wrapper.scss */
   .header__wrapper-1 {
+    position: relative;
+    height: 80px;
     padding: 0;
     background: transparent;
-    display: grid;
-    grid-template-columns: 100px 1fr 100px;
-    grid-template-rows: repeat(2, 40px);
-    grid-column-gap: 0px;
-    grid-row-gap: 0px;
     border-bottom: 1px solid #4a4a4a;
   }
 }
 
-/* line 108, src/scss/_components/common/_header--wrapper.scss */
+/* line 104, src/scss/_components/common/_header--wrapper.scss */
 .header__wrapper-2 {
   min-height: 121px;
 }
 
 @media screen and (max-width: 1023px) {
-  /* line 108, src/scss/_components/common/_header--wrapper.scss */
+  /* line 104, src/scss/_components/common/_header--wrapper.scss */
   .header__wrapper-2 {
     -webkit-box-orient: vertical;
     -webkit-box-direction: normal;
@@ -2719,41 +2718,41 @@ fieldset {
   }
 }
 
-/* line 116, src/scss/_components/common/_header--wrapper.scss */
+/* line 112, src/scss/_components/common/_header--wrapper.scss */
 .header__wrapper-2 .header__col-1 {
   width: 100%;
   max-width: 410px;
 }
 
 @media screen and (max-width: 1023px) {
-  /* line 116, src/scss/_components/common/_header--wrapper.scss */
+  /* line 112, src/scss/_components/common/_header--wrapper.scss */
   .header__wrapper-2 .header__col-1 {
     max-width: 100%;
   }
 }
 
 @media screen and (min-device-width: 768px) and (max-device-width: 1024px) and (orientation: portrait) and (-webkit-min-device-pixel-ratio: 2) {
-  /* line 116, src/scss/_components/common/_header--wrapper.scss */
+  /* line 112, src/scss/_components/common/_header--wrapper.scss */
   .header__wrapper-2 .header__col-1 {
     max-width: 100%;
   }
 }
 
 @media screen and (max-width: 1023px) and (orientation: landscape) {
-  /* line 116, src/scss/_components/common/_header--wrapper.scss */
+  /* line 112, src/scss/_components/common/_header--wrapper.scss */
   .header__wrapper-2 .header__col-1 {
     max-width: 100%;
   }
 }
 
 @media screen and (max-width: 768px) {
-  /* line 116, src/scss/_components/common/_header--wrapper.scss */
+  /* line 112, src/scss/_components/common/_header--wrapper.scss */
   .header__wrapper-2 .header__col-1 {
     max-width: 100%;
   }
 }
 
-/* line 136, src/scss/_components/common/_header--wrapper.scss */
+/* line 132, src/scss/_components/common/_header--wrapper.scss */
 .header__wrapper-2 .header__col-2 {
   display: -webkit-box;
   display: -webkit-flex;
@@ -2779,7 +2778,7 @@ fieldset {
 }
 
 @media screen and (max-width: 1023px) {
-  /* line 136, src/scss/_components/common/_header--wrapper.scss */
+  /* line 132, src/scss/_components/common/_header--wrapper.scss */
   .header__wrapper-2 .header__col-2 {
     padding: 0;
     position: relative;
@@ -2787,7 +2786,7 @@ fieldset {
 }
 
 @media screen and (min-width: 1024px) {
-  /* line 154, src/scss/_components/common/_header--wrapper.scss */
+  /* line 150, src/scss/_components/common/_header--wrapper.scss */
   .header__wrapper-3 {
     -webkit-box-align: center;
     -webkit-align-items: center;
@@ -2828,7 +2827,10 @@ fieldset {
 @media screen and (max-width: 991px) {
   /* line 1, src/scss/_components/common/_header--user.scss */
   .header__user-block {
-    grid-area: 1/1/2/4;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
     height: 40px;
     border: none;
     border-top: 1px solid #0a3e83;
@@ -2852,7 +2854,11 @@ fieldset {
     display: -webkit-flex;
     display: -ms-flexbox;
     display: flex;
-    grid-area: 2 / 2 / 2 / 3;
+    position: absolute;
+    top: 40px;
+    height: 40px;
+    left: 70px;
+    right: 80px;
     -webkit-box-pack: center;
     -webkit-justify-content: center;
         -ms-flex-pack: center;
@@ -2861,22 +2867,22 @@ fieldset {
     -webkit-align-items: center;
         -ms-flex-align: center;
             align-items: center;
-    gap: 30px;
   }
 }
 
-/* line 11, src/scss/_components/common/_header--mobile.scss */
+/* line 14, src/scss/_components/common/_header--mobile.scss */
 .header__mobile-link {
   line-height: 0;
+  margin: 0 15px;
 }
 
-/* line 15, src/scss/_components/common/_header--mobile.scss */
+/* line 19, src/scss/_components/common/_header--mobile.scss */
 .header__mobile-favourites {
   display: none;
 }
 
 @media screen and (max-width: 1023px) {
-  /* line 15, src/scss/_components/common/_header--mobile.scss */
+  /* line 19, src/scss/_components/common/_header--mobile.scss */
   .header__mobile-favourites {
     display: block;
   }
@@ -3476,7 +3482,7 @@ fieldset {
   /* line 3, src/scss/_components/common/_header--toggle.scss */
   .header__toggle {
     position: absolute;
-    left: 20px;
+    left: 15px;
     top: 49px;
   }
 }
@@ -3545,28 +3551,9 @@ fieldset {
   left: 0;
   width: 0;
   height: 0;
-  /*&:checked {
-				& + label {
-					.icon-font {
-						@include transition(opacity);
-
-						&.icon-sun {
-							opacity: 0;
-						}
-						&.icon-moon {
-							opacity: 1;
-						}
-					}
-
-					span {
-						transform: translateX(-25px);
-						@include transition(transform);
-					}
-				}
-			}*/
 }
 
-/* line 85, src/scss/_components/common/_header--toggle.scss */
+/* line 66, src/scss/_components/common/_header--toggle.scss */
 .header__toggle label {
   z-index: 2;
   cursor: pointer;
@@ -3581,7 +3568,7 @@ fieldset {
   height: 100%;
 }
 
-/* line 96, src/scss/_components/common/_header--toggle.scss */
+/* line 77, src/scss/_components/common/_header--toggle.scss */
 .header__toggle span {
   position: absolute;
   top: 2px;
@@ -3607,16 +3594,16 @@ fieldset {
 }
 
 @media screen and (max-width: 991px) {
-  /* line 117, src/scss/_components/common/_header--toggle.scss */
+  /* line 98, src/scss/_components/common/_header--toggle.scss */
   .light .header__toggle {
     border-color: #000;
     background-color: #fff;
   }
-  /* line 124, src/scss/_components/common/_header--toggle.scss */
+  /* line 105, src/scss/_components/common/_header--toggle.scss */
   .light .header__toggle-left .icon-font, .light .header__toggle-right .icon-font {
     color: #000;
   }
-  /* line 128, src/scss/_components/common/_header--toggle.scss */
+  /* line 109, src/scss/_components/common/_header--toggle.scss */
   .light .header__toggle span {
     background-color: #000;
   }
@@ -4120,22 +4107,22 @@ fieldset {
   }
 }
 
-/* line 153, src/scss/_components/common/_header--nav.scss */
-.header__nav-icon {
+/* line 154, src/scss/_components/common/_header--nav.scss */
+.header__nav-icon-fill {
   fill: #c1f002;
 }
 
-/* line 156, src/scss/_components/common/_header--nav.scss */
+/* line 158, src/scss/_components/common/_header--nav.scss */
 .header__nav-icon-outline {
   fill: #000;
 }
 
-/* line 164, src/scss/_components/common/_header--nav.scss */
-.light .header__nav-icon {
+/* line 167, src/scss/_components/common/_header--nav.scss */
+.light .header__nav-icon-fill {
   fill: #000;
 }
 
-/* line 166, src/scss/_components/common/_header--nav.scss */
+/* line 170, src/scss/_components/common/_header--nav.scss */
 .light .header__nav-icon-outline {
   fill: #fff;
 }
@@ -4205,7 +4192,7 @@ fieldset {
   }
   /* line 31, src/scss/_components/common/_header--action.scss */
   .header__action-col:first-child {
-    border-right: 1px solid #0a3e83;
+    border-right: 1px solid #dedede;
   }
 }
 
@@ -4299,6 +4286,13 @@ fieldset {
     display: block;
     padding: 0 15px;
   }
+}
+
+/* line 9, src/scss/_components/common/_header--categories-search.scss */
+.header .category-list-menu-mobile {
+  height: -webkit-calc(100vh - 220px);
+  height: calc(100vh - 220px);
+  overflow: auto;
 }
 
 @media screen and (max-width: 1023px) {
@@ -7326,7 +7320,7 @@ fieldset {
   text-align: center;
 }
 
-/* line 43, src/scss/_components/category/_sidebar.scss */
+/* line 45, src/scss/_components/category/_sidebar.scss */
 .category-list-search .icon-search {
   width: 18px;
   position: absolute;
@@ -7335,18 +7329,35 @@ fieldset {
   fill: #333;
 }
 
-/* line 50, src/scss/_components/category/_sidebar.scss */
+/* line 52, src/scss/_components/category/_sidebar.scss */
 .category-list-search .icon-search path {
   fill: #333;
 }
 
-/* line 55, src/scss/_components/category/_sidebar.scss */
+/* line 57, src/scss/_components/category/_sidebar.scss */
 .category-list-search-title {
   padding-bottom: 10px;
   font-weight: 600;
 }
 
-/* line 60, src/scss/_components/category/_sidebar.scss */
+/* line 62, src/scss/_components/category/_sidebar.scss */
+.category-list-search-mobile {
+  display: none;
+}
+
+@media screen and (max-width: 1023px) {
+  /* line 62, src/scss/_components/category/_sidebar.scss */
+  .category-list-search-mobile {
+    display: block;
+    padding: 0;
+  }
+  /* line 69, src/scss/_components/category/_sidebar.scss */
+  .category-list-search-mobile .icon-search {
+    top: -4px;
+  }
+}
+
+/* line 75, src/scss/_components/category/_sidebar.scss */
 .category-list-filter {
   width: 100%;
   height: 38px;
@@ -7358,7 +7369,7 @@ fieldset {
   padding: 3px 10px 3px 30px;
 }
 
-/* line 70, src/scss/_components/category/_sidebar.scss */
+/* line 85, src/scss/_components/category/_sidebar.scss */
 .category-list-menu {
   display: -webkit-box;
   display: -webkit-flex;
@@ -7372,29 +7383,29 @@ fieldset {
   padding: 0 10px 15px;
 }
 
-/* line 76, src/scss/_components/category/_sidebar.scss */
+/* line 91, src/scss/_components/category/_sidebar.scss */
 .category-list-menu-dropdown {
   gap: 0 25px;
   padding: 0 25px 15px;
 }
 
-/* line 80, src/scss/_components/category/_sidebar.scss */
+/* line 95, src/scss/_components/category/_sidebar.scss */
 .category-list-menu-dropdown .category-list-item {
   padding-right: 25px;
 }
 
-/* line 85, src/scss/_components/category/_sidebar.scss */
+/* line 100, src/scss/_components/category/_sidebar.scss */
 .category-list-menu-bar {
   background: #2a2b31;
   padding: 0 15px;
 }
 
-/* line 89, src/scss/_components/category/_sidebar.scss */
+/* line 104, src/scss/_components/category/_sidebar.scss */
 .category-list-menu-bar .category-list-menu {
   width: 250px;
 }
 
-/* line 94, src/scss/_components/category/_sidebar.scss */
+/* line 109, src/scss/_components/category/_sidebar.scss */
 .category-list-item {
   position: relative;
   -webkit-box-flex: 1;
@@ -7411,17 +7422,17 @@ fieldset {
           order: 1;
 }
 
-/* line 103, src/scss/_components/category/_sidebar.scss */
+/* line 118, src/scss/_components/category/_sidebar.scss */
 .category-list-item:last-child {
   border-bottom: none;
 }
 
-/* line 106, src/scss/_components/category/_sidebar.scss */
+/* line 121, src/scss/_components/category/_sidebar.scss */
 .category-list-item:last-child {
   border-bottom: none;
 }
 
-/* line 110, src/scss/_components/category/_sidebar.scss */
+/* line 125, src/scss/_components/category/_sidebar.scss */
 .category-list-item .mobile_link_icons {
   display: -webkit-box;
   display: -webkit-flex;
@@ -7431,20 +7442,20 @@ fieldset {
   font-size: 0;
 }
 
-/* line 115, src/scss/_components/category/_sidebar.scss */
+/* line 130, src/scss/_components/category/_sidebar.scss */
 .category-list-item .mobile_link_ellipsis,
 .category-list-item .mobile_link_count {
   color: #96979f;
   font-size: 14px;
 }
 
-/* line 122, src/scss/_components/category/_sidebar.scss */
+/* line 137, src/scss/_components/category/_sidebar.scss */
 .category-list-item .icon-category {
   grid-column: 1;
   grid-row: 1 / span 2;
 }
 
-/* line 127, src/scss/_components/category/_sidebar.scss */
+/* line 142, src/scss/_components/category/_sidebar.scss */
 .category-list-item .deIcon::before {
   display: block;
   content: ' ';
@@ -7453,7 +7464,7 @@ fieldset {
   margin-right: 5px;
 }
 
-/* line 135, src/scss/_components/category/_sidebar.scss */
+/* line 150, src/scss/_components/category/_sidebar.scss */
 .category-list-title {
   grid-column: 2;
   display: inline-block;
@@ -7466,13 +7477,13 @@ fieldset {
   color: #fff;
 }
 
-/* line 145, src/scss/_components/category/_sidebar.scss */
+/* line 160, src/scss/_components/category/_sidebar.scss */
 .category-list-title .highlight {
   font-weight: 600;
   color: #d5f963;
 }
 
-/* line 150, src/scss/_components/category/_sidebar.scss */
+/* line 165, src/scss/_components/category/_sidebar.scss */
 .category-list-link {
   position: relative;
   display: grid;
@@ -7482,13 +7493,13 @@ fieldset {
       -ms-flex-align: center;
           align-items: center;
   gap: 6px 5px;
-  padding: 8px 10px 8px 12px;
+  padding: 8px 10px 8px 14px;
   color: #767676;
   font-size: 14px;
   font-weight: 400;
 }
 
-/* line 162, src/scss/_components/category/_sidebar.scss */
+/* line 177, src/scss/_components/category/_sidebar.scss */
 .category-list-link::before {
   content: '';
   display: block;
@@ -7506,12 +7517,12 @@ fieldset {
   background-color: #1b4f90;
 }
 
-/* line 176, src/scss/_components/category/_sidebar.scss */
+/* line 191, src/scss/_components/category/_sidebar.scss */
 .category-list-link.review-category-item {
   padding: 5px 10px 5px 55px;
 }
 
-/* line 179, src/scss/_components/category/_sidebar.scss */
+/* line 194, src/scss/_components/category/_sidebar.scss */
 .category-list-link.review-category-item .icon-category {
   position: absolute;
   left: -40px;
@@ -7521,13 +7532,14 @@ fieldset {
           transform: translateY(-50%);
 }
 
-/* line 188, src/scss/_components/category/_sidebar.scss */
+/* line 203, src/scss/_components/category/_sidebar.scss */
 .category-list-link.visited::before {
   content: '';
   background: transparent;
   -webkit-transform: rotate(45deg);
       -ms-transform: rotate(45deg);
           transform: rotate(45deg);
+  left: 2px;
   width: 6px;
   height: 11px;
   border: solid #d5f963;
@@ -7537,13 +7549,13 @@ fieldset {
   margin: -6px 0;
 }
 
-/* line 201, src/scss/_components/category/_sidebar.scss */
+/* line 217, src/scss/_components/category/_sidebar.scss */
 .category-list-link.visited:hover::before {
   -webkit-animation: none;
           animation: none;
 }
 
-/* line 207, src/scss/_components/category/_sidebar.scss */
+/* line 223, src/scss/_components/category/_sidebar.scss */
 .category-list-link::after {
   content: '';
   display: inline-block;
@@ -7560,20 +7572,20 @@ fieldset {
           background-size: contain;
 }
 
-/* line 220, src/scss/_components/category/_sidebar.scss */
+/* line 236, src/scss/_components/category/_sidebar.scss */
 .category-list-link:not(.visited):hover:before {
   -webkit-animation: pulse-grey 1s infinite;
           animation: pulse-grey 1s infinite;
 }
 
-/* line 224, src/scss/_components/category/_sidebar.scss */
+/* line 240, src/scss/_components/category/_sidebar.scss */
 .category-list-link.pulse:not(.visited)::before {
   background: #2eaf61;
   -webkit-animation: pulse-grey 1s infinite;
           animation: pulse-grey 1s infinite;
 }
 
-/* line 231, src/scss/_components/category/_sidebar.scss */
+/* line 247, src/scss/_components/category/_sidebar.scss */
 .category-list-icons {
   grid-column: 2;
   display: -webkit-box;
@@ -7582,43 +7594,43 @@ fieldset {
   display: flex;
 }
 
-/* line 235, src/scss/_components/category/_sidebar.scss */
+/* line 251, src/scss/_components/category/_sidebar.scss */
 .category-list-icons:before {
   display: block;
   content: ' ';
 }
 
-/* line 244, src/scss/_components/category/_sidebar.scss */
+/* line 260, src/scss/_components/category/_sidebar.scss */
 .light .category-list-menu-bar {
   background: #fff;
 }
 
-/* line 247, src/scss/_components/category/_sidebar.scss */
+/* line 263, src/scss/_components/category/_sidebar.scss */
 .light .category-list-link {
   color: #767676;
 }
 
-/* line 250, src/scss/_components/category/_sidebar.scss */
+/* line 266, src/scss/_components/category/_sidebar.scss */
 .light .category-list-title {
   color: #4e4e4e;
 }
 
-/* line 253, src/scss/_components/category/_sidebar.scss */
+/* line 269, src/scss/_components/category/_sidebar.scss */
 .light .category-list-title .highlight {
   color: #000;
 }
 
-/* line 258, src/scss/_components/category/_sidebar.scss */
+/* line 274, src/scss/_components/category/_sidebar.scss */
 .light .category-list-item {
   border-bottom: 1px solid #e5e5e5;
 }
 
-/* line 262, src/scss/_components/category/_sidebar.scss */
+/* line 278, src/scss/_components/category/_sidebar.scss */
 .light .mobile_category_name > span {
   color: #4e4e4e;
 }
 
-/* line 266, src/scss/_components/category/_sidebar.scss */
+/* line 282, src/scss/_components/category/_sidebar.scss */
 .light .category-list-link.visited::before {
   border: solid #1b4f90;
   border-width: 0 1px 1px 0;

@@ -151,7 +151,9 @@
 			}
 		}
 		&-icon{
-			fill: #c1f002;
+			&-fill{
+				fill: #c1f002;
+			}
 
 			&-outline{
 				fill: #000;
@@ -162,7 +164,9 @@
 .light{
 	.header{
 		&__nav-icon{
-			fill: #000;
+			&-fill{
+				fill: #000;
+			}
 			&-outline{
 				fill: #fff;
 			}

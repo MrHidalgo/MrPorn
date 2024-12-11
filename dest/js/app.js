@@ -406,6 +406,9 @@ function initCategoryPage() {
   var categorySidebar;
   var desktopMenuList = document.querySelector('.category-list-menu');
   var mobileMenuList = document.querySelector('.category-list-menu-mobile');
+  var categoriesPageList = document.querySelector('.categories-list');
+  var bodyClasses = document.body.classList;
+  var isCategoriesPage = bodyClasses.contains('page-template-page-categories');
 
   function createSidebar() {
     var categoryItems = [];
@@ -445,7 +448,7 @@ function initCategoryPage() {
 
         categoryTitle = $categoryTitle.innerHTML;
         categoryIndex++;
-      } else if (document.body.classList.contains('home')) {
+      } else if (bodyClasses.contains('home')) {
         var catLink = _category.querySelector('.list__box-head-a');
 
         link = catLink.getAttribute('href');
@@ -566,15 +569,9 @@ function initCategoryPage() {
   var renderCategorySidebar = function renderCategorySidebar(categoryItems) {
     var filter = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : '';
     var hideVisited = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : false;
-
-    if (desktopMenuList !== null) {
-      desktopMenuList.innerHTML = '';
-    }
-
-    if (mobileMenuList !== null) {
-      mobileMenuList.innerHTML = '';
-    }
-
+    if (desktopMenuList !== null) desktopMenuList.innerHTML = '';
+    if (mobileMenuList !== null) mobileMenuList.innerHTML = '';
+    var categoryIndex = 0;
     categoryItems.map(function (categoryItem) {
       var catTitle = categoryItem.title;
       var catExtraClasses = hideVisited ? '' : categoryItem.visited ? ' visited' : '';
@@ -587,20 +584,28 @@ function initCategoryPage() {
       }
 
       var item = '<li class="category-list-item" >' + '<a  href="' + categoryItem.link + '" class="category-list-link ' + catExtraClasses + '" data-id="' + categoryItem.id + '"><i class="' + categoryItem.icon + '"></i><span class="category-list-title">' + catTitle + '</span><div class="category-list-icons">' + categoryItem.icons + '<span class="mobile_link_ellipsis">...</span>' + '<span class="mobile_link_count">' + categoryItem.count + '</span>' + '</div>' + '</a>' + '</li>';
+      desktopMenuList === null || desktopMenuList === void 0 ? void 0 : desktopMenuList.insertAdjacentHTML('beforeend', item);
+      mobileMenuList === null || mobileMenuList === void 0 ? void 0 : mobileMenuList.insertAdjacentHTML('beforeend', item);
 
-      if (desktopMenuList !== null) {
-        desktopMenuList.insertAdjacentHTML('beforeend', item);
-      }
+      if (isCategoriesPage) {
+        // let categoryBoxItem = '<li class="category-list-item" >' + '<a  href="' + categoryItem.link + '" class="category-list-link ' + catExtraClasses + '" data-id="' + categoryItem.id + '"><i class="' + categoryItem.icon + '"></i><span class="category-list-title">' + catTitle + '</span><div class="category-list-icons">' + categoryItem.icons + '<span class="mobile_link_ellipsis">...</span>' + '<span class="mobile_link_count">' + categoryItem.count + '</span>' + '</div>' + '</a>' + '</li>';
+        // categoriesPageList?.insertAdjacentHTML('beforeend', categoryBoxItem);
+        var categoryBoxItem = document.querySelector('.category_item_link[data-id="' + categoryItem.id + '"]');
 
-      if (mobileMenuList !== null) {
-        mobileMenuList.insertAdjacentHTML('beforeend', item);
+        if (categoryBoxItem) {
+          if (hideVisited) {
+            categoryBoxItem.setAttribute('class', 'category_item_link ' + catExtraClasses);
+          }
+
+          categoryBoxItem.querySelector('.category_item_caption_title').innerHTML = catTitle;
+          categoryBoxItem.parentElement.style.order = "".concat(categoryIndex);
+          categoryIndex++;
+        }
       }
     });
   };
 
-  var bodyClasses = document.body.classList;
-
-  if (document.body.classList.contains('category') || document.body.classList.contains('page-template-page-categories')) {
+  if (bodyClasses.contains('category') || bodyClasses.contains('page-template-page-categories')) {
     createSidebar();
 
     if (document.querySelectorAll('.desktop_menu_list').length > 0) {

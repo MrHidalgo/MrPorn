@@ -6,6 +6,10 @@ function initCategoryPage() {
 	let categorySidebar;
 	let desktopMenuList = document.querySelector('.category-list-menu');
 	let mobileMenuList = document.querySelector('.category-list-menu-mobile');
+	let categoriesPageList = document.querySelector('.categories-list');
+	const bodyClasses = document.body.classList;
+	const isCategoriesPage = bodyClasses.contains('page-template-page-categories');
+
 
 	function createSidebar() {
 
@@ -45,7 +49,7 @@ function initCategoryPage() {
 				let $categoryTitle = _category.querySelector('.category-list-title')
 				categoryTitle = $categoryTitle.innerHTML;
 				categoryIndex++;
-			} else if (document.body.classList.contains('home')) {
+			} else if (bodyClasses.contains('home')) {
 				let catLink = _category.querySelector('.list__box-head-a')
 				link = catLink.getAttribute('href');
 				categoryId = catLink.dataset.id;
@@ -175,14 +179,10 @@ function initCategoryPage() {
 
 	const renderCategorySidebar = (categoryItems, filter = '', hideVisited = false) => {
 
-		if(desktopMenuList !== null){
-			desktopMenuList.innerHTML = '';
-		}
-		if(mobileMenuList !== null){
-			mobileMenuList.innerHTML = '';
-		}
+		if(desktopMenuList !== null) desktopMenuList.innerHTML = '';
+		if(mobileMenuList !== null) mobileMenuList.innerHTML = '';
 
-
+		let categoryIndex = 0;
 		categoryItems.map(
 			(categoryItem) => {
 
@@ -195,18 +195,34 @@ function initCategoryPage() {
 
 				let item = '<li class="category-list-item" >' + '<a  href="' + categoryItem.link + '" class="category-list-link ' + catExtraClasses + '" data-id="' + categoryItem.id + '"><i class="' + categoryItem.icon + '"></i><span class="category-list-title">' + catTitle + '</span><div class="category-list-icons">' + categoryItem.icons + '<span class="mobile_link_ellipsis">...</span>' + '<span class="mobile_link_count">' + categoryItem.count + '</span>' + '</div>' + '</a>' + '</li>';
 
-				if(desktopMenuList !== null){
-					desktopMenuList.insertAdjacentHTML('beforeend', item);
+				desktopMenuList?.insertAdjacentHTML('beforeend', item);
+				mobileMenuList?.insertAdjacentHTML('beforeend', item);
+
+
+				if(isCategoriesPage){
+					// let categoryBoxItem = '<li class="category-list-item" >' + '<a  href="' + categoryItem.link + '" class="category-list-link ' + catExtraClasses + '" data-id="' + categoryItem.id + '"><i class="' + categoryItem.icon + '"></i><span class="category-list-title">' + catTitle + '</span><div class="category-list-icons">' + categoryItem.icons + '<span class="mobile_link_ellipsis">...</span>' + '<span class="mobile_link_count">' + categoryItem.count + '</span>' + '</div>' + '</a>' + '</li>';
+					// categoriesPageList?.insertAdjacentHTML('beforeend', categoryBoxItem);
+
+					let categoryBoxItem = document.querySelector('.category_item_link[data-id="'+categoryItem.id+'"]');
+					if(categoryBoxItem){
+
+						if(hideVisited){
+							categoryBoxItem.setAttribute('class', 'category_item_link '+catExtraClasses);
+						}
+
+						categoryBoxItem.querySelector('.category_item_caption_title').innerHTML = catTitle;
+
+						categoryBoxItem.parentElement.style.order = `${categoryIndex}`;
+						categoryIndex ++;
+					}
 				}
-				if(mobileMenuList !== null) {
-					mobileMenuList.insertAdjacentHTML('beforeend', item);
-				}
+
 			}
 		)
 	}
 
-	const bodyClasses = document.body.classList;
-	if (document.body.classList.contains('category') || document.body.classList.contains('page-template-page-categories')) {
+
+	if (bodyClasses.contains('category') || bodyClasses.contains('page-template-page-categories')) {
 		createSidebar()
 
 		if (document.querySelectorAll('.desktop_menu_list').length > 0) {

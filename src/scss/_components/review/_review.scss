@@ -446,9 +446,10 @@
 		word-break: break-word;
 		text-transform: uppercase;
 		font-weight: 500;
-		line-height: 1.2;
+		line-height: 1;
 		font-size: 26px;
 		color: #fff;
+		gap: 4px;
 
 		@include adaptive(991.98) {
 			display: block;
@@ -464,17 +465,17 @@
 			content: ' ';
 			display: inline-block;
 			vertical-align: middle;
-			width: 26px;
-			height: 12px;
-			background-image: url(../images/icon-right-arrow.svg);
+			width: 16px;
+			height: 23px;
+			background-image: url(../images/down-arrow-dark.svg);
 			background-repeat: no-repeat;
 			background-size: contain;
 			background-position: center;
-			transform: rotate(90deg);
 
 			@include adaptive(991.98) {
-				width: 20px;
-				vertical-align: initial;
+				height: 15px;
+				vertical-align: bottom;
+				margin-bottom: 2px;
 			}
 		}
 	}
@@ -1373,7 +1374,7 @@
 		h2{
 			color: #767676;
 			&::after{
-				background-image: url(../images/icon-right-arrow-light-mode.svg);
+				background-image: url(../images/down-arrow-light.svg);
 			}
 		}
 	}

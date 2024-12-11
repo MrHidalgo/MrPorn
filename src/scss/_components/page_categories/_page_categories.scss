@@ -1,9 +1,4 @@
 // PAGE_CATEGORIES :: START
-/*@include adaptive(767) {
-	.categories_container{
-		margin-top: 110px;
-	}
-}*/
 .categories_container{
 	padding-top: 15px;
 
@@ -36,11 +31,31 @@
 	}
 
 	h1{
+		display: flex;
+		align-items: center;
 		color: #fff;
 		padding: 10px 0 10px 0;
 		text-align: left;
-		font-size: 30px;
+		font-size: 24px;
 		font-weight: 700;
+		gap: 4px;
+
+		&:after{
+			content: ' ';
+			display: inline-block;
+			vertical-align: middle;
+			height: 21px;
+			width: 12px;
+			background-image: url(../images/down-arrow-dark.svg);
+			background-repeat: no-repeat;
+			background-size: contain;
+			background-position: center;
+
+			@include adaptive(991.98) {
+				height: 14px;
+				vertical-align: initial;
+			}
+		}
 
 		@include respond('ipad'){
 			font-size: 25px;
@@ -55,6 +70,10 @@
 }
 
 .award_winning_container{
+	@include adaptive(1023) {
+		display: none;
+	}
+
 	.aw_title{
 		//background: url(../images/award_bg.jpg);
 		color: #fff;
@@ -231,9 +250,11 @@
 			}
 		}
 
-		.categories-container{
-			h1{
-				color: #333;
+		h1{
+			color: #333;
+
+			&::after{
+				background-image: url(../images/down-arrow-light-333.svg);
 			}
 		}
 	}

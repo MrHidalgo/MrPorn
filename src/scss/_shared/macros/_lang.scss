@@ -4,11 +4,13 @@
 	&__outer{
 		@include adaptive(1023) {
 			display: flex;
+			position: absolute;
+			right: 0;
+			top: 40px;
 			justify-content: end;
-			padding: 0 20px;
+			padding: 0 5px;
 			height: 40px;
 			align-items: center;
-			grid-area: 2/3/2/4;
 		}
 	}
 

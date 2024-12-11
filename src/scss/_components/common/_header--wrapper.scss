@@ -93,14 +93,10 @@
 			}
 		}
 		@include adaptive(1023) {
+			position: relative;
+			height: 80px;
 			padding: 0;
 			background: transparent;
-
-			display: grid;
-			grid-template-columns: 100px 1fr 100px;
-			grid-template-rows: repeat(2, 40px);
-			grid-column-gap: 0px;
-			grid-row-gap: 0px;
 			border-bottom: 1px solid #4a4a4a;
 		}
 	}
