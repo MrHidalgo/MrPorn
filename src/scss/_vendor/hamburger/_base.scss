@@ -1,22 +1,29 @@
 // Hamburger
 // ==================================================
 .hamburger {
-  padding: $hamburger-padding-y $hamburger-padding-x;
-  display: $hamburger-display;
-  cursor: pointer;
+	display: none;
 
-  transition-property: opacity, filter;
-  transition-duration: $hamburger-hover-transition-duration;
-  transition-timing-function: $hamburger-hover-transition-timing-function;
-
-  // Normalize (<button>)
-  font: inherit;
-  color: inherit;
-  text-transform: none;
-  background-color: transparent;
-  border: 0;
-  margin: 0;
-  overflow: visible;
+	@media (max-width: 1023px) {
+		display: block;
+		position: absolute;
+		width: 30px;
+		height: 30px;
+		top: 50%;
+		left: 20px;
+		padding: 0;
+		margin-top: -15px;
+		z-index: 1;
+		cursor: pointer;
+		transition-property: opacity, filter;
+		transition-duration: $hamburger-hover-transition-duration;
+		transition-timing-function: $hamburger-hover-transition-timing-function;
+		font: inherit;
+		color: inherit;
+		text-transform: none;
+		background-color: transparent;
+		border: 0;
+		overflow: visible;
+	}
 
   &:hover {
     @if $hamburger-hover-use-filter == true {
@@ -74,7 +81,6 @@
 
 .hamburger-inner {
   display: block;
-  top: 50%;
   margin-top: $hamburger-layer-height / -2;
 
   &,

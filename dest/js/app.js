@@ -741,7 +741,7 @@ var initHamburger = function initHamburger() {
     });
   }
 
-  var searchHamburger = document.querySelector('.pre-header__hamburger'),
+  var searchHamburger = document.querySelector('.search-opener'),
       searchContainer = document.querySelector('[search-mobile-js]');
 
   if (searchHamburger) {

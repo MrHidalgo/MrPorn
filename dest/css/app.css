@@ -21,38 +21,48 @@
  */
 /* line 3, src/scss/_vendor/hamburger/_base.scss */
 .hamburger {
-  padding: 15px 0;
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  cursor: pointer;
-  -webkit-transition-property: opacity, -webkit-filter;
-  transition-property: opacity, -webkit-filter;
-  -o-transition-property: opacity, filter;
-  transition-property: opacity, filter;
-  transition-property: opacity, filter, -webkit-filter;
-  -webkit-transition-duration: 0.35s;
-       -o-transition-duration: 0.35s;
-          transition-duration: 0.35s;
-  -webkit-transition-timing-function: linear;
-       -o-transition-timing-function: linear;
-          transition-timing-function: linear;
-  font: inherit;
-  color: inherit;
-  text-transform: none;
-  background-color: transparent;
-  border: 0;
-  margin: 0;
-  overflow: visible;
+  display: none;
 }
 
-/* line 21, src/scss/_vendor/hamburger/_base.scss */
+@media (max-width: 1023px) {
+  /* line 3, src/scss/_vendor/hamburger/_base.scss */
+  .hamburger {
+    display: block;
+    position: absolute;
+    width: 30px;
+    height: 30px;
+    top: 50%;
+    left: 20px;
+    padding: 0;
+    margin-top: -15px;
+    z-index: 1;
+    cursor: pointer;
+    -webkit-transition-property: opacity, -webkit-filter;
+    transition-property: opacity, -webkit-filter;
+    -o-transition-property: opacity, filter;
+    transition-property: opacity, filter;
+    transition-property: opacity, filter, -webkit-filter;
+    -webkit-transition-duration: 0.35s;
+         -o-transition-duration: 0.35s;
+            transition-duration: 0.35s;
+    -webkit-transition-timing-function: linear;
+         -o-transition-timing-function: linear;
+            transition-timing-function: linear;
+    font: inherit;
+    color: inherit;
+    text-transform: none;
+    background-color: transparent;
+    border: 0;
+    overflow: visible;
+  }
+}
+
+/* line 28, src/scss/_vendor/hamburger/_base.scss */
 .hamburger:hover {
   opacity: 1;
 }
 
-/* line 30, src/scss/_vendor/hamburger/_base.scss */
+/* line 37, src/scss/_vendor/hamburger/_base.scss */
 .hamburger .hamburger-inner {
   -webkit-transition-duration: 0.075s;
        -o-transition-duration: 0.075s;
@@ -62,14 +72,14 @@
           transition-timing-function: cubic-bezier(0.55, 0.055, 0.675, 0.19);
 }
 
-/* line 34, src/scss/_vendor/hamburger/_base.scss */
+/* line 41, src/scss/_vendor/hamburger/_base.scss */
 .hamburger .hamburger-inner::before {
   -webkit-transition: top 0.075s 0.12s ease, opacity 0.075s ease;
   -o-transition: top 0.075s 0.12s ease, opacity 0.075s ease;
   transition: top 0.075s 0.12s ease, opacity 0.075s ease;
 }
 
-/* line 39, src/scss/_vendor/hamburger/_base.scss */
+/* line 46, src/scss/_vendor/hamburger/_base.scss */
 .hamburger .hamburger-inner::after {
   -webkit-transition: bottom 0.075s 0.12s ease, -webkit-transform 0.075s cubic-bezier(0.55, 0.055, 0.675, 0.19);
   transition: bottom 0.075s 0.12s ease, -webkit-transform 0.075s cubic-bezier(0.55, 0.055, 0.675, 0.19);
@@ -78,7 +88,7 @@
   transition: bottom 0.075s 0.12s ease, transform 0.075s cubic-bezier(0.55, 0.055, 0.675, 0.19), -webkit-transform 0.075s cubic-bezier(0.55, 0.055, 0.675, 0.19);
 }
 
-/* line 46, src/scss/_vendor/hamburger/_base.scss */
+/* line 53, src/scss/_vendor/hamburger/_base.scss */
 .hamburger.is-active .hamburger-inner {
   -webkit-transform: rotate(45deg);
       -ms-transform: rotate(45deg);
@@ -91,7 +101,7 @@
           transition-timing-function: cubic-bezier(0.215, 0.61, 0.355, 1);
 }
 
-/* line 51, src/scss/_vendor/hamburger/_base.scss */
+/* line 58, src/scss/_vendor/hamburger/_base.scss */
 .hamburger.is-active .hamburger-inner::before {
   top: 0;
   opacity: 0;
@@ -100,7 +110,7 @@
   transition: top 0.075s ease, opacity 0.075s 0.12s ease;
 }
 
-/* line 58, src/scss/_vendor/hamburger/_base.scss */
+/* line 65, src/scss/_vendor/hamburger/_base.scss */
 .hamburger.is-active .hamburger-inner::after {
   bottom: 0;
   -webkit-transform: rotate(-90deg);
@@ -113,7 +123,7 @@
   transition: bottom 0.075s ease, transform 0.075s 0.12s cubic-bezier(0.215, 0.61, 0.355, 1), -webkit-transform 0.075s 0.12s cubic-bezier(0.215, 0.61, 0.355, 1);
 }
 
-/* line 68, src/scss/_vendor/hamburger/_base.scss */
+/* line 75, src/scss/_vendor/hamburger/_base.scss */
 .hamburger-box {
   width: 30px;
   height: 19px;
@@ -121,14 +131,13 @@
   position: relative;
 }
 
-/* line 75, src/scss/_vendor/hamburger/_base.scss */
+/* line 82, src/scss/_vendor/hamburger/_base.scss */
 .hamburger-inner {
   display: block;
-  top: 50%;
   margin-top: -1.5px;
 }
 
-/* line 80, src/scss/_vendor/hamburger/_base.scss */
+/* line 86, src/scss/_vendor/hamburger/_base.scss */
 .hamburger-inner, .hamburger-inner::before, .hamburger-inner::after {
   width: 30px;
   height: 3px;
@@ -149,18 +158,18 @@
           transition-timing-function: ease;
 }
 
-/* line 93, src/scss/_vendor/hamburger/_base.scss */
+/* line 99, src/scss/_vendor/hamburger/_base.scss */
 .hamburger-inner::before, .hamburger-inner::after {
   content: "";
   display: block;
 }
 
-/* line 99, src/scss/_vendor/hamburger/_base.scss */
+/* line 105, src/scss/_vendor/hamburger/_base.scss */
 .hamburger-inner::before {
   top: -8px;
 }
 
-/* line 103, src/scss/_vendor/hamburger/_base.scss */
+/* line 109, src/scss/_vendor/hamburger/_base.scss */
 .hamburger-inner::after {
   bottom: -8px;
 }
@@ -1056,21 +1065,20 @@ strong {
 }
 
 @media screen and (max-width: 1023px) {
-  /* line 4, src/scss/_shared/macros/_lang.scss */
-  .lang__outer {
+  /* line 1, src/scss/_shared/macros/_lang.scss */
+  .lang {
     display: -webkit-box;
     display: -webkit-flex;
     display: -ms-flexbox;
     display: flex;
     position: absolute;
     right: 0;
-    top: 40px;
+    top: 45px;
     -webkit-box-pack: end;
     -webkit-justify-content: end;
         -ms-flex-pack: end;
             justify-content: end;
     padding: 0 5px;
-    height: 40px;
     -webkit-box-align: center;
     -webkit-align-items: center;
         -ms-flex-align: center;
@@ -1078,7 +1086,7 @@ strong {
   }
 }
 
-/* line 21, src/scss/_shared/macros/_lang.scss */
+/* line 17, src/scss/_shared/macros/_lang.scss */
 .lang:hover .lang__toggle {
   border-color: #fff;
   -webkit-border-bottom-left-radius: 0;
@@ -1093,7 +1101,7 @@ strong {
   transition: border-color 0.35s ease-in-out, background-color 0.35s ease-in-out, border-radius 0.35s ease-in-out, -webkit-border-radius 0.35s ease-in-out;
 }
 
-/* line 28, src/scss/_shared/macros/_lang.scss */
+/* line 24, src/scss/_shared/macros/_lang.scss */
 .lang:hover .lang__toggle span,
 .lang:hover .lang__toggle .icon-font {
   color: #080915;
@@ -1102,22 +1110,21 @@ strong {
   transition: color 0.35s ease-in-out;
 }
 
-/* line 35, src/scss/_shared/macros/_lang.scss */
+/* line 31, src/scss/_shared/macros/_lang.scss */
 .lang:hover .lang__drop {
   display: block;
   opacity: 1;
   visibility: visible;
-  -webkit-transform: translateY(0);
-      -ms-transform: translateY(0);
-          transform: translateY(0);
-  -webkit-transition: opacity 0.35s ease-in-out, visibility 0.35s ease-in-out, -webkit-transform 0.35s ease-in-out;
-  transition: opacity 0.35s ease-in-out, visibility 0.35s ease-in-out, -webkit-transform 0.35s ease-in-out;
-  -o-transition: opacity 0.35s ease-in-out, visibility 0.35s ease-in-out, transform 0.35s ease-in-out;
-  transition: opacity 0.35s ease-in-out, visibility 0.35s ease-in-out, transform 0.35s ease-in-out;
-  transition: opacity 0.35s ease-in-out, visibility 0.35s ease-in-out, transform 0.35s ease-in-out, -webkit-transform 0.35s ease-in-out;
 }
 
-/* line 45, src/scss/_shared/macros/_lang.scss */
+@media screen and (max-width: 1023px) {
+  /* line 31, src/scss/_shared/macros/_lang.scss */
+  .lang:hover .lang__drop {
+    right: 5px;
+  }
+}
+
+/* line 42, src/scss/_shared/macros/_lang.scss */
 .lang__toggle {
   display: -webkit-box;
   display: -webkit-flex;
@@ -1150,22 +1157,23 @@ strong {
 }
 
 @media screen and (max-width: 1279px) {
-  /* line 45, src/scss/_shared/macros/_lang.scss */
+  /* line 42, src/scss/_shared/macros/_lang.scss */
   .lang__toggle {
     width: 65px;
   }
 }
 
 @media screen and (max-width: 1023px) {
-  /* line 45, src/scss/_shared/macros/_lang.scss */
+  /* line 42, src/scss/_shared/macros/_lang.scss */
   .lang__toggle {
+    right: 5px;
     width: 84px;
     padding-right: 0;
     border-color: transparent;
   }
 }
 
-/* line 69, src/scss/_shared/macros/_lang.scss */
+/* line 67, src/scss/_shared/macros/_lang.scss */
 .lang__toggle span,
 .lang__toggle .icon-font {
   color: #9294ad;
@@ -1174,27 +1182,27 @@ strong {
   transition: color 0.35s ease-in-out;
 }
 
-/* line 75, src/scss/_shared/macros/_lang.scss */
+/* line 73, src/scss/_shared/macros/_lang.scss */
 .lang__toggle span {
   font-weight: 700;
   text-transform: uppercase;
 }
 
 @media screen and (max-width: 1279px) {
-  /* line 75, src/scss/_shared/macros/_lang.scss */
+  /* line 73, src/scss/_shared/macros/_lang.scss */
   .lang__toggle span {
     display: none;
   }
 }
 
 @media screen and (max-width: 1023px) {
-  /* line 75, src/scss/_shared/macros/_lang.scss */
+  /* line 73, src/scss/_shared/macros/_lang.scss */
   .lang__toggle span {
     display: inline-block;
   }
 }
 
-/* line 86, src/scss/_shared/macros/_lang.scss */
+/* line 84, src/scss/_shared/macros/_lang.scss */
 .lang__toggle .icon-font {
   margin-left: 10px;
   font-size: 8px;
@@ -1203,11 +1211,8 @@ strong {
           transform: rotate(-90deg);
 }
 
-/* line 93, src/scss/_shared/macros/_lang.scss */
+/* line 91, src/scss/_shared/macros/_lang.scss */
 .lang__drop {
-  -webkit-transform: translateY(10px);
-      -ms-transform: translateY(10px);
-          transform: translateY(10px);
   z-index: 2000;
   position: absolute;
   top: 100%;
@@ -1230,13 +1235,13 @@ strong {
 }
 
 @media screen and (max-width: 480px) {
-  /* line 93, src/scss/_shared/macros/_lang.scss */
+  /* line 91, src/scss/_shared/macros/_lang.scss */
   .lang__drop {
     min-width: 320px;
   }
 }
 
-/* line 113, src/scss/_shared/macros/_lang.scss */
+/* line 110, src/scss/_shared/macros/_lang.scss */
 .lang__drop-col {
   display: -webkit-box;
   display: -webkit-flex;
@@ -1253,7 +1258,7 @@ strong {
   padding: 15px;
 }
 
-/* line 121, src/scss/_shared/macros/_lang.scss */
+/* line 118, src/scss/_shared/macros/_lang.scss */
 .lang__drop-link {
   position: relative;
   display: -webkit-box;
@@ -1269,7 +1274,7 @@ strong {
   margin-bottom: 5px;
 }
 
-/* line 130, src/scss/_shared/macros/_lang.scss */
+/* line 127, src/scss/_shared/macros/_lang.scss */
 .lang__drop-link:hover::before, .lang__drop-link:hover::after {
   width: 50%;
   -webkit-transition: width 0.35s ease-in-out;
@@ -1277,7 +1282,7 @@ strong {
   transition: width 0.35s ease-in-out;
 }
 
-/* line 137, src/scss/_shared/macros/_lang.scss */
+/* line 134, src/scss/_shared/macros/_lang.scss */
 .lang__drop-link::before {
   content: '';
   position: absolute;
@@ -1290,7 +1295,7 @@ strong {
   transition: width 0.35s ease-in-out;
 }
 
-/* line 146, src/scss/_shared/macros/_lang.scss */
+/* line 143, src/scss/_shared/macros/_lang.scss */
 .lang__drop-link::after {
   content: '';
   position: absolute;
@@ -1303,22 +1308,22 @@ strong {
   transition: width 0.35s ease-in-out;
 }
 
-/* line 156, src/scss/_shared/macros/_lang.scss */
+/* line 153, src/scss/_shared/macros/_lang.scss */
 .lang__drop-link::before {
   left: 50%;
 }
 
-/* line 159, src/scss/_shared/macros/_lang.scss */
+/* line 156, src/scss/_shared/macros/_lang.scss */
 .lang__drop-link::after {
   right: 50%;
 }
 
-/* line 163, src/scss/_shared/macros/_lang.scss */
+/* line 160, src/scss/_shared/macros/_lang.scss */
 .lang__drop-link span {
   color: #080915;
 }
 
-/* line 169, src/scss/_shared/macros/_lang.scss */
+/* line 166, src/scss/_shared/macros/_lang.scss */
 .lang__flag {
   display: -webkit-box;
   display: -webkit-flex;
@@ -1327,7 +1332,7 @@ strong {
   margin-right: 5px;
 }
 
-/* line 173, src/scss/_shared/macros/_lang.scss */
+/* line 170, src/scss/_shared/macros/_lang.scss */
 .lang__flag:before {
   content: "";
   display: -webkit-box;
@@ -1339,182 +1344,182 @@ strong {
   background-repeat: no-repeat;
 }
 
-/* line 183, src/scss/_shared/macros/_lang.scss */
+/* line 180, src/scss/_shared/macros/_lang.scss */
 .lang__flag--en:before {
   background-position: -48px 0;
 }
 
-/* line 188, src/scss/_shared/macros/_lang.scss */
+/* line 185, src/scss/_shared/macros/_lang.scss */
 .lang__flag--de:before {
   background-position: 0 -22px;
 }
 
-/* line 193, src/scss/_shared/macros/_lang.scss */
+/* line 190, src/scss/_shared/macros/_lang.scss */
 .lang__flag--fr:before {
   background-position: -32px -33px;
 }
 
-/* line 198, src/scss/_shared/macros/_lang.scss */
+/* line 195, src/scss/_shared/macros/_lang.scss */
 .lang__flag--it:before {
   background-position: -16px -44px;
 }
 
-/* line 203, src/scss/_shared/macros/_lang.scss */
+/* line 200, src/scss/_shared/macros/_lang.scss */
 .lang__flag--ro:before {
   background-position: -64px -44px;
 }
 
-/* line 208, src/scss/_shared/macros/_lang.scss */
+/* line 205, src/scss/_shared/macros/_lang.scss */
 .lang__flag--pt:before {
   background-position: -64px -33px;
 }
 
-/* line 213, src/scss/_shared/macros/_lang.scss */
+/* line 210, src/scss/_shared/macros/_lang.scss */
 .lang__flag--ru:before {
   background-position: 0 -55px;
 }
 
-/* line 218, src/scss/_shared/macros/_lang.scss */
+/* line 215, src/scss/_shared/macros/_lang.scss */
 .lang__flag--es:before {
   background-position: 0 -33px;
 }
 
-/* line 223, src/scss/_shared/macros/_lang.scss */
+/* line 220, src/scss/_shared/macros/_lang.scss */
 .lang__flag--nl:before {
   background-position: -64px 0;
 }
 
-/* line 228, src/scss/_shared/macros/_lang.scss */
+/* line 225, src/scss/_shared/macros/_lang.scss */
 .lang__flag--tr:before {
   background-position: -64px -55px;
 }
 
-/* line 233, src/scss/_shared/macros/_lang.scss */
+/* line 230, src/scss/_shared/macros/_lang.scss */
 .lang__flag--sv:before {
   background-position: -32px -55px;
 }
 
-/* line 238, src/scss/_shared/macros/_lang.scss */
+/* line 235, src/scss/_shared/macros/_lang.scss */
 .lang__flag--no:before {
   background-position: -64px -11px;
 }
 
-/* line 243, src/scss/_shared/macros/_lang.scss */
+/* line 240, src/scss/_shared/macros/_lang.scss */
 .lang__flag--be:before {
   background-position: 0 -11px;
 }
 
-/* line 248, src/scss/_shared/macros/_lang.scss */
+/* line 245, src/scss/_shared/macros/_lang.scss */
 .lang__flag--ja:before {
   background-position: -32px -44px;
 }
 
-/* line 253, src/scss/_shared/macros/_lang.scss */
+/* line 250, src/scss/_shared/macros/_lang.scss */
 .lang__flag--el:before {
   background-position: -32px -22px;
 }
 
-/* line 258, src/scss/_shared/macros/_lang.scss */
+/* line 255, src/scss/_shared/macros/_lang.scss */
 .lang__flag--hi:before {
   background-position: -48px -11px;
 }
 
-/* line 263, src/scss/_shared/macros/_lang.scss */
+/* line 260, src/scss/_shared/macros/_lang.scss */
 .lang__flag--vi:before {
   background-position: -16px -66px;
 }
 
-/* line 268, src/scss/_shared/macros/_lang.scss */
+/* line 265, src/scss/_shared/macros/_lang.scss */
 .lang__flag--pl:before {
   background-position: -64px -22px;
 }
 
-/* line 273, src/scss/_shared/macros/_lang.scss */
+/* line 270, src/scss/_shared/macros/_lang.scss */
 .lang__flag--fi:before {
   background-position: -16px -33px;
 }
 
-/* line 278, src/scss/_shared/macros/_lang.scss */
+/* line 275, src/scss/_shared/macros/_lang.scss */
 .lang__flag--da:before {
   background-position: -32px -11px;
 }
 
-/* line 283, src/scss/_shared/macros/_lang.scss */
+/* line 280, src/scss/_shared/macros/_lang.scss */
 .lang__flag--sl:before {
   background-position: -16px -55px;
 }
 
-/* line 288, src/scss/_shared/macros/_lang.scss */
+/* line 285, src/scss/_shared/macros/_lang.scss */
 .lang__flag--hr:before {
   background-position: -48px -33px;
 }
 
-/* line 293, src/scss/_shared/macros/_lang.scss */
+/* line 290, src/scss/_shared/macros/_lang.scss */
 .lang__flag--ar:before {
   background-position: 0 0;
 }
 
-/* line 298, src/scss/_shared/macros/_lang.scss */
+/* line 295, src/scss/_shared/macros/_lang.scss */
 .lang__flag--hu:before {
   background-position: -48px -22px;
 }
 
-/* line 303, src/scss/_shared/macros/_lang.scss */
+/* line 300, src/scss/_shared/macros/_lang.scss */
 .lang__flag--cs:before {
   background-position: -32px 0;
 }
 
-/* line 308, src/scss/_shared/macros/_lang.scss */
+/* line 305, src/scss/_shared/macros/_lang.scss */
 .lang__flag--zh:before {
   background-position: -32px -66px;
 }
 
-/* line 313, src/scss/_shared/macros/_lang.scss */
+/* line 310, src/scss/_shared/macros/_lang.scss */
 .lang__flag--ko:before {
   background-position: -48px -44px;
 }
 
-/* line 318, src/scss/_shared/macros/_lang.scss */
+/* line 315, src/scss/_shared/macros/_lang.scss */
 .lang__flag--th:before {
   background-position: -48px -55px;
 }
 
-/* line 323, src/scss/_shared/macros/_lang.scss */
+/* line 320, src/scss/_shared/macros/_lang.scss */
 .lang__flag--id:before {
   background-position: 0 -44px;
 }
 
-/* line 328, src/scss/_shared/macros/_lang.scss */
+/* line 325, src/scss/_shared/macros/_lang.scss */
 .lang__flag--he:before {
   background-position: -64px -88px;
 }
 
-/* line 333, src/scss/_shared/macros/_lang.scss */
+/* line 330, src/scss/_shared/macros/_lang.scss */
 .lang__flag--bg:before {
   background-position: -16px -110px;
 }
 
-/* line 338, src/scss/_shared/macros/_lang.scss */
+/* line 335, src/scss/_shared/macros/_lang.scss */
 .lang__flag--hu:before {
   background-position: -32px -110px;
 }
 
-/* line 343, src/scss/_shared/macros/_lang.scss */
+/* line 340, src/scss/_shared/macros/_lang.scss */
 .lang__flag--ms:before {
   background-position: -64px -99px;
 }
 
-/* line 348, src/scss/_shared/macros/_lang.scss */
+/* line 345, src/scss/_shared/macros/_lang.scss */
 .lang__flag--zu:before {
   background-position: 0 -110px;
 }
 
-/* line 356, src/scss/_shared/macros/_lang.scss */
+/* line 353, src/scss/_shared/macros/_lang.scss */
 .light .lang__toggle {
   color: #4e4e4e;
 }
 
-/* line 358, src/scss/_shared/macros/_lang.scss */
+/* line 355, src/scss/_shared/macros/_lang.scss */
 .light .lang__toggle span {
   color: #4e4e4e;
 }
@@ -2433,6 +2438,25 @@ fieldset {
   }
 }
 
+/* line 17, src/scss/_components/common/_header.scss */
+.header-search {
+  display: none;
+}
+
+@media screen and (max-width: 1023px) {
+  /* line 17, src/scss/_components/common/_header.scss */
+  .header-search {
+    display: block;
+    position: absolute;
+    right: 10px;
+    top: 50%;
+    background: transparent;
+    border: none;
+    fill: #fff;
+    margin-top: -13px;
+  }
+}
+
 /* line 2, src/scss/_components/common/_header--conatainer.scss */
 .header__col-menu, .header__col-search {
   display: none;
@@ -2441,13 +2465,15 @@ fieldset {
 @media screen and (max-width: 1023px) {
   /* line 2, src/scss/_components/common/_header--conatainer.scss */
   .header__col-menu, .header__col-search {
+    position: absolute;
     display: block;
     margin: 0 10px;
+    right: 10px;
   }
 }
 
 @media screen and (max-width: 1023px) {
-  /* line 13, src/scss/_components/common/_header--conatainer.scss */
+  /* line 15, src/scss/_components/common/_header--conatainer.scss */
   .header__row_left {
     display: -webkit-box;
     display: -webkit-flex;
@@ -2458,36 +2484,41 @@ fieldset {
         -ms-flex-pack: center;
             justify-content: center;
   }
-  /* line 18, src/scss/_components/common/_header--conatainer.scss */
+  /* line 20, src/scss/_components/common/_header--conatainer.scss */
   .header__most-popular {
     display: none;
   }
 }
 
-/* line 25, src/scss/_components/common/_header--conatainer.scss */
+/* line 27, src/scss/_components/common/_header--conatainer.scss */
 .header__container-1 {
   background-color: #07113b;
 }
 
 @media screen and (max-width: 1023px) {
-  /* line 25, src/scss/_components/common/_header--conatainer.scss */
+  /* line 27, src/scss/_components/common/_header--conatainer.scss */
   .header__container-1 {
     display: none;
   }
 }
 
-/* line 32, src/scss/_components/common/_header--conatainer.scss */
+/* line 34, src/scss/_components/common/_header--conatainer.scss */
 .header__container-2 {
   background-color: #081b49;
 }
 
 @media screen and (max-width: 1023px) {
-  /* line 32, src/scss/_components/common/_header--conatainer.scss */
+  /* line 34, src/scss/_components/common/_header--conatainer.scss */
   .header__container-2 {
+    position: relative;
     display: -webkit-box;
     display: -webkit-flex;
     display: -ms-flexbox;
     display: flex;
+    -webkit-box-pack: center;
+    -webkit-justify-content: center;
+        -ms-flex-pack: center;
+            justify-content: center;
     -webkit-box-align: center;
     -webkit-align-items: center;
         -ms-flex-align: center;
@@ -2495,7 +2526,7 @@ fieldset {
     min-height: 80px;
     padding: 5px 10px;
   }
-  /* line 43, src/scss/_components/common/_header--conatainer.scss */
+  /* line 47, src/scss/_components/common/_header--conatainer.scss */
   .header__container-2.is-open .header__view-actions {
     opacity: 1;
     display: -webkit-box;
@@ -2512,19 +2543,19 @@ fieldset {
     -webkit-transform: translateY(0) translateZ(0);
             transform: translateY(0) translateZ(0);
   }
-  /* line 51, src/scss/_components/common/_header--conatainer.scss */
+  /* line 55, src/scss/_components/common/_header--conatainer.scss */
   .header__container-2.is-open .header__view-actions.awe {
     padding: 10px 20px 0;
   }
 }
 
-/* line 58, src/scss/_components/common/_header--conatainer.scss */
+/* line 62, src/scss/_components/common/_header--conatainer.scss */
 .header__container-2 .c-grid {
   position: relative;
 }
 
 @media screen and (max-width: 1023px) {
-  /* line 58, src/scss/_components/common/_header--conatainer.scss */
+  /* line 62, src/scss/_components/common/_header--conatainer.scss */
   .header__container-2 .c-grid {
     padding-left: 0;
     padding-right: 0;
@@ -2532,7 +2563,7 @@ fieldset {
 }
 
 @media screen and (min-width: 1024px) {
-  /* line 68, src/scss/_components/common/_header--conatainer.scss */
+  /* line 72, src/scss/_components/common/_header--conatainer.scss */
   .header__container-3 {
     background-color: #0b0d28;
     -webkit-box-shadow: 1.482px 16.935px 35px 0px rgba(31, 37, 103, 0.33);
@@ -4296,43 +4327,43 @@ fieldset {
 }
 
 @media screen and (max-width: 1023px) {
-  /* line 68, src/scss/_components/common/_header.scss */
+  /* line 82, src/scss/_components/common/_header.scss */
   .light .header__bottom.is-open {
     background: #fff;
   }
-  /* line 72, src/scss/_components/common/_header.scss */
+  /* line 86, src/scss/_components/common/_header.scss */
   .light .pre-header__mobile {
     background-color: #303030fa;
   }
-  /* line 75, src/scss/_components/common/_header.scss */
+  /* line 89, src/scss/_components/common/_header.scss */
   .light .header__nav-item:not(:last-of-type) {
     border-bottom: 1px solid #4a4a4a;
   }
-  /* line 78, src/scss/_components/common/_header.scss */
+  /* line 92, src/scss/_components/common/_header.scss */
   .light .pre-header__mobile-middle {
     border-top: 1px solid #4a4a4a;
     border-bottom: 1px solid #4a4a4a;
   }
 }
 
-/* line 86, src/scss/_components/common/_header.scss */
+/* line 100, src/scss/_components/common/_header.scss */
 .light .header__toggle label .icon-font {
   -webkit-transition: opacity 0.35s ease-in-out;
   -o-transition: opacity 0.35s ease-in-out;
   transition: opacity 0.35s ease-in-out;
 }
 
-/* line 89, src/scss/_components/common/_header.scss */
+/* line 103, src/scss/_components/common/_header.scss */
 .light .header__toggle label .icon-font.icon-sun {
   opacity: 1;
 }
 
-/* line 92, src/scss/_components/common/_header.scss */
+/* line 106, src/scss/_components/common/_header.scss */
 .light .header__toggle label .icon-font.icon-moon {
   opacity: 0;
 }
 
-/* line 97, src/scss/_components/common/_header.scss */
+/* line 111, src/scss/_components/common/_header.scss */
 .light .header__toggle label span {
   -webkit-transform: translateX(0);
       -ms-transform: translateX(0);
@@ -4344,56 +4375,56 @@ fieldset {
   transition: transform 0.35s ease-in-out, -webkit-transform 0.35s ease-in-out;
 }
 
-/* line 106, src/scss/_components/common/_header.scss */
+/* line 120, src/scss/_components/common/_header.scss */
 .is_logged .header__view-wrapper {
   display: block;
 }
 
 @media screen and (max-width: 1023px) {
-  /* line 106, src/scss/_components/common/_header.scss */
+  /* line 120, src/scss/_components/common/_header.scss */
   .is_logged .header__view-wrapper {
     display: none;
   }
 }
 
-/* line 113, src/scss/_components/common/_header.scss */
+/* line 127, src/scss/_components/common/_header.scss */
 .is_logged .header__view-text {
   display: none;
 }
 
-/* line 118, src/scss/_components/common/_header.scss */
+/* line 132, src/scss/_components/common/_header.scss */
 [data-label-lg]::after {
   content: attr(data-label-lg);
 }
 
 @media screen and (max-width: 767px) {
   /* line 189, src/scss/_shared/_main-setting-reset.scss */
-  /* line 124, src/scss/_components/common/_header.scss */
+  /* line 138, src/scss/_components/common/_header.scss */
   [data-label-xs]::after {
     content: attr(data-label-xs);
   }
 }
 
-/* line 133, src/scss/_components/common/_header.scss */
+/* line 147, src/scss/_components/common/_header.scss */
 .has_search .header__recent {
   display: none;
 }
 
 @media screen and (max-width: 1023.98px) {
-  /* line 141, src/scss/_components/common/_header.scss */
+  /* line 155, src/scss/_components/common/_header.scss */
   .fund .header {
     top: 45px;
   }
 }
 
-/* line 145, src/scss/_components/common/_header.scss */
+/* line 159, src/scss/_components/common/_header.scss */
 .fund .c-grid.bitcoin {
   display: block;
   position: relative;
 }
 
 @media screen and (max-width: 1023.98px) {
-  /* line 145, src/scss/_components/common/_header.scss */
+  /* line 159, src/scss/_components/common/_header.scss */
   .fund .c-grid.bitcoin {
     position: fixed;
     z-index: 105;
@@ -4403,7 +4434,7 @@ fieldset {
   }
 }
 
-/* line 158, src/scss/_components/common/_header.scss */
+/* line 172, src/scss/_components/common/_header.scss */
 .fund .header__action_bitcoin-outer {
   position: absolute;
   z-index: 1;
@@ -4412,7 +4443,7 @@ fieldset {
 }
 
 @media screen and (max-width: 1023px) {
-  /* line 158, src/scss/_components/common/_header.scss */
+  /* line 172, src/scss/_components/common/_header.scss */
   .fund .header__action_bitcoin-outer {
     position: relative;
     height: 45px;
@@ -4423,7 +4454,7 @@ fieldset {
   }
 }
 
-/* line 173, src/scss/_components/common/_header.scss */
+/* line 187, src/scss/_components/common/_header.scss */
 .fund .header__action_bitcoin-outer .btc-close {
   position: absolute;
   right: 15px;
@@ -4437,14 +4468,14 @@ fieldset {
 }
 
 @media screen and (max-width: 1023px) {
-  /* line 173, src/scss/_components/common/_header.scss */
+  /* line 187, src/scss/_components/common/_header.scss */
   .fund .header__action_bitcoin-outer .btc-close {
     left: 15px;
     right: auto;
   }
 }
 
-/* line 189, src/scss/_components/common/_header.scss */
+/* line 203, src/scss/_components/common/_header.scss */
 .fund .header__action_bitcoin {
   display: -webkit-box;
   display: -webkit-flex;
@@ -4470,13 +4501,13 @@ fieldset {
           transform: translate3d(0, 0, 0);
 }
 
-/* line 202, src/scss/_components/common/_header.scss */
+/* line 216, src/scss/_components/common/_header.scss */
 .fund .header__action_bitcoin .btc_hash img {
   height: 24px;
   margin: -3px 5px;
 }
 
-/* line 207, src/scss/_components/common/_header.scss */
+/* line 221, src/scss/_components/common/_header.scss */
 .fund .header__action_bitcoin.copied {
   -webkit-animation: rotateBtc 3.7s ease-in-out;
           animation: rotateBtc 3.7s ease-in-out;
@@ -4484,20 +4515,20 @@ fieldset {
           animation-fill-mode: forwards;
 }
 
-/* line 211, src/scss/_components/common/_header.scss */
+/* line 225, src/scss/_components/common/_header.scss */
 .fund .header__action_bitcoin.copied .btc-close {
   -webkit-transform: translateY(-50%) rotateX(180deg);
           transform: translateY(-50%) rotateX(180deg);
 }
 
 @media screen and (min-width: 1199.98px) and (max-width: 1449.98px) {
-  /* line 189, src/scss/_components/common/_header.scss */
+  /* line 203, src/scss/_components/common/_header.scss */
   .fund .header__action_bitcoin {
     left: 410px;
   }
 }
 
-/* line 223, src/scss/_components/common/_header.scss */
+/* line 237, src/scss/_components/common/_header.scss */
 .fund .header__action_bitcoin span {
   display: -webkit-box;
   display: -webkit-flex;
@@ -4512,14 +4543,14 @@ fieldset {
 }
 
 @media screen and (max-width: 1023px) {
-  /* line 223, src/scss/_components/common/_header.scss */
+  /* line 237, src/scss/_components/common/_header.scss */
   .fund .header__action_bitcoin span {
     overflow: hidden;
   }
 }
 
 @media screen and (max-width: 1023px) {
-  /* line 236, src/scss/_components/common/_header.scss */
+  /* line 250, src/scss/_components/common/_header.scss */
   .fund .header__bottom {
     top: 110px;
   }

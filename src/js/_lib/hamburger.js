@@ -44,7 +44,7 @@ const initHamburger = () => {
 	}
 
 
-	const searchHamburger = document.querySelector('.pre-header__hamburger'),
+	const searchHamburger = document.querySelector('.search-opener'),
 		searchContainer = document.querySelector('[search-mobile-js]');
 
 	if(searchHamburger) {

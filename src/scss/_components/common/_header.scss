@@ -14,6 +14,20 @@
 		padding-top: 0;
 	}
 
+	&-search{
+		display: none;
+
+		@include adaptive(1023) {
+			display: block;
+			position: absolute;
+			right: 10px;
+			top: 50%;
+			background: transparent;
+			border: none;
+			fill: #fff;
+			margin-top: -13px;
+		}
+	}
 
 	@import "header--conatainer";
 

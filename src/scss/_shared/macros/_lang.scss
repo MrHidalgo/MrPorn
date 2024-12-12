@@ -1,43 +1,40 @@
 .lang {
 	position: relative;
 
-	&__outer{
-		@include adaptive(1023) {
-			display: flex;
-			position: absolute;
-			right: 0;
-			top: 40px;
-			justify-content: end;
-			padding: 0 5px;
-			height: 40px;
-			align-items: center;
-		}
+	@include adaptive(1023) {
+		display: flex;
+		position: absolute;
+		right: 0;
+		top: 45px;
+		justify-content: end;
+		padding: 0 5px;
+		align-items: center;
 	}
 
 
 
 	&:hover {
-		.lang {
-			&__toggle {
-				border-color: #fff;
-				border-bottom-left-radius: 0;
-				border-bottom-right-radius: 0;
-				background-color: #ffffff;
-				@include transition(border-color, background-color, border-radius);
+		.lang__toggle {
+			border-color: #fff;
+			border-bottom-left-radius: 0;
+			border-bottom-right-radius: 0;
+			background-color: #ffffff;
+			@include transition(border-color, background-color, border-radius);
 
-				span,
-				.icon-font {
-					color: #080915;
-					@include transition(color);
-				}
+			span,
+			.icon-font {
+				color: #080915;
+				@include transition(color);
 			}
+		}
 
-			&__drop {
-				display: block;
-				opacity: 1;
-				visibility: visible;
-				transform: translateY(0);
-				@include transition(opacity, visibility, transform);
+		.lang__drop {
+			display: block;
+			opacity: 1;
+			visibility: visible;
+
+			@include adaptive(1023) {
+				right: 5px;
 			}
 		}
 	}
@@ -61,6 +58,7 @@
 			width: 65px;
 		}
 		@include adaptive(1023) {
+			right: 5px;
 			width: 84px;
 			padding-right: 0;
 			border-color: transparent;
@@ -93,7 +91,6 @@
 	&__drop {
 		//opacity: 0;
 		//visibility: hidden;
-		transform: translateY(10px);
 		z-index: 2000;
 		position: absolute;
 		top: 100%;
