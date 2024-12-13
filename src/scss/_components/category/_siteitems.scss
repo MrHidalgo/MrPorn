@@ -1,5 +1,6 @@
 // SITE_ITEM :: START
 
+
 .category_sites{
 	display: flex;
 	flex-wrap: wrap;
@@ -680,9 +681,14 @@
 	display: none;
 }
 
-//.similar_sites{
-//	margin-bottom: 20px;
-//}
+.similar_sites{
+	.category_sites_item_overlay a{
+		@media screen and (min-width: 1024.5px) {
+			padding: 16px 0;
+			font-size: 16px;
+		}
+	}
+}
 
 .light{
 
