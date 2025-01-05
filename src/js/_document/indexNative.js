@@ -181,6 +181,8 @@ let lastMobileSimilarSite;
 				verifyAge();
 			}else if(_ev.classList.contains('acceptCookie')){
 				verifyCookie();
+			}else if(_ev.closest('[favorites-toggle-js]')){
+				onSiteBoxFavourite(_ev.closest('[favorites-toggle-js]'));
 			}else if(_ev.closest('[un-favorites-js]')){
 				removeFavourite(_ev.closest('[un-favorites-js]'));
 			}else if(_ev.closest('[collapse-toggle-js]')){
@@ -377,6 +379,19 @@ let lastMobileSimilarSite;
 		}
 
 	};
+
+	function onSiteBoxFavourite(el) {
+		if(!isLoggedUser){
+			renderLoginForm();
+			return ;
+		}
+
+		var elID = el.dataset.id,
+			elParent = el.closest('.list__box-wrapper');
+
+		el.classList.toggle('is-active');
+		addToFavourites(elID);
+	}
 
 	function initGotoTop(){
 

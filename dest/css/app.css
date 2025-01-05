@@ -4284,7 +4284,7 @@ fieldset {
   /* line 2, src/scss/_components/common/_header--categories-search.scss */
   .header__categories-mobile {
     display: block;
-    padding: 0 15px;
+    padding: 15px 15px;
   }
 }
 
@@ -7307,77 +7307,86 @@ fieldset {
           transform: translate3d(0, 0, 0);
   will-change: position, transform;
   width: 250px;
+  padding-top: 15px;
 }
 
-/* line 20, src/scss/_components/category/_sidebar.scss */
+/* line 21, src/scss/_components/category/_sidebar.scss */
 .page-template-page-categories .desktop_menu_list {
   width: 280px;
 }
 
-/* line 22, src/scss/_components/category/_sidebar.scss */
+/* line 23, src/scss/_components/category/_sidebar.scss */
 .page-template-page-categories .desktop_menu_list .inner-wrapper-sticky {
   width: 280px;
 }
 
-/* line 26, src/scss/_components/category/_sidebar.scss */
+/* line 27, src/scss/_components/category/_sidebar.scss */
 .page-template-page-categories .categories-container {
   margin-left: 290px;
 }
 
 @media screen and (max-width: 767px) {
-  /* line 26, src/scss/_components/category/_sidebar.scss */
+  /* line 27, src/scss/_components/category/_sidebar.scss */
   .page-template-page-categories .categories-container {
     margin-left: 0;
   }
 }
 
 /* line 36, src/scss/_components/category/_sidebar.scss */
+.inner-wrapper-sticky {
+  background: #2a2b31;
+}
+
+/* line 40, src/scss/_components/category/_sidebar.scss */
+.light .inner-wrapper-sticky {
+  background: #fff;
+}
+
+/* line 46, src/scss/_components/category/_sidebar.scss */
 .category-list-search {
   position: relative;
   width: 100%;
-  padding: 15px 0 3px;
   color: #fff;
   text-align: center;
 }
 
-/* line 45, src/scss/_components/category/_sidebar.scss */
+/* line 52, src/scss/_components/category/_sidebar.scss */
 .category-list-search .icon-search {
   width: 18px;
   position: absolute;
   left: 8px;
-  top: 10px;
   fill: #333;
 }
 
-/* line 52, src/scss/_components/category/_sidebar.scss */
+/* line 58, src/scss/_components/category/_sidebar.scss */
 .category-list-search .icon-search path {
   fill: #333;
 }
 
-/* line 57, src/scss/_components/category/_sidebar.scss */
+/* line 63, src/scss/_components/category/_sidebar.scss */
 .category-list-search-title {
   padding-bottom: 10px;
   font-weight: 600;
 }
 
-/* line 62, src/scss/_components/category/_sidebar.scss */
+/* line 68, src/scss/_components/category/_sidebar.scss */
 .category-list-search-mobile {
   display: none;
 }
 
 @media screen and (max-width: 1023px) {
-  /* line 62, src/scss/_components/category/_sidebar.scss */
+  /* line 68, src/scss/_components/category/_sidebar.scss */
   .category-list-search-mobile {
     display: block;
     padding: 0;
   }
-  /* line 69, src/scss/_components/category/_sidebar.scss */
+  /* line 75, src/scss/_components/category/_sidebar.scss */
   .category-list-search-mobile .icon-search {
     top: -4px;
   }
 }
 
-/* line 75, src/scss/_components/category/_sidebar.scss */
+/* line 81, src/scss/_components/category/_sidebar.scss */
 .category-list-filter {
   width: 100%;
   height: 38px;
@@ -7389,43 +7398,60 @@ fieldset {
   padding: 3px 10px 3px 30px;
 }
 
-/* line 85, src/scss/_components/category/_sidebar.scss */
-.category-list-menu {
+/* line 90, src/scss/_components/category/_sidebar.scss */
+.category-list-filter-btn {
+  position: absolute;
+  right: 0;
+  top: 2px;
+  bottom: 2px;
+  width: 35px;
+  background: url(../images/icon-settings.svg) no-repeat center;
+  -webkit-background-size: 65% 65%;
+          background-size: 65%;
+  outline: none;
+  border: none;
+  border-left: 2px solid #ccc;
+  cursor: pointer;
+}
+
+/* line 106, src/scss/_components/category/_sidebar.scss */
+.category-list-options {
+  height: 0;
+  overflow: hidden;
+  -webkit-transition: height 0.35s ease-in-out;
+  -o-transition: height 0.35s ease-in-out;
+  transition: height 0.35s ease-in-out;
+}
+
+/* line 111, src/scss/_components/category/_sidebar.scss */
+.category-list-options ul {
+  padding: 5px 0;
+}
+
+/* line 115, src/scss/_components/category/_sidebar.scss */
+.category-list-options.open {
+  height: 85px;
+}
+
+/* line 119, src/scss/_components/category/_sidebar.scss */
+.category-list-option {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
-  -webkit-flex-wrap: wrap;
-      -ms-flex-wrap: wrap;
-          flex-wrap: wrap;
-  -webkit-backface-visibility: hidden;
-          backface-visibility: hidden;
-  padding: 0 10px 15px;
+  -webkit-box-pack: justify;
+  -webkit-justify-content: space-between;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  padding: 2px 0;
 }
 
-/* line 91, src/scss/_components/category/_sidebar.scss */
-.category-list-menu-dropdown {
-  gap: 0 25px;
-  padding: 0 25px 15px;
+/* line 124, src/scss/_components/category/_sidebar.scss */
+.category-list-option:hover {
+  background: #ddd;
 }
 
-/* line 95, src/scss/_components/category/_sidebar.scss */
-.category-list-menu-dropdown .category-list-item {
-  padding-right: 25px;
-}
-
-/* line 100, src/scss/_components/category/_sidebar.scss */
-.category-list-menu-bar {
-  background: #2a2b31;
-  padding: 0 15px;
-}
-
-/* line 104, src/scss/_components/category/_sidebar.scss */
-.category-list-menu-bar .category-list-menu {
-  width: 250px;
-}
-
-/* line 109, src/scss/_components/category/_sidebar.scss */
+/* line 159, src/scss/_components/category/_sidebar.scss */
 .category-list-item {
   position: relative;
   -webkit-box-flex: 1;
@@ -7442,17 +7468,17 @@ fieldset {
           order: 1;
 }
 
-/* line 118, src/scss/_components/category/_sidebar.scss */
+/* line 168, src/scss/_components/category/_sidebar.scss */
 .category-list-item:last-child {
   border-bottom: none;
 }
 
-/* line 121, src/scss/_components/category/_sidebar.scss */
+/* line 171, src/scss/_components/category/_sidebar.scss */
 .category-list-item:last-child {
   border-bottom: none;
 }
 
-/* line 125, src/scss/_components/category/_sidebar.scss */
+/* line 175, src/scss/_components/category/_sidebar.scss */
 .category-list-item .mobile_link_icons {
   display: -webkit-box;
   display: -webkit-flex;
@@ -7462,20 +7488,20 @@ fieldset {
   font-size: 0;
 }
 
-/* line 130, src/scss/_components/category/_sidebar.scss */
+/* line 180, src/scss/_components/category/_sidebar.scss */
 .category-list-item .mobile_link_ellipsis,
 .category-list-item .mobile_link_count {
   color: #96979f;
   font-size: 14px;
 }
 
-/* line 137, src/scss/_components/category/_sidebar.scss */
+/* line 187, src/scss/_components/category/_sidebar.scss */
 .category-list-item .icon-category {
   grid-column: 1;
   grid-row: 1 / span 2;
 }
 
-/* line 142, src/scss/_components/category/_sidebar.scss */
+/* line 192, src/scss/_components/category/_sidebar.scss */
 .category-list-item .deIcon::before {
   display: block;
   content: ' ';
@@ -7484,10 +7510,67 @@ fieldset {
   margin-right: 5px;
 }
 
-/* line 150, src/scss/_components/category/_sidebar.scss */
+/* line 201, src/scss/_components/category/_sidebar.scss */
+.category-list-menu {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-wrap: wrap;
+      -ms-flex-wrap: wrap;
+          flex-wrap: wrap;
+  -webkit-backface-visibility: hidden;
+          backface-visibility: hidden;
+  padding: 10px 10px 15px;
+}
+
+/* line 207, src/scss/_components/category/_sidebar.scss */
+.category-list-menu-dropdown {
+  gap: 0 25px;
+  padding: 0 25px 15px;
+}
+
+/* line 211, src/scss/_components/category/_sidebar.scss */
+.category-list-menu-dropdown .category-list-item {
+  padding-right: 25px;
+}
+
+/* line 216, src/scss/_components/category/_sidebar.scss */
+.category-list-menu-bar {
+  padding: 0 15px;
+}
+
+/* line 219, src/scss/_components/category/_sidebar.scss */
+.category-list-menu-bar .category-list-menu {
+  width: 250px;
+}
+
+/* line 224, src/scss/_components/category/_sidebar.scss */
+.category-list-menu.a2z {
+  gap: 4px;
+  padding: 10px 0;
+}
+
+/* line 228, src/scss/_components/category/_sidebar.scss */
+.category-list-menu.a2z .category-list-item {
+  width: auto;
+  -webkit-box-flex: 0;
+  -webkit-flex: 0;
+      -ms-flex: 0;
+          flex: 0;
+  border-width: 0;
+  background: #ccc;
+  padding: 5px;
+}
+
+/* line 235, src/scss/_components/category/_sidebar.scss */
+.category-list-menu.a2z .category-list-title {
+  font-size: 14px;
+}
+
+/* line 241, src/scss/_components/category/_sidebar.scss */
 .category-list-title {
   grid-column: 2;
-  display: inline-block;
   overflow: hidden;
   -o-text-overflow: ellipsis;
      text-overflow: ellipsis;
@@ -7497,13 +7580,13 @@ fieldset {
   color: #fff;
 }
 
-/* line 160, src/scss/_components/category/_sidebar.scss */
+/* line 250, src/scss/_components/category/_sidebar.scss */
 .category-list-title .highlight {
   font-weight: 600;
   color: #d5f963;
 }
 
-/* line 165, src/scss/_components/category/_sidebar.scss */
+/* line 255, src/scss/_components/category/_sidebar.scss */
 .category-list-link {
   position: relative;
   display: grid;
@@ -7519,7 +7602,7 @@ fieldset {
   font-weight: 400;
 }
 
-/* line 177, src/scss/_components/category/_sidebar.scss */
+/* line 267, src/scss/_components/category/_sidebar.scss */
 .category-list-link::before {
   content: '';
   display: block;
@@ -7537,12 +7620,12 @@ fieldset {
   background-color: #1b4f90;
 }
 
-/* line 191, src/scss/_components/category/_sidebar.scss */
+/* line 281, src/scss/_components/category/_sidebar.scss */
 .category-list-link.review-category-item {
   padding: 5px 10px 5px 55px;
 }
 
-/* line 194, src/scss/_components/category/_sidebar.scss */
+/* line 284, src/scss/_components/category/_sidebar.scss */
 .category-list-link.review-category-item .icon-category {
   position: absolute;
   left: -40px;
@@ -7552,7 +7635,7 @@ fieldset {
           transform: translateY(-50%);
 }
 
-/* line 203, src/scss/_components/category/_sidebar.scss */
+/* line 293, src/scss/_components/category/_sidebar.scss */
 .category-list-link.visited::before {
   content: '';
   background: transparent;
@@ -7569,13 +7652,13 @@ fieldset {
   margin: -6px 0;
 }
 
-/* line 217, src/scss/_components/category/_sidebar.scss */
+/* line 307, src/scss/_components/category/_sidebar.scss */
 .category-list-link.visited:hover::before {
   -webkit-animation: none;
           animation: none;
 }
 
-/* line 223, src/scss/_components/category/_sidebar.scss */
+/* line 313, src/scss/_components/category/_sidebar.scss */
 .category-list-link::after {
   content: '';
   display: inline-block;
@@ -7592,20 +7675,20 @@ fieldset {
           background-size: contain;
 }
 
-/* line 236, src/scss/_components/category/_sidebar.scss */
+/* line 326, src/scss/_components/category/_sidebar.scss */
 .category-list-link:not(.visited):hover:before {
   -webkit-animation: pulse-grey 1s infinite;
           animation: pulse-grey 1s infinite;
 }
 
-/* line 240, src/scss/_components/category/_sidebar.scss */
+/* line 330, src/scss/_components/category/_sidebar.scss */
 .category-list-link.pulse:not(.visited)::before {
   background: #2eaf61;
   -webkit-animation: pulse-grey 1s infinite;
           animation: pulse-grey 1s infinite;
 }
 
-/* line 247, src/scss/_components/category/_sidebar.scss */
+/* line 337, src/scss/_components/category/_sidebar.scss */
 .category-list-icons {
   grid-column: 2;
   display: -webkit-box;
@@ -7614,43 +7697,38 @@ fieldset {
   display: flex;
 }
 
-/* line 251, src/scss/_components/category/_sidebar.scss */
+/* line 341, src/scss/_components/category/_sidebar.scss */
 .category-list-icons:before {
   display: block;
   content: ' ';
 }
 
-/* line 260, src/scss/_components/category/_sidebar.scss */
-.light .category-list-menu-bar {
-  background: #fff;
-}
-
-/* line 263, src/scss/_components/category/_sidebar.scss */
+/* line 350, src/scss/_components/category/_sidebar.scss */
 .light .category-list-link {
   color: #767676;
 }
 
-/* line 266, src/scss/_components/category/_sidebar.scss */
+/* line 353, src/scss/_components/category/_sidebar.scss */
 .light .category-list-title {
   color: #4e4e4e;
 }
 
-/* line 269, src/scss/_components/category/_sidebar.scss */
+/* line 356, src/scss/_components/category/_sidebar.scss */
 .light .category-list-title .highlight {
   color: #000;
 }
 
-/* line 274, src/scss/_components/category/_sidebar.scss */
+/* line 361, src/scss/_components/category/_sidebar.scss */
 .light .category-list-item {
   border-bottom: 1px solid #e5e5e5;
 }
 
-/* line 278, src/scss/_components/category/_sidebar.scss */
+/* line 365, src/scss/_components/category/_sidebar.scss */
 .light .mobile_category_name > span {
   color: #4e4e4e;
 }
 
-/* line 282, src/scss/_components/category/_sidebar.scss */
+/* line 369, src/scss/_components/category/_sidebar.scss */
 .light .category-list-link.visited::before {
   border: solid #1b4f90;
   border-width: 0 1px 1px 0;
