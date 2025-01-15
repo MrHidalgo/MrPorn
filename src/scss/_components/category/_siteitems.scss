@@ -2,22 +2,23 @@
 
 
 .category_sites{
-	display: flex;
-	flex-wrap: wrap;
+	//display: flex;
+	//flex-wrap: wrap;
+	//font:400 14px/1.2;
+	font-size: 0;
 	counter-reset: number;
-	font:400 14px/1.2;
-	margin-left: -5px;
-	margin-right: -5px;
 
 	@include respond('max-medium'){
 		margin: 0;
 	}
 
 	&_description{
+		float: right;
 		flex-grow: 1;
 		width: 50%;
 		padding: 10px 0 0 10px;
 		position: relative;
+		height: 260px;
 
 		@include respond('ipad_portrait'){
 			width: 100%;
@@ -168,7 +169,7 @@
 	}
 
 	&_item{
-		flex-grow: 1;
+		display: inline-block;
 		width: 25%;
 		max-width: 25%;
 		padding: 15px 5px 0;
@@ -522,6 +523,24 @@
 		}
 	}
 }
+
+
+
+
+@media screen and (min-width: 767.98px) {
+	.scroll{
+		.col_5{
+			.category_sites_item{
+				width: 20%;
+				max-width: 20%;
+			}
+			.category_sites_description{
+				width: 40%;
+			}
+		}
+	}
+}
+
 
 .category_sites_item_content:hover{
 	.category_sites_item_title{

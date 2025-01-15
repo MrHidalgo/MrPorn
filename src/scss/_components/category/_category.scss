@@ -54,8 +54,18 @@
 	&_container{
 		/*display: flex;
 		flex-direction: column;*/
+
+		--container-width: 100%;
+		--content-width: 80%;
 	}
 }
+
+//.has_sidebar{
+//	.category_site_list{
+//		padding-left: 246px;
+//	}
+//}
+
 .light{
 	&_header{
 		border-bottom: 3px solid #e9ebed;
@@ -65,15 +75,7 @@
 	}
 }
 
-.category_list-sites{
-	&.has_sidebar{
-		margin-left: 270px;
 
-		@include adaptive(767) {
-			margin-left: 0;
-		}
-	}
-}
 .category_bottom_description{
 	padding: 10px 15px;
 }

@@ -2410,7 +2410,32 @@ fieldset {
   display: none;
 }
 
-/* line 5, src/scss/_components/common/_header.scss */
+/* line 3, src/scss/_components/common/_header.scss */
+.flex {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+/* line 6, src/scss/_components/common/_header.scss */
+.flex_center {
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+  -webkit-align-items: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+/* line 11, src/scss/_components/common/_header.scss */
+.relative {
+  position: relative;
+}
+
+/* line 16, src/scss/_components/common/_header.scss */
 .header {
   position: relative;
   display: -webkit-box;
@@ -2427,7 +2452,7 @@ fieldset {
 }
 
 @media screen and (max-width: 1023.98px) {
-  /* line 5, src/scss/_components/common/_header.scss */
+  /* line 16, src/scss/_components/common/_header.scss */
   .header {
     padding-top: 0;
   }
@@ -3015,7 +3040,7 @@ fieldset {
 }
 
 @media screen and (max-width: 1023.98px) {
-  /* line 5, src/scss/_components/common/_header.scss */
+  /* line 16, src/scss/_components/common/_header.scss */
   .header {
     position: fixed;
     width: 100%;
@@ -3024,7 +3049,7 @@ fieldset {
 }
 
 @media screen and (min-device-width: 768px) and (max-device-width: 1024px) and (orientation: portrait) and (-webkit-min-device-pixel-ratio: 2) {
-  /* line 5, src/scss/_components/common/_header.scss */
+  /* line 16, src/scss/_components/common/_header.scss */
   .header {
     position: fixed;
     width: 100%;
@@ -3033,7 +3058,7 @@ fieldset {
 }
 
 @media screen and (min-device-width: 1366px) and (max-device-width: 1366px) and (orientation: landscape) and (-webkit-min-device-pixel-ratio: 2) {
-  /* line 5, src/scss/_components/common/_header.scss */
+  /* line 16, src/scss/_components/common/_header.scss */
   .header {
     position: relative;
     width: 100%;
@@ -3042,7 +3067,7 @@ fieldset {
 }
 
 @media screen and (min-device-width: 1024px) and (max-device-width: 1024px) and (orientation: portrait) and (-webkit-min-device-pixel-ratio: 2) {
-  /* line 5, src/scss/_components/common/_header.scss */
+  /* line 16, src/scss/_components/common/_header.scss */
   .header {
     position: relative;
     width: 100%;
@@ -4296,43 +4321,43 @@ fieldset {
 }
 
 @media screen and (max-width: 1023px) {
-  /* line 68, src/scss/_components/common/_header.scss */
+  /* line 79, src/scss/_components/common/_header.scss */
   .light .header__bottom.is-open {
     background: #fff;
   }
-  /* line 72, src/scss/_components/common/_header.scss */
+  /* line 83, src/scss/_components/common/_header.scss */
   .light .pre-header__mobile {
     background-color: #303030fa;
   }
-  /* line 75, src/scss/_components/common/_header.scss */
+  /* line 86, src/scss/_components/common/_header.scss */
   .light .header__nav-item:not(:last-of-type) {
     border-bottom: 1px solid #4a4a4a;
   }
-  /* line 78, src/scss/_components/common/_header.scss */
+  /* line 89, src/scss/_components/common/_header.scss */
   .light .pre-header__mobile-middle {
     border-top: 1px solid #4a4a4a;
     border-bottom: 1px solid #4a4a4a;
   }
 }
 
-/* line 86, src/scss/_components/common/_header.scss */
+/* line 97, src/scss/_components/common/_header.scss */
 .light .header__toggle label .icon-font {
   -webkit-transition: opacity 0.35s ease-in-out;
   -o-transition: opacity 0.35s ease-in-out;
   transition: opacity 0.35s ease-in-out;
 }
 
-/* line 89, src/scss/_components/common/_header.scss */
+/* line 100, src/scss/_components/common/_header.scss */
 .light .header__toggle label .icon-font.icon-sun {
   opacity: 1;
 }
 
-/* line 92, src/scss/_components/common/_header.scss */
+/* line 103, src/scss/_components/common/_header.scss */
 .light .header__toggle label .icon-font.icon-moon {
   opacity: 0;
 }
 
-/* line 97, src/scss/_components/common/_header.scss */
+/* line 108, src/scss/_components/common/_header.scss */
 .light .header__toggle label span {
   -webkit-transform: translateX(0);
       -ms-transform: translateX(0);
@@ -4344,56 +4369,56 @@ fieldset {
   transition: transform 0.35s ease-in-out, -webkit-transform 0.35s ease-in-out;
 }
 
-/* line 106, src/scss/_components/common/_header.scss */
+/* line 117, src/scss/_components/common/_header.scss */
 .is_logged .header__view-wrapper {
   display: block;
 }
 
 @media screen and (max-width: 1023px) {
-  /* line 106, src/scss/_components/common/_header.scss */
+  /* line 117, src/scss/_components/common/_header.scss */
   .is_logged .header__view-wrapper {
     display: none;
   }
 }
 
-/* line 113, src/scss/_components/common/_header.scss */
+/* line 124, src/scss/_components/common/_header.scss */
 .is_logged .header__view-text {
   display: none;
 }
 
-/* line 118, src/scss/_components/common/_header.scss */
+/* line 129, src/scss/_components/common/_header.scss */
 [data-label-lg]::after {
   content: attr(data-label-lg);
 }
 
 @media screen and (max-width: 767px) {
   /* line 189, src/scss/_shared/_main-setting-reset.scss */
-  /* line 124, src/scss/_components/common/_header.scss */
+  /* line 135, src/scss/_components/common/_header.scss */
   [data-label-xs]::after {
     content: attr(data-label-xs);
   }
 }
 
-/* line 133, src/scss/_components/common/_header.scss */
+/* line 144, src/scss/_components/common/_header.scss */
 .has_search .header__recent {
   display: none;
 }
 
 @media screen and (max-width: 1023.98px) {
-  /* line 141, src/scss/_components/common/_header.scss */
+  /* line 152, src/scss/_components/common/_header.scss */
   .fund .header {
     top: 45px;
   }
 }
 
-/* line 145, src/scss/_components/common/_header.scss */
+/* line 156, src/scss/_components/common/_header.scss */
 .fund .c-grid.bitcoin {
   display: block;
   position: relative;
 }
 
 @media screen and (max-width: 1023.98px) {
-  /* line 145, src/scss/_components/common/_header.scss */
+  /* line 156, src/scss/_components/common/_header.scss */
   .fund .c-grid.bitcoin {
     position: fixed;
     z-index: 105;
@@ -4403,7 +4428,7 @@ fieldset {
   }
 }
 
-/* line 158, src/scss/_components/common/_header.scss */
+/* line 169, src/scss/_components/common/_header.scss */
 .fund .header__action_bitcoin-outer {
   position: absolute;
   z-index: 1;
@@ -4412,7 +4437,7 @@ fieldset {
 }
 
 @media screen and (max-width: 1023px) {
-  /* line 158, src/scss/_components/common/_header.scss */
+  /* line 169, src/scss/_components/common/_header.scss */
   .fund .header__action_bitcoin-outer {
     position: relative;
     height: 45px;
@@ -4423,7 +4448,7 @@ fieldset {
   }
 }
 
-/* line 173, src/scss/_components/common/_header.scss */
+/* line 184, src/scss/_components/common/_header.scss */
 .fund .header__action_bitcoin-outer .btc-close {
   position: absolute;
   right: 15px;
@@ -4437,14 +4462,14 @@ fieldset {
 }
 
 @media screen and (max-width: 1023px) {
-  /* line 173, src/scss/_components/common/_header.scss */
+  /* line 184, src/scss/_components/common/_header.scss */
   .fund .header__action_bitcoin-outer .btc-close {
     left: 15px;
     right: auto;
   }
 }
 
-/* line 189, src/scss/_components/common/_header.scss */
+/* line 200, src/scss/_components/common/_header.scss */
 .fund .header__action_bitcoin {
   display: -webkit-box;
   display: -webkit-flex;
@@ -4470,13 +4495,13 @@ fieldset {
           transform: translate3d(0, 0, 0);
 }
 
-/* line 202, src/scss/_components/common/_header.scss */
+/* line 213, src/scss/_components/common/_header.scss */
 .fund .header__action_bitcoin .btc_hash img {
   height: 24px;
   margin: -3px 5px;
 }
 
-/* line 207, src/scss/_components/common/_header.scss */
+/* line 218, src/scss/_components/common/_header.scss */
 .fund .header__action_bitcoin.copied {
   -webkit-animation: rotateBtc 3.7s ease-in-out;
           animation: rotateBtc 3.7s ease-in-out;
@@ -4484,20 +4509,20 @@ fieldset {
           animation-fill-mode: forwards;
 }
 
-/* line 211, src/scss/_components/common/_header.scss */
+/* line 222, src/scss/_components/common/_header.scss */
 .fund .header__action_bitcoin.copied .btc-close {
   -webkit-transform: translateY(-50%) rotateX(180deg);
           transform: translateY(-50%) rotateX(180deg);
 }
 
 @media screen and (min-width: 1199.98px) and (max-width: 1449.98px) {
-  /* line 189, src/scss/_components/common/_header.scss */
+  /* line 200, src/scss/_components/common/_header.scss */
   .fund .header__action_bitcoin {
     left: 410px;
   }
 }
 
-/* line 223, src/scss/_components/common/_header.scss */
+/* line 234, src/scss/_components/common/_header.scss */
 .fund .header__action_bitcoin span {
   display: -webkit-box;
   display: -webkit-flex;
@@ -4512,14 +4537,14 @@ fieldset {
 }
 
 @media screen and (max-width: 1023px) {
-  /* line 223, src/scss/_components/common/_header.scss */
+  /* line 234, src/scss/_components/common/_header.scss */
   .fund .header__action_bitcoin span {
     overflow: hidden;
   }
 }
 
 @media screen and (max-width: 1023px) {
-  /* line 236, src/scss/_components/common/_header.scss */
+  /* line 247, src/scss/_components/common/_header.scss */
   .fund .header__bottom {
     top: 110px;
   }
@@ -7274,6 +7299,62 @@ fieldset {
 }
 
 /* line 322, src/scss/_components/icons/_category_icons.scss */
+.icon-fingering {
+  background-image: url(../images/categories/fingering.svg);
+}
+
+/* line 325, src/scss/_components/icons/_category_icons.scss */
+.icon-fisting {
+  background-image: url(../images/categories/fisting.svg);
+}
+
+/* line 328, src/scss/_components/icons/_category_icons.scss */
+.icon-feet {
+  background-image: url(../images/categories/feet.svg);
+  width: 40px;
+}
+
+/* line 332, src/scss/_components/icons/_category_icons.scss */
+.icon-british {
+  background-image: url(../images/categories/british.svg);
+}
+
+/* line 335, src/scss/_components/icons/_category_icons.scss */
+.icon-bukkake {
+  background-image: url(../images/categories/bukkake.svg);
+}
+
+/* line 338, src/scss/_components/icons/_category_icons.scss */
+.icon-brazilian {
+  background-image: url(../images/categories/brazilian.svg);
+}
+
+/* line 341, src/scss/_components/icons/_category_icons.scss */
+.icon-bigdick {
+  background-image: url(../images/categories/bigdick.svg);
+}
+
+/* line 344, src/scss/_components/icons/_category_icons.scss */
+.icon-blowjob {
+  background-image: url(../images/categories/blowjob.svg);
+}
+
+/* line 347, src/scss/_components/icons/_category_icons.scss */
+.icon-italian {
+  background-image: url(../images/categories/italian.svg);
+}
+
+/* line 350, src/scss/_components/icons/_category_icons.scss */
+.icon-masterbation {
+  background-image: url(../images/categories/masterbation.svg);
+}
+
+/* line 353, src/scss/_components/icons/_category_icons.scss */
+.icon-gangbang {
+  background-image: url(../images/categories/gangbang.svg);
+}
+
+/* line 356, src/scss/_components/icons/_category_icons.scss */
 .icon-circled {
   height: 22px;
   width: 22px;
@@ -7281,23 +7362,36 @@ fieldset {
           background-size: 16px;
 }
 
-/* line 2, src/scss/_components/category/_sidebar.scss */
+/* line 3, src/scss/_components/category/_sidebar.scss */
+.category_list-sites.has_sidebar {
+  margin-left: 20%;
+}
+
+@media screen and (max-width: 767px) {
+  /* line 3, src/scss/_components/category/_sidebar.scss */
+  .category_list-sites.has_sidebar {
+    margin-left: 0;
+  }
+}
+
+/* line 11, src/scss/_components/category/_sidebar.scss */
 .desktop_menu_list {
-  width: 250px;
+  width: 20%;
   float: left;
   will-change: min-height;
   -webkit-backface-visibility: hidden;
           backface-visibility: hidden;
+  padding: 15px 10px 0 0;
 }
 
 @media screen and (max-width: 767px) {
-  /* line 2, src/scss/_components/category/_sidebar.scss */
+  /* line 11, src/scss/_components/category/_sidebar.scss */
   .desktop_menu_list {
     display: none;
   }
 }
 
-/* line 12, src/scss/_components/category/_sidebar.scss */
+/* line 25, src/scss/_components/category/_sidebar.scss */
 .desktop_menu_list .inner-wrapper-sticky {
   -webkit-transform: translate(0, 0);
       -ms-transform: translate(0, 0);
@@ -7306,51 +7400,110 @@ fieldset {
   -webkit-transform: translate3d(0, 0, 0);
           transform: translate3d(0, 0, 0);
   will-change: position, transform;
-  width: 250px;
-  padding-top: 15px;
-}
-
-/* line 21, src/scss/_components/category/_sidebar.scss */
-.page-template-page-categories .desktop_menu_list {
-  width: 280px;
-}
-
-/* line 23, src/scss/_components/category/_sidebar.scss */
-.page-template-page-categories .desktop_menu_list .inner-wrapper-sticky {
-  width: 280px;
-}
-
-/* line 27, src/scss/_components/category/_sidebar.scss */
-.page-template-page-categories .categories-container {
-  margin-left: 290px;
-}
-
-@media screen and (max-width: 767px) {
-  /* line 27, src/scss/_components/category/_sidebar.scss */
-  .page-template-page-categories .categories-container {
-    margin-left: 0;
-  }
 }
 
 /* line 36, src/scss/_components/category/_sidebar.scss */
+.desktop_menu_list.is-affixed .inner-wrapper-sticky {
+  position: fixed;
+  padding-top: 10px;
+}
+
+/* line 43, src/scss/_components/category/_sidebar.scss */
+.desktop_menu_list.scroll .category-list-letter {
+  padding: 3px 5px;
+}
+
+/*.page-template-page-categories{
+	.desktop_menu_list {
+		width: 280px;
+		.inner-wrapper-sticky {
+			width: 280px;
+		}
+	}
+	.categories-container{
+		margin-left: 290px;
+		@include adaptive(767) {
+			margin-left: 0;
+		}
+
+	}
+}*/
+/* line 65, src/scss/_components/category/_sidebar.scss */
+.review_header_dropdown .site_nav_categories {
+  padding: 15px 15px 3px;
+}
+
+/* line 68, src/scss/_components/category/_sidebar.scss */
+.review_header_dropdown .category-list-menu-dropdown {
+  padding: 0 10px 15px;
+}
+
+/* line 74, src/scss/_components/category/_sidebar.scss */
 .inner-wrapper-sticky {
   background: #2a2b31;
 }
 
-/* line 40, src/scss/_components/category/_sidebar.scss */
+/* line 78, src/scss/_components/category/_sidebar.scss */
 .light .inner-wrapper-sticky {
   background: #fff;
 }
 
-/* line 46, src/scss/_components/category/_sidebar.scss */
+/* line 85, src/scss/_components/category/_sidebar.scss */
+.category-list-container {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  position: relative;
+  -webkit-box-flex: 1;
+  -webkit-flex: 1;
+      -ms-flex: 1;
+          flex: 1;
+}
+
+/* line 93, src/scss/_components/category/_sidebar.scss */
+.category-list-container:after {
+  display: block;
+  content: ' ';
+  clear: both;
+}
+
+/* line 99, src/scss/_components/category/_sidebar.scss */
+.category-list-container.a2z {
+  max-height: -webkit-calc(100vh - 60px);
+  max-height: calc(100vh - 60px);
+}
+
+/* line 102, src/scss/_components/category/_sidebar.scss */
+.category-list-container.a2z .category-list-letters {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+  -webkit-flex-direction: column;
+      -ms-flex-direction: column;
+          flex-direction: column;
+}
+
+/* line 106, src/scss/_components/category/_sidebar.scss */
+.category-list-container.a2z .category-list-item {
+  padding: 3px 15px 3px 10px;
+}
+
+/* line 111, src/scss/_components/category/_sidebar.scss */
 .category-list-search {
   position: relative;
   width: 100%;
-  color: #fff;
   text-align: center;
+  border: 2px solid #333;
+  -webkit-border-radius: 3px;
+          border-radius: 3px;
+  margin-bottom: 5px;
 }
 
-/* line 52, src/scss/_components/category/_sidebar.scss */
+/* line 119, src/scss/_components/category/_sidebar.scss */
 .category-list-search .icon-search {
   width: 18px;
   position: absolute;
@@ -7358,53 +7511,100 @@ fieldset {
   fill: #333;
 }
 
-/* line 58, src/scss/_components/category/_sidebar.scss */
+/* line 125, src/scss/_components/category/_sidebar.scss */
 .category-list-search .icon-search path {
   fill: #333;
 }
 
-/* line 63, src/scss/_components/category/_sidebar.scss */
+/* line 130, src/scss/_components/category/_sidebar.scss */
 .category-list-search-title {
   padding-bottom: 10px;
   font-weight: 600;
 }
 
-/* line 68, src/scss/_components/category/_sidebar.scss */
+/* line 135, src/scss/_components/category/_sidebar.scss */
 .category-list-search-mobile {
   display: none;
 }
 
 @media screen and (max-width: 1023px) {
-  /* line 68, src/scss/_components/category/_sidebar.scss */
+  /* line 135, src/scss/_components/category/_sidebar.scss */
   .category-list-search-mobile {
-    display: block;
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -ms-flexbox;
+    display: flex;
     padding: 0;
   }
-  /* line 75, src/scss/_components/category/_sidebar.scss */
+  /* line 142, src/scss/_components/category/_sidebar.scss */
   .category-list-search-mobile .icon-search {
     top: -4px;
   }
 }
 
-/* line 81, src/scss/_components/category/_sidebar.scss */
-.category-list-filter {
-  width: 100%;
-  height: 38px;
-  outline: none;
-  font-size: 16px;
-  border: 2px solid #333;
-  -webkit-border-radius: 3px;
-          border-radius: 3px;
-  padding: 3px 10px 3px 30px;
+/* line 148, src/scss/_components/category/_sidebar.scss */
+.category-list-left {
+  overflow: auto;
+  scrollbar-width: thin;
 }
 
-/* line 90, src/scss/_components/category/_sidebar.scss */
+/* line 152, src/scss/_components/category/_sidebar.scss */
+.category-list-left::-webkit-scrollbar {
+  width: 4px;
+  /* Set the width of the scrollbar */
+}
+
+/* line 156, src/scss/_components/category/_sidebar.scss */
+.category-list-left::-webkit-scrollbar-track {
+  background: #f1f1f1;
+  /* Background of the track */
+}
+
+/* line 160, src/scss/_components/category/_sidebar.scss */
+.category-list-left::-webkit-scrollbar-thumb {
+  background: #888;
+  /* Scrollbar thumb color */
+  -webkit-border-radius: 10px;
+          border-radius: 10px;
+  /* Rounded corners */
+}
+
+/* line 165, src/scss/_components/category/_sidebar.scss */
+.category-list-left::-webkit-scrollbar-thumb:hover {
+  background: #555;
+  /* Hover color */
+}
+
+/* line 169, src/scss/_components/category/_sidebar.scss */
+.category-list-filter {
+  -webkit-box-flex: 1;
+  -webkit-flex: 1;
+      -ms-flex: 1;
+          flex: 1;
+  height: 34px;
+  outline: none;
+  font-size: 16px;
+  border: none;
+  padding: 3px 0 3px 30px;
+}
+
+/* line 177, src/scss/_components/category/_sidebar.scss */
 .category-list-filter-btn {
+  position: relative;
+  -webkit-box-flex: 0;
+  -webkit-flex: 0 0 35px;
+      -ms-flex: 0 0 35px;
+          flex: 0 0 35px;
+}
+
+/* line 181, src/scss/_components/category/_sidebar.scss */
+.category-list-filter-btn:before {
   position: absolute;
   right: 0;
   top: 2px;
   bottom: 2px;
   width: 35px;
+  content: ' ';
   background: url(../images/icon-settings.svg) no-repeat center;
   -webkit-background-size: 65% 65%;
           background-size: 65%;
@@ -7414,26 +7614,35 @@ fieldset {
   cursor: pointer;
 }
 
-/* line 106, src/scss/_components/category/_sidebar.scss */
-.category-list-options {
-  height: 0;
-  overflow: hidden;
-  -webkit-transition: height 0.35s ease-in-out;
-  -o-transition: height 0.35s ease-in-out;
-  transition: height 0.35s ease-in-out;
+/* line 197, src/scss/_components/category/_sidebar.scss */
+.category-list-filter-btn:hover .category-list-options {
+  display: block;
 }
 
-/* line 111, src/scss/_components/category/_sidebar.scss */
+/* line 204, src/scss/_components/category/_sidebar.scss */
+.category-list-options {
+  overflow: hidden;
+  max-height: 0;
+  -webkit-transition: max-height 0.35s ease-in-out;
+  -o-transition: max-height 0.35s ease-in-out;
+  transition: max-height 0.35s ease-in-out;
+}
+
+/* line 210, src/scss/_components/category/_sidebar.scss */
 .category-list-options ul {
   padding: 5px 0;
 }
 
-/* line 115, src/scss/_components/category/_sidebar.scss */
-.category-list-options.open {
-  height: 85px;
+/* line 214, src/scss/_components/category/_sidebar.scss */
+.category-list-options:hover, .category-list-options.open {
+  border-top: 1px solid #333;
+  -webkit-transform: translateY(0);
+      -ms-transform: translateY(0);
+          transform: translateY(0);
+  max-height: 150px;
 }
 
-/* line 119, src/scss/_components/category/_sidebar.scss */
+/* line 222, src/scss/_components/category/_sidebar.scss */
 .category-list-option {
   display: -webkit-box;
   display: -webkit-flex;
@@ -7443,15 +7652,90 @@ fieldset {
   -webkit-justify-content: space-between;
       -ms-flex-pack: justify;
           justify-content: space-between;
-  padding: 2px 0;
+  padding: 5px 10px 5px 8px;
+  text-align: left;
+  gap: 10px;
 }
 
-/* line 124, src/scss/_components/category/_sidebar.scss */
+/* line 229, src/scss/_components/category/_sidebar.scss */
+.category-list-option:before {
+  content: ' ';
+  display: block;
+  width: 20px;
+  height: 20px;
+  -webkit-background-size: 100% 100%;
+          background-size: 100%;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
+/* line 238, src/scss/_components/category/_sidebar.scss */
+.category-list-option.icon_scroll:before {
+  background-image: url(../images/sort_scrollable.svg);
+}
+
+/* line 241, src/scss/_components/category/_sidebar.scss */
+.category-list-option.icon_a2z:before {
+  background-image: url(../images/sort_az.svg);
+}
+
+/* line 244, src/scss/_components/category/_sidebar.scss */
+.category-list-option.icon_popular:before {
+  background-image: url(../images/sort_popular.svg);
+}
+
+/* line 247, src/scss/_components/category/_sidebar.scss */
+.category-list-option.icon_random:before {
+  background-image: url(../images/sort_random.svg);
+}
+
+/* line 251, src/scss/_components/category/_sidebar.scss */
+.category-list-option span {
+  -webkit-box-flex: 1;
+  -webkit-flex: 1;
+      -ms-flex: 1;
+          flex: 1;
+}
+
+/* line 255, src/scss/_components/category/_sidebar.scss */
 .category-list-option:hover {
   background: #ddd;
 }
 
-/* line 159, src/scss/_components/category/_sidebar.scss */
+/* line 259, src/scss/_components/category/_sidebar.scss */
+.category-list-option input[type="checkbox"] {
+  appearance: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  width: 20px;
+  height: 20px;
+  border: 2px solid black;
+  background-color: white;
+  cursor: pointer;
+  position: relative;
+}
+
+/* line 271, src/scss/_components/category/_sidebar.scss */
+.category-list-option input[type="checkbox"]:checked {
+  background-color: #c2f24a;
+  color: #113d74;
+  border: 2px solid #113d74;
+}
+
+/* line 277, src/scss/_components/category/_sidebar.scss */
+.category-list-option input[type="checkbox"]:checked::after {
+  content: "\2713";
+  color: black;
+  font-size: 16px;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  -webkit-transform: translate(-50%, -50%);
+      -ms-transform: translate(-50%, -50%);
+          transform: translate(-50%, -50%);
+}
+
+/* line 288, src/scss/_components/category/_sidebar.scss */
 .category-list-item {
   position: relative;
   -webkit-box-flex: 1;
@@ -7461,24 +7745,28 @@ fieldset {
   border-bottom: 1px solid #666;
   display: inline-block;
   width: 100%;
-  background: 0 0;
   -webkit-box-ordinal-group: 2;
   -webkit-order: 1;
       -ms-flex-order: 1;
           order: 1;
 }
 
-/* line 168, src/scss/_components/category/_sidebar.scss */
+/* line 296, src/scss/_components/category/_sidebar.scss */
 .category-list-item:last-child {
   border-bottom: none;
 }
 
-/* line 171, src/scss/_components/category/_sidebar.scss */
+/* line 299, src/scss/_components/category/_sidebar.scss */
 .category-list-item:last-child {
   border-bottom: none;
 }
 
-/* line 175, src/scss/_components/category/_sidebar.scss */
+/* line 303, src/scss/_components/category/_sidebar.scss */
+.category-list-item-letter {
+  background: #e8e7e6;
+}
+
+/* line 307, src/scss/_components/category/_sidebar.scss */
 .category-list-item .mobile_link_icons {
   display: -webkit-box;
   display: -webkit-flex;
@@ -7488,20 +7776,20 @@ fieldset {
   font-size: 0;
 }
 
-/* line 180, src/scss/_components/category/_sidebar.scss */
+/* line 312, src/scss/_components/category/_sidebar.scss */
 .category-list-item .mobile_link_ellipsis,
 .category-list-item .mobile_link_count {
   color: #96979f;
   font-size: 14px;
 }
 
-/* line 187, src/scss/_components/category/_sidebar.scss */
+/* line 319, src/scss/_components/category/_sidebar.scss */
 .category-list-item .icon-category {
   grid-column: 1;
   grid-row: 1 / span 2;
 }
 
-/* line 192, src/scss/_components/category/_sidebar.scss */
+/* line 324, src/scss/_components/category/_sidebar.scss */
 .category-list-item .deIcon::before {
   display: block;
   content: ' ';
@@ -7510,65 +7798,63 @@ fieldset {
   margin-right: 5px;
 }
 
-/* line 201, src/scss/_components/category/_sidebar.scss */
+/* line 332, src/scss/_components/category/_sidebar.scss */
 .category-list-menu {
+  overflow: auto;
+  padding: 0 10px 15px 0;
+}
+
+/* line 340, src/scss/_components/category/_sidebar.scss */
+.category-list-menu-dropdown {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
+  gap: 0 25px;
+  padding: 0 25px 15px;
   -webkit-flex-wrap: wrap;
       -ms-flex-wrap: wrap;
           flex-wrap: wrap;
-  -webkit-backface-visibility: hidden;
-          backface-visibility: hidden;
-  padding: 10px 10px 15px;
 }
 
-/* line 207, src/scss/_components/category/_sidebar.scss */
-.category-list-menu-dropdown {
-  gap: 0 25px;
-  padding: 0 25px 15px;
-}
-
-/* line 211, src/scss/_components/category/_sidebar.scss */
+/* line 346, src/scss/_components/category/_sidebar.scss */
 .category-list-menu-dropdown .category-list-item {
   padding-right: 25px;
 }
 
-/* line 216, src/scss/_components/category/_sidebar.scss */
-.category-list-menu-bar {
-  padding: 0 15px;
-}
-
-/* line 219, src/scss/_components/category/_sidebar.scss */
-.category-list-menu-bar .category-list-menu {
-  width: 250px;
-}
-
-/* line 224, src/scss/_components/category/_sidebar.scss */
+/* line 351, src/scss/_components/category/_sidebar.scss */
 .category-list-menu.a2z {
-  gap: 4px;
-  padding: 10px 0;
+  scrollbar-width: thin;
 }
 
-/* line 228, src/scss/_components/category/_sidebar.scss */
-.category-list-menu.a2z .category-list-item {
-  width: auto;
-  -webkit-box-flex: 0;
-  -webkit-flex: 0;
-      -ms-flex: 0;
-          flex: 0;
-  border-width: 0;
-  background: #ccc;
-  padding: 5px;
+/* line 359, src/scss/_components/category/_sidebar.scss */
+.category-list-menu.a2z::-webkit-scrollbar {
+  width: 4px;
+  /* Set the width of the scrollbar */
 }
 
-/* line 235, src/scss/_components/category/_sidebar.scss */
-.category-list-menu.a2z .category-list-title {
-  font-size: 14px;
+/* line 363, src/scss/_components/category/_sidebar.scss */
+.category-list-menu.a2z::-webkit-scrollbar-track {
+  background: #f1f1f1;
+  /* Background of the track */
 }
 
-/* line 241, src/scss/_components/category/_sidebar.scss */
+/* line 367, src/scss/_components/category/_sidebar.scss */
+.category-list-menu.a2z::-webkit-scrollbar-thumb {
+  background: #888;
+  /* Scrollbar thumb color */
+  -webkit-border-radius: 10px;
+          border-radius: 10px;
+  /* Rounded corners */
+}
+
+/* line 372, src/scss/_components/category/_sidebar.scss */
+.category-list-menu.a2z::-webkit-scrollbar-thumb:hover {
+  background: #555;
+  /* Hover color */
+}
+
+/* line 378, src/scss/_components/category/_sidebar.scss */
 .category-list-title {
   grid-column: 2;
   overflow: hidden;
@@ -7580,13 +7866,13 @@ fieldset {
   color: #fff;
 }
 
-/* line 250, src/scss/_components/category/_sidebar.scss */
+/* line 387, src/scss/_components/category/_sidebar.scss */
 .category-list-title .highlight {
   font-weight: 600;
   color: #d5f963;
 }
 
-/* line 255, src/scss/_components/category/_sidebar.scss */
+/* line 392, src/scss/_components/category/_sidebar.scss */
 .category-list-link {
   position: relative;
   display: grid;
@@ -7602,7 +7888,24 @@ fieldset {
   font-weight: 400;
 }
 
-/* line 267, src/scss/_components/category/_sidebar.scss */
+/* line 403, src/scss/_components/category/_sidebar.scss */
+.category-list-link-a2z {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+  -webkit-justify-content: space-between;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+}
+
+/* line 407, src/scss/_components/category/_sidebar.scss */
+.category-list-link-a2z .category-list-title {
+  font-size: 14px;
+}
+
+/* line 413, src/scss/_components/category/_sidebar.scss */
 .category-list-link::before {
   content: '';
   display: block;
@@ -7620,12 +7923,12 @@ fieldset {
   background-color: #1b4f90;
 }
 
-/* line 281, src/scss/_components/category/_sidebar.scss */
+/* line 427, src/scss/_components/category/_sidebar.scss */
 .category-list-link.review-category-item {
   padding: 5px 10px 5px 55px;
 }
 
-/* line 284, src/scss/_components/category/_sidebar.scss */
+/* line 430, src/scss/_components/category/_sidebar.scss */
 .category-list-link.review-category-item .icon-category {
   position: absolute;
   left: -40px;
@@ -7635,7 +7938,7 @@ fieldset {
           transform: translateY(-50%);
 }
 
-/* line 293, src/scss/_components/category/_sidebar.scss */
+/* line 439, src/scss/_components/category/_sidebar.scss */
 .category-list-link.visited::before {
   content: '';
   background: transparent;
@@ -7652,13 +7955,13 @@ fieldset {
   margin: -6px 0;
 }
 
-/* line 307, src/scss/_components/category/_sidebar.scss */
+/* line 453, src/scss/_components/category/_sidebar.scss */
 .category-list-link.visited:hover::before {
   -webkit-animation: none;
           animation: none;
 }
 
-/* line 313, src/scss/_components/category/_sidebar.scss */
+/* line 459, src/scss/_components/category/_sidebar.scss */
 .category-list-link::after {
   content: '';
   display: inline-block;
@@ -7675,20 +7978,20 @@ fieldset {
           background-size: contain;
 }
 
-/* line 326, src/scss/_components/category/_sidebar.scss */
+/* line 472, src/scss/_components/category/_sidebar.scss */
 .category-list-link:not(.visited):hover:before {
   -webkit-animation: pulse-grey 1s infinite;
           animation: pulse-grey 1s infinite;
 }
 
-/* line 330, src/scss/_components/category/_sidebar.scss */
+/* line 476, src/scss/_components/category/_sidebar.scss */
 .category-list-link.pulse:not(.visited)::before {
   background: #2eaf61;
   -webkit-animation: pulse-grey 1s infinite;
           animation: pulse-grey 1s infinite;
 }
 
-/* line 337, src/scss/_components/category/_sidebar.scss */
+/* line 483, src/scss/_components/category/_sidebar.scss */
 .category-list-icons {
   grid-column: 2;
   display: -webkit-box;
@@ -7697,38 +8000,62 @@ fieldset {
   display: flex;
 }
 
-/* line 341, src/scss/_components/category/_sidebar.scss */
+/* line 487, src/scss/_components/category/_sidebar.scss */
 .category-list-icons:before {
   display: block;
   content: ' ';
 }
 
-/* line 350, src/scss/_components/category/_sidebar.scss */
+/* line 493, src/scss/_components/category/_sidebar.scss */
+.category-list-letters {
+  display: none;
+  float: right;
+  -webkit-box-flex: 0;
+  -webkit-flex: 0 0 30px;
+      -ms-flex: 0 0 30px;
+          flex: 0 0 30px;
+  text-align: center;
+}
+
+/* line 499, src/scss/_components/category/_sidebar.scss */
+.category-list-letter {
+  padding: 5px;
+  color: #337ab7;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+/* line 505, src/scss/_components/category/_sidebar.scss */
+.category-list-letter.active {
+  color: #000;
+}
+
+/* line 513, src/scss/_components/category/_sidebar.scss */
 .light .category-list-link {
   color: #767676;
 }
 
-/* line 353, src/scss/_components/category/_sidebar.scss */
+/* line 516, src/scss/_components/category/_sidebar.scss */
 .light .category-list-title {
   color: #4e4e4e;
 }
 
-/* line 356, src/scss/_components/category/_sidebar.scss */
+/* line 519, src/scss/_components/category/_sidebar.scss */
 .light .category-list-title .highlight {
   color: #000;
 }
 
-/* line 361, src/scss/_components/category/_sidebar.scss */
+/* line 524, src/scss/_components/category/_sidebar.scss */
 .light .category-list-item {
   border-bottom: 1px solid #e5e5e5;
 }
 
-/* line 365, src/scss/_components/category/_sidebar.scss */
+/* line 528, src/scss/_components/category/_sidebar.scss */
 .light .mobile_category_name > span {
   color: #4e4e4e;
 }
 
-/* line 369, src/scss/_components/category/_sidebar.scss */
+/* line 532, src/scss/_components/category/_sidebar.scss */
 .light .category-list-link.visited::before {
   border: solid #1b4f90;
   border-width: 0 1px 1px 0;

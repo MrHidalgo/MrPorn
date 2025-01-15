@@ -1,6 +1,8 @@
 // PAGE_CATEGORIES :: START
 .categories_container{
-	padding-top: 15px;
+	background: #2a2b31;
+	margin-top: 15px;
+	padding: 0 15px;
 
 	&_inner{
 		display: flex;
@@ -24,7 +26,7 @@
 	padding-bottom: 15px;
 }
 .categories-container{
-	margin-left: 270px;
+	padding-top: 15px;
 
 	@include respond('max-small'){
 		padding-left: 0;
@@ -76,6 +78,7 @@
 
 	.aw_title{
 		//background: url(../images/award_bg.jpg);
+		display: flex;
 		color: #fff;
 		line-height: 61px;
 		font-size: 24px;
@@ -95,6 +98,8 @@
 		}
 		&__inner{
 			position: relative;
+			width: 100%;
+			background: url("../images/award_bg.jpg");
 			z-index: 10;
 			text-shadow: 3px 2px #000;
 			text-overflow: ellipsis;
@@ -113,17 +118,18 @@
 
 	.aw_site_list{
 		display: flex;
-		margin: 10px -5px;
+		margin: 10px 0;
 		flex-wrap: wrap;
 		flex-direction: row;
+		gap: 10px;
 
 		@include adaptive(767) {
 			margin: 10px -5px 0;
 		}
 
 		.aw_item{
-			width: 16.666667%;
-			padding: 0 5px;
+			//width: 16.666667%;
+			flex: 1;
 
 			@include adaptive(767) {
 				width: 33.3333334%;
@@ -228,7 +234,9 @@
 }
 
 .light{
+
 	.categories_container{
+		background: #fff;
 		.leftCat{
 
 			.lcatT{
