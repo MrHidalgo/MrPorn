@@ -1,5 +1,11 @@
 "use strict";
 
+function _createForOfIteratorHelper(o, allowArrayLike) { var it; if (typeof Symbol === "undefined" || o[Symbol.iterator] == null) { if (Array.isArray(o) || (it = _unsupportedIterableToArray(o)) || allowArrayLike && o && typeof o.length === "number") { if (it) o = it; var i = 0; var F = function F() {}; return { s: F, n: function n() { if (i >= o.length) return { done: true }; return { done: false, value: o[i++] }; }, e: function e(_e) { throw _e; }, f: F }; } throw new TypeError("Invalid attempt to iterate non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); } var normalCompletion = true, didErr = false, err; return { s: function s() { it = o[Symbol.iterator](); }, n: function n() { var step = it.next(); normalCompletion = step.done; return step; }, e: function e(_e2) { didErr = true; err = _e2; }, f: function f() { try { if (!normalCompletion && it["return"] != null) it["return"](); } finally { if (didErr) throw err; } } }; }
+
+function _unsupportedIterableToArray(o, minLen) { if (!o) return; if (typeof o === "string") return _arrayLikeToArray(o, minLen); var n = Object.prototype.toString.call(o).slice(8, -1); if (n === "Object" && o.constructor) n = o.constructor.name; if (n === "Map" || n === "Set") return Array.from(o); if (n === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)) return _arrayLikeToArray(o, minLen); }
+
+function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len = arr.length; for (var i = 0, arr2 = new Array(len); i < len; i++) { arr2[i] = arr[i]; } return arr2; }
+
 /*
 * ============================
 *
@@ -428,9 +434,15 @@ function initCategoryPage() {
   var filterType = '';
   var categoryItems = [];
   var otherCategoryItems = [];
+  var a2zCategories = [];
+  var a2zLetters = [];
   var filterScroll = (_getCookieMpgCookie = +getCookieMpgCookie("category_filter_scroll")) !== null && _getCookieMpgCookie !== void 0 ? _getCookieMpgCookie : 0;
   var filterA2z = (_getCookieMpgCookie2 = +getCookieMpgCookie("category_filter_a2z")) !== null && _getCookieMpgCookie2 !== void 0 ? _getCookieMpgCookie2 : 0;
   var filterPopular = (_getCookieMpgCookie3 = +getCookieMpgCookie("category_filter_popular")) !== null && _getCookieMpgCookie3 !== void 0 ? _getCookieMpgCookie3 : 0;
+
+  if (!isMobileOrTablet && document.body.classList.contains('single-sites')) {
+    filterA2z = 0;
+  }
 
   if (filterScroll) {
     document.querySelectorAll('.category_filter_option_scroll').forEach(function (checkbox) {
@@ -535,13 +547,10 @@ function initCategoryPage() {
 
     if (!desktopMenuList || desktopMenuList.children.length == 0) {
       console.log('Filter type ', filterType);
-      renderCategorySidebar(categoryItems);
+      renderCategorySidebar(filterA2z ? a2zCategories : categoryItems);
     }
 
     var categoryFilter = document.querySelectorAll('.category-list-filter');
-    var catSearch = document.querySelector('.desktop_menu_list .category-list-search'); // if(catSearch){
-    // 	catSearch.style.display = 'block';
-    // }
 
     if (categoryFilter.length > 0) {
       for (var i = 0; i < categoryFilter.length; i++) {
@@ -549,11 +558,16 @@ function initCategoryPage() {
           var filter = evt.target.value.toLowerCase().trim();
 
           if (filter == '') {
-            renderCategorySidebar(categoryItems);
+            renderCategorySidebar(filterA2z ? a2zCategories : categoryItems);
             return;
           }
 
           var filteredCategories = [].concat(categoryItems);
+
+          if (filterA2z) {
+            filteredCategories = Array.prototype.slice.call(a2zCategories);
+          }
+
           var catCount = filteredCategories.length; // categoryItems = categoryItems.sort((a, b) => b.title.localeCompare(a.title));
 
           filteredCategories = filteredCategories.sort(function (a, b) {
@@ -625,11 +639,6 @@ function initCategoryPage() {
     filterOptionScroll === null || filterOptionScroll === void 0 ? void 0 : filterOptionScroll.addEventListener('change', function () {
       onScrollChecked(this.checked);
     });
-
-    if (filterA2z) {
-      onA2ZChecked(filterA2z);
-    }
-
     filterOptionA2Z === null || filterOptionA2Z === void 0 ? void 0 : filterOptionA2Z.addEventListener('change', function () {
       onA2ZChecked(this.checked);
     });
@@ -666,15 +675,17 @@ function initCategoryPage() {
   };
 
   var onA2ZChecked = function onA2ZChecked(checked) {
+    filterA2z = checked;
+
     if (checked) {
       createCookie("category_filter_a2z", 1, 356);
       leftSidebar === null || leftSidebar === void 0 ? void 0 : leftSidebar.classList.add('scroll');
-      renderA2Z();
     } else {
       createCookie("category_filter_a2z", 0, 356);
       leftSidebar === null || leftSidebar === void 0 ? void 0 : leftSidebar.classList.remove('scroll');
-      renderCategorySidebar(categoryItems);
     }
+
+    renderCategorySidebar(filterA2z ? a2zCategories : categoryItems);
   };
 
   var setSidebarHeight = function setSidebarHeight() {
@@ -716,10 +727,61 @@ function initCategoryPage() {
     }
   };
 
+  var renderA2ZLetters = function renderA2ZLetters() {
+    if (!categoryListLetters) {
+      return;
+    }
+
+    categoryListLetters.innerHTML = '';
+
+    var _iterator = _createForOfIteratorHelper(a2zLetters),
+        _step;
+
+    try {
+      for (_iterator.s(); !(_step = _iterator.n()).done;) {
+        var letter = _step.value;
+        var liChar = document.createElement("li");
+        liChar.textContent = letter.toUpperCase();
+        liChar.className = "category-list-letter letter_" + letter;
+        liChar.dataset.letter = letter;
+        categoryListLetters.appendChild(liChar);
+        liChar.addEventListener("click", function (e) {
+          var _document$querySelect2;
+
+          var triggeredLetter = e.currentTarget.dataset.letter;
+          (_document$querySelect2 = document.querySelector('.category-list-letter.active')) === null || _document$querySelect2 === void 0 ? void 0 : _document$querySelect2.classList.remove('active');
+          var letterTop = document.querySelector(sidebarContainer + ' .category-list-item-letter.letter_' + triggeredLetter).offsetTop;
+          console.log('letter top ' + triggeredLetter, letterTop);
+          desktopMenuListContainer.scrollTo({
+            top: letterTop,
+            behavior: "smooth"
+          });
+          mobileMenuList.scrollTo({
+            top: letterTop,
+            behavior: "smooth"
+          });
+          e.currentTarget.classList.add('active');
+        });
+      }
+    } catch (err) {
+      _iterator.e(err);
+    } finally {
+      _iterator.f();
+    }
+  };
+
   var renderCategorySidebar = function renderCategorySidebar(categoryItems) {
     var filter = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : '';
     var hideVisited = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : false;
-    categoryListContainer === null || categoryListContainer === void 0 ? void 0 : categoryListContainer.classList.remove('a2z'); // mobileMenuList?.classList.remove('a2z');
+
+    // categoryListContainer?.classList.remove('a2z');
+    // mobileMenuList?.classList.remove('a2z');
+    if (filterA2z) {
+      categoryListContainer === null || categoryListContainer === void 0 ? void 0 : categoryListContainer.classList.add('a2z');
+      renderA2ZLetters();
+    } else {
+      categoryListContainer === null || categoryListContainer === void 0 ? void 0 : categoryListContainer.classList.remove('a2z');
+    }
 
     if (desktopMenuList !== null) desktopMenuList.innerHTML = '';
     if (mobileMenuList !== null) mobileMenuList.innerHTML = '';
@@ -736,12 +798,19 @@ function initCategoryPage() {
       }
 
       var item = '<li class="category-list-item" >' + '<a  href="' + categoryItem.link + '" class="category-list-link ' + catExtraClasses + '" data-id="' + categoryItem.id + '"><i class="' + categoryItem.icon + '"></i><span class="category-list-title">' + catTitle + '</span><div class="category-list-icons">' + categoryItem.icons + '<span class="mobile_link_ellipsis">...</span>' + '<span class="mobile_link_count">' + categoryItem.count + '</span>' + '</div>' + '</a>' + '</li>';
+
+      if (filterA2z) {
+        item = '<li class="category-list-item" >' + '<a  href="' + categoryItem.link + '" class="category-list-link-a2z ' + catExtraClasses + '" data-id="' + categoryItem.id + '"><span class="category-list-title">' + catTitle + '</span><span class="mobile_link_count">' + categoryItem.count + '</span></a>' + '</li>';
+      }
+
+      if (categoryItem.letter) {
+        item = '<li class="category-list-item category-list-item-letter letter_' + categoryItem.letter + '">' + categoryItem.letter.toUpperCase() + '</li>';
+      }
+
       desktopMenuList === null || desktopMenuList === void 0 ? void 0 : desktopMenuList.insertAdjacentHTML('beforeend', item);
       mobileMenuList === null || mobileMenuList === void 0 ? void 0 : mobileMenuList.insertAdjacentHTML('beforeend', item);
 
       if (isCategoriesPage) {
-        // let categoryBoxItem = '<li class="category-list-item" >' + '<a  href="' + categoryItem.link + '" class="category-list-link ' + catExtraClasses + '" data-id="' + categoryItem.id + '"><i class="' + categoryItem.icon + '"></i><span class="category-list-title">' + catTitle + '</span><div class="category-list-icons">' + categoryItem.icons + '<span class="mobile_link_ellipsis">...</span>' + '<span class="mobile_link_count">' + categoryItem.count + '</span>' + '</div>' + '</a>' + '</li>';
-        // categoriesPageList?.insertAdjacentHTML('beforeend', categoryBoxItem);
         var categoryBoxItem = document.querySelector('.category_item_link[data-id="' + categoryItem.id + '"]');
 
         if (categoryBoxItem) {
@@ -757,6 +826,41 @@ function initCategoryPage() {
       }
     });
     reorderCategories();
+
+    if (filterA2z) {
+      var _iterator2 = _createForOfIteratorHelper(a2zLetters),
+          _step2;
+
+      try {
+        for (_iterator2.s(); !(_step2 = _iterator2.n()).done;) {
+          var _desktopMenuListConta;
+
+          var letter = _step2.value;
+          var letterTop = desktopMenuListContainer === null || desktopMenuListContainer === void 0 ? void 0 : (_desktopMenuListConta = desktopMenuListContainer.querySelector('.category-list-item-letter.letter_' + letter)) === null || _desktopMenuListConta === void 0 ? void 0 : _desktopMenuListConta.offsetTop;
+          letterOffsets[letter] = letterTop;
+        }
+      } catch (err) {
+        _iterator2.e(err);
+      } finally {
+        _iterator2.f();
+      }
+
+      desktopMenuListContainer === null || desktopMenuListContainer === void 0 ? void 0 : desktopMenuListContainer.addEventListener("scroll", function () {
+        var scrollTop = desktopMenuListContainer.scrollTop;
+        var activeLetter = null;
+
+        for (var key in letterOffsets) {
+          if (scrollTop >= letterOffsets[key]) {
+            activeLetter = key;
+          }
+        } // Update active class
+
+
+        categoryListContainer.querySelectorAll(".category-list-letter").forEach(function (div) {
+          div.classList.toggle("active", div.dataset.letter === activeLetter);
+        });
+      });
+    }
   };
 
   var reorderCategories = function reorderCategories() {
@@ -785,96 +889,83 @@ function initCategoryPage() {
     }
   };
 
-  var renderA2Z = function renderA2Z() {
-    // categorySidebar.destroy();
-    var filteredCategories = [].concat(categoryItems);
-    filteredCategories = filteredCategories.sort(function (a, b) {
-      return a.title.localeCompare(b.title);
-    }); // const letters = 'abcdefghijklmnopqrstuvwxyz'.split('');
-
-    var letters = [];
-    filteredCategories.map(function (item, index) {
-      letters.includes(item.title.charAt(0).toUpperCase()) ? null : letters.push(item.title.charAt(0).toUpperCase());
-    });
-    categoryListLetters.innerHTML = '';
-    letters.map(function (letter, index) {
-      var liChar = document.createElement("li");
-      liChar.textContent = letter; // liChar.className = letterOffsets[letter] ? "category-list-letter" : "category-list-letter disabled";
-
-      liChar.className = "category-list-letter";
-      categoryListLetters.appendChild(liChar);
-      liChar.addEventListener("click", function (e) {
-        var _document$querySelect2;
-
-        var triggeredLetter = e.currentTarget.innerHTML;
-        (_document$querySelect2 = document.querySelector('.category-list-letter.active')) === null || _document$querySelect2 === void 0 ? void 0 : _document$querySelect2.classList.remove('active');
-        var letterTop = document.querySelector(sidebarContainer + ' .category-list-item-letter.letter_' + triggeredLetter).offsetTop;
-        console.log('letter top ' + triggeredLetter, letterTop);
-        desktopMenuListContainer.scrollTo({
-          top: letterTop,
-          behavior: "smooth"
-        });
-        mobileMenuList.scrollTo({
-          top: letterTop,
-          behavior: "smooth"
-        });
-        e.currentTarget.classList.add('active');
-      });
-    });
-    if (desktopMenuList !== null) desktopMenuList.innerHTML = '';
-    if (mobileMenuList !== null) mobileMenuList.innerHTML = '';
-    categoryListContainer === null || categoryListContainer === void 0 ? void 0 : categoryListContainer.classList.add('a2z'); // mobileMenuList?.classList.add('a2z');
-
-    var lastLetter = '';
-    var categoryIndex = 0;
-    filteredCategories.map(function (categoryItem) {
-      var catTitle = categoryItem.title;
-      var catExtraClasses = categoryItem.visited ? ' visited' : '';
-      var currentLetter = catTitle.charAt(0).toUpperCase();
-
-      if (lastLetter !== currentLetter) {
-        lastLetter = currentLetter;
-        var liLetter = '<li class="category-list-item category-list-item-letter letter_' + currentLetter + '">' + currentLetter + '</li>';
-        desktopMenuList === null || desktopMenuList === void 0 ? void 0 : desktopMenuList.insertAdjacentHTML('beforeend', liLetter);
-        mobileMenuList === null || mobileMenuList === void 0 ? void 0 : mobileMenuList.insertAdjacentHTML('beforeend', liLetter); // letterOffsets[currentLetter] = liLetter.offsetTop;
-        // console.log('offset ', currentLetter, liLetter.offsetTop)
-      }
-
-      var item = '<li class="category-list-item" >' + '<a  href="' + categoryItem.link + '" class="category-list-link-a2z ' + catExtraClasses + '" data-id="' + categoryItem.id + '"><span class="category-list-title">' + catTitle + '</span><span class="mobile_link_count">' + categoryItem.count + '</span></a>' + '</li>';
-      desktopMenuList === null || desktopMenuList === void 0 ? void 0 : desktopMenuList.insertAdjacentHTML('beforeend', item);
-      mobileMenuList === null || mobileMenuList === void 0 ? void 0 : mobileMenuList.insertAdjacentHTML('beforeend', item);
-    });
-
-    for (var key = 0; key < letters.length; key++) {
-      var letterTop = document.querySelector('.category-list-item-letter.letter_' + letters[key]).offsetTop;
-      letterOffsets[letters[key]] = letterTop;
+  var fetchA2Z = function fetchA2Z() {
+    if (getWithExpiry('a2zData')) {
+      processA2ZData(getWithExpiry('a2zData'));
+      return;
     }
 
-    desktopMenuListContainer === null || desktopMenuListContainer === void 0 ? void 0 : desktopMenuListContainer.addEventListener("scroll", function () {
-      var scrollTop = desktopMenuListContainer.scrollTop;
-      var activeLetter = null; // Find the active letter based on scroll position
-
-      for (var _key in letterOffsets) {
-        if (scrollTop >= letterOffsets[_key]) {
-          activeLetter = _key;
-        }
-      } // Update active class
-
-
-      document.querySelectorAll(".category-list-letter").forEach(function (div) {
-        div.classList.toggle("active", div.textContent === activeLetter);
-      });
+    fetch('/wp-json/mpg/a2z/').then(function (res) {
+      return res.json();
+    }).then(function (result) {
+      setWithExpiry('a2zData', result, 30 * 60 * 1000);
+      processA2ZData(result);
+      console.log('a2zData ', result); // let filteredCategories = [...categoryItems];
+    })["catch"](function (err) {// console.log('didnt load translations');
     });
   };
 
-  if (bodyClasses.contains('category') || bodyClasses.contains('page-template-page-categories')) {
-    createSidebar();
+  var processA2ZData = function processA2ZData(result) {
+    a2zCategories = [];
+    a2zLetters = [];
+    var a2zOrder = 0;
 
-    if (!filterScroll) {
-      initStickySidebar();
+    for (var letter in result) {
+      a2zCategories.push({
+        'letter': letter,
+        'title': '',
+        'order': a2zOrder
+      });
+      a2zLetters.push(letter);
+
+      var _iterator3 = _createForOfIteratorHelper(result[letter]),
+          _step3;
+
+      try {
+        for (_iterator3.s(); !(_step3 = _iterator3.n()).done;) {
+          var categoryItem = _step3.value;
+          a2zCategories.push({
+            'id': categoryItem.category,
+            'title': categoryItem.name,
+            'link': categoryItem.link,
+            'count': categoryItem.count,
+            'is_webcam': categoryItem.is_webcam,
+            'order': a2zOrder
+          });
+          a2zOrder++;
+        }
+      } catch (err) {
+        _iterator3.e(err);
+      } finally {
+        _iterator3.f();
+      }
+
+      a2zOrder++;
     }
-  } else {
-    createSidebar();
+
+    if (bodyClasses.contains('category') || bodyClasses.contains('page-template-page-categories')) {
+      createSidebar();
+
+      if (!filterScroll) {
+        initStickySidebar();
+      }
+    } else {
+      createSidebar();
+    }
+  };
+
+  fetchA2Z();
+
+  if (!filterA2z) {
+    if (bodyClasses.contains('category') || bodyClasses.contains('page-template-page-categories')) {
+      createSidebar();
+
+      if (!filterScroll) {
+        initStickySidebar();
+      }
+    } else {
+      createSidebar();
+    }
   }
 }
 
@@ -1282,10 +1373,13 @@ var markFavourites = function markFavourites() {
 };
 
 var letterSearch = function letterSearch() {
-  letterData = getWithExpiry("letter_data_" + dataTime);
+  if (getWithExpiry("letter_data_" + dataTime)) {
+    letterData = getWithExpiry("letter_data_" + dataTime);
 
-  if (!letterData) {
-    letterData = [];
+    if (letterData.length > 0) {
+      renderSorting();
+      return;
+    }
   }
 
   if (!letterData | letterData.length === 0) {
@@ -1869,8 +1963,8 @@ var debounce = function debounce(cb) {
   var delay = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : 0;
   var timer = null;
   return function () {
-    for (var _len = arguments.length, args = new Array(_len), _key2 = 0; _key2 < _len; _key2++) {
-      args[_key2] = arguments[_key2];
+    for (var _len = arguments.length, args = new Array(_len), _key = 0; _key < _len; _key++) {
+      args[_key] = arguments[_key];
     }
 
     clearTimeout(timer);

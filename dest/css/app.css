@@ -7355,6 +7355,11 @@ fieldset {
 }
 
 /* line 356, src/scss/_components/icons/_category_icons.scss */
+.icon-handjob {
+  background-image: url(../images/categories/handjob.svg);
+}
+
+/* line 359, src/scss/_components/icons/_category_icons.scss */
 .icon-circled {
   height: 22px;
   width: 22px;
@@ -7489,7 +7494,7 @@ fieldset {
 
 /* line 106, src/scss/_components/category/_sidebar.scss */
 .category-list-container.a2z .category-list-item {
-  padding: 3px 15px 3px 10px;
+  padding: 3px 0 3px 10px;
 }
 
 /* line 111, src/scss/_components/category/_sidebar.scss */
@@ -7903,9 +7908,29 @@ fieldset {
 /* line 407, src/scss/_components/category/_sidebar.scss */
 .category-list-link-a2z .category-list-title {
   font-size: 14px;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+  -webkit-align-items: center;
+      -ms-flex-align: center;
+          align-items: center;
 }
 
-/* line 413, src/scss/_components/category/_sidebar.scss */
+/* line 412, src/scss/_components/category/_sidebar.scss */
+.category-list-link-a2z .category-list-title .webcam {
+  display: inline-block;
+  content: '';
+  background-image: url("../images/icon_cam.png");
+  -webkit-background-size: contain;
+          background-size: contain;
+  width: 14px;
+  height: 15px;
+  margin-left: 5px;
+}
+
+/* line 425, src/scss/_components/category/_sidebar.scss */
 .category-list-link::before {
   content: '';
   display: block;
@@ -7923,12 +7948,12 @@ fieldset {
   background-color: #1b4f90;
 }
 
-/* line 427, src/scss/_components/category/_sidebar.scss */
+/* line 439, src/scss/_components/category/_sidebar.scss */
 .category-list-link.review-category-item {
   padding: 5px 10px 5px 55px;
 }
 
-/* line 430, src/scss/_components/category/_sidebar.scss */
+/* line 442, src/scss/_components/category/_sidebar.scss */
 .category-list-link.review-category-item .icon-category {
   position: absolute;
   left: -40px;
@@ -7938,7 +7963,7 @@ fieldset {
           transform: translateY(-50%);
 }
 
-/* line 439, src/scss/_components/category/_sidebar.scss */
+/* line 451, src/scss/_components/category/_sidebar.scss */
 .category-list-link.visited::before {
   content: '';
   background: transparent;
@@ -7955,13 +7980,13 @@ fieldset {
   margin: -6px 0;
 }
 
-/* line 453, src/scss/_components/category/_sidebar.scss */
+/* line 465, src/scss/_components/category/_sidebar.scss */
 .category-list-link.visited:hover::before {
   -webkit-animation: none;
           animation: none;
 }
 
-/* line 459, src/scss/_components/category/_sidebar.scss */
+/* line 471, src/scss/_components/category/_sidebar.scss */
 .category-list-link::after {
   content: '';
   display: inline-block;
@@ -7978,20 +8003,20 @@ fieldset {
           background-size: contain;
 }
 
-/* line 472, src/scss/_components/category/_sidebar.scss */
+/* line 484, src/scss/_components/category/_sidebar.scss */
 .category-list-link:not(.visited):hover:before {
   -webkit-animation: pulse-grey 1s infinite;
           animation: pulse-grey 1s infinite;
 }
 
-/* line 476, src/scss/_components/category/_sidebar.scss */
+/* line 488, src/scss/_components/category/_sidebar.scss */
 .category-list-link.pulse:not(.visited)::before {
   background: #2eaf61;
   -webkit-animation: pulse-grey 1s infinite;
           animation: pulse-grey 1s infinite;
 }
 
-/* line 483, src/scss/_components/category/_sidebar.scss */
+/* line 495, src/scss/_components/category/_sidebar.scss */
 .category-list-icons {
   grid-column: 2;
   display: -webkit-box;
@@ -8000,13 +8025,13 @@ fieldset {
   display: flex;
 }
 
-/* line 487, src/scss/_components/category/_sidebar.scss */
+/* line 499, src/scss/_components/category/_sidebar.scss */
 .category-list-icons:before {
   display: block;
   content: ' ';
 }
 
-/* line 493, src/scss/_components/category/_sidebar.scss */
+/* line 505, src/scss/_components/category/_sidebar.scss */
 .category-list-letters {
   display: none;
   float: right;
@@ -8017,7 +8042,7 @@ fieldset {
   text-align: center;
 }
 
-/* line 499, src/scss/_components/category/_sidebar.scss */
+/* line 511, src/scss/_components/category/_sidebar.scss */
 .category-list-letter {
   padding: 5px;
   color: #337ab7;
@@ -8025,37 +8050,37 @@ fieldset {
   cursor: pointer;
 }
 
-/* line 505, src/scss/_components/category/_sidebar.scss */
+/* line 517, src/scss/_components/category/_sidebar.scss */
 .category-list-letter.active {
   color: #000;
 }
 
-/* line 513, src/scss/_components/category/_sidebar.scss */
+/* line 525, src/scss/_components/category/_sidebar.scss */
 .light .category-list-link {
   color: #767676;
 }
 
-/* line 516, src/scss/_components/category/_sidebar.scss */
+/* line 528, src/scss/_components/category/_sidebar.scss */
 .light .category-list-title {
   color: #4e4e4e;
 }
 
-/* line 519, src/scss/_components/category/_sidebar.scss */
+/* line 531, src/scss/_components/category/_sidebar.scss */
 .light .category-list-title .highlight {
   color: #000;
 }
 
-/* line 524, src/scss/_components/category/_sidebar.scss */
+/* line 536, src/scss/_components/category/_sidebar.scss */
 .light .category-list-item {
   border-bottom: 1px solid #e5e5e5;
 }
 
-/* line 528, src/scss/_components/category/_sidebar.scss */
+/* line 540, src/scss/_components/category/_sidebar.scss */
 .light .mobile_category_name > span {
   color: #4e4e4e;
 }
 
-/* line 532, src/scss/_components/category/_sidebar.scss */
+/* line 544, src/scss/_components/category/_sidebar.scss */
 .light .category-list-link.visited::before {
   border: solid #1b4f90;
   border-width: 0 1px 1px 0;

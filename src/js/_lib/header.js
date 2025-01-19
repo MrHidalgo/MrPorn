@@ -178,10 +178,12 @@ const markFavourites = () =>{
 }
 
 const letterSearch = () => {
-
-	letterData = getWithExpiry("letter_data_"+dataTime);
-	if(!letterData){
-		letterData = [];
+	if(getWithExpiry("letter_data_"+dataTime)){
+		letterData = getWithExpiry("letter_data_"+dataTime);
+		if(letterData.length > 0){
+			renderSorting();
+			return
+		}
 	}
 
 	if(!letterData | letterData.length===0){
