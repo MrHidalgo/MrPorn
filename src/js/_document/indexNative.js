@@ -549,9 +549,9 @@ let lastMobileSimilarSite;
 		// initBtcShare();
 		//sortCB();
 
-		if(isMobileOrTablet){
-			sortCB();
-		}
+		// if(isMobileOrTablet){
+		// 	sortCB();
+		// }
 
 		goTop = document.querySelector('.go-top');
 
@@ -559,7 +559,7 @@ let lastMobileSimilarSite;
 		initGotoTop();
 
 
-		letterSearch();
+		// letterSearch();
 
 
 		search();

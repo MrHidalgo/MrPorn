@@ -199,9 +199,8 @@
 	}
 
 	&-header {
-		display: flex;
+		position: relative;
 		align-items: center;
-		gap: 20px;
 		padding: 10px 20px;
 
 		@media (max-width: 991px) {
@@ -236,14 +235,13 @@
 	}
 
 	&-close {
-		display: flex;
-		margin-left: auto;
+		position: absolute;
+		top: 18px;
+		right: 20px;
 		cursor: pointer;
 		fill: #fff;
 
 		.icon {
-			width: 24px;
-			height: 24px;
 			fill: #fff;
 			transition: fill 0.2s ease;
 			pointer-events: none;

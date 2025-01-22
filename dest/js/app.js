@@ -2,9 +2,23 @@
 
 function _createForOfIteratorHelper(o, allowArrayLike) { var it; if (typeof Symbol === "undefined" || o[Symbol.iterator] == null) { if (Array.isArray(o) || (it = _unsupportedIterableToArray(o)) || allowArrayLike && o && typeof o.length === "number") { if (it) o = it; var i = 0; var F = function F() {}; return { s: F, n: function n() { if (i >= o.length) return { done: true }; return { done: false, value: o[i++] }; }, e: function e(_e) { throw _e; }, f: F }; } throw new TypeError("Invalid attempt to iterate non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); } var normalCompletion = true, didErr = false, err; return { s: function s() { it = o[Symbol.iterator](); }, n: function n() { var step = it.next(); normalCompletion = step.done; return step; }, e: function e(_e2) { didErr = true; err = _e2; }, f: function f() { try { if (!normalCompletion && it["return"] != null) it["return"](); } finally { if (didErr) throw err; } } }; }
 
+function _toConsumableArray(arr) { return _arrayWithoutHoles(arr) || _iterableToArray(arr) || _unsupportedIterableToArray(arr) || _nonIterableSpread(); }
+
+function _nonIterableSpread() { throw new TypeError("Invalid attempt to spread non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
+
 function _unsupportedIterableToArray(o, minLen) { if (!o) return; if (typeof o === "string") return _arrayLikeToArray(o, minLen); var n = Object.prototype.toString.call(o).slice(8, -1); if (n === "Object" && o.constructor) n = o.constructor.name; if (n === "Map" || n === "Set") return Array.from(o); if (n === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)) return _arrayLikeToArray(o, minLen); }
 
+function _iterableToArray(iter) { if (typeof Symbol !== "undefined" && Symbol.iterator in Object(iter)) return Array.from(iter); }
+
+function _arrayWithoutHoles(arr) { if (Array.isArray(arr)) return _arrayLikeToArray(arr); }
+
 function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len = arr.length; for (var i = 0, arr2 = new Array(len); i < len; i++) { arr2[i] = arr[i]; } return arr2; }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
+
+function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
 
 /*
 * ============================
@@ -335,81 +349,295 @@ function postTextRequest() {
     console.log(err);
     throw err;
   });
-} // const CategoryPopup = () => {
-// 	let self = this;
-// 	const init = () => {
-// 		this.trigger = document.querySelector('.js-category-popup-trigger');
-// 		if(this.trigger === null) return;
-// 		initEvents();
-//
-// 	}
-// 	const initEvents = () => {
-// 		this.trigger.addEventListener('click', toggleSort.bind(this));
-// 	}
-// 	 const toggleSort = () => {
-// 		if(!document.querySelector('#sorter-modal')){
-// 			this.generateSortContent();
-// 		}
-// 		MicroModal.show('sorter-modal',{
-// 			onShow: function (){
-// 				document.body.classList.add('is-hideScroll')
-// 			},
-// 			onClose: function (){
-// 				document.body.classList.remove('is-hideScroll')
-// 			}
-// 		});
-// 	}
-//
-// 	const generateSortContent = () =>{
-// 		const modalHTML = `
-// 		  <div class="micromodal micromodal-slide sorter-modal is-open" id="sorter-modal" aria-hidden="false">
-// 			  <div class="micromodal-overlay" tabindex="-1">
-// 				<div class="micromodal-container custom-scrollbar" role="dialog" aria-modal="true" aria-labelledby="boogie-title">
-// 				  <div class="micromodal-content boogie-issues-content">
-// 					  <div class="micromodal-header">
-// 						<h4 class="micromodal-title" id="boogie-title">
-// 						  <span class="inline-icon icon-thumbsup"></span>
-//
-// 						  <div class="micromodal-title-text">
-// 							Report a Review Feedback for
-// 							<span id="report_review_title" class="color-primary">${reviewName}</span>
-// 						  </div>
-// 						</h4>
-// 						<div class="micromodal-close" data-micromodal-close="">
-// 						  <svg class="icon" xmlns="http://www.w3.org/2000/svg" viewBox="0.51 0.51 22.99 22.99">
-// 							<path d="M23.1294 21.4152L2.58488 0.870773C2.10409 0.38998 1.33062 0.383984 0.85722 0.85738C0.383824 1.33078 0.38982 2.10425 0.870613 2.58504L21.4151 23.1295C21.8959 23.6103 22.6694 23.6163 23.1428 23.1429C23.6161 22.6695 23.6101 21.896 23.1294 21.4152Z"></path>
-// 							<path d="M21.415 0.870638L0.870529 21.4151C0.389736 21.8959 0.38374 22.6694 0.857136 23.1428C1.33053 23.6162 2.10401 23.6102 2.5848 23.1294L23.1293 2.58491C23.6101 2.10412 23.6161 1.33064 23.1427 0.857245C22.6693 0.383849 21.8958 0.389845 21.415 0.870638Z"></path>
-// 						  </svg>
-// 						</div>
-//
-// 					  </div>
-//
-// 					  <hr>
-//
-// 					  <div class="micromodal-body">
-// 					  </div>
-// 					</div>
-// 				</div>
-// 			  </div>
-// 			</div>
-// 		`;
-// 		document.body.insertAdjacentHTML('beforeend', modalHTML);
-//
-// 		return {
-// 			init,
-// 			setVisitedView,
-// 			getVisitedViews
-// 		}
-// 	}
-// }
+}
 
+var A2ZPopup = /*#__PURE__*/function () {
+  function A2ZPopup(data) {
+    var _document$querySelect;
+
+    _classCallCheck(this, A2ZPopup);
+
+    this.data = data.categories;
+    this.popular = data.popular;
+    this.currentLetter = '';
+    this.letters = [];
+    this.categories = [];
+    this.filteredCategories = [];
+    this.selectedCategoryLink = '';
+    this.headerViewActions = document.querySelector('.header__view-actions');
+    this.a2zContainer = document.querySelector('#a2z-modal .micromodal-container');
+    this.processA2ZData(); // this.init();
+
+    var parent = this;
+    (_document$querySelect = document.querySelector('.sort__toggle')) === null || _document$querySelect === void 0 ? void 0 : _document$querySelect.addEventListener('click', function () {
+      var _document$querySelect2;
+
+      // document.querySelector('.search__close')?.click()
+      (_document$querySelect2 = document.querySelector('[search-mobile-js]')) === null || _document$querySelect2 === void 0 ? void 0 : _document$querySelect2.classList.remove("is-open");
+      parent.showA2ZPopup();
+    }); // this.popup = document.querySelector('.a2z-popup');
+    // this.popupClose = document.querySelector('.a2z-popup__close');
+    // this.popupOpen = document.querySelector('.a2z-popup__open');
+    //
+    // this.popupOpen.addEventListener('click', this.openPopup.bind(this));
+    // this.popupClose.addEventListener('click', this.closePopup.bind(this));
+  }
+
+  _createClass(A2ZPopup, [{
+    key: "showA2ZPopup",
+    value: function showA2ZPopup() {
+      var parent = this;
+
+      if (!document.querySelector("#a2z-modal")) {
+        var modalHTML = this.generateA2ZPopupContent();
+        document.body.insertAdjacentHTML('beforeend', modalHTML);
+        this.addA2ZPopupListeners();
+        this.initCategoryEvents();
+      } // Initialize and show the modal
+
+
+      MicroModal.show('a2z-modal', {
+        onShow: function onShow() {
+          if (parent.headerViewActions) {
+            bodyScrollLock.enableBodyScroll(parent.headerViewActions);
+          }
+
+          if (parent.a2zContainer) {
+            bodyScrollLock.disableBodyScroll(parent.a2zContainer);
+          }
+
+          document.body.classList.add('is-hideScroll');
+          var filterInput = document.querySelector('#filter_tag_input');
+          filterInput === null || filterInput === void 0 ? void 0 : filterInput.setAttribute('tabindex', '-1');
+          filterInput === null || filterInput === void 0 ? void 0 : filterInput.blur();
+        },
+        onClose: function onClose() {
+          document.querySelector('#a2z-modal').remove();
+          document.documentElement.classList.remove('is-hideScroll');
+          document.body.classList.remove('is-hideScroll');
+
+          if (parent.a2zContainer) {
+            bodyScrollLock.disableBodyScroll(parent.a2zContainer);
+          }
+        }
+      });
+    }
+  }, {
+    key: "addA2ZPopupListeners",
+    value: function addA2ZPopupListeners() {
+      var _document$querySelect3;
+
+      var parent = this;
+      (_document$querySelect3 = document.querySelector('#filter_tag_input')) === null || _document$querySelect3 === void 0 ? void 0 : _document$querySelect3.addEventListener('input', debounce(function (evt) {
+        var filter = evt.target.value.toLowerCase().trim();
+
+        if (filter == '') {
+          if (parent.currentLetter === '') {
+            parent.updateCategories(parent.categories);
+          } else if (parent.currentLetter === 'popular') {
+            parent.updateCategories(parent.popular, true);
+          } else {
+            parent.updateCategories(parent.data[parent.currentLetter]);
+          }
+
+          return;
+        }
+
+        parent.filteredCategories = parent.filterCategories(filter);
+        parent.updateCategories(parent.filteredCategories);
+      }));
+      document.querySelectorAll('.a2z-letter-item').forEach(function (letter) {
+        letter.addEventListener('click', function (evt) {
+          var _document$querySelect4;
+
+          parent.currentLetter = evt.target.dataset.letter;
+          (_document$querySelect4 = document.querySelector('.a2z-letter-item.active')) === null || _document$querySelect4 === void 0 ? void 0 : _document$querySelect4.classList.remove('active');
+          evt.target.classList.add('active');
+
+          if (parent.currentLetter === '') {
+            parent.updateCategories(parent.categories, true);
+            return;
+          } else if (parent.currentLetter === 'popular') {
+            parent.updateCategories([], true);
+          } else {
+            parent.updateCategories(parent.data[parent.currentLetter]);
+          }
+        });
+      });
+      document.querySelector('.a2z-reset').addEventListener('click', function () {
+        var _document$querySelect5, _document$querySelect6;
+
+        (_document$querySelect5 = document.querySelector('.a2z-letter-item.active')) === null || _document$querySelect5 === void 0 ? void 0 : _document$querySelect5.classList.remove('active');
+        (_document$querySelect6 = document.querySelector('.a2z-letter-item.all')) === null || _document$querySelect6 === void 0 ? void 0 : _document$querySelect6.classList.add('active');
+        document.querySelector('#filter_tag_input').value = '';
+        parent.currentLetter = '';
+        parent.updateCategories(parent.categories, true);
+        parent.selectedCategoryLink = '';
+      });
+      document.querySelector('.a2z-apply').addEventListener('click', function (evt) {
+        evt.target.disabled = true;
+
+        if (parent.selectedCategoryLink === '') {
+          MicroModal.close('a2z-modal');
+          return;
+        }
+
+        window.location.href = parent.selectedCategoryLink;
+      });
+    }
+  }, {
+    key: "processA2ZData",
+    value: function processA2ZData() {
+      console.log('this.data', this.data);
+
+      for (var key in this.data) {
+        if (this.data.hasOwnProperty(key)) {
+          this.letters.push(key);
+          this.categories = this.categories.concat(this.data[key]);
+          this.categories.sort();
+        }
+      }
+
+      this.letters.sort();
+    }
+  }, {
+    key: "filterCategories",
+    value: function filterCategories(filter) {
+      var filteredCategories = _toConsumableArray(this.categories);
+
+      filteredCategories = filteredCategories.sort(function (a, b) {
+        var titleA = a.title.toLowerCase();
+        var titleB = b.title.toLowerCase();
+        var posA = titleA.indexOf(filter);
+        var posB = titleB.indexOf(filter); // Strings with the search term come first
+
+        if (posA !== -1 && posB === -1) return -1;
+        if (posA === -1 && posB !== -1) return 1; // If both contain the term, sort by position
+
+        if (posA !== -1 && posB !== -1) return posA - posB; // Otherwise, keep the original order
+
+        return a.order - b.order;
+      });
+      filteredCategories.forEach(function (item, index) {
+        item.index = index;
+      });
+      var premiumItems = filteredCategories.filter(function (item) {
+        return item.title.toLowerCase().includes("premium") && item.title.toLowerCase().includes(filter.toLowerCase());
+      });
+      var nonPremiumItems = filteredCategories.filter(function (item) {
+        return !(item.title.toLowerCase().includes("premium") && item.title.toLowerCase().includes(filter.toLowerCase()));
+      }); // Remove 'Premium' items
+
+      nonPremiumItems = nonPremiumItems.sort(function (a, b) {
+        return a.index - b.index;
+      });
+      filteredCategories = premiumItems.concat(nonPremiumItems);
+      return filteredCategories;
+    }
+  }, {
+    key: "generateA2ZPopupContent",
+    value: function generateA2ZPopupContent() {
+      var popupContent = "\n\t\t  <div class=\"micromodal micromodal-slide boogie-modal is-open\" id=\"a2z-modal\" aria-hidden=\"false\">\n\t\t\t  <div class=\"micromodal-overlay\" tabindex=\"-1\">\n\t\t\t\t<div class=\"micromodal-container custom-scrollbar\" role=\"dialog\" aria-modal=\"true\" aria-labelledby=\"boogie-title\">\n\t\t\t\t  <div class=\"micromodal-content a2z-content\">\n\t\t\t\t\t  <div class=\"micromodal-header\">\n\t\t\t\t\t\t\t<div class=\"micromodal-title\" id=\"boogie-title\">\n\t\t\t\t\t\t\t\t<div class=\"micromodal-title-text\">A-Z Category List</div>\n\t\t\t\t\t\t\t</div>\n\t\t\t\t\t\t\t<div class=\"a2z-header\">\n\t\t\t\t\t\t\t\t".concat(this.renderA2ZLetters(), "\n\n\t\t\t\t\t\t\t\t<div class=\"filter_tag\">\n\t\t\t\t\t\t\t\t\t<input placeholder=\"Type to search...\" type=\"text\" id=\"filter_tag_input\" autocomplete=\"off\"/>\n\t\t\t\t\t\t\t\t</div>\n\t\t\t\t\t\t\t</div>\n\n\n\t\t\t\t\t\t\t<div class=\"micromodal-close\" data-micromodal-close=\"\">\n\t\t\t\t\t\t\t\t<svg class=\"icon\" xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0.51 0.51 22.99 22.99\" width=\"16px\" height=\"16px\">\n\t\t\t\t\t\t\t\t\t<path d=\"M23.1294 21.4152L2.58488 0.870773C2.10409 0.38998 1.33062 0.383984 0.85722 0.85738C0.383824 1.33078 0.38982 2.10425 0.870613 2.58504L21.4151 23.1295C21.8959 23.6103 22.6694 23.6163 23.1428 23.1429C23.6161 22.6695 23.6101 21.896 23.1294 21.4152Z\"></path>\n\t\t\t\t\t\t\t\t\t<path d=\"M21.415 0.870638L0.870529 21.4151C0.389736 21.8959 0.38374 22.6694 0.857136 23.1428C1.33053 23.6162 2.10401 23.6102 2.5848 23.1294L23.1293 2.58491C23.6101 2.10412 23.6161 1.33064 23.1427 0.857245C22.6693 0.383849 21.8958 0.389845 21.415 0.870638Z\"></path>\n\t\t\t\t\t\t\t\t</svg>\n\t\t\t\t\t\t\t</div>\n\t\t\t\t\t  </div>\n\n\t\t\t\t\t  <div class=\"micromodal-body\">\n\t\t\t\t\t\t\t").concat(this.renderCategories(), "\n\t\t\t\t\t  </div>\n\t\t\t\t\t  <div class=\"micromodal-footer\">\n\t\t\t\t\t\t\t<button class=\"btn btn-secondary a2z-reset\">Reset all</button>\n\t\t\t\t\t\t\t<button class=\"btn btn-success a2z-apply progress-button\">\n\t\t\t\t\t\t\t\t<span class=\"progress-spinner\"></span>\n\t\t\t\t\t\t\t\tApply\n\t\t\t\t\t\t\t</button>\n\t\t\t\t\t\t</div>\n\t\t\t\t\t</div>\n\t\t\t\t</div>\n\t\t\t  </div>\n\t\t\t</div>\n\t\t");
+      return popupContent;
+    }
+  }, {
+    key: "renderA2ZLetters",
+    value: function renderA2ZLetters() {
+      var letters = this.letters.map(function (letter) {
+        return "<li class=\"a2z-letter-item\" data-letter=\"".concat(letter, "\">").concat(letter, "</li>");
+      });
+      var a2ZLetterContent = "<ul class=\"a2z-letters-container\">\n\t\t\t<li class=\"a2z-letter-item popular\" data-letter=\"popular\">Popular</li>\n\t\t\t<li class=\"a2z-letter-item all\" data-letter=\"\">#</li>\n\t\t\t".concat(letters.join(''), "\n\t\t</ul>");
+      return a2ZLetterContent;
+    }
+  }, {
+    key: "renderPopular",
+    value: function renderPopular() {
+      var popular = this.popular.map(function (category) {
+        return "<button class=\"a2z-btn a2z-category-item a2z-popular-item\" data-link=\"".concat(category.link, "\">").concat(category.title, "</button>");
+      });
+      return popular.join('');
+    }
+  }, {
+    key: "renderCategories",
+    value: function renderCategories() {
+      var currentCategories = [];
+
+      if (this.currentLetter === 'popular') {
+        currentCategories = [];
+      } else if (this.currentLetter !== '') {
+        var _this$data$this$curre;
+
+        currentCategories = (_this$data$this$curre = this.data[this.currentLetter]) !== null && _this$data$this$curre !== void 0 ? _this$data$this$curre : [];
+      } else {
+        currentCategories = this.categories;
+      }
+
+      var popular = [];
+
+      if (this.currentLetter === 'popular' || this.currentLetter === '') {
+        popular = this.popular.map(function (category) {
+          return "<button class=\"a2z-btn a2z-category-item a2z-popular-item\" data-link=\"".concat(category.link, "\">").concat(category.title, "</button>");
+        });
+      }
+
+      var categories = currentCategories.map(function (category) {
+        return "<button class=\"a2z-btn a2z-category-item\" data-link=\"".concat(category.link, "\">").concat(category.title, "</button>");
+      });
+      var a2ZCategoryContent = "<div class=\"a2z-categories-container\">".concat(popular.join('')).concat(categories.join(''), "</div>");
+      return a2ZCategoryContent;
+    }
+  }, {
+    key: "updateCategories",
+    value: function updateCategories(categories) {
+      var isPopular = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : false;
+      var popular = [];
+
+      if (isPopular) {
+        popular = this.popular.map(function (category) {
+          return "<button class=\"a2z-btn a2z-category-item a2z-popular-item\" data-link=\"".concat(category.link, "\">").concat(category.title, "</button>");
+        });
+      }
+
+      var categoriesList = categories.map(function (category) {
+        return "<button class=\"a2z-btn a2z-category-item\" data-link=\"".concat(category.link, "\">").concat(category.title, "</button>");
+      });
+      document.querySelector('.a2z-categories-container').innerHTML = popular.join('') + categoriesList.join('');
+      this.initCategoryEvents();
+    }
+  }, {
+    key: "initCategoryEvents",
+    value: function initCategoryEvents() {
+      var parent = this;
+      document.querySelectorAll('.a2z-category-item').forEach(function (category) {
+        category.addEventListener('click', function (evt) {
+          var _document$querySelect7;
+
+          (_document$querySelect7 = document.querySelector('.a2z-category-item.active')) === null || _document$querySelect7 === void 0 ? void 0 : _document$querySelect7.classList.remove('active');
+          var cat = evt.target;
+          cat.classList.toggle('active');
+
+          if (cat.classList.contains('active')) {
+            parent.selectedCategoryLink = cat.dataset.link;
+          } else {
+            parent.selectedCategoryLink = '';
+          }
+        });
+      });
+    }
+  }]);
+
+  return A2ZPopup;
+}();
 /*
 * Category page scripts
 * */
 
 
 function initCategoryPage() {
-  var _getCookieMpgCookie, _getCookieMpgCookie2, _getCookieMpgCookie3;
+  var _getCookieMpgCookie,
+      _getCookieMpgCookie2,
+      _getCookieMpgCookie3,
+      _this = this;
 
   var categorySidebar;
   var isMobile = isMobileOrTablet;
@@ -663,11 +891,11 @@ function initCategoryPage() {
       (_categorySidebar = categorySidebar) === null || _categorySidebar === void 0 ? void 0 : _categorySidebar.destroy();
       setSidebarHeight();
     } else {
-      var _document$querySelect;
+      var _document$querySelect8;
 
       createCookie("category_filter_scroll", 0, 356);
       leftSidebar === null || leftSidebar === void 0 ? void 0 : leftSidebar.classList.remove('scroll');
-      (_document$querySelect = document.querySelector('.category_list-sites')) === null || _document$querySelect === void 0 ? void 0 : _document$querySelect.classList.add('has_sidebar');
+      (_document$querySelect8 = document.querySelector('.category_list-sites')) === null || _document$querySelect8 === void 0 ? void 0 : _document$querySelect8.classList.add('has_sidebar');
       catListSites === null || catListSites === void 0 ? void 0 : catListSites.classList.remove('scroll');
       setSidebarHeight(true);
       initStickySidebar();
@@ -746,10 +974,10 @@ function initCategoryPage() {
         liChar.dataset.letter = letter;
         categoryListLetters.appendChild(liChar);
         liChar.addEventListener("click", function (e) {
-          var _document$querySelect2;
+          var _document$querySelect9;
 
           var triggeredLetter = e.currentTarget.dataset.letter;
-          (_document$querySelect2 = document.querySelector('.category-list-letter.active')) === null || _document$querySelect2 === void 0 ? void 0 : _document$querySelect2.classList.remove('active');
+          (_document$querySelect9 = document.querySelector('.category-list-letter.active')) === null || _document$querySelect9 === void 0 ? void 0 : _document$querySelect9.classList.remove('active');
           var letterTop = document.querySelector(sidebarContainer + ' .category-list-item-letter.letter_' + triggeredLetter).offsetTop;
           console.log('letter top ' + triggeredLetter, letterTop);
           desktopMenuListContainer.scrollTo({
@@ -890,15 +1118,15 @@ function initCategoryPage() {
   };
 
   var fetchA2Z = function fetchA2Z() {
-    if (getWithExpiry('a2zData')) {
-      processA2ZData(getWithExpiry('a2zData'));
+    if (getWithExpiry('a2z_data')) {
+      processA2ZData(getWithExpiry('a2z_data'));
       return;
     }
 
     fetch('/wp-json/mpg/a2z/').then(function (res) {
       return res.json();
     }).then(function (result) {
-      setWithExpiry('a2zData', result, 30 * 60 * 1000);
+      setWithExpiry('a2z_data', result, 30 * 60 * 1000);
       processA2ZData(result);
       console.log('a2zData ', result); // let filteredCategories = [...categoryItems];
     })["catch"](function (err) {// console.log('didnt load translations');
@@ -908,9 +1136,10 @@ function initCategoryPage() {
   var processA2ZData = function processA2ZData(result) {
     a2zCategories = [];
     a2zLetters = [];
+    new A2ZPopup(result);
     var a2zOrder = 0;
 
-    for (var letter in result) {
+    for (var letter in result.categories) {
       a2zCategories.push({
         'letter': letter,
         'title': '',
@@ -918,7 +1147,7 @@ function initCategoryPage() {
       });
       a2zLetters.push(letter);
 
-      var _iterator3 = _createForOfIteratorHelper(result[letter]),
+      var _iterator3 = _createForOfIteratorHelper(result.categories[letter]),
           _step3;
 
       try {
@@ -926,7 +1155,7 @@ function initCategoryPage() {
           var categoryItem = _step3.value;
           a2zCategories.push({
             'id': categoryItem.category,
-            'title': categoryItem.name,
+            'title': categoryItem.title,
             'link': categoryItem.link,
             'count': categoryItem.count,
             'is_webcam': categoryItem.is_webcam,
@@ -943,6 +1172,10 @@ function initCategoryPage() {
       a2zOrder++;
     }
 
+    initCategorySidebar();
+  };
+
+  var initCategorySidebar = function initCategorySidebar() {
     if (bodyClasses.contains('category') || bodyClasses.contains('page-template-page-categories')) {
       createSidebar();
 
@@ -957,16 +1190,34 @@ function initCategoryPage() {
   fetchA2Z();
 
   if (!filterA2z) {
-    if (bodyClasses.contains('category') || bodyClasses.contains('page-template-page-categories')) {
-      createSidebar();
-
-      if (!filterScroll) {
-        initStickySidebar();
-      }
-    } else {
-      createSidebar();
-    }
+    initCategorySidebar();
   }
+
+  var a2zPopup = function a2zPopup() {
+    // Check if modal already exists
+    if (!document.querySelector("#boogie-modal")) {
+      // Create modal HTML
+      var reviewTitle = document.querySelector('.review-title-line h1').innerHTML;
+
+      var modalHTML = _this.generateReportReviewContent(reviewTitle); // Inject modal into the body
+
+
+      document.body.insertAdjacentHTML('beforeend', modalHTML);
+
+      _this.addReviewReportItemClickListeners();
+    } // Initialize and show the modal
+
+
+    MicroModal.show('boogie-modal', {
+      onShow: function onShow() {
+        document.body.classList.add('is-hideScroll');
+      },
+      onClose: function onClose() {
+        document.querySelector('#boogie-modal').remove();
+        document.body.classList.remove('is-hideScroll');
+      }
+    });
+  };
 }
 
 (function () {
@@ -2698,14 +2949,13 @@ var lastMobileSimilarSite;
     renderFavourites();
     viewFavoritesToggle(); // initBtcShare();
     //sortCB();
-
-    if (isMobileOrTablet) {
-      sortCB();
-    }
+    // if(isMobileOrTablet){
+    // 	sortCB();
+    // }
 
     goTop = document.querySelector('.go-top');
-    initGotoTop();
-    letterSearch();
+    initGotoTop(); // letterSearch();
+
     search();
     showThumbInfoOnHover();
 

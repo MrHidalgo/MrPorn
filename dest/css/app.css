@@ -2173,12 +2173,1058 @@ strong {
   }
 }
 
-/* line 7, src/scss/_shared/_common.scss */
+/* line 1, src/scss/_components/misc/_micromodal.scss */
+.micromodal {
+  color: #000;
+}
+
+/* line 4, src/scss/_components/misc/_micromodal.scss */
+.micromodal hr {
+  margin: 20px 0;
+  border: none;
+  border-top: 1px solid #484a54;
+}
+
+/* line 10, src/scss/_components/misc/_micromodal.scss */
+.micromodal p {
+  margin-bottom: 20px;
+  font-size: 14px;
+  line-height: 1.4;
+}
+
+/* line 16, src/scss/_components/misc/_micromodal.scss */
+.micromodal .color-primary {
+  color: #3e98cf;
+}
+
+/* line 20, src/scss/_components/misc/_micromodal.scss */
+.micromodal .color-secondary {
+  color: #8c8d96;
+}
+
+/* line 24, src/scss/_components/misc/_micromodal.scss */
+.micromodal .color-success {
+  color: #2eaf61;
+}
+
+/* line 28, src/scss/_components/misc/_micromodal.scss */
+.micromodal .color-error {
+  color: #f60000;
+}
+
+/* line 32, src/scss/_components/misc/_micromodal.scss */
+.micromodal .text-center {
+  text-align: center;
+}
+
+/* line 35, src/scss/_components/misc/_micromodal.scss */
+.micromodal .report_review_title {
+  line-height: 1.25;
+}
+
+/* line 39, src/scss/_components/misc/_micromodal.scss */
+.micromodal .btn {
+  border: none;
+  cursor: pointer;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+  -webkit-align-items: center;
+      -ms-flex-align: center;
+          align-items: center;
+  font-size: 14px;
+  padding: 18px 31px;
+  -webkit-border-radius: 10px;
+          border-radius: 10px;
+  text-align: center;
+  line-height: 1;
+  -webkit-transition: opacity 0.2s ease, background-color 0.2s ease;
+  -o-transition: opacity 0.2s ease, background-color 0.2s ease;
+  transition: opacity 0.2s ease, background-color 0.2s ease;
+}
+
+/* line 53, src/scss/_components/misc/_micromodal.scss */
+.micromodal .btn-back .icon {
+  width: 18px;
+  height: 12px;
+  margin-right: 10px;
+  fill: #8c8d96;
+  -webkit-transform: rotate(180deg);
+      -ms-transform: rotate(180deg);
+          transform: rotate(180deg);
+}
+
+/* line 62, src/scss/_components/misc/_micromodal.scss */
+.micromodal .btn-primary {
+  background-color: #007aff;
+  color: #fff;
+}
+
+/* line 68, src/scss/_components/misc/_micromodal.scss */
+.micromodal .btn-primary:active {
+  background-color: #024b93;
+}
+
+@media (min-width: 1025px) {
+  /* line 73, src/scss/_components/misc/_micromodal.scss */
+  .micromodal .btn-primary:hover {
+    background-color: #007aff;
+  }
+}
+
+/* line 78, src/scss/_components/misc/_micromodal.scss */
+.micromodal .btn-secondary {
+  background-color: #f0f1f5;
+  color: #8c8d96;
+}
+
+/* line 82, src/scss/_components/misc/_micromodal.scss */
+.micromodal .btn-secondary:active {
+  background-color: #e4e5e7;
+}
+
+@media (min-width: 1025px) {
+  /* line 87, src/scss/_components/misc/_micromodal.scss */
+  .micromodal .btn-secondary:hover {
+    background-color: #e4e5e7;
+  }
+}
+
+/* line 93, src/scss/_components/misc/_micromodal.scss */
+.micromodal .btn-success {
+  background-color: #29a656;
+  color: #fff;
+}
+
+/* line 97, src/scss/_components/misc/_micromodal.scss */
+.micromodal .btn-success:active {
+  background-color: #1e8142;
+}
+
+@media (min-width: 1025px) {
+  /* line 102, src/scss/_components/misc/_micromodal.scss */
+  .micromodal .btn-success:hover {
+    background-color: #1e8142;
+  }
+}
+
+/* line 107, src/scss/_components/misc/_micromodal.scss */
+.micromodal .btn-submit {
+  cursor: pointer;
+  width: 150px;
+}
+
+/* line 110, src/scss/_components/misc/_micromodal.scss */
+.micromodal .btn-submit .btn-text {
+  display: block;
+}
+
+/* line 111, src/scss/_components/misc/_micromodal.scss */
+.micromodal .btn-submit .lds-dual-ring {
+  display: none;
+  width: 24px;
+  height: 24px;
+}
+
+/* line 116, src/scss/_components/misc/_micromodal.scss */
+.micromodal .btn-submit .lds-dual-ring:after {
+  content: " ";
+  display: block;
+  width: 20px;
+  height: 20px;
+  -webkit-border-radius: 50%;
+          border-radius: 50%;
+  border: 2px solid #fff;
+  border-color: #fff transparent #fff transparent;
+  -webkit-animation: progress-spinner 1.2s linear infinite;
+          animation: progress-spinner 1.2s linear infinite;
+}
+
+/* line 128, src/scss/_components/misc/_micromodal.scss */
+.micromodal .btn-submit.spin .btn-text {
+  display: none;
+}
+
+/* line 129, src/scss/_components/misc/_micromodal.scss */
+.micromodal .btn-submit.spin .lds-dual-ring {
+  display: inline-block;
+}
+
+/* line 137, src/scss/_components/misc/_micromodal.scss */
+.micromodal .inline-icon {
+  -webkit-flex-shrink: 0;
+      -ms-flex-negative: 0;
+          flex-shrink: 0;
+  width: 20px;
+  height: 20px;
+  -webkit-background-size: contain;
+          background-size: contain;
+}
+
+/* line 144, src/scss/_components/misc/_micromodal.scss */
+.micromodal-slide {
+  display: none;
+}
+
+/* line 147, src/scss/_components/misc/_micromodal.scss */
+.micromodal-slide.is-open {
+  display: block;
+}
+
+/* line 152, src/scss/_components/misc/_micromodal.scss */
+.micromodal-slide[aria-hidden="false"] .micromodal-overlay {
+  -webkit-animation: mmfadeIn 0.3s cubic-bezier(0, 0, 0.2, 1);
+          animation: mmfadeIn 0.3s cubic-bezier(0, 0, 0.2, 1);
+}
+
+/* line 156, src/scss/_components/misc/_micromodal.scss */
+.micromodal-slide[aria-hidden="false"] .micromodal-container {
+  -webkit-animation: mmslideIn 0.3s cubic-bezier(0, 0, 0.2, 1);
+          animation: mmslideIn 0.3s cubic-bezier(0, 0, 0.2, 1);
+}
+
+/* line 162, src/scss/_components/misc/_micromodal.scss */
+.micromodal-slide[aria-hidden="true"] .micromodal-overlay {
+  -webkit-animation: mmfadeOut 0.3s cubic-bezier(0, 0, 0.2, 1);
+          animation: mmfadeOut 0.3s cubic-bezier(0, 0, 0.2, 1);
+}
+
+/* line 166, src/scss/_components/misc/_micromodal.scss */
+.micromodal-slide[aria-hidden="true"] .micromodal-container {
+  -webkit-animation: mmslideOut 0.3s cubic-bezier(0, 0, 0.2, 1);
+          animation: mmslideOut 0.3s cubic-bezier(0, 0, 0.2, 1);
+}
+
+/* line 172, src/scss/_components/misc/_micromodal.scss */
+.micromodal .micromodal-overlay {
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  z-index: 9999;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+  -webkit-align-items: center;
+      -ms-flex-align: center;
+          align-items: center;
+  background: rgba(0, 0, 0, 0.6);
+  -webkit-backdrop-filter: blur(10px);
+          backdrop-filter: blur(10px);
+}
+
+/* line 186, src/scss/_components/misc/_micromodal.scss */
+.micromodal .micromodal-container {
+  width: 100%;
+  max-width: 940px;
+  max-height: 90vh;
+  margin: 0 10px;
+  -webkit-border-radius: 10px;
+          border-radius: 10px;
+  overflow-y: auto;
+}
+
+/* line 195, src/scss/_components/misc/_micromodal.scss */
+.micromodal-content {
+  -webkit-border-radius: 10px;
+          border-radius: 10px;
+  background-color: #2a2b31;
+  color: #fff;
+}
+
+/* line 201, src/scss/_components/misc/_micromodal.scss */
+.micromodal-header {
+  position: relative;
+  -webkit-box-align: center;
+  -webkit-align-items: center;
+      -ms-flex-align: center;
+          align-items: center;
+  padding: 10px 20px;
+}
+
+@media (max-width: 991px) {
+  /* line 201, src/scss/_components/misc/_micromodal.scss */
+  .micromodal-header {
+    padding: 12px 20px;
+  }
+}
+
+/* line 210, src/scss/_components/misc/_micromodal.scss */
+.micromodal-header + hr {
+  margin: 0;
+}
+
+/* line 214, src/scss/_components/misc/_micromodal.scss */
+.micromodal-header .inline-icon {
+  width: 40px;
+  height: 40px;
+}
+
+/* line 220, src/scss/_components/misc/_micromodal.scss */
+.micromodal-title {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+  -webkit-align-items: center;
+      -ms-flex-align: center;
+          align-items: center;
+  gap: 14px;
+  overflow: hidden;
+  font-size: 24px;
+}
+
+@media (max-width: 991px) {
+  /* line 220, src/scss/_components/misc/_micromodal.scss */
+  .micromodal-title {
+    font-size: 18px;
+  }
+}
+
+/* line 231, src/scss/_components/misc/_micromodal.scss */
+.micromodal-title-text {
+  overflow: hidden;
+  -o-text-overflow: ellipsis;
+     text-overflow: ellipsis;
+}
+
+/* line 237, src/scss/_components/misc/_micromodal.scss */
+.micromodal-close {
+  position: absolute;
+  top: 18px;
+  right: 20px;
+  cursor: pointer;
+  fill: #fff;
+}
+
+/* line 244, src/scss/_components/misc/_micromodal.scss */
+.micromodal-close .icon {
+  fill: #fff;
+  -webkit-transition: fill 0.2s ease;
+  -o-transition: fill 0.2s ease;
+  transition: fill 0.2s ease;
+  pointer-events: none;
+}
+
+/* line 250, src/scss/_components/misc/_micromodal.scss */
+.micromodal-close:hover .icon {
+  fill: #1c3f87;
+}
+
+/* line 254, src/scss/_components/misc/_micromodal.scss */
+.micromodal-close:active .icon {
+  fill: #1c3f87;
+}
+
+@media (min-width: 1025px) {
+  /* line 259, src/scss/_components/misc/_micromodal.scss */
+  .micromodal-close:hover .icon {
+    fill: #1c3f87;
+  }
+}
+
+/* line 265, src/scss/_components/misc/_micromodal.scss */
+.micromodal-body {
+  padding: 20px 30px;
+}
+
+@media (max-width: 991px) {
+  /* line 265, src/scss/_components/misc/_micromodal.scss */
+  .micromodal-body {
+    padding: 20px;
+  }
+}
+
+/* line 273, src/scss/_components/misc/_micromodal.scss */
+.micromodal-hero {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+  -webkit-flex-direction: column;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: center;
+  -webkit-align-items: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+/* line 278, src/scss/_components/misc/_micromodal.scss */
+.micromodal-hero p {
+  margin-bottom: 50px;
+  font-size: 18px;
+  line-height: 1.5;
+  text-align: center;
+}
+
+@media (max-width: 991px) {
+  /* line 278, src/scss/_components/misc/_micromodal.scss */
+  .micromodal-hero p {
+    font-size: 16px;
+  }
+}
+
+/* line 289, src/scss/_components/misc/_micromodal.scss */
+.micromodal-hero .micromodal-title {
+  margin-bottom: 30px;
+  text-align: center;
+  font-size: 30px;
+}
+
+@media (max-width: 991px) {
+  /* line 289, src/scss/_components/misc/_micromodal.scss */
+  .micromodal-hero .micromodal-title {
+    margin-bottom: 20px;
+    font-size: 26px;
+  }
+}
+
+/* line 300, src/scss/_components/misc/_micromodal.scss */
+.micromodal-hero .inline-icon {
+  margin-bottom: 30px;
+  width: 160px;
+  height: 160px;
+}
+
+/* line 307, src/scss/_components/misc/_micromodal.scss */
+.micromodal-hero-actions {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-wrap: wrap;
+      -ms-flex-wrap: wrap;
+          flex-wrap: wrap;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+  -webkit-align-items: center;
+      -ms-flex-align: center;
+          align-items: center;
+  gap: 20px;
+}
+
+/* line 314, src/scss/_components/misc/_micromodal.scss */
+.micromodal-hero-actions .btn {
+  -webkit-box-flex: 1;
+  -webkit-flex-grow: 1;
+      -ms-flex-positive: 1;
+          flex-grow: 1;
+}
+
+@-webkit-keyframes mmfadeIn {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+@keyframes mmfadeIn {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+@-webkit-keyframes mmfadeOut {
+  0% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+  }
+}
+
+@keyframes mmfadeOut {
+  0% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+  }
+}
+
+@-webkit-keyframes mmslideIn {
+  0% {
+    -webkit-transform: translateY(15%);
+            transform: translateY(15%);
+  }
+  100% {
+    -webkit-transform: translateY(0);
+            transform: translateY(0);
+  }
+}
+
+@keyframes mmslideIn {
+  0% {
+    -webkit-transform: translateY(15%);
+            transform: translateY(15%);
+  }
+  100% {
+    -webkit-transform: translateY(0);
+            transform: translateY(0);
+  }
+}
+
+@-webkit-keyframes mmslideOut {
+  0% {
+    -webkit-transform: translateY(0);
+            transform: translateY(0);
+  }
+  100% {
+    -webkit-transform: translateY(-10%);
+            transform: translateY(-10%);
+  }
+}
+
+@keyframes mmslideOut {
+  0% {
+    -webkit-transform: translateY(0);
+            transform: translateY(0);
+  }
+  100% {
+    -webkit-transform: translateY(-10%);
+            transform: translateY(-10%);
+  }
+}
+
+/* line 359, src/scss/_components/misc/_micromodal.scss */
+.micromodal .icon-thumbsup {
+  background-image: url(../images/report/icon-thumbs-up.svg);
+}
+
+/* line 362, src/scss/_components/misc/_micromodal.scss */
+.micromodal .icon-broken-link {
+  background-image: url(../images/report/icon-broken.svg);
+}
+
+/* line 365, src/scss/_components/misc/_micromodal.scss */
+.micromodal .icon-inaccuracy {
+  background-image: url(../images/report/icon-inaccuracy.svg);
+}
+
+/* line 368, src/scss/_components/misc/_micromodal.scss */
+.micromodal .icon-comment-bubble {
+  background-image: url(../images/report/icon-bubble.svg);
+}
+
+/* line 371, src/scss/_components/misc/_micromodal.scss */
+.micromodal .icon-speech-bubble-icon {
+  background-image: url(../images/report/icon-bubble.svg);
+}
+
+/* line 374, src/scss/_components/misc/_micromodal.scss */
+.micromodal .icon-screenshot {
+  background-image: url(../images/report/icon-screen-shot.svg);
+}
+
+/* line 378, src/scss/_components/misc/_micromodal.scss */
+.micromodal .icon-categories {
+  background-image: url(../images/report/icon-category.svg);
+}
+
+/* line 382, src/scss/_components/misc/_micromodal.scss */
+.micromodal .icon-spam {
+  background-image: url(../images/report/icon-envelope.svg);
+}
+
+/* line 386, src/scss/_components/misc/_micromodal.scss */
+.micromodal .icon-age-limit {
+  background-image: url(../images/report/icon-18-plus.svg);
+}
+
+/* line 390, src/scss/_components/misc/_micromodal.scss */
+.micromodal .icon-revenge {
+  background-image: url(../images/report/icon-revenge.svg);
+}
+
+/* line 393, src/scss/_components/misc/_micromodal.scss */
+.micromodal .icon-speech-bubble-heart-success {
+  background-image: url(../images/report/icon-bubble.svg);
+}
+
+/* line 396, src/scss/_components/misc/_micromodal.scss */
+.micromodal .icon-report-success {
+  background-image: url(../images/report/icon-success.svg);
+}
+
+/* line 400, src/scss/_components/misc/_micromodal.scss */
+.boogie-list {
+  margin: 10px -30px 0;
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 1.625;
+}
+
+@media (max-width: 991px) {
+  /* line 400, src/scss/_components/misc/_micromodal.scss */
+  .boogie-list {
+    margin: 10px -20px 0;
+  }
+}
+
+/* line 411, src/scss/_components/misc/_micromodal.scss */
+.boogie-list-item {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+  -webkit-justify-content: space-between;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  -webkit-box-align: center;
+  -webkit-align-items: center;
+      -ms-flex-align: center;
+          align-items: center;
+  gap: 10px;
+  padding: 12px 30px;
+  cursor: pointer;
+  -webkit-transition: background-color 0.2s ease, color 0.2s ease;
+  -o-transition: background-color 0.2s ease, color 0.2s ease;
+  transition: background-color 0.2s ease, color 0.2s ease;
+}
+
+/* line 420, src/scss/_components/misc/_micromodal.scss */
+.boogie-list-item .arrow {
+  fill: #fff;
+}
+
+/* line 424, src/scss/_components/misc/_micromodal.scss */
+.boogie-list-item:hover {
+  background-color: #484a54;
+  color: #3e98cf;
+}
+
+/* line 431, src/scss/_components/misc/_micromodal.scss */
+.boogie-list-item:hover .arrow {
+  fill: #3e98cf;
+}
+
+/* line 436, src/scss/_components/misc/_micromodal.scss */
+.boogie-list-item:active {
+  background-color: #f0f1f5;
+  color: #000;
+}
+
+@media (max-width: 991px) {
+  /* line 411, src/scss/_components/misc/_micromodal.scss */
+  .boogie-list-item {
+    padding: 15px 20px;
+  }
+}
+
+/* line 445, src/scss/_components/misc/_micromodal.scss */
+.boogie-list-item .icon {
+  -webkit-flex-shrink: 0;
+      -ms-flex-negative: 0;
+          flex-shrink: 0;
+  width: 20px;
+  height: 20px;
+  fill: #8c8d96;
+  -webkit-transition: fill 0.2s ease;
+  -o-transition: fill 0.2s ease;
+  transition: fill 0.2s ease;
+}
+
+@media (min-width: 1025px) {
+  /* line 452, src/scss/_components/misc/_micromodal.scss */
+  .boogie-list-item .icon:hover {
+    fill: #ff8c04;
+  }
+}
+
+/* line 458, src/scss/_components/misc/_micromodal.scss */
+.boogie-list-item .icon:active {
+  fill: #ff8c04;
+}
+
+/* line 464, src/scss/_components/misc/_micromodal.scss */
+.boogie-list-text {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+  -webkit-align-items: center;
+      -ms-flex-align: center;
+          align-items: center;
+  gap: 10px;
+}
+
+/* line 470, src/scss/_components/misc/_micromodal.scss */
+.boogie-link {
+  background: no-repeat 50% 100%;
+  background-image: -webkit-gradient(linear, left top, left bottom, from(currentColor), to(currentColor));
+  background-image: -webkit-linear-gradient(currentColor, currentColor);
+  background-image: -o-linear-gradient(currentColor, currentColor);
+  background-image: linear-gradient(currentColor, currentColor);
+  -webkit-background-size: 100% 1px;
+          background-size: 100% 1px;
+  -webkit-transition: -webkit-background-size 0.2s ease;
+  transition: -webkit-background-size 0.2s ease;
+  -o-transition: background-size 0.2s ease;
+  transition: background-size 0.2s ease;
+  transition: background-size 0.2s ease, -webkit-background-size 0.2s ease;
+}
+
+/* line 476, src/scss/_components/misc/_micromodal.scss */
+.boogie-link:active {
+  -webkit-background-size: 0 1px;
+          background-size: 0 1px;
+}
+
+@media (min-width: 1025px) {
+  /* line 480, src/scss/_components/misc/_micromodal.scss */
+  .boogie-link:hover {
+    -webkit-background-size: 0 1px;
+            background-size: 0 1px;
+  }
+}
+
+/* line 487, src/scss/_components/misc/_micromodal.scss */
+.boogie-disclaimer {
+  margin-bottom: 20px;
+  padding: 10px;
+  -webkit-border-radius: 10px;
+          border-radius: 10px;
+  background: #484a54;
+  color: #fff;
+}
+
+/* line 494, src/scss/_components/misc/_micromodal.scss */
+.boogie-disclaimer p {
+  font-size: 12px;
+  line-height: 1.4;
+  margin-bottom: 18px;
+}
+
+/* line 499, src/scss/_components/misc/_micromodal.scss */
+.boogie-disclaimer p:last-child {
+  margin-bottom: 0;
+}
+
+/* line 505, src/scss/_components/misc/_micromodal.scss */
+.boogie-form-footer {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-wrap: wrap;
+      -ms-flex-wrap: wrap;
+          flex-wrap: wrap;
+  -webkit-box-pack: justify;
+  -webkit-justify-content: space-between;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  -webkit-box-align: center;
+  -webkit-align-items: center;
+      -ms-flex-align: center;
+          align-items: center;
+  gap: 10px;
+}
+
+@media (max-width: 374px) {
+  /* line 513, src/scss/_components/misc/_micromodal.scss */
+  .boogie-form-footer .btn {
+    -webkit-box-flex: 1;
+    -webkit-flex-grow: 1;
+        -ms-flex-positive: 1;
+            flex-grow: 1;
+  }
+}
+
+/* line 519, src/scss/_components/misc/_micromodal.scss */
+.boogie-fields {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-wrap: wrap;
+      -ms-flex-wrap: wrap;
+          flex-wrap: wrap;
+  margin: 0 -10px 20px;
+  gap: 20px 0;
+}
+
+/* line 526, src/scss/_components/misc/_micromodal.scss */
+.boogie-field {
+  width: 50%;
+  padding: 0 10px;
+}
+
+@media (max-width: 424px) {
+  /* line 526, src/scss/_components/misc/_micromodal.scss */
+  .boogie-field {
+    width: 100%;
+  }
+}
+
+/* line 535, src/scss/_components/misc/_micromodal.scss */
+.boogie-field-textarea {
+  width: 100%;
+}
+
+/* line 538, src/scss/_components/misc/_micromodal.scss */
+.boogie-field-textarea .boogie-input {
+  max-width: initial;
+  height: 120px;
+  padding-top: 16px;
+}
+
+/* line 545, src/scss/_components/misc/_micromodal.scss */
+.boogie-input {
+  width: 100%;
+  height: 50px;
+  padding: 0 20px;
+  border: 1px solid #b7b7b7;
+  -webkit-border-radius: 10px;
+          border-radius: 10px;
+  background-color: #484a54;
+  color: #fff;
+  -webkit-transition: border-color 0.2s ease;
+  -o-transition: border-color 0.2s ease;
+  transition: border-color 0.2s ease;
+}
+
+/* line 555, src/scss/_components/misc/_micromodal.scss */
+.boogie-input.has_error {
+  border: 1px solid red;
+}
+
+/* line 559, src/scss/_components/misc/_micromodal.scss */
+.boogie-input:focus {
+  border-color: #ff8c04;
+}
+
+/* line 563, src/scss/_components/misc/_micromodal.scss */
+.boogie-input.invalid, .boogie-input:invalid {
+  border-color: #f60000;
+}
+
+/* line 568, src/scss/_components/misc/_micromodal.scss */
+.boogie-input::-webkit-input-placeholder {
+  color: #fff;
+}
+.boogie-input::-moz-placeholder {
+  color: #fff;
+}
+.boogie-input::-ms-input-placeholder {
+  color: #fff;
+}
+.boogie-input::placeholder {
+  color: #fff;
+}
+
+/* line 573, src/scss/_components/misc/_micromodal.scss */
+.boogie-checkbox {
+  position: relative;
+  font-weight: 500;
+  font-size: 14px;
+}
+
+/* line 578, src/scss/_components/misc/_micromodal.scss */
+.boogie-checkbox .boogie-checkbox-input {
+  position: absolute;
+  opacity: 0;
+  width: 0;
+  height: 0;
+  cursor: pointer;
+}
+
+/* line 585, src/scss/_components/misc/_micromodal.scss */
+.boogie-checkbox .boogie-checkbox-input:checked + .boogie-checkbox-label::before {
+  -webkit-background-size: 10px 8px;
+          background-size: 10px 8px;
+  -webkit-filter: invert(48%) sepia(66%) saturate(447%) hue-rotate(89deg) brightness(96%) contrast(97%);
+          filter: invert(48%) sepia(66%) saturate(447%) hue-rotate(89deg) brightness(96%) contrast(97%);
+}
+
+/* line 590, src/scss/_components/misc/_micromodal.scss */
+.boogie-checkbox .boogie-checkbox-input.invalid + .boogie-checkbox-label::before {
+  border-color: #f60000;
+}
+
+/* line 595, src/scss/_components/misc/_micromodal.scss */
+.boogie-checkbox .boogie-checkbox-label {
+  position: relative;
+  display: -webkit-inline-box;
+  display: -webkit-inline-flex;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
+  -webkit-box-align: center;
+  -webkit-align-items: center;
+      -ms-flex-align: center;
+          align-items: center;
+  line-height: 1;
+  cursor: pointer;
+}
+
+/* line 602, src/scss/_components/misc/_micromodal.scss */
+.boogie-checkbox .boogie-checkbox-label::before {
+  content: '';
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  display: block;
+  -webkit-flex-shrink: 0;
+      -ms-flex-negative: 0;
+          flex-shrink: 0;
+  width: 24px;
+  height: 24px;
+  margin-right: 8px;
+  border: 1px solid #b7b7b7;
+  -webkit-border-radius: 4px;
+          border-radius: 4px;
+  background-image: url(../images/review/tick.svg);
+  background-repeat: no-repeat;
+  background-position: center;
+  -webkit-background-size: 0 0;
+          background-size: 0 0;
+  cursor: pointer;
+  -webkit-transition: -webkit-background-size 0.1s ease, -webkit-filter 0.2s ease;
+  transition: -webkit-background-size 0.1s ease, -webkit-filter 0.2s ease;
+  -o-transition: background-size 0.1s ease, filter 0.2s ease;
+  transition: background-size 0.1s ease, filter 0.2s ease;
+  transition: background-size 0.1s ease, filter 0.2s ease, -webkit-background-size 0.1s ease, -webkit-filter 0.2s ease;
+}
+
+/* line 620, src/scss/_components/misc/_micromodal.scss */
+.boogie-checkbox .boogie-checkbox-label.has_error::before {
+  border-color: #f60000;
+}
+
+/* line 627, src/scss/_components/misc/_micromodal.scss */
+.boogie-after-submit-content .micromodal-body {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+  -webkit-flex-direction: column;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: center;
+  -webkit-align-items: center;
+      -ms-flex-align: center;
+          align-items: center;
+  padding-bottom: 70px;
+}
+
+/* line 637, src/scss/_components/misc/_micromodal.scss */
+.light .micromodal hr {
+  border-top: 1px solid #d8d8d8;
+}
+
+/* line 640, src/scss/_components/misc/_micromodal.scss */
+.light .micromodal-content {
+  background-color: #fff;
+  color: #000;
+}
+
+/* line 646, src/scss/_components/misc/_micromodal.scss */
+.light .micromodal-close .icon {
+  fill: #454545;
+}
+
+/* line 650, src/scss/_components/misc/_micromodal.scss */
+.light .micromodal-close:hover .icon {
+  fill: #1c3f87;
+}
+
+/* line 659, src/scss/_components/misc/_micromodal.scss */
+.light .boogie-disclaimer {
+  background: #f6f6f6;
+  color: #000;
+}
+
+/* line 663, src/scss/_components/misc/_micromodal.scss */
+.light .boogie-input {
+  color: #000;
+  background-color: #fff;
+}
+
+/* line 667, src/scss/_components/misc/_micromodal.scss */
+.light .boogie-input::-webkit-input-placeholder {
+  color: #000;
+}
+.light .boogie-input::-moz-placeholder {
+  color: #000;
+}
+.light .boogie-input::-ms-input-placeholder {
+  color: #000;
+}
+.light .boogie-input::placeholder {
+  color: #000;
+}
+
+/* line 672, src/scss/_components/misc/_micromodal.scss */
+.light .boogie-list-item .arrow {
+  fill: #000;
+}
+
+/* line 675, src/scss/_components/misc/_micromodal.scss */
+.light .boogie-list-item:hover {
+  background-color: #f0f1f5;
+  color: #000;
+}
+
+/* line 679, src/scss/_components/misc/_micromodal.scss */
+.light .boogie-list-item:hover .arrow {
+  fill: #3e98cf;
+}
+
+@-webkit-keyframes progress-spinner {
+  0% {
+    -webkit-transform: rotate(0);
+            transform: rotate(0);
+  }
+  100% {
+    -webkit-transform: rotate(360deg);
+            transform: rotate(360deg);
+  }
+}
+
+@keyframes progress-spinner {
+  0% {
+    -webkit-transform: rotate(0);
+            transform: rotate(0);
+  }
+  100% {
+    -webkit-transform: rotate(360deg);
+            transform: rotate(360deg);
+  }
+}
+
+/* line 8, src/scss/_shared/_common.scss */
 fieldset {
   border: none;
 }
 
-/* line 11, src/scss/_shared/_common.scss */
+/* line 12, src/scss/_shared/_common.scss */
 .copyright {
   display: -webkit-box;
   display: -webkit-flex;
@@ -2194,7 +3240,7 @@ fieldset {
           justify-content: center;
 }
 
-/* line 16, src/scss/_shared/_common.scss */
+/* line 17, src/scss/_shared/_common.scss */
 .copyright__text {
   text-align: center;
   font-size: 16px;
@@ -2203,18 +3249,18 @@ fieldset {
   margin: 0;
 }
 
-/* line 23, src/scss/_shared/_common.scss */
+/* line 24, src/scss/_shared/_common.scss */
 .copyright__text a {
   color: #4099f9;
 }
 
-/* line 26, src/scss/_shared/_common.scss */
+/* line 27, src/scss/_shared/_common.scss */
 .copyright__text a:hover, .copyright__text a:focus {
   color: #4099f9;
 }
 
 @media screen and (max-width: 767px) {
-  /* line 16, src/scss/_shared/_common.scss */
+  /* line 17, src/scss/_shared/_common.scss */
   .copyright__text {
     font-size: 12px;
     line-height: 2;
@@ -2222,7 +3268,7 @@ fieldset {
 }
 
 @media screen and (max-width: 424px) {
-  /* line 16, src/scss/_shared/_common.scss */
+  /* line 17, src/scss/_shared/_common.scss */
   .copyright__text {
     font-size: 10px;
   }
@@ -7365,6 +8411,410 @@ fieldset {
   width: 22px;
   -webkit-background-size: 16px 16px;
           background-size: 16px;
+}
+
+/* line 2, src/scss/_components/common/a2z_popup.scss */
+#a2z-modal .micromodal-container {
+  margin: 0;
+}
+
+@media screen and (max-width: 1023px) {
+  /* line 2, src/scss/_components/common/a2z_popup.scss */
+  #a2z-modal .micromodal-container {
+    height: var(--vh, 100vh);
+    max-height: var(--vh, 100vh);
+    -webkit-border-radius: 0;
+            border-radius: 0;
+  }
+}
+
+/* line 13, src/scss/_components/common/a2z_popup.scss */
+.a2z-content {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+  -webkit-flex-direction: column;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  background: #2a2b31;
+  min-height: 25rem;
+  height: 80vh;
+}
+
+@media screen and (max-width: 1023px) {
+  /* line 13, src/scss/_components/common/a2z_popup.scss */
+  .a2z-content {
+    -webkit-border-radius: 0;
+            border-radius: 0;
+    height: var(--vh, 100vh);
+  }
+}
+
+/* line 25, src/scss/_components/common/a2z_popup.scss */
+.a2z-content .micromodal-body {
+  -webkit-box-flex: 1;
+  -webkit-flex: 1;
+      -ms-flex: 1;
+          flex: 1;
+  overflow: auto;
+  margin: 0 10px;
+  padding: 7px 10px;
+}
+
+/* line 31, src/scss/_components/common/a2z_popup.scss */
+.a2z-content .micromodal-body::-webkit-scrollbar {
+  width: 4px;
+  /* Set the width of the scrollbar */
+}
+
+/* line 35, src/scss/_components/common/a2z_popup.scss */
+.a2z-content .micromodal-body::-webkit-scrollbar-track {
+  background: #f1f1f1;
+  /* Background of the track */
+}
+
+/* line 39, src/scss/_components/common/a2z_popup.scss */
+.a2z-content .micromodal-body::-webkit-scrollbar-thumb {
+  background: #225396;
+  /* Scrollbar thumb color */
+  -webkit-border-radius: 10px;
+          border-radius: 10px;
+  /* Rounded corners */
+}
+
+/* line 44, src/scss/_components/common/a2z_popup.scss */
+.a2z-content .micromodal-body::-webkit-scrollbar-thumb:hover {
+  background: #555;
+  /* Hover color */
+}
+
+/* line 48, src/scss/_components/common/a2z_popup.scss */
+.a2z-content .micromodal-footer {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: right;
+  -webkit-justify-content: right;
+      -ms-flex-pack: right;
+          justify-content: right;
+  -webkit-box-align: center;
+  -webkit-align-items: center;
+      -ms-flex-align: center;
+          align-items: center;
+  padding: 20px;
+  gap: 10px;
+}
+
+/* line 55, src/scss/_components/common/a2z_popup.scss */
+.a2z-content .micromodal-footer .btn {
+  padding: 10px 30px;
+  -webkit-border-radius: 4px;
+          border-radius: 4px;
+}
+
+/* line 60, src/scss/_components/common/a2z_popup.scss */
+.a2z-content .micromodal-footer .a2z-reset {
+  color: #3d3e3f;
+}
+
+/* line 66, src/scss/_components/common/a2z_popup.scss */
+.a2z-content .filter_tag {
+  position: relative;
+}
+
+@media screen and (max-width: 1023px) {
+  /* line 66, src/scss/_components/common/a2z_popup.scss */
+  .a2z-content .filter_tag {
+    width: 100%;
+    border: 2px solid #333;
+  }
+}
+
+/* line 74, src/scss/_components/common/a2z_popup.scss */
+.a2z-content .filter_tag input {
+  width: 100%;
+  border: none;
+  outline: none;
+  -webkit-border-radius: 4px;
+          border-radius: 4px;
+  padding: 8px 10px;
+  font-size: 16px;
+}
+
+/* line 82, src/scss/_components/common/a2z_popup.scss */
+.a2z-content .filter_tag:after {
+  content: ' ';
+  position: absolute;
+  top: 50%;
+  right: 5px;
+  -webkit-transform: translateY(-50%);
+      -ms-transform: translateY(-50%);
+          transform: translateY(-50%);
+  width: 18px;
+  height: 18px;
+  background-image: url("../images/svg/icons-search.svg");
+  -webkit-background-size: contain;
+          background-size: contain;
+}
+
+/* line 95, src/scss/_components/common/a2z_popup.scss */
+.a2z-header {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+  -webkit-justify-content: space-between;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  -webkit-box-align: end;
+  -webkit-align-items: end;
+      -ms-flex-align: end;
+          align-items: end;
+}
+
+@media screen and (max-width: 1023px) {
+  /* line 95, src/scss/_components/common/a2z_popup.scss */
+  .a2z-header {
+    display: block;
+  }
+}
+
+/* line 104, src/scss/_components/common/a2z_popup.scss */
+.a2z-letters-container {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-wrap: wrap;
+      -ms-flex-wrap: wrap;
+          flex-wrap: wrap;
+  gap: 10px;
+  text-transform: capitalize;
+  font-weight: 500;
+}
+
+@media screen and (max-width: 1023px) {
+  /* line 104, src/scss/_components/common/a2z_popup.scss */
+  .a2z-letters-container {
+    gap: 6px;
+    -webkit-box-pack: center;
+    -webkit-justify-content: center;
+        -ms-flex-pack: center;
+            justify-content: center;
+    padding: 10px 0;
+  }
+}
+
+/* line 117, src/scss/_components/common/a2z_popup.scss */
+.a2z-letters-container .a2z-letter-item {
+  cursor: pointer;
+  font-size: 16px;
+  -webkit-transition: color .3s;
+  -o-transition: color .3s;
+  transition: color .3s;
+}
+
+/* line 122, src/scss/_components/common/a2z_popup.scss */
+.a2z-letters-container .a2z-letter-item.popular {
+  color: #0040a0;
+}
+
+@media screen and (max-width: 1023px) {
+  /* line 117, src/scss/_components/common/a2z_popup.scss */
+  .a2z-letters-container .a2z-letter-item {
+    font-size: 14px;
+    padding: 0 10px;
+  }
+}
+
+/* line 131, src/scss/_components/common/a2z_popup.scss */
+.a2z-letters-container .a2z-letter-item.active {
+  color: #3e98cf;
+}
+
+/* line 138, src/scss/_components/common/a2z_popup.scss */
+.a2z-btn {
+  border: none;
+  -webkit-border-radius: 4px;
+          border-radius: 4px;
+  color: #333;
+  display: block;
+  overflow: hidden;
+  padding: 10px;
+  cursor: pointer;
+  text-decoration: none;
+  -o-text-overflow: ellipsis;
+     text-overflow: ellipsis;
+  white-space: nowrap;
+  font-size: 16px;
+  text-align: center;
+}
+
+/* line 153, src/scss/_components/common/a2z_popup.scss */
+.a2z-btn.processing:before {
+  text-rendering: auto;
+  -webkit-font-smoothing: antialiased;
+  content: "";
+  display: inline-block;
+  font-size: 15px;
+  font: normal normal normal 14px / 1 FontAwesome;
+  font-size: inherit;
+}
+
+/* line 164, src/scss/_components/common/a2z_popup.scss */
+.a2z-btn:hover, .a2z-btn.active {
+  color: #fff;
+}
+
+/* line 172, src/scss/_components/common/a2z_popup.scss */
+.a2z-categories-container {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-wrap: wrap;
+      -ms-flex-wrap: wrap;
+          flex-wrap: wrap;
+  gap: 10px;
+}
+
+/* line 180, src/scss/_components/common/a2z_popup.scss */
+.a2z-category-item {
+  background: #dbdce0;
+  color: #333;
+  -webkit-box-flex: 1;
+  -webkit-flex: 1 1 -webkit-calc(16.666% - 10px);
+      -ms-flex: 1 1 calc(16.666% - 10px);
+          flex: 1 1 calc(16.666% - 10px);
+  max-width: -webkit-calc(16.666% - 10px);
+  max-width: calc(16.666% - 10px);
+}
+
+@media screen and (max-width: 1023px) {
+  /* line 180, src/scss/_components/common/a2z_popup.scss */
+  .a2z-category-item {
+    -webkit-box-flex: 1;
+    -webkit-flex: 1 1 -webkit-calc(33.333% - 10px);
+        -ms-flex: 1 1 calc(33.333% - 10px);
+            flex: 1 1 calc(33.333% - 10px);
+    max-width: -webkit-calc(33.333% - 10px);
+    max-width: calc(33.333% - 10px);
+    -webkit-box-sizing: border-box;
+            box-sizing: border-box;
+  }
+}
+
+/* line 192, src/scss/_components/common/a2z_popup.scss */
+.a2z-category-item:hover, .a2z-category-item.active {
+  background: #3e98cf;
+  color: #fff;
+}
+
+/* line 199, src/scss/_components/common/a2z_popup.scss */
+.a2z-popular {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: stretch;
+  -webkit-justify-content: stretch;
+      -ms-flex-pack: stretch;
+          justify-content: stretch;
+  -webkit-flex-wrap: wrap;
+      -ms-flex-wrap: wrap;
+          flex-wrap: wrap;
+  gap: 10px;
+  margin-top: 5px;
+}
+
+/* line 206, src/scss/_components/common/a2z_popup.scss */
+.a2z-popular-item {
+  background: #0040a0;
+  color: #fff;
+  -webkit-box-flex: 1;
+  -webkit-flex: 1 1 -webkit-calc(16.666% - 10px);
+      -ms-flex: 1 1 calc(16.666% - 10px);
+          flex: 1 1 calc(16.666% - 10px);
+  max-width: -webkit-calc(16.666% - 10px);
+  max-width: calc(16.666% - 10px);
+}
+
+@media screen and (max-width: 1023px) {
+  /* line 206, src/scss/_components/common/a2z_popup.scss */
+  .a2z-popular-item {
+    -webkit-box-flex: 1;
+    -webkit-flex: 1 1 -webkit-calc(33.333% - 10px);
+        -ms-flex: 1 1 calc(33.333% - 10px);
+            flex: 1 1 calc(33.333% - 10px);
+    max-width: -webkit-calc(33.333% - 10px);
+    max-width: calc(33.333% - 10px);
+    -webkit-box-sizing: border-box;
+            box-sizing: border-box;
+  }
+  /* line 217, src/scss/_components/common/a2z_popup.scss */
+  .a2z-popular-item:nth-child(6) {
+    display: block;
+  }
+}
+
+/* line 222, src/scss/_components/common/a2z_popup.scss */
+.a2z-popular-item:hover {
+  background: #3e98cf;
+  color: #fff;
+}
+
+/* line 230, src/scss/_components/common/a2z_popup.scss */
+.progress-spinner {
+  width: 16px;
+  height: 16px;
+  border: 2px solid rgba(255, 255, 255, 0.3);
+  border-top-color: #fff;
+  -webkit-border-radius: 50%;
+          border-radius: 50%;
+  -webkit-animation: spin 1s linear infinite;
+          animation: spin 1s linear infinite;
+  margin-right: 8px;
+}
+
+/* line 240, src/scss/_components/common/a2z_popup.scss */
+.progress-button .progress-spinner {
+  display: none;
+}
+
+/* line 244, src/scss/_components/common/a2z_popup.scss */
+.progress-button:disabled {
+  opacity: 0.8;
+  cursor: not-allowed;
+  font-size: 0;
+}
+
+/* line 249, src/scss/_components/common/a2z_popup.scss */
+.progress-button:disabled .progress-spinner {
+  display: block;
+}
+
+@-webkit-keyframes spin {
+  to {
+    -webkit-transform: rotate(360deg);
+            transform: rotate(360deg);
+  }
+}
+
+@keyframes spin {
+  to {
+    -webkit-transform: rotate(360deg);
+            transform: rotate(360deg);
+  }
+}
+
+/* line 261, src/scss/_components/common/a2z_popup.scss */
+.light .a2z-content {
+  background: #eee;
 }
 
 /* line 3, src/scss/_components/category/_sidebar.scss */

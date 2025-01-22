@@ -476,15 +476,15 @@ function initCategoryPage() {
 	}
 
 	const fetchA2Z = () => {
-		if(getWithExpiry('a2zData')){
-			processA2ZData(getWithExpiry('a2zData'))
+		if(getWithExpiry('a2z_data')){
+			processA2ZData(getWithExpiry('a2z_data'))
 			return
 		}
 
 		fetch('/wp-json/mpg/a2z/')
 			.then(res => res.json())
 			.then((result) => {
-				setWithExpiry('a2zData', result, 30*60*1000);
+				setWithExpiry('a2z_data', result, 30*60*1000);
 				processA2ZData(result)
 				console.log('a2zData ', result)
 				// let filteredCategories = [...categoryItems];
@@ -498,8 +498,10 @@ function initCategoryPage() {
 		a2zCategories = []
 		a2zLetters = []
 
+		new A2ZPopup(result)
+
 		let a2zOrder = 0;
-		for (const letter in result) {
+		for (const letter in result.categories) {
 			a2zCategories.push({
 				'letter': letter,
 				'title': '',
@@ -507,10 +509,10 @@ function initCategoryPage() {
 			});
 			a2zLetters.push(letter)
 
-			for (const categoryItem of result[letter]) {
+			for (const categoryItem of result.categories[letter]) {
 				a2zCategories.push({
 					'id': categoryItem.category,
-					'title': categoryItem.name,
+					'title': categoryItem.title,
 					'link': categoryItem.link,
 					'count': categoryItem.count,
 					'is_webcam': categoryItem.is_webcam,
@@ -521,6 +523,10 @@ function initCategoryPage() {
 			a2zOrder++;
 		}
 
+		initCategorySidebar()
+	}
+
+	const initCategorySidebar = () => {
 		if (bodyClasses.contains('category') || bodyClasses.contains('page-template-page-categories')) {
 			createSidebar()
 			if(!filterScroll){
@@ -533,17 +539,31 @@ function initCategoryPage() {
 
 	fetchA2Z();
 	if(!filterA2z){
-		if (bodyClasses.contains('category') || bodyClasses.contains('page-template-page-categories')) {
-			createSidebar()
-			if(!filterScroll){
-				initStickySidebar()
-			}
-		} else {
-			createSidebar()
-		}
+		initCategorySidebar()
 	}
 
+	const a2zPopup = () => {
+		// Check if modal already exists
+		if (!document.querySelector("#boogie-modal")) {
+			// Create modal HTML
+			let reviewTitle = document.querySelector('.review-title-line h1').innerHTML;
+			let modalHTML = this.generateReportReviewContent(reviewTitle)
+			// Inject modal into the body
+			document.body.insertAdjacentHTML('beforeend', modalHTML);
+			this.addReviewReportItemClickListeners()
+		}
 
+		// Initialize and show the modal
+		MicroModal.show('boogie-modal',{
+			onShow: function (){
+				document.body.classList.add('is-hideScroll')
+			},
+			onClose: function (){
+				document.querySelector('#boogie-modal').remove()
+				document.body.classList.remove('is-hideScroll')
+			}
+		});
+	}
 }
 
 
