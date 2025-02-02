@@ -34,6 +34,9 @@
 }
 
 .category{
+	&_site_list{
+		//position: relative;
+	}
 	&_list{
 		background-color: #2a2b31;
 		border-color: #151515;
@@ -49,14 +52,78 @@
 		}
 	}
 	&_header{
+		position: relative;
 		border-bottom: 3px solid #999;
 	}
 	&_container{
 		/*display: flex;
 		flex-direction: column;*/
-
+		position: relative;
 		--container-width: 100%;
 		--content-width: 80%;
+	}
+}
+
+
+
+.loading_spinner{
+	display: none;
+
+	&.show{
+		position: absolute;
+		display: block;
+		top: 0;
+		width: 100%;
+		height: 100%;
+		z-index: 20;
+
+		background-color: rgba(42, 43, 49, 0.5); /* White background with 50% opacity */
+		backdrop-filter: blur(10px); /* Apply blur effect */
+		-webkit-backdrop-filter: blur(10px); /* For Safari */
+		padding: 20px; /* Optional: Add some padding */
+		border-radius: 10px; /* Optional: Add rounded corners */
+
+		&.mobile{
+			top: 170px;
+			bottom: 0;
+			height: auto;
+		}
+
+
+	}
+
+	&:before{
+		display: block;
+		position: absolute;
+		left: 50%;
+		top: 200px;
+		transform: translateX(-50%);
+		content: ' ';
+		background: url(../images/coupon_loading.gif) no-repeat center center;
+		width: 200px;
+		height: 200px;
+	}
+
+	&.mobile{
+		&:before{
+			top: 50%;
+			transform: translateY(-50%) translateX(-50%);
+		}
+	}
+
+	img{
+		position: absolute;
+		left: 50%;
+		top: 200px;
+		transform: translateX(-50%);
+	}
+}
+.has_sidebar .loading_spinner{
+	width: 80%;
+}
+.filter_type_content[data-type="all"]{
+	.loading_spinner.mobile {
+		top: 145px;
 	}
 }
 
@@ -73,6 +140,12 @@
 	.category_list {
 		background: #fff;
 	}
+	.loading_spinner{
+		&.show{
+			background-color: rgba(255, 255, 255, 0.5);
+		}
+	}
+
 }
 
 

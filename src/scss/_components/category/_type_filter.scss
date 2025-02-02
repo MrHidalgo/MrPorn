@@ -1,0 +1,304 @@
+.archive.category .micromodal-title-text{
+	@include adaptive(767) {
+		.color-primary{
+			display: block;
+		}
+	}
+}
+#type-filter-modal{
+	.micromodal{
+
+		&-header{
+			padding: 12px 60px 12px 20px;
+		}
+		&-body{
+			padding-top: 10px;
+		}
+	}
+
+	.additional_actions{
+
+		.inline-icon{
+			width: 28px;
+			height: 28px;
+		}
+	}
+	.review_type_slider .option:hover .tooltip{
+		display: none;
+	}
+}
+.review_type_container{
+	position: absolute;
+	right: 0;
+	top: 50%;
+	transform: translateY(-50%);
+	display: inline-flex;
+	z-index: 1;
+}
+.review_type_slider{
+
+	padding: 4px;
+	border-radius: 6px;
+	background: #303030;
+
+	@include adaptive(767) {
+		display: none;
+
+		&.mobile{
+			display: flex;
+			position: relative;
+			width: 100%;
+			padding: 8px;
+
+			.option{
+				flex: 1;
+				font-size: 18px;
+				padding: 10px 15px;
+
+				.tooltip{
+					display: none;
+				}
+			}
+		}
+		&_status{
+			display: none;
+			position: relative;
+			line-height: 26px;
+			text-align: center;
+			margin-top: 4px;
+			border-radius: 5px;
+			text-transform: capitalize;
+
+			&.show{
+				--tip_x: 50%;
+				display: block;
+				background: #2663b0;
+				color: #fff;
+
+				&:before{
+					content: '';
+					position: absolute;
+					top: 0; /* Position above the tooltip */
+					left: var(--tip_x, 50%);
+					transform: translateX(-50%) translateY(-100%);
+					border-width: 8px;
+					border-style: solid;
+					border-color: transparent  transparent #2663b0 transparent;
+				}
+			}
+
+			&.error{
+				color: #f00;
+			}
+		}
+		&_error{
+			position: relative;
+			line-height: 26px;
+			text-align: center;
+			margin-top: 4px;
+			border-radius: 5px;
+			color: #f00;
+
+			&.show{
+				display: block;
+			}
+		}
+	}
+
+	&_thumb{
+		position: absolute;
+		border-radius: 4px;
+		background: #707070;
+		top: 4px;
+		bottom: 4px;
+		left: 4px;
+		width: 45px;
+		@include transition(left, width);
+	}
+
+	&_tooltip,
+	.tooltip{
+		display: none;
+		position: absolute;
+		background: #2663b0;
+		color: #fff;
+		padding: 5px 8px;
+		border-radius: 4px;
+		bottom: 100%;
+		left: 50%;
+		margin: 0 0 10px;
+		white-space: nowrap;
+		transform: translateX(-50%);
+
+		&:after{
+			content: '';
+			position: absolute;
+			top: 100%; /* Position above the tooltip */
+			left: 50%;
+			transform: translateX(-50%);
+			border-width: 5px;
+			border-style: solid;
+			border-color: #2663b0 transparent transparent transparent;
+		}
+
+		&.down{
+			top: 65%;
+			bottom: auto;
+			margin: 10px 0 0;
+
+			&:after{
+				top: -10px;
+				border-color: transparent transparent #2663b0 transparent;
+			}
+		}
+
+		@include adaptive(767) {
+			display: none;
+		}
+	}
+
+	.option{
+		position: relative;
+		background: transparent;
+		border: none;
+		outline: none;
+		color: #fff;
+		padding: 6px 15px;
+		border-radius: 4px;
+		cursor: pointer;
+
+		&.disabled{
+			.tooltip{
+				display: none;
+			}
+			&:hover{
+				.tooltip{
+					display: none;
+				}
+			}
+		}
+
+		&:hover{
+			//background: #505050;
+
+			.review_type_slider_tooltip,
+			.tooltip{
+				display: block;
+
+				@include adaptive(767) {
+					display: none;
+				}
+			}
+		}
+
+		&.active1{
+			background: #707070;
+		}
+	}
+}
+
+
+
+.review_type_trigger{
+	display: none;
+	border: none;
+	background: transparent;
+	cursor: pointer;
+
+	&.desktop{
+		display: flex;
+	}
+
+
+
+	&-dropdown{
+		display: none;
+		position: absolute;
+		background: #fff;
+		box-shadow: 0 10px 30px 0 rgba(0,0,0,.15);
+		right: 0;
+		top: 100%;
+		padding: 10px 0;
+		border-radius: 4px;
+		cursor: pointer;
+
+		.inline-icon{
+			width: 18px;
+			height: 16px;
+		}
+
+		&.open{
+			display: block;
+		}
+
+		.title{
+			font-size: 16px;
+			margin-bottom: 10px;
+		}
+	}
+
+	&-outer{
+		display: flex;
+		align-items: center;
+
+		//&:hover{
+		//	.review_type_slider{
+		//		display: block;
+		//	}
+		//	.review_type_trigger-dropdown{
+		//		display: block;
+		//	}
+		//}
+	}
+
+	@include adaptive(767) {
+		display: block;
+
+		&.desktop{
+			display: none;
+		}
+
+		.more{
+			fill: #fff;
+		}
+	}
+}
+.additional{
+	&_action{
+		display: flex;
+		align-items: center;
+		background: transparent;
+		border: none;
+		outline: none;
+		gap: 10px;
+		padding: 0 15px;
+		line-height: 30px;
+
+		&:hover{
+			background: #dadada;
+		}
+	}
+}
+
+.light{
+	.review_type_trigger{
+		.more{
+			fill: #000;
+		}
+	}
+	.review_type_slider{
+		background: #dadada;
+
+		&_thumb{
+			background: #fff;
+		}
+
+
+
+
+		.option{
+			color: #303030;
+		}
+	}
+}
+

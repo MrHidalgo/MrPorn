@@ -1,6 +1,13 @@
 #a2z-modal{
+
+	@include adaptive(1023) {
+		.micromodal-overlay{
+			max-height: var(--vh, 100vh);
+		}
+	}
 	.micromodal-container{
 		margin: 0;
+		max-width: 1020px;
 
 		@include adaptive(1023) {
 			height: var(--vh, 100vh);
@@ -55,6 +62,10 @@
 			.btn{
 				padding: 10px 30px;
 				border-radius: 4px;
+			}
+
+			.a2z-apply{
+				width: 100px;
 			}
 
 			.a2z-reset{
@@ -146,8 +157,12 @@
 		text-decoration: none;
 		text-overflow: ellipsis;
 		white-space: nowrap;
-		font-size: 16px;
+		font-size: 15px;
 		text-align: center;
+
+		@include adaptive(1023) {
+			font-size: 14px;
+		}
 
 		&.processing{
 			&:before{
@@ -234,7 +249,6 @@
 	border-top-color: #fff;
 	border-radius: 50%;
 	animation: spin 1s linear infinite;
-	margin-right: 8px;
 }
 .progress-button{
 	.progress-spinner{

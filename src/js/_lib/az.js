@@ -38,31 +38,56 @@ class A2ZPopup{
 			this.initCategoryEvents()
 		}
 
-		// Initialize and show the modal
-		MicroModal.show('a2z-modal',{
-			onShow: function (){
-				if(parent.headerViewActions){
-					bodyScrollLock.enableBodyScroll(parent.headerViewActions)
-				}
-				if(parent.a2zContainer){
-					bodyScrollLock.disableBodyScroll(parent.a2zContainer)
-				}
-				document.body.classList.add('is-hideScroll')
 
-				let filterInput = document.querySelector('#filter_tag_input')
-				filterInput?.setAttribute('tabindex', '-1');
-				filterInput?.blur()
-			},
-			onClose: function (){
-				document.querySelector('#a2z-modal').remove()
+
+		if(isMobileOrTablet){
+			let a2zModal = document.querySelector('#a2z-modal');
+			a2zModal?.classList.add('is-open')
+
+			if(parent.headerViewActions){
+				bodyScrollLock.enableBodyScroll(parent.headerViewActions)
+			}
+			if(parent.a2zContainer){
+				bodyScrollLock.disableBodyScroll(parent.a2zContainer)
+			}
+
+			document.querySelector('#a2z-modal .micromodal-close')?.addEventListener('click', function(evt){
+				a2zModal.classList.remove('is-open')
+				if(parent.a2zContainer){
+					bodyScrollLock.enableBodyScroll(parent.a2zContainer)
+				}
 				document.documentElement.classList.remove('is-hideScroll')
 				document.body.classList.remove('is-hideScroll')
+			})
+		}else{
 
-				if(parent.a2zContainer){
-					bodyScrollLock.disableBodyScroll(parent.a2zContainer)
+			MicroModal.show('a2z-modal',{
+				onShow: function (){
+					if(parent.headerViewActions){
+						bodyScrollLock.enableBodyScroll(parent.headerViewActions)
+					}
+					if(parent.a2zContainer){
+						bodyScrollLock.disableBodyScroll(parent.a2zContainer)
+					}
+					document.body.classList.add('is-hideScroll')
+
+					let filterInput = document.querySelector('#filter_tag_input')
+					filterInput?.setAttribute('tabindex', '-1');
+					filterInput?.blur()
+				},
+				onClose: function (){
+					document.querySelector('#a2z-modal').remove()
+					document.documentElement.classList.remove('is-hideScroll')
+					document.body.classList.remove('is-hideScroll')
+
+					if(parent.a2zContainer){
+						bodyScrollLock.disableBodyScroll(parent.a2zContainer)
+					}
 				}
-			}
-		});
+			});
+		}
+
+
 	}
 
 	addA2ZPopupListeners(){
@@ -175,7 +200,7 @@ class A2ZPopup{
 
 	generateA2ZPopupContent(){
 		const popupContent = `
-		  <div class="micromodal micromodal-slide boogie-modal is-open" id="a2z-modal" aria-hidden="false">
+		  <div class="micromodal micromodal-slide" id="a2z-modal" aria-hidden="false">
 			  <div class="micromodal-overlay" tabindex="-1">
 				<div class="micromodal-container custom-scrollbar" role="dialog" aria-modal="true" aria-labelledby="boogie-title">
 				  <div class="micromodal-content a2z-content">

@@ -2188,41 +2188,42 @@ strong {
 /* line 10, src/scss/_components/misc/_micromodal.scss */
 .micromodal p {
   margin-bottom: 20px;
+  margin-top: 0;
   font-size: 14px;
   line-height: 1.4;
 }
 
-/* line 16, src/scss/_components/misc/_micromodal.scss */
+/* line 17, src/scss/_components/misc/_micromodal.scss */
 .micromodal .color-primary {
   color: #3e98cf;
 }
 
-/* line 20, src/scss/_components/misc/_micromodal.scss */
+/* line 21, src/scss/_components/misc/_micromodal.scss */
 .micromodal .color-secondary {
   color: #8c8d96;
 }
 
-/* line 24, src/scss/_components/misc/_micromodal.scss */
+/* line 25, src/scss/_components/misc/_micromodal.scss */
 .micromodal .color-success {
   color: #2eaf61;
 }
 
-/* line 28, src/scss/_components/misc/_micromodal.scss */
+/* line 29, src/scss/_components/misc/_micromodal.scss */
 .micromodal .color-error {
   color: #f60000;
 }
 
-/* line 32, src/scss/_components/misc/_micromodal.scss */
+/* line 33, src/scss/_components/misc/_micromodal.scss */
 .micromodal .text-center {
   text-align: center;
 }
 
-/* line 35, src/scss/_components/misc/_micromodal.scss */
+/* line 36, src/scss/_components/misc/_micromodal.scss */
 .micromodal .report_review_title {
   line-height: 1.25;
 }
 
-/* line 39, src/scss/_components/misc/_micromodal.scss */
+/* line 40, src/scss/_components/misc/_micromodal.scss */
 .micromodal .btn {
   border: none;
   cursor: pointer;
@@ -2249,7 +2250,7 @@ strong {
   transition: opacity 0.2s ease, background-color 0.2s ease;
 }
 
-/* line 53, src/scss/_components/misc/_micromodal.scss */
+/* line 54, src/scss/_components/misc/_micromodal.scss */
 .micromodal .btn-back .icon {
   width: 18px;
   height: 12px;
@@ -2260,79 +2261,79 @@ strong {
           transform: rotate(180deg);
 }
 
-/* line 62, src/scss/_components/misc/_micromodal.scss */
+/* line 63, src/scss/_components/misc/_micromodal.scss */
 .micromodal .btn-primary {
   background-color: #007aff;
   color: #fff;
 }
 
-/* line 68, src/scss/_components/misc/_micromodal.scss */
+/* line 69, src/scss/_components/misc/_micromodal.scss */
 .micromodal .btn-primary:active {
   background-color: #024b93;
 }
 
 @media (min-width: 1025px) {
-  /* line 73, src/scss/_components/misc/_micromodal.scss */
+  /* line 74, src/scss/_components/misc/_micromodal.scss */
   .micromodal .btn-primary:hover {
     background-color: #007aff;
   }
 }
 
-/* line 78, src/scss/_components/misc/_micromodal.scss */
+/* line 79, src/scss/_components/misc/_micromodal.scss */
 .micromodal .btn-secondary {
   background-color: #f0f1f5;
   color: #8c8d96;
 }
 
-/* line 82, src/scss/_components/misc/_micromodal.scss */
+/* line 83, src/scss/_components/misc/_micromodal.scss */
 .micromodal .btn-secondary:active {
   background-color: #e4e5e7;
 }
 
 @media (min-width: 1025px) {
-  /* line 87, src/scss/_components/misc/_micromodal.scss */
+  /* line 88, src/scss/_components/misc/_micromodal.scss */
   .micromodal .btn-secondary:hover {
     background-color: #e4e5e7;
   }
 }
 
-/* line 93, src/scss/_components/misc/_micromodal.scss */
+/* line 94, src/scss/_components/misc/_micromodal.scss */
 .micromodal .btn-success {
   background-color: #29a656;
   color: #fff;
 }
 
-/* line 97, src/scss/_components/misc/_micromodal.scss */
+/* line 98, src/scss/_components/misc/_micromodal.scss */
 .micromodal .btn-success:active {
   background-color: #1e8142;
 }
 
 @media (min-width: 1025px) {
-  /* line 102, src/scss/_components/misc/_micromodal.scss */
+  /* line 103, src/scss/_components/misc/_micromodal.scss */
   .micromodal .btn-success:hover {
     background-color: #1e8142;
   }
 }
 
-/* line 107, src/scss/_components/misc/_micromodal.scss */
+/* line 108, src/scss/_components/misc/_micromodal.scss */
 .micromodal .btn-submit {
   cursor: pointer;
   width: 150px;
 }
 
-/* line 110, src/scss/_components/misc/_micromodal.scss */
+/* line 111, src/scss/_components/misc/_micromodal.scss */
 .micromodal .btn-submit .btn-text {
   display: block;
 }
 
-/* line 111, src/scss/_components/misc/_micromodal.scss */
+/* line 112, src/scss/_components/misc/_micromodal.scss */
 .micromodal .btn-submit .lds-dual-ring {
   display: none;
   width: 24px;
   height: 24px;
 }
 
-/* line 116, src/scss/_components/misc/_micromodal.scss */
+/* line 117, src/scss/_components/misc/_micromodal.scss */
 .micromodal .btn-submit .lds-dual-ring:after {
   content: " ";
   display: block;
@@ -2346,62 +2347,99 @@ strong {
           animation: progress-spinner 1.2s linear infinite;
 }
 
-/* line 128, src/scss/_components/misc/_micromodal.scss */
+/* line 129, src/scss/_components/misc/_micromodal.scss */
 .micromodal .btn-submit.spin .btn-text {
   display: none;
 }
 
-/* line 129, src/scss/_components/misc/_micromodal.scss */
+/* line 130, src/scss/_components/misc/_micromodal.scss */
 .micromodal .btn-submit.spin .lds-dual-ring {
   display: inline-block;
 }
 
-/* line 137, src/scss/_components/misc/_micromodal.scss */
-.micromodal .inline-icon {
-  -webkit-flex-shrink: 0;
-      -ms-flex-negative: 0;
-          flex-shrink: 0;
-  width: 20px;
-  height: 20px;
-  -webkit-background-size: contain;
-          background-size: contain;
-}
-
-/* line 144, src/scss/_components/misc/_micromodal.scss */
+/* line 140, src/scss/_components/misc/_micromodal.scss */
 .micromodal-slide {
   display: none;
 }
 
-/* line 147, src/scss/_components/misc/_micromodal.scss */
+/* line 143, src/scss/_components/misc/_micromodal.scss */
 .micromodal-slide.is-open {
   display: block;
 }
 
-/* line 152, src/scss/_components/misc/_micromodal.scss */
+/* line 148, src/scss/_components/misc/_micromodal.scss */
 .micromodal-slide[aria-hidden="false"] .micromodal-overlay {
   -webkit-animation: mmfadeIn 0.3s cubic-bezier(0, 0, 0.2, 1);
           animation: mmfadeIn 0.3s cubic-bezier(0, 0, 0.2, 1);
 }
 
-/* line 156, src/scss/_components/misc/_micromodal.scss */
+/* line 152, src/scss/_components/misc/_micromodal.scss */
 .micromodal-slide[aria-hidden="false"] .micromodal-container {
   -webkit-animation: mmslideIn 0.3s cubic-bezier(0, 0, 0.2, 1);
           animation: mmslideIn 0.3s cubic-bezier(0, 0, 0.2, 1);
 }
 
-/* line 162, src/scss/_components/misc/_micromodal.scss */
-.micromodal-slide[aria-hidden="true"] .micromodal-overlay {
-  -webkit-animation: mmfadeOut 0.3s cubic-bezier(0, 0, 0.2, 1);
-          animation: mmfadeOut 0.3s cubic-bezier(0, 0, 0.2, 1);
+@media screen and (max-width: 767px) {
+  /* line 160, src/scss/_components/misc/_micromodal.scss */
+  .micromodal-slide[aria-hidden="true"] .micromodal-overlay {
+    -webkit-animation: mmfadeOutMax 0.5s cubic-bezier(0, 0, 0.2, 1);
+            animation: mmfadeOutMax 0.5s cubic-bezier(0, 0, 0.2, 1);
+  }
+  /* line 164, src/scss/_components/misc/_micromodal.scss */
+  .micromodal-slide[aria-hidden="true"] .micromodal-container {
+    -webkit-animation: mmslideDown 0.8s cubic-bezier(0, 0, 0.2, 1);
+            animation: mmslideDown 0.8s cubic-bezier(0, 0, 0.2, 1);
+  }
 }
 
-/* line 166, src/scss/_components/misc/_micromodal.scss */
-.micromodal-slide[aria-hidden="true"] .micromodal-container {
-  -webkit-animation: mmslideOut 0.3s cubic-bezier(0, 0, 0.2, 1);
-          animation: mmslideOut 0.3s cubic-bezier(0, 0, 0.2, 1);
+@media screen and (min-width: 768px) {
+  /* line 169, src/scss/_components/misc/_micromodal.scss */
+  .micromodal-slide[aria-hidden="true"] .micromodal-overlay {
+    -webkit-animation: mmfadeOut 0.3s cubic-bezier(0, 0, 0.2, 1);
+            animation: mmfadeOut 0.3s cubic-bezier(0, 0, 0.2, 1);
+  }
+  /* line 173, src/scss/_components/misc/_micromodal.scss */
+  .micromodal-slide[aria-hidden="true"] .micromodal-container {
+    -webkit-animation: mmslideOut 0.3s cubic-bezier(0, 0, 0.2, 1);
+            animation: mmslideOut 0.3s cubic-bezier(0, 0, 0.2, 1);
+  }
 }
 
-/* line 172, src/scss/_components/misc/_micromodal.scss */
+/* line 180, src/scss/_components/misc/_micromodal.scss */
+.micromodal-category {
+  display: none;
+}
+
+/* line 183, src/scss/_components/misc/_micromodal.scss */
+.micromodal-category.is-open {
+  display: block;
+}
+
+/* line 188, src/scss/_components/misc/_micromodal.scss */
+.micromodal-category[aria-hidden="false"] .micromodal-overlay {
+  -webkit-animation: mmfadeIn 0.3s cubic-bezier(0, 0, 0.2, 1);
+          animation: mmfadeIn 0.3s cubic-bezier(0, 0, 0.2, 1);
+}
+
+/* line 192, src/scss/_components/misc/_micromodal.scss */
+.micromodal-category[aria-hidden="false"] .micromodal-container {
+  -webkit-animation: mmslideIn 0.3s cubic-bezier(0, 0, 0.2, 1);
+          animation: mmslideIn 0.3s cubic-bezier(0, 0, 0.2, 1);
+}
+
+/* line 198, src/scss/_components/misc/_micromodal.scss */
+.micromodal-category[aria-hidden="true"] .micromodal-overlay {
+  -webkit-animation: mmfadeOutMax 0.5s cubic-bezier(0, 0, 0.2, 1);
+          animation: mmfadeOutMax 0.5s cubic-bezier(0, 0, 0.2, 1);
+}
+
+/* line 202, src/scss/_components/misc/_micromodal.scss */
+.micromodal-category[aria-hidden="true"] .micromodal-container {
+  -webkit-animation: mmslideDown 0.8s cubic-bezier(0, 0, 0.2, 1);
+          animation: mmslideDown 0.8s cubic-bezier(0, 0, 0.2, 1);
+}
+
+/* line 208, src/scss/_components/misc/_micromodal.scss */
 .micromodal .micromodal-overlay {
   position: fixed;
   top: 0;
@@ -2426,7 +2464,7 @@ strong {
           backdrop-filter: blur(10px);
 }
 
-/* line 186, src/scss/_components/misc/_micromodal.scss */
+/* line 222, src/scss/_components/misc/_micromodal.scss */
 .micromodal .micromodal-container {
   width: 100%;
   max-width: 940px;
@@ -2437,7 +2475,7 @@ strong {
   overflow-y: auto;
 }
 
-/* line 195, src/scss/_components/misc/_micromodal.scss */
+/* line 231, src/scss/_components/misc/_micromodal.scss */
 .micromodal-content {
   -webkit-border-radius: 10px;
           border-radius: 10px;
@@ -2445,7 +2483,22 @@ strong {
   color: #fff;
 }
 
-/* line 201, src/scss/_components/misc/_micromodal.scss */
+/* line 236, src/scss/_components/misc/_micromodal.scss */
+.micromodal-content .color-secondary {
+  padding-top: 10px;
+}
+
+/* line 240, src/scss/_components/misc/_micromodal.scss */
+.micromodal-content.filter_type_content {
+  position: relative;
+}
+
+/* line 244, src/scss/_components/misc/_micromodal.scss */
+.micromodal-content.filter_type_content .additional_actions .boogie-list {
+  margin: 0 -20px 0;
+}
+
+/* line 251, src/scss/_components/misc/_micromodal.scss */
 .micromodal-header {
   position: relative;
   -webkit-box-align: center;
@@ -2456,24 +2509,24 @@ strong {
 }
 
 @media (max-width: 991px) {
-  /* line 201, src/scss/_components/misc/_micromodal.scss */
+  /* line 251, src/scss/_components/misc/_micromodal.scss */
   .micromodal-header {
     padding: 12px 20px;
   }
 }
 
-/* line 210, src/scss/_components/misc/_micromodal.scss */
+/* line 260, src/scss/_components/misc/_micromodal.scss */
 .micromodal-header + hr {
   margin: 0;
 }
 
-/* line 214, src/scss/_components/misc/_micromodal.scss */
+/* line 264, src/scss/_components/misc/_micromodal.scss */
 .micromodal-header .inline-icon {
   width: 40px;
   height: 40px;
 }
 
-/* line 220, src/scss/_components/misc/_micromodal.scss */
+/* line 270, src/scss/_components/misc/_micromodal.scss */
 .micromodal-title {
   display: -webkit-box;
   display: -webkit-flex;
@@ -2486,23 +2539,24 @@ strong {
   gap: 14px;
   overflow: hidden;
   font-size: 24px;
+  line-height: 1.2;
 }
 
 @media (max-width: 991px) {
-  /* line 220, src/scss/_components/misc/_micromodal.scss */
+  /* line 270, src/scss/_components/misc/_micromodal.scss */
   .micromodal-title {
     font-size: 18px;
   }
 }
 
-/* line 231, src/scss/_components/misc/_micromodal.scss */
+/* line 282, src/scss/_components/misc/_micromodal.scss */
 .micromodal-title-text {
   overflow: hidden;
   -o-text-overflow: ellipsis;
      text-overflow: ellipsis;
 }
 
-/* line 237, src/scss/_components/misc/_micromodal.scss */
+/* line 288, src/scss/_components/misc/_micromodal.scss */
 .micromodal-close {
   position: absolute;
   top: 18px;
@@ -2511,7 +2565,7 @@ strong {
   fill: #fff;
 }
 
-/* line 244, src/scss/_components/misc/_micromodal.scss */
+/* line 295, src/scss/_components/misc/_micromodal.scss */
 .micromodal-close .icon {
   fill: #fff;
   -webkit-transition: fill 0.2s ease;
@@ -2520,36 +2574,36 @@ strong {
   pointer-events: none;
 }
 
-/* line 250, src/scss/_components/misc/_micromodal.scss */
+/* line 301, src/scss/_components/misc/_micromodal.scss */
 .micromodal-close:hover .icon {
   fill: #1c3f87;
 }
 
-/* line 254, src/scss/_components/misc/_micromodal.scss */
+/* line 305, src/scss/_components/misc/_micromodal.scss */
 .micromodal-close:active .icon {
   fill: #1c3f87;
 }
 
 @media (min-width: 1025px) {
-  /* line 259, src/scss/_components/misc/_micromodal.scss */
+  /* line 310, src/scss/_components/misc/_micromodal.scss */
   .micromodal-close:hover .icon {
     fill: #1c3f87;
   }
 }
 
-/* line 265, src/scss/_components/misc/_micromodal.scss */
+/* line 316, src/scss/_components/misc/_micromodal.scss */
 .micromodal-body {
   padding: 20px 30px;
 }
 
 @media (max-width: 991px) {
-  /* line 265, src/scss/_components/misc/_micromodal.scss */
+  /* line 316, src/scss/_components/misc/_micromodal.scss */
   .micromodal-body {
     padding: 20px;
   }
 }
 
-/* line 273, src/scss/_components/misc/_micromodal.scss */
+/* line 324, src/scss/_components/misc/_micromodal.scss */
 .micromodal-hero {
   display: -webkit-box;
   display: -webkit-flex;
@@ -2566,7 +2620,7 @@ strong {
           align-items: center;
 }
 
-/* line 278, src/scss/_components/misc/_micromodal.scss */
+/* line 329, src/scss/_components/misc/_micromodal.scss */
 .micromodal-hero p {
   margin-bottom: 50px;
   font-size: 18px;
@@ -2575,13 +2629,13 @@ strong {
 }
 
 @media (max-width: 991px) {
-  /* line 278, src/scss/_components/misc/_micromodal.scss */
+  /* line 329, src/scss/_components/misc/_micromodal.scss */
   .micromodal-hero p {
     font-size: 16px;
   }
 }
 
-/* line 289, src/scss/_components/misc/_micromodal.scss */
+/* line 340, src/scss/_components/misc/_micromodal.scss */
 .micromodal-hero .micromodal-title {
   margin-bottom: 30px;
   text-align: center;
@@ -2589,21 +2643,21 @@ strong {
 }
 
 @media (max-width: 991px) {
-  /* line 289, src/scss/_components/misc/_micromodal.scss */
+  /* line 340, src/scss/_components/misc/_micromodal.scss */
   .micromodal-hero .micromodal-title {
     margin-bottom: 20px;
     font-size: 26px;
   }
 }
 
-/* line 300, src/scss/_components/misc/_micromodal.scss */
+/* line 351, src/scss/_components/misc/_micromodal.scss */
 .micromodal-hero .inline-icon {
   margin-bottom: 30px;
   width: 160px;
   height: 160px;
 }
 
-/* line 307, src/scss/_components/misc/_micromodal.scss */
+/* line 358, src/scss/_components/misc/_micromodal.scss */
 .micromodal-hero-actions {
   display: -webkit-box;
   display: -webkit-flex;
@@ -2623,7 +2677,7 @@ strong {
   gap: 20px;
 }
 
-/* line 314, src/scss/_components/misc/_micromodal.scss */
+/* line 365, src/scss/_components/misc/_micromodal.scss */
 .micromodal-hero-actions .btn {
   -webkit-box-flex: 1;
   -webkit-flex-grow: 1;
@@ -2654,7 +2708,9 @@ strong {
     opacity: 1;
   }
   100% {
-    opacity: 0;
+    opacity: 0.5;
+    -webkit-transform: translateY(0);
+            transform: translateY(0);
   }
 }
 
@@ -2663,7 +2719,9 @@ strong {
     opacity: 1;
   }
   100% {
-    opacity: 0;
+    opacity: 0.5;
+    -webkit-transform: translateY(0);
+            transform: translateY(0);
   }
 }
 
@@ -2689,14 +2747,36 @@ strong {
   }
 }
 
+@-webkit-keyframes mmfadeOutMax {
+  0% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+    -webkit-transform: translateY(0);
+            transform: translateY(0);
+  }
+}
+
+@keyframes mmfadeOutMax {
+  0% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+    -webkit-transform: translateY(0);
+            transform: translateY(0);
+  }
+}
+
 @-webkit-keyframes mmslideOut {
   0% {
     -webkit-transform: translateY(0);
             transform: translateY(0);
   }
   100% {
-    -webkit-transform: translateY(-10%);
-            transform: translateY(-10%);
+    -webkit-transform: translateY(-15%);
+            transform: translateY(-15%);
   }
 }
 
@@ -2706,72 +2786,122 @@ strong {
             transform: translateY(0);
   }
   100% {
-    -webkit-transform: translateY(-10%);
-            transform: translateY(-10%);
+    -webkit-transform: translateY(-15%);
+            transform: translateY(-15%);
   }
 }
 
-/* line 359, src/scss/_components/misc/_micromodal.scss */
-.micromodal .icon-thumbsup {
+@-webkit-keyframes mmslideDown {
+  0% {
+    -webkit-transform: translateY(0);
+            transform: translateY(0);
+  }
+  100% {
+    -webkit-transform: translateY(200%);
+            transform: translateY(200%);
+  }
+}
+
+@keyframes mmslideDown {
+  0% {
+    -webkit-transform: translateY(0);
+            transform: translateY(0);
+  }
+  100% {
+    -webkit-transform: translateY(200%);
+            transform: translateY(200%);
+  }
+}
+
+/* line 432, src/scss/_components/misc/_micromodal.scss */
+.inline-icon {
+  -webkit-flex-shrink: 0;
+      -ms-flex-negative: 0;
+          flex-shrink: 0;
+  width: 20px;
+  height: 20px;
+  -webkit-background-size: contain;
+          background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
+/* line 441, src/scss/_components/misc/_micromodal.scss */
+.icon-thumbsup {
   background-image: url(../images/report/icon-thumbs-up.svg);
 }
 
-/* line 362, src/scss/_components/misc/_micromodal.scss */
-.micromodal .icon-broken-link {
+/* line 444, src/scss/_components/misc/_micromodal.scss */
+.icon-broken-link {
   background-image: url(../images/report/icon-broken.svg);
 }
 
-/* line 365, src/scss/_components/misc/_micromodal.scss */
-.micromodal .icon-inaccuracy {
+/* line 447, src/scss/_components/misc/_micromodal.scss */
+.icon-inaccuracy {
   background-image: url(../images/report/icon-inaccuracy.svg);
 }
 
-/* line 368, src/scss/_components/misc/_micromodal.scss */
-.micromodal .icon-comment-bubble {
+/* line 450, src/scss/_components/misc/_micromodal.scss */
+.icon-comment-bubble {
   background-image: url(../images/report/icon-bubble.svg);
 }
 
-/* line 371, src/scss/_components/misc/_micromodal.scss */
-.micromodal .icon-speech-bubble-icon {
+/* line 453, src/scss/_components/misc/_micromodal.scss */
+.icon-speech-bubble-icon {
   background-image: url(../images/report/icon-bubble.svg);
 }
 
-/* line 374, src/scss/_components/misc/_micromodal.scss */
-.micromodal .icon-screenshot {
+/* line 456, src/scss/_components/misc/_micromodal.scss */
+.icon-screenshot {
   background-image: url(../images/report/icon-screen-shot.svg);
 }
 
-/* line 378, src/scss/_components/misc/_micromodal.scss */
-.micromodal .icon-categories {
+/* line 460, src/scss/_components/misc/_micromodal.scss */
+.icon-categories {
   background-image: url(../images/report/icon-category.svg);
 }
 
-/* line 382, src/scss/_components/misc/_micromodal.scss */
-.micromodal .icon-spam {
+/* line 464, src/scss/_components/misc/_micromodal.scss */
+.icon-spam {
   background-image: url(../images/report/icon-envelope.svg);
 }
 
-/* line 386, src/scss/_components/misc/_micromodal.scss */
-.micromodal .icon-age-limit {
+/* line 468, src/scss/_components/misc/_micromodal.scss */
+.icon-age-limit {
   background-image: url(../images/report/icon-18-plus.svg);
 }
 
-/* line 390, src/scss/_components/misc/_micromodal.scss */
-.micromodal .icon-revenge {
+/* line 472, src/scss/_components/misc/_micromodal.scss */
+.icon-revenge {
   background-image: url(../images/report/icon-revenge.svg);
 }
 
-/* line 393, src/scss/_components/misc/_micromodal.scss */
-.micromodal .icon-speech-bubble-heart-success {
+/* line 475, src/scss/_components/misc/_micromodal.scss */
+.icon-speech-bubble-heart-success {
   background-image: url(../images/report/icon-bubble.svg);
 }
 
-/* line 396, src/scss/_components/misc/_micromodal.scss */
-.micromodal .icon-report-success {
+/* line 478, src/scss/_components/misc/_micromodal.scss */
+.icon-report-success {
   background-image: url(../images/report/icon-success.svg);
 }
 
-/* line 400, src/scss/_components/misc/_micromodal.scss */
+/* line 481, src/scss/_components/misc/_micromodal.scss */
+.icon-problem {
+  background-image: url(../images/report/icon-problem.svg);
+}
+
+/* line 484, src/scss/_components/misc/_micromodal.scss */
+.icon-recommendations {
+  background-image: url(../images/report/icon-reccomendations.svg);
+}
+
+/* line 487, src/scss/_components/misc/_micromodal.scss */
+.icon-feedback {
+  background-image: url(../images/report/icon-feedback.svg);
+}
+
+/* line 491, src/scss/_components/misc/_micromodal.scss */
 .boogie-list {
   margin: 10px -30px 0;
   font-weight: 500;
@@ -2780,13 +2910,13 @@ strong {
 }
 
 @media (max-width: 991px) {
-  /* line 400, src/scss/_components/misc/_micromodal.scss */
+  /* line 491, src/scss/_components/misc/_micromodal.scss */
   .boogie-list {
     margin: 10px -20px 0;
   }
 }
 
-/* line 411, src/scss/_components/misc/_micromodal.scss */
+/* line 502, src/scss/_components/misc/_micromodal.scss */
 .boogie-list-item {
   display: -webkit-box;
   display: -webkit-flex;
@@ -2808,36 +2938,36 @@ strong {
   transition: background-color 0.2s ease, color 0.2s ease;
 }
 
-/* line 420, src/scss/_components/misc/_micromodal.scss */
+/* line 511, src/scss/_components/misc/_micromodal.scss */
 .boogie-list-item .arrow {
   fill: #fff;
 }
 
-/* line 424, src/scss/_components/misc/_micromodal.scss */
+/* line 515, src/scss/_components/misc/_micromodal.scss */
 .boogie-list-item:hover {
   background-color: #484a54;
   color: #3e98cf;
 }
 
-/* line 431, src/scss/_components/misc/_micromodal.scss */
+/* line 522, src/scss/_components/misc/_micromodal.scss */
 .boogie-list-item:hover .arrow {
   fill: #3e98cf;
 }
 
-/* line 436, src/scss/_components/misc/_micromodal.scss */
+/* line 527, src/scss/_components/misc/_micromodal.scss */
 .boogie-list-item:active {
   background-color: #f0f1f5;
   color: #000;
 }
 
 @media (max-width: 991px) {
-  /* line 411, src/scss/_components/misc/_micromodal.scss */
+  /* line 502, src/scss/_components/misc/_micromodal.scss */
   .boogie-list-item {
     padding: 15px 20px;
   }
 }
 
-/* line 445, src/scss/_components/misc/_micromodal.scss */
+/* line 536, src/scss/_components/misc/_micromodal.scss */
 .boogie-list-item .icon {
   -webkit-flex-shrink: 0;
       -ms-flex-negative: 0;
@@ -2851,18 +2981,18 @@ strong {
 }
 
 @media (min-width: 1025px) {
-  /* line 452, src/scss/_components/misc/_micromodal.scss */
+  /* line 543, src/scss/_components/misc/_micromodal.scss */
   .boogie-list-item .icon:hover {
     fill: #ff8c04;
   }
 }
 
-/* line 458, src/scss/_components/misc/_micromodal.scss */
+/* line 549, src/scss/_components/misc/_micromodal.scss */
 .boogie-list-item .icon:active {
   fill: #ff8c04;
 }
 
-/* line 464, src/scss/_components/misc/_micromodal.scss */
+/* line 555, src/scss/_components/misc/_micromodal.scss */
 .boogie-list-text {
   display: -webkit-box;
   display: -webkit-flex;
@@ -2875,7 +3005,7 @@ strong {
   gap: 10px;
 }
 
-/* line 470, src/scss/_components/misc/_micromodal.scss */
+/* line 561, src/scss/_components/misc/_micromodal.scss */
 .boogie-link {
   background: no-repeat 50% 100%;
   background-image: -webkit-gradient(linear, left top, left bottom, from(currentColor), to(currentColor));
@@ -2891,21 +3021,21 @@ strong {
   transition: background-size 0.2s ease, -webkit-background-size 0.2s ease;
 }
 
-/* line 476, src/scss/_components/misc/_micromodal.scss */
+/* line 567, src/scss/_components/misc/_micromodal.scss */
 .boogie-link:active {
   -webkit-background-size: 0 1px;
           background-size: 0 1px;
 }
 
 @media (min-width: 1025px) {
-  /* line 480, src/scss/_components/misc/_micromodal.scss */
+  /* line 571, src/scss/_components/misc/_micromodal.scss */
   .boogie-link:hover {
     -webkit-background-size: 0 1px;
             background-size: 0 1px;
   }
 }
 
-/* line 487, src/scss/_components/misc/_micromodal.scss */
+/* line 578, src/scss/_components/misc/_micromodal.scss */
 .boogie-disclaimer {
   margin-bottom: 20px;
   padding: 10px;
@@ -2915,19 +3045,19 @@ strong {
   color: #fff;
 }
 
-/* line 494, src/scss/_components/misc/_micromodal.scss */
+/* line 585, src/scss/_components/misc/_micromodal.scss */
 .boogie-disclaimer p {
   font-size: 12px;
   line-height: 1.4;
   margin-bottom: 18px;
 }
 
-/* line 499, src/scss/_components/misc/_micromodal.scss */
+/* line 590, src/scss/_components/misc/_micromodal.scss */
 .boogie-disclaimer p:last-child {
   margin-bottom: 0;
 }
 
-/* line 505, src/scss/_components/misc/_micromodal.scss */
+/* line 596, src/scss/_components/misc/_micromodal.scss */
 .boogie-form-footer {
   display: -webkit-box;
   display: -webkit-flex;
@@ -2948,7 +3078,7 @@ strong {
 }
 
 @media (max-width: 374px) {
-  /* line 513, src/scss/_components/misc/_micromodal.scss */
+  /* line 604, src/scss/_components/misc/_micromodal.scss */
   .boogie-form-footer .btn {
     -webkit-box-flex: 1;
     -webkit-flex-grow: 1;
@@ -2957,7 +3087,7 @@ strong {
   }
 }
 
-/* line 519, src/scss/_components/misc/_micromodal.scss */
+/* line 610, src/scss/_components/misc/_micromodal.scss */
 .boogie-fields {
   display: -webkit-box;
   display: -webkit-flex;
@@ -2970,32 +3100,33 @@ strong {
   gap: 20px 0;
 }
 
-/* line 526, src/scss/_components/misc/_micromodal.scss */
+/* line 617, src/scss/_components/misc/_micromodal.scss */
 .boogie-field {
   width: 50%;
   padding: 0 10px;
 }
 
 @media (max-width: 424px) {
-  /* line 526, src/scss/_components/misc/_micromodal.scss */
+  /* line 617, src/scss/_components/misc/_micromodal.scss */
   .boogie-field {
     width: 100%;
   }
 }
 
-/* line 535, src/scss/_components/misc/_micromodal.scss */
+/* line 626, src/scss/_components/misc/_micromodal.scss */
 .boogie-field-textarea {
   width: 100%;
 }
 
-/* line 538, src/scss/_components/misc/_micromodal.scss */
+/* line 630, src/scss/_components/misc/_micromodal.scss */
 .boogie-field-textarea .boogie-input {
   max-width: initial;
   height: 120px;
   padding-top: 16px;
+  font-family: inherit;
 }
 
-/* line 545, src/scss/_components/misc/_micromodal.scss */
+/* line 638, src/scss/_components/misc/_micromodal.scss */
 .boogie-input {
   width: 100%;
   height: 50px;
@@ -3010,22 +3141,22 @@ strong {
   transition: border-color 0.2s ease;
 }
 
-/* line 555, src/scss/_components/misc/_micromodal.scss */
+/* line 648, src/scss/_components/misc/_micromodal.scss */
 .boogie-input.has_error {
   border: 1px solid red;
 }
 
-/* line 559, src/scss/_components/misc/_micromodal.scss */
+/* line 652, src/scss/_components/misc/_micromodal.scss */
 .boogie-input:focus {
   border-color: #ff8c04;
 }
 
-/* line 563, src/scss/_components/misc/_micromodal.scss */
+/* line 656, src/scss/_components/misc/_micromodal.scss */
 .boogie-input.invalid, .boogie-input:invalid {
   border-color: #f60000;
 }
 
-/* line 568, src/scss/_components/misc/_micromodal.scss */
+/* line 661, src/scss/_components/misc/_micromodal.scss */
 .boogie-input::-webkit-input-placeholder {
   color: #fff;
 }
@@ -3039,14 +3170,14 @@ strong {
   color: #fff;
 }
 
-/* line 573, src/scss/_components/misc/_micromodal.scss */
+/* line 666, src/scss/_components/misc/_micromodal.scss */
 .boogie-checkbox {
   position: relative;
   font-weight: 500;
   font-size: 14px;
 }
 
-/* line 578, src/scss/_components/misc/_micromodal.scss */
+/* line 671, src/scss/_components/misc/_micromodal.scss */
 .boogie-checkbox .boogie-checkbox-input {
   position: absolute;
   opacity: 0;
@@ -3055,7 +3186,7 @@ strong {
   cursor: pointer;
 }
 
-/* line 585, src/scss/_components/misc/_micromodal.scss */
+/* line 678, src/scss/_components/misc/_micromodal.scss */
 .boogie-checkbox .boogie-checkbox-input:checked + .boogie-checkbox-label::before {
   -webkit-background-size: 10px 8px;
           background-size: 10px 8px;
@@ -3063,12 +3194,12 @@ strong {
           filter: invert(48%) sepia(66%) saturate(447%) hue-rotate(89deg) brightness(96%) contrast(97%);
 }
 
-/* line 590, src/scss/_components/misc/_micromodal.scss */
+/* line 683, src/scss/_components/misc/_micromodal.scss */
 .boogie-checkbox .boogie-checkbox-input.invalid + .boogie-checkbox-label::before {
   border-color: #f60000;
 }
 
-/* line 595, src/scss/_components/misc/_micromodal.scss */
+/* line 688, src/scss/_components/misc/_micromodal.scss */
 .boogie-checkbox .boogie-checkbox-label {
   position: relative;
   display: -webkit-inline-box;
@@ -3083,7 +3214,7 @@ strong {
   cursor: pointer;
 }
 
-/* line 602, src/scss/_components/misc/_micromodal.scss */
+/* line 695, src/scss/_components/misc/_micromodal.scss */
 .boogie-checkbox .boogie-checkbox-label::before {
   content: '';
   -webkit-box-sizing: border-box;
@@ -3111,12 +3242,12 @@ strong {
   transition: background-size 0.1s ease, filter 0.2s ease, -webkit-background-size 0.1s ease, -webkit-filter 0.2s ease;
 }
 
-/* line 620, src/scss/_components/misc/_micromodal.scss */
+/* line 713, src/scss/_components/misc/_micromodal.scss */
 .boogie-checkbox .boogie-checkbox-label.has_error::before {
   border-color: #f60000;
 }
 
-/* line 627, src/scss/_components/misc/_micromodal.scss */
+/* line 720, src/scss/_components/misc/_micromodal.scss */
 .boogie-after-submit-content .micromodal-body {
   display: -webkit-box;
   display: -webkit-flex;
@@ -3134,40 +3265,40 @@ strong {
   padding-bottom: 70px;
 }
 
-/* line 637, src/scss/_components/misc/_micromodal.scss */
+/* line 730, src/scss/_components/misc/_micromodal.scss */
 .light .micromodal hr {
   border-top: 1px solid #d8d8d8;
 }
 
-/* line 640, src/scss/_components/misc/_micromodal.scss */
+/* line 733, src/scss/_components/misc/_micromodal.scss */
 .light .micromodal-content {
   background-color: #fff;
   color: #000;
 }
 
-/* line 646, src/scss/_components/misc/_micromodal.scss */
+/* line 739, src/scss/_components/misc/_micromodal.scss */
 .light .micromodal-close .icon {
   fill: #454545;
 }
 
-/* line 650, src/scss/_components/misc/_micromodal.scss */
+/* line 743, src/scss/_components/misc/_micromodal.scss */
 .light .micromodal-close:hover .icon {
   fill: #1c3f87;
 }
 
-/* line 659, src/scss/_components/misc/_micromodal.scss */
+/* line 752, src/scss/_components/misc/_micromodal.scss */
 .light .boogie-disclaimer {
   background: #f6f6f6;
   color: #000;
 }
 
-/* line 663, src/scss/_components/misc/_micromodal.scss */
+/* line 756, src/scss/_components/misc/_micromodal.scss */
 .light .boogie-input {
   color: #000;
   background-color: #fff;
 }
 
-/* line 667, src/scss/_components/misc/_micromodal.scss */
+/* line 760, src/scss/_components/misc/_micromodal.scss */
 .light .boogie-input::-webkit-input-placeholder {
   color: #000;
 }
@@ -3181,18 +3312,18 @@ strong {
   color: #000;
 }
 
-/* line 672, src/scss/_components/misc/_micromodal.scss */
+/* line 765, src/scss/_components/misc/_micromodal.scss */
 .light .boogie-list-item .arrow {
   fill: #000;
 }
 
-/* line 675, src/scss/_components/misc/_micromodal.scss */
+/* line 768, src/scss/_components/misc/_micromodal.scss */
 .light .boogie-list-item:hover {
   background-color: #f0f1f5;
   color: #000;
 }
 
-/* line 679, src/scss/_components/misc/_micromodal.scss */
+/* line 772, src/scss/_components/misc/_micromodal.scss */
 .light .boogie-list-item:hover .arrow {
   fill: #3e98cf;
 }
@@ -8413,13 +8544,21 @@ fieldset {
           background-size: 16px;
 }
 
-/* line 2, src/scss/_components/common/a2z_popup.scss */
+@media screen and (max-width: 1023px) {
+  /* line 4, src/scss/_components/common/a2z_popup.scss */
+  #a2z-modal .micromodal-overlay {
+    max-height: var(--vh, 100vh);
+  }
+}
+
+/* line 8, src/scss/_components/common/a2z_popup.scss */
 #a2z-modal .micromodal-container {
   margin: 0;
+  max-width: 1020px;
 }
 
 @media screen and (max-width: 1023px) {
-  /* line 2, src/scss/_components/common/a2z_popup.scss */
+  /* line 8, src/scss/_components/common/a2z_popup.scss */
   #a2z-modal .micromodal-container {
     height: var(--vh, 100vh);
     max-height: var(--vh, 100vh);
@@ -8428,7 +8567,7 @@ fieldset {
   }
 }
 
-/* line 13, src/scss/_components/common/a2z_popup.scss */
+/* line 20, src/scss/_components/common/a2z_popup.scss */
 .a2z-content {
   display: -webkit-box;
   display: -webkit-flex;
@@ -8445,7 +8584,7 @@ fieldset {
 }
 
 @media screen and (max-width: 1023px) {
-  /* line 13, src/scss/_components/common/a2z_popup.scss */
+  /* line 20, src/scss/_components/common/a2z_popup.scss */
   .a2z-content {
     -webkit-border-radius: 0;
             border-radius: 0;
@@ -8453,7 +8592,7 @@ fieldset {
   }
 }
 
-/* line 25, src/scss/_components/common/a2z_popup.scss */
+/* line 32, src/scss/_components/common/a2z_popup.scss */
 .a2z-content .micromodal-body {
   -webkit-box-flex: 1;
   -webkit-flex: 1;
@@ -8464,19 +8603,19 @@ fieldset {
   padding: 7px 10px;
 }
 
-/* line 31, src/scss/_components/common/a2z_popup.scss */
+/* line 38, src/scss/_components/common/a2z_popup.scss */
 .a2z-content .micromodal-body::-webkit-scrollbar {
   width: 4px;
   /* Set the width of the scrollbar */
 }
 
-/* line 35, src/scss/_components/common/a2z_popup.scss */
+/* line 42, src/scss/_components/common/a2z_popup.scss */
 .a2z-content .micromodal-body::-webkit-scrollbar-track {
   background: #f1f1f1;
   /* Background of the track */
 }
 
-/* line 39, src/scss/_components/common/a2z_popup.scss */
+/* line 46, src/scss/_components/common/a2z_popup.scss */
 .a2z-content .micromodal-body::-webkit-scrollbar-thumb {
   background: #225396;
   /* Scrollbar thumb color */
@@ -8485,13 +8624,13 @@ fieldset {
   /* Rounded corners */
 }
 
-/* line 44, src/scss/_components/common/a2z_popup.scss */
+/* line 51, src/scss/_components/common/a2z_popup.scss */
 .a2z-content .micromodal-body::-webkit-scrollbar-thumb:hover {
   background: #555;
   /* Hover color */
 }
 
-/* line 48, src/scss/_components/common/a2z_popup.scss */
+/* line 55, src/scss/_components/common/a2z_popup.scss */
 .a2z-content .micromodal-footer {
   display: -webkit-box;
   display: -webkit-flex;
@@ -8509,32 +8648,37 @@ fieldset {
   gap: 10px;
 }
 
-/* line 55, src/scss/_components/common/a2z_popup.scss */
+/* line 62, src/scss/_components/common/a2z_popup.scss */
 .a2z-content .micromodal-footer .btn {
   padding: 10px 30px;
   -webkit-border-radius: 4px;
           border-radius: 4px;
 }
 
-/* line 60, src/scss/_components/common/a2z_popup.scss */
+/* line 67, src/scss/_components/common/a2z_popup.scss */
+.a2z-content .micromodal-footer .a2z-apply {
+  width: 100px;
+}
+
+/* line 71, src/scss/_components/common/a2z_popup.scss */
 .a2z-content .micromodal-footer .a2z-reset {
   color: #3d3e3f;
 }
 
-/* line 66, src/scss/_components/common/a2z_popup.scss */
+/* line 77, src/scss/_components/common/a2z_popup.scss */
 .a2z-content .filter_tag {
   position: relative;
 }
 
 @media screen and (max-width: 1023px) {
-  /* line 66, src/scss/_components/common/a2z_popup.scss */
+  /* line 77, src/scss/_components/common/a2z_popup.scss */
   .a2z-content .filter_tag {
     width: 100%;
     border: 2px solid #333;
   }
 }
 
-/* line 74, src/scss/_components/common/a2z_popup.scss */
+/* line 85, src/scss/_components/common/a2z_popup.scss */
 .a2z-content .filter_tag input {
   width: 100%;
   border: none;
@@ -8545,7 +8689,7 @@ fieldset {
   font-size: 16px;
 }
 
-/* line 82, src/scss/_components/common/a2z_popup.scss */
+/* line 93, src/scss/_components/common/a2z_popup.scss */
 .a2z-content .filter_tag:after {
   content: ' ';
   position: absolute;
@@ -8561,7 +8705,7 @@ fieldset {
           background-size: contain;
 }
 
-/* line 95, src/scss/_components/common/a2z_popup.scss */
+/* line 106, src/scss/_components/common/a2z_popup.scss */
 .a2z-header {
   display: -webkit-box;
   display: -webkit-flex;
@@ -8578,13 +8722,13 @@ fieldset {
 }
 
 @media screen and (max-width: 1023px) {
-  /* line 95, src/scss/_components/common/a2z_popup.scss */
+  /* line 106, src/scss/_components/common/a2z_popup.scss */
   .a2z-header {
     display: block;
   }
 }
 
-/* line 104, src/scss/_components/common/a2z_popup.scss */
+/* line 115, src/scss/_components/common/a2z_popup.scss */
 .a2z-letters-container {
   display: -webkit-box;
   display: -webkit-flex;
@@ -8599,7 +8743,7 @@ fieldset {
 }
 
 @media screen and (max-width: 1023px) {
-  /* line 104, src/scss/_components/common/a2z_popup.scss */
+  /* line 115, src/scss/_components/common/a2z_popup.scss */
   .a2z-letters-container {
     gap: 6px;
     -webkit-box-pack: center;
@@ -8610,7 +8754,7 @@ fieldset {
   }
 }
 
-/* line 117, src/scss/_components/common/a2z_popup.scss */
+/* line 128, src/scss/_components/common/a2z_popup.scss */
 .a2z-letters-container .a2z-letter-item {
   cursor: pointer;
   font-size: 16px;
@@ -8619,25 +8763,25 @@ fieldset {
   transition: color .3s;
 }
 
-/* line 122, src/scss/_components/common/a2z_popup.scss */
+/* line 133, src/scss/_components/common/a2z_popup.scss */
 .a2z-letters-container .a2z-letter-item.popular {
   color: #0040a0;
 }
 
 @media screen and (max-width: 1023px) {
-  /* line 117, src/scss/_components/common/a2z_popup.scss */
+  /* line 128, src/scss/_components/common/a2z_popup.scss */
   .a2z-letters-container .a2z-letter-item {
     font-size: 14px;
     padding: 0 10px;
   }
 }
 
-/* line 131, src/scss/_components/common/a2z_popup.scss */
+/* line 142, src/scss/_components/common/a2z_popup.scss */
 .a2z-letters-container .a2z-letter-item.active {
   color: #3e98cf;
 }
 
-/* line 138, src/scss/_components/common/a2z_popup.scss */
+/* line 149, src/scss/_components/common/a2z_popup.scss */
 .a2z-btn {
   border: none;
   -webkit-border-radius: 4px;
@@ -8651,11 +8795,18 @@ fieldset {
   -o-text-overflow: ellipsis;
      text-overflow: ellipsis;
   white-space: nowrap;
-  font-size: 16px;
+  font-size: 15px;
   text-align: center;
 }
 
-/* line 153, src/scss/_components/common/a2z_popup.scss */
+@media screen and (max-width: 1023px) {
+  /* line 149, src/scss/_components/common/a2z_popup.scss */
+  .a2z-btn {
+    font-size: 14px;
+  }
+}
+
+/* line 168, src/scss/_components/common/a2z_popup.scss */
 .a2z-btn.processing:before {
   text-rendering: auto;
   -webkit-font-smoothing: antialiased;
@@ -8666,12 +8817,12 @@ fieldset {
   font-size: inherit;
 }
 
-/* line 164, src/scss/_components/common/a2z_popup.scss */
+/* line 179, src/scss/_components/common/a2z_popup.scss */
 .a2z-btn:hover, .a2z-btn.active {
   color: #fff;
 }
 
-/* line 172, src/scss/_components/common/a2z_popup.scss */
+/* line 187, src/scss/_components/common/a2z_popup.scss */
 .a2z-categories-container {
   display: -webkit-box;
   display: -webkit-flex;
@@ -8683,7 +8834,7 @@ fieldset {
   gap: 10px;
 }
 
-/* line 180, src/scss/_components/common/a2z_popup.scss */
+/* line 195, src/scss/_components/common/a2z_popup.scss */
 .a2z-category-item {
   background: #dbdce0;
   color: #333;
@@ -8696,7 +8847,7 @@ fieldset {
 }
 
 @media screen and (max-width: 1023px) {
-  /* line 180, src/scss/_components/common/a2z_popup.scss */
+  /* line 195, src/scss/_components/common/a2z_popup.scss */
   .a2z-category-item {
     -webkit-box-flex: 1;
     -webkit-flex: 1 1 -webkit-calc(33.333% - 10px);
@@ -8709,13 +8860,13 @@ fieldset {
   }
 }
 
-/* line 192, src/scss/_components/common/a2z_popup.scss */
+/* line 207, src/scss/_components/common/a2z_popup.scss */
 .a2z-category-item:hover, .a2z-category-item.active {
   background: #3e98cf;
   color: #fff;
 }
 
-/* line 199, src/scss/_components/common/a2z_popup.scss */
+/* line 214, src/scss/_components/common/a2z_popup.scss */
 .a2z-popular {
   display: -webkit-box;
   display: -webkit-flex;
@@ -8732,7 +8883,7 @@ fieldset {
   margin-top: 5px;
 }
 
-/* line 206, src/scss/_components/common/a2z_popup.scss */
+/* line 221, src/scss/_components/common/a2z_popup.scss */
 .a2z-popular-item {
   background: #0040a0;
   color: #fff;
@@ -8745,7 +8896,7 @@ fieldset {
 }
 
 @media screen and (max-width: 1023px) {
-  /* line 206, src/scss/_components/common/a2z_popup.scss */
+  /* line 221, src/scss/_components/common/a2z_popup.scss */
   .a2z-popular-item {
     -webkit-box-flex: 1;
     -webkit-flex: 1 1 -webkit-calc(33.333% - 10px);
@@ -8756,19 +8907,19 @@ fieldset {
     -webkit-box-sizing: border-box;
             box-sizing: border-box;
   }
-  /* line 217, src/scss/_components/common/a2z_popup.scss */
+  /* line 232, src/scss/_components/common/a2z_popup.scss */
   .a2z-popular-item:nth-child(6) {
     display: block;
   }
 }
 
-/* line 222, src/scss/_components/common/a2z_popup.scss */
+/* line 237, src/scss/_components/common/a2z_popup.scss */
 .a2z-popular-item:hover {
   background: #3e98cf;
   color: #fff;
 }
 
-/* line 230, src/scss/_components/common/a2z_popup.scss */
+/* line 245, src/scss/_components/common/a2z_popup.scss */
 .progress-spinner {
   width: 16px;
   height: 16px;
@@ -8778,22 +8929,21 @@ fieldset {
           border-radius: 50%;
   -webkit-animation: spin 1s linear infinite;
           animation: spin 1s linear infinite;
-  margin-right: 8px;
 }
 
-/* line 240, src/scss/_components/common/a2z_popup.scss */
+/* line 254, src/scss/_components/common/a2z_popup.scss */
 .progress-button .progress-spinner {
   display: none;
 }
 
-/* line 244, src/scss/_components/common/a2z_popup.scss */
+/* line 258, src/scss/_components/common/a2z_popup.scss */
 .progress-button:disabled {
   opacity: 0.8;
   cursor: not-allowed;
   font-size: 0;
 }
 
-/* line 249, src/scss/_components/common/a2z_popup.scss */
+/* line 263, src/scss/_components/common/a2z_popup.scss */
 .progress-button:disabled .progress-spinner {
   display: block;
 }
@@ -8812,7 +8962,7 @@ fieldset {
   }
 }
 
-/* line 261, src/scss/_components/common/a2z_popup.scss */
+/* line 275, src/scss/_components/common/a2z_popup.scss */
 .light .a2z-content {
   background: #eee;
 }
@@ -8929,7 +9079,34 @@ fieldset {
   max-height: calc(100vh - 60px);
 }
 
-/* line 102, src/scss/_components/category/_sidebar.scss */
+/* line 103, src/scss/_components/category/_sidebar.scss */
+.category-list-container.a2z .category-list-left::-webkit-scrollbar {
+  width: 4px;
+  /* Set the width of the scrollbar */
+}
+
+/* line 107, src/scss/_components/category/_sidebar.scss */
+.category-list-container.a2z .category-list-left::-webkit-scrollbar-track {
+  background: #f1f1f1;
+  /* Background of the track */
+}
+
+/* line 111, src/scss/_components/category/_sidebar.scss */
+.category-list-container.a2z .category-list-left::-webkit-scrollbar-thumb {
+  background: #225396;
+  /* Scrollbar thumb color */
+  -webkit-border-radius: 10px;
+          border-radius: 10px;
+  /* Rounded corners */
+}
+
+/* line 116, src/scss/_components/category/_sidebar.scss */
+.category-list-container.a2z .category-list-left::-webkit-scrollbar-thumb:hover {
+  background: #555;
+  /* Hover color */
+}
+
+/* line 121, src/scss/_components/category/_sidebar.scss */
 .category-list-container.a2z .category-list-letters {
   display: -webkit-box;
   display: -webkit-flex;
@@ -8942,23 +9119,24 @@ fieldset {
           flex-direction: column;
 }
 
-/* line 106, src/scss/_components/category/_sidebar.scss */
+/* line 125, src/scss/_components/category/_sidebar.scss */
 .category-list-container.a2z .category-list-item {
-  padding: 3px 0 3px 10px;
+  padding: 3px 5px 3px 10px;
 }
 
-/* line 111, src/scss/_components/category/_sidebar.scss */
+/* line 130, src/scss/_components/category/_sidebar.scss */
 .category-list-search {
   position: relative;
   width: 100%;
   text-align: center;
+  background: #fff;
   border: 2px solid #333;
   -webkit-border-radius: 3px;
           border-radius: 3px;
   margin-bottom: 5px;
 }
 
-/* line 119, src/scss/_components/category/_sidebar.scss */
+/* line 139, src/scss/_components/category/_sidebar.scss */
 .category-list-search .icon-search {
   width: 18px;
   position: absolute;
@@ -8966,24 +9144,24 @@ fieldset {
   fill: #333;
 }
 
-/* line 125, src/scss/_components/category/_sidebar.scss */
+/* line 145, src/scss/_components/category/_sidebar.scss */
 .category-list-search .icon-search path {
   fill: #333;
 }
 
-/* line 130, src/scss/_components/category/_sidebar.scss */
+/* line 150, src/scss/_components/category/_sidebar.scss */
 .category-list-search-title {
   padding-bottom: 10px;
   font-weight: 600;
 }
 
-/* line 135, src/scss/_components/category/_sidebar.scss */
+/* line 155, src/scss/_components/category/_sidebar.scss */
 .category-list-search-mobile {
   display: none;
 }
 
 @media screen and (max-width: 1023px) {
-  /* line 135, src/scss/_components/category/_sidebar.scss */
+  /* line 155, src/scss/_components/category/_sidebar.scss */
   .category-list-search-mobile {
     display: -webkit-box;
     display: -webkit-flex;
@@ -8991,46 +9169,45 @@ fieldset {
     display: flex;
     padding: 0;
   }
-  /* line 142, src/scss/_components/category/_sidebar.scss */
+  /* line 162, src/scss/_components/category/_sidebar.scss */
   .category-list-search-mobile .icon-search {
     top: -4px;
   }
 }
 
-/* line 148, src/scss/_components/category/_sidebar.scss */
+/* line 168, src/scss/_components/category/_sidebar.scss */
 .category-list-left {
   overflow: auto;
-  scrollbar-width: thin;
 }
 
-/* line 152, src/scss/_components/category/_sidebar.scss */
+/* line 171, src/scss/_components/category/_sidebar.scss */
 .category-list-left::-webkit-scrollbar {
   width: 4px;
   /* Set the width of the scrollbar */
 }
 
-/* line 156, src/scss/_components/category/_sidebar.scss */
+/* line 175, src/scss/_components/category/_sidebar.scss */
 .category-list-left::-webkit-scrollbar-track {
   background: #f1f1f1;
   /* Background of the track */
 }
 
-/* line 160, src/scss/_components/category/_sidebar.scss */
+/* line 179, src/scss/_components/category/_sidebar.scss */
 .category-list-left::-webkit-scrollbar-thumb {
-  background: #888;
+  background: #225396;
   /* Scrollbar thumb color */
   -webkit-border-radius: 10px;
           border-radius: 10px;
   /* Rounded corners */
 }
 
-/* line 165, src/scss/_components/category/_sidebar.scss */
+/* line 184, src/scss/_components/category/_sidebar.scss */
 .category-list-left::-webkit-scrollbar-thumb:hover {
   background: #555;
   /* Hover color */
 }
 
-/* line 169, src/scss/_components/category/_sidebar.scss */
+/* line 188, src/scss/_components/category/_sidebar.scss */
 .category-list-filter {
   -webkit-box-flex: 1;
   -webkit-flex: 1;
@@ -9043,7 +9220,7 @@ fieldset {
   padding: 3px 0 3px 30px;
 }
 
-/* line 177, src/scss/_components/category/_sidebar.scss */
+/* line 196, src/scss/_components/category/_sidebar.scss */
 .category-list-filter-btn {
   position: relative;
   -webkit-box-flex: 0;
@@ -9052,7 +9229,7 @@ fieldset {
           flex: 0 0 35px;
 }
 
-/* line 181, src/scss/_components/category/_sidebar.scss */
+/* line 200, src/scss/_components/category/_sidebar.scss */
 .category-list-filter-btn:before {
   position: absolute;
   right: 0;
@@ -9069,12 +9246,12 @@ fieldset {
   cursor: pointer;
 }
 
-/* line 197, src/scss/_components/category/_sidebar.scss */
+/* line 216, src/scss/_components/category/_sidebar.scss */
 .category-list-filter-btn:hover .category-list-options {
   display: block;
 }
 
-/* line 204, src/scss/_components/category/_sidebar.scss */
+/* line 223, src/scss/_components/category/_sidebar.scss */
 .category-list-options {
   overflow: hidden;
   max-height: 0;
@@ -9083,12 +9260,12 @@ fieldset {
   transition: max-height 0.35s ease-in-out;
 }
 
-/* line 210, src/scss/_components/category/_sidebar.scss */
+/* line 229, src/scss/_components/category/_sidebar.scss */
 .category-list-options ul {
   padding: 5px 0;
 }
 
-/* line 214, src/scss/_components/category/_sidebar.scss */
+/* line 233, src/scss/_components/category/_sidebar.scss */
 .category-list-options:hover, .category-list-options.open {
   border-top: 1px solid #333;
   -webkit-transform: translateY(0);
@@ -9097,7 +9274,7 @@ fieldset {
   max-height: 150px;
 }
 
-/* line 222, src/scss/_components/category/_sidebar.scss */
+/* line 241, src/scss/_components/category/_sidebar.scss */
 .category-list-option {
   display: -webkit-box;
   display: -webkit-flex;
@@ -9112,7 +9289,7 @@ fieldset {
   gap: 10px;
 }
 
-/* line 229, src/scss/_components/category/_sidebar.scss */
+/* line 248, src/scss/_components/category/_sidebar.scss */
 .category-list-option:before {
   content: ' ';
   display: block;
@@ -9124,27 +9301,27 @@ fieldset {
   background-position: center;
 }
 
-/* line 238, src/scss/_components/category/_sidebar.scss */
+/* line 257, src/scss/_components/category/_sidebar.scss */
 .category-list-option.icon_scroll:before {
   background-image: url(../images/sort_scrollable.svg);
 }
 
-/* line 241, src/scss/_components/category/_sidebar.scss */
+/* line 260, src/scss/_components/category/_sidebar.scss */
 .category-list-option.icon_a2z:before {
   background-image: url(../images/sort_az.svg);
 }
 
-/* line 244, src/scss/_components/category/_sidebar.scss */
+/* line 263, src/scss/_components/category/_sidebar.scss */
 .category-list-option.icon_popular:before {
   background-image: url(../images/sort_popular.svg);
 }
 
-/* line 247, src/scss/_components/category/_sidebar.scss */
+/* line 266, src/scss/_components/category/_sidebar.scss */
 .category-list-option.icon_random:before {
   background-image: url(../images/sort_random.svg);
 }
 
-/* line 251, src/scss/_components/category/_sidebar.scss */
+/* line 270, src/scss/_components/category/_sidebar.scss */
 .category-list-option span {
   -webkit-box-flex: 1;
   -webkit-flex: 1;
@@ -9152,12 +9329,12 @@ fieldset {
           flex: 1;
 }
 
-/* line 255, src/scss/_components/category/_sidebar.scss */
+/* line 274, src/scss/_components/category/_sidebar.scss */
 .category-list-option:hover {
   background: #ddd;
 }
 
-/* line 259, src/scss/_components/category/_sidebar.scss */
+/* line 278, src/scss/_components/category/_sidebar.scss */
 .category-list-option input[type="checkbox"] {
   appearance: none;
   -webkit-appearance: none;
@@ -9170,14 +9347,14 @@ fieldset {
   position: relative;
 }
 
-/* line 271, src/scss/_components/category/_sidebar.scss */
+/* line 290, src/scss/_components/category/_sidebar.scss */
 .category-list-option input[type="checkbox"]:checked {
   background-color: #c2f24a;
   color: #113d74;
   border: 2px solid #113d74;
 }
 
-/* line 277, src/scss/_components/category/_sidebar.scss */
+/* line 296, src/scss/_components/category/_sidebar.scss */
 .category-list-option input[type="checkbox"]:checked::after {
   content: "\2713";
   color: black;
@@ -9190,7 +9367,7 @@ fieldset {
           transform: translate(-50%, -50%);
 }
 
-/* line 288, src/scss/_components/category/_sidebar.scss */
+/* line 307, src/scss/_components/category/_sidebar.scss */
 .category-list-item {
   position: relative;
   -webkit-box-flex: 1;
@@ -9206,22 +9383,22 @@ fieldset {
           order: 1;
 }
 
-/* line 296, src/scss/_components/category/_sidebar.scss */
+/* line 315, src/scss/_components/category/_sidebar.scss */
 .category-list-item:last-child {
   border-bottom: none;
 }
 
-/* line 299, src/scss/_components/category/_sidebar.scss */
+/* line 318, src/scss/_components/category/_sidebar.scss */
 .category-list-item:last-child {
   border-bottom: none;
 }
 
-/* line 303, src/scss/_components/category/_sidebar.scss */
+/* line 322, src/scss/_components/category/_sidebar.scss */
 .category-list-item-letter {
   background: #e8e7e6;
 }
 
-/* line 307, src/scss/_components/category/_sidebar.scss */
+/* line 326, src/scss/_components/category/_sidebar.scss */
 .category-list-item .mobile_link_icons {
   display: -webkit-box;
   display: -webkit-flex;
@@ -9231,20 +9408,20 @@ fieldset {
   font-size: 0;
 }
 
-/* line 312, src/scss/_components/category/_sidebar.scss */
+/* line 331, src/scss/_components/category/_sidebar.scss */
 .category-list-item .mobile_link_ellipsis,
 .category-list-item .mobile_link_count {
   color: #96979f;
   font-size: 14px;
 }
 
-/* line 319, src/scss/_components/category/_sidebar.scss */
+/* line 338, src/scss/_components/category/_sidebar.scss */
 .category-list-item .icon-category {
   grid-column: 1;
   grid-row: 1 / span 2;
 }
 
-/* line 324, src/scss/_components/category/_sidebar.scss */
+/* line 343, src/scss/_components/category/_sidebar.scss */
 .category-list-item .deIcon::before {
   display: block;
   content: ' ';
@@ -9253,13 +9430,13 @@ fieldset {
   margin-right: 5px;
 }
 
-/* line 332, src/scss/_components/category/_sidebar.scss */
+/* line 351, src/scss/_components/category/_sidebar.scss */
 .category-list-menu {
   overflow: auto;
   padding: 0 10px 15px 0;
 }
 
-/* line 340, src/scss/_components/category/_sidebar.scss */
+/* line 359, src/scss/_components/category/_sidebar.scss */
 .category-list-menu-dropdown {
   display: -webkit-box;
   display: -webkit-flex;
@@ -9272,29 +9449,29 @@ fieldset {
           flex-wrap: wrap;
 }
 
-/* line 346, src/scss/_components/category/_sidebar.scss */
+/* line 365, src/scss/_components/category/_sidebar.scss */
 .category-list-menu-dropdown .category-list-item {
   padding-right: 25px;
 }
 
-/* line 351, src/scss/_components/category/_sidebar.scss */
+/* line 370, src/scss/_components/category/_sidebar.scss */
 .category-list-menu.a2z {
   scrollbar-width: thin;
 }
 
-/* line 359, src/scss/_components/category/_sidebar.scss */
+/* line 378, src/scss/_components/category/_sidebar.scss */
 .category-list-menu.a2z::-webkit-scrollbar {
   width: 4px;
   /* Set the width of the scrollbar */
 }
 
-/* line 363, src/scss/_components/category/_sidebar.scss */
+/* line 382, src/scss/_components/category/_sidebar.scss */
 .category-list-menu.a2z::-webkit-scrollbar-track {
   background: #f1f1f1;
   /* Background of the track */
 }
 
-/* line 367, src/scss/_components/category/_sidebar.scss */
+/* line 386, src/scss/_components/category/_sidebar.scss */
 .category-list-menu.a2z::-webkit-scrollbar-thumb {
   background: #888;
   /* Scrollbar thumb color */
@@ -9303,13 +9480,13 @@ fieldset {
   /* Rounded corners */
 }
 
-/* line 372, src/scss/_components/category/_sidebar.scss */
+/* line 391, src/scss/_components/category/_sidebar.scss */
 .category-list-menu.a2z::-webkit-scrollbar-thumb:hover {
   background: #555;
   /* Hover color */
 }
 
-/* line 378, src/scss/_components/category/_sidebar.scss */
+/* line 397, src/scss/_components/category/_sidebar.scss */
 .category-list-title {
   grid-column: 2;
   overflow: hidden;
@@ -9321,13 +9498,13 @@ fieldset {
   color: #fff;
 }
 
-/* line 387, src/scss/_components/category/_sidebar.scss */
+/* line 406, src/scss/_components/category/_sidebar.scss */
 .category-list-title .highlight {
   font-weight: 600;
   color: #d5f963;
 }
 
-/* line 392, src/scss/_components/category/_sidebar.scss */
+/* line 411, src/scss/_components/category/_sidebar.scss */
 .category-list-link {
   position: relative;
   display: grid;
@@ -9343,7 +9520,7 @@ fieldset {
   font-weight: 400;
 }
 
-/* line 403, src/scss/_components/category/_sidebar.scss */
+/* line 422, src/scss/_components/category/_sidebar.scss */
 .category-list-link-a2z {
   display: -webkit-box;
   display: -webkit-flex;
@@ -9355,7 +9532,7 @@ fieldset {
           justify-content: space-between;
 }
 
-/* line 407, src/scss/_components/category/_sidebar.scss */
+/* line 426, src/scss/_components/category/_sidebar.scss */
 .category-list-link-a2z .category-list-title {
   font-size: 14px;
   display: -webkit-box;
@@ -9368,7 +9545,7 @@ fieldset {
           align-items: center;
 }
 
-/* line 412, src/scss/_components/category/_sidebar.scss */
+/* line 431, src/scss/_components/category/_sidebar.scss */
 .category-list-link-a2z .category-list-title .webcam {
   display: inline-block;
   content: '';
@@ -9380,7 +9557,7 @@ fieldset {
   margin-left: 5px;
 }
 
-/* line 425, src/scss/_components/category/_sidebar.scss */
+/* line 444, src/scss/_components/category/_sidebar.scss */
 .category-list-link::before {
   content: '';
   display: block;
@@ -9398,12 +9575,12 @@ fieldset {
   background-color: #1b4f90;
 }
 
-/* line 439, src/scss/_components/category/_sidebar.scss */
+/* line 458, src/scss/_components/category/_sidebar.scss */
 .category-list-link.review-category-item {
   padding: 5px 10px 5px 55px;
 }
 
-/* line 442, src/scss/_components/category/_sidebar.scss */
+/* line 461, src/scss/_components/category/_sidebar.scss */
 .category-list-link.review-category-item .icon-category {
   position: absolute;
   left: -40px;
@@ -9413,7 +9590,7 @@ fieldset {
           transform: translateY(-50%);
 }
 
-/* line 451, src/scss/_components/category/_sidebar.scss */
+/* line 470, src/scss/_components/category/_sidebar.scss */
 .category-list-link.visited::before {
   content: '';
   background: transparent;
@@ -9430,13 +9607,13 @@ fieldset {
   margin: -6px 0;
 }
 
-/* line 465, src/scss/_components/category/_sidebar.scss */
+/* line 484, src/scss/_components/category/_sidebar.scss */
 .category-list-link.visited:hover::before {
   -webkit-animation: none;
           animation: none;
 }
 
-/* line 471, src/scss/_components/category/_sidebar.scss */
+/* line 490, src/scss/_components/category/_sidebar.scss */
 .category-list-link::after {
   content: '';
   display: inline-block;
@@ -9453,20 +9630,20 @@ fieldset {
           background-size: contain;
 }
 
-/* line 484, src/scss/_components/category/_sidebar.scss */
+/* line 503, src/scss/_components/category/_sidebar.scss */
 .category-list-link:not(.visited):hover:before {
   -webkit-animation: pulse-grey 1s infinite;
           animation: pulse-grey 1s infinite;
 }
 
-/* line 488, src/scss/_components/category/_sidebar.scss */
+/* line 507, src/scss/_components/category/_sidebar.scss */
 .category-list-link.pulse:not(.visited)::before {
   background: #2eaf61;
   -webkit-animation: pulse-grey 1s infinite;
           animation: pulse-grey 1s infinite;
 }
 
-/* line 495, src/scss/_components/category/_sidebar.scss */
+/* line 514, src/scss/_components/category/_sidebar.scss */
 .category-list-icons {
   grid-column: 2;
   display: -webkit-box;
@@ -9475,13 +9652,13 @@ fieldset {
   display: flex;
 }
 
-/* line 499, src/scss/_components/category/_sidebar.scss */
+/* line 518, src/scss/_components/category/_sidebar.scss */
 .category-list-icons:before {
   display: block;
   content: ' ';
 }
 
-/* line 505, src/scss/_components/category/_sidebar.scss */
+/* line 524, src/scss/_components/category/_sidebar.scss */
 .category-list-letters {
   display: none;
   float: right;
@@ -9492,7 +9669,7 @@ fieldset {
   text-align: center;
 }
 
-/* line 511, src/scss/_components/category/_sidebar.scss */
+/* line 530, src/scss/_components/category/_sidebar.scss */
 .category-list-letter {
   padding: 5px;
   color: #337ab7;
@@ -9500,37 +9677,37 @@ fieldset {
   cursor: pointer;
 }
 
-/* line 517, src/scss/_components/category/_sidebar.scss */
+/* line 536, src/scss/_components/category/_sidebar.scss */
 .category-list-letter.active {
   color: #000;
 }
 
-/* line 525, src/scss/_components/category/_sidebar.scss */
+/* line 544, src/scss/_components/category/_sidebar.scss */
 .light .category-list-link {
   color: #767676;
 }
 
-/* line 528, src/scss/_components/category/_sidebar.scss */
+/* line 547, src/scss/_components/category/_sidebar.scss */
 .light .category-list-title {
   color: #4e4e4e;
 }
 
-/* line 531, src/scss/_components/category/_sidebar.scss */
+/* line 550, src/scss/_components/category/_sidebar.scss */
 .light .category-list-title .highlight {
   color: #000;
 }
 
-/* line 536, src/scss/_components/category/_sidebar.scss */
+/* line 555, src/scss/_components/category/_sidebar.scss */
 .light .category-list-item {
   border-bottom: 1px solid #e5e5e5;
 }
 
-/* line 540, src/scss/_components/category/_sidebar.scss */
+/* line 559, src/scss/_components/category/_sidebar.scss */
 .light .mobile_category_name > span {
   color: #4e4e4e;
 }
 
-/* line 544, src/scss/_components/category/_sidebar.scss */
+/* line 563, src/scss/_components/category/_sidebar.scss */
 .light .category-list-link.visited::before {
   border: solid #1b4f90;
   border-width: 0 1px 1px 0;

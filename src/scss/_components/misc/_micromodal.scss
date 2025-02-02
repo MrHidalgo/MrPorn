@@ -9,6 +9,7 @@
 
 	p {
 		margin-bottom: 20px;
+		margin-top: 0;
 		font-size: 14px;
 		line-height: 1.4;
 	}
@@ -134,12 +135,7 @@
 	}
 
 
-	.inline-icon {
-		flex-shrink: 0;
-		width: 20px;
-		height: 20px;
-		background-size: contain;
-	}
+
 
 	&-slide {
 		display: none;
@@ -159,12 +155,52 @@
 		}
 
 		&[aria-hidden="true"] {
+
+			@include adaptive(767) {
+				.micromodal-overlay {
+					animation: mmfadeOutMax 0.5s cubic-bezier(0.0, 0.0, 0.2, 1);
+				}
+
+				.micromodal-container {
+					animation: mmslideDown 0.8s cubic-bezier(0, 0, 0.2, 1);
+				}
+			}
+			@include respond('medium') {
+				.micromodal-overlay {
+					animation: mmfadeOut 0.3s cubic-bezier(0.0, 0.0, 0.2, 1);
+				}
+
+				.micromodal-container {
+					animation: mmslideOut 0.3s cubic-bezier(0, 0, 0.2, 1);
+				}
+			}
+		}
+	}
+
+	&-category {
+		display: none;
+
+		&.is-open {
+			display: block;
+		}
+
+		&[aria-hidden="false"] {
 			.micromodal-overlay {
-				animation: mmfadeOut 0.3s cubic-bezier(0.0, 0.0, 0.2, 1);
+				animation: mmfadeIn 0.3s cubic-bezier(0.0, 0.0, 0.2, 1);
 			}
 
 			.micromodal-container {
-				animation: mmslideOut 0.3s cubic-bezier(0, 0, 0.2, 1);
+				animation: mmslideIn 0.3s cubic-bezier(0, 0, 0.2, 1);
+			}
+		}
+
+		&[aria-hidden="true"] {
+			.micromodal-overlay {
+				animation: mmfadeOutMax 0.5s cubic-bezier(0.0, 0.0, 0.2, 1);
+			}
+
+			.micromodal-container {
+				animation: mmslideDown 0.8s cubic-bezier(0, 0, 0.2, 1);
 			}
 		}
 	}
@@ -196,6 +232,20 @@
 		border-radius: 10px;
 		background-color: #2a2b31;
 		color: #fff;
+
+		.color-secondary{
+			padding-top: 10px;
+		}
+
+		&.filter_type_content{
+			position: relative;
+
+			.additional_actions{
+				.boogie-list{
+					margin: 0 -20px 0;
+				}
+			}
+		}
 	}
 
 	&-header {
@@ -223,6 +273,7 @@
 		gap: 14px;
 		overflow: hidden;
 		font-size: 24px;
+		line-height: 1.2;
 
 		@media (max-width: 991px) {
 			font-size: 18px;
@@ -332,7 +383,8 @@
 		}
 
 		100% {
-			opacity: 0;
+			opacity: 0.5;
+			transform: translateY(0);
 		}
 	}
 
@@ -346,55 +398,94 @@
 		}
 	}
 
+	@keyframes mmfadeOutMax {
+		0% {
+			opacity: 1;
+		}
+
+		100% {
+			opacity: 0;
+			transform: translateY(0);
+		}
+	}
+
 	@keyframes mmslideOut {
 		0% {
 			transform: translateY(0);
 		}
 
 		100% {
-			transform: translateY(-10%);
+			transform: translateY(-15%);
+		}
+	}
+
+	@keyframes mmslideDown {
+		0% {
+			transform: translateY(0);
+		}
+
+		100% {
+			transform: translateY(200%);
 		}
 	}
 }
-.micromodal .icon-thumbsup{
+.inline-icon {
+	flex-shrink: 0;
+	width: 20px;
+	height: 20px;
+	background-size: contain;
+	background-repeat: no-repeat;
+	background-position: center;
+
+}
+.icon-thumbsup{
 	background-image: url(../images/report/icon-thumbs-up.svg);
 }
-.micromodal .icon-broken-link {
+.icon-broken-link {
 	background-image: url(../images/report/icon-broken.svg)
 }
-.micromodal .icon-inaccuracy{
+.icon-inaccuracy{
 	background-image: url(../images/report/icon-inaccuracy.svg);
 }
-.micromodal .icon-comment-bubble{
+.icon-comment-bubble{
 	background-image: url(../images/report/icon-bubble.svg);
 }
-.micromodal .icon-speech-bubble-icon {
+.icon-speech-bubble-icon {
 	background-image: url(../images/report/icon-bubble.svg)
 }
-.micromodal .icon-screenshot {
+.icon-screenshot {
 	background-image: url(../images/report/icon-screen-shot.svg)
 }
 
-.micromodal .icon-categories {
+.icon-categories {
 	background-image: url(../images/report/icon-category.svg)
 }
 
-.micromodal .icon-spam {
+.icon-spam {
 	background-image: url(../images/report/icon-envelope.svg)
 }
 
-.micromodal .icon-age-limit {
+.icon-age-limit {
 	background-image: url(../images/report/icon-18-plus.svg)
 }
 
-.micromodal .icon-revenge {
+.icon-revenge {
 	background-image: url(../images/report/icon-revenge.svg)
 }
-.micromodal .icon-speech-bubble-heart-success{
+.icon-speech-bubble-heart-success{
 	background-image: url(../images/report/icon-bubble.svg)
 }
-.micromodal .icon-report-success{
+.icon-report-success{
 	background-image: url(../images/report/icon-success.svg)
+}
+.icon-problem{
+	background-image: url(../images/report/icon-problem.svg)
+}
+.icon-recommendations{
+	background-image: url(../images/report/icon-reccomendations.svg)
+}
+.icon-feedback{
+	background-image: url(../images/report/icon-feedback.svg)
 }
 
 .boogie-list {
@@ -535,10 +626,12 @@
 .boogie-field-textarea {
 	width: 100%;
 
+
 	.boogie-input {
 		max-width: initial;
 		height: 120px;
 		padding-top: 16px;
+		font-family: inherit;
 	}
 }
 

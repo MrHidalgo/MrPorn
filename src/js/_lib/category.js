@@ -20,8 +20,10 @@ function initCategoryPage() {
 	let filterOptionPopular = document.querySelector(sidebarContainer+ ' .category_filter_option_popular');
 	let filterOptionRandom = document.querySelector(sidebarContainer+ ' .category_filter_option_random');
 
-
+	let initializedListeners = false
 	let categoryListLetters = document.querySelector(sidebarContainer+ ' .category-list-letters');
+	let reviewTypeSlider = document.querySelector('.review_type_slider');
+	let rtsThumb = document.querySelector('.review_type_slider_thumb');
 
 	const letterOffsets = {};
 
@@ -165,6 +167,7 @@ function initCategoryPage() {
 						return;
 
 					}
+
 					let filteredCategories = [...categoryItems];
 					if(filterA2z){
 						filteredCategories = Array.prototype.slice.call(a2zCategories)
@@ -207,6 +210,15 @@ function initCategoryPage() {
 					});
 					filteredCategories = premiumItems.concat(nonPremiumItems);
 					renderCategorySidebar(filteredCategories, filter, true);
+
+					desktopMenuListContainer.scrollTo({
+						top: 0,
+						behavior: "smooth",
+					});
+					mobileMenuList.scrollTo({
+						top: 0,
+						behavior: "smooth",
+					});
 				}));
 			}
 
@@ -248,15 +260,22 @@ function initCategoryPage() {
 		if(filterScroll){
 			onScrollChecked(filterScroll)
 		}
-		filterOptionScroll?.addEventListener('change', function () {
-			onScrollChecked(this.checked)
-		})
-		filterOptionA2Z?.addEventListener('change', function () {
-			onA2ZChecked(this.checked)
-		})
-		filterOptionRandom?.addEventListener('change', function () {
-			gotoRandomCategory()
-		})
+
+		if(!initializedListeners){
+			filterOptionScroll?.addEventListener('change', function () {
+				console.log('Scroll checked ', this.checked)
+				onScrollChecked(this.checked)
+			}, false)
+			filterOptionA2Z?.addEventListener('change', function () {
+				onA2ZChecked(this.checked)
+			}, false)
+			filterOptionRandom?.addEventListener('change', function () {
+				gotoRandomCategory()
+			})
+			initializedListeners = true
+		}
+
+
 	}
 
 	const gotoRandomCategory = () => {
@@ -265,13 +284,20 @@ function initCategoryPage() {
 	}
 
 	const onScrollChecked = (checked) => {
+		filterScroll = checked
 		if (checked) {
 			createCookie("category_filter_scroll", 1, 356);
 
 			leftSidebar?.classList.add('scroll');
 			catListSites?.classList.remove('has_sidebar')
 			catListSites?.classList.add('scroll')
-			categorySidebar?.destroy();
+
+			if(categorySidebar){
+				categorySidebar.destroy();
+			}
+
+
+			console.log('Destroying sidebar ', categorySidebar)
 
 			setSidebarHeight()
 		}else{
@@ -396,7 +422,11 @@ function initCategoryPage() {
 
 				let item = '<li class="category-list-item" >' + '<a  href="' + categoryItem.link + '" class="category-list-link ' + catExtraClasses + '" data-id="' + categoryItem.id + '"><i class="' + categoryItem.icon + '"></i><span class="category-list-title">' + catTitle + '</span><div class="category-list-icons">' + categoryItem.icons + '<span class="mobile_link_ellipsis">...</span>' + '<span class="mobile_link_count">' + categoryItem.count + '</span>' + '</div>' + '</a>' + '</li>';
 				if(filterA2z){
-					 item = '<li class="category-list-item" >' + '<a  href="' + categoryItem.link + '" class="category-list-link-a2z ' + catExtraClasses + '" data-id="' + categoryItem.id + '"><span class="category-list-title">' + catTitle + '</span><span class="mobile_link_count">'+categoryItem.count+'</span></a>' + '</li>';
+					let catIcon = '';
+					if(+categoryItem.is_webcam > 0){
+						catIcon = '<i class="webcam"></i>';
+					}
+					 item = '<li class="category-list-item" >' + '<a  href="' + categoryItem.link + '" class="category-list-link-a2z ' + catExtraClasses + '" data-id="' + categoryItem.id + '"><span class="category-list-title">' + catTitle + catIcon + '</span><span class="mobile_link_count">'+categoryItem.count+'</span></a>' + '</li>';
 				}
 
 				if(categoryItem.letter){
@@ -464,7 +494,8 @@ function initCategoryPage() {
 	}
 
 	const initStickySidebar = () => {
-		if (document.querySelectorAll('.desktop_menu_list').length > 0) {
+		console.log(`Init sticky sidebar ${filterScroll}`)
+		if (!filterScroll && document.querySelectorAll('.desktop_menu_list').length > 0) {
 			categorySidebar = new StickySidebar('.desktop_menu_list', {
 				// topSpacing: 20,
 				// bottomSpacing: 20,
@@ -537,33 +568,13 @@ function initCategoryPage() {
 		}
 	}
 
-	fetchA2Z();
-	if(!filterA2z){
+
+/*	if(!filterA2z){
 		initCategorySidebar()
-	}
+	}*/
 
-	const a2zPopup = () => {
-		// Check if modal already exists
-		if (!document.querySelector("#boogie-modal")) {
-			// Create modal HTML
-			let reviewTitle = document.querySelector('.review-title-line h1').innerHTML;
-			let modalHTML = this.generateReportReviewContent(reviewTitle)
-			// Inject modal into the body
-			document.body.insertAdjacentHTML('beforeend', modalHTML);
-			this.addReviewReportItemClickListeners()
-		}
-
-		// Initialize and show the modal
-		MicroModal.show('boogie-modal',{
-			onShow: function (){
-				document.body.classList.add('is-hideScroll')
-			},
-			onClose: function (){
-				document.querySelector('#boogie-modal').remove()
-				document.body.classList.remove('is-hideScroll')
-			}
-		});
-	}
+	fetchA2Z();
+	// new CategoryTypeFilter()
 }
 
 

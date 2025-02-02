@@ -29,6 +29,11 @@
 			padding-left: 0;
 			width: 100%;
 			order: -1;
+			height: 240px;
+
+			&.show_all{
+				height: auto;
+			}
 		}
 
 		&__readmore{
@@ -509,7 +514,31 @@
 		}
 	}
 
-
+	&[data-type="free"]{
+		.category_sites_item:not(.free){
+			display: none;
+		}
+	}
+	&[data-type="premium"]{
+		.category_sites_item:not(.premium){
+			display: none;
+		}
+	}
+	&[data-type="casual"]{
+		.category_sites_item:not(.casual){
+			display: none;
+		}
+	}
+	&[data-type="affair"]{
+		.category_sites_item:not(.affair){
+			display: none;
+		}
+	}
+	&[data-type="swinger"]{
+		.category_sites_item:not(.swinger){
+			display: none;
+		}
+	}
 
 	@include respond('large'){
 

@@ -99,12 +99,31 @@
 		&.a2z{
 			max-height: calc(100vh - 60px);
 
+			.category-list-left{
+				&::-webkit-scrollbar {
+					width: 4px; /* Set the width of the scrollbar */
+				}
+
+				&::-webkit-scrollbar-track {
+					background: #f1f1f1; /* Background of the track */
+				}
+
+				&::-webkit-scrollbar-thumb {
+					background: #225396; /* Scrollbar thumb color */
+					border-radius: 10px; /* Rounded corners */
+				}
+
+				&::-webkit-scrollbar-thumb:hover {
+					background: #555; /* Hover color */
+				}
+			}
+
 			.category-list-letters{
 				display: flex;
 				flex-direction: column;
 			}
 			.category-list-item{
-				padding: 3px 0 3px 10px;
+				padding: 3px 5px 3px 10px;
 			}
 		}
 	}
@@ -112,6 +131,7 @@
 		position: relative;
 		width: 100%;
 		text-align: center;
+		background: #fff;
 		border: 2px solid #333;
 		border-radius: 3px;
 		margin-bottom: 5px;
@@ -147,7 +167,6 @@
 	}
 	&-left{
 		overflow: auto;
-		scrollbar-width: thin;
 
 		&::-webkit-scrollbar {
 			width: 4px; /* Set the width of the scrollbar */
@@ -158,7 +177,7 @@
 		}
 
 		&::-webkit-scrollbar-thumb {
-			background: #888; /* Scrollbar thumb color */
+			background: #225396; /* Scrollbar thumb color */
 			border-radius: 10px; /* Rounded corners */
 		}
 

@@ -76,11 +76,20 @@
 		&_link{
 			display: block;
 			color: #fff;
-			padding: 5px;
+			padding: 5px 0;
 			text-align: center;
 
 			@include adaptive(991.98) {
 				padding: 0 5px 10px;
+			}
+			@include respond('ipad_landscape'){
+				padding: 0 4px 10px;
+			}
+			@include respond('ipad_portrait'){
+				padding: 0 4px 10px;
+			}
+			@include adaptive(767) {
+				padding: 0 3px 10px;
 			}
 
 			&:hover{
@@ -203,7 +212,7 @@
 			width: 100%;
 			position: relative;
 			overflow: hidden;
-			outline: 1px solid #333;
+			//outline: 1px solid #333;
 			line-height: 0;
 			padding-bottom: 100%;
 

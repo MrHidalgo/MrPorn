@@ -393,42 +393,67 @@ var A2ZPopup = /*#__PURE__*/function () {
         document.body.insertAdjacentHTML('beforeend', modalHTML);
         this.addA2ZPopupListeners();
         this.initCategoryEvents();
-      } // Initialize and show the modal
+      }
 
+      if (isMobileOrTablet) {
+        var _document$querySelect3;
 
-      MicroModal.show('a2z-modal', {
-        onShow: function onShow() {
-          if (parent.headerViewActions) {
-            bodyScrollLock.enableBodyScroll(parent.headerViewActions);
-          }
+        var a2zModal = document.querySelector('#a2z-modal');
+        a2zModal === null || a2zModal === void 0 ? void 0 : a2zModal.classList.add('is-open');
+
+        if (parent.headerViewActions) {
+          bodyScrollLock.enableBodyScroll(parent.headerViewActions);
+        }
+
+        if (parent.a2zContainer) {
+          bodyScrollLock.disableBodyScroll(parent.a2zContainer);
+        }
+
+        (_document$querySelect3 = document.querySelector('#a2z-modal .micromodal-close')) === null || _document$querySelect3 === void 0 ? void 0 : _document$querySelect3.addEventListener('click', function (evt) {
+          a2zModal.classList.remove('is-open');
 
           if (parent.a2zContainer) {
-            bodyScrollLock.disableBodyScroll(parent.a2zContainer);
+            bodyScrollLock.enableBodyScroll(parent.a2zContainer);
           }
 
-          document.body.classList.add('is-hideScroll');
-          var filterInput = document.querySelector('#filter_tag_input');
-          filterInput === null || filterInput === void 0 ? void 0 : filterInput.setAttribute('tabindex', '-1');
-          filterInput === null || filterInput === void 0 ? void 0 : filterInput.blur();
-        },
-        onClose: function onClose() {
-          document.querySelector('#a2z-modal').remove();
           document.documentElement.classList.remove('is-hideScroll');
           document.body.classList.remove('is-hideScroll');
+        });
+      } else {
+        MicroModal.show('a2z-modal', {
+          onShow: function onShow() {
+            if (parent.headerViewActions) {
+              bodyScrollLock.enableBodyScroll(parent.headerViewActions);
+            }
 
-          if (parent.a2zContainer) {
-            bodyScrollLock.disableBodyScroll(parent.a2zContainer);
+            if (parent.a2zContainer) {
+              bodyScrollLock.disableBodyScroll(parent.a2zContainer);
+            }
+
+            document.body.classList.add('is-hideScroll');
+            var filterInput = document.querySelector('#filter_tag_input');
+            filterInput === null || filterInput === void 0 ? void 0 : filterInput.setAttribute('tabindex', '-1');
+            filterInput === null || filterInput === void 0 ? void 0 : filterInput.blur();
+          },
+          onClose: function onClose() {
+            document.querySelector('#a2z-modal').remove();
+            document.documentElement.classList.remove('is-hideScroll');
+            document.body.classList.remove('is-hideScroll');
+
+            if (parent.a2zContainer) {
+              bodyScrollLock.disableBodyScroll(parent.a2zContainer);
+            }
           }
-        }
-      });
+        });
+      }
     }
   }, {
     key: "addA2ZPopupListeners",
     value: function addA2ZPopupListeners() {
-      var _document$querySelect3;
+      var _document$querySelect4;
 
       var parent = this;
-      (_document$querySelect3 = document.querySelector('#filter_tag_input')) === null || _document$querySelect3 === void 0 ? void 0 : _document$querySelect3.addEventListener('input', debounce(function (evt) {
+      (_document$querySelect4 = document.querySelector('#filter_tag_input')) === null || _document$querySelect4 === void 0 ? void 0 : _document$querySelect4.addEventListener('input', debounce(function (evt) {
         var filter = evt.target.value.toLowerCase().trim();
 
         if (filter == '') {
@@ -448,10 +473,10 @@ var A2ZPopup = /*#__PURE__*/function () {
       }));
       document.querySelectorAll('.a2z-letter-item').forEach(function (letter) {
         letter.addEventListener('click', function (evt) {
-          var _document$querySelect4;
+          var _document$querySelect5;
 
           parent.currentLetter = evt.target.dataset.letter;
-          (_document$querySelect4 = document.querySelector('.a2z-letter-item.active')) === null || _document$querySelect4 === void 0 ? void 0 : _document$querySelect4.classList.remove('active');
+          (_document$querySelect5 = document.querySelector('.a2z-letter-item.active')) === null || _document$querySelect5 === void 0 ? void 0 : _document$querySelect5.classList.remove('active');
           evt.target.classList.add('active');
 
           if (parent.currentLetter === '') {
@@ -465,10 +490,10 @@ var A2ZPopup = /*#__PURE__*/function () {
         });
       });
       document.querySelector('.a2z-reset').addEventListener('click', function () {
-        var _document$querySelect5, _document$querySelect6;
+        var _document$querySelect6, _document$querySelect7;
 
-        (_document$querySelect5 = document.querySelector('.a2z-letter-item.active')) === null || _document$querySelect5 === void 0 ? void 0 : _document$querySelect5.classList.remove('active');
-        (_document$querySelect6 = document.querySelector('.a2z-letter-item.all')) === null || _document$querySelect6 === void 0 ? void 0 : _document$querySelect6.classList.add('active');
+        (_document$querySelect6 = document.querySelector('.a2z-letter-item.active')) === null || _document$querySelect6 === void 0 ? void 0 : _document$querySelect6.classList.remove('active');
+        (_document$querySelect7 = document.querySelector('.a2z-letter-item.all')) === null || _document$querySelect7 === void 0 ? void 0 : _document$querySelect7.classList.add('active');
         document.querySelector('#filter_tag_input').value = '';
         parent.currentLetter = '';
         parent.updateCategories(parent.categories, true);
@@ -537,7 +562,7 @@ var A2ZPopup = /*#__PURE__*/function () {
   }, {
     key: "generateA2ZPopupContent",
     value: function generateA2ZPopupContent() {
-      var popupContent = "\n\t\t  <div class=\"micromodal micromodal-slide boogie-modal is-open\" id=\"a2z-modal\" aria-hidden=\"false\">\n\t\t\t  <div class=\"micromodal-overlay\" tabindex=\"-1\">\n\t\t\t\t<div class=\"micromodal-container custom-scrollbar\" role=\"dialog\" aria-modal=\"true\" aria-labelledby=\"boogie-title\">\n\t\t\t\t  <div class=\"micromodal-content a2z-content\">\n\t\t\t\t\t  <div class=\"micromodal-header\">\n\t\t\t\t\t\t\t<div class=\"micromodal-title\" id=\"boogie-title\">\n\t\t\t\t\t\t\t\t<div class=\"micromodal-title-text\">A-Z Category List</div>\n\t\t\t\t\t\t\t</div>\n\t\t\t\t\t\t\t<div class=\"a2z-header\">\n\t\t\t\t\t\t\t\t".concat(this.renderA2ZLetters(), "\n\n\t\t\t\t\t\t\t\t<div class=\"filter_tag\">\n\t\t\t\t\t\t\t\t\t<input placeholder=\"Type to search...\" type=\"text\" id=\"filter_tag_input\" autocomplete=\"off\"/>\n\t\t\t\t\t\t\t\t</div>\n\t\t\t\t\t\t\t</div>\n\n\n\t\t\t\t\t\t\t<div class=\"micromodal-close\" data-micromodal-close=\"\">\n\t\t\t\t\t\t\t\t<svg class=\"icon\" xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0.51 0.51 22.99 22.99\" width=\"16px\" height=\"16px\">\n\t\t\t\t\t\t\t\t\t<path d=\"M23.1294 21.4152L2.58488 0.870773C2.10409 0.38998 1.33062 0.383984 0.85722 0.85738C0.383824 1.33078 0.38982 2.10425 0.870613 2.58504L21.4151 23.1295C21.8959 23.6103 22.6694 23.6163 23.1428 23.1429C23.6161 22.6695 23.6101 21.896 23.1294 21.4152Z\"></path>\n\t\t\t\t\t\t\t\t\t<path d=\"M21.415 0.870638L0.870529 21.4151C0.389736 21.8959 0.38374 22.6694 0.857136 23.1428C1.33053 23.6162 2.10401 23.6102 2.5848 23.1294L23.1293 2.58491C23.6101 2.10412 23.6161 1.33064 23.1427 0.857245C22.6693 0.383849 21.8958 0.389845 21.415 0.870638Z\"></path>\n\t\t\t\t\t\t\t\t</svg>\n\t\t\t\t\t\t\t</div>\n\t\t\t\t\t  </div>\n\n\t\t\t\t\t  <div class=\"micromodal-body\">\n\t\t\t\t\t\t\t").concat(this.renderCategories(), "\n\t\t\t\t\t  </div>\n\t\t\t\t\t  <div class=\"micromodal-footer\">\n\t\t\t\t\t\t\t<button class=\"btn btn-secondary a2z-reset\">Reset all</button>\n\t\t\t\t\t\t\t<button class=\"btn btn-success a2z-apply progress-button\">\n\t\t\t\t\t\t\t\t<span class=\"progress-spinner\"></span>\n\t\t\t\t\t\t\t\tApply\n\t\t\t\t\t\t\t</button>\n\t\t\t\t\t\t</div>\n\t\t\t\t\t</div>\n\t\t\t\t</div>\n\t\t\t  </div>\n\t\t\t</div>\n\t\t");
+      var popupContent = "\n\t\t  <div class=\"micromodal micromodal-slide\" id=\"a2z-modal\" aria-hidden=\"false\">\n\t\t\t  <div class=\"micromodal-overlay\" tabindex=\"-1\">\n\t\t\t\t<div class=\"micromodal-container custom-scrollbar\" role=\"dialog\" aria-modal=\"true\" aria-labelledby=\"boogie-title\">\n\t\t\t\t  <div class=\"micromodal-content a2z-content\">\n\t\t\t\t\t  <div class=\"micromodal-header\">\n\t\t\t\t\t\t\t<div class=\"micromodal-title\" id=\"boogie-title\">\n\t\t\t\t\t\t\t\t<div class=\"micromodal-title-text\">A-Z Category List</div>\n\t\t\t\t\t\t\t</div>\n\t\t\t\t\t\t\t<div class=\"a2z-header\">\n\t\t\t\t\t\t\t\t".concat(this.renderA2ZLetters(), "\n\n\t\t\t\t\t\t\t\t<div class=\"filter_tag\">\n\t\t\t\t\t\t\t\t\t<input placeholder=\"Type to search...\" type=\"text\" id=\"filter_tag_input\" autocomplete=\"off\"/>\n\t\t\t\t\t\t\t\t</div>\n\t\t\t\t\t\t\t</div>\n\n\n\t\t\t\t\t\t\t<div class=\"micromodal-close\" data-micromodal-close=\"\">\n\t\t\t\t\t\t\t\t<svg class=\"icon\" xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0.51 0.51 22.99 22.99\" width=\"16px\" height=\"16px\">\n\t\t\t\t\t\t\t\t\t<path d=\"M23.1294 21.4152L2.58488 0.870773C2.10409 0.38998 1.33062 0.383984 0.85722 0.85738C0.383824 1.33078 0.38982 2.10425 0.870613 2.58504L21.4151 23.1295C21.8959 23.6103 22.6694 23.6163 23.1428 23.1429C23.6161 22.6695 23.6101 21.896 23.1294 21.4152Z\"></path>\n\t\t\t\t\t\t\t\t\t<path d=\"M21.415 0.870638L0.870529 21.4151C0.389736 21.8959 0.38374 22.6694 0.857136 23.1428C1.33053 23.6162 2.10401 23.6102 2.5848 23.1294L23.1293 2.58491C23.6101 2.10412 23.6161 1.33064 23.1427 0.857245C22.6693 0.383849 21.8958 0.389845 21.415 0.870638Z\"></path>\n\t\t\t\t\t\t\t\t</svg>\n\t\t\t\t\t\t\t</div>\n\t\t\t\t\t  </div>\n\n\t\t\t\t\t  <div class=\"micromodal-body\">\n\t\t\t\t\t\t\t").concat(this.renderCategories(), "\n\t\t\t\t\t  </div>\n\t\t\t\t\t  <div class=\"micromodal-footer\">\n\t\t\t\t\t\t\t<button class=\"btn btn-secondary a2z-reset\">Reset all</button>\n\t\t\t\t\t\t\t<button class=\"btn btn-success a2z-apply progress-button\">\n\t\t\t\t\t\t\t\t<span class=\"progress-spinner\"></span>\n\t\t\t\t\t\t\t\tApply\n\t\t\t\t\t\t\t</button>\n\t\t\t\t\t\t</div>\n\t\t\t\t\t</div>\n\t\t\t\t</div>\n\t\t\t  </div>\n\t\t\t</div>\n\t\t");
       return popupContent;
     }
   }, {
@@ -610,9 +635,9 @@ var A2ZPopup = /*#__PURE__*/function () {
       var parent = this;
       document.querySelectorAll('.a2z-category-item').forEach(function (category) {
         category.addEventListener('click', function (evt) {
-          var _document$querySelect7;
+          var _document$querySelect8;
 
-          (_document$querySelect7 = document.querySelector('.a2z-category-item.active')) === null || _document$querySelect7 === void 0 ? void 0 : _document$querySelect7.classList.remove('active');
+          (_document$querySelect8 = document.querySelector('.a2z-category-item.active')) === null || _document$querySelect8 === void 0 ? void 0 : _document$querySelect8.classList.remove('active');
           var cat = evt.target;
           cat.classList.toggle('active');
 
@@ -628,16 +653,91 @@ var A2ZPopup = /*#__PURE__*/function () {
 
   return A2ZPopup;
 }();
+
+var CategoryTypeFilter = /*#__PURE__*/function () {
+  function CategoryTypeFilter() {
+    _classCallCheck(this, CategoryTypeFilter);
+
+    this.reviewTypeSlider = document.querySelector('.review_type_slider');
+    this.rtsThumb = document.querySelector('.review_type_slider_thumb');
+    this.currentFilter = 'all';
+    this.typeFilter = document.querySelector('.review_type_trigger');
+    this.reportBtn = document.querySelector('.additional_action.report');
+    this.typeTriggerBtn = document.querySelector('.review_type_trigger-outer');
+    this.additionalActions = document.querySelector('.review_type_trigger-dropdown');
+    this.reportModal = new ReportModal();
+    this.timeoutId = null;
+    this.init();
+  }
+
+  _createClass(CategoryTypeFilter, [{
+    key: "init",
+    value: function init() {
+      var _this$typeFilter,
+          _this = this;
+
+      if (!isMobileOrTablet) {
+        this.parentContainer = document.querySelector('.category_header');
+
+        if (document.body.classList.contains('category')) {
+          this.initFilterEvents();
+        }
+      }
+
+      this.checkAvailability();
+      var parent = this;
+      (_this$typeFilter = this.typeFilter) === null || _this$typeFilter === void 0 ? void 0 : _this$typeFilter.addEventListener('click', function (evt) {
+        parent.showFilterPopup();
+      }); // this.reportBtn?.addEventListener('click', function (evt) {
+      // 	evt.preventDefault();
+      // 	parent.reportModal.initReviewReportModal()
+      // });
+
+      this.reportModal.initCategoryReportModal();
+      var timeoutId;
+
+      if (this.additionalActions) {
+        var _this$typeTriggerBtn, _this$typeTriggerBtn2, _this$typeTriggerBtn3;
+
+        (_this$typeTriggerBtn = this.typeTriggerBtn) === null || _this$typeTriggerBtn === void 0 ? void 0 : _this$typeTriggerBtn.addEventListener('mouseover', function () {
+          clearTimeout(timeoutId);
+
+          _this.additionalActions.classList.add('open');
+        });
+        (_this$typeTriggerBtn2 = this.typeTriggerBtn) === null || _this$typeTriggerBtn2 === void 0 ? void 0 : _this$typeTriggerBtn2.addEventListener('mouseout', function () {
+          timeoutId = setTimeout(function () {
+            _this.additionalActions.classList.remove('open');
+          }, 700); // 2000 milliseconds = 2 seconds
+        });
+        (_this$typeTriggerBtn3 = this.typeTriggerBtn) === null || _this$typeTriggerBtn3 === void 0 ? void 0 : _this$typeTriggerBtn3.addEventListener('click', function () {
+          if (_this.additionalActions.classList.contains('open')) {
+            clearTimeout(timeoutId);
+
+            _this.additionalActions.classList.remove('open');
+          } else {
+            _this.additionalActions.classList.add('open');
+          }
+        });
+      }
+    }
+  }, {
+    key: "getFilterOptions",
+    value: function getFilterOptions() {
+      var _document$querySelect9;
+
+      return (_document$querySelect9 = document.querySelector('.review_type_slider')) === null || _document$querySelect9 === void 0 ? void 0 : _document$querySelect9.innerHTML;
+    }
+  }]);
+
+  return CategoryTypeFilter;
+}();
 /*
 * Category page scripts
 * */
 
 
 function initCategoryPage() {
-  var _getCookieMpgCookie,
-      _getCookieMpgCookie2,
-      _getCookieMpgCookie3,
-      _this = this;
+  var _getCookieMpgCookie, _getCookieMpgCookie2, _getCookieMpgCookie3;
 
   var categorySidebar;
   var isMobile = isMobileOrTablet;
@@ -655,7 +755,10 @@ function initCategoryPage() {
   var filterOptionA2Z = document.querySelector(sidebarContainer + ' .category_filter_option_a2z');
   var filterOptionPopular = document.querySelector(sidebarContainer + ' .category_filter_option_popular');
   var filterOptionRandom = document.querySelector(sidebarContainer + ' .category_filter_option_random');
+  var initializedListeners = false;
   var categoryListLetters = document.querySelector(sidebarContainer + ' .category-list-letters');
+  var reviewTypeSlider = document.querySelector('.review_type_slider');
+  var rtsThumb = document.querySelector('.review_type_slider_thumb');
   var letterOffsets = {};
   var bodyClasses = document.body.classList;
   var isCategoriesPage = bodyClasses.contains('page-template-page-categories');
@@ -826,6 +929,14 @@ function initCategoryPage() {
           });
           filteredCategories = premiumItems.concat(nonPremiumItems);
           renderCategorySidebar(filteredCategories, filter, true);
+          desktopMenuListContainer.scrollTo({
+            top: 0,
+            behavior: "smooth"
+          });
+          mobileMenuList.scrollTo({
+            top: 0,
+            behavior: "smooth"
+          });
         }));
       }
     }
@@ -864,15 +975,19 @@ function initCategoryPage() {
       onScrollChecked(filterScroll);
     }
 
-    filterOptionScroll === null || filterOptionScroll === void 0 ? void 0 : filterOptionScroll.addEventListener('change', function () {
-      onScrollChecked(this.checked);
-    });
-    filterOptionA2Z === null || filterOptionA2Z === void 0 ? void 0 : filterOptionA2Z.addEventListener('change', function () {
-      onA2ZChecked(this.checked);
-    });
-    filterOptionRandom === null || filterOptionRandom === void 0 ? void 0 : filterOptionRandom.addEventListener('change', function () {
-      gotoRandomCategory();
-    });
+    if (!initializedListeners) {
+      filterOptionScroll === null || filterOptionScroll === void 0 ? void 0 : filterOptionScroll.addEventListener('change', function () {
+        console.log('Scroll checked ', this.checked);
+        onScrollChecked(this.checked);
+      }, false);
+      filterOptionA2Z === null || filterOptionA2Z === void 0 ? void 0 : filterOptionA2Z.addEventListener('change', function () {
+        onA2ZChecked(this.checked);
+      }, false);
+      filterOptionRandom === null || filterOptionRandom === void 0 ? void 0 : filterOptionRandom.addEventListener('change', function () {
+        gotoRandomCategory();
+      });
+      initializedListeners = true;
+    }
   }
 
   var gotoRandomCategory = function gotoRandomCategory() {
@@ -881,21 +996,26 @@ function initCategoryPage() {
   };
 
   var onScrollChecked = function onScrollChecked(checked) {
-    if (checked) {
-      var _categorySidebar;
+    filterScroll = checked;
 
+    if (checked) {
       createCookie("category_filter_scroll", 1, 356);
       leftSidebar === null || leftSidebar === void 0 ? void 0 : leftSidebar.classList.add('scroll');
       catListSites === null || catListSites === void 0 ? void 0 : catListSites.classList.remove('has_sidebar');
       catListSites === null || catListSites === void 0 ? void 0 : catListSites.classList.add('scroll');
-      (_categorySidebar = categorySidebar) === null || _categorySidebar === void 0 ? void 0 : _categorySidebar.destroy();
+
+      if (categorySidebar) {
+        categorySidebar.destroy();
+      }
+
+      console.log('Destroying sidebar ', categorySidebar);
       setSidebarHeight();
     } else {
-      var _document$querySelect8;
+      var _document$querySelect10;
 
       createCookie("category_filter_scroll", 0, 356);
       leftSidebar === null || leftSidebar === void 0 ? void 0 : leftSidebar.classList.remove('scroll');
-      (_document$querySelect8 = document.querySelector('.category_list-sites')) === null || _document$querySelect8 === void 0 ? void 0 : _document$querySelect8.classList.add('has_sidebar');
+      (_document$querySelect10 = document.querySelector('.category_list-sites')) === null || _document$querySelect10 === void 0 ? void 0 : _document$querySelect10.classList.add('has_sidebar');
       catListSites === null || catListSites === void 0 ? void 0 : catListSites.classList.remove('scroll');
       setSidebarHeight(true);
       initStickySidebar();
@@ -974,10 +1094,10 @@ function initCategoryPage() {
         liChar.dataset.letter = letter;
         categoryListLetters.appendChild(liChar);
         liChar.addEventListener("click", function (e) {
-          var _document$querySelect9;
+          var _document$querySelect11;
 
           var triggeredLetter = e.currentTarget.dataset.letter;
-          (_document$querySelect9 = document.querySelector('.category-list-letter.active')) === null || _document$querySelect9 === void 0 ? void 0 : _document$querySelect9.classList.remove('active');
+          (_document$querySelect11 = document.querySelector('.category-list-letter.active')) === null || _document$querySelect11 === void 0 ? void 0 : _document$querySelect11.classList.remove('active');
           var letterTop = document.querySelector(sidebarContainer + ' .category-list-item-letter.letter_' + triggeredLetter).offsetTop;
           console.log('letter top ' + triggeredLetter, letterTop);
           desktopMenuListContainer.scrollTo({
@@ -1028,7 +1148,13 @@ function initCategoryPage() {
       var item = '<li class="category-list-item" >' + '<a  href="' + categoryItem.link + '" class="category-list-link ' + catExtraClasses + '" data-id="' + categoryItem.id + '"><i class="' + categoryItem.icon + '"></i><span class="category-list-title">' + catTitle + '</span><div class="category-list-icons">' + categoryItem.icons + '<span class="mobile_link_ellipsis">...</span>' + '<span class="mobile_link_count">' + categoryItem.count + '</span>' + '</div>' + '</a>' + '</li>';
 
       if (filterA2z) {
-        item = '<li class="category-list-item" >' + '<a  href="' + categoryItem.link + '" class="category-list-link-a2z ' + catExtraClasses + '" data-id="' + categoryItem.id + '"><span class="category-list-title">' + catTitle + '</span><span class="mobile_link_count">' + categoryItem.count + '</span></a>' + '</li>';
+        var catIcon = '';
+
+        if (+categoryItem.is_webcam > 0) {
+          catIcon = '<i class="webcam"></i>';
+        }
+
+        item = '<li class="category-list-item" >' + '<a  href="' + categoryItem.link + '" class="category-list-link-a2z ' + catExtraClasses + '" data-id="' + categoryItem.id + '"><span class="category-list-title">' + catTitle + catIcon + '</span><span class="mobile_link_count">' + categoryItem.count + '</span></a>' + '</li>';
       }
 
       if (categoryItem.letter) {
@@ -1106,7 +1232,9 @@ function initCategoryPage() {
   };
 
   var initStickySidebar = function initStickySidebar() {
-    if (document.querySelectorAll('.desktop_menu_list').length > 0) {
+    console.log("Init sticky sidebar ".concat(filterScroll));
+
+    if (!filterScroll && document.querySelectorAll('.desktop_menu_list').length > 0) {
       categorySidebar = new StickySidebar('.desktop_menu_list', {
         // topSpacing: 20,
         // bottomSpacing: 20,
@@ -1186,38 +1314,12 @@ function initCategoryPage() {
       createSidebar();
     }
   };
-
-  fetchA2Z();
-
-  if (!filterA2z) {
-    initCategorySidebar();
-  }
-
-  var a2zPopup = function a2zPopup() {
-    // Check if modal already exists
-    if (!document.querySelector("#boogie-modal")) {
-      // Create modal HTML
-      var reviewTitle = document.querySelector('.review-title-line h1').innerHTML;
-
-      var modalHTML = _this.generateReportReviewContent(reviewTitle); // Inject modal into the body
+  /*	if(!filterA2z){
+  		initCategorySidebar()
+  	}*/
 
 
-      document.body.insertAdjacentHTML('beforeend', modalHTML);
-
-      _this.addReviewReportItemClickListeners();
-    } // Initialize and show the modal
-
-
-    MicroModal.show('boogie-modal', {
-      onShow: function onShow() {
-        document.body.classList.add('is-hideScroll');
-      },
-      onClose: function onClose() {
-        document.querySelector('#boogie-modal').remove();
-        document.body.classList.remove('is-hideScroll');
-      }
-    });
-  };
+  fetchA2Z(); // new CategoryTypeFilter()
 }
 
 (function () {
@@ -2039,6 +2141,703 @@ var initPreventBehavior = function initPreventBehavior() {
   });
 };
 
+var ReportModal = /*#__PURE__*/function () {
+  function ReportModal() {
+    _classCallCheck(this, ReportModal);
+
+    this.lastRequestTime = 0;
+    this.rateLimitTime = 5000; // 5 seconds
+
+    this.reportData = [{
+      tag: "broken",
+      title: "Broken or incorrect Link",
+      icon: "broken-link",
+      desc: "If the link is incorrect or broken, please report it here."
+    }, {
+      tag: "inaccuracy",
+      title: "Review inaccuracy",
+      icon: "inaccuracy",
+      desc: "If the site has materially changed and lacks something mentioned in this review, please report it here."
+    }, {
+      tag: "outdated_ss",
+      title: "Outdated or inaccurate screenshot",
+      icon: "screenshot",
+      desc: "If the screenshot presented is different from how the site appears, please report it here."
+    }, {
+      tag: "incorrect_cat",
+      title: "Inaccurate categorization",
+      icon: "categories",
+      desc: "If you think the site has been placed into the wrong category, please report it here."
+    }, {
+      tag: "spam",
+      title: "Spam or malicious content",
+      icon: "spam",
+      desc: "If the website has changed significantly and you believe it is now malicious or spammy, please report it here."
+    }, {
+      tag: "exploit",
+      title: "Underage content",
+      icon: "age-limit",
+      desc: 'Please report the website to the webhost, local law enforcement and the NCMEC (<a class="color-success boogie-link" href="https://www.missingkids.org" target="_blank" rel="noopener noreferrer">https://www.missingkids.org</a>) in addition to your report here.'
+    }, {
+      tag: "revenge",
+      title: "Nonconsensual content",
+      icon: "revenge",
+      desc: "If you believe a website has revenge porn and shows non-consensual activity, report it to the web host and local law enforcement in addition to your report here."
+    }, {
+      tag: "feedback",
+      title: "General Feedback",
+      icon: "comment-bubble",
+      desc: "If you have other feedback or information that doesn't fit into one of the above categories, please report it here."
+    }, {
+      tag: "recommendations",
+      title: "Website Submission for ",
+      headerTitle: "Website Submission for ",
+      icon: "comment-bubble",
+      desc: "Know a website in this niche we don't have? Submit it!",
+      disclaimer: "If you know of a great website that isn't listed in this category and think it deserves a place here, Mr. Porn Geek would love to hear about it! Please provide the website URL, and I'll personally review it. If it's popular, has good content, and is updated regularly, we'll include it here.",
+      hideInList: true
+    }];
+    this.parentContainer = document.querySelector('.review_type_container');
+    this.additionalActions = document.querySelector('.review_type_trigger-dropdown');
+    this.typeTriggerBtn = document.querySelector('.review_type_trigger-outer');
+    this.typeFilter = document.querySelector('.review_type_trigger');
+    var bodyClasses = document.body.classList;
+
+    if (bodyClasses.contains('single-sites')) {
+      this.title = document.querySelector('.review-title-line h1').innerHTML;
+    } else if (bodyClasses.contains('category')) {
+      this.title = document.querySelector('.bread-crumb-links .category_title').innerHTML;
+      this.reportData.splice(1, 2);
+    }
+
+    this.addReviewReportClickListeners();
+    this.addCategoryReportClickListeners();
+  }
+
+  _createClass(ReportModal, [{
+    key: "initReviewReportModal",
+    value: function initReviewReportModal() {
+      this.addReviewReportClickListeners();
+    }
+  }, {
+    key: "initCategoryReportModal",
+    value: function initCategoryReportModal() {
+      this.addCategoryReportClickListeners();
+    }
+  }, {
+    key: "addReviewReportClickListeners",
+    value: function addReviewReportClickListeners() {
+      var _this2 = this;
+
+      var reportBtn = document.querySelectorAll('.report-button');
+      reportBtn.forEach(function (item) {
+        item.addEventListener('click', function (event) {
+          var tag = event.currentTarget.dataset.tag;
+
+          _this2.injectReportReviewModal();
+        });
+      });
+    }
+  }, {
+    key: "addCategoryReportClickListeners",
+    value: function addCategoryReportClickListeners() {
+      var _this3 = this,
+          _document$querySelect12,
+          _document$querySelect13,
+          _document$querySelect14,
+          _this$typeFilter2;
+
+      var parent = this;
+      var reportBtn = document.querySelectorAll('.additional_action.report');
+      reportBtn.forEach(function (item) {
+        item.addEventListener('click', function (event) {
+          var tag = event.currentTarget.dataset.tag;
+
+          _this3.injectReportReviewModal('', 'Report a Problem for');
+        });
+      });
+      (_document$querySelect12 = document.querySelector('.review_type_trigger.mobile')) === null || _document$querySelect12 === void 0 ? void 0 : _document$querySelect12.addEventListener('click', function (evt) {
+        parent.showFilterPopup();
+      });
+      (_document$querySelect13 = document.querySelector('.additional_action.recommendations')) === null || _document$querySelect13 === void 0 ? void 0 : _document$querySelect13.addEventListener('click', function (event) {
+        _this3.injectReportReviewModal('recommendations', 'Website Recommendations for');
+      });
+      (_document$querySelect14 = document.querySelector('.additional_action.feedback')) === null || _document$querySelect14 === void 0 ? void 0 : _document$querySelect14.addEventListener('click', function (event) {
+        _this3.injectReportReviewModal('feedback', 'Send Feedback for');
+      });
+      this.checkAvailability();
+      this.initTypeTriggerEvents();
+      (_this$typeFilter2 = this.typeFilter) === null || _this$typeFilter2 === void 0 ? void 0 : _this$typeFilter2.addEventListener('click', function (evt) {
+        parent.showFilterPopup();
+      });
+    }
+  }, {
+    key: "initTypeTriggerEvents",
+    value: function initTypeTriggerEvents() {
+      var _this4 = this;
+
+      var timeoutId;
+
+      if (this.additionalActions) {
+        var _this$typeTriggerBtn4, _this$typeTriggerBtn5, _this$typeTriggerBtn6;
+
+        (_this$typeTriggerBtn4 = this.typeTriggerBtn) === null || _this$typeTriggerBtn4 === void 0 ? void 0 : _this$typeTriggerBtn4.addEventListener('mouseover', function () {
+          clearTimeout(timeoutId);
+
+          _this4.additionalActions.classList.add('open');
+        });
+        (_this$typeTriggerBtn5 = this.typeTriggerBtn) === null || _this$typeTriggerBtn5 === void 0 ? void 0 : _this$typeTriggerBtn5.addEventListener('mouseout', function () {
+          timeoutId = setTimeout(function () {
+            _this4.additionalActions.classList.remove('open');
+          }, 700); // 2000 milliseconds = 2 seconds
+        });
+        (_this$typeTriggerBtn6 = this.typeTriggerBtn) === null || _this$typeTriggerBtn6 === void 0 ? void 0 : _this$typeTriggerBtn6.addEventListener('click', function () {
+          if (_this4.additionalActions.classList.contains('open')) {
+            clearTimeout(timeoutId);
+
+            _this4.additionalActions.classList.remove('open');
+          } else {
+            _this4.additionalActions.classList.add('open');
+          }
+        });
+      }
+    }
+  }, {
+    key: "addReviewReportItemClickListeners",
+    value: function addReviewReportItemClickListeners() {
+      var _this5 = this;
+
+      var listItems = document.querySelectorAll('.boogie-list-item');
+      listItems.forEach(function (item) {
+        item.addEventListener('click', function (event) {
+          var tag = event.currentTarget.dataset.tag;
+          var desc = event.currentTarget.dataset.tag;
+          console.log("Clicked on item with tag: ".concat(tag));
+
+          _this5.showReportForm(tag);
+
+          document.querySelector('.boogie-fields textarea').focus();
+        });
+      });
+    }
+  }, {
+    key: "injectReportReviewModal",
+    value: function injectReportReviewModal() {
+      var initialTag = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : '';
+      var headerTitle = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : 'Report a Review Feedback for';
+      var modalHTML = this.generateReportReviewContent(this.title, headerTitle);
+
+      if (document.querySelector('#boogie-modal')) {
+        document.querySelector('#boogie-modal').innerHTML = modalHTML;
+      } else {
+        document.body.insertAdjacentHTML('beforeend', "<div class=\"micromodal micromodal-slide boogie-modal is-open\" id=\"boogie-modal\" aria-hidden=\"false\">".concat(modalHTML, "</div>"));
+      }
+
+      if (initialTag == '') {
+        this.addReviewReportItemClickListeners();
+      } else {
+        this.showReportForm(initialTag, true);
+      } // Initialize and show the modal
+
+
+      MicroModal.show('boogie-modal', {
+        // awaitOpenAnimation: true,
+        awaitCloseAnimation: true,
+        onShow: function onShow() {
+          document.body.classList.add('is-hideScroll'); // document.querySelector('#boogie-modal')?.remove()
+        },
+        onClose: function onClose() {
+          // document.querySelector('#boogie-modal').remove()
+          document.body.classList.remove('is-hideScroll');
+        }
+      });
+    }
+  }, {
+    key: "switchToReport",
+    value: function switchToReport() {
+      var modalHTML = this.generateReportReviewContent(this.title, 'Report a Problem for');
+      document.querySelector('#boogie-modal').innerHTML = modalHTML;
+      this.addReviewReportItemClickListeners(); // if(initialTag == ''){
+      // 	this.addReviewReportItemClickListeners()
+      // }else{
+      // 	this.showReportForm(initialTag, true)
+      // }
+    }
+  }, {
+    key: "generateReportReviewContent",
+    value: function generateReportReviewContent(reviewName) {
+      var headerTitle = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : 'Report a Review Feedback for';
+      var modalOuter = "<div class=\"micromodal micromodal-slide boogie-modal is-open\" id=\"boogie-modal\" aria-hidden=\"false\"></div>";
+      var modalHTML = "\n\t\t  <div class=\"micromodal-overlay\" tabindex=\"-1\">\n\t\t\t\t\t<div class=\"micromodal-container custom-scrollbar\" role=\"dialog\" aria-modal=\"true\" aria-labelledby=\"boogie-title\">\n\t\t\t\t\t\t<div class=\"micromodal-content boogie-issues-content\">\n\t\t\t\t\t\t\t<div class=\"micromodal-header\">\n\t\t\t\t\t\t\t\t<h4 class=\"micromodal-title\" id=\"boogie-title\">\n\t\t\t\t\t\t\t\t\t<span class=\"inline-icon icon-thumbsup\"></span>\n\n\t\t\t\t\t\t\t\t\t<div class=\"micromodal-title-text\">\n\t\t\t\t\t\t\t\t\t\t<span>".concat(headerTitle, "</span>\n\t\t\t\t\t\t\t\t\t\t<span id=\"report_review_title\" class=\"color-primary\">").concat(reviewName, "</span>\n\t\t\t\t\t\t\t\t\t</div>\n\t\t\t\t\t\t\t\t</h4>\n\t\t\t\t\t\t\t\t<div class=\"micromodal-close\" data-micromodal-close=\"\">\n\t\t\t\t\t\t\t\t\t<svg class=\"icon\" xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0.51 0.51 22.99 22.99\" width=\"24px\" height=\"24px\">\n\t\t\t\t\t\t\t\t\t<path d=\"M23.1294 21.4152L2.58488 0.870773C2.10409 0.38998 1.33062 0.383984 0.85722 0.85738C0.383824 1.33078 0.38982 2.10425 0.870613 2.58504L21.4151 23.1295C21.8959 23.6103 22.6694 23.6163 23.1428 23.1429C23.6161 22.6695 23.6101 21.896 23.1294 21.4152Z\"></path>\n\t\t\t\t\t\t\t\t\t<path d=\"M21.415 0.870638L0.870529 21.4151C0.389736 21.8959 0.38374 22.6694 0.857136 23.1428C1.33053 23.6162 2.10401 23.6102 2.5848 23.1294L23.1293 2.58491C23.6101 2.10412 23.6161 1.33064 23.1427 0.857245C22.6693 0.383849 21.8958 0.389845 21.415 0.870638Z\"></path>\n\t\t\t\t\t\t\t\t\t</svg>\n\t\t\t\t\t\t\t\t</div>\n\n\t\t\t\t\t\t\t</div>\n\n\t\t\t\t\t\t\t<hr>\n\n\t\t\t\t\t\t\t<div class=\"micromodal-body\">\n\t\t\t\t\t\t\t").concat(this.getReportBodyContent(), "\n\t\t\t\t\t\t\t</div>\n\t\t\t\t\t\t</div>\n\t\t\t\t\t</div>\n\t\t\t  </div>\n\t\t");
+      return modalHTML;
+    }
+  }, {
+    key: "getReportBodyContent",
+    value: function getReportBodyContent() {
+      var reportItemsContent = '';
+      this.reportData.forEach(function (item) {
+        if (item.hideInList) {
+          return;
+        }
+
+        reportItemsContent += "<li class=\"boogie-list-item\" data-icon=\"broken-link\" data-tag=\"".concat(item.tag, "\">\n\t\t\t\t\t\t<div class=\"boogie-list-text\">\n\t\t\t\t\t\t  <span class=\"inline-icon icon-").concat(item.icon, "\"></span>\n\t\t\t\t\t\t  <div>").concat(item.title, "</div>\n\t\t\t\t\t\t</div>\n\t\t\t\t\t\t<svg class=\"arrow\" width=\"20\" height=\"20\" xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0.5 18 11\" fill=\"currentColor\">\n\t\t\t\t\t\t\t<path d=\"M17.738 5.38997L12.982 0.747973C12.8149 0.586608 12.5918 0.496418 12.3595 0.496418C12.1272 0.496418 11.9041 0.586608 11.737 0.747973C11.6555 0.826858 11.5906 0.921336 11.5464 1.02579C11.5021 1.13024 11.4793 1.24253 11.4793 1.35597C11.4793 1.46942 11.5021 1.58171 11.5464 1.68616C11.5906 1.79061 11.6555 1.88509 11.737 1.96397L14.989 5.13997L0.881 5.13997C0.766747 5.13852 0.653327 5.15959 0.547217 5.20197C0.441107 5.24435 0.344385 5.30722 0.262575 5.38699C0.180765 5.46676 0.115469 5.56186 0.0704156 5.66687C0.0253626 5.77187 0.0014352 5.88472 -2.405e-07 5.99897C0.0028998 6.22954 0.0972146 6.44953 0.262221 6.6106C0.427228 6.77167 0.649428 6.86064 0.88 6.85797L14.99 6.85797L11.738 10.033C11.6565 10.1118 11.5917 10.2062 11.5474 10.3105C11.5032 10.4149 11.4803 10.5271 11.4803 10.6405C11.4803 10.7538 11.5032 10.866 11.5474 10.9704C11.5917 11.0748 11.6565 11.1692 11.738 11.248C11.9045 11.4107 12.1282 11.5016 12.361 11.501C12.586 11.501 12.811 11.416 12.983 11.248L17.739 6.60597C17.8205 6.52717 17.8853 6.43278 17.9296 6.32841C17.9738 6.22405 17.9967 6.11184 17.9967 5.99847C17.9967 5.88511 17.9738 5.7729 17.9296 5.66853C17.8853 5.56416 17.8205 5.46977 17.739 5.39097L17.738 5.38997Z\"></path>\n\t\t\t\t\t\t</svg>\n\t\t\t\t\t  </li>\n");
+      });
+      var bodyContent = "<div class=\"color-secondary\">\n\t\t\t\t\t\t  What's the issue?\n\t\t\t\t\t\t</div>\n\n\t\t\t\t\t\t<ul class=\"boogie-list\">\n\t\t\t\t\t\t\t".concat(reportItemsContent, "\n\t\t\t\t\t\t</ul>");
+      return bodyContent;
+    }
+  }, {
+    key: "showReportForm",
+    value: function showReportForm(tag) {
+      var _this6 = this;
+
+      var changeBack = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : false;
+      var parent = this;
+      var reviewTitle = this.title;
+      var selectedTag = this.getDescriptionByTag(tag);
+      var desc = selectedTag ? selectedTag.desc : '';
+      var reportType = selectedTag ? selectedTag.title : '';
+      var checkboxLabel = "I am submitting feedback for a ".concat(reviewTitle, " website review");
+
+      if (document.body.classList.contains('category')) {
+        checkboxLabel = 'I confirm and wish to proceed with my submission';
+      }
+
+      var reportFormContent = "<p>".concat(desc, "</p>\n\n        <div class=\"boogie-disclaimer\">\n        ").concat((selectedTag === null || selectedTag === void 0 ? void 0 : selectedTag.disclaimer) || "<p>Please note that Mr. Porn Geek doesn't manage any of the third-party platforms he reviews. If you have a problem with payments, content or something else, contact the site directly.</p><p>Mr. Porn Geek's reviews are written in a comedic way and with parody of the industry as its central focus. The character himself is fictional, and is merely an attempt to be a satirical take on the business of adult entertainment.</p>", "\n\n        </div>\n\n        <form method=\"post\" class=\"boogie-form\" action=\"#\" data-code=\"broke\">\n        \t<input type=\"hidden\" class=\"boogie-input\" name=\"tag\" value=\"").concat(reportType, "\">\n          <div class=\"boogie-form-body\">\n            <div class=\"boogie-fields\">\n              <div class=\"boogie-field boogie-field-textarea\">\n                <textarea class=\"boogie-input\" id=\"message\" name=\"message\" placeholder=\"Please enter details of your request\"></textarea>\n              </div>\n\n              <div class=\"boogie-field\">\n                <input class=\"boogie-input\" type=\"text\" id=\"name\" name=\"name\" placeholder=\"Your Name\">\n              </div>\n\n              <div class=\"boogie-field\">\n                <input class=\"boogie-input\" type=\"email\" id=\"email\" name=\"email\" placeholder=\"Your Email\">\n              </div>\n            </div>\n\n            <div class=\"boogie-checkbox\">\n              <input class=\"boogie-checkbox-input\" type=\"checkbox\" id=\"boogie-checkbox-input\" name=\"checkbox\">\n\n              <label class=\"boogie-checkbox-label\" for=\"boogie-checkbox-input\">").concat(checkboxLabel, "</label>\n            </div>\n          </div>\n\n          <hr>\n\n          <div class=\"boogie-form-footer\">\n            <button class=\"btn btn-secondary btn-back\" type=\"button\" ").concat(changeBack ? 'data-micromodal-close' : '', ">\n            \t").concat(changeBack ? '' : '<svg class="icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0.5 18 11">\n								<path d="M17.738 5.38997L12.982 0.747973C12.8149 0.586608 12.5918 0.496418 12.3595 0.496418C12.1272 0.496418 11.9041 0.586608 11.737 0.747973C11.6555 0.826858 11.5906 0.921336 11.5464 1.02579C11.5021 1.13024 11.4793 1.24253 11.4793 1.35597C11.4793 1.46942 11.5021 1.58171 11.5464 1.68616C11.5906 1.79061 11.6555 1.88509 11.737 1.96397L14.989 5.13997L0.881 5.13997C0.766747 5.13852 0.653327 5.15959 0.547217 5.20197C0.441107 5.24435 0.344385 5.30722 0.262575 5.38699C0.180765 5.46676 0.115469 5.56186 0.0704156 5.66687C0.0253626 5.77187 0.0014352 5.88472 -2.405e-07 5.99897C0.0028998 6.22954 0.0972146 6.44953 0.262221 6.6106C0.427228 6.77167 0.649428 6.86064 0.88 6.85797L14.99 6.85797L11.738 10.033C11.6565 10.1118 11.5917 10.2062 11.5474 10.3105C11.5032 10.4149 11.4803 10.5271 11.4803 10.6405C11.4803 10.7538 11.5032 10.866 11.5474 10.9704C11.5917 11.0748 11.6565 11.1692 11.738 11.248C11.9045 11.4107 12.1282 11.5016 12.361 11.501C12.586 11.501 12.811 11.416 12.983 11.248L17.739 6.60597C17.8205 6.52717 17.8853 6.43278 17.9296 6.32841C17.9738 6.22405 17.9967 6.11184 17.9967 5.99847C17.9967 5.88511 17.9738 5.7729 17.9296 5.66853C17.8853 5.56416 17.8205 5.46977 17.739 5.39097L17.738 5.38997Z"></path>\n							</svg>', "\n\t\t\t\t\t\t\t").concat(changeBack ? 'Close' : 'Back', "</button>\n\n            <button class=\"btn btn-success btn-submit submit-report\" type=\"submit\">\n              <span class=\"btn-text\">Submit</span>\n              <div class=\"lds-dual-ring\"></div>\n            </button>\n          </div>\n        </form>");
+      document.querySelector('#boogie-modal .micromodal-body').innerHTML = reportFormContent;
+      document.querySelector('.boogie-form-footer .btn-back').addEventListener('click', function (event) {
+        document.querySelector('#boogie-modal .micromodal-body').innerHTML = _this6.getReportBodyContent();
+
+        _this6.addReviewReportItemClickListeners();
+      }); // document.querySelector('.boogie-form input').addEventListener('change', (event) => {
+      //
+      // });
+
+      var name = document.querySelector('.boogie-input[name="name"]');
+      var email = document.querySelector('.boogie-input[name="email"]');
+      var message = document.querySelector('.boogie-input[name="message"]');
+      var debouncedValidateName = debounce(function () {
+        return _this6.validateField(name);
+      }, 300);
+      var debouncedValidateMessage = debounce(function () {
+        return _this6.validateField(message);
+      }, 300);
+      var debouncedValidateEmail = debounce(function () {
+        return _this6.validateField(email);
+      }, 300);
+      name.addEventListener('input', debouncedValidateName);
+      message.addEventListener('input', debouncedValidateMessage);
+      email.addEventListener('input', debouncedValidateEmail);
+      document.querySelector('.boogie-form').addEventListener('submit', function (event) {
+        event.preventDefault();
+        parent.submitForm();
+      });
+    }
+  }, {
+    key: "debounce",
+    value: function debounce(func, delay) {
+      var timeout;
+      return function () {
+        var _this7 = this;
+
+        for (var _len = arguments.length, args = new Array(_len), _key = 0; _key < _len; _key++) {
+          args[_key] = arguments[_key];
+        }
+
+        clearTimeout(timeout);
+        timeout = setTimeout(function () {
+          return func.apply(_this7, args);
+        }, delay);
+      };
+    }
+  }, {
+    key: "validateField",
+    value: function validateField(field) {
+      var value = field.value.trim();
+
+      if (field.id === 'message') {
+        if (value.length < 3) {
+          field.classList.add('has_error');
+        } else {
+          field.classList.remove('has_error');
+        }
+      }
+
+      if (field.id === 'name') {
+        if (value.length < 3) {
+          field.classList.add('has_error');
+        } else {
+          field.classList.remove('has_error');
+        }
+      } else if (field.id === 'email') {
+        var emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+        if (!emailRegex.test(value)) {
+          field.classList.add('has_error');
+        } else {
+          field.classList.remove('has_error');
+        }
+      }
+    }
+  }, {
+    key: "getDescriptionByTag",
+    value: function getDescriptionByTag(tagName) {
+      var selectedTag = this.reportData.filter(function (item) {
+        return item.tag === tagName;
+      });
+      return selectedTag.length > 0 ? selectedTag[0] : null;
+    }
+  }, {
+    key: "showSuccessDialog",
+    value: function showSuccessDialog() {
+      var successContent = "\n        <div class=\"micromodal-hero\">\n          <h4 class=\"micromodal-title\">\n            Your contributions are truly appreciated!\n          </h4>\n          <span class=\"inline-icon icon-report-success\"></span>\n          <p>\n          \tThank you for your feedback! Your input is what helps make <span class=\"color-primary\">MrPornGeek.com</span> better for everyone.\n          </p>\n          <div class=\"micromodal-hero-actions\">\n            <button class=\"btn btn-primary btn-ok\" type=\"button\" data-micromodal-close=\"\">Ok</button>\n          </div>\n        </div>";
+      document.querySelector('#boogie-modal hr').remove();
+      document.querySelector('#boogie-modal .micromodal-header').innerHTML = '';
+      document.querySelector('#boogie-modal .micromodal-body').innerHTML = successContent;
+    }
+  }, {
+    key: "isReportValid",
+    value: function isReportValid(name, email, message, accepted) {
+      var hasError = false; // let accepted = document.querySelector('#boogie-checkbox-input').checked
+
+      if (!accepted) {
+        document.querySelector('.boogie-checkbox-label').classList.add('has_error');
+        hasError = true;
+      } else {
+        document.querySelector('.boogie-checkbox-label').classList.remove('has_error');
+      }
+
+      if (name == '') {
+        document.querySelector('.boogie-input[name="name"]').classList.add('has_error');
+        hasError = true;
+      } else {
+        document.querySelector('.boogie-input[name="name"]').classList.remove('has_error');
+      }
+
+      if (email == '') {
+        document.querySelector('.boogie-input[name="email"]').classList.add('has_error');
+        hasError = true;
+      } else {
+        document.querySelector('.boogie-input[name="email"]').classList.remove('has_error');
+      }
+
+      if (message == '') {
+        document.querySelector('.boogie-input[name="message"]').classList.add('has_error');
+        hasError = true;
+      } else {
+        document.querySelector('.boogie-input[name="message"]').classList.remove('has_error');
+      }
+
+      if (hasError) {
+        return false;
+      }
+
+      var emailRegex = /^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+$/;
+      hasError = emailRegex.test(email);
+      return hasError;
+    } // Function to handle form submission
+
+  }, {
+    key: "submitForm",
+    value: function submitForm() {
+      var _this8 = this;
+
+      var tag = document.querySelector('.boogie-input[name="tag"]').value.trim();
+      var name = document.querySelector('.boogie-input[name="name"]').value.trim();
+      var email = document.querySelector('.boogie-input[name="email"]').value.trim();
+      var message = document.querySelector('.boogie-input[name="message"]').value.trim();
+      var reviewUrl = window.location.href;
+      var reviewId = document.querySelector('.main_con.review_container').dataset.siteid;
+      var accepted = document.querySelector('#boogie-checkbox-input').checked; // let reviewTitle = document.querySelector('.review_site_link .site_name').innerHTML;
+      // Validate email format
+
+      if (!this.isReportValid(name, email, message, accepted)) {
+        return false;
+      } // Rate limit check
+
+
+      var currentTime = Date.now();
+
+      if (currentTime - this.lastRequestTime < this.rateLimitTime) {
+        return;
+      }
+
+      document.querySelector('.boogie-form .submit-report').classList.add('spin'); // Update the last request time
+
+      this.lastRequestTime = currentTime; // If valid email, proceed with the POST request
+
+      fetch("/wp-content/themes/mpg/ajax-handler-wp.php?action=submit_report", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json"
+        },
+        body: JSON.stringify({
+          reporter_name: name,
+          email: email,
+          message: message,
+          tag: tag,
+          post_id: reviewId
+        })
+      }).then(function (response) {
+        if (response.ok) {
+          return response.json();
+        } else {
+          throw new Error('Network response was not ok.');
+        }
+      }).then(function (responseData) {
+        if (responseData.success) {
+          _this8.showSuccessDialog();
+        } else {
+          console.log('error');
+
+          _this8.showSuccessDialog();
+        }
+      })["catch"](function (error) {
+        console.error("Error:", error);
+      });
+    }
+  }, {
+    key: "generateTypeFilterPopupContent",
+    value: function generateTypeFilterPopupContent() {
+      var _document$querySelect15;
+
+      var withParent = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : false;
+      var filterOptions = (_document$querySelect15 = document.querySelector('.review_type_slider')) === null || _document$querySelect15 === void 0 ? void 0 : _document$querySelect15.innerHTML;
+      var popupContent = "\n\t\t\t<div class=\"micromodal-overlay\" tabindex=\"-1\">\n\t\t\t\t<div class=\"micromodal-container custom-scrollbar\" role=\"dialog\" aria-modal=\"true\" aria-labelledby=\"boogie-title\">\n\t\t\t\t  <div class=\"micromodal-content filter_type_content\" data-type=\"all\">\n\t\t\t\t\t  <div class=\"micromodal-header\">\n\t\t\t\t\t\t\t<h4 class=\"micromodal-title\" id=\"boogie-title\">\n\t\t\t\t\t\t\t\t<span class=\"inline-icon icon-thumbsup\"></span>\n\n\t\t\t\t\t\t\t\t<div class=\"micromodal-title-text\">\n\t\t\t\t\t\t\t\t\t<span>Filter by Free or Premium</span>\n\t\t\t\t\t\t\t\t\t<span id=\"report_review_title\" class=\"color-primary\"></span>\n\t\t\t\t\t\t\t\t</div>\n\t\t\t\t\t\t\t</h4>\n\t\t\t\t\t\t\t<div class=\"micromodal-close\" data-micromodal-close=\"\">\n\t\t\t\t\t\t\t\t<svg class=\"icon\" xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0.51 0.51 22.99 22.99\" width=\"24px\" height=\"24px\">\n\t\t\t\t\t\t\t\t<path d=\"M23.1294 21.4152L2.58488 0.870773C2.10409 0.38998 1.33062 0.383984 0.85722 0.85738C0.383824 1.33078 0.38982 2.10425 0.870613 2.58504L21.4151 23.1295C21.8959 23.6103 22.6694 23.6163 23.1428 23.1429C23.6161 22.6695 23.6101 21.896 23.1294 21.4152Z\"></path>\n\t\t\t\t\t\t\t\t<path d=\"M21.415 0.870638L0.870529 21.4151C0.389736 21.8959 0.38374 22.6694 0.857136 23.1428C1.33053 23.6162 2.10401 23.6102 2.5848 23.1294L23.1293 2.58491C23.6101 2.10412 23.6161 1.33064 23.1427 0.857245C22.6693 0.383849 21.8958 0.389845 21.415 0.870638Z\"></path>\n\t\t\t\t\t\t\t\t</svg>\n\t\t\t\t\t\t\t</div>\n\t\t\t\t\t  </div>\n\t\t\t\t\t   <hr>\n\n\t\t\t\t\t  <div class=\"micromodal-body\">\n\t\t\t\t\t\t\t<div>\n\t\t\t\t\t\t\t\t<div class=\"review_type_slider mobile\">\n\t\t\t\t\t\t\t\t\t".concat(filterOptions, "\n\t\t\t\t\t\t\t\t</div>\n\t\t\t\t\t\t\t</div>\n\t\t\t\t\t\t\t<div class=\"review_type_slider_status\"></div>\n\t\t\t\t\t\t\t<div class=\"review_type_slider_error\"></div>\n\t\t\t\t\t\t\t<div class=\"color-secondary\">Additional Actions</div>\n\t\t\t\t\t\t\t<ul class=\"additional_actions boogie-list\">\n\t\t\t\t\t\t\t\t<li class=\"boogie-list-item problem\" data-icon=\"problem\" data-tag=\"problem\">\n\t\t\t\t\t\t\t\t\t\t<div class=\"boogie-list-text\">\n\t\t\t\t\t\t\t\t\t\t\t<span class=\"inline-icon icon-problem\"></span>\n\t\t\t\t\t\t\t\t\t\t\t<div>Report a Problem</div>\n\t\t\t\t\t\t\t\t\t\t</div>\n\t\t\t\t\t\t\t\t\t\t<svg class=\"arrow\" width=\"20\" height=\"20\" xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0.5 18 11\" fill=\"currentColor\">\n\t\t\t\t\t\t\t\t\t\t\t<path d=\"M17.738 5.38997L12.982 0.747973C12.8149 0.586608 12.5918 0.496418 12.3595 0.496418C12.1272 0.496418 11.9041 0.586608 11.737 0.747973C11.6555 0.826858 11.5906 0.921336 11.5464 1.02579C11.5021 1.13024 11.4793 1.24253 11.4793 1.35597C11.4793 1.46942 11.5021 1.58171 11.5464 1.68616C11.5906 1.79061 11.6555 1.88509 11.737 1.96397L14.989 5.13997L0.881 5.13997C0.766747 5.13852 0.653327 5.15959 0.547217 5.20197C0.441107 5.24435 0.344385 5.30722 0.262575 5.38699C0.180765 5.46676 0.115469 5.56186 0.0704156 5.66687C0.0253626 5.77187 0.0014352 5.88472 -2.405e-07 5.99897C0.0028998 6.22954 0.0972146 6.44953 0.262221 6.6106C0.427228 6.77167 0.649428 6.86064 0.88 6.85797L14.99 6.85797L11.738 10.033C11.6565 10.1118 11.5917 10.2062 11.5474 10.3105C11.5032 10.4149 11.4803 10.5271 11.4803 10.6405C11.4803 10.7538 11.5032 10.866 11.5474 10.9704C11.5917 11.0748 11.6565 11.1692 11.738 11.248C11.9045 11.4107 12.1282 11.5016 12.361 11.501C12.586 11.501 12.811 11.416 12.983 11.248L17.739 6.60597C17.8205 6.52717 17.8853 6.43278 17.9296 6.32841C17.9738 6.22405 17.9967 6.11184 17.9967 5.99847C17.9967 5.88511 17.9738 5.7729 17.9296 5.66853C17.8853 5.56416 17.8205 5.46977 17.739 5.39097L17.738 5.38997Z\"></path>\n\t\t\t\t\t\t\t\t\t\t</svg>\n\t\t\t\t\t\t\t\t</li>\n\t\t\t\t\t\t\t\t<li class=\"boogie-list-item recommendations\" data-icon=\"recommendations\" data-tag=\"recommendations\">\n\t\t\t\t\t\t\t\t\t\t<div class=\"boogie-list-text\">\n\t\t\t\t\t\t\t\t\t\t\t<span class=\"inline-icon icon-recommendations\"></span>\n\t\t\t\t\t\t\t\t\t\t\t<div>Site Recommendations</div>\n\t\t\t\t\t\t\t\t\t\t</div>\n\t\t\t\t\t\t\t\t\t\t<svg class=\"arrow\" width=\"20\" height=\"20\" xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0.5 18 11\" fill=\"currentColor\">\n\t\t\t\t\t\t\t\t\t\t\t<path d=\"M17.738 5.38997L12.982 0.747973C12.8149 0.586608 12.5918 0.496418 12.3595 0.496418C12.1272 0.496418 11.9041 0.586608 11.737 0.747973C11.6555 0.826858 11.5906 0.921336 11.5464 1.02579C11.5021 1.13024 11.4793 1.24253 11.4793 1.35597C11.4793 1.46942 11.5021 1.58171 11.5464 1.68616C11.5906 1.79061 11.6555 1.88509 11.737 1.96397L14.989 5.13997L0.881 5.13997C0.766747 5.13852 0.653327 5.15959 0.547217 5.20197C0.441107 5.24435 0.344385 5.30722 0.262575 5.38699C0.180765 5.46676 0.115469 5.56186 0.0704156 5.66687C0.0253626 5.77187 0.0014352 5.88472 -2.405e-07 5.99897C0.0028998 6.22954 0.0972146 6.44953 0.262221 6.6106C0.427228 6.77167 0.649428 6.86064 0.88 6.85797L14.99 6.85797L11.738 10.033C11.6565 10.1118 11.5917 10.2062 11.5474 10.3105C11.5032 10.4149 11.4803 10.5271 11.4803 10.6405C11.4803 10.7538 11.5032 10.866 11.5474 10.9704C11.5917 11.0748 11.6565 11.1692 11.738 11.248C11.9045 11.4107 12.1282 11.5016 12.361 11.501C12.586 11.501 12.811 11.416 12.983 11.248L17.739 6.60597C17.8205 6.52717 17.8853 6.43278 17.9296 6.32841C17.9738 6.22405 17.9967 6.11184 17.9967 5.99847C17.9967 5.88511 17.9738 5.7729 17.9296 5.66853C17.8853 5.56416 17.8205 5.46977 17.739 5.39097L17.738 5.38997Z\"></path>\n\t\t\t\t\t\t\t\t\t\t</svg>\n\t\t\t\t\t\t\t\t</li>\n\t\t\t\t\t\t\t\t<li class=\"boogie-list-item feedback\" data-icon=\"feedback\" data-tag=\"feedback\">\n\t\t\t\t\t\t\t\t\t<div class=\"boogie-list-text\">\n\t\t\t\t\t\t\t\t\t\t\t<span class=\"inline-icon icon-feedback\"></span>\n\t\t\t\t\t\t\t\t\t\t\t<div>Send feedback</div>\n\t\t\t\t\t\t\t\t\t\t</div>\n\t\t\t\t\t\t\t\t\t\t<svg class=\"arrow\" width=\"20\" height=\"20\" xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0.5 18 11\" fill=\"currentColor\">\n\t\t\t\t\t\t\t\t\t\t\t<path d=\"M17.738 5.38997L12.982 0.747973C12.8149 0.586608 12.5918 0.496418 12.3595 0.496418C12.1272 0.496418 11.9041 0.586608 11.737 0.747973C11.6555 0.826858 11.5906 0.921336 11.5464 1.02579C11.5021 1.13024 11.4793 1.24253 11.4793 1.35597C11.4793 1.46942 11.5021 1.58171 11.5464 1.68616C11.5906 1.79061 11.6555 1.88509 11.737 1.96397L14.989 5.13997L0.881 5.13997C0.766747 5.13852 0.653327 5.15959 0.547217 5.20197C0.441107 5.24435 0.344385 5.30722 0.262575 5.38699C0.180765 5.46676 0.115469 5.56186 0.0704156 5.66687C0.0253626 5.77187 0.0014352 5.88472 -2.405e-07 5.99897C0.0028998 6.22954 0.0972146 6.44953 0.262221 6.6106C0.427228 6.77167 0.649428 6.86064 0.88 6.85797L14.99 6.85797L11.738 10.033C11.6565 10.1118 11.5917 10.2062 11.5474 10.3105C11.5032 10.4149 11.4803 10.5271 11.4803 10.6405C11.4803 10.7538 11.5032 10.866 11.5474 10.9704C11.5917 11.0748 11.6565 11.1692 11.738 11.248C11.9045 11.4107 12.1282 11.5016 12.361 11.501C12.586 11.501 12.811 11.416 12.983 11.248L17.739 6.60597C17.8205 6.52717 17.8853 6.43278 17.9296 6.32841C17.9738 6.22405 17.9967 6.11184 17.9967 5.99847C17.9967 5.88511 17.9738 5.7729 17.9296 5.66853C17.8853 5.56416 17.8205 5.46977 17.739 5.39097L17.738 5.38997Z\"></path>\n\t\t\t\t\t\t\t\t\t\t</svg>\n\t\t\t\t\t\t\t\t</li>\n\t\t\t\t\t\t\t</ul>\n\t\t\t\t\t  </div>\n\n\t\t\t\t\t\t<div class=\"loading_spinner mobile\"></div>\n\t\t\t\t\t</div>\n\t\t\t\t</div>\n\t\t\t  </div>\n\t\t");
+
+      if (withParent) {
+        return "<div class=\"micromodal micromodal-category\" id=\"boogie-modal\" aria-hidden=\"false\">".concat(popupContent, "</div>");
+      }
+
+      return popupContent;
+    }
+  }, {
+    key: "showFilterPopup",
+    value: function showFilterPopup() {
+      var parent = this;
+
+      if (!document.querySelector("#boogie-modal")) {
+        var modalHTML = this.generateTypeFilterPopupContent(true);
+        document.body.insertAdjacentHTML('beforeend', modalHTML);
+      } else {
+        var _modalHTML = this.generateTypeFilterPopupContent();
+
+        document.querySelector('#boogie-modal').innerHTML = _modalHTML;
+      }
+
+      MicroModal.show('boogie-modal', {
+        // awaitOpenAnimation: true,
+        awaitCloseAnimation: true,
+        onShow: function onShow() {
+          var _parent$reviewTypeSli;
+
+          document.body.classList.add('is-hideScroll');
+          parent.parentContainer = document.querySelector('#boogie-modal');
+          parent.type_status = parent.parentContainer.querySelector('.review_type_slider_status');
+          parent.type_error = parent.parentContainer.querySelector('.review_type_slider_error');
+          parent.reviewTypeSlider = document.querySelector('.review_type_slider.mobile');
+          parent.rtsThumb = document.querySelector('.review_type_slider.mobile .review_type_slider_thumb');
+          parent.filterTypeContainer = document.querySelector('.filter_type_content');
+          parent.initFilterEvents();
+          parent.initPopupEvents();
+          parent.checkAvailability();
+
+          if ((_parent$reviewTypeSli = parent.reviewTypeSlider) === null || _parent$reviewTypeSli === void 0 ? void 0 : _parent$reviewTypeSli.querySelector('.option.active')) {
+            parent.slideToType(parent.reviewTypeSlider.querySelector('.option.active'));
+          }
+        },
+        onClose: function onClose() {
+          // document.querySelector('#type-filter-modal').remove()
+          document.documentElement.classList.remove('is-hideScroll');
+          document.body.classList.remove('is-hideScroll');
+        }
+      });
+    }
+  }, {
+    key: "initFilterEvents",
+    value: function initFilterEvents() {
+      var _this$parentContainer;
+
+      var sitesArchive = document.querySelector('.category_sites.cat_archive');
+      (_this$parentContainer = this.parentContainer.querySelectorAll('.review_type_slider .option')) === null || _this$parentContainer === void 0 ? void 0 : _this$parentContainer.forEach(function (option) {
+        var _this9 = this;
+
+        option.addEventListener('click', function (evt) {
+          var _this9$parentContaine, _document$querySelect16, _document$querySelect17;
+
+          var type = evt.currentTarget.dataset.type;
+
+          if (_this9.currentFilter == type) {
+            return;
+          }
+
+          if (evt.currentTarget.classList.contains('disabled')) {
+            if (_this9.type_status && _this9.type_status.classList.contains('show')) {
+              _this9.type_status.classList.remove('show');
+            }
+
+            if (_this9.type_error) {
+              _this9.type_error.innerHTML = "No ".concat(type, " sites listed in this category");
+
+              _this9.type_error.classList.add('error');
+
+              _this9.startTypeErrorTimer();
+            }
+
+            return;
+          }
+
+          var siteType = evt.currentTarget.dataset.type;
+          _this9.currentFilter = siteType;
+
+          if (_this9.filterTypeContainer) {
+            _this9.filterTypeContainer.dataset.type = siteType;
+          }
+
+          (_this9$parentContaine = _this9.parentContainer.querySelector('.review_type_slider .option.active')) === null || _this9$parentContaine === void 0 ? void 0 : _this9$parentContaine.classList.remove('active');
+
+          _this9.slideToType(evt.currentTarget);
+
+          (_document$querySelect16 = document.querySelector('.review_type_container .option.active')) === null || _document$querySelect16 === void 0 ? void 0 : _document$querySelect16.classList.remove('active');
+          (_document$querySelect17 = document.querySelector('.review_type_container .option.' + siteType)) === null || _document$querySelect17 === void 0 ? void 0 : _document$querySelect17.classList.add('active');
+          evt.currentTarget.classList.add('active');
+          console.log("Switching to ".concat(siteType));
+          sitesArchive.dataset.type = siteType;
+
+          if (_this9.type_status) {
+            if (siteType == 'all') {
+              _this9.type_status.innerHTML = '';
+
+              _this9.type_status.classList.remove('show');
+            } else {
+              var tooltip = document.querySelector('.review_type_container .option.' + siteType + ' .tooltip');
+
+              if (tooltip) {
+                _this9.type_status.innerHTML = tooltip.innerHTML;
+              } else {
+                _this9.type_status.innerHTML = "You've Viewing All The ".concat(siteType, " Sites");
+              }
+
+              _this9.type_status.classList.add('show');
+
+              _this9.repositionStatusTooltip(evt);
+            }
+          }
+
+          _this9.showProgress();
+        });
+      }.bind(this));
+    }
+  }, {
+    key: "repositionStatusTooltip",
+    value: function repositionStatusTooltip(evt) {
+      var typeSliderContainer = document.querySelector('.review_type_slider.mobile');
+      var sliderContainerX = typeSliderContainer.getBoundingClientRect().x;
+      var optionBounds = evt.currentTarget.getBoundingClientRect();
+      var tipX = optionBounds.x + optionBounds.width / 2 - sliderContainerX;
+      this.type_status.style.setProperty('--tip_x', "".concat(tipX, "px"));
+    }
+  }, {
+    key: "startTypeErrorTimer",
+    value: function startTypeErrorTimer() {
+      var parent = this;
+
+      if (parent.type_status) {
+        setTimeout(function () {
+          if (parent.type_error) {
+            parent.type_error.innerHTML = '';
+            parent.type_error.classList.remove('show');
+          }
+
+          if (parent.type_status && parent.type_status.innerHTML != '') {
+            parent.type_status.classList.add('show');
+          }
+        }, 2500);
+      }
+    }
+  }, {
+    key: "checkAvailability",
+    value: function checkAvailability() {
+      var _this$parentContainer2;
+
+      (_this$parentContainer2 = this.parentContainer) === null || _this$parentContainer2 === void 0 ? void 0 : _this$parentContainer2.querySelectorAll('.review_type_slider .option').forEach(function (option) {
+        var type = option.dataset.type;
+
+        if (type == 'all') {
+          return;
+        }
+
+        var sites = document.querySelectorAll('.category_sites_item.' + type).length;
+
+        if (sites == 0) {
+          option.classList.add('disabled');
+          option.insertAdjacentHTML('beforeend', '<div class="review_type_slider_tooltip">No ' + type + ' sites listed in this category</div>');
+        }
+      });
+    }
+  }, {
+    key: "slideToType",
+    value: function slideToType(target) {
+      var sliderContainerX = this.reviewTypeSlider.getBoundingClientRect().x;
+      var optionBounds = target.getBoundingClientRect();
+      var thumbX = optionBounds.x - sliderContainerX;
+      this.rtsThumb.style.left = thumbX + 'px';
+      this.rtsThumb.style.width = optionBounds.width + 'px'; // rtsThumbMobile
+
+      console.log(sliderContainerX, optionBounds);
+    }
+  }, {
+    key: "showProgress",
+    value: function showProgress() {
+      var progress = document.querySelector('.loading_spinner.desktop');
+
+      if (isMobileOrTablet) {
+        progress = document.querySelector('.loading_spinner.mobile');
+      }
+
+      if (progress) {
+        var _progress;
+
+        (_progress = progress) === null || _progress === void 0 ? void 0 : _progress.classList.add('show');
+        setTimeout(function () {
+          var _progress2;
+
+          (_progress2 = progress) === null || _progress2 === void 0 ? void 0 : _progress2.classList.remove('show');
+
+          if (isMobileOrTablet) {
+            MicroModal.close('boogie-modal');
+          }
+        }, 2000);
+      }
+    }
+  }, {
+    key: "initPopupEvents",
+    value: function initPopupEvents() {
+      var _document$querySelect18, _document$querySelect19, _document$querySelect20;
+
+      var parent = this;
+      (_document$querySelect18 = document.querySelector('.boogie-list-item.problem')) === null || _document$querySelect18 === void 0 ? void 0 : _document$querySelect18.addEventListener('click', function (evt) {
+        evt.preventDefault(); // MicroModal.close('type-filter-modal');
+        // document.querySelector('#type-filter-modal')?.remove()
+        // parent.injectReportReviewModal('', 'Report a Problem for')
+
+        parent.switchToReport();
+      });
+      (_document$querySelect19 = document.querySelector('.boogie-list-item.recommendations')) === null || _document$querySelect19 === void 0 ? void 0 : _document$querySelect19.addEventListener('click', function (evt) {
+        evt.preventDefault(); // MicroModal.close('type-filter-modal');
+
+        parent.injectReportReviewModal('recommendations', 'Website Recommendations for'); // parent.showReportForm('recommendations')
+      });
+      (_document$querySelect20 = document.querySelector('.boogie-list-item.feedback')) === null || _document$querySelect20 === void 0 ? void 0 : _document$querySelect20.addEventListener('click', function (evt) {
+        evt.preventDefault(); // MicroModal.close('type-filter-modal');
+
+        parent.injectReportReviewModal('feedback', 'Send Feedback for');
+      });
+    }
+  }]);
+
+  return ReportModal;
+}();
+
 var findTheClosestValueInArray = function findTheClosestValueInArray(needle, haystack) {
   return haystack.reduce(function (prev, cur) {
     return Math.abs(cur - needle) < Math.abs(prev - needle) ? cur : prev;
@@ -2214,8 +3013,8 @@ var debounce = function debounce(cb) {
   var delay = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : 0;
   var timer = null;
   return function () {
-    for (var _len = arguments.length, args = new Array(_len), _key = 0; _key < _len; _key++) {
-      args[_key] = arguments[_key];
+    for (var _len2 = arguments.length, args = new Array(_len2), _key2 = 0; _key2 < _len2; _key2++) {
+      args[_key2] = arguments[_key2];
     }
 
     clearTimeout(timer);

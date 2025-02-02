@@ -41,7 +41,7 @@ const configOption = {
     "presets": ["@babel/preset-env"],
 		plugins: [
 			["@babel/plugin-transform-runtime", {
-				"helpers": false
+				"helpers": false,
 			}]
 		]
 		//"presets": ["env"]
