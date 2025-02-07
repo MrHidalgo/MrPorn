@@ -56,6 +56,15 @@ class ReportModal{
 		this.additionalActions = document.querySelector('.review_type_trigger-dropdown')
 		this.typeTriggerBtn = document.querySelector('.review_type_trigger-outer');
 		this.typeFilter = document.querySelector('.review_type_trigger');
+		this.reviewTypeSlider = document.querySelector('.review_type_slider');
+		this.type_status = this.parentContainer.querySelector('.review_type_slider_status');
+		this.rtsThumb = document.querySelector('.review_type_slider_thumb');
+
+		this.selectedFilter = 'all'
+		this.selectedFilterTagline = ''
+		this.selectedFilterTipX = 0
+		this.selectedFilterTipW = 0
+		this.filterPopupContent = ''
 
 		let bodyClasses = document.body.classList;
 		if(bodyClasses.contains('single-sites')){
@@ -113,8 +122,9 @@ class ReportModal{
 
 		this.checkAvailability()
 		this.initTypeTriggerEvents();
+		this.initFilterEvents()
 		this.typeFilter?.addEventListener('click', function (evt) {
-			parent.showFilterPopup()
+			// parent.showFilterPopup()
 		});
 	}
 
@@ -180,7 +190,9 @@ class ReportModal{
 				// document.querySelector('#boogie-modal')?.remove()
 			},
 			onClose: function (){
-				// document.querySelector('#boogie-modal').remove()
+				if(!isMobileOrTablet || window.innerWidth < 768){
+					document.querySelector('#boogie-modal').remove()
+				}
 				document.body.classList.remove('is-hideScroll')
 			}
 		});
@@ -593,8 +605,8 @@ class ReportModal{
 			let modalHTML = this.generateTypeFilterPopupContent(true)
 			document.body.insertAdjacentHTML('beforeend', modalHTML);
 		}else{
-			let modalHTML = this.generateTypeFilterPopupContent()
-			document.querySelector('#boogie-modal').innerHTML = modalHTML;
+			// let modalHTML = this.generateTypeFilterPopupContent()
+			document.querySelector('#boogie-modal').innerHTML = this.filterPopupContent;
 		}
 		MicroModal.show('boogie-modal',{
 			// awaitOpenAnimation: true,
@@ -614,7 +626,8 @@ class ReportModal{
 				parent.initPopupEvents()
 				parent.checkAvailability()
 
-				if(parent.reviewTypeSlider?.querySelector('.option.active')){
+				let opt = parent.reviewTypeSlider?.querySelector('.option.active')
+				if(opt?.dataset.type == 'all'){
 					parent.slideToType(parent.reviewTypeSlider.querySelector('.option.active'))
 				}
 			},
@@ -627,8 +640,9 @@ class ReportModal{
 	}
 
 	initFilterEvents(){
-
+		let parent = this;
 		let sitesArchive = document.querySelector('.category_sites.cat_archive');
+		let timeoutId;
 
 		this.parentContainer.querySelectorAll('.review_type_slider .option')?.forEach(function (option)  {
 			option.addEventListener('click',  (evt) => {
@@ -637,13 +651,13 @@ class ReportModal{
 					return;
 				}
 				if(evt.currentTarget.classList.contains('disabled')){
-					if(this.type_status && this.type_status.classList.contains('show')){
-						this.type_status.classList.remove('show')
-					}
-					if(this.type_error){
+					// if(this.type_status && this.type_status.classList.contains('show')){
+					// 	this.type_status.classList.remove('show')
+					// }
+					if(this.type_status){
 
-						this.type_error.innerHTML = `No ${type} sites listed in this category`;
-						this.type_error.classList.add('error')
+						this.type_status.innerHTML = `No ${type} sites listed in this category`;
+						this.type_status.classList.add('show')
 						this.startTypeErrorTimer()
 					}
 					return;
@@ -672,27 +686,75 @@ class ReportModal{
 						if(tooltip){
 							this.type_status.innerHTML = tooltip.innerHTML;
 						}else{
-							this.type_status.innerHTML = `You've Viewing All The ${siteType} Sites`;
+							this.type_status.innerHTML = `You're Viewing All ${siteType} Sites`;
 						}
 
 						this.type_status.classList.add('show')
-						this.repositionStatusTooltip(evt)
+						this.type_status.classList.remove('error')
+						this.repositionStatusTooltip(evt.currentTarget)
+
+						this.selectedFilter = evt.currentTarget;
+						this.selectedFilterTagline = evt.currentTarget?.dataset.tip || '';
+
+						this.type_status.innerHTML = evt.currentTarget?.dataset.tip;
+						if(!this.type_status.classList.contains('show')){
+							this.type_status.classList.add('show')
+						}
 					}
 				}
 
 				this.showProgress()
+
+				// this.repositionStatusTooltip(evt)
+
 			})
+
+			if(option.classList.contains('disabled')){
+				option.addEventListener('mouseover', (evtT) => {
+					clearTimeout(timeoutId);
+
+					parent.repositionStatusTooltip(evtT.currentTarget, true)
+					parent.type_status.innerHTML = 'No ' + evtT.currentTarget.dataset.type + ' sites listed in this category' // evt.currentTarget?.dataset.tip;
+					if(!parent.type_status.classList.contains('show')){
+						parent.type_status.classList.add('show')
+					}
+
+					parent.type_status.classList.add('error')
+				});
+				option.addEventListener('mouseout', () => {
+					parent.startTypeErrorTimer()
+				});
+
+				//
+				// option.addEventListener('mouseenter', function (evtT) {
+				// 	parent.repositionStatusTooltip(evtT.currentTarget)
+				// 	parent.type_status.innerHTML = 'No ' + evtT.currentTarget.dataset.type + ' sites listed in this category' // evt.currentTarget?.dataset.tip;
+				// 	if(!parent.type_status.classList.contains('show')){
+				// 		parent.type_status.classList.add('show')
+				// 	}
+				//
+				// 	parent.type_status.classList.add('error')
+				//
+				// 	parent.startTypeErrorTimer()
+				// });
+			}
 		}.bind(this));
 
 
 	}
 
-	repositionStatusTooltip(evt){
-		let typeSliderContainer = document.querySelector('.review_type_slider.mobile')
-		let sliderContainerX = typeSliderContainer.getBoundingClientRect().x
-		let optionBounds = evt.currentTarget.getBoundingClientRect()
-		let tipX = optionBounds.x + (optionBounds.width / 2) - sliderContainerX
-		this.type_status.style.setProperty('--tip_x', `${tipX}px`);
+	repositionStatusTooltip(target, isDisabled = false){
+		let typeSliderContainer = this.parentContainer.querySelector('.review_type_slider')
+		let typeSliderContainerBounds = typeSliderContainer.getBoundingClientRect()
+		let sliderContainerX = typeSliderContainerBounds.x + typeSliderContainerBounds.width
+		let optionBounds = target.getBoundingClientRect()
+		let optionCX = optionBounds.x + (optionBounds.width / 2)
+		let tipX = sliderContainerX - optionCX
+		if(!isDisabled){
+			this.selectedFilterTipX = tipX
+		}
+
+		this.type_status.style.setProperty('--tip_rx', `${tipX}px`);
 	}
 
 	startTypeErrorTimer(){
@@ -706,6 +768,16 @@ class ReportModal{
 				if(parent.type_status && parent.type_status.innerHTML!=''){
 					parent.type_status.classList.add('show')
 				}
+
+				// parent.type_status.innerHTML = parent.selectedFilterTagline;
+				if(parent.selectedFilterTagline === ''){
+					parent.type_status.classList.remove('show')
+					return
+				}
+				parent.type_status.innerHTML = parent.selectedFilterTagline;
+				parent.type_status.classList.remove('error')
+				parent.type_status.style.setProperty('--tip_rx', `${parent.selectedFilterTipX}px`);
+				// parent.repositionStatusTooltip(parent.selectedFilter)
 
 			}, 2500);
 		}
@@ -721,7 +793,7 @@ class ReportModal{
 			let sites = document.querySelectorAll('.category_sites_item.'+type).length;
 			if(sites == 0){
 				option.classList.add('disabled')
-				option.insertAdjacentHTML('beforeend', '<div class="review_type_slider_tooltip">No ' + type + ' sites listed in this category</div>');
+				// option.insertAdjacentHTML('beforeend', '<div class="review_type_slider_tooltip">No ' + type + ' sites listed in this category</div>');
 			}
 		})
 	}
@@ -733,20 +805,26 @@ class ReportModal{
 		this.rtsThumb.style.left = thumbX + 'px';
 		this.rtsThumb.style.width = optionBounds.width + 'px';
 
+		document.querySelectorAll('.review_type_slider_thumb').forEach((thumb) => {
+			thumb.style.left = thumbX + 'px'
+			thumb.style.width = optionBounds.width + 'px'
+		});
+
 		// rtsThumbMobile
 		console.log(sliderContainerX, optionBounds)
 	}
 
-	showProgress() {
+	showProgress(isMobile = false) {
 		let progress = document.querySelector('.loading_spinner.desktop');
-		if(isMobileOrTablet){
+		if(isMobileOrTablet || window.innerWidth < 768){
 			progress = document.querySelector('.loading_spinner.mobile');
 		}
 		if(progress){
-			progress?.classList.add('show');
+			progress.classList.add('show');
 			setTimeout(() => {
-				progress?.classList.remove('show');
-				if(isMobileOrTablet){
+				progress.classList.remove('show');
+				if(isMobileOrTablet || window.innerWidth < 768){
+					this.filterPopupContent =	document.querySelector('#boogie-modal').innerHTML
 					MicroModal.close('boogie-modal');
 				}
 			}, 2000);

@@ -458,17 +458,18 @@ var A2ZPopup = /*#__PURE__*/function () {
 
         if (filter == '') {
           if (parent.currentLetter === '') {
-            parent.updateCategories(parent.categories);
+            parent.updateCategories(parent.categories, true);
           } else if (parent.currentLetter === 'popular') {
             parent.updateCategories(parent.popular, true);
           } else {
-            parent.updateCategories(parent.data[parent.currentLetter]);
+            parent.updateCategories(parent.data[parent.currentLetter], true);
           }
 
           return;
-        }
+        } // parent.filteredCategories = parent.filterCategories(filter);
 
-        parent.filteredCategories = parent.filterCategories(filter);
+
+        parent.filteredCategories = parent.searchCategories(filter);
         parent.updateCategories(parent.filteredCategories);
       }));
       document.querySelectorAll('.a2z-letter-item').forEach(function (letter) {
@@ -524,6 +525,30 @@ var A2ZPopup = /*#__PURE__*/function () {
       }
 
       this.letters.sort();
+    }
+  }, {
+    key: "searchCategories",
+    value: function searchCategories(filter) {
+      var filteredCategories = _toConsumableArray(this.categories);
+
+      filteredCategories = filteredCategories.filter(function (item) {
+        return item.title.toLowerCase().includes(filter.toLowerCase());
+      });
+      filteredCategories.forEach(function (item, index) {
+        item.index = index;
+      });
+      var premiumItems = filteredCategories.filter(function (item) {
+        return item.title.toLowerCase().includes("premium") && item.title.toLowerCase().includes(filter.toLowerCase());
+      });
+      var nonPremiumItems = filteredCategories.filter(function (item) {
+        return !(item.title.toLowerCase().includes("premium") && item.title.toLowerCase().includes(filter.toLowerCase()));
+      }); // Remove 'Premium' items
+
+      nonPremiumItems = nonPremiumItems.sort(function (a, b) {
+        return a.index - b.index;
+      });
+      filteredCategories = premiumItems.concat(nonPremiumItems);
+      return filteredCategories;
     }
   }, {
     key: "filterCategories",
@@ -2201,6 +2226,14 @@ var ReportModal = /*#__PURE__*/function () {
     this.additionalActions = document.querySelector('.review_type_trigger-dropdown');
     this.typeTriggerBtn = document.querySelector('.review_type_trigger-outer');
     this.typeFilter = document.querySelector('.review_type_trigger');
+    this.reviewTypeSlider = document.querySelector('.review_type_slider');
+    this.type_status = this.parentContainer.querySelector('.review_type_slider_status');
+    this.rtsThumb = document.querySelector('.review_type_slider_thumb');
+    this.selectedFilter = 'all';
+    this.selectedFilterTagline = '';
+    this.selectedFilterTipX = 0;
+    this.selectedFilterTipW = 0;
+    this.filterPopupContent = '';
     var bodyClasses = document.body.classList;
 
     if (bodyClasses.contains('single-sites')) {
@@ -2267,8 +2300,8 @@ var ReportModal = /*#__PURE__*/function () {
       });
       this.checkAvailability();
       this.initTypeTriggerEvents();
-      (_this$typeFilter2 = this.typeFilter) === null || _this$typeFilter2 === void 0 ? void 0 : _this$typeFilter2.addEventListener('click', function (evt) {
-        parent.showFilterPopup();
+      this.initFilterEvents();
+      (_this$typeFilter2 = this.typeFilter) === null || _this$typeFilter2 === void 0 ? void 0 : _this$typeFilter2.addEventListener('click', function (evt) {// parent.showFilterPopup()
       });
     }
   }, {
@@ -2347,7 +2380,10 @@ var ReportModal = /*#__PURE__*/function () {
           document.body.classList.add('is-hideScroll'); // document.querySelector('#boogie-modal')?.remove()
         },
         onClose: function onClose() {
-          // document.querySelector('#boogie-modal').remove()
+          if (!isMobileOrTablet || window.innerWidth < 768) {
+            document.querySelector('#boogie-modal').remove();
+          }
+
           document.body.classList.remove('is-hideScroll');
         }
       });
@@ -2619,9 +2655,8 @@ var ReportModal = /*#__PURE__*/function () {
         var modalHTML = this.generateTypeFilterPopupContent(true);
         document.body.insertAdjacentHTML('beforeend', modalHTML);
       } else {
-        var _modalHTML = this.generateTypeFilterPopupContent();
-
-        document.querySelector('#boogie-modal').innerHTML = _modalHTML;
+        // let modalHTML = this.generateTypeFilterPopupContent()
+        document.querySelector('#boogie-modal').innerHTML = this.filterPopupContent;
       }
 
       MicroModal.show('boogie-modal', {
@@ -2640,8 +2675,9 @@ var ReportModal = /*#__PURE__*/function () {
           parent.initFilterEvents();
           parent.initPopupEvents();
           parent.checkAvailability();
+          var opt = (_parent$reviewTypeSli = parent.reviewTypeSlider) === null || _parent$reviewTypeSli === void 0 ? void 0 : _parent$reviewTypeSli.querySelector('.option.active');
 
-          if ((_parent$reviewTypeSli = parent.reviewTypeSlider) === null || _parent$reviewTypeSli === void 0 ? void 0 : _parent$reviewTypeSli.querySelector('.option.active')) {
+          if ((opt === null || opt === void 0 ? void 0 : opt.dataset.type) == 'all') {
             parent.slideToType(parent.reviewTypeSlider.querySelector('.option.active'));
           }
         },
@@ -2657,7 +2693,9 @@ var ReportModal = /*#__PURE__*/function () {
     value: function initFilterEvents() {
       var _this$parentContainer;
 
+      var parent = this;
       var sitesArchive = document.querySelector('.category_sites.cat_archive');
+      var timeoutId;
       (_this$parentContainer = this.parentContainer.querySelectorAll('.review_type_slider .option')) === null || _this$parentContainer === void 0 ? void 0 : _this$parentContainer.forEach(function (option) {
         var _this9 = this;
 
@@ -2671,14 +2709,13 @@ var ReportModal = /*#__PURE__*/function () {
           }
 
           if (evt.currentTarget.classList.contains('disabled')) {
-            if (_this9.type_status && _this9.type_status.classList.contains('show')) {
-              _this9.type_status.classList.remove('show');
-            }
+            // if(this.type_status && this.type_status.classList.contains('show')){
+            // 	this.type_status.classList.remove('show')
+            // }
+            if (_this9.type_status) {
+              _this9.type_status.innerHTML = "No ".concat(type, " sites listed in this category");
 
-            if (_this9.type_error) {
-              _this9.type_error.innerHTML = "No ".concat(type, " sites listed in this category");
-
-              _this9.type_error.classList.add('error');
+              _this9.type_status.classList.add('show');
 
               _this9.startTypeErrorTimer();
             }
@@ -2709,32 +2746,81 @@ var ReportModal = /*#__PURE__*/function () {
 
               _this9.type_status.classList.remove('show');
             } else {
+              var _evt$currentTarget, _evt$currentTarget2;
+
               var tooltip = document.querySelector('.review_type_container .option.' + siteType + ' .tooltip');
 
               if (tooltip) {
                 _this9.type_status.innerHTML = tooltip.innerHTML;
               } else {
-                _this9.type_status.innerHTML = "You've Viewing All The ".concat(siteType, " Sites");
+                _this9.type_status.innerHTML = "You're Viewing All ".concat(siteType, " Sites");
               }
 
               _this9.type_status.classList.add('show');
 
-              _this9.repositionStatusTooltip(evt);
+              _this9.type_status.classList.remove('error');
+
+              _this9.repositionStatusTooltip(evt.currentTarget);
+
+              _this9.selectedFilter = evt.currentTarget;
+              _this9.selectedFilterTagline = ((_evt$currentTarget = evt.currentTarget) === null || _evt$currentTarget === void 0 ? void 0 : _evt$currentTarget.dataset.tip) || '';
+              _this9.type_status.innerHTML = (_evt$currentTarget2 = evt.currentTarget) === null || _evt$currentTarget2 === void 0 ? void 0 : _evt$currentTarget2.dataset.tip;
+
+              if (!_this9.type_status.classList.contains('show')) {
+                _this9.type_status.classList.add('show');
+              }
             }
           }
 
-          _this9.showProgress();
+          _this9.showProgress(); // this.repositionStatusTooltip(evt)
+
         });
+
+        if (option.classList.contains('disabled')) {
+          option.addEventListener('mouseover', function (evtT) {
+            clearTimeout(timeoutId);
+            parent.repositionStatusTooltip(evtT.currentTarget, true);
+            parent.type_status.innerHTML = 'No ' + evtT.currentTarget.dataset.type + ' sites listed in this category'; // evt.currentTarget?.dataset.tip;
+
+            if (!parent.type_status.classList.contains('show')) {
+              parent.type_status.classList.add('show');
+            }
+
+            parent.type_status.classList.add('error');
+          });
+          option.addEventListener('mouseout', function () {
+            parent.startTypeErrorTimer();
+          }); //
+          // option.addEventListener('mouseenter', function (evtT) {
+          // 	parent.repositionStatusTooltip(evtT.currentTarget)
+          // 	parent.type_status.innerHTML = 'No ' + evtT.currentTarget.dataset.type + ' sites listed in this category' // evt.currentTarget?.dataset.tip;
+          // 	if(!parent.type_status.classList.contains('show')){
+          // 		parent.type_status.classList.add('show')
+          // 	}
+          //
+          // 	parent.type_status.classList.add('error')
+          //
+          // 	parent.startTypeErrorTimer()
+          // });
+        }
       }.bind(this));
     }
   }, {
     key: "repositionStatusTooltip",
-    value: function repositionStatusTooltip(evt) {
-      var typeSliderContainer = document.querySelector('.review_type_slider.mobile');
-      var sliderContainerX = typeSliderContainer.getBoundingClientRect().x;
-      var optionBounds = evt.currentTarget.getBoundingClientRect();
-      var tipX = optionBounds.x + optionBounds.width / 2 - sliderContainerX;
-      this.type_status.style.setProperty('--tip_x', "".concat(tipX, "px"));
+    value: function repositionStatusTooltip(target) {
+      var isDisabled = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : false;
+      var typeSliderContainer = this.parentContainer.querySelector('.review_type_slider');
+      var typeSliderContainerBounds = typeSliderContainer.getBoundingClientRect();
+      var sliderContainerX = typeSliderContainerBounds.x + typeSliderContainerBounds.width;
+      var optionBounds = target.getBoundingClientRect();
+      var optionCX = optionBounds.x + optionBounds.width / 2;
+      var tipX = sliderContainerX - optionCX;
+
+      if (!isDisabled) {
+        this.selectedFilterTipX = tipX;
+      }
+
+      this.type_status.style.setProperty('--tip_rx', "".concat(tipX, "px"));
     }
   }, {
     key: "startTypeErrorTimer",
@@ -2750,7 +2836,17 @@ var ReportModal = /*#__PURE__*/function () {
 
           if (parent.type_status && parent.type_status.innerHTML != '') {
             parent.type_status.classList.add('show');
+          } // parent.type_status.innerHTML = parent.selectedFilterTagline;
+
+
+          if (parent.selectedFilterTagline === '') {
+            parent.type_status.classList.remove('show');
+            return;
           }
+
+          parent.type_status.innerHTML = parent.selectedFilterTagline;
+          parent.type_status.classList.remove('error');
+          parent.type_status.style.setProperty('--tip_rx', "".concat(parent.selectedFilterTipX, "px")); // parent.repositionStatusTooltip(parent.selectedFilter)
         }, 2500);
       }
     }
@@ -2769,8 +2865,7 @@ var ReportModal = /*#__PURE__*/function () {
         var sites = document.querySelectorAll('.category_sites_item.' + type).length;
 
         if (sites == 0) {
-          option.classList.add('disabled');
-          option.insertAdjacentHTML('beforeend', '<div class="review_type_slider_tooltip">No ' + type + ' sites listed in this category</div>');
+          option.classList.add('disabled'); // option.insertAdjacentHTML('beforeend', '<div class="review_type_slider_tooltip">No ' + type + ' sites listed in this category</div>');
         }
       });
     }
@@ -2781,29 +2876,33 @@ var ReportModal = /*#__PURE__*/function () {
       var optionBounds = target.getBoundingClientRect();
       var thumbX = optionBounds.x - sliderContainerX;
       this.rtsThumb.style.left = thumbX + 'px';
-      this.rtsThumb.style.width = optionBounds.width + 'px'; // rtsThumbMobile
+      this.rtsThumb.style.width = optionBounds.width + 'px';
+      document.querySelectorAll('.review_type_slider_thumb').forEach(function (thumb) {
+        thumb.style.left = thumbX + 'px';
+        thumb.style.width = optionBounds.width + 'px';
+      }); // rtsThumbMobile
 
       console.log(sliderContainerX, optionBounds);
     }
   }, {
     key: "showProgress",
     value: function showProgress() {
+      var _this10 = this;
+
+      var isMobile = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : false;
       var progress = document.querySelector('.loading_spinner.desktop');
 
-      if (isMobileOrTablet) {
+      if (isMobileOrTablet || window.innerWidth < 768) {
         progress = document.querySelector('.loading_spinner.mobile');
       }
 
       if (progress) {
-        var _progress;
-
-        (_progress = progress) === null || _progress === void 0 ? void 0 : _progress.classList.add('show');
+        progress.classList.add('show');
         setTimeout(function () {
-          var _progress2;
+          progress.classList.remove('show');
 
-          (_progress2 = progress) === null || _progress2 === void 0 ? void 0 : _progress2.classList.remove('show');
-
-          if (isMobileOrTablet) {
+          if (isMobileOrTablet || window.innerWidth < 768) {
+            _this10.filterPopupContent = document.querySelector('#boogie-modal').innerHTML;
             MicroModal.close('boogie-modal');
           }
         }, 2000);

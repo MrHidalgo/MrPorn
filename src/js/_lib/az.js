@@ -96,15 +96,17 @@ class A2ZPopup{
 			let filter = evt.target.value.toLowerCase().trim();
 			if (filter == '') {
 				if(parent.currentLetter === ''){
-					parent.updateCategories(parent.categories);
+					parent.updateCategories(parent.categories, true);
 				} else if(parent.currentLetter === 'popular'){
 					parent.updateCategories(parent.popular, true);
 				} else{
-					parent.updateCategories(parent.data[parent.currentLetter]);
+					parent.updateCategories(parent.data[parent.currentLetter], true);
 				}
 				return;
 			}
-			parent.filteredCategories = parent.filterCategories(filter);
+			// parent.filteredCategories = parent.filterCategories(filter);
+			parent.filteredCategories = parent.searchCategories(filter);
+
 			parent.updateCategories(parent.filteredCategories);
 		}));
 
@@ -155,6 +157,29 @@ class A2ZPopup{
 		}
 
 		this.letters.sort();
+	}
+
+	searchCategories(filter){
+		let filteredCategories = [...this.categories];
+		filteredCategories = filteredCategories.filter(item => item.title.toLowerCase().includes(filter.toLowerCase()));
+
+		filteredCategories.forEach((item, index) => {
+			item.index = index;
+		});
+
+		const premiumItems = filteredCategories.filter(item =>
+			item.title.toLowerCase().includes("premium") &&
+			item.title.toLowerCase().includes(filter.toLowerCase())
+		);
+
+		let nonPremiumItems = filteredCategories.filter(item => !(item.title.toLowerCase().includes("premium") &&
+			item.title.toLowerCase().includes(filter.toLowerCase()))); // Remove 'Premium' items
+		nonPremiumItems = nonPremiumItems.sort((a, b) => {
+			return a.index - b.index;
+		});
+		filteredCategories = premiumItems.concat(nonPremiumItems);
+
+		return filteredCategories;
 	}
 
 	filterCategories(filter){
