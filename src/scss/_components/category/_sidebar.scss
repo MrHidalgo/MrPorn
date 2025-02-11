@@ -65,6 +65,9 @@
 	.site_nav_categories{
 		padding: 15px 15px 3px;
 	}
+	.category-list-search{
+		position: relative;
+	}
 	.category-list-menu-dropdown{
 		padding: 0 10px 15px;
 	}
@@ -88,6 +91,7 @@
 		position: relative;
 		//margin-top: 10px;
 		flex: 1;
+		padding-top: 45px;
 		//background: #f7f6f5;
 
 		&:after{
@@ -128,13 +132,21 @@
 		}
 	}
 	&-search{
-		position: relative;
-		width: 100%;
+		position: absolute;
+		left: 0;
+		right: 0;
+		z-index: 7;
 		text-align: center;
 		background: #fff;
 		border: 2px solid #333;
 		border-radius: 3px;
 		margin-bottom: 5px;
+		//box-shadow: 0 10px 30px 0 rgba(0, 0, 0, 0.15);
+
+		@include adaptive(1023) {
+			left: 15px;
+			right: 15px;
+		}
 
 		.icon-search{
 			width: 18px;
@@ -194,8 +206,11 @@
 		padding: 3px 0 3px 30px;
 
 		&-btn{
-			position: relative;
+			position: absolute;
 			flex: 0 0 35px;
+			right: 0;
+			top: 0;
+			height: 100%;
 
 			&:before{
 				position: absolute;
@@ -222,9 +237,21 @@
 
 	&-options{
 		//display: none;
+
+
+
+		//height: 0;
+		//transform-origin: top;
+		//transform: scaleY(0);
+		//transition: height 0.3s ease, transform 0.3s ease;
+		//animation: slideUpClose 0.35s;
+
 		overflow: hidden;
 		max-height: 0;
-		@include transition(max-height);
+		//transform: scaleY(0); /* Initial scale to collapse */
+		transform-origin: top;
+		transition: max-height 0.3s ease-out;
+
 
 		ul{
 			padding: 5px 0;
@@ -233,9 +260,15 @@
 		&:hover,
 		&.open{
 			//display: block;
+
+			//height: 100px;
+			//transform: scaleY(1);
+
+			//transform: translateY(0);
 			border-top: 1px solid #333;
-			transform: translateY(0);
-			max-height: 150px;
+			max-height: 500px;
+			//transform: scaleY(1);
+			//animation: slideDownOpen 0.35s;
 		}
 	}
 	&-option{
@@ -563,5 +596,30 @@
 	.category-list-link.visited::before{
 		border: solid #1b4f90;
 		border-width: 0 1px 1px 0;
+	}
+}
+
+@keyframes slideDownOpen {
+	0% {
+		opacity: 0;
+		//max-height: 0;
+		transform: scaleY(0);
+	}
+	100% {
+		opacity: 1;
+		//max-height: 150px;
+		transform: scaleY(1);
+	}
+}
+@keyframes slideUpClose {
+	0% {
+		opacity: 1;
+		//max-height: 150px;
+		//transform: scaleY(1);
+		transform: scaleY(0);
+	}
+	100% {
+		opacity: 0;
+		max-height: 0;
 	}
 }

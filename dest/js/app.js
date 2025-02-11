@@ -713,11 +713,7 @@ var CategoryTypeFilter = /*#__PURE__*/function () {
       var parent = this;
       (_this$typeFilter = this.typeFilter) === null || _this$typeFilter === void 0 ? void 0 : _this$typeFilter.addEventListener('click', function (evt) {
         parent.showFilterPopup();
-      }); // this.reportBtn?.addEventListener('click', function (evt) {
-      // 	evt.preventDefault();
-      // 	parent.reportModal.initReviewReportModal()
-      // });
-
+      });
       this.reportModal.initCategoryReportModal();
       var timeoutId;
 
@@ -776,6 +772,7 @@ function initCategoryPage() {
   var catListSites = document.querySelector('.category_list-sites');
   var categoryFilterBtn = document.querySelector(sidebarContainer + ' .category-list-filter-btn');
   var categoryFilterOptions = document.querySelector(sidebarContainer + ' .category-list-options');
+  var categoryFilterOptionsIsOpen = false;
   var filterOptionScroll = document.querySelector(sidebarContainer + ' .category_filter_option_scroll');
   var filterOptionA2Z = document.querySelector(sidebarContainer + ' .category_filter_option_a2z');
   var filterOptionPopular = document.querySelector(sidebarContainer + ' .category_filter_option_popular');
@@ -902,7 +899,6 @@ function initCategoryPage() {
     });
 
     if (!desktopMenuList || desktopMenuList.children.length == 0) {
-      console.log('Filter type ', filterType);
       renderCategorySidebar(filterA2z ? a2zCategories : categoryItems);
     }
 
@@ -977,11 +973,15 @@ function initCategoryPage() {
     if (!isMobile) {
       categoryFilterBtn === null || categoryFilterBtn === void 0 ? void 0 : categoryFilterBtn.addEventListener('mouseover', function () {
         clearTimeout(timeoutId);
-        categoryFilterOptions.classList.add('open');
+
+        if (!categoryFilterOptions.classList.contains('open')) {
+          categoryFilterOptions.classList.add('open');
+        } // toggleExpand()
+
       });
       categoryFilterBtn === null || categoryFilterBtn === void 0 ? void 0 : categoryFilterBtn.addEventListener('mouseout', function () {
         timeoutId = setTimeout(function () {
-          categoryFilterOptions.classList.remove('open');
+          categoryFilterOptions.classList.remove('open'); // toggleExpand()
         }, 700); // 2000 milliseconds = 2 seconds
       });
     }
@@ -993,7 +993,8 @@ function initCategoryPage() {
         categoryFilterOptions.classList.remove('open');
       } else {
         categoryFilterOptions.classList.add('open');
-      }
+      } // toggleExpand()
+
     });
 
     if (filterScroll) {
@@ -1012,6 +1013,71 @@ function initCategoryPage() {
         gotoRandomCategory();
       });
       initializedListeners = true;
+    }
+  }
+
+  function toggleExpand() {
+    var startHeight = isOpen ? categoryFilterOptions.scrollHeight : 0;
+    var endHeight = isOpen ? 0 : categoryFilterOptions.scrollHeight; // Set the initial values
+
+    categoryFilterOptions.style.height = "".concat(startHeight, "px"); // Animation parameters
+
+    var duration = 400; // 400ms for the animation
+
+    var startTime;
+
+    function animate(time) {
+      if (!startTime) startTime = time;
+      var progress = (time - startTime) / duration; // progress of the animation (0 to 1)
+      // Calculate the current height and margin during the animation
+
+      var currentHeight = startHeight + (endHeight - startHeight) * progress; // Update the height and margin values dynamically
+
+      categoryFilterOptions.style.height = "".concat(currentHeight, "px");
+
+      if (progress < 1) {
+        // Continue the animation
+        requestAnimationFrame(animate);
+      } else {
+        // Finalize the values
+        categoryFilterOptions.style.height = endHeight === 0 ? '0' : "".concat(endHeight, "px"); // Toggle the open state
+
+        categoryFilterOptionsIsOpen = !categoryFilterOptionsIsOpen;
+      }
+    } // Start the animation
+
+
+    requestAnimationFrame(animate);
+  }
+
+  function toggleExpand() {
+    if (categoryFilterOptions.classList.contains('open')) {
+      // Slide Up (Collapse)
+      var currentHeight = categoryFilterOptions.scrollHeight;
+      categoryFilterOptions.style.height = "".concat(currentHeight, "px"); // Set explicit current height
+
+      requestAnimationFrame(function () {
+        categoryFilterOptions.style.height = '0px'; // Collapse to 0 height
+
+        categoryFilterOptions.classList.remove('open');
+      });
+    } else {
+      // Slide Down (Expand)
+      var targetHeight = categoryFilterOptions.scrollHeight;
+      categoryFilterOptions.style.height = '0px'; // Start from collapsed height
+
+      categoryFilterOptions.classList.add('open');
+      requestAnimationFrame(function () {
+        categoryFilterOptions.style.height = "".concat(targetHeight, "px"); // Expand to full height
+      }); // Reset to `auto` after transition ends
+
+      categoryFilterOptions.addEventListener('transitionend', function resetHeight() {
+        if (categoryFilterOptions.classList.contains('open')) {
+          categoryFilterOptions.style.height = 'auto';
+        }
+
+        categoryFilterOptions.removeEventListener('transitionend', resetHeight);
+      });
     }
   }
 
@@ -1124,6 +1190,7 @@ function initCategoryPage() {
           var triggeredLetter = e.currentTarget.dataset.letter;
           (_document$querySelect11 = document.querySelector('.category-list-letter.active')) === null || _document$querySelect11 === void 0 ? void 0 : _document$querySelect11.classList.remove('active');
           var letterTop = document.querySelector(sidebarContainer + ' .category-list-item-letter.letter_' + triggeredLetter).offsetTop;
+          letterTop -= 45;
           console.log('letter top ' + triggeredLetter, letterTop);
           desktopMenuListContainer.scrollTo({
             top: letterTop,
@@ -2222,29 +2289,32 @@ var ReportModal = /*#__PURE__*/function () {
       disclaimer: "If you know of a great website that isn't listed in this category and think it deserves a place here, Mr. Porn Geek would love to hear about it! Please provide the website URL, and I'll personally review it. If it's popular, has good content, and is updated regularly, we'll include it here.",
       hideInList: true
     }];
-    this.parentContainer = document.querySelector('.review_type_container');
-    this.additionalActions = document.querySelector('.review_type_trigger-dropdown');
-    this.typeTriggerBtn = document.querySelector('.review_type_trigger-outer');
-    this.typeFilter = document.querySelector('.review_type_trigger');
-    this.reviewTypeSlider = document.querySelector('.review_type_slider');
-    this.type_status = this.parentContainer.querySelector('.review_type_slider_status');
-    this.rtsThumb = document.querySelector('.review_type_slider_thumb');
-    this.selectedFilter = 'all';
-    this.selectedFilterTagline = '';
-    this.selectedFilterTipX = 0;
-    this.selectedFilterTipW = 0;
-    this.filterPopupContent = '';
     var bodyClasses = document.body.classList;
+
+    if (bodyClasses.contains('category')) {
+      this.parentContainer = document.querySelector('.review_type_container');
+      this.additionalActions = document.querySelector('.review_type_trigger-dropdown');
+      this.typeTriggerBtn = document.querySelector('.review_type_trigger-outer');
+      this.typeFilter = document.querySelector('.review_type_trigger');
+      this.reviewTypeSlider = document.querySelector('.review_type_slider');
+      this.type_status = this.parentContainer.querySelector('.review_type_slider_status');
+      this.rtsThumb = this.parentContainer.querySelector('.review_type_slider_thumb');
+      var activeFilter = document.querySelector('.review_type_container .option.active');
+      this.selectedFilter = activeFilter ? activeFilter.dataset.type : 'all';
+      this.selectedFilterTagline = activeFilter ? activeFilter.dataset.tip : '';
+      this.selectedFilterTipX = 0;
+      this.selectedFilterTipW = 0;
+      this.filterPopupContent = '';
+      this.addCategoryReportClickListeners();
+    }
 
     if (bodyClasses.contains('single-sites')) {
       this.title = document.querySelector('.review-title-line h1').innerHTML;
+      this.addReviewReportClickListeners();
     } else if (bodyClasses.contains('category')) {
       this.title = document.querySelector('.bread-crumb-links .category_title').innerHTML;
       this.reportData.splice(1, 2);
     }
-
-    this.addReviewReportClickListeners();
-    this.addCategoryReportClickListeners();
   }
 
   _createClass(ReportModal, [{
@@ -2345,7 +2415,6 @@ var ReportModal = /*#__PURE__*/function () {
         item.addEventListener('click', function (event) {
           var tag = event.currentTarget.dataset.tag;
           var desc = event.currentTarget.dataset.tag;
-          console.log("Clicked on item with tag: ".concat(tag));
 
           _this5.showReportForm(tag);
 
@@ -2638,7 +2707,7 @@ var ReportModal = /*#__PURE__*/function () {
 
       var withParent = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : false;
       var filterOptions = (_document$querySelect15 = document.querySelector('.review_type_slider')) === null || _document$querySelect15 === void 0 ? void 0 : _document$querySelect15.innerHTML;
-      var popupContent = "\n\t\t\t<div class=\"micromodal-overlay\" tabindex=\"-1\">\n\t\t\t\t<div class=\"micromodal-container custom-scrollbar\" role=\"dialog\" aria-modal=\"true\" aria-labelledby=\"boogie-title\">\n\t\t\t\t  <div class=\"micromodal-content filter_type_content\" data-type=\"all\">\n\t\t\t\t\t  <div class=\"micromodal-header\">\n\t\t\t\t\t\t\t<h4 class=\"micromodal-title\" id=\"boogie-title\">\n\t\t\t\t\t\t\t\t<span class=\"inline-icon icon-thumbsup\"></span>\n\n\t\t\t\t\t\t\t\t<div class=\"micromodal-title-text\">\n\t\t\t\t\t\t\t\t\t<span>Filter by Free or Premium</span>\n\t\t\t\t\t\t\t\t\t<span id=\"report_review_title\" class=\"color-primary\"></span>\n\t\t\t\t\t\t\t\t</div>\n\t\t\t\t\t\t\t</h4>\n\t\t\t\t\t\t\t<div class=\"micromodal-close\" data-micromodal-close=\"\">\n\t\t\t\t\t\t\t\t<svg class=\"icon\" xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0.51 0.51 22.99 22.99\" width=\"24px\" height=\"24px\">\n\t\t\t\t\t\t\t\t<path d=\"M23.1294 21.4152L2.58488 0.870773C2.10409 0.38998 1.33062 0.383984 0.85722 0.85738C0.383824 1.33078 0.38982 2.10425 0.870613 2.58504L21.4151 23.1295C21.8959 23.6103 22.6694 23.6163 23.1428 23.1429C23.6161 22.6695 23.6101 21.896 23.1294 21.4152Z\"></path>\n\t\t\t\t\t\t\t\t<path d=\"M21.415 0.870638L0.870529 21.4151C0.389736 21.8959 0.38374 22.6694 0.857136 23.1428C1.33053 23.6162 2.10401 23.6102 2.5848 23.1294L23.1293 2.58491C23.6101 2.10412 23.6161 1.33064 23.1427 0.857245C22.6693 0.383849 21.8958 0.389845 21.415 0.870638Z\"></path>\n\t\t\t\t\t\t\t\t</svg>\n\t\t\t\t\t\t\t</div>\n\t\t\t\t\t  </div>\n\t\t\t\t\t   <hr>\n\n\t\t\t\t\t  <div class=\"micromodal-body\">\n\t\t\t\t\t\t\t<div>\n\t\t\t\t\t\t\t\t<div class=\"review_type_slider mobile\">\n\t\t\t\t\t\t\t\t\t".concat(filterOptions, "\n\t\t\t\t\t\t\t\t</div>\n\t\t\t\t\t\t\t</div>\n\t\t\t\t\t\t\t<div class=\"review_type_slider_status\"></div>\n\t\t\t\t\t\t\t<div class=\"review_type_slider_error\"></div>\n\t\t\t\t\t\t\t<div class=\"color-secondary\">Additional Actions</div>\n\t\t\t\t\t\t\t<ul class=\"additional_actions boogie-list\">\n\t\t\t\t\t\t\t\t<li class=\"boogie-list-item problem\" data-icon=\"problem\" data-tag=\"problem\">\n\t\t\t\t\t\t\t\t\t\t<div class=\"boogie-list-text\">\n\t\t\t\t\t\t\t\t\t\t\t<span class=\"inline-icon icon-problem\"></span>\n\t\t\t\t\t\t\t\t\t\t\t<div>Report a Problem</div>\n\t\t\t\t\t\t\t\t\t\t</div>\n\t\t\t\t\t\t\t\t\t\t<svg class=\"arrow\" width=\"20\" height=\"20\" xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0.5 18 11\" fill=\"currentColor\">\n\t\t\t\t\t\t\t\t\t\t\t<path d=\"M17.738 5.38997L12.982 0.747973C12.8149 0.586608 12.5918 0.496418 12.3595 0.496418C12.1272 0.496418 11.9041 0.586608 11.737 0.747973C11.6555 0.826858 11.5906 0.921336 11.5464 1.02579C11.5021 1.13024 11.4793 1.24253 11.4793 1.35597C11.4793 1.46942 11.5021 1.58171 11.5464 1.68616C11.5906 1.79061 11.6555 1.88509 11.737 1.96397L14.989 5.13997L0.881 5.13997C0.766747 5.13852 0.653327 5.15959 0.547217 5.20197C0.441107 5.24435 0.344385 5.30722 0.262575 5.38699C0.180765 5.46676 0.115469 5.56186 0.0704156 5.66687C0.0253626 5.77187 0.0014352 5.88472 -2.405e-07 5.99897C0.0028998 6.22954 0.0972146 6.44953 0.262221 6.6106C0.427228 6.77167 0.649428 6.86064 0.88 6.85797L14.99 6.85797L11.738 10.033C11.6565 10.1118 11.5917 10.2062 11.5474 10.3105C11.5032 10.4149 11.4803 10.5271 11.4803 10.6405C11.4803 10.7538 11.5032 10.866 11.5474 10.9704C11.5917 11.0748 11.6565 11.1692 11.738 11.248C11.9045 11.4107 12.1282 11.5016 12.361 11.501C12.586 11.501 12.811 11.416 12.983 11.248L17.739 6.60597C17.8205 6.52717 17.8853 6.43278 17.9296 6.32841C17.9738 6.22405 17.9967 6.11184 17.9967 5.99847C17.9967 5.88511 17.9738 5.7729 17.9296 5.66853C17.8853 5.56416 17.8205 5.46977 17.739 5.39097L17.738 5.38997Z\"></path>\n\t\t\t\t\t\t\t\t\t\t</svg>\n\t\t\t\t\t\t\t\t</li>\n\t\t\t\t\t\t\t\t<li class=\"boogie-list-item recommendations\" data-icon=\"recommendations\" data-tag=\"recommendations\">\n\t\t\t\t\t\t\t\t\t\t<div class=\"boogie-list-text\">\n\t\t\t\t\t\t\t\t\t\t\t<span class=\"inline-icon icon-recommendations\"></span>\n\t\t\t\t\t\t\t\t\t\t\t<div>Site Recommendations</div>\n\t\t\t\t\t\t\t\t\t\t</div>\n\t\t\t\t\t\t\t\t\t\t<svg class=\"arrow\" width=\"20\" height=\"20\" xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0.5 18 11\" fill=\"currentColor\">\n\t\t\t\t\t\t\t\t\t\t\t<path d=\"M17.738 5.38997L12.982 0.747973C12.8149 0.586608 12.5918 0.496418 12.3595 0.496418C12.1272 0.496418 11.9041 0.586608 11.737 0.747973C11.6555 0.826858 11.5906 0.921336 11.5464 1.02579C11.5021 1.13024 11.4793 1.24253 11.4793 1.35597C11.4793 1.46942 11.5021 1.58171 11.5464 1.68616C11.5906 1.79061 11.6555 1.88509 11.737 1.96397L14.989 5.13997L0.881 5.13997C0.766747 5.13852 0.653327 5.15959 0.547217 5.20197C0.441107 5.24435 0.344385 5.30722 0.262575 5.38699C0.180765 5.46676 0.115469 5.56186 0.0704156 5.66687C0.0253626 5.77187 0.0014352 5.88472 -2.405e-07 5.99897C0.0028998 6.22954 0.0972146 6.44953 0.262221 6.6106C0.427228 6.77167 0.649428 6.86064 0.88 6.85797L14.99 6.85797L11.738 10.033C11.6565 10.1118 11.5917 10.2062 11.5474 10.3105C11.5032 10.4149 11.4803 10.5271 11.4803 10.6405C11.4803 10.7538 11.5032 10.866 11.5474 10.9704C11.5917 11.0748 11.6565 11.1692 11.738 11.248C11.9045 11.4107 12.1282 11.5016 12.361 11.501C12.586 11.501 12.811 11.416 12.983 11.248L17.739 6.60597C17.8205 6.52717 17.8853 6.43278 17.9296 6.32841C17.9738 6.22405 17.9967 6.11184 17.9967 5.99847C17.9967 5.88511 17.9738 5.7729 17.9296 5.66853C17.8853 5.56416 17.8205 5.46977 17.739 5.39097L17.738 5.38997Z\"></path>\n\t\t\t\t\t\t\t\t\t\t</svg>\n\t\t\t\t\t\t\t\t</li>\n\t\t\t\t\t\t\t\t<li class=\"boogie-list-item feedback\" data-icon=\"feedback\" data-tag=\"feedback\">\n\t\t\t\t\t\t\t\t\t<div class=\"boogie-list-text\">\n\t\t\t\t\t\t\t\t\t\t\t<span class=\"inline-icon icon-feedback\"></span>\n\t\t\t\t\t\t\t\t\t\t\t<div>Send feedback</div>\n\t\t\t\t\t\t\t\t\t\t</div>\n\t\t\t\t\t\t\t\t\t\t<svg class=\"arrow\" width=\"20\" height=\"20\" xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0.5 18 11\" fill=\"currentColor\">\n\t\t\t\t\t\t\t\t\t\t\t<path d=\"M17.738 5.38997L12.982 0.747973C12.8149 0.586608 12.5918 0.496418 12.3595 0.496418C12.1272 0.496418 11.9041 0.586608 11.737 0.747973C11.6555 0.826858 11.5906 0.921336 11.5464 1.02579C11.5021 1.13024 11.4793 1.24253 11.4793 1.35597C11.4793 1.46942 11.5021 1.58171 11.5464 1.68616C11.5906 1.79061 11.6555 1.88509 11.737 1.96397L14.989 5.13997L0.881 5.13997C0.766747 5.13852 0.653327 5.15959 0.547217 5.20197C0.441107 5.24435 0.344385 5.30722 0.262575 5.38699C0.180765 5.46676 0.115469 5.56186 0.0704156 5.66687C0.0253626 5.77187 0.0014352 5.88472 -2.405e-07 5.99897C0.0028998 6.22954 0.0972146 6.44953 0.262221 6.6106C0.427228 6.77167 0.649428 6.86064 0.88 6.85797L14.99 6.85797L11.738 10.033C11.6565 10.1118 11.5917 10.2062 11.5474 10.3105C11.5032 10.4149 11.4803 10.5271 11.4803 10.6405C11.4803 10.7538 11.5032 10.866 11.5474 10.9704C11.5917 11.0748 11.6565 11.1692 11.738 11.248C11.9045 11.4107 12.1282 11.5016 12.361 11.501C12.586 11.501 12.811 11.416 12.983 11.248L17.739 6.60597C17.8205 6.52717 17.8853 6.43278 17.9296 6.32841C17.9738 6.22405 17.9967 6.11184 17.9967 5.99847C17.9967 5.88511 17.9738 5.7729 17.9296 5.66853C17.8853 5.56416 17.8205 5.46977 17.739 5.39097L17.738 5.38997Z\"></path>\n\t\t\t\t\t\t\t\t\t\t</svg>\n\t\t\t\t\t\t\t\t</li>\n\t\t\t\t\t\t\t</ul>\n\t\t\t\t\t  </div>\n\n\t\t\t\t\t\t<div class=\"loading_spinner mobile\"></div>\n\t\t\t\t\t</div>\n\t\t\t\t</div>\n\t\t\t  </div>\n\t\t");
+      var popupContent = "\n\t\t\t<div class=\"micromodal-overlay\" tabindex=\"-1\">\n\t\t\t\t<div class=\"micromodal-container custom-scrollbar\" role=\"dialog\" aria-modal=\"true\" aria-labelledby=\"boogie-title\">\n\t\t\t\t  <div class=\"micromodal-content filter_type_content\" data-type=\"all\">\n\t\t\t\t\t  <div class=\"micromodal-header\">\n\t\t\t\t\t\t\t<h4 class=\"micromodal-title\" id=\"boogie-title\">\n\t\t\t\t\t\t\t\t<span class=\"inline-icon icon-thumbsup\"></span>\n\n\t\t\t\t\t\t\t\t<div class=\"micromodal-title-text\">\n\t\t\t\t\t\t\t\t\t<span>Filter by Free or Premium</span>\n\t\t\t\t\t\t\t\t\t<span id=\"report_review_title\" class=\"color-primary\"></span>\n\t\t\t\t\t\t\t\t</div>\n\t\t\t\t\t\t\t</h4>\n\t\t\t\t\t\t\t<div class=\"micromodal-close\" data-micromodal-close=\"\">\n\t\t\t\t\t\t\t\t<svg class=\"icon\" xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0.51 0.51 22.99 22.99\" width=\"24px\" height=\"24px\">\n\t\t\t\t\t\t\t\t<path d=\"M23.1294 21.4152L2.58488 0.870773C2.10409 0.38998 1.33062 0.383984 0.85722 0.85738C0.383824 1.33078 0.38982 2.10425 0.870613 2.58504L21.4151 23.1295C21.8959 23.6103 22.6694 23.6163 23.1428 23.1429C23.6161 22.6695 23.6101 21.896 23.1294 21.4152Z\"></path>\n\t\t\t\t\t\t\t\t<path d=\"M21.415 0.870638L0.870529 21.4151C0.389736 21.8959 0.38374 22.6694 0.857136 23.1428C1.33053 23.6162 2.10401 23.6102 2.5848 23.1294L23.1293 2.58491C23.6101 2.10412 23.6161 1.33064 23.1427 0.857245C22.6693 0.383849 21.8958 0.389845 21.415 0.870638Z\"></path>\n\t\t\t\t\t\t\t\t</svg>\n\t\t\t\t\t\t\t</div>\n\t\t\t\t\t  </div>\n\t\t\t\t\t   <hr>\n\n\t\t\t\t\t  <div class=\"micromodal-body\">\n\t\t\t\t\t\t\t<div>\n\t\t\t\t\t\t\t\t<div class=\"review_type_slider mobile\">\n\t\t\t\t\t\t\t\t\t".concat(filterOptions, "\n\t\t\t\t\t\t\t\t</div>\n\t\t\t\t\t\t\t</div>\n\t\t\t\t\t\t\t<div class=\"review_type_slider_status\"></div>\n\t\t\t\t\t\t\t<div class=\"color-secondary\">Additional Actions</div>\n\t\t\t\t\t\t\t<ul class=\"additional_actions boogie-list\">\n\t\t\t\t\t\t\t\t<li class=\"boogie-list-item problem\" data-icon=\"problem\" data-tag=\"problem\">\n\t\t\t\t\t\t\t\t\t\t<div class=\"boogie-list-text\">\n\t\t\t\t\t\t\t\t\t\t\t<span class=\"inline-icon icon-problem\"></span>\n\t\t\t\t\t\t\t\t\t\t\t<div>Report a Problem</div>\n\t\t\t\t\t\t\t\t\t\t</div>\n\t\t\t\t\t\t\t\t\t\t<svg class=\"arrow\" width=\"20\" height=\"20\" xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0.5 18 11\" fill=\"currentColor\">\n\t\t\t\t\t\t\t\t\t\t\t<path d=\"M17.738 5.38997L12.982 0.747973C12.8149 0.586608 12.5918 0.496418 12.3595 0.496418C12.1272 0.496418 11.9041 0.586608 11.737 0.747973C11.6555 0.826858 11.5906 0.921336 11.5464 1.02579C11.5021 1.13024 11.4793 1.24253 11.4793 1.35597C11.4793 1.46942 11.5021 1.58171 11.5464 1.68616C11.5906 1.79061 11.6555 1.88509 11.737 1.96397L14.989 5.13997L0.881 5.13997C0.766747 5.13852 0.653327 5.15959 0.547217 5.20197C0.441107 5.24435 0.344385 5.30722 0.262575 5.38699C0.180765 5.46676 0.115469 5.56186 0.0704156 5.66687C0.0253626 5.77187 0.0014352 5.88472 -2.405e-07 5.99897C0.0028998 6.22954 0.0972146 6.44953 0.262221 6.6106C0.427228 6.77167 0.649428 6.86064 0.88 6.85797L14.99 6.85797L11.738 10.033C11.6565 10.1118 11.5917 10.2062 11.5474 10.3105C11.5032 10.4149 11.4803 10.5271 11.4803 10.6405C11.4803 10.7538 11.5032 10.866 11.5474 10.9704C11.5917 11.0748 11.6565 11.1692 11.738 11.248C11.9045 11.4107 12.1282 11.5016 12.361 11.501C12.586 11.501 12.811 11.416 12.983 11.248L17.739 6.60597C17.8205 6.52717 17.8853 6.43278 17.9296 6.32841C17.9738 6.22405 17.9967 6.11184 17.9967 5.99847C17.9967 5.88511 17.9738 5.7729 17.9296 5.66853C17.8853 5.56416 17.8205 5.46977 17.739 5.39097L17.738 5.38997Z\"></path>\n\t\t\t\t\t\t\t\t\t\t</svg>\n\t\t\t\t\t\t\t\t</li>\n\t\t\t\t\t\t\t\t<li class=\"boogie-list-item recommendations\" data-icon=\"recommendations\" data-tag=\"recommendations\">\n\t\t\t\t\t\t\t\t\t\t<div class=\"boogie-list-text\">\n\t\t\t\t\t\t\t\t\t\t\t<span class=\"inline-icon icon-recommendations\"></span>\n\t\t\t\t\t\t\t\t\t\t\t<div>Site Recommendations</div>\n\t\t\t\t\t\t\t\t\t\t</div>\n\t\t\t\t\t\t\t\t\t\t<svg class=\"arrow\" width=\"20\" height=\"20\" xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0.5 18 11\" fill=\"currentColor\">\n\t\t\t\t\t\t\t\t\t\t\t<path d=\"M17.738 5.38997L12.982 0.747973C12.8149 0.586608 12.5918 0.496418 12.3595 0.496418C12.1272 0.496418 11.9041 0.586608 11.737 0.747973C11.6555 0.826858 11.5906 0.921336 11.5464 1.02579C11.5021 1.13024 11.4793 1.24253 11.4793 1.35597C11.4793 1.46942 11.5021 1.58171 11.5464 1.68616C11.5906 1.79061 11.6555 1.88509 11.737 1.96397L14.989 5.13997L0.881 5.13997C0.766747 5.13852 0.653327 5.15959 0.547217 5.20197C0.441107 5.24435 0.344385 5.30722 0.262575 5.38699C0.180765 5.46676 0.115469 5.56186 0.0704156 5.66687C0.0253626 5.77187 0.0014352 5.88472 -2.405e-07 5.99897C0.0028998 6.22954 0.0972146 6.44953 0.262221 6.6106C0.427228 6.77167 0.649428 6.86064 0.88 6.85797L14.99 6.85797L11.738 10.033C11.6565 10.1118 11.5917 10.2062 11.5474 10.3105C11.5032 10.4149 11.4803 10.5271 11.4803 10.6405C11.4803 10.7538 11.5032 10.866 11.5474 10.9704C11.5917 11.0748 11.6565 11.1692 11.738 11.248C11.9045 11.4107 12.1282 11.5016 12.361 11.501C12.586 11.501 12.811 11.416 12.983 11.248L17.739 6.60597C17.8205 6.52717 17.8853 6.43278 17.9296 6.32841C17.9738 6.22405 17.9967 6.11184 17.9967 5.99847C17.9967 5.88511 17.9738 5.7729 17.9296 5.66853C17.8853 5.56416 17.8205 5.46977 17.739 5.39097L17.738 5.38997Z\"></path>\n\t\t\t\t\t\t\t\t\t\t</svg>\n\t\t\t\t\t\t\t\t</li>\n\t\t\t\t\t\t\t\t<li class=\"boogie-list-item feedback\" data-icon=\"feedback\" data-tag=\"feedback\">\n\t\t\t\t\t\t\t\t\t<div class=\"boogie-list-text\">\n\t\t\t\t\t\t\t\t\t\t\t<span class=\"inline-icon icon-feedback\"></span>\n\t\t\t\t\t\t\t\t\t\t\t<div>Send feedback</div>\n\t\t\t\t\t\t\t\t\t\t</div>\n\t\t\t\t\t\t\t\t\t\t<svg class=\"arrow\" width=\"20\" height=\"20\" xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0.5 18 11\" fill=\"currentColor\">\n\t\t\t\t\t\t\t\t\t\t\t<path d=\"M17.738 5.38997L12.982 0.747973C12.8149 0.586608 12.5918 0.496418 12.3595 0.496418C12.1272 0.496418 11.9041 0.586608 11.737 0.747973C11.6555 0.826858 11.5906 0.921336 11.5464 1.02579C11.5021 1.13024 11.4793 1.24253 11.4793 1.35597C11.4793 1.46942 11.5021 1.58171 11.5464 1.68616C11.5906 1.79061 11.6555 1.88509 11.737 1.96397L14.989 5.13997L0.881 5.13997C0.766747 5.13852 0.653327 5.15959 0.547217 5.20197C0.441107 5.24435 0.344385 5.30722 0.262575 5.38699C0.180765 5.46676 0.115469 5.56186 0.0704156 5.66687C0.0253626 5.77187 0.0014352 5.88472 -2.405e-07 5.99897C0.0028998 6.22954 0.0972146 6.44953 0.262221 6.6106C0.427228 6.77167 0.649428 6.86064 0.88 6.85797L14.99 6.85797L11.738 10.033C11.6565 10.1118 11.5917 10.2062 11.5474 10.3105C11.5032 10.4149 11.4803 10.5271 11.4803 10.6405C11.4803 10.7538 11.5032 10.866 11.5474 10.9704C11.5917 11.0748 11.6565 11.1692 11.738 11.248C11.9045 11.4107 12.1282 11.5016 12.361 11.501C12.586 11.501 12.811 11.416 12.983 11.248L17.739 6.60597C17.8205 6.52717 17.8853 6.43278 17.9296 6.32841C17.9738 6.22405 17.9967 6.11184 17.9967 5.99847C17.9967 5.88511 17.9738 5.7729 17.9296 5.66853C17.8853 5.56416 17.8205 5.46977 17.739 5.39097L17.738 5.38997Z\"></path>\n\t\t\t\t\t\t\t\t\t\t</svg>\n\t\t\t\t\t\t\t\t</li>\n\t\t\t\t\t\t\t</ul>\n\t\t\t\t\t  </div>\n\n\t\t\t\t\t\t<div class=\"loading_spinner mobile\"></div>\n\t\t\t\t\t</div>\n\t\t\t\t</div>\n\t\t\t  </div>\n\t\t");
 
       if (withParent) {
         return "<div class=\"micromodal micromodal-category\" id=\"boogie-modal\" aria-hidden=\"false\">".concat(popupContent, "</div>");
@@ -2654,6 +2723,7 @@ var ReportModal = /*#__PURE__*/function () {
       if (!document.querySelector("#boogie-modal")) {
         var modalHTML = this.generateTypeFilterPopupContent(true);
         document.body.insertAdjacentHTML('beforeend', modalHTML);
+        this.filterPopupContent = document.querySelector('#boogie-modal').innerHTML; // parent.preselectFilter()
       } else {
         // let modalHTML = this.generateTypeFilterPopupContent()
         document.querySelector('#boogie-modal').innerHTML = this.filterPopupContent;
@@ -2672,6 +2742,7 @@ var ReportModal = /*#__PURE__*/function () {
           parent.reviewTypeSlider = document.querySelector('.review_type_slider.mobile');
           parent.rtsThumb = document.querySelector('.review_type_slider.mobile .review_type_slider_thumb');
           parent.filterTypeContainer = document.querySelector('.filter_type_content');
+          parent.preselectFilter();
           parent.initFilterEvents();
           parent.initPopupEvents();
           parent.checkAvailability();
@@ -2689,91 +2760,28 @@ var ReportModal = /*#__PURE__*/function () {
       });
     }
   }, {
+    key: "preselectFilter",
+    value: function preselectFilter() {
+      var filter = this.reviewTypeSlider.querySelector('.option.active');
+
+      if (filter.dataset.type != 'all') {
+        this.rtsThumb.classList.add('no_anim');
+        this.selectedFilterTagline = filter === null || filter === void 0 ? void 0 : filter.dataset.tip;
+        this.slideToType(filter);
+        this.repositionStatusTooltip(filter);
+        this.rtsThumb.classList.remove('no_anim');
+        this.type_status.innerHTML = filter === null || filter === void 0 ? void 0 : filter.dataset.tip;
+        this.type_status.classList.add('show');
+      }
+    }
+  }, {
     key: "initFilterEvents",
     value: function initFilterEvents() {
-      var _this$parentContainer;
-
       var parent = this;
-      var sitesArchive = document.querySelector('.category_sites.cat_archive');
       var timeoutId;
-      (_this$parentContainer = this.parentContainer.querySelectorAll('.review_type_slider .option')) === null || _this$parentContainer === void 0 ? void 0 : _this$parentContainer.forEach(function (option) {
-        var _this9 = this;
-
+      this.parentContainer.querySelectorAll('.review_type_slider .option').forEach(function (option) {
         option.addEventListener('click', function (evt) {
-          var _this9$parentContaine, _document$querySelect16, _document$querySelect17;
-
-          var type = evt.currentTarget.dataset.type;
-
-          if (_this9.currentFilter == type) {
-            return;
-          }
-
-          if (evt.currentTarget.classList.contains('disabled')) {
-            // if(this.type_status && this.type_status.classList.contains('show')){
-            // 	this.type_status.classList.remove('show')
-            // }
-            if (_this9.type_status) {
-              _this9.type_status.innerHTML = "No ".concat(type, " sites listed in this category");
-
-              _this9.type_status.classList.add('show');
-
-              _this9.startTypeErrorTimer();
-            }
-
-            return;
-          }
-
-          var siteType = evt.currentTarget.dataset.type;
-          _this9.currentFilter = siteType;
-
-          if (_this9.filterTypeContainer) {
-            _this9.filterTypeContainer.dataset.type = siteType;
-          }
-
-          (_this9$parentContaine = _this9.parentContainer.querySelector('.review_type_slider .option.active')) === null || _this9$parentContaine === void 0 ? void 0 : _this9$parentContaine.classList.remove('active');
-
-          _this9.slideToType(evt.currentTarget);
-
-          (_document$querySelect16 = document.querySelector('.review_type_container .option.active')) === null || _document$querySelect16 === void 0 ? void 0 : _document$querySelect16.classList.remove('active');
-          (_document$querySelect17 = document.querySelector('.review_type_container .option.' + siteType)) === null || _document$querySelect17 === void 0 ? void 0 : _document$querySelect17.classList.add('active');
-          evt.currentTarget.classList.add('active');
-          console.log("Switching to ".concat(siteType));
-          sitesArchive.dataset.type = siteType;
-
-          if (_this9.type_status) {
-            if (siteType == 'all') {
-              _this9.type_status.innerHTML = '';
-
-              _this9.type_status.classList.remove('show');
-            } else {
-              var _evt$currentTarget, _evt$currentTarget2;
-
-              var tooltip = document.querySelector('.review_type_container .option.' + siteType + ' .tooltip');
-
-              if (tooltip) {
-                _this9.type_status.innerHTML = tooltip.innerHTML;
-              } else {
-                _this9.type_status.innerHTML = "You're Viewing All ".concat(siteType, " Sites");
-              }
-
-              _this9.type_status.classList.add('show');
-
-              _this9.type_status.classList.remove('error');
-
-              _this9.repositionStatusTooltip(evt.currentTarget);
-
-              _this9.selectedFilter = evt.currentTarget;
-              _this9.selectedFilterTagline = ((_evt$currentTarget = evt.currentTarget) === null || _evt$currentTarget === void 0 ? void 0 : _evt$currentTarget.dataset.tip) || '';
-              _this9.type_status.innerHTML = (_evt$currentTarget2 = evt.currentTarget) === null || _evt$currentTarget2 === void 0 ? void 0 : _evt$currentTarget2.dataset.tip;
-
-              if (!_this9.type_status.classList.contains('show')) {
-                _this9.type_status.classList.add('show');
-              }
-            }
-          }
-
-          _this9.showProgress(); // this.repositionStatusTooltip(evt)
-
+          parent.onOptionClicked(evt.currentTarget);
         });
 
         if (option.classList.contains('disabled')) {
@@ -2781,6 +2789,8 @@ var ReportModal = /*#__PURE__*/function () {
             clearTimeout(timeoutId);
             parent.repositionStatusTooltip(evtT.currentTarget, true);
             parent.type_status.innerHTML = 'No ' + evtT.currentTarget.dataset.type + ' sites listed in this category'; // evt.currentTarget?.dataset.tip;
+
+            if (!parent.type_status) return;
 
             if (!parent.type_status.classList.contains('show')) {
               parent.type_status.classList.add('show');
@@ -2790,31 +2800,112 @@ var ReportModal = /*#__PURE__*/function () {
           });
           option.addEventListener('mouseout', function () {
             parent.startTypeErrorTimer();
-          }); //
-          // option.addEventListener('mouseenter', function (evtT) {
-          // 	parent.repositionStatusTooltip(evtT.currentTarget)
-          // 	parent.type_status.innerHTML = 'No ' + evtT.currentTarget.dataset.type + ' sites listed in this category' // evt.currentTarget?.dataset.tip;
-          // 	if(!parent.type_status.classList.contains('show')){
-          // 		parent.type_status.classList.add('show')
-          // 	}
-          //
-          // 	parent.type_status.classList.add('error')
-          //
-          // 	parent.startTypeErrorTimer()
-          // });
+          });
         }
       }.bind(this));
+    }
+  }, {
+    key: "onOptionClicked",
+    value: function onOptionClicked(target) {
+      var _this$parentContainer, _document$querySelect16, _document$querySelect17;
+
+      var sitesArchive = document.querySelector('.category_sites.cat_archive');
+      var type = target.dataset.type;
+      var parent = this;
+
+      if (this.currentFilter == type) {
+        return;
+      }
+
+      if (target.classList.contains('disabled')) {
+        if (this.type_status) {
+          this.type_status.innerHTML = "No ".concat(type, " sites listed in this category");
+          this.type_status.classList.add('show');
+
+          if (isMobileOrTablet || window.innerWidth < 768) {
+            this.type_status.classList.add('error');
+            parent.repositionStatusTooltip(target, true);
+            setTimeout(function () {
+              parent.type_status.classList.remove('error');
+
+              if (parent.currentFilter != 'all') {
+                parent.type_status.innerHTML = parent.selectedFilterTagline;
+                parent.type_status.style.setProperty('--tip_rx', "".concat(parent.selectedFilterTipX, "px"));
+              } else {
+                parent.type_status.classList.remove('show');
+              }
+            }, 2000);
+          }
+        }
+
+        return;
+      }
+
+      var siteType = target.dataset.type;
+      setWithExpiry('term_filter_' + document.body.dataset.page, siteType, 3000 * 60 * 1000);
+      this.currentFilter = siteType;
+
+      if (this.filterTypeContainer) {
+        this.filterTypeContainer.dataset.type = siteType;
+      }
+
+      (_this$parentContainer = this.parentContainer.querySelector('.review_type_slider .option.active')) === null || _this$parentContainer === void 0 ? void 0 : _this$parentContainer.classList.remove('active');
+      this.slideToType(target);
+      (_document$querySelect16 = document.querySelector('.review_type_container .option.active')) === null || _document$querySelect16 === void 0 ? void 0 : _document$querySelect16.classList.remove('active');
+      (_document$querySelect17 = document.querySelector('.review_type_container .option.' + siteType)) === null || _document$querySelect17 === void 0 ? void 0 : _document$querySelect17.classList.add('active');
+      target.classList.add('active');
+      console.log("Switching to ".concat(siteType));
+      sitesArchive.dataset.type = siteType;
+
+      if (this.type_status) {
+        if (siteType == 'all') {
+          this.type_status.innerHTML = '';
+          this.selectedFilterTagline = '';
+          this.type_status.classList.remove('show');
+        } else {
+          var tooltip = document.querySelector('.review_type_container .option.' + siteType + ' .tooltip');
+
+          if (tooltip) {
+            this.type_status.innerHTML = tooltip.innerHTML;
+          } else {
+            this.type_status.innerHTML = "You're Viewing All ".concat(siteType, " Sites");
+          }
+
+          this.type_status.classList.add('show');
+          this.type_status.classList.remove('error');
+          this.repositionStatusTooltip(target);
+          this.selectedFilter = target;
+          this.selectedFilterTagline = (target === null || target === void 0 ? void 0 : target.dataset.tip) || '';
+          this.type_status.innerHTML = target === null || target === void 0 ? void 0 : target.dataset.tip;
+          setWithExpiry('term_filter_' + document.body.dataset.page + '_tagline', this.type_status.innerHTML, 3000 * 60 * 1000);
+
+          if (!this.type_status.classList.contains('show')) {
+            this.type_status.classList.add('show');
+          }
+        }
+      }
+
+      if (document.querySelector('#boogie-modal')) {
+        this.filterPopupContent = document.querySelector('#boogie-modal').innerHTML;
+      }
+
+      this.showProgress();
     }
   }, {
     key: "repositionStatusTooltip",
     value: function repositionStatusTooltip(target) {
       var isDisabled = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : false;
       var typeSliderContainer = this.parentContainer.querySelector('.review_type_slider');
-      var typeSliderContainerBounds = typeSliderContainer.getBoundingClientRect();
-      var sliderContainerX = typeSliderContainerBounds.x + typeSliderContainerBounds.width;
-      var optionBounds = target.getBoundingClientRect();
-      var optionCX = optionBounds.x + optionBounds.width / 2;
-      var tipX = sliderContainerX - optionCX;
+
+      var _typeSliderContainer$ = typeSliderContainer.getBoundingClientRect(),
+          x = _typeSliderContainer$.x,
+          width = _typeSliderContainer$.width;
+
+      var _target$getBoundingCl = target.getBoundingClientRect(),
+          optionX = _target$getBoundingCl.x,
+          optionWidth = _target$getBoundingCl.width;
+
+      var tipX = x + width - (optionX + optionWidth / 2);
 
       if (!isDisabled) {
         this.selectedFilterTipX = tipX;
@@ -2828,26 +2919,22 @@ var ReportModal = /*#__PURE__*/function () {
       var parent = this;
 
       if (parent.type_status) {
-        setTimeout(function () {
-          if (parent.type_error) {
-            parent.type_error.innerHTML = '';
-            parent.type_error.classList.remove('show');
-          }
-
-          if (parent.type_status && parent.type_status.innerHTML != '') {
-            parent.type_status.classList.add('show');
-          } // parent.type_status.innerHTML = parent.selectedFilterTagline;
+        // setTimeout(() => {
+        // 	// parent.repositionStatusTooltip(parent.selectedFilter)
+        // }, 2500);
+        if (parent.type_status && parent.type_status.innerHTML != '') {
+          parent.type_status.classList.add('show');
+        } // parent.type_status.innerHTML = parent.selectedFilterTagline;
 
 
-          if (parent.selectedFilterTagline === '') {
-            parent.type_status.classList.remove('show');
-            return;
-          }
+        if (parent.selectedFilterTagline === '' || parent.selectedFilterTagline === undefined) {
+          parent.type_status.classList.remove('show');
+          return;
+        }
 
-          parent.type_status.innerHTML = parent.selectedFilterTagline;
-          parent.type_status.classList.remove('error');
-          parent.type_status.style.setProperty('--tip_rx', "".concat(parent.selectedFilterTipX, "px")); // parent.repositionStatusTooltip(parent.selectedFilter)
-        }, 2500);
+        parent.type_status.innerHTML = parent.selectedFilterTagline;
+        parent.type_status.classList.remove('error');
+        parent.type_status.style.setProperty('--tip_rx', "".concat(parent.selectedFilterTipX, "px"));
       }
     }
   }, {
@@ -2880,6 +2967,8 @@ var ReportModal = /*#__PURE__*/function () {
       document.querySelectorAll('.review_type_slider_thumb').forEach(function (thumb) {
         thumb.style.left = thumbX + 'px';
         thumb.style.width = optionBounds.width + 'px';
+        setWithExpiry('term_filter_' + document.body.dataset.page + '_x', thumbX, 3000 * 60 * 1000);
+        setWithExpiry('term_filter_' + document.body.dataset.page + '_w', optionBounds.width, 3000 * 60 * 1000);
       }); // rtsThumbMobile
 
       console.log(sliderContainerX, optionBounds);
@@ -2887,7 +2976,7 @@ var ReportModal = /*#__PURE__*/function () {
   }, {
     key: "showProgress",
     value: function showProgress() {
-      var _this10 = this;
+      var _this9 = this;
 
       var isMobile = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : false;
       var progress = document.querySelector('.loading_spinner.desktop');
@@ -2902,7 +2991,7 @@ var ReportModal = /*#__PURE__*/function () {
           progress.classList.remove('show');
 
           if (isMobileOrTablet || window.innerWidth < 768) {
-            _this10.filterPopupContent = document.querySelector('#boogie-modal').innerHTML;
+            _this9.filterPopupContent = document.querySelector('#boogie-modal').innerHTML;
             MicroModal.close('boogie-modal');
           }
         }, 2000);

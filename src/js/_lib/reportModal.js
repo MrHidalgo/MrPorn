@@ -52,30 +52,39 @@ class ReportModal{
 			hideInList: true
 		} ]
 
-		this.parentContainer = document.querySelector('.review_type_container');
-		this.additionalActions = document.querySelector('.review_type_trigger-dropdown')
-		this.typeTriggerBtn = document.querySelector('.review_type_trigger-outer');
-		this.typeFilter = document.querySelector('.review_type_trigger');
-		this.reviewTypeSlider = document.querySelector('.review_type_slider');
-		this.type_status = this.parentContainer.querySelector('.review_type_slider_status');
-		this.rtsThumb = document.querySelector('.review_type_slider_thumb');
-
-		this.selectedFilter = 'all'
-		this.selectedFilterTagline = ''
-		this.selectedFilterTipX = 0
-		this.selectedFilterTipW = 0
-		this.filterPopupContent = ''
-
 		let bodyClasses = document.body.classList;
+
+		if(bodyClasses.contains('category')){
+			this.parentContainer = document.querySelector('.review_type_container');
+			this.additionalActions = document.querySelector('.review_type_trigger-dropdown')
+			this.typeTriggerBtn = document.querySelector('.review_type_trigger-outer');
+			this.typeFilter = document.querySelector('.review_type_trigger');
+			this.reviewTypeSlider = document.querySelector('.review_type_slider');
+			this.type_status = this.parentContainer.querySelector('.review_type_slider_status');
+			this.rtsThumb = this.parentContainer.querySelector('.review_type_slider_thumb');
+
+			let activeFilter = document.querySelector('.review_type_container .option.active');
+
+			this.selectedFilter = activeFilter ? activeFilter.dataset.type : 'all';
+			this.selectedFilterTagline = activeFilter ? activeFilter.dataset.tip : '';
+			this.selectedFilterTipX = 0
+			this.selectedFilterTipW = 0
+			this.filterPopupContent = ''
+
+			this.addCategoryReportClickListeners()
+		}
+
+
 		if(bodyClasses.contains('single-sites')){
 		 	this.title = document.querySelector('.review-title-line h1').innerHTML;
+			this.addReviewReportClickListeners()
 		}else if(bodyClasses.contains('category')){
 			this.title = document.querySelector('.bread-crumb-links .category_title').innerHTML;
 			this.reportData.splice(1, 2);
 		}
 
-		this.addReviewReportClickListeners()
-		this.addCategoryReportClickListeners()
+
+
 	}
 
 	initReviewReportModal() {
@@ -160,7 +169,6 @@ class ReportModal{
 			item.addEventListener('click', (event) => {
 				const tag = event.currentTarget.dataset.tag;
 				const desc = event.currentTarget.dataset.tag;
-				console.log(`Clicked on item with tag: ${tag}`);
 				this.showReportForm(tag)
 				document.querySelector('.boogie-fields textarea').focus();
 			});
@@ -552,7 +560,6 @@ class ReportModal{
 								</div>
 							</div>
 							<div class="review_type_slider_status"></div>
-							<div class="review_type_slider_error"></div>
 							<div class="color-secondary">Additional Actions</div>
 							<ul class="additional_actions boogie-list">
 								<li class="boogie-list-item problem" data-icon="problem" data-tag="problem">
@@ -604,6 +611,8 @@ class ReportModal{
 		if (!document.querySelector("#boogie-modal")) {
 			let modalHTML = this.generateTypeFilterPopupContent(true)
 			document.body.insertAdjacentHTML('beforeend', modalHTML);
+			this.filterPopupContent =	document.querySelector('#boogie-modal').innerHTML
+			// parent.preselectFilter()
 		}else{
 			// let modalHTML = this.generateTypeFilterPopupContent()
 			document.querySelector('#boogie-modal').innerHTML = this.filterPopupContent;
@@ -617,11 +626,11 @@ class ReportModal{
 				parent.type_status = parent.parentContainer.querySelector('.review_type_slider_status');
 				parent.type_error = parent.parentContainer.querySelector('.review_type_slider_error');
 
-
 				parent.reviewTypeSlider = document.querySelector('.review_type_slider.mobile');
 				parent.rtsThumb = document.querySelector('.review_type_slider.mobile .review_type_slider_thumb');
 				parent.filterTypeContainer = document.querySelector('.filter_type_content');
 
+				parent.preselectFilter()
 				parent.initFilterEvents()
 				parent.initPopupEvents()
 				parent.checkAvailability()
@@ -639,73 +648,27 @@ class ReportModal{
 		});
 	}
 
+	preselectFilter(){
+		let filter = this.reviewTypeSlider.querySelector('.option.active')
+		if(filter.dataset.type != 'all'){
+			this.rtsThumb.classList.add('no_anim')
+			this.selectedFilterTagline = filter?.dataset.tip;
+			this.slideToType(filter)
+			this.repositionStatusTooltip(filter)
+			this.rtsThumb.classList.remove('no_anim')
+			this.type_status.innerHTML = filter?.dataset.tip;
+			this.type_status.classList.add('show')
+		}
+	}
+
 	initFilterEvents(){
 		let parent = this;
-		let sitesArchive = document.querySelector('.category_sites.cat_archive');
+
 		let timeoutId;
 
-		this.parentContainer.querySelectorAll('.review_type_slider .option')?.forEach(function (option)  {
+		this.parentContainer.querySelectorAll('.review_type_slider .option').forEach(function (option)  {
 			option.addEventListener('click',  (evt) => {
-				let type = evt.currentTarget.dataset.type;
-				if(this.currentFilter == type){
-					return;
-				}
-				if(evt.currentTarget.classList.contains('disabled')){
-					// if(this.type_status && this.type_status.classList.contains('show')){
-					// 	this.type_status.classList.remove('show')
-					// }
-					if(this.type_status){
-
-						this.type_status.innerHTML = `No ${type} sites listed in this category`;
-						this.type_status.classList.add('show')
-						this.startTypeErrorTimer()
-					}
-					return;
-				}
-				let siteType = evt.currentTarget.dataset.type;
-
-				this.currentFilter = siteType
-				if (this.filterTypeContainer) {
-					this.filterTypeContainer.dataset.type = siteType
-				}
-				this.parentContainer.querySelector('.review_type_slider .option.active')?.classList.remove('active');
-				this.slideToType(evt.currentTarget)
-
-				document.querySelector('.review_type_container .option.active')?.classList.remove('active');
-				document.querySelector('.review_type_container .option.'+siteType)?.classList.add('active');
-				evt.currentTarget.classList.add('active');
-				console.log(`Switching to ${siteType}`)
-				sitesArchive.dataset.type = siteType;
-				if(this.type_status){
-
-					if(siteType == 'all'){
-						this.type_status.innerHTML = '';
-						this.type_status.classList.remove('show')
-					}else{
-						let tooltip = document.querySelector('.review_type_container .option.'+siteType+' .tooltip')
-						if(tooltip){
-							this.type_status.innerHTML = tooltip.innerHTML;
-						}else{
-							this.type_status.innerHTML = `You're Viewing All ${siteType} Sites`;
-						}
-
-						this.type_status.classList.add('show')
-						this.type_status.classList.remove('error')
-						this.repositionStatusTooltip(evt.currentTarget)
-
-						this.selectedFilter = evt.currentTarget;
-						this.selectedFilterTagline = evt.currentTarget?.dataset.tip || '';
-
-						this.type_status.innerHTML = evt.currentTarget?.dataset.tip;
-						if(!this.type_status.classList.contains('show')){
-							this.type_status.classList.add('show')
-						}
-					}
-				}
-
-				this.showProgress()
-
-				// this.repositionStatusTooltip(evt)
+				parent.onOptionClicked(evt.currentTarget)
 
 			})
 
@@ -715,6 +678,8 @@ class ReportModal{
 
 					parent.repositionStatusTooltip(evtT.currentTarget, true)
 					parent.type_status.innerHTML = 'No ' + evtT.currentTarget.dataset.type + ' sites listed in this category' // evt.currentTarget?.dataset.tip;
+
+					if(!parent.type_status) return
 					if(!parent.type_status.classList.contains('show')){
 						parent.type_status.classList.add('show')
 					}
@@ -724,62 +689,130 @@ class ReportModal{
 				option.addEventListener('mouseout', () => {
 					parent.startTypeErrorTimer()
 				});
-
-				//
-				// option.addEventListener('mouseenter', function (evtT) {
-				// 	parent.repositionStatusTooltip(evtT.currentTarget)
-				// 	parent.type_status.innerHTML = 'No ' + evtT.currentTarget.dataset.type + ' sites listed in this category' // evt.currentTarget?.dataset.tip;
-				// 	if(!parent.type_status.classList.contains('show')){
-				// 		parent.type_status.classList.add('show')
-				// 	}
-				//
-				// 	parent.type_status.classList.add('error')
-				//
-				// 	parent.startTypeErrorTimer()
-				// });
 			}
 		}.bind(this));
 
-
 	}
 
-	repositionStatusTooltip(target, isDisabled = false){
-		let typeSliderContainer = this.parentContainer.querySelector('.review_type_slider')
-		let typeSliderContainerBounds = typeSliderContainer.getBoundingClientRect()
-		let sliderContainerX = typeSliderContainerBounds.x + typeSliderContainerBounds.width
-		let optionBounds = target.getBoundingClientRect()
-		let optionCX = optionBounds.x + (optionBounds.width / 2)
-		let tipX = sliderContainerX - optionCX
-		if(!isDisabled){
-			this.selectedFilterTipX = tipX
+	onOptionClicked(target){
+		let sitesArchive = document.querySelector('.category_sites.cat_archive');
+		let type = target.dataset.type;
+		let parent = this
+
+		if(this.currentFilter == type){
+			return;
 		}
 
+
+		if(target.classList.contains('disabled')){
+			if(this.type_status){
+
+				this.type_status.innerHTML = `No ${type} sites listed in this category`;
+				this.type_status.classList.add('show')
+
+
+				if(isMobileOrTablet || window.innerWidth < 768){
+					this.type_status.classList.add('error')
+					parent.repositionStatusTooltip(target, true)
+					setTimeout(function (){
+						parent.type_status.classList.remove('error')
+						if(parent.currentFilter != 'all'){
+							parent.type_status.innerHTML = parent.selectedFilterTagline;
+							parent.type_status.style.setProperty('--tip_rx', `${parent.selectedFilterTipX}px`);
+						}else{
+							parent.type_status.classList.remove('show')
+						}
+
+					}, 2000)
+				}
+
+			}
+			return;
+		}
+		let siteType = target.dataset.type;
+		setWithExpiry('term_filter_'+document.body.dataset.page, siteType, 3000*60*1000);
+
+		this.currentFilter = siteType
+		if (this.filterTypeContainer) {
+			this.filterTypeContainer.dataset.type = siteType
+		}
+		this.parentContainer.querySelector('.review_type_slider .option.active')?.classList.remove('active');
+		this.slideToType(target)
+
+		document.querySelector('.review_type_container .option.active')?.classList.remove('active');
+		document.querySelector('.review_type_container .option.'+siteType)?.classList.add('active');
+		target.classList.add('active');
+		console.log(`Switching to ${siteType}`)
+		sitesArchive.dataset.type = siteType;
+		if(this.type_status){
+
+			if(siteType == 'all'){
+				this.type_status.innerHTML = '';
+				this.selectedFilterTagline = ''
+				this.type_status.classList.remove('show')
+			}else{
+				let tooltip = document.querySelector('.review_type_container .option.'+siteType+' .tooltip')
+				if(tooltip){
+					this.type_status.innerHTML = tooltip.innerHTML;
+				}else{
+					this.type_status.innerHTML = `You're Viewing All ${siteType} Sites`;
+				}
+
+
+
+				this.type_status.classList.add('show')
+				this.type_status.classList.remove('error')
+				this.repositionStatusTooltip(target)
+
+				this.selectedFilter = target;
+				this.selectedFilterTagline = target?.dataset.tip || '';
+
+				this.type_status.innerHTML = target?.dataset.tip;
+				setWithExpiry('term_filter_'+document.body.dataset.page+'_tagline', this.type_status.innerHTML, 3000*60*1000);
+				if(!this.type_status.classList.contains('show')){
+					this.type_status.classList.add('show')
+				}
+			}
+		}
+		if(document.querySelector('#boogie-modal')){
+			this.filterPopupContent =	document.querySelector('#boogie-modal').innerHTML
+		}
+
+
+		this.showProgress()
+	}
+
+	repositionStatusTooltip(target, isDisabled = false) {
+		const typeSliderContainer = this.parentContainer.querySelector('.review_type_slider');
+		const { x, width } = typeSliderContainer.getBoundingClientRect();
+		const { x: optionX, width: optionWidth } = target.getBoundingClientRect();
+		const tipX = (x + width) - (optionX + optionWidth / 2);
+
+		if (!isDisabled) {
+			this.selectedFilterTipX = tipX;
+		}
 		this.type_status.style.setProperty('--tip_rx', `${tipX}px`);
 	}
 
 	startTypeErrorTimer(){
 		let parent = this
 		if(parent.type_status){
-			setTimeout(() => {
-				if(parent.type_error){
-					parent.type_error.innerHTML = '';
-					parent.type_error.classList.remove('show')
-				}
-				if(parent.type_status && parent.type_status.innerHTML!=''){
-					parent.type_status.classList.add('show')
-				}
+			// setTimeout(() => {
+			// 	// parent.repositionStatusTooltip(parent.selectedFilter)
+			// }, 2500);
 
-				// parent.type_status.innerHTML = parent.selectedFilterTagline;
-				if(parent.selectedFilterTagline === ''){
-					parent.type_status.classList.remove('show')
-					return
-				}
-				parent.type_status.innerHTML = parent.selectedFilterTagline;
-				parent.type_status.classList.remove('error')
-				parent.type_status.style.setProperty('--tip_rx', `${parent.selectedFilterTipX}px`);
-				// parent.repositionStatusTooltip(parent.selectedFilter)
+			if(parent.type_status && parent.type_status.innerHTML!=''){
+				parent.type_status.classList.add('show')
+			}
 
-			}, 2500);
+			// parent.type_status.innerHTML = parent.selectedFilterTagline;
+			if(parent.selectedFilterTagline === '' || parent.selectedFilterTagline === undefined){
+				parent.type_status.classList.remove('show')
+				return
+			}
+			parent.type_status.innerHTML = parent.selectedFilterTagline;
+			parent.type_status.classList.remove('error')
+			parent.type_status.style.setProperty('--tip_rx', `${parent.selectedFilterTipX}px`);
 		}
 
 	}
@@ -808,6 +841,9 @@ class ReportModal{
 		document.querySelectorAll('.review_type_slider_thumb').forEach((thumb) => {
 			thumb.style.left = thumbX + 'px'
 			thumb.style.width = optionBounds.width + 'px'
+
+			setWithExpiry('term_filter_'+document.body.dataset.page+'_x', thumbX, 3000*60*1000);
+			setWithExpiry('term_filter_'+document.body.dataset.page+'_w', optionBounds.width, 3000*60*1000);
 		});
 
 		// rtsThumbMobile

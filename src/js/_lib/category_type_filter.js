@@ -29,11 +29,6 @@ class CategoryTypeFilter{
 			parent.showFilterPopup()
 		});
 
-		// this.reportBtn?.addEventListener('click', function (evt) {
-		// 	evt.preventDefault();
-		// 	parent.reportModal.initReviewReportModal()
-		// });
-
 		this.reportModal.initCategoryReportModal()
 
 		let timeoutId;
@@ -61,13 +56,6 @@ class CategoryTypeFilter{
 		}
 
 	}
-
-
-
-
-
-
-
 	getFilterOptions(){
 		return document.querySelector('.review_type_slider')?.innerHTML
 	}

@@ -15,6 +15,7 @@ function initCategoryPage() {
 	let catListSites = document.querySelector('.category_list-sites');
 	let categoryFilterBtn = document.querySelector(sidebarContainer+ ' .category-list-filter-btn');
 	let categoryFilterOptions = document.querySelector(sidebarContainer+ ' .category-list-options');
+	let categoryFilterOptionsIsOpen = false;
 	let filterOptionScroll = document.querySelector(sidebarContainer+ ' .category_filter_option_scroll');
 	let filterOptionA2Z = document.querySelector(sidebarContainer+ ' .category_filter_option_a2z');
 	let filterOptionPopular = document.querySelector(sidebarContainer+ ' .category_filter_option_popular');
@@ -148,9 +149,6 @@ function initCategoryPage() {
 		});
 
 		if (!desktopMenuList || desktopMenuList.children.length == 0) {
-
-			console.log('Filter type ', filterType)
-
 			renderCategorySidebar(filterA2z ? a2zCategories : categoryItems);
 		}
 
@@ -238,11 +236,17 @@ function initCategoryPage() {
 		if(!isMobile){
 			categoryFilterBtn?.addEventListener('mouseover', () => {
 				clearTimeout(timeoutId);
-				categoryFilterOptions.classList.add('open');
+				if(!categoryFilterOptions.classList.contains('open')){
+					categoryFilterOptions.classList.add('open');
+				}
+
+				// toggleExpand()
+
 			});
 			categoryFilterBtn?.addEventListener('mouseout', () => {
 				timeoutId = setTimeout(() => {
 					categoryFilterOptions.classList.remove('open');
+					// toggleExpand()
 				}, 700); // 2000 milliseconds = 2 seconds
 			});
 		}
@@ -254,6 +258,7 @@ function initCategoryPage() {
 			}else{
 				categoryFilterOptions.classList.add('open');
 			}
+			// toggleExpand()
 		});
 
 
@@ -276,6 +281,73 @@ function initCategoryPage() {
 		}
 
 
+	}
+
+
+	function toggleExpand() {
+		const startHeight = isOpen ? categoryFilterOptions.scrollHeight : 0;
+		const endHeight = isOpen ? 0 : categoryFilterOptions.scrollHeight;
+
+		// Set the initial values
+		categoryFilterOptions.style.height = `${startHeight}px`;
+
+		// Animation parameters
+		const duration = 400; // 400ms for the animation
+		let startTime;
+
+		function animate(time) {
+			if (!startTime) startTime = time;
+
+			const progress = (time - startTime) / duration; // progress of the animation (0 to 1)
+
+			// Calculate the current height and margin during the animation
+			const currentHeight = startHeight + (endHeight - startHeight) * progress;
+
+			// Update the height and margin values dynamically
+			categoryFilterOptions.style.height = `${currentHeight}px`;
+
+			if (progress < 1) {
+				// Continue the animation
+				requestAnimationFrame(animate);
+			} else {
+				// Finalize the values
+				categoryFilterOptions.style.height = endHeight === 0 ? '0' : `${endHeight}px`;
+
+				// Toggle the open state
+				categoryFilterOptionsIsOpen= !categoryFilterOptionsIsOpen;
+			}
+		}
+
+		// Start the animation
+		requestAnimationFrame(animate);
+	}
+
+	function toggleExpand() {
+		if (categoryFilterOptions.classList.contains('open')) {
+			// Slide Up (Collapse)
+			const currentHeight = categoryFilterOptions.scrollHeight;
+			categoryFilterOptions.style.height = `${currentHeight}px`; // Set explicit current height
+			requestAnimationFrame(() => {
+				categoryFilterOptions.style.height = '0px'; // Collapse to 0 height
+				categoryFilterOptions.classList.remove('open');
+			});
+		} else {
+			// Slide Down (Expand)
+			const targetHeight = categoryFilterOptions.scrollHeight;
+			categoryFilterOptions.style.height = '0px'; // Start from collapsed height
+			categoryFilterOptions.classList.add('open');
+			requestAnimationFrame(() => {
+				categoryFilterOptions.style.height = `${targetHeight}px`; // Expand to full height
+			});
+
+			// Reset to `auto` after transition ends
+			categoryFilterOptions.addEventListener('transitionend', function resetHeight() {
+				if (categoryFilterOptions.classList.contains('open')) {
+					categoryFilterOptions.style.height = 'auto';
+				}
+				categoryFilterOptions.removeEventListener('transitionend', resetHeight);
+			});
+		}
 	}
 
 	const gotoRandomCategory = () => {
@@ -377,6 +449,7 @@ function initCategoryPage() {
 				document.querySelector('.category-list-letter.active')?.classList.remove('active');
 
 				let letterTop = document.querySelector(sidebarContainer+' .category-list-item-letter.letter_'+triggeredLetter).offsetTop
+				letterTop -= 45;
 				console.log('letter top '+triggeredLetter, letterTop)
 				desktopMenuListContainer.scrollTo({
 					top: letterTop,

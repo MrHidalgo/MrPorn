@@ -115,16 +115,9 @@
 			margin: 0 0 10px;
 			font-weight: 700;
 
-			@include respond('max-medium'){
-				display: none;
-
-				&:first-of-type{
-					display: block;
-				}
-			}
 
 			@include adaptive(767) {
-				font-size: 19px;
+				font-size: 16px;
 				line-height: 22px;
 				margin: 0 0 5px;
 			}
