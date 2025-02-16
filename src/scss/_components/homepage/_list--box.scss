@@ -115,7 +115,6 @@
 
 		&-link{
 			color: #ededed;
-			flex: 1;
 			text-overflow: ellipsis;
 			white-space: nowrap;
 			overflow: hidden;
@@ -150,6 +149,8 @@
 
 		&-preview{
 			display: block;
+			position: absolute;
+			right: 10px;
 			content: ' ';
 			width: 16px;
 			height: 16px;
