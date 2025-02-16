@@ -25,6 +25,8 @@ $paddingRight: $paddingLeft;
   }
 	&_nav{
 		padding-top: 0;
+
+
 	}
 
 	&.bitcoin{
@@ -53,6 +55,12 @@ $paddingRight: $paddingLeft;
 			padding-left: 0;
 			padding-right: 0;
 			margin-top: 115px;
+		}
+	}
+
+	@include adaptive(1023) {
+		&_nav{
+			padding: 0;
 		}
 	}
 
