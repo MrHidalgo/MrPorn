@@ -12,11 +12,9 @@
 
 	@include adaptive(1023) {
 		margin-top: 0;
-	}
-
-	@include adaptive(767) {
 		padding-top: 0;
 	}
+
 	@include respond('mobile_landscape'){
 		padding-top: 0;
 	}
