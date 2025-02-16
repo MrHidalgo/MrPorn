@@ -209,11 +209,11 @@ function initCategoryPage() {
 					filteredCategories = premiumItems.concat(nonPremiumItems);
 					renderCategorySidebar(filteredCategories, filter, true);
 
-					desktopMenuListContainer.scrollTo({
+					desktopMenuListContainer?.scrollTo({
 						top: 0,
 						behavior: "smooth",
 					});
-					mobileMenuList.scrollTo({
+					mobileMenuList?.scrollTo({
 						top: 0,
 						behavior: "smooth",
 					});
@@ -451,11 +451,11 @@ function initCategoryPage() {
 				let letterTop = document.querySelector(sidebarContainer+' .category-list-item-letter.letter_'+triggeredLetter).offsetTop
 				letterTop -= 45;
 				console.log('letter top '+triggeredLetter, letterTop)
-				desktopMenuListContainer.scrollTo({
+				desktopMenuListContainer?.scrollTo({
 					top: letterTop,
 					behavior: "smooth",
 				});
-				mobileMenuList.scrollTo({
+				mobileMenuList?.scrollTo({
 					top: letterTop,
 					behavior: "smooth",
 				});

@@ -950,11 +950,11 @@ function initCategoryPage() {
           });
           filteredCategories = premiumItems.concat(nonPremiumItems);
           renderCategorySidebar(filteredCategories, filter, true);
-          desktopMenuListContainer.scrollTo({
+          desktopMenuListContainer === null || desktopMenuListContainer === void 0 ? void 0 : desktopMenuListContainer.scrollTo({
             top: 0,
             behavior: "smooth"
           });
-          mobileMenuList.scrollTo({
+          mobileMenuList === null || mobileMenuList === void 0 ? void 0 : mobileMenuList.scrollTo({
             top: 0,
             behavior: "smooth"
           });
@@ -1192,11 +1192,11 @@ function initCategoryPage() {
           var letterTop = document.querySelector(sidebarContainer + ' .category-list-item-letter.letter_' + triggeredLetter).offsetTop;
           letterTop -= 45;
           console.log('letter top ' + triggeredLetter, letterTop);
-          desktopMenuListContainer.scrollTo({
+          desktopMenuListContainer === null || desktopMenuListContainer === void 0 ? void 0 : desktopMenuListContainer.scrollTo({
             top: letterTop,
             behavior: "smooth"
           });
-          mobileMenuList.scrollTo({
+          mobileMenuList === null || mobileMenuList === void 0 ? void 0 : mobileMenuList.scrollTo({
             top: letterTop,
             behavior: "smooth"
           });

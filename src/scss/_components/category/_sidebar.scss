@@ -91,7 +91,6 @@
 		position: relative;
 		//margin-top: 10px;
 		flex: 1;
-		padding-top: 45px;
 		//background: #f7f6f5;
 
 		&:after{
@@ -132,9 +131,9 @@
 		}
 	}
 	&-search{
-		position: absolute;
-		left: 0;
-		right: 0;
+		//position: absolute;
+		//left: 0;
+		//right: 0;
 		z-index: 7;
 		text-align: center;
 		background: #fff;
@@ -143,10 +142,10 @@
 		margin-bottom: 5px;
 		//box-shadow: 0 10px 30px 0 rgba(0, 0, 0, 0.15);
 
-		@include adaptive(1023) {
-			left: 15px;
-			right: 15px;
-		}
+		//@include adaptive(1023) {
+		//	left: 15px;
+		//	right: 15px;
+		//}
 
 		.icon-search{
 			width: 18px;
@@ -200,17 +199,21 @@
 	&-filter{
 		flex: 1;
 		height: 34px;
+		width: 100%;
 		outline: none;
 		font-size: 16px;
 		border: none;
 		padding: 3px 0 3px 30px;
 
 		&-btn{
+			background: #fff;
 			position: absolute;
 			flex: 0 0 35px;
 			right: 0;
 			top: 0;
 			height: 100%;
+			width: 35px;
+			font-size: 0;
 
 			&:before{
 				position: absolute;
@@ -569,6 +572,17 @@
 		&.active{
 			color: #000;
 		}
+	}
+}
+
+.header__categories-mobile{
+	.category-list-search{
+		position: absolute;
+		left: 15px;
+		right: 15px;
+	}
+	.category-list-container{
+		padding-top: 45px;
 	}
 }
 

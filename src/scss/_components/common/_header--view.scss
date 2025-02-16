@@ -38,16 +38,18 @@
 				margin-left: 2px;
 			}
 
+			@include adaptive(1023) {
+				span{
+					display: none;
+				}
+			}
+
 			@include respond('max-medium') {
 				margin: 0;
 				padding-bottom: 0;
 				font-size: 10px;
 				line-height: 1.1;
 				text-align: center;
-
-				span{
-					display: none;
-				}
 			}
 		}
 
