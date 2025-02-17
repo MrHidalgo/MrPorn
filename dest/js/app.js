@@ -810,6 +810,7 @@ function initCategoryPage() {
   }
 
   function createSidebar() {
+    var parent = this;
     var isPreLoaded = false;
 
     if (mobileMenuList.classList.contains('loaded')) {
@@ -976,12 +977,11 @@ function initCategoryPage() {
 
         if (!categoryFilterOptions.classList.contains('open')) {
           categoryFilterOptions.classList.add('open');
-        } // toggleExpand()
-
+        }
       });
       categoryFilterBtn === null || categoryFilterBtn === void 0 ? void 0 : categoryFilterBtn.addEventListener('mouseout', function () {
         timeoutId = setTimeout(function () {
-          categoryFilterOptions.classList.remove('open'); // toggleExpand()
+          categoryFilterOptions.classList.remove('open');
         }, 700); // 2000 milliseconds = 2 seconds
       });
     }
@@ -992,9 +992,9 @@ function initCategoryPage() {
       if (categoryFilterOptions.classList.contains('open')) {
         categoryFilterOptions.classList.remove('open');
       } else {
+        renderMobileCatFilters();
         categoryFilterOptions.classList.add('open');
-      } // toggleExpand()
-
+      }
     });
 
     if (filterScroll) {
@@ -1003,7 +1003,6 @@ function initCategoryPage() {
 
     if (!initializedListeners) {
       filterOptionScroll === null || filterOptionScroll === void 0 ? void 0 : filterOptionScroll.addEventListener('change', function () {
-        console.log('Scroll checked ', this.checked);
         onScrollChecked(this.checked);
       }, false);
       filterOptionA2Z === null || filterOptionA2Z === void 0 ? void 0 : filterOptionA2Z.addEventListener('change', function () {
@@ -1016,70 +1015,13 @@ function initCategoryPage() {
     }
   }
 
-  function toggleExpand() {
-    var startHeight = isOpen ? categoryFilterOptions.scrollHeight : 0;
-    var endHeight = isOpen ? 0 : categoryFilterOptions.scrollHeight; // Set the initial values
+  var renderMobileCatFilters = function renderMobileCatFilters() {
+    var catListOptions = document.querySelector('.header__categories-mobile .category-list-options');
 
-    categoryFilterOptions.style.height = "".concat(startHeight, "px"); // Animation parameters
-
-    var duration = 400; // 400ms for the animation
-
-    var startTime;
-
-    function animate(time) {
-      if (!startTime) startTime = time;
-      var progress = (time - startTime) / duration; // progress of the animation (0 to 1)
-      // Calculate the current height and margin during the animation
-
-      var currentHeight = startHeight + (endHeight - startHeight) * progress; // Update the height and margin values dynamically
-
-      categoryFilterOptions.style.height = "".concat(currentHeight, "px");
-
-      if (progress < 1) {
-        // Continue the animation
-        requestAnimationFrame(animate);
-      } else {
-        // Finalize the values
-        categoryFilterOptions.style.height = endHeight === 0 ? '0' : "".concat(endHeight, "px"); // Toggle the open state
-
-        categoryFilterOptionsIsOpen = !categoryFilterOptionsIsOpen;
-      }
-    } // Start the animation
-
-
-    requestAnimationFrame(animate);
-  }
-
-  function toggleExpand() {
-    if (categoryFilterOptions.classList.contains('open')) {
-      // Slide Up (Collapse)
-      var currentHeight = categoryFilterOptions.scrollHeight;
-      categoryFilterOptions.style.height = "".concat(currentHeight, "px"); // Set explicit current height
-
-      requestAnimationFrame(function () {
-        categoryFilterOptions.style.height = '0px'; // Collapse to 0 height
-
-        categoryFilterOptions.classList.remove('open');
-      });
-    } else {
-      // Slide Down (Expand)
-      var targetHeight = categoryFilterOptions.scrollHeight;
-      categoryFilterOptions.style.height = '0px'; // Start from collapsed height
-
-      categoryFilterOptions.classList.add('open');
-      requestAnimationFrame(function () {
-        categoryFilterOptions.style.height = "".concat(targetHeight, "px"); // Expand to full height
-      }); // Reset to `auto` after transition ends
-
-      categoryFilterOptions.addEventListener('transitionend', function resetHeight() {
-        if (categoryFilterOptions.classList.contains('open')) {
-          categoryFilterOptions.style.height = 'auto';
-        }
-
-        categoryFilterOptions.removeEventListener('transitionend', resetHeight);
-      });
+    if (catListOptions && catListOptions.innerHTML == '') {
+      catListOptions.innerHTML = "<ul>\n                            <li>\n                               <label class=\"category-list-option icon_a2z\" data-option=\"top\" for=\"category_filter_option_mobile_a2z\">\n                                   <span>Alphabetical order</span>\n                                   <input id=\"category_filter_option_mobile_a2z\" type=\"checkbox\" class=\"category_filter_option_a2z\" name=\"category_filter_type\" value=\"a2z\"/>\n                               </label>\n                            </li>\n                            <li>\n                                <label class=\"category-list-option icon_random\" data-option=\"new\" for=\"category_filter_option_mobile_random\">\n                                    <span>Random category</span>\n                                    <input id=\"category_filter_option_mobile_random\" type=\"checkbox\" class=\"category_filter_option_random\" name=\"category_filter_type\" value=\"random\"/>\n                                </label>\n                            </li>\n                        </ul>";
     }
-  }
+  };
 
   var gotoRandomCategory = function gotoRandomCategory() {
     var randomCategory = categoryItems[Math.floor(Math.random() * categoryItems.length)];
@@ -1190,12 +1132,12 @@ function initCategoryPage() {
           var triggeredLetter = e.currentTarget.dataset.letter;
           (_document$querySelect11 = document.querySelector('.category-list-letter.active')) === null || _document$querySelect11 === void 0 ? void 0 : _document$querySelect11.classList.remove('active');
           var letterTop = document.querySelector(sidebarContainer + ' .category-list-item-letter.letter_' + triggeredLetter).offsetTop;
-          letterTop -= 45;
           console.log('letter top ' + triggeredLetter, letterTop);
           desktopMenuListContainer === null || desktopMenuListContainer === void 0 ? void 0 : desktopMenuListContainer.scrollTo({
             top: letterTop,
             behavior: "smooth"
           });
+          letterTop -= 45;
           mobileMenuList === null || mobileMenuList === void 0 ? void 0 : mobileMenuList.scrollTo({
             top: letterTop,
             behavior: "smooth"
@@ -3911,8 +3853,7 @@ var lastMobileSimilarSite;
     showThumbInfoOnHover();
 
     if (document.body.classList.contains('home')) {
-      getLikesAndDislikes();
-      initHomeTooltip();
+      getLikesAndDislikes(); // initHomeTooltip()
 
       if (isLoggedUser != '') {
         renderFavouriteButtons();

@@ -569,7 +569,7 @@ let lastMobileSimilarSite;
 
 		if(document.body.classList.contains('home')){
 			getLikesAndDislikes();
-			initHomeTooltip()
+			// initHomeTooltip()
 
 			if(isLoggedUser!=''){
 				renderFavouriteButtons()
