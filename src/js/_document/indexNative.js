@@ -512,6 +512,12 @@ let lastMobileSimilarSite;
 		});
 	};
 
+	const lazyLoadImages = () => {
+		document.querySelectorAll('.lazyload').forEach((img) => {
+			img.classList.add('lazyloaded');
+		});
+	}
+
 	/**
 	 * end MAIN CALLBACK
 	 * ===================================
@@ -557,6 +563,7 @@ let lastMobileSimilarSite;
 
 
 		initGotoTop();
+		lazyLoadImages();
 
 
 		// letterSearch();

@@ -246,6 +246,7 @@
 		border-right: 1px solid #c5c0c0;
 		border-top-left-radius: 10px;
 		border-top-right-radius: 10px;
+		border-bottom: none;
 		color: #555;
 		display: inline-block;
 		height: 28px;
@@ -800,10 +801,15 @@
 }
 .gallery-top{
 	position: relative;
+	padding-top: 85.29%;
 
-	img{
+	&-image{
+		position: absolute;
+		top: 0;
+		left: 0;
 		width: 100%;
-		height: auto;
+		height: 100%;
+		object-fit: cover;
 	}
 }
 .review-block{
@@ -920,14 +926,18 @@
 	background-size: cover;
 	background-position: 0 0;
 	transition: opacity .2s ease, background-position .2s ease;
-	background-image: url(../images/back-img-dark.png);
+
 
 	@include adaptive(991.98) {
 		order: 5;
+		&.lazyloaded{
+			background-image: url(../images/back-img-dark.png);
+		}
 	}
 
 	@media (min-width: 992px) {
 		padding-bottom: 131%;
+		background-image: url(../images/back-img-dark.png);
 	}
 
 	&-link{
@@ -980,7 +990,15 @@
 }
 .light {
 	.back-box{
-		background-image: url(../images/back-img.png);
+		@include adaptive(991.98) {
+			&.lazyloaded{
+				background-image: url(../images/back-img.png);
+			}
+		}
+
+		@media (min-width: 992px) {
+			background-image: url(../images/back-img.png);
+		}
 	}
 }
 

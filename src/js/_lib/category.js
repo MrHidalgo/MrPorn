@@ -5,6 +5,11 @@
 function initCategoryPage() {
 	let categorySidebar;
 	const isMobile = isMobileOrTablet;
+
+
+
+
+
 	const sidebarContainer = isMobile? '.header__categories-mobile':'.desktop_menu_list';
 	const leftSidebar = document.querySelector('.desktop_menu_list');
 	let desktopMenuList = document.querySelector('.category-list-menu');
@@ -57,7 +62,7 @@ function initCategoryPage() {
 	}
 
 	function createSidebar() {
-	let parent = this;
+		let parent = this;
 
 		let isPreLoaded = false
 
@@ -277,22 +282,13 @@ function initCategoryPage() {
 	}
 
 	const renderMobileCatFilters = () => {
-		 let catListOptions =	document.querySelector('.header__categories-mobile .category-list-options');
-		if(catListOptions && catListOptions.innerHTML == ''){
-			catListOptions.innerHTML = `<ul>
-                            <li>
-                               <label class="category-list-option icon_a2z" data-option="top" for="category_filter_option_mobile_a2z">
-                                   <span>Alphabetical order</span>
-                                   <input id="category_filter_option_mobile_a2z" type="checkbox" class="category_filter_option_a2z" name="category_filter_type" value="a2z"/>
-                               </label>
-                            </li>
-                            <li>
-                                <label class="category-list-option icon_random" data-option="new" for="category_filter_option_mobile_random">
-                                    <span>Random category</span>
-                                    <input id="category_filter_option_mobile_random" type="checkbox" class="category_filter_option_random" name="category_filter_type" value="random"/>
-                                </label>
-                            </li>
-                        </ul>`
+		let spanA2z = document.querySelector('.category-list-options .icon_a2z span');
+		let spanRandom = document.querySelector('.category-list-options .icon_random span');
+		if(spanA2z){
+			spanA2z.innerHTML = 'Alphabetical order';
+		}
+		if(spanRandom){
+			spanRandom.innerHTML = 'Random category';
 		}
 	}
 
