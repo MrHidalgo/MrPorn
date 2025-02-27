@@ -1203,7 +1203,7 @@ function initCategoryPage() {
       desktopMenuList === null || desktopMenuList === void 0 ? void 0 : desktopMenuList.insertAdjacentHTML('beforeend', item);
       mobileMenuList === null || mobileMenuList === void 0 ? void 0 : mobileMenuList.insertAdjacentHTML('beforeend', item);
 
-      if (isCategoriesPage) {
+      if (isCategoriesPage && !filterA2z) {
         var categoryBoxItem = document.querySelector('.category_item_link[data-id="' + categoryItem.id + '"]');
 
         if (categoryBoxItem) {
@@ -1257,6 +1257,10 @@ function initCategoryPage() {
   };
 
   var reorderCategories = function reorderCategories() {
+    if (bodyClasses.contains('page-template-page-categories')) {
+      return;
+    }
+
     var container = document.querySelector('.category_sites');
 
     if (container) {

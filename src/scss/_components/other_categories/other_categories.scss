@@ -256,7 +256,7 @@
 				width: 100%;
 				z-index: 2;
 
-				li{
+				&-li{
 					display: flex;
 					align-items: center;
 					margin: 0 0 8%;
@@ -282,14 +282,6 @@
 						font-size: 11px;
 						padding-left: 20px;
 						margin-bottom: 4%;
-					}
-
-					&:before{
-						content: '';
-						display: block;
-						width: 16px;
-						height: 16px;
-						margin-right: 5px;
 					}
 				}
 			}

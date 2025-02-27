@@ -453,7 +453,7 @@ function initCategoryPage() {
 				mobileMenuList?.insertAdjacentHTML('beforeend', item);
 
 
-				if(isCategoriesPage){
+				if(isCategoriesPage && !filterA2z){
 
 					let categoryBoxItem = document.querySelector('.category_item_link[data-id="'+categoryItem.id+'"]');
 					if(categoryBoxItem){
@@ -501,6 +501,10 @@ function initCategoryPage() {
 	}
 
 	const reorderCategories = () => {
+		if(bodyClasses.contains('page-template-page-categories')){
+			return
+		}
+
 		const container = document.querySelector('.category_sites')
 		if(container){
 			const items = Array.from(container.children);
