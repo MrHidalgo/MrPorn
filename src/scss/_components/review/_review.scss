@@ -494,190 +494,6 @@
 	}
 }
 
-.review_slide{
-	padding-top: 85.4729%;
-	position: relative;
-	background: #000;
-
-	&:nth-child(n+2){
-		display: none;
-	}
-
-	img {
-		position: absolute;
-		height: 100%;
-		width: 100%;
-		object-fit: cover;
-		z-index: 11;
-		text-indent: 100vw;
-	}
-
-	.slider_inner {
-		position: absolute;
-		display: block;
-		top: 0;
-		bottom: 0;
-		left: 0;
-		width: 100%;
-		z-index: 0;
-		overflow: hidden;
-	}
-
-	.slider_inner.slide_0 {
-		top: 0;
-		bottom: 0;
-	}
-}
-
-
-.gallery-thumbs{
-	height: 20%;
-	box-sizing: border-box;
-	padding: 0;
-	margin-top: 20px;
-
-	@include adaptive(1024) {
-		display: none;
-	}
-
-	&-wrapper{
-		@include respond('ipad_portrait'){
-			padding: 0 15px 10px;
-		}
-
-		@include adaptive(767) {
-			padding: 10px;
-		}
-	}
-
-	@include adaptive(767) {
-		height: 75px;
-		margin: 0;
-	}
-}
-
-.screen_shot_dummy{
-
-	@include respond('max-medium'){
-		margin-bottom: 0;
-	}
-}
-
-@include respond('large'){
-	.link-thumbs-holder{
-		display: none;
-	}
-}
-
-.review_screenshot {
-	position: absolute;
-	left: 0;
-	right: 0;
-	height: 100%;
-	top: -1px;
-	z-index: 9;
-	content: " ";
-	padding-top: 85.30%;
-	border: 1px solid #ccc;
-	border-radius: 5px;
-	background-size: auto 100%!important;
-	background-repeat: no-repeat!important;
-	background-position: 50% 50%!important;
-
-	@include respond('large'){
-		.deadsite-drop{
-			display: none;
-		}
-		&.is_unlisted, &.is_dead{
-			.deadsite-drop{
-				display: block;
-			}
-		}
-	}
-
-	@include respond('max-medium'){
-		border: none;
-		border-radius: 0;
-	}
-
-	a{
-		position: absolute;
-		top: 0;
-		bottom: 0;
-		left: 0;
-		right: 0;
-		display: flex;
-		flex-direction: column;
-		align-items: center;
-		justify-content: center;
-		z-index: 10;
-	}
-
-	.review_screenshot_hover{
-		position: absolute;
-		top: 0;
-		left: 0;
-		right: 0;
-		height: 100%;
-		background-color: rgba(0,0,0,.8);
-		text-align: center;
-		display: none;
-
-		@include adaptive(767) {
-			display: block;
-			background: transparent;
-		}
-
-		img{
-			width: auto;
-			margin-left: auto;
-			margin-right: auto;
-			max-width: 120px;
-			height: auto;
-
-			@include adaptive(767) {
-				visibility: hidden;
-			}
-
-			&.games{
-				max-width: 300px;
-				height: auto;
-			}
-		}
-
-		p{
-			color: #fff;
-			font-size: 18px;
-			margin-top: 20px;
-			white-space: nowrap;
-
-			@include adaptive(767) {
-				display: none;
-			}
-
-			span{
-				color: #0596f8;
-			}
-		}
-	}
-
-	&:not(.is_dead):not(.is_unlisted):hover {
-		.review_screenshot_hover{
-			display: block;
-
-			@include adaptive(991.98) {
-				display: none;
-			}
-
-			@include adaptive(767) {
-				display: block;
-				background: transparent;
-			}
-		}
-	}
-
-}
-
 .visit_icon{
 	position: relative;
 	width: 18px;
@@ -799,19 +615,19 @@
 		order: 1;
 	}
 }
-.gallery-top{
-	position: relative;
-	padding-top: 85.29%;
-
-	&-image{
-		position: absolute;
-		top: 0;
-		left: 0;
-		width: 100%;
-		height: 100%;
-		object-fit: cover;
-	}
-}
+//.gallery-top{
+//	position: relative;
+//	padding-top: 85.29%;
+//
+//	&-image{
+//		position: absolute;
+//		top: 0;
+//		left: 0;
+//		width: 100%;
+//		height: 100%;
+//		object-fit: cover;
+//	}
+//}
 .review-block{
 	display: flex;
 	flex-direction: column;

@@ -18,6 +18,10 @@ const configOption = {
     sourceComments: true
   },
 
+	stripCssCommentsOption: {
+		preserve: false // Set to true if you want to preserve comments that start with /*! or /**!
+	},
+
   autoPrefixOptions: {
     browsers: [
       "last 10 versions",

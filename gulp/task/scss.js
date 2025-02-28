@@ -5,6 +5,8 @@ const { src, dest, task, watch, series } = require('gulp');
 const plumber = require('gulp-plumber'),
   prefixer = require('gulp-autoprefixer'),
   scss = require('gulp-sass'),
+	cssmin = require('gulp-cssmin'),
+	stripCssComments = require('gulp-strip-css-comments'),
   sourcemaps = require('gulp-sourcemaps');
 
 const configPath = require('../config/configPath'),
@@ -20,6 +22,8 @@ task('scss', (done) => {
 		.pipe(sourcemaps.init())
 		.pipe(scss(configOption.sassAPI).on('error', scss.logError))
 		.pipe(prefixer(configOption.autoPrefixOptions))
+		// .pipe(cssmin(configOption.cssMinOption))
+		// .pipe(stripCssComments())
 		.pipe(sourcemaps.write('./maps', configOption.sourceMapStyle))
 		.pipe(plumber.stop())
 		.pipe(dest(configPath.dest.css))
