@@ -1,126 +1,8 @@
 let pauseHoverAnimation = false;
 
-let trigger;
-
 const modal = document.querySelector('.modal');
 
-let homeMainContainer = document.querySelector('.c-grid--inner');
-let isPopVisible = false;
-let popover = document.querySelector('.popover');
-// let popoverOuter = document.querySelector('.popover-outer');
-//
-// let popoverTitle;
-// let popoverLink;
-// let popoverTagline;
-//
-// let categoryContainers = [];
-//
-// function isMouseOverPopover(e){
-// 	const arrowTip = popover.getBoundingClientRect(); // Get the bounding box of the arrow
-// 	const mouseX = e.clientX; // Mouse X position
-// 	const mouseY = e.clientY; // Mouse Y position
-//
-// 	const popupTipXStart = arrowTip.left + arrowTip.width - 40;
-// 	const popupTipYStart = arrowTip.top + arrowTip.height;
-//
-// 	const popupTipXEnd = arrowTip.left + arrowTip.width;
-// 	const popupTipYEnd = arrowTip.top + arrowTip.height + 30;
-//
-// 	// Check if mouse is within the arrow's bounding box
-// 	const isOverArrow =
-// 		mouseX >= popupTipXStart &&
-// 		mouseX <= popupTipXEnd &&
-// 		mouseY >= popupTipYStart &&
-// 		mouseY <= popupTipYEnd;
-//
-// 	return isOverArrow;
-// }
 
-
-// function initHomeTooltip(){
-// 	categoryContainers = document.querySelectorAll('.list__box-list');
-//
-// 	if (!window.mobileAndTabletcheck()) {
-//
-// 		if(homeGridInner){
-// 			categoryContainers.forEach((_container)=>{
-// 				_container.onmouseleave = debounce(function (e){
-// 					if(popover.style.display=='block'){
-//
-// 						if(!isMouseOverPopover(e)){
-// 							popover.style.display = 'none';
-// 						}
-// 					}
-// 				})
-// 			});
-//
-// 			// debounce
-// 			homeGridInner.onmouseover = debounce(function(e){
-// 				let hoverTarget = e.target;
-// 				if(hoverTarget.matches('.list__box__item') | hoverTarget.parents('.list__box__item').length>0){
-// 					if(hoverTarget.parents('.list__box__item').length>0){
-// 						hoverTarget = hoverTarget.parents('.list__box__item')[0];
-// 					}
-// 					let tagLine = hoverTarget.querySelector('.list__box__item-tagline');
-// 					let _siteName = hoverTarget.querySelector('.list__box__item-link');
-//
-// 					let siteId = hoverTarget.dataset.id;
-// 					let siteCategory = hoverTarget.dataset.category;
-// 					let siteIndex = hoverTarget.dataset.index;
-//
-// 					let siteName = _siteName.innerHTML;
-// 					let siteTagline = tagLine.innerHTML;
-// 					siteTagline = siteTagline.replace("\\", "").replace("\\", "");
-// 					let siteReviewLink = _siteName.getAttribute("href");;
-// 					let siteFx = tagLine.dataset.fx;
-// 					let siteFy = tagLine.dataset.fy;
-//
-// 					var wallDimensions = homeMainContainer.getBoundingClientRect();
-// 					var wallX = wallDimensions.left;
-// 					var wallY = wallDimensions.top;
-// 					var hoverTargetBounds = hoverTarget.getBoundingClientRect();
-// 					var popW = hoverTargetBounds.width - 7;
-// 					var popY =  hoverTargetBounds.top - wallY-10;
-// 					var popX = hoverTargetBounds.left +7 - wallX;
-//
-// 					popover.style.display = 'block';
-// 					popover.style.top = popY+'px';
-// 					popover.style.left = popX+'px';
-// 					popover.style.width = popW+'px';
-//
-// 					if(!popoverOuter){
-// 						popover.innerHTML = '<div class="popover-outer">\n' +
-// 							'            <div class="popover-title deIcon">\n' +
-// 							'                    <a class="popover-title-a link direct_1 step_1_" target="_blank" href=""></a>\n' +
-// 							'            </div>\n' +
-// 							'            <div class="popover-content"></div>\n' +
-// 							'        </div>';
-//
-// 						popoverTitle = popover.querySelector('.popover-title');
-// 						popoverLink = popover.querySelector('.popover-title-a');
-// 						popoverTagline = popover.querySelector('.popover-content');
-// 					}
-//
-//
-// 					popoverLink.innerHTML = siteName;
-// 					popoverTitle.className = 'popover-title deIcon  fx_'+siteFx+' fy_'+siteFy+' fi'+siteId;
-// 					popoverLink.setAttribute('href', siteReviewLink);
-// 					popoverTagline.innerHTML = siteTagline;
-// 					isPopVisible = true;
-// 				}else{
-// 					if(isPopVisible){
-// 						if(!isMouseOverPopover(e)){
-// 							popover.style.display = 'none';
-// 						}
-//
-// 					}
-// 				}
-// 			})
-//
-//
-// 		}
-// 	}
-// }
 
 function renderFavouriteButtons(){
 	let sitePreviewItems = document.querySelectorAll('.list__box__item-preview');
@@ -154,41 +36,11 @@ function scrollToCategoryOnHome(ev, _ev){
 						categoryHead.classList.remove('shake');
 					}, 4000);
 				}
-
-				/*let elParent = document.querySelector('.list__box-wrapper[data-name="category_'+catId+'"]');
-
-				let scrollGreenBar = document.querySelector('.list__box-wrapper[data-name="category_'+catId+'"] .list__box-line');
-				scrollGreenBar.setAttribute('style', 'background-color: #d5f34a;');
-
-				setTimeout(function (){
-
-					setTimeout(function (){
-						scrollGreenBar.setAttribute('style', 'background-color: rgb(25, 26, 40);');
-
-						setTimeout(function (){
-							pauseHoverAnimation = false;
-						}, 1000);
-					}, 1000);
-				}, 1300);*/
 			}
 		}
 	}
 
 }
-
-
-
-
-function onRatingClick(){
-	previewModal.querySelector('.list__rating').classList.add('active');
-	setTimeout(function (){
-		previewModal.querySelector('.list__rating').classList.remove('active');
-	}, 2000);
-}
-
-let tOut = null;
-
-let homeGridInner = document.querySelector(".c-grid--inner");
 
 function addToFavourites(siteId){
 	postRequest(ajaxEndpoint, {
@@ -212,9 +64,6 @@ function removeFavourite(favItem){
 		renderFavourites();
 	});
 }
-
-
-
 
 function getLikesAndDislikes(){
 	window.dislikes = [];
@@ -246,3 +95,26 @@ function onDisLike(el, elID){
 	}
 	setWithExpiry("dislikes", window.dislikes, 30*24*3600*1000);
 }
+
+function initHomeFunctions(){
+	initHomeTabs();
+}
+function initHomeTabs(){
+	let tabs = document.querySelectorAll('.home-tabs');
+	tabs.forEach((tabContainer)=>{
+		tabContainer.querySelectorAll('.trending-tag-item').forEach((tag)=>{
+			tag.addEventListener('click', function(evt){
+				let tag = evt.currentTarget.dataset.tag;
+				if(tag){
+					tabContainer.querySelector('.trending-tag-item.active')?.classList.remove('active');
+					tabContainer.querySelector('.trending-tag-item[data-tag="'+tag+'"]').classList.add('active');
+
+					tabContainer.querySelector('.trending-tag-tab.active').classList.remove('active');
+					tabContainer.querySelector('.trending-tag-tab.tab-'+tag).classList.add('active');
+				}
+			});
+		})
+	});
+}
+
+initHomeFunctions();

@@ -4288,8 +4288,6 @@ var lastMobileSimilarSite;
         removeFavourite(_ev.closest('[un-favorites-js]'));
       } else if (_ev.closest('[collapse-toggle-js]')) {
         onSortToggle(_ev.closest('[collapse-toggle-js]'));
-      } else if (_ev.closest('.rating_stars') || _ev.classList.contains('rating_stars')) {
-        onRatingClick();
       } else if (_ev.closest('.login_popup_close')) {
         closeLoginPopups();
       } else if (_ev.classList.contains('popup_link_signup')) {

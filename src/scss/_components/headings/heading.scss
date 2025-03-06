@@ -5,6 +5,17 @@
 	width: 100%;
 	min-height: 48px;
 
+	&__home{
+		color: #000;
+		font-weight: 500;
+		min-height: 0;
+	}
+
+	&__1{
+		font-size: 16px;
+		font-weight: 500;
+	}
+
 	&__h1, &__h2{
 		font-size: 24px;
 		font-weight: 600;
@@ -134,6 +145,11 @@
 		}
 	}
 
+}
+.section_footer{
+	display: flex;
+	justify-content: center;
+	padding: 15px;
 }
 
 .light{

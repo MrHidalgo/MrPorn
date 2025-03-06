@@ -1,0 +1,69 @@
+.deal{
+	&-list{
+		border: 1px solid #ccc;
+		border-radius: 5px;
+		padding: 8px 0;
+	}
+	&-row{
+		display: flex;
+		align-items: center;
+		gap: 15px;
+		padding: 8px 15px;
+
+		&-index{
+			flex: 0 0 50px;
+			text-align: right;
+			font-weight: 500;
+		}
+
+		&-image{
+			font-size: 0;
+			width: 20%;
+			img{
+				height: 80px;
+			}
+		}
+		&-rate{
+			text-align: center;
+			width: 20%;
+
+			&-price{
+				font-size: 18px;
+				font-weight: 500;
+			}
+			&-discount{
+				color: #288767;
+				font-size: 14px;
+				text-decoration: line-through;
+			}
+		}
+		&-score{
+			display: flex;
+			width: 15%;
+			text-align: center;
+			justify-content: center;
+
+			&-inner{
+				background: #42011e;
+				color: #929493;
+				padding: 5px 15px;
+			}
+			&-number{
+				font-size: 30px;
+				font-weight: 600;
+				color: #fff;
+				line-height: 1.1;
+			}
+		}
+		&-stat{
+			width: 15%;
+			text-align: center;
+		}
+		&-actions{
+			flex: 1;
+			text-align: right;
+		}
+		&-action{
+		}
+	}
+}
