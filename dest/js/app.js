@@ -1157,6 +1157,38 @@ function initCategoryPage() {
     }
   };
 
+  var initLetterScroll = function initLetterScroll() {
+    var letterLinks = document.querySelectorAll('.category-list-letter');
+
+    if (letterLinks.length == 0) {
+      return;
+    }
+
+    letterLinks.forEach(function (letterLink) {
+      letterLink.addEventListener('click', function (e) {
+        var _container$querySelec;
+
+        e.preventDefault();
+        var container = e.target.closest('.category-list-container');
+        var letterList = container.querySelector('.category-list-left');
+        var letter = e.target.dataset.letter;
+        var letterElement = container.querySelector(".category-list-item-letter.letter_".concat(letter));
+        var letterTop = letterElement.offsetTop;
+
+        if (isMobileOrTablet) {
+          letterTop -= 45;
+        }
+
+        (_container$querySelec = container.querySelector('.category-list-letter.active')) === null || _container$querySelec === void 0 ? void 0 : _container$querySelec.classList.remove('active');
+        e.target.classList.add('active');
+        letterList.scrollTo({
+          top: letterTop,
+          behavior: 'smooth'
+        });
+      });
+    });
+  };
+
   var renderCategorySidebar = function renderCategorySidebar(categoryItems) {
     var filter = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : '';
     var hideVisited = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : false;
@@ -1344,6 +1376,7 @@ function initCategoryPage() {
     }
 
     initCategorySidebar();
+    initLetterScroll();
   };
 
   var initCategorySidebar = function initCategorySidebar() {

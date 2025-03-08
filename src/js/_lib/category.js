@@ -410,6 +410,35 @@ function initCategoryPage() {
 
 	}
 
+	const initLetterScroll = () => {
+		const letterLinks = document.querySelectorAll('.category-list-letter');
+		if(letterLinks.length == 0){
+			return;
+		}
+
+		letterLinks.forEach((letterLink) => {
+			letterLink.addEventListener('click', (e) => {
+				e.preventDefault();
+				const container = e.target.closest('.category-list-container');
+				const letterList = container.querySelector('.category-list-left');
+				const letter = e.target.dataset.letter;
+				const letterElement = container.querySelector(`.category-list-item-letter.letter_${letter}`);
+				let letterTop = letterElement.offsetTop;
+
+				if(isMobileOrTablet){
+					letterTop -= 45;
+				}
+
+				container.querySelector('.category-list-letter.active')?.classList.remove('active');
+				e.target.classList.add('active');
+				letterList.scrollTo({
+					top: letterTop,
+					behavior: 'smooth'
+				});
+			});
+		});
+	}
+
 	const renderCategorySidebar = (categoryItems, filter = '', hideVisited = false) => {
 
 		// categoryListContainer?.classList.remove('a2z');
@@ -575,6 +604,7 @@ function initCategoryPage() {
 		}
 
 		initCategorySidebar()
+		initLetterScroll()
 	}
 
 	const initCategorySidebar = () => {
