@@ -262,6 +262,10 @@ function initCategoryPage() {
 			}
 		});
 
+		if(bodyClasses.contains('home')){
+			return;
+		}
+
 
 		if(filterScroll){
 			onScrollChecked(filterScroll)

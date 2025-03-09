@@ -195,12 +195,13 @@
 			padding: 15px 4px 0;
 		}
 		@include adaptive(767) {
-			width: 50%;
-			max-width: 50%;
-			padding: 10px 3px 0;
+			&,
+			&.col-5{
+				width: 50%;
+				max-width: 50%;
+				padding: 10px 3px 0;
+			}
 		}
-
-
 
 		&_inner{
 			padding: 0;

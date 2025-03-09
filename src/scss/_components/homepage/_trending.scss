@@ -35,6 +35,47 @@
 			}
 		}
 	}
+	&_site{
+		position: relative;
+
+		.category_sites_item_title:before{
+			display: none;
+		}
+
+		&-bottom{
+			display: flex;
+			padding: 5px 0;
+			justify-content: space-between;
+			align-items: center;
+		}
+		&-rating{
+			display: block;
+			width: 84px;
+			height: 16px;
+			background-repeat: no-repeat;
+			background-size: contain;
+			background-position: center;
+			background-image: url("../images/rating_1.png");
+
+			&-2{
+				background-image: url("../images/rating_2.png");
+			}
+			&-3{
+				background-image: url("../images/rating_3.png");
+			}
+			&-4{
+				background-image: url("../images/rating_4.png");
+			}
+			&-5{
+				background-image: url("../images/rating_5.png");
+			}
+		}
+		&-tag{
+			font-size: 13px;
+			text-transform: capitalize;
+		}
+	}
+
 	.category-list-menu{
 		padding: 0 0 0 0;
 	}

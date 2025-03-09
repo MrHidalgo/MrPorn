@@ -18,10 +18,6 @@ function showThumbInfoOnHover() {
 
 		var $block = '<div class="category_sites_item_overlay">' + '<a class="link_read" href="' + review_link + '" target="_blank">' + text_read + '<i class="icon-font icon-arrow-angle right_angle"></i>' + '</a>' + linkOpenSite + '</div>';
 		$this.insertAdjacentHTML('beforeend', $block);
-
-		/*if (review_link == external_link) {
-			$this.find('.link1').addClass('visibility-hidden');
-		}*/
 	}
 	function removeThumbInfo(el) {
 		let siteItemOverlay = el.querySelector('.category_sites_item_overlay');
