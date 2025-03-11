@@ -995,11 +995,9 @@ function initCategoryPage() {
         renderMobileCatFilters();
         categoryFilterOptions.classList.add('open');
       }
-    });
-
-    if (bodyClasses.contains('home')) {
-      return;
-    }
+    }); // if(bodyClasses.contains('home')){
+    // 	return;
+    // }
 
     if (filterScroll) {
       onScrollChecked(filterScroll);
@@ -1080,6 +1078,10 @@ function initCategoryPage() {
 
   var setSidebarHeight = function setSidebarHeight() {
     var reset = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : false;
+
+    if (!categoryListContainer) {
+      return;
+    }
 
     if (reset) {
       categoryListContainer === null || categoryListContainer === void 0 ? void 0 : categoryListContainer.style.removeProperty('height');

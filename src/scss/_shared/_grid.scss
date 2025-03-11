@@ -82,6 +82,9 @@ $paddingRight: $paddingLeft;
 			padding: 0 5px;
 		}
 	}
+	&.rounded{
+		border-radius: 5px;
+	}
 }
 
 .light{
@@ -177,6 +180,10 @@ $paddingRight: $paddingLeft;
 
 			@include respond('ipad_landscape'){
 				padding: 15px 20px 25px;
+			}
+
+			@include adaptive(767) {
+				padding: 0;
 			}
 		}
 

@@ -262,9 +262,9 @@ function initCategoryPage() {
 			}
 		});
 
-		if(bodyClasses.contains('home')){
-			return;
-		}
+		// if(bodyClasses.contains('home')){
+		// 	return;
+		// }
 
 
 		if(filterScroll){
@@ -341,6 +341,9 @@ function initCategoryPage() {
 	}
 
 	const setSidebarHeight = (reset = false) => {
+		if(!categoryListContainer){
+			return;
+		}
 		if(reset){
 			categoryListContainer?.style.removeProperty('height');
 		}else{

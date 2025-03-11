@@ -1,4 +1,7 @@
 .trending{
+	&-tabs{
+		position: relative;
+	}
 	&-tag{
 		&-header{
 			display: flex;
@@ -49,25 +52,13 @@
 			align-items: center;
 		}
 		&-rating{
-			display: block;
-			width: 84px;
-			height: 16px;
-			background-repeat: no-repeat;
-			background-size: contain;
-			background-position: center;
-			background-image: url("../images/rating_1.png");
+			display: flex;
+			gap: 6px;
+			align-items: center;
 
-			&-2{
-				background-image: url("../images/rating_2.png");
-			}
-			&-3{
-				background-image: url("../images/rating_3.png");
-			}
-			&-4{
-				background-image: url("../images/rating_4.png");
-			}
-			&-5{
-				background-image: url("../images/rating_5.png");
+
+			&-number{
+				font-size: 14px;
 			}
 		}
 		&-tag{
@@ -80,13 +71,55 @@
 		padding: 0 0 0 0;
 	}
 }
+.rating{
+	display: block;
+	width: 84px;
+	height: 16px;
+	background-repeat: no-repeat;
+	background-size: contain;
+	background-position: center;
+	background-image: url("../images/rating_1.png");
+
+	&-2{
+		background-image: url("../images/rating_2.png");
+	}
+	&-3{
+		background-image: url("../images/rating_3.png");
+	}
+	&-4{
+		background-image: url("../images/rating_4.png");
+	}
+	&-5{
+		background-image: url("../images/rating_5.png");
+	}
+}
 .link-action{
 	color: #333;
 	border: 2px solid #aaa;
 	border-radius: 5px;
-	padding: 8px 15px;
+	padding: 5px 15px;
+	text-align: center;
+
+	@include adaptive(767) {
+		display: block;
+		width: 100%;
+	}
 
 	&:hover, &:focus{
 		color: #333;
 	}
 }
+
+.section_footer{
+	display: flex;
+	justify-content: center;
+	padding: 10px 0;
+
+	 @include respond('medium'){
+			position: absolute;
+		 	right: 0;
+			 top: 0;
+			 padding: 0;
+		}
+}
+
