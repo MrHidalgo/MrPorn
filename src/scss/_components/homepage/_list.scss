@@ -7,81 +7,17 @@
 .list {
 	padding-top: 25px;
 	padding-bottom: 25px;
+
+	--scrollbar-color: #131313 #525252;
+
+
 	@include adaptive(767) {
 		.c-grid {
 			padding-right: 0;
 		}
 	}
 
-	.swiper {
-		&-container {
-			//overflow: unset;
-		}
 
-		&-slide {
-			position: relative;
-			width: 185px !important;
-			height: 185px;
-			margin-left: 3px;
-			margin-right: 3px;
-			@include transition(width);
-			@include adaptive(1279) {
-				width: 195px !important;
-				height: 195px;
-			}
-			@include adaptive(1023) {
-				width: 150px !important;
-				height: 150px;
-			}
-			@include respond('ipad_landscape'){
-				width: 130px !important;
-				height: 130px;
-			}
-			@include adaptive(767) {
-				width: 100px !important;
-				height: 100px;
-			}
-
-			.is-mobile & {
-				/*@media screen and (orientation: landscape) {
-					width: 150px !important;
-					height: 150px;
-				}*/
-
-			}
-
-
-			&:first-of-type {
-				margin-left: 0;
-			}
-			&:last-of-type {
-				margin-right: 0;
-			}
-
-			/*&.is-hover {
-				width: 350px !important;
-				@include transition(width);
-
-				&.last-box{
-					.list__box:not(.less_5){
-						transform: translate(calc(-50% - 55px), -50%);
-					}
-				}
-			}*/
-		}
-	}
-
-	/*.swiper-wrapper:not(.short_list){
-		.swiper-slide{
-			&.is-hover {
-				&:last-of-type {
-					.list__box:not(.less_5){
-						transform: translate(calc(-50% - 120px), -50%);
-					}
-				}
-			}
-		}
-	}*/
 
 	@import "list--info";
 	@import "list--btn";
@@ -528,6 +464,7 @@
 .light{
 	.list__box{
 		background: #fff;
+		--scrollbar-color: #1b4f90c7 rgba(0,0,0,0.1);
 	}
 	.list__box-head-a{
 		color: #000;
@@ -605,12 +542,12 @@
 	.list__box-list{
 		background: #fff;
 
-		scrollbar-color: #131313 #525252;
-		&::-webkit-scrollbar {width: 10px; }
+		scrollbar-color: #1b4f90c7 rgba(0,0,0,0.1);
+		&::-webkit-scrollbar {width: 5px; }
 		&::-webkit-scrollbar-corner{ background: rgba(0,0,0, 0.1); }
 		&::-webkit-scrollbar-track{ background: rgba(0,0,0,0.1) }
-		&::-webkit-scrollbar-thumb{ background: #9c9b9c }
-		&:hover::-webkit-scrollbar-thumb{ background: #225396 }
+		&::-webkit-scrollbar-thumb{ background: #1b4f90c7 }
+		//&:hover::-webkit-scrollbar-thumb{ background: #225396 }
 	}
 }
 

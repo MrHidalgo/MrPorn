@@ -41,10 +41,15 @@ function initCategoryPage() {
 	let otherCategoryItems = [];
 	let a2zCategories = []
 	let a2zLetters = []
+	let sidebarCategories = []
 
 	let filterScroll = +getCookieMpgCookie("category_filter_scroll") ?? 0;
-	let filterA2z = +getCookieMpgCookie("category_filter_a2z") ?? 0;
+	let filterA2z = bodyClasses.contains('home') ? 1:  +getCookieMpgCookie("category_filter_a2z") ?? 0;
 	let filterPopular = +getCookieMpgCookie("category_filter_popular") ?? 0;
+
+	let frontListA2Z = false;
+	let frontMainFilter = document.querySelector('.main_filter');
+
 
 	if(!isMobileOrTablet && document.body.classList.contains('single-sites')){
 		filterA2z = 0
@@ -61,9 +66,7 @@ function initCategoryPage() {
 		})
 	}
 
-	function createSidebar() {
-		let parent = this;
-
+	const processCategoryDataFromDom = () => {
 		let isPreLoaded = false
 
 		if(mobileMenuList.classList.contains('loaded')){
@@ -152,6 +155,10 @@ function initCategoryPage() {
 				'order': categoryOrder
 			});
 		});
+	}
+
+	function createSidebar() {
+		let parent = this;
 
 		if (!desktopMenuList || desktopMenuList.children.length == 0) {
 			renderCategorySidebar(filterA2z ? a2zCategories : categoryItems);
@@ -281,6 +288,17 @@ function initCategoryPage() {
 			filterOptionRandom?.addEventListener('change', function () {
 				gotoRandomCategory()
 			})
+
+			document.querySelector('.category-list-switcher')?.addEventListener('click', function () {
+				onA2ZChecked(frontListA2Z)
+				frontListA2Z = !frontListA2Z
+				if(frontListA2Z){
+					frontMainFilter?.classList.remove('a2z')
+				}else{
+					frontMainFilter?.classList.add('a2z')
+				}
+			})
+
 			initializedListeners = true
 		}
 	}
@@ -581,9 +599,38 @@ function initCategoryPage() {
 			});
 	}
 
+	const processHomeCategories = (result) => {
+		sidebarCategories = [];
+		result.terms?.forEach(function (term) {
+			let icons = '';
+			let siteIndex = 0;
+			term.category_sites.forEach(function (_site) {
+				if (siteIndex < 5) {
+					icons += '<i class="category-site-icon deIcon ' + _site + '"></i>';
+					siteIndex++;
+				}
+			})
+
+			sidebarCategories.push({
+				'id': term.term_id,
+				'title': term.category_title_2,
+				'icon': 'icon-category '+term.icon_class,
+				'link': term.term_link,
+				'count': term.count,
+				'icons': icons,
+				'visited': 0,
+				'visited_o': 0,
+				'order': term.position
+			});
+		})
+
+		categoryItems = sidebarCategories;
+	}
+
 	const processA2ZData = (result) => {
 		a2zCategories = []
 		a2zLetters = []
+
 
 		new A2ZPopup(result)
 
@@ -610,28 +657,29 @@ function initCategoryPage() {
 			a2zOrder++;
 		}
 
+		if(bodyClasses.contains('home')){
+			processHomeCategories(result)
+		}else{
+			processCategoryDataFromDom();
+		}
+
+
+
+		console.log(sidebarCategories)
+
+
 		initCategorySidebar()
 		initLetterScroll()
 	}
 
 	const initCategorySidebar = () => {
-		if (bodyClasses.contains('category') || bodyClasses.contains('page-template-page-categories')) {
-			createSidebar()
-			if(!filterScroll){
-				initStickySidebar()
-			}
-		} else {
-			createSidebar()
+		createSidebar()
+		if(!filterScroll){
+			initStickySidebar()
 		}
 	}
 
-
-/*	if(!filterA2z){
-		initCategorySidebar()
-	}*/
-
 	fetchA2Z();
-	// new CategoryTypeFilter()
 }
 
 

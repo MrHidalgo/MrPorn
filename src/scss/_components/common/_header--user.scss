@@ -1,5 +1,11 @@
+@include respond('large') {
+	&__user-block-outer{
+		flex: 1;
+		text-align: right;
+	}
+}
 &__user-block{
-	display: flex;
+	display: inline-flex;
 
 	@include respond('large') {
 		gap: 10px;
