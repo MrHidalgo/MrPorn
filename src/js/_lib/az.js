@@ -147,7 +147,6 @@ class A2ZPopup{
 	}
 
 	processA2ZData(){
-		console.log('this.data', this.data)
 		for (const key in this.data) {
 			if (this.data.hasOwnProperty(key)) {
 				this.letters.push(key);

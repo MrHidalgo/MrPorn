@@ -160,7 +160,7 @@ function initCategoryPage() {
 	function createSidebar() {
 		let parent = this;
 
-		if (!desktopMenuList || desktopMenuList.children.length == 0) {
+		if (!desktopMenuList || desktopMenuList.children.length == 0 || bodyClasses.contains('home')) {
 			renderCategorySidebar(filterA2z ? a2zCategories : categoryItems);
 		}
 
@@ -268,10 +268,6 @@ function initCategoryPage() {
 				categoryFilterOptions.classList.add('open');
 			}
 		});
-
-		// if(bodyClasses.contains('home')){
-		// 	return;
-		// }
 
 
 		if(filterScroll){

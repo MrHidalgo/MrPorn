@@ -514,8 +514,6 @@ var A2ZPopup = /*#__PURE__*/function () {
   }, {
     key: "processA2ZData",
     value: function processA2ZData() {
-      console.log('this.data', this.data);
-
       for (var key in this.data) {
         if (this.data.hasOwnProperty(key)) {
           this.letters.push(key);
@@ -678,80 +676,6 @@ var A2ZPopup = /*#__PURE__*/function () {
 
   return A2ZPopup;
 }();
-
-var CategoryTypeFilter = /*#__PURE__*/function () {
-  function CategoryTypeFilter() {
-    _classCallCheck(this, CategoryTypeFilter);
-
-    this.reviewTypeSlider = document.querySelector('.review_type_slider');
-    this.rtsThumb = document.querySelector('.review_type_slider_thumb');
-    this.currentFilter = 'all';
-    this.typeFilter = document.querySelector('.review_type_trigger');
-    this.reportBtn = document.querySelector('.additional_action.report');
-    this.typeTriggerBtn = document.querySelector('.review_type_trigger-outer');
-    this.additionalActions = document.querySelector('.review_type_trigger-dropdown');
-    this.reportModal = new ReportModal();
-    this.timeoutId = null;
-    this.init();
-  }
-
-  _createClass(CategoryTypeFilter, [{
-    key: "init",
-    value: function init() {
-      var _this$typeFilter,
-          _this = this;
-
-      if (!isMobileOrTablet) {
-        this.parentContainer = document.querySelector('.category_header');
-
-        if (document.body.classList.contains('category')) {
-          this.initFilterEvents();
-        }
-      }
-
-      this.checkAvailability();
-      var parent = this;
-      (_this$typeFilter = this.typeFilter) === null || _this$typeFilter === void 0 ? void 0 : _this$typeFilter.addEventListener('click', function (evt) {
-        parent.showFilterPopup();
-      });
-      this.reportModal.initCategoryReportModal();
-      var timeoutId;
-
-      if (this.additionalActions) {
-        var _this$typeTriggerBtn, _this$typeTriggerBtn2, _this$typeTriggerBtn3;
-
-        (_this$typeTriggerBtn = this.typeTriggerBtn) === null || _this$typeTriggerBtn === void 0 ? void 0 : _this$typeTriggerBtn.addEventListener('mouseover', function () {
-          clearTimeout(timeoutId);
-
-          _this.additionalActions.classList.add('open');
-        });
-        (_this$typeTriggerBtn2 = this.typeTriggerBtn) === null || _this$typeTriggerBtn2 === void 0 ? void 0 : _this$typeTriggerBtn2.addEventListener('mouseout', function () {
-          timeoutId = setTimeout(function () {
-            _this.additionalActions.classList.remove('open');
-          }, 700); // 2000 milliseconds = 2 seconds
-        });
-        (_this$typeTriggerBtn3 = this.typeTriggerBtn) === null || _this$typeTriggerBtn3 === void 0 ? void 0 : _this$typeTriggerBtn3.addEventListener('click', function () {
-          if (_this.additionalActions.classList.contains('open')) {
-            clearTimeout(timeoutId);
-
-            _this.additionalActions.classList.remove('open');
-          } else {
-            _this.additionalActions.classList.add('open');
-          }
-        });
-      }
-    }
-  }, {
-    key: "getFilterOptions",
-    value: function getFilterOptions() {
-      var _document$querySelect9;
-
-      return (_document$querySelect9 = document.querySelector('.review_type_slider')) === null || _document$querySelect9 === void 0 ? void 0 : _document$querySelect9.innerHTML;
-    }
-  }]);
-
-  return CategoryTypeFilter;
-}();
 /*
 * Category page scripts
 * */
@@ -905,7 +829,7 @@ function initCategoryPage() {
   function createSidebar() {
     var parent = this;
 
-    if (!desktopMenuList || desktopMenuList.children.length == 0) {
+    if (!desktopMenuList || desktopMenuList.children.length == 0 || bodyClasses.contains('home')) {
       renderCategorySidebar(filterA2z ? a2zCategories : categoryItems);
     }
 
@@ -1001,16 +925,14 @@ function initCategoryPage() {
         renderMobileCatFilters();
         categoryFilterOptions.classList.add('open');
       }
-    }); // if(bodyClasses.contains('home')){
-    // 	return;
-    // }
+    });
 
     if (filterScroll) {
       onScrollChecked(filterScroll);
     }
 
     if (!initializedListeners) {
-      var _document$querySelect10;
+      var _document$querySelect9;
 
       filterOptionScroll === null || filterOptionScroll === void 0 ? void 0 : filterOptionScroll.addEventListener('change', function () {
         onScrollChecked(this.checked);
@@ -1021,7 +943,7 @@ function initCategoryPage() {
       filterOptionRandom === null || filterOptionRandom === void 0 ? void 0 : filterOptionRandom.addEventListener('change', function () {
         gotoRandomCategory();
       });
-      (_document$querySelect10 = document.querySelector('.category-list-switcher')) === null || _document$querySelect10 === void 0 ? void 0 : _document$querySelect10.addEventListener('click', function () {
+      (_document$querySelect9 = document.querySelector('.category-list-switcher')) === null || _document$querySelect9 === void 0 ? void 0 : _document$querySelect9.addEventListener('click', function () {
         onA2ZChecked(frontListA2Z);
         frontListA2Z = !frontListA2Z;
 
@@ -1069,11 +991,11 @@ function initCategoryPage() {
       console.log('Destroying sidebar ', categorySidebar);
       setSidebarHeight();
     } else {
-      var _document$querySelect11;
+      var _document$querySelect10;
 
       createCookie("category_filter_scroll", 0, 356);
       leftSidebar === null || leftSidebar === void 0 ? void 0 : leftSidebar.classList.remove('scroll');
-      (_document$querySelect11 = document.querySelector('.category_list-sites')) === null || _document$querySelect11 === void 0 ? void 0 : _document$querySelect11.classList.add('has_sidebar');
+      (_document$querySelect10 = document.querySelector('.category_list-sites')) === null || _document$querySelect10 === void 0 ? void 0 : _document$querySelect10.classList.add('has_sidebar');
       catListSites === null || catListSites === void 0 ? void 0 : catListSites.classList.remove('scroll');
       setSidebarHeight(true);
       initStickySidebar();
@@ -1156,10 +1078,10 @@ function initCategoryPage() {
         liChar.dataset.letter = letter;
         categoryListLetters.appendChild(liChar);
         liChar.addEventListener("click", function (e) {
-          var _document$querySelect12;
+          var _document$querySelect11;
 
           var triggeredLetter = e.currentTarget.dataset.letter;
-          (_document$querySelect12 = document.querySelector('.category-list-letter.active')) === null || _document$querySelect12 === void 0 ? void 0 : _document$querySelect12.classList.remove('active');
+          (_document$querySelect11 = document.querySelector('.category-list-letter.active')) === null || _document$querySelect11 === void 0 ? void 0 : _document$querySelect11.classList.remove('active');
           var letterTop = document.querySelector(sidebarContainer + ' .category-list-item-letter.letter_' + triggeredLetter).offsetTop;
           console.log('letter top ' + triggeredLetter, letterTop);
           desktopMenuListContainer === null || desktopMenuListContainer === void 0 ? void 0 : desktopMenuListContainer.scrollTo({
@@ -2385,25 +2307,25 @@ var ReportModal = /*#__PURE__*/function () {
   }, {
     key: "addReviewReportClickListeners",
     value: function addReviewReportClickListeners() {
-      var _this2 = this;
+      var _this = this;
 
       var reportBtn = document.querySelectorAll('.report-button');
       reportBtn.forEach(function (item) {
         item.addEventListener('click', function (event) {
           var tag = event.currentTarget.dataset.tag;
 
-          _this2.injectReportReviewModal();
+          _this.injectReportReviewModal();
         });
       });
     }
   }, {
     key: "addCategoryReportClickListeners",
     value: function addCategoryReportClickListeners() {
-      var _this3 = this,
+      var _this2 = this,
+          _document$querySelect12,
           _document$querySelect13,
           _document$querySelect14,
-          _document$querySelect15,
-          _this$typeFilter2;
+          _this$typeFilter;
 
       var parent = this;
       var reportBtn = document.querySelectorAll('.additional_action.report');
@@ -2411,51 +2333,51 @@ var ReportModal = /*#__PURE__*/function () {
         item.addEventListener('click', function (event) {
           var tag = event.currentTarget.dataset.tag;
 
-          _this3.injectReportReviewModal('', 'Report a Problem for');
+          _this2.injectReportReviewModal('', 'Report a Problem for');
         });
       });
-      (_document$querySelect13 = document.querySelector('.review_type_trigger.mobile')) === null || _document$querySelect13 === void 0 ? void 0 : _document$querySelect13.addEventListener('click', function (evt) {
+      (_document$querySelect12 = document.querySelector('.review_type_trigger.mobile')) === null || _document$querySelect12 === void 0 ? void 0 : _document$querySelect12.addEventListener('click', function (evt) {
         parent.showFilterPopup();
       });
-      (_document$querySelect14 = document.querySelector('.additional_action.recommendations')) === null || _document$querySelect14 === void 0 ? void 0 : _document$querySelect14.addEventListener('click', function (event) {
-        _this3.injectReportReviewModal('recommendations', 'Website Recommendations for');
+      (_document$querySelect13 = document.querySelector('.additional_action.recommendations')) === null || _document$querySelect13 === void 0 ? void 0 : _document$querySelect13.addEventListener('click', function (event) {
+        _this2.injectReportReviewModal('recommendations', 'Website Recommendations for');
       });
-      (_document$querySelect15 = document.querySelector('.additional_action.feedback')) === null || _document$querySelect15 === void 0 ? void 0 : _document$querySelect15.addEventListener('click', function (event) {
-        _this3.injectReportReviewModal('feedback', 'Send Feedback for');
+      (_document$querySelect14 = document.querySelector('.additional_action.feedback')) === null || _document$querySelect14 === void 0 ? void 0 : _document$querySelect14.addEventListener('click', function (event) {
+        _this2.injectReportReviewModal('feedback', 'Send Feedback for');
       });
       this.checkAvailability();
       this.initTypeTriggerEvents();
       this.initFilterEvents();
-      (_this$typeFilter2 = this.typeFilter) === null || _this$typeFilter2 === void 0 ? void 0 : _this$typeFilter2.addEventListener('click', function (evt) {// parent.showFilterPopup()
+      (_this$typeFilter = this.typeFilter) === null || _this$typeFilter === void 0 ? void 0 : _this$typeFilter.addEventListener('click', function (evt) {// parent.showFilterPopup()
       });
     }
   }, {
     key: "initTypeTriggerEvents",
     value: function initTypeTriggerEvents() {
-      var _this4 = this;
+      var _this3 = this;
 
       var timeoutId;
 
       if (this.additionalActions) {
-        var _this$typeTriggerBtn4, _this$typeTriggerBtn5, _this$typeTriggerBtn6;
+        var _this$typeTriggerBtn, _this$typeTriggerBtn2, _this$typeTriggerBtn3;
 
-        (_this$typeTriggerBtn4 = this.typeTriggerBtn) === null || _this$typeTriggerBtn4 === void 0 ? void 0 : _this$typeTriggerBtn4.addEventListener('mouseover', function () {
+        (_this$typeTriggerBtn = this.typeTriggerBtn) === null || _this$typeTriggerBtn === void 0 ? void 0 : _this$typeTriggerBtn.addEventListener('mouseover', function () {
           clearTimeout(timeoutId);
 
-          _this4.additionalActions.classList.add('open');
+          _this3.additionalActions.classList.add('open');
         });
-        (_this$typeTriggerBtn5 = this.typeTriggerBtn) === null || _this$typeTriggerBtn5 === void 0 ? void 0 : _this$typeTriggerBtn5.addEventListener('mouseout', function () {
+        (_this$typeTriggerBtn2 = this.typeTriggerBtn) === null || _this$typeTriggerBtn2 === void 0 ? void 0 : _this$typeTriggerBtn2.addEventListener('mouseout', function () {
           timeoutId = setTimeout(function () {
-            _this4.additionalActions.classList.remove('open');
+            _this3.additionalActions.classList.remove('open');
           }, 700); // 2000 milliseconds = 2 seconds
         });
-        (_this$typeTriggerBtn6 = this.typeTriggerBtn) === null || _this$typeTriggerBtn6 === void 0 ? void 0 : _this$typeTriggerBtn6.addEventListener('click', function () {
-          if (_this4.additionalActions.classList.contains('open')) {
+        (_this$typeTriggerBtn3 = this.typeTriggerBtn) === null || _this$typeTriggerBtn3 === void 0 ? void 0 : _this$typeTriggerBtn3.addEventListener('click', function () {
+          if (_this3.additionalActions.classList.contains('open')) {
             clearTimeout(timeoutId);
 
-            _this4.additionalActions.classList.remove('open');
+            _this3.additionalActions.classList.remove('open');
           } else {
-            _this4.additionalActions.classList.add('open');
+            _this3.additionalActions.classList.add('open');
           }
         });
       }
@@ -2463,7 +2385,7 @@ var ReportModal = /*#__PURE__*/function () {
   }, {
     key: "addReviewReportItemClickListeners",
     value: function addReviewReportItemClickListeners() {
-      var _this5 = this;
+      var _this4 = this;
 
       var listItems = document.querySelectorAll('.boogie-list-item');
       listItems.forEach(function (item) {
@@ -2471,7 +2393,7 @@ var ReportModal = /*#__PURE__*/function () {
           var tag = event.currentTarget.dataset.tag;
           var desc = event.currentTarget.dataset.tag;
 
-          _this5.showReportForm(tag);
+          _this4.showReportForm(tag);
 
           document.querySelector('.boogie-fields textarea').focus();
         });
@@ -2548,7 +2470,7 @@ var ReportModal = /*#__PURE__*/function () {
   }, {
     key: "showReportForm",
     value: function showReportForm(tag) {
-      var _this6 = this;
+      var _this5 = this;
 
       var changeBack = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : false;
       var parent = this;
@@ -2565,9 +2487,9 @@ var ReportModal = /*#__PURE__*/function () {
       var reportFormContent = "<p>".concat(desc, "</p>\n\n        <div class=\"boogie-disclaimer\">\n        ").concat((selectedTag === null || selectedTag === void 0 ? void 0 : selectedTag.disclaimer) || "<p>Please note that Mr. Porn Geek doesn't manage any of the third-party platforms he reviews. If you have a problem with payments, content or something else, contact the site directly.</p><p>Mr. Porn Geek's reviews are written in a comedic way and with parody of the industry as its central focus. The character himself is fictional, and is merely an attempt to be a satirical take on the business of adult entertainment.</p>", "\n\n        </div>\n\n        <form method=\"post\" class=\"boogie-form\" action=\"#\" data-code=\"broke\">\n        \t<input type=\"hidden\" class=\"boogie-input\" name=\"tag\" value=\"").concat(reportType, "\">\n          <div class=\"boogie-form-body\">\n            <div class=\"boogie-fields\">\n              <div class=\"boogie-field boogie-field-textarea\">\n                <textarea class=\"boogie-input\" id=\"message\" name=\"message\" placeholder=\"Please enter details of your request\"></textarea>\n              </div>\n\n              <div class=\"boogie-field\">\n                <input class=\"boogie-input\" type=\"text\" id=\"name\" name=\"name\" placeholder=\"Your Name\">\n              </div>\n\n              <div class=\"boogie-field\">\n                <input class=\"boogie-input\" type=\"email\" id=\"email\" name=\"email\" placeholder=\"Your Email\">\n              </div>\n            </div>\n\n            <div class=\"boogie-checkbox\">\n              <input class=\"boogie-checkbox-input\" type=\"checkbox\" id=\"boogie-checkbox-input\" name=\"checkbox\">\n\n              <label class=\"boogie-checkbox-label\" for=\"boogie-checkbox-input\">").concat(checkboxLabel, "</label>\n            </div>\n          </div>\n\n          <hr>\n\n          <div class=\"boogie-form-footer\">\n            <button class=\"btn btn-secondary btn-back\" type=\"button\" ").concat(changeBack ? 'data-micromodal-close' : '', ">\n            \t").concat(changeBack ? '' : '<svg class="icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0.5 18 11">\n								<path d="M17.738 5.38997L12.982 0.747973C12.8149 0.586608 12.5918 0.496418 12.3595 0.496418C12.1272 0.496418 11.9041 0.586608 11.737 0.747973C11.6555 0.826858 11.5906 0.921336 11.5464 1.02579C11.5021 1.13024 11.4793 1.24253 11.4793 1.35597C11.4793 1.46942 11.5021 1.58171 11.5464 1.68616C11.5906 1.79061 11.6555 1.88509 11.737 1.96397L14.989 5.13997L0.881 5.13997C0.766747 5.13852 0.653327 5.15959 0.547217 5.20197C0.441107 5.24435 0.344385 5.30722 0.262575 5.38699C0.180765 5.46676 0.115469 5.56186 0.0704156 5.66687C0.0253626 5.77187 0.0014352 5.88472 -2.405e-07 5.99897C0.0028998 6.22954 0.0972146 6.44953 0.262221 6.6106C0.427228 6.77167 0.649428 6.86064 0.88 6.85797L14.99 6.85797L11.738 10.033C11.6565 10.1118 11.5917 10.2062 11.5474 10.3105C11.5032 10.4149 11.4803 10.5271 11.4803 10.6405C11.4803 10.7538 11.5032 10.866 11.5474 10.9704C11.5917 11.0748 11.6565 11.1692 11.738 11.248C11.9045 11.4107 12.1282 11.5016 12.361 11.501C12.586 11.501 12.811 11.416 12.983 11.248L17.739 6.60597C17.8205 6.52717 17.8853 6.43278 17.9296 6.32841C17.9738 6.22405 17.9967 6.11184 17.9967 5.99847C17.9967 5.88511 17.9738 5.7729 17.9296 5.66853C17.8853 5.56416 17.8205 5.46977 17.739 5.39097L17.738 5.38997Z"></path>\n							</svg>', "\n\t\t\t\t\t\t\t").concat(changeBack ? 'Close' : 'Back', "</button>\n\n            <button class=\"btn btn-success btn-submit submit-report\" type=\"submit\">\n              <span class=\"btn-text\">Submit</span>\n              <div class=\"lds-dual-ring\"></div>\n            </button>\n          </div>\n        </form>");
       document.querySelector('#boogie-modal .micromodal-body').innerHTML = reportFormContent;
       document.querySelector('.boogie-form-footer .btn-back').addEventListener('click', function (event) {
-        document.querySelector('#boogie-modal .micromodal-body').innerHTML = _this6.getReportBodyContent();
+        document.querySelector('#boogie-modal .micromodal-body').innerHTML = _this5.getReportBodyContent();
 
-        _this6.addReviewReportItemClickListeners();
+        _this5.addReviewReportItemClickListeners();
       }); // document.querySelector('.boogie-form input').addEventListener('change', (event) => {
       //
       // });
@@ -2576,13 +2498,13 @@ var ReportModal = /*#__PURE__*/function () {
       var email = document.querySelector('.boogie-input[name="email"]');
       var message = document.querySelector('.boogie-input[name="message"]');
       var debouncedValidateName = debounce(function () {
-        return _this6.validateField(name);
+        return _this5.validateField(name);
       }, 300);
       var debouncedValidateMessage = debounce(function () {
-        return _this6.validateField(message);
+        return _this5.validateField(message);
       }, 300);
       var debouncedValidateEmail = debounce(function () {
-        return _this6.validateField(email);
+        return _this5.validateField(email);
       }, 300);
       name.addEventListener('input', debouncedValidateName);
       message.addEventListener('input', debouncedValidateMessage);
@@ -2597,7 +2519,7 @@ var ReportModal = /*#__PURE__*/function () {
     value: function debounce(func, delay) {
       var timeout;
       return function () {
-        var _this7 = this;
+        var _this6 = this;
 
         for (var _len = arguments.length, args = new Array(_len), _key = 0; _key < _len; _key++) {
           args[_key] = arguments[_key];
@@ -2605,7 +2527,7 @@ var ReportModal = /*#__PURE__*/function () {
 
         clearTimeout(timeout);
         timeout = setTimeout(function () {
-          return func.apply(_this7, args);
+          return func.apply(_this6, args);
         }, delay);
       };
     }
@@ -2699,7 +2621,7 @@ var ReportModal = /*#__PURE__*/function () {
   }, {
     key: "submitForm",
     value: function submitForm() {
-      var _this8 = this;
+      var _this7 = this;
 
       var tag = document.querySelector('.boogie-input[name="tag"]').value.trim();
       var name = document.querySelector('.boogie-input[name="name"]').value.trim();
@@ -2745,11 +2667,11 @@ var ReportModal = /*#__PURE__*/function () {
         }
       }).then(function (responseData) {
         if (responseData.success) {
-          _this8.showSuccessDialog();
+          _this7.showSuccessDialog();
         } else {
           console.log('error');
 
-          _this8.showSuccessDialog();
+          _this7.showSuccessDialog();
         }
       })["catch"](function (error) {
         console.error("Error:", error);
@@ -2758,10 +2680,10 @@ var ReportModal = /*#__PURE__*/function () {
   }, {
     key: "generateTypeFilterPopupContent",
     value: function generateTypeFilterPopupContent() {
-      var _document$querySelect16;
+      var _document$querySelect15;
 
       var withParent = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : false;
-      var filterOptions = (_document$querySelect16 = document.querySelector('.review_type_slider')) === null || _document$querySelect16 === void 0 ? void 0 : _document$querySelect16.innerHTML;
+      var filterOptions = (_document$querySelect15 = document.querySelector('.review_type_slider')) === null || _document$querySelect15 === void 0 ? void 0 : _document$querySelect15.innerHTML;
       var popupContent = "\n\t\t\t<div class=\"micromodal-overlay\" tabindex=\"-1\">\n\t\t\t\t<div class=\"micromodal-container custom-scrollbar\" role=\"dialog\" aria-modal=\"true\" aria-labelledby=\"boogie-title\">\n\t\t\t\t  <div class=\"micromodal-content filter_type_content\" data-type=\"all\">\n\t\t\t\t\t  <div class=\"micromodal-header\">\n\t\t\t\t\t\t\t<h4 class=\"micromodal-title\" id=\"boogie-title\">\n\t\t\t\t\t\t\t\t<span class=\"inline-icon icon-thumbsup\"></span>\n\n\t\t\t\t\t\t\t\t<div class=\"micromodal-title-text\">\n\t\t\t\t\t\t\t\t\t<span>Filter by Free or Premium</span>\n\t\t\t\t\t\t\t\t\t<span id=\"report_review_title\" class=\"color-primary\"></span>\n\t\t\t\t\t\t\t\t</div>\n\t\t\t\t\t\t\t</h4>\n\t\t\t\t\t\t\t<div class=\"micromodal-close\" data-micromodal-close=\"\">\n\t\t\t\t\t\t\t\t<svg class=\"icon\" xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0.51 0.51 22.99 22.99\" width=\"24px\" height=\"24px\">\n\t\t\t\t\t\t\t\t<path d=\"M23.1294 21.4152L2.58488 0.870773C2.10409 0.38998 1.33062 0.383984 0.85722 0.85738C0.383824 1.33078 0.38982 2.10425 0.870613 2.58504L21.4151 23.1295C21.8959 23.6103 22.6694 23.6163 23.1428 23.1429C23.6161 22.6695 23.6101 21.896 23.1294 21.4152Z\"></path>\n\t\t\t\t\t\t\t\t<path d=\"M21.415 0.870638L0.870529 21.4151C0.389736 21.8959 0.38374 22.6694 0.857136 23.1428C1.33053 23.6162 2.10401 23.6102 2.5848 23.1294L23.1293 2.58491C23.6101 2.10412 23.6161 1.33064 23.1427 0.857245C22.6693 0.383849 21.8958 0.389845 21.415 0.870638Z\"></path>\n\t\t\t\t\t\t\t\t</svg>\n\t\t\t\t\t\t\t</div>\n\t\t\t\t\t  </div>\n\t\t\t\t\t   <hr>\n\n\t\t\t\t\t  <div class=\"micromodal-body\">\n\t\t\t\t\t\t\t<div>\n\t\t\t\t\t\t\t\t<div class=\"review_type_slider mobile\">\n\t\t\t\t\t\t\t\t\t".concat(filterOptions, "\n\t\t\t\t\t\t\t\t</div>\n\t\t\t\t\t\t\t</div>\n\t\t\t\t\t\t\t<div class=\"review_type_slider_status\"></div>\n\t\t\t\t\t\t\t<div class=\"color-secondary\">Additional Actions</div>\n\t\t\t\t\t\t\t<ul class=\"additional_actions boogie-list\">\n\t\t\t\t\t\t\t\t<li class=\"boogie-list-item problem\" data-icon=\"problem\" data-tag=\"problem\">\n\t\t\t\t\t\t\t\t\t\t<div class=\"boogie-list-text\">\n\t\t\t\t\t\t\t\t\t\t\t<span class=\"inline-icon icon-problem\"></span>\n\t\t\t\t\t\t\t\t\t\t\t<div>Report a Problem</div>\n\t\t\t\t\t\t\t\t\t\t</div>\n\t\t\t\t\t\t\t\t\t\t<svg class=\"arrow\" width=\"20\" height=\"20\" xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0.5 18 11\" fill=\"currentColor\">\n\t\t\t\t\t\t\t\t\t\t\t<path d=\"M17.738 5.38997L12.982 0.747973C12.8149 0.586608 12.5918 0.496418 12.3595 0.496418C12.1272 0.496418 11.9041 0.586608 11.737 0.747973C11.6555 0.826858 11.5906 0.921336 11.5464 1.02579C11.5021 1.13024 11.4793 1.24253 11.4793 1.35597C11.4793 1.46942 11.5021 1.58171 11.5464 1.68616C11.5906 1.79061 11.6555 1.88509 11.737 1.96397L14.989 5.13997L0.881 5.13997C0.766747 5.13852 0.653327 5.15959 0.547217 5.20197C0.441107 5.24435 0.344385 5.30722 0.262575 5.38699C0.180765 5.46676 0.115469 5.56186 0.0704156 5.66687C0.0253626 5.77187 0.0014352 5.88472 -2.405e-07 5.99897C0.0028998 6.22954 0.0972146 6.44953 0.262221 6.6106C0.427228 6.77167 0.649428 6.86064 0.88 6.85797L14.99 6.85797L11.738 10.033C11.6565 10.1118 11.5917 10.2062 11.5474 10.3105C11.5032 10.4149 11.4803 10.5271 11.4803 10.6405C11.4803 10.7538 11.5032 10.866 11.5474 10.9704C11.5917 11.0748 11.6565 11.1692 11.738 11.248C11.9045 11.4107 12.1282 11.5016 12.361 11.501C12.586 11.501 12.811 11.416 12.983 11.248L17.739 6.60597C17.8205 6.52717 17.8853 6.43278 17.9296 6.32841C17.9738 6.22405 17.9967 6.11184 17.9967 5.99847C17.9967 5.88511 17.9738 5.7729 17.9296 5.66853C17.8853 5.56416 17.8205 5.46977 17.739 5.39097L17.738 5.38997Z\"></path>\n\t\t\t\t\t\t\t\t\t\t</svg>\n\t\t\t\t\t\t\t\t</li>\n\t\t\t\t\t\t\t\t<li class=\"boogie-list-item recommendations\" data-icon=\"recommendations\" data-tag=\"recommendations\">\n\t\t\t\t\t\t\t\t\t\t<div class=\"boogie-list-text\">\n\t\t\t\t\t\t\t\t\t\t\t<span class=\"inline-icon icon-recommendations\"></span>\n\t\t\t\t\t\t\t\t\t\t\t<div>Site Recommendations</div>\n\t\t\t\t\t\t\t\t\t\t</div>\n\t\t\t\t\t\t\t\t\t\t<svg class=\"arrow\" width=\"20\" height=\"20\" xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0.5 18 11\" fill=\"currentColor\">\n\t\t\t\t\t\t\t\t\t\t\t<path d=\"M17.738 5.38997L12.982 0.747973C12.8149 0.586608 12.5918 0.496418 12.3595 0.496418C12.1272 0.496418 11.9041 0.586608 11.737 0.747973C11.6555 0.826858 11.5906 0.921336 11.5464 1.02579C11.5021 1.13024 11.4793 1.24253 11.4793 1.35597C11.4793 1.46942 11.5021 1.58171 11.5464 1.68616C11.5906 1.79061 11.6555 1.88509 11.737 1.96397L14.989 5.13997L0.881 5.13997C0.766747 5.13852 0.653327 5.15959 0.547217 5.20197C0.441107 5.24435 0.344385 5.30722 0.262575 5.38699C0.180765 5.46676 0.115469 5.56186 0.0704156 5.66687C0.0253626 5.77187 0.0014352 5.88472 -2.405e-07 5.99897C0.0028998 6.22954 0.0972146 6.44953 0.262221 6.6106C0.427228 6.77167 0.649428 6.86064 0.88 6.85797L14.99 6.85797L11.738 10.033C11.6565 10.1118 11.5917 10.2062 11.5474 10.3105C11.5032 10.4149 11.4803 10.5271 11.4803 10.6405C11.4803 10.7538 11.5032 10.866 11.5474 10.9704C11.5917 11.0748 11.6565 11.1692 11.738 11.248C11.9045 11.4107 12.1282 11.5016 12.361 11.501C12.586 11.501 12.811 11.416 12.983 11.248L17.739 6.60597C17.8205 6.52717 17.8853 6.43278 17.9296 6.32841C17.9738 6.22405 17.9967 6.11184 17.9967 5.99847C17.9967 5.88511 17.9738 5.7729 17.9296 5.66853C17.8853 5.56416 17.8205 5.46977 17.739 5.39097L17.738 5.38997Z\"></path>\n\t\t\t\t\t\t\t\t\t\t</svg>\n\t\t\t\t\t\t\t\t</li>\n\t\t\t\t\t\t\t\t<li class=\"boogie-list-item feedback\" data-icon=\"feedback\" data-tag=\"feedback\">\n\t\t\t\t\t\t\t\t\t<div class=\"boogie-list-text\">\n\t\t\t\t\t\t\t\t\t\t\t<span class=\"inline-icon icon-feedback\"></span>\n\t\t\t\t\t\t\t\t\t\t\t<div>Send feedback</div>\n\t\t\t\t\t\t\t\t\t\t</div>\n\t\t\t\t\t\t\t\t\t\t<svg class=\"arrow\" width=\"20\" height=\"20\" xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0.5 18 11\" fill=\"currentColor\">\n\t\t\t\t\t\t\t\t\t\t\t<path d=\"M17.738 5.38997L12.982 0.747973C12.8149 0.586608 12.5918 0.496418 12.3595 0.496418C12.1272 0.496418 11.9041 0.586608 11.737 0.747973C11.6555 0.826858 11.5906 0.921336 11.5464 1.02579C11.5021 1.13024 11.4793 1.24253 11.4793 1.35597C11.4793 1.46942 11.5021 1.58171 11.5464 1.68616C11.5906 1.79061 11.6555 1.88509 11.737 1.96397L14.989 5.13997L0.881 5.13997C0.766747 5.13852 0.653327 5.15959 0.547217 5.20197C0.441107 5.24435 0.344385 5.30722 0.262575 5.38699C0.180765 5.46676 0.115469 5.56186 0.0704156 5.66687C0.0253626 5.77187 0.0014352 5.88472 -2.405e-07 5.99897C0.0028998 6.22954 0.0972146 6.44953 0.262221 6.6106C0.427228 6.77167 0.649428 6.86064 0.88 6.85797L14.99 6.85797L11.738 10.033C11.6565 10.1118 11.5917 10.2062 11.5474 10.3105C11.5032 10.4149 11.4803 10.5271 11.4803 10.6405C11.4803 10.7538 11.5032 10.866 11.5474 10.9704C11.5917 11.0748 11.6565 11.1692 11.738 11.248C11.9045 11.4107 12.1282 11.5016 12.361 11.501C12.586 11.501 12.811 11.416 12.983 11.248L17.739 6.60597C17.8205 6.52717 17.8853 6.43278 17.9296 6.32841C17.9738 6.22405 17.9967 6.11184 17.9967 5.99847C17.9967 5.88511 17.9738 5.7729 17.9296 5.66853C17.8853 5.56416 17.8205 5.46977 17.739 5.39097L17.738 5.38997Z\"></path>\n\t\t\t\t\t\t\t\t\t\t</svg>\n\t\t\t\t\t\t\t\t</li>\n\t\t\t\t\t\t\t</ul>\n\t\t\t\t\t  </div>\n\n\t\t\t\t\t\t<div class=\"loading_spinner mobile\"></div>\n\t\t\t\t\t</div>\n\t\t\t\t</div>\n\t\t\t  </div>\n\t\t");
 
       if (withParent) {
@@ -2862,7 +2784,7 @@ var ReportModal = /*#__PURE__*/function () {
   }, {
     key: "onOptionClicked",
     value: function onOptionClicked(target) {
-      var _this$parentContainer, _document$querySelect17, _document$querySelect18;
+      var _this$parentContainer, _document$querySelect16, _document$querySelect17;
 
       var sitesArchive = document.querySelector('.category_sites.cat_archive');
       var type = target.dataset.type;
@@ -2898,6 +2820,7 @@ var ReportModal = /*#__PURE__*/function () {
 
       var siteType = target.dataset.type;
       setWithExpiry('term_filter_' + document.body.dataset.page, siteType, 3000 * 60 * 1000);
+      setWithExpiry('term_filter_id', document.body.dataset.page, 3000 * 60 * 1000);
       this.currentFilter = siteType;
 
       if (this.filterTypeContainer) {
@@ -2906,8 +2829,8 @@ var ReportModal = /*#__PURE__*/function () {
 
       (_this$parentContainer = this.parentContainer.querySelector('.review_type_slider .option.active')) === null || _this$parentContainer === void 0 ? void 0 : _this$parentContainer.classList.remove('active');
       this.slideToType(target);
-      (_document$querySelect17 = document.querySelector('.review_type_container .option.active')) === null || _document$querySelect17 === void 0 ? void 0 : _document$querySelect17.classList.remove('active');
-      (_document$querySelect18 = document.querySelector('.review_type_container .option.' + siteType)) === null || _document$querySelect18 === void 0 ? void 0 : _document$querySelect18.classList.add('active');
+      (_document$querySelect16 = document.querySelector('.review_type_container .option.active')) === null || _document$querySelect16 === void 0 ? void 0 : _document$querySelect16.classList.remove('active');
+      (_document$querySelect17 = document.querySelector('.review_type_container .option.' + siteType)) === null || _document$querySelect17 === void 0 ? void 0 : _document$querySelect17.classList.add('active');
       target.classList.add('active');
       console.log("Switching to ".concat(siteType));
       sitesArchive.dataset.type = siteType;
@@ -3031,7 +2954,7 @@ var ReportModal = /*#__PURE__*/function () {
   }, {
     key: "showProgress",
     value: function showProgress() {
-      var _this9 = this;
+      var _this8 = this;
 
       var isMobile = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : false;
       var progress = document.querySelector('.loading_spinner.desktop');
@@ -3046,7 +2969,7 @@ var ReportModal = /*#__PURE__*/function () {
           progress.classList.remove('show');
 
           if (isMobileOrTablet || window.innerWidth < 768) {
-            _this9.filterPopupContent = document.querySelector('#boogie-modal').innerHTML;
+            _this8.filterPopupContent = document.querySelector('#boogie-modal').innerHTML;
             MicroModal.close('boogie-modal');
           }
         }, 2000);
@@ -3055,22 +2978,22 @@ var ReportModal = /*#__PURE__*/function () {
   }, {
     key: "initPopupEvents",
     value: function initPopupEvents() {
-      var _document$querySelect19, _document$querySelect20, _document$querySelect21;
+      var _document$querySelect18, _document$querySelect19, _document$querySelect20;
 
       var parent = this;
-      (_document$querySelect19 = document.querySelector('.boogie-list-item.problem')) === null || _document$querySelect19 === void 0 ? void 0 : _document$querySelect19.addEventListener('click', function (evt) {
+      (_document$querySelect18 = document.querySelector('.boogie-list-item.problem')) === null || _document$querySelect18 === void 0 ? void 0 : _document$querySelect18.addEventListener('click', function (evt) {
         evt.preventDefault(); // MicroModal.close('type-filter-modal');
         // document.querySelector('#type-filter-modal')?.remove()
         // parent.injectReportReviewModal('', 'Report a Problem for')
 
         parent.switchToReport();
       });
-      (_document$querySelect20 = document.querySelector('.boogie-list-item.recommendations')) === null || _document$querySelect20 === void 0 ? void 0 : _document$querySelect20.addEventListener('click', function (evt) {
+      (_document$querySelect19 = document.querySelector('.boogie-list-item.recommendations')) === null || _document$querySelect19 === void 0 ? void 0 : _document$querySelect19.addEventListener('click', function (evt) {
         evt.preventDefault(); // MicroModal.close('type-filter-modal');
 
         parent.injectReportReviewModal('recommendations', 'Website Recommendations for'); // parent.showReportForm('recommendations')
       });
-      (_document$querySelect21 = document.querySelector('.boogie-list-item.feedback')) === null || _document$querySelect21 === void 0 ? void 0 : _document$querySelect21.addEventListener('click', function (evt) {
+      (_document$querySelect20 = document.querySelector('.boogie-list-item.feedback')) === null || _document$querySelect20 === void 0 ? void 0 : _document$querySelect20.addEventListener('click', function (evt) {
         evt.preventDefault(); // MicroModal.close('type-filter-modal');
 
         parent.injectReportReviewModal('feedback', 'Send Feedback for');

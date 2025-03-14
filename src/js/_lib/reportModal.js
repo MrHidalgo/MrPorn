@@ -731,6 +731,7 @@ class ReportModal{
 		}
 		let siteType = target.dataset.type;
 		setWithExpiry('term_filter_'+document.body.dataset.page, siteType, 3000*60*1000);
+		setWithExpiry('term_filter_id', document.body.dataset.page, 3000*60*1000);
 
 		this.currentFilter = siteType
 		if (this.filterTypeContainer) {
