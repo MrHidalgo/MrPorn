@@ -659,11 +659,6 @@ function initCategoryPage() {
 			processCategoryDataFromDom();
 		}
 
-
-
-		console.log(sidebarCategories)
-
-
 		initCategorySidebar()
 		initLetterScroll()
 	}
