@@ -8,12 +8,12 @@
 	margin: 0 4px;
 	overflow: hidden;
 
-	div, ul{scrollbar-color: var(--scrollbar-color, #131313 #525252);}
-	div::-webkit-scrollbar, ul::-webkit-scrollbar {width: 10px; }
-	div::-webkit-scrollbar-corner, ul::-webkit-scrollbar-corner { background: rgba(0,0,0,0); }
-	div::-webkit-scrollbar-track, ul::-webkit-scrollbar-track{background: #131313; border-left:1px solid #333;}
-	div::-webkit-scrollbar-thumb, ul::-webkit-scrollbar-thumb { background: #525252; }
-	div:hover::-webkit-scrollbar-thumb, ul:hover::-webkit-scrollbar-thumb { background: #323232; }
+	//div, ul{scrollbar-color: var(--scrollbar-color, #131313 #525252);}
+	//div::-webkit-scrollbar, ul::-webkit-scrollbar {width: 10px; }
+	//div::-webkit-scrollbar-corner, ul::-webkit-scrollbar-corner { background: rgba(0,0,0,0); }
+	//div::-webkit-scrollbar-track, ul::-webkit-scrollbar-track{background: #131313; border-left:1px solid #333;}
+	//div::-webkit-scrollbar-thumb, ul::-webkit-scrollbar-thumb { background: #525252; }
+	//div:hover::-webkit-scrollbar-thumb, ul:hover::-webkit-scrollbar-thumb { background: #323232; }
 
 	&__thumb{
 		position: absolute;
@@ -35,6 +35,7 @@
 		overflow: auto;
 		-webkit-overflow-scrolling: touch;
 		counter-reset: number 0;
+
 		scrollbar-color: #131313 #525252;
 		&::-webkit-scrollbar{width: 10px; }
 		&::-webkit-scrollbar-corner{ background: rgba(0,0,0,0); }
