@@ -479,18 +479,8 @@
 			font-size: 11.3px;
 		}
 	}
-	.list__box__item{
-		border-bottom: 1px solid #ededed;
-
-		@include adaptive(991.98) {
-			border: none;
-		}
-	}
 	.list__box__item-link{
-		color: #113d74;
-		@include adaptive(991.98) {
-			color: #000;
-		}
+		color: #000;
 	}
 	.list__info p{
 		color: #0b0d28;
