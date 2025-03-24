@@ -162,14 +162,6 @@ let lastMobileSimilarSite;
 				hide(document.querySelector('.awe_search_result'))
 			}
 
-			// if(_ev.closest('.scroll_to_category')){
-			// 	if(document.body.classList.contains('home') && !document.body.classList.contains('is-mobile')){
-			// 		ev.preventDefault();
-			// 		scrollToCategoryOnHome(ev, _ev.closest('.scroll_to_category'));
-			// 		hide(document.querySelector('[search-drop-js]'));
-			// 	}
-			//
-			// }
 
 			if(_ev.classList.contains('search_category_item')){
 				if(document.body.classList.contains('home') && !document.body.classList.contains('is-mobile')){
@@ -286,76 +278,6 @@ let lastMobileSimilarSite;
 				}
 			}, false);
 		}
-	};
-
-
-	const sortCB = () => {
-		const sortToggle = () => {
-			const toggleSort = document.querySelector('[sort-toggle-js]'),
-				nodeSort = document.querySelector('[sort-node-js]');
-
-			if(toggleSort){
-				toggleSort.addEventListener('click', (ev) => {
-					if(nodeSort.innerHTML.trim()==''){
-						renderSorting();
-
-						sortDropInner();
-						sortCollapse();
-					}
-
-					nodeSort.classList.toggle('is-open');
-				}, false);
-			}
-		};
-		const sortDropInner = () => {
-			const links = document.querySelectorAll('.sort__drop-link'),
-				nodeDropInner = document.querySelector('.sort__drop-inner');
-
-			let i = null,
-				len = links.length;
-
-			for(i = 0; i < len; i++) {
-				links[i].addEventListener('click', (ev) => {
-					const el = ev.currentTarget;
-
-					if(el.classList.contains('is-active')) {
-						el.classList.remove('is-active');
-						nodeDropInner.classList.remove('is-open');
-					} else {
-						for(let j = 0; j < links.length; j++) {
-							links[j].classList.remove('is-active');
-						}
-
-						el.classList.add('is-active');
-						nodeDropInner.classList.add('is-open');
-					}
-				}, false);
-			}
-		};
-		const sortCollapse = () => {
-			const toggles = document.querySelectorAll('[collapse-toggle-js]');
-
-			let i = null,
-				len = toggles.length;
-
-			for(i = 0; i < len; i++) {
-				toggles[i].addEventListener('click', (ev) => {
-					const el = ev.currentTarget,
-						container = document.getElementById(el.dataset.container);
-
-					if(document.querySelector('.sort__collapse-body.is-open')) {
-						document.querySelector('.sort__collapse-toggle.is-active').classList.remove('is-active');
-						document.querySelector('.sort__collapse-body.is-open').classList.remove('is-open');
-					}
-
-					el.classList.toggle('is-active');
-					container.classList.toggle('is-open');
-				}, false);
-			}
-		};
-
-		sortToggle();
-
 	};
 
 
@@ -550,12 +472,6 @@ let lastMobileSimilarSite;
 
 		viewFavoritesToggle();
 
-		// initBtcShare();
-		//sortCB();
-
-		// if(isMobileOrTablet){
-		// 	sortCB();
-		// }
 
 		goTop = document.querySelector('.go-top');
 
@@ -570,9 +486,10 @@ let lastMobileSimilarSite;
 		search();
 
 		showThumbInfoOnHover();
+		let bodyClasses = document.body.classList;
 
 
-		if(document.body.classList.contains('home')){
+		if(bodyClasses.contains('home')){
 			getLikesAndDislikes();
 			// initHomeTooltip()
 
@@ -581,7 +498,7 @@ let lastMobileSimilarSite;
 			}
 
 			visitedSites().initVisitedSites('.list__box__item')
-		}else if(document.body.classList.contains('single-blog')){
+		}else if(bodyClasses.contains('single-blog')){
 			isSingleBlog = true;
 			blogContent = document.querySelector('.blog_content');
 			if(blogContent){
@@ -589,11 +506,11 @@ let lastMobileSimilarSite;
 				blogProgressBar = document.querySelector('.blog_progress');
 				onBlogScroll()
 			}
-		} else if(document.body.classList.contains('category')) {
+		} else if(bodyClasses.contains('category')) {
 			visitedSites().initVisitedSites('.category_sites_item, .category_item_link')
-		} else if(document.body.classList.contains('single-sites')) {
+		} else if(bodyClasses.contains('single-sites')) {
 			visitedSites().initVisitedSites('.category_sites_item, .category_item_link, .category-list-link, .cat_item')
-		} else if(document.body.classList.contains('page-template-page-categories')) {
+		} else if(bodyClasses.contains('page-template-page-categories')) {
 			visitedSites().initVisitedSites('.category_item_link, .category-list-link')
 		}
 
@@ -612,6 +529,10 @@ let lastMobileSimilarSite;
 
 		showAgeVerification();
 		showAcceptCookie();
+
+		if(bodyClasses.contains('page-template-page-categories')){
+			initCategoriesPage();
+		}
 
 		// new CategoryPopup()
 	};

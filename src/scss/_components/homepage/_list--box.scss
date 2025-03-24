@@ -61,6 +61,10 @@
 		position: relative;
 		color: #ddd;
 
+		&:hover{
+			background: #f0f1f5;
+		}
+
 		@include adaptive(991.98) {
 			padding: 4px 10px 4px 5px;
 			height: auto;
