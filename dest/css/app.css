@@ -8615,7 +8615,22 @@ fieldset {
   background-image: url(../images/categories/masterbation.svg);
 }
 
+/* line 393, src/scss/_components/icons/_category_icons.scss */
+.icon-trending {
+  background-image: url(../images/categories/trending.svg);
+}
+
 /* line 396, src/scss/_components/icons/_category_icons.scss */
+.icon-trending:not(.icon-sm) {
+  width: 26px !important;
+}
+
+/* line 400, src/scss/_components/icons/_category_icons.scss */
+.icon-trending.icon-sm {
+  width: 18px;
+}
+
+/* line 407, src/scss/_components/icons/_category_icons.scss */
 .icon-circled {
   height: 22px;
   width: 22px;
