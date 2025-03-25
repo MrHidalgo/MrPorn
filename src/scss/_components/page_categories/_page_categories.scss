@@ -127,10 +127,10 @@
 			background-image: url("../images/tags/icon-age.svg");
 		}
 		&-apparel{
-			background-image: url("../images/tags/icon-apparel.svg");
+			background-image: url("../images/tags/icon-apparel.svg?1");
 		}
 		&-body{
-			background-image: url("../images/tags/icon-body.svg");
+			background-image: url("../images/tags/icon-body.svg?");
 		}
 		&-ethnicity{
 			background-image: url("../images/tags/icon-ethnicity.svg");
@@ -140,7 +140,7 @@
 			background-size: 18px;
 		}
 		&-hair{
-			background-image: url("../images/tags/icon-hair.svg");
+			background-image: url("../images/tags/icon-hair.svg?");
 		}
 		&-live-cams{
 			background-image: url("../images/tags/icon-live-cams.svg");
@@ -158,12 +158,16 @@
 			background-image: url("../images/tags/icon-production.svg?");
 			background-size: 16px;
 		}
+		&-region{
+			background-image: url("../images/tags/icon-region.svg");
+			background-size: 16px;
+		}
 		&-scene-type{
 			background-image: url("../images/tags/icon-scene-type.svg");
 			background-size: 18px;
 		}
 		&-sex-toys{
-			background-image: url("../images/tags/icon-sex-toys.svg");
+			background-image: url("../images/tags/icon-sex-toys.svg?2");
 		}
 		&-scenario{
 			background-image: url("../images/tags/icon-scenario.svg");
@@ -178,6 +182,7 @@
 		display: flex;
 		font-size: 20px;
 		background: #f3f3f3;
+		color: #000;
 		padding: 5px 10px;
 	}
 	&-categories{
@@ -186,15 +191,28 @@
 		}
 	}
 	&-more{
-		background: var(--color-cobalt-light, #dadada);
-		border-radius: 4px;
 		cursor: pointer;
-		display: block;
-		font-size: 12px;
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		gap: 7px;
+		font-size: 16px;
 		font-weight: 700;
 		line-height: 16px;
-		padding: 8px;
+		padding: 0 0 8px;
 		text-align: center;
+
+		&:after{
+			content: ' ';
+			width: 0;
+			height: 0;
+			border-style: solid;
+			border-right: 7px solid transparent;
+			border-left: 7px solid transparent;
+			border-top: 8px solid #555555;
+			border-bottom: 0;
+			margin-top: 5px;
+		}
 	}
 
 	&.show_all{

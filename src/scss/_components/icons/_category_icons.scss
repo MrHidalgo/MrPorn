@@ -392,6 +392,14 @@
 	}
 	&-trending{
 		background-image: url(../images/categories/trending.svg);
+
+		&:not(.icon-sm){
+			width: 26px !important;
+		}
+
+		&.icon-sm{
+			width: 18px;
+		}
 	}
 
 
