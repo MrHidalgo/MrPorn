@@ -9915,27 +9915,25 @@ fieldset {
 
 /* line 519, src/scss/_components/category/_sidebar.scss */
 .category-list-link::before {
-  display: none;
+  content: '';
+  display: block;
+  position: absolute;
+  z-index: 5;
+  top: 50%;
+  -webkit-transform: translateY(-50%);
+      -ms-transform: translateY(-50%);
+          transform: translateY(-50%);
+  left: 0;
+  height: 6px;
+  width: 6px;
+  -webkit-border-radius: 3px;
+          border-radius: 3px;
+  background-color: #1b4f90;
 }
 
-@media screen and (min-width: 768px) {
-  /* line 519, src/scss/_components/category/_sidebar.scss */
-  .category-list-link::before {
-    content: '';
-    display: block;
-    position: absolute;
-    z-index: 5;
-    top: 50%;
-    -webkit-transform: translateY(-50%);
-        -ms-transform: translateY(-50%);
-            transform: translateY(-50%);
-    left: 0;
-    height: 6px;
-    width: 6px;
-    -webkit-border-radius: 3px;
-            border-radius: 3px;
-    background-color: #1b4f90;
-  }
+/* line 533, src/scss/_components/category/_sidebar.scss */
+.category-list-link.trending::before {
+  display: none;
 }
 
 /* line 537, src/scss/_components/category/_sidebar.scss */

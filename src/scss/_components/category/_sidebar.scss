@@ -517,21 +517,21 @@
 
 
 		&::before{
-			display: none;
+			content: '';
+			display: block;
+			position: absolute;
+			z-index: 5;
+			top: 50%;
+			transform: translateY(-50%);
+			left: 0;
+			height: 6px;
+			width: 6px;
+			border-radius: 3px;
+			background-color: #1b4f90;
+		}
 
-			@include respond('medium'){
-				content: '';
-				display: block;
-				position: absolute;
-				z-index: 5;
-				top: 50%;
-				transform: translateY(-50%);
-				left: 0;
-				height: 6px;
-				width: 6px;
-				border-radius: 3px;
-				background-color: #1b4f90;
-			}
+		&.trending::before{
+			display: none;
 		}
 
 		&.review-category-item{

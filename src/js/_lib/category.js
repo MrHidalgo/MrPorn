@@ -43,8 +43,8 @@ function initCategoryPage() {
 	let a2zLetters = []
 	let sidebarCategories = []
 
-	let filterScroll = +getCookieMpgCookie("category_filter_scroll") ?? 0;
-	let filterA2z = bodyClasses.contains('home') ? 1:  +getCookieMpgCookie("category_filter_a2z") ?? 0;
+	let filterScroll = bodyClasses.contains('page-template-page-categories') ? 0: +getCookieMpgCookie("category_filter_scroll") ?? 0;
+	let filterA2z = (bodyClasses.contains('home') || isCategoriesPage) ? 1:  +getCookieMpgCookie("category_filter_a2z") ?? 0;
 	let filterPopular = +getCookieMpgCookie("category_filter_popular") ?? 0;
 
 	let frontListA2Z = false;
@@ -160,7 +160,7 @@ function initCategoryPage() {
 	function createSidebar() {
 		let parent = this;
 
-		if (!desktopMenuList || desktopMenuList.children.length == 0 || bodyClasses.contains('home')) {
+		if (!desktopMenuList || desktopMenuList.children.length == 0 || bodyClasses.contains('home') || isCategoriesPage) {
 			renderCategorySidebar(filterA2z ? a2zCategories : categoryItems);
 		}
 

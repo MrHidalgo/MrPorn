@@ -736,8 +736,8 @@ function initCategoryPage() {
   var a2zCategories = [];
   var a2zLetters = [];
   var sidebarCategories = [];
-  var filterScroll = (_getCookieMpgCookie = +getCookieMpgCookie("category_filter_scroll")) !== null && _getCookieMpgCookie !== void 0 ? _getCookieMpgCookie : 0;
-  var filterA2z = bodyClasses.contains('home') ? 1 : (_getCookieMpgCookie2 = +getCookieMpgCookie("category_filter_a2z")) !== null && _getCookieMpgCookie2 !== void 0 ? _getCookieMpgCookie2 : 0;
+  var filterScroll = bodyClasses.contains('page-template-page-categories') ? 0 : (_getCookieMpgCookie = +getCookieMpgCookie("category_filter_scroll")) !== null && _getCookieMpgCookie !== void 0 ? _getCookieMpgCookie : 0;
+  var filterA2z = bodyClasses.contains('home') || isCategoriesPage ? 1 : (_getCookieMpgCookie2 = +getCookieMpgCookie("category_filter_a2z")) !== null && _getCookieMpgCookie2 !== void 0 ? _getCookieMpgCookie2 : 0;
   var filterPopular = (_getCookieMpgCookie3 = +getCookieMpgCookie("category_filter_popular")) !== null && _getCookieMpgCookie3 !== void 0 ? _getCookieMpgCookie3 : 0;
   var frontListA2Z = false;
   var frontMainFilter = document.querySelector('.main_filter');
@@ -851,7 +851,7 @@ function initCategoryPage() {
   function createSidebar() {
     var parent = this;
 
-    if (!desktopMenuList || desktopMenuList.children.length == 0 || bodyClasses.contains('home')) {
+    if (!desktopMenuList || desktopMenuList.children.length == 0 || bodyClasses.contains('home') || isCategoriesPage) {
       renderCategorySidebar(filterA2z ? a2zCategories : categoryItems);
     }
 
