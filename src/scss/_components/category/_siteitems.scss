@@ -189,6 +189,21 @@
 			width: 20%;
 			max-width: 20%;
 		}
+		&.trending{
+			width: 16.666667%;
+			max-width: 16.666667%;
+
+			.category_sites_item_title{
+				font-size: 14px;
+			}
+			.trending_site-rating-number{
+				font-size: 13px;
+			}
+			.rating{
+				width: 74px;
+				height: 14px;
+			}
+		}
 		@include respond('ipad_portrait'){
 			width: 33.333333%;
 			max-width: 33.333333%;
@@ -196,7 +211,8 @@
 		}
 		@include adaptive(767) {
 			&,
-			&.col-5{
+			&.col-5,
+			&.trending{
 				width: 50%;
 				max-width: 50%;
 				padding: 10px 3px 0;

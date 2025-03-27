@@ -9931,17 +9931,19 @@ fieldset {
   background-color: #1b4f90;
 }
 
-/* line 533, src/scss/_components/category/_sidebar.scss */
-.category-list-link.trending::before {
-  display: none;
+@media screen and (max-width: 767px) {
+  /* line 534, src/scss/_components/category/_sidebar.scss */
+  .category-list-link.trending::before {
+    display: none;
+  }
 }
 
-/* line 537, src/scss/_components/category/_sidebar.scss */
+/* line 539, src/scss/_components/category/_sidebar.scss */
 .category-list-link.review-category-item {
   padding: 5px 10px 5px 55px;
 }
 
-/* line 540, src/scss/_components/category/_sidebar.scss */
+/* line 542, src/scss/_components/category/_sidebar.scss */
 .category-list-link.review-category-item .icon-category {
   position: absolute;
   left: -40px;
@@ -9951,7 +9953,7 @@ fieldset {
           transform: translateY(-50%);
 }
 
-/* line 549, src/scss/_components/category/_sidebar.scss */
+/* line 551, src/scss/_components/category/_sidebar.scss */
 .category-list-link.visited::before {
   content: '';
   background: transparent;
@@ -9968,13 +9970,13 @@ fieldset {
   margin: -6px 0;
 }
 
-/* line 563, src/scss/_components/category/_sidebar.scss */
+/* line 565, src/scss/_components/category/_sidebar.scss */
 .category-list-link.visited:hover::before {
   -webkit-animation: none;
           animation: none;
 }
 
-/* line 569, src/scss/_components/category/_sidebar.scss */
+/* line 571, src/scss/_components/category/_sidebar.scss */
 .category-list-link::after {
   content: '';
   display: inline-block;
@@ -9991,20 +9993,20 @@ fieldset {
           background-size: contain;
 }
 
-/* line 582, src/scss/_components/category/_sidebar.scss */
+/* line 584, src/scss/_components/category/_sidebar.scss */
 .category-list-link:not(.visited):hover:before {
   -webkit-animation: pulse-grey 1s infinite;
           animation: pulse-grey 1s infinite;
 }
 
-/* line 586, src/scss/_components/category/_sidebar.scss */
+/* line 588, src/scss/_components/category/_sidebar.scss */
 .category-list-link.pulse:not(.visited)::before {
   background: #2eaf61;
   -webkit-animation: pulse-grey 1s infinite;
           animation: pulse-grey 1s infinite;
 }
 
-/* line 593, src/scss/_components/category/_sidebar.scss */
+/* line 595, src/scss/_components/category/_sidebar.scss */
 .category-list-icons {
   grid-column: 2;
   display: -webkit-box;
@@ -10013,13 +10015,13 @@ fieldset {
   display: flex;
 }
 
-/* line 597, src/scss/_components/category/_sidebar.scss */
+/* line 599, src/scss/_components/category/_sidebar.scss */
 .category-list-icons:before {
   display: block;
   content: ' ';
 }
 
-/* line 603, src/scss/_components/category/_sidebar.scss */
+/* line 605, src/scss/_components/category/_sidebar.scss */
 .category-list-letters {
   display: none;
   float: right;
@@ -10030,7 +10032,7 @@ fieldset {
   text-align: center;
 }
 
-/* line 609, src/scss/_components/category/_sidebar.scss */
+/* line 611, src/scss/_components/category/_sidebar.scss */
 .category-list-letter {
   padding: 5px;
   color: #337ab7;
@@ -10038,54 +10040,54 @@ fieldset {
   cursor: pointer;
 }
 
-/* line 615, src/scss/_components/category/_sidebar.scss */
+/* line 617, src/scss/_components/category/_sidebar.scss */
 .category-list-letter.active {
   color: #000;
 }
 
-/* line 622, src/scss/_components/category/_sidebar.scss */
+/* line 624, src/scss/_components/category/_sidebar.scss */
 .header__categories-mobile .category-list-search {
   position: absolute;
   left: 15px;
   right: 15px;
 }
 
-/* line 627, src/scss/_components/category/_sidebar.scss */
+/* line 629, src/scss/_components/category/_sidebar.scss */
 .header__categories-mobile .category-list-container {
   padding-top: 45px;
 }
 
-/* line 634, src/scss/_components/category/_sidebar.scss */
+/* line 636, src/scss/_components/category/_sidebar.scss */
 .light .category-list-link {
   color: #767676;
 }
 
-/* line 637, src/scss/_components/category/_sidebar.scss */
+/* line 639, src/scss/_components/category/_sidebar.scss */
 .light .category-list-title {
   color: #4e4e4e;
 }
 
-/* line 640, src/scss/_components/category/_sidebar.scss */
+/* line 642, src/scss/_components/category/_sidebar.scss */
 .light .category-list-title .highlight {
   color: #000;
 }
 
-/* line 645, src/scss/_components/category/_sidebar.scss */
+/* line 647, src/scss/_components/category/_sidebar.scss */
 .light .category-list-item {
   border-bottom: 1px solid #e5e5e5;
 }
 
-/* line 648, src/scss/_components/category/_sidebar.scss */
+/* line 650, src/scss/_components/category/_sidebar.scss */
 .light .category-list-item.trending {
   border: 1px solid #ccc;
 }
 
-/* line 653, src/scss/_components/category/_sidebar.scss */
+/* line 655, src/scss/_components/category/_sidebar.scss */
 .light .mobile_category_name > span {
   color: #4e4e4e;
 }
 
-/* line 657, src/scss/_components/category/_sidebar.scss */
+/* line 659, src/scss/_components/category/_sidebar.scss */
 .light .category-list-link.visited::before {
   border: solid #1b4f90;
   border-width: 0 1px 1px 0;

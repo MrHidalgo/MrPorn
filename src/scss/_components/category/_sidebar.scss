@@ -530,8 +530,10 @@
 			background-color: #1b4f90;
 		}
 
-		&.trending::before{
-			display: none;
+		@include adaptive(767) {
+			&.trending::before{
+				display: none;
+			}
 		}
 
 		&.review-category-item{
