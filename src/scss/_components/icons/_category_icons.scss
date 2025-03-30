@@ -59,11 +59,16 @@
 	}
 	&-celebrity{
 		background-image: url(../images/categories/celebrity.svg);
-		width: 44px;
+
+		&:not(.icon-sm){
+			width: 44px;
+		}
 	}
 	&-black{
 		background-image: url(../images/categories/black.svg);
-		width: 41px;
+		&:not(.icon-sm) {
+			width: 41px;
+		}
 	}
 	&-escorts{
 		background-image: url(../images/categories/escorts.svg);

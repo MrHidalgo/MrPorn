@@ -443,6 +443,12 @@ let lastMobileSimilarSite;
 	 * ===================================
 	 */
 
+	const initFooterTextBehaviour = () => {
+		document.querySelector('.btn_show_more-text').addEventListener('click', function(evt){
+			evt.preventDefault();
+			document.querySelector('.footer_description').classList.add('show_all');
+		});
+	}
 
 	/**
 	 * @name initNative
@@ -498,6 +504,8 @@ let lastMobileSimilarSite;
 			}
 
 			visitedSites().initVisitedSites('.list__box__item')
+
+			initFooterTextBehaviour();
 		}else if(bodyClasses.contains('single-blog')){
 			isSingleBlog = true;
 			blogContent = document.querySelector('.blog_content');

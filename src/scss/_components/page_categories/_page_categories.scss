@@ -190,7 +190,8 @@
 		@include adaptive(767) {
 			display: grid;
 			grid-auto-rows: 100px;
-			grid-template-rows: 224px 224px;
+			grid-template-rows: auto auto;
+			grid-row-gap: 5px;
 			grid-auto-columns: calc(50% - 16px);
 			grid-auto-flow: column;
 			grid-template-columns: repeat(2, calc(50% - 16px));
@@ -203,9 +204,12 @@
 			}
 		}
 
-		.category_item:nth-child(n + 9){
-			display: none;
+		@include respond('medium'){
+			.category_item:nth-child(n + 9){
+				display: none;
+			}
 		}
+
 	}
 	&-more{
 		cursor: pointer;
@@ -236,14 +240,18 @@
 		}
 	}
 
-	&.show_all{
-		.category_item:nth-child(n + 9){
-			display: inline-block;
-		}
-		.tag-section-more{
-			display: none;
+	@include respond('medium'){
+		&.show_all{
+			.category_item:nth-child(n + 9){
+				display: inline-block;
+			}
+			.tag-section-more{
+				display: none;
+			}
 		}
 	}
+
+
 }
 
 .light{

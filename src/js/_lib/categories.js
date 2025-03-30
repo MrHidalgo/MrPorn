@@ -3,9 +3,21 @@ const initCategoriesPage = () => {
 		let tag =  tagElement.dataset.tag
 		tagElement.addEventListener('click', function(evt){
 			if(tag){
-				document.querySelector('.tag-section.tag-'+tag).scrollIntoView({
-					behavior: 'smooth'
+
+
+				let tagSection = document.querySelector('.tag-section.tag-'+tag);
+				let headerOffset = 120;
+				let elementPosition = tagSection.getBoundingClientRect().top;
+				let offsetPosition = elementPosition + window.pageYOffset - headerOffset;
+
+				window.scrollTo({
+					top: offsetPosition,
+					behavior: "smooth"
 				});
+
+				// document.querySelector('.tag-section.tag-'+tag).scrollIntoView({
+				// 	behavior: 'smooth'
+				// });
 			}
 		});
 	});

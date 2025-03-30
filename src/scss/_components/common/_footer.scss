@@ -188,15 +188,6 @@ body.chatbot_active{
 	}
 }
 .light {
-	/*.go-top{
-		background-color: rgba(0,0,0,.3);
-
-		&:hover{
-			background-color: rgba(0,0,0,.6);
-			text-decoration: none;
-		}
-	}*/
-
 	.footer__nav a:hover{
 		color: #000;
 	}
@@ -682,6 +673,45 @@ body.chatbot_active{
 		}
 		@include adaptive(767) {
 			font-size: 12px;
+		}
+
+
+
+	}
+
+	&:not(.show_all){
+		p:first-of-type{
+			display: -webkit-box;
+			-webkit-line-clamp: 4;
+			-webkit-box-orient: vertical;
+			height: 120px;
+			overflow: hidden;
+
+			@include adaptive(767) {
+				height: 85px;
+			}
+		}
+		.p1:nth-child(n + 3){
+			display: none;
+		}
+	}
+
+
+
+	.btn_show_more{
+		text-align: center;
+		padding: 10px 0 40px;
+		font-weight: 600;
+		color: #000;
+
+		&-text{
+			cursor: pointer;
+		}
+	}
+
+	&.show_all{
+		.btn_show_more{
+			display: none;
 		}
 	}
 }

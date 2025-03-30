@@ -111,11 +111,11 @@
 .category_item{
 	display: inline-block;
 	width: 25%;
-	padding: 0 5px 10px;
+	padding: 0 5px 0;
 
 	@include respond('ipad_landscape'){
 		width: 25%;
-		padding: 0 5px 10px;
+		padding: 0 5px 0;
 	}
 	@include respond('ipad_portrait'){
 		width: 33.333333%;
@@ -146,7 +146,7 @@
 			padding: 0 4px 10px;
 		}
 		@include adaptive(767) {
-			padding: 0 3px 10px;
+			padding: 0 3px 0;
 		}
 
 		&:hover{
@@ -312,7 +312,8 @@
 		width: 100%;
 		height: auto;
 		transform: scale(1);
-		transition: opacity 250ms,transform .3s;
+		transition: opacity 250ms,transform .3s !important;
+
 	}
 }
 

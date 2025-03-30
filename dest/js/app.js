@@ -682,9 +682,16 @@ var initCategoriesPage = function initCategoriesPage() {
     var tag = tagElement.dataset.tag;
     tagElement.addEventListener('click', function (evt) {
       if (tag) {
-        document.querySelector('.tag-section.tag-' + tag).scrollIntoView({
-          behavior: 'smooth'
-        });
+        var tagSection = document.querySelector('.tag-section.tag-' + tag);
+        var headerOffset = 120;
+        var elementPosition = tagSection.getBoundingClientRect().top;
+        var offsetPosition = elementPosition + window.pageYOffset - headerOffset;
+        window.scrollTo({
+          top: offsetPosition,
+          behavior: "smooth"
+        }); // document.querySelector('.tag-section.tag-'+tag).scrollIntoView({
+        // 	behavior: 'smooth'
+        // });
       }
     });
   });
@@ -4570,6 +4577,13 @@ var lastMobileSimilarSite;
    * ===================================
    */
 
+
+  var initFooterTextBehaviour = function initFooterTextBehaviour() {
+    document.querySelector('.btn_show_more-text').addEventListener('click', function (evt) {
+      evt.preventDefault();
+      document.querySelector('.footer_description').classList.add('show_all');
+    });
+  };
   /**
    * @name initNative
    *
@@ -4608,6 +4622,7 @@ var lastMobileSimilarSite;
       }
 
       visitedSites().initVisitedSites('.list__box__item');
+      initFooterTextBehaviour();
     } else if (bodyClasses.contains('single-blog')) {
       isSingleBlog = true;
       blogContent = document.querySelector('.blog_content');
