@@ -683,15 +683,13 @@ var initCategoriesPage = function initCategoriesPage() {
     tagElement.addEventListener('click', function (evt) {
       if (tag) {
         var tagSection = document.querySelector('.tag-section.tag-' + tag);
-        var headerOffset = 120;
+        var headerOffset = isMobileOrTablet ? 120 : 0;
         var elementPosition = tagSection.getBoundingClientRect().top;
         var offsetPosition = elementPosition + window.pageYOffset - headerOffset;
         window.scrollTo({
           top: offsetPosition,
           behavior: "smooth"
-        }); // document.querySelector('.tag-section.tag-'+tag).scrollIntoView({
-        // 	behavior: 'smooth'
-        // });
+        });
       }
     });
   });
