@@ -10,4 +10,24 @@
 	&_pb_30{
 		padding-bottom: 30px ;
 	}
+
+	&_separator{
+		position: relative;
+		border-bottom: 2px solid #1F559A;
+		margin: 20px;
+
+		&:before{
+			position: absolute;
+			top: -22px;
+			left: 50%;
+			margin-left: -22px;
+			content: ' ';
+			display: block;
+			height: 44px;
+			width: 44px;
+			background-image: url(../images/mpg-icon.png);
+			background-repeat: no-repeat;
+			background-size: contain;
+		}
+	}
 }
