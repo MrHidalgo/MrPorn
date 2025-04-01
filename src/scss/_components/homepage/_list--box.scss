@@ -238,12 +238,6 @@
 			@include transition(border-style, border-width);
 		}
 
-		.list__box-details {
-			/*opacity: 0;
-			visibility: hidden;*/
-			transform: translateY(0);
-			@include transition(opacity 0.55s, visibility 0.55s, transform 0.55s);
-		}
 
 		&:after {
 			content: '';
@@ -284,20 +278,12 @@
 
 		&.is-open {
 			padding-bottom: 0;
-			//margin-bottom: 30px;
 			position: relative;
 
 			@include transition(padding-bottom);
-			@include adaptive(767) {
-				/*margin-bottom: 0;*/
-			}
 
 			.list__box-body {
-				//padding-bottom: 0;
 				@include transition(padding-bottom);
-				@include adaptive(767) {
-					/*padding-bottom: 10px;*/
-				}
 			}
 		}
 	}
@@ -411,87 +397,6 @@
 		}
 	}
 
-	&-line {
-		position: relative;
-		width: 100%;
-		height: 2px;
-		background-color: rgb(25, 26, 40);
-		transition: background-color 1s ease-in-out;
-
-		u,
-		span {
-			cursor: pointer;
-			position: absolute;
-			top: 0;
-			left: 0;
-			width: 64px;
-			height: 2px;
-			background-color: #d5f34a;
-			transform: translateX(63px);
-			transform-origin: center;
-			//transition: width 0.35s ease-in-out, transform 0.35s ease-in-out, left 0.6s ease-in-out;
-			transition: width 0.35s ease-in-out, transform 0.35s ease-in-out;
-
-			//@include transition(width, transform);
-			//@include transition(width, transform, left);
-
-			&.no_anim{
-				transition:width 0.35s ease-in-out;
-			}
-
-			@include respond('ipad_pro_landscape'){
-				width: 34px;
-				left: 0;
-				transform: translateX(75px);
-			}
-
-			@include respond('ipad_pro_portrait'){
-				width: 34px;
-				left: 0;
-				transform: translateX(97.5px);
-			}
-
-
-			@include respond('ipad_landscape'){
-				width: 34px;
-				left: 0;
-				transform: translateX(75px);
-			}
-
-			@include adaptive(1279) {
-				//transform: translateX(65.5px);
-				//left: 97.5px;
-			}
-			@include adaptive(1023) {
-				width: 34px;
-				left: 0;
-				transform: translateX(75px);
-			}
-			@include adaptive(767) {
-				width: 19px;
-				left: 0;
-				transform: translateX(45px);
-				transition: width 0.35s ease-in-out, transform 0.35s ease-in-out;
-
-				/*transition: width 0.35s ease-in-out, transform 0.35s ease-in-out;
-				transition-duration: 350ms;*/
-			}
-		}
-
-		span {
-			&.is-transform {
-				//width: calc(64px + 115px);
-				//@include transition(width, transform);
-			}
-		}
-
-		u {
-			z-index: -1;
-			opacity: 0;
-			visibility: hidden;
-		}
-	}
-
 	&-all{
 		display: flex;
 		justify-content: center;
@@ -569,21 +474,6 @@
 		@include transition(background-color);
 	}
 
-	&_more_item{
-		width: calc(100%/3)!important;
-		max-width: calc(100%/3)!important;
-		padding: 4px;
-
-		a{
-			padding-top: 100%;
-			display: block;
-			content: ' ';
-			background-size: auto 100%;
-			background-position: center;
-			border: 1px dashed #fff;
-		}
-	}
-
 	&-border {
 		z-index: 0;
 		position: absolute;
@@ -610,229 +500,6 @@
 		}
 	}
 
-	&-details {
-		z-index: 11;
-		/*opacity: 0;
-		visibility: hidden;*/
-		/*position: absolute;
-		top: 3px;
-		left: 3px;*/
-		display: flex;
-		align-items: flex-end;
-		justify-content: space-between;
-		/*width: 100%;
-		max-width: calc(100% - 6px);
-		height: calc(100% - 6px);*/
-		padding: 0 10px 15px;
-		background: linear-gradient(to bottom, rgba(8,9,21,0) 0%,rgba(8,9,21,0.85) 100%);
-		@include transition(opacity, visibility);
-		@include adaptive(1279) {
-			//display: none;
-		}
-
-		&-left {
-			display: flex;
-			flex-direction: column;
-			align-items: flex-start;
-			width: 100%;
-			max-width: calc(100% - 30px);
-			margin-bottom: 5px;
-			z-index: 23;
-			visibility: hidden;
-
-			//animation: showAfterPop 0s 0.45s forwards;
-
-			> * {
-				width: 100%;
-			}
-
-			button {
-				outline: none;
-				cursor: pointer;
-				padding: 0;
-				border: none;
-				border-radius: 0;
-				box-shadow: none;
-				background-color: transparent;
-
-				&.list__box-external {
-					.icon-font {
-						margin-bottom: 5px;
-					}
-				}
-
-				.icon-font {
-					color: #cecece;
-					font-size: 20px;
-				}
-			}
-
-			a.site_link{
-				display: block;
-
-				i.icon-font{
-					color: #cecece;
-					font-size: 20px;
-				}
-			}
-		}
-
-		&-right {
-			display: flex;
-			flex-direction: column;
-			align-items: flex-end;
-			justify-content: flex-end;
-			width: 30px;
-			margin-bottom: 10px;
-			visibility: hidden;
-
-			//animation: showAfterPop 0s 0.45s forwards;
-
-			> * {
-				margin-top: 3px;
-				transition: all 0.4s ease-in-out;
-			}
-
-			button {
-				outline: none;
-				cursor: pointer;
-				overflow: hidden;
-				position: relative;
-				display: flex;
-				align-items: center;
-				justify-content: center;
-				width: 30px;
-				height: 30px;
-				padding: 0;
-				border-radius: 50%;
-				box-shadow: none;
-				border: 1px solid #fff;
-				background-color: transparent;
-				transform-origin: center;
-				transition: all 0.4s ease-in-out;
-
-				&.is-hide {
-					opacity: 0;
-					visibility: hidden;
-					height: 0;
-					margin-top: 0 !important;
-					transform: scale(0);
-					@include transition(opacity, visibility, height, transform);
-				}
-
-				&:after {
-					content: '';
-					z-index: 0;
-					opacity: 0;
-					visibility: hidden;
-					position: absolute;
-					left: 50%;
-					top: 50%;
-					width: calc(100% + 30px);
-					border-radius: 50%;
-					padding: calc(40% + 30px) 0;
-					background: radial-gradient(ellipse at center, rgba(255,255,255,0.75) 0%,rgba(255,255,255,0) 100%);
-					transform: translateX(-50%) translateY(-50%) scale(0);
-					animation-fill-mode: both;
-					animation-duration: 0.45s;
-					animation-timing-function: ease-in-out;
-				}
-
-				&:hover {
-					background-color: rgba(#000, 0.85);
-					transform: scale(1.05);
-					transition: all 0.4s ease-in-out;
-
-					.icon-font {
-						@include transition(color);
-					}
-				}
-
-				&.is-active {
-					border-color: #c5f015;
-					transition: all 0.4s ease-in-out;
-
-					&:after {
-						animation-name: flashBlinking;
-					}
-
-					& + .c-poppertext {
-						> u {
-							&:nth-of-type(1) {
-								display: none;
-							}
-							&:nth-of-type(2) {
-								display: block;
-							}
-						}
-					}
-
-					.icon-font {
-						color: #c5f015;
-						@include transition(color);
-					}
-				}
-
-				&.list__box-like {
-					.icon-font {
-						transform: scaleX(-1);
-					}
-				}
-				&.list__box-dislike {
-					.icon-font {
-						transform: scale(-1);
-					}
-				}
-				&.list__box-favorites {
-
-					&.is-active {
-						.icon-font {
-							@include transition(color, opacity, visibility);
-
-							&.icon-star-fill {
-								opacity: 0;
-								visibility: hidden;
-							}
-							&.icon-star {
-								opacity: 1;
-								visibility: visible;
-							}
-						}
-					}
-
-					.icon-font {
-						@include transition(color, opacity, visibility);
-
-						&.icon-star {
-							opacity: 0;
-							visibility: hidden;
-							position: absolute;
-						}
-
-						&.icon-more-arrow{
-							transform: rotateZ(-90deg);
-							font-size: 11px;
-						}
-					}
-				}
-
-				.icon-font {
-					color: #ffffff;
-					font-size: 18px;
-					@include transition(color, opacity, visibility);
-				}
-			}
-		}
-
-		&-title {
-			overflow: hidden;
-			white-space: nowrap;
-			text-overflow: ellipsis;
-			color: #ffffff;
-			font-size: 20px;
-			font-weight: 700;
-		}
-	}
 
 	&--tooltip{
 		display: block;
