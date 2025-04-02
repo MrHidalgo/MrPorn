@@ -2767,14 +2767,22 @@ var ReportModal = /*#__PURE__*/function () {
     value: function preselectFilter() {
       var filter = this.reviewTypeSlider.querySelector('.option.active');
 
-      if (filter.dataset.type != 'all') {
+      if (filter == undefined) {
+        filter = this.reviewTypeSlider.querySelector('.option.all');
+      }
+
+      if (filter && filter.dataset.type != 'all') {
+        var _filter, _filter2;
+
         this.rtsThumb.classList.add('no_anim');
-        this.selectedFilterTagline = filter === null || filter === void 0 ? void 0 : filter.dataset.tip;
+        this.selectedFilterTagline = (_filter = filter) === null || _filter === void 0 ? void 0 : _filter.dataset.tip;
         this.slideToType(filter);
         this.repositionStatusTooltip(filter);
         this.rtsThumb.classList.remove('no_anim');
-        this.type_status.innerHTML = filter === null || filter === void 0 ? void 0 : filter.dataset.tip;
+        this.type_status.innerHTML = (_filter2 = filter) === null || _filter2 === void 0 ? void 0 : _filter2.dataset.tip;
         this.type_status.classList.add('show');
+      } else if (filter) {
+        this.slideToType(filter);
       }
     }
   }, {
