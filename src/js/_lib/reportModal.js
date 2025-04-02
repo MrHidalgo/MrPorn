@@ -650,7 +650,10 @@ class ReportModal{
 
 	preselectFilter(){
 		let filter = this.reviewTypeSlider.querySelector('.option.active')
-		if(filter.dataset.type != 'all'){
+		if(filter == undefined){
+			filter = this.reviewTypeSlider.querySelector('.option.all')
+		}
+		if(filter && filter.dataset.type != 'all'){
 			this.rtsThumb.classList.add('no_anim')
 			this.selectedFilterTagline = filter?.dataset.tip;
 			this.slideToType(filter)
@@ -658,6 +661,8 @@ class ReportModal{
 			this.rtsThumb.classList.remove('no_anim')
 			this.type_status.innerHTML = filter?.dataset.tip;
 			this.type_status.classList.add('show')
+		}else if(filter){
+			this.slideToType(filter)
 		}
 	}
 

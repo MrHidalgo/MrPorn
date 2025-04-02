@@ -166,7 +166,7 @@ var createCookie = function(name, value, days) {
 	}
 	document.cookie = name + "=" + value + expires + "; path=/";
 }
-var isMobileOrTablet = window.mobileAndTabletcheck();
+let isMobileOrTablet = window.mobileAndTabletcheck();
 
 
 function findAncestor (el, sel) {

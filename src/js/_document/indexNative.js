@@ -534,6 +534,7 @@ let lastMobileSimilarSite;
 		initWebWorker();
 
 		initCategoryPage();
+		initTrendingTabs();
 
 		showAgeVerification();
 		showAcceptCookie();

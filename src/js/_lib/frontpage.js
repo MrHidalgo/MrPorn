@@ -96,25 +96,3 @@ function onDisLike(el, elID){
 	setWithExpiry("dislikes", window.dislikes, 30*24*3600*1000);
 }
 
-function initHomeFunctions(){
-	initHomeTabs();
-}
-function initHomeTabs(){
-	let tabs = document.querySelectorAll('.home-tabs');
-	tabs.forEach((tabContainer)=>{
-		tabContainer.querySelectorAll('.trending-tag-item').forEach((tag)=>{
-			tag.addEventListener('click', function(evt){
-				let tag = evt.currentTarget.dataset.tag;
-				if(tag){
-					tabContainer.querySelector('.trending-tag-item.active')?.classList.remove('active');
-					tabContainer.querySelector('.trending-tag-item[data-tag="'+tag+'"]').classList.add('active');
-
-					tabContainer.querySelector('.trending-tag-tab.active').classList.remove('active');
-					tabContainer.querySelector('.trending-tag-tab.tab-'+tag).classList.add('active');
-				}
-			});
-		})
-	});
-}
-
-initHomeFunctions();
