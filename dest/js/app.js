@@ -1376,7 +1376,7 @@ function initCategoryPage() {
       a2zOrder++;
     }
 
-    if (bodyClasses.contains('home')) {
+    if (bodyClasses.contains('home') || bodyClasses.contains('category')) {
       processHomeCategories(result);
     } else {
       processCategoryDataFromDom();

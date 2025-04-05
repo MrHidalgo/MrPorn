@@ -6,6 +6,18 @@
 		&-header{
 			display: flex;
 			border-bottom: 1px solid #cccc;
+
+			@include adaptive(767) {
+				display: flex;
+				overflow: auto;
+				white-space: nowrap;
+				gap: 6px;
+				scrollbar-width: none;
+				padding-bottom: 15px;
+				font-size: 13px;
+			}
+
+
 		}
 		&-item{
 			position: relative;
