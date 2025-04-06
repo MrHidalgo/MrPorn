@@ -564,7 +564,7 @@ function initCategoryPage() {
 	}
 
 	const initStickySidebar = () => {
-		console.log(`Init sticky sidebar ${filterScroll}`)
+		/*console.log(`Init sticky sidebar ${filterScroll}`)
 		if (!filterScroll && document.querySelectorAll('.desktop_menu_list').length > 0) {
 			categorySidebar = new StickySidebar('.desktop_menu_list', {
 				// topSpacing: 20,
@@ -573,7 +573,7 @@ function initCategoryPage() {
 				innerWrapperSelector: '.inner-wrapper-sticky',
 				resizeSensor: true
 			});
-		}
+		}*/
 	}
 
 	const fetchA2Z = () => {

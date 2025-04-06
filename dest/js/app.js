@@ -1280,17 +1280,16 @@ function initCategoryPage() {
   };
 
   var initStickySidebar = function initStickySidebar() {
-    console.log("Init sticky sidebar ".concat(filterScroll));
-
+    /*console.log(`Init sticky sidebar ${filterScroll}`)
     if (!filterScroll && document.querySelectorAll('.desktop_menu_list').length > 0) {
-      categorySidebar = new StickySidebar('.desktop_menu_list', {
-        // topSpacing: 20,
-        // bottomSpacing: 20,
-        // containerSelector: '.category_site_container',
-        innerWrapperSelector: '.inner-wrapper-sticky',
-        resizeSensor: true
-      });
-    }
+    	categorySidebar = new StickySidebar('.desktop_menu_list', {
+    		// topSpacing: 20,
+    		// bottomSpacing: 20,
+    		// containerSelector: '.category_site_container',
+    		innerWrapperSelector: '.inner-wrapper-sticky',
+    		resizeSensor: true
+    	});
+    }*/
   };
 
   var fetchA2Z = function fetchA2Z() {
