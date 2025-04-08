@@ -8824,7 +8824,62 @@ fieldset {
   width: 18px;
 }
 
+/* line 412, src/scss/_components/icons/_category_icons.scss */
+.icon-3d {
+  background-image: url(../images/categories/3d.svg);
+}
+
 /* line 415, src/scss/_components/icons/_category_icons.scss */
+.icon-brunette {
+  background-image: url(../images/categories/brunette.svg);
+}
+
+/* line 418, src/scss/_components/icons/_category_icons.scss */
+.icon-redhair {
+  background-image: url(../images/categories/redhair.svg);
+}
+
+/* line 421, src/scss/_components/icons/_category_icons.scss */
+.icon-blonde {
+  background-image: url(../images/categories/blonde.svg);
+}
+
+/* line 424, src/scss/_components/icons/_category_icons.scss */
+.icon-deepfake {
+  background-image: url(../images/categories/deepfake.svg);
+}
+
+/* line 427, src/scss/_components/icons/_category_icons.scss */
+.icon-ghetto {
+  background-image: url(../images/categories/ghetto.svg);
+}
+
+/* line 430, src/scss/_components/icons/_category_icons.scss */
+.icon-birth {
+  background-image: url(../images/categories/birth.svg);
+}
+
+/* line 433, src/scss/_components/icons/_category_icons.scss */
+.icon-thai {
+  background-image: url(../images/categories/thai.svg);
+}
+
+/* line 436, src/scss/_components/icons/_category_icons.scss */
+.icon-undress-ai {
+  background-image: url(../images/categories/undress-ai.svg);
+}
+
+/* line 439, src/scss/_components/icons/_category_icons.scss */
+.icon-ai-sex-chat {
+  background-image: url(../images/categories/ai-sex-chat.svg);
+}
+
+/* line 442, src/scss/_components/icons/_category_icons.scss */
+.icon-small-tits {
+  background-image: url(../images/categories/small-tits.svg);
+}
+
+/* line 446, src/scss/_components/icons/_category_icons.scss */
 .icon-circled {
   height: 22px;
   width: 22px;
@@ -10184,6 +10239,116 @@ fieldset {
   100% {
     -webkit-box-shadow: 0 0 0 0 rgba(118, 118, 118, 0);
             box-shadow: 0 0 0 0 rgba(118, 118, 118, 0);
+  }
+}
+
+@-webkit-keyframes skipMobile {
+  from {
+    opacity: 1;
+    visibility: visible;
+    -webkit-transform: scale(1);
+            transform: scale(1);
+  }
+  50% {
+    opacity: 0.5;
+    -webkit-transform: scale(0.5);
+            transform: scale(0.5);
+    visibility: hidden;
+  }
+  to {
+    opacity: 1;
+    visibility: visible;
+    -webkit-transform: scale(1);
+            transform: scale(1);
+  }
+}
+
+@keyframes skipMobile {
+  from {
+    opacity: 1;
+    visibility: visible;
+    -webkit-transform: scale(1);
+            transform: scale(1);
+  }
+  50% {
+    opacity: 0.5;
+    -webkit-transform: scale(0.5);
+            transform: scale(0.5);
+    visibility: hidden;
+  }
+  to {
+    opacity: 1;
+    visibility: visible;
+    -webkit-transform: scale(1);
+            transform: scale(1);
+  }
+}
+
+@-webkit-keyframes rightArrowAnim {
+  0% {
+    -webkit-transform: translateX(0px);
+            transform: translateX(0px);
+  }
+  50% {
+    -webkit-transform: translateX(5px);
+            transform: translateX(5px);
+  }
+  100% {
+    -webkit-transform: translateX(0px);
+            transform: translateX(0px);
+  }
+}
+
+@keyframes rightArrowAnim {
+  0% {
+    -webkit-transform: translateX(0px);
+            transform: translateX(0px);
+  }
+  50% {
+    -webkit-transform: translateX(5px);
+            transform: translateX(5px);
+  }
+  100% {
+    -webkit-transform: translateX(0px);
+            transform: translateX(0px);
+  }
+}
+
+@-webkit-keyframes shakeCategoryBar {
+  10%, 90% {
+    -webkit-transform: translate3d(-1px, 0, 0);
+            transform: translate3d(-1px, 0, 0);
+  }
+  20%, 80% {
+    -webkit-transform: translate3d(2px, 0, 0);
+            transform: translate3d(2px, 0, 0);
+  }
+  30%, 50%, 70% {
+    -webkit-transform: translate3d(-4px, 0, 0);
+            transform: translate3d(-4px, 0, 0);
+  }
+  40%, 60% {
+    -webkit-transform: translate3d(4px, 0, 0);
+            transform: translate3d(4px, 0, 0);
+  }
+}
+
+@keyframes shakeCategoryBar {
+  10%, 90% {
+    -webkit-transform: translate3d(-1px, 0, 0);
+            transform: translate3d(-1px, 0, 0);
+  }
+  20%, 80% {
+    -webkit-transform: translate3d(2px, 0, 0);
+            transform: translate3d(2px, 0, 0);
+  }
+  30%, 50%, 70% {
+    -webkit-transform: translate3d(-4px, 0, 0);
+            transform: translate3d(-4px, 0, 0);
+  }
+  40%, 60% {
+    -webkit-transform: translate3d(4px, 0, 0);
+            transform: translate3d(4px, 0, 0);
   }
 }
 
