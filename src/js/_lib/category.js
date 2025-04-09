@@ -43,8 +43,20 @@ function initCategoryPage() {
 	let a2zLetters = []
 	let sidebarCategories = []
 
+	let a2zCookie = getCookieMpgCookie("category_filter_a2z");
+
 	let filterScroll = bodyClasses.contains('page-template-page-categories') ? 0: +getCookieMpgCookie("category_filter_scroll") ?? 0;
-	let filterA2z = (bodyClasses.contains('home') || isCategoriesPage) ? 1:  +getCookieMpgCookie("category_filter_a2z") ?? 0;
+	let filterA2z = 1; // (bodyClasses.contains('home') || isCategoriesPage) ? 1:  +getCookieMpgCookie("category_filter_a2z") ?? 1;
+	if(bodyClasses.contains('home') || isCategoriesPage){
+		filterA2z = 1;
+	}else{
+		if(a2zCookie == ''){
+			filterA2z = 1;
+		}else{
+			filterA2z = +a2zCookie;
+		}
+	}
+
 	let filterPopular = +getCookieMpgCookie("category_filter_popular") ?? 0;
 
 	let frontListA2Z = false;
@@ -60,9 +72,9 @@ function initCategoryPage() {
 			checkbox.checked = true;
 		})
 	}
-	if(filterA2z){
+	if(a2zCookie!=''){
 		document.querySelectorAll('.category_filter_option_a2z').forEach(checkbox => {
-			checkbox.checked = true;
+			checkbox.checked = !filterA2z;
 		})
 	}
 
@@ -279,7 +291,7 @@ function initCategoryPage() {
 				onScrollChecked(this.checked)
 			}, false)
 			filterOptionA2Z?.addEventListener('change', function () {
-				onA2ZChecked(this.checked)
+				onA2ZChecked(!this.checked)
 			}, false)
 			filterOptionRandom?.addEventListener('change', function () {
 				gotoRandomCategory()
@@ -303,7 +315,7 @@ function initCategoryPage() {
 		let spanA2z = document.querySelector('.category-list-options .icon_a2z span');
 		let spanRandom = document.querySelector('.category-list-options .icon_random span');
 		if(spanA2z){
-			spanA2z.innerHTML = 'Alphabetical order';
+			spanA2z.innerHTML = 'Icon View';
 		}
 		if(spanRandom){
 			spanRandom.innerHTML = 'Random category';

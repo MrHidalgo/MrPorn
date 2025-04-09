@@ -709,7 +709,7 @@ var initCategoriesPage = function initCategoriesPage() {
 
 
 function initCategoryPage() {
-  var _getCookieMpgCookie, _getCookieMpgCookie2, _getCookieMpgCookie3;
+  var _getCookieMpgCookie, _getCookieMpgCookie2;
 
   var categorySidebar;
   var isMobile = isMobileOrTablet;
@@ -741,9 +741,21 @@ function initCategoryPage() {
   var a2zCategories = [];
   var a2zLetters = [];
   var sidebarCategories = [];
+  var a2zCookie = getCookieMpgCookie("category_filter_a2z");
   var filterScroll = bodyClasses.contains('page-template-page-categories') ? 0 : (_getCookieMpgCookie = +getCookieMpgCookie("category_filter_scroll")) !== null && _getCookieMpgCookie !== void 0 ? _getCookieMpgCookie : 0;
-  var filterA2z = bodyClasses.contains('home') || isCategoriesPage ? 1 : (_getCookieMpgCookie2 = +getCookieMpgCookie("category_filter_a2z")) !== null && _getCookieMpgCookie2 !== void 0 ? _getCookieMpgCookie2 : 0;
-  var filterPopular = (_getCookieMpgCookie3 = +getCookieMpgCookie("category_filter_popular")) !== null && _getCookieMpgCookie3 !== void 0 ? _getCookieMpgCookie3 : 0;
+  var filterA2z = 1; // (bodyClasses.contains('home') || isCategoriesPage) ? 1:  +getCookieMpgCookie("category_filter_a2z") ?? 1;
+
+  if (bodyClasses.contains('home') || isCategoriesPage) {
+    filterA2z = 1;
+  } else {
+    if (a2zCookie == '') {
+      filterA2z = 1;
+    } else {
+      filterA2z = +a2zCookie;
+    }
+  }
+
+  var filterPopular = (_getCookieMpgCookie2 = +getCookieMpgCookie("category_filter_popular")) !== null && _getCookieMpgCookie2 !== void 0 ? _getCookieMpgCookie2 : 0;
   var frontListA2Z = false;
   var frontMainFilter = document.querySelector('.main_filter');
 
@@ -757,9 +769,9 @@ function initCategoryPage() {
     });
   }
 
-  if (filterA2z) {
+  if (a2zCookie != '') {
     document.querySelectorAll('.category_filter_option_a2z').forEach(function (checkbox) {
-      checkbox.checked = true;
+      checkbox.checked = !filterA2z;
     });
   }
 
@@ -965,7 +977,7 @@ function initCategoryPage() {
         onScrollChecked(this.checked);
       }, false);
       filterOptionA2Z === null || filterOptionA2Z === void 0 ? void 0 : filterOptionA2Z.addEventListener('change', function () {
-        onA2ZChecked(this.checked);
+        onA2ZChecked(!this.checked);
       }, false);
       filterOptionRandom === null || filterOptionRandom === void 0 ? void 0 : filterOptionRandom.addEventListener('change', function () {
         gotoRandomCategory();
@@ -989,7 +1001,7 @@ function initCategoryPage() {
     var spanRandom = document.querySelector('.category-list-options .icon_random span');
 
     if (spanA2z) {
-      spanA2z.innerHTML = 'Alphabetical order';
+      spanA2z.innerHTML = 'Icon View';
     }
 
     if (spanRandom) {
