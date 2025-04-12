@@ -1306,17 +1306,27 @@ function initCategoryPage() {
   };
 
   var fetchA2Z = function fetchA2Z() {
-    if (getWithExpiry('a2z_data')) {
-      processA2ZData(getWithExpiry('a2z_data'));
+    var url = '/wp-json/mpg/a2z/';
+    var cacheKey = 'a2z_data';
+
+    var _lang = document.documentElement.getAttribute('lang');
+
+    if (_lang != 'en') {
+      url += '?lang=' + currentLang;
+      cacheKey += '_' + currentLang;
+    }
+
+    if (getWithExpiry(cacheKey)) {
+      processA2ZData(getWithExpiry(cacheKey));
       return;
     }
 
-    fetch('/wp-json/mpg/a2z/').then(function (res) {
+    fetch(url).then(function (res) {
       return res.json();
     }).then(function (result) {
-      setWithExpiry('a2z_data', result, 30 * 60 * 1000);
+      setWithExpiry(cacheKey, result, 30 * 60 * 1000);
       processA2ZData(result);
-      console.log('a2zData ', result); // let filteredCategories = [...categoryItems];
+      console.log(cacheKey, result); // let filteredCategories = [...categoryItems];
     })["catch"](function (err) {// console.log('didnt load translations');
     });
   };

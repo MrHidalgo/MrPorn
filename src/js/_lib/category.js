@@ -589,17 +589,26 @@ function initCategoryPage() {
 	}
 
 	const fetchA2Z = () => {
-		if(getWithExpiry('a2z_data')){
-			processA2ZData(getWithExpiry('a2z_data'))
+
+		let url = '/wp-json/mpg/a2z/';
+		let cacheKey = 'a2z_data';
+		let _lang = document.documentElement.getAttribute('lang')
+		if(_lang!='en'){
+			url += '?lang='+currentLang;
+			cacheKey += '_'+currentLang;
+		}
+
+		if(getWithExpiry(cacheKey)){
+			processA2ZData(getWithExpiry(cacheKey))
 			return
 		}
 
-		fetch('/wp-json/mpg/a2z/')
+		fetch(url)
 			.then(res => res.json())
 			.then((result) => {
-				setWithExpiry('a2z_data', result, 30*60*1000);
+				setWithExpiry(cacheKey, result, 30*60*1000);
 				processA2ZData(result)
-				console.log('a2zData ', result)
+				console.log(cacheKey, result)
 				// let filteredCategories = [...categoryItems];
 			})
 			.catch(err => {
