@@ -46,14 +46,7 @@ function initCategoryPage() {
 	let a2zCookie = getCookieMpgCookie("category_filter_a2z");
 
 
-	let headerHeight = document.querySelector('#header').offsetHeight
-	let catHeadHeight = document.querySelector('.category_header')?.offsetHeight;
-	let offsetTop = headerHeight  + catHeadHeight + 40;
-	let contentHeight = catListSites.offsetHeight;
-	const scrollLimit = contentHeight + offsetTop - window.innerHeight;
-	let footerHeight = document.querySelector('.footer')?.offsetHeight;
-	let docHeight = document.body.offsetHeight;
-	let maxScrollLimit = docHeight - footerHeight;
+	let headerHeight,catHeadHeight,offsetTop, contentHeight,scrollLimit,footerHeight,docHeight,maxScrollLimit;
 
 
 	let filterScroll = bodyClasses.contains('page-template-page-categories') ? 0: +getCookieMpgCookie("category_filter_scroll") ?? 0;
@@ -601,6 +594,16 @@ function initCategoryPage() {
 				if(categorySidebar){
 					categorySidebar.destroy()
 				}
+
+				headerHeight = document.querySelector('#header').offsetHeight
+				catHeadHeight = document.querySelector('.category_header')?.offsetHeight;
+				offsetTop = headerHeight  + catHeadHeight + 40;
+				contentHeight = catListSites.offsetHeight;
+				scrollLimit = contentHeight + offsetTop - window.innerHeight;
+				footerHeight = document.querySelector('.footer')?.offsetHeight;
+				docHeight = document.body.offsetHeight;
+				maxScrollLimit = docHeight - footerHeight;
+
 				window.addEventListener('scroll', onSideBarScroll);
 			}
 		}
@@ -641,17 +644,26 @@ function initCategoryPage() {
 	}
 
 	const fetchA2Z = () => {
-		if(getWithExpiry('a2z_data')){
-			processA2ZData(getWithExpiry('a2z_data'))
+
+		let url = '/wp-json/mpg/a2z/';
+		let cacheKey = 'a2z_data';
+		let _lang = document.documentElement.getAttribute('lang')
+		if(_lang!='en'){
+			url += '?lang='+currentLang;
+			cacheKey += '_'+currentLang;
+		}
+
+		if(getWithExpiry(cacheKey)){
+			processA2ZData(getWithExpiry(cacheKey))
 			return
 		}
 
-		fetch('/wp-json/mpg/a2z/')
+		fetch(url)
 			.then(res => res.json())
 			.then((result) => {
-				setWithExpiry('a2z_data', result, 30*60*1000);
+				setWithExpiry(cacheKey, result, 30*60*1000);
 				processA2ZData(result)
-				console.log('a2zData ', result)
+				console.log(cacheKey, result)
 				// let filteredCategories = [...categoryItems];
 			})
 			.catch(err => {

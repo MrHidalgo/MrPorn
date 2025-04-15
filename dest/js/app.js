@@ -709,7 +709,7 @@ var initCategoriesPage = function initCategoriesPage() {
 
 
 function initCategoryPage() {
-  var _document$querySelect9, _document$querySelect10, _getCookieMpgCookie, _getCookieMpgCookie2;
+  var _getCookieMpgCookie, _getCookieMpgCookie2;
 
   var categorySidebar;
   var isMobile = isMobileOrTablet;
@@ -742,14 +742,7 @@ function initCategoryPage() {
   var a2zLetters = [];
   var sidebarCategories = [];
   var a2zCookie = getCookieMpgCookie("category_filter_a2z");
-  var headerHeight = document.querySelector('#header').offsetHeight;
-  var catHeadHeight = (_document$querySelect9 = document.querySelector('.category_header')) === null || _document$querySelect9 === void 0 ? void 0 : _document$querySelect9.offsetHeight;
-  var offsetTop = headerHeight + catHeadHeight + 40;
-  var contentHeight = catListSites.offsetHeight;
-  var scrollLimit = contentHeight + offsetTop - window.innerHeight;
-  var footerHeight = (_document$querySelect10 = document.querySelector('.footer')) === null || _document$querySelect10 === void 0 ? void 0 : _document$querySelect10.offsetHeight;
-  var docHeight = document.body.offsetHeight;
-  var maxScrollLimit = docHeight - footerHeight;
+  var headerHeight, catHeadHeight, offsetTop, contentHeight, scrollLimit, footerHeight, docHeight, maxScrollLimit;
   var filterScroll = bodyClasses.contains('page-template-page-categories') ? 0 : (_getCookieMpgCookie = +getCookieMpgCookie("category_filter_scroll")) !== null && _getCookieMpgCookie !== void 0 ? _getCookieMpgCookie : 0;
   var filterA2z = 1; // (bodyClasses.contains('home') || isCategoriesPage) ? 1:  +getCookieMpgCookie("category_filter_a2z") ?? 1;
 
@@ -979,7 +972,7 @@ function initCategoryPage() {
     }
 
     if (!initializedListeners) {
-      var _document$querySelect11;
+      var _document$querySelect9;
 
       filterOptionScroll === null || filterOptionScroll === void 0 ? void 0 : filterOptionScroll.addEventListener('change', function () {
         onScrollChecked(this.checked);
@@ -990,7 +983,7 @@ function initCategoryPage() {
       filterOptionRandom === null || filterOptionRandom === void 0 ? void 0 : filterOptionRandom.addEventListener('change', function () {
         gotoRandomCategory();
       });
-      (_document$querySelect11 = document.querySelector('.category-list-switcher')) === null || _document$querySelect11 === void 0 ? void 0 : _document$querySelect11.addEventListener('click', function () {
+      (_document$querySelect9 = document.querySelector('.category-list-switcher')) === null || _document$querySelect9 === void 0 ? void 0 : _document$querySelect9.addEventListener('click', function () {
         onA2ZChecked(frontListA2Z);
         frontListA2Z = !frontListA2Z;
 
@@ -1039,11 +1032,11 @@ function initCategoryPage() {
       console.log('Destroying sidebar ', categorySidebar);
       setSidebarHeight();
     } else {
-      var _document$querySelect12;
+      var _document$querySelect10;
 
       createCookie("category_filter_scroll", 0, 356);
       leftSidebar === null || leftSidebar === void 0 ? void 0 : leftSidebar.classList.remove('scroll');
-      (_document$querySelect12 = document.querySelector('.category_list-sites')) === null || _document$querySelect12 === void 0 ? void 0 : _document$querySelect12.classList.add('has_sidebar');
+      (_document$querySelect10 = document.querySelector('.category_list-sites')) === null || _document$querySelect10 === void 0 ? void 0 : _document$querySelect10.classList.add('has_sidebar');
       catListSites === null || catListSites === void 0 ? void 0 : catListSites.classList.remove('scroll');
       setSidebarHeight(true);
       initStickySidebar();
@@ -1126,10 +1119,10 @@ function initCategoryPage() {
         liChar.dataset.letter = letter;
         categoryListLetters.appendChild(liChar);
         liChar.addEventListener("click", function (e) {
-          var _document$querySelect13;
+          var _document$querySelect11;
 
           var triggeredLetter = e.currentTarget.dataset.letter;
-          (_document$querySelect13 = document.querySelector('.category-list-letter.active')) === null || _document$querySelect13 === void 0 ? void 0 : _document$querySelect13.classList.remove('active');
+          (_document$querySelect11 = document.querySelector('.category-list-letter.active')) === null || _document$querySelect11 === void 0 ? void 0 : _document$querySelect11.classList.remove('active');
           var letterTop = document.querySelector(sidebarContainer + ' .category-list-item-letter.letter_' + triggeredLetter).offsetTop;
           console.log('letter top ' + triggeredLetter, letterTop);
           desktopMenuListContainer === null || desktopMenuListContainer === void 0 ? void 0 : desktopMenuListContainer.scrollTo({
@@ -1315,10 +1308,20 @@ function initCategoryPage() {
           resizeSensor: true
         });
       } else {
+        var _document$querySelect12, _document$querySelect13;
+
         if (categorySidebar) {
           categorySidebar.destroy();
         }
 
+        headerHeight = document.querySelector('#header').offsetHeight;
+        catHeadHeight = (_document$querySelect12 = document.querySelector('.category_header')) === null || _document$querySelect12 === void 0 ? void 0 : _document$querySelect12.offsetHeight;
+        offsetTop = headerHeight + catHeadHeight + 40;
+        contentHeight = catListSites.offsetHeight;
+        scrollLimit = contentHeight + offsetTop - window.innerHeight;
+        footerHeight = (_document$querySelect13 = document.querySelector('.footer')) === null || _document$querySelect13 === void 0 ? void 0 : _document$querySelect13.offsetHeight;
+        docHeight = document.body.offsetHeight;
+        maxScrollLimit = docHeight - footerHeight;
         window.addEventListener('scroll', onSideBarScroll);
       }
     }
@@ -1364,17 +1367,27 @@ function initCategoryPage() {
   };
 
   var fetchA2Z = function fetchA2Z() {
-    if (getWithExpiry('a2z_data')) {
-      processA2ZData(getWithExpiry('a2z_data'));
+    var url = '/wp-json/mpg/a2z/';
+    var cacheKey = 'a2z_data';
+
+    var _lang = document.documentElement.getAttribute('lang');
+
+    if (_lang != 'en') {
+      url += '?lang=' + currentLang;
+      cacheKey += '_' + currentLang;
+    }
+
+    if (getWithExpiry(cacheKey)) {
+      processA2ZData(getWithExpiry(cacheKey));
       return;
     }
 
-    fetch('/wp-json/mpg/a2z/').then(function (res) {
+    fetch(url).then(function (res) {
       return res.json();
     }).then(function (result) {
-      setWithExpiry('a2z_data', result, 30 * 60 * 1000);
+      setWithExpiry(cacheKey, result, 30 * 60 * 1000);
       processA2ZData(result);
-      console.log('a2zData ', result); // let filteredCategories = [...categoryItems];
+      console.log(cacheKey, result); // let filteredCategories = [...categoryItems];
     })["catch"](function (err) {// console.log('didnt load translations');
     });
   };
