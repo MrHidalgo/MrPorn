@@ -16,6 +16,7 @@ function initCategoryPage() {
 	let desktopMenuListContainer = document.querySelector('.category-list-left');
 	let mobileMenuList = document.querySelector('.category-list-menu-mobile');
 	let categoriesPageList = document.querySelector('.categories-list');
+	let categoryContainer = document.querySelector('#content')
 	let categoryListContainer = document.querySelector(sidebarContainer+ ' .category-list-container')
 	let catListSites = document.querySelector('.category_list-sites');
 	let categoryFilterBtn = document.querySelector(sidebarContainer+ ' .category-list-filter-btn');
@@ -253,8 +254,8 @@ function initCategoryPage() {
 
 		if (otherCategoryItems.length) {
 
-			if (catListSites) {
-				catListSites.classList.add('has_sidebar')
+			if (categoryContainer) {
+				categoryContainer.classList.add('has_sidebar')
 			}
 		}
 
@@ -337,7 +338,7 @@ function initCategoryPage() {
 			createCookie("category_filter_scroll", 1, 356);
 
 			leftSidebar?.classList.add('scroll');
-			catListSites?.classList.remove('has_sidebar')
+			categoryContainer.classList.remove('has_sidebar')
 			catListSites?.classList.add('scroll')
 
 			if(categorySidebar){
@@ -351,7 +352,7 @@ function initCategoryPage() {
 		}else{
 			createCookie("category_filter_scroll", 0, 356);
 			leftSidebar?.classList.remove('scroll');
-			document.querySelector('.category_list-sites')?.classList.add('has_sidebar')
+			categoryContainer.classList.add('has_sidebar')
 			catListSites?.classList.remove('scroll')
 			setSidebarHeight(true)
 			initStickySidebar()
@@ -581,31 +582,59 @@ function initCategoryPage() {
 	const initStickySidebar = () => {
 		console.log(`Init sticky sidebar ${filterScroll}`)
 		if (!filterScroll && document.querySelectorAll('.desktop_menu_list').length > 0) {
-			window.removeEventListener('scroll', onSideBarScroll);
+			// window.removeEventListener('scroll', onSideBarScroll);
+			// if(filterA2z){
+			// 	categorySidebar = new StickySidebar('.desktop_menu_list', {
+			// 		// topSpacing: 20,
+			// 		// bottomSpacing: 20,
+			// 		// containerSelector: '.category_site_container',
+			// 		innerWrapperSelector: '.inner-wrapper-sticky',
+			// 		resizeSensor: true
+			// 	});
+			// }else{
+			// 	if(categorySidebar){
+			// 		categorySidebar.destroy()
+			// 	}
+			//
+			// 	headerHeight = document.querySelector('#header').offsetHeight
+			// 	catHeadHeight = document.querySelector('.category_header')?.offsetHeight;
+			// 	offsetTop = headerHeight  + catHeadHeight + 40;
+			// 	contentHeight = catListSites.offsetHeight;
+			// 	scrollLimit = contentHeight + offsetTop - window.innerHeight;
+			// 	footerHeight = document.querySelector('.footer')?.offsetHeight;
+			// 	docHeight = document.body.offsetHeight;
+			// 	maxScrollLimit = docHeight - footerHeight;
+			//
+			// 	window.addEventListener('scroll', onSideBarScroll);
+			// }
+
+
+
+			// categorySidebar = new StickySidebar('.desktop_menu_list', {
+			// 	// topSpacing: 20,
+			// 	// bottomSpacing: 20,
+			// 	// containerSelector: '.category_site_container',
+			// 	innerWrapperSelector: '.inner-wrapper-sticky',
+			// 	resizeSensor: true
+			// });
+
+			if(categorySidebar){
+				categorySidebar.destroy()
+			}
+
 			if(filterA2z){
-				categorySidebar = new StickySidebar('.desktop_menu_list', {
-					// topSpacing: 20,
-					// bottomSpacing: 20,
-					// containerSelector: '.category_site_container',
+					categorySidebar = new StickySidebar('.desktop_menu_list', {
+						innerWrapperSelector: '.inner-wrapper-sticky',
+						resizeSensor: true
+					});
+			}else{
+				categorySidebar = new StickySidebar('.category_list-sites', {
 					innerWrapperSelector: '.inner-wrapper-sticky',
 					resizeSensor: true
 				});
-			}else{
-				if(categorySidebar){
-					categorySidebar.destroy()
-				}
-
-				headerHeight = document.querySelector('#header').offsetHeight
-				catHeadHeight = document.querySelector('.category_header')?.offsetHeight;
-				offsetTop = headerHeight  + catHeadHeight + 40;
-				contentHeight = catListSites.offsetHeight;
-				scrollLimit = contentHeight + offsetTop - window.innerHeight;
-				footerHeight = document.querySelector('.footer')?.offsetHeight;
-				docHeight = document.body.offsetHeight;
-				maxScrollLimit = docHeight - footerHeight;
-
-				window.addEventListener('scroll', onSideBarScroll);
 			}
+
+
 		}
 	}
 

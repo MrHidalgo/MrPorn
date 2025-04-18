@@ -1,16 +1,16 @@
 // CATEGORY_SIDEBAR :: START
-.category_list-sites{
-	&.has_sidebar{
-		margin-left: 20%;
-
-		@include adaptive(767) {
-			margin-left: 0;
-		}
-	}
-}
+//.category_list-sites{
+//	&.has_sidebar{
+//		margin-left: 20%;
+//
+//		@include adaptive(767) {
+//			margin-left: 0;
+//		}
+//	}
+//}
 .desktop_menu_list{
-	width: 20%;
 	float: left;
+	width: 20%;
   will-change: min-height;
   backface-visibility: hidden;
 	padding: 15px 10px 0 0;
@@ -42,6 +42,18 @@
 		}
 	}
 }
+
+@include respond('medium'){
+	.category_container.has_sidebar{
+		display: flex;
+		flex: 0 0 20%;
+	}
+	.category_container.has_sidebar .desktop_menu_list{
+		float: none;
+		flex: 0 0 20%;
+	}
+}
+
 
 .review_header_dropdown{
 	.site_nav_categories{
