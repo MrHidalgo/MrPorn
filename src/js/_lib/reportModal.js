@@ -649,6 +649,7 @@ class ReportModal{
 	}
 
 	preselectFilter(){
+		let viewFilter = document.querySelector('.viewing-filter');
 		let filter = this.reviewTypeSlider.querySelector('.option.active')
 		if(filter == undefined){
 			filter = this.reviewTypeSlider.querySelector('.option.all')
@@ -661,8 +662,16 @@ class ReportModal{
 			this.rtsThumb.classList.remove('no_anim')
 			this.type_status.innerHTML = filter?.dataset.tip;
 			this.type_status.classList.add('show')
+
+			if(viewFilter){
+				viewFilter.innerHTML = `Viewing ${filter.dataset.type} Sites — Change ^`;
+			}
+
 		}else if(filter){
 			this.slideToType(filter)
+			if(viewFilter){
+				viewFilter.innerHTML = ``;
+			}
 		}
 	}
 
@@ -678,22 +687,40 @@ class ReportModal{
 			})
 
 			if(option.classList.contains('disabled')){
-				option.addEventListener('mouseover', (evtT) => {
-					clearTimeout(timeoutId);
+				if(isMobileOrTablet || window.innerWidth < 768){
+					option.addEventListener('click', (evtT) => {
+						clearTimeout(timeoutId);
+						parent.repositionStatusTooltip(evtT.currentTarget, true)
+						parent.type_status.innerHTML = 'No ' + evtT.currentTarget.dataset.type + ' sites listed in this category' // evt.currentTarget?.dataset.tip;
 
-					parent.repositionStatusTooltip(evtT.currentTarget, true)
-					parent.type_status.innerHTML = 'No ' + evtT.currentTarget.dataset.type + ' sites listed in this category' // evt.currentTarget?.dataset.tip;
+						if(!parent.type_status) return
+						if(!parent.type_status.classList.contains('show')){
+							parent.type_status.classList.add('show')
+						}
 
-					if(!parent.type_status) return
-					if(!parent.type_status.classList.contains('show')){
-						parent.type_status.classList.add('show')
-					}
+						parent.type_status.classList.add('error')
+					});
 
-					parent.type_status.classList.add('error')
-				});
-				option.addEventListener('mouseout', () => {
-					parent.startTypeErrorTimer()
-				});
+				}else{
+					option.addEventListener('mouseover', (evtT) => {
+						clearTimeout(timeoutId);
+
+						parent.repositionStatusTooltip(evtT.currentTarget, true)
+						parent.type_status.innerHTML = 'No ' + evtT.currentTarget.dataset.type + ' sites listed in this category' // evt.currentTarget?.dataset.tip;
+
+						if(!parent.type_status) return
+						if(!parent.type_status.classList.contains('show')){
+							parent.type_status.classList.add('show')
+						}
+
+						parent.type_status.classList.add('error')
+					});
+
+					option.addEventListener('mouseout', () => {
+						parent.startTypeErrorTimer()
+					});
+				}
+
 			}
 		}.bind(this));
 
@@ -756,6 +783,10 @@ class ReportModal{
 				this.type_status.innerHTML = '';
 				this.selectedFilterTagline = ''
 				this.type_status.classList.remove('show')
+
+				if(isMobileOrTablet && viewFilter){
+					viewFilter.innerHTML = '';
+				}
 			}else{
 				let tooltip = document.querySelector('.review_type_container .option.'+siteType+' .tooltip')
 				if(tooltip){
@@ -764,7 +795,9 @@ class ReportModal{
 					this.type_status.innerHTML = `You're Viewing All ${siteType} Sites`;
 				}
 
-
+			if(isMobileOrTablet && viewFilter){
+				viewFilter.innerHTML = `Viewing ${siteType} Sites — Change ^`;
+			}
 
 				this.type_status.classList.add('show')
 				this.type_status.classList.remove('error')

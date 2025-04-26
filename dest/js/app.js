@@ -2867,6 +2867,7 @@ var ReportModal = /*#__PURE__*/function () {
   }, {
     key: "preselectFilter",
     value: function preselectFilter() {
+      var viewFilter = document.querySelector('.viewing-filter');
       var filter = this.reviewTypeSlider.querySelector('.option.active');
 
       if (filter == undefined) {
@@ -2883,8 +2884,16 @@ var ReportModal = /*#__PURE__*/function () {
         this.rtsThumb.classList.remove('no_anim');
         this.type_status.innerHTML = (_filter2 = filter) === null || _filter2 === void 0 ? void 0 : _filter2.dataset.tip;
         this.type_status.classList.add('show');
+
+        if (viewFilter) {
+          viewFilter.innerHTML = "Viewing ".concat(filter.dataset.type, " Sites \u2014 Change ^");
+        }
       } else if (filter) {
         this.slideToType(filter);
+
+        if (viewFilter) {
+          viewFilter.innerHTML = "";
+        }
       }
     }
   }, {
@@ -2898,22 +2907,38 @@ var ReportModal = /*#__PURE__*/function () {
         });
 
         if (option.classList.contains('disabled')) {
-          option.addEventListener('mouseover', function (evtT) {
-            clearTimeout(timeoutId);
-            parent.repositionStatusTooltip(evtT.currentTarget, true);
-            parent.type_status.innerHTML = 'No ' + evtT.currentTarget.dataset.type + ' sites listed in this category'; // evt.currentTarget?.dataset.tip;
+          if (isMobileOrTablet || window.innerWidth < 768) {
+            option.addEventListener('click', function (evtT) {
+              clearTimeout(timeoutId);
+              parent.repositionStatusTooltip(evtT.currentTarget, true);
+              parent.type_status.innerHTML = 'No ' + evtT.currentTarget.dataset.type + ' sites listed in this category'; // evt.currentTarget?.dataset.tip;
 
-            if (!parent.type_status) return;
+              if (!parent.type_status) return;
 
-            if (!parent.type_status.classList.contains('show')) {
-              parent.type_status.classList.add('show');
-            }
+              if (!parent.type_status.classList.contains('show')) {
+                parent.type_status.classList.add('show');
+              }
 
-            parent.type_status.classList.add('error');
-          });
-          option.addEventListener('mouseout', function () {
-            parent.startTypeErrorTimer();
-          });
+              parent.type_status.classList.add('error');
+            });
+          } else {
+            option.addEventListener('mouseover', function (evtT) {
+              clearTimeout(timeoutId);
+              parent.repositionStatusTooltip(evtT.currentTarget, true);
+              parent.type_status.innerHTML = 'No ' + evtT.currentTarget.dataset.type + ' sites listed in this category'; // evt.currentTarget?.dataset.tip;
+
+              if (!parent.type_status) return;
+
+              if (!parent.type_status.classList.contains('show')) {
+                parent.type_status.classList.add('show');
+              }
+
+              parent.type_status.classList.add('error');
+            });
+            option.addEventListener('mouseout', function () {
+              parent.startTypeErrorTimer();
+            });
+          }
         }
       }.bind(this));
     }
@@ -2976,6 +3001,10 @@ var ReportModal = /*#__PURE__*/function () {
           this.type_status.innerHTML = '';
           this.selectedFilterTagline = '';
           this.type_status.classList.remove('show');
+
+          if (isMobileOrTablet && viewFilter) {
+            viewFilter.innerHTML = '';
+          }
         } else {
           var tooltip = document.querySelector('.review_type_container .option.' + siteType + ' .tooltip');
 
@@ -2983,6 +3012,10 @@ var ReportModal = /*#__PURE__*/function () {
             this.type_status.innerHTML = tooltip.innerHTML;
           } else {
             this.type_status.innerHTML = "You're Viewing All ".concat(siteType, " Sites");
+          }
+
+          if (isMobileOrTablet && viewFilter) {
+            viewFilter.innerHTML = "Viewing ".concat(siteType, " Sites \u2014 Change ^");
           }
 
           this.type_status.classList.add('show');
@@ -4209,6 +4242,7 @@ var visitedSites = function visitedSites() {
 
   var showVisitedViews = function showVisitedViews(key, elementSelector) {
     var visitedSites = getVisitedViews(key);
+    console.log('visitedSites:', visitedSites);
     var $els = document.querySelectorAll(elementSelector);
     $els.forEach(function ($el) {
       var id = +$el.getAttribute('data-id');
