@@ -1307,7 +1307,7 @@ function initCategoryPage() {
 
   var fetchA2Z = function fetchA2Z() {
     var url = '/wp-json/mpg/a2z/';
-    var cacheKey = 'a2z_data';
+    var cacheKey = 'a2z_data__';
 
     var _lang = document.documentElement.getAttribute('lang');
 
