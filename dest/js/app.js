@@ -1387,7 +1387,7 @@ function initCategoryPage() {
 
   var fetchA2Z = function fetchA2Z() {
     var url = '/wp-json/mpg/a2z/';
-    var cacheKey = 'a2z_data';
+    var cacheKey = 'a2z_data__';
 
     var _lang = document.documentElement.getAttribute('lang');
 
@@ -1780,8 +1780,10 @@ var initTheme = function initTheme() {
 
   if (isDark == '1') {
     document.documentElement.classList.remove('light');
+    document.documentElement.classList.add('dark');
     toggleSwitch.checked = true;
   } else {
+    document.documentElement.classList.remove('dark');
     document.documentElement.classList.add('light');
     toggleSwitch.checked = false;
   }

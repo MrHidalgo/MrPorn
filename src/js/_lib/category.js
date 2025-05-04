@@ -675,7 +675,7 @@ function initCategoryPage() {
 	const fetchA2Z = () => {
 
 		let url = '/wp-json/mpg/a2z/';
-		let cacheKey = 'a2z_data';
+		let cacheKey = 'a2z_data__';
 		let _lang = document.documentElement.getAttribute('lang')
 		if(_lang!='en'){
 			url += '?lang='+currentLang;
