@@ -1700,8 +1700,10 @@ var initTheme = function initTheme() {
 
   if (isDark == '1') {
     document.documentElement.classList.remove('light');
+    document.documentElement.classList.add('dark');
     toggleSwitch.checked = true;
   } else {
+    document.documentElement.classList.remove('dark');
     document.documentElement.classList.add('light');
     toggleSwitch.checked = false;
   }
