@@ -132,9 +132,6 @@ class ReportModal{
 		this.checkAvailability()
 		this.initTypeTriggerEvents();
 		this.initFilterEvents()
-		this.typeFilter?.addEventListener('click', function (evt) {
-			// parent.showFilterPopup()
-		});
 	}
 
 	initTypeTriggerEvents(){
