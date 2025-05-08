@@ -2454,8 +2454,7 @@ var ReportModal = /*#__PURE__*/function () {
       var _this2 = this,
           _document$querySelect11,
           _document$querySelect12,
-          _document$querySelect13,
-          _this$typeFilter;
+          _document$querySelect13;
 
       var parent = this;
       var reportBtn = document.querySelectorAll('.additional_action.report');
@@ -2478,8 +2477,6 @@ var ReportModal = /*#__PURE__*/function () {
       this.checkAvailability();
       this.initTypeTriggerEvents();
       this.initFilterEvents();
-      (_this$typeFilter = this.typeFilter) === null || _this$typeFilter === void 0 ? void 0 : _this$typeFilter.addEventListener('click', function (evt) {// parent.showFilterPopup()
-      });
     }
   }, {
     key: "initTypeTriggerEvents",
