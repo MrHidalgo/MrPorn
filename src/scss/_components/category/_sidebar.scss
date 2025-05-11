@@ -18,6 +18,8 @@
   backface-visibility: hidden;
 	padding: 15px 10px 0 0;
 
+	--color-category-letter: #d7d7d7;
+
 	@include adaptive(767) {
 		display: none;
 	}
@@ -67,6 +69,9 @@
 		background: #fff;
 	}
 
+	.desktop_menu_list{
+		--color-category-letter: #337ab7;
+	}
 }
 
 .category-list{
@@ -343,6 +348,11 @@
 
 		&.trending{
 			padding: 0 8px;
+			border: 1px solid #4d4d4d;
+
+			&:last-child{
+				border: 1px solid #4d4d4d;
+			}
 
 			@include respond('medium'){
 				max-width: calc(25% - 2px);
@@ -354,7 +364,6 @@
 				flex: none;
 				width: calc(50% - 2px);
 				padding: 0 8px 0 5px;
-				border: 1px solid #ccc;
 
 				.icon-category{
 					width: 32px;
@@ -379,7 +388,8 @@
 		}
 
 		&-letter{
-			background: #e8e7e6;
+			background: #555;
+			color: var(--primary-color-2, #4c4c4c);
 		}
 
 		.mobile_link_icons {
@@ -610,7 +620,7 @@
 	}
 	&-letter{
 		padding: 5px;
-		color: #337ab7;
+		color: var(--color-category-letter, #337ab7);
 		font-weight: 600;
 		cursor: pointer;
 
@@ -642,6 +652,9 @@
 			.highlight{
 				color: #000;
 			}
+		}
+		&-item-letter{
+			background: #e8e7e6;
 		}
 	}
 	.category-list-item{

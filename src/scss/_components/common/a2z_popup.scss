@@ -131,7 +131,7 @@
 			transition: color .3s;
 
 			&.popular{
-				color: #0040a0;
+				color: #76aaf7;
 			}
 
 			@include adaptive(1023) {
@@ -274,5 +274,8 @@
 .light{
 	.micromodal-content.a2z-content {
 			background: #eee;
+	}
+	.a2z-letters-container .a2z-letter-item.popular{
+		color: #0040a0;
 	}
 }

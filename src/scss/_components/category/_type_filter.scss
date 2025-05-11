@@ -43,7 +43,7 @@
 
 	padding: 4px;
 	border-radius: 6px;
-	background: #303030;
+	background: var(--bg-header-grey, #303030);
 
 	&-outer{
 		position: relative;
@@ -255,6 +255,10 @@
 	&-outer{
 		display: flex;
 		align-items: center;
+
+		svg{
+			fill: var( --primary-color, #000);
+		}
 
 		//&:hover{
 		//	.review_type_slider{
