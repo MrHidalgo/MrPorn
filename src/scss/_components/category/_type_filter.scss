@@ -43,7 +43,7 @@
 
 	padding: 4px;
 	border-radius: 6px;
-	background: #303030;
+	background: var(--bg-header-grey, #303030);
 
 	&-outer{
 		position: relative;
@@ -207,7 +207,12 @@
 	}
 }
 
-
+.viewing-filter{
+	display: block;
+	font-size: 12px;
+	text-align: right;
+	padding-right: 15px;
+}
 
 .review_type_trigger{
 	display: none;
@@ -250,6 +255,10 @@
 	&-outer{
 		display: flex;
 		align-items: center;
+
+		svg{
+			fill: var( --primary-color, #000);
+		}
 
 		//&:hover{
 		//	.review_type_slider{

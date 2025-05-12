@@ -9,6 +9,7 @@
 	padding-bottom: 25px;
 
 	--scrollbar-color: #131313 #525252;
+	--link-hover-color: #676a77;
 
 
 	@include adaptive(767) {
@@ -22,6 +23,9 @@
 	@import "list--arrow";
 	@import "list--rating";
 	@import "list--box";
+}
+.light .list {
+	--link-hover-color: #f0f1f5;
 }
 
 .popover{

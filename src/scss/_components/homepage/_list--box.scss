@@ -62,7 +62,9 @@
 		color: #ddd;
 
 		&:hover{
-			background: #f0f1f5;
+			background: var(--link-hover-color, #f0f1f5);
+			//background: #f0f1f5;
+			// #67686f
 		}
 
 		@include adaptive(991.98) {
