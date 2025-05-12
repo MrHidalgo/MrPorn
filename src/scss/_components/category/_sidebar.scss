@@ -19,6 +19,7 @@
 	padding: 15px 10px 0 0;
 
 	--color-category-letter: #d7d7d7;
+	--scroll-thumb-color: #76aaf7;
 
 	@include adaptive(767) {
 		display: none;
@@ -71,6 +72,7 @@
 
 	.desktop_menu_list{
 		--color-category-letter: #337ab7;
+		--scroll-thumb-color: #225396;
 	}
 }
 
@@ -109,7 +111,7 @@
 				}
 
 				&::-webkit-scrollbar-thumb {
-					background: #225396; /* Scrollbar thumb color */
+					background: var(--scroll-thumb-color, #225396); /* Scrollbar thumb color */
 					border-radius: 10px; /* Rounded corners */
 				}
 
@@ -625,7 +627,7 @@
 		cursor: pointer;
 
 		&.active{
-			color: #000;
+			color: #76aaf7;
 		}
 	}
 }
@@ -655,6 +657,9 @@
 		}
 		&-item-letter{
 			background: #e8e7e6;
+		}
+		&-letter.active{
+			color: #000;
 		}
 	}
 	.category-list-item{

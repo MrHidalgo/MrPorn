@@ -438,6 +438,26 @@ let lastMobileSimilarSite;
 		});
 	}
 
+	const pukeCheck = () => {
+		if(getCookieMpgCookie("is_adb_closed") === '1'){
+			return;
+		}
+		const detector = new AdBlockDetector({
+			onDetected: () => {
+				console.log("Ad Blocker is ON!");
+				// Optional: redirect or hide certain features
+			},
+			onNotDetected: () => {
+				console.log("Ad Blocker is OFF.");
+			},
+			onClose: () => {
+				createCookie("is_adb_closed", "1", 1);
+			}
+		});
+
+		detector.run();
+	}
+
 	/**
 	 * end MAIN CALLBACK
 	 * ===================================
@@ -522,15 +542,6 @@ let lastMobileSimilarSite;
 			visitedSites().initVisitedSites('.category_item_link, .category-list-link')
 		}
 
-
-//		boxMore();
-
-
-
-		// ==========================================
-
-		//loadJS('/wp-content/themes/mpg/js/vendor.js', initWebWorker, document.body);
-
 		initWebWorker();
 
 		initCategoryPage();
@@ -543,7 +554,12 @@ let lastMobileSimilarSite;
 		}
 
 		// new CategoryPopup()
+		if(!isMobileOrTablet){
+			pukeCheck();
+		}
+
 	};
+
 	/**
 	 * @description Init all CB after page load
 	 */
