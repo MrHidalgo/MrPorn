@@ -3382,6 +3382,44 @@ strong {
   }
 }
 
+/* line 1, src/scss/_components/ads/adb_notice.scss */
+.adblock-notice {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+  -webkit-align-items: center;
+      -ms-flex-align: center;
+          align-items: center;
+  gap: 10px;
+  padding: 5px;
+  background: #D93025;
+  color: #fff;
+}
+
+/* line 10, src/scss/_components/ads/adb_notice.scss */
+.adblock-notice:before {
+  display: inline-block;
+  content: ' ';
+  width: 32px;
+  height: 32px;
+  background: url(../images/adbk.svg);
+}
+
+/* line 18, src/scss/_components/ads/adb_notice.scss */
+.adblock-notice-close {
+  background: transparent;
+  border: none;
+  -webkit-box-shadow: none;
+          box-shadow: none;
+  cursor: pointer;
+}
+
 @-webkit-keyframes pulse {
   0% {
     -webkit-box-shadow: 0 0 0 0 rgba(var(--animation-rgb-value, 18, 71, 140), var(--animation-rgb-opacity, 0.7));
@@ -3532,12 +3570,12 @@ strong {
   }
 }
 
-/* line 9, src/scss/_shared/_common.scss */
+/* line 10, src/scss/_shared/_common.scss */
 fieldset {
   border: none;
 }
 
-/* line 13, src/scss/_shared/_common.scss */
+/* line 14, src/scss/_shared/_common.scss */
 .copyright {
   display: -webkit-box;
   display: -webkit-flex;
@@ -3553,7 +3591,7 @@ fieldset {
           justify-content: center;
 }
 
-/* line 18, src/scss/_shared/_common.scss */
+/* line 19, src/scss/_shared/_common.scss */
 .copyright__text {
   text-align: center;
   font-size: 16px;
@@ -3562,18 +3600,18 @@ fieldset {
   margin: 0;
 }
 
-/* line 25, src/scss/_shared/_common.scss */
+/* line 26, src/scss/_shared/_common.scss */
 .copyright__text a {
   color: #4099f9;
 }
 
-/* line 28, src/scss/_shared/_common.scss */
+/* line 29, src/scss/_shared/_common.scss */
 .copyright__text a:hover, .copyright__text a:focus {
   color: #4099f9;
 }
 
 @media screen and (max-width: 767px) {
-  /* line 18, src/scss/_shared/_common.scss */
+  /* line 19, src/scss/_shared/_common.scss */
   .copyright__text {
     font-size: 12px;
     line-height: 2;
@@ -3581,7 +3619,7 @@ fieldset {
 }
 
 @media screen and (max-width: 424px) {
-  /* line 18, src/scss/_shared/_common.scss */
+  /* line 19, src/scss/_shared/_common.scss */
   .copyright__text {
     font-size: 10px;
   }
