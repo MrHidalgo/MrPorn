@@ -223,6 +223,10 @@ class A2ZPopup{
 	}
 
 	generateA2ZPopupContent(){
+		let categoriesLink = '/categories/';
+		if(currentLang != 'en'){
+			categoriesLink = '/'+currentLang+'/categories/';
+		}
 		const popupContent = `
 		  <div class="micromodal micromodal-slide" id="a2z-modal" aria-hidden="false">
 			  <div class="micromodal-overlay" tabindex="-1">
@@ -253,6 +257,7 @@ class A2ZPopup{
 							${this.renderCategories()}
 					  </div>
 					  <div class="micromodal-footer">
+							<a href="${categoriesLink}" class="a2z-categories">All Categories & Tags ↗</a>
 							<button class="btn btn-secondary a2z-reset">Reset all</button>
 							<button class="btn btn-success a2z-apply progress-button">
 								<span class="progress-spinner"></span>

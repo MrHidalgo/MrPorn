@@ -19,7 +19,6 @@ const visitedSites = () => {
 
 	const showVisitedViews = (key, elementSelector) => {
 		const visitedSites = getVisitedViews(key);
-		console.log('visitedSites:', visitedSites);
 		const $els = document.querySelectorAll(elementSelector);
 		$els.forEach($el => {
 				const id = +$el.getAttribute('data-id');

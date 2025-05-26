@@ -179,48 +179,6 @@ const markFavourites = () =>{
 	})
 }
 
-const letterSearch = () => {
-	if(getWithExpiry("letter_data_"+dataTime)){
-		letterData = getWithExpiry("letter_data_"+dataTime);
-		if(letterData.length > 0){
-			renderSorting();
-			return
-		}
-	}
-
-	if(!letterData | letterData.length===0){
-
-
-		fetch('/wp-json/mpg/letter_matrix/')
-			.then(res => res.json())
-			.then((result) => {
-				Object.keys(result).forEach(function (key) {
-					var letter = key;
-					var suggestions = result[key];
-
-					var letterSuggestions = [];
-
-					suggestions.map(function (suggestion) {
-						let sName = suggestion.name;
-						let sIcon = suggestion.icon;
-						let sHd = suggestion.hd;
-						let sFree = suggestion.free;
-
-						letterSuggestions.push(suggestion);
-					});
-
-					letterData[letter] = letterSuggestions;
-				});
-				renderSorting();
-
-				setWithExpiry("letter_data_"+dataTime, letterData, 30*60*1000);
-			})
-			.catch(err => {
-				// console.log('didnt load letter matrix');
-			});
-	}
-}
-
 const loadTranslations = () => {
 	translations = getWithExpiry("i18n_"+dataTime);
 	if(!translations){

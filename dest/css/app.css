@@ -9040,7 +9040,12 @@ fieldset {
   background-image: url(../images/categories/art.svg);
 }
 
-/* line 511, src/scss/_components/icons/_category_icons.scss */
+/* line 509, src/scss/_components/icons/_category_icons.scss */
+.icon-mpg {
+  background-image: url(../images/avatar.svg);
+}
+
+/* line 515, src/scss/_components/icons/_category_icons.scss */
 .icon-circled {
   height: 22px;
   width: 22px;
@@ -9159,30 +9164,58 @@ fieldset {
           border-radius: 4px;
 }
 
-/* line 67, src/scss/_components/common/a2z_popup.scss */
+@media screen and (max-width: 768px) {
+  /* line 62, src/scss/_components/common/a2z_popup.scss */
+  .a2z-content .micromodal-footer .btn {
+    padding: 10px 12px;
+  }
+}
+
+/* line 71, src/scss/_components/common/a2z_popup.scss */
 .a2z-content .micromodal-footer .a2z-apply {
   width: 100px;
 }
 
-/* line 71, src/scss/_components/common/a2z_popup.scss */
+/* line 75, src/scss/_components/common/a2z_popup.scss */
 .a2z-content .micromodal-footer .a2z-reset {
+  background: #e4e5e6;
   color: #3d3e3f;
 }
 
-/* line 77, src/scss/_components/common/a2z_popup.scss */
+/* line 80, src/scss/_components/common/a2z_popup.scss */
+.a2z-content .micromodal-footer .a2z-categories {
+  color: var(--primary-color, #000);
+  font-size: 12px;
+  padding: 4px 8px;
+  -webkit-border-radius: 3px;
+          border-radius: 3px;
+}
+
+@media screen and (max-width: 768px) {
+  /* line 80, src/scss/_components/common/a2z_popup.scss */
+  .a2z-content .micromodal-footer .a2z-categories {
+    padding: 4px 8px 4px 0;
+    -webkit-box-flex: 1;
+    -webkit-flex: 1;
+        -ms-flex: 1;
+            flex: 1;
+  }
+}
+
+/* line 94, src/scss/_components/common/a2z_popup.scss */
 .a2z-content .filter_tag {
   position: relative;
 }
 
 @media screen and (max-width: 1023px) {
-  /* line 77, src/scss/_components/common/a2z_popup.scss */
+  /* line 94, src/scss/_components/common/a2z_popup.scss */
   .a2z-content .filter_tag {
     width: 100%;
     border: 2px solid #333;
   }
 }
 
-/* line 85, src/scss/_components/common/a2z_popup.scss */
+/* line 102, src/scss/_components/common/a2z_popup.scss */
 .a2z-content .filter_tag input {
   width: 100%;
   border: none;
@@ -9193,7 +9226,7 @@ fieldset {
   font-size: 16px;
 }
 
-/* line 93, src/scss/_components/common/a2z_popup.scss */
+/* line 110, src/scss/_components/common/a2z_popup.scss */
 .a2z-content .filter_tag:after {
   content: ' ';
   position: absolute;
@@ -9209,7 +9242,7 @@ fieldset {
           background-size: contain;
 }
 
-/* line 106, src/scss/_components/common/a2z_popup.scss */
+/* line 123, src/scss/_components/common/a2z_popup.scss */
 .a2z-header {
   display: -webkit-box;
   display: -webkit-flex;
@@ -9226,13 +9259,13 @@ fieldset {
 }
 
 @media screen and (max-width: 1023px) {
-  /* line 106, src/scss/_components/common/a2z_popup.scss */
+  /* line 123, src/scss/_components/common/a2z_popup.scss */
   .a2z-header {
     display: block;
   }
 }
 
-/* line 115, src/scss/_components/common/a2z_popup.scss */
+/* line 132, src/scss/_components/common/a2z_popup.scss */
 .a2z-letters-container {
   display: -webkit-box;
   display: -webkit-flex;
@@ -9247,7 +9280,7 @@ fieldset {
 }
 
 @media screen and (max-width: 1023px) {
-  /* line 115, src/scss/_components/common/a2z_popup.scss */
+  /* line 132, src/scss/_components/common/a2z_popup.scss */
   .a2z-letters-container {
     gap: 6px;
     -webkit-box-pack: center;
@@ -9258,7 +9291,7 @@ fieldset {
   }
 }
 
-/* line 128, src/scss/_components/common/a2z_popup.scss */
+/* line 145, src/scss/_components/common/a2z_popup.scss */
 .a2z-letters-container .a2z-letter-item {
   cursor: pointer;
   font-size: 16px;
@@ -9267,25 +9300,25 @@ fieldset {
   transition: color .3s;
 }
 
-/* line 133, src/scss/_components/common/a2z_popup.scss */
+/* line 150, src/scss/_components/common/a2z_popup.scss */
 .a2z-letters-container .a2z-letter-item.popular {
   color: #76aaf7;
 }
 
 @media screen and (max-width: 1023px) {
-  /* line 128, src/scss/_components/common/a2z_popup.scss */
+  /* line 145, src/scss/_components/common/a2z_popup.scss */
   .a2z-letters-container .a2z-letter-item {
     font-size: 14px;
     padding: 0 10px;
   }
 }
 
-/* line 142, src/scss/_components/common/a2z_popup.scss */
+/* line 159, src/scss/_components/common/a2z_popup.scss */
 .a2z-letters-container .a2z-letter-item.active {
   color: #3e98cf;
 }
 
-/* line 149, src/scss/_components/common/a2z_popup.scss */
+/* line 166, src/scss/_components/common/a2z_popup.scss */
 .a2z-btn {
   border: none;
   -webkit-border-radius: 4px;
@@ -9304,13 +9337,13 @@ fieldset {
 }
 
 @media screen and (max-width: 1023px) {
-  /* line 149, src/scss/_components/common/a2z_popup.scss */
+  /* line 166, src/scss/_components/common/a2z_popup.scss */
   .a2z-btn {
     font-size: 14px;
   }
 }
 
-/* line 168, src/scss/_components/common/a2z_popup.scss */
+/* line 185, src/scss/_components/common/a2z_popup.scss */
 .a2z-btn.processing:before {
   text-rendering: auto;
   -webkit-font-smoothing: antialiased;
@@ -9321,12 +9354,12 @@ fieldset {
   font-size: inherit;
 }
 
-/* line 179, src/scss/_components/common/a2z_popup.scss */
+/* line 196, src/scss/_components/common/a2z_popup.scss */
 .a2z-btn:hover, .a2z-btn.active {
   color: #fff;
 }
 
-/* line 187, src/scss/_components/common/a2z_popup.scss */
+/* line 204, src/scss/_components/common/a2z_popup.scss */
 .a2z-categories-container {
   display: -webkit-box;
   display: -webkit-flex;
@@ -9338,7 +9371,7 @@ fieldset {
   gap: 10px;
 }
 
-/* line 195, src/scss/_components/common/a2z_popup.scss */
+/* line 212, src/scss/_components/common/a2z_popup.scss */
 .a2z-category-item {
   background: #dbdce0;
   color: #333;
@@ -9351,7 +9384,7 @@ fieldset {
 }
 
 @media screen and (max-width: 1023px) {
-  /* line 195, src/scss/_components/common/a2z_popup.scss */
+  /* line 212, src/scss/_components/common/a2z_popup.scss */
   .a2z-category-item {
     -webkit-box-flex: 1;
     -webkit-flex: 1 1 -webkit-calc(33.333% - 10px);
@@ -9364,13 +9397,13 @@ fieldset {
   }
 }
 
-/* line 207, src/scss/_components/common/a2z_popup.scss */
+/* line 224, src/scss/_components/common/a2z_popup.scss */
 .a2z-category-item:hover, .a2z-category-item.active {
   background: #3e98cf;
   color: #fff;
 }
 
-/* line 214, src/scss/_components/common/a2z_popup.scss */
+/* line 231, src/scss/_components/common/a2z_popup.scss */
 .a2z-popular {
   display: -webkit-box;
   display: -webkit-flex;
@@ -9387,7 +9420,7 @@ fieldset {
   margin-top: 5px;
 }
 
-/* line 221, src/scss/_components/common/a2z_popup.scss */
+/* line 238, src/scss/_components/common/a2z_popup.scss */
 .a2z-popular-item {
   background: #0040a0;
   color: #fff;
@@ -9400,7 +9433,7 @@ fieldset {
 }
 
 @media screen and (max-width: 1023px) {
-  /* line 221, src/scss/_components/common/a2z_popup.scss */
+  /* line 238, src/scss/_components/common/a2z_popup.scss */
   .a2z-popular-item {
     -webkit-box-flex: 1;
     -webkit-flex: 1 1 -webkit-calc(33.333% - 10px);
@@ -9411,19 +9444,19 @@ fieldset {
     -webkit-box-sizing: border-box;
             box-sizing: border-box;
   }
-  /* line 232, src/scss/_components/common/a2z_popup.scss */
+  /* line 249, src/scss/_components/common/a2z_popup.scss */
   .a2z-popular-item:nth-child(6) {
     display: block;
   }
 }
 
-/* line 237, src/scss/_components/common/a2z_popup.scss */
+/* line 254, src/scss/_components/common/a2z_popup.scss */
 .a2z-popular-item:hover {
   background: #3e98cf;
   color: #fff;
 }
 
-/* line 245, src/scss/_components/common/a2z_popup.scss */
+/* line 262, src/scss/_components/common/a2z_popup.scss */
 .progress-spinner {
   width: 16px;
   height: 16px;
@@ -9435,19 +9468,19 @@ fieldset {
           animation: spin 1s linear infinite;
 }
 
-/* line 254, src/scss/_components/common/a2z_popup.scss */
+/* line 271, src/scss/_components/common/a2z_popup.scss */
 .progress-button .progress-spinner {
   display: none;
 }
 
-/* line 258, src/scss/_components/common/a2z_popup.scss */
+/* line 275, src/scss/_components/common/a2z_popup.scss */
 .progress-button:disabled {
   opacity: 0.8;
   cursor: not-allowed;
   font-size: 0;
 }
 
-/* line 263, src/scss/_components/common/a2z_popup.scss */
+/* line 280, src/scss/_components/common/a2z_popup.scss */
 .progress-button:disabled .progress-spinner {
   display: block;
 }
@@ -9466,12 +9499,12 @@ fieldset {
   }
 }
 
-/* line 275, src/scss/_components/common/a2z_popup.scss */
+/* line 292, src/scss/_components/common/a2z_popup.scss */
 .light .micromodal-content.a2z-content {
   background: #eee;
 }
 
-/* line 278, src/scss/_components/common/a2z_popup.scss */
+/* line 295, src/scss/_components/common/a2z_popup.scss */
 .light .a2z-letters-container .a2z-letter-item.popular {
   color: #0040a0;
 }

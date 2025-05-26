@@ -506,9 +506,6 @@ let lastMobileSimilarSite;
 		lazyLoadImages();
 
 
-		// letterSearch();
-
-
 		search();
 
 		showThumbInfoOnHover();

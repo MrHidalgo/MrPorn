@@ -661,7 +661,13 @@ var A2ZPopup = /*#__PURE__*/function () {
   }, {
     key: "generateA2ZPopupContent",
     value: function generateA2ZPopupContent() {
-      var popupContent = "\n\t\t  <div class=\"micromodal micromodal-slide\" id=\"a2z-modal\" aria-hidden=\"false\">\n\t\t\t  <div class=\"micromodal-overlay\" tabindex=\"-1\">\n\t\t\t\t<div class=\"micromodal-container custom-scrollbar\" role=\"dialog\" aria-modal=\"true\" aria-labelledby=\"boogie-title\">\n\t\t\t\t  <div class=\"micromodal-content a2z-content\">\n\t\t\t\t\t  <div class=\"micromodal-header\">\n\t\t\t\t\t\t\t<div class=\"micromodal-title\" id=\"boogie-title\">\n\t\t\t\t\t\t\t\t<div class=\"micromodal-title-text\">A-Z Category List</div>\n\t\t\t\t\t\t\t</div>\n\t\t\t\t\t\t\t<div class=\"a2z-header\">\n\t\t\t\t\t\t\t\t".concat(this.renderA2ZLetters(), "\n\n\t\t\t\t\t\t\t\t<div class=\"filter_tag\">\n\t\t\t\t\t\t\t\t\t<input placeholder=\"Type to search...\" type=\"text\" id=\"filter_tag_input\" autocomplete=\"off\"/>\n\t\t\t\t\t\t\t\t</div>\n\t\t\t\t\t\t\t</div>\n\n\n\t\t\t\t\t\t\t<div class=\"micromodal-close\" data-micromodal-close=\"\">\n\t\t\t\t\t\t\t\t<svg class=\"icon\" xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0.51 0.51 22.99 22.99\" width=\"16px\" height=\"16px\">\n\t\t\t\t\t\t\t\t\t<path d=\"M23.1294 21.4152L2.58488 0.870773C2.10409 0.38998 1.33062 0.383984 0.85722 0.85738C0.383824 1.33078 0.38982 2.10425 0.870613 2.58504L21.4151 23.1295C21.8959 23.6103 22.6694 23.6163 23.1428 23.1429C23.6161 22.6695 23.6101 21.896 23.1294 21.4152Z\"></path>\n\t\t\t\t\t\t\t\t\t<path d=\"M21.415 0.870638L0.870529 21.4151C0.389736 21.8959 0.38374 22.6694 0.857136 23.1428C1.33053 23.6162 2.10401 23.6102 2.5848 23.1294L23.1293 2.58491C23.6101 2.10412 23.6161 1.33064 23.1427 0.857245C22.6693 0.383849 21.8958 0.389845 21.415 0.870638Z\"></path>\n\t\t\t\t\t\t\t\t</svg>\n\t\t\t\t\t\t\t</div>\n\t\t\t\t\t  </div>\n\n\t\t\t\t\t  <div class=\"micromodal-body\">\n\t\t\t\t\t\t\t").concat(this.renderCategories(), "\n\t\t\t\t\t  </div>\n\t\t\t\t\t  <div class=\"micromodal-footer\">\n\t\t\t\t\t\t\t<button class=\"btn btn-secondary a2z-reset\">Reset all</button>\n\t\t\t\t\t\t\t<button class=\"btn btn-success a2z-apply progress-button\">\n\t\t\t\t\t\t\t\t<span class=\"progress-spinner\"></span>\n\t\t\t\t\t\t\t\tApply\n\t\t\t\t\t\t\t</button>\n\t\t\t\t\t\t</div>\n\t\t\t\t\t</div>\n\t\t\t\t</div>\n\t\t\t  </div>\n\t\t\t</div>\n\t\t");
+      var categoriesLink = '/categories/';
+
+      if (currentLang != 'en') {
+        categoriesLink = '/' + currentLang + '/categories/';
+      }
+
+      var popupContent = "\n\t\t  <div class=\"micromodal micromodal-slide\" id=\"a2z-modal\" aria-hidden=\"false\">\n\t\t\t  <div class=\"micromodal-overlay\" tabindex=\"-1\">\n\t\t\t\t<div class=\"micromodal-container custom-scrollbar\" role=\"dialog\" aria-modal=\"true\" aria-labelledby=\"boogie-title\">\n\t\t\t\t  <div class=\"micromodal-content a2z-content\">\n\t\t\t\t\t  <div class=\"micromodal-header\">\n\t\t\t\t\t\t\t<div class=\"micromodal-title\" id=\"boogie-title\">\n\t\t\t\t\t\t\t\t<div class=\"micromodal-title-text\">A-Z Category List</div>\n\t\t\t\t\t\t\t</div>\n\t\t\t\t\t\t\t<div class=\"a2z-header\">\n\t\t\t\t\t\t\t\t".concat(this.renderA2ZLetters(), "\n\n\t\t\t\t\t\t\t\t<div class=\"filter_tag\">\n\t\t\t\t\t\t\t\t\t<input placeholder=\"Type to search...\" type=\"text\" id=\"filter_tag_input\" autocomplete=\"off\"/>\n\t\t\t\t\t\t\t\t</div>\n\t\t\t\t\t\t\t</div>\n\n\n\t\t\t\t\t\t\t<div class=\"micromodal-close\" data-micromodal-close=\"\">\n\t\t\t\t\t\t\t\t<svg class=\"icon\" xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0.51 0.51 22.99 22.99\" width=\"16px\" height=\"16px\">\n\t\t\t\t\t\t\t\t\t<path d=\"M23.1294 21.4152L2.58488 0.870773C2.10409 0.38998 1.33062 0.383984 0.85722 0.85738C0.383824 1.33078 0.38982 2.10425 0.870613 2.58504L21.4151 23.1295C21.8959 23.6103 22.6694 23.6163 23.1428 23.1429C23.6161 22.6695 23.6101 21.896 23.1294 21.4152Z\"></path>\n\t\t\t\t\t\t\t\t\t<path d=\"M21.415 0.870638L0.870529 21.4151C0.389736 21.8959 0.38374 22.6694 0.857136 23.1428C1.33053 23.6162 2.10401 23.6102 2.5848 23.1294L23.1293 2.58491C23.6101 2.10412 23.6161 1.33064 23.1427 0.857245C22.6693 0.383849 21.8958 0.389845 21.415 0.870638Z\"></path>\n\t\t\t\t\t\t\t\t</svg>\n\t\t\t\t\t\t\t</div>\n\t\t\t\t\t  </div>\n\n\t\t\t\t\t  <div class=\"micromodal-body\">\n\t\t\t\t\t\t\t").concat(this.renderCategories(), "\n\t\t\t\t\t  </div>\n\t\t\t\t\t  <div class=\"micromodal-footer\">\n\t\t\t\t\t\t\t<a href=\"").concat(categoriesLink, "\" class=\"a2z-categories\">All Categories & Tags \u2197</a>\n\t\t\t\t\t\t\t<button class=\"btn btn-secondary a2z-reset\">Reset all</button>\n\t\t\t\t\t\t\t<button class=\"btn btn-success a2z-apply progress-button\">\n\t\t\t\t\t\t\t\t<span class=\"progress-spinner\"></span>\n\t\t\t\t\t\t\t\tApply\n\t\t\t\t\t\t\t</button>\n\t\t\t\t\t\t</div>\n\t\t\t\t\t</div>\n\t\t\t\t</div>\n\t\t\t  </div>\n\t\t\t</div>\n\t\t");
       return popupContent;
     }
   }, {
@@ -1918,40 +1924,6 @@ var markFavourites = function markFavourites() {
       document.querySelector('.list__specification-favorites[data-id="' + fav + '"]').classList.add('is-active');
     }
   });
-};
-
-var letterSearch = function letterSearch() {
-  if (getWithExpiry("letter_data_" + dataTime)) {
-    letterData = getWithExpiry("letter_data_" + dataTime);
-
-    if (letterData.length > 0) {
-      renderSorting();
-      return;
-    }
-  }
-
-  if (!letterData | letterData.length === 0) {
-    fetch('/wp-json/mpg/letter_matrix/').then(function (res) {
-      return res.json();
-    }).then(function (result) {
-      Object.keys(result).forEach(function (key) {
-        var letter = key;
-        var suggestions = result[key];
-        var letterSuggestions = [];
-        suggestions.map(function (suggestion) {
-          var sName = suggestion.name;
-          var sIcon = suggestion.icon;
-          var sHd = suggestion.hd;
-          var sFree = suggestion.free;
-          letterSuggestions.push(suggestion);
-        });
-        letterData[letter] = letterSuggestions;
-      });
-      renderSorting();
-      setWithExpiry("letter_data_" + dataTime, letterData, 30 * 60 * 1000);
-    })["catch"](function (err) {// console.log('didnt load letter matrix');
-    });
-  }
 };
 
 var loadTranslations = function loadTranslations() {
@@ -4218,7 +4190,6 @@ var visitedSites = function visitedSites() {
 
   var showVisitedViews = function showVisitedViews(key, elementSelector) {
     var visitedSites = getVisitedViews(key);
-    console.log('visitedSites:', visitedSites);
     var $els = document.querySelectorAll(elementSelector);
     $els.forEach(function ($el) {
       var id = +$el.getAttribute('data-id');
@@ -4764,8 +4735,7 @@ var lastMobileSimilarSite;
     viewFavoritesToggle();
     goTop = document.querySelector('.go-top');
     initGotoTop();
-    lazyLoadImages(); // letterSearch();
-
+    lazyLoadImages();
     search();
     showThumbInfoOnHover();
     var bodyClasses = document.body.classList;
