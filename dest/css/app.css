@@ -3420,6 +3420,29 @@ strong {
   cursor: pointer;
 }
 
+/* line 1, src/scss/_components/common/_buttons.scss */
+.link-action {
+  color: var(--view-all-color, #333);
+  border: 2px solid #aaa;
+  -webkit-border-radius: 5px;
+          border-radius: 5px;
+  padding: 5px 15px;
+  text-align: center;
+}
+
+@media screen and (max-width: 767px) {
+  /* line 1, src/scss/_components/common/_buttons.scss */
+  .link-action {
+    display: block;
+    width: 100%;
+  }
+}
+
+/* line 13, src/scss/_components/common/_buttons.scss */
+.link-action:hover, .link-action:focus {
+  color: var(--view-all-color, #333);
+}
+
 @-webkit-keyframes pulse {
   0% {
     -webkit-box-shadow: 0 0 0 0 rgba(var(--animation-rgb-value, 18, 71, 140), var(--animation-rgb-opacity, 0.7));
@@ -3570,12 +3593,12 @@ strong {
   }
 }
 
-/* line 10, src/scss/_shared/_common.scss */
+/* line 11, src/scss/_shared/_common.scss */
 fieldset {
   border: none;
 }
 
-/* line 14, src/scss/_shared/_common.scss */
+/* line 15, src/scss/_shared/_common.scss */
 .copyright {
   display: -webkit-box;
   display: -webkit-flex;
@@ -3591,7 +3614,7 @@ fieldset {
           justify-content: center;
 }
 
-/* line 19, src/scss/_shared/_common.scss */
+/* line 20, src/scss/_shared/_common.scss */
 .copyright__text {
   text-align: center;
   font-size: 16px;
@@ -3600,18 +3623,18 @@ fieldset {
   margin: 0;
 }
 
-/* line 26, src/scss/_shared/_common.scss */
+/* line 27, src/scss/_shared/_common.scss */
 .copyright__text a {
   color: #4099f9;
 }
 
-/* line 29, src/scss/_shared/_common.scss */
+/* line 30, src/scss/_shared/_common.scss */
 .copyright__text a:hover, .copyright__text a:focus {
   color: #4099f9;
 }
 
 @media screen and (max-width: 767px) {
-  /* line 19, src/scss/_shared/_common.scss */
+  /* line 20, src/scss/_shared/_common.scss */
   .copyright__text {
     font-size: 12px;
     line-height: 2;
@@ -3619,7 +3642,7 @@ fieldset {
 }
 
 @media screen and (max-width: 424px) {
-  /* line 19, src/scss/_shared/_common.scss */
+  /* line 20, src/scss/_shared/_common.scss */
   .copyright__text {
     font-size: 10px;
   }

@@ -95,22 +95,6 @@
 		background-image: url("../images/rating_5.png");
 	}
 }
-.link-action{
-	color: var(--view-all-color, #333);
-	border: 2px solid #aaa;
-	border-radius: 5px;
-	padding: 5px 15px;
-	text-align: center;
-
-	@include adaptive(767) {
-		display: block;
-		width: 100%;
-	}
-
-	&:hover, &:focus{
-		color: var(--view-all-color, #333);
-	}
-}
 
 .section_footer{
 	display: flex;
