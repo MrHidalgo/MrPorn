@@ -10,8 +10,9 @@
 	}
 
 	&__tagline{
-		font-size: 12px;
+		font-size: 14px;
 		font-weight: 400;
+		padding-bottom: 10px;
 
 		@include respond('medium'){
 			display: block;
@@ -24,6 +25,12 @@
 		font-size: 20px;
 		min-height: 0;
 		padding-bottom: 10px;
+	}
+	&__p20{
+		color: var(--heading-color, #000);
+		font-weight: 500;
+		font-size: 20px;
+		min-height: 0;
 	}
 
 	&__1{
@@ -166,6 +173,9 @@
 
 }
 
+.categories-container .section_heading__tagline h1{
+	padding: 0;
+}
 
 .light{
 	.blue_heading{

@@ -4568,7 +4568,7 @@ var lastMobileSimilarSite;
     var scrollOffset = 0;
     var bodyClasses = document.body.classList;
 
-    if (bodyClasses.contains('single-sites') || bodyClasses.contains('category') || bodyClasses.contains('page-template-page-categories')) {
+    if (bodyClasses.contains('single-sites') || bodyClasses.contains('category') || bodyClasses.contains('page-template-page-categories') || bodyClasses.contains('tax-category-tag')) {
       initReviewScroll();
     } else if (bodyClasses.contains('home')) {
       initHomeScroll();
