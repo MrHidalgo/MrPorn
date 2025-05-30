@@ -12,8 +12,14 @@
 	cursor: pointer;
 	border-radius: 4px;
 	display: flex;
+	gap: 10px;
 	align-items: center;
 	justify-content: space-between;
+
+	&:after{
+		content: '▼';
+		transition: transform 0.3s ease;
+	}
 }
 
 .dropdown-icon {
@@ -24,30 +30,40 @@
 .dropdown-menu {
 	display: none;
 	position: absolute;
-	background-color: white;
+	background-color: #2a2b31;
 	box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 	padding: 10px 0;
 	margin: 0;
 	list-style: none;
 	border-radius: 4px;
 	z-index: 1000;
-	min-width: 200px;
+	min-width: 230px;
 
 	&.right{
 		right: 0;
 	}
 }
 
-.dropdown-menu li {
+.dropdown-item {
 	position: relative;
-	padding: 8px 16px;
+	padding: 8px 2px 8px 16px;
+
+	&:after{
+		width: 18px;
+		height: 9px;
+	}
 
 	&:hover {
-		background-color: #f0f0f0;
+		background-color: #484a54;
+		color: #3e98cf;
 	}
 
 	&.all{
+		display: flex;
+		align-items: center;
 		background: #0a3e83;
+		white-space: nowrap;
+
 		.tag-icon{
 			height: 16px;
 		}
@@ -62,22 +78,49 @@
 
 .dropdown-menu li a {
 	text-decoration: none;
-	color: #333;
-	display: block;
+	color: var(--primary-color, #fff);
+	display: flex;
+	align-items: center;
+
+	span{
+		flex: 1;
+	}
+
+	&:hover{
+		color: #3e98cf;
+	}
 
 	@include respond('medium'){
 		padding-left: 20px;
+		padding-right: 5px;
 	}
 }
-
-.show {
+.dropdown-menu li.all:hover a{
+	color: #fff
+}
+.dropdown-toggle.show{
+	&:after {
+		transform: rotate(180deg);
+	}
+}
+.dropdown-menu.show {
 	display: block;
 }
 
-.show {
-	display: block;
-}
-
-.show .dropdown-icon {
-	transform: rotate(180deg); /* Rotate the icon when dropdown is open */
+.light{
+	.dropdown-menu{
+		background-color: white;
+		li:hover a{
+			color: #000;
+		}
+		li.all:hover a{
+			color: #fff;
+		}
+	}
+	.dropdown-item:not(.all){
+		&:hover{
+			background-color: #f0f1f5;
+			color: #000;
+		}
+	}
 }

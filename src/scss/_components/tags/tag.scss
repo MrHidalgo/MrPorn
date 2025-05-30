@@ -12,6 +12,9 @@
 	background-position: 10px center;
 	background-repeat: no-repeat;
 
+
+
+
 	a, a:hover{
 		color: #000;
 	}
@@ -75,6 +78,45 @@
 		background-position: center;
 		margin-right: 5px;
 
+		&.themed{
+			--icon-action: url("../images/tags/icon-actions-white.svg");
+			--icon-age: url("../images/tags/icon-age-white.svg");
+			--icon-apparel: url("../images/tags/icon-apparel-white.svg");
+			--icon-body: url("../images/tags/icon-body-white.svg");
+			--icon-ethnicity: url("../images/tags/icon-ethnicity-white.svg");
+			--icon-fetish: url("../images/tags/icon-fetish-white.svg");
+			--icon-hair: url("../images/tags/icon-hair-white.svg");
+			--icon-live-cams: url("../images/tags/icon-live-cams-white.svg");
+			--icon-location: url("../images/tags/icon-location-white.svg");
+			--icon-orientation: url("../images/tags/icon-orientation-white.svg");
+			--icon-production: url("../images/tags/icon-production-white.svg");
+			--icon-region: url("../images/tags/icon-region-white.svg");
+			--icon-scene-type: url("../images/tags/icon-scene-type-white.svg");
+			--icon-sex-toys: url("../images/tags/icon-sex-toys-white.svg");
+			--icon-scenario: url("../images/tags/icon-scenario-white.svg");
+			--icon-ai-porn: url("../images/tags/icon-ai-porn-white.svg");
+		}
+		&:not(.themed){
+			--icon-action: url("../images/tags/icon-actions.svg");
+			--icon-age: url("../images/tags/icon-age.svg");
+			--icon-apparel: url("../images/tags/icon-apparel.svg");
+			--icon-body: url("../images/tags/icon-body.svg");
+			--icon-ethnicity: url("../images/tags/icon-ethnicity.svg");
+			--icon-fetish: url("../images/tags/icon-fetish.svg");
+			--icon-hair: url("../images/tags/icon-hair.svg");
+			--icon-live-cams: url("../images/tags/icon-live-cams.svg");
+			--icon-location: url("../images/tags/icon-location.svg");
+			--icon-orientation: url("../images/tags/icon-orientation.svg");
+			--icon-production: url("../images/tags/icon-production.svg");
+			--icon-region: url("../images/tags/icon-region.svg");
+			--icon-scene-type: url("../images/tags/icon-scene-type.svg");
+			--icon-sex-toys: url("../images/tags/icon-sex-toys.svg");
+			--icon-scenario: url("../images/tags/icon-scenario.svg");
+			--icon-ai-porn: url("../images/tags/icon-ai-porn.svg");
+		}
+
+
+
 		@include respond('medium'){
 			position: absolute;
 			left: 7px;
@@ -88,63 +130,86 @@
 
 		&.tag{
 			&-actions{
-				background-image: url("../images/tags/icon-actions.svg");
+				background-image: var(--icon-action, url("../images/tags/icon-actions.svg"));
 				background-size: 18px;
 			}
 			&-age{
-				background-image: url("../images/tags/icon-age.svg");
+				background-image: var(--icon-age, url("../images/tags/icon-age.svg"));
 			}
 			&-apparel{
-				background-image: url("../images/tags/icon-apparel.svg?1");
+				background-image: var(--icon-apparel, url("../images/tags/icon-apparel.svg?1"));
 			}
 			&-body{
-				background-image: url("../images/tags/icon-body.svg?");
+				background-image: var(--icon-body, url("../images/tags/icon-body.svg?"));
 			}
 			&-ethnicity{
-				background-image: url("../images/tags/icon-ethnicity.svg");
+				background-image: var(--icon-ethnicity, url("../images/tags/icon-ethnicity.svg"));
 			}
 			&-fetish{
-				background-image: url("../images/tags/icon-fetish.svg");
+				background-image: var(--icon-fetish, url("../images/tags/icon-fetish.svg"));
 				background-size: 18px;
 			}
 			&-hair{
-				background-image: url("../images/tags/icon-hair.svg?");
+				background-image: var(--icon-hair, url("../images/tags/icon-hair.svg?"));
 			}
 			&-live-cams{
-				background-image: url("../images/tags/icon-live-cams.svg");
+				background-image: var(--icon-live-cams, url("../images/tags/icon-live-cams.svg"));
 				background-size: 18px;
 			}
 			&-location{
-				background-image: url("../images/tags/icon-location.svg");
+				background-image: var(--icon-location, url("../images/tags/icon-location.svg"));
 				background-size: 18px;
 			}
 			&-orientation{
-				background-image: url("../images/tags/icon-orientation.svg");
+				background-image: var(--icon-orientation, url("../images/tags/icon-orientation.svg"));
 				background-size: 17px;
 			}
 			&-production{
-				background-image: url("../images/tags/icon-production.svg?");
+				background-image: var(--icon-production, url("../images/tags/icon-production.svg?"));
 				background-size: 16px;
 			}
 			&-region{
-				background-image: url("../images/tags/icon-region.svg");
+				background-image: var(--icon-region, url("../images/tags/icon-region.svg"));
 				background-size: 16px;
 			}
 			&-scene-type{
-				background-image: url("../images/tags/icon-scene-type.svg");
+				background-image: var(--icon-scene-type, url("../images/tags/icon-scene-type.svg"));
 				background-size: 18px;
 			}
 			&-sex-toys{
-				background-image: url("../images/tags/icon-sex-toys.svg?2");
+				background-image: var(--icon-sex-toys, url("../images/tags/icon-sex-toys.svg?2"));
 			}
 			&-scenario{
-				background-image: url("../images/tags/icon-scenario.svg");
+				background-image: var(--icon-scenario, url("../images/tags/icon-scenario.svg"));
 			}
 			&-ai-porn{
-				background-image: url("../images/tags/icon-ai-porn.svg");
+				background-image: var(--icon-ai-porn, url("../images/tags/icon-ai-porn.svg"));
 			}
 		}
 	}
+}
 
+.review_header_dropdown{
+	.categories-tags-item{
+		display: block;
+	}
+}
 
+.light .tag-icon{
+	--icon-action: url("../images/tags/icon-actions.svg");
+	--icon-age: url("../images/tags/icon-age.svg");
+	--icon-apparel: url("../images/tags/icon-apparel.svg");
+	--icon-body: url("../images/tags/icon-body.svg");
+	--icon-ethnicity: url("../images/tags/icon-ethnicity.svg");
+	--icon-fetish: url("../images/tags/icon-fetish.svg");
+	--icon-hair: url("../images/tags/icon-hair.svg");
+	--icon-live-cams: url("../images/tags/icon-live-cams.svg");
+	--icon-location: url("../images/tags/icon-location.svg");
+	--icon-orientation: url("../images/tags/icon-orientation.svg");
+	--icon-production: url("../images/tags/icon-production.svg");
+	--icon-region: url("../images/tags/icon-region.svg");
+	--icon-scene-type: url("../images/tags/icon-scene-type.svg");
+	--icon-sex-toys: url("../images/tags/icon-sex-toys.svg");
+	--icon-scenario: url("../images/tags/icon-scenario.svg");
+	--icon-ai-porn: url("../images/tags/icon-ai-porn.svg");
 }

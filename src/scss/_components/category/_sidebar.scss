@@ -52,9 +52,23 @@
 .review_header_dropdown{
 	.site_nav_categories{
 		padding: 15px 15px 3px;
+
+		&_search{
+			display: flex;
+			gap: 4px;
+		}
+		&_tag{
+			color: var(--primary-color, #000);
+			font-size: 12px;
+		}
+		.categories-tags-item{
+			padding: 2px 15px 2px 25px;
+			color: #000;
+		}
 	}
 	.category-list-search{
 		position: relative;
+		flex: 1;
 	}
 	.category-list-menu-dropdown{
 		padding: 0 10px 15px;

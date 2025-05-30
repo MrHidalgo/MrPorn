@@ -751,11 +751,21 @@
 		align-items: center;
 		gap: 3px;
 		padding-bottom: 5px;
+		color: var(--primary-color, #000);
+
+		@include adaptive(767) {
+			background: #e3e3e3;
+			padding: 6px;
+		}
 
 		.categories-tags-item{
 			display: inline-flex;
 			align-items: center;
 			padding: 3px 10px 3px 10px;
+
+			@include adaptive(767) {
+				background-color: #bababa;
+			}
 
 			.tag-icon{
 				@include respond('medium') {
@@ -785,7 +795,7 @@
 
 	@media (min-width: 992px) {
 		.back-box-inner{
-			padding-bottom: 131%;
+			padding-bottom: 121%;
 			background-image: url(../images/back-img-dark.png);
 		}
 
