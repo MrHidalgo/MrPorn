@@ -51,7 +51,6 @@
 
 .review_header_dropdown{
 	.site_nav_categories{
-		padding: 15px 15px 3px;
 
 		&_search{
 			display: flex;
@@ -70,12 +69,24 @@
 			}
 		}
 	}
+	.dropdown-toggle{
+		padding: 11px 15px;
+		&:focus,
+		&:hover{
+			outline: none;
+			border: none;
+		}
+	}
+	.tag-dropdown-menu{
+		top: 46px;
+	}
 	.category-list-search{
 		position: relative;
 		flex: 1;
 	}
 	.category-list-menu-dropdown{
 		padding: 0 10px 15px;
+		height: calc(100% - 45px);
 	}
 }
 

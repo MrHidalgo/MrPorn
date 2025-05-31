@@ -1515,7 +1515,7 @@ function loadJS(url, implementationCode, location) {
 ;
 document.addEventListener('DOMContentLoaded', function () {
   var toggleButton = document.querySelector('.dropdown-toggle');
-  var dropdownMenu = document.querySelector('.dropdown-menu');
+  var dropdownMenu = document.querySelector('.tag-dropdown-menu');
   toggleButton.addEventListener('click', function () {
     dropdownMenu.classList.toggle('show');
     toggleButton.classList.toggle('show'); // Add 'show' class to the button for icon rotation
