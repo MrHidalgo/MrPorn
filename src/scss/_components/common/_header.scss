@@ -11,6 +11,11 @@
 .relative{
 	position: relative;
 }
+.clearfix:after {
+	display: block;
+	content: "";
+	clear: both;
+}
 
 
 .header {
