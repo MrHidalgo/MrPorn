@@ -3839,7 +3839,7 @@ fieldset {
 }
 
 /* line 6, src/scss/_components/common/_header.scss */
-.flex_center {
+.flex-center {
   -webkit-box-pack: center;
   -webkit-justify-content: center;
       -ms-flex-pack: center;
@@ -3850,19 +3850,26 @@ fieldset {
           align-items: center;
 }
 
-/* line 11, src/scss/_components/common/_header.scss */
+/* line 10, src/scss/_components/common/_header.scss */
+.flex-wrap {
+  -webkit-flex-wrap: wrap;
+      -ms-flex-wrap: wrap;
+          flex-wrap: wrap;
+}
+
+/* line 14, src/scss/_components/common/_header.scss */
 .relative {
   position: relative;
 }
 
-/* line 14, src/scss/_components/common/_header.scss */
+/* line 17, src/scss/_components/common/_header.scss */
 .clearfix:after {
   display: block;
   content: "";
   clear: both;
 }
 
-/* line 21, src/scss/_components/common/_header.scss */
+/* line 24, src/scss/_components/common/_header.scss */
 .header {
   position: relative;
   display: -webkit-box;
@@ -3879,7 +3886,7 @@ fieldset {
 }
 
 @media screen and (max-width: 1023.98px) {
-  /* line 21, src/scss/_components/common/_header.scss */
+  /* line 24, src/scss/_components/common/_header.scss */
   .header {
     padding-top: 0;
   }
@@ -4479,7 +4486,7 @@ fieldset {
 }
 
 @media screen and (max-width: 1023.98px) {
-  /* line 21, src/scss/_components/common/_header.scss */
+  /* line 24, src/scss/_components/common/_header.scss */
   .header {
     position: fixed;
     width: 100%;
@@ -4488,7 +4495,7 @@ fieldset {
 }
 
 @media screen and (min-device-width: 768px) and (max-device-width: 1024px) and (orientation: portrait) and (-webkit-min-device-pixel-ratio: 2) {
-  /* line 21, src/scss/_components/common/_header.scss */
+  /* line 24, src/scss/_components/common/_header.scss */
   .header {
     position: fixed;
     width: 100%;
@@ -4497,7 +4504,7 @@ fieldset {
 }
 
 @media screen and (min-device-width: 1366px) and (max-device-width: 1366px) and (orientation: landscape) and (-webkit-min-device-pixel-ratio: 2) {
-  /* line 21, src/scss/_components/common/_header.scss */
+  /* line 24, src/scss/_components/common/_header.scss */
   .header {
     position: relative;
     width: 100%;
@@ -4506,7 +4513,7 @@ fieldset {
 }
 
 @media screen and (min-device-width: 1024px) and (max-device-width: 1024px) and (orientation: portrait) and (-webkit-min-device-pixel-ratio: 2) {
-  /* line 21, src/scss/_components/common/_header.scss */
+  /* line 24, src/scss/_components/common/_header.scss */
   .header {
     position: relative;
     width: 100%;
@@ -5807,39 +5814,39 @@ fieldset {
 }
 
 @media screen and (max-width: 1023px) {
-  /* line 84, src/scss/_components/common/_header.scss */
+  /* line 87, src/scss/_components/common/_header.scss */
   .light .header__bottom.is-open {
     background: #fff;
   }
-  /* line 88, src/scss/_components/common/_header.scss */
+  /* line 91, src/scss/_components/common/_header.scss */
   .light .pre-header__mobile {
     background-color: #303030fa;
   }
-  /* line 91, src/scss/_components/common/_header.scss */
+  /* line 94, src/scss/_components/common/_header.scss */
   .light .pre-header__mobile-middle {
     border-top: 1px solid #4a4a4a;
     border-bottom: 1px solid #4a4a4a;
   }
 }
 
-/* line 99, src/scss/_components/common/_header.scss */
+/* line 102, src/scss/_components/common/_header.scss */
 .light .header__toggle label .icon-font {
   -webkit-transition: opacity 0.35s ease-in-out;
   -o-transition: opacity 0.35s ease-in-out;
   transition: opacity 0.35s ease-in-out;
 }
 
-/* line 102, src/scss/_components/common/_header.scss */
+/* line 105, src/scss/_components/common/_header.scss */
 .light .header__toggle label .icon-font.icon-sun {
   opacity: 1;
 }
 
-/* line 105, src/scss/_components/common/_header.scss */
+/* line 108, src/scss/_components/common/_header.scss */
 .light .header__toggle label .icon-font.icon-moon {
   opacity: 0;
 }
 
-/* line 110, src/scss/_components/common/_header.scss */
+/* line 113, src/scss/_components/common/_header.scss */
 .light .header__toggle label span {
   -webkit-transform: translateX(0);
       -ms-transform: translateX(0);
@@ -5851,56 +5858,56 @@ fieldset {
   transition: transform 0.35s ease-in-out, -webkit-transform 0.35s ease-in-out;
 }
 
-/* line 119, src/scss/_components/common/_header.scss */
+/* line 122, src/scss/_components/common/_header.scss */
 .is_logged .header__view-wrapper {
   display: block;
 }
 
 @media screen and (max-width: 1023px) {
-  /* line 119, src/scss/_components/common/_header.scss */
+  /* line 122, src/scss/_components/common/_header.scss */
   .is_logged .header__view-wrapper {
     display: none;
   }
 }
 
-/* line 126, src/scss/_components/common/_header.scss */
+/* line 129, src/scss/_components/common/_header.scss */
 .is_logged .header__view-text {
   display: none;
 }
 
-/* line 131, src/scss/_components/common/_header.scss */
+/* line 134, src/scss/_components/common/_header.scss */
 [data-label-lg]::after {
   content: attr(data-label-lg);
 }
 
 @media screen and (max-width: 767px) {
   /* line 189, src/scss/_shared/_main-setting-reset.scss */
-  /* line 137, src/scss/_components/common/_header.scss */
+  /* line 140, src/scss/_components/common/_header.scss */
   [data-label-xs]::after {
     content: attr(data-label-xs);
   }
 }
 
-/* line 146, src/scss/_components/common/_header.scss */
+/* line 149, src/scss/_components/common/_header.scss */
 .has_search .header__recent {
   display: none;
 }
 
 @media screen and (max-width: 1023.98px) {
-  /* line 154, src/scss/_components/common/_header.scss */
+  /* line 157, src/scss/_components/common/_header.scss */
   .fund .header {
     top: 45px;
   }
 }
 
-/* line 158, src/scss/_components/common/_header.scss */
+/* line 161, src/scss/_components/common/_header.scss */
 .fund .c-grid.bitcoin {
   display: block;
   position: relative;
 }
 
 @media screen and (max-width: 1023.98px) {
-  /* line 158, src/scss/_components/common/_header.scss */
+  /* line 161, src/scss/_components/common/_header.scss */
   .fund .c-grid.bitcoin {
     position: fixed;
     z-index: 105;
@@ -5910,7 +5917,7 @@ fieldset {
   }
 }
 
-/* line 171, src/scss/_components/common/_header.scss */
+/* line 174, src/scss/_components/common/_header.scss */
 .fund .header__action_bitcoin-outer {
   position: absolute;
   z-index: 1;
@@ -5919,7 +5926,7 @@ fieldset {
 }
 
 @media screen and (max-width: 1023px) {
-  /* line 171, src/scss/_components/common/_header.scss */
+  /* line 174, src/scss/_components/common/_header.scss */
   .fund .header__action_bitcoin-outer {
     position: relative;
     height: 45px;
@@ -5930,7 +5937,7 @@ fieldset {
   }
 }
 
-/* line 186, src/scss/_components/common/_header.scss */
+/* line 189, src/scss/_components/common/_header.scss */
 .fund .header__action_bitcoin-outer .btc-close {
   position: absolute;
   right: 15px;
@@ -5944,14 +5951,14 @@ fieldset {
 }
 
 @media screen and (max-width: 1023px) {
-  /* line 186, src/scss/_components/common/_header.scss */
+  /* line 189, src/scss/_components/common/_header.scss */
   .fund .header__action_bitcoin-outer .btc-close {
     left: 15px;
     right: auto;
   }
 }
 
-/* line 202, src/scss/_components/common/_header.scss */
+/* line 205, src/scss/_components/common/_header.scss */
 .fund .header__action_bitcoin {
   display: -webkit-box;
   display: -webkit-flex;
@@ -5977,13 +5984,13 @@ fieldset {
           transform: translate3d(0, 0, 0);
 }
 
-/* line 215, src/scss/_components/common/_header.scss */
+/* line 218, src/scss/_components/common/_header.scss */
 .fund .header__action_bitcoin .btc_hash img {
   height: 24px;
   margin: -3px 5px;
 }
 
-/* line 220, src/scss/_components/common/_header.scss */
+/* line 223, src/scss/_components/common/_header.scss */
 .fund .header__action_bitcoin.copied {
   -webkit-animation: rotateBtc 3.7s ease-in-out;
           animation: rotateBtc 3.7s ease-in-out;
@@ -5991,20 +5998,20 @@ fieldset {
           animation-fill-mode: forwards;
 }
 
-/* line 224, src/scss/_components/common/_header.scss */
+/* line 227, src/scss/_components/common/_header.scss */
 .fund .header__action_bitcoin.copied .btc-close {
   -webkit-transform: translateY(-50%) rotateX(180deg);
           transform: translateY(-50%) rotateX(180deg);
 }
 
 @media screen and (min-width: 1199.98px) and (max-width: 1449.98px) {
-  /* line 202, src/scss/_components/common/_header.scss */
+  /* line 205, src/scss/_components/common/_header.scss */
   .fund .header__action_bitcoin {
     left: 410px;
   }
 }
 
-/* line 236, src/scss/_components/common/_header.scss */
+/* line 239, src/scss/_components/common/_header.scss */
 .fund .header__action_bitcoin span {
   display: -webkit-box;
   display: -webkit-flex;
@@ -6019,14 +6026,14 @@ fieldset {
 }
 
 @media screen and (max-width: 1023px) {
-  /* line 236, src/scss/_components/common/_header.scss */
+  /* line 239, src/scss/_components/common/_header.scss */
   .fund .header__action_bitcoin span {
     overflow: hidden;
   }
 }
 
 @media screen and (max-width: 1023px) {
-  /* line 249, src/scss/_components/common/_header.scss */
+  /* line 252, src/scss/_components/common/_header.scss */
   .fund .header__bottom {
     top: 110px;
   }
