@@ -810,6 +810,8 @@ function initCategoryPage() {
   var filterOptionA2Z = document.querySelector(sidebarContainer + ' .category_filter_option_a2z');
   var filterOptionPopular = document.querySelector(sidebarContainer + ' .category_filter_option_popular');
   var filterOptionRandom = document.querySelector(sidebarContainer + ' .category_filter_option_random');
+  var filterOptionTags = document.querySelector(sidebarContainer + ' #category_filter_option_tags');
+  var sidebarAllTags = document.querySelector('#sidebar-all-tags');
   var initializedListeners = false;
   var categoryListLetters = document.querySelector(sidebarContainer + ' .category-list-letters');
   var reviewTypeSlider = document.querySelector('.review_type_slider');
@@ -1063,6 +1065,13 @@ function initCategoryPage() {
       }, false);
       filterOptionRandom === null || filterOptionRandom === void 0 ? void 0 : filterOptionRandom.addEventListener('change', function () {
         gotoRandomCategory();
+      });
+      filterOptionTags === null || filterOptionTags === void 0 ? void 0 : filterOptionTags.addEventListener('change', function () {
+        if (this.checked) {
+          sidebarAllTags === null || sidebarAllTags === void 0 ? void 0 : sidebarAllTags.classList.add('show');
+        } else {
+          sidebarAllTags === null || sidebarAllTags === void 0 ? void 0 : sidebarAllTags.classList.remove('show');
+        }
       });
       (_document$querySelect9 = document.querySelector('.category-list-switcher')) === null || _document$querySelect9 === void 0 ? void 0 : _document$querySelect9.addEventListener('click', function () {
         onA2ZChecked(frontListA2Z);

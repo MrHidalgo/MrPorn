@@ -1,6 +1,8 @@
 .category-tag{
 	&-list{
-		overflow: auto;
+		@include respond('medium'){
+			overflow: auto;
+		}
 		scrollbar-width: none;
 	}
 	&-tipbox{
@@ -23,6 +25,10 @@
 			background-color: #fdfdfd;
 			color: #767676;
 			animation: fadeEffect .2s;
+
+			span{
+				color: #000;
+			}
 
 			&:after{
 				content: '';
@@ -52,13 +58,20 @@
 		padding: 5px;
 
 		&-left{
-			border-right: 2px solid #969696;
+			border-right: 1px solid #969696;
 			padding-right: 10px;
+			gap: 10px;
 
 			.tag-inline{
 				background: #ccc;
-				padding: 3px 10px 3px 30px;
+				padding: 3px 10px 3px 10px;
 				color: #000;
+				font-size: 12px;
+
+
+				@include respond('medium'){
+					padding: 3px 10px 3px 30px;
+				}
 			}
 		}
 		&-more{
@@ -66,6 +79,8 @@
 			padding-left: 10px;
 			overflow: auto;
 			gap: 5px;
+
+			scrollbar-width: none;
 
 			span{
 				white-space: nowrap;
@@ -76,12 +91,14 @@
 				white-space: nowrap;
 				gap: 4px;
 			}
+
 		}
 	}
 
 	&-item{
-		background: #eee;
+		background: #fff;
 		padding: 3px 8px;
+		border: 1px solid #626262;
 
 		a, a:hover, a:focus{
 			color: #000;

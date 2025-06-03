@@ -331,6 +331,9 @@
 		&.icon_random:before{
 			background-image: url(../images/sort_random.svg);
 		}
+		&.icon_tags:before{
+			background-image: url(../images/svg/icon-tags.svg);
+		}
 
 		span{
 			flex: 1;
@@ -731,5 +734,27 @@
 	100% {
 		opacity: 0;
 		max-height: 0;
+	}
+}
+
+.sidebar-all-tags{
+	display: none;
+	&.show{
+		display: block;
+	}
+
+	.title{
+		background-color: #dadada;
+		color: #000;
+		font-size: 16px;
+		padding: 5px 10px;
+		margin-bottom: 4px;
+	}
+	.categories-tags{
+		gap: 4px;
+
+		.categories-tags-item{
+			width: calc(50% - 2px);
+		}
 	}
 }

@@ -25,6 +25,9 @@ function initCategoryPage() {
 	let filterOptionA2Z = document.querySelector(sidebarContainer+ ' .category_filter_option_a2z');
 	let filterOptionPopular = document.querySelector(sidebarContainer+ ' .category_filter_option_popular');
 	let filterOptionRandom = document.querySelector(sidebarContainer+ ' .category_filter_option_random');
+	let filterOptionTags = document.querySelector(sidebarContainer+ ' #category_filter_option_tags');
+	let sidebarAllTags = document.querySelector('#sidebar-all-tags');
+
 
 	let initializedListeners = false
 	let categoryListLetters = document.querySelector(sidebarContainer+ ' .category-list-letters');
@@ -296,6 +299,15 @@ function initCategoryPage() {
 			filterOptionRandom?.addEventListener('change', function () {
 				gotoRandomCategory()
 			})
+			filterOptionTags?.addEventListener('change', function () {
+				if(this.checked){
+					sidebarAllTags?.classList.add('show');
+				}else{
+					sidebarAllTags?.classList.remove('show');
+				}
+			})
+
+
 
 			document.querySelector('.category-list-switcher')?.addEventListener('click', function () {
 				onA2ZChecked(frontListA2Z)
