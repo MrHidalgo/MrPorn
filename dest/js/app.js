@@ -788,6 +788,7 @@ var initCategoriesPage = function initCategoriesPage() {
 /*
 * Category page scripts
 * */
+// const {TheiaStickySidebar} = require("theia-sticky-sidebar");
 
 
 function initCategoryPage() {
@@ -826,6 +827,7 @@ function initCategoryPage() {
   var a2zLetters = [];
   var sidebarCategories = [];
   var a2zCookie = getCookieMpgCookie("category_filter_a2z");
+  var allTagsCookie = getCookieMpgCookie("category_filter_all_tags");
   var filterScroll = bodyClasses.contains('page-template-page-categories') ? 0 : (_getCookieMpgCookie = +getCookieMpgCookie("category_filter_scroll")) !== null && _getCookieMpgCookie !== void 0 ? _getCookieMpgCookie : 0;
   var filterA2z = 1; // (bodyClasses.contains('home') || isCategoriesPage) ? 1:  +getCookieMpgCookie("category_filter_a2z") ?? 1;
 
@@ -857,6 +859,16 @@ function initCategoryPage() {
     document.querySelectorAll('.category_filter_option_a2z').forEach(function (checkbox) {
       checkbox.checked = !filterA2z;
     });
+  }
+
+  if (allTagsCookie == '1') {
+    document.querySelectorAll('.category_filter_option_tags').forEach(function (checkbox) {
+      checkbox.checked = true;
+    });
+
+    if (sidebarAllTags) {
+      sidebarAllTags.classList.add('show');
+    }
   }
 
   var processCategoryDataFromDom = function processCategoryDataFromDom() {
@@ -1068,8 +1080,10 @@ function initCategoryPage() {
       });
       filterOptionTags === null || filterOptionTags === void 0 ? void 0 : filterOptionTags.addEventListener('change', function () {
         if (this.checked) {
+          createCookie("category_filter_all_tags", 1, 356);
           sidebarAllTags === null || sidebarAllTags === void 0 ? void 0 : sidebarAllTags.classList.add('show');
         } else {
+          createCookie("category_filter_all_tags", 0, 356);
           sidebarAllTags === null || sidebarAllTags === void 0 ? void 0 : sidebarAllTags.classList.remove('show');
         }
       });
@@ -1384,11 +1398,18 @@ function initCategoryPage() {
 
   var initStickySidebar = function initStickySidebar() {
     console.log("Init sticky sidebar ".concat(filterScroll));
+    var bodyClasses = document.body.classList;
 
-    if (!filterScroll && document.querySelectorAll('.desktop_menu_list').length > 0) {
+    if (bodyClasses.contains('term-production')) {
+      categorySidebar = new StickySidebar('.categories-container', {
+        innerWrapperSelector: '.inner-wrapper-sticky',
+        bottomSpacing: 0,
+        resizeSensor: true
+      });
+    } else if (!filterScroll && document.querySelectorAll('.desktop_menu_list').length > 0) {
       categorySidebar = new StickySidebar('.desktop_menu_list', {
         // topSpacing: 20,
-        // bottomSpacing: 20,
+        bottomSpacing: 0,
         // containerSelector: '.category_site_container',
         innerWrapperSelector: '.inner-wrapper-sticky',
         resizeSensor: true
@@ -1525,6 +1546,11 @@ function loadJS(url, implementationCode, location) {
 document.addEventListener('DOMContentLoaded', function () {
   var toggleButton = document.querySelector('.dropdown-toggle');
   var dropdownMenu = document.querySelector('.tag-dropdown-menu');
+
+  if (!toggleButton || !dropdownMenu) {
+    return;
+  }
+
   toggleButton.addEventListener('click', function () {
     dropdownMenu.classList.toggle('show');
     toggleButton.classList.toggle('show'); // Add 'show' class to the button for icon rotation
@@ -2522,7 +2548,7 @@ var ReportModal = /*#__PURE__*/function () {
     key: "injectReportReviewModal",
     value: function injectReportReviewModal() {
       var initialTag = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : '';
-      var headerTitle = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : 'Report a Review Feedback for';
+      var headerTitle = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : 'Submit Review Feedback for';
       var modalHTML = this.generateReportReviewContent(this.title, headerTitle);
 
       if (document.querySelector('#boogie-modal')) {
@@ -2567,7 +2593,7 @@ var ReportModal = /*#__PURE__*/function () {
   }, {
     key: "generateReportReviewContent",
     value: function generateReportReviewContent(reviewName) {
-      var headerTitle = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : 'Report a Review Feedback for';
+      var headerTitle = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : 'Submit Review Feedback for';
       var modalOuter = "<div class=\"micromodal micromodal-slide boogie-modal is-open\" id=\"boogie-modal\" aria-hidden=\"false\"></div>";
       var modalHTML = "\n\t\t  <div class=\"micromodal-overlay\" tabindex=\"-1\">\n\t\t\t\t\t<div class=\"micromodal-container custom-scrollbar\" role=\"dialog\" aria-modal=\"true\" aria-labelledby=\"boogie-title\">\n\t\t\t\t\t\t<div class=\"micromodal-content boogie-issues-content\">\n\t\t\t\t\t\t\t<div class=\"micromodal-header\">\n\t\t\t\t\t\t\t\t<h4 class=\"micromodal-title\" id=\"boogie-title\">\n\t\t\t\t\t\t\t\t\t<span class=\"inline-icon icon-thumbsup\"></span>\n\n\t\t\t\t\t\t\t\t\t<div class=\"micromodal-title-text\">\n\t\t\t\t\t\t\t\t\t\t<span>".concat(headerTitle, "</span>\n\t\t\t\t\t\t\t\t\t\t<span id=\"report_review_title\" class=\"color-primary\">").concat(reviewName, "</span>\n\t\t\t\t\t\t\t\t\t</div>\n\t\t\t\t\t\t\t\t</h4>\n\t\t\t\t\t\t\t\t<div class=\"micromodal-close\" data-micromodal-close=\"\">\n\t\t\t\t\t\t\t\t\t<svg class=\"icon\" xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0.51 0.51 22.99 22.99\" width=\"24px\" height=\"24px\">\n\t\t\t\t\t\t\t\t\t<path d=\"M23.1294 21.4152L2.58488 0.870773C2.10409 0.38998 1.33062 0.383984 0.85722 0.85738C0.383824 1.33078 0.38982 2.10425 0.870613 2.58504L21.4151 23.1295C21.8959 23.6103 22.6694 23.6163 23.1428 23.1429C23.6161 22.6695 23.6101 21.896 23.1294 21.4152Z\"></path>\n\t\t\t\t\t\t\t\t\t<path d=\"M21.415 0.870638L0.870529 21.4151C0.389736 21.8959 0.38374 22.6694 0.857136 23.1428C1.33053 23.6162 2.10401 23.6102 2.5848 23.1294L23.1293 2.58491C23.6101 2.10412 23.6161 1.33064 23.1427 0.857245C22.6693 0.383849 21.8958 0.389845 21.415 0.870638Z\"></path>\n\t\t\t\t\t\t\t\t\t</svg>\n\t\t\t\t\t\t\t\t</div>\n\n\t\t\t\t\t\t\t</div>\n\n\t\t\t\t\t\t\t<hr>\n\n\t\t\t\t\t\t\t<div class=\"micromodal-body\">\n\t\t\t\t\t\t\t").concat(this.getReportBodyContent(), "\n\t\t\t\t\t\t\t</div>\n\t\t\t\t\t\t</div>\n\t\t\t\t\t</div>\n\t\t\t  </div>\n\t\t");
       return modalHTML;

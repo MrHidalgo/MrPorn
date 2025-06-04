@@ -1,6 +1,9 @@
 document.addEventListener('DOMContentLoaded', function () {
 	const toggleButton = document.querySelector('.dropdown-toggle');
 	const dropdownMenu = document.querySelector('.tag-dropdown-menu');
+	if (!toggleButton || !dropdownMenu) {
+		return;
+	}
 
 	toggleButton.addEventListener('click', function () {
 		dropdownMenu.classList.toggle('show');

@@ -2,6 +2,9 @@
 * Category page scripts
 * */
 
+
+// const {TheiaStickySidebar} = require("theia-sticky-sidebar");
+
 function initCategoryPage() {
 	let categorySidebar;
 	const isMobile = isMobileOrTablet;
@@ -47,6 +50,7 @@ function initCategoryPage() {
 	let sidebarCategories = []
 
 	let a2zCookie = getCookieMpgCookie("category_filter_a2z");
+	let allTagsCookie = getCookieMpgCookie("category_filter_all_tags");
 
 	let filterScroll = bodyClasses.contains('page-template-page-categories') ? 0: +getCookieMpgCookie("category_filter_scroll") ?? 0;
 	let filterA2z = 1; // (bodyClasses.contains('home') || isCategoriesPage) ? 1:  +getCookieMpgCookie("category_filter_a2z") ?? 1;
@@ -79,6 +83,15 @@ function initCategoryPage() {
 		document.querySelectorAll('.category_filter_option_a2z').forEach(checkbox => {
 			checkbox.checked = !filterA2z;
 		})
+	}
+	if(allTagsCookie=='1'){
+		document.querySelectorAll('.category_filter_option_tags').forEach(checkbox => {
+			checkbox.checked = true;
+		})
+
+		if(sidebarAllTags){
+			sidebarAllTags.classList.add('show');
+		}
 	}
 
 	const processCategoryDataFromDom = () => {
@@ -301,8 +314,10 @@ function initCategoryPage() {
 			})
 			filterOptionTags?.addEventListener('change', function () {
 				if(this.checked){
+					createCookie("category_filter_all_tags", 1, 356);
 					sidebarAllTags?.classList.add('show');
 				}else{
+					createCookie("category_filter_all_tags", 0, 356);
 					sidebarAllTags?.classList.remove('show');
 				}
 			})
@@ -589,10 +604,17 @@ function initCategoryPage() {
 
 	const initStickySidebar = () => {
 		console.log(`Init sticky sidebar ${filterScroll}`)
-		if (!filterScroll && document.querySelectorAll('.desktop_menu_list').length > 0) {
+		let bodyClasses = document.body.classList;
+		if(bodyClasses.contains('term-production')){
+			categorySidebar = new StickySidebar('.categories-container', {
+				innerWrapperSelector: '.inner-wrapper-sticky',
+				bottomSpacing: 0,
+				resizeSensor: true
+			});
+		}else if (!filterScroll && document.querySelectorAll('.desktop_menu_list').length > 0) {
 			categorySidebar = new StickySidebar('.desktop_menu_list', {
 				// topSpacing: 20,
-				// bottomSpacing: 20,
+				bottomSpacing: 0,
 				// containerSelector: '.category_site_container',
 				innerWrapperSelector: '.inner-wrapper-sticky',
 				resizeSensor: true

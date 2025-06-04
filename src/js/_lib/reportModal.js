@@ -172,7 +172,7 @@ class ReportModal{
 		});
 	}
 
-	injectReportReviewModal(initialTag = '', headerTitle = 'Report a Review Feedback for') {
+	injectReportReviewModal(initialTag = '', headerTitle = 'Submit Review Feedback for') {
 		let modalHTML = this.generateReportReviewContent(this.title, headerTitle)
 		if(document.querySelector('#boogie-modal')){
 			document.querySelector('#boogie-modal').innerHTML = modalHTML;
@@ -215,7 +215,7 @@ class ReportModal{
 		// }
 	}
 
-	generateReportReviewContent(reviewName, headerTitle = 'Report a Review Feedback for'){
+	generateReportReviewContent(reviewName, headerTitle = 'Submit Review Feedback for'){
 
 		const modalOuter = `<div class="micromodal micromodal-slide boogie-modal is-open" id="boogie-modal" aria-hidden="false"></div>`
 
