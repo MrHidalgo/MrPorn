@@ -811,7 +811,7 @@ function initCategoryPage() {
   var filterOptionA2Z = document.querySelector(sidebarContainer + ' .category_filter_option_a2z');
   var filterOptionPopular = document.querySelector(sidebarContainer + ' .category_filter_option_popular');
   var filterOptionRandom = document.querySelector(sidebarContainer + ' .category_filter_option_random');
-  var filterOptionTags = document.querySelector(sidebarContainer + ' #category_filter_option_tags');
+  var filterOptionTags = document.querySelector(sidebarContainer + ' .category_filter_option_tags');
   var sidebarAllTags = document.querySelector('#sidebar-all-tags');
   var initializedListeners = false;
   var categoryListLetters = document.querySelector(sidebarContainer + ' .category-list-letters');
@@ -860,6 +860,15 @@ function initCategoryPage() {
       checkbox.checked = !filterA2z;
     });
   }
+
+  var checkAndMoveTagSidebar = function checkAndMoveTagSidebar() {
+    if (sidebarAllTags && isMobileOrTablet) {
+      var newParent = document.querySelector('.header__categories-mobile');
+      newParent.insertBefore(sidebarAllTags, newParent.children[1]);
+    }
+  };
+
+  checkAndMoveTagSidebar();
 
   if (allTagsCookie == '1') {
     document.querySelectorAll('.category_filter_option_tags').forEach(function (checkbox) {
@@ -1104,6 +1113,7 @@ function initCategoryPage() {
   var renderMobileCatFilters = function renderMobileCatFilters() {
     var spanA2z = document.querySelector('.category-list-options .icon_a2z span');
     var spanRandom = document.querySelector('.category-list-options .icon_random span');
+    var spanAllTags = document.querySelector('.category-list-options .icon_tags span');
 
     if (spanA2z) {
       spanA2z.innerHTML = 'Icon View';
@@ -1111,6 +1121,10 @@ function initCategoryPage() {
 
     if (spanRandom) {
       spanRandom.innerHTML = 'Random category';
+    }
+
+    if (spanAllTags) {
+      spanAllTags.innerHTML = 'Show All Tags';
     }
   };
 
@@ -4665,7 +4679,11 @@ var lastMobileSimilarSite;
   var initReviewScroll = function initReviewScroll() {
     var headerHeights = {
       get mobileHeaderHeight() {
-        return document.querySelector("#header").offsetHeight;
+        var hHeader = document.querySelector("#header").offsetHeight;
+        document.querySelectorAll('.fom').forEach(function (el) {
+          hHeader += el.offsetHeight;
+        });
+        return hHeader;
       },
 
       get topBarHeight() {

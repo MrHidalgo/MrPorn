@@ -377,7 +377,11 @@ let lastMobileSimilarSite;
 	const initReviewScroll = () => {
 		const headerHeights = {
 			get mobileHeaderHeight() {
-				return document.querySelector("#header").offsetHeight;
+				let hHeader = document.querySelector("#header").offsetHeight;
+				document.querySelectorAll('.fom').forEach( (el) => {
+					hHeader += el.offsetHeight;
+				})
+				return hHeader;
 			},
 			get topBarHeight() {
 				let reviewHeader = document.querySelector(".review_header");
