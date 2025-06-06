@@ -91,6 +91,12 @@ function initCategoryPage() {
 			newParent.insertBefore(sidebarAllTags, newParent.children[1]);
 		}
 	}
+	const initTagsContainerSlide = () => {
+		if(document.querySelector('#sidebar-all-tags') && document.querySelector('.category-list-container')){
+			const tagsShrinkController = new TagsShrinkEffect('#sidebar-all-tags', '.category-list-container');
+		}
+
+	}
 
 	checkAndMoveTagSidebar();
 	if(allTagsCookie=='1'){
@@ -100,6 +106,8 @@ function initCategoryPage() {
 
 		if(sidebarAllTags){
 			sidebarAllTags.classList.add('show');
+			categoryListContainer.classList.add('show_tags');
+			initTagsContainerSlide();
 		}
 	}
 
@@ -325,9 +333,12 @@ function initCategoryPage() {
 				if(this.checked){
 					createCookie("category_filter_all_tags", 1, 356);
 					sidebarAllTags?.classList.add('show');
+					initTagsContainerSlide();
+					categoryListContainer.classList.add('show_tags');
 				}else{
 					createCookie("category_filter_all_tags", 0, 356);
 					sidebarAllTags?.classList.remove('show');
+					categoryListContainer.classList.remove('show_tags');
 				}
 			})
 
@@ -346,6 +357,8 @@ function initCategoryPage() {
 			initializedListeners = true
 		}
 	}
+
+
 
 	const renderMobileCatFilters = () => {
 		let spanA2z = document.querySelector('.category-list-options .icon_a2z span');

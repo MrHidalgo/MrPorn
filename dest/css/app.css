@@ -10603,15 +10603,22 @@ fieldset {
 /* line 782, src/scss/_components/category/_sidebar.scss */
 .sidebar-all-tags {
   display: none;
-  padding-bottom: 5px;
+  margin-bottom: 5px;
+  -webkit-box-flex: 0;
+  -webkit-flex: 0 0 auto;
+      -ms-flex: 0 0 auto;
+          flex: 0 0 auto;
+  -webkit-transition: height 0.3s ease-out;
+  -o-transition: height 0.3s ease-out;
+  transition: height 0.3s ease-out;
 }
 
-/* line 785, src/scss/_components/category/_sidebar.scss */
+/* line 789, src/scss/_components/category/_sidebar.scss */
 .sidebar-all-tags.show {
   display: block;
 }
 
-/* line 789, src/scss/_components/category/_sidebar.scss */
+/* line 793, src/scss/_components/category/_sidebar.scss */
 .sidebar-all-tags .title {
   background-color: var(--sidebar-title-bg, #555);
   color: #000;
@@ -10620,16 +10627,26 @@ fieldset {
   margin-bottom: 4px;
 }
 
-/* line 796, src/scss/_components/category/_sidebar.scss */
+/* line 800, src/scss/_components/category/_sidebar.scss */
 .sidebar-all-tags .categories-tags {
   gap: 4px;
 }
 
-/* line 801, src/scss/_components/category/_sidebar.scss */
+/* line 805, src/scss/_components/category/_sidebar.scss */
 .sidebar-all-tags .categories-tags-item {
   width: -webkit-calc(50% - 2px);
   width: calc(50% - 2px);
   font-size: 13px;
+}
+
+/* line 810, src/scss/_components/category/_sidebar.scss */
+.tags-shrink-effect {
+  overflow: hidden;
+}
+
+/* line 813, src/scss/_components/category/_sidebar.scss */
+.tax-category-tag .sidebar-all-tags.show {
+  display: none;
 }
 
 @-webkit-keyframes pulse-grey {

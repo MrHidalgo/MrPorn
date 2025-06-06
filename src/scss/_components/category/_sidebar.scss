@@ -781,7 +781,11 @@
 
 .sidebar-all-tags{
 	display: none;
-	padding-bottom: 5px;
+	margin-bottom: 5px;
+	flex: 0 0 auto;
+
+	transition: height 0.3s ease-out;
+
 	&.show{
 		display: block;
 	}
@@ -802,4 +806,10 @@
 		width: calc(50% - 2px);
 		font-size: 13px;
 	}
+}
+.tags-shrink-effect{
+	overflow: hidden;
+}
+.tax-category-tag .sidebar-all-tags.show{
+	display: none;
 }
