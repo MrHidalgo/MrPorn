@@ -47,22 +47,44 @@ function initWebWorker(){
 	currentLang = document.documentElement.getAttribute('lang');
 }
 
-function showAgeVerification(){
-	if(document.documentElement.lang=='de'){
-		var isVerified = getCookieMpgCookie("age");
-		if(!isVerified){
-			let avHtml = '<div class="modal_age">' +
-				'<div class="modal_inner">' +
-				'<img src="/wp-content/themes/mpg/images/logo-mob.png"/>'+
-				'<div class="title">Altersüberprüfung</div>' +
-				'<p>MrPornGeek ist eine Erwachsenen-Community, die altersbeschränkte Inhalte enthält.<br/>' +
-				'Du musst 18 Jahre oder älter sein, um teilnehmen zu können.</p>' +
-				'<button class="btnPrimary greyButton js-closeAgeModal">Ich bin 18 oder älter - Eingabe</button>'+
-				'</div>' +
-				'</div>';
+function detectCountryAndVerifyAge() {
+	const apiUrl = 'https://ip-api.com/json/';
 
-			document.body.insertAdjacentHTML( 'beforeend', avHtml );
-		}
+	fetch(apiUrl)
+		.then(response => response.json())
+		.then(data => {
+			if (data.countryCode === 'DE') {
+				console.log('User is from Germany');
+				showAgeVerification(); // Example function for German visitors
+			} else if (data.countryCode === 'GB') {
+				console.log('User is from the UK');
+				// showUKSpecificContent(); // Example function for UK visitors
+			} else {
+				console.log(`User is from ${data.country}`);
+			}
+		})
+		.catch(error => {
+			console.error('Error detecting country:', error);
+		});
+}
+
+function showAgeVerification(){
+	// if(document.documentElement.lang=='de'){
+	//
+	// }
+	var isVerified = getCookieMpgCookie("age");
+	if(!isVerified){
+		let avHtml = '<div class="modal_age">' +
+			'<div class="modal_inner">' +
+			'<img src="/wp-content/themes/mpg/images/logo-mob.png"/>'+
+			'<div class="title">Altersüberprüfung</div>' +
+			'<p>MrPornGeek ist eine Erwachsenen-Community, die altersbeschränkte Inhalte enthält.<br/>' +
+			'Du musst 18 Jahre oder älter sein, um teilnehmen zu können.</p>' +
+			'<button class="btnPrimary greyButton js-closeAgeModal">Ich bin 18 oder älter - Eingabe</button>'+
+			'</div>' +
+			'</div>';
+
+		document.body.insertAdjacentHTML( 'beforeend', avHtml );
 	}
 }
 
@@ -547,7 +569,8 @@ let lastMobileSimilarSite;
 
 		initCategoryPage();
 
-		showAgeVerification();
+		// showAgeVerification();
+		detectCountryAndVerifyAge()
 		showAcceptCookie();
 
 		if(bodyClasses.contains('page-template-page-categories')){

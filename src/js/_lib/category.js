@@ -92,9 +92,9 @@ function initCategoryPage() {
 		}
 	}
 	const initTagsContainerSlide = () => {
-		if(document.querySelector('#sidebar-all-tags') && document.querySelector('.category-list-container')){
-			const tagsShrinkController = new TagsShrinkEffect('#sidebar-all-tags', '.category-list-container');
-		}
+		// if(document.querySelector('#sidebar-all-tags') && document.querySelector('.category-list-container')){
+		// 	const tagsShrinkController = new TagsShrinkEffect('#sidebar-all-tags', '.category-list-container');
+		// }
 
 	}
 
@@ -352,6 +352,8 @@ function initCategoryPage() {
 				}else{
 					frontMainFilter?.classList.add('a2z')
 				}
+
+				initStickySidebar()
 			})
 
 			initializedListeners = true
@@ -630,22 +632,37 @@ function initCategoryPage() {
 
 	const initStickySidebar = () => {
 		console.log(`Init sticky sidebar ${filterScroll}`)
-		let bodyClasses = document.body.classList;
-		if(bodyClasses.contains('term-production')){
-			categorySidebar = new StickySidebar('.categories-container', {
-				innerWrapperSelector: '.inner-wrapper-sticky',
-				bottomSpacing: 0,
-				resizeSensor: true
-			});
-		}else if (!filterScroll && document.querySelectorAll('.desktop_menu_list').length > 0) {
-			categorySidebar = new StickySidebar('.desktop_menu_list', {
-				// topSpacing: 20,
-				bottomSpacing: 0,
-				// containerSelector: '.category_site_container',
-				innerWrapperSelector: '.inner-wrapper-sticky',
-				resizeSensor: true
-			});
+		if(categorySidebar){
+			categorySidebar.destroy();
 		}
+
+		let bodyClasses = document.body.classList;
+		// if(bodyClasses.contains('tax-category-tag') && filterA2z){
+		// 	categorySidebar = new StickySidebar('.categories-container', {
+		// 		innerWrapperSelector: '.inner-wrapper-sticky',
+		// 		bottomSpacing: 0,
+		// 		resizeSensor: true
+		// 	});
+		// }else if (!filterScroll && document.querySelectorAll('.desktop_menu_list').length > 0) {
+		// 	categorySidebar = new StickySidebar('.desktop_menu_list', {
+		// 		// topSpacing: 20,
+		// 		bottomSpacing: 0,
+		// 		// containerSelector: '.category_site_container',
+		// 		innerWrapperSelector: '.inner-wrapper-sticky',
+		// 		resizeSensor: true
+		// 	});
+		// }
+		if(document.querySelector('.desktop_menu_list') === null){
+			return;
+		}
+		if(document.querySelector('.category_list') === null){
+			return;
+		}
+		categorySidebar = new StickySidebar('.desktop_menu_list', '.category_list-sites', {
+			innerWrapperSelector: '.inner-wrapper-sticky',
+			bottomSpacing: 0,
+			resizeSensor: true
+		});
 	}
 
 	const fetchA2Z = () => {
