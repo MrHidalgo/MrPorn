@@ -570,7 +570,7 @@ let lastMobileSimilarSite;
 		initCategoryPage();
 
 		// showAgeVerification();
-		detectCountryAndVerifyAge()
+		// detectCountryAndVerifyAge()
 		showAcceptCookie();
 
 		if(bodyClasses.contains('page-template-page-categories')){

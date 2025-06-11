@@ -808,8 +808,7 @@ function initSearch(){
 
 		for (const tag in tags) {
 			if (tags.hasOwnProperty(tag)) {
-				console.log(`Key: ${tag}, Value: ${tags[tag]}`);
-				let tagIcon = tag.split('').reverse().join('')
+				let tagIcon = tags[tag].icon
 				tagsHtml += '<li class="categories-tags-item solid" >\n' +
 					'                        <a href="/category-tags/'+tag+'/"><i class="tag-icon tag-'+tagIcon+'"></i>'+tags[tag].name+'</a>\n' +
 					'                    </li>';

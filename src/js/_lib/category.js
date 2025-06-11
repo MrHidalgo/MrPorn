@@ -29,7 +29,7 @@ function initCategoryPage() {
 	let filterOptionPopular = document.querySelector(sidebarContainer+ ' .category_filter_option_popular');
 	let filterOptionRandom = document.querySelector(sidebarContainer+ ' .category_filter_option_random');
 	let filterOptionTags = document.querySelector(sidebarContainer+ ' .category_filter_option_tags');
-	let sidebarAllTags = document.querySelector('#sidebar-all-tags');
+	let sidebarAllTags = document.querySelectorAll('.sidebar-all-tags');
 
 
 	let initializedListeners = false
@@ -97,8 +97,10 @@ function initCategoryPage() {
 			checkbox.checked = true;
 		})
 
-		if(sidebarAllTags){
-			sidebarAllTags.classList.add('show');
+		if(sidebarAllTags.length > 0){
+			sidebarAllTags.forEach(element => {
+				element.classList.add('show');
+			});
 			categoryListContainer?.classList.add('show_tags');
 			initTagsContainerSlide();
 		}
@@ -325,12 +327,16 @@ function initCategoryPage() {
 			filterOptionTags?.addEventListener('change', function () {
 				if(this.checked){
 					createCookie("category_filter_all_tags", 1, 356);
-					sidebarAllTags?.classList.add('show');
+					sidebarAllTags.forEach(element => {
+						element.classList.add('show');
+					});
 					initTagsContainerSlide();
 					categoryListContainer.classList.add('show_tags');
 				}else{
 					createCookie("category_filter_all_tags", 0, 356);
-					sidebarAllTags?.classList.remove('show');
+					sidebarAllTags.forEach(element => {
+						element.classList.remove('show');
+					});
 					categoryListContainer.classList.remove('show_tags');
 				}
 			})
@@ -352,6 +358,7 @@ function initCategoryPage() {
 			initializedListeners = true
 		}
 	}
+
 
 
 
