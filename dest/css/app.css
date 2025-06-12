@@ -10665,22 +10665,28 @@ fieldset {
 }
 
 /* line 822, src/scss/_components/category/_sidebar.scss */
-.sidebar-all-tags .categories-tags-item {
-  font-size: 13px;
-  color: #000;
+.sidebar-all-tags .categories-tags-li {
+  position: relative;
 }
 
 @media screen and (min-width: 768px) {
   /* line 822, src/scss/_components/category/_sidebar.scss */
-  .sidebar-all-tags .categories-tags-item {
+  .sidebar-all-tags .categories-tags-li {
     width: -webkit-calc(50% - 2px);
     width: calc(50% - 2px);
   }
 }
 
+/* line 828, src/scss/_components/category/_sidebar.scss */
+.sidebar-all-tags .categories-tags-item {
+  font-size: 13px;
+  color: #000;
+  width: 100%;
+}
+
 @media screen and (max-width: 767px) {
-  /* line 831, src/scss/_components/category/_sidebar.scss */
-  .sidebar-all-tags .categories-tags-item a {
+  /* line 828, src/scss/_components/category/_sidebar.scss */
+  .sidebar-all-tags .categories-tags-item {
     display: -webkit-box;
     display: -webkit-flex;
     display: -ms-flexbox;
@@ -10689,17 +10695,17 @@ fieldset {
   }
 }
 
-/* line 839, src/scss/_components/category/_sidebar.scss */
+/* line 841, src/scss/_components/category/_sidebar.scss */
 .tags-shrink-effect {
   overflow: hidden;
 }
 
-/* line 843, src/scss/_components/category/_sidebar.scss */
+/* line 845, src/scss/_components/category/_sidebar.scss */
 .page-template-page-categories .desktop_menu_list .sidebar-all-tags.show {
   display: none;
 }
 
-/* line 846, src/scss/_components/category/_sidebar.scss */
+/* line 848, src/scss/_components/category/_sidebar.scss */
 .tax-category-tag .desktop_menu_list .sidebar-all-tags.show {
   display: none;
 }

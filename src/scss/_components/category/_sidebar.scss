@@ -819,19 +819,21 @@
 			padding-bottom: 0;
 		}
 	}
-	.categories-tags-item{
-		font-size: 13px;
-		color: #000;
-
+	.categories-tags-li{
+		position: relative;
 		@include respond('medium'){
 			width: calc(50% - 2px);
 		}
+	}
+	.categories-tags-item{
+		font-size: 13px;
+		color: #000;
+		width: 100%;
+
 
 		@include adaptive(767) {
-			a{
-				display: flex;
-				white-space: nowrap;
-			}
+			display: flex;
+			white-space: nowrap;
 
 		}
 	}

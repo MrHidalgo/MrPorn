@@ -809,8 +809,8 @@ function initSearch(){
 		for (const tag in tags) {
 			if (tags.hasOwnProperty(tag)) {
 				let tagIcon = tags[tag].icon
-				tagsHtml += '<li class="categories-tags-item solid" >\n' +
-					'                        <a href="/category-tags/'+tag+'/"><i class="tag-icon tag-'+tagIcon+'"></i>'+tags[tag].name+'</a>\n' +
+				tagsHtml += '<li class="categories-tags-li">\n' +
+					'                        <a href="/category-tags/'+tag+'/" class="categories-tags-item solid"><i class="tag-icon tag-'+tagIcon+'"></i>'+tags[tag].name+'</a>\n' +
 					'                    </li>';
 
 				dropdownTags += '<li class="dropdown-item ">\n' +
