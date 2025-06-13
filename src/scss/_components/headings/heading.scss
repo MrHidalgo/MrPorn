@@ -46,10 +46,11 @@
 		flex: 1;
 		line-height: 48px;
 		padding: 0;
-		background-size: 32px;
-		background-position: left center;
-		background-repeat: no-repeat;
-		color: #fff;
+		color: var(--primary-color-2, #fff);
+
+		//background-size: 32px;
+		//background-position: left center;
+		//background-repeat: no-repeat;
 
 		&-title{
 			line-height: normal;
@@ -181,10 +182,5 @@
 .light{
 	.blue_heading{
 		background: #1e559a;
-	}
-	.section_heading{
-		&__h1, &__h2{
-			color: #4c4c4c;
-		}
 	}
 }

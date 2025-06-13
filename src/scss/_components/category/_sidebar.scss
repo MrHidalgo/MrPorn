@@ -161,6 +161,8 @@
 		position: relative;
 		//margin-top: 10px;
 		flex: 1;
+		max-height: calc(100vh - 60px);
+
 		@include respond('medium'){
 			flex-direction: column;
 		}
@@ -174,7 +176,7 @@
 		}
 
 		&.a2z{
-			max-height: calc(100vh - 60px);
+
 
 			.category-list-left{
 				&::-webkit-scrollbar {

@@ -48,19 +48,14 @@ function initWebWorker(){
 }
 
 function detectCountryAndVerifyAge() {
-	const apiUrl = 'https://ip-api.com/json/';
+	const apiUrl = 'https://ipinfo.io/json?token=b26cc70e6edb61';
 
 	fetch(apiUrl)
 		.then(response => response.json())
 		.then(data => {
-			if (data.countryCode === 'DE') {
-				console.log('User is from Germany');
-				showAgeVerification(); // Example function for German visitors
-			} else if (data.countryCode === 'GB') {
-				console.log('User is from the UK');
-				// showUKSpecificContent(); // Example function for UK visitors
-			} else {
-				console.log(`User is from ${data.country}`);
+			if (data.country === 'DE' || data.country === 'GB') {
+				console.log('User is from '+data.country);
+				showAgeVerification(data.country); // Example function for German visitors
 			}
 		})
 		.catch(error => {
@@ -68,21 +63,39 @@ function detectCountryAndVerifyAge() {
 		});
 }
 
-function showAgeVerification(){
+function showAgeVerification(country){
 	// if(document.documentElement.lang=='de'){
 	//
 	// }
 	var isVerified = getCookieMpgCookie("age");
 	if(!isVerified){
-		let avHtml = '<div class="modal_age">' +
-			'<div class="modal_inner">' +
-			'<img src="/wp-content/themes/mpg/images/logo-mob.png"/>'+
-			'<div class="title">Altersüberprüfung</div>' +
-			'<p>MrPornGeek ist eine Erwachsenen-Community, die altersbeschränkte Inhalte enthält.<br/>' +
-			'Du musst 18 Jahre oder älter sein, um teilnehmen zu können.</p>' +
-			'<button class="btnPrimary greyButton js-closeAgeModal">Ich bin 18 oder älter - Eingabe</button>'+
-			'</div>' +
-			'</div>';
+		let avHtml = '';
+		if(country && country=='DE'){
+			avHtml = '<div class="modal_age">' +
+				'<div class="modal_inner">' +
+				'<img src="/wp-content/themes/mpg/images/logo-mob.png"/>'+
+				'<div class="title">Altersüberprüfung</div>' +
+				'<p>MrPornGeek ist eine Erwachsenen-Community, die altersbeschränkte Inhalte enthält.<br/>' +
+				'Du musst 18 Jahre oder älter sein, um teilnehmen zu können.</p>' +
+				'<button class="btnPrimary greyButton js-closeAgeModal">Ich bin 18 oder älter - Eingabe</button>'+
+				'</div>' +
+				'</div>';
+		}else if(country && country=='GB'){
+			avHtml = '<div class="modal_age">' +
+				'<div class="modal_inner">' +
+				'<img src="/wp-content/themes/mpg/images/logo-mob.png"/>'+
+				'<div class="title">ADULTS ONLY 18+</div>' +
+				'<p class="modal_age_p">You\'re accessing this site from the United Kingdom.<br/>' +
+				'This website is intended for adults aged 18 or over only.<br/>' +
+				'By continuing, you confirm that you are 18+ years of age or older</p>' +
+				'<div class="modal_age_buttons flex flex-hc">' +
+				'<button class="btn btn_in btnPrimary greyButton js-closeAgeModal">I’m Over 18+ – Let Me In</button>'+
+				'<a href="https://www.google.com/" class="btn btn_exit btnPrimary greyButton">I’m Under 18 – Exit</a>'+
+				'</div>'
+
+				'</div>' +
+				'</div>';
+		}
 
 		document.body.insertAdjacentHTML( 'beforeend', avHtml );
 	}
@@ -570,7 +583,7 @@ let lastMobileSimilarSite;
 		initCategoryPage();
 
 		// showAgeVerification();
-		// detectCountryAndVerifyAge()
+		detectCountryAndVerifyAge()
 		showAcceptCookie();
 
 		if(bodyClasses.contains('page-template-page-categories')){
