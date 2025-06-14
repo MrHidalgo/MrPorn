@@ -68,6 +68,23 @@ body {
 			}
 		}
 	}
+	&-heading{
+		@include respond('medium'){
+			padding: 8px 0;
+
+			.section_heading__h1{
+				max-width: calc(100% - 350px);
+				overflow: hidden;
+				text-overflow: ellipsis;
+			}
+		}
+		@include adaptive(767) {
+			display: flex;
+			align-items: center;
+			width: 100%;
+			min-height: 48px;
+		}
+	}
 	&_container{
 		/*display: flex;
 		flex-direction: column;*/

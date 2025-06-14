@@ -53,7 +53,8 @@ function detectCountryAndVerifyAge() {
 	fetch(apiUrl)
 		.then(response => response.json())
 		.then(data => {
-			if (data.country === 'DE' || data.country === 'GB') {
+			// if (data.country === 'DE' || data.country === 'GB') {
+			if (data.country === 'DE') {
 				console.log('User is from '+data.country);
 				showAgeVerification(data.country); // Example function for German visitors
 			}
@@ -582,7 +583,6 @@ let lastMobileSimilarSite;
 
 		initCategoryPage();
 
-		// showAgeVerification();
 		detectCountryAndVerifyAge()
 		showAcceptCookie();
 

@@ -76,6 +76,11 @@ body {
 
 	font-family: helvetica neue,Helvetica,Arial,sans-serif;
 
+	@include respond('medium'){
+		&.pk{
+			padding-top: 42px;
+		}
+	}
 }
 .light{
 	body {

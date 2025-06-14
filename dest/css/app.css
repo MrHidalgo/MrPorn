@@ -615,28 +615,35 @@ body {
   font-family: helvetica neue,Helvetica,Arial,sans-serif;
 }
 
-/* line 81, src/scss/_shared/_main-setting-reset.scss */
+@media screen and (min-width: 768px) {
+  /* line 80, src/scss/_shared/_main-setting-reset.scss */
+  body.pk {
+    padding-top: 42px;
+  }
+}
+
+/* line 86, src/scss/_shared/_main-setting-reset.scss */
 .light body {
   background: #cad4df;
   color: #4c4c4c;
 }
 
-/* line 85, src/scss/_shared/_main-setting-reset.scss */
+/* line 90, src/scss/_shared/_main-setting-reset.scss */
 .light body.home {
   background: #d6d9e2;
 }
 
-/* line 89, src/scss/_shared/_main-setting-reset.scss */
+/* line 94, src/scss/_shared/_main-setting-reset.scss */
 a {
   color: #4099f9;
 }
 
-/* line 92, src/scss/_shared/_main-setting-reset.scss */
+/* line 97, src/scss/_shared/_main-setting-reset.scss */
 a:hover {
   color: #337ab7;
 }
 
-/* line 95, src/scss/_shared/_main-setting-reset.scss */
+/* line 100, src/scss/_shared/_main-setting-reset.scss */
 a:focus {
   color: #337ab7;
 }
@@ -646,19 +653,19 @@ a:focus {
 		color: #337ab7;
 	}
 }*/
-/* line 107, src/scss/_shared/_main-setting-reset.scss */
+/* line 112, src/scss/_shared/_main-setting-reset.scss */
 * {
   -webkit-box-sizing: border-box;
           box-sizing: border-box;
 }
 
-/* line 110, src/scss/_shared/_main-setting-reset.scss */
+/* line 115, src/scss/_shared/_main-setting-reset.scss */
 *:before, *:after {
   -webkit-box-sizing: border-box;
           box-sizing: border-box;
 }
 
-/* line 116, src/scss/_shared/_main-setting-reset.scss */
+/* line 121, src/scss/_shared/_main-setting-reset.scss */
 h1, h2, h3, h4, h5, h6 {
   font-family: inherit;
   font-weight: 500;
@@ -669,7 +676,7 @@ h1, h2, h3, h4, h5, h6 {
 /*p{
 	margin: 0 0 10px;
 }*/
-/* line 126, src/scss/_shared/_main-setting-reset.scss */
+/* line 131, src/scss/_shared/_main-setting-reset.scss */
 button,
 input,
 optgroup,
@@ -679,65 +686,65 @@ textarea {
   margin: 0;
 }
 
-/* line 136, src/scss/_shared/_main-setting-reset.scss */
+/* line 141, src/scss/_shared/_main-setting-reset.scss */
 button,
 input {
   overflow: visible;
 }
 
-/* line 142, src/scss/_shared/_main-setting-reset.scss */
+/* line 147, src/scss/_shared/_main-setting-reset.scss */
 button[disabled] {
   opacity: 0.55;
   cursor: not-allowed;
 }
 
-/* line 148, src/scss/_shared/_main-setting-reset.scss */
+/* line 153, src/scss/_shared/_main-setting-reset.scss */
 [type="search"] {
   -webkit-appearance: textfield;
   outline-offset: -2px;
 }
 
-/* line 154, src/scss/_shared/_main-setting-reset.scss */
+/* line 159, src/scss/_shared/_main-setting-reset.scss */
 [type="search"]::-webkit-search-cancel-button,
 [type="search"]::-webkit-search-decoration {
   -webkit-appearance: none;
 }
 
-/* line 160, src/scss/_shared/_main-setting-reset.scss */
+/* line 165, src/scss/_shared/_main-setting-reset.scss */
 textarea {
   overflow: auto;
 }
 
-/* line 165, src/scss/_shared/_main-setting-reset.scss */
+/* line 170, src/scss/_shared/_main-setting-reset.scss */
 h1, h2, h3, h4, h5, h6,
 hr {
   margin: 0;
   padding: 0;
 }
 
-/* line 172, src/scss/_shared/_main-setting-reset.scss */
+/* line 177, src/scss/_shared/_main-setting-reset.scss */
 ul {
   margin: 0;
   padding: 0;
 }
 
-/* line 177, src/scss/_shared/_main-setting-reset.scss */
+/* line 182, src/scss/_shared/_main-setting-reset.scss */
 ul li {
   list-style: none;
 }
 
-/* line 183, src/scss/_shared/_main-setting-reset.scss */
+/* line 188, src/scss/_shared/_main-setting-reset.scss */
 a {
   outline: none;
   text-decoration: none;
 }
 
-/* line 188, src/scss/_shared/_main-setting-reset.scss */
+/* line 193, src/scss/_shared/_main-setting-reset.scss */
 a:hover, a:focus {
   text-decoration: none;
 }
 
-/* line 195, src/scss/_shared/_main-setting-reset.scss */
+/* line 200, src/scss/_shared/_main-setting-reset.scss */
 input[type="text"] {
   -webkit-appearance: none;
      -moz-appearance: none;
@@ -751,71 +758,71 @@ input[type="text"] {
   width: 100%;
   height: 100%;
 }*/
-/* line 207, src/scss/_shared/_main-setting-reset.scss */
+/* line 212, src/scss/_shared/_main-setting-reset.scss */
 .custom_scroll {
   scrollbar-color: #131313 #525252;
 }
 
-/* line 208, src/scss/_shared/_main-setting-reset.scss */
+/* line 213, src/scss/_shared/_main-setting-reset.scss */
 .custom_scroll::-webkit-scrollbar {
   width: 10px;
 }
 
-/* line 209, src/scss/_shared/_main-setting-reset.scss */
+/* line 214, src/scss/_shared/_main-setting-reset.scss */
 .custom_scroll::-webkit-scrollbar-track {
   background: rgba(0, 0, 0, 0.1);
 }
 
-/* line 210, src/scss/_shared/_main-setting-reset.scss */
+/* line 215, src/scss/_shared/_main-setting-reset.scss */
 .custom_scroll::-webkit-scrollbar-thumb {
   background: #9c9b9c;
 }
 
-/* line 213, src/scss/_shared/_main-setting-reset.scss */
+/* line 218, src/scss/_shared/_main-setting-reset.scss */
 .light .custom_scroll:hover::-webkit-scrollbar-thumb {
   background: #225396;
 }
 
-/* line 216, src/scss/_shared/_main-setting-reset.scss */
+/* line 221, src/scss/_shared/_main-setting-reset.scss */
 strong {
   font-weight: 700;
 }
 
-/* line 220, src/scss/_shared/_main-setting-reset.scss */
+/* line 225, src/scss/_shared/_main-setting-reset.scss */
 [data-label-desc]::after {
   content: attr(data-label-desc);
 }
 
 @media screen and (max-width: 767px) {
-  /* line 220, src/scss/_shared/_main-setting-reset.scss */
+  /* line 225, src/scss/_shared/_main-setting-reset.scss */
   [data-label-desc]::after {
     content: attr(data-label-mobile);
   }
 }
 
-/* line 228, src/scss/_shared/_main-setting-reset.scss */
+/* line 233, src/scss/_shared/_main-setting-reset.scss */
 .visible-xs-inline {
   display: none;
 }
 
 @media screen and (max-width: 767px) {
-  /* line 228, src/scss/_shared/_main-setting-reset.scss */
+  /* line 233, src/scss/_shared/_main-setting-reset.scss */
   .visible-xs-inline {
     display: inline-block;
   }
 }
 
-/* line 236, src/scss/_shared/_main-setting-reset.scss */
+/* line 241, src/scss/_shared/_main-setting-reset.scss */
 .show-xs {
   display: none;
 }
 
 @media screen and (max-width: 767px) {
-  /* line 239, src/scss/_shared/_main-setting-reset.scss */
+  /* line 244, src/scss/_shared/_main-setting-reset.scss */
   .hidden-xs {
     display: none;
   }
-  /* line 242, src/scss/_shared/_main-setting-reset.scss */
+  /* line 247, src/scss/_shared/_main-setting-reset.scss */
   .show-xs {
     display: block;
   }
@@ -3386,6 +3393,10 @@ strong {
 
 /* line 1, src/scss/_components/ads/adb_notice.scss */
 .adblock-notice {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -3404,7 +3415,7 @@ strong {
   color: #fff;
 }
 
-/* line 10, src/scss/_components/ads/adb_notice.scss */
+/* line 14, src/scss/_components/ads/adb_notice.scss */
 .adblock-notice:before {
   display: inline-block;
   content: ' ';
@@ -3413,7 +3424,7 @@ strong {
   background: url(../images/adbk.svg);
 }
 
-/* line 18, src/scss/_components/ads/adb_notice.scss */
+/* line 22, src/scss/_components/ads/adb_notice.scss */
 .adblock-notice-close {
   background: transparent;
   border: none;
