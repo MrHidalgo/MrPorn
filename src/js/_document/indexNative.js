@@ -48,15 +48,14 @@ function initWebWorker(){
 }
 
 function detectCountryAndVerifyAge() {
-	const apiUrl = 'https://ipinfo.io/json?token=b26cc70e6edb61';
+	// const apiUrl = 'https://ipinfo.io/json?token=b26cc70e6edb61';
 
-	fetch(apiUrl)
+	fetch('/api/country.php')
 		.then(response => response.json())
 		.then(data => {
-			// if (data.country === 'DE' || data.country === 'GB') {
-			if (data.country === 'DE') {
-				console.log('User is from '+data.country);
-				showAgeVerification(data.country); // Example function for German visitors
+			if (data.countryCode === 'DE' || data.countryCode === 'GB') {
+			// if (data.countryCode === 'DE') {
+				showAgeVerification(data.countryCode); // Example function for German visitors
 			}
 		})
 		.catch(error => {
@@ -65,9 +64,6 @@ function detectCountryAndVerifyAge() {
 }
 
 function showAgeVerification(country){
-	// if(document.documentElement.lang=='de'){
-	//
-	// }
 	var isVerified = getCookieMpgCookie("age");
 	if(!isVerified){
 		let avHtml = '';
@@ -78,7 +74,7 @@ function showAgeVerification(country){
 				'<div class="title">Altersüberprüfung</div>' +
 				'<p>MrPornGeek ist eine Erwachsenen-Community, die altersbeschränkte Inhalte enthält.<br/>' +
 				'Du musst 18 Jahre oder älter sein, um teilnehmen zu können.</p>' +
-				'<button class="btnPrimary greyButton js-closeAgeModal">Ich bin 18 oder älter - Eingabe</button>'+
+				'<button class="btn btnPrimary greyButton js-closeAgeModal">Ich bin 18 oder älter - Eingabe</button>'+
 				'</div>' +
 				'</div>';
 		}else if(country && country=='GB'){
