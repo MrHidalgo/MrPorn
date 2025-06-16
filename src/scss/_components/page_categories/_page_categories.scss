@@ -111,6 +111,9 @@
 
 
 .more-related-tags{
+	.categories-tags-item{
+		width: 100%;
+	}
 	@include adaptive(767) {
 		.link-action{
 			padding: 10px 8px;
@@ -126,10 +129,12 @@
 			flex-wrap: wrap;
 			gap: 5px;
 		}
+		li{
+			width: calc(50% - 4px);
+		}
 		.categories-tags-item{
 			justify-content: center;
 			padding: 8px 10px 8px 10px;
-			width: calc(50% - 4px);
 
 			.tag-icon{
 				position: absolute;

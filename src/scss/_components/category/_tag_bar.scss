@@ -63,6 +63,13 @@
 		border-top: 2px solid #969696;
 		border-bottom: 2px solid #969696;
 		padding: 5px;
+		scrollbar-width: none;
+
+		@include adaptive(767) {
+			overflow: auto;
+			gap: 5px;
+			flex-wrap: nowrap;
+		}
 
 		&-left{
 			border-right: 1px solid #969696;
@@ -96,6 +103,7 @@
 			@include adaptive(767) {
 				padding-left: 3px;
 				gap: 1px;
+				overflow: visible;
 			}
 
 			scrollbar-width: none;

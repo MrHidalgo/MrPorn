@@ -3382,6 +3382,48 @@ function Marquee(selector, speed) {
   startMarquee();
 }
 
+var ScrollBoxShadows = /*#__PURE__*/function () {
+  function ScrollBoxShadows(element, scrollBox) {
+    var topShadowClass = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : 'top-shadow';
+    var bottomShadowClass = arguments.length > 3 && arguments[3] !== undefined ? arguments[3] : 'bottom-shadow';
+
+    _classCallCheck(this, ScrollBoxShadows);
+
+    this.scrollContainer = document.querySelector(element);
+    this.scrollBox = document.querySelector(scrollBox);
+    this.topShadowClass = topShadowClass;
+    this.bottomShadowClass = bottomShadowClass;
+
+    if (this.scrollBox) {
+      this.init();
+    }
+  }
+
+  _createClass(ScrollBoxShadows, [{
+    key: "init",
+    value: function init() {
+      var _this11 = this;
+
+      this.updateShadows();
+      this.scrollBox.addEventListener('scroll', function (e) {
+        _this11.updateShadows();
+      });
+    }
+  }, {
+    key: "updateShadows",
+    value: function updateShadows() {
+      this.scrollContainer.classList.toggle(this.topShadowClass, this.scrollBox.scrollTop > 0);
+      this.scrollContainer.classList.toggle(this.bottomShadowClass, this.scrollBox.scrollTop + this.scrollBox.clientHeight < this.scrollBox.scrollHeight - 5);
+    }
+  }]);
+
+  return ScrollBoxShadows;
+}();
+
+document.addEventListener('DOMContentLoaded', function () {
+  new ScrollBoxShadows('.category_sites_description', '.category_description');
+});
+
 var getWindowScrollTop = function getWindowScrollTop() {
   return window.scrollY || window.pageYOffSet || document.documentElement.scrollTop;
 };
@@ -4370,7 +4412,7 @@ var StickySidebar = function () {
      * @param {Object} options - The options of sticky sidebar.
      */
     function StickySidebar(sidebar, mainContainer) {
-      var _this11 = this;
+      var _this12 = this;
 
       var options = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : {};
 
@@ -4418,7 +4460,7 @@ var StickySidebar = function () {
       }; // Bind event handlers for referencability.
 
       ['handleEvent'].forEach(function (method) {
-        _this11[method] = _this11[method].bind(_this11);
+        _this12[method] = _this12[method].bind(_this12);
       }); // Initialize sticky sidebar for first time.
 
       this.initialize();
@@ -4433,7 +4475,7 @@ var StickySidebar = function () {
     _createClass(StickySidebar, [{
       key: "initialize",
       value: function initialize() {
-        var _this12 = this;
+        var _this13 = this;
 
         this._setSupportFeatures(); // Get sticky sidebar inner wrapper, if not found, will create one.
 
@@ -4460,8 +4502,8 @@ var StickySidebar = function () {
           var containers = document.querySelectorAll(this.options.containerSelector);
           containers = Array.prototype.slice.call(containers);
           containers.forEach(function (container, item) {
-            if (!container.contains(_this12.sidebar)) return;
-            _this12.container = container;
+            if (!container.contains(_this13.sidebar)) return;
+            _this13.container = container;
           });
           if (!containers.length) throw new Error("The container does not contains on the sidebar.");
         } // If top/bottom spacing is not function parse value to integer.
@@ -4842,7 +4884,7 @@ var StickySidebar = function () {
     }, {
       key: "updateSticky",
       value: function updateSticky() {
-        var _this13 = this;
+        var _this14 = this;
 
         var event = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {};
         if (this._running) return;
@@ -4854,11 +4896,11 @@ var StickySidebar = function () {
               // When browser is scrolling and re-calculate just dimensions
               // within scroll.
               case 'scroll':
-                _this13._calcDimensionsWithScroll();
+                _this14._calcDimensionsWithScroll();
 
-                _this13.observeScrollDir();
+                _this14.observeScrollDir();
 
-                _this13.stickyPosition();
+                _this14.stickyPosition();
 
                 break;
               // When browser is resizing or there's no event, observe width
@@ -4866,16 +4908,16 @@ var StickySidebar = function () {
 
               case 'resize':
               default:
-                _this13._widthBreakpoint();
+                _this14._widthBreakpoint();
 
-                _this13.calcDimensions();
+                _this14.calcDimensions();
 
-                _this13.stickyPosition(true);
+                _this14.stickyPosition(true);
 
                 break;
             }
 
-            _this13._running = false;
+            _this14._running = false;
           });
         })(event.type);
       }

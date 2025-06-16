@@ -209,12 +209,17 @@ input[type="text"] {
   height: 100%;
 }*/
 
-.custom_scroll{scrollbar-color: #131313 #525252;}
+.custom_scroll{scrollbar-color: #96979f #96979f;}
 .custom_scroll::-webkit-scrollbar{width: 10px; }
 .custom_scroll::-webkit-scrollbar-track{ background: rgba(0,0,0,0.1) }
 .custom_scroll::-webkit-scrollbar-thumb{ background: #9c9b9c }
 
 .light{
+	.custom_scroll{scrollbar-color: #131313 #525252;}
+	.custom_scroll::-webkit-scrollbar{width: 10px; }
+	.custom_scroll::-webkit-scrollbar-track{ background: rgba(0,0,0,0.1) }
+	.custom_scroll::-webkit-scrollbar-thumb{ background: #9c9b9c }
+
 	.custom_scroll:hover::-webkit-scrollbar-thumb{ background: #225396 }
 }
 
