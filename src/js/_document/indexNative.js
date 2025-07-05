@@ -53,10 +53,11 @@ function detectCountryAndVerifyAge() {
 	fetch('/api/country.php')
 		.then(response => response.json())
 		.then(data => {
-			if (data.countryCode === 'DE' || data.countryCode === 'GB') {
+			if (data.countryCode === 'DE' || data.countryCode === 'GB' || data.countryCode === 'LK') {
 			// if (data.countryCode === 'DE') {
 				showAgeVerification(data.countryCode); // Example function for German visitors
 			}
+			console.log('Detected country:', data.countryCode);
 		})
 		.catch(error => {
 			console.error('Error detecting country:', error);
@@ -66,9 +67,9 @@ function detectCountryAndVerifyAge() {
 function showAgeVerification(country){
 	var isVerified = getCookieMpgCookie("age");
 	if(!isVerified){
-		let avHtml = '';
-		if(country && country=='DE'){
-			avHtml = '<div class="modal_age">' +
+		if(country=='DE'){
+			console.log('rendering german popup')
+			let avHtml = '<div class="modal_age">' +
 				'<div class="modal_inner">' +
 				'<img src="/wp-content/themes/mpg/images/logo-mob.png"/>'+
 				'<div class="title">Altersüberprüfung</div>' +
@@ -77,8 +78,10 @@ function showAgeVerification(country){
 				'<button class="btn btnPrimary greyButton js-closeAgeModal">Ich bin 18 oder älter - Eingabe</button>'+
 				'</div>' +
 				'</div>';
-		}else if(country && country=='GB'){
-			avHtml = '<div class="modal_age">' +
+			document.body.insertAdjacentHTML( 'beforeend', avHtml );
+		}else if(country=='GB' || country=='LK'){
+			console.log('English pop')
+			let avHtml = '<div class="modal_age">' +
 				'<div class="modal_inner">' +
 				'<img src="/wp-content/themes/mpg/images/logo-mob.png"/>'+
 				'<div class="title">ADULTS ONLY 18+</div>' +
@@ -92,9 +95,12 @@ function showAgeVerification(country){
 
 				'</div>' +
 				'</div>';
+			document.body.insertAdjacentHTML( 'beforeend', avHtml );
 		}
 
-		document.body.insertAdjacentHTML( 'beforeend', avHtml );
+
+	}else{
+		console.log('already verified age')
 	}
 }
 
