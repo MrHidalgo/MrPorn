@@ -204,6 +204,14 @@
 	&-porn-search-engines{
 		background-image: url(../images/categories/porn-search-engines.svg);
 		width: 46px;
+
+		&:not(.icon-sm){
+			width: 46px !important;
+		}
+
+		&.icon-sm{
+			width: 32px;
+		}
 	}
 	&-latina{
 		background-image: url(../images/categories/latina.svg);
