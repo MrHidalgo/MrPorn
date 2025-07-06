@@ -1248,12 +1248,11 @@ function initCategoryPage() {
           var triggeredLetter = e.currentTarget.dataset.letter;
           (_document$querySelect11 = document.querySelector('.category-list-letter.active')) === null || _document$querySelect11 === void 0 ? void 0 : _document$querySelect11.classList.remove('active');
           var letterTop = document.querySelector(sidebarContainer + ' .category-list-item-letter.letter_' + triggeredLetter).offsetTop;
-          console.log('letter top ' + triggeredLetter, letterTop);
           desktopMenuListContainer === null || desktopMenuListContainer === void 0 ? void 0 : desktopMenuListContainer.scrollTo({
             top: letterTop,
             behavior: "smooth"
-          });
-          letterTop -= 45;
+          }); // letterTop -= 45;
+
           mobileMenuList === null || mobileMenuList === void 0 ? void 0 : mobileMenuList.scrollTo({
             top: letterTop,
             behavior: "smooth"
@@ -1292,10 +1291,13 @@ function initCategoryPage() {
 
         (_container$querySelec = container.querySelector('.category-list-letter.active')) === null || _container$querySelec === void 0 ? void 0 : _container$querySelec.classList.remove('active');
         e.target.classList.add('active');
-        letterList.scrollTo({
-          top: letterTop,
-          behavior: 'smooth'
-        });
+
+        if (letterList) {
+          letterList.scrollTo({
+            top: letterTop,
+            behavior: 'smooth'
+          });
+        }
       });
     });
   };
@@ -5836,13 +5838,17 @@ var lastMobileSimilarSite;
       evt.preventDefault();
       document.querySelector('.footer_description').classList.add('show_all');
     });
-  };
+  }; // document.addEventListener("DOMContentLoaded", () => {
+  //
+  // });
+
+
+  initCategoryPage();
   /**
    * @name initNative
    *
    * @description Init all method
    */
-
 
   var initNative = function initNative() {
     // default
@@ -5892,8 +5898,8 @@ var lastMobileSimilarSite;
       visitedSites().initVisitedSites('.category_item_link, .category-list-link');
     }
 
-    initWebWorker();
-    initCategoryPage();
+    initWebWorker(); // initCategoryPage();
+
     detectCountryAndVerifyAge();
     showAcceptCookie();
 

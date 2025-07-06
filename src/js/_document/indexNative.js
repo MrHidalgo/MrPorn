@@ -512,6 +512,11 @@ let lastMobileSimilarSite;
 		});
 	}
 
+	// document.addEventListener("DOMContentLoaded", () => {
+	//
+	// });
+	initCategoryPage();
+
 	/**
 	 * @name initNative
 	 *
@@ -583,7 +588,7 @@ let lastMobileSimilarSite;
 
 		initWebWorker();
 
-		initCategoryPage();
+		// initCategoryPage();
 
 		detectCountryAndVerifyAge()
 		showAcceptCookie();
@@ -624,4 +629,7 @@ let lastMobileSimilarSite;
 	});
 
 
+
 })();
+
+

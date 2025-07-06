@@ -479,13 +479,11 @@ function initCategoryPage() {
 				document.querySelector('.category-list-letter.active')?.classList.remove('active');
 
 				let letterTop = document.querySelector(sidebarContainer+' .category-list-item-letter.letter_'+triggeredLetter).offsetTop
-
-				console.log('letter top '+triggeredLetter, letterTop)
 				desktopMenuListContainer?.scrollTo({
 					top: letterTop,
 					behavior: "smooth",
 				});
-				letterTop -= 45;
+				// letterTop -= 45;
 				mobileMenuList?.scrollTo({
 					top: letterTop,
 					behavior: "smooth",
@@ -519,10 +517,13 @@ function initCategoryPage() {
 
 				container.querySelector('.category-list-letter.active')?.classList.remove('active');
 				e.target.classList.add('active');
-				letterList.scrollTo({
-					top: letterTop,
-					behavior: 'smooth'
-				});
+				if(letterList){
+					letterList.scrollTo({
+						top: letterTop,
+						behavior: 'smooth'
+					});
+				}
+
 			});
 		});
 	}
