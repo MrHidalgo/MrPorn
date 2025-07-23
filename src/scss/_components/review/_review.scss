@@ -2080,7 +2080,15 @@
 	visibility: hidden !important;
 }
 
-
+#other_categories.related-categories{
+	padding-bottom: 10px;
+	@include adaptive(767) {
+		padding-bottom: 10px;
+	}
+	.link-header{
+		padding: 0;
+	}
+}
 
 .light{
 	.joinarrw{
