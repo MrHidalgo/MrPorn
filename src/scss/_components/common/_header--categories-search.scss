@@ -1,0 +1,37 @@
+.header{
+	&__categories-mobile{
+		display: none;
+		@include adaptive(1023) {
+			display: block;
+			padding: 60px 15px 15px;
+			position: relative;
+		}
+	}
+	.category-list-menu-mobile{
+		height: calc(100vh - 220px);
+		overflow: auto;
+		padding-right: 10px;
+
+		&::-webkit-scrollbar {
+			width: 4px; /* Set the width of the scrollbar */
+		}
+
+		&::-webkit-scrollbar-track {
+			background: #f1f1f1; /* Background of the track */
+		}
+
+		&::-webkit-scrollbar-thumb {
+			background: #225396; /* Scrollbar thumb color */
+			border-radius: 10px; /* Rounded corners */
+		}
+
+		&::-webkit-scrollbar-thumb:hover {
+			background: #555; /* Hover color */
+		}
+	}
+}
+.light {
+	.header {
+	}
+
+}

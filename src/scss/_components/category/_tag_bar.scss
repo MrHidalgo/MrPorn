@@ -1,0 +1,143 @@
+.category-tag{
+	&-list{
+		@include respond('medium'){
+			overflow: auto;
+		}
+		scrollbar-width: none;
+	}
+	&-tipbox{
+		position: relative;
+		cursor: pointer;
+
+		.tooltip{
+			display: none;
+
+			@include respond('medium'){
+				position: absolute;
+				text-align: center;
+				bottom: 100%;
+				left: 50%;
+				z-index: 2;
+				transform: translate(-50%, -10px);
+				display: none;
+				padding: 6px 10px;
+				border: 3px solid #bababa;
+				border-radius: 11px;
+				white-space: nowrap;
+				line-height: 1;
+				background-color: #fdfdfd;
+				color: #767676;
+				animation: fadeEffect .2s;
+
+				span{
+					color: #000;
+				}
+
+				&:after{
+					content: '';
+					position: absolute;
+					top: 100%;
+					left: 50%;
+					transform: translate(-50%, -4px) rotate(-45deg);
+					display: inline-block;
+					width: 12px;
+					height: 12px;
+					border-width: 0 0 3px 3px;
+					border-style: solid;
+					border-color: transparent transparent #bababa #bababa;
+					background-color: #fdfdfd;
+				}
+			}
+
+		}
+		@include respond('medium'){
+			&:hover .tooltip{
+				display: block;
+			}
+		}
+	}
+
+
+	&-bar{
+		background: #e5e5e5;
+		border-top: 2px solid #969696;
+		border-bottom: 2px solid #969696;
+		padding: 5px;
+		scrollbar-width: none;
+
+		@include adaptive(767) {
+			overflow: auto;
+			gap: 5px;
+			flex-wrap: nowrap;
+		}
+
+		&-left{
+			border-right: 1px solid #969696;
+			padding-right: 5px;
+			gap: 3px;
+
+			@include adaptive(767) {
+				padding-right: 3px;
+				gap: 1px;
+			}
+
+			.tag-inline{
+				display: flex;
+				background: #ccc;
+				padding: 3px 4px;
+				color: #000;
+				font-size: 12px;
+				white-space: nowrap;
+
+				@include respond('medium'){
+					padding: 3px 10px 3px 30px;
+				}
+			}
+		}
+		&-more{
+			flex: 1;
+			padding-left: 5px;
+			overflow: auto;
+			gap: 5px;
+
+			@include adaptive(767) {
+				padding-left: 3px;
+				gap: 1px;
+				overflow: visible;
+			}
+
+			scrollbar-width: none;
+
+			span{
+				white-space: nowrap;
+			}
+
+			&-categories{
+				display: flex;
+				white-space: nowrap;
+				gap: 4px;
+
+				@include adaptive(767) {
+					gap: 3px;
+				}
+			}
+
+			@include adaptive(767) {
+				.category-tag-item{
+					padding: 2px 4px;
+				}
+			}
+		}
+	}
+
+	&-item{
+		background: #fff;
+		padding: 3px 8px;
+		border: 1px solid #626262;
+
+		a, a:hover, a:focus{
+			color: #000;
+			gap: 4px;
+		}
+	}
+}

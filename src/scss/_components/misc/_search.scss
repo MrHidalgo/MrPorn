@@ -84,6 +84,7 @@
 		padding: 4px 13px 4px 5px;
 		display: flex;
 		align-items: center;
+		gap: 10px;
 
 		@include adaptive(1023) {
 			padding-right: 3px;
@@ -97,6 +98,11 @@
 		img{
 			max-height: 22px;
 			margin-right: 10px;
+		}
+
+		.icon-category{
+			background-color: #000;
+			border-radius: 50%;
 		}
 
 		&:before{margin-left: 0; zoom: 0.8;}

@@ -1,0 +1,28 @@
+.adblock-notice{
+	position: absolute;
+	top: 0;
+	left: 0;
+	right: 0;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	gap: 10px;
+	padding: 5px;
+	background: #D93025;
+	color: #fff;
+
+	&:before{
+		display: inline-block;
+		content: ' ';
+		width: 32px;
+		height: 32px;
+		background: url(../images/adbk.svg);
+	}
+
+	&-close{
+		background: transparent;
+		border: none;
+		box-shadow: none;
+		cursor: pointer;
+	}
+}

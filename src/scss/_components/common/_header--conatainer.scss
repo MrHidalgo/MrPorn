@@ -15,10 +15,6 @@
 		justify-content: center;
 	}
 
-	&__user-block{
-		width: 100%;
-		border-bottom: 1px solid #4a4a4a;
-	}
 	&__most-popular{
 		display: none;
 	}
@@ -51,7 +47,6 @@
 					flex-direction: column;
 					visibility: visible;
 					transform: translateY(0) translateZ(0);
-					@include transition(opacity, visibility, transform);
 
 					&.awe{
 						padding: 10px 20px 0;

@@ -18,6 +18,10 @@ const configOption = {
     sourceComments: true
   },
 
+	stripCssCommentsOption: {
+		preserve: false // Set to true if you want to preserve comments that start with /*! or /**!
+	},
+
   autoPrefixOptions: {
     browsers: [
       "last 10 versions",
@@ -38,7 +42,12 @@ const configOption = {
   },
 
   es6: {
-    "presets": ["@babel/preset-env"]
+    "presets": ["@babel/preset-env"],
+		plugins: [
+			["@babel/plugin-transform-runtime", {
+				"helpers": false,
+			}]
+		]
 		//"presets": ["env"]
   },
 

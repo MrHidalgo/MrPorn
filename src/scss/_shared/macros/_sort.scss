@@ -8,7 +8,7 @@
 		margin: 10px 20px;
 	}
 
-	@include adaptive(767) {
+	@include adaptive(1023) {
 		height: 44px;
 		max-height: 44px;
 
@@ -40,11 +40,26 @@
 		display: flex;
 		align-items: center;
 		justify-content: center;
+		gap: 4px;
 		cursor: pointer;
+		color: #fff;
 		width: 100%;
 		height: 100%;
 		border-radius: 5px 0 0 5px;
 		background-color: #939cb2;
+		font-weight: 600;
+
+		/*&:after{
+			display: inline-block;
+			content: ' ';
+			width: 0px;
+			height: 0px;
+			border-style: solid;
+			border-width: 8px 6px 0 6px;
+			border-color: #fff transparent transparent transparent;
+			transform: rotate(0deg);
+		}*/
+
 		@include adaptive(1023) {
 			border-radius: 0;
 		}
@@ -80,7 +95,17 @@
 }
 
 .light{
-	.sort__drop-link{
-		color: #081b49;
+	.sort{
+
+		&__drop-link{
+			color: #081b49;
+		}
+
+		@include respond('max-medium') {
+			&__toggle{
+				background-color: #3d3d3d;;
+			}
+		}
+
 	}
 }

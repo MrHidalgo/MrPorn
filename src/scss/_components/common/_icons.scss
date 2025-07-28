@@ -1,0 +1,56 @@
+.icon{
+	&-arrow{
+
+		&-right{
+			&:after{
+				content: ' ';
+				display: inline-block;
+				background-image: url(../images/icon-right-arrow.svg);
+				background-position: center;
+				background-repeat: no-repeat;
+				width: 22px;
+				height: 12px;
+				background-size: contain;
+				margin-left: 10px;
+			}
+
+			&.animate:hover{
+				&:after{
+					animation: btnMainArrowRight 1s infinite;
+				}
+			}
+		}
+		&-down{
+			&:after{
+				content: ' ';
+				display: inline-block;
+				width: 12px;
+				height: 22px;
+				background-image: url(../images/icon-arrow-down.svg);
+				background-repeat: no-repeat;
+				background-size: contain;
+				margin-left: 5px;
+			}
+
+			&.animate:hover{
+				&:after{
+					animation: btnMainArrowRight 1s infinite;
+				}
+			}
+		}
+	}
+}
+
+
+.light {
+	.icon{
+		&-arrow{
+			&-right:after{
+				background-image: url(../images/icon-right-light-arrow.svg);
+			}
+			&-down:after{
+				background-image: url(../images/icon-arrow-down-light.svg);
+			}
+		}
+	}
+}

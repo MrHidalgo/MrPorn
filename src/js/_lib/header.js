@@ -24,8 +24,10 @@ const initTheme = () => {
 	}
 	if(isDark=='1'){
 		document.documentElement.classList.remove('light');
+		document.documentElement.classList.add('dark');
 		toggleSwitch.checked = true;
 	}else{
+		document.documentElement.classList.remove('dark');
 		document.documentElement.classList.add('light');
 		toggleSwitch.checked = false;
 	}
@@ -143,12 +145,12 @@ function renderMobileFavourites(response){
 		favIndex++;
 	});
 
-	window.favHtmlMobile = '<div class="hdrfav mobile_fav_link"><div class="hdrfavttl">Your Favourite Sites</div><div class="site_list favourite_list">'+favHtml+'</div></div>'
+	window.favHtmlMobile = '<div class="hdrfavttl">Your Favourite Sites</div><div class="site_list favourite_list">'+favHtml+'</div>'
 
-	let menuUserBlock = document.querySelector('.header__user-block');
+	let menuUserBlock = document.querySelector('.mobile_fav_link');
 
 	if(menuUserBlock){
-		menuUserBlock.insertAdjacentHTML("beforeend", window.favHtmlMobile);
+		menuUserBlock.innerHTML = window.favHtmlMobile;
 		document.querySelector('.mobile_fav_link .hdrfavttl').onclick = function(event){
 			document.querySelector('.mobile_fav_link').classList.toggle('open1');
 		}
@@ -175,46 +177,6 @@ const markFavourites = () =>{
 			document.querySelector('.list__specification-favorites[data-id="'+fav+'"]').classList.add('is-active');
 		}
 	})
-}
-
-const letterSearch = () => {
-
-	letterData = getWithExpiry("letter_data_"+dataTime);
-	if(!letterData){
-		letterData = [];
-	}
-
-	if(!letterData | letterData.length===0){
-
-
-		fetch('/wp-json/mpg/letter_matrix/')
-			.then(res => res.json())
-			.then((result) => {
-				Object.keys(result).forEach(function (key) {
-					var letter = key;
-					var suggestions = result[key];
-
-					var letterSuggestions = [];
-
-					suggestions.map(function (suggestion) {
-						let sName = suggestion.name;
-						let sIcon = suggestion.icon;
-						let sHd = suggestion.hd;
-						let sFree = suggestion.free;
-
-						letterSuggestions.push(suggestion);
-					});
-
-					letterData[letter] = letterSuggestions;
-				});
-				renderSorting();
-
-				setWithExpiry("letter_data_"+dataTime, letterData, 30*60*1000);
-			})
-			.catch(err => {
-				// console.log('didnt load letter matrix');
-			});
-	}
 }
 
 const loadTranslations = () => {
@@ -311,7 +273,7 @@ const onSortLetterClick = (letterItem) => {
 		let freeId = suggession.free_id;
 		let siteHd = suggession.hd;
 		let hdId = suggession.hd_id;
-		let catIcon = '/wp-content/uploads/'+suggession.icon;
+		let catIcon = suggession.icon;
 
 		if(currentLang!='en'){
 			siteFree = siteFree.replace(siteOrigin+'/', siteOrigin+'/'+currentLang+'/');
@@ -344,7 +306,8 @@ const onSortLetterClick = (letterItem) => {
 			letterSuggessions += '<div class="sort__collapse">' +
 				'<div class="sort__collapse-toggle" collapse-toggle-js data-container="sort-collapse-'+suggessionIndex+'">'+
 				'<div><span>#'+suggessionIndex+'</span></div>'+
-				'<div><img src="'+catIcon+'" />'+
+				'<div class="sort__collapse-title">'+
+				'<i class="icon-category '+catIcon+'"></i>'+
 				'<p>'+suggessionName+'</p>'+
 				'</div>'+
 				'<div><i class="icon-font icon-arrow-angle"></i></div></div>'+
@@ -359,7 +322,8 @@ const onSortLetterClick = (letterItem) => {
 			letterSuggessions += '<div class="sort__collapse">' +
 				'<a class="sort__collapse-toggle scroll_to_category11" data-category="'+((hdId!='')?hdId:freeId)+'" href="'+toggleLink+'">'+
 				'<div><span>#'+suggessionIndex+'</span></div>'+
-				'<div><img src="'+catIcon+'" />'+
+				'<div class="sort__collapse-title">' +
+				'<i class="icon-category '+catIcon+'"></i>'+
 				'<p>'+suggessionName+'</p>'+
 				'</div>'+
 				'</a>'+

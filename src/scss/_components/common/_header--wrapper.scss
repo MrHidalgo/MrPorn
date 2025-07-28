@@ -68,6 +68,7 @@
 					max-width: 100%;
 					display: flex;
 					justify-content: center;
+					font-size: 0;
 				}
 
 				&-3 {
@@ -93,8 +94,11 @@
 			}
 		}
 		@include adaptive(1023) {
+			position: relative;
+			height: 80px;
 			padding: 0;
 			background: transparent;
+			border-bottom: 1px solid #4a4a4a;
 		}
 	}
 

@@ -1,5 +1,34 @@
 // HEADER :: START
 
+.flex{
+	display: flex;
+
+	&-hc{
+		justify-content: center;
+	}
+	&-sb{
+		justify-content: space-between;
+	}
+	&-col{
+		flex-direction: column;
+	}
+	&-vc{
+		align-items: center;
+	}
+	&-wrap{
+		flex-wrap: wrap;
+	}
+}
+.relative{
+	position: relative;
+}
+.clearfix:after {
+	display: block;
+	content: "";
+	clear: both;
+}
+
+
 .header {
 	position: relative;
 	display: flex;
@@ -17,15 +46,18 @@
 
 	//@media screen and (min-width: 768px) {
 		@import "header--wrapper";
-		@import "header--action";
+
+		@import "header--user";
+	@import "header--mobile";
 		@import "header--category";
+
 	//}
 
-	@import "header--toggle";
 
-	@import "header--view";
-	@import "header--nav";
-	@import "header--recent";
+
+
+
+
 	@import "header--update";
 	//@import "header--awe";
 
@@ -51,18 +83,21 @@
 		z-index: 105;
 	}
 }
+@import "header--view";
+@import "header--toggle";
+@import "header--recent";
+@import "header--nav";
+@import "header--action";
+@import "header--categories-search";
 
 .light{
 	@include adaptive(1023) {
 		.header__bottom.is-open {
-			background: #303030fa;
+			background: #fff;
 		}
 
 		.pre-header__mobile{
 			background-color: #303030fa;
-		}
-		.header__nav-item:not(:last-of-type) {
-			border-bottom: 1px solid #4a4a4a;
 		}
 		.pre-header__mobile-middle{
 			border-top: 1px solid #4a4a4a;
@@ -241,7 +276,12 @@
 @import "../misc/header";
 @import "../misc/search";
 @import "../common/login";
+@import "../icons/category_icons";
+@import "../common/a2z_popup";
+@import "../category/sidebar";
+@import "../misc/animation";
 
 //@import "../../_generated/spritePNG";
 //@import "../../_generated/spriteFont";
 @import "../../_components/common/footer";
+

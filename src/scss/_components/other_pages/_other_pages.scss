@@ -358,18 +358,16 @@ ul{
 	border-radius: 6px;
 	font-size: 32px;
 	color: #fff;
-	padding: 0 25px 0 0;
+	padding: 0 45px 0 0;
 	text-transform: uppercase;
 	margin: 0 8px;
 	background-size: auto 100% !important;
+	overflow: hidden;
 
 	&:focus, &:hover{
 		color: #fff;
 	}
 
-	&:not(.bt_about){
-		flex: 1;
-	}
 
 	&.me{
 		background: url("../images/btn_bg_contact.png");

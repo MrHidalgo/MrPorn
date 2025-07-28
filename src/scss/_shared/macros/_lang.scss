@@ -4,8 +4,11 @@
 	&__outer{
 		@include adaptive(1023) {
 			display: flex;
+			position: absolute;
+			right: 0;
+			top: 40px;
 			justify-content: end;
-			padding: 0 20px;
+			padding: 0 5px;
 			height: 40px;
 			align-items: center;
 		}
@@ -88,15 +91,14 @@
 	}
 
 	&__drop {
-		display: none;
-		opacity: 0;
-		visibility: hidden;
+		//opacity: 0;
+		//visibility: hidden;
 		transform: translateY(10px);
 		z-index: 2000;
 		position: absolute;
 		top: 100%;
 		right: 0;
-		display: flex;
+		display: none;
 		min-width: 350px;
 		border-radius: 5px 0 5px 5px;
 		background-color: rgb(255, 255, 255);
@@ -125,15 +127,23 @@
 			margin-bottom: 5px;
 
 			&:hover {
-				&:before,
-				&:after {
+				&::before,
+				&::after {
 					width: 50%;
 					@include transition(width);
 				}
 			}
 
-			&:before,
-			&:after {
+			&::before{
+				content: '';
+				position: absolute;
+				top: 100%;
+				width: 0;
+				height: 1px;
+				background-color: #080915;
+				@include transition(width);
+			}
+			&::after {
 				content: '';
 				position: absolute;
 				top: 100%;
@@ -143,10 +153,10 @@
 				@include transition(width);
 			}
 
-			&:before {
+			&::before {
 				left: 50%;
 			}
-			&:after {
+			&::after {
 				right: 50%;
 			}
 
@@ -165,7 +175,6 @@
 			display: flex;
 			width: 16px;
 			height: 11px;
-			//background-image: url('../images/flags.png');
 			background-repeat: no-repeat;
 		}
 
@@ -337,6 +346,16 @@
 		&--zu {
 			&:before {
 				background-position: 0 -110px
+			}
+		}
+	}
+}
+.light{
+	.lang{
+		&__toggle {
+			color: #4e4e4e;
+			span{
+				color: #4e4e4e;
 			}
 		}
 	}

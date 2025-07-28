@@ -1,0 +1,323 @@
+.archive.category .micromodal-title-text{
+	@include adaptive(767) {
+		.color-primary{
+			display: block;
+		}
+	}
+}
+#type-filter-modal{
+	.micromodal{
+
+		&-header{
+			padding: 12px 60px 12px 20px;
+		}
+		&-body{
+			padding-top: 10px;
+		}
+	}
+
+	.additional_actions{
+
+		.inline-icon{
+			width: 28px;
+			height: 28px;
+		}
+	}
+	.review_type_slider .option:hover .tooltip{
+		display: none;
+	}
+}
+.review_type_container{
+	position: absolute;
+	right: 0;
+	top: 50%;
+	transform: translateY(-50%);
+	display: inline-flex;
+	z-index: 8;
+
+	@include adaptive(767) {
+		display: none;
+	}
+}
+.review_type_slider{
+
+	padding: 4px;
+	border-radius: 6px;
+	background: var(--bg-header-grey, #303030);
+
+	&-outer{
+		position: relative;
+	}
+
+	&_status{
+		display: none;
+		position: relative;
+		white-space: nowrap;
+		line-height: 26px;
+		text-align: center;
+		margin-top: 8px;
+		border-radius: 5px;
+		text-transform: capitalize;
+
+		&:before{
+			content: '';
+			position: absolute;
+			top: 0; /* Position above the tooltip */
+			right: var(--tip_rx, 50%);
+			transform: translateX(50%) translateY(-100%);
+			border-width: 8px;
+			border-style: solid;
+			border-color: transparent  transparent #2663b0 transparent;
+		}
+
+		@include respond('medium') {
+			position: absolute;
+			right: 0;
+			padding: 2px 10px;
+			font-size: 12px;
+			line-height: 1.1;
+			margin-top: 4px;
+			min-width: 100%;
+
+			&:before{
+				border-width: 5px;
+			}
+		}
+
+		&.show{
+			--tip_rx: 50%;
+			display: block;
+			background: #2663b0;
+			color: #fff;
+		}
+
+		&.error{
+			background: #ffe1e1;
+			color: #fe0000;
+			&:before{
+				border-color: transparent  transparent #ffe1e1 transparent;
+			}
+		}
+	}
+
+	@include adaptive(767) {
+		display: none;
+
+		&.mobile{
+			display: flex;
+			position: relative;
+			width: 100%;
+			padding: 8px;
+
+			.option{
+				flex: 1;
+				font-size: 16px;
+				padding: 10px 5px;
+
+				.tooltip{
+					display: none;
+				}
+			}
+		}
+	}
+
+	&_thumb{
+		position: absolute;
+		border-radius: 4px;
+		background: #707070;
+		top: 4px;
+		bottom: 4px;
+		left: 4px;
+		width: 83px;
+
+		&:not(.no_anim){
+			@include transition(left, width);
+		}
+	}
+
+	&_tooltip,
+	.tooltip{
+		display: none;
+		position: absolute;
+		background: #2663b0;
+		color: #fff;
+		padding: 2px 8px;
+		border-radius: 4px;
+		top: 100%;
+		left: 50%;
+		font-size: 12px;
+		margin: 7px 0 0;
+		white-space: nowrap;
+		transform: translateX(-50%);
+
+		&:after{
+			content: '';
+			position: absolute;
+			top: -10px;
+			left: 50%;
+			transform: translateX(-50%);
+			border-width: 5px;
+			border-style: solid;
+			border-color: transparent transparent #2663b0 transparent;
+		}
+
+		@include adaptive(767) {
+			display: none;
+		}
+	}
+
+	.option{
+		position: relative;
+		background: transparent;
+		border: none;
+		outline: none;
+		color: #fff;
+		padding: 5px 15px;
+		border-radius: 4px;
+		cursor: pointer;
+
+		&.disabled{
+			.tooltip{
+				display: none;
+			}
+			&:hover{
+				.tooltip{
+					display: none;
+				}
+			}
+		}
+
+		&.active,
+		&.disabled:hover{
+			//background: #505050;
+
+			.review_type_slider_tooltip,
+			.tooltip{
+				display: block;
+
+				@include adaptive(767) {
+					display: none;
+				}
+			}
+		}
+
+		&.active1{
+			background: #707070;
+		}
+	}
+}
+
+.viewing-filter{
+	display: block;
+	font-size: 12px;
+	text-align: right;
+	padding-right: 15px;
+}
+
+.review_type_trigger{
+	display: none;
+	border: none;
+	background: transparent;
+	cursor: pointer;
+
+	&.desktop{
+		display: flex;
+	}
+
+
+
+	&-dropdown{
+		display: none;
+		position: absolute;
+		background: #fff;
+		box-shadow: 0 10px 30px 0 rgba(0,0,0,.15);
+		right: 0;
+		top: 100%;
+		padding: 10px 0;
+		border-radius: 4px;
+		cursor: pointer;
+
+		.inline-icon{
+			width: 18px;
+			height: 16px;
+		}
+
+		&.open{
+			display: block;
+		}
+
+		.title{
+			font-size: 16px;
+			margin-bottom: 10px;
+		}
+	}
+
+	&-outer{
+		display: flex;
+		align-items: center;
+
+		svg{
+			fill: var( --primary-color, #000);
+		}
+
+		//&:hover{
+		//	.review_type_slider{
+		//		display: block;
+		//	}
+		//	.review_type_trigger-dropdown{
+		//		display: block;
+		//	}
+		//}
+	}
+
+	@include adaptive(767) {
+		display: block;
+
+		&.desktop{
+			display: none;
+		}
+
+		.more{
+			fill: #fff;
+		}
+	}
+}
+.additional{
+	&_action{
+		display: flex;
+		align-items: center;
+		background: transparent;
+		border: none;
+		outline: none;
+		gap: 10px;
+		padding: 0 15px;
+		line-height: 30px;
+
+		&:hover{
+			background: #dadada;
+		}
+	}
+}
+
+.light{
+	.review_type_trigger{
+		.more{
+			fill: #000;
+		}
+	}
+	.review_type_slider{
+		background: #dadada;
+
+		&_thumb{
+			background: #fff;
+		}
+
+
+
+
+		.option{
+			color: #303030;
+		}
+	}
+}
+

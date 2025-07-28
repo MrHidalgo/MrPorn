@@ -1,15 +1,16 @@
 // CATEGORY :: START
+body {
+	--bg-header-grey: #545454;
+}
+.light body{
+	--bg-header-grey: #303030;
+}
+
 .list {
 	padding-top: 15px;
 }
 @include respond('ipad'){
 	.blue_heading_back{
-		display: none;
-	}
-}
-
-@include adaptive(767) {
-	.bread-crumb{
 		display: none;
 	}
 }
@@ -40,11 +41,14 @@
 }
 
 .category{
+	&_site_list{
+		//position: relative;
+	}
 	&_list{
 		background-color: #2a2b31;
 		border-color: #151515;
 		border-radius: 5px;
-		padding: 10px 15px;
+		padding: 2px 15px 10px;
 
 
 		@include adaptive(767) {
@@ -55,33 +59,126 @@
 		}
 	}
 	&_header{
-		border-bottom: 3px solid #999;
+		position: relative;
+		//border-bottom: 3px solid #999;
+
+		.section_heading__h1, .section_heading__h2{
+			@include adaptive(767) {
+				font-size: 20px;
+			}
+		}
+	}
+	&-heading{
+		@include respond('medium'){
+			padding: 8px 0;
+
+			.section_heading__h1{
+				max-width: calc(100% - 350px);
+				overflow: hidden;
+				text-overflow: ellipsis;
+			}
+		}
+		@include adaptive(767) {
+			display: flex;
+			align-items: center;
+			width: 100%;
+			min-height: 48px;
+		}
 	}
 	&_container{
 		/*display: flex;
 		flex-direction: column;*/
+		position: relative;
+		--container-width: 100%;
+		--content-width: 80%;
 	}
 }
+
+
+
+.loading_spinner{
+	display: none;
+
+	&.show{
+		position: absolute;
+		display: block;
+		top: 0;
+		width: 100%;
+		height: 100%;
+		z-index: 6;
+
+		background-color: rgba(42, 43, 49, 0.5); /* White background with 50% opacity */
+		backdrop-filter: blur(10px); /* Apply blur effect */
+		-webkit-backdrop-filter: blur(10px); /* For Safari */
+		padding: 20px; /* Optional: Add some padding */
+		border-radius: 10px; /* Optional: Add rounded corners */
+
+		&.mobile{
+			top: 180px;
+			bottom: 0;
+			height: auto;
+		}
+
+
+	}
+
+	&:before{
+		display: block;
+		position: absolute;
+		left: 50%;
+		top: 200px;
+		transform: translateX(-50%);
+		content: ' ';
+		background: url(../images/coupon_loading.gif) no-repeat center center;
+		width: 200px;
+		height: 200px;
+	}
+
+	&.mobile{
+		&:before{
+			top: 50%;
+			transform: translateY(-50%) translateX(-50%);
+		}
+	}
+
+	img{
+		position: absolute;
+		left: 50%;
+		top: 200px;
+		transform: translateX(-50%);
+	}
+}
+.has_sidebar .loading_spinner{
+	width: 80%;
+}
+.filter_type_content[data-type="all"]{
+	.loading_spinner.mobile {
+		top: 145px;
+	}
+}
+
+//.has_sidebar{
+//	.category_site_list{
+//		padding-left: 246px;
+//	}
+//}
+
 .light{
 	&_header{
 		border-bottom: 3px solid #e9ebed;
 	}
-	.category {
-		&_list {
-			background: #fff;
+	.category_list {
+		background: #fff;
+	}
+	.loading_spinner{
+		&.show{
+			background-color: rgba(255, 255, 255, 0.5);
 		}
 	}
+
 }
 
-.category_list-sites{
-	&.has_sidebar{
-		margin-left: 270px;
 
-		@include adaptive(767) {
-			margin-left: 0;
-		}
-	}
-}
 .category_bottom_description{
 	padding: 10px 15px;
 }
@@ -127,44 +224,9 @@
 }
 
 .category_site_container.category_55{
-	.category_site_lits.page_1{
-		.category_sites_item:nth-child(n+52){
-			display: none;
-		}
 
-		.pagi {
-			display: none;
-		}
-	}
 	.category_bottom_links.page_1{
 		display: none;
-	}
-
-	&.show_all{
-		.category_site_lits.page_1 .pagi{
-			display: block;
-		}
-
-		.click_for_more_games{
-			display: none;
-		}
-
-		.category_bottom_links{
-			display: block;
-			text-align: center;
-
-			@include adaptive(767) {
-				padding: 0 10px 5px;
-			}
-		}
-	}
-}
-
-.category_site_container.category_55.show_all{
-	.category_site_lits.page_1 {
-		.category_sites_item:nth-child(n+52) {
-			display: block;
-		}
 	}
 }
 
