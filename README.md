@@ -3,4 +3,6 @@
 ## [MrPorn](https://mrporn-dev.netlify.app/)
 
 ## How to start
-* `yarn && bower i && gulp` - install npm dependencies, bower packages and run dev-server
+* `npm install` - install dependencies
+* `npm run dev` - start development server
+* `npm run build` - build for production

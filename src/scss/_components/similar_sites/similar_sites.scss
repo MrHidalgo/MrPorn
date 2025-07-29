@@ -37,9 +37,11 @@
 		@include adaptive(767) {
 			width: 50%;
 			max-width: 50%;
+		}
 
-			&:nth-child(2n){
-				&_inner{
+		&:nth-child(2n) {
+			@include adaptive(767) {
+				.similar_sites_item_inner {
 					padding-left: 0;
 				}
 			}

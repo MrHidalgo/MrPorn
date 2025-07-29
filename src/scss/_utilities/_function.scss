@@ -1,3 +1,5 @@
+@use "sass:map";
+
 ////
 /// @group  Function
 ////
@@ -92,11 +94,11 @@
 ///
 @function search-key($map, $keys...) {
   @each $key in $keys {
-    @if not map-has-key($map, $key) {
+    @if not map.has-key($map, $key) {
         @error "The value is not present in the object... watch [_varaible.scss]";
       @return false;
     }
-    $map: map-get($map, $key);
+    $map: map.get($map, $key);
   }
 
   @return true;
@@ -132,7 +134,7 @@
     @error "'#{$keys}' is empty, check your arguments";
   } @else {
     @each $key in $keys {
-      $map : map-get($map, $key);
+      $map : map.get($map, $key);
     }
   }
 

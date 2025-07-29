@@ -1,3 +1,5 @@
+@use "sass:map";
+
 ////
 /// @group  Mixin
 ////
@@ -297,8 +299,8 @@ $breakpointsMedia: (
 ) !default;
 
 @mixin respond($name) {
-	@if map-has-key($breakpointsMedia, $name) {
-		@media screen and #{inspect(map-get($breakpointsMedia, $name))} {
+	@if map.has-key($breakpointsMedia, $name) {
+		@media screen and #{map.get($breakpointsMedia, $name)} {
 			@content;
 		}
 	} @else {
