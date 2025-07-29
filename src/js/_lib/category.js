@@ -547,12 +547,13 @@ function initCategoryPage() {
 		categoryItems.map(
 			(categoryItem) => {
 
-				let catTitle = categoryItem.title;
+				let catTitle = categoryItem.title.endsWith(' ') ? categoryItem.title : categoryItem.title + ' ';
 				let catExtraClasses = hideVisited? '' : (categoryItem.visited ? ' visited' : '') ;
 				if (filter != '' && catTitle.toLowerCase().indexOf(filter) > -1) {
 					catTitle = catTitle.replace(new RegExp(filter, 'gi'), (match) => `<span class="highlight">${match}</span>`);
 					catExtraClasses += ' pulse';
 				}
+
 
 				let item = '<li class="category-list-item" >' + '<a  href="' + categoryItem.link + '" class="category-list-link ' + catExtraClasses + '" data-id="' + categoryItem.id + '"><i class="' + categoryItem.icon + '"></i><span class="category-list-title">' + catTitle + '</span><div class="category-list-icons">' + categoryItem.icons + '<span class="mobile_link_ellipsis">...</span>' + '<span class="mobile_link_count">' + categoryItem.count + '</span>' + '</div>' + '</a>' + '</li>';
 				if(filterA2z){

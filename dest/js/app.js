@@ -1319,7 +1319,7 @@ function initCategoryPage() {
     if (mobileMenuList !== null) mobileMenuList.innerHTML = '';
     var categoryIndex = 0;
     categoryItems.map(function (categoryItem) {
-      var catTitle = categoryItem.title;
+      var catTitle = categoryItem.title.endsWith(' ') ? categoryItem.title : categoryItem.title + ' ';
       var catExtraClasses = hideVisited ? '' : categoryItem.visited ? ' visited' : '';
 
       if (filter != '' && catTitle.toLowerCase().indexOf(filter) > -1) {
