@@ -1,5 +1,12 @@
 "use strict";
 
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.StorageUtils = exports.FunctionUtils = exports.DOMUtils = exports.CookieUtils = exports.ArrayUtils = void 0;
+function ownKeys(e, r) { var t = Object.keys(e); if (Object.getOwnPropertySymbols) { var o = Object.getOwnPropertySymbols(e); r && (o = o.filter(function (r) { return Object.getOwnPropertyDescriptor(e, r).enumerable; })), t.push.apply(t, o); } return t; }
+function _objectSpread(e) { for (var r = 1; r < arguments.length; r++) { var t = null != arguments[r] ? arguments[r] : {}; r % 2 ? ownKeys(Object(t), !0).forEach(function (r) { _defineProperty(e, r, t[r]); }) : Object.getOwnPropertyDescriptors ? Object.defineProperties(e, Object.getOwnPropertyDescriptors(t)) : ownKeys(Object(t)).forEach(function (r) { Object.defineProperty(e, r, Object.getOwnPropertyDescriptor(t, r)); }); } return e; }
+function _defineProperty(e, r, t) { return (r = _toPropertyKey(r)) in e ? Object.defineProperty(e, r, { value: t, enumerable: !0, configurable: !0, writable: !0 }) : e[r] = t, e; }
 function _createForOfIteratorHelper(r, e) { var t = "undefined" != typeof Symbol && r[Symbol.iterator] || r["@@iterator"]; if (!t) { if (Array.isArray(r) || (t = _unsupportedIterableToArray(r)) || e && r && "number" == typeof r.length) { t && (r = t); var _n = 0, F = function F() {}; return { s: F, n: function n() { return _n >= r.length ? { done: !0 } : { done: !1, value: r[_n++] }; }, e: function e(r) { throw r; }, f: F }; } throw new TypeError("Invalid attempt to iterate non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); } var o, a = !0, u = !1; return { s: function s() { t = t.call(r); }, n: function n() { var r = t.next(); return a = r.done, r; }, e: function e(r) { u = !0, o = r; }, f: function f() { try { a || null == t["return"] || t["return"](); } finally { if (u) throw o; } } }; }
 function _toConsumableArray(r) { return _arrayWithoutHoles(r) || _iterableToArray(r) || _unsupportedIterableToArray(r) || _nonIterableSpread(); }
 function _nonIterableSpread() { throw new TypeError("Invalid attempt to spread non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
@@ -5222,3 +5229,401 @@ var lastMobileSimilarSite;
     }
   });
 })();
+
+/**
+ * DOM Utilities - Safe replacement for prototype pollution
+ * Provides utility functions for common DOM operations
+ */
+
+var DOMUtils = exports.DOMUtils = {
+  /**
+   * Get all parent elements of an element
+   * @param {Element} element - The starting element
+   * @param {string} selector - Optional CSS selector to filter parents
+   * @returns {Element[]} Array of parent elements
+   */
+  getParents: function getParents(element, selector) {
+    if (!element || !element.parentElement) return [];
+    var elements = [];
+    var elem = element;
+    while ((elem = elem.parentElement) !== null) {
+      if (elem.nodeType !== Node.ELEMENT_NODE) continue;
+      if (!selector || elem.matches(selector)) {
+        elements.push(elem);
+      }
+    }
+    return elements;
+  },
+  /**
+   * Safe querySelector with error handling
+   * @param {string} selector - CSS selector
+   * @param {Element} context - Context element (default: document)
+   * @returns {Element|null} Found element or null
+   */
+  querySelector: function querySelector(selector) {
+    var context = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : document;
+    try {
+      return context.querySelector(selector);
+    } catch (error) {
+      console.warn("Invalid selector: ".concat(selector), error);
+      return null;
+    }
+  },
+  /**
+   * Safe querySelectorAll with error handling
+   * @param {string} selector - CSS selector
+   * @param {Element} context - Context element (default: document)
+   * @returns {NodeList|[]} Found elements or empty array
+   */
+  querySelectorAll: function querySelectorAll(selector) {
+    var context = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : document;
+    try {
+      return context.querySelectorAll(selector);
+    } catch (error) {
+      console.warn("Invalid selector: ".concat(selector), error);
+      return [];
+    }
+  },
+  /**
+   * Show element by setting display to block
+   * @param {Element} element - Element to show
+   */
+  show: function show(element) {
+    if (element && element.style) {
+      element.style.display = 'block';
+    }
+  },
+  /**
+   * Hide element by setting display to none
+   * @param {Element} element - Element to hide
+   */
+  hide: function hide(element) {
+    if (element && element.style) {
+      element.style.display = 'none';
+    }
+  },
+  /**
+   * Remove element from DOM
+   * @param {Element} element - Element to remove
+   */
+  remove: function remove(element) {
+    if (element && element.remove) {
+      element.remove();
+    }
+  },
+  /**
+   * Toggle CSS class on element
+   * @param {Element} element - Target element
+   * @param {string} className - Class name to toggle
+   */
+  toggleClass: function toggleClass(element, className) {
+    if (!element || !className) return;
+    if (element.classList) {
+      element.classList.toggle(className);
+    } else {
+      // Fallback for older browsers
+      var classes = element.className.split(" ");
+      var index = classes.indexOf(className);
+      if (index >= 0) {
+        classes.splice(index, 1);
+      } else {
+        classes.push(className);
+      }
+      element.className = classes.join(" ");
+    }
+  },
+  /**
+   * Smooth scroll to element
+   * @param {Element|number} target - Target element or Y position
+   * @param {number} duration - Animation duration in ms
+   */
+  smoothScroll: function smoothScroll(target) {
+    var duration = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : 1000;
+    var elementY = typeof target === 'number' ? target : target.offsetTop;
+    var startingY = window.pageYOffset;
+    var diff = elementY - startingY;
+    var start;
+    window.requestAnimationFrame(function step(timestamp) {
+      if (!start) start = timestamp;
+      var time = timestamp - start;
+      var percent = Math.min(time / duration, 1);
+      window.scrollTo(0, startingY + diff * percent);
+      if (time < duration) {
+        window.requestAnimationFrame(step);
+      }
+    });
+  }
+};
+
+/**
+ * Array Utilities - Safe replacement for prototype pollution
+ */
+var ArrayUtils = exports.ArrayUtils = {
+  /**
+   * Remove items from array
+   * @param {Array} array - Target array
+   * @param {...any} items - Items to remove
+   * @returns {Array} Modified array
+   */
+  remove: function remove(array) {
+    if (!Array.isArray(array)) return array;
+    for (var _len3 = arguments.length, items = new Array(_len3 > 1 ? _len3 - 1 : 0), _key5 = 1; _key5 < _len3; _key5++) {
+      items[_key5 - 1] = arguments[_key5];
+    }
+    items.forEach(function (item) {
+      var index;
+      while ((index = array.indexOf(item)) !== -1) {
+        array.splice(index, 1);
+      }
+    });
+    return array;
+  }
+};
+
+/**
+ * Function Utilities - Safe replacement for prototype pollution
+ */
+var FunctionUtils = exports.FunctionUtils = {
+  /**
+   * Extend function with additional functions
+   * @param {Function} baseFn - Base function
+   * @param {...Function} additionalFns - Additional functions
+   * @returns {Function} Combined function
+   */
+  extend: function extend(baseFn) {
+    for (var _len4 = arguments.length, additionalFns = new Array(_len4 > 1 ? _len4 - 1 : 0), _key6 = 1; _key6 < _len4; _key6++) {
+      additionalFns[_key6 - 1] = arguments[_key6];
+    }
+    var fns = [baseFn].concat(additionalFns);
+    return function () {
+      var _this13 = this;
+      for (var _len5 = arguments.length, args = new Array(_len5), _key7 = 0; _key7 < _len5; _key7++) {
+        args[_key7] = arguments[_key7];
+      }
+      fns.forEach(function (fn) {
+        if (typeof fn === 'function') {
+          fn.apply(_this13, args);
+        }
+      });
+    };
+  }
+};
+/**
+ * Storage Utilities - Enhanced localStorage with TTL and error handling
+ * Provides safe storage operations with expiration support
+ */
+
+var StorageUtils = exports.StorageUtils = {
+  /**
+   * Set item in localStorage with expiration
+   * @param {string} key - Storage key
+   * @param {any} value - Value to store
+   * @param {number} ttl - Time to live in milliseconds
+   * @returns {boolean} Success status
+   */
+  setWithExpiry: function setWithExpiry(key, value, ttl) {
+    if (!key || typeof key !== 'string') {
+      console.warn('Invalid key provided to setWithExpiry');
+      return false;
+    }
+    var now = new Date();
+    var item = {
+      value: value,
+      expiry: now.getTime() + ttl
+    };
+    try {
+      localStorage.setItem(key, JSON.stringify(item));
+      return true;
+    } catch (error) {
+      console.error('Storage error:', error);
+
+      // Try to clear old data and retry
+      if (error.name === 'QuotaExceededError') {
+        StorageUtils.clearOldData();
+        try {
+          localStorage.setItem(key, JSON.stringify(item));
+          return true;
+        } catch (retryError) {
+          console.error('Storage retry failed:', retryError);
+          return false;
+        }
+      }
+      return false;
+    }
+  },
+  /**
+   * Get item from localStorage with expiration check
+   * @param {string} key - Storage key
+   * @returns {any|null} Stored value or null if expired/not found
+   */
+  getWithExpiry: function getWithExpiry(key) {
+    if (!key || typeof key !== 'string') {
+      console.warn('Invalid key provided to getWithExpiry');
+      return null;
+    }
+    try {
+      var itemStr = localStorage.getItem(key);
+      if (!itemStr) {
+        return null;
+      }
+      var item = JSON.parse(itemStr);
+      var now = new Date();
+      if (now.getTime() > item.expiry) {
+        localStorage.removeItem(key);
+        return null;
+      }
+      return item.value;
+    } catch (error) {
+      console.error('Error retrieving from storage:', error);
+      return null;
+    }
+  },
+  /**
+   * Clear old data from localStorage
+   * @param {string} prefix - Optional prefix to filter keys
+   */
+  clearOldData: function clearOldData() {
+    var prefix = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : '';
+    try {
+      var keysToRemove = [];
+      for (var i = 0; i < localStorage.length; i++) {
+        var key = localStorage.key(i);
+        if (key && (key.indexOf('cat_') > -1 || key.indexOf('site_') > -1 || key.startsWith(prefix))) {
+          keysToRemove.push(key);
+        }
+      }
+      keysToRemove.forEach(function (key) {
+        return localStorage.removeItem(key);
+      });
+      console.log("Cleared ".concat(keysToRemove.length, " old storage items"));
+    } catch (error) {
+      console.error('Error clearing old data:', error);
+    }
+  },
+  /**
+   * Check if localStorage is available
+   * @returns {boolean} Availability status
+   */
+  isAvailable: function isAvailable() {
+    try {
+      var test = '__storage_test__';
+      localStorage.setItem(test, test);
+      localStorage.removeItem(test);
+      return true;
+    } catch (error) {
+      return false;
+    }
+  },
+  /**
+   * Get storage usage information
+   * @returns {Object} Storage usage stats
+   */
+  getUsageInfo: function getUsageInfo() {
+    try {
+      var totalSize = 0;
+      var items = [];
+      for (var i = 0; i < localStorage.length; i++) {
+        var key = localStorage.key(i);
+        var value = localStorage.getItem(key);
+        var size = new Blob([key, value]).size;
+        totalSize += size;
+        items.push({
+          key: key,
+          size: size
+        });
+      }
+      return {
+        totalSize: totalSize,
+        itemCount: localStorage.length,
+        items: items.sort(function (a, b) {
+          return b.size - a.size;
+        })
+      };
+    } catch (error) {
+      console.error('Error getting storage usage:', error);
+      return {
+        totalSize: 0,
+        itemCount: 0,
+        items: []
+      };
+    }
+  }
+};
+
+/**
+ * Cookie Utilities - Enhanced cookie management
+ */
+var CookieUtils = exports.CookieUtils = {
+  /**
+   * Create cookie with options
+   * @param {string} name - Cookie name
+   * @param {string} value - Cookie value
+   * @param {Object} options - Cookie options
+   * @param {number} options.days - Days until expiration
+   * @param {string} options.path - Cookie path
+   * @param {string} options.domain - Cookie domain
+   * @param {boolean} options.secure - Secure flag
+   * @param {string} options.sameSite - SameSite attribute
+   */
+  create: function create(name, value) {
+    var options = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : {};
+    if (!name || typeof name !== 'string') {
+      console.warn('Invalid cookie name');
+      return false;
+    }
+    var expires = '';
+    if (options.days) {
+      var date = new Date();
+      date.setTime(date.getTime() + options.days * 24 * 60 * 60 * 1000);
+      expires = "; expires=".concat(date.toUTCString());
+    }
+    var path = options.path || '/';
+    var domain = options.domain ? "; domain=".concat(options.domain) : '';
+    var secure = options.secure ? '; secure' : '';
+    var sameSite = options.sameSite ? "; samesite=".concat(options.sameSite) : '';
+    try {
+      document.cookie = "".concat(name, "=").concat(encodeURIComponent(value)).concat(expires, "; path=").concat(path).concat(domain).concat(secure).concat(sameSite);
+      return true;
+    } catch (error) {
+      console.error('Error creating cookie:', error);
+      return false;
+    }
+  },
+  /**
+   * Get cookie value
+   * @param {string} name - Cookie name
+   * @returns {string|null} Cookie value or null
+   */
+  get: function get(name) {
+    if (!name || typeof name !== 'string') {
+      return null;
+    }
+    try {
+      var nameEQ = name + "=";
+      var ca = document.cookie.split(';');
+      for (var i = 0; i < ca.length; i++) {
+        var c = ca[i];
+        while (c.charAt(0) === ' ') c = c.substring(1, c.length);
+        if (c.indexOf(nameEQ) === 0) {
+          return decodeURIComponent(c.substring(nameEQ.length, c.length));
+        }
+      }
+      return null;
+    } catch (error) {
+      console.error('Error reading cookie:', error);
+      return null;
+    }
+  },
+  /**
+   * Delete cookie
+   * @param {string} name - Cookie name
+   * @param {Object} options - Cookie options
+   * @returns {boolean} Success status
+   */
+  "delete": function _delete(name) {
+    var options = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : {};
+    return CookieUtils.create(name, '', _objectSpread(_objectSpread({}, options), {}, {
+      days: -1
+    }));
+  }
+};
