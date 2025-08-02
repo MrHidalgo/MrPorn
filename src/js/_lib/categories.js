@@ -27,3 +27,6 @@ const initCategoriesPage = () => {
 		});
 	})
 }
+
+// Make function globally available for non-module scripts
+window.initCategoriesPage = initCategoriesPage;

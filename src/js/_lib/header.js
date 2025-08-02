@@ -3,6 +3,26 @@ let translations = [];
 let favouriteList = [];
 let isDark = '1';
 let toggleSwitch = document.querySelector('#toggle-mode');
+let isLoggedUser = false;
+let dataTime = '';
+
+// Initialize user state
+const initUserState = () => {
+	isLoggedUser = getCookieMpgCookie('logged_username');
+	dataTime = new Date().getTime();
+}
+
+// Update user state globally
+const updateUserState = (loggedIn) => {
+	isLoggedUser = loggedIn;
+	// Also update the global variable for other modules
+	if (typeof window !== 'undefined') {
+		window.isLoggedUser = loggedIn;
+	}
+}
+
+// Call initialization
+initUserState();
 
 const initTheme = () => {
 
@@ -63,8 +83,6 @@ const renderFavourites = () => {
 		return;
 	}*/
 
-	isLoggedUser = getCookieMpgCookie('logged_username');
-
 	if(isLoggedUser==''){
 		//loadLoginForm();
 		return;
@@ -88,7 +106,7 @@ const renderFavourites = () => {
 	}, function (res) {
 		if(res.status){
 			if(res.status=='true'){
-				isLoggedUser = true;
+				updateUserState(true);
 
 				let logoutLink = '/wp-login.php?action=logout';
 
@@ -567,4 +585,14 @@ function toggleLoginPopups(type){
 		}
 	}
 }
+
+// Make function globally available for non-module scripts
+window.renderFavourites = renderFavourites;
+window.renderLoginForm = renderLoginForm;
+window.closeLoginPopups = closeLoginPopups;
+window.toggleLoginPopups = toggleLoginPopups;
+window.onSortToggle = onSortToggle;
+window.loadTranslations = loadTranslations;
+window.isLoggedUser = isLoggedUser;
+window.updateUserState = updateUserState;
 

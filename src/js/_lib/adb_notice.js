@@ -50,3 +50,6 @@ class AdBlockDetector {
 		}
 	}
 }
+
+// Make AdBlockDetector available globally
+window.AdBlockDetector = AdBlockDetector;

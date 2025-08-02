@@ -92,4 +92,7 @@ function Marquee(selector, speed) {
 	startMarquee()
 }
 
+// Make function globally available for non-module scripts
+window.showThumbInfoOnHover = showThumbInfoOnHover;
+
 

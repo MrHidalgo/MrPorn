@@ -111,3 +111,9 @@ function postTextRequest(url = '', data = {}, callback){
 			throw err;
 		});
 }
+
+// Make ajax functions available globally
+window.postRequest = postRequest;
+window.postRequestAbortable = postRequestAbortable;
+window.postTextRequest = postTextRequest;
+window.getRequest = getRequest;

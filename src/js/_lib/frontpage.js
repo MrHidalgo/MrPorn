@@ -117,4 +117,14 @@ function initHomeTabs(){
 	});
 }
 
+// Make functions globally available for non-module scripts
+window.renderFavouriteButtons = renderFavouriteButtons;
+window.getLikesAndDislikes = getLikesAndDislikes;
+window.scrollToCategoryOnHome = scrollToCategoryOnHome;
+window.removeFavourite = removeFavourite;
+window.addToFavourites = addToFavourites;
+window.onLike = onLike;
+window.onDisLike = onDisLike;
+
+// Call initHomeFunctions after all functions are exported globally
 initHomeFunctions();

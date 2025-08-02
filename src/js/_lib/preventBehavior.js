@@ -19,3 +19,6 @@ const initPreventBehavior = () => {
 
   });
 };
+
+// Make initPreventBehavior available globally
+window.initPreventBehavior = initPreventBehavior;

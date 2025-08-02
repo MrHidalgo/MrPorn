@@ -99,5 +99,14 @@ const initScrollSpyButton = ({
 		setTopOffset,
 		toggleBindScroll,
 		toggleBindClick,
-	}
-}
+		onScroll,
+		onClick,
+		getPercent,
+		setPercentCSSProperty,
+		toggleTopClass,
+	};
+};
+
+// Make initScrollSpyButton available globally
+window.initScrollSpyButton = initScrollSpyButton;
+window.debounce = debounce;

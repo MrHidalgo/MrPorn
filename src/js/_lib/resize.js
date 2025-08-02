@@ -39,3 +39,6 @@ const initResize = ({breakpoints=[], onInit= () => {}
 	handleResize(false);
 	bindResize();
 }
+
+// Make initResize available globally
+window.initResize = initResize;

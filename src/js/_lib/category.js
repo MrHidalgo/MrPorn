@@ -772,4 +772,7 @@ function initCategoryPage() {
 	fetchA2Z();
 }
 
+// Make function globally available for non-module scripts
+window.initCategoryPage = initCategoryPage;
+
 

@@ -20,42 +20,84 @@ function enqueue_vite_assets_individual() {
     $theme_url = get_template_directory_uri();
     $assets_path = $theme_url . '/assets/';
     
-    // Always load main CSS (core styles)
+    // Load main CSS (includes all page-specific styles)
     wp_enqueue_style(
         'vite-main-css',
-        $assets_path . 'app-CZJnCuL7.css',
+        $assets_path . 'css/app-CKJwbBsC.css',
         array(),
         '1.0.0'
     );
     
-    // Load page-specific CSS based on current page
-    $current_page_css = get_current_page_css();
-    
-    if ($current_page_css) {
+    // Load frontpage-specific CSS if on front page
+    if (is_front_page() || is_home()) {
         wp_enqueue_style(
-            'vite-page-specific-css',
-            $assets_path . $current_page_css,
+            'vite-frontpage-css',
+            $assets_path . 'css/frontpage-Xdus8ASz.css',
             array('vite-main-css'),
             '1.0.0'
         );
     }
     
-    // Load JavaScript (main and frontpage only)
-    wp_enqueue_script(
-        'vite-main-js',
-        $assets_path . 'js/main-BQC1HXzh.js',
-        array(),
-        '1.0.0',
-        true
-    );
+    // Load JavaScript (app and frontpage only) - Dynamic approach for cache busting
+    $app_js = get_latest_js_file('app-*.js');
+    if ($app_js) {
+        wp_enqueue_script(
+            'vite-app-js',
+            $assets_path . 'js/' . $app_js,
+            array(),
+            filemtime($theme_dir . '/assets/js/' . $app_js),
+            true
+        );
+    }
     
     // Load frontpage-specific JavaScript if on front page
     if (is_front_page() || is_home()) {
+        $frontpage_js = get_latest_js_file('frontpage-*.js');
+        if ($frontpage_js) {
+            wp_enqueue_script(
+                'vite-frontpage-js',
+                $assets_path . 'js/' . $frontpage_js,
+                array('vite-app-js'),
+                filemtime($theme_dir . '/assets/js/' . $frontpage_js),
+                true
+            );
+        }
+    }
+    
+    // Load legacy JavaScript for older browsers - Dynamic approach
+    $app_legacy_js = get_latest_js_file('app-legacy-*.js');
+    if ($app_legacy_js) {
         wp_enqueue_script(
-            'vite-frontpage-js',
-            $assets_path . 'js/frontpage-BNtHG3qD.js',
-            array('vite-main-js'),
-            '1.0.0',
+            'vite-app-legacy-js',
+            $assets_path . 'js/' . $app_legacy_js,
+            array(),
+            filemtime($theme_dir . '/assets/js/' . $app_legacy_js),
+            true
+        );
+    }
+    
+    // Load legacy frontpage JavaScript if on front page
+    if (is_front_page() || is_home()) {
+        $frontpage_legacy_js = get_latest_js_file('frontpage-legacy-*.js');
+        if ($frontpage_legacy_js) {
+            wp_enqueue_script(
+                'vite-frontpage-legacy-js',
+                $assets_path . 'js/' . $frontpage_legacy_js,
+                array('vite-app-legacy-js'),
+                filemtime($theme_dir . '/assets/js/' . $frontpage_legacy_js),
+                true
+            );
+        }
+    }
+    
+    // Load polyfills for legacy browsers
+    $polyfills_js = get_latest_js_file('polyfills-legacy-*.js');
+    if ($polyfills_js) {
+        wp_enqueue_script(
+            'vite-polyfills',
+            $assets_path . 'js/' . $polyfills_js,
+            array(),
+            filemtime($theme_dir . '/assets/js/' . $polyfills_js),
             true
         );
     }
@@ -171,6 +213,17 @@ function enqueue_vite_assets_dynamic() {
     function get_latest_css_file($pattern) {
         $theme_dir = get_template_directory();
         $files = glob($theme_dir . '/assets/' . $pattern);
+        if (!empty($files)) {
+            $latest_file = basename(end($files));
+            return $latest_file;
+        }
+        return false;
+    }
+    
+    // Function to get the latest JS file by pattern
+    function get_latest_js_file($pattern) {
+        $theme_dir = get_template_directory();
+        $files = glob($theme_dir . '/assets/js/' . $pattern);
         if (!empty($files)) {
             $latest_file = basename(end($files));
             return $latest_file;
@@ -313,20 +366,19 @@ function add_vite_preload_hints_individual() {
     $assets_path = $theme_url . '/assets/';
     
     // Preload main CSS
-    echo '<link rel="preload" href="' . $assets_path . 'app-CZJnCuL7.css" as="style" onload="this.onload=null;this.rel=\'stylesheet\'">';
+    echo '<link rel="preload" href="' . $assets_path . 'css/app-CKJwbBsC.css" as="style" onload="this.onload=null;this.rel=\'stylesheet\'">';
     
-    // Preload page-specific CSS
-    $current_page_css = get_current_page_css();
-    if ($current_page_css) {
-        echo '<link rel="preload" href="' . $assets_path . $current_page_css . '" as="style" onload="this.onload=null;this.rel=\'stylesheet\'">';
+    // Preload frontpage CSS if on front page
+    if (is_front_page() || is_home()) {
+        echo '<link rel="preload" href="' . $assets_path . 'css/frontpage-Xdus8ASz.css" as="style" onload="this.onload=null;this.rel=\'stylesheet\'">';
     }
     
     // Preload main JS
-    echo '<link rel="preload" href="' . $assets_path . 'js/main-BQC1HXzh.js" as="script">';
+    echo '<link rel="preload" href="' . $assets_path . 'js/app.js" as="script">';
     
     // Preload frontpage JS if on front page
     if (is_front_page() || is_home()) {
-        echo '<link rel="preload" href="' . $assets_path . 'js/frontpage-BNtHG3qD.js" as="script">';
+        echo '<link rel="preload" href="' . $assets_path . 'js/frontpage.js" as="script">';
     }
 }
 

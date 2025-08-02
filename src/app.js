@@ -1,13 +1,10 @@
 // Import main SCSS file
 import './scss/app.scss'
 
-// Import frontpage-specific SCSS
-import './scss/frontpage.scss'
-
 // Import global variables first (must be loaded before other modules)
 import './js/_lib/_globals.js'
 
-// Import JavaScript modules in order (including frontpage-specific)
+// Import JavaScript modules in order (excluding frontpage-specific)
 // Core utilities and polyfills
 import './js/_lib/preventBehavior.js'
 import './js/_lib/_getBrowser.js'
@@ -19,17 +16,13 @@ import './js/_lib/_webFontLoader.js'
 import './js/_lib/_smoothScroll.js'
 
 // UI components
-import './js/_lib/hamburger.js'
-import './js/_lib/header.js'
+
 import './js/_lib/search.js'
+import './js/_lib/dropdown.js'
 import './js/_lib/_customSelect.js'
 import './js/_lib/_magnificPopup.js'
 
-// Frontpage-specific functionality
-import './js/_lib/frontpage.js'
-import './js/_lib/front_functions.js'
-
-// Additional functionality (including frontpage-specific)
+// Additional functionality (excluding frontpage-specific)
 import './js/_lib/scrollButton.js'
 import './js/_lib/scroll_box_shadows.js'
 import './js/_lib/sticky-sidebar.js'
@@ -47,10 +40,13 @@ import './js/_lib/az.js'
 import './js/_lib/categories.js'
 import './js/_lib/category.js'
 
-// Frontpage-specific initialization (separate from indexNative.js to avoid duplication)
-import './js/_document/frontpageInit.js'
+// Window and document ready handlers (must be last to ensure all modules are loaded)
+import './js/_document/indexNative.js'
 
 // Import vendor scripts
+import './vendorScript/_shared/micromodal.js'
+
+// Import body-scroll-lock functions and make them globally available
 import { disableBodyScroll, enableBodyScroll, clearAllBodyScrollLocks } from 'body-scroll-lock'
 
 // Make bodyScrollLock globally available for legacy code
@@ -69,4 +65,4 @@ if (typeof window !== 'undefined') {
         enableBodyScroll,
         clearAllBodyScrollLocks
     };
-}
+} 

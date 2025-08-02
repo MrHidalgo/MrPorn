@@ -26,3 +26,6 @@ const initPopups = () => {
   });
 
 };
+
+// Make initPopups available globally
+window.initPopups = initPopups;

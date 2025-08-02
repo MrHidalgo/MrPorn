@@ -41,3 +41,6 @@ function initGetBrowserNameVersion() {
   };
 
 }
+
+// Make initGetBrowserNameVersion available globally
+window.initGetBrowserNameVersion = initGetBrowserNameVersion;

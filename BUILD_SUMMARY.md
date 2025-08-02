@@ -2,21 +2,33 @@
 
 ## Overview
 Successfully migrated from Gulp to Vite with the following structure:
-- **2 JavaScript files** (bundled)
+- **1 HTML file** (with legacy fallback)
+- **2 JavaScript files** (app.js and frontpage.js - replicating Gulp behavior)
+- **Legacy JavaScript files** (for older browser support)
 - **21 individual CSS files** (page-specific)
 
 ## Build Structure
 
-### JavaScript Files (2 files)
+### HTML File
+```
+dest/
+└── index.html                # Main HTML entry point with legacy fallback (1.6KB)
+```
+
+### JavaScript Files (2 main files + legacy support)
 ```
 dest/js/
-├── main-BQC1HXzh.js          # Main JavaScript bundle (217B)
-└── frontpage-BNtHG3qD.js     # Frontpage-specific JavaScript (79KB)
+├── app.js                    # Main JavaScript bundle (50KB) - All JS except frontpage-specific
+├── frontpage.js              # Frontpage-specific JavaScript (764B) - All JS including frontpage-specific
+├── app-legacy.js             # Legacy version of app.js (49KB) - For older browsers
+├── frontpage-legacy.js       # Legacy version of frontpage.js (264KB) - For older browsers
+├── polyfills-legacy-B0zjxFx8.js # Polyfills for legacy browsers (26KB)
+└── [other legacy files]      # Additional legacy files for CSS entry points
 ```
 
 ### CSS Files (21 individual files)
 ```
-dest/assets/
+dest/css/
 ├── app-CZJnCuL7.css                    # Main CSS bundle (232KB)
 ├── frontpage-Xdus8ASz.css              # Frontpage CSS (263KB)
 ├── porn-deals-CgK1GFxD.css             # Porn deals page CSS (231KB)
@@ -76,6 +88,8 @@ npm run deploy-dev
 - **Caching**: Page-specific changes don't invalidate other pages
 - **Bandwidth**: Saves 200-300KB per page
 - **User Experience**: Faster perceived performance
+- **Legacy Support**: Automatic fallback for older browsers
+- **Modern Features**: ES modules with polyfill support
 
 ### File Size Comparison
 - **Bundled approach**: ~500KB total CSS
@@ -116,6 +130,8 @@ npm run deploy-dev
 - Individual CSS file generation
 - WordPress integration examples
 - Performance optimization features
+- Legacy browser fallback implementation
+- HTML entry point with automatic polyfill loading
 
 ## Next Steps
 

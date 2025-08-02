@@ -81,3 +81,6 @@ const visitedSites = () => {
 		getVisitedViews
 	}
 }
+
+// Make visitedSites functions available globally
+window.visitedSites = visitedSites();

@@ -98,6 +98,8 @@ const initHamburger = () => {
 	}
 };
 
+// Make initHamburger available globally
+window.initHamburger = initHamburger;
 
 function translateLink(link){
 	if(currentLang=='en'){

@@ -23,23 +23,18 @@ function enqueue_vite_assets() {
     // Check if we're on the front page or home page
     $is_front_page = is_front_page() || is_home();
     
-    // Enqueue main CSS
-    wp_enqueue_style(
-        'vite-main-css',
-        $assets_path . 'app-CZJnCuL7.css',
-        array(),
-        '1.0.0'
-    );
-    
-    // Enqueue frontpage CSS only on front page
-    if ($is_front_page) {
-        wp_enqueue_style(
-            'vite-frontpage-css',
-            $assets_path . 'frontpage-Xdus8ASz.css',
-            array('vite-main-css'),
-            '1.0.0'
-        );
+    // Load main CSS
+    wp_enqueue_style('vite-main-css', $assets_path . 'css/app-P_zzMeNC.css');
+
+    // Load page-specific CSS based on current page
+    if (is_page('porn-deals')) {
+        wp_enqueue_style('vite-porn-deals-css', $assets_path . 'css/porn-deals-r-8MGJhs.css');
+    } elseif (is_page('pornstars')) {
+        wp_enqueue_style('vite-pornstars-css', $assets_path . 'css/pornstars-CMnF2Rz8.css');
+    } elseif (is_front_page()) {
+        wp_enqueue_style('vite-frontpage-css', $assets_path . 'css/frontpage-Daco7TDc.css');
     }
+    // ... and so on for each page type
     
     // Enqueue main JavaScript
     wp_enqueue_script(
@@ -73,7 +68,7 @@ function enqueue_vite_assets() {
     // Enqueue polyfills
     wp_enqueue_script(
         'vite-polyfills',
-        $assets_path . 'js/polyfills-legacy-DfYQpNA6.js',
+        $assets_path . 'c',
         array(),
         '1.0.0',
         true

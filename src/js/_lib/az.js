@@ -324,7 +324,7 @@ class A2ZPopup{
 			});
 		}
 		let categoriesList = categories.map(category => {
-			return `<button class="a2z-btn a2z-category-item" data-link="${category.link}">${category.title}</button>`;
+			return `<button class="a2z-btn a2z-category-iteFvm" data-link="${category.link}">${category.title}</button>`;
 		});
 		document.querySelector('.a2z-categories-container').innerHTML = popular.join('') + categoriesList.join('');
 		this.initCategoryEvents()
@@ -347,3 +347,6 @@ class A2ZPopup{
 		});
 	}
 }
+
+// Make A2ZPopup available globally
+window.A2ZPopup = A2ZPopup;

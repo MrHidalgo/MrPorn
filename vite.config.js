@@ -4,21 +4,53 @@ import { resolve } from 'path'
 
 export default defineConfig({
   plugins: [
-    legacy({
-      targets: ['defaults', 'not IE 11']
-    })
+    // Custom plugin to filter CSS entry points from legacy processing
+    {
+      name: 'filter-css-legacy',
+      config(config) {
+        // Store original input for later use
+        config.build.rollupOptions.input = config.build.rollupOptions.input;
+      },
+      generateBundle(options, bundle) {
+        // Remove CSS entry points from legacy processing
+        const cssEntryPoints = [
+          'porn-deals', 'porn-deals-single', 'pornstars', 'blog', 'category', 
+          'review', 'webcam', 'login', 'page_categories', 'page_categories_xl', 
+          'other_page', '404', 'crytical', 'fonts', 'grid', 'header', 
+          'header_m', 'header_xl', 'misc', 'other_categories', 'similar_sites'
+        ];
+        
+        // Delete legacy files for CSS entry points
+        Object.keys(bundle).forEach(fileName => {
+          if (cssEntryPoints.some(cssEntry => fileName.includes(cssEntry + '-legacy'))) {
+            delete bundle[fileName];
+          }
+        });
+      }
+    }
   ],
-  root: 'src',
+  // Optimize dependencies to ensure npm modules are properly bundled
+  optimizeDeps: {
+    include: [
+      'body-scroll-lock',
+      'micromodal'
+    ],
+    exclude: []
+  },
   build: {
-    outDir: '../dest',
+    outDir: 'dest',
     emptyOutDir: true,
+    // Enable CSS code splitting to create separate CSS files
+    cssCodeSplit: true,
     rollupOptions: {
       input: {
-        // Main entry points for JavaScript
-        main: resolve(__dirname, 'src/main.js'),
+        // Main HTML entry point (for legacy fallback)
+        index: resolve(__dirname, 'src/index.html'),
+        // Main entry points for JavaScript (replicating Gulp behavior)
+        app: resolve(__dirname, 'src/app.js'),
         frontpage: resolve(__dirname, 'src/frontpage.js'),
         
-        // Individual CSS files (these will only generate CSS, not JS)
+        // Individual CSS files (these will generate separate CSS files)
         'porn-deals': resolve(__dirname, 'src/scss/porn-deals.scss'),
         'porn-deals-single': resolve(__dirname, 'src/scss/porn-deals-single.scss'),
         'pornstars': resolve(__dirname, 'src/scss/pornstars.scss'),
@@ -42,10 +74,40 @@ export default defineConfig({
         'similar_sites': resolve(__dirname, 'src/scss/similar_sites.scss')
       },
       output: {
-        // No manual chunks for now since we're not using external libraries
+        // Use ES modules format but ensure compatibility
+        format: 'es',
+        // Disable inline dynamic imports for multiple inputs
+        inlineDynamicImports: false,
+        // Force all code into single chunks - no code splitting for JS
+        manualChunks: (id) => {
+          // Bundle all npm modules with their respective entry points
+          if (id.includes('body-scroll-lock') || id.includes('micromodal')) {
+            // Bundle npm modules with their respective entry points
+            if (id.includes('frontpage') || id.includes('src/frontpage.js')) {
+              return 'frontpage'; // Bundle with frontpage
+            }
+            return 'app'; // Bundle with app
+          }
+          
+          // Force all app-related code into single app chunk
+          if (id.includes('src/js/') || id.includes('src/vendorScript/')) {
+            return 'app';
+          }
+          
+          // Force all frontpage-specific SCSS into frontpage chunk
+          if (id.includes('src/scss/frontpage.scss')) {
+            return 'frontpage';
+          }
+          
+          // Don't create separate chunks for anything else - bundle everything together
+          return null;
+        },
         assetFileNames: (assetInfo) => {
           const info = assetInfo.name.split('.')
           const ext = info[info.length - 1]
+          if (/css/i.test(ext)) {
+            return `css/[name]-[hash][extname]`
+          }
           if (/png|jpe?g|svg|gif|tiff|bmp|ico/i.test(ext)) {
             return `images/[name]-[hash][extname]`
           }
@@ -55,11 +117,27 @@ export default defineConfig({
           return `assets/[name]-[hash][extname]`
         },
         chunkFileNames: 'js/[name]-[hash].js',
-        entryFileNames: 'js/[name]-[hash].js'
+        entryFileNames: (chunkInfo) => {
+          // Add content hashing for cache busting
+          if (chunkInfo.name === 'app') {
+            return 'js/app-[hash].js'
+          }
+          if (chunkInfo.name === 'frontpage') {
+            return 'js/frontpage-[hash].js'
+          }
+          return 'js/[name]-[hash].js'
+        }
       }
     },
-    cssCodeSplit: true,
-    sourcemap: true
+    sourcemap: true,
+    // Optimize bundle size
+    minify: 'terser',
+    terserOptions: {
+      compress: {
+        drop_console: false, // Keep console logs for debugging
+        drop_debugger: true
+      }
+    }
   },
   css: {
     preprocessorOptions: {
