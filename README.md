@@ -2,5 +2,12 @@
 
 ## [MrPorn](https://mrporn-dev.netlify.app/)
 
+## Requirements
+* Node.js 18.0.0 or higher
+* npm 8.0.0 or higher
+
 ## How to start
-* `yarn && bower i && gulp` - install npm dependencies, bower packages and run dev-server
+* `npm install` or `yarn install` - install dependencies
+* `npm start` or `gulp` - run development server
+* `npm run build` - build for production
+* `npm run clean` - clean build directory

@@ -2,7 +2,7 @@
 
 const { task } = require('gulp');
 
-const del = require('del');
+const { deleteSync } = require('del');
 
 const configPath  = require('../config/configPath');
 
@@ -11,7 +11,7 @@ const configPath  = require('../config/configPath');
  * @description Gulp clean - clean dest folder before build project.
  */
 task('clean', (done) => {
-	del.sync([
+	deleteSync([
     configPath.dest.root + '/**/*',
     configPath.src.root + '/images/**',
     configPath.src.root + '/media/**',
