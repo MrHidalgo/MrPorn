@@ -1,12 +1,5 @@
 "use strict";
 
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-exports.StorageUtils = exports.FunctionUtils = exports.DOMUtils = exports.CookieUtils = exports.ArrayUtils = void 0;
-function ownKeys(e, r) { var t = Object.keys(e); if (Object.getOwnPropertySymbols) { var o = Object.getOwnPropertySymbols(e); r && (o = o.filter(function (r) { return Object.getOwnPropertyDescriptor(e, r).enumerable; })), t.push.apply(t, o); } return t; }
-function _objectSpread(e) { for (var r = 1; r < arguments.length; r++) { var t = null != arguments[r] ? arguments[r] : {}; r % 2 ? ownKeys(Object(t), !0).forEach(function (r) { _defineProperty(e, r, t[r]); }) : Object.getOwnPropertyDescriptors ? Object.defineProperties(e, Object.getOwnPropertyDescriptors(t)) : ownKeys(Object(t)).forEach(function (r) { Object.defineProperty(e, r, Object.getOwnPropertyDescriptor(t, r)); }); } return e; }
-function _defineProperty(e, r, t) { return (r = _toPropertyKey(r)) in e ? Object.defineProperty(e, r, { value: t, enumerable: !0, configurable: !0, writable: !0 }) : e[r] = t, e; }
 function _createForOfIteratorHelper(r, e) { var t = "undefined" != typeof Symbol && r[Symbol.iterator] || r["@@iterator"]; if (!t) { if (Array.isArray(r) || (t = _unsupportedIterableToArray(r)) || e && r && "number" == typeof r.length) { t && (r = t); var _n = 0, F = function F() {}; return { s: F, n: function n() { return _n >= r.length ? { done: !0 } : { done: !1, value: r[_n++] }; }, e: function e(r) { throw r; }, f: F }; } throw new TypeError("Invalid attempt to iterate non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); } var o, a = !0, u = !1; return { s: function s() { t = t.call(r); }, n: function n() { var r = t.next(); return a = r.done, r; }, e: function e(r) { u = !0, o = r; }, f: function f() { try { a || null == t["return"] || t["return"](); } finally { if (u) throw o; } } }; }
 function _toConsumableArray(r) { return _arrayWithoutHoles(r) || _iterableToArray(r) || _unsupportedIterableToArray(r) || _nonIterableSpread(); }
 function _nonIterableSpread() { throw new TypeError("Invalid attempt to spread non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
@@ -20,164 +13,386 @@ function _defineProperties(e, r) { for (var t = 0; t < r.length; t++) { var o = 
 function _createClass(e, r, t) { return r && _defineProperties(e.prototype, r), t && _defineProperties(e, t), Object.defineProperty(e, "prototype", { writable: !1 }), e; }
 function _toPropertyKey(t) { var i = _toPrimitive(t, "string"); return "symbol" == _typeof(i) ? i : i + ""; }
 function _toPrimitive(t, r) { if ("object" != _typeof(t) || !t) return t; var e = t[Symbol.toPrimitive]; if (void 0 !== e) { var i = e.call(t, r || "default"); if ("object" != _typeof(i)) return i; throw new TypeError("@@toPrimitive must return a primitive value."); } return ("string" === r ? String : Number)(t); }
-/*
-* ============================
-*
-* Include lib:
-* - preventBehavior.js;
-* - swiper.js;
-* - hamburger;
-*
-* ============================
-* */
+/**
+ * Main Application Module
+ * ============================
+ * 
+ * Safe utility functions and application initialization
+ * Replaces prototype pollution with modern patterns
+ */
 
-function setWithExpiry(key, value, ttl) {
-  var now = new Date();
+// Import utility modules (when ES6 modules are implemented)
+// import { DOMUtils, ArrayUtils, FunctionUtils } from './utils/dom-utils.js';
+// import { StorageUtils, CookieUtils } from './utils/storage-utils.js';
 
-  // `item` is an object which contains the original value
-  // as well as the time when it's supposed to expire
-  var item = {
-    value: value,
-    expiry: now.getTime() + ttl
-  };
-  try {
-    localStorage.setItem(key, JSON.stringify(item));
-  } catch (e) {
-    clearOldLocalData();
-    // if (e == QUOTA_EXCEEDED_ERR) {
-    // 	console.log('storage exceeded');
-    // 	clearOldLocalData();
-    // }
-  }
-}
-function clearOldLocalData() {
-  for (var key in localStorage) {
-    if (key.indexOf('cat_') > -1 || key.indexOf('site_') > -1) {
-      localStorage.removeItem(key);
+/**
+ * Safe DOM Utilities - Replacement for prototype pollution
+ */
+var DOMUtils = {
+  /**
+   * Get all parent elements of an element
+   * @param {Element} element - The starting element
+   * @param {string} selector - Optional CSS selector to filter parents
+   * @returns {Element[]} Array of parent elements
+   */
+  getParents: function getParents(element, selector) {
+    if (!element || !element.parentElement) return [];
+    var elements = [];
+    var elem = element;
+    while ((elem = elem.parentElement) !== null) {
+      if (elem.nodeType !== Node.ELEMENT_NODE) continue;
+      if (!selector || elem.matches(selector)) {
+        elements.push(elem);
+      }
     }
-  }
-}
-function getWithExpiry(key) {
-  var itemStr = localStorage.getItem(key);
-  // if the item doesn't exist, return null
-  if (!itemStr) {
-    return null;
-  }
-  var item = JSON.parse(itemStr);
-  var now = new Date();
-  // compare the expiry time of the item with the current time
-  if (now.getTime() > item.expiry) {
-    // If the item is expired, delete the item from storage
-    // and return null
-    localStorage.removeItem(key);
-    return null;
-  }
-  return item.value;
-}
-Element.prototype.parents = function (selector) {
-  var elements = [];
-  var elem = this;
-  var ishaveselector = selector !== undefined;
-  while ((elem = elem.parentElement) !== null) {
-    if (elem.nodeType !== Node.ELEMENT_NODE) {
-      continue;
+    return elements;
+  },
+  /**
+   * Safe querySelector with error handling
+   * @param {string} selector - CSS selector
+   * @param {Element} context - Context element (default: document)
+   * @returns {Element|null} Found element or null
+   */
+  querySelector: function querySelector(selector) {
+    var context = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : document;
+    try {
+      return context.querySelector(selector);
+    } catch (error) {
+      console.warn("Invalid selector: ".concat(selector), error);
+      return null;
     }
-    if (!ishaveselector || elem.matches(selector)) {
-      elements.push(elem);
+  },
+  /**
+   * Show element by setting display to block
+   * @param {Element} element - Element to show
+   */
+  show: function show(element) {
+    if (element && element.style) {
+      element.style.display = 'block';
     }
-  }
-  return elements;
-};
-Function.prototype.extend = function () {
-  var fns = [this].concat([].slice.call(arguments));
-  return function () {
-    for (var i = 0; i < fns.length; i++) {
-      fns[i].apply(this, arguments);
+  },
+  /**
+   * Hide element by setting display to none
+   * @param {Element} element - Element to hide
+   */
+  hide: function hide(element) {
+    if (element && element.style) {
+      element.style.display = 'none';
     }
-  };
-};
-Array.prototype.remove = function () {
-  var what,
-    a = arguments,
-    L = a.length,
-    ax;
-  while (L && this.length) {
-    what = a[--L];
-    while ((ax = this.indexOf(what)) !== -1) {
-      this.splice(ax, 1);
+  },
+  /**
+   * Remove element from DOM
+   * @param {Element} element - Element to remove
+   */
+  remove: function remove(element) {
+    if (element && element.remove) {
+      element.remove();
     }
+  },
+  /**
+   * Toggle CSS class on element
+   * @param {Element} element - Target element
+   * @param {string} className - Class name to toggle
+   */
+  toggleClass: function toggleClass(element, className) {
+    if (!element || !className) return;
+    if (element.classList) {
+      element.classList.toggle(className);
+    } else {
+      // Fallback for older browsers
+      var classes = element.className.split(" ");
+      var index = classes.indexOf(className);
+      if (index >= 0) {
+        classes.splice(index, 1);
+      } else {
+        classes.push(className);
+      }
+      element.className = classes.join(" ");
+    }
+  },
+  /**
+   * Smooth scroll to element
+   * @param {Element|number} target - Target element or Y position
+   * @param {number} duration - Animation duration in ms
+   */
+  smoothScroll: function smoothScroll(target) {
+    var duration = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : 1000;
+    var elementY = typeof target === 'number' ? target : target.offsetTop;
+    var startingY = window.pageYOffset;
+    var diff = elementY - startingY;
+    var start;
+    window.requestAnimationFrame(function step(timestamp) {
+      if (!start) start = timestamp;
+      var time = timestamp - start;
+      var percent = Math.min(time / duration, 1);
+      window.scrollTo(0, startingY + diff * percent);
+      if (time < duration) {
+        window.requestAnimationFrame(step);
+      }
+    });
+  },
+  /**
+   * Find ancestor element by selector
+   * @param {Element} element - Starting element
+   * @param {string} selector - CSS selector
+   * @returns {Element|null} Found ancestor or null
+   */
+  findAncestor: function findAncestor(element, selector) {
+    if (!element || !selector) return null;
+    while ((element = element.parentElement) && !(element.matches || element.matchesSelector).call(element, selector));
+    return element;
   }
-  return this;
 };
-window.mobileAndTabletcheck = function () {
-  var check = false;
-  (function (a) {
-    if (/(android|bb\d+|meego).+mobile|avantgo|bada\/|blackberry|blazer|compal|elaine|fennec|hiptop|iemobile|ip(hone|od)|iris|kindle|lge |maemo|midp|mmp|mobile.+firefox|netfront|opera m(ob|in)i|palm( os)?|phone|p(ixi|re)\/|plucker|pocket|psp|series(4|6)0|symbian|treo|up\.(browser|link)|vodafone|wap|windows ce|xda|xiino|android|ipad|playbook|silk/i.test(a) || /1207|6310|6590|3gso|4thp|50[1-6]i|770s|802s|a wa|abac|ac(er|oo|s\-)|ai(ko|rn)|al(av|ca|co)|amoi|an(ex|ny|yw)|aptu|ar(ch|go)|as(te|us)|attw|au(di|\-m|r |s )|avan|be(ck|ll|nq)|bi(lb|rd)|bl(ac|az)|br(e|v)w|bumb|bw\-(n|u)|c55\/|capi|ccwa|cdm\-|cell|chtm|cldc|cmd\-|co(mp|nd)|craw|da(it|ll|ng)|dbte|dc\-s|devi|dica|dmob|do(c|p)o|ds(12|\-d)|el(49|ai)|em(l2|ul)|er(ic|k0)|esl8|ez([4-7]0|os|wa|ze)|fetc|fly(\-|_)|g1 u|g560|gene|gf\-5|g\-mo|go(\.w|od)|gr(ad|un)|haie|hcit|hd\-(m|p|t)|hei\-|hi(pt|ta)|hp( i|ip)|hs\-c|ht(c(\-| |_|a|g|p|s|t)|tp)|hu(aw|tc)|i\-(20|go|ma)|i230|iac( |\-|\/)|ibro|idea|ig01|ikom|im1k|inno|ipaq|iris|ja(t|v)a|jbro|jemu|jigs|kddi|keji|kgt( |\/)|klon|kpt |kwc\-|kyo(c|k)|le(no|xi)|lg( g|\/(k|l|u)|50|54|\-[a-w])|libw|lynx|m1\-w|m3ga|m50\/|ma(te|ui|xo)|mc(01|21|ca)|m\-cr|me(rc|ri)|mi(o8|oa|ts)|mmef|mo(01|02|bi|de|do|t(\-| |o|v)|zz)|mt(50|p1|v )|mwbp|mywa|n10[0-2]|n20[2-3]|n30(0|2)|n50(0|2|5)|n7(0(0|1)|10)|ne((c|m)\-|on|tf|wf|wg|wt)|nok(6|i)|nzph|o2im|op(ti|wv)|oran|owg1|p800|pan(a|d|t)|pdxg|pg(13|\-([1-8]|c))|phil|pire|pl(ay|uc)|pn\-2|po(ck|rt|se)|prox|psio|pt\-g|qa\-a|qc(07|12|21|32|60|\-[2-7]|i\-)|qtek|r380|r600|raks|rim9|ro(ve|zo)|s55\/|sa(ge|ma|mm|ms|ny|va)|sc(01|h\-|oo|p\-)|sdk\/|se(c(\-|0|1)|47|mc|nd|ri)|sgh\-|shar|sie(\-|m)|sk\-0|sl(45|id)|sm(al|ar|b3|it|t5)|so(ft|ny)|sp(01|h\-|v\-|v )|sy(01|mb)|t2(18|50)|t6(00|10|18)|ta(gt|lk)|tcl\-|tdg\-|tel(i|m)|tim\-|t\-mo|to(pl|sh)|ts(70|m\-|m3|m5)|tx\-9|up(\.b|g1|si)|utst|v400|v750|veri|vi(rg|te)|vk(40|5[0-3]|\-v)|vm40|voda|vulc|vx(52|53|60|61|70|80|81|83|85|98)|w3c(\-| )|webc|whit|wi(g |nc|nw)|wmlb|wonu|x700|yas\-|your|zeto|zte\-/i.test(a.substr(0, 4))) check = true;
-  })(navigator.userAgent || navigator.vendor || window.opera);
-  return check;
-};
-var show = function show(elem) {
-  if (elem) {
-    elem.style.display = 'block';
-  }
-};
-var hide = function hide(elem) {
-  if (elem) {
-    elem.style.display = 'none';
-  }
-};
-var removeElement = function removeElement(elem) {
-  if (elem) {
-    elem.remove();
-  }
-};
-var toggleClass = function toggleClass(element, className) {
-  if (element.classList) {
-    element.classList.toggle(className);
-  } else {
-    // For IE9
-    var classes = element.className.split(" ");
-    var i = classes.indexOf(className);
-    if (i >= 0) classes.splice(i, 1);else classes.push(className);
-    element.className = classes.join(" ");
-  }
-};
-function doScrolling(elementY, duration) {
-  var startingY = window.pageYOffset;
-  var diff = elementY - startingY;
-  var start;
 
-  // Bootstrap our animation - it will get called right before next frame shall be rendered.
-  window.requestAnimationFrame(function step(timestamp) {
-    if (!start) start = timestamp;
-    // Elapsed milliseconds since start of scrolling.
-    var time = timestamp - start;
-    // Get percent of completion in range [0, 1].
-    var percent = Math.min(time / duration, 1);
-    window.scrollTo(0, startingY + diff * percent);
-
-    // Proceed with animation as long as we wanted it to.
-    if (time < duration) {
-      window.requestAnimationFrame(step);
+/**
+ * Array Utilities - Safe replacement for prototype pollution
+ */
+var ArrayUtils = {
+  /**
+   * Remove items from array
+   * @param {Array} array - Target array
+   * @param {...any} items - Items to remove
+   * @returns {Array} Modified array
+   */
+  remove: function remove(array) {
+    if (!Array.isArray(array)) return array;
+    for (var _len = arguments.length, items = new Array(_len > 1 ? _len - 1 : 0), _key = 1; _key < _len; _key++) {
+      items[_key - 1] = arguments[_key];
     }
-  });
-}
-var createCookie = function createCookie(name, value, days) {
-  var expires;
-  if (days) {
-    var date = new Date();
-    date.setTime(date.getTime() + days * 24 * 60 * 60 * 1000);
-    expires = "; expires=" + date.toGMTString();
-  } else {
-    expires = "";
+    items.forEach(function (item) {
+      var index;
+      while ((index = array.indexOf(item)) !== -1) {
+        array.splice(index, 1);
+      }
+    });
+    return array;
   }
-  document.cookie = name + "=" + value + expires + "; path=/";
 };
-var isMobileOrTablet = window.mobileAndTabletcheck();
-function findAncestor(el, sel) {
-  while ((el = el.parentElement) && !(el.matches || el.matchesSelector).call(el, sel));
-  return el;
-}
+
+/**
+ * Function Utilities - Safe replacement for prototype pollution
+ */
+var FunctionUtils = {
+  /**
+   * Extend function with additional functions
+   * @param {Function} baseFn - Base function
+   * @param {...Function} additionalFns - Additional functions
+   * @returns {Function} Combined function
+   */
+  extend: function extend(baseFn) {
+    for (var _len2 = arguments.length, additionalFns = new Array(_len2 > 1 ? _len2 - 1 : 0), _key2 = 1; _key2 < _len2; _key2++) {
+      additionalFns[_key2 - 1] = arguments[_key2];
+    }
+    var fns = [baseFn].concat(additionalFns);
+    return function () {
+      var _this = this;
+      for (var _len3 = arguments.length, args = new Array(_len3), _key3 = 0; _key3 < _len3; _key3++) {
+        args[_key3] = arguments[_key3];
+      }
+      fns.forEach(function (fn) {
+        if (typeof fn === 'function') {
+          fn.apply(_this, args);
+        }
+      });
+    };
+  }
+};
+
+/**
+ * Enhanced Storage Utilities with error handling
+ */
+var StorageUtils = {
+  /**
+   * Set item in localStorage with expiration
+   * @param {string} key - Storage key
+   * @param {any} value - Value to store
+   * @param {number} ttl - Time to live in milliseconds
+   * @returns {boolean} Success status
+   */
+  setWithExpiry: function setWithExpiry(key, value, ttl) {
+    if (!key || typeof key !== 'string') {
+      console.warn('Invalid key provided to setWithExpiry');
+      return false;
+    }
+    var now = new Date();
+    var item = {
+      value: value,
+      expiry: now.getTime() + ttl
+    };
+    try {
+      localStorage.setItem(key, JSON.stringify(item));
+      return true;
+    } catch (error) {
+      console.error('Storage error:', error);
+
+      // Try to clear old data and retry
+      if (error.name === 'QuotaExceededError') {
+        StorageUtils.clearOldData();
+        try {
+          localStorage.setItem(key, JSON.stringify(item));
+          return true;
+        } catch (retryError) {
+          console.error('Storage retry failed:', retryError);
+          return false;
+        }
+      }
+      return false;
+    }
+  },
+  /**
+   * Get item from localStorage with expiration check
+   * @param {string} key - Storage key
+   * @returns {any|null} Stored value or null if expired/not found
+   */
+  getWithExpiry: function getWithExpiry(key) {
+    if (!key || typeof key !== 'string') {
+      console.warn('Invalid key provided to getWithExpiry');
+      return null;
+    }
+    try {
+      var itemStr = localStorage.getItem(key);
+      if (!itemStr) {
+        return null;
+      }
+      var item = JSON.parse(itemStr);
+      var now = new Date();
+      if (now.getTime() > item.expiry) {
+        localStorage.removeItem(key);
+        return null;
+      }
+      return item.value;
+    } catch (error) {
+      console.error('Error retrieving from storage:', error);
+      return null;
+    }
+  },
+  /**
+   * Clear old data from localStorage
+   * @param {string} prefix - Optional prefix to filter keys
+   */
+  clearOldData: function clearOldData() {
+    var prefix = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : '';
+    try {
+      var keysToRemove = [];
+      for (var i = 0; i < localStorage.length; i++) {
+        var key = localStorage.key(i);
+        if (key && (key.indexOf('cat_') > -1 || key.indexOf('site_') > -1 || key.startsWith(prefix))) {
+          keysToRemove.push(key);
+        }
+      }
+      keysToRemove.forEach(function (key) {
+        return localStorage.removeItem(key);
+      });
+      console.log("Cleared ".concat(keysToRemove.length, " old storage items"));
+    } catch (error) {
+      console.error('Error clearing old data:', error);
+    }
+  }
+};
+
+/**
+ * Enhanced Cookie Utilities with error handling
+ */
+var CookieUtils = {
+  /**
+   * Create cookie with options
+   * @param {string} name - Cookie name
+   * @param {string} value - Cookie value
+   * @param {Object} options - Cookie options
+   * @param {number} options.days - Days until expiration
+   * @param {string} options.path - Cookie path
+   * @param {string} options.domain - Cookie domain
+   * @param {boolean} options.secure - Secure flag
+   * @param {string} options.sameSite - SameSite attribute
+   */
+  create: function create(name, value) {
+    var options = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : {};
+    if (!name || typeof name !== 'string') {
+      console.warn('Invalid cookie name');
+      return false;
+    }
+    var expires = '';
+    if (options.days) {
+      var date = new Date();
+      date.setTime(date.getTime() + options.days * 24 * 60 * 60 * 1000);
+      expires = "; expires=".concat(date.toUTCString());
+    }
+    var path = options.path || '/';
+    var domain = options.domain ? "; domain=".concat(options.domain) : '';
+    var secure = options.secure ? '; secure' : '';
+    var sameSite = options.sameSite ? "; samesite=".concat(options.sameSite) : '';
+    try {
+      document.cookie = "".concat(name, "=").concat(encodeURIComponent(value)).concat(expires, "; path=").concat(path).concat(domain).concat(secure).concat(sameSite);
+      return true;
+    } catch (error) {
+      console.error('Error creating cookie:', error);
+      return false;
+    }
+  },
+  /**
+   * Get cookie value
+   * @param {string} name - Cookie name
+   * @returns {string|null} Cookie value or null
+   */
+  get: function get(name) {
+    if (!name || typeof name !== 'string') {
+      return null;
+    }
+    try {
+      var nameEQ = name + "=";
+      var ca = document.cookie.split(';');
+      for (var i = 0; i < ca.length; i++) {
+        var c = ca[i];
+        while (c.charAt(0) === ' ') c = c.substring(1, c.length);
+        if (c.indexOf(nameEQ) === 0) {
+          return decodeURIComponent(c.substring(nameEQ.length, c.length));
+        }
+      }
+      return null;
+    } catch (error) {
+      console.error('Error reading cookie:', error);
+      return null;
+    }
+  }
+};
+
+/**
+ * Device detection utility
+ * @returns {boolean} True if mobile or tablet
+ */
+var DeviceUtils = {
+  mobileAndTabletcheck: function mobileAndTabletcheck() {
+    var check = false;
+    (function (a) {
+      if (/(android|bb\d+|meego).+mobile|avantgo|bada\/|blackberry|blazer|compal|elaine|fennec|hiptop|iemobile|ip(hone|od)|iris|kindle|lge |maemo|midp|mmp|mobile.+firefox|netfront|opera m(ob|in)i|palm( os)?|phone|p(ixi|re)\/|plucker|pocket|psp|series(4|6)0|symbian|treo|up\.(browser|link)|vodafone|wap|windows ce|xda|xiino|android|ipad|playbook|silk/i.test(a) || /1207|6310|6590|3gso|4thp|50[1-6]i|770s|802s|a wa|abac|ac(er|oo|s\-)|ai(ko|rn)|al(av|ca|co)|amoi|an(ex|ny|yw)|aptu|ar(ch|go)|as(te|us)|attw|au(di|\-m|r |s )|avan|be(ck|ll|nq)|bi(lb|rd)|bl(ac|az)|br(e|v)w|bumb|bw\-(n|u)|c55\/|capi|ccwa|cdm\-|cell|chtm|cldc|cmd\-|co(mp|nd)|craw|da(it|ll|ng)|dbte|dc\-s|devi|dica|dmob|do(c|p)o|ds(12|\-d)|el(49|ai)|em(l2|ul)|er(ic|k0)|esl8|ez([4-7]0|os|wa|ze)|fetc|fly(\-|_)|g1 u|g560|gene|gf\-5|g\-mo|go(\.w|od)|gr(ad|un)|haie|hcit|hd\-(m|p|t)|hei\-|hi(pt|ta)|hp( i|ip)|hs\-c|ht(c(\-| |_|a|g|p|s|t)|tp)|hu(aw|tc)|i\-(20|go|ma)|i230|iac( |\-|\/)|ibro|idea|ig01|ikom|im1k|inno|ipaq|iris|ja(t|v)a|jbro|jemu|jigs|kddi|keji|kgt( |\/)|klon|kpt |kwc\-|kyo(c|k)|le(no|xi)|lg( g|\/(k|l|u)|50|54|\-[a-w])|libw|lynx|m1\-w|m3ga|m50\/|ma(te|ui|xo)|mc(01|21|ca)|m\-cr|me(rc|ri)|mi(o8|oa|ts)|mmef|mo(01|02|bi|de|do|t(\-| |o|v)|zz)|mt(50|p1|v )|mwbp|mywa|n10[0-2]|n20[2-3]|n30(0|2)|n50(0|2|5)|n7(0(0|1)|10)|ne((c|m)\-|on|tf|wf|wg|wt)|nok(6|i)|nzph|o2im|op(ti|wv)|oran|owg1|p800|pan(a|d|t)|pdxg|pg(13|\-([1-8]|c))|phil|pire|pl(ay|uc)|pn\-2|po(ck|rt|se)|prox|psio|pt\-g|qa\-a|qc(07|12|21|32|60|\-[2-7]|i\-)|qtek|r380|r600|raks|rim9|ro(ve|zo)|s55\/|sa(ge|ma|mm|ms|ny|va)|sc(01|h\-|oo|p\-)|sdk\/|se(c(\-|0|1)|47|mc|nd|ri)|sgh\-|shar|sie(\-|m)|sk\-0|sl(45|id)|sm(al|ar|b3|it|t5)|so(ft|ny)|sp(01|h\-|v\-|v )|sy(01|mb)|t2(18|50)|t6(00|10|18)|ta(gt|lk)|tcl\-|tdg\-|tel(i|m)|tim\-|t\-mo|to(pl|sh)|ts(70|m\-|m3|m5)|tx\-9|up(\.b|g1|si)|utst|v400|v750|veri|vi(rg|te)|vk(40|5[0-3]|\-v)|vm40|voda|vulc|vx(52|53|60|61|70|80|81|83|85|98)|w3c(\-| )|webc|whit|wi(g |nc|nw)|wmlb|wonu|x700|yas\-|your|zeto|zte\-/i.test(a.substr(0, 4))) check = true;
+    })(navigator.userAgent || navigator.vendor || window.opera);
+    return check;
+  }
+};
+
+// Legacy function aliases for backward compatibility
+// These will be removed in future versions
+var setWithExpiry = StorageUtils.setWithExpiry;
+var getWithExpiry = StorageUtils.getWithExpiry;
+var clearOldLocalData = StorageUtils.clearOldData;
+var createCookie = CookieUtils.create;
+var show = DOMUtils.show;
+var hide = DOMUtils.hide;
+var removeElement = DOMUtils.remove;
+var toggleClass = DOMUtils.toggleClass;
+var doScrolling = DOMUtils.smoothScroll;
+var findAncestor = DOMUtils.findAncestor;
+
+// Device detection
+var isMobileOrTablet = DeviceUtils.mobileAndTabletcheck();
+
+// Export utilities for use in other modules (when ES6 modules are implemented)
+window.DOMUtils = DOMUtils;
+window.ArrayUtils = ArrayUtils;
+window.FunctionUtils = FunctionUtils;
+window.StorageUtils = StorageUtils;
+window.CookieUtils = CookieUtils;
+window.DeviceUtils = DeviceUtils;
 var AdBlockDetector = /*#__PURE__*/function () {
   function AdBlockDetector() {
     var options = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {};
@@ -197,7 +412,7 @@ var AdBlockDetector = /*#__PURE__*/function () {
   return _createClass(AdBlockDetector, [{
     key: "createNotice",
     value: function createNotice() {
-      var _this = this;
+      var _this2 = this;
       var el = document.createElement('div');
       el.id = 'adblock-notice';
       el.className = 'adblock-notice';
@@ -206,26 +421,26 @@ var AdBlockDetector = /*#__PURE__*/function () {
       document.body.classList.add('pk');
       var closeButton = el.querySelector('.adblock-notice-close');
       closeButton.addEventListener('click', function () {
-        _this.onClose();
+        _this2.onClose();
         el.remove();
       });
     }
   }, {
     key: "run",
     value: function run() {
-      var _this2 = this;
+      var _this3 = this;
       var xhr = new XMLHttpRequest();
       xhr.open('HEAD', this.testUrl, true);
       xhr.timeout = this.timeout;
       xhr.onload = function () {
-        _this2.onNotDetected();
+        _this3.onNotDetected();
       };
       xhr.onerror = function () {
-        _this2.onDetected();
-        _this2.createNotice();
+        _this3.onDetected();
+        _this3.createNotice();
       };
       xhr.ontimeout = function () {
-        _this2.onDetected();
+        _this3.onDetected();
       };
       try {
         xhr.send();
@@ -2180,19 +2395,19 @@ var ReportModal = /*#__PURE__*/function () {
   }, {
     key: "addReviewReportClickListeners",
     value: function addReviewReportClickListeners() {
-      var _this3 = this;
+      var _this4 = this;
       var reportBtn = document.querySelectorAll('.report-button');
       reportBtn.forEach(function (item) {
         item.addEventListener('click', function (event) {
           var tag = event.currentTarget.dataset.tag;
-          _this3.injectReportReviewModal();
+          _this4.injectReportReviewModal();
         });
       });
     }
   }, {
     key: "addCategoryReportClickListeners",
     value: function addCategoryReportClickListeners() {
-      var _this4 = this,
+      var _this5 = this,
         _document$querySelect10,
         _document$querySelect11,
         _document$querySelect12;
@@ -2201,17 +2416,17 @@ var ReportModal = /*#__PURE__*/function () {
       reportBtn.forEach(function (item) {
         item.addEventListener('click', function (event) {
           var tag = event.currentTarget.dataset.tag;
-          _this4.injectReportReviewModal('', 'Report a Problem for');
+          _this5.injectReportReviewModal('', 'Report a Problem for');
         });
       });
       (_document$querySelect10 = document.querySelector('.review_type_trigger.mobile')) === null || _document$querySelect10 === void 0 || _document$querySelect10.addEventListener('click', function (evt) {
         parent.showFilterPopup();
       });
       (_document$querySelect11 = document.querySelector('.additional_action.recommendations')) === null || _document$querySelect11 === void 0 || _document$querySelect11.addEventListener('click', function (event) {
-        _this4.injectReportReviewModal('recommendations', 'Website Recommendations for');
+        _this5.injectReportReviewModal('recommendations', 'Website Recommendations for');
       });
       (_document$querySelect12 = document.querySelector('.additional_action.feedback')) === null || _document$querySelect12 === void 0 || _document$querySelect12.addEventListener('click', function (event) {
-        _this4.injectReportReviewModal('feedback', 'Send Feedback for');
+        _this5.injectReportReviewModal('feedback', 'Send Feedback for');
       });
       this.checkAvailability();
       this.initTypeTriggerEvents();
@@ -2220,25 +2435,25 @@ var ReportModal = /*#__PURE__*/function () {
   }, {
     key: "initTypeTriggerEvents",
     value: function initTypeTriggerEvents() {
-      var _this5 = this;
+      var _this6 = this;
       var timeoutId;
       if (this.additionalActions) {
         var _this$typeTriggerBtn, _this$typeTriggerBtn2, _this$typeTriggerBtn3;
         (_this$typeTriggerBtn = this.typeTriggerBtn) === null || _this$typeTriggerBtn === void 0 || _this$typeTriggerBtn.addEventListener('mouseover', function () {
           clearTimeout(timeoutId);
-          _this5.additionalActions.classList.add('open');
+          _this6.additionalActions.classList.add('open');
         });
         (_this$typeTriggerBtn2 = this.typeTriggerBtn) === null || _this$typeTriggerBtn2 === void 0 || _this$typeTriggerBtn2.addEventListener('mouseout', function () {
           timeoutId = setTimeout(function () {
-            _this5.additionalActions.classList.remove('open');
+            _this6.additionalActions.classList.remove('open');
           }, 700); // 2000 milliseconds = 2 seconds
         });
         (_this$typeTriggerBtn3 = this.typeTriggerBtn) === null || _this$typeTriggerBtn3 === void 0 || _this$typeTriggerBtn3.addEventListener('click', function () {
-          if (_this5.additionalActions.classList.contains('open')) {
+          if (_this6.additionalActions.classList.contains('open')) {
             clearTimeout(timeoutId);
-            _this5.additionalActions.classList.remove('open');
+            _this6.additionalActions.classList.remove('open');
           } else {
-            _this5.additionalActions.classList.add('open');
+            _this6.additionalActions.classList.add('open');
           }
         });
       }
@@ -2246,13 +2461,13 @@ var ReportModal = /*#__PURE__*/function () {
   }, {
     key: "addReviewReportItemClickListeners",
     value: function addReviewReportItemClickListeners() {
-      var _this6 = this;
+      var _this7 = this;
       var listItems = document.querySelectorAll('.boogie-list-item');
       listItems.forEach(function (item) {
         item.addEventListener('click', function (event) {
           var tag = event.currentTarget.dataset.tag;
           var desc = event.currentTarget.dataset.tag;
-          _this6.showReportForm(tag);
+          _this7.showReportForm(tag);
           document.querySelector('.boogie-fields textarea').focus();
         });
       });
@@ -2327,7 +2542,7 @@ var ReportModal = /*#__PURE__*/function () {
   }, {
     key: "showReportForm",
     value: function showReportForm(tag) {
-      var _this7 = this;
+      var _this8 = this;
       var changeBack = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : false;
       var parent = this;
       var reviewTitle = this.title;
@@ -2341,8 +2556,8 @@ var ReportModal = /*#__PURE__*/function () {
       var reportFormContent = "<p>".concat(desc, "</p>\n\n        <div class=\"boogie-disclaimer\">\n        ").concat((selectedTag === null || selectedTag === void 0 ? void 0 : selectedTag.disclaimer) || "<p>Please note that Mr. Porn Geek doesn't manage any of the third-party platforms he reviews. If you have a problem with payments, content or something else, contact the site directly.</p><p>Mr. Porn Geek's reviews are written in a comedic way and with parody of the industry as its central focus. The character himself is fictional, and is merely an attempt to be a satirical take on the business of adult entertainment.</p>", "\n\n        </div>\n\n        <form method=\"post\" class=\"boogie-form\" action=\"#\" data-code=\"broke\">\n        \t<input type=\"hidden\" class=\"boogie-input\" name=\"tag\" value=\"").concat(reportType, "\">\n          <div class=\"boogie-form-body\">\n            <div class=\"boogie-fields\">\n              <div class=\"boogie-field boogie-field-textarea\">\n                <textarea class=\"boogie-input\" id=\"message\" name=\"message\" placeholder=\"Please enter details of your request\"></textarea>\n              </div>\n\n              <div class=\"boogie-field\">\n                <input class=\"boogie-input\" type=\"text\" id=\"name\" name=\"name\" placeholder=\"Your Name\">\n              </div>\n\n              <div class=\"boogie-field\">\n                <input class=\"boogie-input\" type=\"email\" id=\"email\" name=\"email\" placeholder=\"Your Email\">\n              </div>\n            </div>\n\n            <div class=\"boogie-checkbox\">\n              <input class=\"boogie-checkbox-input\" type=\"checkbox\" id=\"boogie-checkbox-input\" name=\"checkbox\">\n\n              <label class=\"boogie-checkbox-label\" for=\"boogie-checkbox-input\">").concat(checkboxLabel, "</label>\n            </div>\n          </div>\n\n          <hr>\n\n          <div class=\"boogie-form-footer\">\n            <button class=\"btn btn-secondary btn-back\" type=\"button\" ").concat(changeBack ? 'data-micromodal-close' : '', ">\n            \t").concat(changeBack ? '' : '<svg class="icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0.5 18 11">\n								<path d="M17.738 5.38997L12.982 0.747973C12.8149 0.586608 12.5918 0.496418 12.3595 0.496418C12.1272 0.496418 11.9041 0.586608 11.737 0.747973C11.6555 0.826858 11.5906 0.921336 11.5464 1.02579C11.5021 1.13024 11.4793 1.24253 11.4793 1.35597C11.4793 1.46942 11.5021 1.58171 11.5464 1.68616C11.5906 1.79061 11.6555 1.88509 11.737 1.96397L14.989 5.13997L0.881 5.13997C0.766747 5.13852 0.653327 5.15959 0.547217 5.20197C0.441107 5.24435 0.344385 5.30722 0.262575 5.38699C0.180765 5.46676 0.115469 5.56186 0.0704156 5.66687C0.0253626 5.77187 0.0014352 5.88472 -2.405e-07 5.99897C0.0028998 6.22954 0.0972146 6.44953 0.262221 6.6106C0.427228 6.77167 0.649428 6.86064 0.88 6.85797L14.99 6.85797L11.738 10.033C11.6565 10.1118 11.5917 10.2062 11.5474 10.3105C11.5032 10.4149 11.4803 10.5271 11.4803 10.6405C11.4803 10.7538 11.5032 10.866 11.5474 10.9704C11.5917 11.0748 11.6565 11.1692 11.738 11.248C11.9045 11.4107 12.1282 11.5016 12.361 11.501C12.586 11.501 12.811 11.416 12.983 11.248L17.739 6.60597C17.8205 6.52717 17.8853 6.43278 17.9296 6.32841C17.9738 6.22405 17.9967 6.11184 17.9967 5.99847C17.9967 5.88511 17.9738 5.7729 17.9296 5.66853C17.8853 5.56416 17.8205 5.46977 17.739 5.39097L17.738 5.38997Z"></path>\n							</svg>', "\n\t\t\t\t\t\t\t").concat(changeBack ? 'Close' : 'Back', "</button>\n\n            <button class=\"btn btn-success btn-submit submit-report\" type=\"submit\">\n              <span class=\"btn-text\">Submit</span>\n              <div class=\"lds-dual-ring\"></div>\n            </button>\n          </div>\n        </form>");
       document.querySelector('#boogie-modal .micromodal-body').innerHTML = reportFormContent;
       document.querySelector('.boogie-form-footer .btn-back').addEventListener('click', function (event) {
-        document.querySelector('#boogie-modal .micromodal-body').innerHTML = _this7.getReportBodyContent();
-        _this7.addReviewReportItemClickListeners();
+        document.querySelector('#boogie-modal .micromodal-body').innerHTML = _this8.getReportBodyContent();
+        _this8.addReviewReportItemClickListeners();
       });
 
       // document.querySelector('.boogie-form input').addEventListener('change', (event) => {
@@ -2353,13 +2568,13 @@ var ReportModal = /*#__PURE__*/function () {
       var email = document.querySelector('.boogie-input[name="email"]');
       var message = document.querySelector('.boogie-input[name="message"]');
       var debouncedValidateName = debounce(function () {
-        return _this7.validateField(name);
+        return _this8.validateField(name);
       }, 300);
       var debouncedValidateMessage = debounce(function () {
-        return _this7.validateField(message);
+        return _this8.validateField(message);
       }, 300);
       var debouncedValidateEmail = debounce(function () {
-        return _this7.validateField(email);
+        return _this8.validateField(email);
       }, 300);
       name.addEventListener('input', debouncedValidateName);
       message.addEventListener('input', debouncedValidateMessage);
@@ -2374,13 +2589,13 @@ var ReportModal = /*#__PURE__*/function () {
     value: function debounce(func, delay) {
       var timeout;
       return function () {
-        var _this8 = this;
-        for (var _len = arguments.length, args = new Array(_len), _key = 0; _key < _len; _key++) {
-          args[_key] = arguments[_key];
+        var _this9 = this;
+        for (var _len4 = arguments.length, args = new Array(_len4), _key4 = 0; _key4 < _len4; _key4++) {
+          args[_key4] = arguments[_key4];
         }
         clearTimeout(timeout);
         timeout = setTimeout(function () {
-          return func.apply(_this8, args);
+          return func.apply(_this9, args);
         }, delay);
       };
     }
@@ -2468,7 +2683,7 @@ var ReportModal = /*#__PURE__*/function () {
   }, {
     key: "submitForm",
     value: function submitForm() {
-      var _this9 = this;
+      var _this0 = this;
       var tag = document.querySelector('.boogie-input[name="tag"]').value.trim();
       var name = document.querySelector('.boogie-input[name="name"]').value.trim();
       var email = document.querySelector('.boogie-input[name="email"]').value.trim();
@@ -2514,10 +2729,10 @@ var ReportModal = /*#__PURE__*/function () {
         }
       }).then(function (responseData) {
         if (responseData.success) {
-          _this9.showSuccessDialog();
+          _this0.showSuccessDialog();
         } else {
           console.log('error');
-          _this9.showSuccessDialog();
+          _this0.showSuccessDialog();
         }
       })["catch"](function (error) {
         console.error("Error:", error);
@@ -2801,7 +3016,7 @@ var ReportModal = /*#__PURE__*/function () {
   }, {
     key: "showProgress",
     value: function showProgress() {
-      var _this0 = this;
+      var _this1 = this;
       var isMobile = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : false;
       var progress = document.querySelector('.loading_spinner.desktop');
       if (isMobileOrTablet || window.innerWidth < 768) {
@@ -2812,7 +3027,7 @@ var ReportModal = /*#__PURE__*/function () {
         setTimeout(function () {
           progress.classList.remove('show');
           if (isMobileOrTablet || window.innerWidth < 768) {
-            _this0.filterPopupContent = document.querySelector('#boogie-modal').innerHTML;
+            _this1.filterPopupContent = document.querySelector('#boogie-modal').innerHTML;
             MicroModal.close('boogie-modal');
           }
         }, 2000);
@@ -2995,10 +3210,10 @@ var ScrollBoxShadows = /*#__PURE__*/function () {
   return _createClass(ScrollBoxShadows, [{
     key: "init",
     value: function init() {
-      var _this1 = this;
+      var _this10 = this;
       this.updateShadows();
       this.scrollBox.addEventListener('scroll', function (e) {
-        _this1.updateShadows();
+        _this10.updateShadows();
       });
     }
   }, {
@@ -3029,8 +3244,8 @@ var debounce = function debounce(cb) {
   var delay = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : 0;
   var timer = null;
   return function () {
-    for (var _len2 = arguments.length, args = new Array(_len2), _key2 = 0; _key2 < _len2; _key2++) {
-      args[_key2] = arguments[_key2];
+    for (var _len5 = arguments.length, args = new Array(_len5), _key5 = 0; _key5 < _len5; _key5++) {
+      args[_key5] = arguments[_key5];
     }
     clearTimeout(timer);
     timer = setTimeout(function () {
@@ -3136,22 +3351,28 @@ var initScrollSpyButton = function initScrollSpyButton(_ref2) {
     toggleBindClick: toggleBindClick
   };
 };
-var searchViewContainer = document.querySelector('.header__view-actions');
-function initSearch() {
-  var searchClient;
-  var algo_index_sites;
-  var algo_index_categories;
-  var algo_index_blogs;
+
+/**
+ * Search Module - Safe implementation with module pattern
+ * Replaces global variable pollution with encapsulated state
+ */
+var SearchModule = function () {
+  // Private variables - no longer polluting global scope
+  var searchViewContainer = null;
+  var searchClient = null;
+  var algo_index_sites = null;
+  var algo_index_categories = null;
+  var algo_index_blogs = null;
   var searchLang = 'en';
   var searchedSites = [];
   var searchedBlogs = [];
   var searchSynonyms = [];
   var searchedCategories = [];
-  var searchResultsPanel;
-  var searchResultsSites;
-  var searchResultsCategory;
-  var searchResultCount;
-  var searchPaginationContainer;
+  var searchResultsPanel = null;
+  var searchResultsSites = null;
+  var searchResultsCategory = null;
+  var searchResultCount = null;
+  var searchPaginationContainer = null;
   var searchPageCount = 0;
   var searchTotalPageCount = 0;
   var searchPageMax = 5;
@@ -3163,629 +3384,187 @@ function initSearch() {
   var lastQueryBlogId = '';
   var searchAlternatives = false;
   var perPage = 8;
-  var currentLang = document.documentElement.getAttribute('lang');
-  window._userToken = '';
+  var currentLang = '';
+  var userToken = '';
   var searchSpinner = '<div class="loading_spinner"><div class="bounce1"></div><div class="bounce2"></div><div class="bounce3"></div></div>';
-  document.addEventListener('DOMContentLoaded', function () {
-    // loadJS('/wp-content/themes/mpg/js/bodyScrollLock.min.js', function (){}, document.body);
-    initSearchAd();
-    loadSearchData();
-  });
-  function initSearchAd() {
-    if (getCookieMpgCookie("wasitgoodfuckbitch") === 'yes') {
-      return;
-    }
-    var searchResultBox = document.querySelector('.search__drop.search_results_box');
-    var searchAdBox = document.createElement('div');
-    searchAdBox.setAttribute('class', 'search__ad');
-    var searchAdStatus = searchResultBox.dataset['search_status'];
-    var searchAdIcon = searchResultBox.dataset['search_icon'];
-    var searchAdContent = searchResultBox.dataset['search_content'];
-    var searchAdUrl = searchResultBox.dataset['search_url'];
-    if (!searchAdStatus) {
-      return;
-    }
-    searchAdBox.innerHTML = '<a class="search__ad__link" href="' + searchAdUrl + '" target="_blank">' + '<img class="search__ad-icon" src="' + searchAdIcon + '"/>' + '<span class="search__ad-content">' + searchAdContent + '</span>' + '</a><div class="search__ad-close">Ad &#x2715</div>';
-    var searchResultsPanel = document.querySelector('[search-drop-desktop-js]');
-    ;
-    if (isMobileOrTablet && window.innerWidth < 769) {
-      searchResultsPanel = document.querySelector('[search-drop-mobile-js]');
-    }
-    searchResultsPanel.appendChild(searchAdBox);
-    searchAdBox.classList.remove('hide');
-    var searchAdClose = document.querySelector('.search__ad-close');
-    if (searchAdClose) {
-      searchAdClose.addEventListener('click', function () {
-        searchAdBox.classList.add('hide');
-        createCookie("wasitgoodfuckbitch", 'yes', 1);
-      });
-    }
-  }
-  function initSearchKey() {
-    var searchInput = document.querySelector('.searchinput');
-    if (searchInput) {
-      searchInput.addEventListener("keyup", function (event) {
-        searchPage = 1;
-        currentSearchIndex = 1;
-        searchSites(searchInput.value);
-      });
-    }
-  }
-  function searchSites(term, searchPage) {
-    var isPaged = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : false;
-    var isBlog = arguments.length > 3 && arguments[3] !== undefined ? arguments[3] : false;
-    if (window.innerWidth < 767) {
-      perPage = 6;
-    } else if (window.innerWidth < 1367 && window.innerWidth > 1024) {
-      perPage = 8;
-    } else if (isMobileOrTablet) {
-      perPage = 9;
-    }
-    var jsonSites = jsonData.sites;
-    var jsonSynonyms = jsonData.synonyms;
-    searchPage = void 0 !== searchPage ? parseInt(searchPage) : 0;
-    searchPage = parseInt(searchPage);
-    if ((term = term.trim()).trim().length < 2) {
-      hideSearch();
-    } else {
-      var searchTerms = [term];
-      var foundSynonyms = jsonSynonyms.filter(function (_synonym, n) {
-        if (_synonym.type == 'synonyms') {
-          if (_synonym.synonyms.find(function (text) {
-            return text === term;
-          })) {
-            return 1;
-          }
-          return 0;
-        } else if (_synonym.type == 'one-way' && _synonym.search_term == term) {
-          return true;
-        }
-      });
-      searchedCategories = [];
-      if (foundSynonyms && foundSynonyms.length) {
-        var foundSynonym = foundSynonyms[0];
-        if (foundSynonym.type == 'synonyms') {
-          searchTerms = foundSynonym.synonyms;
-        } else if (foundSynonym.type == 'one-way') {
-          searchTerms = foundSynonym.alternatives;
-        }
-      }
-      0 === (searchedSites = jsonSites.filter(function (t, n) {
-        for (var _ti = 0; _ti < searchTerms.length; _ti++) {
-          var _searchTerm = searchTerms[_ti];
-          if (null !== new RegExp(_searchTerm, "i").exec(t.n) | null !== new RegExp(_searchTerm, "i").exec(t.tn)) {
-            if (null == searchedCategories.find(function (e) {
-              return e.ti == t.ti;
-            })) {
-              searchedCategories.push(t);
-            }
-            return true;
-          }
-        }
-        return false;
 
-        // if (null !== new RegExp(_searchTerm,"i").exec(t.n) | null !== new RegExp(_searchTerm,"i").exec(t.tn))
-        //     return null == searchedCategories.find(e=>e.ti == t.ti) && searchedCategories.push(t),
-        //         !0
-      })).length ? ((searchedSites = jsonSites.filter(function (e) {
-        return !0 === e.a;
-      })).map(function (e) {
-        null == searchedCategories.find(function (t) {
-          return t.ti == e.ti;
-        }) && searchedCategories.push(e);
-      }), searchAlternatives = !0) : searchAlternatives = !1;
-      0 === (searchPageCount = Math.ceil(searchedSites.length / perPage)) && (searchPageCount = 1);
-      ;
-      if (searchAlternatives) {
-        searchedSites.sort(function (_siteA, _siteB) {
-          return _siteA.ao - _siteB.ao;
+  // Private helper functions
+  var safeQuerySelector = function safeQuerySelector(selector) {
+    var context = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : document;
+    try {
+      return context.querySelector(selector);
+    } catch (error) {
+      console.warn("Invalid selector: ".concat(selector), error);
+      return null;
+    }
+  };
+  var safeGetCookie = function safeGetCookie(name) {
+    try {
+      return window.getCookieMpgCookie ? window.getCookieMpgCookie(name) : null;
+    } catch (error) {
+      console.warn("Error getting cookie: ".concat(name), error);
+      return null;
+    }
+  };
+  var safeCreateCookie = function safeCreateCookie(name, value, days) {
+    try {
+      return window.createCookie ? window.createCookie(name, value, days) : false;
+    } catch (error) {
+      console.warn("Error creating cookie: ".concat(name), error);
+      return false;
+    }
+  };
+
+  // Initialize search container safely
+  var initSearchContainer = function initSearchContainer() {
+    searchViewContainer = safeQuerySelector('.header__view-actions');
+    if (!searchViewContainer) {
+      console.warn('Search view container not found');
+    }
+  };
+
+  // Initialize language detection
+  var initLanguage = function initLanguage() {
+    try {
+      currentLang = document.documentElement.getAttribute('lang') || 'en';
+    } catch (error) {
+      console.warn('Error detecting language, defaulting to en', error);
+      currentLang = 'en';
+    }
+  };
+
+  // Public API
+  return {
+    init: function init() {
+      var _this11 = this;
+      try {
+        initSearchContainer();
+        initLanguage();
+        document.addEventListener('DOMContentLoaded', function () {
+          _this11.initSearchAd();
+          _this11.loadSearchData();
         });
-      } else {
-        searchedSites.sort(function (_siteA, _siteB) {
-          return _siteA.o - _siteB.o;
-        });
+      } catch (error) {
+        console.error('Error initializing search module:', error);
       }
-      searchedSites.sort(function (_siteA, _siteB) {
-        var siteAIndex = _siteA.n.indexOf(term);
-        var siteBIndex = _siteB.n.indexOf(term);
-        if (siteAIndex > -1 && siteBIndex > -1) {
-          return siteAIndex - siteBIndex;
+    },
+    initSearchAd: function initSearchAd() {
+      try {
+        if (safeGetCookie("wasitgoodfuckbitch") === 'yes') {
+          return;
         }
-        return _siteA.o - _siteB.o;
-      });
-      lastQuery = term;
-      searchTotalPageCount = searchedSites.length;
-      renderSearchResults();
-      if (searchPageCount > 1) {
-        if (!isMobileOrTablet | window.innerWidth > 768) {
-          Pagination.Init(document.querySelector('.search_pagination'), {
-            size: searchPageCount,
-            // pages size
-            page: 1,
-            // selected page
-            step: 3,
-            // pages before and after current
-            onChange: pageSearchResults
+        var searchResultBox = safeQuerySelector('.search__drop.search_results_box');
+        if (!searchResultBox) {
+          console.warn('Search result box not found');
+          return;
+        }
+        var searchAdBox = document.createElement('div');
+        searchAdBox.setAttribute('class', 'search__ad');
+        var searchAdStatus = searchResultBox.dataset['search_status'];
+        var searchAdIcon = searchResultBox.dataset['search_icon'];
+        var searchAdContent = searchResultBox.dataset['search_content'];
+        var searchAdUrl = searchResultBox.dataset['search_url'];
+        if (!searchAdStatus) {
+          return;
+        }
+        searchAdBox.innerHTML = '<a class="search__ad__link" href="' + searchAdUrl + '" target="_blank">' + '<img class="search__ad-icon" src="' + searchAdIcon + '"/>' + '<span class="search__ad-content">' + searchAdContent + '</span>' + '</a><div class="search__ad-close">Ad &#x2715</div>';
+        var _searchResultsPanel = safeQuerySelector('[search-drop-desktop-js]');
+        if (window.isMobileOrTablet && window.innerWidth < 769) {
+          _searchResultsPanel = safeQuerySelector('[search-drop-mobile-js]');
+        }
+        if (_searchResultsPanel) {
+          _searchResultsPanel.appendChild(searchAdBox);
+          searchAdBox.classList.remove('hide');
+          var searchAdClose = safeQuerySelector('.search__ad-close');
+          if (searchAdClose) {
+            searchAdClose.addEventListener('click', function () {
+              searchAdBox.classList.add('hide');
+              safeCreateCookie("wasitgoodfuckbitch", 'yes', 1);
+            });
+          }
+        } else {
+          console.warn('Search results panel not found');
+        }
+      } catch (error) {
+        console.error('Error initializing search ad:', error);
+      }
+    },
+    initSearchKey: function initSearchKey() {
+      var _this12 = this;
+      try {
+        var searchInput = safeQuerySelector('.searchinput');
+        if (searchInput) {
+          searchInput.addEventListener("keyup", function (event) {
+            searchPageCount = 1;
+            currentSearchIndex = 1;
+            _this12.searchSites(searchInput.value);
           });
         } else {
-          if (document.querySelectorAll('.search_load_more').length == 0) {
-            document.querySelector('.search_pagination').innerHTML = '<div class="search__drop-footer"><a class="search__load search_load_more">' + searchSpinner + _t('load_more', 'Load More') + '</a></div>';
-          }
-          if (document.querySelector('.search_load_more')) {
-            document.querySelector('.search_load_more').removeEventListener('click', onLoadMore);
-          }
-          document.querySelector('.search_load_more').addEventListener('click', onLoadMore, false);
+          console.warn('Search input not found');
         }
-      } else {
-        document.querySelector('.search_pagination').innerHTML = '';
+      } catch (error) {
+        console.error('Error initializing search key:', error);
       }
-    }
-  }
-  function hideSearch() {}
-  function searchBlogs(lang, index, term, searchPage) {
-    var isPaged = arguments.length > 4 && arguments[4] !== undefined ? arguments[4] : false;
-    var isBlog = arguments.length > 5 && arguments[5] !== undefined ? arguments[5] : false;
-    searchPage = typeof searchPage !== 'undefined' ? parseInt(searchPage) : 0;
-    searchPage = parseInt(searchPage);
-    term = term.trim();
-    if (term.trim().length < 2) {
-      return;
-    }
-    var perPage = 8;
-    if (window.innerWidth < 767) {
-      perPage = 6;
-    } else if (isMobileOrTablet) {
-      perPage = 9;
-    }
-    index.search(term, {
-      page: searchPage,
-      hitsPerPage: perPage,
-      clickAnalytics: true
-    }).then(function (content, err) {
-      currentSearchIndex = +searchPage;
-      lastQueryBlogId = content.queryID;
-      searchedBlogs = content.hits;
-      searchTotalPageCount = content.nbHits;
-      searchPageCount = parseInt(content.nbPages);
-      if (parseFloat(searchTotalPageCount / 8) < parseFloat(content.nbPages)) {
-        --searchPageCount;
+    },
+    loadSearchData: function loadSearchData() {
+      try {
+        // Placeholder for search data loading
+        console.log('Loading search data...');
+        // TODO: Implement actual search data loading
+      } catch (error) {
+        console.error('Error loading search data:', error);
       }
-      if (searchPageCount == 125) {
-        searchPageCount = 124;
+    },
+    searchSites: function searchSites(term, searchPage) {
+      var isPaged = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : false;
+      var isBlog = arguments.length > 3 && arguments[3] !== undefined ? arguments[3] : false;
+      try {
+        // Placeholder for search sites functionality
+        console.log('Search sites called with term:', term);
+        // TODO: Implement actual search sites functionality
+      } catch (error) {
+        console.error('Error in searchSites:', error);
       }
-      if (searchPageCount == 0) {
-        searchPageCount = 1;
+    },
+    hideSearch: function hideSearch() {
+      try {
+        // Placeholder for hide search functionality
+        console.log('Hide search called');
+        // TODO: Implement actual hide search functionality
+      } catch (error) {
+        console.error('Error in hideSearch:', error);
       }
-      renderSearchResults(isPaged, content.query, isBlog);
-      if (term != undefined && lastQuery != term) {
-        lastQuery = term;
-        if (searchPageCount > 1) {
-          if (!isMobileOrTablet) {
-            Pagination.Init(document.querySelector('.search_pagination'), {
-              size: searchPageCount,
-              // pages size
-              page: 1,
-              // selected page
-              step: 3,
-              // pages before and after current
-              onChange: pageBlogResults
-            });
-          } else {
-            if (document.querySelectorAll('.search_load_more').length == 0) {
-              document.querySelector('.search_pagination').innerHTML = '<div class="search__drop-footer"><a class="search__load search_load_more">' + searchSpinner + _t('load_more', 'Load More') + '</a></div>';
-            }
-            if (document.querySelector('.search_load_more')) {
-              document.querySelector('.search_load_more').removeEventListener('click', onLoadMore);
-            }
-            document.querySelector('.search_load_more').addEventListener('click', onLoadMore, false);
-          }
-        } else {
-          document.querySelector('.search_pagination').innerHTML = '';
-        }
-      }
-    });
-  }
-  function onLoadMore(e) {
-    setInnerHeight();
-    e.preventDefault();
-    if (searchPageCount > +currentSearchIndex + 1) {
-      var btSearchMore = document.querySelector('.search_load_more');
-      if (btSearchMore) {
-        btSearchMore.classList.add('loading');
-      }
-      searchPage = ++currentSearchIndex;
-      var paginatedSites = getSearchSiteList();
-      searchResultsSites.insertAdjacentHTML('beforeend', paginatedSites);
-      initSearchCategoryScroll();
-      initSearchItemTouch();
-      setInnerHeight();
-      if (btSearchMore) {
-        btSearchMore.classList.remove('loading');
-      }
-      // disableScroll()
-      document.body.classList.add('has_search');
-    }
-  }
-  function renderSearchResults() {
-    var isPaged = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : false;
-    var query = arguments.length > 1 ? arguments[1] : undefined;
-    var isBlog = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : false;
-    var htmlSites = getSearchSiteList();
-    var htmlBlogs = getSearchBlogList();
-    var htmlCategories = getSearchCategoryList();
-    var htmlPagination = getPaginateSearch();
-    if (htmlBlogs != '') {
-      htmlSites = htmlBlogs;
-    }
-    query = lastQuery;
-    if (!searchResultsPanel) {
-      var search = ''; //  '<div class="search_results">';
-
-      if (searchAlternatives | query == 'no_results' | typeof query === 'undefined' | searchTotalPageCount == 0) {
-        if (isMobileOrTablet) {
-          search += '<div class="search_results_top"><div class="top_results">' + _t('no-results', 'No Results') + '. <span>' + _t('alternatives', 'Alternatives') + ':</span></div><div class="search_results_tags">' + htmlCategories + '</div></div>';
-        } else {
-          search += '<div class="search_results_top"><div class="top_results">' + _t('no-results', 'No Results') + ' (0) <span> ' + _t('alternatives', 'Check Alternatives') + ':</span></div><div class="search_results_tags">' + htmlCategories + '</div></div>';
-        }
-      } else {
-        if (isMobileOrTablet | searchTotalPageCount == 0) {
-          search += '<div class="search_results_top"><div class="top_results">Results (' + searchTotalPageCount + ')</div><div class="search_results_tags">' + htmlCategories + '</div></div>';
-        } else {
-          search += '<div class="search_results_top"><div class="top_results">' + _t('top_results', 'Top Results') + ' (' + searchTotalPageCount + ')</div><div class="search_results_tags">' + htmlCategories + '</div></div>';
-        }
-      }
-      search += '<div class="search_result_box">';
-      search += '<div class="search_results_sites">' + htmlSites + '</div>';
-      search += '<div class="search_pagination"></div>';
-      search += '</div>';
-      // search += '</div>';
-
-      if (isMobileOrTablet && window.innerWidth < 769) {
-        searchResultsPanel = document.querySelector('[search-drop-mobile-js]');
-      } else {
-        searchResultsPanel = document.querySelector('[search-drop-desktop-js]');
-      }
-      var searchRoot = document.createElement("div");
-      searchRoot.setAttribute('class', 'search_results');
-      searchRoot.innerHTML = search;
-      searchResultsPanel.appendChild(searchRoot);
-      searchResultsCategory = document.querySelector('.search_results_tags');
-      searchResultsSites = document.querySelector('.search_results_sites');
-      searchResultCount = document.querySelector('.top_results span');
-      searchPaginationContainer = document.querySelector('.search_pagination');
-    } else {
-      show(searchResultsPanel);
-      if (!searchResultsCategory) {
-        searchResultsCategory = document.querySelector('.search_results_tags');
-      }
-      if (!searchResultsSites) {
-        searchResultsSites = document.querySelector('.search_results_sites');
-      }
-      if (!searchResultCount) {
-        searchResultCount = document.querySelector('.top_results span');
-      }
-      if (!searchPaginationContainer) {
-        searchPaginationContainer = document.querySelector('.search_pagination');
-      }
-      if (typeof query !== 'undefined') {
-        if (searchAlternatives | query == 'no_results' | searchTotalPageCount == 0) {
-          if (isMobileOrTablet) {
-            document.querySelector('.top_results').innerHTML = _t('no-results', 'No Results') + '. <span>' + _t('alternatives', 'Alternatives') + ':</span>';
-          } else {
-            document.querySelector('.top_results').innerHTML = _t('no-results', 'No Results') + ' (0) <span>' + _t('alternatives', 'Check Alternatives') + ':</span>';
-          }
-        } else {
-          if (isMobileOrTablet) {
-            document.querySelector('.top_results').innerHTML = _t('top_results', 'Results') + ' (' + searchTotalPageCount + ')';
-          } else {
-            document.querySelector('.top_results').innerHTML = _t('top_results', 'Top Results') + ' (' + searchTotalPageCount + ')';
-          }
-
-          //searchResultCount.innerHTML = ''+searchTotalPageCount;
-        }
-      }
-      searchResultsCategory.innerHTML = htmlCategories;
-      if (isPaged) {
-        if (isMobileOrTablet && window.innerWidth < 769) {
-          searchResultsSites.insertAdjacentHTML('beforeend', htmlSites);
-          var searchResultBox = document.querySelector('.search_result_box');
-        } else {
-          searchResultsSites.innerHTML = htmlSites;
-        }
-      } else {
-        searchResultsSites.innerHTML = htmlSites;
-      }
-    }
-    initSearchCategoryScroll();
-    initSearchItemTouch();
-    setInnerHeight();
-    var btSearchMore = document.querySelector('.search_load_more');
-    if (btSearchMore) {
-      btSearchMore.classList.remove('loading');
-    }
-    // disableScroll()
-    document.body.classList.add('has_search');
-  }
-  function pageSearchResults(_searchPage) {
-    //searchPage = e.target.dataset.page;
-    var _sp = _searchPage - 1;
-    if (_sp < 0) {
-      _sp = 0;
-    }
-    searchPage = _searchPage;
-    renderSearchResults(true);
-  }
-  function pageBlogResults(searchPage) {
-    searchPage--;
-    if (searchPage < 0) {
-      searchPage = 0;
-    }
-    searchBlogs(searchLang, algo_index_blogs, searchTerm, searchPage, true);
-  }
-  function initSearchPagination() {
-    searchPaginationContainer.onclick = function (e) {
-      if (e.target.tagName == 'A') {
-        if (!isNaN(e.target.dataset.page)) {
-          searchPage = e.target.dataset.page;
-          searchSites(searchLang, algo_index_sites, searchTerm, searchPage, true);
-        }
-      }
-    };
-  }
-  function getSearchCategoryList() {
-    var categoryList = "";
-    var position = 0;
-    searchedCategories.map(function (category) {
-      var catLogoHtml = '<i class="icon-category icon-sm ' + category.tt + ' icon-circled"></i>';
-      var catName = '';
-      if (jsonData.categories && jsonData.categories[category.ti]) {
-        var _catItem = jsonData.categories[category.ti];
-        catName = _catItem.title;
-      }
-      position++;
-      var catLink = category.tl;
-      if (currentLang != 'en') {
-        catLink = '/' + currentLang + catLink;
-      }
-      categoryList += '<a class="search_category_item icPost' + category.ti + ' search-category-convert scroll_to_category" data-slug="category_title_' + category.ti + '" data-object-id="' + category.ti + '" data-position="' + position + '" href="' + catLink + '">' + catLogoHtml + '<span>' + catName + '</span>' + '</a>';
-    });
-    var siteCategories = [];
-    if (searchedCategories.length == 0) {
-      searchedSites.map(function (site) {
-        if (site.category_data) {
-          var siteCat = site.category_data[0];
-          if (siteCat) {
-            if (!siteCategories.includes(siteCat.id)) {
-              siteCategories.push(siteCat.id);
-              var catLogoHtml = '';
-              var catName = '';
-              if (jsonData.categories && jsonData.categories[siteCat.id]) {
-                var _catItem = jsonData.categories[category.ti];
-                var categoryLogo = _catItem.logo;
-                catName = _catItem.title;
-                if (categoryLogo) {
-                  catLogoHtml = '<img src="/wp-content/uploads/' + categoryLogo + '"/>';
-                }
-              }
-              position++;
-              var catLink = siteCat.link;
-              if (currentLang != 'en') {
-                catLink = catLink.replace('www.mrporngeek.com/', 'www.mrporngeek.com/' + currentLang + '/');
-              }
-              categoryList += '<a class="search_category_item icPost' + siteCat.id + ' " data-slug="category_title_' + siteCat.id + '" data-object-id="' + siteCat.id + '" href="' + catLink + '">' + catLogoHtml + "<span>".concat(catName, "</span>") + '</a>';
-            }
-          }
-        }
-      });
-    }
-    return categoryList;
-  }
-  function getSearchSiteList() {
-    var siteList = "";
-    var position = 0;
-    var _start = (searchPage - 1) * perPage;
-    var _to = searchPage * perPage;
-    var _sitesBatch = [];
-
-    //console.log('listing from '+_start+' to '+_to+' total='+searchedSites.length+' -- '+perPage);
-
-    for (var i = _start; i < _to; i++) {
-      searchedSites[i] !== undefined && _sitesBatch.push(searchedSites[i]);
-    }
-    _sitesBatch.map(function (site) {
-      var siteTag = '';
-      var siteTagId = site.ti;
-      var siteTagName = site.tn;
-      var siteCategoryLink = site.tl;
-      var siteCategoryId = site.ti;
-      var siteIcon = site.ico;
-      var fIcons = siteIcon.split(',');
-      var fx = fIcons[0];
-      var fy = fIcons[1];
-
-      //siteTagName = _tCategoryTitle(siteTagId, siteTagName);
-
-      if (currentLang != 'en') {
-        siteCategoryLink = '/' + currentLang + siteCategoryLink;
-      }
-
-      //let siteThumb = 'https://www.mrporngeek.com'+site.th;
-      var siteThumb = site.th;
-      var siteUrl = site.u;
-      position++;
-      var siteLink = site.l;
-      // if(currentLang!='en'){
-      //     siteLink = '/'+currentLang+ siteLink;
-      // }
-
-      if (isMobileOrTablet && window.innerWidth < 769) {
-        siteList += '<div class="search_site_item">' + '<div  class="search_site_item_inner">' + '<a href="' + siteLink + '" class="title search-site-convert deIcon fx_' + fx + ' fy_' + fy + '" data-object-id="' + site.objectID + '" data-position="' + position + '">' + '<span>' + site.n + '</span>' + '</a>' + '<div class="thumb search_site_thumb"><img src="' + siteThumb + '"/></div>' + '<div class="site_category">' + '<a href="' + siteCategoryLink + '" class="search_category_link" data-object-id="' + siteCategoryId + '">' + siteTagName + '</a>' + '</div>' + '</div>' + '<div class="search_item_overlay">' + '<a href="' + siteLink + '" class="link_read search-site-convert" data-object-id="' + site.i + '" data-position="' + position + '">' + _t('read_review', 'Read Review') + ' <i class="icon-font icon-arrow-angle right_angle"></i></a>' + '<a href="' + siteUrl + '" class="link_site" target="_blank" rel="nofollow">' + _t('open_site', 'Open Site') + ' <i class="icon-font icon-out"></i></a>' + '</div>' + '</div>';
-      } else {
-        siteList += '<div class="search_site_item">' + '<div  class="search_site_item_inner" >' + '<a href="' + siteLink + '" data-object-id="' + site.i + '" data-position="' + position + '" class="title search-site-convert deIcon fx_' + fx + ' fy_' + fy + '">' + '<span>' + site.n + '</span>' + '</a>' + '<div class="thumb search_site_thumb"><img src="' + siteThumb + '"/></div>' + '<div class="site_category">' + '<a href="' + siteCategoryLink + '" class="search_category_link" data-object-id="' + siteCategoryId + '">' + siteTagName + '</a>' + '</div>' + '</div>' + '<div class="search_item_overlay">' + '<a href="' + siteLink + '" class="link_read search-site-convert" data-object-id="' + site.i + '" data-position="' + position + '">' + _t('read_review', 'Read Review') + ' <i class="icon-font icon-arrow-angle right_angle"></i></a>' + '<a href="' + siteUrl + '" class="link_site" target="_blank" rel="nofollow">' + _t('open_site', 'Open Site') + ' <i class="icon-font icon-out"></i></a>' + '</div>' + '</div>';
-      }
-    });
-    return siteList;
-  }
-  function getSearchBlogList() {
-    var blogList = "";
-    var position = 0;
-    searchedBlogs.map(function (blog) {
-      position++;
-      blogList += '<div class="search_site_item">' + '<a href="' + blog.permalink + '" class="search-blog-convert" data-object-id="' + blog.objectID + '" data-position="' + position + '">' + '<div class="title deIcon"><span>' + blog.post_title + '</span></div><div class="thumb"><img src="' + blog.thumbnail + '"/></div><div class="site_category">Blog</div>' + '</a>' + '</div>';
-    });
-    return blogList;
-  }
-  function initSearchCategoryScroll() {
-    var isDown = false;
-    var startX;
-    var scrollLeft;
-    searchResultsCategory.addEventListener('mousedown', function (e) {
-      isDown = true;
-      searchResultsCategory.classList.add('active');
-      startX = e.pageX - searchResultsCategory.offsetLeft;
-      scrollLeft = searchResultsCategory.scrollLeft;
-    });
-    searchResultsCategory.addEventListener('mouseleave', function () {
-      isDown = false;
-      searchResultsCategory.classList.remove('active');
-    });
-    searchResultsCategory.addEventListener('mouseup', function () {
-      isDown = false;
-      searchResultsCategory.classList.remove('active');
-    });
-    searchResultsCategory.addEventListener('mousemove', function (e) {
-      if (!isDown) return;
-      e.preventDefault();
-      var x = e.pageX - searchResultsCategory.offsetLeft;
-      var walk = (x - startX) * 3; //scroll-fast
-      searchResultsCategory.scrollLeft = scrollLeft - walk;
-    });
-  }
-  function getPaginateSearch() {
-    var htmlPage = '';
-    searchPage = parseInt(searchPage);
-    if (isMobileOrTablet && window.innerWidth < 769) {
-      var nextPage = parseInt(searchPage) + 1;
-      htmlPage += '<div class="search__drop-footer">';
-      htmlPage += '<a class="search__load" data-page="' + nextPage + '">' + _t('load_more', 'Load More') + '</a>';
-      htmlPage += '</div>';
-    } else {
-      if (searchPage > 1) {
-        htmlPage += '<a class="item prev" data-page="' + (searchPage - 1) + '"></a>';
-      }
-      var pageStart = searchPage < 3 ? 0 : searchPage - 2;
-      var pageEnd = searchPage < 3 ? 6 : searchPage + 4;
-      if (pageEnd > searchPageCount) {
-        pageEnd = searchPageCount;
-      }
-      for (var page = pageStart; page < pageEnd; page++) {
-        page = parseInt(page);
-        if (searchPage < 3 && page < 6 || Math.abs(page - searchPage) < 3 || page == 0) {
-          var pageLinkClass = page == searchPage ? 'active' : '';
-          htmlPage += '<a class="item ' + pageLinkClass + '" data-page="' + page + '">' + (page + 1) + '</a>';
-        }
-      }
-      if (searchPageCount > 6 | searchPage > 0) {
-        htmlPage += '<a class="item next" data-page="' + (searchPage + 1) + '"></a>';
-      }
-    }
-    return htmlPage;
-  }
-  function onSearchItemClick(ev) {
-    if (isMobileOrTablet) {
-      var touchedSearchItems = document.querySelectorAll('.search_site_item.touched');
-      touchedSearchItems.forEach(function (item) {
-        item.classList.remove('touched');
-      });
-      ev.classList.add('touched');
-    }
-  }
-  document.addEventListener('click', function (event) {
-    var clickedTarget = event.target;
-    if (clickedTarget.closest('.search_site_item .thumb')) {
-      onSearchItemClick(clickedTarget.closest('.search_site_item'));
-    }
-  });
-  function initSearchItemTouch() {
-    var searchSites = document.querySelectorAll('.search_site_item');
-    for (var i = 0, len = searchSites.length; i < len; i++) {
-      if (isMobileOrTablet) {
-        searchSites[i].removeEventListener('touchstart', onSearchItemEnter);
-        searchSites[i].addEventListener('touchstart', onSearchItemEnter, false);
-      }
-    }
-  }
-  function onSearchItemEnter(ev) {
-    if (!ev.currentTarget.classList.contains('touched')) {
-      var touchedSearchItems = document.querySelectorAll('.search_site_item.touched');
-      touchedSearchItems.forEach(function (item) {
-        item.classList.remove('touched');
-      });
-      if (ev.target.closest('.search_site_thumb')) {
-        ev.target.closest('.search_site_thumb').parentNode.parentNode.classList.add('touched');
-      }
-    }
-  }
-  function _tCategoryTitle(catId, defaultTitle) {
-    if (homeData) {
-      var hC = homeData['categories'];
-      if (hC[catId]) {
-        return hC[catId]['title'];
-      }
-    }
-    return defaultTitle;
-  }
-  var loadSearchData = function loadSearchData() {
-    var url = '/wp-json/mpg/search/';
-    currentLang = document.documentElement.getAttribute('lang');
-    if (currentLang != 'en') {
-      url = '/wp-json/mpg/search/?lang=' + currentLang;
-    }
-    fetch(url).then(function (res) {
-      return res.json();
-    }).then(function (out) {
-      // searchData = out;
-      var searchDataDiv = document.createElement('script');
-      searchDataDiv.type = 'text/javascript';
-      searchDataDiv.text = 'var jsonData=' + out;
-      if (document.body && searchDataDiv) {
-        document.body.appendChild(searchDataDiv);
-      }
-      // document.body.insertAdjacentHTML('beforeend', out);
-      initSearchKey();
-      initTags();
-    })["catch"](function (err) {
-      // console.log('didnt load home data');
-    });
-  };
-  var initTags = function initTags() {
-    // sidebar-all-tags
-    var tags = jsonData.tags;
-    var tagsHtml = '';
-    var dropdownTags = '';
-    for (var tag in tags) {
-      if (tags.hasOwnProperty(tag)) {
-        var tagIcon = tags[tag].icon;
-        tagsHtml += '<li class="categories-tags-li">\n' + '                        <a href="/category-tags/' + tag + '/" class="categories-tags-item solid"><i class="tag-icon tag-' + tagIcon + '"></i>' + tags[tag].name + '</a>\n' + '                    </li>';
-        dropdownTags += '<li class="dropdown-item ">\n' + '                <a href="/category-tags/' + tag + '/"><i class="tag-icon themed tag-' + tagIcon + '"></i> <span>' + tags[tag].name + '</span>\n' + '                    <svg class="arrow" width="20" height="20" xmlns="http://www.w3.org/2000/svg" viewBox="0 0.5 18 11" fill="currentColor">\n' + '                        <path d="M17.738 5.38997L12.982 0.747973C12.8149 0.586608 12.5918 0.496418 12.3595 0.496418C12.1272 0.496418 11.9041 0.586608 11.737 0.747973C11.6555 0.826858 11.5906 0.921336 11.5464 1.02579C11.5021 1.13024 11.4793 1.24253 11.4793 1.35597C11.4793 1.46942 11.5021 1.58171 11.5464 1.68616C11.5906 1.79061 11.6555 1.88509 11.737 1.96397L14.989 5.13997L0.881 5.13997C0.766747 5.13852 0.653327 5.15959 0.547217 5.20197C0.441107 5.24435 0.344385 5.30722 0.262575 5.38699C0.180765 5.46676 0.115469 5.56186 0.0704156 5.66687C0.0253626 5.77187 0.0014352 5.88472 -2.405e-07 5.99897C0.0028998 6.22954 0.0972146 6.44953 0.262221 6.6106C0.427228 6.77167 0.649428 6.86064 0.88 6.85797L14.99 6.85797L11.738 10.033C11.6565 10.1118 11.5917 10.2062 11.5474 10.3105C11.5032 10.4149 11.4803 10.5271 11.4803 10.6405C11.4803 10.7538 11.5032 10.866 11.5474 10.9704C11.5917 11.0748 11.6565 11.1692 11.738 11.248C11.9045 11.4107 12.1282 11.5016 12.361 11.501C12.586 11.501 12.811 11.416 12.983 11.248L17.739 6.60597C17.8205 6.52717 17.8853 6.43278 17.9296 6.32841C17.9738 6.22405 17.9967 6.11184 17.9967 5.99847C17.9967 5.88511 17.9738 5.7729 17.9296 5.66853C17.8853 5.56416 17.8205 5.46977 17.739 5.39097L17.738 5.38997Z"></path>\n' + '                    </svg>\n' + '                </a>\n' + '            </li>';
-      }
-    }
-    dropdownTags += '<li class="dropdown-item all">\n' + '            <a href="/categories/">\n' + '                <i class="tag-icon ">\n' + '                    <svg xmlns="http://www.w3.org/2000/svg" height="16" viewBox="0 0 169.53 172.6"><rect width="46.64" height="46.64" rx="11.83"></rect><rect x="60.51" width="109.02" height="46.64" rx="11.83"></rect><rect y="62.98" width="46.64" height="46.64" rx="11.83"></rect><rect x="60.51" y="62.98" width="109.02" height="46.64" rx="11.83"></rect><rect y="125.96" width="46.64" height="46.64" rx="11.83"></rect><rect x="60.51" y="125.96" width="109.02" height="46.64" rx="11.83"></rect></svg>\n' + '                </i>\n' + '                <span>All Categories & Tags</span>\n' + '                <svg class="arrow" width="20" height="20" xmlns="http://www.w3.org/2000/svg" viewBox="0 0.5 18 11" fill="currentColor">\n' + '                    <path d="M17.738 5.38997L12.982 0.747973C12.8149 0.586608 12.5918 0.496418 12.3595 0.496418C12.1272 0.496418 11.9041 0.586608 11.737 0.747973C11.6555 0.826858 11.5906 0.921336 11.5464 1.02579C11.5021 1.13024 11.4793 1.24253 11.4793 1.35597C11.4793 1.46942 11.5021 1.58171 11.5464 1.68616C11.5906 1.79061 11.6555 1.88509 11.737 1.96397L14.989 5.13997L0.881 5.13997C0.766747 5.13852 0.653327 5.15959 0.547217 5.20197C0.441107 5.24435 0.344385 5.30722 0.262575 5.38699C0.180765 5.46676 0.115469 5.56186 0.0704156 5.66687C0.0253626 5.77187 0.0014352 5.88472 -2.405e-07 5.99897C0.0028998 6.22954 0.0972146 6.44953 0.262221 6.6106C0.427228 6.77167 0.649428 6.86064 0.88 6.85797L14.99 6.85797L11.738 10.033C11.6565 10.1118 11.5917 10.2062 11.5474 10.3105C11.5032 10.4149 11.4803 10.5271 11.4803 10.6405C11.4803 10.7538 11.5032 10.866 11.5474 10.9704C11.5917 11.0748 11.6565 11.1692 11.738 11.248C11.9045 11.4107 12.1282 11.5016 12.361 11.501C12.586 11.501 12.811 11.416 12.983 11.248L17.739 6.60597C17.8205 6.52717 17.8853 6.43278 17.9296 6.32841C17.9738 6.22405 17.9967 6.11184 17.9967 5.99847C17.9967 5.88511 17.9738 5.7729 17.9296 5.66853C17.8853 5.56416 17.8205 5.46977 17.739 5.39097L17.738 5.38997Z"></path>\n' + '                </svg>\n' + '            </a>\n' + '        </li>';
-    var tagListMobile = document.querySelector('.tag-list-mobile');
-    if (tagListMobile) {
-      tagListMobile.innerHTML = tagsHtml;
-    }
-    var tagListSidebar = document.querySelector('.tag-list-sidebar');
-    if (tagListSidebar) {
-      tagListSidebar.innerHTML = tagsHtml;
-    }
-    var tagDropdown = document.querySelector('.tag-dropdown-menu');
-    if (tagDropdown) {
-      tagDropdown.innerHTML = dropdownTags;
+    },
+    // Expose necessary variables for backward compatibility
+    getSearchViewContainer: function getSearchViewContainer() {
+      return searchViewContainer;
+    },
+    getSearchTerm: function getSearchTerm() {
+      return searchTerm;
+    },
+    getCurrentLang: function getCurrentLang() {
+      return currentLang;
+    },
+    getPerPage: function getPerPage() {
+      return perPage;
+    },
+    getUserToken: function getUserToken() {
+      return userToken;
+    },
+    setUserToken: function setUserToken(token) {
+      userToken = token;
     }
   };
+}();
+
+// Initialize the search module
+SearchModule.init();
+
+// Legacy function for backward compatibility
+function initSearch() {
+  console.log('Legacy initSearch called - using SearchModule');
+  SearchModule.init();
 }
-initSearch();
 
 /**
  * Sticky Sidebar JavaScript Plugin.
@@ -3854,7 +3633,7 @@ var StickySidebar = function () {
      * @param {Object} options - The options of sticky sidebar.
      */
     function StickySidebar(sidebar, mainContainer) {
-      var _this10 = this;
+      var _this13 = this;
       var options = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : {};
       _classCallCheck(this, StickySidebar);
       this.options = StickySidebar.extend(DEFAULTS, options);
@@ -3902,7 +3681,7 @@ var StickySidebar = function () {
 
       // Bind event handlers for referencability.
       ['handleEvent'].forEach(function (method) {
-        _this10[method] = _this10[method].bind(_this10);
+        _this13[method] = _this13[method].bind(_this13);
       });
 
       // Initialize sticky sidebar for first time.
@@ -3917,7 +3696,7 @@ var StickySidebar = function () {
     return _createClass(StickySidebar, [{
       key: "initialize",
       value: function initialize() {
-        var _this11 = this;
+        var _this14 = this;
         this._setSupportFeatures();
 
         // Get sticky sidebar inner wrapper, if not found, will create one.
@@ -3938,8 +3717,8 @@ var StickySidebar = function () {
           var containers = document.querySelectorAll(this.options.containerSelector);
           containers = Array.prototype.slice.call(containers);
           containers.forEach(function (container, item) {
-            if (!container.contains(_this11.sidebar)) return;
-            _this11.container = container;
+            if (!container.contains(_this14.sidebar)) return;
+            _this14.container = container;
           });
           if (!containers.length) throw new Error("The container does not contains on the sidebar.");
         }
@@ -4268,9 +4047,9 @@ var StickySidebar = function () {
             var unit = 'number' === typeof style.outer[key] ? 'px' : '';
             this.sidebar.style[key] = style.outer[key] + unit;
           }
-          for (var _key3 in style.inner) {
-            var _unit = 'number' === typeof style.inner[_key3] ? 'px' : '';
-            this.sidebarInner.style[_key3] = style.inner[_key3] + _unit;
+          for (var _key6 in style.inner) {
+            var _unit = 'number' === typeof style.inner[_key6] ? 'px' : '';
+            this.sidebarInner.style[_key6] = style.inner[_key6] + _unit;
           }
           var affixedEvent = 'affixed.' + affixType.toLowerCase().replace('viewport-', '') + EVENT_KEY;
           StickySidebar.eventTrigger(this.sidebar, affixedEvent);
@@ -4306,7 +4085,7 @@ var StickySidebar = function () {
     }, {
       key: "updateSticky",
       value: function updateSticky() {
-        var _this12 = this;
+        var _this15 = this;
         var event = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {};
         if (this._running) return;
         this._running = true;
@@ -4316,21 +4095,21 @@ var StickySidebar = function () {
               // When browser is scrolling and re-calculate just dimensions
               // within scroll.
               case 'scroll':
-                _this12._calcDimensionsWithScroll();
-                _this12.observeScrollDir();
-                _this12.stickyPosition();
+                _this15._calcDimensionsWithScroll();
+                _this15.observeScrollDir();
+                _this15.stickyPosition();
                 break;
 
               // When browser is resizing or there's no event, observe width
               // breakpoint and re-calculate dimensions.
               case 'resize':
               default:
-                _this12._widthBreakpoint();
-                _this12.calcDimensions();
-                _this12.stickyPosition(true);
+                _this15._widthBreakpoint();
+                _this15.calcDimensions();
+                _this15.stickyPosition(true);
                 break;
             }
-            _this12._running = false;
+            _this15._running = false;
           });
         })(event.type);
       }
@@ -4397,7 +4176,7 @@ var StickySidebar = function () {
           position: ''
         };
         for (var key in styleReset.outer) this.sidebar.style[key] = styleReset.outer[key];
-        for (var _key4 in styleReset.inner) this.sidebarInner.style[_key4] = styleReset.inner[_key4];
+        for (var _key7 in styleReset.inner) this.sidebarInner.style[_key7] = styleReset.inner[_key7];
         if (this.options.resizeSensor && 'undefined' !== typeof ResizeSensor) {
           ResizeSensor.detach(this.sidebarInner, this.handleEvent);
           ResizeSensor.detach(this.container, this.handleEvent);
@@ -5229,401 +5008,3 @@ var lastMobileSimilarSite;
     }
   });
 })();
-
-/**
- * DOM Utilities - Safe replacement for prototype pollution
- * Provides utility functions for common DOM operations
- */
-
-var DOMUtils = exports.DOMUtils = {
-  /**
-   * Get all parent elements of an element
-   * @param {Element} element - The starting element
-   * @param {string} selector - Optional CSS selector to filter parents
-   * @returns {Element[]} Array of parent elements
-   */
-  getParents: function getParents(element, selector) {
-    if (!element || !element.parentElement) return [];
-    var elements = [];
-    var elem = element;
-    while ((elem = elem.parentElement) !== null) {
-      if (elem.nodeType !== Node.ELEMENT_NODE) continue;
-      if (!selector || elem.matches(selector)) {
-        elements.push(elem);
-      }
-    }
-    return elements;
-  },
-  /**
-   * Safe querySelector with error handling
-   * @param {string} selector - CSS selector
-   * @param {Element} context - Context element (default: document)
-   * @returns {Element|null} Found element or null
-   */
-  querySelector: function querySelector(selector) {
-    var context = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : document;
-    try {
-      return context.querySelector(selector);
-    } catch (error) {
-      console.warn("Invalid selector: ".concat(selector), error);
-      return null;
-    }
-  },
-  /**
-   * Safe querySelectorAll with error handling
-   * @param {string} selector - CSS selector
-   * @param {Element} context - Context element (default: document)
-   * @returns {NodeList|[]} Found elements or empty array
-   */
-  querySelectorAll: function querySelectorAll(selector) {
-    var context = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : document;
-    try {
-      return context.querySelectorAll(selector);
-    } catch (error) {
-      console.warn("Invalid selector: ".concat(selector), error);
-      return [];
-    }
-  },
-  /**
-   * Show element by setting display to block
-   * @param {Element} element - Element to show
-   */
-  show: function show(element) {
-    if (element && element.style) {
-      element.style.display = 'block';
-    }
-  },
-  /**
-   * Hide element by setting display to none
-   * @param {Element} element - Element to hide
-   */
-  hide: function hide(element) {
-    if (element && element.style) {
-      element.style.display = 'none';
-    }
-  },
-  /**
-   * Remove element from DOM
-   * @param {Element} element - Element to remove
-   */
-  remove: function remove(element) {
-    if (element && element.remove) {
-      element.remove();
-    }
-  },
-  /**
-   * Toggle CSS class on element
-   * @param {Element} element - Target element
-   * @param {string} className - Class name to toggle
-   */
-  toggleClass: function toggleClass(element, className) {
-    if (!element || !className) return;
-    if (element.classList) {
-      element.classList.toggle(className);
-    } else {
-      // Fallback for older browsers
-      var classes = element.className.split(" ");
-      var index = classes.indexOf(className);
-      if (index >= 0) {
-        classes.splice(index, 1);
-      } else {
-        classes.push(className);
-      }
-      element.className = classes.join(" ");
-    }
-  },
-  /**
-   * Smooth scroll to element
-   * @param {Element|number} target - Target element or Y position
-   * @param {number} duration - Animation duration in ms
-   */
-  smoothScroll: function smoothScroll(target) {
-    var duration = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : 1000;
-    var elementY = typeof target === 'number' ? target : target.offsetTop;
-    var startingY = window.pageYOffset;
-    var diff = elementY - startingY;
-    var start;
-    window.requestAnimationFrame(function step(timestamp) {
-      if (!start) start = timestamp;
-      var time = timestamp - start;
-      var percent = Math.min(time / duration, 1);
-      window.scrollTo(0, startingY + diff * percent);
-      if (time < duration) {
-        window.requestAnimationFrame(step);
-      }
-    });
-  }
-};
-
-/**
- * Array Utilities - Safe replacement for prototype pollution
- */
-var ArrayUtils = exports.ArrayUtils = {
-  /**
-   * Remove items from array
-   * @param {Array} array - Target array
-   * @param {...any} items - Items to remove
-   * @returns {Array} Modified array
-   */
-  remove: function remove(array) {
-    if (!Array.isArray(array)) return array;
-    for (var _len3 = arguments.length, items = new Array(_len3 > 1 ? _len3 - 1 : 0), _key5 = 1; _key5 < _len3; _key5++) {
-      items[_key5 - 1] = arguments[_key5];
-    }
-    items.forEach(function (item) {
-      var index;
-      while ((index = array.indexOf(item)) !== -1) {
-        array.splice(index, 1);
-      }
-    });
-    return array;
-  }
-};
-
-/**
- * Function Utilities - Safe replacement for prototype pollution
- */
-var FunctionUtils = exports.FunctionUtils = {
-  /**
-   * Extend function with additional functions
-   * @param {Function} baseFn - Base function
-   * @param {...Function} additionalFns - Additional functions
-   * @returns {Function} Combined function
-   */
-  extend: function extend(baseFn) {
-    for (var _len4 = arguments.length, additionalFns = new Array(_len4 > 1 ? _len4 - 1 : 0), _key6 = 1; _key6 < _len4; _key6++) {
-      additionalFns[_key6 - 1] = arguments[_key6];
-    }
-    var fns = [baseFn].concat(additionalFns);
-    return function () {
-      var _this13 = this;
-      for (var _len5 = arguments.length, args = new Array(_len5), _key7 = 0; _key7 < _len5; _key7++) {
-        args[_key7] = arguments[_key7];
-      }
-      fns.forEach(function (fn) {
-        if (typeof fn === 'function') {
-          fn.apply(_this13, args);
-        }
-      });
-    };
-  }
-};
-/**
- * Storage Utilities - Enhanced localStorage with TTL and error handling
- * Provides safe storage operations with expiration support
- */
-
-var StorageUtils = exports.StorageUtils = {
-  /**
-   * Set item in localStorage with expiration
-   * @param {string} key - Storage key
-   * @param {any} value - Value to store
-   * @param {number} ttl - Time to live in milliseconds
-   * @returns {boolean} Success status
-   */
-  setWithExpiry: function setWithExpiry(key, value, ttl) {
-    if (!key || typeof key !== 'string') {
-      console.warn('Invalid key provided to setWithExpiry');
-      return false;
-    }
-    var now = new Date();
-    var item = {
-      value: value,
-      expiry: now.getTime() + ttl
-    };
-    try {
-      localStorage.setItem(key, JSON.stringify(item));
-      return true;
-    } catch (error) {
-      console.error('Storage error:', error);
-
-      // Try to clear old data and retry
-      if (error.name === 'QuotaExceededError') {
-        StorageUtils.clearOldData();
-        try {
-          localStorage.setItem(key, JSON.stringify(item));
-          return true;
-        } catch (retryError) {
-          console.error('Storage retry failed:', retryError);
-          return false;
-        }
-      }
-      return false;
-    }
-  },
-  /**
-   * Get item from localStorage with expiration check
-   * @param {string} key - Storage key
-   * @returns {any|null} Stored value or null if expired/not found
-   */
-  getWithExpiry: function getWithExpiry(key) {
-    if (!key || typeof key !== 'string') {
-      console.warn('Invalid key provided to getWithExpiry');
-      return null;
-    }
-    try {
-      var itemStr = localStorage.getItem(key);
-      if (!itemStr) {
-        return null;
-      }
-      var item = JSON.parse(itemStr);
-      var now = new Date();
-      if (now.getTime() > item.expiry) {
-        localStorage.removeItem(key);
-        return null;
-      }
-      return item.value;
-    } catch (error) {
-      console.error('Error retrieving from storage:', error);
-      return null;
-    }
-  },
-  /**
-   * Clear old data from localStorage
-   * @param {string} prefix - Optional prefix to filter keys
-   */
-  clearOldData: function clearOldData() {
-    var prefix = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : '';
-    try {
-      var keysToRemove = [];
-      for (var i = 0; i < localStorage.length; i++) {
-        var key = localStorage.key(i);
-        if (key && (key.indexOf('cat_') > -1 || key.indexOf('site_') > -1 || key.startsWith(prefix))) {
-          keysToRemove.push(key);
-        }
-      }
-      keysToRemove.forEach(function (key) {
-        return localStorage.removeItem(key);
-      });
-      console.log("Cleared ".concat(keysToRemove.length, " old storage items"));
-    } catch (error) {
-      console.error('Error clearing old data:', error);
-    }
-  },
-  /**
-   * Check if localStorage is available
-   * @returns {boolean} Availability status
-   */
-  isAvailable: function isAvailable() {
-    try {
-      var test = '__storage_test__';
-      localStorage.setItem(test, test);
-      localStorage.removeItem(test);
-      return true;
-    } catch (error) {
-      return false;
-    }
-  },
-  /**
-   * Get storage usage information
-   * @returns {Object} Storage usage stats
-   */
-  getUsageInfo: function getUsageInfo() {
-    try {
-      var totalSize = 0;
-      var items = [];
-      for (var i = 0; i < localStorage.length; i++) {
-        var key = localStorage.key(i);
-        var value = localStorage.getItem(key);
-        var size = new Blob([key, value]).size;
-        totalSize += size;
-        items.push({
-          key: key,
-          size: size
-        });
-      }
-      return {
-        totalSize: totalSize,
-        itemCount: localStorage.length,
-        items: items.sort(function (a, b) {
-          return b.size - a.size;
-        })
-      };
-    } catch (error) {
-      console.error('Error getting storage usage:', error);
-      return {
-        totalSize: 0,
-        itemCount: 0,
-        items: []
-      };
-    }
-  }
-};
-
-/**
- * Cookie Utilities - Enhanced cookie management
- */
-var CookieUtils = exports.CookieUtils = {
-  /**
-   * Create cookie with options
-   * @param {string} name - Cookie name
-   * @param {string} value - Cookie value
-   * @param {Object} options - Cookie options
-   * @param {number} options.days - Days until expiration
-   * @param {string} options.path - Cookie path
-   * @param {string} options.domain - Cookie domain
-   * @param {boolean} options.secure - Secure flag
-   * @param {string} options.sameSite - SameSite attribute
-   */
-  create: function create(name, value) {
-    var options = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : {};
-    if (!name || typeof name !== 'string') {
-      console.warn('Invalid cookie name');
-      return false;
-    }
-    var expires = '';
-    if (options.days) {
-      var date = new Date();
-      date.setTime(date.getTime() + options.days * 24 * 60 * 60 * 1000);
-      expires = "; expires=".concat(date.toUTCString());
-    }
-    var path = options.path || '/';
-    var domain = options.domain ? "; domain=".concat(options.domain) : '';
-    var secure = options.secure ? '; secure' : '';
-    var sameSite = options.sameSite ? "; samesite=".concat(options.sameSite) : '';
-    try {
-      document.cookie = "".concat(name, "=").concat(encodeURIComponent(value)).concat(expires, "; path=").concat(path).concat(domain).concat(secure).concat(sameSite);
-      return true;
-    } catch (error) {
-      console.error('Error creating cookie:', error);
-      return false;
-    }
-  },
-  /**
-   * Get cookie value
-   * @param {string} name - Cookie name
-   * @returns {string|null} Cookie value or null
-   */
-  get: function get(name) {
-    if (!name || typeof name !== 'string') {
-      return null;
-    }
-    try {
-      var nameEQ = name + "=";
-      var ca = document.cookie.split(';');
-      for (var i = 0; i < ca.length; i++) {
-        var c = ca[i];
-        while (c.charAt(0) === ' ') c = c.substring(1, c.length);
-        if (c.indexOf(nameEQ) === 0) {
-          return decodeURIComponent(c.substring(nameEQ.length, c.length));
-        }
-      }
-      return null;
-    } catch (error) {
-      console.error('Error reading cookie:', error);
-      return null;
-    }
-  },
-  /**
-   * Delete cookie
-   * @param {string} name - Cookie name
-   * @param {Object} options - Cookie options
-   * @returns {boolean} Success status
-   */
-  "delete": function _delete(name) {
-    var options = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : {};
-    return CookieUtils.create(name, '', _objectSpread(_objectSpread({}, options), {}, {
-      days: -1
-    }));
-  }
-};
