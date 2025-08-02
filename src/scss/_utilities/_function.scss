@@ -1,3 +1,8 @@
+@use "sass:map";
+@use "sass:math";
+@use "sass:string";
+@use "sass:meta";
+
 ////
 /// @group  Function
 ////
@@ -92,11 +97,11 @@
 ///
 @function search-key($map, $keys...) {
   @each $key in $keys {
-    @if not map-has-key($map, $key) {
+    @if not map.has-key($map, $key) {
         @error "The value is not present in the object... watch [_varaible.scss]";
       @return false;
     }
-    $map: map-get($map, $key);
+    $map: map.get($map, $key);
   }
 
   @return true;
@@ -132,7 +137,7 @@
     @error "'#{$keys}' is empty, check your arguments";
   } @else {
     @each $key in $keys {
-      $map : map-get($map, $key);
+      $map : map.get($map, $key);
     }
   }
 
@@ -173,11 +178,11 @@
     $context: $context * 1px;
   }
 
-  @return $pixels / $context * 1em;
+  @return math.div($pixels, $context) * 1em;
 }
 ///
 @function calculateRem($size) {
-  $remSize: $size / 16px;
+  $remSize: math.div($size, 16px);
   @return $remSize * 1rem;
 }
 

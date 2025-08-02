@@ -95,11 +95,12 @@
 			}
 
 			@include respond('mobile_landscape'){
+				max-width: 430px;
+				margin: 0 auto;
+				
 				&_outer{
 					background: #080915;
 				}
-				max-width: 430px;
-				margin: 0 auto;
 			}
 
 			a{
