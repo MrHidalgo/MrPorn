@@ -240,13 +240,15 @@
 			}
 		}
 
-		&-actions{
-			@include adaptive(1023) {
+		
+		@include adaptive(1023) {
+			&-actions{
 				z-index: 1600;
 				opacity: 0;
 				visibility: hidden;
 				transform: translateY(50px) translateZ(0);
-				overflow: hidden;
+				overflow-x: hidden;
+				overflow-y: auto;
 				position: fixed;
 				top: 0;
 				left: 0;
@@ -256,8 +258,23 @@
 				background-color: rgba(#080915, 0.975);
 				overscroll-behavior: contain;
 				@include transition(opacity, visibility, transform);
+
+				
+	
+				&.is-open {
+					opacity: 1;
+					visibility: visible;
+					transform: translateY(0);
+				}
 			}
+			
 		}
+	}
+}
+#mobile-search{
+	display: none;
+	@include adaptive(1023) {
+		display: block;
 	}
 }
 

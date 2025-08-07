@@ -110,21 +110,24 @@
 			min-width: 320px;
 		}
 
-		&-col {
+		&-list{
 			display: flex;
 			align-items: flex-start;
 			flex-wrap: wrap;
 			width: 100%;
-			padding: 15px;
+			padding: 10px 15px 15px;
 		}
 
-		&-link {
+		&-item{
 			position: relative;
-			display: flex;
 			width: 50%;
-			align-items: center;
 			padding-top: 5px;
 			margin-bottom: 5px;
+		}
+		
+		&-link {
+			display: flex;
+			align-items: center;
 
 			&:hover {
 				&::before,

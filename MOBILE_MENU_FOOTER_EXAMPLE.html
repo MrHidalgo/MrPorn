@@ -1,0 +1,375 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mobile Menu Below Footer Example</title>
+    <link rel="stylesheet" href="dest/css/header.css">
+</head>
+<body>
+    <!-- Header with Mobile Menu Toggle -->
+    <header class="header">
+        <div class="header__container">
+            <!-- Mobile Menu Toggle Button (for header) -->
+            <button class="mobile-menu-toggle" id="mobileMenuToggle" aria-label="Toggle mobile menu">
+                <span class="mobile-menu-toggle__line"></span>
+                <span class="mobile-menu-toggle__line"></span>
+                <span class="mobile-menu-toggle__line"></span>
+            </button>
+
+            <!-- Logo -->
+            <div class="header__logo">
+                <a href="/">
+                    <img src="/path/to/logo.png" alt="Site Logo">
+                </a>
+            </div>
+
+            <!-- Desktop Navigation -->
+            <nav class="header__nav">
+                <!-- Your existing desktop navigation -->
+            </nav>
+
+            <!-- User Actions -->
+            <div class="header__actions">
+                <!-- Your existing header actions -->
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main>
+        <!-- Your main content here -->
+        <div class="container">
+            <h1>Your Main Content</h1>
+            <p>This is your main content area. The mobile menu will appear below the footer on mobile devices.</p>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer__container">
+            <!-- Your existing footer content -->
+            <div class="footer__content">
+                <div class="footer__section">
+                    <h3>About Us</h3>
+                    <p>Your footer content here...</p>
+                </div>
+                <div class="footer__section">
+                    <h3>Quick Links</h3>
+                    <ul>
+                        <li><a href="/about">About</a></li>
+                        <li><a href="/contact">Contact</a></li>
+                        <li><a href="/privacy">Privacy</a></li>
+                        <li><a href="/terms">Terms</a></li>
+                    </ul>
+                </div>
+                <div class="footer__section">
+                    <h3>Categories</h3>
+                    <ul>
+                        <li><a href="/category/amateur">Amateur</a></li>
+                        <li><a href="/category/anal">Anal</a></li>
+                        <li><a href="/category/blowjob">Blowjob</a></li>
+                        <li><a href="/category/lesbian">Lesbian</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer__bottom">
+                <p>&copy; 2024 Your Site Name. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Mobile Menu Component (Below Footer) - Behaves like header__bottom -->
+    <div class="mobile-menu" id="mobileMenu">
+        <!-- Toggle Button -->
+        <button class="mobile-menu__toggle" id="mobileMenuToggleFooter" aria-label="Toggle mobile menu">
+            <span class="mobile-menu__toggle-text">Menu</span>
+            <span class="mobile-menu__toggle-icon"></span>
+        </button>
+        
+        <!-- Content Container -->
+        <div class="mobile-menu__content">
+            <!-- Search Section -->
+            <div class="mobile-menu__search">
+                <form class="mobile-menu__search-form">
+                    <input 
+                        type="search" 
+                        class="mobile-menu__search-input" 
+                        placeholder="Search sites, categories..."
+                        aria-label="Search"
+                    >
+                    <button type="submit" class="mobile-menu__search-button" aria-label="Search">
+                        <span class="icon"></span>
+                    </button>
+                </form>
+            </div>
+
+            <!-- User Section -->
+            <div class="mobile-menu__user">
+                <div class="mobile-menu__user-profile">
+                    <div class="mobile-menu__user-avatar">
+                        <span>U</span>
+                    </div>
+                    <div class="mobile-menu__user-info">
+                        <div class="mobile-menu__user-name">User Name</div>
+                        <div class="mobile-menu__user-status">Premium Member</div>
+                    </div>
+                </div>
+                <div class="mobile-menu__user-actions">
+                    <a href="/login" class="mobile-menu__user-button">Login</a>
+                    <a href="/register" class="mobile-menu__user-button mobile-menu__user-button--primary">Sign Up</a>
+                </div>
+            </div>
+
+            <!-- Navigation Section -->
+            <nav class="mobile-menu__nav">
+                <!-- Main Navigation -->
+                <div class="mobile-menu__nav-section">
+                    <h3 class="mobile-menu__nav-title">Main Menu</h3>
+                    <ul class="mobile-menu__nav-list">
+                        <li class="mobile-menu__nav-item">
+                            <a href="/" class="mobile-menu__nav-link">
+                                <span class="icon icon--home"></span>
+                                <span>Home</span>
+                            </a>
+                        </li>
+                        <li class="mobile-menu__nav-item">
+                            <a href="/categories" class="mobile-menu__nav-link">
+                                <span class="icon icon--categories"></span>
+                                <span>Categories</span>
+                                <span class="arrow"></span>
+                            </a>
+                            <!-- Submenu -->
+                            <ul class="mobile-menu__nav-submenu">
+                                <li class="mobile-menu__nav-item">
+                                    <a href="/category/amateur" class="mobile-menu__nav-link">Amateur</a>
+                                </li>
+                                <li class="mobile-menu__nav-item">
+                                    <a href="/category/anal" class="mobile-menu__nav-link">Anal</a>
+                                </li>
+                                <li class="mobile-menu__nav-item">
+                                    <a href="/category/blowjob" class="mobile-menu__nav-link">Blowjob</a>
+                                </li>
+                                <li class="mobile-menu__nav-item">
+                                    <a href="/category/lesbian" class="mobile-menu__nav-link">Lesbian</a>
+                                </li>
+                            </ul>
+                        </li>
+                        <li class="mobile-menu__nav-item">
+                            <a href="/search" class="mobile-menu__nav-link">
+                                <span class="icon icon--search"></span>
+                                <span>Search</span>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+
+                <!-- User Navigation -->
+                <div class="mobile-menu__nav-section">
+                    <h3 class="mobile-menu__nav-title">My Account</h3>
+                    <ul class="mobile-menu__nav-list">
+                        <li class="mobile-menu__nav-item">
+                            <a href="/profile" class="mobile-menu__nav-link">
+                                <span class="icon icon--user"></span>
+                                <span>Profile</span>
+                            </a>
+                        </li>
+                        <li class="mobile-menu__nav-item">
+                            <a href="/favorites" class="mobile-menu__nav-link">
+                                <span class="icon icon--favorites"></span>
+                                <span>Favorites</span>
+                                <span class="badge">3</span>
+                            </a>
+                        </li>
+                        <li class="mobile-menu__nav-item">
+                            <a href="/settings" class="mobile-menu__nav-link">
+                                <span class="icon icon--settings"></span>
+                                <span>Settings</span>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+
+                <!-- Categories Navigation -->
+                <div class="mobile-menu__nav-section">
+                    <h3 class="mobile-menu__nav-title">Popular Categories</h3>
+                    <ul class="mobile-menu__nav-list">
+                        <li class="mobile-menu__nav-item">
+                            <a href="/category/amateur" class="mobile-menu__nav-link">Amateur</a>
+                        </li>
+                        <li class="mobile-menu__nav-item">
+                            <a href="/category/anal" class="mobile-menu__nav-link">Anal</a>
+                        </li>
+                        <li class="mobile-menu__nav-item">
+                            <a href="/category/blowjob" class="mobile-menu__nav-link">Blowjob</a>
+                        </li>
+                        <li class="mobile-menu__nav-item">
+                            <a href="/category/lesbian" class="mobile-menu__nav-link">Lesbian</a>
+                        </li>
+                        <li class="mobile-menu__nav-item">
+                            <a href="/category/massage" class="mobile-menu__nav-link">Massage</a>
+                        </li>
+                        <li class="mobile-menu__nav-item">
+                            <a href="/category/milf" class="mobile-menu__nav-link">MILF</a>
+                        </li>
+                    </ul>
+                </div>
+            </nav>
+
+            <!-- Footer Section -->
+            <div class="mobile-menu__footer">
+                <div class="mobile-menu__footer-links">
+                    <a href="/about" class="mobile-menu__footer-link">About</a>
+                    <a href="/contact" class="mobile-menu__footer-link">Contact</a>
+                    <a href="/privacy" class="mobile-menu__footer-link">Privacy</a>
+                    <a href="/terms" class="mobile-menu__footer-link">Terms</a>
+                </div>
+                <div class="mobile-menu__footer-copyright">
+                    © 2024 Your Site Name. All rights reserved.
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- JavaScript for Mobile Menu Functionality (matches hamburger.js pattern) -->
+    <script>
+        // Mobile Menu JavaScript (matches header__bottom behavior)
+        const initMobileMenu = () => {
+            const btnMobileMenu = document.querySelector("#mobileMenuToggleFooter"),
+                headerToggle = document.querySelector("#mobileMenuToggle"),
+                mobileContainer = document.querySelector("#mobileMenu"),
+                hideScrollContainer = document.querySelectorAll("html, body");
+
+            if (btnMobileMenu) {
+                btnMobileMenu.addEventListener("click", (ev) => {
+                    const elem = ev.currentTarget;
+
+                    // Toggle active state on button
+                    elem.classList.toggle("is-active");
+                    
+                    // Toggle is-open class on container (same as header__bottom)
+                    mobileContainer.classList.toggle("is-open");
+
+                    // Toggle scroll hiding (same as hamburger.js)
+                    hideScrollContainer.forEach((val, idx) => {
+                        val.classList.toggle("is-hideScroll");
+                    });
+
+                    // Focus search input when opened (same as hamburger.js)
+                    if (document.body.classList.contains('is-hideScroll')) {
+                        setTimeout(function () {
+                            const searchInput = document.querySelector('.mobile-menu__search-input');
+                            if (searchInput) searchInput.focus();
+                        }, 500);
+                    }
+                });
+            }
+
+            // Handle header toggle button (if exists)
+            if (headerToggle) {
+                headerToggle.addEventListener("click", (ev) => {
+                    const elem = ev.currentTarget;
+
+                    // Toggle active state on header button
+                    elem.classList.toggle("is-active");
+                    
+                    // Toggle is-open class on mobile container
+                    mobileContainer.classList.toggle("is-open");
+
+                    // Toggle scroll hiding
+                    hideScrollContainer.forEach((val, idx) => {
+                        val.classList.toggle("is-hideScroll");
+                    });
+
+                    // Focus search input when opened
+                    if (document.body.classList.contains('is-hideScroll')) {
+                        setTimeout(function () {
+                            const searchInput = document.querySelector('.mobile-menu__search-input');
+                            if (searchInput) searchInput.focus();
+                        }, 500);
+                    }
+                });
+            }
+
+            // Handle submenu toggles
+            const submenus = document.querySelectorAll('.mobile-menu__nav-submenu');
+            submenus.forEach(submenu => {
+                const parentLink = submenu.previousElementSibling;
+                if (parentLink && parentLink.classList.contains('mobile-menu__nav-link')) {
+                    parentLink.addEventListener('click', (e) => {
+                        e.preventDefault();
+                        toggleSubmenu(submenu, parentLink);
+                    });
+                }
+            });
+
+            // Close menu on escape key
+            document.addEventListener('keydown', (e) => {
+                if (e.key === 'Escape' && mobileContainer.classList.contains('is-open')) {
+                    closeMobileMenu();
+                }
+            });
+
+            // Handle search form
+            const searchForm = document.querySelector('.mobile-menu__search-form');
+            if (searchForm) {
+                searchForm.addEventListener('submit', (e) => {
+                    e.preventDefault();
+                    const input = searchForm.querySelector('.mobile-menu__search-input');
+                    if (input.value.trim()) {
+                        // Handle search - redirect or trigger search
+                        window.location.href = `/search?q=${encodeURIComponent(input.value.trim())}`;
+                    }
+                });
+            }
+
+            // Helper function to toggle submenu
+            function toggleSubmenu(submenu, parentLink) {
+                const isOpen = submenu.classList.contains('is-open');
+                
+                // Close all other submenus
+                submenus.forEach(otherSubmenu => {
+                    if (otherSubmenu !== submenu) {
+                        otherSubmenu.classList.remove('is-open');
+                    }
+                });
+
+                // Toggle current submenu
+                if (isOpen) {
+                    submenu.classList.remove('is-open');
+                } else {
+                    submenu.classList.add('is-open');
+                }
+
+                // Update arrow rotation
+                const arrow = parentLink.querySelector('.arrow');
+                if (arrow) {
+                    arrow.style.transform = isOpen ? 'rotate(-45deg)' : 'rotate(45deg)';
+                }
+            }
+
+            // Helper function to close mobile menu
+            function closeMobileMenu() {
+                mobileContainer.classList.remove('is-open');
+                btnMobileMenu.classList.remove('is-active');
+                if (headerToggle) headerToggle.classList.remove('is-active');
+                
+                // Remove scroll hiding
+                hideScrollContainer.forEach((val, idx) => {
+                    val.classList.remove("is-hideScroll");
+                });
+                
+                // Close all submenus
+                submenus.forEach(submenu => {
+                    submenu.classList.remove('is-open');
+                });
+            }
+        };
+
+        // Initialize mobile menu when DOM is loaded
+        document.addEventListener('DOMContentLoaded', () => {
+            initMobileMenu();
+        });
+    </script>
+</body>
+</html> 

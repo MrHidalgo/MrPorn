@@ -1,25 +1,25 @@
 // HEADER :: START
 
-.flex{
+.flex {
 	display: flex;
 
-	&-hc{
+	&-hc {
 		justify-content: center;
 	}
-	&-sb{
+	&-sb {
 		justify-content: space-between;
 	}
-	&-col{
+	&-col {
 		flex-direction: column;
 	}
-	&-vc{
+	&-vc {
 		align-items: center;
 	}
-	&-wrap{
+	&-wrap {
 		flex-wrap: wrap;
 	}
 }
-.relative{
+.relative {
 	position: relative;
 }
 .clearfix:after {
@@ -28,59 +28,46 @@
 	clear: both;
 }
 
-
 .header {
 	position: relative;
 	display: flex;
 	flex-direction: column;
 	background-color: #07113b;
 
-	padding-top: 40px;
-
-	@include adaptive(1023.98) {
-		padding-top: 0;
-	}
-
-
 	@import "header--conatainer";
 
 	//@media screen and (min-width: 768px) {
-		@import "header--wrapper";
+	@import "header--wrapper";
 
-		@import "header--user";
+	@import "header--user";
 	@import "header--mobile";
-		@import "header--category";
+	@import "header--category";
 
 	//}
-
-
-
-
-
-
 	@import "header--update";
 	//@import "header--awe";
 
 	@include adaptive(1023.98) {
 		position: fixed;
 		width: 100%;
-		z-index: 105;
+		z-index: 6;
+		top: 0;
 	}
 
-	@include respond('ipad_portrait'){
+	@include respond("ipad_portrait") {
 		position: fixed;
 		width: 100%;
-		z-index: 105;
+		z-index: 6;
 	}
-	@include respond('ipad_pro_landscape'){
+	@include respond("ipad_pro_landscape") {
 		position: relative;
 		width: 100%;
-		z-index: 105;
+		z-index: 6;
 	}
-	@include respond('ipad_pro_portrait'){
+	@include respond("ipad_pro_portrait") {
 		position: relative;
 		width: 100%;
-		z-index: 105;
+		z-index: 6;
 	}
 }
 @import "header--view";
@@ -90,23 +77,23 @@
 @import "header--action";
 @import "header--categories-search";
 
-.light{
+.light {
 	@include adaptive(1023) {
 		.header__bottom.is-open {
 			background: #fff;
 		}
 
-		.pre-header__mobile{
+		.pre-header__mobile {
 			background-color: #303030fa;
 		}
-		.pre-header__mobile-middle{
+		.pre-header__mobile-middle {
 			border-top: 1px solid #4a4a4a;
 			border-bottom: 1px solid #4a4a4a;
 		}
 	}
 
 	.header__toggle {
-		label{
+		label {
 			.icon-font {
 				@include transition(opacity);
 
@@ -126,15 +113,15 @@
 	}
 }
 
-.is_logged{
-	.header__view-wrapper{
+.is_logged {
+	.header__view-wrapper {
 		display: block;
 
 		@include adaptive(1023) {
 			display: none;
 		}
 	}
-	.header__view-text{
+	.header__view-text {
 		display: none;
 	}
 }
@@ -152,9 +139,8 @@
 
 //.hdrfav
 
-
-.has_search{
-	.header__recent{
+.has_search {
+	.header__recent {
 		display: none;
 	}
 }
@@ -162,11 +148,11 @@
 
 .fund {
 	@include adaptive(1023.98) {
-		.header{
+		.header {
 			top: 45px;
 		}
 	}
-	.c-grid.bitcoin{
+	.c-grid.bitcoin {
 		display: block;
 		position: relative;
 
@@ -179,7 +165,7 @@
 		}
 	}
 
-	.header__action_bitcoin-outer{
+	.header__action_bitcoin-outer {
 		position: absolute;
 		z-index: 1;
 		top: 10px;
@@ -194,7 +180,7 @@
 			font-size: 13px;
 		}
 
-		.btc-close{
+		.btc-close {
 			position: absolute;
 			right: 15px;
 			top: 50%;
@@ -210,8 +196,7 @@
 			}
 		}
 	}
-	.header__action_bitcoin{
-
+	.header__action_bitcoin {
 		display: flex;
 		justify-content: center;
 		align-items: center;
@@ -221,30 +206,27 @@
 		transform-style: preserve-3d;
 
 		backface-visibility: hidden;
-		transform: translate3d(0,0,0);
+		transform: translate3d(0, 0, 0);
 
-		.btc_hash img{
+		.btc_hash img {
 			height: 24px;
 			margin: -3px 5px;
 		}
 
-		&.copied{
+		&.copied {
 			animation: rotateBtc 3.7s ease-in-out;
 			animation-fill-mode: forwards;
 
-			.btc-close{
-				transform: translateY(-50%) rotateX(180deg)
+			.btc-close {
+				transform: translateY(-50%) rotateX(180deg);
 			}
 		}
 
-		@include adaptiveMinMax(1449.98, 1199.98){
+		@include adaptiveMinMax(1449.98, 1199.98) {
 			left: 410px;
 		}
 
-
-
-
-		span{
+		span {
 			display: flex;
 			color: #fff;
 			justify-content: center;
@@ -257,19 +239,30 @@
 	}
 
 	@include adaptive(1023) {
-		.header__bottom{
+		.header__bottom {
 			top: 110px;
 		}
 	}
 }
 
 @keyframes rotateBtc {
-	0% { transform: rotateX(0deg); background-color: #e58616; }
-	17% { transform: rotateX(180deg); background-color: #269552; }
-	83% { transform: rotateX(180deg); background-color: #269552; }
-	100% { transform: rotateX(0deg); background-color: #e58616; }
+	0% {
+		transform: rotateX(0deg);
+		background-color: #e58616;
+	}
+	17% {
+		transform: rotateX(180deg);
+		background-color: #269552;
+	}
+	83% {
+		transform: rotateX(180deg);
+		background-color: #269552;
+	}
+	100% {
+		transform: rotateX(0deg);
+		background-color: #e58616;
+	}
 }
-
 
 @import "../misc/misc";
 @import "../misc/sort";
@@ -284,4 +277,4 @@
 //@import "../../_generated/spritePNG";
 //@import "../../_generated/spriteFont";
 @import "../../_components/common/footer";
-
+@import "./mobile-menu";

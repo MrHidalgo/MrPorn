@@ -53,6 +53,16 @@ const configOption = {
   sourceMapStyle: {
     includeContent: true,
     sourceRoot: '../src'
+  },
+
+  uglifyOptions: {
+    compress: {
+      drop_console: true,
+      drop_debugger: true
+    },
+    output: {
+      comments: false
+    }
   }
 };
 

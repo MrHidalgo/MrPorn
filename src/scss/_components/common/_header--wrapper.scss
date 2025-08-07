@@ -1,13 +1,6 @@
-&__row{
-	&-1{
-		position: absolute;
-		left: 0;
-		top: 0;
-		width: 100%;
-
-		@include adaptive(1023) {
-			position: relative;
-		}
+&__row-1{
+	@include adaptive(1023) {
+		display: none;
 	}
 }
 &__bottom{

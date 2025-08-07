@@ -201,32 +201,24 @@
 	}
 
 	&__drop {
-		//overflow: hidden;
-		z-index: 1000;
-		opacity: 0;
-		visibility: hidden;
-		transform: translateY(10px);
-		position: absolute;
-		top: 100%;
-		left: 0;
-		display: flex;
-		flex-direction: column;
-		width: 100%;
-		border-radius: 5px;
-		background-color: #ffffff;
-		backface-visibility: hidden;
-		@include transition(opacity, visibility, transform);
-		@include adaptive(1023) {
-			top: calc(100% + 10px);
-			left: -63px;
-			width: 100vw;
-			height: calc(100vh - 54px);
-			min-height: 682px;
-			border-radius: 0;
-			background-color: #080915;
-		}
+		display: none;
 
 		@include respond('medium'){
+			z-index: 1000;
+			opacity: 0;
+			visibility: hidden;
+			transform: translateY(10px);
+			position: absolute;
+			top: 100%;
+			left: 0;
+			display: flex;
+			flex-direction: column;
+			width: 100%;
+			border-radius: 5px;
+			background-color: #ffffff;
+			backface-visibility: hidden;
+			@include transition(opacity, visibility, transform);
+			
 			&.is-open {
 				z-index: 1600;
 				opacity: 1;

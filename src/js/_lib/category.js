@@ -363,9 +363,9 @@ function initCategoryPage() {
 
 
 	const renderMobileCatFilters = () => {
-		let spanA2z = document.querySelector('.category-list-options .icon_a2z span');
-		let spanRandom = document.querySelector('.category-list-options .icon_random span');
-		let spanAllTags = document.querySelector('.category-list-options .icon_tags span');
+		let spanA2z = document.querySelector('.header__categories-mobile .category-list-options .icon_a2z span');
+		let spanRandom = document.querySelector('.header__categories-mobile .category-list-options .icon_random span');
+		let spanAllTags = document.querySelector('.header__categories-mobile .category-list-options .icon_tags span');
 		if(spanA2z){
 			spanA2z.innerHTML = 'Icon View';
 		}
@@ -753,11 +753,12 @@ function initCategoryPage() {
 			a2zOrder++;
 		}
 
-		if(bodyClasses.contains('home')){
-			processHomeCategories(result)
-		}else{
-			processCategoryDataFromDom();
-		}
+		// if(bodyClasses.contains('home')){
+		// 	processHomeCategories(result)
+		// }else{
+		// 	processCategoryDataFromDom();
+		// }
+		processHomeCategories(result)
 
 		initCategorySidebar()
 		initLetterScroll()

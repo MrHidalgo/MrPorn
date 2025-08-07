@@ -15,18 +15,15 @@ class A2ZPopup{
 
 		let parent = this
 
-		document.querySelector('.sort__toggle')?.addEventListener('click', function(){
-			// document.querySelector('.search__close')?.click()
-			document.querySelector('[search-mobile-js]')?.classList.remove("is-open");
-			parent.showA2ZPopup()
+		document.querySelectorAll('.sort__toggle').forEach(function(toggleElement) {
+			toggleElement.addEventListener('click', function(){
+				// document.querySelector('.search__close')?.click()
+				document.querySelector('[search-mobile-js]')?.classList.remove("is-open");
+				parent.showA2ZPopup()
+			});
 		});
 
-		// this.popup = document.querySelector('.a2z-popup');
-		// this.popupClose = document.querySelector('.a2z-popup__close');
-		// this.popupOpen = document.querySelector('.a2z-popup__open');
-		//
-		// this.popupOpen.addEventListener('click', this.openPopup.bind(this));
-		// this.popupClose.addEventListener('click', this.closePopup.bind(this));
+		
 	}
 
 	showA2ZPopup(){

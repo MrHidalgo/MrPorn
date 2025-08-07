@@ -5,7 +5,8 @@ const { src, dest, task, watch, series } = require('gulp');
 const plumber = require('gulp-plumber'),
   concat = require('gulp-concat'),
   order = require("gulp-order"),
-  babel = require('gulp-babel');
+  babel = require('gulp-babel'),
+  uglify = require('gulp-uglify');
 
 const configPath  = require('../config/configPath'),
   configOption    = require('../config/configOption');
@@ -33,6 +34,7 @@ task('js', (done) => {
 		]))
 		.pipe(concat('app.js'))
 		.pipe(babel(configOption.es6))
+		.pipe(uglify(configOption.uglifyOptions))
 		.pipe(plumber.stop())
 		.pipe(dest(configPath.dest.js))
 });
@@ -54,10 +56,56 @@ task('js_home', (done) => {
 		]))
 		.pipe(concat('frontpage.js'))
 		.pipe(babel(configOption.es6))
+		.pipe(uglify(configOption.uglifyOptions))
 		.pipe(plumber.stop())
 		.pipe(dest(configPath.dest.js))
 });
 
+
+/**
+ * @description Gulp Javascript - development version (no minification)
+ */
+task('js:dev', (done) => {
+  return src([
+			configPath.src.js + '/*.js',
+			configPath.src.js + '/**/*.js',
+			'!' + configPath.src.js + '/**/_**.js',
+			'!' + configPath.src.js + '/**/frontpage.js',
+		'!' + configPath.src.js + '/_frontpage/*.js',
+		'!' + configPath.src.js + '/_lib/swiper.js',
+		])
+		.pipe(plumber(configOption.pipeBreaking.err))
+		.pipe(order([
+			"*",
+			"_lib/**",
+			"_window/**",
+			"_document/**",
+		]))
+		.pipe(concat('app.js'))
+		.pipe(babel(configOption.es6))
+		.pipe(plumber.stop())
+		.pipe(dest(configPath.dest.js))
+});
+
+task('js_home:dev', (done) => {
+	return src([
+		configPath.src.js + '/*.js',
+		configPath.src.js + '/**/*.js',
+		'!' + configPath.src.js + '/**/_**.js',
+	])
+		.pipe(plumber(configOption.pipeBreaking.err))
+		.pipe(order([
+			"*",
+			"_lib/**",
+			"_window/**",
+			"_document/**",
+			"_frontpage/**",
+		]))
+		.pipe(concat('frontpage.js'))
+		.pipe(babel(configOption.es6))
+		.pipe(plumber.stop())
+		.pipe(dest(configPath.dest.js))
+});
 
 /**
  * @description Gulp Javascript watch - keeps track of changes in files.

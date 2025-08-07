@@ -1,0 +1,304 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mobile Menu Component Example</title>
+    <link rel="stylesheet" href="dest/css/header.css">
+</head>
+<body>
+    <!-- Header with Mobile Menu Toggle -->
+    <header class="header">
+        <div class="header__container">
+            <!-- Mobile Menu Toggle Button -->
+            <button class="mobile-menu-toggle" id="mobileMenuToggle" aria-label="Toggle mobile menu">
+                <span class="mobile-menu-toggle__line"></span>
+                <span class="mobile-menu-toggle__line"></span>
+                <span class="mobile-menu-toggle__line"></span>
+            </button>
+
+            <!-- Logo -->
+            <div class="header__logo">
+                <a href="/">
+                    <img src="/path/to/logo.png" alt="Site Logo">
+                </a>
+            </div>
+
+            <!-- Desktop Navigation -->
+            <nav class="header__nav">
+                <!-- Your existing desktop navigation -->
+            </nav>
+
+            <!-- User Actions -->
+            <div class="header__actions">
+                <!-- Your existing header actions -->
+            </div>
+        </div>
+    </header>
+
+    <!-- Mobile Menu Component -->
+    <div class="mobile-menu" id="mobileMenu">
+        <!-- Overlay -->
+        <div class="mobile-menu__overlay" id="mobileMenuOverlay"></div>
+        
+        <!-- Menu Panel -->
+        <div class="mobile-menu__panel">
+            <!-- Header Section -->
+            <div class="mobile-menu__header">
+                <div class="mobile-menu__header-logo">
+                    <img src="/path/to/logo-white.png" alt="Site Logo">
+                </div>
+                <button class="mobile-menu__header-close" id="mobileMenuClose" aria-label="Close mobile menu">
+                    <!-- Close button is styled with CSS pseudo-elements -->
+                </button>
+            </div>
+
+            <!-- Search Section -->
+            <div class="mobile-menu__search">
+                <form class="mobile-menu__search-form">
+                    <input 
+                        type="search" 
+                        class="mobile-menu__search-input" 
+                        placeholder="Search sites, categories..."
+                        aria-label="Search"
+                    >
+                    <button type="submit" class="mobile-menu__search-button" aria-label="Search">
+                        <span class="icon"></span>
+                    </button>
+                </form>
+            </div>
+
+            <!-- User Section -->
+            <div class="mobile-menu__user">
+                <div class="mobile-menu__user-profile">
+                    <div class="mobile-menu__user-avatar">
+                        <span>U</span>
+                    </div>
+                    <div class="mobile-menu__user-info">
+                        <div class="mobile-menu__user-name">User Name</div>
+                        <div class="mobile-menu__user-status">Premium Member</div>
+                    </div>
+                </div>
+                <div class="mobile-menu__user-actions">
+                    <a href="/login" class="mobile-menu__user-button">Login</a>
+                    <a href="/register" class="mobile-menu__user-button mobile-menu__user-button--primary">Sign Up</a>
+                </div>
+            </div>
+
+            <!-- Navigation Section -->
+            <nav class="mobile-menu__nav">
+                <!-- Main Navigation -->
+                <div class="mobile-menu__nav-section">
+                    <h3 class="mobile-menu__nav-title">Main Menu</h3>
+                    <ul class="mobile-menu__nav-list">
+                        <li class="mobile-menu__nav-item">
+                            <a href="/" class="mobile-menu__nav-link">
+                                <span class="icon icon--home"></span>
+                                <span>Home</span>
+                            </a>
+                        </li>
+                        <li class="mobile-menu__nav-item">
+                            <a href="/categories" class="mobile-menu__nav-link">
+                                <span class="icon icon--categories"></span>
+                                <span>Categories</span>
+                                <span class="arrow"></span>
+                            </a>
+                            <!-- Submenu -->
+                            <ul class="mobile-menu__nav-submenu">
+                                <li class="mobile-menu__nav-item">
+                                    <a href="/category/amateur" class="mobile-menu__nav-link">Amateur</a>
+                                </li>
+                                <li class="mobile-menu__nav-item">
+                                    <a href="/category/anal" class="mobile-menu__nav-link">Anal</a>
+                                </li>
+                                <li class="mobile-menu__nav-item">
+                                    <a href="/category/blowjob" class="mobile-menu__nav-link">Blowjob</a>
+                                </li>
+                                <li class="mobile-menu__nav-item">
+                                    <a href="/category/lesbian" class="mobile-menu__nav-link">Lesbian</a>
+                                </li>
+                            </ul>
+                        </li>
+                        <li class="mobile-menu__nav-item">
+                            <a href="/search" class="mobile-menu__nav-link">
+                                <span class="icon icon--search"></span>
+                                <span>Search</span>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+
+                <!-- User Navigation -->
+                <div class="mobile-menu__nav-section">
+                    <h3 class="mobile-menu__nav-title">My Account</h3>
+                    <ul class="mobile-menu__nav-list">
+                        <li class="mobile-menu__nav-item">
+                            <a href="/profile" class="mobile-menu__nav-link">
+                                <span class="icon icon--user"></span>
+                                <span>Profile</span>
+                            </a>
+                        </li>
+                        <li class="mobile-menu__nav-item">
+                            <a href="/favorites" class="mobile-menu__nav-link">
+                                <span class="icon icon--favorites"></span>
+                                <span>Favorites</span>
+                                <span class="badge">3</span>
+                            </a>
+                        </li>
+                        <li class="mobile-menu__nav-item">
+                            <a href="/settings" class="mobile-menu__nav-link">
+                                <span class="icon icon--settings"></span>
+                                <span>Settings</span>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+
+                <!-- Categories Navigation -->
+                <div class="mobile-menu__nav-section">
+                    <h3 class="mobile-menu__nav-title">Popular Categories</h3>
+                    <ul class="mobile-menu__nav-list">
+                        <li class="mobile-menu__nav-item">
+                            <a href="/category/amateur" class="mobile-menu__nav-link">Amateur</a>
+                        </li>
+                        <li class="mobile-menu__nav-item">
+                            <a href="/category/anal" class="mobile-menu__nav-link">Anal</a>
+                        </li>
+                        <li class="mobile-menu__nav-item">
+                            <a href="/category/blowjob" class="mobile-menu__nav-link">Blowjob</a>
+                        </li>
+                        <li class="mobile-menu__nav-item">
+                            <a href="/category/lesbian" class="mobile-menu__nav-link">Lesbian</a>
+                        </li>
+                        <li class="mobile-menu__nav-item">
+                            <a href="/category/massage" class="mobile-menu__nav-link">Massage</a>
+                        </li>
+                        <li class="mobile-menu__nav-item">
+                            <a href="/category/milf" class="mobile-menu__nav-link">MILF</a>
+                        </li>
+                    </ul>
+                </div>
+            </nav>
+
+            <!-- Footer Section -->
+            <div class="mobile-menu__footer">
+                <div class="mobile-menu__footer-links">
+                    <a href="/about" class="mobile-menu__footer-link">About</a>
+                    <a href="/contact" class="mobile-menu__footer-link">Contact</a>
+                    <a href="/privacy" class="mobile-menu__footer-link">Privacy</a>
+                    <a href="/terms" class="mobile-menu__footer-link">Terms</a>
+                </div>
+                <div class="mobile-menu__footer-copyright">
+                    © 2024 Your Site Name. All rights reserved.
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- JavaScript for Mobile Menu Functionality -->
+    <script>
+        // Mobile Menu JavaScript
+        class MobileMenu {
+            constructor() {
+                this.menu = document.getElementById('mobileMenu');
+                this.toggle = document.getElementById('mobileMenuToggle');
+                this.close = document.getElementById('mobileMenuClose');
+                this.overlay = document.getElementById('mobileMenuOverlay');
+                this.submenus = document.querySelectorAll('.mobile-menu__nav-submenu');
+                
+                this.init();
+            }
+
+            init() {
+                // Toggle menu
+                this.toggle.addEventListener('click', () => this.openMenu());
+                this.close.addEventListener('click', () => this.closeMenu());
+                this.overlay.addEventListener('click', () => this.closeMenu());
+
+                // Handle submenu toggles
+                this.submenus.forEach(submenu => {
+                    const parentLink = submenu.previousElementSibling;
+                    if (parentLink && parentLink.classList.contains('mobile-menu__nav-link')) {
+                        parentLink.addEventListener('click', (e) => {
+                            e.preventDefault();
+                            this.toggleSubmenu(submenu, parentLink);
+                        });
+                    }
+                });
+
+                // Close menu on escape key
+                document.addEventListener('keydown', (e) => {
+                    if (e.key === 'Escape' && this.menu.classList.contains('is-active')) {
+                        this.closeMenu();
+                    }
+                });
+
+                // Handle search form
+                const searchForm = document.querySelector('.mobile-menu__search-form');
+                if (searchForm) {
+                    searchForm.addEventListener('submit', (e) => {
+                        e.preventDefault();
+                        const input = searchForm.querySelector('.mobile-menu__search-input');
+                        if (input.value.trim()) {
+                            // Handle search - redirect or trigger search
+                            window.location.href = `/search?q=${encodeURIComponent(input.value.trim())}`;
+                        }
+                    });
+                }
+            }
+
+            openMenu() {
+                this.menu.classList.add('is-active');
+                this.toggle.classList.add('is-active');
+                document.body.style.overflow = 'hidden';
+                
+                // Focus management
+                setTimeout(() => {
+                    const firstLink = this.menu.querySelector('.mobile-menu__nav-link');
+                    if (firstLink) firstLink.focus();
+                }, 300);
+            }
+
+            closeMenu() {
+                this.menu.classList.remove('is-active');
+                this.toggle.classList.remove('is-active');
+                document.body.style.overflow = '';
+                
+                // Close all submenus
+                this.submenus.forEach(submenu => {
+                    submenu.classList.remove('is-open');
+                });
+            }
+
+            toggleSubmenu(submenu, parentLink) {
+                const isOpen = submenu.classList.contains('is-open');
+                
+                // Close all other submenus
+                this.submenus.forEach(otherSubmenu => {
+                    if (otherSubmenu !== submenu) {
+                        otherSubmenu.classList.remove('is-open');
+                    }
+                });
+
+                // Toggle current submenu
+                if (isOpen) {
+                    submenu.classList.remove('is-open');
+                } else {
+                    submenu.classList.add('is-open');
+                }
+
+                // Update arrow rotation
+                const arrow = parentLink.querySelector('.arrow');
+                if (arrow) {
+                    arrow.style.transform = isOpen ? 'rotate(-45deg)' : 'rotate(45deg)';
+                }
+            }
+        }
+
+        // Initialize mobile menu when DOM is loaded
+        document.addEventListener('DOMContentLoaded', () => {
+            new MobileMenu();
+        });
+    </script>
+</body>
+</html> 

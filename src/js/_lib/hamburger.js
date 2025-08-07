@@ -10,13 +10,18 @@ const initHamburger = () => {
 
   const btnHamburger = document.querySelector("[hamburger-js]"),
     hideScrollContainer = document.querySelectorAll("html, body"),
-		mobileContainer = document.querySelector(".header__bottom");
+		mobileContainer = document.querySelector("#mobileMenu"),
+		desktopMenuLang = document.querySelector("#header .lang__drop"),
+		mobileMenuLangList = document.querySelector("#mobileMenu .lang__drop");
 
 
 	if(btnHamburger) {
 		btnHamburger.addEventListener("click", (ev) => {
 			const elem = ev.currentTarget;
 
+			if(mobileMenuLangList.innerHTML === ''){
+				mobileMenuLangList.innerHTML = desktopMenuLang.innerHTML;
+			}
 
 			elem.classList.toggle("is-active");
 			mobileContainer.classList.toggle("is-open");
@@ -24,8 +29,6 @@ const initHamburger = () => {
 			hideScrollContainer.forEach((val, idx) => {
 				val.classList.toggle("is-hideScroll");
 			});
-
-			// initMobileThemeToggle();
 
 
 			if(document.body.classList.contains('is-hideScroll')){
@@ -47,7 +50,10 @@ const initHamburger = () => {
 			// disableScroll()
 			isSearchActive = true;
 
-			bodyScrollLock.disableBodyScroll(searchViewContainer);
+			const searchViewContainer = SearchModule ? SearchModule.getSearchViewContainer() : null;
+			if (searchViewContainer) {
+				bodyScrollLock.disableBodyScroll(searchViewContainer);
+			}
 
 			btnHamburger.classList.remove("is-active");
 
@@ -82,7 +88,10 @@ const initHamburger = () => {
 			setInnerHeight();
 			isSearchActive = false;
 			// enableScroll()
-			bodyScrollLock.enableBodyScroll(searchViewContainer);
+			const searchViewContainer = SearchModule ? SearchModule.getSearchViewContainer() : null;
+			if (searchViewContainer) {
+				bodyScrollLock.enableBodyScroll(searchViewContainer);
+			}
 
 			document.body.classList.remove('has_search');
 
