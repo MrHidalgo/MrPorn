@@ -1474,6 +1474,821 @@ strong {
   }
 }
 
+/* Dynamic Sprite Grid System with SCSS Mixins */
+.deIcon {
+  position: relative;
+}
+
+.deIcon::before {
+  content: "";
+  width: 16px;
+  height: 16px;
+  background-repeat: no-repeat;
+  --sprite-x: 0;
+  --sprite-y: 0;
+  background-position: calc(var(--sprite-x) * -16px) calc(var(--sprite-y) * -16px);
+}
+
+.fx_1::before {
+  --sprite-x: 1;
+}
+
+.fy_1::before {
+  --sprite-y: 0;
+}
+
+.fx_2::before {
+  --sprite-x: 2;
+}
+
+.fy_2::before {
+  --sprite-y: 1;
+}
+
+.fx_3::before {
+  --sprite-x: 3;
+}
+
+.fy_3::before {
+  --sprite-y: 2;
+}
+
+.fx_4::before {
+  --sprite-x: 4;
+}
+
+.fy_4::before {
+  --sprite-y: 3;
+}
+
+.fx_5::before {
+  --sprite-x: 5;
+}
+
+.fy_5::before {
+  --sprite-y: 4;
+}
+
+.fx_6::before {
+  --sprite-x: 6;
+}
+
+.fy_6::before {
+  --sprite-y: 5;
+}
+
+.fx_7::before {
+  --sprite-x: 7;
+}
+
+.fy_7::before {
+  --sprite-y: 6;
+}
+
+.fx_8::before {
+  --sprite-x: 8;
+}
+
+.fy_8::before {
+  --sprite-y: 7;
+}
+
+.fx_9::before {
+  --sprite-x: 9;
+}
+
+.fy_9::before {
+  --sprite-y: 8;
+}
+
+.fx_10::before {
+  --sprite-x: 10;
+}
+
+.fy_10::before {
+  --sprite-y: 9;
+}
+
+.fx_11::before {
+  --sprite-x: 11;
+}
+
+.fy_11::before {
+  --sprite-y: 10;
+}
+
+.fx_12::before {
+  --sprite-x: 12;
+}
+
+.fy_12::before {
+  --sprite-y: 11;
+}
+
+.fx_13::before {
+  --sprite-x: 13;
+}
+
+.fy_13::before {
+  --sprite-y: 12;
+}
+
+.fx_14::before {
+  --sprite-x: 14;
+}
+
+.fy_14::before {
+  --sprite-y: 13;
+}
+
+.fx_15::before {
+  --sprite-x: 15;
+}
+
+.fy_15::before {
+  --sprite-y: 14;
+}
+
+.fx_16::before {
+  --sprite-x: 16;
+}
+
+.fy_16::before {
+  --sprite-y: 15;
+}
+
+.fx_17::before {
+  --sprite-x: 17;
+}
+
+.fy_17::before {
+  --sprite-y: 16;
+}
+
+.fx_18::before {
+  --sprite-x: 18;
+}
+
+.fy_18::before {
+  --sprite-y: 17;
+}
+
+.fx_19::before {
+  --sprite-x: 19;
+}
+
+.fy_19::before {
+  --sprite-y: 18;
+}
+
+.fx_20::before {
+  --sprite-x: 20;
+}
+
+.fy_20::before {
+  --sprite-y: 19;
+}
+
+.fx_21::before {
+  --sprite-x: 21;
+}
+
+.fy_21::before {
+  --sprite-y: 20;
+}
+
+.fx_22::before {
+  --sprite-x: 22;
+}
+
+.fy_22::before {
+  --sprite-y: 21;
+}
+
+.fx_23::before {
+  --sprite-x: 23;
+}
+
+.fy_23::before {
+  --sprite-y: 22;
+}
+
+.fx_24::before {
+  --sprite-x: 24;
+}
+
+.fy_24::before {
+  --sprite-y: 23;
+}
+
+.fx_25::before {
+  --sprite-x: 25;
+}
+
+.fy_25::before {
+  --sprite-y: 24;
+}
+
+.fx_26::before {
+  --sprite-x: 26;
+}
+
+.fy_26::before {
+  --sprite-y: 25;
+}
+
+.fx_27::before {
+  --sprite-x: 27;
+}
+
+.fy_27::before {
+  --sprite-y: 26;
+}
+
+.fx_28::before {
+  --sprite-x: 28;
+}
+
+.fy_28::before {
+  --sprite-y: 27;
+}
+
+.fx_29::before {
+  --sprite-x: 29;
+}
+
+.fy_29::before {
+  --sprite-y: 28;
+}
+
+.fx_30::before {
+  --sprite-x: 30;
+}
+
+.fy_30::before {
+  --sprite-y: 29;
+}
+
+.fx_31::before {
+  --sprite-x: 31;
+}
+
+.fy_31::before {
+  --sprite-y: 30;
+}
+
+.fx_32::before {
+  --sprite-x: 32;
+}
+
+.fy_32::before {
+  --sprite-y: 31;
+}
+
+.fx_33::before {
+  --sprite-x: 33;
+}
+
+.fy_33::before {
+  --sprite-y: 32;
+}
+
+.fx_34::before {
+  --sprite-x: 34;
+}
+
+.fy_34::before {
+  --sprite-y: 33;
+}
+
+.fx_35::before {
+  --sprite-x: 35;
+}
+
+.fy_35::before {
+  --sprite-y: 34;
+}
+
+.fx_36::before {
+  --sprite-x: 36;
+}
+
+.fy_36::before {
+  --sprite-y: 35;
+}
+
+.fx_37::before {
+  --sprite-x: 37;
+}
+
+.fy_37::before {
+  --sprite-y: 36;
+}
+
+.fx_38::before {
+  --sprite-x: 38;
+}
+
+.fy_38::before {
+  --sprite-y: 37;
+}
+
+.fx_39::before {
+  --sprite-x: 39;
+}
+
+.fy_39::before {
+  --sprite-y: 38;
+}
+
+.fx_40::before {
+  --sprite-x: 40;
+}
+
+.fy_40::before {
+  --sprite-y: 39;
+}
+
+.fx_41::before {
+  --sprite-x: 41;
+}
+
+.fy_41::before {
+  --sprite-y: 40;
+}
+
+.fx_42::before {
+  --sprite-x: 42;
+}
+
+.fy_42::before {
+  --sprite-y: 41;
+}
+
+.fx_43::before {
+  --sprite-x: 43;
+}
+
+.fy_43::before {
+  --sprite-y: 42;
+}
+
+.fx_44::before {
+  --sprite-x: 44;
+}
+
+.fy_44::before {
+  --sprite-y: 43;
+}
+
+.fx_45::before {
+  --sprite-x: 45;
+}
+
+.fy_45::before {
+  --sprite-y: 44;
+}
+
+.fx_46::before {
+  --sprite-x: 46;
+}
+
+.fy_46::before {
+  --sprite-y: 45;
+}
+
+.fx_47::before {
+  --sprite-x: 47;
+}
+
+.fy_47::before {
+  --sprite-y: 46;
+}
+
+.fx_48::before {
+  --sprite-x: 48;
+}
+
+.fy_48::before {
+  --sprite-y: 47;
+}
+
+.fx_49::before {
+  --sprite-x: 49;
+}
+
+.fy_49::before {
+  --sprite-y: 48;
+}
+
+.fx_50::before {
+  --sprite-x: 50;
+}
+
+.fy_50::before {
+  --sprite-y: 49;
+}
+
+.fx_51::before {
+  --sprite-x: 51;
+}
+
+.fy_51::before {
+  --sprite-y: 50;
+}
+
+.fx_52::before {
+  --sprite-x: 52;
+}
+
+.fy_52::before {
+  --sprite-y: 51;
+}
+
+.fx_53::before {
+  --sprite-x: 53;
+}
+
+.fy_53::before {
+  --sprite-y: 52;
+}
+
+.fx_54::before {
+  --sprite-x: 54;
+}
+
+.fy_54::before {
+  --sprite-y: 53;
+}
+
+.fx_55::before {
+  --sprite-x: 55;
+}
+
+.fy_55::before {
+  --sprite-y: 54;
+}
+
+.fx_56::before {
+  --sprite-x: 56;
+}
+
+.fy_56::before {
+  --sprite-y: 55;
+}
+
+.fx_57::before {
+  --sprite-x: 57;
+}
+
+.fy_57::before {
+  --sprite-y: 56;
+}
+
+.fx_58::before {
+  --sprite-x: 58;
+}
+
+.fy_58::before {
+  --sprite-y: 57;
+}
+
+.fx_59::before {
+  --sprite-x: 59;
+}
+
+.fy_59::before {
+  --sprite-y: 58;
+}
+
+.fx_60::before {
+  --sprite-x: 60;
+}
+
+.fy_60::before {
+  --sprite-y: 59;
+}
+
+.fx_61::before {
+  --sprite-x: 61;
+}
+
+.fy_61::before {
+  --sprite-y: 60;
+}
+
+.fx_62::before {
+  --sprite-x: 62;
+}
+
+.fy_62::before {
+  --sprite-y: 61;
+}
+
+.fx_63::before {
+  --sprite-x: 63;
+}
+
+.fy_63::before {
+  --sprite-y: 62;
+}
+
+.fx_64::before {
+  --sprite-x: 64;
+}
+
+.fy_64::before {
+  --sprite-y: 63;
+}
+
+.fx_65::before {
+  --sprite-x: 65;
+}
+
+.fy_65::before {
+  --sprite-y: 64;
+}
+
+.fx_66::before {
+  --sprite-x: 66;
+}
+
+.fy_66::before {
+  --sprite-y: 65;
+}
+
+.fx_67::before {
+  --sprite-x: 67;
+}
+
+.fy_67::before {
+  --sprite-y: 66;
+}
+
+.fx_68::before {
+  --sprite-x: 68;
+}
+
+.fy_68::before {
+  --sprite-y: 67;
+}
+
+.fx_69::before {
+  --sprite-x: 69;
+}
+
+.fy_69::before {
+  --sprite-y: 68;
+}
+
+.fx_70::before {
+  --sprite-x: 70;
+}
+
+.fy_70::before {
+  --sprite-y: 69;
+}
+
+.fx_71::before {
+  --sprite-x: 71;
+}
+
+.fy_71::before {
+  --sprite-y: 70;
+}
+
+.fx_72::before {
+  --sprite-x: 72;
+}
+
+.fy_72::before {
+  --sprite-y: 71;
+}
+
+.fx_73::before {
+  --sprite-x: 73;
+}
+
+.fy_73::before {
+  --sprite-y: 72;
+}
+
+.fx_74::before {
+  --sprite-x: 74;
+}
+
+.fy_74::before {
+  --sprite-y: 73;
+}
+
+.fx_75::before {
+  --sprite-x: 75;
+}
+
+.fy_75::before {
+  --sprite-y: 74;
+}
+
+.fx_76::before {
+  --sprite-x: 76;
+}
+
+.fy_76::before {
+  --sprite-y: 75;
+}
+
+.fx_77::before {
+  --sprite-x: 77;
+}
+
+.fy_77::before {
+  --sprite-y: 76;
+}
+
+.fx_78::before {
+  --sprite-x: 78;
+}
+
+.fy_78::before {
+  --sprite-y: 77;
+}
+
+.fx_79::before {
+  --sprite-x: 79;
+}
+
+.fy_79::before {
+  --sprite-y: 78;
+}
+
+.fx_80::before {
+  --sprite-x: 80;
+}
+
+.fy_80::before {
+  --sprite-y: 79;
+}
+
+.fx_81::before {
+  --sprite-x: 81;
+}
+
+.fy_81::before {
+  --sprite-y: 80;
+}
+
+.fx_82::before {
+  --sprite-x: 82;
+}
+
+.fy_82::before {
+  --sprite-y: 81;
+}
+
+.fx_83::before {
+  --sprite-x: 83;
+}
+
+.fy_83::before {
+  --sprite-y: 82;
+}
+
+.fx_84::before {
+  --sprite-x: 84;
+}
+
+.fy_84::before {
+  --sprite-y: 83;
+}
+
+.fx_85::before {
+  --sprite-x: 85;
+}
+
+.fy_85::before {
+  --sprite-y: 84;
+}
+
+.fx_86::before {
+  --sprite-x: 86;
+}
+
+.fy_86::before {
+  --sprite-y: 85;
+}
+
+.fx_87::before {
+  --sprite-x: 87;
+}
+
+.fy_87::before {
+  --sprite-y: 86;
+}
+
+.fx_88::before {
+  --sprite-x: 88;
+}
+
+.fy_88::before {
+  --sprite-y: 87;
+}
+
+.fx_89::before {
+  --sprite-x: 89;
+}
+
+.fy_89::before {
+  --sprite-y: 88;
+}
+
+.fx_90::before {
+  --sprite-x: 90;
+}
+
+.fy_90::before {
+  --sprite-y: 89;
+}
+
+.fx_91::before {
+  --sprite-x: 91;
+}
+
+.fy_91::before {
+  --sprite-y: 90;
+}
+
+.fx_92::before {
+  --sprite-x: 92;
+}
+
+.fy_92::before {
+  --sprite-y: 91;
+}
+
+.fx_93::before {
+  --sprite-x: 93;
+}
+
+.fy_93::before {
+  --sprite-y: 92;
+}
+
+.fx_94::before {
+  --sprite-x: 94;
+}
+
+.fy_94::before {
+  --sprite-y: 93;
+}
+
+.fx_95::before {
+  --sprite-x: 95;
+}
+
+.fy_95::before {
+  --sprite-y: 94;
+}
+
+.fx_96::before {
+  --sprite-x: 96;
+}
+
+.fy_96::before {
+  --sprite-y: 95;
+}
+
+.fx_97::before {
+  --sprite-x: 97;
+}
+
+.fy_97::before {
+  --sprite-y: 96;
+}
+
+.fx_98::before {
+  --sprite-x: 98;
+}
+
+.fy_98::before {
+  --sprite-y: 97;
+}
+
+.fx_99::before {
+  --sprite-x: 99;
+}
+
+.fy_99::before {
+  --sprite-y: 98;
+}
+
+.fx_100::before {
+  --sprite-x: 100;
+}
+
+.fy_100::before {
+  --sprite-y: 99;
+}
+
 .micromodal {
   color: #000;
 }

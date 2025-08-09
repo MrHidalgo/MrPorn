@@ -186,17 +186,20 @@ const SearchModule = (function() {
 
         loadSearchData: function() {
             currentLang = document.documentElement.getAttribute('lang');
+
+            let _this = this;
             try {
                 let url = '/wp-json/mpg/search/';
                 
                 if(currentLang != 'en'){
                     url = '/wp-json/mpg/search/?lang=' + currentLang;
                 }
+                
 
                 fetch(url)
                     .then(res => res.json())
                     .then((out) => {
-                        this.renderRecentLinks(out);
+                        
 
                         let searchDataDiv = document.createElement('script');
                         searchDataDiv.type = 'text/javascript';
@@ -204,8 +207,9 @@ const SearchModule = (function() {
                         if(document.body && searchDataDiv){
                             document.body.appendChild(searchDataDiv);
                         }
-                        this.initSearchKey();
-                        this.initTags();
+                        _this.renderRecentLinks(out);
+                        _this.initSearchKey();
+                        _this.initTags();
                     })
                     .catch(err => {
                         console.warn('Failed to load search data:', err);
@@ -215,15 +219,16 @@ const SearchModule = (function() {
             }
         },
 
-        renderRecentLinks: function(jsonData) {
-            let json = JSON.parse(jsonData);
-            let recentLinks = json.recent_links;
+        renderRecentLinks: function(data) {
+            // jsonData is already parsed JSON object, no need to parse again
+            // data = JSON.parse(data);
+            let recentLinks = jsonData.recent_links;
             let recentLinksContainer = safeQuerySelector('.header__recent');
             if(recentLinksContainer && recentLinksContainer.innerHTML != ''){
                 return;
             }
 
-            if(recentLinks.links.length > 0){
+            if(recentLinks && recentLinks.links && recentLinks.links.length > 0){
                 let recentLinksHtml = '<div class="header__recent-head"><p>'+recentLinks.title+'</p><i class="icon-font icon-left-arrow"></i></div>';
                 recentLinksHtml += '<div class="header__recent-body">'; 
                 recentLinks.links.forEach(link => {

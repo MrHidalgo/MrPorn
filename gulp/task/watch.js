@@ -16,6 +16,7 @@ const watch = (done) => {
 		'iconfont:watch',
 		'spritePNG:watch',
 		'spriteSVG:watch',
+		'images:watch',
 		'vendorScript:watch',
 		'vendorStyle:watch',
 		'list-pages:watch'

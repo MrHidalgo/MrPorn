@@ -1,0 +1,45 @@
+/* Dynamic Sprite Grid System with SCSS Mixins */
+
+// Configuration - Easy to modify
+$sprite-config: (
+  icon-size: 16px,
+  max-grid: 100, // Changed to 100 as requested
+  image-path: '../images/zsprite_grid.png'
+);
+
+// Base deIcon setup
+.deIcon {
+  position: relative;
+}
+
+.deIcon::before {
+  content: '';
+  width: map-get($sprite-config, 'icon-size');
+  height: map-get($sprite-config, 'icon-size');
+//   background-image: url(map-get($sprite-config, 'image-path'));
+  background-repeat: no-repeat;
+  
+  // CSS Custom Properties for dynamic positioning
+  --sprite-x: 0;
+  --sprite-y: 0;
+  background-position: calc(var(--sprite-x) * -#{map-get($sprite-config, 'icon-size')}) calc(var(--sprite-y) * -#{map-get($sprite-config, 'icon-size')});
+}
+
+// Mixin to generate fx_ and fy_ classes dynamically
+@mixin generate-fx-fy-classes($max: 100) {
+  @for $i from 1 through $max {
+    .fx_#{$i}::before {
+      --sprite-x: #{$i};
+    }
+    
+    .fy_#{$i}::before {
+      --sprite-y: #{$i - 1};
+    }
+  }
+}
+
+// Generate fx_ and fy_ classes for 100x100 grid
+@include generate-fx-fy-classes(100);
+
+
+  

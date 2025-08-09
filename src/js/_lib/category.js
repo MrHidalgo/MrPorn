@@ -106,97 +106,6 @@ function initCategoryPage() {
 		}
 	}
 
-	const processCategoryDataFromDom = () => {
-		let isPreLoaded = false
-
-		if(mobileMenuList.classList.contains('loaded')){
-			isPreLoaded = true;
-			otherCategoryItems = document.querySelectorAll('.category-list-menu-mobile .category-list-link ');
-		}else{
-			otherCategoryItems = document.querySelectorAll('#other_categories .category_item_link, .category_box.category_col');
-		}
-
-		let categoryIndex = 0;
-		otherCategoryItems.forEach(function (_category) {
-			let $this = _category;
-			let link = '';
-			let categoryId = '';
-			let categoryOrder = 0;
-			let isVisited = '';
-			let isVisitedClass = '';
-			let categorySites = [];
-			let count_sites = 0;
-			let categoryTitle = '';
-
-			if (isPreLoaded) {
-				// Category list is already loaded
-				link = _category.getAttribute('href');
-				categoryId = _category.dataset.id;
-				categoryOrder = +categoryIndex;
-				isVisited = _category.classList.contains('visited');
-				isVisitedClass = isVisited ? 'visited' : '';
-				categorySites = $this.querySelectorAll('.category-list-icons .category-site-icon')
-				count_sites = +_category.querySelector('.mobile_link_count').innerHTML;
-
-				let $categoryTitle = _category.querySelector('.category-list-title')
-				categoryTitle = $categoryTitle.innerHTML;
-				categoryIndex++;
-			} else if (bodyClasses.contains('home')) {
-				let catLink = _category.querySelector('.list__box-head-a')
-				link = catLink.getAttribute('href');
-				categoryId = catLink.dataset.id;
-				categoryOrder = +catLink.dataset.order;
-				isVisited = _category.classList.contains('visited');
-				isVisitedClass = isVisited ? 'visited' : '';
-				categorySites = $this.querySelectorAll('.list__box__item-icon')
-				count_sites = +_category.dataset.count;
-
-				let $categoryTitle = _category.querySelector('.list__box-head-a')
-				categoryTitle = $categoryTitle.innerHTML;
-			} else {
-				link = _category.getAttribute('href');
-				categoryId = _category.dataset.id;
-				categoryOrder = +_category.dataset.order;
-				isVisited = _category.classList.contains('visited');
-				isVisitedClass = isVisited ? 'visited' : '';
-
-				categorySites = $this.querySelectorAll('.url_link_list_sites .deIcon')
-
-				let categorySiteCount = $this.querySelector('.url_link_count_sites')
-
-				count_sites = categorySiteCount.textContent.replace('+', '');
-
-				let $categoryTitle = _category.querySelector('.category_item_caption_title')
-				categoryTitle = $categoryTitle.innerHTML;
-			}
-
-			let $categoryIcon = _category.querySelector('.icon-category')
-			let categoryIcon = $categoryIcon.className;
-
-
-			let icons = '';
-			let siteIndex = 0;
-			categorySites.forEach(function (_site) {
-				if (siteIndex < 5) {
-					icons += '<i class="category-site-icon ' + _site.getAttribute('class') + '"></i>';
-					siteIndex++;
-				}
-			})
-
-			categoryItems.push({
-				'id': categoryId,
-				'title': categoryTitle,
-				'icon': categoryIcon,
-				'link': link,
-				'count': count_sites,
-				'icons': icons,
-				'visited': isVisited,
-				'visited_o': isVisited,
-				'order': categoryOrder
-			});
-		});
-	}
-
 	function createSidebar() {
 		let parent = this;
 
@@ -543,6 +452,8 @@ function initCategoryPage() {
 		if(desktopMenuList !== null) desktopMenuList.innerHTML = '';
 		if(mobileMenuList !== null) mobileMenuList.innerHTML = '';
 
+		console.log('rendering sidebar items');
+
 		let categoryIndex = 0;
 		categoryItems.map(
 			(categoryItem) => {
@@ -695,7 +606,7 @@ function initCategoryPage() {
 			});
 	}
 
-	const processHomeCategories = (result) => {
+	const processCategoryList = (result) => {
 		sidebarCategories = [];
 		result.terms?.forEach(function (term) {
 			let icons = '';
@@ -752,13 +663,7 @@ function initCategoryPage() {
 			}
 			a2zOrder++;
 		}
-
-		// if(bodyClasses.contains('home')){
-		// 	processHomeCategories(result)
-		// }else{
-		// 	processCategoryDataFromDom();
-		// }
-		processHomeCategories(result)
+		processCategoryList(result)
 
 		initCategorySidebar()
 		initLetterScroll()

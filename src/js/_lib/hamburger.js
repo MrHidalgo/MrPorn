@@ -52,7 +52,7 @@ const initHamburger = () => {
 
 			const searchViewContainer = SearchModule ? SearchModule.getSearchViewContainer() : null;
 			if (searchViewContainer) {
-				bodyScrollLock.disableBodyScroll(searchViewContainer);
+				// bodyScrollLock.disableBodyScroll(searchViewContainer);
 			}
 
 			btnHamburger.classList.remove("is-active");

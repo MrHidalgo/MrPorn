@@ -13,6 +13,7 @@ const build = (done) => {
 		'iconfont',
     'spritePNG',
     'spriteSVG',
+    'images',
     'vendorScript',
     'vendorStyle',
     'vendorHomeScript',
