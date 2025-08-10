@@ -130,7 +130,7 @@ function verifyAge(){
 }
 
 function showAcceptCookie(){
-	if(document.documentElement.lang=='de'){
+	if(document.documentElement.getAttribute("lang")=='de'){
 		var isAccepted = getCookieMpgCookie("accept");
 		if(!isAccepted){
 			let avHtml = '<div class="cookieBanner">' +

@@ -115,6 +115,7 @@ function initCategoryPage() {
 
 
 		let categoryFilter = document.querySelectorAll('.category-list-filter')
+		let categoryFilterDropdown = document.querySelector('.category-list-menu-dropdown')
 
 		if (categoryFilter.length > 0) {
 			for (let i = 0; i < categoryFilter.length; i++) {
@@ -175,6 +176,10 @@ function initCategoryPage() {
 						behavior: "smooth",
 					});
 					mobileMenuList?.scrollTo({
+						top: 0,
+						behavior: "smooth",
+					});
+					categoryFilterDropdown?.scrollTo({
 						top: 0,
 						behavior: "smooth",
 					});
@@ -584,8 +589,8 @@ function initCategoryPage() {
 		let cacheKey = 'a2z_data__';
 		let _lang = document.documentElement.getAttribute('lang')
 		if(_lang!='en'){
-			url += '?lang='+currentLang;
-			cacheKey += '_'+currentLang;
+			url += '?lang='+_lang;
+			cacheKey += '_'+_lang;
 		}
 
 		if(getWithExpiry(cacheKey)){
