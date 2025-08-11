@@ -232,7 +232,7 @@ const SearchModule = (function() {
                 let recentLinksHtml = '<div class="header__recent-head"><p>'+recentLinks.title+'</p><i class="icon-font icon-left-arrow"></i></div>';
                 recentLinksHtml += '<div class="header__recent-body">'; 
                 recentLinks.links.forEach(link => {
-                    recentLinksHtml += '<a href="'+link.url+'"><i class="icon-font icon-arrow-angle"></i><span>'+link.title+'</span></a>';
+                    recentLinksHtml += '<a href="'+ rootUrl + link.url+'"><i class="icon-font icon-arrow-angle"></i><span>'+link.title+'</span></a>';
                 });
                 recentLinksHtml += '</div>';
                 recentLinksContainer.innerHTML = recentLinksHtml;
@@ -832,7 +832,7 @@ const SearchModule = (function() {
                 if (tags.hasOwnProperty(tag)) {
                     let tagIcon = tags[tag].icon;
                     tagsHtml += '<li class="categories-tags-li">\n' +
-                        '                        <a href="' + langPrefix + '/category-tags/' + tag + '/" class="categories-tags-item solid"><i class="tag-icon tag-' + tagIcon + '"></i>' + tags[tag].name + '</a>\n' +
+                        '                        <a href="' +  rootUrl + langPrefix + '/category-tags/' + tag + '/" class="categories-tags-item solid"><i class="tag-icon tag-' + tagIcon + '"></i>' + tags[tag].name + '</a>\n' +
                         '                    </li>';
 
                     dropdownTags += '<li class="dropdown-item ">\n' +

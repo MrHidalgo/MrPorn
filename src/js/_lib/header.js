@@ -84,7 +84,8 @@ const renderFavourites = () => {
 	postRequest(ajaxEndpoint, {
 		action:'is_logged',
 		logout:'/',
-		is_fav:true
+		is_fav:true,
+		lang: currentLang
 	}, function (res) {
 		if(res.status){
 			if(res.status=='true'){

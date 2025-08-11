@@ -26,7 +26,8 @@ let isLoggedUser = false;
 let dataTime = '';
 let videoPaused = false;
 
-let currentLang = 'en';
+let currentLang = document.documentElement.getAttribute('lang');
+let rootUrl = window.location.origin;
 let goTop;
 let headerHeight = null;
 let isSingleBlog = false;

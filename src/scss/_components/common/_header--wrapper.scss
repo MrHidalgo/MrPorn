@@ -1,7 +1,16 @@
 &__row-1{
+	
+	@include respond('desktop'){
+		position: absolute;
+		left: 0;
+		right: 0;
+		top: 0;
+		z-index: 6;
+	}
 	@include adaptive(1023) {
 		display: none;
 	}
+
 }
 &__bottom{
 	@include adaptive(1023) {
