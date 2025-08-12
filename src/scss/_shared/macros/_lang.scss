@@ -16,28 +16,31 @@
 
 
 
-	&:hover {
-		.lang {
-			&__toggle {
-				border-color: #fff;
-				border-bottom-left-radius: 0;
-				border-bottom-right-radius: 0;
-				background-color: #ffffff;
-				@include transition(border-color, background-color, border-radius);
-
-				span,
-				.icon-font {
-					color: #080915;
-					@include transition(color);
+	
+	@include respond('desktop'){
+		&:hover {
+			.lang {
+				&__toggle {
+					border-color: #fff;
+					border-bottom-left-radius: 0;
+					border-bottom-right-radius: 0;
+					background-color: #ffffff;
+					@include transition(border-color, background-color, border-radius);
+	
+					span,
+					.icon-font {
+						color: #080915;
+						@include transition(color);
+					}
 				}
-			}
-
-			&__drop {
-				display: block;
-				opacity: 1;
-				visibility: visible;
-				transform: translateY(0);
-				@include transition(opacity, visibility, transform);
+	
+				&__drop {
+					display: block;
+					opacity: 1;
+					visibility: visible;
+					transform: translateY(0);
+					@include transition(opacity, visibility, transform);
+				}
 			}
 		}
 	}
@@ -105,6 +108,13 @@
 		backface-visibility: hidden;
 		transform-origin: center;
 		@include transition(opacity, visibility, transform);
+
+		&.open{
+			display: block;
+			opacity: 1;
+			visibility: visible;
+			transform: translateY(0);
+		}
 
 		@include adaptive(480) {
 			min-width: 320px;

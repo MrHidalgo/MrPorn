@@ -817,24 +817,26 @@ strong {
     align-items: center;
   }
 }
-.lang:hover .lang__toggle {
-  border-color: #fff;
-  border-bottom-left-radius: 0;
-  border-bottom-right-radius: 0;
-  background-color: #ffffff;
-  transition: border-color 0.35s ease-in-out, background-color 0.35s ease-in-out, border-radius 0.35s ease-in-out;
-}
-.lang:hover .lang__toggle span,
-.lang:hover .lang__toggle .icon-font {
-  color: #080915;
-  transition: color 0.35s ease-in-out;
-}
-.lang:hover .lang__drop {
-  display: block;
-  opacity: 1;
-  visibility: visible;
-  transform: translateY(0);
-  transition: opacity 0.35s ease-in-out, visibility 0.35s ease-in-out, transform 0.35s ease-in-out;
+@media screen and (min-width: 1024px) {
+  .lang:hover .lang__toggle {
+    border-color: #fff;
+    border-bottom-left-radius: 0;
+    border-bottom-right-radius: 0;
+    background-color: #ffffff;
+    transition: border-color 0.35s ease-in-out, background-color 0.35s ease-in-out, border-radius 0.35s ease-in-out;
+  }
+  .lang:hover .lang__toggle span,
+  .lang:hover .lang__toggle .icon-font {
+    color: #080915;
+    transition: color 0.35s ease-in-out;
+  }
+  .lang:hover .lang__drop {
+    display: block;
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+    transition: opacity 0.35s ease-in-out, visibility 0.35s ease-in-out, transform 0.35s ease-in-out;
+  }
 }
 .lang__toggle {
   display: flex;
@@ -901,6 +903,12 @@ strong {
   backface-visibility: hidden;
   transform-origin: center;
   transition: opacity 0.35s ease-in-out, visibility 0.35s ease-in-out, transform 0.35s ease-in-out;
+}
+.lang__drop.open {
+  display: block;
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0);
 }
 @media screen and (max-width: 480px) {
   .lang__drop {

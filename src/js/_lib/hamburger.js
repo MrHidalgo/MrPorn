@@ -42,7 +42,9 @@ const initHamburger = () => {
 
 
 	const searchHamburger = document.querySelector('.pre-header__hamburger'),
-		searchContainer = document.querySelector('[search-mobile-js]');
+		searchContainer = document.querySelector('[search-mobile-js]'),
+		languageToggle = document.querySelector('.mobile-menu .lang__toggle'),
+		langDrop = document.querySelector('.mobile-menu .lang__drop');
 
 	if(searchHamburger) {
 		searchHamburger.addEventListener("click", (ev) => {
@@ -70,6 +72,11 @@ const initHamburger = () => {
 			}
 
 		});
+	}
+	if(window.isMobileOrTablet && languageToggle && langDrop){
+		languageToggle.addEventListener('click', (ev) => {
+			langDrop.classList.toggle('open')
+		})
 	}
 
 	const searchClose = document.querySelector('.search__close');
