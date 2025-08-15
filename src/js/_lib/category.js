@@ -471,23 +471,26 @@ function initCategoryPage() {
 					catExtraClasses += ' pulse';
 				}
 
-
-				let item = '<li class="category-list-item" >' + '<a  href="' + rootUrl + categoryItem.link + '" class="category-list-link ' + catExtraClasses + '" data-id="' + categoryItem.id + '"><i class="' + categoryItem.icon + '"></i><span class="category-list-title">' + catTitle + '</span><div class="category-list-icons">' + categoryItem.icons + '<span class="mobile_link_ellipsis">...</span>' + '<span class="mobile_link_count">' + categoryItem.count + '</span>' + '</div>' + '</a>' + '</li>';
-				if(filterA2z){
-					let catIcon = '';
-					if(+categoryItem.is_webcam > 0){
-						catIcon = '<i class="webcam"></i>';
+				if(categoryItem.link != ''){
+					let item = '<li class="category-list-item" >' + '<a  href="' + rootUrl + categoryItem.link + '" class="category-list-link ' + catExtraClasses + '" data-id="' + categoryItem.id + '"><i class="' + categoryItem.icon + '"></i><span class="category-list-title">' + catTitle + '</span><div class="category-list-icons">' + categoryItem.icons + '<span class="mobile_link_ellipsis">...</span>' + '<span class="mobile_link_count">' + categoryItem.count + '</span>' + '</div>' + '</a>' + '</li>';
+					if(filterA2z){
+						let catIcon = '';
+						if(+categoryItem.is_webcam > 0){
+							catIcon = '<i class="webcam"></i>';
+						}
+						item = '<li class="category-list-item" >' + '<a  href="' + rootUrl + categoryItem.link + '" class="category-list-link-a2z ' + catExtraClasses + '" data-id="' + categoryItem.id + '"><span class="category-list-title">' + catTitle + catIcon + '</span><span class="mobile_link_count">'+categoryItem.count+'</span></a>' + '</li>';
 					}
-					 item = '<li class="category-list-item" >' + '<a  href="' + rootUrl + categoryItem.link + '" class="category-list-link-a2z ' + catExtraClasses + '" data-id="' + categoryItem.id + '"><span class="category-list-title">' + catTitle + catIcon + '</span><span class="mobile_link_count">'+categoryItem.count+'</span></a>' + '</li>';
+
+					if(categoryItem.letter){
+						item = '<li class="category-list-item category-list-item-letter letter_'+categoryItem.letter+'">'+categoryItem.letter.toUpperCase()+'</li>';
+					}
+
+					desktopMenuList?.insertAdjacentHTML('beforeend', item);
+					mobileMenuList?.insertAdjacentHTML('beforeend', item);
+
 				}
 
-				if(categoryItem.letter){
-					item = '<li class="category-list-item category-list-item-letter letter_'+categoryItem.letter+'">'+categoryItem.letter.toUpperCase()+'</li>';
-				}
-
-				desktopMenuList?.insertAdjacentHTML('beforeend', item);
-				mobileMenuList?.insertAdjacentHTML('beforeend', item);
-
+				
 
 				if(isCategoriesPage && !filterA2z){
 
