@@ -69,14 +69,14 @@ function initWebWorker(){
 function detectCountryAndVerifyAge() {
 	// const apiUrl = 'https://ipinfo.io/json?token=b26cc70e6edb61';
 
-	fetch('/api/country.php')
+	fetch('https://analytics.mrgeek.link/api/country')
 		.then(response => response.json())
 		.then(data => {
-			if (data.countryCode === 'DE' || data.countryCode === 'GB' || data.countryCode === 'LK') {
+			if (data.country === 'DE' || data.country === 'GB' || data.country === 'LK') {
 			// if (data.countryCode === 'DE') {
-				showAgeVerification(data.countryCode); // Example function for German visitors
+				showAgeVerification(data.country); // Example function for German visitors
 			}
-			console.log('Detected country:', data.countryCode);
+			console.log('Detected country:', data.country);
 		})
 		.catch(error => {
 			console.error('Error detecting country:', error);

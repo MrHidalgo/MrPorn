@@ -51,6 +51,7 @@ function initCategoryPage() {
 
 	let a2zCookie = getCookieMpgCookie("category_filter_a2z");
 	let allTagsCookie = getCookieMpgCookie("category_filter_all_tags");
+	let enableLetterScroll = false;
 
 	let filterScroll = bodyClasses.contains('page-template-page-categories') ? 0: +getCookieMpgCookie("category_filter_scroll") ?? 0;
 	let filterA2z = 1; // (bodyClasses.contains('home') || isCategoriesPage) ? 1:  +getCookieMpgCookie("category_filter_a2z") ?? 1;
@@ -415,12 +416,22 @@ function initCategoryPage() {
 		if(letterLinks.length == 0){
 			return;
 		}
+		const letterList = document.querySelector('.category-list-left');
+		if(!letterList){
+			return;
+		}
+		letterList.addEventListener('mouseover', () => {
+			enableLetterScroll = true;
+		});
+		letterList.addEventListener('mouseout', () => {
+			enableLetterScroll = false;
+		});
 
 		letterLinks.forEach((letterLink) => {
 			letterLink.addEventListener('click', (e) => {
 				e.preventDefault();
 				const container = e.target.closest('.category-list-container');
-				const letterList = container.querySelector('.category-list-left');
+				
 				const letter = e.target.dataset.letter;
 				const letterElement = container.querySelector(`.category-list-item-letter.letter_${letter}`);
 				let letterTop = letterElement.offsetTop;
@@ -432,6 +443,7 @@ function initCategoryPage() {
 				container.querySelector('.category-list-letter.active')?.classList.remove('active');
 				e.target.classList.add('active');
 				if(letterList){
+					
 					letterList.scrollTo({
 						top: letterTop,
 						behavior: 'smooth'
@@ -524,6 +536,9 @@ function initCategoryPage() {
 			desktopMenuListContainer?.addEventListener("scroll", () => {
 				const scrollTop = desktopMenuListContainer.scrollTop;
 				let activeLetter = null;
+				if(!enableLetterScroll){
+					return;
+				}
 
 				for (let key in letterOffsets) {
 					if (scrollTop >= letterOffsets[key]) {
@@ -531,10 +546,10 @@ function initCategoryPage() {
 					}
 				}
 
-				// Update active class
-				categoryListContainer.querySelectorAll(".category-list-letter").forEach(div => {
-					div.classList.toggle("active", div.dataset.letter === activeLetter);
-				});
+				categoryListContainer.querySelector('.category-list-letter.active')?.classList.remove('active');
+				categoryListContainer.querySelector('.category-list-letter.letter_'+activeLetter).classList.add('active');
+				
+
 			});
 		}
 	}

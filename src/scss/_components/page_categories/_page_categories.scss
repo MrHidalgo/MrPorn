@@ -201,7 +201,8 @@
 
 		@include respond('medium'){
 			.category_item:nth-child(n + 9){
-				display: none;
+				height: 0;
+				overflow: hidden;
 			}
 		}
 
@@ -239,7 +240,8 @@
 	@include respond('medium'){
 		&.show_all{
 			.category_item:nth-child(n + 9){
-				display: inline-block;
+				height: 0;
+				overflow: visible;
 			}
 			.tag-section-more{
 				display: none;
