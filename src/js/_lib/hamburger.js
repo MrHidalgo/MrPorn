@@ -23,6 +23,20 @@ const initHamburger = () => {
 				mobileMenuLangList.innerHTML = desktopMenuLang.innerHTML;
 			}
 
+			// Populate mobile menu when hamburger is clicked (only on first open)
+			if(window.populateMobileMenu && !mobileContainer.classList.contains('is-open')) {
+				// Determine which category items to use based on current filter
+				let currentCategoryItems = window.filterA2z ? window.a2zCategories : window.categoryItems;
+				if(currentCategoryItems) {
+					window.populateMobileMenu(currentCategoryItems);
+				}
+			}
+
+			// Populate mobile tags when hamburger is clicked (only on first open)
+			if(SearchModule && !mobileContainer.classList.contains('is-open')) {
+				SearchModule.populateMobileTags();
+			}
+
 			elem.classList.toggle("is-active");
 			mobileContainer.classList.toggle("is-open");
 

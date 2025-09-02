@@ -822,6 +822,7 @@ const SearchModule = (function() {
         initTags: function() {
             if (!window.jsonData || !window.jsonData.tags) return;
             
+            
             let tags = window.jsonData.tags;
             let tagsHtml = '';
             let dropdownTags = '';
@@ -856,10 +857,10 @@ const SearchModule = (function() {
                 '            </a>\n' +
                 '        </li>';
 
-            let tagListMobile = safeQuerySelector('.tag-list-mobile');
-            if (tagListMobile){
-                tagListMobile.innerHTML = tagsHtml;
-            }
+            // Store mobile tags HTML for later use instead of setting immediately
+            window.mobileTagsHtml = tagsHtml;
+            
+            // Only set sidebar and dropdown tags immediately (not mobile)
             let tagListSidebar = safeQuerySelector('.tag-list-sidebar');
             if(tagListSidebar){
                 tagListSidebar.innerHTML = tagsHtml;
@@ -867,6 +868,16 @@ const SearchModule = (function() {
             let tagDropdown = safeQuerySelector('.tag-dropdown-menu');
             if(tagDropdown){
                 tagDropdown.innerHTML = dropdownTags;
+            }
+        },
+
+        // New function to populate mobile tags when hamburger is clicked
+        populateMobileTags: function() {
+            if (!window.mobileTagsHtml) return;
+            
+            let tagListMobile = safeQuerySelector('.tag-list-mobile');
+            if (tagListMobile && !tagListMobile.innerHTML) {
+                tagListMobile.innerHTML = window.mobileTagsHtml;
             }
         },
 

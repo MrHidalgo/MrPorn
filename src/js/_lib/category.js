@@ -64,6 +64,8 @@ function initCategoryPage() {
 			filterA2z = +a2zCookie;
 		}
 	}
+	// Initialize global variable
+	window.filterA2z = filterA2z;
 
 	let filterPopular = +getCookieMpgCookie("category_filter_popular") ?? 0;
 
@@ -73,6 +75,7 @@ function initCategoryPage() {
 
 	if(!isMobileOrTablet && document.body.classList.contains('single-sites')){
 		filterA2z = 0
+		window.filterA2z = filterA2z;
 	}
 
 	if(filterScroll){
@@ -125,6 +128,11 @@ function initCategoryPage() {
 					let filter = evt.target.value.toLowerCase().trim();
 					if (filter == '') {
 						renderCategorySidebar(filterA2z ? a2zCategories : categoryItems);
+						
+						// Update mobile menu if it's already populated
+						if(mobileMenuList && mobileMenuList.children.length > 0) {
+							populateMobileMenu(filterA2z ? a2zCategories : categoryItems);
+						}
 						return;
 
 					}
@@ -171,6 +179,11 @@ function initCategoryPage() {
 					});
 					filteredCategories = premiumItems.concat(nonPremiumItems);
 					renderCategorySidebar(filteredCategories, filter, true);
+
+					// Update mobile menu if it's already populated
+					if(mobileMenuList && mobileMenuList.children.length > 0) {
+						populateMobileMenu(filteredCategories, filter, true);
+					}
 
 					desktopMenuListContainer?.scrollTo({
 						top: 0,
@@ -326,6 +339,8 @@ function initCategoryPage() {
 
 	const onA2ZChecked = (checked) => {
 		filterA2z = checked;
+		// Update global variable as well so mobile menu population works correctly
+		window.filterA2z = checked;
 		if (checked) {
 			createCookie("category_filter_a2z", 1, 356);
 			leftSidebar?.classList.add('scroll');
@@ -334,6 +349,11 @@ function initCategoryPage() {
 			leftSidebar?.classList.remove('scroll');
 		}
 		renderCategorySidebar(filterA2z ? a2zCategories : categoryItems);
+		
+		// Update mobile menu if it's already populated
+		if(mobileMenuList && mobileMenuList.children.length > 0) {
+			populateMobileMenu(filterA2z ? a2zCategories : categoryItems);
+		}
 	}
 
 	const setSidebarHeight = (reset = false) => {
@@ -465,7 +485,8 @@ function initCategoryPage() {
 		}
 
 		if(desktopMenuList !== null) desktopMenuList.innerHTML = '';
-		if(mobileMenuList !== null) mobileMenuList.innerHTML = '';
+		// Remove mobile menu population - it will be populated when hamburger is clicked
+		// if(mobileMenuList !== null) mobileMenuList.innerHTML = '';
 
 		console.log('rendering sidebar items');
 
@@ -495,7 +516,8 @@ function initCategoryPage() {
 					}
 
 					desktopMenuList?.insertAdjacentHTML('beforeend', item);
-					mobileMenuList?.insertAdjacentHTML('beforeend', item);
+					// Remove mobile menu population - it will be populated when hamburger is clicked
+					// mobileMenuList?.insertAdjacentHTML('beforeend', item);
 
 				}
 
@@ -522,6 +544,50 @@ function initCategoryPage() {
 		)
 
 		reorderCategories()
+
+		// Add function to populate mobile menu (will be called when hamburger is clicked)
+		const populateMobileMenu = (categoryItems, filter = '', hideVisited = false) => {
+			if(mobileMenuList !== null) mobileMenuList.innerHTML = '';
+			
+			let categoryIndex = 0;
+			categoryItems.map(
+				(categoryItem) => {
+					let catTitle = categoryItem.title.endsWith(' ') ? categoryItem.title : categoryItem.title + ' ';
+					let catExtraClasses = hideVisited? '' : (categoryItem.visited ? ' visited' : '') ;
+					if (filter != '' && catTitle.toLowerCase().indexOf(filter) > -1) {
+						catTitle = catTitle.replace(new RegExp(filter, 'gi'), (match) => `<span class="highlight">${match}</span>`);
+						catExtraClasses += ' pulse';
+					}
+
+					if(categoryItem.link != ''){
+						let item = '<li class="category-list-item" >' + '<a  href="' + rootUrl + categoryItem.link + '" class="category-list-link ' + catExtraClasses + '" data-id="' + categoryItem.id + '"><i class="' + categoryItem.icon + '"></i><span class="category-list-title">' + catTitle + '</span><div class="category-list-icons">' + categoryItem.icons + '<span class="mobile_link_ellipsis">...</span>' + '<span class="mobile_link_count">' + categoryItem.count + '</span>' + '</div>' + '</a>' + '</li>';
+						if(filterA2z){
+							let catIcon = '';
+							if(+categoryItem.is_webcam > 0){
+								catIcon = '<i class="webcam"></i>';
+							}
+							item = '<li class="category-list-item" >' + '<a  href="' + rootUrl + categoryItem.link + '" class="category-list-link-a2z ' + catExtraClasses + '" data-id="' + categoryItem.id + '"><span class="category-list-title">' + catTitle + catIcon + '</span><span class="mobile_link_count">'+categoryItem.count+'</span></a>' + '</li>';
+						}
+
+						if(categoryItem.letter){
+							item = '<li class="category-list-item category-list-item-letter letter_'+categoryItem.letter+'">'+categoryItem.letter.toUpperCase()+'</li>';
+						}
+
+						mobileMenuList?.insertAdjacentHTML('beforeend', item);
+					}
+				}
+			)
+		}
+
+		// Make this function globally accessible
+		window.populateMobileMenu = populateMobileMenu;
+		
+		// Also make a function to update mobile menu when filter changes
+		window.updateMobileMenu = (categoryItems, filter = '', hideVisited = false) => {
+			if(mobileMenuList && mobileMenuList.children.length > 0) {
+				populateMobileMenu(categoryItems, filter, hideVisited);
+			}
+		};
 
 		if(filterA2z){
 
@@ -653,6 +719,9 @@ function initCategoryPage() {
 		})
 
 		categoryItems = sidebarCategories;
+		
+		// Make category data globally accessible for mobile menu population
+		window.categoryItems = categoryItems;
 	}
 
 	const processA2ZData = (result) => {
@@ -685,6 +754,10 @@ function initCategoryPage() {
 			a2zOrder++;
 		}
 		processCategoryList(result)
+
+		// Make A2Z data globally accessible for mobile menu population
+		window.a2zCategories = a2zCategories;
+		window.filterA2z = filterA2z;
 
 		initCategorySidebar()
 		initLetterScroll()
