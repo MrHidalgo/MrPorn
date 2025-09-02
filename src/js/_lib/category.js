@@ -455,9 +455,6 @@ function initCategoryPage() {
 	}
 
 	const renderCategorySidebar = (categoryItems, filter = '', hideVisited = false) => {
-
-		// categoryListContainer?.classList.remove('a2z');
-		// mobileMenuList?.classList.remove('a2z');
 		
 
 		if(filterA2z){
