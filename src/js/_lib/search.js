@@ -196,24 +196,28 @@ const SearchModule = (function() {
                 }
                 
 
-                fetch(url)
-                    .then(res => res.json())
-                    .then((out) => {
+                // fetch(url)
+                //     .then(res => res.json())
+                //     .then((out) => {
                         
 
-                        let searchDataDiv = document.createElement('script');
-                        searchDataDiv.type = 'text/javascript';
-                        searchDataDiv.text = 'var jsonData=' + out;
-                        if(document.body && searchDataDiv){
-                            document.body.appendChild(searchDataDiv);
-                        }
-                        _this.renderRecentLinks(out);
-                        _this.initSearchKey();
-                        _this.initTags();
-                    })
-                    .catch(err => {
-                        console.warn('Failed to load search data:', err);
-                    });
+                //         let searchDataDiv = document.createElement('script');
+                //         searchDataDiv.type = 'text/javascript';
+                //         searchDataDiv.text = 'var jsonData=' + out;
+                //         if(document.body && searchDataDiv){
+                //             document.body.appendChild(searchDataDiv);
+                //         }
+                //         _this.renderRecentLinks(out);
+                //         _this.initSearchKey();
+                //         _this.initTags();
+                //     })
+                //     .catch(err => {
+                //         console.warn('Failed to load search data:', err);
+                //     });
+
+                // _this.renderRecentLinks(out);
+                    _this.initSearchKey();
+                    _this.initTags();
             } catch (error) {
                 console.error('Error loading search data:', error);
             }
@@ -243,7 +247,49 @@ const SearchModule = (function() {
         renderRecentCategories: function(jsonData) {    
         },
 
-        searchSites: function(term, searchPage, isPaged = false, isBlog = false) {
+        fetchFromTypesense: async function(searchTerm) {
+            let typesense_params = {
+                'searches': [
+                    {
+
+                        "sort_by": 'boost_value:desc,site_order:asc',
+                        "query_by": "post_title",
+                        "facet_by": "category_name,category_slug,tags",
+                        // "filter_by": `q:=${searchTerm}`,
+                        "highlight_full_fields": "post_title",
+                        "exclude_fields": 'post_content,post_author,post_date,post_modified,post_type,tag_links,tags,is_boosted,comment_count',
+                        "collection": "sites",
+                        "q": searchTerm,
+                        // "page": 1,
+                        "per_page": 250
+                    }
+                ]
+            };
+            
+            try {
+                const response = await fetch('https://search.mpgdev.xyz/multi_search?x-typesense-api-key=VaeMPXvOoHvHUOiucqrLkeLpZvfP6Slm', {
+                    method: 'POST',
+                    body: JSON.stringify(typesense_params)
+                });
+                
+                const data = await response.json();
+                console.log('MPG Boost: Search results:', data);
+                
+                // Extract hits from the multi_search response
+                if (data.results && data.results[0] && data.results[0].hits) {
+                    return data.results[0].hits.map(hit => hit.document);
+                }
+            } catch (error) {
+                console.error('MPG Boost: Search error:', error);
+            }
+            return [];
+        },
+
+        searchSites: async function(term, searchPage, isPaged = false, isBlog = false) {
+            
+            let jsonSites = await this.fetchFromTypesense(term);
+            console.log('MPG Boost: Search results:', jsonSites);
+            
             try {
                 if(window.innerWidth < 767){
                     perPage = 6;
@@ -253,6 +299,7 @@ const SearchModule = (function() {
                     perPage = 9;
                 }
         
+                /*
                 let jsonSites = window.jsonData ? window.jsonData.sites : [];
                 let jsonSynonyms = window.jsonData ? window.jsonData.synonyms : [];
         
@@ -312,6 +359,8 @@ const SearchModule = (function() {
                 } else {
                     searchAlternatives = false;
                 }
+
+                */
         
                 // Calculate pagination
                 searchPageCount = Math.ceil(searchedSites.length / perPage);
@@ -320,13 +369,14 @@ const SearchModule = (function() {
                 }
         
                 // Sort results
+                
+                /*
                 if(searchAlternatives){
                     searchedSites.sort((_siteA, _siteB) => _siteA.ao - _siteB.ao);
                 } else {
                     searchedSites.sort((_siteA, _siteB) => _siteA.o - _siteB.o);
                 }
         
-                // Sort by term position in name
                 searchedSites.sort((_siteA, _siteB) => {
                     let siteAIndex = _siteA.n.indexOf(term);
                     let siteBIndex = _siteB.n.indexOf(term);
@@ -335,6 +385,9 @@ const SearchModule = (function() {
                     }
                     return _siteA.o - _siteB.o;
                 });
+                */
+
+                searchedSites = jsonSites;
         
                 lastQuery = term;
                 searchTotalPageCount = searchedSites.length;
@@ -594,32 +647,30 @@ const SearchModule = (function() {
                 searchedSites[i] !== undefined && _sitesBatch.push(searchedSites[i]);
             }
 
+            let langPrefix = currentLang === 'en' ? '/' : '/' + currentLang+'/';
+
             _sitesBatch.map(site => {
-                let siteTag = '';
-                let siteTagId = site.ti;
-                let siteTagName = site.tn;
-                let siteCategoryLink = site.tl;
-                let siteCategoryId = site.ti;
-                let siteIcon = site.ico;
-                let fIcons = siteIcon.split(',');
-                let fx = fIcons[0];
-                let fy = fIcons[1];
-
-                if(currentLang != 'en'){
-                    siteCategoryLink = '/' + currentLang + siteCategoryLink;
-                }
-
-                let siteThumb = site.th;
-                let siteUrl = site.u;
+                // let siteTag = '';
+                // let siteTagId = site.ti;
+                let siteTagName = site.category_name;
+                let siteCategoryLink = langPrefix + site.category_slug;
+                let siteCategoryId = 0; // site.category_id;
+                // let siteIcon = site.ico;
+                // let fIcons = siteIcon.split(',');
+                let fx = site.favicon_x;
+                let fy = site.favicon_y;
+                
+                let siteThumb = site.screenshot_url;
+                let siteUrl = site.porn_site_link;
                 position++;
 
-                let siteLink = site.l;
+                let siteLink = site.permalink;
 
                 if(window.isMobileOrTablet && window.innerWidth < 769){
                     siteList += '<div class="search_site_item">' +
                         '<div class="search_site_item_inner">' +
-                        '<a href="' + siteLink + '" class="title search-site-convert deIcon fx_' + fx + ' fy_' + fy + '" data-object-id="' + site.objectID + '" data-position="' + position + '">' +
-                        '<span>' + site.n + '</span>' +
+                        '<a href="' + siteLink + '" class="title search-site-convert deIcon fx_' + fx + ' fy_' + fy + '" data-object-id="' + site.post_id + '" data-position="' + position + '">' +
+                        '<span>' + site.post_title + '</span>' +
                         '</a>' +
                         '<div class="thumb search_site_thumb"><img src="' + siteThumb + '"/></div>' +
                         '<div class="site_category">' +
@@ -635,7 +686,7 @@ const SearchModule = (function() {
                     siteList += '<div class="search_site_item">' +
                         '<div class="search_site_item_inner">' +
                         '<a href="' + siteLink + '" data-object-id="' + site.i + '" data-position="' + position + '" class="title search-site-convert deIcon fx_' + fx + ' fy_' + fy + '">' +
-                        '<span>' + site.n + '</span>' +
+                        '<span>' + site.post_title + '</span>' +
                         '</a>' +
                         '<div class="thumb search_site_thumb"><img src="' + siteThumb + '"/></div>' +
                         '<div class="site_category">' +
@@ -667,62 +718,97 @@ const SearchModule = (function() {
             return blogList;
         },
 
+        reduceUniqueCategories(data) {
+            // Use a Map to store unique entries. The Map will hold the unique key as the map key
+            // and the object itself as the value, ensuring only one entry per unique key.
+            const uniqueMap = new Map();
+            data.forEach(item => {
+                let categoryId = item.category_id;
+              if (!uniqueMap.has(categoryId) && categoryId > 1) {
+                uniqueMap.set(categoryId, {
+                    category_icon_class: item.category_icon_class || '',
+                    category_id: item.category_id,
+                    category_name: item.category_name || '',
+                    category_slug: item.category_slug || ''
+                });
+              }
+            });
+          
+            // Convert the Map's values back into a new array.
+            return Array.from(uniqueMap.values());
+          },
+
         getSearchCategoryList: function() {
             let categoryList = "";
             let position = 0;
 
-            searchedCategories.map(category => {
-                let catLogoHtml = '<i class="icon-category icon-sm ' + category.tt + ' icon-circled"></i>';
-                let catName = '';
-                if(window.jsonData.categories && window.jsonData.categories[category.ti]){
-                    let _catItem = window.jsonData.categories[category.ti];
-                    catName = _catItem.title;
-                }
+            // Debug: Check what searchedSites contains
+            console.log('MPG Boost: searchedSites:', searchedSites);
 
-                position++;
+            // Guard: Ensure searchedSites is an array and has items
+            const uniqueCategories = this.reduceUniqueCategories(searchedSites);
+            let langPrefix = currentLang === 'en' ? '' : '/' + currentLang;
 
-                let catLink = category.tl;
-                if(currentLang != 'en'){
-                    catLink = '/' + currentLang + catLink;
-                }
+            console.log('MPG Boost: Unique categories:', uniqueCategories);
+            uniqueCategories.map(category => {
+                let catLink = rootUrl + langPrefix + '/'+ category.category_slug + '/';
+                let catLogoHtml = '<i class="icon-category icon-sm ' + category.category_icon_class + ' icon-circled"></i>';
 
-                categoryList += '<a class="search_category_item icPost' + category.ti + ' search-category-convert scroll_to_category" data-slug="category_title_' + category.ti + '" data-object-id="' + category.ti + '" data-position="' + position + '" href="' + catLink + '">' + catLogoHtml + '<span>' + catName + '</span>' + '</a>';
+                categoryList += '<a class="search_category_item icPost' + category.category_id + ' search-category-convert scroll_to_category" data-slug="category_title_' + category.category_id + '" data-object-id="' + category.category_id + '" data-position="' + position + '" href="' + catLink + '">' + catLogoHtml + '<span>' + category.category_name + '</span>' + '</a>';
             });
 
-            let siteCategories = [];
+            // searchedCategories.map(category => {
+            //     let catLogoHtml = '<i class="icon-category icon-sm ' + category.tt + ' icon-circled"></i>';
+            //     let catName = '';
+            //     if(window.jsonData.categories && window.jsonData.categories[category.ti]){
+            //         let _catItem = window.jsonData.categories[category.ti];
+            //         catName = _catItem.title;
+            //     }
 
-            if(searchedCategories.length == 0){
-                searchedSites.map(site => {
-                    if(site.category_data){
-                        let siteCat = site.category_data[0];
-                        if(siteCat){
-                            if(!siteCategories.includes(siteCat.id)){
-                                siteCategories.push(siteCat.id);
-                                let catLogoHtml = '';
-                                let catName = '';
+            //     position++;
 
-                                if(window.jsonData.categories && window.jsonData.categories[siteCat.id]){
-                                    let _catItem = window.jsonData.categories[siteCat.id];
-                                    let categoryLogo = _catItem.logo;
-                                    catName = _catItem.title;
-                                    if(categoryLogo){
-                                        catLogoHtml = '<img src="/wp-content/uploads/' + categoryLogo + '"/>';
-                                    }
-                                }
+            //     let catLink = category.tl;
+            //     if(currentLang != 'en'){
+            //         catLink = '/' + currentLang + catLink;
+            //     }
 
-                                position++;
+            //     categoryList += '<a class="search_category_item icPost' + category.ti + ' search-category-convert scroll_to_category" data-slug="category_title_' + category.ti + '" data-object-id="' + category.ti + '" data-position="' + position + '" href="' + catLink + '">' + catLogoHtml + '<span>' + catName + '</span>' + '</a>';
+            // });
 
-                                let catLink = siteCat.link;
-                                if(currentLang != 'en'){
-                                    catLink = catLink.replace('www.mrporngeek.com/', 'www.mrporngeek.com/' + currentLang + '/');
-                                }
+            // let siteCategories = [];
 
-                                categoryList += '<a class="search_category_item icPost' + siteCat.id + '" data-slug="category_title_' + siteCat.id + '" data-object-id="' + siteCat.id + '" href="' + catLink + '">' + catLogoHtml + '<span>' + catName + '</span>' + '</a>';
-                            }
-                        }
-                    }
-                });
-            }
+            // if(searchedCategories.length == 0){
+            //     searchedSites.map(site => {
+            //         if(site.category_data){
+            //             let siteCat = site.category_data[0];
+            //             if(siteCat){
+            //                 if(!siteCategories.includes(siteCat.id)){
+            //                     siteCategories.push(siteCat.id);
+            //                     let catLogoHtml = '';
+            //                     let catName = '';
+
+            //                     if(window.jsonData.categories && window.jsonData.categories[siteCat.id]){
+            //                         let _catItem = window.jsonData.categories[siteCat.id];
+            //                         let categoryLogo = _catItem.logo;
+            //                         catName = _catItem.title;
+            //                         if(categoryLogo){
+            //                             catLogoHtml = '<img src="/wp-content/uploads/' + categoryLogo + '"/>';
+            //                         }
+            //                     }
+
+            //                     position++;
+
+            //                     let catLink = siteCat.link;
+            //                     if(currentLang != 'en'){
+            //                         catLink = catLink.replace('www.mrporngeek.com/', 'www.mrporngeek.com/' + currentLang + '/');
+            //                     }
+
+            //                     categoryList += '<a class="search_category_item icPost' + siteCat.id + '" data-slug="category_title_' + siteCat.id + '" data-object-id="' + siteCat.id + '" href="' + catLink + '">' + catLogoHtml + '<span>' + catName + '</span>' + '</a>';
+            //                 }
+            //             }
+            //         }
+            //     });
+            // }
 
             return categoryList;
         },
