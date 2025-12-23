@@ -388,6 +388,11 @@ html {
   --mobile-menu-border: #161e3e;
   --color-category-letter: #d7d7d7;
   --scroll-thumb-color: #76aaf7;
+  --bosted-heading-color: #3e98cf;
+  --bosted-black-color: #fff;
+  --bosted-text-color: #bbb;
+  --boosted-page-bg: #6b6c6c;
+  --footer-bg: #080915;
 }
 html.light {
   --heading-color: #000;
@@ -403,6 +408,11 @@ html.light {
   --mobile-menu-border: #e0e0e0;
   --color-category-letter: #337ab7;
   --scroll-thumb-color: #225396;
+  --bosted-heading-color: #1657a8;
+  --bosted-black-color: #000;
+  --bosted-text-color: #3f3f3f;
+  --boosted-page-bg: #D6D9E1;
+  --footer-bg: #b7c2d0;
 }
 
 body {
@@ -429,6 +439,32 @@ body {
     padding-top: 42px;
   }
 }
+body::before {
+  content: "";
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: -1;
+  background-repeat: repeat;
+  background-size: 250px 250px;
+}
+body.bg::before {
+  background-image: url(../images/mpg-bg.svg);
+}
+body.boosted-page::before {
+  background-image: url(../images/boosted-bg.svg);
+}
+body.rank-score::before {
+  background-image: url(../images/ranking_pattern.svg);
+}
+body.user-page::before {
+  background-image: url(../images/bg-signin.svg);
+}
+body.deals::before {
+  background-image: url(../images/bg-deals.png);
+}
 body.is-hideScroll {
   width: 100%;
   overflow: hidden;
@@ -448,11 +484,14 @@ body.is-hideScroll #wp-chatbot-chat-container {
 }
 
 .light body {
-  background: #cad4df;
+  background-color: #cad4df;
   color: #4c4c4c;
 }
+.light body.boosted-page {
+  background-image: url(../images/boosted-bg.svg);
+}
 .light body.home {
-  background: #d6d9e2;
+  background-color: #d6d9e2;
 }
 
 a {
@@ -659,6 +698,9 @@ strong {
   }
   .c-grid-main {
     margin-top: 130px;
+  }
+  .c-grid-main.bubbles-container {
+    margin-top: 120px;
   }
   .c-grid.f-w {
     padding-left: 0;
@@ -3544,7 +3586,7 @@ fieldset {
 }
 .header__mobile-link {
   line-height: 0;
-  margin: 0 15px;
+  margin: 0 10px;
 }
 .header__mobile-favourites {
   display: none;
@@ -4412,6 +4454,7 @@ fieldset {
 
 .header__categories-mobile {
   display: none;
+  flex: 1;
 }
 @media screen and (max-width: 1023px) {
   .header__categories-mobile {
@@ -4422,12 +4465,13 @@ fieldset {
 }
 
 .category-list-menu-mobile {
-  height: calc(100vh - 220px);
+  height: calc(100dvh - 220px);
+  max-height: 100%;
   overflow: auto;
   padding-right: 10px;
 }
 .category-list-menu-mobile::-webkit-scrollbar {
-  width: 4px; /* Set the width of the scrollbar */
+  width: 4px;
 }
 .category-list-menu-mobile::-webkit-scrollbar-track {
   background: #f1f1f1; /* Background of the track */
@@ -5339,13 +5383,15 @@ fieldset {
 }
 .search_site_item .thumb {
   line-height: 0;
-  border-top: 1px solid #9ca4ad;
-  border-left: 1px solid #9ca4ad;
-  border-right: 1px solid #9ca4ad;
   flex: 1;
   display: flex;
   padding-top: 85%;
   position: relative;
+}
+.search_site_item .thumb:not(.boosted) {
+  border-top: 1px solid #9ca4ad;
+  border-left: 1px solid #9ca4ad;
+  border-right: 1px solid #9ca4ad;
 }
 .search_site_item .thumb img {
   max-width: 100%;
@@ -5436,6 +5482,12 @@ fieldset {
   background: #c4f015;
   color: #000;
   margin-top: 15px;
+}
+.search_site_item.boost .search_item_overlay a {
+  padding: 8px 0;
+}
+.search_site_item.boost .search_item_overlay .link_site {
+  margin-top: 8px;
 }
 .search_site_item:hover .search_item_overlay {
   display: flex;
@@ -5535,7 +5587,6 @@ fieldset {
 .login_container {
   background-color: #0e123c;
   padding: 15px;
-  margin-bottom: 150px;
 }
 @media screen and (max-width: 1023px) {
   .login_container {
@@ -5999,10 +6050,14 @@ fieldset {
 }
 .icon-teen {
   background-image: url(../images/categories/teen.svg);
+}
+.icon-teen:not(.icon-sm) {
   width: 35px;
 }
 .icon-premium-amateur {
   background-image: url(../images/categories/premium-amateur.svg);
+}
+.icon-premium-amateur:not(.icon-sm) {
   width: 38.5px;
 }
 .icon-onlyfans-leaks {
@@ -6010,18 +6065,26 @@ fieldset {
 }
 .icon-taboo {
   background-image: url(../images/categories/taboo.svg);
+}
+.icon-taboo:not(.icon-sm) {
   width: 34px;
 }
 .icon-vr {
   background-image: url(../images/categories/vr.svg);
+}
+.icon-vr:not(.icon-sm) {
   width: 41.5px;
 }
 .icon-ai-porn {
   background-image: url(../images/categories/ai-porn.svg);
+}
+.icon-ai-porn:not(.icon-sm) {
   width: 28.8px;
 }
 .icon-dating {
   background-image: url(../images/categories/dating.svg);
+}
+.icon-dating:not(.icon-sm) {
   width: 38.6px;
 }
 .icon-celebrity {
@@ -6041,18 +6104,26 @@ fieldset {
 }
 .icon-trans-cam {
   background-image: url(../images/categories/trans-cam.svg);
+}
+.icon-trans-cam:not(.icon-sm) {
   width: 35px;
 }
 .icon-mature-cam {
   background-image: url(../images/categories/mature-cam.svg);
+}
+.icon-mature-cam:not(.icon-sm) {
   width: 37px;
 }
 .icon-bbw-cam {
   background-image: url(../images/categories/bbw-cam.svg);
+}
+.icon-bbw-cam:not(.icon-sm) {
   width: 36px;
 }
 .icon-bdsm-cam {
   background-image: url(../images/categories/bdsm-cam.svg);
+}
+.icon-bdsm-cam:not(.icon-sm) {
   width: 37px;
 }
 .icon-teen-cam {
@@ -6060,30 +6131,44 @@ fieldset {
 }
 .icon-squirt-cam {
   background-image: url(../images/categories/squirt-cam.svg);
+}
+.icon-squirt-cam:not(.icon-sm) {
   width: 37px;
 }
 .icon-anal-cam {
   background-image: url(../images/categories/anal-cam.svg);
+}
+.icon-anal-cam:not(.icon-sm) {
   width: 37px;
 }
 .icon-black-cam {
   background-image: url(../images/categories/black-cam.svg);
+}
+.icon-black-cam:not(.icon-sm) {
   width: 36.6px;
 }
 .icon-free-onlyfans-accounts {
   background-image: url(../images/categories/free-onlyfans-accounts.svg);
+}
+.icon-free-onlyfans-accounts:not(.icon-sm) {
   width: 36px;
 }
 .icon-premium-indian {
   background-image: url(../images/categories/premium-indian.svg);
+}
+.icon-premium-indian:not(.icon-sm) {
   width: 37px;
 }
 .icon-premium-asian {
   background-image: url(../images/categories/premium-asian.svg);
+}
+.icon-premium-asian:not(.icon-sm) {
   width: 37px;
 }
 .icon-premium-gay {
   background-image: url(../images/categories/premium-gay.svg);
+}
+.icon-premium-gay:not(.icon-sm) {
   width: 37px;
 }
 .icon-premium-anal {
@@ -6097,18 +6182,26 @@ fieldset {
 }
 .icon-hentai {
   background-image: url(../images/categories/hentai.svg);
+}
+.icon-hentai:not(.icon-sm) {
   width: 37px;
 }
 .icon-premium-bdsm {
   background-image: url(../images/categories/premium-bdsm.svg);
+}
+.icon-premium-bdsm:not(.icon-sm) {
   width: 37px;
 }
 .icon-premium-hentai {
   background-image: url(../images/categories/premium-hentai.svg);
+}
+.icon-premium-hentai:not(.icon-sm) {
   width: 38px;
 }
 .icon-voyeur {
   background-image: url(../images/categories/voyeur.svg);
+}
+.icon-voyeur:not(.icon-sm) {
   width: 44px;
 }
 .icon-extreme {
@@ -6116,10 +6209,14 @@ fieldset {
 }
 .icon-friends {
   background-image: url(../images/categories/friends.svg);
+}
+.icon-friends:not(.icon-sm) {
   width: 38.6px;
 }
 .icon-forums {
   background-image: url(../images/categories/forums.svg);
+}
+.icon-forums:not(.icon-sm) {
   width: 30px;
 }
 .icon-comics {
@@ -6139,18 +6236,26 @@ fieldset {
 }
 .icon-subreddits {
   background-image: url(../images/categories/subreddits.svg);
+}
+.icon-subreddits:not(.icon-sm) {
   width: 37px;
 }
 .icon-vintage {
   background-image: url(../images/categories/vintage.svg);
+}
+.icon-vintage:not(.icon-sm) {
   width: 35px;
 }
 .icon-premium-latina {
   background-image: url(../images/categories/premium-latina.svg);
+}
+.icon-premium-latina:not(.icon-sm) {
   width: 37px;
 }
 .icon-parody {
   background-image: url(../images/categories/parody.svg);
+}
+.icon-parody:not(.icon-sm) {
   width: 37px;
 }
 .icon-milf {
@@ -6166,11 +6271,12 @@ fieldset {
   background-image: url(../images/categories/gifs.svg);
 }
 .icon-porn-search-engines {
-  background-image: url(../images/categories/porn-search-engines.svg);
+  background-image: url(../images/categories/porn-search--engines.svg);
   width: 46px;
 }
 .icon-porn-search-engines:not(.icon-sm) {
   width: 46px !important;
+  height: 29px !important;
 }
 .icon-porn-search-engines.icon-sm {
   width: 32px;
@@ -6183,30 +6289,44 @@ fieldset {
 }
 .icon-blogs {
   background-image: url(../images/categories/blogs.svg);
+}
+.icon-blogs:not(.icon-sm) {
   width: 36px;
 }
 .icon-premium-fake {
   background-image: url(../images/categories/premium-fake.svg);
+}
+.icon-premium-fake:not(.icon-sm) {
   width: 37.5px;
 }
 .icon-indian {
   background-image: url(../images/categories/indian.svg);
+}
+.icon-indian:not(.icon-sm) {
   width: 36px;
 }
 .icon-premium-lesbian {
   background-image: url(../images/categories/premium-lesbian.svg);
+}
+.icon-premium-lesbian:not(.icon-sm) {
   width: 37px;
 }
 .icon-premium-milf {
   background-image: url(../images/categories/premium-milf.svg);
+}
+.icon-premium-milf:not(.icon-sm) {
   width: 37.5px;
 }
 .icon-amateur {
   background-image: url(../images/categories/amateur.svg);
+}
+.icon-amateur:not(.icon-sm) {
   width: 35px;
 }
 .icon-stories {
   background-image: url(../images/categories/stories.svg);
+}
+.icon-stories:not(.icon-sm) {
   width: 40px;
 }
 .icon-sexshops {
@@ -6235,6 +6355,8 @@ fieldset {
 }
 .icon-porn-for-woman {
   background-image: url(../images/categories/porn-for-woman.svg);
+}
+.icon-porn-for-woman:not(.icon-sm) {
   width: 36px;
 }
 .icon-milf-dating {
@@ -6248,10 +6370,14 @@ fieldset {
 }
 .icon-premium-scat {
   background-image: url(../images/categories/premium-scat.svg);
+}
+.icon-premium-scat:not(.icon-sm) {
   width: 35px;
 }
 .icon-massage {
   background-image: url(../images/categories/massage.svg);
+}
+.icon-massage:not(.icon-sm) {
   width: 40px;
 }
 .icon-gay-escorts {
@@ -6259,6 +6385,8 @@ fieldset {
 }
 .icon-magazines {
   background-image: url(../images/categories/magazines.svg);
+}
+.icon-magazines:not(.icon-sm) {
   width: 37px;
 }
 .icon-trans-escorts {
@@ -6305,6 +6433,8 @@ fieldset {
 }
 .icon-feet {
   background-image: url(../images/categories/feet.svg);
+}
+.icon-feet:not(.icon-sm) {
   width: 40px;
 }
 .icon-british {
@@ -6471,6 +6601,51 @@ fieldset {
 }
 .icon-art {
   background-image: url(../images/categories/art.svg);
+}
+.icon-jewish {
+  background-image: url(../images/categories/jewish.svg);
+}
+.icon-bad-dragon {
+  background-image: url(../images/categories/bad-dragon.svg);
+}
+.icon-butt-plug {
+  background-image: url(../images/categories/butt-plug.svg);
+}
+.icon-double-dildo {
+  background-image: url(../images/categories/double-dildo.svg);
+}
+.icon-dutch {
+  background-image: url(../images/categories/dutch.svg);
+}
+.icon-facial {
+  background-image: url(../images/categories/facial.svg);
+}
+.icon-interracial {
+  background-image: url(../images/categories/interracial.svg);
+}
+.icon-mixed-race {
+  background-image: url(../images/categories/mixed-race.svg);
+}
+.icon-pickup {
+  background-image: url(../images/categories/pickup.svg);
+}
+.icon-slave {
+  background-image: url(../images/categories/slave.svg);
+}
+.icon-swingers {
+  background-image: url(../images/categories/swingers.svg);
+}
+.icon-teacher {
+  background-image: url(../images/categories/teacher.svg);
+}
+.icon-usa {
+  background-image: url(../images/categories/usa.svg);
+}
+.icon-vibrator {
+  background-image: url(../images/categories/vibrator.svg);
+}
+.icon-white {
+  background-image: url(../images/categories/white.svg);
 }
 .icon-mpg {
   background-image: url(../images/avatar.svg);
@@ -6873,6 +7048,11 @@ fieldset {
   flex: 1;
   max-height: calc(100vh - 60px);
 }
+@media screen and (max-width: 1023px) {
+  .category-list-container {
+    max-height: calc(100dvh - 220px);
+  }
+}
 @media screen and (min-width: 768px) {
   .category-list-container {
     flex-direction: column;
@@ -6899,6 +7079,9 @@ fieldset {
 .category-list-container.a2z .category-list-letters {
   display: flex;
   flex-direction: column;
+  max-height: calc(100vh - 220px);
+  max-height: 100%;
+  overflow: auto;
 }
 .category-list-container.a2z .category-list-item {
   padding: 3px 5px 3px 10px;
@@ -7297,15 +7480,29 @@ fieldset {
   text-align: center;
 }
 .category-list-letter {
-  padding: 5px;
+  padding: 2px 5px;
   color: var(--color-category-letter, #337ab7);
   font-weight: 600;
   cursor: pointer;
+}
+@media screen and (max-width: 1023px) {
+  .category-list-letter {
+    padding: 1px 5px;
+  }
 }
 .category-list-letter.active {
   color: #76aaf7;
 }
 
+.header__categories-mobile .category-list-container {
+  flex-direction: row;
+  flex: 1;
+  position: absolute;
+  top: 60px;
+  left: 15px;
+  right: 15px;
+  bottom: 15px;
+}
 .header__categories-mobile .category-list-search {
   position: absolute;
   top: 15px;
@@ -7433,6 +7630,188 @@ fieldset {
 
 .tax-category-tag .desktop_menu_list .sidebar-all-tags.show {
   display: none;
+}
+
+.categories-tags-item {
+  position: relative;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  text-align: center;
+  color: #000;
+  padding: 6px 10px 6px 10px;
+  border-radius: 2px;
+  background-color: #dadada;
+  background-size: 20px;
+  background-position: 10px center;
+  background-repeat: no-repeat;
+}
+.categories-tags-item a, .categories-tags-item a:hover {
+  color: #000;
+}
+@media screen and (min-width: 768px) {
+  .categories-tags-item {
+    display: inline-block;
+    padding: 6px 15px 6px 25px;
+  }
+}
+.categories-tags-item.inline {
+  display: inline-flex;
+  background: transparent;
+  padding: 0;
+}
+@media screen and (min-width: 768px) {
+  .categories-tags-item.inline {
+    padding-left: 28px;
+  }
+}
+.categories-tags-item:hover, .categories-tags-item:focus {
+  background-color: #f0f1f5;
+  color: #000;
+}
+
+.tags-header {
+  display: flex;
+  justify-content: space-between;
+  position: relative;
+}
+.tags-header .categories-tags-item {
+  display: flex;
+  align-items: center;
+  font-size: 13px;
+  padding: 6px 15px 6px 30px;
+}
+@media screen and (max-width: 767px) {
+  .tags-header .categories-tags-item {
+    padding: 6px 15px 6px 15px;
+  }
+}
+.tags-header .categories-tags-item span {
+  line-height: 0;
+  margin-left: 15px;
+}
+
+.tag-inline {
+  display: inline-flex;
+  position: relative;
+  color: #337ab7;
+  padding-left: 28px;
+}
+.tag-icon {
+  display: inline-block;
+  width: 18px;
+  height: 18px;
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+  margin-right: 5px;
+  --icon-action: url("../images/tags/icon-actions-white.svg");
+  --icon-age: url("../images/tags/icon-age-white.svg");
+  --icon-apparel: url("../images/tags/icon-apparel-white.svg");
+  --icon-body: url("../images/tags/icon-body-white.svg");
+  --icon-ethnicity: url("../images/tags/icon-ethnicity-white.svg");
+  --icon-fetish: url("../images/tags/icon-fetish-white.svg");
+  --icon-hair: url("../images/tags/icon-hair-white.svg");
+  --icon-live-cams: url("../images/tags/icon-live-cams-white.svg");
+  --icon-location: url("../images/tags/icon-location-white.svg");
+  --icon-orientation: url("../images/tags/icon-orientation-white.svg");
+  --icon-production: url("../images/tags/icon-production-white.svg");
+  --icon-region: url("../images/tags/icon-region-white.svg");
+  --icon-scene-type: url("../images/tags/icon-scene-type-white.svg");
+  --icon-sex-toys: url("../images/tags/icon-sex-toys-white.svg");
+  --icon-scenario: url("../images/tags/icon-scenario-white.svg");
+  --icon-ai-porn: url("../images/tags/icon-ai-porn-white.svg");
+}
+@media screen and (min-width: 768px) {
+  .tag-icon {
+    position: absolute;
+    left: 7px;
+    top: 50%;
+    transform: translateY(-50%);
+  }
+  .tag-icon.inline {
+    left: 4px;
+  }
+}
+.tag-icon.tag-01 {
+  background-image: var(--icon-action, url("../images/tags/icon-actions.svg"));
+  background-size: 18px;
+}
+.tag-icon.tag-02 {
+  background-image: var(--icon-age, url("../images/tags/icon-age.svg"));
+}
+.tag-icon.tag-03 {
+  background-image: var(--icon-apparel, url("../images/tags/icon-apparel.svg?1"));
+}
+.tag-icon.tag-04 {
+  background-image: var(--icon-body, url("../images/tags/icon-body.svg?"));
+}
+.tag-icon.tag-05 {
+  background-image: var(--icon-ethnicity, url("../images/tags/icon-ethnicity.svg"));
+}
+.tag-icon.tag-06 {
+  background-image: var(--icon-fetish, url("../images/tags/icon-fetish.svg"));
+  background-size: 18px;
+}
+.tag-icon.tag-07 {
+  background-image: var(--icon-hair, url("../images/tags/icon-hair.svg?"));
+}
+.tag-icon.tag-08 {
+  background-image: var(--icon-live-cams, url("../images/tags/icon-live-cams.svg"));
+  background-size: 18px;
+}
+.tag-icon.tag-09 {
+  background-image: var(--icon-location, url("../images/tags/icon-location.svg"));
+  background-size: 18px;
+}
+.tag-icon.tag-10 {
+  background-image: var(--icon-orientation, url("../images/tags/icon-orientation.svg"));
+  background-size: 17px;
+}
+.tag-icon.tag-11 {
+  background-image: var(--icon-production, url("../images/tags/icon-production.svg?"));
+  background-size: 16px;
+}
+.tag-icon.tag-12 {
+  background-image: var(--icon-region, url("../images/tags/icon-region.svg"));
+  background-size: 16px;
+}
+.tag-icon.tag-13 {
+  background-image: var(--icon-scene-type, url("../images/tags/icon-scene-type.svg"));
+  background-size: 18px;
+}
+.tag-icon.tag-14 {
+  background-image: var(--icon-sex-toys, url("../images/tags/icon-sex-toys.svg?2"));
+}
+.tag-icon.tag-15 {
+  background-image: var(--icon-scenario, url("../images/tags/icon-scenario.svg"));
+}
+.tag-icon.tag-16 {
+  background-image: var(--icon-ai-porn, url("../images/tags/icon-ai-porn.svg"));
+}
+
+.review_header_dropdown .categories-tags-item {
+  display: block;
+}
+
+.light .tag-icon,
+.no_theme .tag-icon {
+  --icon-action: url("../images/tags/icon-actions.svg");
+  --icon-age: url("../images/tags/icon-age.svg");
+  --icon-apparel: url("../images/tags/icon-apparel.svg");
+  --icon-body: url("../images/tags/icon-body.svg");
+  --icon-ethnicity: url("../images/tags/icon-ethnicity.svg");
+  --icon-fetish: url("../images/tags/icon-fetish.svg");
+  --icon-hair: url("../images/tags/icon-hair.svg");
+  --icon-live-cams: url("../images/tags/icon-live-cams.svg");
+  --icon-location: url("../images/tags/icon-location.svg");
+  --icon-orientation: url("../images/tags/icon-orientation.svg");
+  --icon-production: url("../images/tags/icon-production.svg");
+  --icon-region: url("../images/tags/icon-region.svg");
+  --icon-scene-type: url("../images/tags/icon-scene-type.svg");
+  --icon-sex-toys: url("../images/tags/icon-sex-toys.svg");
+  --icon-scenario: url("../images/tags/icon-scenario.svg");
+  --icon-ai-porn: url("../images/tags/icon-ai-porn.svg");
 }
 
 @keyframes pulse-grey {
@@ -7696,6 +8075,7 @@ body.chatbot_active .go-top {
   display: flex;
   flex-direction: column;
   z-index: 2;
+  background: var(--footer-bg);
 }
 .footer__wrapper-1 {
   display: flex;
@@ -8205,9 +8585,6 @@ body.chatbot_active .go-top {
   display: none;
 }
 
-.light .footer {
-  background: #b7c2d0;
-}
 .light .footer__nav a {
   color: #014293;
 }
@@ -8308,7 +8685,7 @@ body.chatbot_active .go-top {
   top: 80px;
   left: 0;
   width: 100%;
-  height: calc(100vh - 80px);
+  height: calc(100dvh - 80px);
   overflow: hidden;
   z-index: 16;
   transform: translateY(50px);
@@ -8319,7 +8696,8 @@ body.chatbot_active .go-top {
 }
 @media screen and (max-width: 1023px) {
   .mobile-menu.is-open {
-    display: block;
+    display: flex;
+    flex-direction: column;
     background: var(--mobile-menu-bg);
     opacity: 1;
     visibility: visible;
@@ -9231,6 +9609,7 @@ body.chatbot_active .go-top {
   display: flex;
   flex-direction: column;
   z-index: 2;
+  background: var(--footer-bg);
 }
 .footer__wrapper-1 {
   display: flex;
@@ -9740,9 +10119,6 @@ body.chatbot_active .go-top {
   display: none;
 }
 
-.light .footer {
-  background: #b7c2d0;
-}
 .light .footer__nav a {
   color: #014293;
 }
@@ -10173,6 +10549,19 @@ body.chatbot_active .go-top {
 }
 .list__box__item:hover {
   background: var(--link-hover-color, #f0f1f5);
+}
+.list__box__item .boost-value {
+  padding-inline-start: 0px;
+  color: #000;
+}
+.list__box__item.boosted-site-item {
+  background: #FFEABB;
+}
+.list__box__item.boosted-site-item .boost-value {
+  color: #c25c34;
+}
+.list__box__item.boosted-site-item:hover {
+  background: #FFEABB;
 }
 @media screen and (max-width: 991.98px) {
   .list__box__item {

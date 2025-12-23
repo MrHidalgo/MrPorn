@@ -66,6 +66,23 @@
 			//background: #f0f1f5;
 			// #67686f
 		}
+		
+		.boost-value{
+			padding-inline-start: 0px;
+			color: #000;
+		}
+		&.boosted-site-item{
+			background: #FFEABB;
+			.boost-value{
+				color: #c25c34;
+			}
+			
+			// animation: pulse-glow 2s ease-in-out infinite;
+
+			&:hover{
+				background: #FFEABB;
+			}
+		}
 
 		@include adaptive(991.98) {
 			padding: 4px 10px 4px 5px;

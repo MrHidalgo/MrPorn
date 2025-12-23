@@ -290,17 +290,25 @@ const SearchModule = (function() {
         
                 // Search in sites using original logic
                 searchedSites = jsonSites.filter(function(t, n) {
-                    for(let _ti = 0; _ti < searchTerms.length; _ti++){
-                        let _searchTerm = searchTerms[_ti];
-                        if (null !== new RegExp(_searchTerm,"i").exec(t.n) | null !== new RegExp(_searchTerm,"i").exec(t.tn)){
-                            if(null == searchedCategories.find(e=>e.ti == t.ti)){
-                                searchedCategories.push(t);
-                            }
-                            return true;
+                    // Check if any term matches the name
+                    let nameMatches = searchTerms.some(term => 
+                        null !== new RegExp(term, "i").exec(t.n)
+                    );
+                    
+                    // Check if all terms match the tag name
+                    let tagMatchesAll = searchTerms.every(term => 
+                        null !== new RegExp(term, "i").exec(t.tn)
+                    );
+                    
+                    if (nameMatches || tagMatchesAll) {
+                        if(null == searchedCategories.find(e=>e.ti == t.ti)){
+                            searchedCategories.push(t);
                         }
+                        return true;
                     }
                     return false;
                 });
+                console.log(searchedSites);
         
                 // Handle alternatives if no results found
                 if(searchedSites.length === 0) {
@@ -604,6 +612,7 @@ const SearchModule = (function() {
                 let fIcons = siteIcon.split(',');
                 let fx = fIcons[0];
                 let fy = fIcons[1];
+                let boost = ''+site.bv;
 
                 if(currentLang != 'en'){
                     siteCategoryLink = '/' + currentLang + siteCategoryLink;
@@ -615,13 +624,31 @@ const SearchModule = (function() {
 
                 let siteLink = site.l;
 
+                let boostHtml = '';
+                let thumbClasses = '';
+                let siteItemClasses = '';
+
+                if(boost > 0){
+                    siteItemClasses = 'boost';
+                    thumbClasses = 'boosted';
+                    let bootstImage = boost > 499 ? 'bcv' : 'bwvn';
+                    let boostIconClass = boost > 499 ? 'boosted-crown' : 'boosted-blue';
+                    if(boost > 499){
+                        thumbClasses += ' boosted-crown';
+                    }else {
+                        thumbClasses += ' boosted-blue';
+                    }
+                    let boostImageNumbers = boost.replaceAll('', '-')
+                    boostHtml = `<i class="boost-indicator boost-indicator-preview site_thumb ${boostIconClass} nolazy" style="background-image: url('/wp-content/themes/mpg/images/boost/${bootstImage+boostImageNumbers}X.svg');"></i>`;
+                }
+
                 if(window.isMobileOrTablet && window.innerWidth < 769){
-                    siteList += '<div class="search_site_item">' +
+                    siteList += '<div class="search_site_item '+siteItemClasses+'">' +
                         '<div class="search_site_item_inner">' +
                         '<a href="' + siteLink + '" class="title search-site-convert deIcon fx_' + fx + ' fy_' + fy + '" data-object-id="' + site.objectID + '" data-position="' + position + '">' +
                         '<span>' + site.n + '</span>' +
                         '</a>' +
-                        '<div class="thumb search_site_thumb"><img src="' + siteThumb + '"/></div>' +
+                        '<div class="thumb search_site_thumb">'+boostHtml+'<img class="'+thumbClasses+'" src="' + siteThumb + '"/></div>' +
                         '<div class="site_category">' +
                         '<a href="' + siteCategoryLink + '" class="search_category_link" data-object-id="' + siteCategoryId + '">' + siteTagName + '</a>' +
                         '</div>' +
@@ -632,12 +659,12 @@ const SearchModule = (function() {
                         '</div>' +
                         '</div>';
                 } else {
-                    siteList += '<div class="search_site_item">' +
+                    siteList += '<div class="search_site_item '+siteItemClasses+'">' +
                         '<div class="search_site_item_inner">' +
                         '<a href="' + siteLink + '" data-object-id="' + site.i + '" data-position="' + position + '" class="title search-site-convert deIcon fx_' + fx + ' fy_' + fy + '">' +
                         '<span>' + site.n + '</span>' +
                         '</a>' +
-                        '<div class="thumb search_site_thumb"><img src="' + siteThumb + '"/></div>' +
+                        '<div class="thumb search_site_thumb">'+boostHtml+'<img class="'+thumbClasses+'" src="' + siteThumb + '"/></div>' +
                         '<div class="site_category">' +
                         '<a href="' + siteCategoryLink + '" class="search_category_link" data-object-id="' + siteCategoryId + '">' + siteTagName + '</a>' +
                         '</div>' +

@@ -195,13 +195,16 @@
 
 	.thumb{
 		line-height: 0;
-		border-top: 1px solid #9ca4ad;
-		border-left: 1px solid #9ca4ad;
-		border-right: 1px solid #9ca4ad;
 		flex: 1;
 		display: flex;
 		padding-top: 85%;
 		position: relative;
+
+		&:not(.boosted){
+			border-top: 1px solid #9ca4ad;
+			border-left: 1px solid #9ca4ad;
+			border-right: 1px solid #9ca4ad;
+		}
 
 		img{
 			max-width: 100%;
@@ -211,6 +214,7 @@
 			height: 100%;
 		}
 	}
+	
 
 	.site_category{
 		background: #0a3e83;
@@ -305,6 +309,17 @@
 			background: #c4f015;
 			color: #000;
 			margin-top: 15px;
+		}
+	}
+
+	&.boost{
+		.search_item_overlay{
+			a{
+				padding: 8px 0;
+			}
+			.link_site{
+				margin-top: 8px;
+			}
 		}
 	}
 

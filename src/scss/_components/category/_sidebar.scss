@@ -152,9 +152,14 @@
 		//margin-top: 10px;
 		flex: 1;
 		max-height: calc(100vh - 60px);
+		
 
+		@include adaptive(1023) {
+			max-height: calc(100dvh - 220px);
+		}
 		@include respond("medium") {
 			flex-direction: column;
+			
 		}
 
 		//background: #f7f6f5;
@@ -191,6 +196,9 @@
 			.category-list-letters {
 				display: flex;
 				flex-direction: column;
+				max-height: calc(100vh - 220px);
+				max-height: 100%;
+    			overflow: auto;
 			}
 			.category-list-item {
 				padding: 3px 5px 3px 10px;
@@ -682,10 +690,14 @@
 		text-align: center;
 	}
 	&-letter {
-		padding: 5px;
+		padding: 2px 5px;
 		color: var(--color-category-letter, #337ab7);
 		font-weight: 600;
 		cursor: pointer;
+
+		@include adaptive(1023) {
+			padding: 1px 5px;
+		}
 
 		&.active {
 			color: #76aaf7;
@@ -697,6 +709,12 @@
 .header__categories-mobile {
 	.category-list-container{
 		flex-direction: row;
+		flex: 1;
+		position: absolute;
+		top: 60px;
+		left: 15px;
+		right: 15px;
+		bottom: 15px;
 	}
 	.category-list-search {
 		position: absolute;

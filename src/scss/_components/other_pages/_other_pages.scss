@@ -1,6 +1,7 @@
 // OTHER_PAGES :: START
 .other_page{
 	padding-top: 15px;
+	padding-bottom: 15px;
 
 	@include respond('ipad_portrait'){
 		padding-top: 0;
@@ -22,6 +23,13 @@
 			padding: 15px;
 		}
 	}
+}
+.other-banner-image img {
+	display: block;
+	width: 100%;
+	height: auto;
+	object-fit: cover;
+	object-position: center;
 }
 ul{
 	margin: 0;
@@ -169,6 +177,7 @@ ul{
 		line-height: 18px;
 		color: #bbb;
 	}
+	
 	ul{
 		margin: 20px 0;
 		padding: 0;
@@ -192,10 +201,19 @@ ul{
 		}
 	}
 }
+.boosted-page .whtbox p{
+		font-size: 15.5px;
+}
+.rank-score .whtbox p{
+	font-size: 15.5px;
+}
 
 //Contact us page
 .contactusC{
 	li{
+		h2,
+		h3,
+		h4,
 		h5{
 			font-size: 36px;
 			color: #dcecff;
@@ -620,6 +638,9 @@ ul{
 	}
 	.contactusC{
 		li{
+			h2,
+			h3,
+			h4,
 			h5{
 				color: #0047a0;
 			}
@@ -833,6 +854,26 @@ ul{
 					margin-top: 15px;
 				}
 			}
+		}
+	}
+}
+
+.boosted-page{
+	.other_page_content{
+		color: var(--bosted-text-color);
+	}
+	h2, h3, h4, h5{
+		color: var(--bosted-heading-color);
+		font-size: 18pt;
+		span{
+			color: var(--bosted-heading-color);
+		}
+	}
+	.black{
+		color: var(--bosted-black-color);
+
+		a, a:hover, a:focus{
+			color: var(--bosted-black-color);
 		}
 	}
 }

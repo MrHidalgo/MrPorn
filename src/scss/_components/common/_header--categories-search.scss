@@ -1,6 +1,7 @@
 .header{
 	&__categories-mobile{
 		display: none;
+		flex: 1;
 		@include adaptive(1023) {
 			display: block;
 			padding: 60px 15px 15px;
@@ -9,12 +10,13 @@
 	}	
 }
 .category-list-menu-mobile{
-	height: calc(100vh - 220px);
+	height: calc(100dvh - 220px);
+	max-height: 100%;
 	overflow: auto;
 	padding-right: 10px;
 
 	&::-webkit-scrollbar {
-		width: 4px; /* Set the width of the scrollbar */
+		width: 4px;
 	}
 
 	&::-webkit-scrollbar-track {
