@@ -478,7 +478,7 @@ ul{
 		padding: 20px 0 10px;
 	}
 
-	h2{
+	h1, h2{
 		font-size: 60px;
 		font-weight: 700;
 		color: #09a0ff;
@@ -700,9 +700,11 @@ ul{
 		font-size: 42px;
 		font-weight: 600;
 		margin-bottom: 25px;
+		line-height: 60px;
 
 		@include adaptive(767) {
 			font-size: 28px;
+			line-height: 40px;
 		}
 	}
 	p{

@@ -21,14 +21,6 @@ body {
 	}
 }
 
-//.site-content{
-//	@include adaptive(767) {
-//		margin-top: 110px;
-//	}
-//	@include respond('mobile_landscape'){
-//		margin-top: 120px;
-//	}
-//}
 .gaming_cat_11{
 	.site-content {
 		@include adaptive(767) {
@@ -41,9 +33,6 @@ body {
 }
 
 .category{
-	&_site_list{
-		//position: relative;
-	}
 	&_list{
 		background-color: #2a2b31;
 		border-color: #151515;
@@ -60,7 +49,6 @@ body {
 	}
 	&_header{
 		position: relative;
-		//border-bottom: 3px solid #999;
 
 		.section_heading__h1, .section_heading__h2{
 			@include adaptive(767) {
@@ -86,8 +74,6 @@ body {
 		}
 	}
 	&_container{
-		/*display: flex;
-		flex-direction: column;*/
 		position: relative;
 		--container-width: 100%;
 		--content-width: 80%;
@@ -157,12 +143,6 @@ body {
 	}
 }
 
-//.has_sidebar{
-//	.category_site_list{
-//		padding-left: 246px;
-//	}
-//}
-
 .light{
 	&_header{
 		border-bottom: 3px solid #e9ebed;
@@ -177,6 +157,7 @@ body {
 	}
 
 }
+
 
 
 .category_bottom_description{

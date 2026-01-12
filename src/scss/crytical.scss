@@ -1,3 +1,151 @@
+html{
+	box-sizing: border-box;
+	text-rendering: optimizeSpeed;
+    -webkit-text-size-adjust: 100%;
+    -webkit-font-smoothing: antialiased;
+
+	-webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+	--heading-color: #fff;
+	--heading-small-color: #fff;
+	--view-all-color: #fff;
+	--primary-color: #fff;
+	--primary-color-2: #fff;
+	--tab-indicator: #fff;
+	--bg-header-grey: #4d4d4d;
+
+	--sidebar-title-bg: #555;
+	--mobile-menu-bg: #080915;
+	--mobile-menu-bg-rgba: rgba(8, 9, 21, 0.975);
+	--mobile-menu-border: #161e3e;
+
+	--color-category-letter: #d7d7d7;
+	--scroll-thumb-color: #76aaf7;
+
+	--bosted-heading-color: #3e98cf;
+	--bosted-black-color: #fff;
+	--bosted-text-color: #bbb;
+
+	--boosted-page-bg: #6b6c6c;
+
+	--footer-bg: #080915;
+	--review-content-color: #d7d7d7;
+	--tag-icon-filter: invert(100%);
+
+	--home-category-title-indicator: #3e98cf;
+
+	--bg-gradient-opacity: 0.7;
+	--list-box-item-link-color: #ededed;
+	--home-boosted-item-preview-filter: invert(100%);
+	--home-boosted-item-color: #000;
+
+	--blue-button-bg: #3e98cf;
+	--review-overlay-link-bg: #3e98cf;
+	--all-categories-bg: #3e98cf;
+	--blog-view-more-bg: #3e98cf;
+
+	--tag-all-bg: #3e98cf;
+	--a2z-popular-item-bg: #3e98cf;
+	--a2z-popular-item-hover-bg: #3bb5ff;
+	--link-header-color: #fff;
+
+
+	&.light{
+		--heading-color: #000;
+		--heading-small-color: #000;
+		--view-all-color: #333;
+		--primary-color: #333;
+		--primary-color-2: #4c4c4c;
+		--tab-indicator: #4c4c4c;
+		--bg-header-grey: #f3f3f3;
+
+		--sidebar-title-bg: #e8e7e6;
+		--mobile-menu-bg: #ffffff;
+		--mobile-menu-bg-rgba: rgba(255, 255, 255, 0.975);
+		--mobile-menu-border: #e0e0e0;
+
+		--color-category-letter: #337ab7;
+		--scroll-thumb-color: #225396;
+
+		--bosted-heading-color: #1657a8;
+		--bosted-black-color: #000;
+		--bosted-text-color: #3f3f3f;
+		--boosted-page-bg: #D6D9E1;
+
+		--footer-bg: #b7c2d0;
+		--review-content-color: #333;
+
+		--tag-icon-filter: invert(0%);
+
+		--home-category-title-indicator: #1b4f90;
+
+		--bg-gradient-opacity: 0;
+		--list-box-item-link-color: #000;
+		--home-boosted-item-preview-filter: invert(0%);
+		--home-boosted-item-color: #000;
+
+		--blue-button-bg: #1b4f90;
+		--review-overlay-link-bg: #004aad;
+		--all-categories-bg: #337ab7;
+		--blog-view-more-bg: linear-gradient(to bottom, #0352b3 0%, #023a84 100%);
+
+		--tag-all-bg: #0a3e83;
+		--a2z-popular-item-bg: #0040a0;
+		--a2z-popular-item-hover-bg: #3e98cf;
+
+		--link-header-color: #767676;
+	}
+}
+
+body {
+	width: 100%;
+	font-family: helvetica neue,Helvetica,Arial,sans-serif;
+	color: #333;
+
+	overflow-x: hidden;
+	position: relative;
+	display: flex;
+	flex-direction: column;
+	min-height: 100vh;
+	margin: 0;
+	padding: 0;
+	background-color: #080915;
+	line-height: 1.42857143;
+	font-size: 14px;
+	font-weight: normal;
+	text-rendering: optimizeSpeed;
+	-webkit-font-smoothing: antialiased;
+	-moz-osx-font-smoothing: grayscale;
+
+	&::before{
+		content: '';
+		position: fixed;
+		top: 0;
+		left: 0;
+		width: 100%;
+		height: 100%;
+		z-index: -1;
+		background-repeat: repeat;
+		background-size: 250px 250px;
+	}
+
+	&.bg::before{
+		background-image: linear-gradient(rgba(0, 0, 0, var(--bg-gradient-opacity)), rgba(0, 0, 0, var(--bg-gradient-opacity))), url(/wp-content/themes/mpg/images/mpg-bg.svg);
+	}
+	&.boosted-page::before{
+		background-image: linear-gradient(rgba(0, 0, 0, var(--bg-gradient-opacity)), rgba(0, 0, 0, var(--bg-gradient-opacity))), url(/wp-content/themes/mpg/images/boosted-bg.svg);
+	}
+	&.rank-score::before{
+		background-image: linear-gradient(rgba(0, 0, 0, var(--bg-gradient-opacity)), rgba(0, 0, 0, var(--bg-gradient-opacity))), url(/wp-content/themes/mpg/images/ranking_pattern.svg);
+	}
+	&.user-page::before{
+		background-image: linear-gradient(rgba(0, 0, 0, var(--bg-gradient-opacity)), rgba(0, 0, 0, var(--bg-gradient-opacity))), url(/wp-content/themes/mpg/images/bg-signin.svg);
+	}
+	&.deals::before{
+		background-image: linear-gradient(rgba(0, 0, 0, var(--bg-gradient-opacity)), rgba(0, 0, 0, var(--bg-gradient-opacity))), url(/wp-content/themes/mpg/images/bg-deals.png);
+	}
+
+}
+
 .bread-crumb{
 	&-main:before{
 		display: inline-block;

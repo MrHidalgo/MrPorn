@@ -104,7 +104,7 @@
 	}
 
 	&.all{
-		background: #0a3e83;
+		background: var(--tag-all-bg, #0a3e83);
 
 		.tag-icon{
 			height: 16px;
@@ -117,9 +117,14 @@
 		}
 	}
 }
-.tag-dropdown-menu li.all:hover a{
-	color: #fff
+.tag-dropdown-menu .tag-icon{
+	filter: invert(100%);
 }
+
+.tag-dropdown-menu li.all .tag-icon{
+	filter: invert(0%);
+}
+
 .dropdown-toggle.show{
 	&:after {
 		transform: rotate(180deg);
@@ -133,6 +138,10 @@
 	.tag-dropdown-menu{
 		background-color: white;
 		border: 3px solid #bababa;
+
+		.tag-icon{
+			filter: invert(0%);
+		}
 
 		li:hover a{
 			color: #000;

@@ -260,12 +260,12 @@
 				color: #fff;
 				font-size: 18px;
 				background: #0352b3;
-				background: -moz-linear-gradient(top, #0352b3 0%, #023a84 100%);
-				background: -webkit-gradient(left top, left bottom, color-stop(0%, #0352b3), color-stop(100%, #023a84));
-				background: -webkit-linear-gradient(top, #0352b3 0%, #023a84 100%);
-				background: -o-linear-gradient(top, #0352b3 0%, #023a84 100%);
-				background: -ms-linear-gradient(top, #0352b3 0%, #023a84 100%);
-				background: linear-gradient(to bottom, #0352b3 0%, #023a84 100%);
+				// background: -moz-linear-gradient(top, #0352b3 0%, #023a84 100%);
+				// background: -webkit-gradient(left top, left bottom, color-stop(0%, #0352b3), color-stop(100%, #023a84));
+				// background: -webkit-linear-gradient(top, #0352b3 0%, #023a84 100%);
+				// background: -o-linear-gradient(top, #0352b3 0%, #023a84 100%);
+				// background: -ms-linear-gradient(top, #0352b3 0%, #023a84 100%);
+				background: var(--blog-view-more-bg, linear-gradient(to bottom, #0352b3 0%, #023a84 100%));
 				filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#0352b3', endColorstr='#023a84', GradientType=0 );
 				border-radius: 3px;
 			}

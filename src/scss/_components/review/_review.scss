@@ -18,6 +18,15 @@
 
 }
 
+.review-evaluation-text{
+	margin: 10px 0;
+    border: 1px solid #ccc;
+    padding: 5px 8px 0;
+}
+.review-evaluation-title{
+	font-weight: 600;
+}
+
 .similar-sites-row{
 
 
@@ -81,6 +90,10 @@
 		display: flex;
 		align-items: center;
 		margin: 0;
+
+		h2{
+			font-size: 15px;	
+		}
 
 		&::-webkit-scrollbar {
 			display: none
@@ -438,7 +451,7 @@
 		padding: 5px 10px 0 0;
 	}
 
-	h2{
+	h2, h3, h4{
 		display: flex;
 		align-items: center;
 		//gap:4px;
@@ -447,7 +460,7 @@
 		font-weight: 500;
 		line-height: 1;
 		font-size: 26px;
-		color: #fff;
+		color: var(--link-header-color, #fff);
 		gap: 4px;
 
 		@include adaptive(991.98) {
@@ -795,6 +808,7 @@
 			}
 
 			.tag-icon{
+
 				@include respond('medium') {
 					position: relative;
 					left: 0;
@@ -1046,17 +1060,19 @@
 .rboosts-tagline{
 	font-size: 12px;
     text-align: center;
-
+	color: var(--review-content-color);
+	
 	@include adaptive(1023) {
 		font-size: 13px;
 	}
-}
-.rboosts-tagline a{
-	color: #000;
-	text-decoration: underline;
 
-	&:hover{
-		color: #000;
+	a{
+		color: var(--review-content-color);
+		text-decoration: underline;
+
+		&:hover{
+			color: var(--review-content-color);
+		}
 	}
 }
 .review-boost-slide{
@@ -1291,7 +1307,7 @@
 		//border-top: 1px solid #d6d6d6;
 		//border-bottom: 1px solid #d6d6d6;
 		padding-right: 10px;
-		color: #d7d7d7;
+		color: var(--review-content-color);
 
 		&:after{
 			position: absolute;
@@ -2338,7 +2354,6 @@
 			color: #6e87a7;
 		}
 		.review_scroll_container{
-			color: #333;
 
 			.scroll_progress{
 				background: #225396;

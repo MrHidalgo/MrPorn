@@ -9,9 +9,6 @@
 	}
 }
 .desktop_menu_list {
-	//display: flex;
-	//flex-direction: column;
-	//overflow: auto;
 	width: 20%;
 	float: left;
 	will-change: min-height;
@@ -27,10 +24,6 @@
 		transform: translate3d(0, 0, 0);
 		will-change: position, transform;
 		padding-top: 15px;
-
-		//display: flex;
-		//flex-direction: column;
-		//height: 100%;
 	}
 	&.is-affixed {
 		.inner-wrapper-sticky {
@@ -53,7 +46,7 @@
 	}
 
 	.all_categories {
-		background: #337ab7;
+		background: var(--all-categories-bg, #337ab7);
 		display: none;
 		width: 100%;
 		color: #fff;
@@ -715,6 +708,10 @@
 		left: 15px;
 		right: 15px;
 		bottom: 15px;
+
+		&.show_tags{
+			top: 100px;
+		}
 	}
 	.category-list-search {
 		position: absolute;
