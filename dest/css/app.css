@@ -369,6 +369,9 @@
   content: "\e011";
 }
 
+body {
+  --heading-down-arrow: url(../images/down-arrow-dark.svg);
+}
 @media screen and (min-width: 768px) {
   body.pk {
     padding-top: 42px;
@@ -395,6 +398,7 @@ body.is-hideScroll #wp-chatbot-chat-container {
 .light body {
   background-color: #cad4df;
   color: #4c4c4c;
+  --heading-down-arrow: url(../images/down-arrow-light.svg);
 }
 .light body.boosted-page {
   background-image: url(../images/boosted-bg.svg);
@@ -5334,13 +5338,13 @@ fieldset {
   z-index: 2;
 }
 .search_site_item .search_item_overlay a {
-  padding: 10px 0;
+  padding: 10px 8px;
   justify-content: center;
   color: #fff;
   background: var(--blue-button-bg, #004aad);
   text-decoration: none;
   border-radius: 5px;
-  width: 80%;
+  width: 85%;
   position: relative;
   text-transform: uppercase;
   font-size: 13px;
@@ -5351,9 +5355,13 @@ fieldset {
 }
 @media screen and (max-width: 1024px) {
   .search_site_item .search_item_overlay a {
-    padding: 10px 0;
     font-size: 14px;
   }
+}
+.search_site_item .search_item_overlay a span {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 .search_site_item .search_item_overlay a i {
   transition: all 0.2s linear 0s;

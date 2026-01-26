@@ -1,11 +1,13 @@
 
 body {
 
-		@include respond('medium'){
-			&.pk{
-				padding-top: 42px;
-			}
+	--heading-down-arrow: url(../images/down-arrow-dark.svg);
+	
+	@include respond('medium'){
+		&.pk{
+			padding-top: 42px;
 		}
+	}
 
 
   &.is-hideScroll {
@@ -34,6 +36,8 @@ body {
 	body {
 		background-color: #cad4df;
 		color: #4c4c4c;
+
+		--heading-down-arrow: url(../images/down-arrow-light.svg);
 
 		&.boosted-page{
 			background-image: url(../images/boosted-bg.svg);

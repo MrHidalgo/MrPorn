@@ -259,13 +259,13 @@
 		z-index: 2;
 
 		a{
-			padding: 10px 0;
+			padding: 10px 8px;
 			justify-content: center;
 			color: #fff;
 			background: var(--blue-button-bg, #004aad);
 			text-decoration: none;
 			border-radius: 5px;
-			width: 80%;
+			width: 85%;
 			position: relative;
 			text-transform: uppercase;
 			font-size: 13px;
@@ -276,8 +276,13 @@
 			transition: all 0.2s linear 0s;
 
 			@include adaptive(1024) {
-				padding: 10px 0;
 				font-size: 14px;
+			}
+
+			span{
+				white-space: nowrap;
+				overflow: hidden;
+				text-overflow: ellipsis;
 			}
 
 			i{

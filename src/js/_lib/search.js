@@ -209,7 +209,7 @@ const SearchModule = (function() {
                         }
                         _this.renderRecentLinks(out);
                         _this.initSearchKey();
-                        _this.initTags();
+                        // _this.initTags();
                     })
                     .catch(err => {
                         console.warn('Failed to load search data:', err);
@@ -308,7 +308,6 @@ const SearchModule = (function() {
                     }
                     return false;
                 });
-                console.log(searchedSites);
         
                 // Handle alternatives if no results found
                 if(searchedSites.length === 0) {
@@ -642,6 +641,9 @@ const SearchModule = (function() {
                     boostHtml = `<i class="boost-indicator boost-indicator-preview site_thumb ${boostIconClass} nolazy" style="background-image: url('/wp-content/themes/mpg/images/boost/${bootstImage+boostImageNumbers}X.svg');"></i>`;
                 }
 
+                // let text_read = this._t('read_review', 'Read Review');
+                let text_read = '<span>' + site.n + '</span>';
+
                 if(window.isMobileOrTablet && window.innerWidth < 769){
                     siteList += '<div class="search_site_item '+siteItemClasses+'">' +
                         '<div class="search_site_item_inner">' +
@@ -654,9 +656,8 @@ const SearchModule = (function() {
                         '</div>' +
                         '</div>' +
                         '<div class="search_item_overlay">' +
-                        '<a href="' + siteLink + '" class="link_read search-site-convert" data-object-id="' + site.i + '" data-position="' + position + '">' + this._t('read_review', 'Read Review') + ' <i class="icon-font icon-arrow-angle right_angle"></i></a>' +
-                        '<a href="' + siteUrl + '" class="link_site" target="_blank" rel="nofollow">' + this._t('open_site', 'Open Site') + ' <i class="icon-font icon-out"></i></a>' +
-                        '</div>' +
+                            '<a href="' + siteLink + '" class="link_read search-site-convert" data-object-id="' + site.i + '" data-position="' + position + '">' + text_read + '&nbsp;Review <i class="icon-font icon-arrow-angle right_angle"></i></a>' +
+                            '</div>' +
                         '</div>';
                 } else {
                     siteList += '<div class="search_site_item '+siteItemClasses+'">' +
@@ -670,8 +671,7 @@ const SearchModule = (function() {
                         '</div>' +
                         '</div>' +
                         '<div class="search_item_overlay">' +
-                        '<a href="' + siteLink + '" class="link_read search-site-convert" data-object-id="' + site.i + '" data-position="' + position + '">' + this._t('read_review', 'Read Review') + ' <i class="icon-font icon-arrow-angle right_angle"></i></a>' +
-                        '<a href="' + siteUrl + '" class="link_site" target="_blank" rel="nofollow">' + this._t('open_site', 'Open Site') + ' <i class="icon-font icon-out"></i></a>' +
+                            '<a href="' + siteLink + '" class="link_read search-site-convert" data-object-id="' + site.i + '" data-position="' + position + '">' + text_read + '&nbsp;Review <i class="icon-font icon-arrow-angle right_angle"></i></a>' +
                         '</div>' +
                         '</div>';
                 }

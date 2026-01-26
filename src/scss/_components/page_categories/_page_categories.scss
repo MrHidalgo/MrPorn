@@ -111,8 +111,14 @@
 
 
 .more-related-tags{
+	.link-header{
+		padding: 0;
+	}
 	.categories-tags-item{
 		width: 100%;
+	}
+	.link-action{
+		font-size: 14px;
 	}
 	@include adaptive(767) {
 		.link-action{

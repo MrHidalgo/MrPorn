@@ -11,15 +11,22 @@ function showThumbInfoOnHover() {
 			, text_open = $parent.getAttribute('data-text-open')
 			, category = $parent.getAttribute('data-category');
 
-		var linkOpenSite = '';
-		if($this.hasAttribute('data-showopen')){
-			linkOpenSite = '<a class="link_site" rel="' + link_rel + '" href="' + external_link + '" target="_blank">' + text_open + '<i class="icon-font icon-out"></i>' + '</a>';
-		}
+			let siteTitle = el.querySelector('.category_sites_item_title').textContent;
 
-		var $block = '<div class="category_sites_item_overlay">' + '<a class="link_read" href="' + review_link + '" target="_blank">' + text_read + '<i class="icon-font icon-arrow-angle right_angle"></i>' + '</a>' + linkOpenSite + '</div>';
+			text_read = '<span>' + siteTitle + '</span>';
+
+		var linkOpenSite = '';
+		// if($this.hasAttribute('data-showopen')){
+		// 	linkOpenSite = '<a class="link_site" rel="' + link_rel + '" href="' + external_link + '" target="_blank">' + text_open + '<i class="icon-font icon-out"></i>' + '</a>';
+		// }
+
+		var $block = '<div class="category_sites_item_overlay">' + '<a class="link_read" href="' + review_link + '" target="_blank">' + text_read + '&nbsp;Review <i class="icon-font icon-arrow-angle right_angle"></i>' + '</a>' + linkOpenSite + '</div>';
 		$this.insertAdjacentHTML('beforeend', $block);
 	}
 	function removeThumbInfo(el) {
+		if(window.debug){
+			return true;
+		}
 		let siteItemOverlay = el.querySelector('.category_sites_item_overlay');
 		if(siteItemOverlay){
 			siteItemOverlay.remove();

@@ -578,7 +578,7 @@ let lastMobileSimilarSite;
 
 		search();
 
-		showThumbInfoOnHover();
+		// showThumbInfoOnHover();
 		let bodyClasses = document.body.classList;
 
 
