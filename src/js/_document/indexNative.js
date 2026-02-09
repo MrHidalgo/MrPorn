@@ -623,6 +623,8 @@ let lastMobileSimilarSite;
 		// new CategoryPopup()
 		if(!isMobileOrTablet){
 			pukeCheck();
+		}else{
+			showThumbInfoOnHover();
 		}
 
 	};

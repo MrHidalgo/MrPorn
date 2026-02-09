@@ -53,17 +53,17 @@ function showThumbInfoOnHover() {
 				if(lastMobileSimilarSite){
 					lastMobileSimilarSite.classList.remove('touched');
 				}
-				showThumbInfo(element);
+				// showThumbInfo(element);
 				lastMobileSimilarSite = element;
 			});
 		}else{
-			element.addEventListener('mouseenter', function() {
-				showThumbInfo(element);
-			});
+			// element.addEventListener('mouseenter', function() {
+			// 	showThumbInfo(element);
+			// });
 
-			element.addEventListener('mouseleave', function() {
-				removeThumbInfo(element);
-			});
+			// element.addEventListener('mouseleave', function() {
+			// 	removeThumbInfo(element);
+			// });
 		}
 	});
 }

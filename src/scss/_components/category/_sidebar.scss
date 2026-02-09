@@ -185,6 +185,27 @@
 					background: #555; /* Hover color */
 				}
 			}
+			.category-list-menu{
+				display: block;
+			}
+			.category-list-item-letter{
+				display: inline-block;
+			}
+			.category-list-link{
+				display: flex;
+				justify-content: space-between;
+				padding: 0;
+
+				&::before,
+				&::after{
+					display: none;
+				}
+			}
+			.icon-category,
+			.category-site-icon,
+			.mobile_link_ellipsis{
+				display: none;
+			}
 
 			.category-list-letters {
 				display: flex;
@@ -244,6 +265,7 @@
 	}
 	&-left {
 		overflow: auto;
+		width: 100%;
 
 		&::-webkit-scrollbar {
 			width: 4px; /* Set the width of the scrollbar */
@@ -407,7 +429,7 @@
 
 	&-item {
 		position: relative;
-		flex: 1 1 250px;
+		// flex: 1 1 250px;
 		border-bottom: 1px solid #666;
 		display: inline-block;
 		width: 100%;
@@ -454,6 +476,7 @@
 		}
 
 		&-letter {
+			display: none;
 			background: #555;
 			color: var(--primary-color-2, #4c4c4c);
 		}
@@ -494,6 +517,12 @@
 		//flex: 1;
 		overflow: auto;
 		padding: 0 10px 15px 0;
+		display: flex;
+		flex-flow: column;
+
+		@include adaptive(767) {
+			width: 100%;
+		}
 
 		&-dropdown {
 			display: flex;

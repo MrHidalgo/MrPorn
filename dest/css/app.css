@@ -4102,15 +4102,23 @@ fieldset {
     width: 100%;
   }
 }
+.header__nav-link.header_nav_add_site {
+  gap: 6px;
+}
 .header__nav-item {
   display: flex;
-  flex: 1;
   min-width: 1px;
   max-width: 100%;
+}
+.header__nav-item.xs {
+  display: none;
 }
 @media screen and (max-width: 1023px) {
   .header__nav-item {
     display: none;
+  }
+  .header__nav-item.xs {
+    display: flex;
   }
   .header__nav-item.mb {
     display: block;
@@ -6977,6 +6985,25 @@ fieldset {
 .category-list-container.a2z .category-list-left::-webkit-scrollbar-thumb:hover {
   background: #555; /* Hover color */
 }
+.category-list-container.a2z .category-list-menu {
+  display: block;
+}
+.category-list-container.a2z .category-list-item-letter {
+  display: inline-block;
+}
+.category-list-container.a2z .category-list-link {
+  display: flex;
+  justify-content: space-between;
+  padding: 0;
+}
+.category-list-container.a2z .category-list-link::before, .category-list-container.a2z .category-list-link::after {
+  display: none;
+}
+.category-list-container.a2z .icon-category,
+.category-list-container.a2z .category-site-icon,
+.category-list-container.a2z .mobile_link_ellipsis {
+  display: none;
+}
 .category-list-container.a2z .category-list-letters {
   display: flex;
   flex-direction: column;
@@ -7023,6 +7050,7 @@ fieldset {
 }
 .category-list-left {
   overflow: auto;
+  width: 100%;
 }
 .category-list-left::-webkit-scrollbar {
   width: 4px; /* Set the width of the scrollbar */
@@ -7149,7 +7177,6 @@ fieldset {
 }
 .category-list-item {
   position: relative;
-  flex: 1 1 250px;
   border-bottom: 1px solid #666;
   display: inline-block;
   width: 100%;
@@ -7192,6 +7219,7 @@ fieldset {
   border-bottom: none;
 }
 .category-list-item-letter {
+  display: none;
   background: #555;
   color: var(--primary-color-2, #4c4c4c);
 }
@@ -7226,6 +7254,13 @@ fieldset {
 .category-list-menu {
   overflow: auto;
   padding: 0 10px 15px 0;
+  display: flex;
+  flex-flow: column;
+}
+@media screen and (max-width: 767px) {
+  .category-list-menu {
+    width: 100%;
+  }
 }
 .category-list-menu-dropdown {
   display: flex;
@@ -8058,6 +8093,9 @@ body.chatbot_active .go-top {
   }
 }
 .footer__nav a {
+  display: flex;
+  gap: 4px;
+  align-items: center;
   font-size: 16px;
   font-weight: 600;
   color: #4099f9;
@@ -9592,6 +9630,9 @@ body.chatbot_active .go-top {
   }
 }
 .footer__nav a {
+  display: flex;
+  gap: 4px;
+  align-items: center;
   font-size: 16px;
   font-weight: 600;
   color: #4099f9;

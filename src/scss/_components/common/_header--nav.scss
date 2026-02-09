@@ -27,14 +27,25 @@
 			}
 		}
 
+		&-link.header_nav_add_site{
+			gap: 6px;
+		}
+
 		&-item {
 			display: flex;
-			flex: 1;
+			// flex: 1;
 			min-width: 1px;
 			max-width: 100%;
+
+			&.xs{
+				display: none;
+			}
 			@include adaptive(1023) {
 				display: none;
 
+				&.xs{
+					display: flex;
+				}
 				&.mb{
 					display: block;
 				}

@@ -1488,9 +1488,12 @@
 		}
 	}
 	.rtu-txt {
+		display: flex;
+		justify-content: center;
 		align-items: center;
 		font-size: 13px;
 		color: #fff;
+		gap: 4px;
 
 		@include adaptive(767) {
 			overflow: hidden;
@@ -1502,13 +1505,65 @@
 	}
 }
 
+.review-tipbox{
+	position: relative;
+	cursor: pointer;
+	height: 14px;
+
+	.tooltip{
+		display: none;
+
+		@include respond('medium'){
+			position: absolute;
+			text-align: center;
+			top: 100%;
+			left: 50%;
+			z-index: 2;
+			transform: translate(-50%, 10px);
+			display: none;
+			padding: 6px 10px;
+			border: 3px solid #bababa;
+			border-radius: 11px;
+			line-height: 1;
+			background-color: #fdfdfd;
+			color: #767676;
+			animation: fadeEffect .2s;
+			width: 325px;
+
+			span{
+				color: #000;
+			}
+
+			&:before{
+				content: '';
+				position: absolute;
+				top: 0%;
+				left: 50%;
+				transform: translate(-50%, -8px) rotate(135deg);
+				display: inline-block;
+				width: 12px;
+				height: 12px;
+				border-width: 0 0 3px 3px;
+				border-style: solid;
+				border-color: transparent transparent #bababa #bababa;
+				background-color: #fdfdfd;
+			}
+		}
+
+	}
+	@include respond('medium'){
+		&:hover .tooltip{
+			display: block;
+		}
+	}
+}
+
 .new-ratingt{
 	position: relative;
 	text-align: left;
 	width:150px;
 	height: 30px;
 	unicode-bidi: bidi-override;
-	direction: rtl;
 	display: flex;
 	vertical-align: middle;
 	cursor: pointer;
@@ -1520,69 +1575,115 @@
 	}
 }
 .new-ratingt > span {
-	position: relative;width: 30px;height: 30px;margin: 0 0 0 0;
+	position: relative;
+	width: 30px;
+	height: 30px;
+	margin: 0 0 0 0;
+	background: url(../images/ratings.svg);
+	background-size: cover;	
 
 	@include adaptive(767) {
 		width: 30px;
 		height: 30px;
 	}
-}
-.new-ratingt:hover > span{
-	background: url(/wp-content/themes/mpg/images/ratings_2.png) 0 -30px no-repeat;
-	background-size: 30px;
+	&.frac{
+		background: url(../images/ratings-grey.svg);
 
-	@include adaptive(767) {
-		background: url(/wp-content/themes/mpg/images/ratings_2.png) 0 -30px no-repeat;
-		background-size: 30px;
+		&:before{
+			content: '';
+			position: absolute;
+			top: 0;
+			left: 0;
+			width: var(--frac-width, 100%);
+			height: 100%;
+			background: url(../images/ratings.svg);
+			background-size: cover;
+		}
 	}
-}
-.new-ratingt > span:hover:before, .new-ratingt > span:hover ~ span:before {
-	width: 30px;height: 30px;background: url(/wp-content/themes/mpg/images/ratings_2.png) 0 0 no-repeat; background-size: cover; position: absolute;content: '';left:0;top: 0;
-
-	@include adaptive(767) {
-		width: 30px;
-		height: 30px;
-		background-size: auto 200%;
-	}
-}
-.new-ratingt:NOT([data-percent]):BEFORE, .new-ratingt[data-percent="0"]:BEFORE {display:none;}
-.new-ratingt[data-percent="1"]:BEFORE, .new-ratingt[data-percent="2"]:BEFORE, .new-ratingt[data-percent="3"]:BEFORE, .new-ratingt[data-percent="4"]:BEFORE, .new-ratingt[data-percent="5"]:BEFORE {
-	width:150px;height: 30px;background: url(/wp-content/themes/mpg/images/ratings.png) 0 -120px no-repeat; background-size: cover; position: absolute;content: '';left: 0;top: 0;
-
-	@include adaptive(767) {
-		width: 150px;
-		height: 30px;
-		background-position: 0 -30px;
-		background-size: auto 500%;
+	&.grey{
+		background: url(../images/ratings-grey.svg);
 	}
 }
 
-.new-ratingt[data-percent="1"]:BEFORE {
-	@include adaptive(767) {
-		background-position: 0 -120px;
-	}
-}
-.new-ratingt[data-percent="2"]:BEFORE {
-	background-position: 0 -90px;
-	@include adaptive(767) {
-		background-position: 0 -90px;
-	}
-}
-.new-ratingt[data-percent="3"]:BEFORE {
-	background-position: 0 -60px;
+.updated_info{
+	display: flex;
+	gap: 4px;
+	align-items: center;
+	justify-content: space-between;
 
-	@include adaptive(767) {
-		background-position: 0 -60px;
+	& > *:only-child {
+		margin-left: auto;
+	}
+
+	&_text{
+		color: #6e87a7;
 	}
 }
-.new-ratingt[data-percent="4"]:BEFORE {
-	background-position: 0 -30px;
-	@include adaptive(767) {
-		background-position: 0 -30px;
-	}
-}
-.new-ratingt[data-percent="5"]:BEFORE {background-position: 0 0}
-.new-ratingt:hover[data-percent="1"]:BEFORE, .new-ratingt:hover[data-percent="2"]:BEFORE, .new-ratingt:hover[data-percent="3"]:BEFORE, .new-ratingt:hover[data-percent="4"]:BEFORE, .new-ratingt:hover[data-percent="5"]:BEFORE {background: none}
+// .new-ratingt > span.frac {
+	
+// 	background-size: cover;
+
+// 	@include adaptive(767) {
+// 		width: 30px;
+// 		height: 30px;
+// 	}
+// }
+// .new-ratingt:hover > span{
+// 	background: url(/wp-content/themes/mpg/images/ratings_2.png) 0 -30px no-repeat;
+// 	background-size: 30px;
+
+// 	@include adaptive(767) {
+// 		background: url(/wp-content/themes/mpg/images/ratings_2.png) 0 -30px no-repeat;
+// 		background-size: 30px;
+// 	}
+// }
+// .new-ratingt > span:hover:before, .new-ratingt > span:hover ~ span:before {
+// 	width: 30px;height: 30px;background: url(/wp-content/themes/mpg/images/ratings_2.png) 0 0 no-repeat; background-size: cover; position: absolute;content: '';left:0;top: 0;
+
+// 	@include adaptive(767) {
+// 		width: 30px;
+// 		height: 30px;
+// 		background-size: auto 200%;
+// 	}
+// }
+// .new-ratingt:NOT([data-percent]):BEFORE, .new-ratingt[data-percent="0"]:BEFORE {display:none;}
+// .new-ratingt[data-percent="1"]:BEFORE, .new-ratingt[data-percent="2"]:BEFORE, .new-ratingt[data-percent="3"]:BEFORE, .new-ratingt[data-percent="4"]:BEFORE, .new-ratingt[data-percent="5"]:BEFORE {
+// 	width:150px;height: 30px;background: url(/wp-content/themes/mpg/images/ratings.png) 0 -120px no-repeat; background-size: cover; position: absolute;content: '';left: 0;top: 0;
+
+// 	@include adaptive(767) {
+// 		width: 150px;
+// 		height: 30px;
+// 		background-position: 0 -30px;
+// 		background-size: auto 500%;
+// 	}
+// }
+
+// .new-ratingt[data-percent="1"]:BEFORE {
+// 	@include adaptive(767) {
+// 		background-position: 0 -120px;
+// 	}
+// }
+// .new-ratingt[data-percent="2"]:BEFORE {
+// 	background-position: 0 -90px;
+// 	@include adaptive(767) {
+// 		background-position: 0 -90px;
+// 	}
+// }
+// .new-ratingt[data-percent="3"]:BEFORE {
+// 	background-position: 0 -60px;
+
+// 	@include adaptive(767) {
+// 		background-position: 0 -60px;
+// 	}
+// }
+// .new-ratingt[data-percent="4"]:BEFORE {
+// 	background-position: 0 -30px;
+// 	@include adaptive(767) {
+// 		background-position: 0 -30px;
+// 	}
+// }
+// .new-ratingt[data-percent="5"]:BEFORE {background-position: 0 0}
+// .new-ratingt:hover[data-percent="1"]:BEFORE, .new-ratingt:hover[data-percent="2"]:BEFORE, .new-ratingt:hover[data-percent="3"]:BEFORE, .new-ratingt:hover[data-percent="4"]:BEFORE, .new-ratingt:hover[data-percent="5"]:BEFORE {background: none}
 
 .ratingtu_buttons {
 	position: absolute;
@@ -1652,7 +1753,22 @@
 .pros_container{
 	order: 3;
 	grid-area: 2/2/3/4;
-	// padding-bottom: 15px;
+	max-height: 40px;
+	overflow: hidden;
+	overflow-y: scroll;
+	scrollbar-gutter: stable;
+
+	&::-webkit-scrollbar {
+		width: 8px;
+		height: 8px;
+	}
+	&::-webkit-scrollbar-track {
+		background: var(--pros-scrollbar-track);
+	}
+	&::-webkit-scrollbar-thumb {
+		background: var(--pros-scrollbar-thumb);
+		border-radius: 4px;
+	}
 
 	@include adaptive(767) {
 		flex-direction: column;
