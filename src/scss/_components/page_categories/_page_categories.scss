@@ -183,9 +183,14 @@
 		color: var(--heading-color, #000) ;
 		padding: 5px 10px;
 
-		a, a:hover{
+		a{
 			color: var(--heading-color, #000) ;
+			border-bottom: 1px solid var(--heading-color, #000);
+			&:hover{
+				color: var(--heading-color, #000) ;
+			}
 		}
+		
 	}
 	&-categories.h_scroll{
 		@include adaptive(767) {
