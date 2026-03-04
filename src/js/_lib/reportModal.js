@@ -476,11 +476,12 @@ class ReportModal{
 		let name = document.querySelector('.boogie-input[name="name"]').value.trim();
 		let email = document.querySelector('.boogie-input[name="email"]').value.trim();
 		let message = document.querySelector('.boogie-input[name="message"]').value.trim();
-		let reviewUrl = window.location.href;
-		let reviewId = document.querySelector('.main_con.review_container').dataset.siteid;
+		let isCategory = document.body.classList.contains('category');
+		let container = document.querySelector('.main_con.review_container');
+		let reviewId = container.dataset.siteid;
+		let categoryId = container.dataset.category;
 
 		let accepted = document.querySelector('#boogie-checkbox-input').checked;
-		// let reviewTitle = document.querySelector('.review_site_link .site_name').innerHTML;
 
 		// Validate email format
 		if (!this.isReportValid(name, email, message, accepted)) {
@@ -498,13 +499,24 @@ class ReportModal{
 		// Update the last request time
 		this.lastRequestTime = currentTime;
 
+		let payload = { reporter_name: name, email: email, message: message, tag: tag };
+
+		if (isCategory) {
+			payload.source = 'category';
+			payload.category_id = categoryId;
+			payload.post_id = 'category_' + categoryId;
+		} else {
+			payload.source = 'review';
+			payload.post_id = reviewId;
+		}
+
 		// If valid email, proceed with the POST request
 		fetch("/wp-content/themes/mpg/ajax-handler-wp.php?action=submit_report", {
 			method: "POST",
 			headers: {
 				"Content-Type": "application/json",
 			},
-			body: JSON.stringify({ reporter_name: name, email: email, message: message, tag: tag, post_id: reviewId }),
+			body: JSON.stringify(payload),
 		})
 			.then(response => {
 				if (response.ok) {

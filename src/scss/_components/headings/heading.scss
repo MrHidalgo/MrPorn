@@ -29,7 +29,8 @@
 		font-weight: 500;
 		line-height: 1;
 		font-size: 26px;
-		color: var(--link-header-color, #fff);
+		// color: var(--link-header-color, #fff);
+		color: var(--heading-color, #000);
 		gap: 4px;
 
 		@include adaptive(991.98) {
@@ -43,10 +44,18 @@
 			vertical-align: middle;
 			width: 16px;
 			height: 23px;
-			background-image: var(--heading-down-arrow);
+			// background-image: var(--heading-down-arrow);
+			background-color: currentColor;
+			// background-image: url(../images/down-arrow-icon.svg);
+
 			background-repeat: no-repeat;
 			background-size: contain;
 			background-position: center;
+
+			mask-image: url(../images/down-arrow-icon.svg);
+			mask-repeat: no-repeat;
+			mask-size: contain;
+			mask-position: center;
 
 			@include adaptive(991.98) {
 				height: 15px;
@@ -251,10 +260,5 @@ h1, h2, h3, h4{
 .light{
 	.blue_heading{
 		background: #1e559a;
-	}
-	.link-header{
-		h2{
-			color: #767676;
-		}
 	}
 }

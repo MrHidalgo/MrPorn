@@ -406,6 +406,29 @@
 			display: block;
 			padding-bottom: 84.8%;
 
+			&.dead::after,
+			&.unlisted::after{
+				position: absolute;
+				content: '';
+				display: block;
+				width: 30px;
+				height: 30px;
+				border-radius: 50%;
+				z-index: 1;
+				top: 10px;
+				right: 10px;
+				box-shadow: 0 1px 3px rgba(0, 0, 0, 0.35);
+				border: 2px solid rgba(255, 255, 255, 0.5);
+			}
+
+			&.dead::after{
+				background: #f00;
+			}
+
+			&.unlisted::after{
+				background: #00f;
+			}
+
 			&__img{
 				aspect-ratio:1.18110;
 				position: absolute;
