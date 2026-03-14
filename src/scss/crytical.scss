@@ -151,7 +151,11 @@ body {
 		background-image: linear-gradient(rgba(0, 0, 0, var(--bg-gradient-opacity)), rgba(0, 0, 0, var(--bg-gradient-opacity))), url(/wp-content/themes/mpg/images/bg-deals.png);
 	}
 	&.submit::before{
-		background-image: linear-gradient(rgba(0, 0, 0, var(--bg-gradient-opacity)), rgba(0, 0, 0, var(--bg-gradient-opacity))), url(/wp-content/themes/mpg/images/bg-submit.svg);
+		background-image: linear-gradient(rgba(0, 0, 0, var(--bg-gradient-opacity)), rgba(0, 0, 0, var(--bg-gradient-opacity))), url(/wp-content/themes/mpg/images/bg--submit.svg);
+	}
+
+	&.teams::before{
+		background-image: linear-gradient(rgba(0, 0, 0, var(--bg-gradient-opacity)), rgba(0, 0, 0, var(--bg-gradient-opacity))), url(/wp-content/themes/mpg/images/teams/bg_teams.jpg);
 	}
 
 }

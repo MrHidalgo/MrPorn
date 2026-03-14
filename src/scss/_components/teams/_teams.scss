@@ -1,0 +1,679 @@
+@keyframes pulse {
+	0% {
+		box-shadow: 0 0 0 0
+			rgba(
+				var(--animation-rgb-value, 16, 69, 178),
+				var(--animation-rgb-opacity, 0.7)
+			);
+	}
+	70% {
+		box-shadow: 0 0 0 10px rgba(var(--animation-rgb-value, 16, 69, 178), 0);
+	}
+	100% {
+		box-shadow: 0 0 0 0 rgba(var(--animation-rgb-value, 16, 69, 178), 0);
+	}
+}
+.centerwrap {
+	width: 1260px;
+	margin: auto;
+}
+
+
+/* Team */
+.teamArea {
+	// background: url(../images/teams/bg_teams.jpg) repeat left top;
+	margin-top: 32px;
+	padding-bottom: 35px;
+
+	// background: #3b3b3b;
+    border-top: 12px solid #1e559a;
+    margin: 10px 0 -1px;
+    padding: 0 0 15px;
+}
+.light{
+	.bread-crumb{
+		a{
+			color: #333;
+		}
+	}
+	.teamArea {
+		border-top: 12px solid #d1f34b;
+	}
+}
+.teamWhite {
+	max-width: 1260px;
+	margin: auto;
+	background-color: #fff;
+	// border-radius: 5px;
+	padding: 42px 65px 36px 65px;
+}
+.teamTitle {
+	text-align: center;
+	max-width: 740px;
+	margin: auto;
+	padding-bottom: 48px;
+}
+.teamTitle_h {
+	font-size: 30px;
+	font-family: "Poppins", sans-serif;
+	font-weight: 700;
+	color: #204fb6;
+	position: relative;
+	padding-bottom: 6px;
+	margin-bottom: 8px;
+}
+.teamTitle_h:before {
+	background-color: #737982;
+	width: 28px;
+	height: 3px;
+	position: absolute;
+	left: 50%;
+	transform: translateX(-50%);
+	bottom: 0px;
+	content: "";
+}
+.teamTitle p {
+	font-family: "Poppins", sans-serif;
+	font-weight: 400;
+	color: #898a8b;
+	letter-spacing: 0.01em;
+	font-size: 15px;
+	line-height: 21px;
+}
+.teamMembers {
+	display: flex;
+	flex-wrap: wrap;
+	padding-bottom: 32px;
+}
+.teamBlock {
+	width: 352px;
+	margin-right: 36px;
+	margin-bottom: 32px;
+}
+.teamBlock:nth-child(3n) {
+	margin-right: 0px;
+}
+.teamPic img {
+	width: 100%;
+}
+.teamMTitle {
+	text-align: center;
+	padding-top: 8px;
+	padding-bottom: 10px;
+}
+.teamMTitle_h {
+	font-family: "Poppins", sans-serif;
+	font-weight: 700;
+	font-size: 22px;
+	color: #204fb6;
+	line-height: 30px;
+}
+.teamMTitle_h a {
+	color: #204fb6;
+}
+.teamMTitle_h a:hover {
+	color: #65cffb;
+}
+.teamMTitle_role {
+	font-family: "Poppins", sans-serif;
+	font-weight: 400;
+	color: #898a8b;
+	font-size: 15px;
+	line-height: 20px;
+}
+.teamMInfo {
+	padding: 0 18px;
+}
+.teamMInfo p {
+	font-family: "Poppins", sans-serif;
+	font-weight: 400;
+	color: #898a8b;
+	font-size: 15px;
+	line-height: 21px;
+	text-align: center;
+}
+.teamMInfo p a {
+	color: #204fb6;
+	cursor: pointer;
+}
+.teamMInfo p a:hover {
+	color: #333;
+}
+.teamMInfo span {
+	color: #204fb6;
+	cursor: pointer;
+	font-family: "Poppins", sans-serif;
+	font-weight: 400;
+	font-size: 15px;
+	line-height: 21px;
+}
+.teamMInfo span:hover {
+	color: #333;
+}
+.teamNote {
+	text-align: center;
+	border-top: 1px solid #dddddd;
+	padding: 18px 64px 0;
+}
+.teamNote p {
+	font-family: "Poppins", sans-serif;
+	font-weight: 400;
+	color: #898a8b;
+	font-size: 15px;
+	line-height: 21px;
+}
+
+/* Team Bio */
+.teamMHead {
+	background-color: #07113b;
+	border-radius: 5px;
+	padding: 28px;
+	margin-top: 20px;
+	display: flex;
+}
+.teamBioPic {
+	width: 352px;
+}
+.teamBioHead {
+	flex: 1;
+	display: flex;
+	align-items: center;
+	flex-direction: column;
+	padding: 0 38px;
+	margin-left: 14px;
+}
+.teamBioHead .av_title {
+	font-family: "Poppins", sans-serif;
+	font-weight: 700;
+	font-size: 36px;
+	color: #204fb6;
+	position: relative;
+	line-height: 70px;
+	margin-bottom: 24px;
+	padding-left: 50px;
+	padding-right: 50px;
+	background: url(../images/teams/teamTitleMBg.png) repeat-x;
+	margin-top: 12px;
+}
+.teamBioHead .av_title:after {
+	background: url(../images/teams/teamTBg.png) no-repeat;
+	height: 70px;
+	width: 20px;
+	position: absolute;
+	right: 0;
+	top: 0px;
+	content: "";
+}
+.teamBioHead .av_title i {
+	position: absolute;
+	left: -51px;
+	top: -12px;
+}
+
+.teamBioHead .pos_title {
+	font-family: "Poppins", sans-serif;
+	font-weight: 600;
+	color: #ffffff;
+	font-size: 27px;
+	letter-spacing: 0.01em;
+	padding-bottom: 2px;
+	text-align: center;
+}
+.teamBioHead .pos_title span {
+	color: #c7f425;
+}
+.teamBioHead p {
+	font-family: "Poppins", sans-serif;
+	font-weight: 400;
+	font-size: 15px;
+	line-height: 21px;
+	color: #939cb2;
+	text-align: center;
+}
+.teamMDetails {
+	padding-top: 38px;
+}
+.teamMDetails h3 {
+	font-family: "Poppins", sans-serif;
+	font-weight: 700;
+	font-size: 16px;
+	letter-spacing: 0.01em;
+	color: #204fb6;
+	padding-bottom: 6px;
+	letter-spacing: 0.01em;
+}
+.teamMDetails p {
+	font-family: "Poppins", sans-serif;
+	font-weight: 400;
+	font-size: 15px;
+	line-height: 21px;
+	color: #898a8b;
+	padding-bottom: 21px;
+	letter-spacing: 0.01em;
+}
+.teamMDetails p:last-child {
+	padding-bottom: 0px;
+}
+.teamMDetails hr {
+	background-color: #dddddd;
+	height: 1px;
+	border: 0px;
+	margin-top: 3px;
+	margin-bottom: 20px;
+}
+.teamMDetails h4 {
+	font-family: "Poppins", sans-serif;
+	font-weight: 700;
+	font-size: 15px;
+	letter-spacing: 0.01em;
+	color: #898a8b;
+	padding-bottom: 2px;
+	letter-spacing: 0.01em;
+}
+ul.noIcon {
+	padding-top: 10px;
+	padding-bottom: 21px;
+}
+ul.noIcon li {
+	padding-bottom: 16px;
+}
+ul.noIcon li:last-child {
+	padding-bottom: 0px;
+}
+ul.withIcon {
+	padding-bottom: 21px;
+}
+ul.withIcon li {
+	font-family: "Poppins", sans-serif;
+	font-weight: 400;
+	font-size: 15px;
+	line-height: 23px;
+	color: #898a8b;
+	letter-spacing: 0.01em;
+	background: url(../images/teams/point.png) no-repeat left 3px;
+	padding-left: 25px;
+}
+.backTeam {
+	display: flex;
+	justify-content: center;
+	padding-top: 30px;
+	padding-bottom: 4px;
+}
+.teamBack {
+	height: 60px;
+	border-radius: 5px;
+	position: relative;
+	border: 2px solid #1045b2;
+	overflow: hidden;
+	background: url(../images/teams/orderBg.png) repeat-x left top;
+	text-align: left;
+	cursor: pointer;
+	padding-left: 110px;
+	padding-right: 20px;
+}
+.teamBack:hover {
+	animation: pulse 1s infinite;
+}
+.teamBack span {
+	font-family: "Poppins", sans-serif;
+	font-size: 32px;
+	font-weight: 600;
+	color: #ffffff;
+	letter-spacing: 0.01em;
+}
+.teamToon {
+	position: absolute;
+	left: 0;
+	top: 0;
+	background: url(../images/teams/teamToon.png) no-repeat left center;
+	width: 105px;
+	height: 56px;
+}
+
+@media only screen and (max-width: 1279px) {
+	.centerwrap {
+		width: 98%;
+	} /*994px*/
+
+	/* Team */
+	.teamWhite {
+		padding: 30px 45px 36px 45px;
+	}
+	.teamTitle_h {
+		font-size: 26px;
+		padding-bottom: 5px;
+	}
+	.teamTitle p {
+		font-size: 14px;
+	}
+	.teamTitle {
+		padding-bottom: 28px;
+	}
+	.teamBlock {
+		width: 32%;
+		margin-right: 2%;
+		margin-bottom: 2%;
+	}
+	.teamMTitle_h {
+		font-size: 20px;
+		line-height: 28px;
+	}
+	.teamMTitle {
+		padding-top: 5px;
+		padding-bottom: 8px;
+	}
+	.teamMTitle_role {
+		font-size: 14px;
+	}
+	.teamMInfo p {
+		font-size: 14px;
+	}
+	.teamMInfo {
+		padding: 0 12px;
+	}
+	.teamMembers {
+		padding-bottom: 24px;
+	}
+	.teamNote p {
+		font-size: 14px;
+	}
+	.teamNote {
+		padding: 16px 44px 0;
+	}
+
+	/* Team Bio */
+	.teamBioPic {
+		width: 30%;
+	}
+	.teamBioHead {
+		padding: 0 30px;
+		margin-left: 10px;
+	}
+	.teamBioHead .pos_title {
+		font-size: 22px;
+		padding-bottom: 0px;
+	}
+	/*.teamBioHead h2{height: 68px; font-size: 30px; padding-left: 78px; padding-right: 34px; line-height: 68px; background-size: auto 68px; margin-bottom: 6px;}
+  .teamBioHead h2:after{background-size: auto 52px; height: 52px; top: 9px; width: 16px;}
+  .teamBioHead h2:before{height: 52px; background-size: auto 52px; top: 9px; left: 70px; width: calc(100% - 86px);}*/
+	.teamBioHead .av_title {
+		font-size: 30px;
+		padding-left: 34px;
+		padding-right: 34px;
+		background-size: auto 52px;
+		line-height: 52px;
+		margin-bottom: 10px;
+	}
+	.teamBioHead .av_title:after {
+		background-size: auto 52px;
+		height: 52px;
+		top: 0px;
+		width: 15px;
+		right: -1px;
+	}
+	.teamBioHead .av_title i {
+		width: 60px;
+		left: -45px;
+	}
+	.teamBioHead p {
+		font-size: 14px;
+		line-height: 20px;
+	}
+	.teamMHead {
+		padding: 24px;
+	}
+	.teamMDetails {
+		padding-top: 28px;
+	}
+	.teamMDetails p {
+		font-size: 14px;
+		padding-bottom: 16px;
+	}
+	ul.withIcon li {
+		font-size: 14px;
+		background-size: 16px;
+		padding-left: 24px;
+	}
+	.teamMDetails hr {
+		margin-bottom: 15px;
+	}
+	ul.withIcon {
+		padding-bottom: 16px;
+	}
+	ul.noIcon {
+		padding-bottom: 16px;
+	}
+	.backTeam {
+		padding-top: 24px;
+	}
+}
+@media only screen and (max-width: 1023px) {
+	.centerwrap {
+		width: 98%;
+	} /* 748px */
+
+	/* Team */
+	.teamWhite {
+		padding: 20px 34px 30px 34px;
+	}
+	.teamTitle_h {
+		font-size: 24px;
+		padding-bottom: 3px;
+	}
+	.teamTitle {
+		padding-bottom: 18px;
+	}
+	.teamMTitle_h {
+		font-size: 18px;
+		line-height: 24px;
+	}
+	.teamMTitle {
+		padding-bottom: 5px;
+	}
+	.teamNote {
+		padding: 12px 20px 0;
+	}
+	.teamMembers {
+		padding-bottom: 20px;
+	}
+
+	/* Team Bio */
+	.teamMHead {
+		padding: 18px;
+		margin-top: 12px;
+	}
+	/*.teamBioHead h2{font-size: 26px; height: 58px; padding-left: 65px; padding-right: 30px; background-size: auto 58px; line-height: 56px;}
+  .teamBioHead h2:after{background-size: auto 44px; height: 44px; top: 8px;}
+  .teamBioHead h2:before{height: 44px; background-size: auto 44px; top: 8px; left: 70px; width: calc(100% - 86px);}*/
+
+	.teamBioHead .av_title {
+		font-size: 26px;
+		padding-left: 30px;
+		padding-right: 30px;
+		line-height: 44px;
+		margin-top: 10px;
+		margin-left: 20px;
+	}
+	.teamBioHead .av_title:after {
+		background-size: auto 44px;
+		height: 44px;
+		top: 0px;
+		width: 13px;
+	}
+	.teamBioHead .av_title i {
+		width: 50px;
+		left: -36px;
+		top: -10px;
+	}
+
+	.teamBioHead .pos_title {
+		font-size: 20px;
+	}
+	.teamBioHead {
+		padding: 0 14px;
+		margin-left: 6px;
+	}
+	.teamMDetails {
+		padding-top: 20px;
+	}
+	.teamBack {
+		height: 52px;
+		padding-left: 92px;
+		padding-right: 20px;
+	}
+	.teamBack span {
+		font-size: 26px;
+	}
+	.teamToon {
+		background-size: auto 48px;
+		height: 48px;
+	}
+	ul.withIcon li {
+		background-position: left 4px;
+	}
+}
+@media only screen and (max-width: 767px) {
+	/* Team */
+	.teamArea {
+		padding-bottom: 25px;
+	}
+	.teamWhite {
+		padding: 14px 20px 20px 20px;
+	}
+	.teamTitle_h {
+		font-size: 22px;
+	}
+	.teamBlock {
+		width: 49%;
+	}
+	.teamBlock:nth-child(3n) {
+		margin-right: 2%;
+	}
+	.teamBlock:nth-child(2n) {
+		margin-right: 0px;
+	}
+	.teamTitle {
+		padding-bottom: 14px;
+	}
+	.teamMInfo {
+		padding: 0 5px;
+	}
+	.teamTitle p {
+		font-size: 13px;
+		line-height: 18px;
+	}
+	.teamMInfo p {
+		font-size: 13px;
+		line-height: 18px;
+	}
+	.teamMTitle_role {
+		font-size: 13px;
+	}
+	.teamMTitle {
+		padding-top: 3px;
+		padding-bottom: 3px;
+	}
+	.teamMTitle_h {
+		font-size: 17px;
+	}
+	.teamNote p {
+		font-size: 13px;
+		line-height: 18px;
+	}
+	.teamMembers {
+		padding-bottom: 24px;
+	}
+	.teamNote {
+		padding: 12px 0px 0;
+	}
+
+	/* Team Bio */
+	.teamMHead {
+		margin-top: 8px;
+		flex-direction: column;
+	}
+	.teamBioPic {
+		width: 100%;
+		max-width: 352px;
+		margin: auto;
+
+		img{
+			height: auto;
+		}
+	}
+	.teamBioHead {
+		margin-left: 0px;
+		padding: 0px;
+		padding-top: 15px;
+	}
+	.teamMDetails h3 {
+		padding-bottom: 3px;
+	}
+	.teamBioHead .pos_title {
+		line-height: 26px;
+		margin-bottom: 4px;
+	}
+	ul.noIcon {
+		padding-top: 5px;
+	}
+	.backTeam {
+		padding-top: 10px;
+	}
+	.teamBack span {
+		font-size: 22px;
+	}
+}
+@media only screen and (max-width: 479px) {
+	/* Team */
+	.teamBlock {
+		width: 100%;
+		margin-right: 0px;
+		margin-bottom: 14px;
+	}
+	.teamBlock:nth-child(3n) {
+		margin-right: 0px;
+	}
+	.teamTitle p {
+		font-size: 14px;
+		line-height: 21px;
+	}
+	.teamTitle_h {
+		font-size: 24px;
+	}
+	.teamMTitle_h {
+		font-size: 18px;
+	}
+	.teamMTitle_role {
+		font-size: 14px;
+	}
+	.teamMInfo p {
+		font-size: 14px;
+		line-height: 21px;
+	}
+	.teamMTitle {
+		padding-top: 5px;
+		padding-bottom: 5px;
+	}
+	.teamNote p {
+		font-size: 14px;
+		line-height: 21px;
+	}
+
+	/* Team Bio */
+	.teamMDetails h4 {
+		line-height: 22px;
+		padding-bottom: 5px;
+	}
+	.teamBack {
+		height: 46px;
+		padding-left: 82px;
+		padding-right: 22px;
+	}
+	.teamBack span {
+		font-size: 18px;
+	}
+	.teamToon {
+		background-size: auto 42px;
+		height: 42px;
+	}
+}

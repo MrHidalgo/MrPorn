@@ -57,6 +57,10 @@ body {
 		}
 	}
 	&-heading{
+		&.bb{
+			border-bottom: 2px solid #969696;
+		}
+
 		@include respond('medium'){
 			padding: 8px 0;
 

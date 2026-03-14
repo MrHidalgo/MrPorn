@@ -1614,6 +1614,16 @@
 	&_text{
 		color: #6e87a7;
 
+		a{
+			color: #6e87a7;
+			text-decoration: underline;
+
+			&:hover,
+			&:focus{
+				color: #6e87a7;
+			}
+		}
+
 		@include adaptive(767) {
 			font-size: 12px;
 		}
@@ -1799,19 +1809,11 @@
 			background-position: 0 center;
 			padding-right: 10px;
 			color: #bbb;
+			padding-left: 13px;
+			background-image: url(../images/review/icon_pros.svg);
+			background-size: 10px;
 
-			&::before{
-				display: inline-block;
-				content: ' ';
-				width: 10px;
-				height: 10px;
-				margin-right: 3px;
-				color: #32a200;
-				background-image: url(../images/review/icon_pros.svg);
-			}
-
-			&.conns::before{
-				color: #f80602;
+			&.conns{
 				background-image: url(../images/review/icon_conns.svg);
 			}
 		}

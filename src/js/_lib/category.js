@@ -209,8 +209,6 @@ function initCategoryPage() {
 
 				});
 
-				console.log('matchingOrdered ', matchingOrdered)
-
 				// Everything else in exact saved (default) order
 				const matchingSet = new Set(matchingOrdered);
 				const restInOriginalOrder = savedOrder.filter(item => !matchingSet.has(item));
@@ -243,7 +241,6 @@ function initCategoryPage() {
 
 					let filter = evt.target.value.toLowerCase().trim();
 					applyCategoryListFilter(filter);
-					console.log('filter ', filter)
 
 					desktopMenuListContainer?.scrollTo({
 						top: 0,
@@ -368,8 +365,15 @@ function initCategoryPage() {
 	}
 
 	const gotoRandomCategory = () => {
-		const randomCategory = categoryItems[Math.floor(Math.random() * categoryItems.length)];
-		window.location.href = randomCategory.link;
+		let categoryLinks = [];
+		if(isMobileOrTablet){
+			categoryLinks = document.querySelectorAll('.mobile-menu .category-list-menu .category-list-item:not(.category-list-item-letter) .category-list-link');
+		}else{
+			categoryLinks = document.querySelectorAll('.desktop_menu_list .category-list-menu .category-list-item:not(.category-list-item-letter) .category-list-link');
+		}
+
+		const randomCategory = categoryLinks[Math.floor(Math.random() * categoryLinks.length)];
+		window.location.href = randomCategory.href;
 	}
 
 	const onScrollChecked = (checked) => {
@@ -665,12 +669,14 @@ function initCategoryPage() {
 
 	if(isMobileOrTablet){
 		let desktopMenuContent = document.querySelector('.desktop_menu_list .category-list-menu')
-		if(desktopMenuContent){
-			document.querySelector('.header__categories-mobile .category-list-menu-mobile').innerHTML = desktopMenuContent.innerHTML;
+		let mobileMenuList = document.querySelector('.mobile-menu .category-list-menu');
+		if(desktopMenuContent && mobileMenuList){
+			mobileMenuList.innerHTML = desktopMenuContent.innerHTML;
 		}
 		let desktopMenuLetterContent = document.querySelector('.desktop_menu_list .category-list-letters');
-		if(desktopMenuLetterContent){
-			document.querySelector('.header__categories-mobile .category-list-letters').innerHTML = desktopMenuLetterContent.innerHTML;
+		let mobileMenuLetters = document.querySelector('.mobile-menu .category-list-letters');
+		if(desktopMenuLetterContent && mobileMenuLetters){
+			mobileMenuLetters.innerHTML = desktopMenuLetterContent.innerHTML;
 		}
 	}
 

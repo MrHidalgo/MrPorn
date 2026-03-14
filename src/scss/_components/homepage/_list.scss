@@ -318,6 +318,37 @@ body:not(.opened){
 	}
 }
 
+.other-category{
+	position: relative;
+
+	&_sites{
+		display: flex;
+		flex-wrap: wrap;
+		gap: 4px;
+		padding-top: 10px;
+	}
+
+	.category-list-item {
+		border: 1px solid #ccc;
+		max-width: calc((100% - 20px) / 6);
+		padding: 0 8px;
+
+		@include adaptive(767) {
+			max-width: calc(50% - 2px);
+		}
+	}
+	.category-list-link {
+		display: flex;
+	}
+
+	
+	.section_footer{
+		@include respond('medium'){
+			top: -13px;
+		}
+	}
+}
+
 
 .overlay {
 	display: none;
