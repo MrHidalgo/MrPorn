@@ -110,13 +110,6 @@
 	.category-tag-bottom{
 		margin-top: 85px;
 	}
-	.tag-dropdown-menu .dropdown-item{
-		padding: 4px 2px 4px 8px;
-
-		span{
-			font-size: 13px;
-		}
-	}
 }
 
 
@@ -174,13 +167,6 @@
 	}
 }
 .tags-header{
-	@include respond('medium'){
-		.custom-dropdown{
-			position: absolute;
-			top: -48px;
-			right: 0;
-		}
-	}
 }
 
 .tag-section{

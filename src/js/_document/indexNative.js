@@ -441,9 +441,7 @@ let lastMobileSimilarSite;
 				return hHeader;
 			},
 			get topBarHeight() {
-				let reviewHeader = document.querySelector(".review_header");
-
-				return reviewHeader ? reviewHeader.offsetHeight : 0;
+				return 0;
 			}
 		};
 
