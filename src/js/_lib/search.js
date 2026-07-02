@@ -90,6 +90,31 @@ const SearchModule = (function() {
         }
     };
 
+    // Cache helpers for search data
+    const _MPG_SD_TTL = 86400000; // 24h — matches server Cache-Control max-age
+
+    const _mpgGetSv = () => {
+        return document.querySelector('meta[name="mpg-sv"]')?.getAttribute('content') || '0';
+    };
+
+    const _mpgGetSdCache = (lang) => {
+        try {
+            const raw = localStorage.getItem('mpg_sd_' + lang);
+            if (!raw) return null;
+            const { ts, v, d } = JSON.parse(raw);
+            if (v !== _mpgGetSv()) return null;
+            if (Date.now() - ts < _MPG_SD_TTL) return d;
+            localStorage.removeItem('mpg_sd_' + lang);
+        } catch(e) {}
+        return null;
+    };
+
+    const _mpgSetSdCache = (lang, data) => {
+        try {
+            localStorage.setItem('mpg_sd_' + lang, JSON.stringify({ ts: Date.now(), v: _mpgGetSv(), d: data }));
+        } catch(e) {}
+    };
+
     // Public API
     return {
         init: function() {
@@ -185,58 +210,84 @@ const SearchModule = (function() {
         },
 
         loadSearchData: function() {
-            currentLang = document.documentElement.getAttribute('lang');
+            currentLang = document.documentElement.getAttribute('lang') || 'en';
 
-            let _this = this;
-            try {
-                let url = '/wp-json/mpg/search/';
-                
-                if(currentLang != 'en'){
-                    url = '/wp-json/mpg/search/?lang=' + currentLang;
-                }
-                
+            const lang = currentLang;
+            const cached = _mpgGetSdCache(lang);
+            const _this = this;
 
+            if (cached) {
+                window.jsonData = cached;
+                _this.renderRecentLinks(cached);
+                _this.initSearchKey();
+                return;
+            }
+
+            // No cache — defer fetch until user first focuses the search input
+            const searchInput = document.querySelector('.searchinput');
+            if (!searchInput) return;
+
+            searchInput.addEventListener('focus', function onSdFocus() {
+                if (window.jsonData) { _this.initSearchKey(); return; }
+                const url = lang !== 'en' ? '/wp-json/mpg/search/?lang=' + lang : '/wp-json/mpg/search/';
                 fetch(url)
                     .then(res => res.json())
-                    .then((out) => {
-                        
-
-                        let searchDataDiv = document.createElement('script');
-                        searchDataDiv.type = 'text/javascript';
-                        searchDataDiv.text = 'var jsonData=' + out;
-                        if(document.body && searchDataDiv){
-                            document.body.appendChild(searchDataDiv);
-                        }
-                        _this.renderRecentLinks(out);
+                    .then(out => {
+                        const data = typeof out === 'string' ? JSON.parse(out) : out;
+                        _mpgSetSdCache(lang, data);
+                        window.jsonData = data;
+                        _this.renderRecentLinks(data);
                         _this.initSearchKey();
-                        // _this.initTags();
                     })
                     .catch(err => {
                         console.warn('Failed to load search data:', err);
                     });
-            } catch (error) {
-                console.error('Error loading search data:', error);
-            }
+            }, { once: true });
         },
 
         renderRecentLinks: function(data) {
-            // jsonData is already parsed JSON object, no need to parse again
-            // data = JSON.parse(data);
-            let recentLinks = jsonData.recent_links;
             let recentLinksContainer = safeQuerySelector('.header__recent');
             if(recentLinksContainer && recentLinksContainer.innerHTML != ''){
                 return;
             }
 
-            if(recentLinks && recentLinks.links && recentLinks.links.length > 0){
-                let recentLinksHtml = '<div class="header__recent-head"><p>'+recentLinks.title+'</p><i class="icon-font icon-left-arrow"></i></div>';
-                recentLinksHtml += '<div class="header__recent-body">'; 
-                recentLinks.links.forEach(link => {
-                    recentLinksHtml += '<a href="'+ rootUrl + link.url+'"><i class="icon-font icon-arrow-angle"></i><span>'+link.title+'</span></a>';
-                });
-                recentLinksHtml += '</div>';
-                recentLinksContainer.innerHTML = recentLinksHtml;
-            }
+            // Fetch trending categories from realtime ranks API
+            fetch('//analytics.mrgeek.link/api/realtime/ranks', {
+                headers: {
+                    'x-api-key': '57ed08ce0b13a447e384bd4dccf7b8ef96fd6edc316aae309439ec913b5c30a5'
+                }
+            })
+            .then(res => res.json())
+            .then(ranks => {
+                if(recentLinksContainer && ranks && ranks.length > 0){
+                    let langPrefix = (currentLang && currentLang !== 'en') ? '/' + currentLang : '';
+                    let recentLinksHtml = '<div class="header__recent-head"><p>Today\'s Most Searched Categories</p><i class="icon-font icon-left-arrow"></i></div>';
+                    recentLinksHtml += '<div class="header__recent-body">';
+                    ranks.forEach(link => {
+                        // If title looks like a slug (contains hyphens, no spaces), convert to readable title
+                        let title = link.title;
+                        if(title && title.indexOf('-') > -1 && title.indexOf(' ') === -1){
+                            title = title.replace(/-/g, ' ').replace(/\b\w/g, c => c.toUpperCase());
+                        }
+                        recentLinksHtml += '<a href="'+ rootUrl + langPrefix + link.link+'"><i class="icon-font icon-arrow-angle"></i><span>'+title+'</span></a>';
+                    });
+                    recentLinksHtml += '</div>';
+                    recentLinksContainer.innerHTML = recentLinksHtml;
+                }
+            })
+            .catch(err => {
+                // Fallback to jsonData.recent_links if realtime API fails
+                let recentLinks = window.jsonData ? window.jsonData.recent_links : null;
+                if(recentLinksContainer && recentLinks && recentLinks.links && recentLinks.links.length > 0){
+                    let recentLinksHtml = '<div class="header__recent-head"><p>'+recentLinks.title+'</p><i class="icon-font icon-left-arrow"></i></div>';
+                    recentLinksHtml += '<div class="header__recent-body">';
+                    recentLinks.links.forEach(link => {
+                        recentLinksHtml += '<a href="'+ rootUrl + link.url+'"><i class="icon-font icon-arrow-angle"></i><span>'+link.title+'</span></a>';
+                    });
+                    recentLinksHtml += '</div>';
+                    recentLinksContainer.innerHTML = recentLinksHtml;
+                }
+            });
 
         },
 
@@ -630,15 +681,14 @@ const SearchModule = (function() {
                 if(boost > 0){
                     siteItemClasses = 'boost';
                     thumbClasses = 'boosted';
-                    let bootstImage = boost > 499 ? 'bcv' : 'bwvn';
                     let boostIconClass = boost > 499 ? 'boosted-crown' : 'boosted-blue';
                     if(boost > 499){
                         thumbClasses += ' boosted-crown';
                     }else {
                         thumbClasses += ' boosted-blue';
                     }
-                    let boostImageNumbers = boost.replaceAll('', '-')
-                    boostHtml = `<i class="boost-indicator boost-indicator-preview site_thumb ${boostIconClass} nolazy" style="background-image: url('/wp-content/themes/mpg/images/boost/${bootstImage+boostImageNumbers}X.svg');"></i>`;
+                    let boostType = boost > 499 ? 'crown' : 'blue';
+                    boostHtml = `<i class="boost-indicator boost-indicator-preview site_thumb ${boostIconClass} nolazy" style="background-image:url('/wp-content/themes/mpg/boost-badge.php?v=${boost}&type=${boostType}&ver=1.0');"></i>`;
                 }
 
                 // let text_read = this._t('read_review', 'Read Review');

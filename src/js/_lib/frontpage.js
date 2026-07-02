@@ -118,7 +118,7 @@ function initHomeTabs(){
 }
 
 function initHomepagePopover(){
-	var SHOW_DELAY = 500;
+	var SHOW_DELAY = 200;
 	var container = document.querySelector('.c-grid--inner');
 	if(!container) return;
 
@@ -144,7 +144,7 @@ function initHomepagePopover(){
 		var popover = document.createElement('div');
 		popover.className = 'homepage-popover';
 		popover.innerHTML = '<div class="homepage-popover-title">' + iconHtml + (titleEl ? titleEl.textContent : '') + '</div>' +
-			'<div class="homepage-popover-desc">' + descEl.textContent + '</div>';
+			'<div class="homepage-popover-desc' + (isCategory ? ' cat' : '') + '">' + descEl.textContent + '</div>';
 		document.body.appendChild(popover);
 		currentPopover = popover;
 
@@ -154,10 +154,9 @@ function initHomepagePopover(){
 		var top = rect.top + window.scrollY - popRect.height - 8;
 		var left = rect.left + window.scrollX + (rect.width / 2) - (popRect.width / 2);
 
-		// Keep within viewport
+		// Keep within viewport horizontally
 		if(left < 8) left = 8;
 		if(left + popRect.width > window.innerWidth - 8) left = window.innerWidth - popRect.width - 8;
-		if(top < window.scrollY + 8) top = rect.bottom + window.scrollY + 8;
 
 		popover.style.top = top + 'px';
 		popover.style.left = left + 'px';

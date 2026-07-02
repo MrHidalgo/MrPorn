@@ -290,6 +290,7 @@ body.chatbot_active{
 		display: flex;
 		align-items: center;
 		justify-content: center;
+		flex-wrap: wrap;
 		color: #4099f9;
 		font-size: 16px;
 
@@ -321,6 +322,7 @@ body.chatbot_active{
 			color: #4099f9;
 			line-height: 2.273;
 			padding: 0 8px;
+			white-space: nowrap;
 			@include transition(color);
 			@include adaptive(1023) {
 				font-size: 14px;

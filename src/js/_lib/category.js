@@ -685,7 +685,7 @@ function initCategoryPage() {
 		fetch(url)
 			.then(res => res.json())
 			.then((result) => {
-				setWithExpiry(cacheKey, result, 30 * 60 * 1000);
+				setWithExpiry(cacheKey, result, 5 * 60 * 1000);
 				renderMobileMenu(result);
 			})
 			.catch(err => {});
@@ -723,6 +723,19 @@ function initCategoryPage() {
 					+ '</li>';
 			}
 		}
+
+		menuHTML += '<li class="category-list-item sidebar-oc">'+
+                                '<a href="/other-porn-categories/">'+
+                                    '<div>Looking for something different?</div>'+
+                                    '<div class="category-list-link">'+
+                                        '<span class="category-list-title">Other Porn Categories</span>'+
+                                        '<div class="category-list-icons">'+
+                                            '<span class="mobile_link_ellipsis">...</span>'+
+                                            '<span class="mobile_link_count">' + (document.body.dataset.otherCategoriesCount || 0) + '</span>'+
+                                        '</div>'+
+                                    '</div>'+
+                                '</a>'+
+                            '</li>';
 
 		if(!mobileMenuList.classList.contains('loaded')){
 			mobileMenuList.innerHTML = menuHTML;
@@ -813,9 +826,6 @@ function initCategoryPage() {
 	const processA2ZData = (result) => {
 		a2zCategories = []
 		a2zLetters = []
-
-
-		new A2ZPopup(result)
 
 		let a2zOrder = 0;
 		for (const letter in result.categories) {

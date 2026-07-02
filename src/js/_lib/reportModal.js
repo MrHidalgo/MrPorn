@@ -52,6 +52,14 @@ class ReportModal{
 			hideInList: true
 		} ]
 
+		if(window.location.pathname.includes('/other-porn-categories')){
+			let rec = this.reportData.find(r => r.tag === 'recommendations');
+			rec.title = "Category Submission for ";
+			rec.headerTitle = "Recommendations for ";
+			rec.desc = "Know a category we're missing? Submit it here.";
+			rec.disclaimer = "If you've spotted a category we don't currently have and think it deserves a place here, send it over. Include the category name and a quick explanation of what it covers. If it makes sense, fits the site, and people are actually searching for it, we'll look at adding it.";
+		}
+
 		let bodyClasses = document.body.classList;
 
 		if(bodyClasses.contains('category')){
@@ -122,7 +130,8 @@ class ReportModal{
 
 
 		document.querySelector('.additional_action.recommendations')?.addEventListener('click', (event) => {
-			this.injectReportReviewModal('recommendations', 'Website Recommendations for')
+			let rec = this.reportData.find(r => r.tag === 'recommendations');
+			this.injectReportReviewModal('recommendations', rec.headerTitle)
 		});
 
 		document.querySelector('.additional_action.feedback')?.addEventListener('click', (event) => {
@@ -540,6 +549,7 @@ class ReportModal{
 
 	generateTypeFilterPopupContent(withParent = false){
 		let filterOptions = document.querySelector('.review_type_slider')?.innerHTML;
+		const isTwitterCategory = document.body.classList.contains('category-best-twitter-porn-creators-reviews');
 		const popupContent = `
 			<div class="micromodal-overlay" tabindex="-1">
 				<div class="micromodal-container custom-scrollbar" role="dialog" aria-modal="true" aria-labelledby="boogie-title">
@@ -549,7 +559,7 @@ class ReportModal{
 								<span class="inline-icon icon-thumbsup"></span>
 
 								<div class="micromodal-title-text">
-									<span>Filter by Free or Premium</span>
+									<span>${isTwitterCategory ? 'Send Feedback' : 'Filter by Free or Premium'}</span>
 									<span id="report_review_title" class="color-primary"></span>
 								</div>
 							</h4>
@@ -563,13 +573,9 @@ class ReportModal{
 					   <hr>
 
 					  <div class="micromodal-body">
-							<div>
-								<div class="review_type_slider mobile">
-									${filterOptions}
-								</div>
-							</div>
+							${!isTwitterCategory ? `<div><div class="review_type_slider mobile">${filterOptions}</div></div>` : ''}
 							<div class="review_type_slider_status"></div>
-							<div class="color-secondary">Additional Actions</div>
+							${!isTwitterCategory ? '<div class="color-secondary">Additional Actions</div>' : ''}
 							<ul class="additional_actions boogie-list">
 								<li class="boogie-list-item problem" data-icon="problem" data-tag="problem">
 										<div class="boogie-list-text">
@@ -929,7 +935,8 @@ class ReportModal{
 		document.querySelector('.boogie-list-item.recommendations')?.addEventListener('click', function (evt) {
 			evt.preventDefault();
 			// MicroModal.close('type-filter-modal');
-			parent.injectReportReviewModal('recommendations', 'Website Recommendations for')
+			let rec = parent.reportData.find(r => r.tag === 'recommendations');
+			parent.injectReportReviewModal('recommendations', rec.headerTitle)
 			// parent.showReportForm('recommendations')
 		})
 		document.querySelector('.boogie-list-item.feedback')?.addEventListener('click', function (evt) {

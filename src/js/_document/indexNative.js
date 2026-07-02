@@ -533,6 +533,7 @@ let lastMobileSimilarSite;
 	//
 	// });
 	initCategoryPage();
+	if (window.initTwitterSort) window.initTwitterSort();
 
 	/**
 	 * @name initNative
