@@ -549,7 +549,7 @@ class ReportModal{
 
 	generateTypeFilterPopupContent(withParent = false){
 		let filterOptions = document.querySelector('.review_type_slider')?.innerHTML;
-		const isTwitterCategory = document.body.classList.contains('category-best-twitter-porn-creators-reviews');
+		const hideReviewTypeSlider = document.body.classList.contains('category-best-twitter-porn-creators-reviews') || document.body.classList.contains('category-other-porn-categories');
 		const popupContent = `
 			<div class="micromodal-overlay" tabindex="-1">
 				<div class="micromodal-container custom-scrollbar" role="dialog" aria-modal="true" aria-labelledby="boogie-title">
@@ -559,7 +559,7 @@ class ReportModal{
 								<span class="inline-icon icon-thumbsup"></span>
 
 								<div class="micromodal-title-text">
-									<span>${isTwitterCategory ? 'Send Feedback' : 'Filter by Free or Premium'}</span>
+									<span>${hideReviewTypeSlider ? 'Send Feedback' : 'Filter by Free or Premium'}</span>
 									<span id="report_review_title" class="color-primary"></span>
 								</div>
 							</h4>
@@ -573,9 +573,9 @@ class ReportModal{
 					   <hr>
 
 					  <div class="micromodal-body">
-							${!isTwitterCategory ? `<div><div class="review_type_slider mobile">${filterOptions}</div></div>` : ''}
+							${!hideReviewTypeSlider ? `<div><div class="review_type_slider mobile">${filterOptions}</div></div>` : ''}
 							<div class="review_type_slider_status"></div>
-							${!isTwitterCategory ? '<div class="color-secondary">Additional Actions</div>' : ''}
+							${!hideReviewTypeSlider ? '<div class="color-secondary">Additional Actions</div>' : ''}
 							<ul class="additional_actions boogie-list">
 								<li class="boogie-list-item problem" data-icon="problem" data-tag="problem">
 										<div class="boogie-list-text">
@@ -664,6 +664,11 @@ class ReportModal{
 	}
 
 	preselectFilter(){
+		// Slider is intentionally absent when the popup hides the free/premium
+		// filter (twitter + other-porn-categories pages)
+		if(!this.reviewTypeSlider){
+			return;
+		}
 		let viewFilter = document.querySelector('.viewing-filter');
 		let filter = this.reviewTypeSlider.querySelector('.option.active')
 		if(filter == undefined){

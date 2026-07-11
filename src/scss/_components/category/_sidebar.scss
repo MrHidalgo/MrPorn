@@ -1,16 +1,14 @@
 // CATEGORY_SIDEBAR :: START
 .category_list-sites {
 	&.has_sidebar {
-		margin-left: 20%;
-
-		@include adaptive(767) {
-			margin-left: 0;
-		}
+		flex: 1 1 auto;
+		min-width: 0;
 	}
 }
 .desktop_menu_list {
+	// float: left;
 	width: 20%;
-	float: left;
+	flex: 0 0 20%;
 	will-change: min-height;
 	backface-visibility: hidden;
 	padding: 0 10px 0 0;

@@ -223,26 +223,47 @@ const SearchModule = (function() {
                 return;
             }
 
-            // No cache — defer fetch until user first focuses the search input
-            const searchInput = document.querySelector('.searchinput');
-            if (!searchInput) return;
+            // No cache — defer fetch until the user first interacts with search.
+            // There are multiple .searchinput elements (desktop header, mobile
+            // overlay, mobile menu) — the trigger must be on ALL of them, and
+            // hamburger.js also calls ensureSearchData() when the mobile search
+            // UI opens, before any input gets focus.
+            document.querySelectorAll('.searchinput').forEach(function (searchInput) {
+                searchInput.addEventListener('focus', function onSdFocus() {
+                    _this.ensureSearchData();
+                }, { once: true });
+            });
+        },
 
-            searchInput.addEventListener('focus', function onSdFocus() {
-                if (window.jsonData) { _this.initSearchKey(); return; }
-                const url = lang !== 'en' ? '/wp-json/mpg/search/?lang=' + lang : '/wp-json/mpg/search/';
-                fetch(url)
-                    .then(res => res.json())
-                    .then(out => {
-                        const data = typeof out === 'string' ? JSON.parse(out) : out;
-                        _mpgSetSdCache(lang, data);
-                        window.jsonData = data;
-                        _this.renderRecentLinks(data);
-                        _this.initSearchKey();
-                    })
-                    .catch(err => {
-                        console.warn('Failed to load search data:', err);
-                    });
-            }, { once: true });
+        ensureSearchData: function() {
+            const _this = this;
+            if (window.jsonData) { _this.initSearchKey(); return; }
+            if (_this._sdFetching) return;
+            _this._sdFetching = true;
+
+            const lang = currentLang || document.documentElement.getAttribute('lang') || 'en';
+            const url = lang !== 'en' ? '/wp-json/mpg/search/?lang=' + lang : '/wp-json/mpg/search/';
+            fetch(url)
+                .then(res => res.json())
+                .then(out => {
+                    const data = typeof out === 'string' ? JSON.parse(out) : out;
+                    _mpgSetSdCache(lang, data);
+                    window.jsonData = data;
+                    _this.renderRecentLinks(data);
+                    _this.initSearchKey();
+                    // Catch up on anything typed while the fetch was in flight
+                    const active = document.activeElement;
+                    if (active && active.hasAttribute && active.hasAttribute('search-js')) {
+                        const term = active.value.trim();
+                        if (term.length >= 2) {
+                            _this.searchSites(term);
+                        }
+                    }
+                })
+                .catch(err => {
+                    _this._sdFetching = false;
+                    console.warn('Failed to load search data:', err);
+                });
         },
 
         renderRecentLinks: function(data) {
@@ -674,6 +695,10 @@ const SearchModule = (function() {
 
                 let siteLink = site.l;
 
+                let linkOpenSite = (!site.isd && siteUrl)
+                    ? '<a href="' + siteUrl + '" class="link_site" target="_blank" rel="nofollow noopener">Open Website<i class="icon-font icon-out"></i></a>'
+                    : '';
+
                 let boostHtml = '';
                 let thumbClasses = '';
                 let siteItemClasses = '';
@@ -707,6 +732,7 @@ const SearchModule = (function() {
                         '</div>' +
                         '<div class="search_item_overlay">' +
                             '<a href="' + siteLink + '" class="link_read search-site-convert" data-object-id="' + site.i + '" data-position="' + position + '">' + text_read + '&nbsp;Review <i class="icon-font icon-arrow-angle right_angle"></i></a>' +
+                            linkOpenSite +
                             '</div>' +
                         '</div>';
                 } else {
@@ -722,6 +748,7 @@ const SearchModule = (function() {
                         '</div>' +
                         '<div class="search_item_overlay">' +
                             '<a href="' + siteLink + '" class="link_read search-site-convert" data-object-id="' + site.i + '" data-position="' + position + '">' + text_read + '&nbsp;Review <i class="icon-font icon-arrow-angle right_angle"></i></a>' +
+                            linkOpenSite +
                         '</div>' +
                         '</div>';
                 }

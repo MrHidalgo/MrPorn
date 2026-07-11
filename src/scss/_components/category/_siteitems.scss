@@ -2,8 +2,8 @@
 
 
 .category_sites{
-	//display: flex;
-	//flex-wrap: wrap;
+	display: flex;
+	flex-wrap: wrap;
 	//font:400 14px/1.2;
 	font-size: 0;
 	counter-reset: number;
@@ -19,6 +19,7 @@
 		padding: 10px 0 0 10px;
 		position: relative;
 		height: 265px;
+		order: 1;
 
 		&::before {
 			display: block;
@@ -62,7 +63,7 @@
 		@include respond('max-medium'){
 			padding-left: 0;
 			width: 100%;
-			order: -1;
+			order: -3;
 			height: 240px;
 
 			&.show_all{
@@ -212,6 +213,14 @@
 		width: 25%;
 		max-width: 25%;
 		padding: 15px 5px 0;
+		order: 2;
+
+		&:first-of-type{
+			order: -1;
+		}
+		&:nth-of-type(2){
+			order: 0;
+		}
 
 		@include respond('ipad_landscape'){
 			width: 25%;
@@ -708,9 +717,9 @@
 	}
 }
 
-.category-archived .category_sites_description{
-	height: 205px;
-}
+// .category-archived .category_sites_description{
+// 	height: 205px;
+// }
 
 
 @media screen and (min-width: 767.98px) {

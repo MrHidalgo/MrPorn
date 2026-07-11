@@ -72,7 +72,7 @@
 			color: #000;
 		}
 		&.boosted-site-item{
-			background: #FFEABB;
+			background: #FFD700;
 
 			.list__box__item-link{
 				color: var(--home-boosted-item-color, #ededed);
@@ -86,8 +86,17 @@
 			// animation: pulse-glow 2s ease-in-out infinite;
 
 			&:hover{
-				background: #FFEABB;
+				background: #FFD700;
 			}
+		}
+
+		.boost-indicator-home{
+			position: absolute;
+			right: 32px;
+			top: 50%;
+			transform: translateY(-50%);
+			font-size: 13px;
+			line-height: 1;
 		}
 
 		@include adaptive(991.98) {
