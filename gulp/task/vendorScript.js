@@ -6,6 +6,7 @@ const plumber = require('gulp-plumber'),
   concat = require('gulp-concat'),
 	browserify = require('browserify'),
 	source     = require('vinyl-source-stream'),
+	terser = require('gulp-terser'),
   order = require("gulp-order");
 
 const configPath = require('../config/configPath'),
@@ -34,6 +35,7 @@ task('vendorScript', function() {
 			'*'
 		]))
 		.pipe(concat('vendor.js'))
+		.pipe(terser(configOption.terserOptions))
 		.pipe(dest(configPath.dest.js))
 
 
@@ -81,6 +83,7 @@ task('vendorHomeScript', function() {
 			'*'
 		]))
 		.pipe(concat('vendor_home.js'))
+		.pipe(terser(configOption.terserOptions))
 		.pipe(dest(configPath.dest.js))
 
 });

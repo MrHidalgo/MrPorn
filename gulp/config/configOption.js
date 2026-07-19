@@ -62,6 +62,16 @@ const configOption = {
     output: {
       comments: false
     }
+  },
+
+  terserOptions: {
+    compress: {
+      drop_console: false,
+      drop_debugger: true
+    },
+    format: {
+      comments: false
+    }
   }
 };
 
