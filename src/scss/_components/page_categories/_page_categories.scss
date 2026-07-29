@@ -1,24 +1,16 @@
 // PAGE_CATEGORIES :: START
 .categories_container{
 	background: #2a2b31;
-	margin-top: 15px;
 	padding: 0 15px;
 
 	&_inner{
 		display: flex;
 		align-content: flex-start;
 		align-items: flex-start;
-	}
-
-	@include adaptive(1023) {
-		margin-top: 0;
-		padding-top: 0;
-	}
-
-	@include respond('mobile_landscape'){
-		padding-top: 0;
-	}
+	}	
 }
+
+
 
 //.leftCat
 .leftCat{
@@ -226,6 +218,7 @@
 
 .tag-section{
 	padding-top: 10px;
+	width: 100%;
 
 	&-title{
 		display: flex;
@@ -251,6 +244,9 @@
 			}
 		}
 
+	}
+	&-categories{
+		width: 100%;
 	}
 	&-categories.h_scroll{
 		@include adaptive(767) {

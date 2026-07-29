@@ -33,7 +33,7 @@ $sprite-config: (
     }
     
     .fy_#{$i}::before {
-      --sprite-y: #{$i - 1};
+      --sprite-y: #{$i};
     }
   }
 }

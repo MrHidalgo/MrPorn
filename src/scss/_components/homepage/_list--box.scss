@@ -73,7 +73,7 @@
 		}
 		&.boosted-site-item{
 			// background: #FFD700;
-			background: #FFEABB;
+			background: gold;
 
 			.list__box__item-link{
 				color: var(--home-boosted-item-color, #ededed);
@@ -84,6 +84,9 @@
 			.list__box__item-preview{
 				filter: var(--home-boosted-item-preview-filter, invert(0%));
 			}
+			// .boost-indicator-home{
+			// 	filter: invert(1);
+			// }
 			// animation: pulse-glow 2s ease-in-out infinite;
 
 			// &:hover{
@@ -93,11 +96,17 @@
 
 		.boost-indicator-home{
 			position: absolute;
-			right: 32px;
+			right: 18px;
 			top: 50%;
 			transform: translateY(-50%);
-			font-size: 13px;
+			font-size: 14px;
 			line-height: 1;
+			color: #1a1a1a;
+			background-image: url(/wp-content/themes/mpg/images/volt_black.svg);
+			background-repeat: no-repeat;
+			background-size: 16px;
+			background-position: left center;
+			padding: 0 0 0 22px;
 		}
 
 		@include adaptive(991.98) {
