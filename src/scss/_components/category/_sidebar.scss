@@ -1,4 +1,18 @@
 // CATEGORY_SIDEBAR :: START
+body{
+	--clb: 1px solid #666;
+	--clc: #fff;
+	--bg-letter: #555;
+	--active-letter: #76aaf7;
+	--highlight: #d5f963;	
+}
+.light body{
+	--clb: 1px solid #e5e5e5;
+	--clc: #4e4e4e;
+	--bg-letter: #e8e7e6;
+	--active-letter: #000;
+	--highlight: #000;	
+}
 .category_list-sites {
 	&.has_sidebar {
 		flex: 1 1 auto;
@@ -81,7 +95,6 @@
 }
 
 
-
 .category-list {
 	&-switcher {
 		background: transparent;
@@ -92,9 +105,7 @@
 	}
 	&-container {
 		display: flex;
-		//padding: 10px 10px 15px;
 		position: relative;
-		//margin-top: 10px;
 		flex: 1;
 		max-height: calc(100vh - 60px);
 		
@@ -107,68 +118,10 @@
 			
 		}
 
-		//background: #f7f6f5;
-
 		&:after {
 			display: block;
 			content: " ";
 			clear: both;
-		}
-
-		&.a2z {
-			.category-list-left {
-				&::-webkit-scrollbar {
-					width: 4px; /* Set the width of the scrollbar */
-				}
-
-				&::-webkit-scrollbar-track {
-					background: #f1f1f1; /* Background of the track */
-				}
-
-				&::-webkit-scrollbar-thumb {
-					background: var(
-						--scroll-thumb-color,
-						#225396
-					); /* Scrollbar thumb color */
-					border-radius: 10px; /* Rounded corners */
-				}
-
-				&::-webkit-scrollbar-thumb:hover {
-					background: #555; /* Hover color */
-				}
-			}
-			.category-list-menu{
-				display: block;
-			}
-			.category-list-item-letter{
-				display: inline-block;
-			}
-			.category-list-link{
-				display: flex;
-				justify-content: space-between;
-				padding: 0;
-
-				&::before,
-				&::after{
-					display: none;
-				}
-			}
-			.icon-category,
-			.category-site-icon,
-			.mobile_link_ellipsis{
-				display: none;
-			}
-
-			.category-list-letters {
-				display: flex;
-				flex-direction: column;
-				max-height: calc(100vh - 220px);
-				max-height: 100%;
-    			overflow: auto;
-			}
-			.category-list-item {
-				padding: 3px 5px 3px 10px;
-			}
 		}
 	}
 	&-search {
@@ -235,7 +188,71 @@
 		&::-webkit-scrollbar-thumb:hover {
 			background: #555; /* Hover color */
 		}
+
+		a{
+			display: flex;
+    		justify-content: space-between;
+			padding: 3px 5px 3px 10px;
+			margin-right: 10px;
+			border-bottom: var(--clb, 1px solid #666);
+
+			overflow: hidden;
+			text-overflow: ellipsis;
+			white-space: nowrap;
+			font-size: 15px;
+			font-weight: 500;
+			color: var(--clc, #fff);
+
+			.clt{
+				margin: 0;
+
+				.highlight{
+					font-weight: 600;
+					color: var(--highlight, #d5f963);
+				}
+			}
+
+			&.oc{
+				display: block;
+			}
+			.oc{
+				
+				&-title{
+					font-size: 11px;
+    				color: var(--all-categories-bg, #337ab7);
+				}
+				&-inner{
+					display: flex;
+					justify-content: space-between;
+				}
+			}
+
+			span:last-child{
+				color: #96979f;
+    			font-size: 14px;
+
+				// @include adaptive(767) {
+				// 	font-size: 12px;
+				// 	transform: translateY(-1px);
+				// }
+			}
+		}
+
+		> div{
+			padding: 3px 5px 3px 10px;
+			margin-right: 10px;
+			background: var(--bg-letter, #555);
+			border-bottom: var(--clb, 1px solid #666);
+			color:var(--primary-color-2, #4c4c4c);
+			font-weight: 600;
+			cursor: pointer;
+
+			&.active {
+				color: var(--active-letter, #76aaf7);
+			}
+		}
 	}
+
 	&-filter {
 		flex: 1;
 		height: 34px;
@@ -425,12 +442,6 @@
 		}
 		&:last-child {
 			border-bottom: none;
-		}
-
-		&-letter {
-			display: none;
-			background: #555;
-			color: var(--primary-color-2, #4c4c4c);
 		}
 
 		.mobile_link_icons {
@@ -659,25 +670,26 @@
 	}
 
 	&-letters {
-		display: none;
 		float: right;
 		flex: 0 0 30px;
 		text-align: center;
-	}
-	&-letter {
-		padding: 2px 5px;
-		color: var(--color-category-letter, #337ab7);
-		font-weight: 600;
-		cursor: pointer;
 
-		@include adaptive(1023) {
-			padding: 1px 5px;
-		}
+		.letter {
+			padding: 2px 5px;
+			color: var(--color-category-letter, #337ab7);
+			font-weight: 600;
+			cursor: pointer;
 
-		&.active {
-			color: #76aaf7;
+			@include adaptive(1023) {
+				padding: 1px 5px;
+			}
+
+			&.active {
+				color: var(--active-letter, #76aaf7);
+			}
 		}
 	}
+	
 }
 
 .sidebar-oc{
@@ -761,6 +773,7 @@
 }
 
 .light {
+	--border-bottom: 1px solid #e5e5e5;
 	.category-list {
 		&-link {
 			color: #767676;

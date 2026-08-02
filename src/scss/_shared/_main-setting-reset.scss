@@ -1,6 +1,6 @@
 
 body {
-
+    --bg-letter: #555;
 	--heading-down-arrow: url(../images/down-arrow-dark.svg);
 	
 	@include respond('medium'){
@@ -37,6 +37,7 @@ body {
 		background-color: #cad4df;
 		color: #4c4c4c;
 
+		--bg-letter: #e8e7e6;
 		--heading-down-arrow: url(../images/down-arrow-light.svg);
 
 		&.boosted-page{

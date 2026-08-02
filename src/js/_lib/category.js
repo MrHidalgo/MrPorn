@@ -9,10 +9,6 @@ function initCategoryPage() {
 	let categorySidebar;
 	const isMobile = isMobileOrTablet;
 
-
-
-
-
 	const sidebarContainer = isMobile? '.header__categories-mobile':'.desktop_menu_list';
 	const leftSidebar = document.querySelector('.desktop_menu_list');
 	let desktopMenuList = document.querySelector('.category-list-menu');
@@ -115,11 +111,6 @@ function initCategoryPage() {
 	function createSidebar() {
 		let parent = this;
 
-		// if (!desktopMenuList || desktopMenuList.children.length == 0 || bodyClasses.contains('home') || isCategoriesPage) {
-		// 	renderCategorySidebar(filterA2z ? a2zCategories : categoryItems);
-		// }
-
-
 		let desktopMenuListContainer = document.querySelector('.category-list-left');
 		let categoryFilter = document.querySelectorAll('.category-list-filter')
 		let categoryFilterDropdown = document.querySelector('.category-list-menu-dropdown')
@@ -128,9 +119,9 @@ function initCategoryPage() {
 		const initialOrderByMenu = new WeakMap();
 
 		function applyCategoryListFilter(filter) {
-			const menus = document.querySelectorAll('.category-list-menu');
+			const menus = document.querySelectorAll('.category-list-left');
 			menus.forEach(menu => {
-				const menuItems = Array.from(menu.querySelectorAll('.category-list-item'));
+				const menuItems = Array.from(menu.querySelectorAll('.cli'));
 
 				menuItems.forEach(item => {
 					item.removeAttribute('style');
@@ -144,10 +135,6 @@ function initCategoryPage() {
 						savedOrderByMenu.delete(menu);
 					}
 					const orderMap = initialOrderByMenu.get(menu);
-					menuItems.forEach(item => {
-						const link = item.querySelector('a[class*="category-list-link"]');
-						link?.classList.remove('pulse');
-					});
 					if (orderMap) initialOrderByMenu.delete(menu);
 					return;
 				}
@@ -160,7 +147,7 @@ function initCategoryPage() {
 					savedOrder = null;
 				}
 				if (!savedOrderByMenu.has(menu)) {
-					const items = Array.from(menu.querySelectorAll('.category-list-item'));
+					const items = Array.from(menu.querySelectorAll('.cli'));
 					savedOrderByMenu.set(menu, items);
 					const orderMap = new Map();
 					items.forEach(item => {
@@ -172,16 +159,15 @@ function initCategoryPage() {
 
 				// Only items that match the filter (non-letter, title includes filter)
 				const matchingOnly = savedOrder.filter(item => {
-					if (item.classList.contains('category-list-item-letter')) return false;
-					const titleEl = item.querySelector('.category-list-title');
-					const titleText = titleEl ? titleEl.textContent.trim().toLowerCase() : '';
+					if (item.className.includes('letter')) return false;
+					const titleText = item.querySelector('.clt')?.textContent.toLowerCase() || '';
 					return titleText.includes(filter);
 				});
 
 				// Sort matching items: match position, then premium last, then original order
 				const matchingOrdered = matchingOnly.slice().sort((a, b) => {
-					const titleA = a.querySelector('.category-list-title').textContent.toLowerCase();
-					const titleB = b.querySelector('.category-list-title').textContent.toLowerCase();
+					const titleA = a.querySelector('.clt').textContent.toLowerCase();
+					const titleB = b.querySelector('.clt').textContent.toLowerCase();
 					const posA = titleA.indexOf(filter);
 					const posB = titleB.indexOf(filter);
 
@@ -199,14 +185,13 @@ function initCategoryPage() {
 				matchingOrdered.forEach((item, i) => {
 					item.style.order = String(-(matchingOrdered.length - i));
 
-					let titleEl = item.querySelector('.category-list-title');
+					let titleEl = item.querySelector('.clt');
 					let titleText = titleEl ? titleEl.textContent.trim() : '';
 
 					if (filter != '' && titleText.toLowerCase().indexOf(filter) > -1) {
 						titleText = titleText.replace(new RegExp(filter, 'gi'), (match) => `<span class="highlight">${match}</span>`);
 						titleEl.innerHTML = titleText;
 					}
-
 				});
 
 				// Everything else in exact saved (default) order
@@ -216,20 +201,15 @@ function initCategoryPage() {
 				const orderedItems = [...matchingOrdered, ...restInOriginalOrder];
 				orderedItems.forEach(item => menu.appendChild(item));
 
-				// Pulse on matches, remove on rest; visibility
 				matchingOrdered.forEach(item => {
 					item.style.display = '';
-					item.querySelector('a[class*="category-list-link"]')?.classList.add('pulse');
-				});
-				restInOriginalOrder.forEach(item => {
-					item.querySelector('a[class*="category-list-link"]')?.classList.remove('pulse');
 				});
 				menu.classList.add('filter-active');
 			});
 		}
 
 		window.clearCategoryFilterSavedOrder = function () {
-			document.querySelectorAll('.category-list-menu').forEach(menu => {
+			document.querySelectorAll('.category-list-left').forEach(menu => {
 				savedOrderByMenu.delete(menu);
 				initialOrderByMenu.delete(menu);
 			});
@@ -241,7 +221,7 @@ function initCategoryPage() {
 
 					let filter = evt.target.value.toLowerCase().trim();
 					applyCategoryListFilter(filter);
-
+					
 					desktopMenuListContainer?.scrollTo({
 						top: 0,
 						behavior: "smooth",
@@ -256,17 +236,13 @@ function initCategoryPage() {
 					});
 				}));
 			}
-
 		}
 
-
 		if (otherCategoryItems.length) {
-
 			if (catListSites) {
 				catListSites.classList.add('has_sidebar')
 			}
 		}
-
 
 		let timeoutId;
 
@@ -294,17 +270,9 @@ function initCategoryPage() {
 			}
 		});
 
-
-		if(filterScroll){
-			onScrollChecked(filterScroll)
-		}
-
 		if(!initializedListeners){
 			filterOptionScroll?.addEventListener('change', function () {
 				onScrollChecked(this.checked)
-			}, false)
-			filterOptionA2Z?.addEventListener('change', function () {
-				onA2ZChecked(!this.checked)
 			}, false)
 			filterOptionRandom?.addEventListener('change', function () {
 				gotoRandomCategory()
@@ -325,18 +293,11 @@ function initCategoryPage() {
 					categoryListContainer.classList.remove('show_tags');
 				}
 			})
-
-
-
-
 			initializedListeners = true
 		}
 
 		initLetterScroll();
 	}
-
-
-
 
 	const renderMobileCatFilters = () => {
 		let spanA2z = document.querySelector('.header__categories-mobile .category-list-options .icon_a2z span');
@@ -356,98 +317,18 @@ function initCategoryPage() {
 	const gotoRandomCategory = () => {
 		let categoryLinks = [];
 		if(isMobileOrTablet){
-			categoryLinks = document.querySelectorAll('.mobile-menu .category-list-menu .category-list-item:not(.category-list-item-letter) .category-list-link');
+			categoryLinks = document.querySelectorAll('.mobile-menu .cli:not(.letter)');
 		}else{
-			categoryLinks = document.querySelectorAll('.desktop_menu_list .category-list-menu .category-list-item:not(.category-list-item-letter) .category-list-link');
+			categoryLinks = document.querySelectorAll('.desktop_menu_list .cli:not(.letter)');
 		}
 
 		const randomCategory = categoryLinks[Math.floor(Math.random() * categoryLinks.length)];
 		window.location.href = randomCategory.href;
 	}
 
-	const onScrollChecked = (checked) => {
-		filterScroll = checked
-		if (checked) {
-			createCookie("category_filter_scroll", 1, 356);
-
-			leftSidebar?.classList.add('scroll');
-			catListSites?.classList.remove('has_sidebar')
-			catListSites?.classList.add('scroll')
-
-			if(categorySidebar){
-				categorySidebar.destroy();
-			}
-
-
-			console.log('Destroying sidebar ', categorySidebar)
-
-			setSidebarHeight()
-		}else{
-			createCookie("category_filter_scroll", 0, 356);
-			leftSidebar?.classList.remove('scroll');
-			document.querySelector('.category_list-sites')?.classList.add('has_sidebar')
-			catListSites?.classList.remove('scroll')
-			setSidebarHeight(true)
-			initStickySidebar()
-		}
-	}
-
-	const onA2ZChecked = (checked) => {
-		window.clearCategoryFilterSavedOrder?.();
-		filterA2z = checked;
-		// Update global variable as well so mobile menu population works correctly
-		window.filterA2z = checked;
-		// renderCategorySidebar(filterA2z ? a2zCategories : categoryItems);
-		
-		// Update mobile menu if it's already populated
-		if(mobileMenuList && mobileMenuList.children.length > 0) {
-			populateMobileMenu(filterA2z ? a2zCategories : categoryItems);
-		}
-	}
-
-	const setSidebarHeight = (reset = false) => {
-		if(!categoryListContainer){
-			return;
-		}
-		if(reset){
-			categoryListContainer?.style.removeProperty('height');
-		}else{
-			let firstSiteItem = document.querySelector('.category_sites_item.category_site_col')
-			if(firstSiteItem){
-
-				let sidebarHeight = firstSiteItem.getBoundingClientRect().height * 2
-				sidebarHeight -= 60;
-				categoryListContainer.style.height = sidebarHeight + 'px';
-			} else if(document.body.classList.contains('page-template-page-categories')){
-				let firstSiteItem = document.querySelector('#other_categories .category_item')
-				let sidebarHeight = firstSiteItem.getBoundingClientRect().height * 2 + 20
-				console.log(sidebarHeight)
-
-				let awardWinningHeight = document.querySelector('.award_winning_container')
-				if(awardWinningHeight){
-					sidebarHeight += awardWinningHeight.getBoundingClientRect().height
-				}
-				console.log(sidebarHeight)
-
-				let categoryHeaderHeight = document.querySelector('.categories_list h1')
-				if(categoryHeaderHeight){
-					sidebarHeight += categoryHeaderHeight.getBoundingClientRect().height
-				}
-				console.log(sidebarHeight)
-
-				sidebarHeight -= 60;
-				categoryListContainer.style.height = sidebarHeight + 'px';
-				categoryListContainer.style.maxHeight = sidebarHeight + 'px';
-			}
-
-
-		}
-
-	}
-
 	const initLetterScroll = () => {
 
-		const letterLinks = document.querySelectorAll(sidebarContainer+' .category-list-letter');
+		const letterLinks = document.querySelectorAll(sidebarContainer+' .letter');
 		if(letterLinks.length == 0){
 			return;
 		}
@@ -468,10 +349,10 @@ function initCategoryPage() {
 				const container = e.target.closest('.category-list-container');
 				
 				const letter = e.target.dataset.letter;
-				const letterElement = container.querySelector(`.category-list-item-letter.letter_${letter}`);
+				const letterElement = container.querySelector(`.cli.letter_${letter}`);
 				let letterTop = letterElement.offsetTop;
 
-				container.querySelector('.category-list-letter.active')?.classList.remove('active');
+				container.querySelector('.letter.active')?.classList.remove('active');
 				e.target.classList.add('active');
 				if(letterList){
 					
@@ -530,7 +411,7 @@ function initCategoryPage() {
 	}
 
 	const renderMobileMenu = (data) => {
-		let mobileMenuList = document.querySelector('.header__categories-mobile .category-list-menu');
+		let mobileMenuList = document.querySelector('.header__categories-mobile .category-list-left');
 		let mobileLetterList = document.querySelector('.header__categories-mobile .category-list-letters');
 		if(mobileMenuList && data.categories){
 
@@ -538,42 +419,23 @@ function initCategoryPage() {
 		let lettersHTML = '';
 
 		for(const letter in data.categories){
-			menuHTML += '<li class="category-list-item category-list-item-letter letter_' + letter + '">' + letter.toUpperCase() + '</li>';
-			lettersHTML += '<li class="category-list-letter letter_' + letter + '" data-letter="' + letter + '">' + letter.toUpperCase() + '</li>';
+			menuHTML += '<div class="cli letter_' + letter + '">' + letter.toUpperCase() + '</div>';
+			lettersHTML += '<li class="letter letter_' + letter + '" data-letter="' + letter + '">' + letter.toUpperCase() + '</li>';
 
 			for(const cat of data.categories[letter]){
-				let sitesHTML = '';
-				if(cat.category_sites && cat.category_sites.length){
-					for(const site of cat.category_sites){
-						sitesHTML += '<i class="category-site-icon deIcon ' + site + '"></i>';
-					}
-				}
-				menuHTML += '<li class="category-list-item" style="order: ' + (cat.position || 0) + ';" data-order="' + (cat.position || 0) + '">'
-					+ '<a href="' + (cat.link || '') + '" class="category-list-link" data-id="' + (cat.category || '') + '">'
-					+ '<i class="icon-category ' + (cat.icon_class || '') + '"></i>'
-					+ '<span class="category-list-title">' + (cat.title || '') + '</span>'
-					+ '<div class="category-list-icons">'
-					+ sitesHTML
-					+ '<span class="mobile_link_ellipsis">...</span>'
-					+ '<span class="mobile_link_count">' + (cat.count || '') + '</span>'
-					+ '</div>'
-					+ '</a>'
-					+ '</li>';
+				menuHTML += '<a class="cli" href="' + (cat.link || '') + '">'
+					+ '<span class="clt">' + (cat.title || '') + '</span>'
+					+ '<span>' + (cat.count || '') + '</span>'
+					+ '</a>';
 			}
 		}
 
-		menuHTML += '<li class="category-list-item sidebar-oc">'+
-                                '<a href="/other-porn-categories/">'+
-                                    '<div>Looking for something different?</div>'+
-                                    '<div class="category-list-link">'+
-                                        '<span class="category-list-title">Other Porn Categories</span>'+
-                                        '<div class="category-list-icons">'+
-                                            '<span class="mobile_link_ellipsis">...</span>'+
-                                            '<span class="mobile_link_count">' + (document.body.dataset.otherCategoriesCount || 0) + '</span>'+
-                                        '</div>'+
+		menuHTML += '<a href="/other-porn-categories/" class="cli oc">'+
+                                    '<div class="oc-title">Looking for something different?</div>'+
+                                    '<div class="oc-inner">Other Porn Categories'+
+                                        '<span>' + (document.body.dataset.otherCategoriesCount || 0) + '</span>'+
                                     '</div>'+
-                                '</a>'+
-                            '</li>';
+                                '</a>';
 
 		if(!mobileMenuList.classList.contains('loaded')){
 			mobileMenuList.innerHTML = menuHTML;
