@@ -865,8 +865,8 @@ ul{
 		color: var(--bosted-text-color);
 	}
 	h2, h3, h4, h5{
-		color: var(--bosted-heading-color);
-		font-size: 18pt;
+		// color: var(--bosted-heading-color);
+		// font-size: 18pt;
 		span{
 			color: var(--bosted-heading-color);
 		}
@@ -877,5 +877,10 @@ ul{
 		a, a:hover, a:focus{
 			color: var(--bosted-black-color);
 		}
+	}
+}
+.leaderboard-page{
+	@include adaptive(768){
+		padding-top: 10px;
 	}
 }

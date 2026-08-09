@@ -102,12 +102,15 @@ $paddingRight: $paddingLeft;
 	.c-grid-main{
 		@include respond('ipad_portrait'){
 			margin-top: 80px;
+			padding-top: 0;
 		}
 		@include adaptive(767) {
 			margin-top: 80px;
+			padding-top: 0;
 		}
 		@include respond('mobile_landscape'){
 			margin-top: 80px;
+			padding-top: 0;
 		}
 	}
 	&.category.gaming_cat_1 .c-grid-main{
@@ -117,6 +120,12 @@ $paddingRight: $paddingLeft;
 		}
 		@include respond('mobile_landscape'){
 			margin-top: 75px;
+		}
+	}
+	
+	@include adaptive(1023) {
+		&.page-template-page-categories .c-grid-main{
+			margin-top: 95px;
 		}
 	}
 	&1{

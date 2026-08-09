@@ -7,15 +7,14 @@ const configOption = {
   },
 
   cssMinOption: {
-    specialComments: 1,
-    format: 'beautify',
-    level: 1
+    specialComments: 0,
+    advanced: false
   },
 
   sassAPI: {
     errLogToConsole: true,
-    outputStyle: 'expanded',
-    sourceComments: true
+    outputStyle: 'compressed',
+    sourceComments: false
   },
 
 	stripCssCommentsOption: {
@@ -61,6 +60,16 @@ const configOption = {
       drop_debugger: true
     },
     output: {
+      comments: false
+    }
+  },
+
+  terserOptions: {
+    compress: {
+      drop_console: false,
+      drop_debugger: true
+    },
+    format: {
       comments: false
     }
   }

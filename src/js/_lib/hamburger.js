@@ -19,7 +19,14 @@ const initHamburger = () => {
 		btnHamburger.addEventListener("click", (ev) => {
 			const elem = ev.currentTarget;
 
-			if(mobileMenuLangList.innerHTML === ''){
+			// Search data is lazy-loaded; start the fetch as soon as the menu
+			// (which contains a search input) opens, not on input focus.
+			if(SearchModule && SearchModule.ensureSearchData){
+				SearchModule.ensureSearchData();
+			}
+
+			// Language switcher may be absent (translations disabled, MPG_TRANSLATIONS_DISABLED)
+			if(mobileMenuLangList && desktopMenuLang && mobileMenuLangList.innerHTML === ''){
 				mobileMenuLangList.innerHTML = desktopMenuLang.innerHTML;
 			}
 
@@ -65,6 +72,12 @@ const initHamburger = () => {
 			setInnerHeight();
 			// disableScroll()
 			isSearchActive = true;
+
+			// Search data is lazy-loaded; start the fetch as soon as the
+			// mobile search overlay opens, not on input focus.
+			if(SearchModule && SearchModule.ensureSearchData){
+				SearchModule.ensureSearchData();
+			}
 
 			const searchViewContainer = SearchModule ? SearchModule.getSearchViewContainer() : null;
 			if (searchViewContainer) {

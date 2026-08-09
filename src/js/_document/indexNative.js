@@ -69,6 +69,10 @@ function initWebWorker(){
 function detectCountryAndVerifyAge() {
 	// const apiUrl = 'https://ipinfo.io/json?token=b26cc70e6edb61';
 
+	if(getCookieMpgCookie("age")){
+		return;
+	}
+
 	fetch('https://analytics.mrgeek.link/api/country')
 		.then(response => response.json())
 		.then(data => {
@@ -76,7 +80,6 @@ function detectCountryAndVerifyAge() {
 			// if (data.countryCode === 'DE') {
 				showAgeVerification(data.country); // Example function for German visitors
 			}
-			console.log('Detected country:', data.country);
 		})
 		.catch(error => {
 			console.error('Error detecting country:', error);
@@ -87,7 +90,6 @@ function showAgeVerification(country){
 	var isVerified = getCookieMpgCookie("age");
 	if(!isVerified){
 		if(country=='DE'){
-			console.log('rendering german popup')
 			let avHtml = '<div class="modal_age">' +
 				'<div class="modal_inner">' +
 				'<img src="/wp-content/themes/mpg/images/logo-mob.png"/>'+
@@ -98,8 +100,8 @@ function showAgeVerification(country){
 				'</div>' +
 				'</div>';
 			document.body.insertAdjacentHTML( 'beforeend', avHtml );
+			document.body.classList.add('is-hideScroll');
 		}else if(country=='GB' || country=='LK'){
-			console.log('English pop')
 			let avHtml = '<div class="modal_age">' +
 				'<div class="modal_inner">' +
 				'<img src="/wp-content/themes/mpg/images/logo-mob.png"/>'+
@@ -110,21 +112,18 @@ function showAgeVerification(country){
 				'<div class="modal_age_buttons flex flex-hc">' +
 				'<button class="btn btn_in btnPrimary greyButton js-closeAgeModal">I’m Over 18+ – Let Me In</button>'+
 				'<a href="https://www.google.com/" class="btn btn_exit btnPrimary greyButton">I’m Under 18 – Exit</a>'+
-				'</div>'
-
+				'</div>' +
 				'</div>' +
 				'</div>';
 			document.body.insertAdjacentHTML( 'beforeend', avHtml );
+			document.body.classList.add('is-hideScroll');
 		}
-
-
-	}else{
-		console.log('already verified age')
 	}
 }
 
 function verifyAge(){
-	createCookie("age", "1", 356);
+	createCookie("age", "1", 365);
+	document.body.classList.remove('is-hideScroll');
 	if(document.querySelector('.modal_age')){
 		document.querySelector('.modal_age').remove()
 	}
@@ -268,7 +267,11 @@ let lastMobileSimilarSite;
 
 			}
 
-			if (!_ev.closest(className)) {
+			// removeFavourite() above detaches the clicked row from the DOM, so by the time we get
+			// here _ev.closest(className) can no longer reach the panel and the click looks like it
+			// came from outside - which would close the panel out from under the user. closest()
+			// still walks the detached row, so test for the button itself.
+			if (!_ev.closest(className) && !_ev.closest('[un-favorites-js]')) {
 				// VIEW FAVORITES
 
 				if(document.querySelector('[view-favorites-toggle-js]')){
@@ -441,9 +444,7 @@ let lastMobileSimilarSite;
 				return hHeader;
 			},
 			get topBarHeight() {
-				let reviewHeader = document.querySelector(".review_header");
-
-				return reviewHeader ? reviewHeader.offsetHeight : 0;
+				return 0;
 			}
 		};
 
@@ -524,17 +525,11 @@ let lastMobileSimilarSite;
 	 * ===================================
 	 */
 
-	const initFooterTextBehaviour = () => {
-		document.querySelector('.btn_show_more-text').addEventListener('click', function(evt){
-			evt.preventDefault();
-			document.querySelector('.footer_description').classList.add('show_all');
-		});
-	}
-
 	// document.addEventListener("DOMContentLoaded", () => {
 	//
 	// });
 	initCategoryPage();
+	if (window.initTwitterSort) window.initTwitterSort();
 
 	/**
 	 * @name initNative
@@ -578,7 +573,7 @@ let lastMobileSimilarSite;
 
 		search();
 
-		// showThumbInfoOnHover();
+		showThumbInfoOnHover();
 		let bodyClasses = document.body.classList;
 
 
@@ -591,8 +586,6 @@ let lastMobileSimilarSite;
 			}
 
 			visitedSites().initVisitedSites('.list__box__item')
-
-			initFooterTextBehaviour();
 		}else if(bodyClasses.contains('single-blog')){
 			isSingleBlog = true;
 			blogContent = document.querySelector('.blog_content');
@@ -613,7 +606,7 @@ let lastMobileSimilarSite;
 
 		// initCategoryPage();
 
-		// detectCountryAndVerifyAge()
+		detectCountryAndVerifyAge();
 		showAcceptCookie();
 
 		if(bodyClasses.contains('page-template-page-categories')){
@@ -623,8 +616,6 @@ let lastMobileSimilarSite;
 		// new CategoryPopup()
 		if(!isMobileOrTablet){
 			pukeCheck();
-		}else{
-			showThumbInfoOnHover();
 		}
 
 	};

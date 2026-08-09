@@ -2,8 +2,8 @@
 
 
 .category_sites{
-	//display: flex;
-	//flex-wrap: wrap;
+	display: flex;
+	flex-wrap: wrap;
 	//font:400 14px/1.2;
 	font-size: 0;
 	counter-reset: number;
@@ -19,6 +19,7 @@
 		padding: 10px 0 0 10px;
 		position: relative;
 		height: 265px;
+		order: 1;
 
 		&::before {
 			display: block;
@@ -62,7 +63,7 @@
 		@include respond('max-medium'){
 			padding-left: 0;
 			width: 100%;
-			order: -1;
+			order: -3;
 			height: 240px;
 
 			&.show_all{
@@ -212,6 +213,14 @@
 		width: 25%;
 		max-width: 25%;
 		padding: 15px 5px 0;
+		order: 2;
+
+		&:first-of-type{
+			order: -1;
+		}
+		&:nth-of-type(2){
+			order: 0;
+		}
 
 		@include respond('ipad_landscape'){
 			width: 25%;
@@ -451,6 +460,38 @@
 				transform: translateX(-50%) translateY(-50%);
 			}
 
+			.twitter_followers_badge {
+				position: absolute;
+				top: 8px;
+				right: 8px;
+				display: flex;
+				align-items: center;
+				gap: 5px;
+				background: rgba(0, 0, 0, 0.72);
+				color: #eee;
+				font-size: 12px;
+				line-height: 1;
+				padding: 5px 8px;
+				border-radius: 20px;
+				z-index: 3;
+				pointer-events: none;
+
+				b{
+					color: #fff;
+					font-weight: 600;
+				}
+
+				.category_icon {
+					width: 14px;
+					height: 14px;
+					background-size: contain;
+					background-repeat: no-repeat;
+					background-position: center;
+					display: inline-block;
+					flex-shrink: 0;
+				}
+			}
+
 			&__overlay, &::before{
 				content: '';
 				position: absolute;
@@ -676,9 +717,9 @@
 	}
 }
 
-.category-archived .category_sites_description{
-	height: 205px;
-}
+// .category-archived .category_sites_description{
+// 	height: 205px;
+// }
 
 
 @media screen and (min-width: 767.98px) {

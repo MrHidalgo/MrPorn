@@ -65,39 +65,6 @@
 		padding-top: 0;
 	}
 
-	&__left {
-		width: 50px;
-		height: 34px;
-
-		@include respond('ipad_portrait'){
-			height: 44px;
-		}
-
-		@include respond('max-medium') {
-			height: 44px;
-			border-style: solid;
-			border-color: #333;
-			border-width: 1px 0 1px 1px;
-		}
-		@include respond('mobile_landscape'){
-			height: 44px;
-		}
-	}
-
-	&__middle {
-		position: relative;
-		flex: 1;
-		min-width: 1px;
-		max-width: 100%;
-		padding-right: 4px;
-		@include respond('max-medium') {
-			padding-right: 0;
-			border-color: #333;
-			border-style: solid;
-			border-width: 1px 1px 1px 0;
-		}
-	}
-
 	&__right {
 		@include respond('max-medium') {
 			width: 43px;
@@ -133,17 +100,20 @@
 	&__wrapper {
 		position: relative;
 		display: flex;
-		width: 100%;
+		flex: 1;
+		min-width: 1px;
+		max-width: 100%;
 		height: 100%;
-	}
-
-	&__toggle {
-		position: relative;
-		display: flex;
-		width: 100%;
-		height: 100%;
+		margin-right: 4px;
 		background-color: #ffffff;
-		border-radius: 0 5px 5px 0;
+		border-radius: 5px;
+
+		@include respond('max-medium') {
+			margin-right: 0;
+			border-color: #333;
+			border-style: solid;
+			border-width: 1px;
+		}
 		@include adaptive(1023) {
 			border-radius: 0;
 		}

@@ -290,6 +290,7 @@ body.chatbot_active{
 		display: flex;
 		align-items: center;
 		justify-content: center;
+		flex-wrap: wrap;
 		color: #4099f9;
 		font-size: 16px;
 
@@ -321,6 +322,7 @@ body.chatbot_active{
 			color: #4099f9;
 			line-height: 2.273;
 			padding: 0 8px;
+			white-space: nowrap;
 			@include transition(color);
 			@include adaptive(1023) {
 				font-size: 14px;
@@ -708,45 +710,6 @@ body.chatbot_active{
 
 	}
 
-	&:not(.show_all){
-		p:first-of-type{
-			display: -webkit-box;
-			-webkit-line-clamp: 4;
-			-webkit-box-orient: vertical;
-			height: 120px;
-			overflow: hidden;
-
-			@include adaptive(767) {
-				height: 85px;
-			}
-		}
-		.p1:nth-child(n + 3){
-			display: none;
-		}
-	}
-
-
-
-	.btn_show_more{
-		text-align: center;
-		padding: 10px 0 40px;
-		font-weight: 600;
-		color: var(--heading-small-color, #000);
-
-		&-text{
-			cursor: pointer;
-
-			svg{
-				fill: var(--heading-small-color, #000);
-			}
-		}
-	}
-
-	&.show_all{
-		.btn_show_more{
-			display: none;
-		}
-	}
 }
 
 .light{

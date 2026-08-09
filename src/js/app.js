@@ -312,6 +312,11 @@ const CookieUtils = {
             return false;
         }
 
+        // Legacy call sites pass a day count as the third positional argument
+        if (typeof options === 'number') {
+            options = { days: options };
+        }
+
         let expires = '';
         if (options.days) {
             const date = new Date();

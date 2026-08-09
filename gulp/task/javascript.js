@@ -6,7 +6,8 @@ const plumber = require('gulp-plumber'),
   concat = require('gulp-concat'),
   order = require("gulp-order"),
   babel = require('gulp-babel'),
-  uglify = require('gulp-uglify');
+  uglify = require('gulp-uglify'),
+  terser = require('gulp-terser');
 
 const configPath  = require('../config/configPath'),
   configOption    = require('../config/configOption');
@@ -23,6 +24,7 @@ task('js', (done) => {
 			'!' + configPath.src.js + '/**/frontpage.js',
 		'!' + configPath.src.js + '/_frontpage/*.js',
 		'!' + configPath.src.js + '/_lib/swiper.js',
+		'!' + configPath.src.js + '/standalone/**/*.js',
 		])
 		.pipe(plumber(configOption.pipeBreaking.err))
 
@@ -44,6 +46,7 @@ task('js_home', (done) => {
 		configPath.src.js + '/*.js',
 		configPath.src.js + '/**/*.js',
 		'!' + configPath.src.js + '/**/_**.js',
+		'!' + configPath.src.js + '/standalone/**/*.js',
 	])
 		.pipe(plumber(configOption.pipeBreaking.err))
 
@@ -73,6 +76,7 @@ task('js:dev', (done) => {
 			'!' + configPath.src.js + '/**/frontpage.js',
 		'!' + configPath.src.js + '/_frontpage/*.js',
 		'!' + configPath.src.js + '/_lib/swiper.js',
+		'!' + configPath.src.js + '/standalone/**/*.js',
 		])
 		.pipe(plumber(configOption.pipeBreaking.err))
 		.pipe(order([
@@ -92,6 +96,7 @@ task('js_home:dev', (done) => {
 		configPath.src.js + '/*.js',
 		configPath.src.js + '/**/*.js',
 		'!' + configPath.src.js + '/**/_**.js',
+		'!' + configPath.src.js + '/standalone/**/*.js',
 	])
 		.pipe(plumber(configOption.pipeBreaking.err))
 		.pipe(order([
@@ -105,6 +110,32 @@ task('js_home:dev', (done) => {
 		.pipe(babel(configOption.es6))
 		.pipe(plumber.stop())
 		.pipe(dest(configPath.dest.js))
+});
+
+/**
+ * @description Individually-served JS files — minified but NOT bundled.
+ * Source: src/js/standalone/*.js
+ * Output: dest/js/ (one minified file per source file, copy to theme/js/)
+ */
+// terser, not babel+uglify: these files ship untranspiled today and uglify-js
+// cannot parse the optional chaining in functions.site.js.
+task('js:standalone', (done) => {
+  return src([
+      configPath.src.js + '/standalone/*.js',
+    ])
+    .pipe(plumber(configOption.pipeBreaking.err))
+    .pipe(terser(configOption.terserOptions))
+    .pipe(plumber.stop())
+    .pipe(dest(configPath.dest.js));
+});
+
+task('js:standalone:dev', (done) => {
+  return src([
+      configPath.src.js + '/standalone/*.js',
+    ])
+    .pipe(plumber(configOption.pipeBreaking.err))
+    .pipe(plumber.stop())
+    .pipe(dest(configPath.dest.js));
 });
 
 /**

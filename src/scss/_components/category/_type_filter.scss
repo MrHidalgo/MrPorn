@@ -37,6 +37,16 @@
 
 	@include adaptive(767) {
 		display: none;
+
+		// Twitter sort container: keep in DOM so the fixed dropdown can render
+		&.twitter-sort-container {
+			display: block;
+			position: static;
+			transform: none;
+			width: 0;
+			height: 0;
+			overflow: visible;
+		}
 	}
 }
 .review_type_slider{
@@ -102,6 +112,13 @@
 
 	@include adaptive(767) {
 		display: none;
+
+		// Hide the mobile slider on the Twitter category (sort dropdown replaces it)
+		body.category-best-twitter-porn-creators-reviews & {
+			&.mobile {
+				display: none !important;
+			}
+		}
 
 		&.mobile{
 			display: flex;
@@ -292,6 +309,7 @@
 		gap: 10px;
 		padding: 0 15px;
 		line-height: 30px;
+		white-space: nowrap;
 
 		&:hover{
 			background: #dadada;
@@ -299,7 +317,204 @@
 	}
 }
 
-.light{
+// Mobile-only Twitter icon toggle (hidden on desktop)
+.twitter-sort-mobile-toggle {
+    display: none;
+    background: none;
+    border: none;
+    padding: 0;
+    cursor: pointer;
+    line-height: 0;
+    margin-right: 4px;
+
+    img {
+        width: 36px;
+        height: 36px;
+        object-fit: contain;
+		outline: none;
+
+		&:focus {
+			outline: none;	
+		}
+    }
+}
+
+// Twitter category sort dropdown
+.twitter-sort-outer {
+    position: relative;
+
+    .twitter-sort-btn {
+        display: inline-flex;
+        align-items: center;
+        gap: 6px;
+        background: #939db2;
+        color: #fff;
+        border: none;
+        border-radius: 4px;
+        padding: 6px 14px;
+        font-size: 14px;
+        cursor: pointer;
+        white-space: nowrap;
+
+		.twitter-sort-label{
+			font-weight: 600;
+			color: #fff;
+		}
+
+        .twitter-sort-caret {
+            display: inline-block;
+            width: 0;
+            height: 0;
+            border-left: 4px solid transparent;
+            border-right: 4px solid transparent;
+            border-top: 5px solid #fff;
+            margin-left: 2px;
+            @include transition(transform);
+        }
+
+        &[aria-expanded="true"] {
+            .twitter-sort-caret {
+                transform: rotate(180deg);
+            }
+        }
+
+        // While the client-side re-sort runs the caret becomes a small spinner. Restyling the
+        // existing element keeps this free of markup and PHP changes. Higher specificity than
+        // the base .twitter-sort-caret rule above, so the triangle borders are overridden.
+        &.is-sorting {
+            .twitter-sort-caret {
+                width: 10px;
+                height: 10px;
+                border: 2px solid rgba(255, 255, 255, .35);
+                border-top-color: #fff;
+                border-radius: 50%;
+                margin-left: 6px;
+                animation: twitterSortSpin .6s linear infinite;
+            }
+        }
+    }
+
+    @keyframes twitterSortSpin {
+        to { transform: rotate(360deg); }
+    }
+
+    .twitter-sort-options {
+        display: none;
+        position: absolute;
+        top: calc(100% + 6px);
+        right: 0;
+        background: #fff;
+        border-radius: 8px;
+        box-shadow: 0 10px 30px rgba(0, 0, 0, .15);
+        list-style: none;
+        margin: 0;
+        padding: 6px 0;
+        min-width: 170px;
+        z-index: 100;
+
+        // Hidden on desktop — shown only on mobile via adaptive block
+        .twitter-sort-options-header {
+            display: none;
+        }
+
+        &.open {
+            display: block;
+        }
+
+        li {
+            padding: 8px 16px;
+            font-size: 14px;
+            color: #1a1a1a;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+
+            &:hover {
+                background: #f5f5f5;
+            }
+
+            &.active::before {
+                content: '✓';
+                color: #5baee8;
+                font-weight: 700;
+                width: 14px;
+                flex-shrink: 0;
+            }
+
+            &:not(.active) {
+                padding-left: 38px;
+            }
+        }
+    }
+
+    @include adaptive(767) {
+        // Hide the desktop text button; Twitter icon in heading takes over
+        .twitter-sort-btn {
+            display: none;
+        }
+
+        // Dropdown fixed below the icon, same width as desktop
+        .twitter-sort-options {
+            position: fixed;
+            top: auto; // set dynamically by JS
+            right: 8px;
+            left: auto;
+            width: auto;
+            border-radius: 8px;
+            z-index: 200;
+            padding: 0;
+            box-shadow: 0 8px 24px rgba(0, 0, 0, .2);
+
+            li {
+                padding: 8px 14px;
+                font-size: 14px;
+
+                &:not(.active) {
+                    padding-left: 14px;
+                }
+            }
+
+            // Show mobile header row
+            .twitter-sort-options-header {
+                display: flex;
+                align-items: center;
+                justify-content: space-between;
+                background: #939db2;
+                color: #fff;
+                font-size: 13px;
+                font-weight: 500;
+                padding: 8px 14px;
+                cursor: default;
+                pointer-events: none;
+
+                .twitter-sort-label-mobile {
+                    font-weight: 700;
+                }
+
+                .twitter-sort-caret-mobile {
+                    display: inline-block;
+                    width: 0;
+                    height: 0;
+                    border-left: 4px solid transparent;
+                    border-right: 4px solid transparent;
+                    border-top: 5px solid #fff;
+                    margin-left: 6px;
+                }
+            }
+        }
+    }
+}
+
+// Show mobile toggle on mobile
+@include adaptive(767) {
+    .twitter-sort-mobile-toggle {
+        display: flex;
+        align-items: center;
+    }
+}
+
+.light {
 	.review_type_trigger{
 		.more{
 			fill: #000;

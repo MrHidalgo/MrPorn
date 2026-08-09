@@ -353,14 +353,19 @@ input[type="submit"] {
 	padding-bottom: 36px;
 }
 .orderBtn {
-	height: 60px;
+	height: auto;
+	min-height: 60px;
 	border-radius: 5px;
 	position: relative;
 	border: 2px solid #1045b2;
-	overflow: hidden;
-	width: 425px;
+	max-width: 100%;
+	width: auto;
+	min-width: 425px;
 	background: url(../images/submit/orderBg.png) repeat-x left top;
 	padding-left: 127px;
+	padding-right: 15px;
+	padding-top: 10px;
+	padding-bottom: 10px;
 	text-align: left;
 	cursor: pointer;
 }
@@ -1740,10 +1745,6 @@ input[type="submit"] {
 		width: 500px;
 		height: 52px;
 	}
-	.orderToon {
-		background-size: auto 48px;
-		height: 48px;
-	}
 	.orderBtn span {
 		font-size: 20px;
 	}
@@ -2039,10 +2040,6 @@ input[type="submit"] {
 		width: 410px;
 		height: 46px;
 	}
-	.orderToon {
-		background-size: auto 42px;
-		height: 42px;
-	}
 	.orderBtn span {
 		font-size: 16px;
 	}
@@ -2305,10 +2302,7 @@ input[type="submit"] {
 		width: 338px;
 		height: 40px;
 		text-align: center;
-	}
-	.orderToon {
-		background-size: auto 36px;
-		height: 36px;
+		min-width: auto;
 	}
 	.orderBtn span {
 		font-size: 14px;

@@ -1,4 +1,5 @@
 .search.search_form{
+	height: 34px;
 	max-height: 34px;
 
 	@include respond('ipad_portrait'){
@@ -26,69 +27,5 @@
 	@include respond('iphone_8_landscape'){
 		height: 54px;
 		max-height: 54px;
-	}
-}
-
-
-.search__left{
-	.sort {
-		position: relative;
-		width: 100%;
-		height: 100%;
-	
-		&__toggle {
-			display: flex;
-			align-items: center;
-			justify-content: center;
-			gap: 4px;
-			cursor: pointer;
-			color: #fff;
-			width: 100%;
-			height: 100%;
-			border-radius: 5px 0 0 5px;
-			background-color: #939cb2;
-			font-weight: 600;
-	
-			@include adaptive(1023) {
-				border-radius: 0;
-			}
-	
-			.icon-font {
-				color: #ffffff;
-				font-size: 20px;
-				transform: rotate(-90deg);
-			}
-	
-			p {
-				display: flex;
-				flex-direction: column;
-				transform: translateX(-3px);
-	
-				span {
-					font-weight: 700;
-					font-size: 12px;
-					color: #ffffff;
-					line-height: 1;
-				}
-			}
-		}
-	
-	}
-}
-
-
-.light{
-	.sort{
-
-		&__drop-link{
-			color: #081b49;
-		}
-
-		@include respond('max-medium') {
-			&__toggle{
-				background-color: #3d3d3d;;
-			}
-		}
-
 	}
 }

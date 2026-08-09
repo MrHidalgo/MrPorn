@@ -90,6 +90,31 @@ const SearchModule = (function() {
         }
     };
 
+    // Cache helpers for search data
+    const _MPG_SD_TTL = 86400000; // 24h — matches server Cache-Control max-age
+
+    const _mpgGetSv = () => {
+        return document.querySelector('meta[name="mpg-sv"]')?.getAttribute('content') || '0';
+    };
+
+    const _mpgGetSdCache = (lang) => {
+        try {
+            const raw = localStorage.getItem('mpg_sd_' + lang);
+            if (!raw) return null;
+            const { ts, v, d } = JSON.parse(raw);
+            if (v !== _mpgGetSv()) return null;
+            if (Date.now() - ts < _MPG_SD_TTL) return d;
+            localStorage.removeItem('mpg_sd_' + lang);
+        } catch(e) {}
+        return null;
+    };
+
+    const _mpgSetSdCache = (lang, data) => {
+        try {
+            localStorage.setItem('mpg_sd_' + lang, JSON.stringify({ ts: Date.now(), v: _mpgGetSv(), d: data }));
+        } catch(e) {}
+    };
+
     // Public API
     return {
         init: function() {
@@ -185,58 +210,105 @@ const SearchModule = (function() {
         },
 
         loadSearchData: function() {
-            currentLang = document.documentElement.getAttribute('lang');
+            currentLang = document.documentElement.getAttribute('lang') || 'en';
 
-            let _this = this;
-            try {
-                let url = '/wp-json/mpg/search/';
-                
-                if(currentLang != 'en'){
-                    url = '/wp-json/mpg/search/?lang=' + currentLang;
-                }
-                
+            const lang = currentLang;
+            const cached = _mpgGetSdCache(lang);
+            const _this = this;
 
-                fetch(url)
-                    .then(res => res.json())
-                    .then((out) => {
-                        
-
-                        let searchDataDiv = document.createElement('script');
-                        searchDataDiv.type = 'text/javascript';
-                        searchDataDiv.text = 'var jsonData=' + out;
-                        if(document.body && searchDataDiv){
-                            document.body.appendChild(searchDataDiv);
-                        }
-                        _this.renderRecentLinks(out);
-                        _this.initSearchKey();
-                        // _this.initTags();
-                    })
-                    .catch(err => {
-                        console.warn('Failed to load search data:', err);
-                    });
-            } catch (error) {
-                console.error('Error loading search data:', error);
+            if (cached) {
+                window.jsonData = cached;
+                _this.renderRecentLinks(cached);
+                _this.initSearchKey();
+                return;
             }
+
+            // No cache — defer fetch until the user first interacts with search.
+            // There are multiple .searchinput elements (desktop header, mobile
+            // overlay, mobile menu) — the trigger must be on ALL of them, and
+            // hamburger.js also calls ensureSearchData() when the mobile search
+            // UI opens, before any input gets focus.
+            document.querySelectorAll('.searchinput').forEach(function (searchInput) {
+                searchInput.addEventListener('focus', function onSdFocus() {
+                    _this.ensureSearchData();
+                }, { once: true });
+            });
+        },
+
+        ensureSearchData: function() {
+            const _this = this;
+            if (window.jsonData) { _this.initSearchKey(); return; }
+            if (_this._sdFetching) return;
+            _this._sdFetching = true;
+
+            const lang = currentLang || document.documentElement.getAttribute('lang') || 'en';
+            const url = lang !== 'en' ? '/wp-json/mpg/search/?lang=' + lang : '/wp-json/mpg/search/';
+            fetch(url)
+                .then(res => res.json())
+                .then(out => {
+                    const data = typeof out === 'string' ? JSON.parse(out) : out;
+                    _mpgSetSdCache(lang, data);
+                    window.jsonData = data;
+                    _this.renderRecentLinks(data);
+                    _this.initSearchKey();
+                    // Catch up on anything typed while the fetch was in flight
+                    const active = document.activeElement;
+                    if (active && active.hasAttribute && active.hasAttribute('search-js')) {
+                        const term = active.value.trim();
+                        if (term.length >= 2) {
+                            _this.searchSites(term);
+                        }
+                    }
+                })
+                .catch(err => {
+                    _this._sdFetching = false;
+                    console.warn('Failed to load search data:', err);
+                });
         },
 
         renderRecentLinks: function(data) {
-            // jsonData is already parsed JSON object, no need to parse again
-            // data = JSON.parse(data);
-            let recentLinks = jsonData.recent_links;
             let recentLinksContainer = safeQuerySelector('.header__recent');
             if(recentLinksContainer && recentLinksContainer.innerHTML != ''){
                 return;
             }
 
-            if(recentLinks && recentLinks.links && recentLinks.links.length > 0){
-                let recentLinksHtml = '<div class="header__recent-head"><p>'+recentLinks.title+'</p><i class="icon-font icon-left-arrow"></i></div>';
-                recentLinksHtml += '<div class="header__recent-body">'; 
-                recentLinks.links.forEach(link => {
-                    recentLinksHtml += '<a href="'+ rootUrl + link.url+'"><i class="icon-font icon-arrow-angle"></i><span>'+link.title+'</span></a>';
-                });
-                recentLinksHtml += '</div>';
-                recentLinksContainer.innerHTML = recentLinksHtml;
-            }
+            // Fetch trending categories from realtime ranks API
+            fetch('//analytics.mrgeek.link/api/realtime/ranks', {
+                headers: {
+                    'x-api-key': '57ed08ce0b13a447e384bd4dccf7b8ef96fd6edc316aae309439ec913b5c30a5'
+                }
+            })
+            .then(res => res.json())
+            .then(ranks => {
+                if(recentLinksContainer && ranks && ranks.length > 0){
+                    let langPrefix = (currentLang && currentLang !== 'en') ? '/' + currentLang : '';
+                    let recentLinksHtml = '<div class="header__recent-head"><p>Today\'s Most Searched Categories</p><i class="icon-font icon-left-arrow"></i></div>';
+                    recentLinksHtml += '<div class="header__recent-body">';
+                    ranks.forEach(link => {
+                        // If title looks like a slug (contains hyphens, no spaces), convert to readable title
+                        let title = link.title;
+                        if(title && title.indexOf('-') > -1 && title.indexOf(' ') === -1){
+                            title = title.replace(/-/g, ' ').replace(/\b\w/g, c => c.toUpperCase());
+                        }
+                        recentLinksHtml += '<a href="'+ rootUrl + langPrefix + link.link+'"><i class="icon-font icon-arrow-angle"></i><span>'+title+'</span></a>';
+                    });
+                    recentLinksHtml += '</div>';
+                    recentLinksContainer.innerHTML = recentLinksHtml;
+                }
+            })
+            .catch(err => {
+                // Fallback to jsonData.recent_links if realtime API fails
+                let recentLinks = window.jsonData ? window.jsonData.recent_links : null;
+                if(recentLinksContainer && recentLinks && recentLinks.links && recentLinks.links.length > 0){
+                    let recentLinksHtml = '<div class="header__recent-head"><p>'+recentLinks.title+'</p><i class="icon-font icon-left-arrow"></i></div>';
+                    recentLinksHtml += '<div class="header__recent-body">';
+                    recentLinks.links.forEach(link => {
+                        recentLinksHtml += '<a href="'+ rootUrl + link.url+'"><i class="icon-font icon-arrow-angle"></i><span>'+link.title+'</span></a>';
+                    });
+                    recentLinksHtml += '</div>';
+                    recentLinksContainer.innerHTML = recentLinksHtml;
+                }
+            });
 
         },
 
@@ -623,6 +695,10 @@ const SearchModule = (function() {
 
                 let siteLink = site.l;
 
+                let linkOpenSite = (!site.isd && siteUrl)
+                    ? '<a href="' + siteUrl + '" class="link_site" target="_blank" rel="nofollow noopener">Open Website<i class="icon-font icon-out"></i></a>'
+                    : '';
+
                 let boostHtml = '';
                 let thumbClasses = '';
                 let siteItemClasses = '';
@@ -630,15 +706,14 @@ const SearchModule = (function() {
                 if(boost > 0){
                     siteItemClasses = 'boost';
                     thumbClasses = 'boosted';
-                    let bootstImage = boost > 499 ? 'bcv' : 'bwvn';
                     let boostIconClass = boost > 499 ? 'boosted-crown' : 'boosted-blue';
                     if(boost > 499){
                         thumbClasses += ' boosted-crown';
                     }else {
                         thumbClasses += ' boosted-blue';
                     }
-                    let boostImageNumbers = boost.replaceAll('', '-')
-                    boostHtml = `<i class="boost-indicator boost-indicator-preview site_thumb ${boostIconClass} nolazy" style="background-image: url('/wp-content/themes/mpg/images/boost/${bootstImage+boostImageNumbers}X.svg');"></i>`;
+                    let boostType = boost > 499 ? 'crown' : 'blue';
+                    boostHtml = `<i class="boost-indicator boost-indicator-preview site_thumb ${boostIconClass} nolazy" style="background-image:url('/wp-content/themes/mpg/boost-badge.php?v=${boost}&type=${boostType}&ver=1.0');"></i>`;
                 }
 
                 // let text_read = this._t('read_review', 'Read Review');
@@ -657,6 +732,7 @@ const SearchModule = (function() {
                         '</div>' +
                         '<div class="search_item_overlay">' +
                             '<a href="' + siteLink + '" class="link_read search-site-convert" data-object-id="' + site.i + '" data-position="' + position + '">' + text_read + '&nbsp;Review <i class="icon-font icon-arrow-angle right_angle"></i></a>' +
+                            linkOpenSite +
                             '</div>' +
                         '</div>';
                 } else {
@@ -672,6 +748,7 @@ const SearchModule = (function() {
                         '</div>' +
                         '<div class="search_item_overlay">' +
                             '<a href="' + siteLink + '" class="link_read search-site-convert" data-object-id="' + site.i + '" data-position="' + position + '">' + text_read + '&nbsp;Review <i class="icon-font icon-arrow-angle right_angle"></i></a>' +
+                            linkOpenSite +
                         '</div>' +
                         '</div>';
                 }
@@ -852,7 +929,6 @@ const SearchModule = (function() {
             
             let tags = window.jsonData.tags;
             let tagsHtml = '';
-            let dropdownTags = '';
             let currentLang = document.documentElement.getAttribute("lang");
             let langPrefix = currentLang === 'en' ? '' : '/' + currentLang;
 
@@ -862,39 +938,16 @@ const SearchModule = (function() {
                     tagsHtml += '<li class="categories-tags-li">\n' +
                         '                        <a href="' +  rootUrl + langPrefix + '/category-tags/' + tag + '/" class="categories-tags-item solid"><i class="tag-icon tag-' + tagIcon + '"></i>' + tags[tag].name + '</a>\n' +
                         '                    </li>';
-
-                    dropdownTags += '<li class="dropdown-item ">\n' +
-                        '                <a href="' + rootUrl + langPrefix + '/category-tags/' + tag + '/"><i class="tag-icon tag-' + tagIcon + '"></i> <span>' + tags[tag].name + '</span>\n' +
-                        '                    <svg class="arrow" width="20" height="20" xmlns="http://www.w3.org/2000/svg" viewBox="0 0.5 18 11" fill="currentColor">\n' +
-                        '                        <path d="M17.738 5.38997L12.982 0.747973C12.8149 0.586608 12.5918 0.496418 12.3595 0.496418C12.1272 0.496418 11.9041 0.586608 11.737 0.747973C11.6555 0.826858 11.5906 0.921336 11.5464 1.02579C11.5021 1.13024 11.4793 1.24253 11.4793 1.35597C11.4793 1.46942 11.5021 1.58171 11.5464 1.68616C11.5906 1.79061 11.6555 1.88509 11.737 1.96397L14.989 5.13997L0.881 5.13997C0.766747 5.13852 0.653327 5.15959 0.547217 5.20197C0.441107 5.24435 0.344385 5.30722 0.262575 5.38699C0.180765 5.46676 0.115469 5.56186 0.0704156 5.66687C0.0253626 5.77187 0.0014352 5.88472 -2.405e-07 5.99897C0.0028998 6.22954 0.0972146 6.44953 0.262221 6.6106C0.427228 6.77167 0.649428 6.86064 0.88 6.85797L14.99 6.85797L11.738 10.033C11.6565 10.1118 11.5917 10.2062 11.5474 10.3105C11.5032 10.4149 11.4803 10.5271 11.4803 10.6405C11.4803 10.7538 11.5032 10.866 11.5474 10.9704C11.5917 11.0748 11.6565 11.1692 11.738 11.248C11.9045 11.4107 12.1282 11.5016 12.361 11.501C12.586 11.501 12.811 11.416 12.983 11.248L17.739 6.60597C17.8205 6.52717 17.8853 6.43278 17.9296 6.32841C17.9738 6.22405 17.9967 6.11184 17.9967 5.99847C17.9967 5.88511 17.9738 5.7729 17.9296 5.66853C17.8853 5.56416 17.8205 5.46977 17.739 5.39097L17.738 5.38997Z"></path>\n' +
-                        '                    </svg>\n' +
-                        '                </a>\n' +
-                        '            </li>';
                 }
             }
-            dropdownTags += '<li class="dropdown-item all">\n' +
-                '            <a href="' + rootUrl + langPrefix + '/categories/">\n' +
-                '                <i class="tag-icon ">\n' +
-                '                    <svg xmlns="http://www.w3.org/2000/svg" height="16" viewBox="0 0 169.53 172.6"><rect width="46.64" height="46.64" rx="11.83"></rect><rect x="60.51" width="109.02" height="46.64" rx="11.83"></rect><rect y="62.98" width="46.64" height="46.64" rx="11.83"></rect><rect x="60.51" y="62.98" width="109.02" height="46.64" rx="11.83"></rect><rect y="125.96" width="46.64" height="46.64" rx="11.83"></rect><rect x="60.51" y="125.96" width="109.02" height="46.64" rx="11.83"></rect></svg>\n' +
-                '                </i>\n' +
-                '                <span>All Categories & Tags</span>\n' +
-                '                <svg class="arrow" width="20" height="20" xmlns="http://www.w3.org/2000/svg" viewBox="0 0.5 18 11" fill="currentColor">\n' +
-                '                    <path d="M17.738 5.38997L12.982 0.747973C12.8149 0.586608 12.5918 0.496418 12.3595 0.496418C12.1272 0.496418 11.9041 0.586608 11.737 0.747973C11.6555 0.826858 11.5906 0.921336 11.5464 1.02579C11.5021 1.13024 11.4793 1.24253 11.4793 1.35597C11.4793 1.46942 11.5021 1.58171 11.5464 1.68616C11.5906 1.79061 11.6555 1.88509 11.737 1.96397L14.989 5.13997L0.881 5.13997C0.766747 5.13852 0.653327 5.15959 0.547217 5.20197C0.441107 5.24435 0.344385 5.30722 0.262575 5.38699C0.180765 5.46676 0.115469 5.56186 0.0704156 5.66687C0.0253626 5.77187 0.0014352 5.88472 -2.405e-07 5.99897C0.0028998 6.22954 0.0972146 6.44953 0.262221 6.6106C0.427228 6.77167 0.649428 6.86064 0.88 6.85797L14.99 6.85797L11.738 10.033C11.6565 10.1118 11.5917 10.2062 11.5474 10.3105C11.5032 10.4149 11.4803 10.5271 11.4803 10.6405C11.4803 10.7538 11.5032 10.866 11.5474 10.9704C11.5917 11.0748 11.6565 11.1692 11.738 11.248C11.9045 11.4107 12.1282 11.5016 12.361 11.501C12.586 11.501 12.811 11.416 12.983 11.248L17.739 6.60597C17.8205 6.52717 17.8853 6.43278 17.9296 6.32841C17.9738 6.22405 17.9967 6.11184 17.9967 5.99847C17.9967 5.88511 17.9738 5.7729 17.9296 5.66853C17.8853 5.56416 17.8205 5.46977 17.739 5.39097L17.738 5.38997Z"></path>\n' +
-                '                </svg>\n' +
-                '            </a>\n' +
-                '        </li>';
 
             // Store mobile tags HTML for later use instead of setting immediately
             window.mobileTagsHtml = tagsHtml;
-            
-            // Only set sidebar and dropdown tags immediately (not mobile)
+
+            // Only set sidebar tags immediately (not mobile, not dropdown)
             let tagListSidebar = safeQuerySelector('.tag-list-sidebar');
             if(tagListSidebar){
                 tagListSidebar.innerHTML = tagsHtml;
-            }
-            let tagDropdown = safeQuerySelector('.tag-dropdown-menu');
-            if(tagDropdown){
-                tagDropdown.innerHTML = dropdownTags;
             }
         },
 

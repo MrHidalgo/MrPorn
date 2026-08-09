@@ -1,27 +1,22 @@
 function showThumbInfoOnHover() {
 	function showThumbInfo(el) {
-		var $this = el
-			, $links = $this.querySelector('.category_sites_item_title')
-			, review_link = $links.getAttribute('href')
-			, link_rel = $links.getAttribute('rel')
-			, external_link = $links.getAttribute('data-site-link')
-			, $parents = $this.parents('.category_sites')
-			, $parent = $parents.length> 0? $parents[0]:undefined
-			, text_read = $parent.getAttribute('data-text-read')
-			, text_open = $parent.getAttribute('data-text-open')
-			, category = $parent.getAttribute('data-category');
+		var review_link = el.dataset.reviewLink;
 
-			let siteTitle = el.querySelector('.category_sites_item_title').textContent;
+		if(!review_link || el.querySelector('.category_sites_item_overlay')){
+			return;
+		}
 
-			text_read = '<span>' + siteTitle + '</span>';
+		var $title = el.querySelector('.category_sites_item_title')
+			, $titleText = $title ? ($title.querySelector('.title') || $title) : null
+			, siteTitle = $titleText ? $titleText.textContent.trim() : '';
 
-		var linkOpenSite = '';
-		// if($this.hasAttribute('data-showopen')){
-		// 	linkOpenSite = '<a class="link_site" rel="' + link_rel + '" href="' + external_link + '" target="_blank">' + text_open + '<i class="icon-font icon-out"></i>' + '</a>';
-		// }
+		var siteUrl = el.dataset.siteUrl;
+		var linkOpenSite = (el.hasAttribute('data-showopen') && siteUrl)
+			? '<a class="link_site" href="' + siteUrl + '" target="_blank" rel="nofollow noopener">Open Website<i class="icon-font icon-out"></i></a>'
+			: '';
 
-		var $block = '<div class="category_sites_item_overlay">' + '<a class="link_read" href="' + review_link + '" target="_blank">' + text_read + '&nbsp;Review <i class="icon-font icon-arrow-angle right_angle"></i>' + '</a>' + linkOpenSite + '</div>';
-		$this.insertAdjacentHTML('beforeend', $block);
+		var $block = '<div class="category_sites_item_overlay">' + '<a class="link_read" href="' + review_link + '" target="_blank">' + '<span>' + siteTitle + '</span>' + '&nbsp;Review <i class="icon-font icon-arrow-angle right_angle"></i>' + '</a>' + linkOpenSite + '</div>';
+		el.insertAdjacentHTML('beforeend', $block);
 	}
 	function removeThumbInfo(el) {
 		if(window.debug){
@@ -41,29 +36,26 @@ function showThumbInfoOnHover() {
 
 		if (isMobileDevice) {
 			element.querySelector('.category_sites_item_thumb').addEventListener('click', function(ev) {
-				// console.log('clicking thumb info', element.classList)
-
 				if(!element.querySelector('.category_video_item')){
 					ev.preventDefault();
 				}
 
-				// ev.preventDefault();
+				showThumbInfo(element);
 
 				element.classList.add('touched');
 				if(lastMobileSimilarSite){
 					lastMobileSimilarSite.classList.remove('touched');
 				}
-				// showThumbInfo(element);
 				lastMobileSimilarSite = element;
 			});
 		}else{
-			// element.addEventListener('mouseenter', function() {
-			// 	showThumbInfo(element);
-			// });
+			element.addEventListener('mouseenter', function() {
+				showThumbInfo(element);
+			});
 
-			// element.addEventListener('mouseleave', function() {
-			// 	removeThumbInfo(element);
-			// });
+			element.addEventListener('mouseleave', function() {
+				removeThumbInfo(element);
+			});
 		}
 	});
 }
