@@ -377,6 +377,25 @@
                 transform: rotate(180deg);
             }
         }
+
+        // While the client-side re-sort runs the caret becomes a small spinner. Restyling the
+        // existing element keeps this free of markup and PHP changes. Higher specificity than
+        // the base .twitter-sort-caret rule above, so the triangle borders are overridden.
+        &.is-sorting {
+            .twitter-sort-caret {
+                width: 10px;
+                height: 10px;
+                border: 2px solid rgba(255, 255, 255, .35);
+                border-top-color: #fff;
+                border-radius: 50%;
+                margin-left: 6px;
+                animation: twitterSortSpin .6s linear infinite;
+            }
+        }
+    }
+
+    @keyframes twitterSortSpin {
+        to { transform: rotate(360deg); }
     }
 
     .twitter-sort-options {

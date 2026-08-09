@@ -2,7 +2,11 @@
 body {
     --bg-letter: #555;
 	--heading-down-arrow: url(../images/down-arrow-dark.svg);
-	
+	--m-m-category: url(../images/menu/icon-category.svg);
+	--m-m-deals: url(../images/menu/menu_deals.svg);
+	--m-m-blog: url(../images/menu/menu_blog.svg);
+	--m-m-contact: url(../images/menu/menu_contact.svg);
+
 	@include respond('medium'){
 		&.pk{
 			padding-top: 42px;
@@ -39,9 +43,13 @@ body {
 
 		--bg-letter: #e8e7e6;
 		--heading-down-arrow: url(../images/down-arrow-light.svg);
+		--m-m-category: url(../images/menu/icon-category-light.svg);
+		--m-m-deals: url(../images/menu/menu_deals-light.svg);
+		--m-m-blog: url(../images/menu/menu_blog-light.svg);
+		--m-m-contact: url(../images/menu/menu_contact-light.svg);
 
 		&.boosted-page{
-			background-image: url(../images/boosted-bg.svg);
+			background-image: url(../images/volt_bg.svg);
 		}
 
 		&.home{background-color: #d6d9e2;}

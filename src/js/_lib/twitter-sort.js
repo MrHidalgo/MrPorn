@@ -1,6 +1,7 @@
 /*
  * Twitter category sort dropdown
- * Server-side sort via ?sort= URL param + localStorage state persistence
+ * Sorts the rendered list in place - no page reload. The server-side sort in category.php and
+ * the ?sort= param stay as the fallback for shared links, crawlers and no-JS visitors.
  * Mobile: Twitter icon toggle in heading opens the same dropdown
  */
 
@@ -24,8 +25,85 @@ window.initTwitterSort = function() {
         'az':             'A-Z',
         'za':             'Z-A'
     };
-    var STORAGE_KEY = 'mpg_twitter_sort';
     var DEFAULT_SORT = 'recommended';
+
+    // The reorder takes a couple of milliseconds - far too fast to read as feedback - so hold
+    // the spinner for at least this long after a click.
+    var SPINNER_MIN_MS = 250;
+
+    var listEl = document.querySelector('.row.category_sites');
+
+    // Direct children only: the container also holds an inline <script>, the pagination block
+    // and .category_sites_description as siblings of the items.
+    function readItems() {
+        return Array.prototype.filter.call(listEl ? listEl.children : [], function (el) {
+            return el.classList && el.classList.contains('category_sites_item');
+        });
+    }
+
+    var items = readItems();
+
+    // "Recommended" is the manual order the server rendered, so keep it as it arrived.
+    var originalOrder = items.slice();
+
+    // Re-insert the block after this node rather than appending it, so the items keep their
+    // child indices - _siteitems.scss:684-693 has :nth-child(2)/:nth-child(3) flex-order rules
+    // and the inline <script> counts as child 1.
+    var anchor = items.length ? items[0].previousSibling : null;
+
+    function num(el, attr) { return parseInt(el.getAttribute('data-' + attr), 10) || 0; }
+    function str(el, attr) { return el.getAttribute('data-' + attr) || ''; }
+    function cmpStr(a, b) { return a < b ? -1 : (a > b ? 1 : 0); }
+
+    // Mirrors the server usort in category.php:380-391. Two details verified against the
+    // server's own output rather than assumed: 'date-desc' is post ID descending (not
+    // post_date), and the title compare is a plain byte compare to match PHP's strcmp -
+    // localeCompare would order differently.
+    var COMPARATORS = {
+        'followers-desc': function (a, b) { return num(b, 'followers') - num(a, 'followers'); },
+        'followers-asc':  function (a, b) { return num(a, 'followers') - num(b, 'followers'); },
+        'date-desc':      function (a, b) { return num(b, 'id') - num(a, 'id'); },
+        'az':             function (a, b) { return cmpStr(str(a, 'title'), str(b, 'title')); },
+        'za':             function (a, b) { return cmpStr(str(b, 'title'), str(a, 'title')); }
+    };
+
+    // Move the existing nodes - never rebuild innerHTML. review.js binds hover/click listeners
+    // directly to each .category_sites_item_content at init, and the rank number is a CSS
+    // counter, so moving nodes preserves the listeners and renumbers for free.
+    function reorder(sortKey) {
+        var ordered = (sortKey === DEFAULT_SORT)
+            ? originalOrder.slice()
+            : items.slice().sort(COMPARATORS[sortKey]);
+
+        var frag = document.createDocumentFragment();
+        ordered.forEach(function (el) { frag.appendChild(el); });
+
+        if (anchor && anchor.parentNode === listEl) {
+            listEl.insertBefore(frag, anchor.nextSibling);
+        } else {
+            listEl.insertBefore(frag, listEl.firstChild);
+        }
+    }
+
+    function setBusy(isBusy) {
+        if (btn) btn.classList.toggle('is-sorting', isBusy);
+    }
+
+    function syncUi(sortKey) {
+        var text = LABELS[sortKey] || LABELS[DEFAULT_SORT];
+
+        if (label) label.textContent = text;
+        if (labelMobile) labelMobile.textContent = text;
+
+        // Skip the header li, which has no data-sort
+        optsList.querySelectorAll('li[data-sort]').forEach(function (li) {
+            li.classList.toggle('active', li.dataset.sort === sortKey);
+        });
+    }
+
+    function sortUrl(sortKey) {
+        return window.location.pathname + (sortKey === DEFAULT_SORT ? '' : '?sort=' + sortKey);
+    }
 
     function getCurrentSort() {
         var params = new URLSearchParams(window.location.search);
@@ -33,38 +111,40 @@ window.initTwitterSort = function() {
     }
 
     function applySort(sortKey) {
-        localStorage.setItem(STORAGE_KEY, sortKey);
-        if (sortKey === DEFAULT_SORT) {
-            window.location.href = window.location.pathname;
-        } else {
-            window.location.href = window.location.pathname + '?sort=' + sortKey;
+        // Nothing to sort, or an unknown key: fall back to the server round trip rather than
+        // silently doing nothing.
+        if (!listEl || !items.length || (sortKey !== DEFAULT_SORT && !COMPARATORS[sortKey])) {
+            window.location.href = sortUrl(sortKey);
+            return;
         }
+
+        currentSort = sortKey;
+        syncUi(sortKey);
+        close();
+        setBusy(true);
+
+        var startedAt = Date.now();
+
+        // rAF so the spinner paints before the synchronous reorder blocks the thread -
+        // otherwise the class is added and removed without ever being rendered.
+        window.requestAnimationFrame(function () {
+            reorder(sortKey);
+
+            if (window.history && window.history.replaceState) {
+                // replaceState, not pushState: the back button shouldn't walk through every
+                // sort the user tried.
+                window.history.replaceState(null, '', sortUrl(sortKey));
+            }
+
+            window.setTimeout(function () {
+                setBusy(false);
+            }, Math.max(0, SPINNER_MIN_MS - (Date.now() - startedAt)));
+        });
     }
 
     var currentSort = getCurrentSort();
-    var savedSort   = localStorage.getItem(STORAGE_KEY);
 
-    if (!window.location.search.includes('sort=') && savedSort && savedSort !== DEFAULT_SORT) {
-        window.location.replace(window.location.pathname + '?sort=' + savedSort);
-        return;
-    }
-
-    if (window.location.search.includes('sort=')) {
-        localStorage.setItem(STORAGE_KEY, currentSort);
-    }
-
-    var currentLabel = LABELS[currentSort] || LABELS[DEFAULT_SORT];
-
-    // Sync desktop button label
-    if (label) label.textContent = currentLabel;
-
-    // Sync mobile dropdown header label
-    if (labelMobile) labelMobile.textContent = currentLabel;
-
-    // Sync active option (skip the header li which has no data-sort)
-    optsList.querySelectorAll('li[data-sort]').forEach(function(li) {
-        li.classList.toggle('active', li.dataset.sort === currentSort);
-    });
+    syncUi(currentSort);
 
     function setDropdownTop() {
         if (mobileToggle && window.innerWidth <= 767) {

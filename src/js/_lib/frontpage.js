@@ -42,28 +42,9 @@ function scrollToCategoryOnHome(ev, _ev){
 
 }
 
-function addToFavourites(siteId){
-	postRequest(ajaxEndpoint, {
-		action:'add_to_fav',
-		site:siteId
-	}, function (res) {
-		renderFavourites();
-	});
-}
-
-function isLoggedIn(){
-
-}
-
-function removeFavourite(favItem){
-	let favId = favItem.dataset.id;
-	postRequest(ajaxEndpoint, {
-		action:'remove_fav',
-		site:favId
-	}, function (res) {
-		renderFavourites();
-	});
-}
+// addToFavourites, removeFavourite and isLoggedIn moved to _lib/favourites.js - the favourites
+// dropdown is global (header.php) but this file is excluded from app.js, so they were undefined
+// on every page except the homepage.
 
 function getLikesAndDislikes(){
 	window.dislikes = [];

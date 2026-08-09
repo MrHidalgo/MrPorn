@@ -22,12 +22,50 @@
 			display: block;
 			white-space: nowrap;
 		}
+
+		&::before{
+			content: '';
+			display: block;
+			height: 22px;
+		}
+		&.ml-cat:before{
+			width: 22px;
+			background-image: var(--m-m-category);
+
+		}
+		&.ml-deals:before{
+			width: 30px;
+			background-image: var(--m-m-deals);
+		}
+		&.ml-blog:before{
+			width: 22px;
+			background-image: var(--m-m-blog);
+		}
+		&.ml-contact:before{
+			width: 29px;
+			background-image: var(--m-m-contact);
+		}
 	}
 
 	&-favourites{
 		display: none;
 		@include adaptive(1023) {
 			display: block;
+		}
+	}
+
+	// SVGs load via <img>, so page CSS can't reach inside them — the light
+	// variants bake their own fills in and are swapped by src.
+	&-icon{
+		$icons: category, deals, blog, contact;
+		$files: (category: "icon-category", deals: "menu_deals", blog: "menu_blog", contact: "menu_contact");
+
+		@each $name in $icons {
+			&--#{$name} {
+				.light & {
+					content: url("/wp-content/themes/mpg/images/menu/#{map-get($files, $name)}-light.svg");
+				}
+			}
 		}
 	}
 }

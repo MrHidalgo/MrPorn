@@ -267,7 +267,11 @@ let lastMobileSimilarSite;
 
 			}
 
-			if (!_ev.closest(className)) {
+			// removeFavourite() above detaches the clicked row from the DOM, so by the time we get
+			// here _ev.closest(className) can no longer reach the panel and the click looks like it
+			// came from outside - which would close the panel out from under the user. closest()
+			// still walks the detached row, so test for the button itself.
+			if (!_ev.closest(className) && !_ev.closest('[un-favorites-js]')) {
 				// VIEW FAVORITES
 
 				if(document.querySelector('[view-favorites-toggle-js]')){
